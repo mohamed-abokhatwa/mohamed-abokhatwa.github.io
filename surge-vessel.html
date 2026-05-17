@@ -68,6 +68,22 @@
 <main>
 
   <h2>Introduction</h2>
+<h2>1. How the Surge Vessel Works</h2>
+<p>The surge vessel is a closed pressure vessel, partially filled with water and partially with compressed gas (nitrogen). When a pump trip occurs, two phases follow:</p>
+<ul>
+  <li><strong>Phase 1 — Down-surge:</strong> Pipeline pressure drops. The vessel expels water into the pipeline to prevent column separation.</li>
+  <li><strong>Phase 2 — Up-surge:</strong> The returning pressure wave compresses the gas cushion, absorbing the excess pressure rise.</li>
+</ul>
+<div class="callout">The vessel does not eliminate the transient — it modulates it. The gas cushion acts as a spring: larger and softer means gentler modulation.</div>
+
+<h2>2. The Governing Equation — Polytropic Gas Law</h2>
+<p>The behaviour of the gas cushion is governed by:</p>
+<div class="formula-box">
+  <div class="formula-main">P0 · V0^n = P1 · V1^n = constant</div>
+  <div class="formula-sub">n = 1.2 adopted as standard for water transmission (Chaudhry, 2014; Thorley, 2004)</div>
+</div>
+<p>In practice <strong>n = 1.2</strong> is the standard — between isothermal (n=1.0) and adiabatic (n=1.4). The water exchanged is simply: <strong>expelled = V1 - V0</strong> and <strong>absorbed = V0 - V2</strong>.</p>
+  
   <p>The hydropneumatic surge vessel is one of the most effective devices for mitigating water hammer in water transmission pipelines. It acts as a local pressure reservoir — supplying water when pressure drops after a pump trip, and absorbing excess water when pressure rises.</p>
   <p>Despite its critical role, surge vessel sizing is frequently oversimplified. In this article, I present a structured design workflow — from defining system inputs to interpreting Bentley HAMMER simulation outputs — using a real-scale pipeline example.</p>
 

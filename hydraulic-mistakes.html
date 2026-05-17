@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Common Mistakes in Hydraulic Modeling — Mohamed Abokhatwa</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Segoe UI',sans-serif;background:#0a0f1e;color:#e2e8f0;}
+    .topbar{background:#0d1829;border-bottom:1px solid #1e3a5f;padding:12px 40px;}
+    .topbar a{color:#60a5fa;text-decoration:none;font-size:14px;}
+    .topbar a:hover{text-decoration:underline;}
+    .hero-img{width:100%;height:auto;display:block;}
+    .hero-caption{max-width:860px;margin:0 auto;padding:32px 40px 0;background:#0a0f1e;}
+    .article-tag{font-size:11px;color:#60a5fa;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;}
+    h1{font-size:28px;font-weight:600;color:#fff;line-height:1.4;margin-bottom:10px;}
+    .byline{font-size:13px;color:#475569;padding-bottom:24px;border-bottom:1px solid #1e3a5f;}
+    main{max-width:860px;margin:0 auto;padding:36px 40px;}
+    h2{font-size:20px;font-weight:600;color:#fff;margin:2rem 0 .6rem;padding-left:10px;border-left:3px solid #2563eb;}
+    h3{font-size:16px;font-weight:600;color:#cbd5e1;margin:1.4rem 0 .4rem;}
+    p{font-size:15px;line-height:1.75;color:#94a3b8;margin-bottom:.9rem;}
+    ul,ol{padding-left:1.5rem;margin-bottom:.9rem;}
+    li{font-size:15px;line-height:1.75;color:#94a3b8;margin-bottom:.4rem;}
+    strong{color:#e2e8f0;}
+    .formula-box{background:#0d2137;border:1px solid #1e3a5f;border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;}
+    .formula-main{font-size:17px;font-weight:600;color:#93c5fd;margin-bottom:.5rem;}
+    .formula-sub{font-size:13px;color:#475569;margin-top:.4rem;}
+    table{width:100%;border-collapse:collapse;font-size:14px;margin:1rem 0;}
+    th{background:#0d2137;padding:9px 12px;text-align:left;font-weight:500;border:1px solid #1e3a5f;color:#93c5fd;}
+    td{padding:9px 12px;border:1px solid #1e3a5f;color:#94a3b8;}
+    tr:nth-child(even) td{background:#0a1628;}
+    .callout{border:1px solid #1d4ed8;background:#0d2137;border-radius:8px;padding:.8rem 1rem;margin:1.2rem 0;font-size:14px;color:#93c5fd;}
+    .warning-box{border:1px solid #92400e;background:#2d1b00;border-radius:8px;padding:.8rem 1rem;margin:1.2rem 0;font-size:14px;color:#fbbf24;}
+    .mistake-header{display:flex;align-items:center;gap:10px;margin:2rem 0 .6rem;}
+    .mistake-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#1e3a5f;color:#60a5fa;font-size:14px;font-weight:600;flex-shrink:0;}
+    .divider{border:none;border-top:1px solid #1e3a5f;margin:1.8rem 0;}
+    .checklist-table td:first-child{text-align:center;width:36px;color:#60a5fa;font-weight:600;}
+    .tags{font-size:13px;color:#2563eb;margin-top:2rem;line-height:2.4;}
+    footer{text-align:center;padding:30px;font-size:13px;color:#475569;border-top:1px solid #1e3a5f;margin-top:40px;}
+    footer a{color:#60a5fa;text-decoration:none;}
+  </style>
+</head>
+<body>
+
+<div class="topbar"><a href="index.html">← Back to all articles</a></div>
+
+<img class="hero-img" src="hydraulic-mistakes-cover.png" alt="Common Mistakes in Hydraulic Modeling — Mohamed Abokhatwa">
+
+<div class="hero-caption">
+  <div class="article-tag">Hydraulic Modeling · Pipeline Design</div>
+  <h1>Common Mistakes in Hydraulic Modeling of Water Transmission Networks</h1>
+  <p class="byline">By Mohamed Abokhatwa &nbsp;·&nbsp; Technical Manager | PMP, PMI-RMP, ENV SP &nbsp;·&nbsp; May 2026</p>
+</div>
+
+<main>
+
+  <h2>Introduction</h2>
+  <p>After two decades of designing and managing water transmission networks — from <strong>400 km+ pipeline systems in Waad Al-Shamal</strong> to <strong>80 km transmission networks for NEOM</strong> — I've reviewed dozens of hydraulic models, both in-house and from third-party consultants. One truth remains constant: <strong>the model is only as reliable as the assumptions behind it.</strong></p>
+  <p>In this article, I share the most critical and recurring mistakes I've encountered in hydraulic modeling, particularly in large-scale water transmission projects. My focus is the <strong>design phase</strong> — where getting it wrong is far less costly than getting it wrong during construction or, worse, during operation.</p>
+
+  <hr class="divider">
+
+  <div class="mistake-header"><span class="mistake-num">1</span><h2 style="margin:0;border:none;padding:0;">Ignoring Transient (Surge) Analysis Entirely</h2></div>
+  <p>This is perhaps the most dangerous mistake of all. Many design teams model only <strong>steady-state conditions</strong> — peak demand, minimum pressure, and average flow scenarios. Steady-state alone tells you how the system behaves when it's stable. It tells you nothing about what happens in the critical seconds following a <strong>pump trip, valve closure, or power failure.</strong></p>
+  <p>In a transmission pipeline designed for 145,000 m³/day — operating at a steady-state pressure of 8 bar — a sudden pump trip can generate a <strong>pressure surge exceeding 20–25 bar</strong> within 2–3 seconds. That's more than <strong>3× the design operating pressure.</strong></p>
+  <div class="callout">💡 <strong>Design Rule of Thumb:</strong> For pipelines longer than 2 km or pump heads exceeding 30 m, transient analysis is <strong>mandatory</strong> — not optional.</div>
+
+  <hr class="divider">
+
+  <div class="mistake-header"><span class="mistake-num">2</span><h2 style="margin:0;border:none;padding:0;">Incorrect Wave Speed Calculation</h2></div>
+  <p>The pressure surge magnitude directly depends on the <strong>wave propagation speed (celerity, a)</strong>, defined by the Joukowsky equation:</p>
+  <div class="formula-box">
+    <div class="formula-main">ΔP = ρ · a · ΔV</div>
+    <div class="formula-sub">ΔP = pressure surge (Pa) &nbsp;|&nbsp; ρ = water density (~1,000 kg/m³) &nbsp;|&nbsp; a = wave speed (m/s) &nbsp;|&nbsp; ΔV = change in velocity (m/s)</div>
+  </div>
+  <table>
+    <tr><th>Pipe Material</th><th>Wave Speed (a)</th></tr>
+    <tr><td>Ductile Iron (DI)</td><td>~1,000–1,100 m/s</td></tr>
+    <tr><td>Carbon Steel (CS)</td><td>~1,200–1,400 m/s</td></tr>
+    <tr><td>HDPE</td><td>~200–400 m/s</td></tr>
+    <tr><td>GRP/FRP</td><td>~400–700 m/s</td></tr>
+  </table>
+  <p>Using steel wave speed for an HDPE pipeline would overestimate surge pressure by <strong>3–5×</strong> — leading to unnecessary over-design or false confidence in the pipe's resilience.</p>
+
+  <hr class="divider">
+
+  <div class="mistake-header"><span class="mistake-num">3</span><h2 style="margin:0;border:none;padding:0;">Neglecting Pipe Profile and Topography</h2></div>
+  <p>In real projects — especially in mountainous areas like <strong>Al-Baha</strong> or desert escarpments — elevation changes of <strong>200–400 m</strong> over 10–30 km are common. When pressure drops below <strong>vapour pressure (~−100 kPa gauge)</strong> at a high point, <strong>column separation</strong> occurs — a vapour cavity forms, then collapses violently when pressure returns.</p>
+  <div class="callout">💡 <strong>Design practice:</strong> Always superimpose the transient pressure envelope on the pipe profile. Any section where minimum transient pressure + elevation head falls below the pipe centreline elevation requires urgent attention.</div>
+
+  <hr class="divider">
+
+  <div class="mistake-header"><span class="mistake-num">4</span><h2 style="margin:0;border:none;padding:0;">Improper Air Valve Sizing and Placement</h2></div>
+  <p>Air valves are a primary surge protection measure — yet their sizing and placement are frequently incorrect.</p>
+  <h3>Common mistakes:</h3>
+  <p><strong>4a — Placing air valves only at high points:</strong> Air valves are also needed at local high points in undulating profiles, before reducers, and upstream of long downward slopes.</p>
+  <p><strong>4b — Undersizing the inflow orifice:</strong> For a DN 1,200 mm DI pipeline at <strong>2.0 m/s</strong>:</p>
+  <ul>
+    <li>Flow rate = 1.13 m² × 2.0 m/s = <strong>~2.26 m³/s (~8,140 m³/h)</strong></li>
+    <li>Required air inflow (~22%) = <strong>~1,800 Nm³/h</strong></li>
+  </ul>
+  <p><strong>4c — Ignoring the slam effect:</strong> A combination air valve closing too rapidly generates a <strong>slam surge</strong> — sometimes more damaging than the original transient. Slow-closing or anti-slam air valves must be specified.</p>
+
+  <hr class="divider">
+
+  <div class="mistake-header"><span class="mistake-num">5</span><h2 style="margin:0;border:none;padding:0;">Surge Protection Devices Specified Without Simulation</h2></div>
+  <p>Specifying a surge vessel or (PRV) without integrating them into the transient model is a critical design gap. The right protection strategy is always determined <em>after</em> running the transient model — not before.</p>
+  <table>
+    <tr><th>Device</th><th>Key Parameters to Validate</th></tr>
+    <tr><td>Surge vessel</td><td>Volume, pre-charge pressure, connection size</td></tr>
+    <tr><td>Air/combination valve</td><td>Orifice size, placement, closing speed</td></tr>
+    <tr><td>Pressure relief valve (PRV)</td><td>Set pressure, relieving capacity, response time</td></tr>
+    <tr><td>Non-return valve (NRV)</td><td>Closing speed, disc inertia</td></tr>
+    <tr><td>Control valve</td><td>Closure time, flow characteristics</td></tr>
+  </table>
+  <div class="callout">💡 A surge vessel undersized by just <strong>20–30%</strong> in volume can allow transient pressures to exceed allowable limits during the critical first cycle.</div>
+
+  <hr class="divider">
+
+  <div class="mistake-header"><span class="mistake-num">6</span><h2 style="margin:0;border:none;padding:0;">Using Steady-State Model for Emergency Scenarios</h2></div>
+  <p>For demand changes occurring over <strong>less than 30–60 seconds</strong>, transient analysis is required — not steady-state. Failing to recognize this boundary has led to systems that perform adequately in normal operation but fail during emergencies.</p>
+
+  <hr class="divider">
+  <h2>Conclusion — Design Engineer's Checklist</h2>
+  <table class="checklist-table">
+    <tr><th>#</th><th>Check Item</th><th>Analysis Type</th></tr>
+    <tr><td>1</td><td>Steady-state pressure and velocity verified</td><td>Steady-State</td></tr>
+    <tr><td>2</td><td>Wave speed calculated per actual pipe material</td><td>Transient</td></tr>
+    <tr><td>3</td><td>Pipeline profile superimposed on HGL</td><td>Transient</td></tr>
+    <tr><td>4</td><td>Column separation locations identified</td><td>Transient</td></tr>
+    <tr><td>5</td><td>Air valve locations and sizes validated</td><td>Transient</td></tr>
+    <tr><td>6</td><td>Surge protection devices sized via simulation</td><td>Transient</td></tr>
+    <tr><td>7</td><td>Min and max pressure envelopes checked</td><td>Transient</td></tr>
+    <tr><td>8</td><td>Emergency / fire flow transients assessed</td><td>Transient</td></tr>
+    <tr><td>9</td><td>Transient report reviewed and approved</td><td>Both</td></tr>
+  </table>
+
+  <hr class="divider">
+  <h2>References</h2>
+  <ol style="font-size:14px;line-height:2.2;color:#94a3b8;">
+    <li>Wylie, E.B. & Streeter, V.L. (1993). <em>Fluid Transients in Systems</em>. Prentice Hall.</li>
+    <li>Chaudhry, M.H. (2014). <em>Applied Hydraulic Transients</em>, 3rd ed. Springer.</li>
+    <li>AWWA M11 (2017). <em>Steel Pipe — A Guide for Design and Installation</em>.</li>
+    <li>AWWA M51 (2017). <em>Air-Release, Air/Vacuum, and Combination Air Valves</em>.</li>
+    <li>Thorley, A.R.D. (2004). <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing.</li>
+    <li>BS EN 805 (2000). <em>Water supply — Requirements for systems outside buildings</em>. BSI.</li>
+  </ol>
+
+  <div class="tags">#WaterEngineering #HydraulicModeling #WaterHammer #SurgeAnalysis #PipelineDesign #WaterTransmission #Engineering #NEOM #SaudiArabia</div>
+</main>
+
+<footer>© 2026 Mohamed Abokhatwa · Riyadh, Saudi Arabia · <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> · <a href="index.html">All Articles</a></footer>
+</body>
+</html>

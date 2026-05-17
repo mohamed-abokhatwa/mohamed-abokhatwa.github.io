@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sizing the Hydropneumatic Surge Vessel — Mohamed Abokhatwa</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Segoe UI',sans-serif;background:#0a0f1e;color:#e2e8f0;}
+    .topbar{background:#0d1829;border-bottom:1px solid #1e3a5f;padding:12px 40px;}
+    .topbar a{color:#60a5fa;text-decoration:none;font-size:14px;}
+    .topbar a:hover{text-decoration:underline;}
+    .hero-caption{max-width:860px;margin:0 auto;padding:32px 40px 0;}
+    .article-tag{font-size:11px;color:#60a5fa;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;}
+    h1{font-size:28px;font-weight:600;color:#fff;line-height:1.4;margin-bottom:10px;}
+    .byline{font-size:13px;color:#475569;padding-bottom:24px;border-bottom:1px solid #1e3a5f;}
+    main{max-width:860px;margin:0 auto;padding:36px 40px;}
+    h2{font-size:20px;font-weight:600;color:#fff;margin:2rem 0 .6rem;padding-left:10px;border-left:3px solid #2563eb;}
+    h3{font-size:16px;font-weight:600;color:#cbd5e1;margin:1.4rem 0 .4rem;}
+    p{font-size:15px;line-height:1.75;color:#94a3b8;margin-bottom:.9rem;}
+    ul,ol{padding-left:1.5rem;margin-bottom:.9rem;}
+    li{font-size:15px;line-height:1.75;color:#94a3b8;margin-bottom:.4rem;}
+    strong{color:#e2e8f0;}
+    em{color:#93c5fd;font-style:italic;}
+    .formula-box{background:#0d2137;border:1px solid #1e3a5f;border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;}
+    .formula-main{font-size:17px;font-weight:600;color:#93c5fd;margin-bottom:.5rem;letter-spacing:.02em;}
+    .formula-sub{font-size:13px;color:#475569;margin-top:.4rem;}
+    table{width:100%;border-collapse:collapse;font-size:14px;margin:1rem 0;}
+    th{background:#0d2137;padding:9px 12px;text-align:left;font-weight:500;border:1px solid #1e3a5f;color:#93c5fd;}
+    td{padding:9px 12px;border:1px solid #1e3a5f;color:#94a3b8;}
+    tr:nth-child(even) td{background:#0a1628;}
+    .highlight-row td{background:#0d2137!important;font-weight:600;color:#60a5fa;}
+    .success-row td{background:#052e16!important;color:#4ade80;font-weight:600;}
+    .danger-row td{background:#2d0a0a!important;color:#f87171;font-weight:600;}
+    .sim-box{border:1px solid #1e3a5f;border-radius:8px;margin:1.2rem 0;overflow:hidden;}
+    .sim-header{background:#0d2137;padding:8px 14px;font-size:13px;font-weight:500;color:#93c5fd;border-bottom:1px solid #1e3a5f;display:flex;align-items:center;gap:8px;}
+    .sim-dot{width:8px;height:8px;border-radius:50%;background:#2563eb;}
+    .sim-body{padding:.8rem 1rem 0;}
+    .callout{border:1px solid #1d4ed8;background:#0d2137;border-radius:8px;padding:.8rem 1rem;margin:1.2rem 0;font-size:14px;color:#93c5fd;}
+    .warning-box{border:1px solid #92400e;background:#2d1b00;border-radius:8px;padding:.8rem 1rem;margin:1.2rem 0;font-size:14px;color:#fbbf24;}
+    .danger-box{border:1px solid #7f1d1d;background:#2d0a0a;border-radius:8px;padding:.8rem 1rem;margin:1.2rem 0;font-size:14px;color:#f87171;}
+    .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:500;}
+    .badge-success{background:#052e16;color:#4ade80;}
+    .badge-danger{background:#2d0a0a;color:#f87171;}
+    .badge-warning{background:#2d1b00;color:#fbbf24;}
+    .badge-info{background:#0d2137;color:#60a5fa;}
+    .chart-wrap{position:relative;width:100%;margin:1rem 0;}
+    .chart-note{font-size:12px;color:#475569;text-align:center;margin-top:4px;font-style:italic;}
+    .divider{border:none;border-top:1px solid #1e3a5f;margin:1.8rem 0;}
+    .step-num{display:inline-block;width:22px;height:22px;border-radius:50%;background:#0d2137;color:#60a5fa;font-size:12px;font-weight:500;text-align:center;line-height:22px;margin-right:6px;border:1px solid #1e3a5f;}
+    .tags{font-size:13px;color:#2563eb;margin-top:2rem;line-height:2.4;}
+    footer{text-align:center;padding:30px;font-size:13px;color:#475569;border-top:1px solid #1e3a5f;margin-top:40px;}
+    footer a{color:#60a5fa;text-decoration:none;}
+  </style>
+</head>
+<body>
+<div class="topbar"><a href="index.html">&#8592; Back to all articles</a></div>
+
+<div style="width:100%;background:#040d1a;">
+<svg width="100%" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#040d1a"/><stop offset="100%" stop-color="#071628"/></linearGradient>
+<linearGradient id="pf2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a3a5c"/><stop offset="100%" stop-color="#0d2137"/></linearGradient>
+</defs>
+<rect width="680" height="340" fill="url(#bg2)"/>
+<rect x="60" y="60" width="240" height="220" rx="12" fill="#071e38" stroke="#1e3a5f" stroke-width="0.5"/>
+<rect x="100" y="280" width="160" height="20" rx="4" fill="#0d2137"/>
+<rect x="100" y="300" width="160" height="60" rx="4" fill="#0a1628" stroke="#1e3a5f" stroke-width="0.5"/>
+<rect x="68" y="100" width="224" height="80" rx="4" fill="#0d4a7a" opacity="0.3"/>
+<rect x="68" y="180" width="224" height="92" rx="4" fill="#1e3a5f" opacity="0.4"/>
+<text font-family="'Segoe UI',sans-serif" font-size="10" fill="#60a5fa" x="180" y="148" text-anchor="middle">Air / N2 (compressed gas)</text>
+<text font-family="'Segoe UI',sans-serif" font-size="10" fill="#93c5fd" x="180" y="230" text-anchor="middle">Water</text>
+<rect x="172" y="60" width="16" height="30" rx="3" fill="#1e3a5f" stroke="#2563eb" stroke-width="0.5"/>
+<circle cx="180" cy="55" r="8" fill="#0d2137" stroke="#2563eb" stroke-width="0.5"/>
+<text font-family="'Segoe UI',sans-serif" font-size="7" fill="#60a5fa" x="180" y="58" text-anchor="middle">P</text>
+<rect x="300" y="230" width="320" height="30" rx="6" fill="url(#pf2)" stroke="#1e3a5f" stroke-width="0.5"/>
+<rect x="300" y="234" width="320" height="22" rx="4" fill="#0d4a7a" opacity="0.5"/>
+<line x1="300" y1="245" x2="240" y2="245" stroke="#2563eb" stroke-width="2"/>
+<circle cx="236" cy="245" r="4" fill="#2563eb"/>
+<text font-family="'Segoe UI',sans-serif" font-size="9" fill="#94a3b8" x="460" y="243" text-anchor="middle">Water transmission pipeline — DN 800 mm</text>
+<path d="M340,234 Q360,220 380,234" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.8"/>
+<path d="M380,234 Q400,248 420,234" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.8"/>
+<path d="M420,234 Q440,220 460,234" fill="none" stroke="#ef4444" stroke-width="1.2" opacity="0.6"/>
+<path d="M460,234 Q480,248 500,234" fill="none" stroke="#ef4444" stroke-width="0.8" opacity="0.4"/>
+<text font-family="'Segoe UI',sans-serif" font-size="9" fill="#ef4444" x="420" y="218" text-anchor="middle">Pressure surge wave</text>
+<text font-family="'Segoe UI',sans-serif" font-size="11" font-weight="600" fill="#fff" x="500" y="100" text-anchor="middle">How the vessel works</text>
+<rect x="390" y="115" width="220" height="28" rx="4" fill="#0d2a48" stroke="#1e3a5f" stroke-width="0.5"/>
+<text font-family="'Segoe UI',sans-serif" font-size="9" fill="#60a5fa" x="500" y="133" text-anchor="middle">Down-surge: vessel expels water</text>
+<rect x="390" y="153" width="220" height="28" rx="4" fill="#1a0a0a" stroke="#7f1d1d" stroke-width="0.5"/>
+<text font-family="'Segoe UI',sans-serif" font-size="9" fill="#fca5a5" x="500" y="171" text-anchor="middle">Up-surge: vessel absorbs water</text>
+<rect x="390" y="191" width="220" height="28" rx="4" fill="#071e1a" stroke="#065f46" stroke-width="0.5"/>
+<text font-family="'Segoe UI',sans-serif" font-size="9" fill="#34d399" x="500" y="209" text-anchor="middle">Gas cushion acts as pressure spring</text>
+<text font-family="'Segoe UI',sans-serif" font-size="10" font-weight="500" fill="#475569" x="672" y="330" text-anchor="end">Mohamed Abokhatwa</text>
+</svg>
+</div>
+
+<div class="hero-caption">
+  <div class="article-tag">Surge Analysis &middot; Hydraulic Design</div>
+  <h1>Sizing the Hydropneumatic Surge Vessel in Water Transmission Pipelines</h1>
+  <p class="byline">By Mohamed Abokhatwa &nbsp;&middot;&nbsp; Technical Manager | PMP, PMI-RMP, ENV SP &nbsp;&middot;&nbsp; May 2026</p>
+</div>
+
+<main>
+
+<h2>Introduction</h2>
+<p>The hydropneumatic surge vessel is one of the most effective devices for mitigating water hammer in water transmission pipelines. It acts as a local pressure reservoir — supplying water when pressure drops after a pump trip, and absorbing excess water when pressure rises.</p>
+<p>Despite its critical role, surge vessel sizing is frequently oversimplified or based on rules of thumb disconnected from actual system behaviour. In this article, I present a structured design workflow — from defining system inputs to interpreting Bentley HAMMER simulation outputs — using a real-scale DN 800 mm pipeline example. The goal is to show not just the <em>what</em>, but the <em>how</em> of surge vessel sizing in practice.</p>
+
+<hr class="divider">
+<h2>1. How the Surge Vessel Works</h2>
+<p>The surge vessel is a closed pressure vessel, partially filled with water and partially with compressed gas (nitrogen). It is connected directly to the pipeline at or near the pump station discharge. During normal operation, the vessel is pressurised to match the steady-state pipeline pressure. When a pump trip occurs, two phases follow:</p>
+<ul>
+  <li><strong>Phase 1 — Down-surge:</strong> Pipeline pressure drops. The vessel expels water into the pipeline to prevent column separation and sub-atmospheric pressures.</li>
+  <li><strong>Phase 2 — Up-surge:</strong> The returning pressure wave compresses the gas cushion, absorbing the excess pressure rise and preventing over-pressurisation.</li>
+</ul>
+<div class="callout">The vessel does not eliminate the transient — it <em>modulates</em> it. The gas cushion acts as a spring: the larger and softer the spring, the gentler the modulation. But an oversized vessel adds unnecessary cost, while an undersized one fails to protect the system.</div>
+
+<hr class="divider">
+<h2>2. The Governing Equation — Polytropic Gas Law</h2>
+<p>The behaviour of the gas cushion in the vessel is governed by the polytropic gas law:</p>
+<div class="formula-box">
+  <div class="formula-main">P0 &middot; V0^n = P1 &middot; V1^n = P2 &middot; V2^n = constant</div>
+  <div class="formula-sub">P0, V0 = initial steady-state gas pressure and volume &nbsp;|&nbsp; P1, V1 = state at minimum pressure (down-surge) &nbsp;|&nbsp; P2, V2 = state at maximum pressure (up-surge) &nbsp;|&nbsp; n = polytropic exponent</div>
+</div>
+<p>In practice, <strong>n = 1.2</strong> is commonly adopted as a conservative intermediate value — between isothermal (n = 1.0, slow events) and adiabatic (n = 1.4, fast events). This is the standard adopted for water transmission surge vessel sizing (Chaudhry, 2014; Thorley, 2004).</p>
+<p>The volume of water exchanged between the vessel and the pipeline during the transient is:</p>
+<div class="formula-box">
+  <div class="formula-main">Water expelled = V1 &minus; V0 &nbsp;&nbsp;|&nbsp;&nbsp; Water absorbed = V0 &minus; V2</div>
+  <div class="formula-sub">These two quantities define the minimum required vessel working volume for down-surge and up-surge protection respectively.</div>
+</div>
+
+<hr class="divider">
+<h2>3. System Description and Design Scenario</h2>
+<p>The example system is a single pump station feeding a 12 km Ductile Iron transmission pipeline. The design scenario is a <strong>simultaneous trip of all operating pumps</strong> — the most critical transient event in most transmission systems.</p>
+
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Bentley HAMMER &mdash; System Input Summary</div>
+  <div class="sim-body">
+    <table style="margin:0;">
+      <tr><th>Input Parameter</th><th>Value</th><th>Notes</th></tr>
+      <tr><td>Pipeline total length</td><td>12,000 m</td><td>Single main pipeline</td></tr>
+      <tr><td>Pipe diameter (D)</td><td>DN 800 mm</td><td>Ductile Iron (DI), Class K9</td></tr>
+      <tr><td>Design flow rate (Q)</td><td>2,520 m&sup3;/h (0.70 m&sup3;/s)</td><td>Peak daily demand</td></tr>
+      <tr><td>Design velocity (v)</td><td>1.4 m/s</td><td>Within recommended range for DN 800</td></tr>
+      <tr><td>Wave speed (a)</td><td>1,050 m/s</td><td>DI pipe, computed per Chaudhry (2014)</td></tr>
+      <tr><td>Static head at pump discharge</td><td>85.0 m</td><td>From steady-state model</td></tr>
+      <tr><td>Pipe class pressure rating</td><td>PN 16 &mdash; 160 m head</td><td>Max allowable: 136 m (15% margin)</td></tr>
+      <tr><td>Minimum allowable pressure</td><td>+3.0 m gauge</td><td>Above vapour pressure with safety margin</td></tr>
+      <tr><td>Pump trip scenario</td><td>Simultaneous trip &mdash; all pumps</td><td>Worst-case transient scenario</td></tr>
+      <tr><td>Polytropic exponent (n)</td><td>1.2</td><td>Standard for water transmission</td></tr>
+    </table>
+  </div>
+</div>
+
+<hr class="divider">
+<h2>4. Baseline Simulation &mdash; No Protection</h2>
+<p>Before sizing any protection device, the first step in Bentley HAMMER is always to run the <strong>unprotected scenario</strong>. This establishes the baseline transient severity and — critically — justifies the protection investment to the client.</p>
+
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Bentley HAMMER &mdash; Unprotected Scenario: Pressure Envelope Results</div>
+  <div class="sim-body">
+    <table style="margin:0;">
+      <tr><th>Location</th><th>Steady-State (m)</th><th>Max Transient (m)</th><th>Min Transient (m)</th><th>Status</th></tr>
+      <tr class="danger-row"><td>0 m &mdash; Pump discharge</td><td>85.0</td><td>217.5</td><td>&minus;8.2</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+      <tr class="danger-row"><td>6,000 m &mdash; Midpoint</td><td>64.9</td><td>154.8</td><td>&minus;24.1</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+      <tr class="danger-row"><td>12,000 m &mdash; Delivery</td><td>44.8</td><td>96.7</td><td>+2.1</td><td><span class="badge badge-warning">MARGINAL</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="danger-box">Without protection, maximum transient pressure reaches <strong>217.5 m</strong> at pump discharge &mdash; exceeding the PN 16 pipe class limit of 136 m by 60%. Minimum pressures drop to <strong>&minus;24.1 m</strong> at the midpoint &mdash; well below vapour pressure. Column separation is certain across the full pipeline length.</div>
+
+<div class="chart-wrap"><canvas id="baselineChart"></canvas><p class="chart-note">Figure 1 &mdash; Pressure envelope along pipeline: unprotected scenario (Bentley HAMMER)</p></div>
+
+<hr class="divider">
+<h2>5. Surge Vessel Sizing &mdash; Step-by-Step Procedure</h2>
+
+<h3><span class="step-num">1</span>Define steady-state operating conditions</h3>
+<p>From the steady-state model: P0 = 85.0 m + 10.3 m atmospheric = <strong>95.3 m abs = 1.84 bar abs</strong> at the vessel tap point. This is the pre-charge pressure — it must reflect the actual HGL at the vessel connection, not the pump discharge head.</p>
+
+<h3><span class="step-num">2</span>Define allowable pressure limits</h3>
+<ul>
+  <li><strong>P_max = 136 m</strong> (PN 16 rating minus 15% safety margin)</li>
+  <li><strong>P_min = +3.0 m gauge</strong> (above vapour pressure with safety margin, confirmed with client)</li>
+</ul>
+
+<h3><span class="step-num">3</span>Set the initial gas volume</h3>
+<p>The initial gas volume occupies a fraction of the total vessel volume. A common starting ratio is 50% gas / 50% water at steady state. This ratio directly controls how much water the vessel can expel (gas expands during down-surge) and absorb (gas compresses during up-surge).</p>
+
+<h3><span class="step-num">4</span>Analytical starting point &mdash; polytropic gas law</h3>
+<p>Assuming initial gas volume V0 = 3.0 m&sup3; (50% of an estimated 6.0 m&sup3; vessel):</p>
+<div class="formula-box">
+  <div class="formula-main">V1 = V0 &times; (P0/P1)^(1/n) = 3.0 &times; (1.84/1.30)^(1/1.2) = 3.0 &times; 1.337 = 4.01 m&sup3;</div>
+  <div class="formula-sub">Water to be expelled = V1 &minus; V0 = 4.01 &minus; 3.0 = 1.01 m&sup3; &nbsp;|&nbsp; Initial vessel estimate: <strong>6.0 m&sup3;</strong></div>
+</div>
+
+<h3><span class="step-num">5</span>Simulation iteration results</h3>
+<p>Three vessel volumes were tested in Bentley HAMMER. For each run, the pre-charge pressure was set to 1.84 bar abs with a 50/50 gas-to-water ratio at steady state.</p>
+
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Bentley HAMMER &mdash; Surge Vessel Iteration Summary</div>
+  <div class="sim-body">
+    <table style="margin:0;">
+      <tr><th>Run</th><th>Vessel (m&sup3;)</th><th>Max Head at Pump (m)</th><th>Min Head at Midpoint (m)</th><th>Max Limit (m)</th><th>Min Limit (m)</th><th>Result</th></tr>
+      <tr class="danger-row"><td>Run 1</td><td>4.0</td><td>168.4</td><td>&minus;6.3</td><td>136</td><td>+3.0</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+      <tr class="danger-row"><td>Run 2</td><td>6.0</td><td>141.2</td><td>+0.8</td><td>136</td><td>+3.0</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+      <tr class="success-row"><td>Run 3</td><td>8.0</td><td>128.6</td><td>+4.2</td><td>136</td><td>+3.0</td><td><span class="badge badge-success">PASS &#10003;</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="callout">The analytical estimate of <strong>6.0 m&sup3;</strong> proved insufficient &mdash; simulation showed it still violated both pressure limits. The final adopted volume of <strong>8.0 m&sup3;</strong> provides satisfactory margin on both criteria. This is precisely why simulation validation is mandatory &mdash; analytical methods provide the starting point, not the final answer.</div>
+
+<hr class="divider">
+<h2>6. Final Simulation Results &mdash; 8.0 m&sup3; Surge Vessel</h2>
+
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Bentley HAMMER &mdash; Protected Scenario (Vessel = 8.0 m&sup3;)</div>
+  <div class="sim-body">
+    <table style="margin:0;">
+      <tr><th>Location</th><th>Steady-State (m)</th><th>Max Transient (m)</th><th>Min Transient (m)</th><th>Status</th></tr>
+      <tr class="success-row"><td>0 m &mdash; Pump discharge</td><td>85.0</td><td>128.6</td><td>+18.4</td><td><span class="badge badge-success">OK &#10003;</span></td></tr>
+      <tr class="success-row"><td>6,000 m &mdash; Midpoint</td><td>64.9</td><td>108.2</td><td>+4.2</td><td><span class="badge badge-success">OK &#10003;</span></td></tr>
+      <tr class="success-row"><td>12,000 m &mdash; Delivery</td><td>44.8</td><td>74.1</td><td>+8.2</td><td><span class="badge badge-success">OK &#10003;</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="chart-wrap"><canvas id="comparisonChart"></canvas><p class="chart-note">Figure 2 &mdash; Pressure envelope comparison: unprotected vs. protected with 8.0 m&sup3; vessel</p></div>
+<div class="chart-wrap"><canvas id="timeChart"></canvas><p class="chart-note">Figure 3 &mdash; Pressure vs. time at pump discharge: first recovery at t = 1.8 s after pump trip</p></div>
+
+<hr class="divider">
+<h2>7. Critical Design Parameters Often Overlooked</h2>
+
+<h3>7.1 Pre-charge pressure</h3>
+<p>The initial gas pressure must match the steady-state HGL at the vessel connection point &mdash; not the pump head, not the system average. On a long pipeline with significant friction losses, these can differ by 10&ndash;30 m &mdash; a critical error in the sizing calculation.</p>
+<div class="warning-box">Setting P0 based on pump discharge head instead of the actual HGL at the vessel tap point is one of the most common &mdash; and most consequential &mdash; mistakes in surge vessel design.</div>
+
+<h3>7.2 Connection pipe diameter</h3>
+<p>The pipe connecting the vessel to the main pipeline must allow rapid water exchange during the transient. An undersized connection pipe creates a hydraulic throttle: the vessel cannot respond fast enough, and the transient is not effectively modulated.</p>
+<div class="formula-box">
+  <div class="formula-main">D_connection &ge; 0.3 &times; D_main</div>
+  <div class="formula-sub">For DN 800 mm main pipeline: connection pipe minimum DN 250 mm</div>
+</div>
+
+<h3>7.3 Asymmetric throttle orifice</h3>
+<p>In many designs, a throttle orifice is installed on the vessel connection to damp oscillations. The key principle &mdash; which is frequently missed &mdash; is that the orifice must be <strong>asymmetric</strong>:</p>
+<ul>
+  <li><strong>Larger orifice for outflow</strong> (during down-surge &mdash; fast water delivery needed to prevent column separation)</li>
+  <li><strong>Smaller orifice for inflow</strong> (during up-surge &mdash; controlled return to prevent slam and re-pressurisation spike)</li>
+</ul>
+
+<h3>7.4 Minimum water reserve</h3>
+<p>The vessel must retain a minimum water volume at all times to prevent gas entrainment into the pipeline. A low-level float switch with alarm and automatic refill valve is mandatory. The minimum water volume is typically set at <strong>10&ndash;15% of total vessel volume</strong>.</p>
+
+<h3>7.5 Vessel location</h3>
+<p>The vessel is most effective when located within <strong>50&ndash;100 m</strong> of the pump station discharge. The further the vessel, the longer the unprotected pipeline segment during the first critical milliseconds of the transient.</p>
+
+<hr class="divider">
+<h2>8. Sensitivity Analysis</h2>
+<p>The table below shows how the required vessel volume changes with key input parameter variations.</p>
+<table>
+  <tr><th>Parameter Change</th><th>Effect on Required Volume</th><th>Sensitivity</th></tr>
+  <tr><td>P0 increases by 10%</td><td>+18&ndash;25% larger vessel</td><td><span class="badge badge-danger">High</span></td></tr>
+  <tr><td>P_min tightened (3 m to 1 m gauge)</td><td>+20&ndash;30% larger vessel</td><td><span class="badge badge-danger">High</span></td></tr>
+  <tr><td>Pipeline length doubled (12 to 24 km)</td><td>+40&ndash;60% larger vessel</td><td><span class="badge badge-danger">High</span></td></tr>
+  <tr><td>DI replaced with HDPE (wave speed ~3&times; lower)</td><td>~35% smaller vessel</td><td><span class="badge badge-warning">Medium</span></td></tr>
+  <tr><td>Connection pipe reduced (DN 250 to DN 150)</td><td>Under-performs &mdash; increase 15&ndash;20%</td><td><span class="badge badge-warning">Medium</span></td></tr>
+  <tr><td>Gas/water ratio changed (50/50 to 30/70)</td><td>Reduced expulsion capacity &mdash; increase volume</td><td><span class="badge badge-warning">Medium</span></td></tr>
+  <tr><td>Polytropic exponent: n=1.0 vs n=1.4</td><td>&plusmn;8&ndash;12% variation</td><td><span class="badge badge-info">Low</span></td></tr>
+</table>
+
+<hr class="divider">
+<h2>9. Final Vessel Specification</h2>
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Surge Vessel &mdash; Final Design Specification</div>
+  <div class="sim-body">
+    <table style="margin:0;">
+      <tr><th>Parameter</th><th>Value</th></tr>
+      <tr><td>Total vessel volume</td><td><strong>8.0 m&sup3;</strong></td></tr>
+      <tr><td>Initial gas volume (V0)</td><td>4.0 m&sup3; (50% gas ratio)</td></tr>
+      <tr><td>Pre-charge pressure (P0)</td><td>1.84 bar abs (85.0 m + atmospheric)</td></tr>
+      <tr><td>Maximum operating pressure</td><td>16 bar (vessel shell rated PN 25)</td></tr>
+      <tr><td>Gas type</td><td>Nitrogen (N2) &mdash; inert, no oxidation risk</td></tr>
+      <tr><td>Connection pipe diameter</td><td>DN 250 mm (&ge; 0.3 &times; DN 800)</td></tr>
+      <tr><td>Connection pipe length</td><td>Max 5 m (minimise hydraulic resistance)</td></tr>
+      <tr><td>Throttle orifice &mdash; outflow</td><td>DN 200 mm (unrestricted &mdash; fast delivery)</td></tr>
+      <tr><td>Throttle orifice &mdash; inflow</td><td>DN 100 mm (controlled return)</td></tr>
+      <tr><td>Minimum water reserve</td><td>0.8 m&sup3; (10% of vessel volume)</td></tr>
+      <tr><td>Low-level alarm setpoint</td><td>15% of vessel volume</td></tr>
+      <tr><td>Vessel location</td><td>Within 30 m of pump discharge header</td></tr>
+      <tr><td>Number of vessels</td><td>1 (common to all pumps in station)</td></tr>
+    </table>
+  </div>
+</div>
+
+<hr class="divider">
+<h2>10. Conclusion</h2>
+<p>Surge vessel sizing is not a single-step calculation &mdash; it is an iterative design process that begins with an analytical estimate and is refined through transient simulation. The key lessons from this example:</p>
+<ul>
+  <li>The analytical method provided a starting point of <strong>6.0 m&sup3;</strong> &mdash; but simulation showed the actual required volume was <strong>8.0 m&sup3;</strong>, a 33% increase.</li>
+  <li>The pre-charge pressure must reflect the actual HGL at the vessel tap point &mdash; errors here cascade through the entire calculation.</li>
+  <li>The connection pipe diameter directly affects vessel response speed and must be modelled explicitly in the simulation.</li>
+  <li>Always run the unprotected baseline first &mdash; it quantifies the risk and builds the case for the protection investment to the client.</li>
+  <li>The pressure-time trace at the pump discharge node is the single most important output for client reporting and design approval.</li>
+</ul>
+
+<hr class="divider">
+<h2>References</h2>
+<ol style="font-size:14px;line-height:2.2;color:#94a3b8;">
+  <li>Chaudhry, M.H. (2014). <em>Applied Hydraulic Transients</em>, 3rd ed. Springer.</li>
+  <li>Wylie, E.B. and Streeter, V.L. (1993). <em>Fluid Transients in Systems</em>. Prentice Hall.</li>
+  <li>Thorley, A.R.D. (2004). <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing.</li>
+  <li>Bentley Systems (2023). <em>Bentley HAMMER V8i &mdash; User Guide</em>. Bentley Systems Inc.</li>
+  <li>AWWA M11 (2017). <em>Steel Pipe &mdash; A Guide for Design and Installation</em>.</li>
+  <li>AWWA M51 (2017). <em>Air-Release, Air/Vacuum, and Combination Air Valves</em>.</li>
+  <li>BS EN 805 (2000). <em>Water supply &mdash; Requirements for systems outside buildings</em>. BSI.</li>
+</ol>
+
+<div class="tags">#SurgeAnalysis #WaterHammer #HydropneumaticVessel #BentleyHAMMER #PipelineDesign #WaterTransmission #WaterEngineering #PumpStation #SaudiArabia #NEOM</div>
+</main>
+
+<footer>&copy; 2026 Mohamed Abokhatwa &middot; Riyadh, Saudi Arabia &middot; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &middot; <a href="index.html">All Articles</a></footer>
+
+<script>
+const labels=['0 m','2 km','4 km','6 km','8 km','10 km','12 km'];
+new Chart(document.getElementById('baselineChart'),{type:'line',data:{labels,datasets:[
+  {label:'Steady-state HGL',data:[85,78.3,71.6,64.9,58.2,51.5,44.8],borderColor:'#60a5fa',borderWidth:2,borderDash:[6,3],pointRadius:3,fill:false,tension:.3},
+  {label:'Max transient (unprotected)',data:[217.5,198.4,176.2,154.8,132.6,118.3,96.7],borderColor:'#f87171',borderWidth:2,pointRadius:3,fill:false,tension:.3},
+  {label:'Min transient (unprotected)',data:[-8.2,-12.6,-18.4,-24.1,-19.8,-11.2,2.1],borderColor:'#fbbf24',borderWidth:2,pointRadius:3,fill:false,tension:.3},
+  {label:'Max allowable (136 m)',data:[136,136,136,136,136,136,136],borderColor:'#ef4444',borderWidth:1.5,borderDash:[4,4],pointRadius:0,fill:false},
+  {label:'Min allowable (+3 m)',data:[3,3,3,3,3,3,3],borderColor:'#4ade80',borderWidth:1.5,borderDash:[4,4],pointRadius:0,fill:false}
+]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:11},boxWidth:12}}},scales:{x:{ticks:{color:'#475569'},grid:{color:'#1e3a5f'},title:{display:true,text:'Chainage along pipeline',color:'#475569',font:{size:11}}},y:{ticks:{color:'#475569'},grid:{color:'#1e3a5f'},title:{display:true,text:'Head (m)',color:'#475569',font:{size:11}}}}}});
+
+new Chart(document.getElementById('comparisonChart'),{type:'line',data:{labels,datasets:[
+  {label:'Max — unprotected',data:[217.5,198.4,176.2,154.8,132.6,118.3,96.7],borderColor:'#f87171',borderWidth:1.5,borderDash:[5,3],pointRadius:3,fill:false,tension:.3},
+  {label:'Min — unprotected',data:[-8.2,-12.6,-18.4,-24.1,-19.8,-11.2,2.1],borderColor:'#fbbf24',borderWidth:1.5,borderDash:[5,3],pointRadius:3,fill:false,tension:.3},
+  {label:'Max — 8.0 m3 vessel',data:[128.6,122.1,115.4,108.2,98.7,86.3,74.1],borderColor:'#60a5fa',borderWidth:2,pointRadius:3,fill:false,tension:.3},
+  {label:'Min — 8.0 m3 vessel',data:[18.4,12.8,8.6,4.2,5.1,6.8,8.2],borderColor:'#4ade80',borderWidth:2,pointRadius:3,fill:false,tension:.3},
+  {label:'Max allowable (136 m)',data:[136,136,136,136,136,136,136],borderColor:'#ef4444',borderWidth:1.5,borderDash:[4,4],pointRadius:0,fill:false},
+  {label:'Min allowable (+3 m)',data:[3,3,3,3,3,3,3],borderColor:'#4ade80',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
+]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:11},boxWidth:12}}},scales:{x:{ticks:{color:'#475569'},grid:{color:'#1e3a5f'}},y:{ticks:{color:'#475569'},grid:{color:'#1e3a5f'},title:{display:true,text:'Head (m)',color:'#475569',font:{size:11}}}}}});
+
+const times=['0s','0.5s','1s','1.5s','1.8s','2s','2.5s','3s','4s','5s','6s','8s','10s','12s','15s','18s','20s'];
+new Chart(document.getElementById('timeChart'),{type:'line',data:{labels:times,datasets:[
+  {label:'Unprotected',data:[85,84,62,18,-6,-8,15,42,68,55,72,80,83,85,85,85,85],borderColor:'#f87171',borderWidth:2,pointRadius:2,fill:false,tension:.4},
+  {label:'Protected (8.0 m3)',data:[85,84,78,70,68,72,82,95,110,118,122,128,126,122,120,118,117],borderColor:'#60a5fa',borderWidth:2,pointRadius:2,fill:false,tension:.4},
+  {label:'Max allowable (136 m)',data:[136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136],borderColor:'#ef4444',borderWidth:1.5,borderDash:[4,4],pointRadius:0,fill:false},
+  {label:'Min allowable (+3 m)',data:[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],borderColor:'#4ade80',borderWidth:1.5,borderDash:[4,4],pointRadius:0,fill:false}
+]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:11},boxWidth:12}}},scales:{x:{ticks:{color:'#475569',maxTicksLimit:10},grid:{color:'#1e3a5f'},title:{display:true,text:'Time after pump trip (s)',color:'#475569',font:{size:11}}},y:{ticks:{color:'#475569'},grid:{color:'#1e3a5f'},title:{display:true,text:'Head at pump discharge (m)',color:'#475569',font:{size:11}}}}}});
+</script>
+</body>
+</html>

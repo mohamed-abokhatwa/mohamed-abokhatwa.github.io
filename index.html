@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohamed Abokhatwa — Water Engineering</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #0a0f1e; color: #e2e8f0; }
+    header { background: linear-gradient(135deg, #0a0f1e 0%, #0d2137 100%); padding: 60px 40px 40px; border-bottom: 1px solid #1e3a5f; }
+    .header-inner { max-width: 860px; margin: 0 auto; }
+    h1 { font-size: 32px; font-weight: 600; color: #ffffff; margin-bottom: 6px; }
+    .tagline { font-size: 16px; color: #60a5fa; margin-bottom: 16px; }
+    .bio { font-size: 14px; color: #94a3b8; line-height: 1.7; max-width: 600px; margin-bottom: 20px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge { font-size: 12px; padding: 4px 12px; border-radius: 20px; background: #1e3a5f; color: #60a5fa; border: 1px solid #2563eb44; }
+    nav { background: #0d1829; border-bottom: 1px solid #1e3a5f; padding: 0 40px; }
+    .nav-inner { max-width: 860px; margin: 0 auto; display: flex; gap: 0; }
+    .nav-inner a { color: #94a3b8; text-decoration: none; font-size: 14px; padding: 14px 20px; border-bottom: 2px solid transparent; transition: all 0.2s; }
+    .nav-inner a:hover, .nav-inner a.active { color: #60a5fa; border-bottom-color: #2563eb; }
+    main { max-width: 860px; margin: 0 auto; padding: 40px; }
+    .section-title { font-size: 20px; font-weight: 600; color: #ffffff; margin-bottom: 6px; padding-bottom: 10px; border-bottom: 1px solid #1e3a5f; margin-bottom: 24px; }
+    .articles-grid { display: grid; gap: 20px; }
+    .article-card { background: #0d1829; border: 1px solid #1e3a5f; border-radius: 12px; padding: 24px; transition: border-color 0.2s; cursor: pointer; }
+    .article-card:hover { border-color: #2563eb; }
+    .article-tag { font-size: 11px; color: #60a5fa; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .article-title { font-size: 17px; font-weight: 600; color: #ffffff; margin-bottom: 8px; line-height: 1.4; }
+    .article-excerpt { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 14px; }
+    .article-meta { font-size: 12px; color: #475569; }
+    .read-link { font-size: 13px; color: #60a5fa; text-decoration: none; }
+    .read-link:hover { text-decoration: underline; }
+    footer { text-align: center; padding: 30px; font-size: 13px; color: #475569; border-top: 1px solid #1e3a5f; margin-top: 40px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>Mohamed Abokhatwa</h1>
+      <p class="tagline">Technical &amp; Engineering Manager | Water Infrastructure Specialist</p>
+      <p class="bio">Over 22 years of experience delivering large-scale water transmission, treatment, and infrastructure projects across Saudi Arabia. Sharing technical insights on hydraulics, surge analysis, and water engineering.</p>
+      <div class="badges">
+        <span class="badge">MSc Project Management</span>
+        <span class="badge">PMP</span>
+        <span class="badge">PMI-RMP</span>
+        <span class="badge">ENV SP</span>
+        <span class="badge">OSHA 30H</span>
+        <span class="badge">Surge Analysis</span>
+        <span class="badge">BIM Management</span>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="active">Articles</a>
+      <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a>
+    </div>
+  </nav>
+  <main>
+    <h2 class="section-title">Technical Articles</h2>
+    <div class="articles-grid">
+      <div class="article-card">
+        <div class="article-tag">Surge Analysis · Hydraulic Design</div>
+        <div class="article-title">Sizing the Hydropneumatic Surge Vessel in Water Transmission Pipelines</div>
+        <div class="article-excerpt">A design engineer's approach to surge vessel sizing — from model inputs to Bentley HAMMER simulation outputs. Includes worked numerical examples, sensitivity analysis, and a practical design checklist.</div>
+        <div class="article-meta">May 2026</div>
+        <br>
+        <a href="surge-vessel.html" class="read-link">Read article →</a>
+      </div>
+      <div class="article-card">
+        <div class="article-tag">Hydraulic Modeling · Pipeline Design</div>
+        <div class="article-title">Common Mistakes in Hydraulic Modeling of Water Transmission Networks</div>
+        <div class="article-excerpt">Seven critical and recurring mistakes in hydraulic modeling — from ignoring transient analysis entirely to specifying surge protection without simulation. A practitioner's perspective from 400 km+ pipeline projects.</div>
+        <div class="article-meta">May 2026</div>
+        <br>
+        <a href="hydraulic-mistakes.html" class="read-link">Read article →</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    © 2026 Mohamed Abokhatwa · Riyadh, Saudi Arabia ·
+    <a href="https://www.linkedin.com/in/abokhatwa" target="_blank" style="color:#60a5fa;">LinkedIn</a>
+  </footer>
+</body>
+</html>

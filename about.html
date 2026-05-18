@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Mohamed Abokhatwa</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .about-hero {
+      padding: 160px 24px 100px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-hero .eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .about-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 32px;
+    }
+    .about-hero h1 em {
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+    .about-hero .lead {
+      font-size: 21px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 680px;
+    }
+    .about-body {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 100px 24px;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      margin-bottom: 100px;
+      align-items: start;
+    }
+    .col-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      position: sticky;
+      top: 80px;
+    }
+    .col-content p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 1.2rem;
+    }
+    .col-content p strong { color: var(--text-primary); font-weight: 500; }
+    .exp-item {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:first-child { padding-top: 0; }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+      gap: 20px;
+    }
+    .exp-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+    .exp-date {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+      margin-top: 3px;
+    }
+    .exp-company {
+      font-size: 15px;
+      color: var(--accent-light);
+      margin-bottom: 12px;
+    }
+    .exp-location {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-bottom: 16px;
+    }
+    .exp-project {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .exp-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .exp-desc ul { padding-left: 20px; margin-top: 8px; }
+    .exp-desc li { margin-bottom: 6px; color: var(--text-secondary); font-size: 15px; }
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .cert-card {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+    }
+    .cert-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+    .cert-org {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-bottom: 2px;
+    }
+    .cert-year {
+      font-size: 12px;
+      color: var(--accent-light);
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .skill-card {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 28px;
+    }
+    .skill-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .skill-desc {
+      font-size: 14px;
+      color: var(--text-tertiary);
+      line-height: 1.6;
+    }
+    .edu-item {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-degree {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .edu-uni { font-size: 15px; color: var(--accent-light); margin-bottom: 4px; }
+    .edu-year { font-size: 13px; color: var(--text-tertiary); }
+    @media(max-width:768px) {
+      .two-col { grid-template-columns: 1fr; gap: 32px; }
+      .col-label { position: static; }
+      .certs-grid, .skills-grid { grid-template-columns: 1fr; }
+      .exp-header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="about-hero">
+  <span class="eyebrow fade-up">About</span>
+  <h1 class="fade-up-2">Engineering at scale.<br><em>For over two decades.</em></h1>
+  <p class="lead fade-up-3">Strategic Technical and Engineering Manager specialising in large-scale water infrastructure — from 400 km transmission networks to 200,000 m&sup3;/day treatment plants across Saudi Arabia.</p>
+</div>
+
+<div class="about-body">
+
+  <!-- BIO -->
+  <div class="two-col">
+    <div class="col-label">Biography</div>
+    <div class="col-content">
+      <p>I am a <strong>Technical and Engineering Manager</strong> with over 22 years of experience delivering complex infrastructure projects in the water sector. My work spans the full project lifecycle — from conceptual design and hydraulic analysis through to construction supervision and commissioning.</p>
+      <p>My technical specialisation centres on <strong>hydraulic transient analysis</strong> (water hammer and surge), large-diameter transmission pipelines, pump station design, and water and wastewater treatment plants including RO, MBR, SBR, and extended aeration systems.</p>
+      <p>I have led multidisciplinary teams on landmark projects including <strong>NEOM Water Transmission</strong>, <strong>Diriyah STP</strong>, and strategic water improvement networks for NWC in Dammam and Jubail — bringing together technical excellence, stakeholder management, and a commitment to sustainable engineering solutions.</p>
+      <p>I hold an <strong>MSc in Project Management</strong> from Liverpool John Moores University and professional certifications including PMP, PMI-RMP, ENV SP, and OSHA 30H.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- EXPERIENCE -->
+  <div class="two-col" style="margin-top:80px;">
+    <div class="col-label">Experience</div>
+    <div class="col-content">
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Technical Manager</div>
+          <div class="exp-date">Jan 2024 — Present</div>
+        </div>
+        <div class="exp-company">WETICO</div>
+        <div class="exp-location">Riyadh, Saudi Arabia</div>
+        <div class="exp-project">Key Project: Diriyah Company STP — 42,000 m&sup3;/day</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Led design activities ensuring compliance with FCR technology standards</li>
+            <li>Managed BIM activities throughout the project lifecycle</li>
+            <li>Coordinating sustainability activities to achieve Envision Gold certification</li>
+            <li>Streamlined shop drawing coordination and technical submittals</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Technical Manager</div>
+          <div class="exp-date">Nov 2022 — Dec 2023</div>
+        </div>
+        <div class="exp-company">AL-YAMAMA Company</div>
+        <div class="exp-location">Dammam, Saudi Arabia</div>
+        <div class="exp-project">Key Projects: Dammam &amp; Jubail Strategic Water Improvement Networks — 100+ km pipelines, pump stations, reservoirs up to 44,000 m&sup3;</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Directed design and technical support team through the project lifecycle</li>
+            <li>Provided critical electromechanical support including transient and steady-state hydraulic analysis</li>
+            <li>Managed technical coordination for pump stations, carbon steel and ductile iron pipe networks</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Engineering Manager</div>
+          <div class="exp-date">Jul 2021 — Oct 2022</div>
+        </div>
+        <div class="exp-company">ALESTOLAT FOR CONTRACTING CO</div>
+        <div class="exp-location">Buraydah, Saudi Arabia</div>
+        <div class="exp-project">Key Project: Buraydah WTP — 100,000 m&sup3;/day (Ceramic membrane filtration — MEIDEN system)</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Managed design activities and facilitated coordination with technology provider MEIDEN</li>
+            <li>Performed hydraulic steady-state and transient analysis for pumping systems</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Technical Support Team Manager</div>
+          <div class="exp-date">Jan 2018 — Jun 2021</div>
+        </div>
+        <div class="exp-company">MUTLAQ ALGHWIRI CO (HOSCE)</div>
+        <div class="exp-location">Riyadh, Saudi Arabia</div>
+        <div class="exp-project">Key Projects: Waad Alshamal (400+ km pipes and pump stations) &amp; NEOM Water Transmission (80 km pipes, 145,000 m&sup3; tanks)</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Managed electromechanical support team for technical compliance</li>
+            <li>Led hydraulic design activities including steady-state and transient analysis for transmission pipelines</li>
+            <li>Managed submission and approval of materials and technical submittals</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Design Project Manager</div>
+          <div class="exp-date">Jan 2014 — Dec 2017</div>
+        </div>
+        <div class="exp-company">HOUSE OF SCIENCE ENGINEERING CONSULTANTS (HOSCE)</div>
+        <div class="exp-location">Al-Baha, Saudi Arabia</div>
+        <div class="exp-project">Key Projects: Buraydah STP (200,000 m&sup3;/day) &amp; Al-Baha STP (12,500 m&sup3;/day MBR)</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Managed design activities and compliance with project specifications</li>
+            <li>Led design meetings for Buraydah STP extended aeration system</li>
+            <li>Managed design review of Al-Baha STP MBR and supervised construction</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Senior Mechanical Design Engineer</div>
+          <div class="exp-date">Nov 2010 — Dec 2013</div>
+        </div>
+        <div class="exp-company">HOUSE OF SCIENCE ENGINEERING CONSULTANTS (HOSCE)</div>
+        <div class="exp-location">Buraydah, Saudi Arabia</div>
+        <div class="exp-project">Key Projects: Multiple NWC RO Plants — 100,000 / 40,000 / 25,000 / 15,000 m&sup3;/day</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Developed and coordinated design drawings and calculations for RO plant systems</li>
+            <li>Performed hydraulic steady-state and transient analysis for pumping systems</li>
+            <li>Reviewed and approved materials and technical submittals</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Senior Mechanical Engineer</div>
+          <div class="exp-date">Jun 2006 — Oct 2010</div>
+        </div>
+        <div class="exp-company">West Delta Electricity Company</div>
+        <div class="exp-location">Behira, Egypt</div>
+        <div class="exp-project">Key Project: Nubaria Power Station — 750 MW Combined Cycle</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Oversaw preparation of tender documents</li>
+            <li>Monitored all mechanical construction activities on-site</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Mechanical Engineer</div>
+          <div class="exp-date">Jul 2004 — May 2006</div>
+        </div>
+        <div class="exp-company">Horse for Engineering Works</div>
+        <div class="exp-location">Alexandria, Egypt</div>
+        <div class="exp-project">Key Projects: Hanovil STP (SBR) 20,000 m&sup3;/day &amp; Al Mamora STP (SBR) 10,000 m&sup3;/day</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Oversaw mechanical construction activities</li>
+            <li>Coordinated commissioning activities</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- EDUCATION -->
+  <div class="two-col" style="margin-top:80px;">
+    <div class="col-label">Education</div>
+    <div class="col-content">
+      <div class="edu-item">
+        <div class="edu-degree">MSc in Project Management</div>
+        <div class="edu-uni">Liverpool John Moores University</div>
+        <div class="edu-year">2023 — 2025</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">B.Sc. in Mechanical Engineering</div>
+        <div class="edu-uni">Alexandria University</div>
+        <div class="edu-year">1999 — 2004</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CERTIFICATIONS -->
+  <div class="two-col" style="margin-top:80px;">
+    <div class="col-label">Certifications</div>
+    <div class="col-content">
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-name">PMP</div>
+          <div class="cert-org">Project Management Institute</div>
+          <div class="cert-year">May 2016</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name">PMI-RMP</div>
+          <div class="cert-org">Project Management Institute</div>
+          <div class="cert-year">December 2016</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name">ENV SP</div>
+          <div class="cert-org">Institute for Sustainable Infrastructure</div>
+          <div class="cert-year">December 2024</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name">OSHA 30H</div>
+          <div class="cert-org">IACET</div>
+          <div class="cert-year">February 2017</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SKILLS -->
+  <div class="two-col" style="margin-top:80px;">
+    <div class="col-label">Technical Skills</div>
+    <div class="col-content">
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-title">Water &amp; Wastewater Treatment</div>
+          <div class="skill-desc">RO Plants, STP (MBR, SBR, Extended Aeration), Ceramic Membranes</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-title">Hydraulic Analysis</div>
+          <div class="skill-desc">Steady-state and Transient (Water Hammer / Surge) Analysis for Networks and Pipelines</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-title">Transmission Infrastructure</div>
+          <div class="skill-desc">Large-scale Pump Stations, Carbon Steel / Ductile Iron Pipelines, Reservoirs</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-title">BIM Management</div>
+          <div class="skill-desc">BIM Lifecycle Management across design, construction, and handover phases</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-title">Project Management</div>
+          <div class="skill-desc">Stakeholder Management, Risk Management, Conflict Resolution, Schedule and Budget Control</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-title">Sustainability</div>
+          <div class="skill-desc">Envision SP — integrating sustainability criteria across the project design lifecycle</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">Articles</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

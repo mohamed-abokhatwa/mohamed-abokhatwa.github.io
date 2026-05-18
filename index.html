@@ -4,81 +4,256 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mohamed Abokhatwa — Water Engineering</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', sans-serif; background: #0a0f1e; color: #e2e8f0; }
-    header { background: linear-gradient(135deg, #0a0f1e 0%, #0d2137 100%); padding: 60px 40px 40px; border-bottom: 1px solid #1e3a5f; }
-    .header-inner { max-width: 860px; margin: 0 auto; }
-    h1 { font-size: 32px; font-weight: 600; color: #ffffff; margin-bottom: 6px; }
-    .tagline { font-size: 16px; color: #60a5fa; margin-bottom: 16px; }
-    .bio { font-size: 14px; color: #94a3b8; line-height: 1.7; max-width: 600px; margin-bottom: 20px; }
-    .badges { display: flex; flex-wrap: wrap; gap: 8px; }
-    .badge { font-size: 12px; padding: 4px 12px; border-radius: 20px; background: #1e3a5f; color: #60a5fa; border: 1px solid #2563eb44; }
-    nav { background: #0d1829; border-bottom: 1px solid #1e3a5f; padding: 0 40px; }
-    .nav-inner { max-width: 860px; margin: 0 auto; display: flex; gap: 0; }
-    .nav-inner a { color: #94a3b8; text-decoration: none; font-size: 14px; padding: 14px 20px; border-bottom: 2px solid transparent; transition: all 0.2s; }
-    .nav-inner a:hover, .nav-inner a.active { color: #60a5fa; border-bottom-color: #2563eb; }
-    main { max-width: 860px; margin: 0 auto; padding: 40px; }
-    .section-title { font-size: 20px; font-weight: 600; color: #ffffff; margin-bottom: 6px; padding-bottom: 10px; border-bottom: 1px solid #1e3a5f; margin-bottom: 24px; }
-    .articles-grid { display: grid; gap: 20px; }
-    .article-card { background: #0d1829; border: 1px solid #1e3a5f; border-radius: 12px; padding: 24px; transition: border-color 0.2s; cursor: pointer; }
-    .article-card:hover { border-color: #2563eb; }
-    .article-tag { font-size: 11px; color: #60a5fa; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-    .article-title { font-size: 17px; font-weight: 600; color: #ffffff; margin-bottom: 8px; line-height: 1.4; }
-    .article-excerpt { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 14px; }
-    .article-meta { font-size: 12px; color: #475569; }
-    .read-link { font-size: 13px; color: #60a5fa; text-decoration: none; }
-    .read-link:hover { text-decoration: underline; }
-    footer { text-align: center; padding: 30px; font-size: 13px; color: #475569; border-top: 1px solid #1e3a5f; margin-top: 40px; }
+    .hero {
+      padding: 160px 24px 120px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+      max-width: 800px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+    .hero-desc {
+      font-size: 19px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+    .hero-certs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 48px;
+    }
+    .cert {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 980px;
+      border: 1px solid var(--border-light);
+      color: var(--text-tertiary);
+      letter-spacing: 0.02em;
+    }
+    .articles-section {
+      padding: 100px 24px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 60px;
+    }
+    .articles-grid {
+      display: grid;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .article-card {
+      background: var(--bg);
+      padding: 48px 40px;
+      text-decoration: none;
+      display: block;
+      transition: var(--transition);
+      position: relative;
+    }
+    .article-card:hover { background: var(--bg-3); }
+    .article-card-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .article-card-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .article-card-excerpt {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 600px;
+      margin-bottom: 24px;
+    }
+    .article-card-meta {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .article-card-arrow {
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: var(--text-tertiary);
+      transition: var(--transition);
+    }
+    .article-card:hover .article-card-arrow {
+      color: var(--text-primary);
+      transform: translateY(-50%) translateX(4px);
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 80px;
+    }
+    .stat {
+      background: var(--bg);
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 400;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-tertiary);
+    }
+    @media(max-width:768px) {
+      .stats-row { grid-template-columns: 1fr; }
+      .article-card-arrow { display: none; }
+      .article-card { padding: 32px 24px; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-inner">
-      <h1>Mohamed Abokhatwa</h1>
-      <p class="tagline">Technical &amp; Engineering Manager | Water Infrastructure Specialist</p>
-      <p class="bio">Over 22 years of experience delivering large-scale water transmission, treatment, and infrastructure projects across Saudi Arabia. Sharing technical insights on hydraulics, surge analysis, and water engineering.</p>
-      <div class="badges">
-        <span class="badge">MSc Project Management</span>
-        <span class="badge">PMP</span>
-        <span class="badge">PMI-RMP</span>
-        <span class="badge">ENV SP</span>
-        <span class="badge">OSHA 30H</span>
-        <span class="badge">Surge Analysis</span>
-        <span class="badge">BIM Management</span>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Articles</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow fade-up">Water Engineering &amp; Infrastructure</span>
+  <h1 class="fade-up-2">Technical insights.<br><em>From the field.</em></h1>
+  <p class="hero-desc fade-up-3">Over 22 years designing and managing large-scale water transmission, treatment, and infrastructure projects across Saudi Arabia.</p>
+  <div class="hero-certs fade-up-4">
+    <span class="cert">MSc Project Management</span>
+    <span class="cert">PMP</span>
+    <span class="cert">PMI-RMP</span>
+    <span class="cert">ENV SP</span>
+    <span class="cert">OSHA 30H</span>
+    <span class="cert">Surge Analysis</span>
+    <span class="cert">BIM Management</span>
+  </div>
+</div>
+
+<div class="articles-section">
+  <span class="section-eyebrow">Published articles</span>
+  <h2 class="section-title">Technical Writing</h2>
+
+  <div class="articles-grid">
+
+    <a href="surge-vessel.html" class="article-card">
+      <span class="article-card-tag">Surge Analysis &middot; Hydraulic Design</span>
+      <div class="article-card-title">Sizing the Hydropneumatic Surge Vessel in Water Transmission Pipelines</div>
+      <p class="article-card-excerpt">A design engineer's approach to surge vessel sizing — from model inputs to Bentley HAMMER simulation outputs. Includes worked numerical examples, sensitivity analysis, and a practical design checklist.</p>
+      <div class="article-card-meta">
+        <span>May 2026</span>
+        <span>10 min read</span>
       </div>
-    </div>
-  </header>
-  <nav>
-    <div class="nav-inner">
-      <a href="#" class="active">Articles</a>
-      <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a>
-    </div>
-  </nav>
-  <main>
-    <h2 class="section-title">Technical Articles</h2>
-    <div class="articles-grid">
-      <div class="article-card">
-        <div class="article-tag">Surge Analysis · Hydraulic Design</div>
-        <div class="article-title">Sizing the Hydropneumatic Surge Vessel in Water Transmission Pipelines</div>
-        <div class="article-excerpt">A design engineer's approach to surge vessel sizing — from model inputs to Bentley HAMMER simulation outputs. Includes worked numerical examples, sensitivity analysis, and a practical design checklist.</div>
-        <div class="article-meta">May 2026</div>
-        <br>
-        <a href="surge-vessel.html" class="read-link">Read article →</a>
+      <span class="article-card-arrow">&#8594;</span>
+    </a>
+
+    <a href="hydraulic-mistakes.html" class="article-card">
+      <span class="article-card-tag">Hydraulic Modeling &middot; Pipeline Design</span>
+      <div class="article-card-title">Common Mistakes in Hydraulic Modeling of Water Transmission Networks</div>
+      <p class="article-card-excerpt">Six critical and recurring mistakes in hydraulic modeling — from ignoring transient analysis entirely to specifying surge protection without simulation. A practitioner's perspective from 400 km+ pipeline projects.</p>
+      <div class="article-card-meta">
+        <span>May 2026</span>
+        <span>8 min read</span>
       </div>
-      <div class="article-card">
-        <div class="article-tag">Hydraulic Modeling · Pipeline Design</div>
-        <div class="article-title">Common Mistakes in Hydraulic Modeling of Water Transmission Networks</div>
-        <div class="article-excerpt">Seven critical and recurring mistakes in hydraulic modeling — from ignoring transient analysis entirely to specifying surge protection without simulation. A practitioner's perspective from 400 km+ pipeline projects.</div>
-        <div class="article-meta">May 2026</div>
-        <br>
-        <a href="hydraulic-mistakes.html" class="read-link">Read article →</a>
-      </div>
+      <span class="article-card-arrow">&#8594;</span>
+    </a>
+
+  </div>
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-num">22+</div>
+      <div class="stat-label">Years of experience</div>
     </div>
-  </main>
-  <footer>
-    © 2026 Mohamed Abokhatwa · Riyadh, Saudi Arabia ·
-    <a href="https://www.linkedin.com/in/abokhatwa" target="_blank" style="color:#60a5fa;">LinkedIn</a>
-  </footer>
+    <div class="stat">
+      <div class="stat-num">400<span style="font-size:32px;">km</span></div>
+      <div class="stat-label">Pipeline systems managed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100k</div>
+      <div class="stat-label">m&sup3;/day treatment capacity</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="about.html">About</a></p>
+  </div>
+</footer>
+
 </body>
 </html>

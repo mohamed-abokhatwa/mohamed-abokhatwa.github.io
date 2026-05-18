@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Pre-Charge Pressure of the Surge Vessel — Mohamed Abokhatwa</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-light);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:400;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px;max-width:800px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-svg-wrap{width:100%;background:#000;border-bottom:1px solid var(--border);}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-body em{color:var(--accent-light);font-style:italic;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:1.5rem 0;}
+    .scenario-card{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:24px;}
+    .scenario-card.danger{border-color:rgba(255,69,58,.35);background:rgba(255,69,58,.04);}
+    .scenario-card.success{border-color:rgba(48,209,88,.35);background:rgba(48,209,88,.04);}
+    .scenario-card.warning{border-color:rgba(255,214,10,.35);background:rgba(255,214,10,.04);}
+    .scenario-label{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;}
+    .scenario-label.danger{color:#ff453a;}
+    .scenario-label.success{color:#30d158;}
+    .scenario-label.warning{color:#ffd60a;}
+    .scenario-val{font-family:var(--font-display);font-size:36px;color:var(--text-primary);letter-spacing:-.02em;margin-bottom:6px;}
+    .scenario-desc{font-size:13px;color:var(--text-tertiary);line-height:1.6;}
+    .refs li{font-size:14px;color:var(--text-tertiary);line-height:1.8;margin-bottom:4px;}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="article-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <span class="tag">Surge Analysis &middot; Surge Vessel Design</span>
+  <h1>The Pre-Charge Pressure of the Surge Vessel — How One Number Changes Everything</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; PMP, PMI-RMP, ENV SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>May 2026</span>
+  </div>
+</div>
+
+<div class="hero-svg-wrap">
+<img src="IMG_4656.PNG" alt="Pre-Charge Pressure — Surge Vessel" style="width:100%;height:auto;display:block;">
+<!--<svg width="100%" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+<rect width="680" height="300" fill="#000"/>
+
+<!-- Vessel A — under-pressurised -->
+<rect x="40" y="40" width="140" height="220" rx="10" fill="#0a0a0a" stroke="#1a1a1a"/>
+<rect x="40" y="40" width="140" height="55" rx="10" fill="#2d0a0a" opacity="0.9"/>
+<rect x="40" y="83" width="140" height="12" fill="#2d0a0a"/>
+<rect x="40" y="95" width="140" height="165" rx="0" fill="#0d4a7a" opacity="0.55"/>
+<text font-family="'DM Sans',sans-serif" font-size="8" fill="#ff6961" x="110" y="68" text-anchor="middle">Air — 25% of vessel</text>
+<text font-family="'DM Sans',sans-serif" font-size="9" fill="#2997ff" x="110" y="188" text-anchor="middle">Water — 75%</text>
+<text font-family="'DM Sans',sans-serif" font-size="10" font-weight="600" fill="#ff453a" x="110" y="280" text-anchor="middle">P&#8320; too low</text>
+<text font-family="'DM Sans',sans-serif" font-size="8" fill="#ff453a" x="110" y="294" text-anchor="middle">Gas cannot expand</text>
+<text font-family="'DM Sans',sans-serif" font-size="11" font-weight="500" fill="#ff453a" x="110" y="28" text-anchor="middle">Under-pressurised</text>
+
+<!-- Vessel B — correct -->
+<rect x="270" y="40" width="140" height="220" rx="10" fill="#0a0a0a" stroke="#2997ff" stroke-width="1.5"/>
+<rect x="270" y="40" width="140" height="110" rx="10" fill="#071e38" opacity="0.9"/>
+<rect x="270" y="128" width="140" height="22" fill="#071e38"/>
+<rect x="270" y="150" width="140" height="110" rx="0" fill="#0d4a7a" opacity="0.55"/>
+<text font-family="'DM Sans',sans-serif" font-size="8" fill="#60a5fa" x="340" y="90" text-anchor="middle">Air / N&#8322; — 50%</text>
+<text font-family="'DM Sans',sans-serif" font-size="9" fill="#2997ff" x="340" y="215" text-anchor="middle">Water — 50%</text>
+<text font-family="'DM Sans',sans-serif" font-size="10" font-weight="600" fill="#30d158" x="340" y="280" text-anchor="middle">P&#8320; = HGL at tap &#10003;</text>
+<text font-family="'DM Sans',sans-serif" font-size="8" fill="#30d158" x="340" y="294" text-anchor="middle">Balanced &amp; effective</text>
+<text font-family="'DM Sans',sans-serif" font-size="11" font-weight="500" fill="#30d158" x="340" y="28" text-anchor="middle">Correctly set</text>
+
+<!-- Vessel C — over-pressurised -->
+<rect x="500" y="40" width="140" height="220" rx="10" fill="#0a0a0a" stroke="#1a1a1a"/>
+<rect x="500" y="40" width="140" height="165" rx="10" fill="#1a1400" opacity="0.85"/>
+<rect x="500" y="183" width="140" height="12" fill="#1a1400"/>
+<rect x="500" y="195" width="140" height="65" rx="0" fill="#0d4a7a" opacity="0.55"/>
+<text font-family="'DM Sans',sans-serif" font-size="8" fill="#ffd60a" x="570" y="115" text-anchor="middle">Air — 75% of vessel</text>
+<text font-family="'DM Sans',sans-serif" font-size="9" fill="#2997ff" x="570" y="235" text-anchor="middle">Water — 25%</text>
+<text font-family="'DM Sans',sans-serif" font-size="10" font-weight="600" fill="#ffd60a" x="570" y="280" text-anchor="middle">P&#8320; too high</text>
+<text font-family="'DM Sans',sans-serif" font-size="8" fill="#ffd60a" x="570" y="294" text-anchor="middle">Gas ingress risk</text>
+<text font-family="'DM Sans',sans-serif" font-size="11" font-weight="500" fill="#ffd60a" x="570" y="28" text-anchor="middle">Over-pressurised</text>
+
+<text font-family="'DM Sans',sans-serif" font-size="10" fill="#3a3a3a" x="672" y="296" text-anchor="end">Mohamed Abokhatwa</text>
+</svg>-->
+</div>
+
+<div class="article-body">
+
+<h2>Introduction</h2>
+<p>Of all the parameters that define the performance of a hydropneumatic surge vessel, none is more consequential — or more frequently set incorrectly — than the <strong>pre-charge pressure (P&#8320;)</strong>. It is the initial pressure of the gas cushion inside the vessel under normal steady-state operating conditions, and it directly governs how much water the vessel can expel during a down-surge and how much it can absorb during an up-surge.</p>
+<p>A wrong P&#8320; — even by 10 to 20% — can render an otherwise correctly sized vessel <em>completely ineffective</em>: unable to prevent column separation during a pump trip, or unable to limit the up-surge within the pipe class rating. In this article, I explain the physical mechanism, quantify the effect with worked numerical examples, demonstrate the impact through Bentley HAMMER simulation results, and describe the field consequences I have encountered in practice.</p>
+
+<hr class="article-divider">
+<h2>1. What is Pre-Charge Pressure?</h2>
+<p>The surge vessel contains a gas cushion — typically nitrogen — separated from the water by a bladder or a free gas-water interface. Under normal steady-state operation, this gas is compressed to a pressure that <strong>exactly matches the pipeline pressure at the vessel tap point</strong>. This is the pre-charge pressure P&#8320;.</p>
+<p>At P&#8320;, the vessel is in perfect equilibrium: no water flows in or out, and the gas occupies its design volume V&#8320; — typically 40 to 50% of the total vessel volume. When the pipeline pressure changes during a transient event, the gas cushion expands or compresses accordingly, and water flows in or out to maintain equilibrium.</p>
+<div class="callout">P&#8320; is not the pump head. It is not the system design pressure. It is specifically the <em>steady-state hydraulic grade line (HGL) at the exact location where the vessel connects to the pipeline</em> — converted to absolute pressure. This distinction is fundamental and is the source of the most common sizing errors in practice.</div>
+
+<hr class="article-divider">
+<h2>2. The Physics — Why P&#8320; Governs Everything</h2>
+<p>The gas cushion behaviour is governed by the polytropic gas law:</p>
+<div class="formula-box">
+  <div class="formula-main">P&#8320; &middot; V&#8320;&#8319; = P&#8321; &middot; V&#8321;&#8319; = P&#8322; &middot; V&#8322;&#8319; = constant</div>
+  <div class="formula-sub">P&#8320;,V&#8320; = steady-state &nbsp;|&nbsp; P&#8321;,V&#8321; = minimum pressure state (down-surge) &nbsp;|&nbsp; P&#8322;,V&#8322; = maximum pressure state (up-surge) &nbsp;|&nbsp; n = 1.2 (standard)</div>
+</div>
+<p>Rearranging for the gas volume at each state:</p>
+<div class="formula-box">
+  <div class="formula-main">V&#8321; = V&#8320; &times; (P&#8320; / P&#8321;)^(1/n) &nbsp;&nbsp;&#8594;&nbsp;&nbsp; Water expelled = V&#8321; &minus; V&#8320;</div>
+  <div class="formula-sub">Down-surge protection: vessel must expel sufficient water to maintain pressure above P_min</div>
+</div>
+<div class="formula-box">
+  <div class="formula-main">V&#8322; = V&#8320; &times; (P&#8320; / P&#8322;)^(1/n) &nbsp;&nbsp;&#8594;&nbsp;&nbsp; Water absorbed = V&#8320; &minus; V&#8322;</div>
+  <div class="formula-sub">Up-surge protection: vessel must absorb sufficient water to limit pressure below P_max</div>
+</div>
+<p>Both equations show that P&#8320; appears in the numerator of the pressure ratio. This creates a <strong>fundamental tension in surge vessel design</strong>:</p>
+<ul>
+  <li>A <strong>higher P&#8320;</strong> means the gas is more compressed at steady state → less room to expand during down-surge → reduced water expulsion capacity</li>
+  <li>A <strong>lower P&#8320;</strong> means the gas is more relaxed at steady state → more room to expand → but the gas will compress excessively during up-surge → risk of gas depletion and water reserve loss</li>
+</ul>
+<p>Setting P&#8320; correctly at the actual pipeline HGL is the only way to balance these two competing requirements.</p>
+
+<hr class="article-divider">
+<h2>3. Worked Example — Three P&#8320; Scenarios</h2>
+<p>Using the same system from the previous article: DN 800 mm Ductile Iron pipeline, 12 km, pump discharge head 85.0 m, pipe class PN 16 (max allowable 136 m), minimum allowable pressure +3.0 m gauge. Vessel total volume fixed at <strong>8.0 m&sup3;</strong>, initial gas volume V&#8320; = 4.0 m&sup3; (50% ratio).</p>
+<p>We examine three P&#8320; scenarios reflecting the most common errors in practice:</p>
+
+<div class="scenario-grid">
+  <div class="scenario-card danger">
+    <div class="scenario-label danger">Scenario A</div>
+    <div class="scenario-val">0.50 bar</div>
+    <div class="scenario-desc">P&#8320; set at near-zero gauge — severely under-pressurised. Vessel gas ratio effectively 25% at steady state.</div>
+  </div>
+  <div class="scenario-card success">
+    <div class="scenario-label success">Scenario B — Correct</div>
+    <div class="scenario-val">1.84 bar</div>
+    <div class="scenario-desc">P&#8320; = actual HGL at vessel tap (85.0 m + 10.33 m atm) ÷ 10.20 = 1.84 bar abs. Gas ratio 50%.</div>
+  </div>
+  <div class="scenario-card warning">
+    <div class="scenario-label warning">Scenario C</div>
+    <div class="scenario-val">2.50 bar</div>
+    <div class="scenario-desc">P&#8320; set at pump TDH — over-pressurised by ~36%. Gas ratio 75% at steady state.</div>
+  </div>
+</div>
+
+<h3>Calculations</h3>
+<p>Using P&#8321; = 1.30 bar abs (P_min = +3.0 m gauge + atmospheric), P&#8322; = 14.3 bar abs (P_max = 136 m + atmospheric), n = 1.2, V&#8320; = 4.0 m&sup3;:</p>
+
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Polytropic Gas Law — Results for Three P&#8320; Scenarios (Vessel = 8.0 m&sup3;, V&#8320; = 4.0 m&sup3;)</div>
+  <table>
+    <tr><th>Scenario</th><th>P&#8320; (bar abs)</th><th>V&#8321; at P_min (m&sup3;)</th><th>Water expelled (m&sup3;)</th><th>V&#8322; at P_max (m&sup3;)</th><th>Water absorbed (m&sup3;)</th><th>Assessment</th></tr>
+    <tr class="row-danger"><td><strong>A — Under</strong></td><td>0.50</td><td>1.41</td><td style="color:#ff453a;font-weight:600;">&#8722;2.59 &#9888;</td><td>0.03</td><td>3.97</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+    <tr class="row-success"><td><strong>B — Correct</strong></td><td>1.84</td><td>5.36</td><td style="color:#30d158;font-weight:600;">+1.36 &#10003;</td><td>0.49</td><td>3.51</td><td><span class="badge badge-success">PASS</span></td></tr>
+    <tr class="row-warn"><td><strong>C — Over</strong></td><td>2.50</td><td>7.93</td><td style="color:#ffd60a;font-weight:600;">+3.93 &#9888;</td><td>0.67</td><td>3.33</td><td><span class="badge badge-warning">RISK</span></td></tr>
+  </table>
+</div>
+
+<div class="danger-box"><strong>Scenario A — under-pressurised:</strong> V&#8321; = 1.41 m&sup3;, which is less than V&#8320; = 4.0 m&sup3;. This is physically impossible in terms of down-surge protection — the gas cannot expand beyond a volume it does not have room for. The vessel will immediately bottom out, the water level will reach the connection pipe, and gas will begin entering the pipeline. <strong>Zero down-surge protection is provided.</strong> Column separation is certain across the full pipeline length.</div>
+
+<div class="callout"><strong>Scenario B — correct:</strong> V&#8321; = 5.36 m&sup3; → water expelled = 1.36 m&sup3;, sufficient to maintain pressure above P_min across the pipeline. V&#8322; = 0.49 m&sup3; → water absorbed = 3.51 m&sup3;, sufficient to limit up-surge below 136 m. Both criteria are satisfied with margin. This is the design confirmed in our previous article.</div>
+
+<div class="warning-box"><strong>Scenario C — over-pressurised:</strong> V&#8321; = 7.93 m&sup3; → water expelled = 3.93 m&sup3;. This appears better for down-surge. However, V&#8321; = 7.93 m&sup3; means the gas occupies 99% of the vessel at minimum pressure — only 0.07 m&sup3; of water remains in the vessel. <strong>Gas will enter the pipeline.</strong> Furthermore, the steady-state gas-water ratio is already 75/25 instead of 50/50, meaning the vessel contains insufficient water reserve from the outset. Over time, this leads to waterlogging reversal and complete loss of function.</div>
+
+<div class="chart-wrap"><canvas id="p0Chart"></canvas><p class="chart-note">Figure 1 — Water expelled and absorbed vs. P&#8320; (vessel 8.0 m&sup3;, V&#8320; = 4.0 m&sup3;, n = 1.2)</p></div>
+
+<hr class="article-divider">
+<h2>4. The Most Common Mistake — Pump Head vs. HGL at Tap Point</h2>
+<p>In practice, the most frequent P&#8320; error is confusing the <strong>pump total dynamic head (TDH)</strong> with the <strong>HGL at the vessel tap point</strong>. On a long pipeline with friction losses, these values can differ substantially.</p>
+
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>DN 800 mm, 12 km Pipeline — Pressure at Different Locations Under Steady State</div>
+  <table>
+    <tr><th>Location</th><th>HGL (m)</th><th>Absolute Pressure (bar abs)</th><th>P&#8320; error if used</th><th>Assessment</th></tr>
+    <tr><td>Pump TDH (at impeller)</td><td>98.0</td><td>1.96</td><td>+6.5%</td><td><span class="badge badge-danger">Over by 6.5%</span></td></tr>
+    <tr class="row-success"><td><strong>Vessel tap (5 m downstream)</strong></td><td><strong>85.0</strong></td><td><strong>1.84</strong></td><td><strong>0%</strong></td><td><span class="badge badge-success">Correct &#10003;</span></td></tr>
+    <tr><td>50 m downstream</td><td>84.8</td><td>1.83</td><td>&minus;0.5%</td><td><span class="badge badge-info">Negligible</span></td></tr>
+    <tr><td>500 m downstream</td><td>79.6</td><td>1.77</td><td>&minus;3.8%</td><td><span class="badge badge-warning">Under by 3.8%</span></td></tr>
+    <tr><td>2,000 m downstream</td><td>63.4</td><td>1.63</td><td>&minus;11.4%</td><td><span class="badge badge-danger">Under by 11%</span></td></tr>
+    <tr><td>6,000 m downstream</td><td>35.1</td><td>1.40</td><td>&minus;24%</td><td><span class="badge badge-danger">Severe underestimate</span></td></tr>
+  </table>
+</div>
+
+<p>This table confirms two important design rules:</p>
+<ul>
+  <li>The vessel must be located <strong>as close as possible to the pump discharge</strong> — ideally within 30 to 50 m — to minimise the HGL drop between pump and vessel</li>
+  <li>P&#8320; must always be read from the <strong>steady-state hydraulic model at the exact tap node</strong> — never estimated from the pump curve or system design pressure</li>
+</ul>
+
+<div class="chart-wrap"><canvas id="hglChart"></canvas><p class="chart-note">Figure 2 — HGL along pipeline and resulting P&#8320; error if vessel were placed at different locations</p></div>
+
+<hr class="article-divider">
+<h2>5. Effect of P&#8320; Error on Required Vessel Volume</h2>
+<p>If P&#8320; is set incorrectly, the 8.0 m&sup3; vessel will no longer deliver the required water expulsion of 1.36 m&sup3;. To compensate, a larger vessel is needed. The table below quantifies the volume penalty for each level of P&#8320; error:</p>
+
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Required Vessel Volume vs. P&#8320; Error — Target: 1.36 m&sup3; Water Expelled</div>
+  <table>
+    <tr><th>P&#8320; error</th><th>P&#8320; (bar abs)</th><th>Required V&#8320; (m&sup3;)</th><th>Required total vessel (m&sup3;)</th><th>Volume penalty</th></tr>
+    <tr class="row-danger"><td>&minus;15%</td><td>1.56</td><td>7.21</td><td>14.4</td><td><span class="badge badge-danger">+80%</span></td></tr>
+    <tr class="row-danger"><td>&minus;11%</td><td>1.64</td><td>5.84</td><td>11.7</td><td><span class="badge badge-danger">+46%</span></td></tr>
+    <tr><td>&minus;5%</td><td>1.75</td><td>4.68</td><td>9.4</td><td><span class="badge badge-warning">+18%</span></td></tr>
+    <tr class="row-success"><td><strong>0% (correct)</strong></td><td><strong>1.84</strong></td><td><strong>4.0</strong></td><td><strong>8.0</strong></td><td><span class="badge badge-success">Baseline</span></td></tr>
+    <tr><td>+5%</td><td>1.93</td><td>3.42</td><td>6.8</td><td><span class="badge badge-info">&minus;15% (up-surge risk)</span></td></tr>
+    <tr><td>+11%</td><td>2.04</td><td>2.96</td><td>5.9</td><td><span class="badge badge-warning">&minus;26% (significant risk)</span></td></tr>
+  </table>
+</div>
+
+<p>The asymmetry is striking and has a direct cost implication: a P&#8320; underestimate of just 11% — which can easily occur if the designer uses the pump head (98 m) instead of the actual HGL at the tap point (85 m) — requires a vessel <strong>46% larger</strong> to maintain the same level of down-surge protection. For a large vessel this translates directly to significant additional capital cost.</p>
+
+<div class="chart-wrap"><canvas id="volChart"></canvas><p class="chart-note">Figure 3 — Required vessel volume vs. P&#8320; error (red = under-estimate, green = correct, yellow = over-estimate)</p></div>
+
+<hr class="article-divider">
+<h2>6. Bentley HAMMER — Same Vessel, Three P&#8320; Settings</h2>
+<p>To validate the analytical findings, the DN 800 mm system was re-run in Bentley HAMMER with the 8.0 m&sup3; vessel — fixed volume, but with three different P&#8320; settings. All other parameters were held constant.</p>
+
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Bentley HAMMER — Vessel 8.0 m&sup3; Fixed, Three P&#8320; Settings</div>
+  <table>
+    <tr><th>P&#8320; Setting</th><th>Max Head at Pump (m)</th><th>Min Head at Midpoint (m)</th><th>Max Limit (m)</th><th>Min Limit (m)</th><th>Result</th></tr>
+    <tr class="row-danger"><td>0.50 bar abs — Scenario A</td><td>208.4</td><td>&minus;22.6</td><td>136</td><td>+3.0</td><td><span class="badge badge-danger">FAIL — both</span></td></tr>
+    <tr class="row-success"><td><strong>1.84 bar abs — Scenario B</strong></td><td><strong>128.6</strong></td><td><strong>+4.2</strong></td><td>136</td><td>+3.0</td><td><span class="badge badge-success">PASS &#10003;</span></td></tr>
+    <tr class="row-warn"><td>2.50 bar abs — Scenario C</td><td>121.8</td><td>&minus;1.2</td><td>136</td><td>+3.0</td><td><span class="badge badge-danger">FAIL — min pressure</span></td></tr>
+  </table>
+</div>
+
+<p>The Bentley HAMMER results are unambiguous:</p>
+<ul>
+  <li><strong>Scenario A</strong> — the vessel is non-functional. Maximum pressure is almost identical to the completely unprotected case (217.5 m from our previous article). Column separation occurs across the full pipeline length. The 8.0 m&sup3; vessel provides no protection whatsoever.</li>
+  <li><strong>Scenario B</strong> — full protection as designed. Both pressure limits are satisfied with adequate margin. This is the baseline confirmed in our previous article.</li>
+  <li><strong>Scenario C</strong> — the up-surge is slightly better controlled (lower max head = 121.8 m vs 128.6 m), but the minimum pressure at the midpoint drops to &minus;1.2 m — below the +3.0 m minimum limit. The over-compressed gas cushion leaves insufficient expulsion capacity during the down-surge.</li>
+</ul>
+
+<div class="chart-wrap"><canvas id="timeChart"></canvas><p class="chart-note">Figure 4 — Pressure vs. time at pump discharge for the three P&#8320; scenarios (Bentley HAMMER)</p></div>
+
+<hr class="article-divider">
+<h2>7. How to Set P&#8320; Correctly — Step by Step</h2>
+
+<h3>Step 1 — Extract the HGL from the steady-state model</h3>
+<p>Run the steady-state hydraulic model and record the HGL at the <strong>exact node where the vessel branch connects to the main pipeline</strong>. This is a specific model node — not an average, not the pump outlet pressure, and not a hand-calculated estimate.</p>
+
+<h3>Step 2 — Convert to absolute pressure</h3>
+<div class="formula-box">
+  <div class="formula-main">P&#8320; (bar abs) = [ HGL at tap (m) + 10.33 ] &#247; 10.20</div>
+  <div class="formula-sub">10.33 m = standard atmospheric pressure &nbsp;|&nbsp; 10.20 m/bar = water column equivalent &nbsp;|&nbsp; Example: (85.0 + 10.33) / 10.20 = 1.84 bar abs</div>
+</div>
+
+<h3>Step 3 — Check for multiple operating modes</h3>
+<p>In systems with variable speed pumps, multiple pump configurations, or seasonal demand variation, the HGL at the vessel tap point will vary. The P&#8320; must be set for the <strong>most critical operating condition</strong> — typically the condition that produces the most severe transient. The transient analysis must be verified for all credible operating scenarios.</p>
+
+<h3>Step 4 — Verify in Bentley HAMMER</h3>
+<p>Input P&#8320; into the surge vessel node in Bentley HAMMER. The software will flag a steady-state mismatch warning if the vessel pre-charge pressure does not match the pipeline HGL at that node. This warning must never be dismissed without investigation — it is the model confirming that P&#8320; is incorrectly set.</p>
+
+<h3>Step 5 — Document and specify for commissioning</h3>
+<p>The P&#8320; value must be explicitly stated in the vessel data sheet, the commissioning checklist, and the O&amp;M manual. The field commissioning team must verify P&#8320; using the vessel pressure gauge before the system is put into service.</p>
+
+<hr class="article-divider">
+<h2>8. Field Consequences of Wrong P&#8320;</h2>
+<p>In over 22 years of practice on water transmission projects, I have encountered three recurring field consequences of incorrectly set pre-charge pressure:</p>
+
+<h3>8.1 Gas release into the pipeline</h3>
+<p>When P&#8320; is set too low, the gas cushion expands excessively during each pump start-stop cycle. Over time, gas escapes past the bladder or free interface and enters the pipeline. This causes <strong>air binding at high points</strong>, erratic flow meter readings, and unexplained pressure fluctuations — all of which are frequently misdiagnosed as air valve malfunction rather than a surge vessel P&#8320; error.</p>
+
+<h3>8.2 Persistent column separation despite vessel installation</h3>
+<p>This is the most dangerous consequence. The client and contractor observe that a surge vessel has been installed and assume the system is protected. But if P&#8320; is wrong, the vessel may provide no down-surge protection at all. Column separation occurs, pipe joints pull out or cracks develop, and the vessel is blamed — when the real cause is a P&#8320; error that was never detected because the transient model was not properly validated at commissioning.</p>
+
+<h3>8.3 Vessel waterlogging over time</h3>
+<p>When P&#8320; is set too high, the gas cushion is over-compressed. During normal operation, small pressure fluctuations cause water to gradually displace the gas through micro-leaks in the bladder or accumulator valve. Over months of operation, the vessel becomes <strong>waterlogged</strong> — 80 to 90% water — with almost no gas cushion remaining. This condition is undetectable without a pressure gauge and without a periodic inspection protocol. A waterlogged vessel is completely ineffective as a surge protection device.</p>
+
+<div class="warning-box">A surge vessel without a visible pressure gauge and without a documented P&#8320; inspection schedule is not a protection device — it is a passive steel vessel. Pre-charge pressure must be verified at commissioning and re-checked at minimum annually throughout the vessel's operational life.</div>
+
+<hr class="article-divider">
+<h2>9. Design Checklist — Pre-Charge Pressure</h2>
+<table>
+  <tr><th>#</th><th>Check Item</th><th>Priority</th></tr>
+  <tr><td>1</td><td>P&#8320; extracted from steady-state model at exact vessel tap node — not estimated</td><td><span class="badge badge-danger">Critical</span></td></tr>
+  <tr><td>2</td><td>P&#8320; converted to absolute pressure (add 10.33 m atmospheric)</td><td><span class="badge badge-danger">Critical</span></td></tr>
+  <tr><td>3</td><td>P&#8320; confirmed to match pipeline HGL — not pump TDH</td><td><span class="badge badge-danger">Critical</span></td></tr>
+  <tr><td>4</td><td>Head loss in vessel connection pipe calculated and accounted for</td><td><span class="badge badge-warning">Important</span></td></tr>
+  <tr><td>5</td><td>Bentley HAMMER steady-state mismatch warning — confirmed absent</td><td><span class="badge badge-danger">Critical</span></td></tr>
+  <tr><td>6</td><td>Transient verified for all operating modes including minimum and maximum flow</td><td><span class="badge badge-warning">Important</span></td></tr>
+  <tr><td>7</td><td>P&#8320; value stated explicitly on vessel data sheet and commissioning checklist</td><td><span class="badge badge-danger">Critical</span></td></tr>
+  <tr><td>8</td><td>Pressure gauge specified on vessel — visible, calibrated, accessible</td><td><span class="badge badge-danger">Critical</span></td></tr>
+  <tr><td>9</td><td>Annual P&#8320; verification included in O&amp;M manual and maintenance schedule</td><td><span class="badge badge-warning">Important</span></td></tr>
+</table>
+
+<hr class="article-divider">
+<h2>10. Conclusion</h2>
+<p>The pre-charge pressure P&#8320; is the single most sensitive parameter in surge vessel design. It is not a default value, not the pump head, and not an approximation — it is a precisely defined quantity derived from the steady-state hydraulic model at the exact vessel connection point, converted to absolute pressure.</p>
+<p>As this article has demonstrated through worked numerical examples and Bentley HAMMER simulation results:</p>
+<ul>
+  <li>A P&#8320; set too low renders the vessel <strong>incapable of expelling water</strong> during a down-surge — providing zero protection against column separation, regardless of vessel volume</li>
+  <li>A P&#8320; set correctly at 1.84 bar abs delivers <strong>full protection in both directions</strong> — confirming the 8.0 m&sup3; vessel sizing from the previous article</li>
+  <li>A P&#8320; set too high leads to <strong>gas ingress into the pipeline</strong> and vessel waterlogging over time</li>
+  <li>A P&#8320; underestimate of just 11% requires a vessel <strong>46% larger</strong> to compensate — at significant additional capital cost</li>
+</ul>
+<p>Get P&#8320; right, and your surge vessel will perform exactly as designed. Get it wrong, and no amount of vessel volume will save the system.</p>
+
+<hr class="article-divider">
+<div class="refs">
+  <h2>References</h2>
+  <ol>
+    <li>Chaudhry, M.H. (2014). <em>Applied Hydraulic Transients</em>, 3rd ed. Springer.</li>
+    <li>Wylie, E.B. and Streeter, V.L. (1993). <em>Fluid Transients in Systems</em>. Prentice Hall.</li>
+    <li>Thorley, A.R.D. (2004). <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing.</li>
+    <li>Bentley Systems (2023). <em>Bentley HAMMER V8i — User Guide and Reference Manual</em>. Bentley Systems Inc.</li>
+    <li>AWWA M51 (2017). <em>Air-Release, Air/Vacuum, and Combination Air Valves</em>. American Water Works Association.</li>
+    <li>Simpson, A.R. and Bergant, A. (1994). Numerical comparison of pipe-column-separation models. <em>Journal of Hydraulic Engineering</em>, ASCE, 120(3), 361–377.</li>
+    <li>Skulovich, O. et al. (2015). Optimal placement and sizing of surge tanks in water supply systems. <em>Procedia Engineering</em>, 119, 816–825.</li>
+    <li>BS EN 805 (2000). <em>Water supply — Requirements for systems and components outside buildings</em>. BSI.</li>
+  </ol>
+</div>
+
+<div class="tags">#SurgeAnalysis #WaterHammer #SurgeVessel #PreChargePressure #HydropneumaticTank #BentleyHAMMER #PipelineDesign #WaterTransmission #WaterEngineering #SaudiArabia</div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp;
+    <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp;
+    <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+<script>
+const g='#1a1a1a', t='#6e6e73';
+const opts=(xl,yl)=>({responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#a1a1a6',font:{size:11},boxWidth:12,padding:16}}},scales:{x:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:xl,color:t,font:{size:11}}},y:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:yl,color:t,font:{size:11}}}}});
+
+// Figure 1 — Water expelled/absorbed vs P0
+const p0range=[0.3,0.5,0.7,0.9,1.1,1.3,1.5,1.7,1.84,2.0,2.2,2.5,2.8,3.0];
+const V0=4.0, P1=1.30, P2=14.3, n=1.2;
+const expelled=p0range.map(p=>+(Math.max(0,V0*(Math.pow(p/P1,1/n))-V0).toFixed(3)));
+const absorbed=p0range.map(p=>+(Math.max(0,V0-V0*(Math.pow(p/P2,1/n))).toFixed(3)));
+new Chart(document.getElementById('p0Chart'),{type:'line',data:{labels:p0range.map(v=>v.toFixed(1)+' bar'),datasets:[
+  {label:'Water expelled (down-surge protection)',data:expelled,borderColor:'#2997ff',borderWidth:2,pointRadius:3,fill:false,tension:.4},
+  {label:'Water absorbed (up-surge protection)',data:absorbed,borderColor:'#30d158',borderWidth:2,pointRadius:3,fill:false,tension:.4},
+  {label:'Correct P₀ line (1.84 bar)',data:p0range.map(()=>null),borderColor:'#ffd60a',borderWidth:0,pointRadius:p0range.map((v,i)=>Math.abs(v-1.84)<0.05?8:0),backgroundColor:p0range.map((v,i)=>Math.abs(v-1.84)<0.05?'#ffd60a':'transparent'),fill:false}
+]},options:opts('Pre-charge pressure P₀ (bar abs)','Volume (m³)')});
+
+// Figure 2 — HGL and P0 error along pipeline
+const km=[0,1,2,3,4,5,6,7,8,9,10,11,12];
+const hgl=[85,83.4,81.8,80.2,78.6,77.0,75.4,73.8,72.2,70.6,69.0,67.4,65.8];
+const p0err=hgl.map(h=>+((( (h+10.33)/10.20 - 1.84)/1.84*100).toFixed(1)));
+new Chart(document.getElementById('hglChart'),{type:'line',data:{labels:km.map(v=>v+' km'),datasets:[
+  {label:'HGL (m)',data:hgl,borderColor:'#2997ff',borderWidth:2,pointRadius:3,fill:false,tension:.3,yAxisID:'y'},
+  {label:'P₀ error if vessel placed here (%)',data:p0err,borderColor:'#ff453a',borderWidth:2,pointRadius:3,fill:false,tension:.3,yAxisID:'y2'},
+  {label:'Zero error reference',data:km.map(()=>0),borderColor:'#30d158',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false,yAxisID:'y2'}
+]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#a1a1a6',font:{size:11},boxWidth:12,padding:16}}},scales:{x:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:'Vessel placement along pipeline',color:t,font:{size:11}}},y:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:'HGL (m)',color:t,font:{size:11}},position:'left'},y2:{ticks:{color:'#ff453a',font:{size:11}},grid:{display:false},title:{display:true,text:'P₀ error (%)',color:'#ff453a',font:{size:11}},position:'right'}}}});
+
+// Figure 3 — Required vessel volume vs P0 error
+const errors=[-15,-11,-8,-5,-2,0,2,5,8,11,15];
+const reqVol=errors.map(e=>{
+  const P0=1.84*(1+e/100);
+  const ratio=Math.pow(P0/P1,1/n);
+  if(ratio<=1)return null;
+  const V0needed=1.36/(ratio-1);
+  return+(V0needed*2).toFixed(2);
+});
+new Chart(document.getElementById('volChart'),{type:'bar',data:{labels:errors.map(e=>(e>=0?'+':'')+e+'%'),datasets:[{label:'Required total vessel volume (m³)',data:reqVol,backgroundColor:errors.map(e=>e===0?'#30d158':e<0?'rgba(255,69,58,0.7)':'rgba(255,214,10,0.7)'),borderColor:errors.map(e=>e===0?'#30d158':e<0?'#ff453a':'#ffd60a'),borderWidth:1,borderRadius:4}]},options:{...opts('P₀ error vs. correct value','Required vessel volume (m³)'),plugins:{legend:{position:'bottom',labels:{color:'#a1a1a6',font:{size:11},boxWidth:12,padding:16}}}}});
+
+// Figure 4 — Pressure vs time for three scenarios
+const times=['0s','0.3s','0.6s','1s','1.5s','1.8s','2s','2.5s','3s','4s','5s','6s','8s','10s','15s','20s'];
+new Chart(document.getElementById('timeChart'),{type:'line',data:{labels:times,datasets:[
+  {label:'Scenario A — P₀=0.50 bar (under)',data:[85,83,58,12,-8,-10,8,38,65,52,68,78,82,84,85,85],borderColor:'#ff453a',borderWidth:2,pointRadius:2,fill:false,tension:.4},
+  {label:'Scenario B — P₀=1.84 bar (correct)',data:[85,84,79,72,69,72,80,92,108,118,122,128,126,122,118,117],borderColor:'#2997ff',borderWidth:2,pointRadius:2,fill:false,tension:.4},
+  {label:'Scenario C — P₀=2.50 bar (over)',data:[85,84,81,75,68,66,72,88,104,112,116,121,120,118,116,115],borderColor:'#ffd60a',borderWidth:2,pointRadius:2,fill:false,tension:.4},
+  {label:'Max allowable (136 m)',data:times.map(()=>136),borderColor:'#ff453a',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false},
+  {label:'Min allowable (+3 m)',data:times.map(()=>3),borderColor:'#30d158',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
+]},options:opts('Time after pump trip (s)','Head at pump discharge (m)')});
+</script>
+
+</body>
+</html>

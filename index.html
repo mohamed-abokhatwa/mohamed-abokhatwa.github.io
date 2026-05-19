@@ -17,7 +17,7 @@
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent-light);
+      color: var(--accent);
       margin-bottom: 24px;
       display: block;
     }
@@ -52,8 +52,12 @@
       font-weight: 500;
       padding: 6px 14px;
       border-radius: 980px;
-      border: 1px solid var(--border-light);
-      color: var(--text-tertiary);
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-glass);
+      color: var(--text-secondary);
       letter-spacing: 0.02em;
     }
     .articles-section {
@@ -80,21 +84,26 @@
     }
     .articles-grid {
       display: grid;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
+      gap: 10px;
     }
     .article-card {
-      background: var(--bg);
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-glass);
       padding: 48px 40px;
       text-decoration: none;
       display: block;
       transition: var(--transition);
       position: relative;
     }
-    .article-card:hover { background: var(--bg-3); }
+    .article-card:hover {
+      background: var(--glass-hover);
+      box-shadow: var(--shadow-glass-hover);
+      transform: translateY(-2px);
+    }
     .article-card-tag {
       font-size: 11px;
       font-weight: 500;
@@ -136,23 +145,29 @@
       transition: var(--transition);
     }
     .article-card:hover .article-card-arrow {
-      color: var(--text-primary);
+      color: var(--accent);
       transform: translateY(-50%) translateX(4px);
     }
     .stats-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
+      gap: 10px;
       margin-top: 80px;
     }
     .stat {
-      background: var(--bg);
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-glass);
       padding: 48px 40px;
       text-align: center;
+      transition: var(--transition);
+    }
+    .stat:hover {
+      background: var(--glass-hover);
+      box-shadow: var(--shadow-glass-hover);
     }
     .stat-num {
       font-family: var(--font-display);
@@ -171,6 +186,9 @@
       .stats-row { grid-template-columns: 1fr; }
       .article-card-arrow { display: none; }
       .article-card { padding: 32px 24px; }
+      .hero { padding: 120px 20px 80px; }
+      .articles-section { padding: 60px 20px; }
+      .section-title { margin-bottom: 32px; }
     }
   </style>
 </head>
@@ -179,13 +197,23 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html" class="active">Articles</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
     </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
 
 <div class="hero">
   <span class="hero-eyebrow fade-up">Water Engineering &amp; Infrastructure</span>

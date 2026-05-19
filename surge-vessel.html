@@ -10,10 +10,10 @@
     .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
     .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
     .article-hero .back:hover{color:var(--text-primary);}
-    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-light);margin-bottom:20px;display:block;}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
     .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:400;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px;max-width:800px;}
     .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-    .hero-img-wrap{width:100%;background:#000;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
     .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
     .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
     .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;}
@@ -22,7 +22,7 @@
     .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
     .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
     .article-body strong{color:var(--text-primary);font-weight:500;}
-    .article-body em{color:var(--accent-light);font-style:italic;}
+    .article-body em{color:var(--accent);font-style:italic;}
     .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
     .refs li{font-size:14px;color:var(--text-tertiary);line-height:1.8;margin-bottom:4px;}
   </style>
@@ -31,13 +31,23 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Articles</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
     </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
 
 <div class="article-hero">
   <a href="index.html" class="back">&#8592; All articles</a>
@@ -237,6 +247,28 @@
 
 <div class="tags">#SurgeAnalysis #WaterHammer #HydropneumaticVessel #BentleyHAMMER #PipelineDesign #WaterTransmission #WaterEngineering #SaudiArabia</div>
 
+<div style="margin-top:60px;padding-top:48px;border-top:1px solid var(--border);">
+  <h2 style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:8px;color:var(--text-primary);">Discussion</h2>
+  <p style="font-size:14px;color:var(--text-tertiary);margin-bottom:24px;">Sign in with GitHub to like or comment.</p>
+  <!-- Giscus comments — powered by GitHub Discussions (free, no ads) -->
+  <!-- Setup: 1) Enable Discussions on your repo  2) Install https://github.com/apps/giscus  3) Go to https://giscus.app and replace REPO_ID and CATEGORY_ID below -->
+  <script src="https://giscus.app/client.js"
+    data-repo="mohamed-abokhatwa/mohamed-abokhatwa.github.io"
+    data-repo-id="REPLACE_WITH_REPO_ID"
+    data-category="General"
+    data-category-id="REPLACE_WITH_CATEGORY_ID"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="en"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
 </div>
 
 <footer>
@@ -246,30 +278,31 @@
 </footer>
 
 <script>
+const g='rgba(0,0,0,0.08)', t='#86868b';
+const lc='#6e6e73';
+const opts=(yt)=>({responsive:true,plugins:{legend:{position:'bottom',labels:{color:lc,font:{size:11},boxWidth:12,padding:16}}},scales:{x:{ticks:{color:t,font:{size:11}},grid:{color:g}},y:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:yt,color:t,font:{size:11}}}}});
 const labels=['0 m','2 km','4 km','6 km','8 km','10 km','12 km'];
-const g='#1a1a1a',t='#6e6e73';
-const opts=(yt)=>({responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#a1a1a6',font:{size:11},boxWidth:12,padding:16}}},scales:{x:{ticks:{color:t,font:{size:11}},grid:{color:g}},y:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:yt,color:t,font:{size:11}}}}});
 new Chart(document.getElementById('baselineChart'),{type:'line',data:{labels,datasets:[
-  {label:'Steady-state HGL',data:[85,78.3,71.6,64.9,58.2,51.5,44.8],borderColor:'#a1a1a6',borderWidth:1.5,borderDash:[6,3],pointRadius:3,fill:false,tension:.3},
-  {label:'Max transient',data:[217.5,198.4,176.2,154.8,132.6,118.3,96.7],borderColor:'#ff453a',borderWidth:2,pointRadius:3,fill:false,tension:.3},
-  {label:'Min transient',data:[-8.2,-12.6,-18.4,-24.1,-19.8,-11.2,2.1],borderColor:'#ffd60a',borderWidth:2,pointRadius:3,fill:false,tension:.3},
-  {label:'Max allowable (136 m)',data:[136,136,136,136,136,136,136],borderColor:'#ff453a',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false},
-  {label:'Min allowable (+3 m)',data:[3,3,3,3,3,3,3],borderColor:'#30d158',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
+  {label:'Steady-state HGL',data:[85,78.3,71.6,64.9,58.2,51.5,44.8],borderColor:'#86868b',borderWidth:1.5,borderDash:[6,3],pointRadius:3,fill:false,tension:.3},
+  {label:'Max transient',data:[217.5,198.4,176.2,154.8,132.6,118.3,96.7],borderColor:'#c42b2b',borderWidth:2,pointRadius:3,fill:false,tension:.3},
+  {label:'Min transient',data:[-8.2,-12.6,-18.4,-24.1,-19.8,-11.2,2.1],borderColor:'#8a5700',borderWidth:2,pointRadius:3,fill:false,tension:.3},
+  {label:'Max allowable (136 m)',data:[136,136,136,136,136,136,136],borderColor:'#c42b2b',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false},
+  {label:'Min allowable (+3 m)',data:[3,3,3,3,3,3,3],borderColor:'#1a7a38',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
 ]},options:opts('Head (m)')});
 new Chart(document.getElementById('comparisonChart'),{type:'line',data:{labels,datasets:[
-  {label:'Max — unprotected',data:[217.5,198.4,176.2,154.8,132.6,118.3,96.7],borderColor:'#ff453a',borderWidth:1.5,borderDash:[5,3],pointRadius:3,fill:false,tension:.3},
-  {label:'Min — unprotected',data:[-8.2,-12.6,-18.4,-24.1,-19.8,-11.2,2.1],borderColor:'#ffd60a',borderWidth:1.5,borderDash:[5,3],pointRadius:3,fill:false,tension:.3},
-  {label:'Max — 8.0 m³ vessel',data:[128.6,122.1,115.4,108.2,98.7,86.3,74.1],borderColor:'#2997ff',borderWidth:2,pointRadius:3,fill:false,tension:.3},
-  {label:'Min — 8.0 m³ vessel',data:[18.4,12.8,8.6,4.2,5.1,6.8,8.2],borderColor:'#30d158',borderWidth:2,pointRadius:3,fill:false,tension:.3},
-  {label:'Max allowable (136 m)',data:[136,136,136,136,136,136,136],borderColor:'#ff453a',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false},
-  {label:'Min allowable (+3 m)',data:[3,3,3,3,3,3,3],borderColor:'#30d158',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
+  {label:'Max — unprotected',data:[217.5,198.4,176.2,154.8,132.6,118.3,96.7],borderColor:'#c42b2b',borderWidth:1.5,borderDash:[5,3],pointRadius:3,fill:false,tension:.3},
+  {label:'Min — unprotected',data:[-8.2,-12.6,-18.4,-24.1,-19.8,-11.2,2.1],borderColor:'#8a5700',borderWidth:1.5,borderDash:[5,3],pointRadius:3,fill:false,tension:.3},
+  {label:'Max — 8.0 m³ vessel',data:[128.6,122.1,115.4,108.2,98.7,86.3,74.1],borderColor:'#0071e3',borderWidth:2,pointRadius:3,fill:false,tension:.3},
+  {label:'Min — 8.0 m³ vessel',data:[18.4,12.8,8.6,4.2,5.1,6.8,8.2],borderColor:'#1a7a38',borderWidth:2,pointRadius:3,fill:false,tension:.3},
+  {label:'Max allowable (136 m)',data:[136,136,136,136,136,136,136],borderColor:'#c42b2b',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false},
+  {label:'Min allowable (+3 m)',data:[3,3,3,3,3,3,3],borderColor:'#1a7a38',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
 ]},options:opts('Head (m)')});
 const times=['0s','0.5s','1s','1.5s','1.8s','2s','2.5s','3s','4s','5s','6s','8s','10s','12s','15s','18s','20s'];
 new Chart(document.getElementById('timeChart'),{type:'line',data:{labels:times,datasets:[
-  {label:'Unprotected',data:[85,84,62,18,-6,-8,15,42,68,55,72,80,83,85,85,85,85],borderColor:'#ff453a',borderWidth:2,pointRadius:2,fill:false,tension:.4},
-  {label:'Protected (8.0 m³)',data:[85,84,78,70,68,72,82,95,110,118,122,128,126,122,120,118,117],borderColor:'#2997ff',borderWidth:2,pointRadius:2,fill:false,tension:.4},
-  {label:'Max allowable (136 m)',data:[136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136],borderColor:'#ff453a',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false},
-  {label:'Min allowable (+3 m)',data:[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],borderColor:'#30d158',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
+  {label:'Unprotected',data:[85,84,62,18,-6,-8,15,42,68,55,72,80,83,85,85,85,85],borderColor:'#c42b2b',borderWidth:2,pointRadius:2,fill:false,tension:.4},
+  {label:'Protected (8.0 m³)',data:[85,84,78,70,68,72,82,95,110,118,122,128,126,122,120,118,117],borderColor:'#0071e3',borderWidth:2,pointRadius:2,fill:false,tension:.4},
+  {label:'Max allowable (136 m)',data:[136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136],borderColor:'#c42b2b',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false},
+  {label:'Min allowable (+3 m)',data:[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],borderColor:'#1a7a38',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
 ]},options:opts('Head at pump discharge (m)')});
 </script>
 </body>

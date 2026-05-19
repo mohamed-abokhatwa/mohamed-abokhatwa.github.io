@@ -10,10 +10,10 @@
     .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
     .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
     .article-hero .back:hover{color:var(--text-primary);}
-    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-light);margin-bottom:20px;display:block;}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
     .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:400;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px;max-width:800px;}
     .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-    .hero-svg-wrap{width:100%;background:#000;border-bottom:1px solid var(--border);}
+    .hero-svg-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
     .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
     .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;}
     .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;}
@@ -21,17 +21,25 @@
     .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
     .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
     .article-body strong{color:var(--text-primary);font-weight:500;}
-    .article-body em{color:var(--accent-light);font-style:italic;}
+    .article-body em{color:var(--accent);font-style:italic;}
     .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
     .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:1.5rem 0;}
-    .scenario-card{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:24px;}
-    .scenario-card.danger{border-color:rgba(255,69,58,.35);background:rgba(255,69,58,.04);}
-    .scenario-card.success{border-color:rgba(48,209,88,.35);background:rgba(48,209,88,.04);}
-    .scenario-card.warning{border-color:rgba(255,214,10,.35);background:rgba(255,214,10,.04);}
+    .scenario-card{
+      background:var(--glass);
+      backdrop-filter:var(--blur);
+      -webkit-backdrop-filter:var(--blur);
+      border:1px solid var(--glass-border);
+      border-radius:var(--radius-sm);
+      box-shadow:var(--shadow-glass);
+      padding:24px;
+    }
+    .scenario-card.danger{border-color:rgba(196,43,43,.25);background:rgba(196,43,43,.05);}
+    .scenario-card.success{border-color:rgba(26,122,56,.25);background:rgba(26,122,56,.05);}
+    .scenario-card.warning{border-color:rgba(138,87,0,.25);background:rgba(138,87,0,.05);}
     .scenario-label{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;}
-    .scenario-label.danger{color:#ff453a;}
-    .scenario-label.success{color:#30d158;}
-    .scenario-label.warning{color:#ffd60a;}
+    .scenario-label.danger{color:var(--danger);}
+    .scenario-label.success{color:var(--success);}
+    .scenario-label.warning{color:var(--warning);}
     .scenario-val{font-family:var(--font-display);font-size:36px;color:var(--text-primary);letter-spacing:-.02em;margin-bottom:6px;}
     .scenario-desc{font-size:13px;color:var(--text-tertiary);line-height:1.6;}
     .refs li{font-size:14px;color:var(--text-tertiary);line-height:1.8;margin-bottom:4px;}
@@ -43,13 +51,23 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Articles</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
     </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
 
 <div class="article-hero">
   <a href="index.html" class="back">&#8592; All articles</a>
@@ -65,7 +83,8 @@
 </div>
 
 <div class="hero-svg-wrap">
-<img src="IMG_4656.PNG" alt="Pre-Charge Pressure — Surge Vessel" style="width:100%;height:auto;display:block;">
+  <img src="IMG_4656.PNG" alt="Pre-Charge Pressure — Surge Vessel" style="width:100%;height:auto;display:block;">
+</div>
 
 <div class="article-body">
 
@@ -132,9 +151,9 @@
   <div class="sim-header"><span class="sim-dot"></span>Polytropic Gas Law — Results for Three P&#8320; Scenarios (Vessel = 8.0 m&sup3;, V&#8320; = 4.0 m&sup3;)</div>
   <table>
     <tr><th>Scenario</th><th>P&#8320; (bar abs)</th><th>V&#8321; at P_min (m&sup3;)</th><th>Water expelled (m&sup3;)</th><th>V&#8322; at P_max (m&sup3;)</th><th>Water absorbed (m&sup3;)</th><th>Assessment</th></tr>
-    <tr class="row-danger"><td><strong>A — Under</strong></td><td>0.50</td><td>1.41</td><td style="color:#ff453a;font-weight:600;">&#8722;2.59 &#9888;</td><td>0.03</td><td>3.97</td><td><span class="badge badge-danger">FAIL</span></td></tr>
-    <tr class="row-success"><td><strong>B — Correct</strong></td><td>1.84</td><td>5.36</td><td style="color:#30d158;font-weight:600;">+1.36 &#10003;</td><td>0.49</td><td>3.51</td><td><span class="badge badge-success">PASS</span></td></tr>
-    <tr class="row-warn"><td><strong>C — Over</strong></td><td>2.50</td><td>7.93</td><td style="color:#ffd60a;font-weight:600;">+3.93 &#9888;</td><td>0.67</td><td>3.33</td><td><span class="badge badge-warning">RISK</span></td></tr>
+    <tr class="row-danger"><td><strong>A — Under</strong></td><td>0.50</td><td>1.41</td><td style="color:var(--danger);font-weight:600;">&#8722;2.59 &#9888;</td><td>0.03</td><td>3.97</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+    <tr class="row-success"><td><strong>B — Correct</strong></td><td>1.84</td><td>5.36</td><td style="color:var(--success);font-weight:600;">+1.36 &#10003;</td><td>0.49</td><td>3.51</td><td><span class="badge badge-success">PASS</span></td></tr>
+    <tr class="row-warn"><td><strong>C — Over</strong></td><td>2.50</td><td>7.93</td><td style="color:var(--warning);font-weight:600;">+3.93 &#9888;</td><td>0.67</td><td>3.33</td><td><span class="badge badge-warning">RISK</span></td></tr>
   </table>
 </div>
 
@@ -190,7 +209,7 @@
 
 <p>The asymmetry is striking and has a direct cost implication: a P&#8320; underestimate of just 11% — which can easily occur if the designer uses the pump head (98 m) instead of the actual HGL at the tap point (85 m) — requires a vessel <strong>46% larger</strong> to maintain the same level of down-surge protection. For a large vessel this translates directly to significant additional capital cost.</p>
 
-<div class="chart-wrap"><canvas id="volChart"></canvas><p class="chart-note">Figure 3 — Required vessel volume vs. P&#8320; error (red = under-estimate, green = correct, yellow = over-estimate)</p></div>
+<div class="chart-wrap"><canvas id="volChart"></canvas><p class="chart-note">Figure 3 — Required vessel volume vs. P&#8320; error (red = under-estimate, green = correct, amber = over-estimate)</p></div>
 
 <hr class="article-divider">
 <h2>6. Bentley HAMMER — Same Vessel, Three P&#8320; Settings</h2>
@@ -295,6 +314,28 @@
 
 <div class="tags">#SurgeAnalysis #WaterHammer #SurgeVessel #PreChargePressure #HydropneumaticTank #BentleyHAMMER #PipelineDesign #WaterTransmission #WaterEngineering #SaudiArabia</div>
 
+<div style="margin-top:60px;padding-top:48px;border-top:1px solid var(--border);">
+  <h2 style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:8px;color:var(--text-primary);">Discussion</h2>
+  <p style="font-size:14px;color:var(--text-tertiary);margin-bottom:24px;">Sign in with GitHub to like or comment.</p>
+  <!-- Giscus comments — powered by GitHub Discussions (free, no ads) -->
+  <!-- Setup: 1) Enable Discussions on your repo  2) Install https://github.com/apps/giscus  3) Go to https://giscus.app and replace REPO_ID and CATEGORY_ID below -->
+  <script src="https://giscus.app/client.js"
+    data-repo="mohamed-abokhatwa/mohamed-abokhatwa.github.io"
+    data-repo-id="REPLACE_WITH_REPO_ID"
+    data-category="General"
+    data-category-id="REPLACE_WITH_CATEGORY_ID"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    data-lang="en"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
 </div>
 
 <footer>
@@ -306,8 +347,8 @@
 </footer>
 
 <script>
-const g='#1a1a1a', t='#6e6e73';
-const opts=(xl,yl)=>({responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#a1a1a6',font:{size:11},boxWidth:12,padding:16}}},scales:{x:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:xl,color:t,font:{size:11}}},y:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:yl,color:t,font:{size:11}}}}});
+const g='rgba(0,0,0,0.08)', t='#86868b', lc='#6e6e73';
+const opts=(xl,yl)=>({responsive:true,plugins:{legend:{position:'bottom',labels:{color:lc,font:{size:11},boxWidth:12,padding:16}}},scales:{x:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:xl,color:t,font:{size:11}}},y:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:yl,color:t,font:{size:11}}}}});
 
 // Figure 1 — Water expelled/absorbed vs P0
 const p0range=[0.3,0.5,0.7,0.9,1.1,1.3,1.5,1.7,1.84,2.0,2.2,2.5,2.8,3.0];
@@ -315,9 +356,9 @@ const V0=4.0, P1=1.30, P2=14.3, n=1.2;
 const expelled=p0range.map(p=>+(Math.max(0,V0*(Math.pow(p/P1,1/n))-V0).toFixed(3)));
 const absorbed=p0range.map(p=>+(Math.max(0,V0-V0*(Math.pow(p/P2,1/n))).toFixed(3)));
 new Chart(document.getElementById('p0Chart'),{type:'line',data:{labels:p0range.map(v=>v.toFixed(1)+' bar'),datasets:[
-  {label:'Water expelled (down-surge protection)',data:expelled,borderColor:'#2997ff',borderWidth:2,pointRadius:3,fill:false,tension:.4},
-  {label:'Water absorbed (up-surge protection)',data:absorbed,borderColor:'#30d158',borderWidth:2,pointRadius:3,fill:false,tension:.4},
-  {label:'Correct P₀ line (1.84 bar)',data:p0range.map(()=>null),borderColor:'#ffd60a',borderWidth:0,pointRadius:p0range.map((v,i)=>Math.abs(v-1.84)<0.05?8:0),backgroundColor:p0range.map((v,i)=>Math.abs(v-1.84)<0.05?'#ffd60a':'transparent'),fill:false}
+  {label:'Water expelled (down-surge protection)',data:expelled,borderColor:'#0071e3',borderWidth:2,pointRadius:3,fill:false,tension:.4},
+  {label:'Water absorbed (up-surge protection)',data:absorbed,borderColor:'#1a7a38',borderWidth:2,pointRadius:3,fill:false,tension:.4},
+  {label:'Correct P₀ (1.84 bar)',data:p0range.map(()=>null),borderColor:'#8a5700',borderWidth:0,pointRadius:p0range.map((v)=>Math.abs(v-1.84)<0.05?8:0),backgroundColor:p0range.map((v)=>Math.abs(v-1.84)<0.05?'#8a5700':'transparent'),fill:false}
 ]},options:opts('Pre-charge pressure P₀ (bar abs)','Volume (m³)')});
 
 // Figure 2 — HGL and P0 error along pipeline
@@ -325,10 +366,10 @@ const km=[0,1,2,3,4,5,6,7,8,9,10,11,12];
 const hgl=[85,83.4,81.8,80.2,78.6,77.0,75.4,73.8,72.2,70.6,69.0,67.4,65.8];
 const p0err=hgl.map(h=>+((( (h+10.33)/10.20 - 1.84)/1.84*100).toFixed(1)));
 new Chart(document.getElementById('hglChart'),{type:'line',data:{labels:km.map(v=>v+' km'),datasets:[
-  {label:'HGL (m)',data:hgl,borderColor:'#2997ff',borderWidth:2,pointRadius:3,fill:false,tension:.3,yAxisID:'y'},
-  {label:'P₀ error if vessel placed here (%)',data:p0err,borderColor:'#ff453a',borderWidth:2,pointRadius:3,fill:false,tension:.3,yAxisID:'y2'},
-  {label:'Zero error reference',data:km.map(()=>0),borderColor:'#30d158',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false,yAxisID:'y2'}
-]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#a1a1a6',font:{size:11},boxWidth:12,padding:16}}},scales:{x:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:'Vessel placement along pipeline',color:t,font:{size:11}}},y:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:'HGL (m)',color:t,font:{size:11}},position:'left'},y2:{ticks:{color:'#ff453a',font:{size:11}},grid:{display:false},title:{display:true,text:'P₀ error (%)',color:'#ff453a',font:{size:11}},position:'right'}}}});
+  {label:'HGL (m)',data:hgl,borderColor:'#0071e3',borderWidth:2,pointRadius:3,fill:false,tension:.3,yAxisID:'y'},
+  {label:'P₀ error if vessel placed here (%)',data:p0err,borderColor:'#c42b2b',borderWidth:2,pointRadius:3,fill:false,tension:.3,yAxisID:'y2'},
+  {label:'Zero error reference',data:km.map(()=>0),borderColor:'#1a7a38',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false,yAxisID:'y2'}
+]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:lc,font:{size:11},boxWidth:12,padding:16}}},scales:{x:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:'Vessel placement along pipeline',color:t,font:{size:11}}},y:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:'HGL (m)',color:t,font:{size:11}},position:'left'},y2:{ticks:{color:'#c42b2b',font:{size:11}},grid:{display:false},title:{display:true,text:'P₀ error (%)',color:'#c42b2b',font:{size:11}},position:'right'}}}});
 
 // Figure 3 — Required vessel volume vs P0 error
 const errors=[-15,-11,-8,-5,-2,0,2,5,8,11,15];
@@ -339,16 +380,16 @@ const reqVol=errors.map(e=>{
   const V0needed=1.36/(ratio-1);
   return+(V0needed*2).toFixed(2);
 });
-new Chart(document.getElementById('volChart'),{type:'bar',data:{labels:errors.map(e=>(e>=0?'+':'')+e+'%'),datasets:[{label:'Required total vessel volume (m³)',data:reqVol,backgroundColor:errors.map(e=>e===0?'#30d158':e<0?'rgba(255,69,58,0.7)':'rgba(255,214,10,0.7)'),borderColor:errors.map(e=>e===0?'#30d158':e<0?'#ff453a':'#ffd60a'),borderWidth:1,borderRadius:4}]},options:{...opts('P₀ error vs. correct value','Required vessel volume (m³)'),plugins:{legend:{position:'bottom',labels:{color:'#a1a1a6',font:{size:11},boxWidth:12,padding:16}}}}});
+new Chart(document.getElementById('volChart'),{type:'bar',data:{labels:errors.map(e=>(e>=0?'+':'')+e+'%'),datasets:[{label:'Required total vessel volume (m³)',data:reqVol,backgroundColor:errors.map(e=>e===0?'rgba(26,122,56,0.7)':e<0?'rgba(196,43,43,0.55)':'rgba(138,87,0,0.45)'),borderColor:errors.map(e=>e===0?'#1a7a38':e<0?'#c42b2b':'#8a5700'),borderWidth:1,borderRadius:4}]},options:{...opts('P₀ error vs. correct value','Required vessel volume (m³)'),plugins:{legend:{position:'bottom',labels:{color:lc,font:{size:11},boxWidth:12,padding:16}}}}});
 
 // Figure 4 — Pressure vs time for three scenarios
 const times=['0s','0.3s','0.6s','1s','1.5s','1.8s','2s','2.5s','3s','4s','5s','6s','8s','10s','15s','20s'];
 new Chart(document.getElementById('timeChart'),{type:'line',data:{labels:times,datasets:[
-  {label:'Scenario A — P₀=0.50 bar (under)',data:[85,83,58,12,-8,-10,8,38,65,52,68,78,82,84,85,85],borderColor:'#ff453a',borderWidth:2,pointRadius:2,fill:false,tension:.4},
-  {label:'Scenario B — P₀=1.84 bar (correct)',data:[85,84,79,72,69,72,80,92,108,118,122,128,126,122,118,117],borderColor:'#2997ff',borderWidth:2,pointRadius:2,fill:false,tension:.4},
-  {label:'Scenario C — P₀=2.50 bar (over)',data:[85,84,81,75,68,66,72,88,104,112,116,121,120,118,116,115],borderColor:'#ffd60a',borderWidth:2,pointRadius:2,fill:false,tension:.4},
-  {label:'Max allowable (136 m)',data:times.map(()=>136),borderColor:'#ff453a',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false},
-  {label:'Min allowable (+3 m)',data:times.map(()=>3),borderColor:'#30d158',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
+  {label:'Scenario A — P₀=0.50 bar (under)',data:[85,83,58,12,-8,-10,8,38,65,52,68,78,82,84,85,85],borderColor:'#c42b2b',borderWidth:2,pointRadius:2,fill:false,tension:.4},
+  {label:'Scenario B — P₀=1.84 bar (correct)',data:[85,84,79,72,69,72,80,92,108,118,122,128,126,122,118,117],borderColor:'#0071e3',borderWidth:2,pointRadius:2,fill:false,tension:.4},
+  {label:'Scenario C — P₀=2.50 bar (over)',data:[85,84,81,75,68,66,72,88,104,112,116,121,120,118,116,115],borderColor:'#8a5700',borderWidth:2,pointRadius:2,fill:false,tension:.4},
+  {label:'Max allowable (136 m)',data:times.map(()=>136),borderColor:'#c42b2b',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false},
+  {label:'Min allowable (+3 m)',data:times.map(()=>3),borderColor:'#1a7a38',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
 ]},options:opts('Time after pump trip (s)','Head at pump discharge (m)')});
 </script>
 

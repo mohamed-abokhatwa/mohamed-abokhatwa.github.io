@@ -17,7 +17,7 @@
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent-light);
+      color: var(--accent);
       margin-bottom: 24px;
       display: block;
     }
@@ -94,7 +94,7 @@
     }
     .exp-company {
       font-size: 15px;
-      color: var(--accent-light);
+      color: var(--accent);
       margin-bottom: 12px;
     }
     .exp-location {
@@ -123,10 +123,18 @@
       gap: 16px;
     }
     .cert-card {
-      background: var(--bg-3);
-      border: 1px solid var(--border);
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-glass);
       padding: 24px;
+      transition: var(--transition);
+    }
+    .cert-card:hover {
+      background: var(--glass-hover);
+      box-shadow: var(--shadow-glass-hover);
     }
     .cert-name {
       font-size: 16px;
@@ -142,7 +150,7 @@
     }
     .cert-year {
       font-size: 12px;
-      color: var(--accent-light);
+      color: var(--accent);
     }
     .skills-grid {
       display: grid;
@@ -150,10 +158,18 @@
       gap: 16px;
     }
     .skill-card {
-      background: var(--bg-3);
-      border: 1px solid var(--border);
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-glass);
       padding: 28px;
+      transition: var(--transition);
+    }
+    .skill-card:hover {
+      background: var(--glass-hover);
+      box-shadow: var(--shadow-glass-hover);
     }
     .skill-title {
       font-size: 15px;
@@ -179,7 +195,7 @@
       letter-spacing: -0.01em;
       margin-bottom: 6px;
     }
-    .edu-uni { font-size: 15px; color: var(--accent-light); margin-bottom: 4px; }
+    .edu-uni { font-size: 15px; color: var(--accent); margin-bottom: 4px; }
     .edu-year { font-size: 13px; color: var(--text-tertiary); }
     @media(max-width:768px) {
       .two-col { grid-template-columns: 1fr; gap: 32px; }
@@ -194,13 +210,23 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Articles</a></li>
       <li><a href="about.html" class="active">About</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
     </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
 
 <div class="about-hero">
   <span class="eyebrow fade-up">About</span>

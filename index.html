@@ -86,6 +86,8 @@
       display: grid;
       gap: 10px;
     }
+
+    /* ── Article Card ── */
     .article-card {
       background: var(--glass);
       backdrop-filter: var(--blur);
@@ -93,16 +95,23 @@
       border: 1px solid var(--glass-border);
       border-radius: var(--radius);
       box-shadow: var(--shadow-glass);
-      padding: 48px 40px;
+      padding: 40px 40px;
       text-decoration: none;
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 36px;
       transition: var(--transition);
-      position: relative;
     }
     .article-card:hover {
       background: var(--glass-hover);
       box-shadow: var(--shadow-glass-hover);
       transform: translateY(-2px);
+    }
+
+    /* ── Card body (text) ── */
+    .card-body {
+      flex: 1;
+      min-width: 0;
     }
     .article-card-tag {
       font-size: 11px;
@@ -126,7 +135,7 @@
       color: var(--text-secondary);
       line-height: 1.6;
       max-width: 600px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .article-card-meta {
       font-size: 13px;
@@ -136,18 +145,54 @@
       gap: 16px;
     }
     .article-card-arrow {
-      position: absolute;
-      right: 40px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 20px;
+      margin-left: auto;
+      font-size: 18px;
       color: var(--text-tertiary);
       transition: var(--transition);
+      flex-shrink: 0;
     }
     .article-card:hover .article-card-arrow {
       color: var(--accent);
-      transform: translateY(-50%) translateX(4px);
+      transform: translateX(4px);
     }
+
+    /* ── Thumbnail ── */
+    .card-thumb {
+      width: 160px;
+      height: 100px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+      opacity: 0.88;
+      transition: filter 0.45s ease, opacity 0.45s ease;
+    }
+    /* Blue tint overlay */
+    .card-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 113, 227, 0.18);
+      pointer-events: none;
+      transition: opacity 0.45s ease;
+    }
+    /* On hover: reveal original colours */
+    .article-card:hover .card-thumb img {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+    .article-card:hover .card-thumb::after {
+      opacity: 0;
+    }
+
+    /* ── Stats ── */
     .stats-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -182,13 +227,16 @@
       font-size: 14px;
       color: var(--text-tertiary);
     }
+
+    /* ── Responsive ── */
     @media(max-width:768px) {
       .stats-row { grid-template-columns: 1fr; }
-      .article-card-arrow { display: none; }
-      .article-card { padding: 32px 24px; }
+      .card-thumb { display: none; }
+      .article-card { padding: 32px 24px; gap: 0; }
       .hero { padding: 120px 20px 80px; }
       .articles-section { padding: 60px 20px; }
       .section-title { margin-bottom: 32px; }
+      .article-card-arrow { display: none; }
     }
   </style>
 </head>
@@ -236,48 +284,84 @@
 
   <div class="articles-grid">
 
-    <a href="combination-air-valves.html" class="article-card">
-      <span class="article-card-tag">Transmission Pipeline Design &middot; Air Management</span>
-      <div class="article-card-title">Design Criteria for Combination Air Valves in Long-Distance Transmission Mains</div>
-      <p class="article-card-excerpt">A systematic methodology for selecting, sizing, and locating Combination Air Valves (CAVs) on long transmission mains — from dual-float mechanics and orifice sizing calculations to HGL-based placement, water hammer surge interaction, and installation requirements. Includes interactive diagrams and a DN 800 mm worked example.</p>
-      <div class="article-card-meta">
-        <span>May 2026</span>
-        <span>14 min read</span>
+    <a href="water-hammer-control-valve.html" class="article-card">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis &middot; Water Hammer &middot; Bentley HAMMER</span>
+        <div class="article-card-title">Effect of Control Valve Closure Time on Water Hammer Intensity</div>
+        <p class="article-card-excerpt">The complete mathematical framework governing surge pressure vs. closure time — from the Joukowsky equation and critical time T<sub>c</sub> to the slow-closure attenuation formula. Includes three interactive calculators, an eight-scenario numerical example, and a detailed workflow for modelling valve closure in Bentley OpenFlows HAMMER.</p>
+        <div class="article-card-meta">
+          <span>May 2026</span>
+          <span>15 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
       </div>
-      <span class="article-card-arrow">&#8594;</span>
+      <div class="card-thumb">
+        <img src="water_hammer_control_valve_v2.png" alt="Control Valve Closure Time and Water Hammer">
+      </div>
+    </a>
+
+    <a href="combination-air-valves.html" class="article-card">
+      <div class="card-body">
+        <span class="article-card-tag">Transmission Pipeline Design &middot; Air Management</span>
+        <div class="article-card-title">Design Criteria for Combination Air Valves in Long-Distance Transmission Mains</div>
+        <p class="article-card-excerpt">A systematic methodology for selecting, sizing, and locating Combination Air Valves (CAVs) on long transmission mains — from dual-float mechanics and orifice sizing calculations to HGL-based placement, water hammer surge interaction, and installation requirements. Includes interactive diagrams and a DN 800 mm worked example.</p>
+        <div class="article-card-meta">
+          <span>May 2026</span>
+          <span>14 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="combination_air_valves_design_criteria.png" alt="Combination Air Valves in Transmission Mains">
+      </div>
     </a>
 
     <a href="surge-vessel.html" class="article-card">
-      <span class="article-card-tag">Surge Analysis &middot; Hydraulic Design</span>
-      <div class="article-card-title">Sizing the Hydropneumatic Surge Vessel in Water Transmission Pipelines</div>
-      <p class="article-card-excerpt">A design engineer's approach to surge vessel sizing — from model inputs to Bentley HAMMER simulation outputs. Includes worked numerical examples, sensitivity analysis, and a practical design checklist.</p>
-      <div class="article-card-meta">
-        <span>May 2026</span>
-        <span>10 min read</span>
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis &middot; Hydraulic Design</span>
+        <div class="article-card-title">Sizing the Hydropneumatic Surge Vessel in Water Transmission Pipelines</div>
+        <p class="article-card-excerpt">A design engineer's approach to surge vessel sizing — from model inputs to Bentley HAMMER simulation outputs. Includes worked numerical examples, sensitivity analysis, and a practical design checklist.</p>
+        <div class="article-card-meta">
+          <span>May 2026</span>
+          <span>10 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
       </div>
-      <span class="article-card-arrow">&#8594;</span>
+      <div class="card-thumb">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DrcxvLSmsv5g8tPL57WIum7RP6/hf_20260517_194531_a798e431-c75a-4a41-b7b3-146f9a1a846d.png" alt="Hydropneumatic Surge Vessel">
+      </div>
     </a>
 
     <a href="hydraulic-mistakes.html" class="article-card">
-      <span class="article-card-tag">Hydraulic Modeling &middot; Pipeline Design</span>
-      <div class="article-card-title">Common Mistakes in Hydraulic Modeling of Water Transmission Networks</div>
-      <p class="article-card-excerpt">Six critical and recurring mistakes in hydraulic modeling — from ignoring transient analysis entirely to specifying surge protection without simulation. A practitioner's perspective from 400 km+ pipeline projects.</p>
-      <div class="article-card-meta">
-        <span>May 2026</span>
-        <span>8 min read</span>
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Modeling &middot; Pipeline Design</span>
+        <div class="article-card-title">Common Mistakes in Hydraulic Modeling of Water Transmission Networks</div>
+        <p class="article-card-excerpt">Six critical and recurring mistakes in hydraulic modeling — from ignoring transient analysis entirely to specifying surge protection without simulation. A practitioner's perspective from 400 km+ pipeline projects.</p>
+        <div class="article-card-meta">
+          <span>May 2026</span>
+          <span>8 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
       </div>
-      <span class="article-card-arrow">&#8594;</span>
+      <div class="card-thumb">
+        <img src="hydraulic_modeling_mistakes.png" alt="Hydraulic Modeling Control Room">
+      </div>
     </a>
 
     <a href="pre-charge-pressure.html" class="article-card">
-      <span class="article-card-tag">Surge Analysis &middot; Surge Vessel Design</span>
-      <div class="article-card-title">The Pre-Charge Pressure of the Surge Vessel — How One Number Changes Everything</div>
-      <p class="article-card-excerpt">The most sensitive parameter in surge vessel design — and the most frequently set incorrectly. A worked numerical analysis showing how a P&#8320; error of just 11% requires a vessel 46% larger, and how wrong P&#8320; renders an otherwise correctly sized vessel completely ineffective.</p>
-      <div class="article-card-meta">
-        <span>May 2026</span>
-        <span>12 min read</span>
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis &middot; Surge Vessel Design</span>
+        <div class="article-card-title">The Pre-Charge Pressure of the Surge Vessel — How One Number Changes Everything</div>
+        <p class="article-card-excerpt">The most sensitive parameter in surge vessel design — and the most frequently set incorrectly. A worked numerical analysis showing how a P&#8320; error of just 11% requires a vessel 46% larger, and how wrong P&#8320; renders an otherwise correctly sized vessel completely ineffective.</p>
+        <div class="article-card-meta">
+          <span>May 2026</span>
+          <span>12 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
       </div>
-      <span class="article-card-arrow">&#8594;</span>
+      <div class="card-thumb">
+        <img src="IMG_4656.PNG" alt="Pre-Charge Pressure Surge Vessel">
+      </div>
     </a>
 
   </div>

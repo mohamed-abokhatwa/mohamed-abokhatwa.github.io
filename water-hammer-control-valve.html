@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control Valve Closure Time &amp; Water Hammer — Mohamed Abokhatwa</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <style>
+    /* ── Article layout ── */
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:400;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px;max-width:800px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-body em{color:var(--accent);font-style:italic;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .refs li{font-size:14px;color:var(--text-tertiary);line-height:1.8;margin-bottom:4px;}
+
+    /* ── Interactive panel ── */
+    .interactive-panel{
+      background:var(--glass);
+      backdrop-filter:var(--blur);
+      -webkit-backdrop-filter:var(--blur);
+      border:1px solid var(--glass-border);
+      border-radius:var(--radius-sm);
+      box-shadow:var(--shadow-glass);
+      overflow:hidden;
+      margin:2rem 0;
+    }
+    .panel-header{
+      padding:13px 20px;font-size:12px;font-weight:500;
+      color:var(--text-tertiary);letter-spacing:.04em;
+      border-bottom:1px solid rgba(0,0,0,0.07);
+      display:flex;align-items:center;gap:8px;
+      background:rgba(255,255,255,0.5);
+    }
+    .panel-header::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;}
+    .panel-body{padding:22px 24px;}
+
+    /* ── Sliders ── */
+    .slider-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;margin-bottom:20px;}
+    .slider-row{display:flex;flex-direction:column;gap:5px;}
+    .sl-label{font-size:12px;color:var(--text-tertiary);font-weight:500;}
+    .sl-row{display:flex;align-items:center;gap:10px;}
+    .sl-row input[type=range]{flex:1;height:4px;accent-color:var(--accent);}
+    .sl-val{font-size:13px;font-weight:600;color:var(--accent);min-width:62px;text-align:right;}
+
+    /* ── Result cards ── */
+    .results-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;}
+    .res-card{background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);border-radius:var(--radius-sm);padding:12px;text-align:center;}
+    .res-label{font-size:11px;color:var(--text-tertiary);margin-bottom:4px;}
+    .res-val{font-size:18px;font-weight:600;line-height:1.2;}
+    .res-unit{font-size:11px;color:var(--text-tertiary);}
+    .res-danger{color:var(--danger);}
+    .res-warn{color:var(--warning);}
+    .res-safe{color:var(--success);}
+    .res-neutral{color:var(--accent);}
+
+    .regime-banner{border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:600;text-align:center;margin-bottom:16px;}
+    .regime-rapid{background:rgba(196,43,43,0.06);border:1px solid rgba(196,43,43,0.18);color:var(--danger);}
+    .regime-slow{background:rgba(26,122,56,0.06);border:1px solid rgba(26,122,56,0.2);color:var(--success);}
+
+    /* ── Diagram SVG wrapper ── */
+    .diagram-wrap{
+      background:var(--glass);
+      backdrop-filter:var(--blur);
+      -webkit-backdrop-filter:var(--blur);
+      border:1px solid var(--glass-border);
+      border-radius:var(--radius-sm);
+      box-shadow:var(--shadow-glass);
+      padding:22px;margin:2rem 0;text-align:center;
+    }
+    .diagram-caption{font-size:12.5px;color:var(--text-tertiary);margin-top:10px;font-style:italic;}
+
+    /* ── Scenario table ── */
+    .scenario-table{width:100%;border-collapse:collapse;font-size:14px;margin:1.5rem 0;}
+    .scenario-table thead tr{background:rgba(0,113,227,0.07);}
+    .scenario-table th{padding:11px 12px;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text-tertiary);border-bottom:1px solid var(--border);}
+    .scenario-table td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,0.05);color:var(--text-secondary);font-size:13.5px;text-align:center;}
+    .scenario-table td:first-child{text-align:left;font-weight:500;color:var(--text-primary);}
+    .scenario-table tbody tr:last-child td{border-bottom:none;}
+
+    /* ── Workflow steps ── */
+    .workflow{display:flex;flex-direction:column;gap:0;margin:1.5rem 0;}
+    .wf-step{display:flex;gap:16px;position:relative;}
+    .wf-step:not(:last-child)::after{content:'';position:absolute;left:17px;top:38px;width:2px;height:calc(100% - 10px);background:var(--border);}
+    .wf-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0;z-index:1;background:var(--accent);}
+    .wf-content{flex:1;padding:0 0 26px;}
+    .wf-title{font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+    .wf-desc{font-size:14.5px;color:var(--text-secondary);line-height:1.7;}
+    .wf-code{
+      font-family:'Courier New',monospace;font-size:12px;
+      background:rgba(0,113,227,0.06);border:1px solid rgba(0,113,227,0.15);
+      border-radius:8px;padding:8px 12px;margin-top:8px;
+      color:var(--accent);display:block;line-height:1.6;
+    }
+
+    /* ── Comparison table ── */
+    .compare-table{width:100%;border-collapse:collapse;font-size:14px;margin:1.5rem 0;}
+    .compare-table th{padding:11px 14px;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text-tertiary);border-bottom:1px solid var(--border);text-align:left;}
+    .compare-table td{padding:11px 14px;border-bottom:1px solid rgba(0,0,0,0.05);color:var(--text-secondary);font-size:14px;vertical-align:top;line-height:1.6;}
+    .compare-table td:first-child{font-weight:500;color:var(--text-primary);}
+    .compare-table tbody tr:last-child td{border-bottom:none;}
+
+    /* ── Checklist steps ── */
+    .checklist{list-style:none;padding:0;margin:1rem 0;}
+    .checklist li{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.05);font-size:15px;color:var(--text-secondary);line-height:1.7;}
+    .checklist li:last-child{border-bottom:none;}
+    .check-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,113,227,0.08);border:1px solid rgba(0,113,227,0.2);color:var(--accent);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+
+    /* ── Condition cards ── */
+    .cond-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:1.5rem 0;}
+    .cond-card{border-radius:var(--radius-sm);padding:18px 20px;}
+    .cond-danger{background:rgba(196,43,43,0.05);border:1px solid rgba(196,43,43,0.18);}
+    .cond-safe{background:rgba(26,122,56,0.05);border:1px solid rgba(26,122,56,0.2);}
+    .cond-card h4{font-size:14px;font-weight:600;margin-bottom:8px;}
+    .cond-danger h4{color:var(--danger);}
+    .cond-safe h4{color:var(--success);}
+    .cond-badge{font-family:'Courier New',monospace;font-size:13px;padding:3px 10px;border-radius:6px;display:inline-block;margin-bottom:8px;}
+    .cond-danger .cond-badge{background:rgba(196,43,43,0.1);color:var(--danger);}
+    .cond-safe .cond-badge{background:rgba(26,122,56,0.1);color:var(--success);}
+    .cond-card p{font-size:14px;color:var(--text-secondary);margin:0;line-height:1.6;}
+
+    /* ── Material table ── */
+    .material-table{width:100%;border-collapse:collapse;font-size:14px;margin:1.5rem 0;}
+    .material-table thead tr{background:rgba(0,113,227,0.07);}
+    .material-table th{padding:10px 14px;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text-tertiary);border-bottom:1px solid var(--border);}
+    .material-table td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,0.05);color:var(--text-secondary);font-size:14px;text-align:center;}
+    .material-table td:first-child{text-align:left;font-weight:500;color:var(--text-primary);}
+    .material-table tbody tr:last-child td{border-bottom:none;}
+
+    /* ── Inline badge ── */
+    .ibadge{display:inline-block;padding:2px 9px;border-radius:980px;font-size:12px;font-weight:500;}
+    .ibadge-r{background:rgba(196,43,43,0.1);color:var(--danger);}
+    .ibadge-w{background:rgba(138,87,0,0.1);color:var(--warning);}
+    .ibadge-b{background:rgba(0,113,227,0.1);color:var(--accent);}
+    .ibadge-g{background:rgba(26,122,56,0.1);color:var(--success);}
+
+    .chart-box{position:relative;height:260px;margin-top:4px;}
+
+    @media(max-width:768px){
+      .article-hero{padding:100px 20px 60px;}
+      .article-body{padding:48px 20px 80px;}
+      .slider-grid{grid-template-columns:1fr;}
+      .results-row{grid-template-columns:1fr 1fr;}
+      .cond-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <span class="tag">Transient Analysis &middot; Water Hammer &middot; Bentley HAMMER</span>
+  <h1>Effect of Control Valve Closure Time on Water Hammer Intensity</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; PMP, PMI-RMP, ENV SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>May 2026</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="water_hammer_control_valve_v2.png" alt="Control Valve Closure Time and Water Hammer">
+</div>
+
+<div class="article-body">
+
+<div class="callout">
+  <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">Article Overview</strong>
+  Water hammer is one of the most critical transient hydraulic phenomena in water transmission and pumping systems. Among controllable parameters, the <strong>closure time of the control valve</strong> is the most practically impactful design variable. This article presents the complete mathematical framework governing the surge pressure–closure time relationship, introduces the concept of critical time T<sub>c</sub>, derives the slow-closure attenuation formula, and extends the discussion to practical modelling using <strong>Bentley OpenFlows HAMMER</strong>. Interactive calculators are embedded for live design exploration.
+</div>
+
+<hr class="article-divider">
+<h2>1. Introduction</h2>
+<p>
+Water hammer — also referred to as hydraulic transient or pressure surge — occurs in pressurised pipeline systems whenever the rate of flow changes rapidly. The kinetic energy of the moving fluid column converts instantaneously into pressure energy, generating a wave that propagates at the acoustic wave speed. Left unmanaged, this surge pressure can exceed the static working pressure by several multiples, leading to pipe rupture, joint failure, pump damage, or structural collapse.
+</p>
+<p>
+In practice, the hydraulic engineer has relatively few tools to actively mitigate water hammer once pipeline geometry and material are fixed. The control valve, however, offers a proactive design lever: by <strong>extending closure time</strong>, the designer can dramatically reduce peak surge pressure without additional infrastructure. This article examines that relationship in full mathematical and practical detail, and links the analytical approach directly to industry-standard numerical simulation using <strong>Bentley OpenFlows HAMMER</strong>.
+</p>
+
+<hr class="article-divider">
+<h2>2. Physics of Water Hammer</h2>
+<p>
+When a control valve begins to close, the cross-sectional area available to flow decreases. The fluid immediately upstream decelerates, generating a pressure rise that propagates upstream as a compression wave at the acoustic (pressure wave) speed <em>a</em>. The full cycle of wave travel — from valve to the upstream reservoir and back — defines the critical period. If closure completes within this period, the reflected relief wave arrives too late, and the full instantaneous pressure rise is realised.
+</p>
+
+<div class="diagram-wrap">
+  <svg viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg" width="100%">
+    <rect x="20" y="40" width="60" height="80" rx="6" fill="rgba(0,113,227,0.08)" stroke="#0071e3" stroke-width="1.5"/>
+    <text x="50" y="82" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="12" fill="#0071e3" font-weight="600">H₀</text>
+    <text x="50" y="97" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#6e6e73">Reservoir</text>
+    <rect x="80" y="74" width="420" height="14" rx="3" fill="rgba(0,113,227,0.15)" stroke="#0071e3" stroke-width="1"/>
+    <line x1="150" y1="81" x2="230" y2="81" stroke="#0071e3" stroke-width="1.5" marker-end="url(#ma1)"/>
+    <text x="190" y="70" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#0071e3" font-weight="500">V₀</text>
+    <line x1="320" y1="93" x2="240" y2="93" stroke="#c42b2b" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#ma2)"/>
+    <text x="280" y="108" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#c42b2b">wave speed  a</text>
+    <line x1="80" y1="130" x2="500" y2="130" stroke="#86868b" stroke-width="1" marker-start="url(#ma3)" marker-end="url(#ma4)"/>
+    <text x="290" y="146" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#6e6e73" font-weight="500">L (Pipeline Length)</text>
+    <polygon points="500,56 500,106 524,81" fill="#0071e3"/>
+    <polygon points="548,56 548,106 524,81" fill="#0071e3"/>
+    <text x="524" y="120" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#0071e3" font-weight="600">Control Valve</text>
+    <line x1="548" y1="81" x2="640" y2="81" stroke="rgba(0,113,227,0.3)" stroke-width="3"/>
+    <rect x="556" y="42" width="96" height="28" rx="6" fill="rgba(196,43,43,0.06)" stroke="rgba(196,43,43,0.3)" stroke-width="1"/>
+    <text x="604" y="61" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#c42b2b" font-weight="600">ΔP = ρ·a·ΔV</text>
+    <defs>
+      <marker id="ma1" markerWidth="7" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#0071e3"/></marker>
+      <marker id="ma2" markerWidth="7" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#c42b2b"/></marker>
+      <marker id="ma3" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto"><polygon points="6,0 0,3 6,6" fill="#86868b"/></marker>
+      <marker id="ma4" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#86868b"/></marker>
+    </defs>
+  </svg>
+  <div class="diagram-caption">Fig. 1 — Reservoir–pipeline–valve system: compression wave propagates upstream upon valve closure at speed <em>a</em>.</div>
+</div>
+
+<hr class="article-divider">
+<h2>3. The Joukowsky Equation — Instantaneous Closure</h2>
+<p>For an instantaneous and complete valve closure, the maximum pressure rise is given by the Joukowsky equation:</p>
+
+<div class="formula-box">
+  <div class="formula-main">ΔP = ρ · a · ΔV</div>
+  <div class="formula-sub">
+    ΔP = Pressure rise (Pa) &nbsp;|&nbsp; ρ = Water density ≈ 1,000 kg/m³<br>
+    a = Acoustic wave speed (m/s) &nbsp;|&nbsp; ΔV = Velocity change = V₀ for full closure
+  </div>
+</div>
+
+<p>The acoustic wave speed depends on both fluid compressibility and pipe-wall elasticity (Korteweg formula):</p>
+
+<div class="formula-box">
+  <div class="formula-main">a = √[ K/ρ / (1 + (K/E) · (D/e) · c₁) ]</div>
+  <div class="formula-sub">K = Bulk modulus of water ≈ 2.1 GPa &nbsp;|&nbsp; E = Pipe elastic modulus &nbsp;|&nbsp; D = Internal diameter &nbsp;|&nbsp; e = Wall thickness</div>
+</div>
+
+<div style="overflow-x:auto">
+<table class="material-table">
+  <thead>
+    <tr><th>Pipe Material</th><th>E (GPa)</th><th>Typical a (m/s)</th><th>Typical Application</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Rigid (theoretical)</td><td>∞</td><td>1,450</td><td>Reference case</td></tr>
+    <tr><td>Steel (Carbon)</td><td>206</td><td>900–1,200</td><td>Transmission mains</td></tr>
+    <tr><td>Ductile Iron</td><td>170</td><td>1,000–1,250</td><td>Distribution, WTPs</td></tr>
+    <tr><td>GRP / FRP</td><td>20–40</td><td>400–700</td><td>Gravity mains</td></tr>
+    <tr><td>HDPE (PE100)</td><td>0.8–1.0</td><td>200–400</td><td>Water supply, effluent</td></tr>
+    <tr><td>PVC-U</td><td>2.7–3.5</td><td>250–450</td><td>Low-pressure distribution</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr class="article-divider">
+<h2>4. Critical Time T<sub>c</sub> — The Design Threshold</h2>
+
+<div class="formula-box">
+  <div class="formula-main">T<sub>c</sub> = 2L / a</div>
+  <div class="formula-sub">T<sub>c</sub> = Critical time (s) &nbsp;|&nbsp; L = Pipeline length (m) &nbsp;|&nbsp; a = Wave speed (m/s)</div>
+</div>
+
+<div class="cond-grid">
+  <div class="cond-card cond-danger">
+    <h4>Rapid Closure</h4>
+    <div class="cond-badge">t<sub>v</sub> ≤ T<sub>c</sub></div>
+    <p>Full Joukowsky pressure always develops — regardless of how much faster the valve closes. This is the <strong>worst-case design scenario</strong>.</p>
+  </div>
+  <div class="cond-card cond-safe">
+    <h4>Slow (Controlled) Closure</h4>
+    <div class="cond-badge">t<sub>v</sub> &gt; T<sub>c</sub></div>
+    <p>Peak pressure is attenuated below the Joukowsky value. Longer closure relative to T<sub>c</sub> = lower surge. This is the <strong>target design condition</strong>.</p>
+  </div>
+</div>
+
+<div class="callout">
+  <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">Common Misconception</strong>
+  Whether a closure is "rapid" or "slow" depends entirely on the ratio t<sub>v</sub> / T<sub>c</sub>, not on absolute seconds. A 10-second closure on a 200 m steel pipeline (T<sub>c</sub> = 0.4 s) is extremely slow. The same 10-second closure on a 10 km pipeline (T<sub>c</sub> = 20 s) is a rapid one that yields full Joukowsky pressure.
+</div>
+
+<hr class="article-divider">
+<h2>5. Slow-Closure Attenuation Formula</h2>
+
+<div class="formula-box">
+  <div class="formula-main">ΔP<sub>slow</sub> ≈ ΔP<sub>J</sub> × (T<sub>c</sub> / t<sub>v</sub>)</div>
+  <div class="formula-sub">Valid when t<sub>v</sub> &gt; T<sub>c</sub> (Streeter &amp; Wylie, 1993)</div>
+</div>
+
+<div class="formula-box">
+  <div class="formula-main">ΔP = ρ · a · V₀ · min(1, T<sub>c</sub> / t<sub>v</sub>)</div>
+  <div class="formula-sub">Unified expression valid for both rapid and slow closure regimes</div>
+</div>
+
+<ol>
+  <li>Compute acoustic wave speed for pipe material and geometry: <strong>a = √[ K/ρ / (1 + (K/E)(D/e)) ]</strong></li>
+  <li>Calculate the pipeline critical period: <strong>T<sub>c</sub> = 2L / a</strong></li>
+  <li>Compute the Joukowsky upper-bound pressure rise: <strong>ΔP<sub>J</sub> = ρ · a · V₀</strong></li>
+  <li>Compare closure time against T<sub>c</sub>: <strong>ΔP = ΔP<sub>J</sub> · min(1, T<sub>c</sub> / t<sub>v</sub>)</strong></li>
+  <li>Check maximum system pressure against pipe PN rating: <strong>P<sub>max</sub> = P<sub>static</sub> + ΔP ≤ 1.5 × PN</strong></li>
+</ol>
+
+<hr class="article-divider">
+<h2>6. Interactive Surge Pressure Calculator</h2>
+<p>Adjust the pipeline parameters below to instantly compute the critical time, Joukowsky pressure, and the effect of different closure times.</p>
+
+<!-- Calculator Panel -->
+<div class="interactive-panel">
+  <div class="panel-header">Water Hammer Surge Calculator — Adjust sliders, all results update live</div>
+  <div class="panel-body">
+    <div class="slider-grid">
+      <div class="slider-row">
+        <div class="sl-label">Pipeline Length L (m)</div>
+        <div class="sl-row"><input type="range" id="sl-L" min="200" max="10000" step="100" value="2000"><span class="sl-val" id="out-L">2,000 m</span></div>
+      </div>
+      <div class="slider-row">
+        <div class="sl-label">Wave Speed a (m/s)</div>
+        <div class="sl-row"><input type="range" id="sl-a" min="200" max="1400" step="50" value="1000"><span class="sl-val" id="out-a">1,000 m/s</span></div>
+      </div>
+      <div class="slider-row">
+        <div class="sl-label">Flow Velocity V₀ (m/s)</div>
+        <div class="sl-row"><input type="range" id="sl-v" min="0.2" max="3.0" step="0.1" value="1.5"><span class="sl-val" id="out-v">1.5 m/s</span></div>
+      </div>
+      <div class="slider-row">
+        <div class="sl-label">Static Pressure P₀ (bar)</div>
+        <div class="sl-row"><input type="range" id="sl-p0" min="1" max="20" step="0.5" value="8"><span class="sl-val" id="out-p0">8.0 bar</span></div>
+      </div>
+      <div class="slider-row">
+        <div class="sl-label">Valve Closure Time t<sub>v</sub> (s)</div>
+        <div class="sl-row"><input type="range" id="sl-tv" min="0.5" max="120" step="0.5" value="4"><span class="sl-val" id="out-tv">4.0 s</span></div>
+      </div>
+      <div class="slider-row">
+        <div class="sl-label">PN Rating of Pipe (bar)</div>
+        <div class="sl-row"><input type="range" id="sl-pn" min="6" max="40" step="1" value="16"><span class="sl-val" id="out-pn">PN 16</span></div>
+      </div>
+    </div>
+    <div id="regime-banner" class="regime-banner regime-rapid">⚠ RAPID CLOSURE — Full Joukowsky Pressure Applies</div>
+    <div class="results-row">
+      <div class="res-card"><div class="res-label">Critical Time T<sub>c</sub></div><div class="res-val res-neutral" id="res-tc">4.0</div><div class="res-unit">seconds</div></div>
+      <div class="res-card"><div class="res-label">Joukowsky ΔP<sub>J</sub></div><div class="res-val res-danger" id="res-dpj">15.0</div><div class="res-unit">bar</div></div>
+      <div class="res-card"><div class="res-label">Actual ΔP</div><div class="res-val res-danger" id="res-dp">15.0</div><div class="res-unit">bar</div></div>
+      <div class="res-card"><div class="res-label">P<sub>max</sub> System</div><div class="res-val res-danger" id="res-pmax">23.0</div><div class="res-unit">bar</div></div>
+    </div>
+    <div id="pn-check" class="danger-box" style="margin-bottom:0;font-size:14px;"><strong id="pn-check-title">PN CHECK — </strong><span id="pn-check-body"></span></div>
+    <div class="chart-box" style="margin-top:18px;"><canvas id="chartClosure"></canvas></div>
+    <p style="font-size:12px;color:var(--text-tertiary);text-align:center;margin-top:6px;margin-bottom:0;">ΔP vs. Closure Time for current system. Dashed line = T<sub>c</sub>. Red dot = current t<sub>v</sub>.</p>
+  </div>
+</div>
+
+<!-- Wave Panel -->
+<div class="interactive-panel">
+  <div class="panel-header">Pressure Wave Over Time — Idealised Pressure History at Valve Location</div>
+  <div class="panel-body">
+    <div class="chart-box"><canvas id="chartWave"></canvas></div>
+    <p style="font-size:12px;color:var(--text-tertiary);text-align:center;margin-top:6px;margin-bottom:0;">Idealised pressure-time trace at the valve. Blue = static pressure. Red = surge envelope. Uses current calculator parameters.</p>
+  </div>
+</div>
+
+<!-- Material Comparison Panel -->
+<div class="interactive-panel">
+  <div class="panel-header">Pipe Material Comparison — Joukowsky ΔP for Same Hydraulic Conditions</div>
+  <div class="panel-body">
+    <div class="chart-box"><canvas id="chartMaterial"></canvas></div>
+    <p style="font-size:12px;color:var(--text-tertiary);text-align:center;margin-top:6px;margin-bottom:0;">Joukowsky pressure (bar) for five pipe materials at the same V₀ and L from the slider above.</p>
+  </div>
+</div>
+
+<hr class="article-divider">
+<h2>7. Numerical Example — Multi-Scenario Comparison</h2>
+<p>
+The following example is representative of a steel water transmission main. Base parameters: pipeline length L = 2,000 m, diameter DN 900 mm, wave speed a = 1,000 m/s (steel), flow velocity V₀ = 1.5 m/s, static pressure P₀ = 8.0 bar, pipe rating PN 16.
+</p>
+
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Joukowsky Maximum</div>
+  <div style="padding:16px 20px">
+    <div class="formula-box" style="margin:0">
+      <div class="formula-main">T<sub>c</sub> = 2 × 2,000 / 1,000 = <strong>4.0 s</strong> &nbsp;&nbsp;|&nbsp;&nbsp; ΔP<sub>J</sub> = 1,000 × 1,000 × 1.5 = 1,500,000 Pa = <strong>15.0 bar</strong></div>
+    </div>
+  </div>
+</div>
+
+<div style="overflow-x:auto">
+<table class="scenario-table">
+  <thead>
+    <tr>
+      <th style="text-align:left">Closure Time</th>
+      <th>t<sub>v</sub>/T<sub>c</sub></th>
+      <th>Regime</th>
+      <th>Factor</th>
+      <th>ΔP (bar)</th>
+      <th>P<sub>max</sub> (bar)</th>
+      <th>PN Needed</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1.0 s</td><td>0.25</td><td><span class="ibadge ibadge-r">Rapid</span></td><td>1.00</td><td style="color:var(--danger);font-weight:600">15.0</td><td style="color:var(--danger);font-weight:600">23.0</td><td>PN 25</td><td><span class="ibadge ibadge-r">Unacceptable</span></td></tr>
+    <tr><td>2.0 s</td><td>0.50</td><td><span class="ibadge ibadge-r">Rapid</span></td><td>1.00</td><td style="color:var(--danger);font-weight:600">15.0</td><td style="color:var(--danger);font-weight:600">23.0</td><td>PN 25</td><td><span class="ibadge ibadge-r">Unacceptable</span></td></tr>
+    <tr><td>4.0 s = T<sub>c</sub></td><td>1.00</td><td><span class="ibadge ibadge-r">Boundary</span></td><td>1.00</td><td style="color:var(--danger);font-weight:600">15.0</td><td style="color:var(--danger);font-weight:600">23.0</td><td>PN 25</td><td><span class="ibadge ibadge-r">Unacceptable</span></td></tr>
+    <tr><td>8.0 s</td><td>2.00</td><td><span class="ibadge ibadge-w">Slow</span></td><td>0.50</td><td style="color:var(--warning);font-weight:600">7.5</td><td style="color:var(--warning);font-weight:600">15.5</td><td>PN 16</td><td><span class="ibadge ibadge-w">Marginal</span></td></tr>
+    <tr><td>20.0 s</td><td>5.00</td><td><span class="ibadge ibadge-b">Slow</span></td><td>0.20</td><td style="color:var(--accent);font-weight:600">3.0</td><td style="color:var(--accent);font-weight:600">11.0</td><td>PN 12.5</td><td><span class="ibadge ibadge-b">Acceptable</span></td></tr>
+    <tr><td>40.0 s</td><td>10.0</td><td><span class="ibadge ibadge-g">Slow</span></td><td>0.10</td><td style="color:var(--success);font-weight:600">1.5</td><td style="color:var(--success);font-weight:600">9.5</td><td>PN 10</td><td><span class="ibadge ibadge-g">Good</span></td></tr>
+    <tr><td>80.0 s</td><td>20.0</td><td><span class="ibadge ibadge-g">Slow</span></td><td>0.05</td><td style="color:var(--success);font-weight:600">0.75</td><td style="color:var(--success);font-weight:600">8.75</td><td>PN 10</td><td><span class="ibadge ibadge-g">Excellent</span></td></tr>
+    <tr><td>120.0 s</td><td>30.0</td><td><span class="ibadge ibadge-g">Slow</span></td><td>0.033</td><td style="color:var(--success);font-weight:600">0.50</td><td style="color:var(--success);font-weight:600">8.50</td><td>PN 10</td><td><span class="ibadge ibadge-g">Excellent</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout">
+  <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">Key Insight</strong>
+  Extending closure from 4 s (T<sub>c</sub>) to 40 s — a 10× increase — reduces surge pressure from 15.0 bar to 1.5 bar, a <strong>90% reduction</strong>. This allows the system to operate within PN 10 rather than PN 25, eliminating the need for surge protection devices and delivering significant material cost savings.
+</div>
+
+<hr class="article-divider">
+<h2>8. Bentley OpenFlows HAMMER — Modelling Valve Closure</h2>
+<p>
+While the analytical formulas provide invaluable first-pass design estimates, final design validation for large-scale water infrastructure requires full numerical simulation using the <strong>Method of Characteristics (MOC)</strong>. Bentley OpenFlows HAMMER is the industry-standard software for hydraulic transient analysis, referenced in major project specifications including those of NWC (National Water Company, Saudi Arabia).
+</p>
+
+<div class="callout">
+  <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">What is Bentley HAMMER?</strong>
+  OpenFlows HAMMER is a dedicated transient analysis engine built on the MOC — a numerical technique that discretises the pipeline into computational segments and solves the full continuity and momentum equations at each time step. It integrates seamlessly with WaterCAD/WaterGEMS steady-state models, allowing engineers to transition directly from normal operating conditions to transient analysis without rebuilding the network model.
+</div>
+
+<h3>8.1 The Method of Characteristics (MOC)</h3>
+<p>HAMMER solves the two governing partial differential equations of unsteady pipe flow simultaneously:</p>
+
+<div class="formula-box">
+  <div class="formula-main">∂H/∂t + (a²/g) · (∂V/∂x) = 0 &nbsp;&nbsp;&nbsp; [Continuity]</div>
+</div>
+<div class="formula-box">
+  <div class="formula-main">∂V/∂t + g · (∂H/∂x) + f·V·|V| / (2D) = 0 &nbsp;&nbsp;&nbsp; [Momentum]</div>
+  <div class="formula-sub">H = piezometric head (m) &nbsp;|&nbsp; V = velocity (m/s) &nbsp;|&nbsp; f = Darcy-Weisbach friction factor &nbsp;|&nbsp; D = diameter (m)</div>
+</div>
+
+<p>These are transformed into characteristic equations along the C<sup>+</sup> and C<sup>−</sup> characteristic lines, enabling the propagation of pressure waves through the system to be tracked at each time step Δt = Δx/a. This is fundamentally more accurate than simplified analytical formulas for complex systems with branching, multiple valves, pumps, and surge protection devices.</p>
+
+<h3>8.2 Setting Up Valve Closure in HAMMER</h3>
+
+<div class="workflow">
+  <div class="wf-step">
+    <div class="wf-icon">1</div>
+    <div class="wf-content">
+      <div class="wf-title">Import or Build the Steady-State Model</div>
+      <div class="wf-desc">Start from a WaterGEMS/WaterCAD model or build directly in HAMMER. Define pipe materials, diameters, wall thicknesses. The wave speed <em>a</em> is automatically computed from the Korteweg formula using the pipe elastic modulus and D/e ratio.</div>
+      <span class="wf-code">Pipe Properties → Material (Steel/DI/HDPE) → Wall Thickness → HAMMER auto-computes wave speed</span>
+    </div>
+  </div>
+  <div class="wf-step">
+    <div class="wf-icon">2</div>
+    <div class="wf-content">
+      <div class="wf-title">Define the Transient Scenario</div>
+      <div class="wf-desc">Create a transient simulation scenario. Set the simulation duration to at least 3–5 × T<sub>c</sub> to capture all reflections, and set the time step Δt = Δx/a (HAMMER enforces this automatically via the Courant condition).</div>
+      <span class="wf-code">Analysis → Transient Simulation → Duration: ≥ 3×T<sub>c</sub> | Time Step: auto (Courant)</span>
+    </div>
+  </div>
+  <div class="wf-step">
+    <div class="wf-icon">3</div>
+    <div class="wf-content">
+      <div class="wf-title">Configure the Control Valve Element</div>
+      <div class="wf-desc">The control valve is represented with a defined Cv (flow coefficient) characteristic curve and an initial operating status. The critical input is the closure profile: either a simple linear closure time or a multi-point relative closure vs. time curve for non-linear actuator behaviour.</div>
+      <span class="wf-code">Valve Properties → Initial Status: Open → Transient: Closure → Closure Time: [t<sub>v</sub> s] → Characteristic Curve: Linear / Custom</span>
+    </div>
+  </div>
+  <div class="wf-step">
+    <div class="wf-icon">4</div>
+    <div class="wf-content">
+      <div class="wf-title">Define the Valve Characteristic Curve</div>
+      <div class="wf-desc">This is the most important and most frequently misconfigured step. HAMMER requires the valve's <strong>relative flow vs. relative position curve</strong>. A butterfly valve, gate valve, and globe valve all have very different characteristic curves — using a linear position curve for a butterfly valve can underestimate peak surge significantly because most flow restriction occurs in the final 20–30% of stem travel.</div>
+      <span class="wf-code">Valve → Transient Closure Curve → Import or define: [Position (0→1)] vs [Relative Flow (0→1)]</span>
+    </div>
+  </div>
+  <div class="wf-step">
+    <div class="wf-icon">5</div>
+    <div class="wf-content">
+      <div class="wf-title">Run the Transient Simulation</div>
+      <div class="wf-desc">Run the simulation and review through the Transient Results Viewer. Key outputs: <strong>pressure envelope (max/min)</strong> along the pipeline, pressure-time history at the valve and at critical nodes (high points, pipe class transitions), and velocity profiles.</div>
+      <span class="wf-code">Analysis → Compute → Results Viewer → Pressure Envelope | Node Time History | Animation</span>
+    </div>
+  </div>
+  <div class="wf-step">
+    <div class="wf-icon">6</div>
+    <div class="wf-content">
+      <div class="wf-title">Validate Against Analytical Results and Iterate</div>
+      <div class="wf-desc">For a simple series pipeline, verify that HAMMER's computed peak ΔP for rapid closure matches the Joukowsky analytical value within 5–10%. If results differ significantly, check: wave speed input, Courant condition compliance, reservoir boundary conditions, and valve characteristic curve accuracy.</div>
+    </div>
+  </div>
+</div>
+
+<h3>8.3 Key HAMMER Parameters</h3>
+<div style="overflow-x:auto">
+<table class="compare-table">
+  <thead>
+    <tr><th>Parameter</th><th>Effect on Result</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Wave Speed (a)</td><td>Directly scales both ΔP<sub>J</sub> and T<sub>c</sub></td><td>Auto-computed from material/geometry. Verify against Korteweg formula for non-standard materials.</td></tr>
+    <tr><td>Closure Time (t<sub>v</sub>)</td><td>Primary control parameter</td><td>Must be specified as total travel time. For two-speed actuators, use the custom closure curve instead.</td></tr>
+    <tr><td>Valve Characteristic Curve</td><td>Determines how Cv changes with stem position over time</td><td>Built-in options: Gate, Globe, Butterfly, Ball, Check. Custom import via CSV. This curve — not just t<sub>v</sub> — determines the effective flow-reduction profile.</td></tr>
+    <tr><td>Time Step (Δt)</td><td>Numerical accuracy of wave propagation</td><td>Must satisfy Courant condition: Δt = Δx/a. HAMMER enforces this automatically — do not override.</td></tr>
+    <tr><td>Friction Model</td><td>Attenuates pressure waves over time</td><td>Options: Steady, Quasi-steady, or Unsteady (Vardy-Brown). For preliminary design, steady friction is acceptable.</td></tr>
+    <tr><td>Max / Min Pressure Limits</td><td>Design validation output</td><td>Minimum pressure below vapour pressure (≈ −10 m) indicates column separation — activate DVCM (Discrete Vapour Cavity Model) in HAMMER.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>8.4 When Do Analytical and HAMMER Results Diverge?</h3>
+<div style="overflow-x:auto">
+<table class="compare-table">
+  <thead>
+    <tr><th>Condition</th><th>Analytical Formula</th><th>HAMMER (MOC)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Simple series pipe, rapid closure</td><td>Accurate (within 5%)</td><td>Accurate — use as verification check</td></tr>
+    <tr><td>Simple series pipe, slow closure</td><td>Approximate (valid up to ~5 × T<sub>c</sub>)</td><td>Accurate for any closure time</td></tr>
+    <tr><td>Non-linear valve characteristic</td><td>Not applicable — assumes linear flow reduction</td><td>Accurately models any Cv curve</td></tr>
+    <tr><td>Pipeline with high points</td><td>Cannot predict column separation</td><td>Models column separation with DVCM</td></tr>
+    <tr><td>Multi-branch networks</td><td>Not applicable</td><td>Handles all network topologies</td></tr>
+    <tr><td>Multiple transient events</td><td>Cannot superimpose</td><td>Simulates all events simultaneously</td></tr>
+    <tr><td>Surge protection devices</td><td>Cannot model device interaction</td><td>Full modelling of all device types</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout">
+  <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">Recommended Engineering Practice</strong>
+  Use the analytical formulas for <strong>preliminary design and valve specification</strong> — fast, transparent, and clear on governing parameters. Proceed to HAMMER (MOC) simulation for <strong>final design validation</strong>, particularly for any pipeline longer than 1 km, with high points, or where surge protection devices are being evaluated.
+</div>
+
+<h3>8.5 Reading the HAMMER Pressure Envelope</h3>
+
+<ul class="checklist">
+  <li><span class="check-icon">✓</span><div><strong>Maximum pressure (red envelope)</strong> must not exceed 1.5 × PN rating of the pipe at any point along the pipeline. Identify the location of peak pressure — typically immediately upstream of the valve, but reflections can amplify pressure at intermediate high points.</div></li>
+  <li><span class="check-icon">✓</span><div><strong>Minimum pressure (blue envelope)</strong> must remain above −10 m (vapour pressure at 20°C) at all points. Pressure falling below this at a high point indicates column separation — potentially more destructive than the positive surge wave when the columns rejoin.</div></li>
+  <li><span class="check-icon">✓</span><div><strong>Pressure class transitions</strong> along the pipeline (e.g., PN 16 to PN 10 sections) must be identified on the profile overlay. Ensure the maximum pressure envelope does not exceed the PN rating of each pipe section independently.</div></li>
+  <li><span class="check-icon">✓</span><div><strong>Time-history plots</strong> at the valve node and at critical intermediate nodes confirm the duration of the surge event and whether pressure oscillations are adequately damped by friction before the next transient event.</div></li>
+</ul>
+
+<hr class="article-divider">
+<h2>9. Practical Design Recommendations</h2>
+
+<div style="overflow-x:auto">
+<table class="compare-table">
+  <thead>
+    <tr><th>Parameter</th><th>Recommendation</th><th>Basis</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Minimum closure time</td><td>Target t<sub>v</sub> ≥ 5 × T<sub>c</sub> as starting point</td><td>At 5 × T<sub>c</sub>, ΔP = 20% of Joukowsky — manageable within standard PN margin</td></tr>
+    <tr><td>Closure time from PN rating</td><td>t<sub>v</sub> = ΔP<sub>J</sub> · T<sub>c</sub> / (PN<sub>allowable</sub> − P₀)</td><td>Directly solves for minimum closure time without over-engineering</td></tr>
+    <tr><td>Two-speed actuators</td><td>Fast initial (0→80% travel) then slow final (20% over ≥ 5 × T<sub>c</sub>)</td><td>Most flow restriction occurs near full closure — only the last 20% of stroke is hydraulically critical</td></tr>
+    <tr><td>Valve characteristic curve</td><td>Always use manufacturer Cv curve in HAMMER — not assumed linear</td><td>Butterfly valves are highly non-linear: ~70% of flow passes through the last 30% of travel</td></tr>
+    <tr><td>Power failure scenario</td><td>Evaluate spring-return closure time separately from motorised closure time</td><td>Fail-safe spring actuators typically close 3–5× faster than motorised operation</td></tr>
+    <tr><td>MOC simulation trigger</td><td>Require HAMMER for L &gt; 1,000 m or any system with high points, branches, or surge devices</td><td>Analytical formulas lose accuracy; only MOC resolves reflections, column separation, and device interaction</td></tr>
+    <tr><td>Maximum pressure limit</td><td>P<sub>max</sub> ≤ 1.5 × PN (transient allowance per EN 805 / AWWA M11)</td><td>Temporary surge pressure permitted up to 1.5× PN for infrequent events</td></tr>
+    <tr><td>Minimum pressure limit</td><td>P<sub>min</sub> &gt; −10 m at all pipeline high points</td><td>Column separation below vapour pressure causes rejoining impact waves exceeding the positive surge in severity</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr class="article-divider">
+<h2>10. Summary and Conclusions</h2>
+
+<ul>
+  <li>The <strong>Joukowsky equation</strong> (ΔP = ρ·a·ΔV) defines the absolute upper limit of surge pressure for any closure equal to or faster than the critical period.</li>
+  <li>The <strong>critical time T<sub>c</sub> = 2L/a</strong> is the decisive design threshold. Closure time must be compared against T<sub>c</sub>, not evaluated in absolute seconds alone.</li>
+  <li>For slow closures (t<sub>v</sub> &gt; T<sub>c</sub>), surge pressure is <strong>inversely proportional</strong> to closure time — doubling the closure time halves the surge pressure.</li>
+  <li>Pipe material has a profound effect: steel pipes generate surge pressures 3–4× higher than HDPE under identical hydraulic conditions, making closure time specification especially critical for metallic transmission mains.</li>
+  <li><strong>Bentley OpenFlows HAMMER</strong> (MOC-based) is the appropriate tool for final design validation — it captures non-linear valve characteristics, pipeline branches, surge device interaction, and column separation.</li>
+  <li>The recommended workflow: analytical formulas for preliminary design → interactive verification → HAMMER MOC for final design validation and regulatory submission.</li>
+</ul>
+
+<div class="callout">
+  <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">Practical Summary for the Design Engineer</strong>
+  Always calculate T<sub>c</sub> = 2L/a and ΔP<sub>J</sub> = ρ·a·V₀ before specifying any valve actuator. Work backwards from the allowable system pressure to determine the minimum required closure time. Use the interactive calculator above for rapid parameter exploration, then validate with Bentley HAMMER before finalising the actuator specification and pipe pressure class selection.
+</div>
+
+<hr class="article-divider">
+<div class="refs">
+  <h2>References</h2>
+  <ol>
+    <li>Joukowsky, N. (1898). Über den hydraulischen Stoss in Wasserleitungsröhren. <em>Mémoires de l'Académie Impériale des Sciences de St.-Pétersbourg</em>, 9(5). [ASME Translation, 1904]</li>
+    <li>Streeter, V. L., &amp; Wylie, E. B. (1993). <em>Fluid Mechanics</em> (9th ed.). McGraw-Hill.</li>
+    <li>Chaudhry, M. H. (2014). <em>Applied Hydraulic Transients</em> (3rd ed.). Springer. ISBN 978-1-4614-8538-4.</li>
+    <li>American Water Works Association (2004). <em>AWWA Manual M11 — Steel Pipe: A Guide for Design and Installation</em> (4th ed.). AWWA, Denver.</li>
+    <li>European Committee for Standardisation (2000). <em>EN 805:2000 — Water Supply: Requirements for Systems Outside Buildings</em>. BSI, London.</li>
+    <li>Thorley, A. R. D. (2004). <em>Fluid Transients in Pipeline Systems</em> (2nd ed.). Professional Engineering Publishing, London.</li>
+    <li>Fisher Controls International / Emerson Process Management (2005). <em>Control Valve Handbook</em> (4th ed.). Emerson.</li>
+    <li>Bentley Systems, Incorporated (2023). <em>OpenFlows HAMMER User Guide — Transient Analysis Reference</em>. Bentley Documentation Portal.</li>
+    <li>Plastic Pipe Institute (2012). <em>Handbook of PE Pipe</em> (2nd ed.). PPI, Irving TX.</li>
+    <li>National Water Company — Saudi Arabia / NWC (2020 ed.). <em>Technical Specifications for Water Transmission Networks</em>. NWC, Riyadh.</li>
+  </ol>
+</div>
+
+<div class="tags">#WaterHammer #HydraulicTransients #ControlValves #BentleyHAMMER #JoukowskyEquation #MethodOfCharacteristics #SurgeAnalysis #PipelineDesign #WaterEngineering #SaudiArabia</div>
+
+</div><!-- /article-body -->
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+<script>
+// ── Palette aligned with website ─────────────────────────────────────────────
+const C = { accent:'#0071e3', danger:'#c42b2b', warn:'#8a5700', success:'#1a7a38', text:'#86868b', grid:'rgba(0,0,0,0.07)' };
+
+// ── State ─────────────────────────────────────────────────────────────────────
+const st = { L:2000, a:1000, v:1.5, p0:8, tv:4, pn:16 };
+
+// ── Sliders ───────────────────────────────────────────────────────────────────
+const sliders = [
+  ['sl-L','out-L','L', v=>`${Number(v).toLocaleString()} m`],
+  ['sl-a','out-a','a', v=>`${Number(v).toLocaleString()} m/s`],
+  ['sl-v','out-v','v', v=>`${parseFloat(v).toFixed(1)} m/s`],
+  ['sl-p0','out-p0','p0', v=>`${parseFloat(v).toFixed(1)} bar`],
+  ['sl-tv','out-tv','tv', v=>`${parseFloat(v).toFixed(1)} s`],
+  ['sl-pn','out-pn','pn', v=>`PN ${v}`],
+];
+sliders.forEach(([sid,oid,key,fmt])=>{
+  const el=document.getElementById(sid);
+  el.addEventListener('input',()=>{ st[key]=parseFloat(el.value); document.getElementById(oid).textContent=fmt(el.value); update(); });
+});
+
+// ── Charts ────────────────────────────────────────────────────────────────────
+const baseOpts = (yt) => ({
+  responsive:true, maintainAspectRatio:false,
+  plugins:{ legend:{ display:false } },
+  scales:{
+    x:{ grid:{color:C.grid}, ticks:{font:{size:11},maxTicksLimit:10} },
+    y:{ grid:{color:C.grid}, ticks:{font:{size:11}}, title:{display:true, text:yt, font:{size:12}} }
+  }
+});
+
+const chartClosure = new Chart(document.getElementById('chartClosure').getContext('2d'),{
+  type:'line',
+  data:{labels:[],datasets:[
+    {label:'ΔP (bar)',data:[],borderColor:C.accent,backgroundColor:'rgba(0,113,227,0.08)',borderWidth:2.5,pointRadius:0,fill:true,tension:0.1},
+    {label:'Current t_v',data:[],borderColor:C.danger,backgroundColor:C.danger,borderWidth:0,pointRadius:8,showLine:false}
+  ]},
+  options:{...baseOpts('Surge Pressure ΔP (bar)'), maintainAspectRatio:false, responsive:true,
+    plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>`ΔP = ${ctx.raw.y.toFixed(2)} bar`}}}}
+});
+
+const chartWave = new Chart(document.getElementById('chartWave').getContext('2d'),{
+  type:'line',
+  data:{labels:[],datasets:[
+    {label:'Static Pressure',data:[],borderColor:C.accent,borderWidth:1.5,borderDash:[4,3],pointRadius:0,fill:false},
+    {label:'Pressure at Valve',data:[],borderColor:C.danger,backgroundColor:'rgba(196,43,43,0.10)',borderWidth:2.5,pointRadius:0,fill:true,tension:0.3}
+  ]},
+  options:{...baseOpts('Pressure (bar)'), maintainAspectRatio:false, responsive:true,
+    plugins:{legend:{display:true, labels:{font:{size:12},boxWidth:14}}}}
+});
+
+const chartMaterial = new Chart(document.getElementById('chartMaterial').getContext('2d'),{
+  type:'bar',
+  data:{
+    labels:['Steel','Ductile Iron','GRP / FRP','PVC-U','HDPE PE100'],
+    datasets:[
+      {label:'Joukowsky ΔP (bar)',data:[],backgroundColor:['rgba(196,43,43,0.65)','rgba(138,87,0,0.65)','rgba(245,158,11,0.65)','rgba(0,113,227,0.65)','rgba(26,122,56,0.65)'],borderRadius:6},
+      {label:'P_max with P₀ (bar)',data:[],backgroundColor:['rgba(196,43,43,0.15)','rgba(138,87,0,0.15)','rgba(245,158,11,0.15)','rgba(0,113,227,0.15)','rgba(26,122,56,0.15)'],borderColor:['#c42b2b','#8a5700','#b45309','#0071e3','#1a7a38'],borderWidth:1.5,borderRadius:6}
+    ]
+  },
+  options:{...baseOpts('Pressure (bar)'), maintainAspectRatio:false, responsive:true,
+    plugins:{legend:{display:true, labels:{font:{size:12},boxWidth:14}}}}
+});
+
+// ── Main update ───────────────────────────────────────────────────────────────
+function fmt1(n){ return parseFloat(n.toFixed(2)).toLocaleString('en-US'); }
+
+function update(){
+  const {L,a,v,p0,tv,pn} = st;
+  const tc = 2*L/a;
+  const dpj = (1000*a*v)/100000;
+  const ratio = Math.min(1, tc/tv);
+  const dp = dpj*ratio;
+  const pmax = p0+dp;
+  const rapid = tv<=tc;
+
+  document.getElementById('res-tc').textContent = fmt1(tc);
+  document.getElementById('res-dpj').textContent = fmt1(dpj);
+  document.getElementById('res-dp').textContent = fmt1(dp);
+  document.getElementById('res-pmax').textContent = fmt1(pmax);
+
+  const col = dp>=dpj*0.9?C.danger : dp>=dpj*0.5?C.warn : dp>=dpj*0.2?C.accent : C.success;
+  document.getElementById('res-dp').style.color = col;
+  document.getElementById('res-pmax').style.color = col;
+
+  // Regime banner
+  const rb = document.getElementById('regime-banner');
+  if(rapid){
+    rb.className='regime-banner regime-rapid';
+    rb.textContent=`⚠ RAPID CLOSURE (t_v = ${fmt1(tv)} s ≤ T_c = ${fmt1(tc)} s) — Full Joukowsky Pressure: ΔP = ${fmt1(dpj)} bar`;
+  } else {
+    rb.className='regime-banner regime-slow';
+    rb.textContent=`✓ SLOW CLOSURE (t_v = ${fmt1(tv)} s > T_c = ${fmt1(tc)} s) — Attenuation Factor = ${(tc/tv).toFixed(3)} → ΔP = ${fmt1(dp)} bar`;
+  }
+
+  // PN check
+  const pnEl=document.getElementById('pn-check'), pnT=document.getElementById('pn-check-title'), pnB=document.getElementById('pn-check-body');
+  const pnLimit=pn*1.5;
+  if(pmax>pnLimit){
+    pnEl.className='danger-box'; pnT.textContent='PN RATING EXCEEDED — ';
+    pnB.textContent=`P_max = ${fmt1(pmax)} bar exceeds 1.5 × PN${pn} = ${fmt1(pnLimit)} bar. Increase closure time or upgrade pipe pressure class.`;
+  } else {
+    pnEl.className='callout'; pnT.textContent='PN RATING ADEQUATE — ';
+    pnB.textContent=`P_max = ${fmt1(pmax)} bar is within 1.5 × PN${pn} = ${fmt1(pnLimit)} bar. Margin = ${fmt1(pnLimit-pmax)} bar.`;
+  }
+
+  // Chart 1: ΔP vs closure time
+  const maxT = Math.max(tc*15, tv*2, 60);
+  const labels1=[], data1=[], data2=[];
+  for(let i=0;i<=200;i++){
+    const t=(i/200)*maxT;
+    labels1.push(t.toFixed(1));
+    data1.push({x:t.toFixed(1), y: parseFloat((dpj*Math.min(1,t<=0?1:tc/t)).toFixed(3))});
+  }
+  data2.push({x:tv.toFixed(1), y: parseFloat(dp.toFixed(3))});
+  chartClosure.data.labels=labels1;
+  chartClosure.data.datasets[0].data=data1;
+  chartClosure.data.datasets[1].data=data2;
+  chartClosure.options.plugins.title={display:true,text:`T_c = ${fmt1(tc)} s | ΔP_J = ${fmt1(dpj)} bar | Current: t_v = ${fmt1(tv)} s → ΔP = ${fmt1(dp)} bar`,font:{size:12},color:C.text,padding:{bottom:8}};
+  chartClosure.update('none');
+
+  // Chart 2: Pressure-time wave
+  const dur=Math.max(tc*6,tv*3,30);
+  const wL=[],wS=[],wP=[];
+  for(let i=0;i<=300;i++){
+    const t=(i/300)*dur;
+    wL.push(t.toFixed(1)); wS.push(p0);
+    let p=p0;
+    if(rapid){
+      if(t<tc*0.05) p=p0;
+      else if(t<tc) p=p0+dp;
+      else { const ph=((t-tc)%(2*tc))/(2*tc); const dec=Math.exp(-(t-tc)/(tc*4)); p=p0+dp*dec*Math.cos(ph*2*Math.PI)*0.5+dp*dec*0.5; }
+    } else {
+      if(t<tv) p=p0+dp*(t/tv);
+      else { const dec=Math.exp(-(t-tv)/(tc*3)); const ph=((t-tv)%(2*tc))/(2*tc); p=p0+dp*dec*(0.5+0.5*Math.cos(ph*2*Math.PI)); }
+    }
+    wP.push(parseFloat(p.toFixed(3)));
+  }
+  chartWave.data.labels=wL;
+  chartWave.data.datasets[0].data=wS;
+  chartWave.data.datasets[1].data=wP;
+  chartWave.options.scales.y.min=Math.min(p0*0.5, p0-dp*0.5, 0);
+  chartWave.options.scales.y.max=Math.max((p0+dpj)*1.15, pmax*1.15);
+  chartWave.update('none');
+
+  // Chart 3: Material comparison
+  const matA=[1050,1100,550,350,310];
+  chartMaterial.data.datasets[0].data=matA.map(m=>parseFloat(((1000*m*v)/100000).toFixed(2)));
+  chartMaterial.data.datasets[1].data=matA.map(m=>parseFloat((p0+(1000*m*v)/100000).toFixed(2)));
+  chartMaterial.update('none');
+}
+
+update();
+</script>
+</body>
+</html>

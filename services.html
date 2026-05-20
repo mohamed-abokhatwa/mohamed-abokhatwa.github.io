@@ -461,30 +461,31 @@
         </a>
       </div>
 
-      <form class="inquiry-form" id="inquiryForm" onsubmit="sendInquiry(event)">
+      <form class="inquiry-form" action="https://formspree.io/f/xojbenyj" method="POST">
+        <input type="hidden" name="_subject" value="New Hydraulic Analysis Inquiry — abokhatwa.com">
         <div class="form-row">
           <div class="form-group">
             <label for="fname">Full Name</label>
-            <input type="text" id="fname" placeholder="Your name" required>
+            <input type="text" id="fname" name="name" placeholder="Your name" required>
           </div>
           <div class="form-group">
             <label for="fcompany">Company / Organisation</label>
-            <input type="text" id="fcompany" placeholder="Your company">
+            <input type="text" id="fcompany" name="company" placeholder="Your company">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="femail">Email Address</label>
-            <input type="email" id="femail" placeholder="you@company.com" required>
+            <input type="email" id="femail" name="email" placeholder="you@company.com" required>
           </div>
           <div class="form-group">
             <label for="fphone">Phone (optional)</label>
-            <input type="tel" id="fphone" placeholder="+966 ...">
+            <input type="tel" id="fphone" name="phone" placeholder="+966 ...">
           </div>
         </div>
         <div class="form-group">
           <label for="fservice">Service Required</label>
-          <select id="fservice">
+          <select id="fservice" name="service">
             <option value="">— Select a service —</option>
             <option value="Surge &amp; Water Hammer Analysis (Transient)">Surge &amp; Water Hammer Analysis (Transient)</option>
             <option value="Hydraulic Network Modelling (Steady-State)">Hydraulic Network Modelling (Steady-State)</option>
@@ -494,41 +495,13 @@
         </div>
         <div class="form-group">
           <label for="fproject">Project Description</label>
-          <textarea id="fproject" placeholder="Briefly describe your project — pipeline length, diameter, flow rates, pump configuration, any known challenges…"></textarea>
+          <textarea id="fproject" name="project" placeholder="Briefly describe your project — pipeline length, diameter, flow rates, pump configuration, any known challenges…"></textarea>
         </div>
         <div class="form-submit">
           <button type="submit" class="btn-primary">Send Inquiry →</button>
-          <span class="form-note">Opens your email client with the details pre-filled.</span>
+          <span class="form-note">We'll respond within 48 hours.</span>
         </div>
       </form>
-
-      <script>
-      function sendInquiry(e) {
-        e.preventDefault();
-        var name    = document.getElementById('fname').value.trim();
-        var company = document.getElementById('fcompany').value.trim();
-        var email   = document.getElementById('femail').value.trim();
-        var phone   = document.getElementById('fphone').value.trim();
-        var service = document.getElementById('fservice').value;
-        var project = document.getElementById('fproject').value.trim();
-
-        if (!name || !email) return;
-
-        var subject = 'Hydraulic Analysis Inquiry' + (service ? ' — ' + service : '');
-        var body =
-          'Name: ' + name + '\n' +
-          (company ? 'Company: ' + company + '\n' : '') +
-          'Email: ' + email + '\n' +
-          (phone ? 'Phone: ' + phone + '\n' : '') +
-          (service ? 'Service: ' + service + '\n' : '') +
-          '\nProject Description:\n' + (project || '—');
-
-        window.location.href =
-          'mailto:mohamed@abokhatwa.com' +
-          '?subject=' + encodeURIComponent(subject) +
-          '&body=' + encodeURIComponent(body);
-      }
-      </script>
 
     </div>
   </div>

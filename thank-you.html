@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You — Mohamed Abokhatwa</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+  <style>
+    .thankyou-wrap {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .thankyou-card {
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-glass);
+      padding: 64px 56px;
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+    }
+    .thankyou-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(0, 113, 227, 0.08);
+      border: 1px solid rgba(0, 113, 227, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 32px;
+    }
+    .thankyou-card h1 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .thankyou-card p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 980px;
+      padding: 14px 32px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: var(--transition);
+      letter-spacing: 0.01em;
+    }
+    .btn-back:hover {
+      background: #0062c8;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0,113,227,0.3);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      border-radius: 980px;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: var(--transition);
+      margin-left: 12px;
+    }
+    .btn-secondary:hover { color: var(--text-primary); }
+    @media(max-width:480px) {
+      .thankyou-card { padding: 48px 28px; }
+      .btn-secondary { display: block; margin: 12px 0 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="thankyou-wrap">
+  <div class="thankyou-card fade-up">
+    <div class="thankyou-icon">✓</div>
+    <h1>Inquiry received.</h1>
+    <p>Thank you for reaching out. I'll review your project details and get back to you within <strong>48 hours</strong>.</p>
+    <div>
+      <a href="services.html" class="btn-back">← Back to Services</a>
+      <a href="index.html" class="btn-secondary">Read articles</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp;
+      <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp;
+      <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp;
+      <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp;
+      <a href="about.html">About</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -461,9 +461,7 @@
         </a>
       </div>
 
-      <form class="inquiry-form" action="https://formspree.io/f/xojbenyj" method="POST">
-        <input type="hidden" name="_subject" value="New Hydraulic Analysis Inquiry — abokhatwa.com">
-        <input type="hidden" name="_next" value="https://abokhatwa.com/thank-you.html">
+      <form class="inquiry-form" id="inquiryForm">
         <div class="form-row">
           <div class="form-group">
             <label for="fname">Full Name</label>
@@ -499,10 +497,46 @@
           <textarea id="fproject" name="project" placeholder="Briefly describe your project — pipeline length, diameter, flow rates, pump configuration, any known challenges…"></textarea>
         </div>
         <div class="form-submit">
-          <button type="submit" class="btn-primary">Send Inquiry →</button>
-          <span class="form-note">We'll respond within 48 hours.</span>
+          <button type="submit" class="btn-primary" id="submitBtn">Send Inquiry →</button>
+          <span class="form-note" id="formNote">We'll respond within 48 hours.</span>
+        </div>
+        <div id="formSuccess" style="display:none;margin-top:24px;padding:20px 24px;background:rgba(26,122,56,0.08);border:1px solid rgba(26,122,56,0.2);border-radius:12px;">
+          <div style="font-size:15px;font-weight:600;color:#1a7a38;margin-bottom:4px;">&#10003; Inquiry sent successfully</div>
+          <div style="font-size:14px;color:var(--text-secondary);">Thank you — I'll get back to you within 48 hours.</div>
         </div>
       </form>
+
+      <script>
+      document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+
+        fetch('https://formspree.io/f/xojbenyj', {
+          method: 'POST',
+          body: new FormData(this),
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(function(res) {
+          if (res.ok) {
+            document.getElementById('inquiryForm').reset();
+            document.getElementById('formSuccess').style.display = 'block';
+            document.getElementById('formNote').style.display = 'none';
+            btn.style.display = 'none';
+          } else {
+            btn.disabled = false;
+            btn.textContent = 'Send Inquiry →';
+            alert('Something went wrong. Please email me at mohamed@abokhatwa.com');
+          }
+        })
+        .catch(function() {
+          btn.disabled = false;
+          btn.textContent = 'Send Inquiry →';
+          alert('Connection error. Please email me at mohamed@abokhatwa.com');
+        });
+      });
+      </script>
 
     </div>
   </div>

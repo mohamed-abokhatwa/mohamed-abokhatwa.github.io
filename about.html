@@ -13,7 +13,11 @@
       max-width: var(--max-w);
       margin: 0 auto;
       border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 80px;
     }
+    .about-hero-content { flex: 1; min-width: 0; }
     .about-hero .eyebrow {
       font-size: 13px;
       font-weight: 500;
@@ -25,7 +29,7 @@
     }
     .about-hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(48px, 7vw, 80px);
+      font-size: clamp(40px, 6vw, 72px);
       font-weight: 400;
       letter-spacing: -0.03em;
       line-height: 1.05;
@@ -36,10 +40,25 @@
       color: var(--text-secondary);
     }
     .about-hero .lead {
-      font-size: 21px;
+      font-size: 19px;
       color: var(--text-secondary);
       line-height: 1.65;
-      max-width: 680px;
+      max-width: 560px;
+    }
+    /* Profile photo */
+    .about-hero-photo {
+      flex-shrink: 0;
+      width: 260px;
+    }
+    .about-hero-photo img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.08);
+      display: block;
     }
     .about-body {
       max-width: var(--max-w);
@@ -200,6 +219,9 @@
     .edu-uni { font-size: 15px; color: var(--accent); margin-bottom: 4px; }
     .edu-year { font-size: 13px; color: var(--text-tertiary); }
     @media(max-width:768px) {
+      .about-hero { flex-direction: column-reverse; gap: 40px; padding: 120px 20px 60px; }
+      .about-hero-photo { width: 160px; align-self: center; }
+      .about-hero-photo img { border-radius: 50%; aspect-ratio: 1; }
       .two-col { grid-template-columns: 1fr; gap: 32px; }
       .col-label { position: static; }
       .certs-grid, .skills-grid { grid-template-columns: 1fr; }
@@ -231,9 +253,14 @@
 </script>
 
 <div class="about-hero">
-  <span class="eyebrow fade-up">About</span>
-  <h1 class="fade-up-2">Engineering at scale.<br><em>For over two decades.</em></h1>
-  <p class="lead fade-up-3">Strategic Technical and Engineering Manager specialising in large-scale water infrastructure — from 400 km transmission networks to 200,000 m&sup3;/day treatment plants across Saudi Arabia.</p>
+  <div class="about-hero-content">
+    <span class="eyebrow fade-up">About</span>
+    <h1 class="fade-up-2">Engineering at scale.<br><em>For over two decades.</em></h1>
+    <p class="lead fade-up-3">Strategic Technical and Engineering Manager specialising in large-scale water infrastructure — from 400 km transmission networks to 200,000 m&sup3;/day treatment plants across Saudi Arabia.</p>
+  </div>
+  <div class="about-hero-photo fade-up-2">
+    <img src="profile.jpg" alt="Mohamed Abokhatwa">
+  </div>
 </div>
 
 <div class="about-body">

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Design Guide: Managing Cavitation in PRVs and FCVs — Mohamed Abokhatwa</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:400;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px;max-width:800px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .refs li{font-size:14px;color:var(--text-tertiary);line-height:1.8;margin-bottom:4px;}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <span class="tag">Hydraulic Design &middot; Cavitation &middot; Valve Engineering</span>
+  <h1>Technical Design Guide: Managing Cavitation in PRVs and FCVs</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; PMP, PMI-RMP, ENV SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>April 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>8 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="cavitation-prvs-fcvs.jpg" alt="Managing Cavitation in PRVs and FCVs">
+</div>
+
+<div class="article-body">
+<h2>Introduction: The Physics of the "Silent Destroyer"</h2>
+<p>In water transmission networks, Pressure Reducing Valves (PRVs) and Flow Control Valves (FCVs) serve critical functions. However, when these devices operate under substantial pressure drops, local pressure within the valve trim can descend below water's vapor pressure (P<sub>v</sub>). This creates vapor bubbles that collapse violently downstream — generating micro-jets capable of destroying valve internals within months.</p>
+
+<hr class="article-divider">
+
+<h2>1. The Cavitation Index (&sigma;)</h2>
+<div class="formula-box">
+  <div class="formula-main">&sigma; = (P<sub>2</sub> &minus; P<sub>v</sub>) / (P<sub>1</sub> &minus; P<sub>2</sub>)</div>
+  <div class="formula-sub">P<sub>1</sub> = Inlet Pressure (Absolute) &nbsp;|&nbsp; P<sub>2</sub> = Outlet Pressure (Absolute) &nbsp;|&nbsp; P<sub>v</sub> = Vapor Pressure (&asymp; 0.36 psi at 20&deg;C)</div>
+</div>
+<table>
+  <tr><th>&sigma; Value</th><th>Operating Condition</th></tr>
+  <tr><td>&sigma; &gt; 1.0</td><td>Safe operation</td></tr>
+  <tr><td>0.5 &lt; &sigma; &lt; 1.0</td><td>Incipient cavitation (vibration and noise)</td></tr>
+  <tr><td>&sigma; &lt; 0.5</td><td>Severe cavitation (immediate damage)</td></tr>
+</table>
+
+<hr class="article-divider">
+
+<h2>2. Practical Design Example: PRV in a High-Head Zone</h2>
+<ul>
+  <li>Inlet Pressure (P<sub>1</sub>): 15 bar (217 psi)</li>
+  <li>Required Outlet Pressure (P<sub>2</sub>): 3 bar (43.5 psi)</li>
+  <li>Fluid: Water at 20&deg;C</li>
+</ul>
+<div class="formula-box">
+  <div class="formula-main">&sigma; = (43.5 &minus; 0.36) / (217 &minus; 43.5) = <strong>0.25</strong></div>
+  <div class="formula-sub">Well below the 0.5 threshold &mdash; a standard PRV will fail within months</div>
+</div>
+<div class="callout">Always perform a <strong>"Worst-Case Scenario" check at minimum flow/maximum head</strong>. Valves operating safely at peak flow may cavitate severely during low-demand periods.</div>
+
+<hr class="article-divider">
+
+<h2>3. Design Example: FCV in a Gravity Line</h2>
+<ul>
+  <li>Upstream Pressure at Min Flow: 12 bar &nbsp;|&nbsp; Downstream Pressure (Tank head): 0.5 bar</li>
+  <li>Pressure Drop: 11.5 bar</li>
+  <li>Calculated &sigma; &asymp; 0.04 &mdash; <strong>cavitation is inevitable without specialized trim</strong></li>
+</ul>
+
+<hr class="article-divider">
+
+<h2>4. Engineering Mitigation Strategies</h2>
+<h3>A. Multi-Stage Pressure Reduction</h3>
+<p>Instead of a single valve handling the full pressure drop, deploy <strong>two valves in series</strong>, each handling half. This keeps each valve's &sigma; within acceptable ranges.</p>
+
+<h3>B. Anti-Cavitation Trims (Cages)</h3>
+<p>Specialized perforated cages split flow into numerous small jets that collide in the centre of the valve, dissipating energy away from the valve walls — preventing impingement damage.</p>
+
+<h3>C. Orifice Plates (Downstream Restrictors)</h3>
+<p>A fixed orifice plate positioned downstream creates back pressure, increasing P<sub>2</sub> at the valve outlet and raising the Cavitation Index to a safe operating range.</p>
+
+<hr class="article-divider">
+<div class="refs">
+  <h2>References</h2>
+  <ol>
+    <li>AWWA M22: Sizing and Selecting Control Valves</li>
+    <li>ISA-75.01.01: Flow Equations for Sizing Control Valves</li>
+    <li>Cla-Val Cavitation Guide &amp; Singer Valve Technical Calculations</li>
+    <li>Tullis, J.P. (1989). <em>Hydraulics of Pipelines: Pumps, Valves, Cavitation, Transients.</em></li>
+  </ol>
+</div>
+<div class="tags">#HydraulicDesign #WaterEngineering #PRV #FCV #Cavitation #FluidDynamics #InfrastructureEngineering #ValveDesign</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

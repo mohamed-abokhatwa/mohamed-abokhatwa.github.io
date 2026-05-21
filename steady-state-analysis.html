@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steady State Analysis: The Foundation of Water Transmission Design — Mohamed Abokhatwa</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:400;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px;max-width:800px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .refs li{font-size:14px;color:var(--text-tertiary);line-height:1.8;margin-bottom:4px;}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <span class="tag">Hydraulic Modeling &middot; Steady State &middot; Pipeline Design</span>
+  <h1>Steady State Analysis: The Foundation of Water Transmission Design</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; PMP, PMI-RMP, ENV SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>April 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>5 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="steady-state-analysis.jpg" alt="Steady State Analysis in Water Transmission Design">
+</div>
+
+<div class="article-body">
+<h2>Introduction</h2>
+<p>Before any transient or surge analysis can be meaningful, the <strong>steady state hydraulic model</strong> must be correct. Steady state analysis examines how a water transmission system behaves when inputs and outputs remain constant over time — establishing the baseline from which all transient events are measured.</p>
+
+<hr class="article-divider">
+
+<h2>1. Three Core Pillars of Steady State Analysis</h2>
+
+<h3>Pillar 1: Friction Losses</h3>
+<p>Using Hazen-Williams or Darcy-Weisbach equations to determine optimal pipe diameter, the engineer is balancing <strong>capital expenditure against long-term energy costs</strong>:</p>
+<ul>
+  <li>Smaller diameter &rarr; lower pipe cost, higher friction, higher energy consumption</li>
+  <li>Larger diameter &rarr; higher pipe cost, lower friction, lower energy cost over 25&ndash;50 year life</li>
+  <li>Optimal diameter minimises the sum of these competing costs over the project life</li>
+</ul>
+
+<h3>Pillar 2: System Head vs. Pump Curve Intersection</h3>
+<p>The operating point where the system curve intersects the pump curve is the system's "heartbeat." Good design ensures pumps operate near their Best Efficiency Point (BEP) under normal conditions. A mismatch here causes:</p>
+<ul>
+  <li>Operation far from BEP, increasing vibration and energy waste</li>
+  <li>Potential for pump surging or cavitation at extreme operating points</li>
+</ul>
+
+<h3>Pillar 3: Pressure Management</h3>
+<p>Verifying that minimum pressure requirements are met at all demand nodes while preventing excessive pressure at low-elevation points. Large transmission systems often require pressure reducing stations at intermediate points to prevent over-pressurization downstream.</p>
+
+<hr class="article-divider">
+
+<h2>2. Why Steady State Must Come First</h2>
+<ul>
+  <li><strong>Energy Optimisation:</strong> Identifies oversized pipes or under-sized pumps before construction</li>
+  <li><strong>System Stability:</strong> Validates system behavior under varying operational scenarios</li>
+  <li><strong>Future-Proofing:</strong> Simulates demand growth to ensure infrastructure remains adequate for design horizon</li>
+  <li><strong>Transient Baseline:</strong> Provides the initial conditions from which all transient events are simulated</li>
+</ul>
+<div class="callout">A transient analysis that begins from an incorrect steady state baseline will produce incorrect surge pressures — no matter how sophisticated the transient model.</div>
+
+<hr class="article-divider">
+<div class="tags">#HydraulicEngineering #WaterTransport #SteadyState #PipelineDesign #PumpSelection #WaterInfrastructure #BentleyWaterGEMS</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

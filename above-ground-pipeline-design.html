@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Guide: Structural Design of Above-Ground Water Pipelines — Mohamed Abokhatwa</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:400;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px;max-width:800px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .refs li{font-size:14px;color:var(--text-tertiary);line-height:1.8;margin-bottom:4px;}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <span class="tag">Structural Design &middot; Pipeline Engineering</span>
+  <h1>Engineering Guide: Structural Design of Above-Ground Water Pipelines</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; PMP, PMI-RMP, ENV SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>April 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>12 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="above-ground-pipeline-design.jpg" alt="Structural Design of Above-Ground Water Pipelines">
+</div>
+
+<div class="article-body">
+<h2>Introduction</h2>
+<p>Unlike buried pipelines, above-ground systems are treated as <strong>structural beams</strong>. They must resist environmental loads (wind, seismic), thermal expansion, and internal hydraulic forces without the continuous support of soil. This requires rigorous analysis of support spacing, thermal stress, and anchor design.</p>
+
+<hr class="article-divider">
+
+<h2>1. Span Calculation: The "Beam" Analogy</h2>
+<p>The most critical design step is determining the <strong>Maximum Allowable Span (L<sub>max</sub>)</strong>. This is governed by two core engineering criteria.</p>
+
+<h3>A. Bending Stress Criterion</h3>
+<p>The design ensures the pipe does not exceed its allowable material stress (S).</p>
+<div class="formula-box">
+  <div class="formula-main">L = &radic;[(0.1 &times; Z &times; S) / w]</div>
+  <div class="formula-sub">Z = Section Modulus &nbsp;|&nbsp; S = Allowable stress (typically 60% of Yield Strength) &nbsp;|&nbsp; w = Total weight per unit length (Pipe + Water + Insulation)</div>
+</div>
+
+<h3>B. Deflection Criterion</h3>
+<p>To prevent "pocketing," vertical deflection (&Delta;) is usually limited to <strong>L/500</strong> or a maximum of 25 mm.</p>
+<div class="formula-box">
+  <div class="formula-main">&Delta; = (5 w L&#8308;) / (384 E I)</div>
+  <div class="formula-sub">E = Modulus of Elasticity &nbsp;|&nbsp; I = Moment of Inertia</div>
+</div>
+
+<div class="callout">For a DN 600 (24&Prime;) Steel Pipe, Sch 40, filled with water (weight ~400 kg/m), the calculated maximum span is typically <strong>10 to 14 metres</strong>.</div>
+
+<hr class="article-divider">
+
+<h2>2. Thermal Expansion &amp; Stress Management</h2>
+<p>Temperature changes cause linear expansion that must be absorbed to prevent buckling.</p>
+<div class="formula-box">
+  <div class="formula-main">&Delta;L = L &alpha; &Delta;T</div>
+  <div class="formula-sub">For steel, &alpha; &asymp; 1.2 &times; 10<sup>&minus;5</sup> per &deg;C</div>
+</div>
+
+<h3>Design Solutions</h3>
+<ul>
+  <li><strong>Expansion Loops:</strong> Utilizing 90-degree bends to absorb movement</li>
+  <li><strong>Expansion Joints:</strong> Mechanical bellows used in tight spaces</li>
+  <li><strong>Anchors &amp; Guides:</strong> Anchors lock the pipe to direct expansion; Guides ensure movement remains longitudinal</li>
+</ul>
+
+<hr class="article-divider">
+
+<h2>3. Lateral Loads: Wind &amp; Seismic</h2>
+<p>Above-ground pipes act as a sail, and lateral stability must be checked.</p>
+<div class="formula-box">
+  <div class="formula-main">F<sub>w</sub> = P<sub>z</sub> C<sub>d</sub> D<sub>o</sub></div>
+  <div class="formula-sub">P<sub>z</sub> = Velocity pressure (regional wind speed) &nbsp;|&nbsp; C<sub>d</sub> = Drag coefficient (0.7 for cylinders) &nbsp;|&nbsp; D<sub>o</sub> = Outside diameter including insulation</div>
+</div>
+
+<hr class="article-divider">
+
+<h2>4. Material Comparison</h2>
+<table>
+  <tr><th>Material</th><th>Span Capability</th><th>Thermal Expansion</th><th>UV Resistance</th></tr>
+  <tr><td>Steel (API 5L)</td><td>Very High</td><td>Moderate</td><td>Requires Coating</td></tr>
+  <tr><td>Ductile Iron</td><td>Medium</td><td>Low</td><td>High</td></tr>
+  <tr><td>GRP / Fiberglass</td><td>Low (more supports needed)</td><td>High</td><td>Requires UV-inhibitor resin</td></tr>
+</table>
+
+<hr class="article-divider">
+
+<h2>5. Design Checklist</h2>
+<ol>
+  <li><strong>Calculate Weight:</strong> Always use the "Hydrotest" weight (pipe 100% full of water)</li>
+  <li><strong>Support Types:</strong> Place Anchors at direction changes and Guides at 1/4 span intervals</li>
+  <li><strong>Thrust Forces:</strong> Design supports for (Pressure &times; Area) forces at all bends</li>
+  <li><strong>Coating:</strong> Specify a UV-resistant Aliphatic Polyurethane topcoat</li>
+</ol>
+
+<hr class="article-divider">
+<div class="refs">
+  <h2>References</h2>
+  <ol>
+    <li>ASME B31.3: Process Piping (Stress analysis)</li>
+    <li>AWWA M11: Steel Pipe Design and Installation</li>
+    <li>ASCE 7: Minimum Design Loads (Wind and Seismic)</li>
+    <li>MSS SP-58: Pipe Hangers and Supports Standards</li>
+  </ol>
+</div>
+<div class="tags">#PipelineEngineering #StructuralDesign #WaterInfrastructure #AboveGroundPipelines #ThermalExpansion #AWWAM11 #WaterEngineering</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

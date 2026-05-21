@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Making Decisions Under Pressure: Lessons From the Field — Mohamed Abokhatwa</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:400;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px;max-width:800px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .refs li{font-size:14px;color:var(--text-tertiary);line-height:1.8;margin-bottom:4px;}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <span class="tag">Engineering Leadership &middot; Project Management &middot; Field Experience</span>
+  <h1>Making Decisions Under Pressure: Lessons From the Field</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; PMP, PMI-RMP, ENV SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>April 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>4 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="engineering-decisions.jpg" alt="Engineering Decision Making Under Pressure">
+</div>
+
+<div class="article-body">
+<h2>The Hardest Decisions Are Not Made in the Office</h2>
+<p>Engineering's most challenging decisions are not made in the office. They are made <strong>on site — under pressure</strong>. When timelines are tight, resources are limited, and something unexpected happens at 2 AM in a remote pump station, the drawings provide no answer. Experience, judgment, and composure do.</p>
+
+<hr class="article-divider">
+
+<h2>What On-Site Decision-Making Actually Requires</h2>
+<p>Technical knowledge is necessary but not sufficient. On-site decision-making under pressure requires:</p>
+<ul>
+  <li><strong>Pattern Recognition:</strong> The ability to quickly identify which class of problem you're facing based on limited early information</li>
+  <li><strong>Risk Assessment Without Time:</strong> Rapidly estimating consequences of action vs. inaction</li>
+  <li><strong>Team Leadership:</strong> Directing multidisciplinary teams toward a solution when everyone is looking for someone to decide</li>
+  <li><strong>Communication Under Pressure:</strong> Keeping stakeholders informed with accurate, concise updates when information is still incomplete</li>
+</ul>
+
+<hr class="article-divider">
+
+<h2>The Cost of Hesitation vs. The Cost of Errors</h2>
+<p>In real projects, <strong>delays are costly</strong>. But wrong decisions cost even more. The challenge is that in the field, you rarely have the luxury of being certain before you must act. You must develop the ability to make the best decision available with the information you have — then execute it decisively.</p>
+<p>From projects spanning 100+ km of pipeline in the Saudi desert to multi-stage pump stations serving hundreds of thousands of people, the critical moments were never in the design review meetings. They were in the field — when something didn't go according to plan.</p>
+
+<hr class="article-divider">
+
+<h2>Engineering Is Responsibility</h2>
+<p>The equations, the models, and the designs are means to an end. The end is <strong>infrastructure that works, reliably, for the people who depend on it</strong>. Every decision — on site and in the office — carries that responsibility.</p>
+<div class="callout">Technical knowledge alone is insufficient. Real leadership in engineering means making sound decisions when it is hard, not just when it is easy.</div>
+
+<hr class="article-divider">
+<div class="tags">#Engineering #Leadership #ProjectManagement #DecisionMaking #Construction #SiteEngineering #WaterEngineering</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

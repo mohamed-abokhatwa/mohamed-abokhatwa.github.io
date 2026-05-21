@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Valves: Just Pipeline Accessories or the Ultimate Safety Guard? — Mohamed Abokhatwa</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:400;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px;max-width:800px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .refs li{font-size:14px;color:var(--text-tertiary);line-height:1.8;margin-bottom:4px;}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <span class="tag">Pipeline Safety &middot; Air Valve Design &middot; Surge Analysis</span>
+  <h1>Air Valves: Just Pipeline Accessories or the Ultimate Safety Guard?</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; PMP, PMI-RMP, ENV SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>April 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>9 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="air-valves-pipeline-safety.jpg" alt="Air Valves as Pipeline Safety Guards">
+</div>
+
+<div class="article-body">
+<h2>Introduction</h2>
+<p>In large-scale strategic transmission mains (DN 1000 and above), air valves are frequently treated as minor accessories — yet they are among the most critical safety components in any pipeline system. Improper sizing or placement remains a <strong>leading cause of catastrophic pipeline failure</strong>. True pipeline safety depends fundamentally on proper air management.</p>
+
+<hr class="article-divider">
+
+<h2>1. Strategic Placement Based on Hydraulic Profiling</h2>
+<p>Air valve locations must align with the <strong>Longitudinal Profile and Slope Breaks</strong> — not arbitrary spacing distances.</p>
+<ul>
+  <li><strong>Primary High Points:</strong> Mandatory at every peak where the HGL might drop</li>
+  <li><strong>Slope Breaks (Positive &amp; Negative):</strong> Where slope changes create air accumulation potential</li>
+  <li><strong>Long Flat Sections:</strong> In gradients &lt;2%, air bubbles migrate poorly — place air valves every 600&ndash;1,000 m to prevent air pockets acting as pneumatic springs</li>
+  <li><strong>Scour Points:</strong> Immediately downstream of isolation or scour valves</li>
+</ul>
+
+<hr class="article-divider">
+
+<h2>2. Sizing for Two Critical Scenarios</h2>
+
+<h3>A. Vacuum Protection (Burst/Drainage Scenario)</h3>
+<p>This is the most critical case for large-diameter pipes. During a burst, water exits at high velocity creating a vacuum that the air valve must break:</p>
+<ul>
+  <li>Air intake flow (Q<sub>air</sub>) must match potential drainage flow (Q<sub>water</sub>)</li>
+  <li>Internal pressure must not drop below the pipe's buckling pressure</li>
+  <li>For large DN lines, &Delta;P is typically limited to <strong>0.35 bar</strong> to prevent structural collapse</li>
+</ul>
+
+<h3>B. Controlled Air Release (Filling Scenario)</h3>
+<ul>
+  <li>Water filling velocity must stay below <strong>0.3 m/s</strong></li>
+  <li><strong>Air Hammer Risk:</strong> Rapid air expulsion causes trailing water to accelerate and slam into the valve seat, generating pressure spikes exceeding 50 bar — often worse than the original transient</li>
+</ul>
+<div class="callout">Specify <strong>Non-Slam (Surge-Suppressing)</strong> air valves for high-head systems and mega-diameter pipelines to dampen final-stage air discharge and prevent pressure transients.</div>
+
+<hr class="article-divider">
+
+<h2>3. Technical Features: Triple Function Combination Valves</h2>
+<p>Strategic infrastructure requires <strong>Triple Function (Combination)</strong> valves with three integrated components:</p>
+<table>
+  <tr><th>Function</th><th>Orifice Type</th><th>Purpose</th></tr>
+  <tr><td>Rapid Air Discharge (Filling)</td><td>Large Orifice (Kinetic)</td><td>Exhaust trapped air during filling</td></tr>
+  <tr><td>Dissolved Air Release (Operation)</td><td>Small Orifice (Automatic)</td><td>Release dissolved air during pressurized flow, maintaining Hazen-Williams C factor</td></tr>
+  <tr><td>Vacuum Protection (Emergency)</td><td>Full Open (Kinetic)</td><td>Admit massive air volumes during pump trips or line breaks</td></tr>
+</table>
+
+<hr class="article-divider">
+
+<h2>4. Professional Verdict</h2>
+<p>Air valve design constitutes a core component of <strong>Surge Analysis (Transient Modeling)</strong>. Using "standard distances" without verifying HGL behavior during pump trips risks expensive forensic investigations after failure. For pipelines longer than 2 km or pump heads exceeding 30 m, air valve placement must be validated through full transient simulation — not just rules of thumb.</p>
+
+<hr class="article-divider">
+<div class="refs">
+  <h2>References</h2>
+  <ol>
+    <li>AWWA M51: Air-Release, Air/Vacuum, and Combination Air Valves</li>
+    <li>EN 1074-4: Performance requirements and verification tests for valves</li>
+    <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>.</li>
+  </ol>
+</div>
+<div class="tags">#HydraulicEngineering #WaterTransmission #PipelineIntegrity #AirValves #WaterHammer #SurgeAnalysis #AWWAM51 #MegaProjects</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

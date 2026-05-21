@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structural Design Reference: Carbon Steel Pipelines with Cement Mortar Lining — Mohamed Abokhatwa</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:400;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px;max-width:800px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .refs li{font-size:14px;color:var(--text-tertiary);line-height:1.8;margin-bottom:4px;}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <span class="tag">Structural Design &middot; Pipeline Engineering &middot; AWWA</span>
+  <h1>Structural Design Reference: Carbon Steel Pipelines with Cement Mortar Lining</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; PMP, PMI-RMP, ENV SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>April 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>11 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="carbon-steel-pipeline-cml.jpg" alt="Carbon Steel Pipeline with Cement Mortar Lining">
+</div>
+
+<div class="article-body">
+<h2>Introduction</h2>
+<p>Large-diameter water transmission mains (&gt;1000 mm) frequently employ <strong>carbon steel</strong> for its tensile strength and flexibility. When combined with <strong>Cement Mortar Lining (CML)</strong>, the pipeline behavior shifts from flexible to semi-rigid. This necessitates comprehensive structural analysis beyond simple pressure calculations — balancing steel elasticity with lining brittleness while accounting for soil-pipe interaction and traffic loads.</p>
+
+<hr class="article-divider">
+
+<h2>1. Engineering Insights &amp; Design Philosophy</h2>
+<h3>The Deflection Paradox</h3>
+<p>Carbon steel can theoretically withstand <strong>5% deflection</strong> without failing, yet CML cracks or delaminates at deflections exceeding <strong>2%</strong>. The lining, therefore, determines serviceability limits rather than the steel itself.</p>
+
+<h3>Soil as a Structural Component</h3>
+<p>Buried pipes depend on soil as a structural element. The <strong>Modulus of Soil Reaction (E&prime;)</strong> provides lateral support preventing pipe flattening — soil functions as integral to structural capacity.</p>
+
+<h3>Vacuum: The Silent Killer</h3>
+<p>Large-diameter pipes face greater failure risk from <strong>internal vacuum</strong> (negative pressure during surge events) than from internal burst pressure alone.</p>
+
+<hr class="article-divider">
+
+<h2>2. Detailed Design Calculation — DN 1600 mm Example</h2>
+
+<h3>Phase I: Handling &amp; Rigidity Check</h3>
+<p>The pipe must maintain its shape during shipping and installation.</p>
+<ul>
+  <li><strong>Rule:</strong> D/t ratio &le; 240</li>
+  <li><strong>Calculation:</strong> 1600 mm / t &le; 240</li>
+  <li><strong>Minimum Thickness Required:</strong> 6.67 mm</li>
+</ul>
+
+<h3>Phase II: Internal Pressure (Hoop Stress)</h3>
+<p>Based on 20 bar total design pressure (2.0 N/mm&sup2;):</p>
+<div class="formula-box">
+  <div class="formula-main">t = (P &times; D) / (2 &times; S &times; F<sub>s</sub>)</div>
+  <div class="formula-sub">P = 2.0 N/mm&sup2; &nbsp;|&nbsp; D = 1600 mm &nbsp;|&nbsp; S = 358 N/mm&sup2; (API 5L X52) &nbsp;|&nbsp; F<sub>s</sub> = 0.5 &nbsp;&rarr;&nbsp; t = <strong>8.94 mm</strong></div>
+</div>
+
+<h3>Phase III: External Loading</h3>
+<p>Total load under a main highway at 3.0 m depth:</p>
+<table>
+  <tr><th>Load Type</th><th>Value</th><th>Unit</th></tr>
+  <tr><td>Dead Load (Soil Weight)</td><td>56.55</td><td>kN/m&sup2;</td></tr>
+  <tr><td>Live Load (AASHTO HS-20 Traffic)</td><td>12.0</td><td>kN/m&sup2;</td></tr>
+  <tr><td>Total Vertical Load (W<sub>v</sub>)</td><td>68.55</td><td>kN/m&sup2;</td></tr>
+</table>
+
+<h3>Phase IV: Deflection Analysis (2% CML Limit)</h3>
+<p>Using the Modified Iowa Equation to preserve lining integrity:</p>
+<div class="formula-box">
+  <div class="formula-main">&Delta;x = (D<sub>L</sub> &times; K &times; W<sub>v</sub> &times; r&sup3;) / (EI + 0.061 E&prime; r&sup3;)</div>
+  <div class="formula-sub">For t = 14 mm &rarr; Resulting Deflection: 13.43 mm (0.84% of diameter) &nbsp;&mdash;&nbsp; <strong>Safe, below 2% limit</strong></div>
+</div>
+
+<h3>Phase V: Buckling Stability (Negative Pressure)</h3>
+<p>Resistance against sudden internal vacuum (&minus;1 bar):</p>
+<div class="formula-box">
+  <div class="formula-main">q<sub>a</sub> = (1/F<sub>s</sub>) &times; [32 &times; R<sub>w</sub> &times; B&prime; &times; E&prime; &times; (EI/D&sup3;)]<sup>0.5</sup></div>
+  <div class="formula-sub">For t = 14 mm (F<sub>s</sub> = 2.0) &rarr; Allowable: 0.25 N/mm&sup2; &gt; Total suction load: 0.168 N/mm&sup2; &nbsp;&mdash;&nbsp; <strong>Safe</strong></div>
+</div>
+
+<hr class="article-divider">
+
+<h2>3. Technical Summary</h2>
+<table>
+  <tr><th>Governing Factor</th><th>Required Thickness</th><th>Constraint</th></tr>
+  <tr><td>Handling</td><td>&gt; 6.67 mm</td><td>D/t Ratio</td></tr>
+  <tr><td>Internal Pressure</td><td>&gt; 8.94 mm</td><td>Hoop Stress</td></tr>
+  <tr><td>Lining Integrity</td><td>&gt; 10.50 mm</td><td>2% Deflection</td></tr>
+  <tr><td>Vacuum Stability</td><td>&gt; 14.00 mm</td><td>Buckling</td></tr>
+</table>
+<div class="callout"><strong>Final Engineering Decision:</strong> Specify 14.0 mm wall thickness — addressing the most restrictive constraint (vacuum buckling) and satisfying all four criteria simultaneously.</div>
+
+<hr class="article-divider">
+<div class="refs">
+  <h2>References</h2>
+  <ol>
+    <li>AWWA M11 (2017): Steel Pipe — A Guide for Design and Installation</li>
+    <li>AWWA C205: Cement-Mortar Protective Lining and Coating</li>
+    <li>AASHTO LRFD: Bridge Design Specifications (Section 12: Buried Structures)</li>
+  </ol>
+</div>
+<div class="tags">#PipelineDesign #CarbonSteel #CML #StructuralDesign #AWWAM11 #WaterInfrastructure #BuriedPipeline</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

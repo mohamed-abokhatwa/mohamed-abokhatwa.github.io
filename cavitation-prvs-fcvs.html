@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Technical Design Guide: Managing Cavitation in PRVs and FCVs — Mohamed Abokhatwa</title>
@@ -27,6 +35,8 @@
     .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
     .refs li{font-size:14px;color:var(--text-tertiary);line-height:1.8;margin-bottom:4px;}
   </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
 <nav class="nav">
@@ -42,6 +52,7 @@
       <span></span><span></span><span></span>
     </button>
   </div>
+
 </nav>
 <script>
   document.getElementById('navToggle').addEventListener('click', function() {
@@ -142,5 +153,45 @@
   </div>
 </footer>
 
+
+
+
+
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon">&#128197;</span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<style>
+.fab-consult {
+  position:fixed; bottom:2rem; right:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(0,113,227,.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#fff; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 8px 32px rgba(0,113,227,.35),0 2px 8px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.1);
+  transform:translateY(0);
+  transition:transform .3s ease,box-shadow .3s ease;
+  animation:float-fab 4s ease-in-out infinite;
+}
+.fab-consult:hover{
+  transform:translateY(-5px);
+  box-shadow:0 16px 40px rgba(0,113,227,.45),0 4px 12px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.15);
+}
+@keyframes float-fab{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+@media(max-width:600px){
+  .fab-text{display:none;}
+  .fab-consult{padding:1rem;border-radius:50%;}
+  .fab-icon{font-size:1.4rem;}
+}
+</style>
 </body>
 </html>

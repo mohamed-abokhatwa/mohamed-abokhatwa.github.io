@@ -204,7 +204,7 @@
     <h2 style="font-size:1.7rem; font-weight:700; margin-bottom:0.5rem; color:#1d1d1f;">Water Engineering Insights</h2>
     <p style="color:#6e6e73; margin-bottom:2rem; font-size:1rem; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
-      <input type="email" name="EMAIL" id="mc-email" placeholder="Your email address" required style="flex:1; min-width:240px; max-width:340px; padding:0.85rem 1.2rem; border-radius:12px; border:1.5px solid rgba(0,113,227,0.2); font-size:0.95rem; outline:none; background:#fff; font-family:inherit;">
+      <input type="email" name="EMAIL" id="mc-email" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:0.85rem 1.2rem; border-radius:12px; border:1.5px solid rgba(0,113,227,0.2); font-size:0.95rem; outline:none; background:#fff; font-family:inherit;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
       <button type="submit" style="padding:0.85rem 1.8rem; background:#0071e3; color:#fff; border:none; border-radius:12px; font-size:0.95rem; font-weight:600; cursor:pointer; white-space:nowrap; font-family:inherit;">Subscribe →</button>
     </form>
@@ -213,20 +213,36 @@
 </section>
 <script>
 function mcSubmit(e) {
-  var email = document.getElementById('mc-email').value;
-  if (!email || !email.includes('@')) {
-    document.getElementById('mc-msg').style.color='#e34000';
-    document.getElementById('mc-msg').textContent='Please enter a valid email address.';
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  // Strong validation
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = '⚠️ Please enter a valid email address (e.g. name@company.com)';
     return false;
   }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
   setTimeout(function() {
-    document.getElementById('mc-newsletter-form').style.display='none';
-    var msg = document.getElementById('mc-msg');
-    msg.style.color='#0071e3';
-    msg.style.fontSize='1.1rem';
-    msg.style.fontWeight='600';
-    msg.textContent='✅ Thank you! Please check your email to confirm your subscription.';
-  }, 800);
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✅ Thank you! Please check your email to confirm your subscription.';
+  }, 900);
   return true;
 }
 </script>

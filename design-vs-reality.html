@@ -171,44 +171,37 @@
 </style>
 
 <!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
 <section style="padding:4rem 2rem; text-align:center; background:rgba(0,113,227,0.04); border-top:1px solid rgba(0,113,227,0.1);">
   <div style="max-width:580px; margin:0 auto;">
     <div style="font-size:2rem; margin-bottom:0.5rem;">📬</div>
     <h2 style="font-size:1.7rem; font-weight:700; margin-bottom:0.5rem; color:#1d1d1f;">Water Engineering Insights</h2>
     <p style="color:#6e6e73; margin-bottom:2rem; font-size:1rem; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
-    <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;" id="mc-form-wrap">
-      <input type="email" id="mc-email" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:0.85rem 1.2rem; border-radius:12px; border:1.5px solid rgba(0,113,227,0.2); font-size:0.95rem; outline:none; background:#fff; font-family:inherit;">
-      <button onclick="mcSubscribe()" style="padding:0.85rem 1.8rem; background:#0071e3; color:#fff; border:none; border-radius:12px; font-size:0.95rem; font-weight:600; cursor:pointer; white-space:nowrap; font-family:inherit;">Subscribe →</button>
-    </div>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" placeholder="Your email address" required style="flex:1; min-width:240px; max-width:340px; padding:0.85rem 1.2rem; border-radius:12px; border:1.5px solid rgba(0,113,227,0.2); font-size:0.95rem; outline:none; background:#fff; font-family:inherit;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" style="padding:0.85rem 1.8rem; background:#0071e3; color:#fff; border:none; border-radius:12px; font-size:0.95rem; font-weight:600; cursor:pointer; white-space:nowrap; font-family:inherit;">Subscribe →</button>
+    </form>
     <div id="mc-msg" style="margin-top:1rem; font-size:0.9rem; color:#aaa;">No spam. Unsubscribe anytime.</div>
   </div>
 </section>
 <script>
-function mcSubscribe() {
+function mcSubmit(e) {
   var email = document.getElementById('mc-email').value;
   if (!email || !email.includes('@')) {
     document.getElementById('mc-msg').style.color='#e34000';
     document.getElementById('mc-msg').textContent='Please enter a valid email address.';
-    return;
+    return false;
   }
-  document.getElementById('mc-msg').style.color='#6e6e73';
-  document.getElementById('mc-msg').textContent='Subscribing...';
-  var url = 'https://abokhatwa.us20.list-manage.com/subscribe/post-json?u=645cde9278168c77168879d6b&id=1891a44d03&f_id=003dc2e1f0&EMAIL=' + encodeURIComponent(email) + '&c=mcCallback';
-  window.mcCallback = function(data) {
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display='none';
     var msg = document.getElementById('mc-msg');
-    if (data.result === 'success') {
-      document.getElementById('mc-form-wrap').style.display='none';
-      msg.style.color='#0071e3';
-      msg.style.fontSize='1.1rem';
-      msg.textContent='✅ Thank you! You are now subscribed.';
-    } else {
-      msg.style.color='#e34000';
-      msg.textContent='⚠️ ' + data.msg.replace(/<[^>]+>/g,'').split('0 -')[1] || 'Something went wrong. Please try again.';
-    }
-  };
-  var s = document.createElement('script');
-  s.src = url;
-  document.body.appendChild(s);
+    msg.style.color='#0071e3';
+    msg.style.fontSize='1.1rem';
+    msg.style.fontWeight='600';
+    msg.textContent='✅ Thank you! Please check your email to confirm your subscription.';
+  }, 800);
+  return true;
 }
 </script>
 <!-- End Newsletter Section -->

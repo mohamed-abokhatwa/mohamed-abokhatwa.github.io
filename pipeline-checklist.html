@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free PDF: 10 Common Mistakes in Pressure Pipeline Design — Mohamed Abokhatwa</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+
+  <!-- SEO & OG -->
+  <meta name="description" content="Download the free PDF guide: 10 Common Mistakes in Pressure Pipeline Design — with charts, Joukowsky equations, surge analysis, and professional engineering solutions.">
+  <meta property="og:title" content="Free PDF: 10 Common Mistakes in Pressure Pipeline Design">
+  <meta property="og:description" content="A professional engineering guide covering transient pressure, air pockets, thrust restraint, surge vessels, and more — with SVG charts and step-by-step corrections.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/pipeline-checklist.html">
+  <meta property="og:image" content="https://abokhatwa.com/profile.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://abokhatwa.com/pipeline-checklist.html">
+
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+  <style>
+    /* ── Hero ── */
+    .lm-hero {
+      padding: 140px 24px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 72px;
+      align-items: center;
+    }
+    .lm-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0071e3;
+      background: rgba(0,113,227,0.08);
+      border: 1px solid rgba(0,113,227,0.15);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+    .lm-eyebrow svg { width:14px; height:14px; fill:currentColor; flex-shrink:0; }
+    .lm-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+    .lm-hero h1 em { font-style: italic; color: var(--text-secondary); }
+    .lm-hero .lead {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+    .lm-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .lm-stat { display: flex; align-items: center; gap: 8px; }
+    .lm-stat-icon { font-size: 18px; }
+    .lm-stat-text { font-size: 14px; color: var(--text-secondary); font-weight: 500; }
+    .lm-stat-text strong { color: var(--text-primary); }
+
+    /* ── PDF Mockup ── */
+    .lm-mockup {
+      position: relative;
+    }
+    .lm-book {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow:
+        0 2px 0 #0060c0,
+        4px 0 0 #e8f0fe,
+        0 24px 80px rgba(0,0,0,0.18),
+        0 8px 24px rgba(0,0,0,0.10);
+      padding: 36px 32px 32px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,113,227,0.12);
+    }
+    .lm-book-accent {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #0071e3, #5b9cf6);
+    }
+    .lm-book-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0071e3;
+      background: rgba(0,113,227,0.08);
+      border: 1px solid rgba(0,113,227,0.15);
+      padding: 4px 10px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+    .lm-book-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1d1d1f;
+      line-height: 1.3;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+    .lm-book-sub {
+      font-size: 12px;
+      color: #6e6e73;
+      margin-bottom: 24px;
+    }
+    .lm-pipeline-svg {
+      width: 100%;
+      height: 130px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f0f4ff;
+    }
+    .lm-book-toc {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .lm-book-toc li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      color: #374151;
+      padding: 5px 0;
+      border-bottom: 1px solid #f3f4f6;
+      line-height: 1.4;
+    }
+    .lm-book-toc li:last-child { border-bottom: none; }
+    .lm-book-toc li span.num {
+      font-size: 10px;
+      font-weight: 700;
+      color: #0071e3;
+      background: #eff6ff;
+      border-radius: 4px;
+      padding: 2px 5px;
+      flex-shrink: 0;
+      min-width: 20px;
+      text-align: center;
+    }
+    .lm-book-footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .lm-book-author { font-size: 11px; font-weight: 600; color: #374151; }
+    .lm-book-author span { color: #0071e3; }
+    .lm-book-pages { font-size: 10px; color: #9ca3af; }
+    .lm-free-badge {
+      position: absolute;
+      top: -12px; right: 20px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 6px 14px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(34,197,94,0.4);
+      text-transform: uppercase;
+    }
+
+    /* ── Mistakes List ── */
+    .lm-inside {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 56px 48px;
+      max-width: 1100px;
+      margin: 0 auto 80px;
+    }
+    .lm-section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0071e3;
+      margin-bottom: 10px;
+    }
+    .lm-inside h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 40px;
+      line-height: 1.15;
+    }
+    .mistakes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .mistake-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .mistake-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+    .mistake-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(0,113,227,0.08);
+      color: #0071e3;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .mistake-card.critical .mistake-num {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+    .mistake-card.high .mistake-num {
+      background: #fef3c7;
+      color: #d97706;
+    }
+    .mistake-card-body h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+    }
+    .mistake-card-body p {
+      font-size: 12.5px;
+      color: var(--text-tertiary);
+      line-height: 1.5;
+    }
+    .mistake-severity {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+    .sev-critical { background: #fee2e2; color: #dc2626; }
+    .sev-high     { background: #fef3c7; color: #d97706; }
+
+    /* ── Email Gate ── */
+    .lm-gate {
+      max-width: 640px;
+      margin: 0 auto 100px;
+      text-align: center;
+      padding: 0 24px;
+    }
+    .lm-gate-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px 44px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .lm-gate-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #5b9cf6, #0040b8);
+    }
+    .lm-gate-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(0,113,227,0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 28px;
+    }
+    .lm-gate-card h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+    .lm-gate-card p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+    .lm-gate-form {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .lm-gate-form input[type="email"] {
+      flex: 1;
+      min-width: 240px;
+      max-width: 320px;
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px;
+      border: 1.5px solid rgba(0,113,227,0.2);
+      font-size: 0.95rem;
+      outline: none;
+      background: #f9fafb;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .lm-gate-form input[type="email"]:focus {
+      border-color: #0071e3;
+      background: #fff;
+    }
+    .lm-gate-form button {
+      padding: 0.9rem 2rem;
+      background: linear-gradient(135deg, #5b9cf6 0%, #0040b8 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: 0 4px 15px rgba(0,113,227,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    .lm-gate-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,113,227,0.5);
+    }
+    .lm-gate-privacy {
+      font-size: 12px;
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .lm-gate-privacy svg { width:12px; height:12px; fill:#9ca3af; flex-shrink:0; }
+
+    /* ── Download Revealed ── */
+    #lm-download-section {
+      display: none;
+      text-align: center;
+      padding: 12px 0;
+    }
+    #lm-download-section .success-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    #lm-download-section h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1d1d1f;
+      margin-bottom: 8px;
+    }
+    #lm-download-section p {
+      font-size: 14px;
+      color: #6e6e73;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .lm-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 1rem 2.2rem;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(34,197,94,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+    .lm-download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(34,197,94,0.5);
+    }
+    .lm-download-btn svg { width:20px; height:20px; fill:#fff; }
+
+    /* ── Trust bar ── */
+    .lm-trust {
+      max-width: 1100px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .lm-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .lm-trust-item svg { width:18px; height:18px; fill: #0071e3; flex-shrink:0; }
+    .lm-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--border);
+    }
+
+    @media(max-width:900px) {
+      .lm-hero {
+        grid-template-columns: 1fr;
+        padding: 120px 20px 60px;
+        gap: 48px;
+      }
+      .lm-mockup { order: -1; }
+      .lm-inside { padding: 40px 24px; }
+      .mistakes-grid { grid-template-columns: 1fr; }
+      .lm-gate-card { padding: 36px 24px; }
+      .lm-trust { gap: 20px; }
+      .lm-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="lm-hero">
+  <!-- Left: Copy -->
+  <div>
+    <div class="lm-eyebrow">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Free Engineering Resource
+    </div>
+    <h1>10 Common Mistakes<br>in <em>Pressure Pipeline</em><br>Design</h1>
+    <p class="lead">A professional technical guide covering the most critical — and costly — errors engineers make in water transmission pipeline design. With charts, equations, and step-by-step corrections.</p>
+    <div class="lm-stats">
+      <div class="lm-stat">
+        <span class="lm-stat-icon">📄</span>
+        <span class="lm-stat-text"><strong>11 pages</strong> — Cover + 10 Mistakes</span>
+      </div>
+      <div class="lm-stat">
+        <span class="lm-stat-icon">📊</span>
+        <span class="lm-stat-text"><strong>10 SVG charts</strong> — one per mistake</span>
+      </div>
+      <div class="lm-stat">
+        <span class="lm-stat-icon">🎯</span>
+        <span class="lm-stat-text"><strong>100% free</strong> — instant download</span>
+      </div>
+    </div>
+    <a href="#get-pdf" style="display:inline-flex;align-items:center;gap:10px;padding:1rem 2rem;background:linear-gradient(135deg,#5b9cf6 0%,#0040b8 100%);color:#fff;border-radius:14px;font-size:1rem;font-weight:600;text-decoration:none;box-shadow:0 6px 20px rgba(0,113,227,0.35);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(0,113,227,0.45)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(0,113,227,0.35)'">
+      Download Free PDF
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </div>
+
+  <!-- Right: PDF Mockup -->
+  <div class="lm-mockup">
+    <div class="lm-free-badge">✓ Free</div>
+    <div class="lm-book">
+      <div class="lm-book-accent"></div>
+      <div class="lm-book-badge">Engineering Guide · 2025</div>
+      <div class="lm-book-title">10 Common Mistakes in<br>Pressure Pipeline Design</div>
+      <div class="lm-book-sub">Mohamed Abokhatwa · abokhatwa.com</div>
+
+      <!-- Mini pipeline SVG illustration -->
+      <div class="lm-pipeline-svg">
+        <svg viewBox="0 0 356 130" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <rect width="356" height="130" fill="#f0f4ff"/>
+          <!-- Pipeline path -->
+          <path d="M20,80 L70,80 L85,55 L140,55 L155,80 L220,80 L220,45 L260,45 L260,80 L330,80" fill="none" stroke="#bfdbfe" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20,80 L70,80 L85,55 L140,55 L155,80 L220,80 L220,45 L260,45 L260,80 L330,80" fill="none" stroke="#0071e3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Pump symbol -->
+          <circle cx="40" cy="80" r="12" fill="#0071e3" opacity="0.9"/>
+          <text x="40" y="84" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">P</text>
+          <!-- High point alert -->
+          <circle cx="112" cy="55" r="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+          <text x="112" y="59" text-anchor="middle" font-size="10" fill="#d97706" font-weight="700">!</text>
+          <!-- Valve symbols -->
+          <rect x="195" y="72" width="16" height="16" rx="3" fill="#fff" stroke="#0071e3" stroke-width="1.5"/>
+          <text x="203" y="83" text-anchor="middle" font-size="9" fill="#0071e3" font-weight="700">V</text>
+          <!-- Water flow arrows -->
+          <path d="M162,77 L175,77" stroke="#93c5fd" stroke-width="2" marker-end="url(#arr)"/>
+          <defs>
+            <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#93c5fd"/>
+            </marker>
+          </defs>
+          <!-- Labels -->
+          <text x="20" y="110" font-size="9" fill="#6b7280">Pump Station</text>
+          <text x="90" y="48" font-size="9" fill="#d97706">High Point</text>
+          <text x="240" y="110" font-size="9" fill="#6b7280">Distribution</text>
+          <!-- Transient wave annotation -->
+          <path d="M270,80 C280,65 290,95 300,80 C310,65 320,80 330,80" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.7"/>
+          <text x="285" y="60" font-size="8" fill="#dc2626" opacity="0.8">Surge</text>
+        </svg>
+      </div>
+
+      <ul class="lm-book-toc">
+        <li><span class="num">1</span> Column Separation at High Points</li>
+        <li><span class="num">2</span> Oversized or Undersized Pipe Diameter</li>
+        <li><span class="num">3</span> Air Accumulation at High Points</li>
+        <li><span class="num">4</span> Transient Pressure at Startup</li>
+        <li><span class="num">5</span> Thermal Expansion in Long Pipelines</li>
+        <li><span class="num">6</span> Ignoring Network Interaction Effects</li>
+        <li><span class="num">7</span> Poor Isolation Valve Placement</li>
+        <li><span class="num">8</span> Thrust Restraint at Bends & Fittings</li>
+        <li><span class="num">9</span> Surge Vessel Sizing & Pre-charge</li>
+        <li><span class="num">10</span> Hydrostatic Pressure Test Failures</li>
+      </ul>
+      <div class="lm-book-footer">
+        <div class="lm-book-author"><span>Mohamed Abokhatwa</span> · Water Infrastructure</div>
+        <div class="lm-book-pages">11 Pages · PDF</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TRUST BAR ═══════════════════ -->
+<div class="lm-trust">
+  <div class="lm-trust-item">
+    <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+    Based on 20+ years field experience
+  </div>
+  <div class="lm-divider"></div>
+  <div class="lm-trust-item">
+    <svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+    700+ km water transmission networks
+  </div>
+  <div class="lm-divider"></div>
+  <div class="lm-trust-item">
+    <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+    Saudi Arabia · KSA Projects
+  </div>
+  <div class="lm-divider"></div>
+  <div class="lm-trust-item">
+    <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    Instant download · No waiting
+  </div>
+</div>
+
+<!-- ═══════════════════ WHAT'S INSIDE ═══════════════════ -->
+<div class="lm-inside" style="padding: 0 24px; max-width:1100px; background:none; border:none;">
+  <div style="max-width:1100px; margin:0 auto; background:var(--glass); border:1px solid var(--glass-border); border-radius:20px; padding:56px 48px;">
+    <div class="lm-section-label">What's Inside</div>
+    <h2>10 Detailed Mistakes —<br>Each with Charts & Solutions</h2>
+    <div class="mistakes-grid">
+
+      <div class="mistake-card critical">
+        <div class="mistake-num">1</div>
+        <div class="mistake-card-body">
+          <h3>Column Separation at High Points</h3>
+          <p>Ignoring sub-atmospheric pressure zones that cause pipe collapse and destructive rejoinder surges.</p>
+          <span class="mistake-severity sev-critical">Critical</span>
+        </div>
+      </div>
+
+      <div class="mistake-card">
+        <div class="mistake-num">2</div>
+        <div class="mistake-card-body">
+          <h3>Oversized or Undersized Pipe Diameter</h3>
+          <p>Using DN200–DN600 without proper head-loss analysis, leading to excessive energy costs or low pressure.</p>
+          <span class="mistake-severity sev-high">High</span>
+        </div>
+      </div>
+
+      <div class="mistake-card critical">
+        <div class="mistake-num">3</div>
+        <div class="mistake-card-body">
+          <h3>Air Accumulation at High Points</h3>
+          <p>Trapped air pockets that block flow, cause pressure oscillations, and damage pumps and valves.</p>
+          <span class="mistake-severity sev-critical">Critical</span>
+        </div>
+      </div>
+
+      <div class="mistake-card critical">
+        <div class="mistake-num">4</div>
+        <div class="mistake-card-body">
+          <h3>Transient Pressure at Startup</h3>
+          <p>Designing for static pressure only — missing Joukowsky spikes up to 2× design pressure at pump start.</p>
+          <span class="mistake-severity sev-critical">Critical</span>
+        </div>
+      </div>
+
+      <div class="mistake-card">
+        <div class="mistake-num">5</div>
+        <div class="mistake-card-body">
+          <h3>Thermal Expansion in Long Pipelines</h3>
+          <p>Neglecting ΔL = α·L·ΔT in steel and HDPE pipelines, causing buckling, joint failure, and anchor overload.</p>
+          <span class="mistake-severity sev-high">High</span>
+        </div>
+      </div>
+
+      <div class="mistake-card">
+        <div class="mistake-num">6</div>
+        <div class="mistake-card-body">
+          <h3>Ignoring Network Interaction Effects</h3>
+          <p>Designing with manual steady-state assumptions instead of full hydraulic network simulation.</p>
+          <span class="mistake-severity sev-high">High</span>
+        </div>
+      </div>
+
+      <div class="mistake-card critical">
+        <div class="mistake-num">7</div>
+        <div class="mistake-card-body">
+          <h3>Poor Isolation Valve Placement</h3>
+          <p>Misplaced or insufficient valves that make maintenance shutdowns impossible without full system drain.</p>
+          <span class="mistake-severity sev-critical">Critical</span>
+        </div>
+      </div>
+
+      <div class="mistake-card critical">
+        <div class="mistake-num">8</div>
+        <div class="mistake-card-body">
+          <h3>Thrust Restraint at Bends & Fittings</h3>
+          <p>Underestimating F = P·A at DN400–DN600 bends, causing joint separation and catastrophic failure.</p>
+          <span class="mistake-severity sev-critical">Critical</span>
+        </div>
+      </div>
+
+      <div class="mistake-card critical">
+        <div class="mistake-num">9</div>
+        <div class="mistake-card-body">
+          <h3>Surge Vessel Sizing & Pre-charge Pressure</h3>
+          <p>Wrong pre-charge pressure or undersized vessel volume leading to surge protection failure on power loss.</p>
+          <span class="mistake-severity sev-critical">Critical</span>
+        </div>
+      </div>
+
+      <div class="mistake-card">
+        <div class="mistake-num">10</div>
+        <div class="mistake-card-body">
+          <h3>Hydrostatic Pressure Test Protocol Errors</h3>
+          <p>Testing at wrong pressures or misreading temperature-corrected pressure drops as leakage failures.</p>
+          <span class="mistake-severity sev-high">High</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ EMAIL GATE ═══════════════════ -->
+<div class="lm-gate" id="get-pdf">
+  <div class="lm-gate-card">
+
+    <!-- Form State -->
+    <div id="lm-form-section">
+      <div class="lm-gate-icon">📥</div>
+      <h2>Get the Free PDF</h2>
+      <p>Enter your email and we'll confirm your access instantly. You'll also receive expert water engineering articles — unsubscribe anytime.</p>
+
+      <iframe name="mc_lm_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+      <form id="lm-gate-form"
+            action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0"
+            method="post"
+            target="mc_lm_hidden"
+            onsubmit="return lmSubmit(event)"
+            class="lm-gate-form">
+        <input type="email" name="EMAIL" id="lm-email" placeholder="name@domain.com" autocomplete="email" required>
+        <div aria-hidden="true" style="position:absolute;left:-5000px;">
+          <input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value="">
+        </div>
+        <button type="submit">
+          Get Free PDF →
+        </button>
+      </form>
+      <div id="lm-msg" class="lm-gate-privacy">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        No spam. Unsubscribe anytime. Your privacy is protected.
+      </div>
+    </div>
+
+    <!-- Download Revealed State -->
+    <div id="lm-download-section">
+      <div class="success-icon">🎉</div>
+      <h3>Your PDF is Ready!</h3>
+      <p>Thank you! Check your inbox to confirm your subscription.<br>Click below to download the guide now.</p>
+      <a href="pipeline-checklist.pdf" download="10-Mistakes-Pressure-Pipeline-Design.pdf" class="lm-download-btn">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        Download PDF — Free
+      </a>
+      <div style="margin-top:20px; font-size:13px; color:#9ca3af;">
+        Having trouble? <a href="pipeline-checklist.pdf" target="_blank" style="color:#0071e3;">Open in browser</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function lmSubmit(e) {
+  var email = document.getElementById('lm-email').value.trim();
+  var msg = document.getElementById('lm-msg');
+  var input = document.getElementById('lm-email');
+
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.innerHTML = '⚠️ Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.innerHTML = 'Confirming…';
+
+  // After 900ms, reveal download
+  setTimeout(function() {
+    document.getElementById('lm-form-section').style.display = 'none';
+    document.getElementById('lm-download-section').style.display = 'block';
+
+    // Track in GA
+    if (window.gtag) {
+      gtag('event', 'lead_magnet_download', {
+        'event_category': 'engagement',
+        'event_label': 'pipeline_checklist_pdf'
+      });
+    }
+  }, 900);
+
+  return true;
+}
+</script>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon">&#128197;</span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<style>
+/* === Unified FAB Buttons === */
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  animation:float-fab 4s ease-in-out infinite;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@keyframes float-fab{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+</style>
+</body>
+</html>

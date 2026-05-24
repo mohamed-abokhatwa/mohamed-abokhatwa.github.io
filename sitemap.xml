@@ -1,20 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ═══════════════════════════════════════
+       BILINGUAL PAGES — EN ↔ AR
+  ═══════════════════════════════════════ -->
+
+  <!-- Homepage EN -->
   <url>
     <loc>https://abokhatwa.com/</loc>
-    <lastmod>2026-05-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/index-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/"/>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>1.0</priority>
   </url>
+
+  <!-- Homepage AR -->
+  <url>
+    <loc>https://abokhatwa.com/index-ar.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/index-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/"/>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- About EN -->
   <url>
     <loc>https://abokhatwa.com/about.html</loc>
-    <lastmod>2026-05-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/about-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/about.html"/>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About AR -->
+  <url>
+    <loc>https://abokhatwa.com/about-ar.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/about-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/about.html"/>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Services EN -->
+  <url>
+    <loc>https://abokhatwa.com/services.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/services.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/services-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/services.html"/>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Services AR -->
+  <url>
+    <loc>https://abokhatwa.com/services-ar.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/services-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/services.html"/>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════════
+       LEAD MAGNET
+  ═══════════════════════════════════════ -->
+
+  <url>
+    <loc>https://abokhatwa.com/pipeline-checklist.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════════
+       HYDRAULIC ENGINEERING ARTICLES (Original 27)
+  ═══════════════════════════════════════ -->
+
+  <url>
+    <loc>https://abokhatwa.com/water-hammer-control-valve.html</loc>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://abokhatwa.com/services.html</loc>
-    <lastmod>2026-05-21</lastmod>
+    <loc>https://abokhatwa.com/combination-air-valves.html</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/surge-vessel.html</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/hydraulic-mistakes.html</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/pre-charge-pressure.html</loc>
+    <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -150,34 +249,64 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- ═══════════════════════════════════════
+       SWRO / DESALINATION ARTICLES (New 9)
+  ═══════════════════════════════════════ -->
+
   <url>
-    <loc>https://abokhatwa.com/water-hammer-control-valve.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <loc>https://abokhatwa.com/daf-swro-pretreatment.html</loc>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://abokhatwa.com/combination-air-valves.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <loc>https://abokhatwa.com/mega-swro-engineering.html</loc>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://abokhatwa.com/surge-vessel.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <loc>https://abokhatwa.com/swro-pretreatment-dilemma.html</loc>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://abokhatwa.com/hydraulic-mistakes.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <loc>https://abokhatwa.com/ro-overdesign-paradox.html</loc>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://abokhatwa.com/pre-charge-pressure.html</loc>
-    <lastmod>2026-05-23</lastmod>
+    <loc>https://abokhatwa.com/chlorine-swro-disinfection.html</loc>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://abokhatwa.com/offshore-intake-design.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/ph-management-swro.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/onshore-intake-design.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/px-energy-recovery.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

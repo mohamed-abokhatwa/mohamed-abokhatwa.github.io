@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محمد أبوخطوة — هندسة المياه</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .nav-inner { direction: rtl; }
+    .lang-switch {
+      font-size: 13px; font-weight: 500; color: var(--accent);
+      text-decoration: none; border: 1px solid rgba(0,113,227,0.2);
+      padding: 4px 12px; border-radius: 20px; transition: background 0.2s;
+    }
+    .lang-switch:hover { background: rgba(0,113,227,0.06); }
+
+    /* Hero */
+    .hero {
+      padding: 160px 24px 120px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+      text-align: right;
+    }
+    .hero-eyebrow {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+      color: var(--accent); margin-bottom: 24px; display: block;
+    }
+    .hero h1 {
+      font-family: 'Cairo', sans-serif;
+      font-size: clamp(44px, 7vw, 76px);
+      font-weight: 700; line-height: 1.15;
+      margin-bottom: 28px; color: var(--text-primary);
+    }
+    .hero h1 em { font-style: normal; color: var(--text-secondary); font-weight: 300; }
+    .hero-desc {
+      font-size: 19px; color: var(--text-secondary);
+      line-height: 1.85; max-width: 560px;
+      margin-bottom: 40px; margin-right: 0;
+    }
+    .hero-certs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 48px; justify-content: flex-end; }
+    .cert {
+      font-size: 12px; font-weight: 500; padding: 6px 14px;
+      border-radius: 980px; background: var(--glass);
+      backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border); box-shadow: var(--shadow-glass);
+      color: var(--text-secondary); font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Articles */
+    .articles-section {
+      padding: 100px 24px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      text-align: right;
+    }
+    .section-eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--text-tertiary); margin-bottom: 16px; display: block;
+    }
+    .section-title {
+      font-family: 'Cairo', sans-serif;
+      font-size: clamp(32px, 4vw, 48px); font-weight: 700;
+      color: var(--text-primary); margin-bottom: 60px;
+    }
+    .articles-grid { display: grid; gap: 10px; }
+
+    /* Article Card — RTL */
+    .article-card {
+      background: var(--glass); backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur); border: 1px solid var(--glass-border);
+      border-radius: var(--radius); box-shadow: var(--shadow-glass);
+      padding: 40px; text-decoration: none;
+      display: flex; align-items: center; gap: 36px;
+      flex-direction: row-reverse;
+      transition: var(--transition);
+    }
+    .article-card:hover {
+      background: var(--glass-hover);
+      box-shadow: var(--shadow-glass-hover);
+      transform: translateY(-2px);
+    }
+    .card-body { flex: 1; min-width: 0; text-align: right; }
+    .article-card-tag {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      color: var(--text-tertiary); margin-bottom: 14px; display: block;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .article-card-title {
+      font-size: 20px; font-weight: 700; color: var(--text-primary);
+      line-height: 1.35; margin-bottom: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    }
+    .article-card-excerpt {
+      font-size: 14px; color: var(--text-secondary);
+      line-height: 1.7; max-width: 600px; margin-bottom: 18px;
+    }
+    .article-card-meta {
+      font-size: 13px; color: var(--text-tertiary);
+      display: flex; align-items: center; gap: 16px;
+      flex-direction: row-reverse; justify-content: flex-end;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .article-card-arrow {
+      margin-right: auto; margin-left: 0;
+      font-size: 18px; color: var(--text-tertiary);
+      transition: var(--transition); flex-shrink: 0;
+    }
+    .article-card:hover .article-card-arrow { color: var(--accent); transform: translateX(-4px); }
+    .card-thumb {
+      width: 160px; height: 100px; flex-shrink: 0;
+      border-radius: 10px; overflow: hidden; position: relative;
+    }
+    .card-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: grayscale(100%); opacity: 0.88;
+      transition: filter 0.45s ease, opacity 0.45s ease;
+    }
+    .card-thumb::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(0,113,227,0.18); pointer-events: none;
+      transition: opacity 0.45s ease;
+    }
+    .article-card:hover .card-thumb img { filter: grayscale(0%); opacity: 1; }
+    .article-card:hover .card-thumb::after { opacity: 0; }
+
+    /* Hidden articles */
+    .hidden-article { display: none !important; }
+    .hidden-article.visible { display: flex !important; animation: articleFadeIn 0.4s ease forwards; }
+    @keyframes articleFadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+    /* Stats */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 10px; margin-top: 80px;
+    }
+    .stat {
+      background: var(--glass); backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur); border: 1px solid var(--glass-border);
+      border-radius: var(--radius); box-shadow: var(--shadow-glass);
+      padding: 48px 40px; text-align: center; transition: var(--transition);
+    }
+    .stat:hover { background: var(--glass-hover); box-shadow: var(--shadow-glass-hover); }
+    .stat-num {
+      font-family: var(--font-display); font-size: 56px; font-weight: 400;
+      color: var(--text-primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px;
+    }
+    .stat-label { font-size: 14px; color: var(--text-tertiary); }
+
+    @media(max-width:768px) {
+      .stats-row { grid-template-columns: 1fr; }
+      .card-thumb { display: none; }
+      .article-card { padding: 32px 24px; gap: 0; }
+      .hero { padding: 120px 20px 80px; }
+      .articles-section { padding: 60px 20px; }
+      .section-title { margin-bottom: 32px; }
+      .article-card-arrow { display: none; }
+      .hero-certs { justify-content: flex-start; }
+    }
+  </style>
+
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="محمد أبوخطوة — مدير هندسي متخصص في البنية التحتية للمياه بخبرة 22 عاماً في شبكات النقل والمحطات الكبرى في المملكة العربية السعودية.">
+  <meta property="og:title" content="محمد أبوخطوة | هندسة المياه والبنية التحتية">
+  <meta property="og:description" content="مقالات تقنية ورؤى هندسية في هيدروليكا المياه وتحليل المطرقة المائية وتصميم خطوط الأنابيب.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/index-ar.html">
+  <meta property="og:image" content="https://abokhatwa.com/profile.jpg">
+  <link rel="canonical" href="https://abokhatwa.com/index-ar.html">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index-ar.html" class="nav-logo" style="font-family:'Cairo',sans-serif;">محمد أبوخطوة</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index-ar.html" class="active">المقالات</a></li>
+      <li><a href="services-ar.html">الخدمات</a></li>
+      <li><a href="about-ar.html">نبذة</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index.html" class="lang-switch">English</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navToggle" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-eyebrow">هندسة المياه والبنية التحتية</span>
+  <h1>رؤى تقنية.<br><em>من الميدان.</em></h1>
+  <p class="hero-desc">أكثر من 22 عاماً في تصميم وإدارة مشاريع نقل المياه والمعالجة والبنية التحتية الكبرى في المملكة العربية السعودية.</p>
+  <div class="hero-certs">
+    <span class="cert">MSc Project Management</span>
+    <span class="cert">PMP</span>
+    <span class="cert">PMI-RMP</span>
+    <span class="cert">ENV SP</span>
+    <span class="cert">OSHA 30H</span>
+    <span class="cert">Surge Analysis</span>
+    <span class="cert">BIM Management</span>
+  </div>
+</div>
+
+<!-- ARTICLES -->
+<div class="articles-section">
+  <span class="section-eyebrow">المقالات المنشورة</span>
+  <h2 class="section-title">رؤى هندسية</h2>
+
+  <div class="articles-grid">
+
+    <a href="water-hammer-control-valve.html" class="article-card">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis · Water Hammer · Bentley HAMMER</span>
+        <div class="article-card-title">تأثير زمن إغلاق صمام التحكم على شدة المطرقة المائية</div>
+        <p class="article-card-excerpt">الإطار الرياضي الكامل الذي يحكم علاقة ضغط الموجة بزمن الإغلاق — من معادلة جوكوفسكي إلى الوقت الحرج Tc، مع ثلاثة حاسبات تفاعلية ونموذج عددي من 8 سيناريوهات.</p>
+        <div class="article-card-meta">
+          <span>مايو 2026</span><span>15 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="water-hammer-control-valve.jpg" alt="Water Hammer Control Valve"></div>
+    </a>
+
+    <a href="combination-air-valves.html" class="article-card">
+      <div class="card-body">
+        <span class="article-card-tag">Transmission Pipeline Design · Air Management</span>
+        <div class="article-card-title">معايير تصميم صمامات الهواء المركبة في خطوط النقل الطويلة</div>
+        <p class="article-card-excerpt">منهجية منظمة لاختيار وتحديد أحجام ومواقع صمامات الهواء المركبة في خطوط النقل الطويلة — مع مثال تطبيقي على خط DN 800 مم.</p>
+        <div class="article-card-meta">
+          <span>مايو 2026</span><span>12 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="combination-air-valves.jpg" alt="Combination Air Valves"></div>
+    </a>
+
+    <a href="surge-vessel.html" class="article-card">
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis · Hydraulic Design</span>
+        <div class="article-card-title">تحديد حجم خزان الحماية الهيدروهوائي في خطوط نقل المياه</div>
+        <p class="article-card-excerpt">نهج المهندس التصميمي لتحديد حجم خزان الحماية — من مدخلات النموذج إلى مخرجات محاكاة HAMMER، مع أمثلة عددية وتحليل حساسية.</p>
+        <div class="article-card-meta">
+          <span>مايو 2026</span><span>10 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="surge-vessel.jpg" alt="Surge Vessel"></div>
+    </a>
+
+    <a href="hydraulic-mistakes.html" class="article-card">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Modeling · Pipeline Design</span>
+        <div class="article-card-title">الأخطاء الشائعة في النمذجة الهيدروليكية لشبكات نقل المياه</div>
+        <p class="article-card-excerpt">ست أخطاء متكررة وحرجة في النمذجة الهيدروليكية — من تجاهل تحليل المطرقة المائية إلى تحديد الحماية بدون محاكاة. منظور عملي من مشاريع تجاوزت 700 كم.</p>
+        <div class="article-card-meta">
+          <span>مايو 2026</span><span>8 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="hydraulic-mistakes.jpg" alt="Hydraulic Mistakes"></div>
+    </a>
+
+    <a href="pre-charge-pressure.html" class="article-card">
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis · Surge Vessel Design</span>
+        <div class="article-card-title">ضغط الشحن المسبق لخزان الحماية — كيف يغير رقم واحد كل شيء</div>
+        <p class="article-card-excerpt">المعامل الأكثر حساسية في تصميم خزان الحماية — وأكثرها خطأً. تحليل عددي يُظهر كيف أن خطأ 11% في P₀ يتطلب خزاناً أكبر بنسبة 46%.</p>
+        <div class="article-card-meta">
+          <span>مايو 2026</span><span>9 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="pre-charge-pressure.jpg" alt="Pre-Charge Pressure"></div>
+    </a>
+
+    <a href="above-ground-pipeline-design.html" class="article-card">
+      <div class="card-body">
+        <span class="article-card-tag">Structural Design · Pipeline Engineering · ASME</span>
+        <div class="article-card-title">دليل هندسي: التصميم الإنشائي لخطوط المياه فوق الأرض</div>
+        <p class="article-card-excerpt">خطوط الأنابيب فوق الأرض عبارة عن عوارض إنشائية — منهجية منظمة لحساب الامتداد الأقصى المسموح به وإدارة التمدد الحراري وتصميم الحمولات الريحية.</p>
+        <div class="article-card-meta">
+          <span>أبريل 2026</span><span>12 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="above-ground-pipeline-design.jpg" alt="Above Ground Pipeline Design"></div>
+    </a>
+
+    <!-- Hidden Articles 7-27 -->
+    <a href="control-valve-transients-hammer.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis · Bentley HAMMER · Valve Control</span>
+        <div class="article-card-title">إتقان تحليل المطرقة المائية لصمامات التحكم في HAMMER: FCV مقابل PRV</div>
+                <p class="article-card-excerpt">دليل عملي للتمييز بين FCV وPRV في محاكاة HAMMER — متى تستخدم كل منهما وكيف تتحكم في الضغطات العابرة لحماية الشبكة.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>10 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="control-valve-transients-hammer.jpg" alt="Control Valve Transients"></div>
+    </a>
+
+    <a href="boundary-conditions-reservoir-tank.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis · Bentley HAMMER · Modelling</span>
+        <div class="article-card-title">الشروط الحدية في HAMMER: الفرق بين Reservoir و Tank</div>
+                <p class="article-card-excerpt">الفرق الجوهري بين Reservoir وTank في HAMMER وتأثير كل منهما على نتائج محاكاة المطرقة المائية — خطأ شائع يُفسد التحليل بالكامل.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>8 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="boundary-conditions-reservoir-tank.jpg" alt="Boundary Conditions"></div>
+    </a>
+
+    <a href="carbon-steel-pipeline-cml.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Structural Design · Pipeline Engineering · AWWA M11</span>
+        <div class="article-card-title">مرجع التصميم الإنشائي: خطوط الأنابيب الفولاذية بالبطانة الأسمنتية (CML)</div>
+                <p class="article-card-excerpt">مرجع تصميمي شامل لخطوط الأنابيب الفولاذية مع البطانة الأسمنتية — سُمك الجدار ودرجات الفولاذ وحسابات الضغط وفق AWWA M11.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>11 دقيقة</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="carbon-steel-pipeline-cml.jpg" alt="Carbon Steel Pipeline"></div>
+    </a>
+
+    <a href="npsh-water-infrastructure.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Design · Hydraulic Engineering · NPSH</span>
+        <div class="article-card-title">دليل تقني: إتقان حساب NPSH في منظومات المياه</div>
+                <p class="article-card-excerpt">حساب NPSH المتاح والمطلوب في منظومات ضخ المياه — الأخطاء الشائعة في التصميم وكيف يؤدي تجاهله إلى تآكل المضخات وانهيار الكفاءة.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>9 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="npsh-water-infrastructure.jpg" alt="NPSH"></div>
+    </a>
+
+    <a href="transient-analysis-scada.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">SCADA · Digital Twin · Surge Analysis</span>
+        <div class="article-card-title">ما وراء التصميم الثابت: دمج تحليل المطرقة المائية مع SCADA في الشبكات الذكية</div>
+                <p class="article-card-excerpt">كيف يُحسّن دمج نتائج تحليل المطرقة المائية مع أنظمة SCADA قرارات التشغيل ويحوّل الشبكة من نظام تقليدي إلى منظومة ذكية استباقية.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>8 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="transient-analysis-scada.jpg" alt="SCADA"></div>
+    </a>
+
+    <a href="cavitation-prvs-fcvs.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Design · Cavitation · Valve Engineering</span>
+        <div class="article-card-title">دليل تقني: إدارة ظاهرة التكهف في صمامات PRV و FCV</div>
+                <p class="article-card-excerpt">التكهف في صمامات PRV وFCV — كيف يحدث وكيف تكشفه في محاكاة HAMMER، وأساليب التصميم التي تحدّ منه قبل أن يُلحق الضرر.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>10 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="cavitation-prvs-fcvs.jpg" alt="Cavitation"></div>
+    </a>
+
+    <a href="wet-well-vortex-design.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Station Design · Wet Well · ANSI/HI 9.8</span>
+        <div class="article-card-title">القاتل الصامت: تشكّل الدوامات والاضطراب الهيدروليكي في تصميم بئر السحب</div>
+                <p class="article-card-excerpt">الدوامات في بئر السحب تُسبب اهتزازات وتآكلاً وانخفاضاً في الكفاءة — معايير ANSI/HI 9.8 وكيف تصمم بئراً هيدروليكياً آمناً.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>9 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="wet-well-vortex-design.jpg" alt="Wet Well Vortex"></div>
+    </a>
+
+    <a href="vfd-myth-hydraulic-design.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering · Energy Efficiency · VFD</span>
+        <div class="article-card-title">أسطورة VFD: لماذا لا تُصلح محركات التردد المتغير ضعف التصميم الهيدروليكي؟</div>
+                <p class="article-card-excerpt">VFD ليست حلاً سحرياً — حالات يكون فيها محرك التردد المتغير مضيعة للمال وكيف تُقيّم جدواه قبل الإدراج في التصميم.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>7 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="vfd-myth-hydraulic-design.jpg" alt="VFD Myth"></div>
+    </a>
+
+    <a href="air-valves-pipeline-safety.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Pipeline Safety · Air Valve Design · AWWA M51</span>
+        <div class="article-card-title">صمامات الهواء: مجرد ملحقات أم درع الحماية الأول لخط الأنابيب؟</div>
+                <p class="article-card-excerpt">تحليل شامل لدور صمامات الهواء في حماية الشبكة — الفرق بين صمامات الإدخال والإخراج ومتى يصبح غيابها خطراً هيدروليكياً حقيقياً.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>8 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="air-valves-pipeline-safety.jpg" alt="Air Valves"></div>
+    </a>
+
+    <a href="air-admission-networks.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis · Air Management · Pipeline Design</span>
+        <div class="article-card-title">إدخال الهواء الاستراتيجي في شبكات نقل المياه: رؤية مزدوجة</div>
+                <p class="article-card-excerpt">استراتيجية إدخال الهواء في شبكات نقل المياه من منظورين: حماية الخط من الانهيار، وتسريع استعادة التشغيل بعد التوقف.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>9 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="air-admission-networks.jpg" alt="Air Admission"></div>
+    </a>
+
+    <a href="top-hill-challenge.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Pipeline Design · Surge Analysis · HGL Management</span>
+        <div class="article-card-title">إدارة تحدي النقطة الحرجة في خطوط نقل المياه</div>
+                <p class="article-card-excerpt">النقاط الحرجة المرتفعة هي أكثر مواطن خطر الضغط السالب في خطوط النقل — كيف تُدار بالتصميم الهيدروليكي وليس فقط بوسائل الحماية.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>8 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="top-hill-challenge.jpg" alt="Top Hill Challenge"></div>
+    </a>
+
+    <a href="check-valve-hammer.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis · Check Valve · Procurement</span>
+        <div class="article-card-title">من النمذجة إلى الشراء: دليل تحليل صمامات عدم الرجوع في HAMMER</div>
+                <p class="article-card-excerpt">دليل متكامل لتحليل صمامات عدم الرجوع في HAMMER — من اختيار النموذج الصحيح إلى ترجمة النتائج إلى مواصفات شراء دقيقة وقابلة للتطبيق.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>9 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="check-valve-hammer.jpg" alt="Check Valve"></div>
+    </a>
+
+    <a href="prv-altitude-valve-fcv.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Control · Valve Selection · Water Transmission</span>
+        <div class="article-card-title">فهم صمامات PRV وصمامات المنسوب و FCV في منظومات نقل المياه</div>
+                <p class="article-card-excerpt">الفروق التشغيلية بين ثلاثة صمامات حيوية في شبكات المياه — متى تختار PRV ومتى يكون صمام المنسوب أو FCV هو الخيار الأنسب.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>8 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="prv-altitude-valve-fcv.jpg" alt="PRV Altitude Valve FCV"></div>
+    </a>
+
+    <a href="sustainable-pump-selection.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering · Energy Efficiency · Sustainability</span>
+        <div class="article-card-title">اختيار المضخة المستدام: ما وراء نقطة التشغيل</div>
+                <p class="article-card-excerpt">اختيار المضخة لا ينتهي عند نقطة التشغيل — تحليل منحنى الكفاءة على مدى عمر المشروع وأثره الحقيقي على استهلاك الطاقة والتكاليف.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>7 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="sustainable-pump-selection.jpg" alt="Sustainable Pump Selection"></div>
+    </a>
+
+    <a href="steady-state-analysis.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Modeling · Steady-State · Pipeline Design</span>
+        <div class="article-card-title">التحليل الهيدروليكي للحالة المستقرة: الأساس قبل تحليل المطرقة المائية</div>
+                <p class="article-card-excerpt">التحليل الهيدروليكي للحالة المستقرة هو الأساس الذي يقوم عليه كل تحليل عابر — متطلبات الإدخال الصحيح وأثر الأخطاء على دقة النتائج.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>8 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="steady-state-analysis.jpg" alt="Steady State Analysis"></div>
+    </a>
+
+    <a href="surge-analysis-risk.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis · Risk Management · Pipeline Design</span>
+        <div class="article-card-title">تحليل المطرقة المائية كأداة لإدارة المخاطر الهندسية</div>
+                <p class="article-card-excerpt">كيف تتحول نتائج تحليل المطرقة المائية إلى مصفوفة مخاطر قابلة للتقييم — ربط السيناريوهات الحرجة باحتمالات الفشل وتكاليفه.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>7 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="surge-analysis-risk.jpg" alt="Surge Analysis Risk"></div>
+    </a>
+
+    <a href="design-vs-reality.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Engineering Practice · Field Experience · Design</span>
+        <div class="article-card-title">التصميم مقابل الواقع: ما يعلمك إياه الميدان ولا يعلمك أي برنامج</div>
+                <p class="article-card-excerpt">فجوة حقيقية بين ما يُصمَّم على الورق وما يحدث في الميدان — دروس مباشرة من مشاريع فعلية تجاوزت 700 كم من خطوط النقل.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>6 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="design-vs-reality.jpg" alt="Design vs Reality"></div>
+    </a>
+
+    <a href="engineering-decisions.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Engineering Leadership · Decision Making · Infrastructure</span>
+        <div class="article-card-title">القرارات الهندسية في ظل عدم اليقين: إطار عمل لمشاريع البنية التحتية</div>
+                <p class="article-card-excerpt">إطار منهجي لاتخاذ القرارات الهندسية عند غياب البيانات الكاملة — أدوات تقييم عدم اليقين في مشاريع البنية التحتية الكبرى.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>7 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="engineering-decisions.jpg" alt="Engineering Decisions"></div>
+    </a>
+
+    <a href="envision-sustainability.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Sustainability · Envision · Infrastructure Design</span>
+        <div class="article-card-title">نظام تقييم Envision: دمج الاستدامة في تصميم البنية التحتية</div>
+                <p class="article-card-excerpt">نظام Envision لتقييم الاستدامة في مشاريع البنية التحتية — كيف يختلف عن LEED ومتى يُضاف إلى خطة المشروع من البداية.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>6 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="envision-sustainability.jpg" alt="Envision Sustainability"></div>
+    </a>
+
+    <a href="infrastructure-at-scale.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Infrastructure · Large Scale · Project Management</span>
+        <div class="article-card-title">البنية التحتية على نطاق واسع: دروس من إدارة مشاريع أنابيب تجاوزت 400 كم</div>
+                <p class="article-card-excerpt">دروس عملية من إدارة مشاريع أنابيب تجاوزت 400 كم — تحديات التنسيق والجودة والتسليم في المشاريع الضخمة متعددة المراحل.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>6 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="infrastructure-at-scale.jpg" alt="Infrastructure at Scale"></div>
+    </a>
+
+    <a href="sustainability-in-design.html" class="article-card hidden-article">
+      <div class="card-body">
+        <span class="article-card-tag">Sustainability · Design Coordination · Infrastructure</span>
+        <div class="article-card-title">من الاستراتيجية إلى المواصفات: دمج الاستدامة في التصميم الهندسي</div>
+                <p class="article-card-excerpt">كيف تُترجم أهداف الاستدامة إلى مواصفات تقنية قابلة للتطبيق — من التخطيط الاستراتيجي إلى وثائق العطاء والمراجعة الهندسية.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>4 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="sustainability-in-design.jpg" alt="Sustainability in Design"></div>
+    </a>
+
+  </div>
+
+  <!-- Show More Button -->
+  <div id="show-more-wrap" style="text-align:center; padding:2.5rem 0 1rem;">
+    <button id="show-more-btn" onclick="revealArticles()" style="display:inline-flex; align-items:center; gap:10px; padding:0.9rem 2.2rem; background:#fff; color:#0071e3; border:1.5px solid rgba(0,113,227,0.3); border-radius:50px; font-size:0.95rem; font-weight:600; cursor:pointer; font-family:'Cairo',sans-serif; box-shadow:0 4px 16px rgba(0,0,0,0.06); transition:transform .2s, box-shadow .2s, border-color .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)';this.style.borderColor='rgba(0,113,227,0.6)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.06)';this.style.borderColor='rgba(0,113,227,0.3)'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      عرض 21 مقالة إضافية
+    </button>
+    <div style="margin-top:0.75rem; font-size:12px; color:#9ca3af;">يُعرض 6 من أصل 27 مقالة</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-num">22+</div>
+      <div class="stat-label">سنة خبرة</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">700+<span style="font-size:32px;">كم</span></div>
+      <div class="stat-label">شبكات أنابيب مُدارة</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">600k</div>
+      <div class="stat-label">م³/يوم طاقة معالجة</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Lead Magnet Banner -->
+<section style="padding:3.5rem 2rem; background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%); border-top:1px solid #bfdbfe; border-bottom:1px solid #bfdbfe; direction:rtl;">
+  <div style="max-width:860px; margin:0 auto; display:flex; align-items:center; gap:2.5rem; flex-wrap:wrap; justify-content:space-between;">
+    <div style="flex:1; min-width:260px; text-align:right;">
+      <div style="font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#0071e3; margin-bottom:10px;">دليل هندسي مجاني</div>
+      <h2 style="font-size:1.5rem; font-weight:700; color:#1d1d1f; margin-bottom:8px; line-height:1.3;">10 أخطاء شائعة في<br>تصميم خطوط الضغط</h2>
+      <p style="font-size:0.95rem; color:#4b5563; line-height:1.7; margin:0;">11 صفحة PDF مع مخططات ومعادلات وحلول احترافية — مجاناً تماماً.</p>
+    </div>
+    <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+      <div style="font-size:13px; color:#4b5563; text-align:right;">
+        <div style="margin-bottom:4px;">✅ تحليل الضغط العابر</div>
+        <div style="margin-bottom:4px;">✅ إدارة جيوب الهواء</div>
+        <div>✅ تحديد حجم خزان الحماية</div>
+      </div>
+      <a href="pipeline-checklist.html" style="display:inline-flex; align-items:center; gap:8px; padding:0.9rem 1.8rem; background:linear-gradient(135deg,#5b9cf6 0%,#0040b8 100%); color:#fff; border-radius:12px; font-size:0.95rem; font-weight:700; text-decoration:none; white-space:nowrap; box-shadow:0 4px 16px rgba(0,113,227,0.35); flex-shrink:0; font-family:'Cairo',sans-serif; transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 28px rgba(0,113,227,0.5)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(0,113,227,0.35)'">
+        تحميل مجاني
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<iframe name="mc_hidden_ar" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:4rem 2rem; text-align:center; background:rgba(0,113,227,0.04); border-top:1px solid rgba(0,113,227,0.1); direction:rtl;">
+  <div style="max-width:580px; margin:0 auto;">
+    <div style="font-size:2rem; margin-bottom:0.5rem;">📬</div>
+    <h2 style="font-size:1.7rem; font-weight:700; margin-bottom:0.5rem; color:#1d1d1f; font-family:'Cairo',sans-serif;">رؤى هندسة المياه</h2>
+    <p style="color:#6e6e73; margin-bottom:2rem; font-size:1rem; line-height:1.8;">مقالات متخصصة في الهيدروليكا وحماية الموجة الضاغطة والبنية التحتية للمياه — مباشرة إلى بريدك.</p>
+    <form id="mc-newsletter-form-ar" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden_ar" onsubmit="return mcSubmitAr(event)" style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email-ar" placeholder="بريدك الإلكتروني" style="flex:1; min-width:240px; max-width:340px; padding:0.85rem 1.2rem; border-radius:12px; border:1.5px solid rgba(0,113,227,0.2); font-size:0.95rem; outline:none; background:#fff; font-family:'Cairo',sans-serif; direction:rtl; text-align:right;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" style="padding:0.85rem 1.8rem; background:linear-gradient(135deg,#5b9cf6 0%,#0040b8 100%); color:#fff; border:none; border-radius:14px; font-size:0.95rem; font-weight:700; cursor:pointer; white-space:nowrap; font-family:'Cairo',sans-serif; box-shadow:0 4px 15px rgba(0,113,227,0.4);">اشترك ←</button>
+    </form>
+    <div id="mc-msg-ar" style="margin-top:1rem; font-size:0.9rem; color:#aaa;">بدون رسائل مزعجة. إلغاء الاشتراك في أي وقت.</div>
+  </div>
+</section>
+
+<script>
+function revealArticles() {
+  var hidden = document.querySelectorAll('.hidden-article');
+  var wrap = document.getElementById('show-more-wrap');
+  hidden.forEach(function(el, i) {
+    setTimeout(function() { el.classList.add('visible'); }, i * 40);
+  });
+  wrap.style.transition = 'opacity 0.3s ease';
+  wrap.style.opacity = '0';
+  setTimeout(function(){ wrap.style.display = 'none'; }, 300);
+  if (window.gtag) gtag('event', 'show_more_articles_ar', { event_category: 'engagement' });
+}
+
+function mcSubmitAr(e) {
+  var email = document.getElementById('mc-email-ar').value.trim();
+  var msg = document.getElementById('mc-msg-ar');
+  var input = document.getElementById('mc-email-ar');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = '⚠️ يرجى إدخال بريد إلكتروني صحيح (مثال: name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'جارٍ الاشتراك…';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form-ar').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '700';
+    msg.textContent = '✅ شكراً! تحقق من بريدك لتأكيد الاشتراك.';
+  }, 900);
+  return true;
+}
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <p style="direction:rtl;">© 2026 محمد أبوخطوة &nbsp;&middot;&nbsp; الرياض، المملكة العربية السعودية &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="about-ar.html">نبذة</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon">&#128197;</span>
+  <span class="fab-text">احجز استشارة</span>
+</div>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">واتساب</span>
+</a>
+
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15); backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px); color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600; font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none; animation:float-fab 4s ease-in-out infinite;
+  transition:transform .2s, box-shadow .2s; font-family:'Cairo',sans-serif;
+}
+.fab-glass:hover,.fab-consult:hover { transform:translateY(-5px); box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4); }
+.fab-wa { right:2rem; }
+.fab-consult { left:2rem; }
+@keyframes float-fab{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@media(max-width:600px){
+  .fab-glass-text,.fab-text{display:none;}
+  .fab-glass,.fab-consult{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;}
+}
+</style>
+</body>
+</html>

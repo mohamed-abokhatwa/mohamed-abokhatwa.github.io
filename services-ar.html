@@ -215,9 +215,25 @@
       .services-grid { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: 1fr 1fr; }
       .contact-wrap { grid-template-columns: 1fr; }
-      .contact-info-col { border-left: none; border-bottom: 1px solid var(--border); }
+      .contact-info-col {
+        border-left: none;
+        border-bottom: 1px solid var(--border);
+        padding: 28px 20px;
+      }
       .form-row { grid-template-columns: 1fr; }
       .page-hero { padding: 120px 20px 60px; }
+      /* Fix: contact section was outside services-body — add screen margins */
+      .contact-section {
+        margin: 0 16px 40px;
+        border-radius: var(--radius);
+      }
+      .inquiry-form { padding: 28px 20px; }
+      .form-submit {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .btn-primary { width: 100%; text-align: center; justify-content: center; }
     }
   </style>
 

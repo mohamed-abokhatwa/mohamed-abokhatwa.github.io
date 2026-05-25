@@ -24,8 +24,10 @@
     body { font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif; }
     .nav-logo { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; }
 
-    /* RTL nav fix */
-    .nav-links { flex-direction: row; }
+    /* RTL nav fix — desktop only, don't break mobile hamburger */
+    @media (min-width: 769px) {
+      .nav-links { flex-direction: row; }
+    }
     .nav-inner { direction: rtl; }
 
     /* Lang switcher */

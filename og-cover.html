@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>OG Cover — Mohamed Abokhatwa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0f;
+  }
+
+  .card {
+    width: 1200px;
+    height: 630px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+    gap: 60px;
+    overflow: hidden;
+  }
+
+  /* Background gradient blobs */
+  .blob-1 {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,113,227,0.18) 0%, transparent 70%);
+    top: -200px; right: -100px;
+    pointer-events: none;
+  }
+  .blob-2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,113,227,0.10) 0%, transparent 70%);
+    bottom: -150px; left: 200px;
+    pointer-events: none;
+  }
+
+  /* Grid lines subtle */
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,113,227,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,113,227,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  /* Left: Photo */
+  .photo-wrap {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+  .photo-ring {
+    width: 210px; height: 210px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, #0071e3, #5b9cf6, #0040b8);
+    box-shadow: 0 0 60px rgba(0,113,227,0.4);
+  }
+  .photo-inner {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #1a1a2e;
+  }
+  .photo-inner img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Right: Content */
+  .content {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,113,227,0.15);
+    border: 1px solid rgba(0,113,227,0.3);
+    border-radius: 30px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #5b9cf6;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .tag-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #0071e3;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .name {
+    font-size: 52px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 14px;
+  }
+  .name span { color: #0071e3; }
+
+  .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.4;
+    margin-bottom: 32px;
+    max-width: 560px;
+  }
+
+  /* Stats row */
+  .stats {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 36px;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+  }
+  .stat-num span { color: #0071e3; }
+  .stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .stat-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.1);
+    align-self: stretch;
+  }
+
+  /* Domain */
+  .domain {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .domain-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: rgba(0,113,227,0.2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .domain-icon svg { width: 16px; height: 16px; fill: #5b9cf6; }
+  .domain-text {
+    font-size: 17px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.3px;
+  }
+  .domain-text strong { color: rgba(255,255,255,0.85); }
+
+  /* Top-right watermark */
+  .watermark {
+    position: absolute;
+    top: 40px; right: 80px;
+    z-index: 2;
+    opacity: 0.25;
+  }
+  .watermark svg { width: 36px; height: 36px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="grid"></div>
+  <div class="blob-1"></div>
+  <div class="blob-2"></div>
+
+  <!-- Photo -->
+  <div class="photo-wrap">
+    <div class="photo-ring">
+      <div class="photo-inner">
+        <img src="profile.jpg" alt="Mohamed Abokhatwa">
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <div class="tag">
+      <span class="tag-dot"></span>
+      Water Infrastructure · Saudi Arabia
+    </div>
+
+    <div class="name">Mohamed<br><span>Abokhatwa</span></div>
+
+    <div class="title">Water Infrastructure Engineering Manager<br>Hydraulic Analysis · Pipeline Systems · SWRO</div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">22<span>+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">700<span>km</span></div>
+        <div class="stat-label">Pipelines Designed</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">36</div>
+        <div class="stat-label">Technical Articles</div>
+      </div>
+    </div>
+
+    <div class="domain">
+      <div class="domain-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2 0V4.07c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93z"/></svg>
+      </div>
+      <div class="domain-text"><strong>abokhatwa</strong>.com</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -412,6 +412,8 @@ footer a:hover { color: var(--text-primary); }
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 768px) {
   .nav-hamburger { display: flex; }
+  /* Keep theme toggle visible on mobile, slightly smaller */
+  .theme-toggle { width: 30px; height: 30px; margin-left: 2px; }
 
   .nav-links {
     display: none;
@@ -451,4 +453,168 @@ footer a:hover { color: var(--text-primary); }
   .nav-inner { padding: 0 16px; }
   .section { padding: 48px 16px; }
   .section-sm { padding: 36px 16px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DARK MODE
+═══════════════════════════════════════════════════════════ */
+:root[data-theme="dark"] {
+  --bg:             #161618;
+  --bg-2:           #1c1c1e;
+  --bg-3:           #232325;
+  --bg-4:           #2c2c2e;
+  --border:         rgba(255,255,255,0.08);
+  --border-light:   rgba(255,255,255,0.14);
+  --glass:          rgba(255,255,255,0.055);
+  --glass-border:   rgba(255,255,255,0.10);
+  --glass-hover:    rgba(255,255,255,0.09);
+  --shadow-glass:   0 2px 20px rgba(0,0,0,0.4),  0 1px 3px rgba(0,0,0,0.3);
+  --shadow-glass-hover: 0 6px 32px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.4);
+  --text-primary:   #f5f5f7;
+  --text-secondary: #aeaeb2;
+  --text-tertiary:  #636366;
+  --accent:         #2997ff;
+  --success:        #30d158;
+  --danger:         #ff453a;
+  --warning:        #ffd60a;
+}
+
+/* Body background & gradient */
+[data-theme="dark"] body {
+  background: #0e0e10;
+}
+[data-theme="dark"] body::before {
+  background:
+    radial-gradient(ellipse at 12%  8%,  rgba(0, 80,200,0.16) 0%, transparent 44%),
+    radial-gradient(ellipse at 88% 14%,  rgba(0,130,180,0.10) 0%, transparent 42%),
+    radial-gradient(ellipse at 55% 88%,  rgba(60, 80,200,0.08) 0%, transparent 48%),
+    radial-gradient(ellipse at 28% 72%,  rgba(0,100,200,0.06) 0%, transparent 38%);
+}
+
+/* Nav */
+[data-theme="dark"] .nav {
+  background: rgba(14,14,16,0.85);
+  border-bottom-color: rgba(255,255,255,0.06);
+}
+@media (max-width: 768px) {
+  [data-theme="dark"] .nav-links {
+    background: rgba(18,18,20,0.97) !important;
+    border-bottom-color: rgba(255,255,255,0.06) !important;
+  }
+}
+
+/* Table tweaks */
+[data-theme="dark"] th {
+  background: rgba(255,255,255,0.05);
+  border-bottom-color: var(--border);
+}
+[data-theme="dark"] td {
+  border-bottom-color: rgba(255,255,255,0.05);
+}
+
+/* Sim box header */
+[data-theme="dark"] .sim-header {
+  background: rgba(255,255,255,0.06);
+  border-bottom-color: rgba(255,255,255,0.06);
+}
+
+/* Callout boxes: keep accent tint, just adjust for dark bg */
+[data-theme="dark"] .callout      { background: rgba(41,151,255,0.08); border-color: rgba(41,151,255,0.25); }
+[data-theme="dark"] .warning-box  { background: rgba(255,214,10,0.07);  border-color: rgba(255,214,10,0.25); }
+[data-theme="dark"] .danger-box   { background: rgba(255,69,58,0.07);   border-color: rgba(255,69,58,0.25); }
+
+/* ── Theme Toggle Button ─────────────────────────────────── */
+.theme-toggle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+.theme-toggle:hover {
+  color: var(--text-primary);
+  background: var(--glass);
+  border-color: var(--accent);
+}
+/* Default (light): show moon to invite dark mode */
+.icon-sun  { display: none; }
+.icon-moon { display: block; }
+/* Dark mode: show sun to invite light mode */
+:root[data-theme="dark"] .icon-sun  { display: block; }
+:root[data-theme="dark"] .icon-moon { display: none; }
+
+/* ═══════════════════════════════════════════════════════════
+   PRINT / PDF
+═══════════════════════════════════════════════════════════ */
+@media print {
+  /* Hide everything except core article content */
+  .nav,
+  footer,
+  .fab-consult,
+  .fab-glass,
+  .related-articles-section,
+  #read-progress-bar,
+  .pdf-btn,
+  #show-more-wrap,
+  .filter-ui,
+  .hero-img-wrap,
+  .newsletter-print-hide,
+  section[style*="background:rgba(0,113,227"],
+  section[style*="background:linear-gradient"],
+  section[style*="background:rgba(0,0,0"],
+  [style*="padding:4rem"],
+  [style*="padding:3.5rem"] { display: none !important; }
+
+  /* Clean white canvas */
+  html, body { background: #fff !important; color: #111 !important; }
+  body::before { display: none !important; }
+
+  /* Remove glass & shadow effects */
+  * {
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Article layout */
+  .article-hero { padding: 20px 0 16px !important; border-bottom: 1px solid #ddd !important; }
+  .article-body { max-width: 100% !important; padding: 20px 0 40px !important; }
+
+  /* Typography */
+  p, li  { font-size: 11pt; line-height: 1.75; color: #333 !important; }
+  h1     { font-size: 22pt; color: #000 !important; margin-bottom: 8pt !important; }
+  h2     { font-size: 15pt; color: #000 !important; page-break-after: avoid; margin-top: 20pt !important; }
+  h3     { font-size: 12pt; color: #111 !important; page-break-after: avoid; }
+  strong { color: #000 !important; }
+
+  /* Tables */
+  table  { border-collapse: collapse; width: 100%; font-size: 10pt; }
+  th, td { border: 1px solid #ccc !important; padding: 6px 10px; background: transparent !important; }
+  th     { background: #f0f0f0 !important; font-weight: 600; }
+
+  /* Callout boxes */
+  .callout, .warning-box, .danger-box {
+    border: 1px solid #ccc !important;
+    background: #fafafa !important;
+    color: #333 !important;
+  }
+
+  /* Don't print URLs after links */
+  a[href]:after { content: none !important; }
+  a { color: #111 !important; text-decoration: none !important; }
+
+  /* Page breaks */
+  img   { max-width: 100%; page-break-inside: avoid; }
+  table { page-break-inside: avoid; }
+
+  /* Print header: site name at top */
+  .article-hero .back { display: none !important; }
 }

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>pH Management: The Hidden Key to Sustainable SWRO Operation — Mohamed Abokhatwa</title>
   <meta name="description" content="Strategic pH control across all SWRO stages — acid dosing to prevent CaCO₃ scaling, pH elevation for boron rejection, and re-mineralization to protect distribution network integrity.">
@@ -70,10 +71,15 @@
     <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
     </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
     <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -149,5 +155,7 @@ document.getElementById('navToggle').addEventListener('click', function() {
   .fab-glass,.fab-consult{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;}
 }
 </style>
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
 </body>
 </html>

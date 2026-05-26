@@ -84,7 +84,7 @@
 .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
 .breadcrumb a:hover{color:var(--text-primary);}
 .breadcrumb-sep{opacity:.4;}
-.breadcrumb-current{color:var(--text-secondary);}
+.breadcrumb-current{color:var(--text-secondary);}.breadcrumb a.breadcrumb-current{color:var(--accent);}.breadcrumb a.breadcrumb-current:hover{opacity:.75;}
 </style>
 </head>
 <body>
@@ -116,7 +116,7 @@ document.getElementById('navToggle').addEventListener('click', function() {
 
 <div class="article-hero">
   <a href="index.html" class="back">&#8592; All Articles</a>
-<div class="breadcrumb"><a href="index.html">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Desalination & SWRO</span></div>
+<div class="breadcrumb"><a href="index.html">Articles</a><span class="breadcrumb-sep">›</span><a href="desalination-swro.html" class="breadcrumb-current">Desalination & SWRO</a></div>
   <span class="tag">Desalination &middot; Energy Recovery &middot; PX &middot; Sustainability</span>
   <h1>PX Technology: How Energy Recovery Transformed Desalination Economics</h1>
   <div class="byline">

@@ -253,6 +253,73 @@
       .section-title { margin-bottom: 32px; }
       .article-card-arrow { display: none; }
     }
+
+    /* ── Browse by Category ── */
+    .cat-section {
+      padding: 80px 24px 0;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 0;
+    }
+    .cat-card {
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-glass);
+      padding: 32px 28px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: var(--transition);
+    }
+    .cat-card:hover {
+      background: var(--glass-hover);
+      box-shadow: var(--shadow-glass-hover);
+      transform: translateY(-2px);
+    }
+    .cat-card-icon {
+      font-size: 28px;
+      line-height: 1;
+    }
+    .cat-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    .cat-card-count {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-top: auto;
+    }
+    .cat-card-arrow {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .cat-card:hover .cat-card-arrow {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+    @media(max-width:768px) {
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .cat-section { padding: 60px 20px 0; }
+    }
+    @media(max-width:480px) {
+      .cat-grid { grid-template-columns: 1fr; }
+    }
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -391,6 +458,42 @@
     <span class="cert">OSHA 30H</span>
     <span class="cert">Surge Analysis</span>
     <span class="cert">BIM Management</span>
+  </div>
+</div>
+
+<div class="cat-section">
+  <span class="section-eyebrow">Browse by topic</span>
+  <div class="cat-grid">
+    <a href="surge-transients.html" class="cat-card">
+      <span class="cat-card-icon">⚡</span>
+      <div class="cat-card-title">Surge &amp; Transients</div>
+      <div class="cat-card-count">9 articles <span class="cat-card-arrow">→</span></div>
+    </a>
+    <a href="pipeline-design.html" class="cat-card">
+      <span class="cat-card-icon">🔧</span>
+      <div class="cat-card-title">Pipeline Design</div>
+      <div class="cat-card-count">5 articles <span class="cat-card-arrow">→</span></div>
+    </a>
+    <a href="pump-engineering.html" class="cat-card">
+      <span class="cat-card-icon">⚙️</span>
+      <div class="cat-card-title">Pump Engineering</div>
+      <div class="cat-card-count">4 articles <span class="cat-card-arrow">→</span></div>
+    </a>
+    <a href="hydraulic-design.html" class="cat-card">
+      <span class="cat-card-icon">💧</span>
+      <div class="cat-card-title">Hydraulic Design</div>
+      <div class="cat-card-count">4 articles <span class="cat-card-arrow">→</span></div>
+    </a>
+    <a href="desalination-swro.html" class="cat-card">
+      <span class="cat-card-icon">🌊</span>
+      <div class="cat-card-title">Desalination &amp; SWRO</div>
+      <div class="cat-card-count">9 articles <span class="cat-card-arrow">→</span></div>
+    </a>
+    <a href="leadership-sustainability.html" class="cat-card">
+      <span class="cat-card-icon">👔</span>
+      <div class="cat-card-title">Leadership &amp; Sustainability</div>
+      <div class="cat-card-count">5 articles <span class="cat-card-arrow">→</span></div>
+    </a>
   </div>
 </div>
 

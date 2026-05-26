@@ -205,6 +205,73 @@
       .article-card-arrow { display: none; }
       .hero-certs { justify-content: flex-start; }
     }
+
+    /* ── تصفح حسب الموضوع ── */
+    .cat-section {
+      padding: 80px 24px 0;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      text-align: right;
+    }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 0;
+    }
+    .cat-card {
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-glass);
+      padding: 32px 28px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: var(--transition);
+      text-align: right;
+    }
+    .cat-card:hover {
+      background: var(--glass-hover);
+      box-shadow: var(--shadow-glass-hover);
+      transform: translateY(-2px);
+    }
+    .cat-card-icon { font-size: 28px; line-height: 1; }
+    .cat-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+      font-family: 'Cairo', sans-serif;
+    }
+    .cat-card-count {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-top: auto;
+      font-family: 'Cairo', sans-serif;
+    }
+    .cat-card-arrow {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .cat-card:hover .cat-card-arrow {
+      opacity: 1;
+      transform: translateX(-4px);
+    }
+    @media(max-width:768px) {
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .cat-section { padding: 60px 20px 0; }
+    }
+    @media(max-width:480px) {
+      .cat-grid { grid-template-columns: 1fr; }
+    }
   </style>
 
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -274,6 +341,42 @@
 </div>
 
 <!-- ARTICLES -->
+<div class="cat-section">
+  <span class="section-eyebrow" style="text-align:right;display:block;">تصفح حسب الموضوع</span>
+  <div class="cat-grid">
+    <a href="surge-transients.html" class="cat-card">
+      <span class="cat-card-icon">⚡</span>
+      <div class="cat-card-title">التدفق العابر والمطرقة المائية</div>
+      <div class="cat-card-count">٩ مقالات <span class="cat-card-arrow">←</span></div>
+    </a>
+    <a href="pipeline-design.html" class="cat-card">
+      <span class="cat-card-icon">🔧</span>
+      <div class="cat-card-title">تصميم خطوط الأنابيب</div>
+      <div class="cat-card-count">٥ مقالات <span class="cat-card-arrow">←</span></div>
+    </a>
+    <a href="pump-engineering.html" class="cat-card">
+      <span class="cat-card-icon">⚙️</span>
+      <div class="cat-card-title">هندسة المضخات</div>
+      <div class="cat-card-count">٤ مقالات <span class="cat-card-arrow">←</span></div>
+    </a>
+    <a href="hydraulic-design.html" class="cat-card">
+      <span class="cat-card-icon">💧</span>
+      <div class="cat-card-title">التصميم الهيدروليكي</div>
+      <div class="cat-card-count">٤ مقالات <span class="cat-card-arrow">←</span></div>
+    </a>
+    <a href="desalination-swro.html" class="cat-card">
+      <span class="cat-card-icon">🌊</span>
+      <div class="cat-card-title">تحلية المياه و SWRO</div>
+      <div class="cat-card-count">٩ مقالات <span class="cat-card-arrow">←</span></div>
+    </a>
+    <a href="leadership-sustainability.html" class="cat-card">
+      <span class="cat-card-icon">👔</span>
+      <div class="cat-card-title">القيادة والاستدامة</div>
+      <div class="cat-card-count">٥ مقالات <span class="cat-card-arrow">←</span></div>
+    </a>
+  </div>
+</div>
+
 <div class="articles-section">
   <span class="section-eyebrow">المقالات المنشورة</span>
   <h2 class="section-title">رؤى هندسية</h2>

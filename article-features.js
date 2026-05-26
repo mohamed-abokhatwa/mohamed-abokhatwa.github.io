@@ -503,33 +503,8 @@
       '  box-shadow:0 4px 20px rgba(0,0,0,0.4);',
       '}',
 
-      /* ── Table of Contents ── */
-      '#article-toc{',
-      '  position:fixed;',
-      '  left:calc(50% + 400px);',
-      '  top:120px;',
-      '  width:210px;',
-      '  background:var(--bg-2,#fbfbfd);',
-      '  border:1px solid var(--border,rgba(0,0,0,0.08));',
-      '  border-radius:14px;',
-      '  padding:16px;',
-      '  display:none;',
-      '  z-index:100;',
-      '  max-height:calc(100vh - 160px);',
-      '  overflow-y:auto;',
-      '}',
-      '@media(min-width:1260px){',
-      '  #article-toc{ display:block; }',
-      '}',
-      '.toc-label{',
-      '  display:block;',
-      '  font-size:10px;',
-      '  font-weight:700;',
-      '  letter-spacing:0.1em;',
-      '  text-transform:uppercase;',
-      '  color:var(--text-tertiary,#86868b);',
-      '  margin-bottom:12px;',
-      '}',
+      /* ── Table of Contents (collapsible, all screen sizes) ── */
+      '#article-toc{ display:none; }',   /* desktop sidebar disabled */
       '.toc-list{',
       '  list-style:none;',
       '  padding:0;',
@@ -544,7 +519,7 @@
       '  gap:8px;',
       '  padding:6px 8px;',
       '  border-radius:8px;',
-      '  font-size:12px;',
+      '  font-size:13px;',
       '  line-height:1.4;',
       '  color:var(--text-secondary,#6e6e73);',
       '  text-decoration:none;',
@@ -560,21 +535,18 @@
       '  font-weight:600;',
       '}',
       '.toc-num{',
-      '  font-size:10px;',
+      '  font-size:11px;',
       '  font-weight:700;',
       '  color:var(--accent,#0071e3);',
-      '  min-width:14px;',
+      '  min-width:16px;',
       '  flex-shrink:0;',
       '}',
-      /* Mobile TOC */
+      /* Collapsible TOC — always visible */
       '#article-toc-mobile{',
       '  margin-bottom:2rem;',
       '  border:1px solid var(--border,rgba(0,0,0,0.08));',
       '  border-radius:14px;',
       '  overflow:hidden;',
-      '}',
-      '@media(min-width:1260px){',
-      '  #article-toc-mobile{ display:none; }',
       '}',
       '.toc-mobile-toggle{',
       '  width:100%;',
@@ -713,14 +685,7 @@
              '</a></li>';
     }).join('');
 
-    // Desktop: fixed sidebar
-    var tocEl = document.createElement('nav');
-    tocEl.id = 'article-toc';
-    tocEl.setAttribute('aria-label', 'Article sections');
-    tocEl.innerHTML = '<span class="toc-label">Contents</span><ol class="toc-list">' + listHTML + '</ol>';
-    document.body.appendChild(tocEl);
-
-    // Mobile: collapsible at top of article
+    // Collapsible TOC at top of article (all screen sizes)
     var mobileToc = document.createElement('nav');
     mobileToc.id = 'article-toc-mobile';
     mobileToc.setAttribute('aria-label', 'Article sections');

@@ -1,4 +1,5 @@
-/* article-features.js — Reading Progress Bar + Reading Time + Related Articles
+/* article-features.js — Progress Bar · Reading Time · Related Articles
+                         Back-to-Top · LinkedIn Share · GA4 Event Tracking
    Include this script in every article page (before </body>) */
 
 (function () {
@@ -15,7 +16,7 @@
     { url:'pre-charge-pressure.html',              title:'The Pre-Charge Pressure of the Surge Vessel — How One Number Changes Everything',                         cat:'surge',       thumb:'IMG_4656.PNG',                        mins:12, tag:'Surge Analysis · Surge Vessel Design' },
     { url:'above-ground-pipeline-design.html',     title:'Engineering Guide: Structural Design of Above-Ground Water Pipelines',                                   cat:'pipeline',    thumb:'above-ground-pipeline-design.jpg',    mins:12, tag:'Structural Design · Pipeline Engineering' },
     { url:'control-valve-transients-hammer.html',  title:'Mastering Control Valve Transients in Bentley HAMMER: FCV vs. PRV',                                      cat:'surge',       thumb:'control-valve-transients-hammer.jpg', mins:10, tag:'Transient Analysis · Bentley HAMMER' },
-    { url:'boundary-conditions-reservoir-tank.html',title:'Demystifying Boundary Conditions: Reservoir vs. Tank in Bentley HAMMER',                                cat:'surge',       thumb:'boundary-conditions-reservoir-tank.jpg',mins:9, tag:'Transient Analysis · Bentley HAMMER' },
+    { url:'boundary-conditions-reservoir-tank.html',title:'Demystifying Boundary Conditions: Reservoir vs. Tank in Bentley HAMMER',                               cat:'surge',       thumb:'boundary-conditions-reservoir-tank.jpg',mins:9, tag:'Transient Analysis · Bentley HAMMER' },
     { url:'carbon-steel-pipeline-cml.html',        title:'Structural Design Reference: Carbon Steel Pipelines with Cement Mortar Lining',                          cat:'pipeline',    thumb:'carbon-steel-pipeline-cml.jpg',      mins:11, tag:'Structural Design · Pipeline Engineering' },
     { url:'npsh-water-infrastructure.html',        title:'Technical Design Guide: Mastering NPSH in Water Infrastructure',                                         cat:'pumps',       thumb:'npsh-water-infrastructure.jpg',       mins:10, tag:'Pump Design · NPSH' },
     { url:'transient-analysis-scada.html',         title:'Beyond Static Design: Integrating Transient Analysis with SCADA for Smart Pipelines',                    cat:'surge',       thumb:'transient-analysis-scada.jpg',        mins:9,  tag:'SCADA · Digital Twin · Surge Analysis' },
@@ -47,7 +48,16 @@
   ];
 
   /* ─────────────────────────────────────────────────────────────
-     2.  READING PROGRESS BAR
+     2.  GA4 EVENT HELPER
+     ───────────────────────────────────────────────────────────── */
+  function trackEvent(name, params) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, params || {});
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     3.  READING PROGRESS BAR  +  article_read_complete event
      ───────────────────────────────────────────────────────────── */
   function initProgressBar() {
     var bar = document.createElement('div');
@@ -68,26 +78,36 @@
     ].join(';');
     document.body.insertBefore(bar, document.body.firstChild);
 
+    var readFired = false;
+
     window.addEventListener('scroll', function () {
-      var scrollTop  = window.pageYOffset || document.documentElement.scrollTop;
-      var docHeight  = Math.max(
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var docHeight = Math.max(
         document.body.scrollHeight,
         document.documentElement.scrollHeight
       ) - window.innerHeight;
       var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
       bar.style.width = pct + '%';
+
+      // Fire once when reader reaches 90%
+      if (!readFired && pct >= 90) {
+        readFired = true;
+        trackEvent('article_read_complete', {
+          page_title: document.title,
+          page_path: window.location.pathname
+        });
+      }
     }, { passive: true });
   }
 
   /* ─────────────────────────────────────────────────────────────
-     3.  READING TIME (auto-compute from article-body)
+     4.  READING TIME (auto-compute from article-body)
      ───────────────────────────────────────────────────────────── */
   function updateReadingTime() {
     var body = document.querySelector('.article-body');
     if (!body) return;
     var words = (body.innerText || body.textContent || '').trim().split(/\s+/).length;
     var mins  = Math.max(1, Math.ceil(words / 230));
-    // Find the span in .byline that contains "min read" and update it
     var byline = document.querySelector('.byline');
     if (!byline) return;
     var spans = byline.querySelectorAll('span');
@@ -100,7 +120,7 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     4.  RELATED ARTICLES
+     5.  RELATED ARTICLES
      ───────────────────────────────────────────────────────────── */
   function getRelated() {
     var page = window.location.pathname.split('/').pop() || '';
@@ -110,7 +130,6 @@
     }
     if (!current) return [];
 
-    // Same category first, then fallback to any
     var same = [];
     var other = [];
     for (var j = 0; j < ARTICLES.length; j++) {
@@ -118,7 +137,6 @@
       if (ARTICLES[j].cat === current.cat) same.push(ARTICLES[j]);
       else other.push(ARTICLES[j]);
     }
-    // Shuffle same-cat picks slightly (deterministic by title length so it's stable)
     same.sort(function(a, b){ return (a.mins - b.mins) || a.title.length - b.title.length; });
     var picks = same.slice(0, 3);
     if (picks.length < 3) picks = picks.concat(other.slice(0, 3 - picks.length));
@@ -140,11 +158,12 @@
     ];
 
     articles.forEach(function (a) {
-      var thumbSrc = a.thumb.indexOf('http') === 0 ? a.thumb : a.thumb;
+      var safeTitle = a.title.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
       html.push(
-        '<a href="' + a.url + '" class="related-card">',
+        '<a href="' + a.url + '" class="related-card" ' +
+          'onclick="if(window.gtag)window.gtag(\'event\',\'related_article_click\',{item_id:\'' + a.url + '\',page_path:window.location.pathname})">',
         '  <div class="related-thumb">',
-        '    <img src="' + thumbSrc + '" alt="' + a.title.replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'">',
+        '    <img src="' + a.thumb + '" alt="' + safeTitle + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'">',
         '  </div>',
         '  <div class="related-card-body">',
         '    <span class="related-tag">' + a.tag + '</span>',
@@ -157,7 +176,6 @@
 
     html.push('    </div>', '  </div>', '</section>');
 
-    // Insert before footer
     var footer = document.querySelector('footer');
     if (footer) {
       footer.insertAdjacentHTML('beforebegin', html.join('\n'));
@@ -165,39 +183,121 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     4b. PDF DOWNLOAD BUTTON
+     6.  ARTICLE ACTIONS  —  PDF download  +  LinkedIn share
      ───────────────────────────────────────────────────────────── */
-  function injectPdfButton() {
+  function injectArticleActions() {
     var byline = document.querySelector('.byline');
     if (!byline) return;
 
+    var pageUrl  = window.location.href;
+    var liUrl    = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl);
+    var safePath = window.location.pathname.replace(/'/g, '');
+
     var wrap = document.createElement('div');
-    wrap.className = 'pdf-btn-wrap';
+    wrap.className = 'article-actions-wrap';
 
-    var btn = document.createElement('button');
-    btn.className = 'pdf-btn';
-    btn.setAttribute('aria-label', 'Download as PDF');
-    btn.title = 'Save or print this article as PDF';
-    btn.innerHTML =
+    // PDF button
+    var pdfBtn = document.createElement('button');
+    pdfBtn.className = 'pdf-btn';
+    pdfBtn.setAttribute('aria-label', 'Download as PDF');
+    pdfBtn.title = 'Save or print this article as PDF';
+    pdfBtn.innerHTML =
       '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-      '<path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>' +
-      '<polyline points="7 10 12 15 17 10"/>' +
-      '<line x1="12" y1="15" x2="12" y2="3"/>' +
+        '<path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>' +
+        '<polyline points="7 10 12 15 17 10"/>' +
+        '<line x1="12" y1="15" x2="12" y2="3"/>' +
       '</svg> Download PDF';
-    btn.onclick = function () { window.print(); };
+    pdfBtn.addEventListener('click', function () {
+      trackEvent('pdf_download', { page_title: document.title, page_path: window.location.pathname });
+      window.print();
+    });
 
-    wrap.appendChild(btn);
-    // Insert after byline
+    // LinkedIn share button
+    var liBtn = document.createElement('a');
+    liBtn.href = liUrl;
+    liBtn.target = '_blank';
+    liBtn.rel = 'noopener';
+    liBtn.className = 'share-btn-li';
+    liBtn.setAttribute('aria-label', 'Share on LinkedIn');
+    liBtn.innerHTML =
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">' +
+        '<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>' +
+      '</svg> Share on LinkedIn';
+    liBtn.addEventListener('click', function () {
+      trackEvent('share', {
+        method: 'linkedin',
+        content_type: 'article',
+        item_id: window.location.pathname
+      });
+    });
+
+    wrap.appendChild(pdfBtn);
+    wrap.appendChild(liBtn);
+
+    // Insert the action row right after the byline
     byline.parentNode.insertBefore(wrap, byline.nextSibling);
   }
 
   /* ─────────────────────────────────────────────────────────────
-     5.  CSS
+     7.  BACK-TO-TOP BUTTON
+     ───────────────────────────────────────────────────────────── */
+  function initBackToTop() {
+    var btn = document.createElement('button');
+    btn.id = 'back-to-top';
+    btn.setAttribute('aria-label', 'Back to top');
+    btn.title = 'Back to top';
+    btn.innerHTML =
+      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
+        '<polyline points="18 15 12 9 6 15"/>' +
+      '</svg>';
+
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      trackEvent('back_to_top', { page_path: window.location.pathname });
+    });
+
+    document.body.appendChild(btn);
+
+    window.addEventListener('scroll', function () {
+      var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+      var visible  = scrolled > 500;
+      btn.style.opacity       = visible ? '1' : '0';
+      btn.style.pointerEvents = visible ? 'auto' : 'none';
+      btn.style.transform     = visible
+        ? 'translateX(-50%) translateY(0)'
+        : 'translateX(-50%) translateY(10px)';
+    }, { passive: true });
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     8.  FAB TRACKING  —  WhatsApp + Book Consultation clicks
+     ───────────────────────────────────────────────────────────── */
+  function initFabTracking() {
+    // FABs are injected inline in HTML; wait briefly for DOM readiness
+    setTimeout(function () {
+      var waFab = document.querySelector('.fab-wa');
+      if (waFab) {
+        waFab.addEventListener('click', function () {
+          trackEvent('whatsapp_click', { page_path: window.location.pathname });
+        });
+      }
+      var consultFab = document.querySelector('.fab-consult');
+      if (consultFab) {
+        consultFab.addEventListener('click', function () {
+          trackEvent('consultation_click', { page_path: window.location.pathname });
+        });
+      }
+    }, 200);
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     9.  CSS
      ───────────────────────────────────────────────────────────── */
   function injectCSS() {
     var style = document.createElement('style');
     style.textContent = [
-      /* Related articles section */
+
+      /* ── Related articles ── */
       '.related-articles-section{',
       '  padding:60px 24px 80px;',
       '  background:var(--bg-2,#f5f5f7);',
@@ -267,7 +367,7 @@
       '  opacity:1;',
       '}',
       '.related-card-body{',
-      '  padding:20px 20px 20px;',
+      '  padding:20px;',
       '  flex:1;',
       '  display:flex;',
       '  flex-direction:column;',
@@ -294,8 +394,17 @@
       '  font-weight:500;',
       '  margin-top:4px;',
       '}',
+
+      /* ── Article actions row (PDF + LinkedIn share) ── */
+      '.article-actions-wrap{',
+      '  margin-top:20px;',
+      '  display:flex;',
+      '  gap:10px;',
+      '  flex-wrap:wrap;',
+      '  align-items:center;',
+      '}',
+
       /* PDF button */
-      '.pdf-btn-wrap{ margin-top:20px; }',
       '.pdf-btn{',
       '  display:inline-flex;',
       '  align-items:center;',
@@ -327,28 +436,99 @@
       '  border-color:#2997ff;',
       '  background:rgba(41,151,255,0.15);',
       '}',
-      /* Responsive */
+
+      /* LinkedIn share button */
+      '.share-btn-li{',
+      '  display:inline-flex;',
+      '  align-items:center;',
+      '  gap:7px;',
+      '  padding:9px 20px;',
+      '  border-radius:980px;',
+      '  border:1.5px solid rgba(0,119,181,0.35);',
+      '  background:rgba(0,119,181,0.06);',
+      '  font-size:13px;',
+      '  font-weight:600;',
+      '  color:#0077b5;',
+      '  cursor:pointer;',
+      '  font-family:inherit;',
+      '  text-decoration:none;',
+      '  transition:all 0.2s;',
+      '  letter-spacing:-0.01em;',
+      '}',
+      '.share-btn-li:hover{',
+      '  border-color:#0077b5;',
+      '  background:rgba(0,119,181,0.12);',
+      '  transform:translateY(-1px);',
+      '  box-shadow:0 4px 14px rgba(0,119,181,0.2);',
+      '}',
+      ':root[data-theme="dark"] .share-btn-li{',
+      '  color:#70b5d9;',
+      '  border-color:rgba(112,181,217,0.35);',
+      '  background:rgba(112,181,217,0.08);',
+      '}',
+      ':root[data-theme="dark"] .share-btn-li:hover{',
+      '  border-color:#70b5d9;',
+      '  background:rgba(112,181,217,0.15);',
+      '}',
+
+      /* ── Back-to-top button ── */
+      '#back-to-top{',
+      '  position:fixed;',
+      '  bottom:2rem;',
+      '  left:50%;',
+      '  transform:translateX(-50%) translateY(10px);',
+      '  width:44px;',
+      '  height:44px;',
+      '  border-radius:50%;',
+      '  background:var(--bg-primary,#fff);',
+      '  border:1.5px solid var(--border,rgba(0,0,0,0.1));',
+      '  box-shadow:0 4px 20px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.06);',
+      '  color:var(--text-primary,#1d1d1f);',
+      '  cursor:pointer;',
+      '  display:flex;',
+      '  align-items:center;',
+      '  justify-content:center;',
+      '  z-index:9998;',
+      '  opacity:0;',
+      '  pointer-events:none;',
+      '  transition:opacity 0.25s ease, transform 0.25s ease, box-shadow 0.2s ease;',
+      '}',
+      '#back-to-top:hover{',
+      '  box-shadow:0 8px 28px rgba(0,0,0,0.18);',
+      '  transform:translateX(-50%) translateY(-2px) !important;',
+      '}',
+      ':root[data-theme="dark"] #back-to-top{',
+      '  background:var(--bg-primary,#1d1d1f);',
+      '  border-color:rgba(255,255,255,0.15);',
+      '  box-shadow:0 4px 20px rgba(0,0,0,0.4);',
+      '}',
+
+      /* ── Responsive ── */
       '@media(max-width:768px){',
       '  .related-grid{ grid-template-columns:1fr; gap:12px; }',
       '  .related-articles-section{ padding:48px 20px 60px; }',
       '  .related-thumb{ height:110px; }',
+      '  .pdf-btn,.share-btn-li{ padding:8px 16px; font-size:12px; }',
       '}',
       '@media(min-width:769px) and (max-width:1024px){',
       '  .related-grid{ grid-template-columns:repeat(2,1fr); }',
       '}'
+
     ].join('\n');
     document.head.appendChild(style);
   }
 
   /* ─────────────────────────────────────────────────────────────
-     6.  INIT
+     10.  INIT
      ───────────────────────────────────────────────────────────── */
   function init() {
     injectCSS();
     initProgressBar();
     updateReadingTime();
-    injectPdfButton();
+    injectArticleActions();
     renderRelated();
+    initBackToTop();
+    initFabTracking();
   }
 
   if (document.readyState === 'loading') {

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
   <meta charset="UTF-8">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,64 +27,57 @@
   <meta name="twitter:image" content="https://abokhatwa.com/swro-pretreatment-dilemma.jpg">
   <title>Design Reference: The Strategic Dilemma in SWRO Pre-treatment — Lamella + PSF vs. UF & Ceramic — Mohamed Abokhatwa</title>
   <meta name="description" content="Conventional gravity clarification + sand filtration versus membrane-based pre-treatment — trade-offs in SDI performance, space, and lifecycle costs for 100,000 m³/day plants.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <link rel="alternate" hreflang="ar" href="swro-pretreatment-dilemma-ar.html">
   <style>
-    .article-hero {
-      padding: 120px 24px 60px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .article-tag {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
-      color: var(--text-tertiary); margin-bottom: 20px; display: block;
-      text-transform: uppercase;
-    }
-    .article-title {
-      font-size: clamp(28px, 4vw, 44px); font-weight: 700;
-      color: var(--text-primary); line-height: 1.2;
-      letter-spacing: -0.02em; margin-bottom: 24px;
-    }
-    .article-meta {
-      display: flex; gap: 20px; font-size: 13px;
-      color: var(--text-tertiary); margin-bottom: 48px;
-      padding-bottom: 32px; border-bottom: 1px solid rgba(0,0,0,0.08);
-    }
-    .article-body {
-      max-width: 800px; margin: 0 auto; padding: 0 24px 80px;
-    }
-    .article-body h2 {
-      font-size: 22px; font-weight: 700; color: var(--text-primary);
-      margin: 48px 0 16px; letter-spacing: -0.01em;
-    }
-    .article-body p {
-      font-size: 16px; line-height: 1.8; color: var(--text-secondary);
-      margin-bottom: 20px;
-    }
-    .article-body ul { padding-left: 20px; margin-bottom: 20px; }
-    .article-body li {
-      font-size: 16px; line-height: 1.8; color: var(--text-secondary);
-      margin-bottom: 8px;
-    }
-    .article-body strong { color: var(--text-primary); font-weight: 600; }
-    .back-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 14px; color: var(--accent); text-decoration: none;
-      font-weight: 500; margin-bottom: 32px;
-    }
-    .back-link:hover { text-decoration: underline; }
-    .li-cta {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 0.85rem 1.8rem;
-      background: linear-gradient(135deg,#0a66c2 0%,#004182 100%);
-      color: #fff; border-radius: 12px; font-size: 0.95rem;
-      font-weight: 600; text-decoration: none; margin-top: 40px;
-      margin-bottom: 20px;
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:400;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px;max-width:800px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    @media(max-width:768px){
+      .article-hero{padding:100px 20px 60px;}
+      .article-body{padding:48px 20px 80px;}
     }
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "The Strategic Dilemma in SWRO Pre-treatment: Lamella + PSF vs. UF & Ceramic | Mohamed Abokhatwa",
+  "description": "Conventional gravity clarification + sand filtration versus membrane-based pre-treatment — trade-offs in SDI performance, space, and lifecycle costs for 100,000 m³/day plants.",
+  "image": "https://abokhatwa.com/swro-pretreatment-dilemma.jpg",
+  "datePublished": "2026-04-01",
+  "dateModified": "2026-05-25",
+  "author": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa",
+    "url": "https://abokhatwa.com/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abokhatwa.com/swro-pretreatment-dilemma.html"
+  }
+}
+  </script>
 </head>
 <body>
 <nav class="nav">
@@ -106,14 +107,16 @@ document.getElementById('navToggle').addEventListener('click', function() {
 </script>
 
 <div class="article-hero">
-  <a href="index.html" class="back-link">&#8592; All Articles</a>
-  <span class="article-tag">Desalination · SWRO · UF · Pre-treatment</span>
-  <h1 class="article-title">Design Reference: The Strategic Dilemma in SWRO Pre-treatment — Lamella + PSF vs. UF & Ceramic</h1>
-  <div class="article-meta">
+  <a href="index.html" class="back">&#8592; All Articles</a>
+  <span class="tag">Desalination &middot; SWRO &middot; UF &middot; Pre-treatment</span>
+  <h1>Design Reference: The Strategic Dilemma in SWRO Pre-treatment — Lamella + PSF vs. UF &amp; Ceramic</h1>
+  <div class="byline">
     <span>April 2026</span>
     <span>9 min read</span>
-    <a href="swro-pretreatment-dilemma-ar.html" class="lang-switch">العربية</a>
   </div>
+</div>
+<div class="hero-img-wrap">
+  <img src="swro-pretreatment-dilemma.jpg" alt="SWRO pre-treatment dilemma: lamella PSF vs UF ceramic membranes" loading="lazy">
 </div>
 
 <div class="article-body">
@@ -127,13 +130,6 @@ document.getElementById('navToggle').addEventListener('click', function() {
 <p>Conventional pre-treatment typically achieves 95–97% recovery with minimal backwash waste. UF systems operate at 90–95% recovery with regular backwash and periodic CIP, generating a concentrated waste stream requiring careful disposal management. For inland brackish water applications, this waste stream becomes a significant design constraint.</p>
 <h2>Decision Framework</h2>
 <p><ul><li><strong>Choose Lamella + PSF when:</strong> feed water quality is consistently good (SDI < 4), plot space is ample, and CAPEX minimization is the priority</li><li><strong>Choose UF/Ceramic when:</strong> feed water quality is variable or poor, footprint is constrained, or membrane warranty requirements specify SDI < 2</li></ul></p>
-
-  <hr style="margin:48px 0; border:none; border-top:1px solid rgba(0,0,0,0.08);">
-  <p style="font-size:14px; color:var(--text-tertiary);">Originally published on LinkedIn. Read comments and join the discussion:</p>
-  <a href="https://www.linkedin.com/pulse/design-reference-strategic-dilemma-swro-pre-treatment-abokhatwa-pvsrf/" target="_blank" rel="noopener" class="li-cta">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-    View on LinkedIn &#8599;
-  </a>
 </div>
 
 <footer>
@@ -162,8 +158,8 @@ document.getElementById('navToggle').addEventListener('click', function() {
   text-decoration:none; animation:float-fab 4s ease-in-out infinite;
   transition:transform .2s, box-shadow .2s;
 }
-.fab-wa { right:2rem; }
-.fab-consult { left:2rem; }
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
 @keyframes float-fab{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 @media(max-width:600px){
   .fab-glass-text,.fab-text{display:none;}

@@ -9,42 +9,42 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
-    { url:'water-hammer-control-valve.html',       title:'Effect of Control Valve Closure Time on Water Hammer Intensity',                                          cat:'surge',       thumb:'water_hammer_control_valve_v2.png',   mins:15, tag:'Transient Analysis · Water Hammer' },
-    { url:'combination-air-valves.html',           title:'Design Criteria for Combination Air Valves in Long-Distance Transmission Mains',                          cat:'pipeline',    thumb:'combination_air_valves_design_criteria.png', mins:14, tag:'Transmission Pipeline · Air Management' },
-    { url:'surge-vessel.html',                     title:'Sizing the Hydropneumatic Surge Vessel in Water Transmission Pipelines',                                  cat:'surge',       thumb:'https://d8j0ntlcm91z4.cloudfront.net/user_3DrcxvLSmsv5g8tPL57WIum7RP6/hf_20260517_194531_a798e431-c75a-4a41-b7b3-146f9a1a846d.png', mins:10, tag:'Surge Analysis · Hydraulic Design' },
-    { url:'hydraulic-mistakes.html',               title:'Common Mistakes in Hydraulic Modeling of Water Transmission Networks',                                    cat:'hydraulic',   thumb:'hydraulic_modeling_mistakes.png',     mins:8,  tag:'Hydraulic Modeling · Pipeline Design' },
-    { url:'pre-charge-pressure.html',              title:'The Pre-Charge Pressure of the Surge Vessel — How One Number Changes Everything',                         cat:'surge',       thumb:'IMG_4656.PNG',                        mins:12, tag:'Surge Analysis · Surge Vessel Design' },
-    { url:'above-ground-pipeline-design.html',     title:'Engineering Guide: Structural Design of Above-Ground Water Pipelines',                                   cat:'pipeline',    thumb:'above-ground-pipeline-design.jpg',    mins:12, tag:'Structural Design · Pipeline Engineering' },
-    { url:'control-valve-transients-hammer.html',  title:'Mastering Control Valve Transients in Bentley HAMMER: FCV vs. PRV',                                      cat:'surge',       thumb:'control-valve-transients-hammer.jpg', mins:10, tag:'Transient Analysis · Bentley HAMMER' },
-    { url:'boundary-conditions-reservoir-tank.html',title:'Demystifying Boundary Conditions: Reservoir vs. Tank in Bentley HAMMER',                               cat:'surge',       thumb:'boundary-conditions-reservoir-tank.jpg',mins:9, tag:'Transient Analysis · Bentley HAMMER' },
-    { url:'carbon-steel-pipeline-cml.html',        title:'Structural Design Reference: Carbon Steel Pipelines with Cement Mortar Lining',                          cat:'pipeline',    thumb:'carbon-steel-pipeline-cml.jpg',      mins:11, tag:'Structural Design · Pipeline Engineering' },
-    { url:'npsh-water-infrastructure.html',        title:'Technical Design Guide: Mastering NPSH in Water Infrastructure',                                         cat:'pumps',       thumb:'npsh-water-infrastructure.jpg',       mins:10, tag:'Pump Design · NPSH' },
-    { url:'transient-analysis-scada.html',         title:'Beyond Static Design: Integrating Transient Analysis with SCADA for Smart Pipelines',                    cat:'surge',       thumb:'transient-analysis-scada.jpg',        mins:9,  tag:'SCADA · Digital Twin · Surge Analysis' },
-    { url:'cavitation-prvs-fcvs.html',             title:'Technical Design Guide: Managing Cavitation in PRVs and FCVs',                                           cat:'hydraulic',   thumb:'cavitation-prvs-fcvs.jpg',            mins:8,  tag:'Hydraulic Design · Cavitation' },
-    { url:'wet-well-vortex-design.html',           title:'The Silent Pump Killer: Vortex Formation and Hydraulic Instability in Wet Well Design',                  cat:'pumps',       thumb:'wet-well-vortex-design.jpg',          mins:9,  tag:'Pump Station Design · Wet Well' },
-    { url:'vfd-myth-hydraulic-design.html',        title:"The VFD Myth: Why Variable Frequency Drives Aren't a 'Magic Fix' for Poor Hydraulic Design",             cat:'pumps',       thumb:'vfd-myth-hydraulic-design.jpg',       mins:8,  tag:'Pump Engineering · VFD' },
-    { url:'air-valves-pipeline-safety.html',       title:'Air Valves: Just Pipeline Accessories or the Ultimate Safety Guard?',                                    cat:'pipeline',    thumb:'air-valves-pipeline-safety.jpg',      mins:9,  tag:'Pipeline Safety · Air Valve Design' },
-    { url:'air-admission-networks.html',           title:'Strategic Air Admission in Water Transmission Networks: A Dual Perspective',                             cat:'surge',       thumb:'air-admission-networks.jpg',          mins:8,  tag:'Surge Analysis · Air Management' },
-    { url:'top-hill-challenge.html',               title:'Managing the "Top Hill" Challenge in Water Transmission Lines',                                          cat:'pipeline',    thumb:'top-hill-challenge.jpg',              mins:5,  tag:'Pipeline Design · Surge Analysis' },
-    { url:'check-valve-hammer.html',               title:'From Modeling to Procurement: A Guide to Check Valve Analysis in Bentley HAMMER',                        cat:'surge',       thumb:'check-valve-hammer.jpg',              mins:5,  tag:'Transient Analysis · Check Valve' },
-    { url:'prv-altitude-valve-fcv.html',           title:'Understanding PRV, Altitude Valve, and FCV in Water Transmission Systems',                               cat:'hydraulic',   thumb:'prv-altitude-valve-fcv.jpg',          mins:5,  tag:'Hydraulic Control · Valve Selection' },
-    { url:'sustainable-pump-selection.html',       title:'Sustainable Pump Selection: Beyond the Duty Point',                                                      cat:'pumps',       thumb:'sustainable-pump-selection.jpg',      mins:5,  tag:'Pump Engineering · Energy Efficiency' },
-    { url:'steady-state-analysis.html',            title:'Steady State Analysis: The Foundation of Water Transmission Design',                                     cat:'hydraulic',   thumb:'steady-state-analysis.jpg',           mins:5,  tag:'Hydraulic Modeling · Steady State' },
-    { url:'surge-analysis-risk.html',              title:'Surge Analysis: An Essential Risk Mitigation Strategy for Pressurized Pipelines',                        cat:'surge',       thumb:'surge-analysis-risk.jpg',             mins:5,  tag:'Surge Analysis · Risk Management' },
-    { url:'design-vs-reality.html',                title:'The Biggest Gap in Engineering: Design vs. Reality',                                                     cat:'leadership',  thumb:'design-vs-reality.jpg',               mins:4,  tag:'Engineering Leadership · Field Experience' },
-    { url:'engineering-decisions.html',            title:'Making Decisions Under Pressure: Lessons From the Field',                                                cat:'leadership',  thumb:'engineering-decisions.jpg',           mins:4,  tag:'Engineering Leadership · Project Management' },
-    { url:'envision-sustainability.html',          title:'Sustainability in Infrastructure: A Core Engineering Responsibility',                                    cat:'leadership',  thumb:'envision-sustainability.jpg',         mins:4,  tag:'Sustainability · Envision' },
-    { url:'infrastructure-at-scale.html',          title:'Managing Infrastructure at Scale: Beyond Technical Complexity',                                          cat:'leadership',  thumb:'infrastructure-at-scale.jpg',         mins:4,  tag:'Engineering Leadership · Infrastructure' },
-    { url:'sustainability-in-design.html',         title:'From Strategy to Specification: Integrating Sustainability in Engineering Design',                       cat:'leadership',  thumb:'sustainability-in-design.jpg',        mins:4,  tag:'Sustainability · Design Coordination' },
-    { url:'daf-swro-pretreatment.html',            title:'Technical Deep-Dive: Designing DAF for Large-Scale SWRO Pre-treatment',                                  cat:'desalination',thumb:'daf-swro-pretreatment.jpg',           mins:10, tag:'Desalination · DAF · SWRO' },
-    { url:'mega-swro-engineering.html',            title:'The Engineering of Scale: Why Standard Design Is Not Enough for Mega SWRO Plants',                       cat:'desalination',thumb:'mega-swro-engineering.jpg',          mins:8,  tag:'Desalination · SWRO · Scale Engineering' },
-    { url:'swro-pretreatment-dilemma.html',        title:'Design Reference: The Strategic Dilemma in SWRO Pre-treatment',                                          cat:'desalination',thumb:'swro-pretreatment-dilemma.jpg',       mins:9,  tag:'Desalination · SWRO · UF' },
-    { url:'ro-overdesign-paradox.html',            title:'The Over-Design Paradox: Are Your Safety Margins Actually Killing Your RO Plant?',                       cat:'desalination',thumb:'ro-overdesign-paradox.jpg',          mins:7,  tag:'Desalination · RO · Design Philosophy' },
-    { url:'chlorine-swro-disinfection.html',       title:'The Chlorine Journey: Disinfection Science in SWRO Plants',                                              cat:'desalination',thumb:'chlorine-swro-disinfection.jpg',     mins:3,  tag:'Desalination · SWRO · Chlorination' },
-    { url:'offshore-intake-design.html',           title:'Offshore Seawater Intake Design: Six Core Engineering Principles',                                       cat:'desalination',thumb:'offshore-intake-design.jpg',          mins:3,  tag:'Desalination · Intake Design · Offshore' },
-    { url:'ph-management-swro.html',               title:'pH Management: The Hidden Key to Sustainable SWRO Operation',                                            cat:'desalination',thumb:'ph-management-swro.jpg',              mins:3,  tag:'Desalination · SWRO · pH' },
-    { url:'onshore-intake-design.html',            title:'Onshore Intake Design: Bridging Hydraulic Theory and Field Reality',                                     cat:'desalination',thumb:'onshore-intake-design.jpg',          mins:3,  tag:'Desalination · Intake Design · Onshore' },
-    { url:'px-energy-recovery.html',               title:'PX Technology: How Energy Recovery Transformed Desalination Economics',                                  cat:'desalination',thumb:'px-energy-recovery.jpg',              mins:3,  tag:'Desalination · Energy Recovery · PX' }
+    { url:'water-hammer-control-valve.html',       title:'Effect of Control Valve Closure Time on Water Hammer Intensity',                                          cat:'surge',       thumb:'water_hammer_control_valve_v2.webp',   mins:15, tag:'Transient Analysis · Water Hammer' },
+    { url:'combination-air-valves.html',           title:'Design Criteria for Combination Air Valves in Long-Distance Transmission Mains',                          cat:'pipeline',    thumb:'combination_air_valves_design_criteria.webp', mins:14, tag:'Transmission Pipeline · Air Management' },
+    { url:'surge-vessel.html',                     title:'Sizing the Hydropneumatic Surge Vessel in Water Transmission Pipelines',                                  cat:'surge',       thumb:'surge-vessel.webp',                    mins:10, tag:'Surge Analysis · Hydraulic Design' },
+    { url:'hydraulic-mistakes.html',               title:'Common Mistakes in Hydraulic Modeling of Water Transmission Networks',                                    cat:'hydraulic',   thumb:'hydraulic_modeling_mistakes.webp',     mins:8,  tag:'Hydraulic Modeling · Pipeline Design' },
+    { url:'pre-charge-pressure.html',              title:'The Pre-Charge Pressure of the Surge Vessel — How One Number Changes Everything',                         cat:'surge',       thumb:'IMG_4656.webp',                        mins:12, tag:'Surge Analysis · Surge Vessel Design' },
+    { url:'above-ground-pipeline-design.html',     title:'Engineering Guide: Structural Design of Above-Ground Water Pipelines',                                   cat:'pipeline',    thumb:'above-ground-pipeline-design.webp',    mins:12, tag:'Structural Design · Pipeline Engineering' },
+    { url:'control-valve-transients-hammer.html',  title:'Mastering Control Valve Transients in Bentley HAMMER: FCV vs. PRV',                                      cat:'surge',       thumb:'control-valve-transients-hammer.webp', mins:10, tag:'Transient Analysis · Bentley HAMMER' },
+    { url:'boundary-conditions-reservoir-tank.html',title:'Demystifying Boundary Conditions: Reservoir vs. Tank in Bentley HAMMER',                               cat:'surge',       thumb:'boundary-conditions-reservoir-tank.webp',mins:9, tag:'Transient Analysis · Bentley HAMMER' },
+    { url:'carbon-steel-pipeline-cml.html',        title:'Structural Design Reference: Carbon Steel Pipelines with Cement Mortar Lining',                          cat:'pipeline',    thumb:'carbon-steel-pipeline-cml.webp',      mins:11, tag:'Structural Design · Pipeline Engineering' },
+    { url:'npsh-water-infrastructure.html',        title:'Technical Design Guide: Mastering NPSH in Water Infrastructure',                                         cat:'pumps',       thumb:'npsh-water-infrastructure.webp',       mins:10, tag:'Pump Design · NPSH' },
+    { url:'transient-analysis-scada.html',         title:'Beyond Static Design: Integrating Transient Analysis with SCADA for Smart Pipelines',                    cat:'surge',       thumb:'transient-analysis-scada.webp',        mins:9,  tag:'SCADA · Digital Twin · Surge Analysis' },
+    { url:'cavitation-prvs-fcvs.html',             title:'Technical Design Guide: Managing Cavitation in PRVs and FCVs',                                           cat:'hydraulic',   thumb:'cavitation-prvs-fcvs.webp',            mins:8,  tag:'Hydraulic Design · Cavitation' },
+    { url:'wet-well-vortex-design.html',           title:'The Silent Pump Killer: Vortex Formation and Hydraulic Instability in Wet Well Design',                  cat:'pumps',       thumb:'wet-well-vortex-design.webp',          mins:9,  tag:'Pump Station Design · Wet Well' },
+    { url:'vfd-myth-hydraulic-design.html',        title:"The VFD Myth: Why Variable Frequency Drives Aren't a 'Magic Fix' for Poor Hydraulic Design",             cat:'pumps',       thumb:'vfd-myth-hydraulic-design.webp',       mins:8,  tag:'Pump Engineering · VFD' },
+    { url:'air-valves-pipeline-safety.html',       title:'Air Valves: Just Pipeline Accessories or the Ultimate Safety Guard?',                                    cat:'pipeline',    thumb:'air-valves-pipeline-safety.webp',      mins:9,  tag:'Pipeline Safety · Air Valve Design' },
+    { url:'air-admission-networks.html',           title:'Strategic Air Admission in Water Transmission Networks: A Dual Perspective',                             cat:'surge',       thumb:'air-admission-networks.webp',          mins:8,  tag:'Surge Analysis · Air Management' },
+    { url:'top-hill-challenge.html',               title:'Managing the "Top Hill" Challenge in Water Transmission Lines',                                          cat:'pipeline',    thumb:'top-hill-challenge.webp',              mins:5,  tag:'Pipeline Design · Surge Analysis' },
+    { url:'check-valve-hammer.html',               title:'From Modeling to Procurement: A Guide to Check Valve Analysis in Bentley HAMMER',                        cat:'surge',       thumb:'check-valve-hammer.webp',              mins:5,  tag:'Transient Analysis · Check Valve' },
+    { url:'prv-altitude-valve-fcv.html',           title:'Understanding PRV, Altitude Valve, and FCV in Water Transmission Systems',                               cat:'hydraulic',   thumb:'prv-altitude-valve-fcv.webp',          mins:5,  tag:'Hydraulic Control · Valve Selection' },
+    { url:'sustainable-pump-selection.html',       title:'Sustainable Pump Selection: Beyond the Duty Point',                                                      cat:'pumps',       thumb:'sustainable-pump-selection.webp',      mins:5,  tag:'Pump Engineering · Energy Efficiency' },
+    { url:'steady-state-analysis.html',            title:'Steady State Analysis: The Foundation of Water Transmission Design',                                     cat:'hydraulic',   thumb:'steady-state-analysis.webp',           mins:5,  tag:'Hydraulic Modeling · Steady State' },
+    { url:'surge-analysis-risk.html',              title:'Surge Analysis: An Essential Risk Mitigation Strategy for Pressurized Pipelines',                        cat:'surge',       thumb:'surge-analysis-risk.webp',             mins:5,  tag:'Surge Analysis · Risk Management' },
+    { url:'design-vs-reality.html',                title:'The Biggest Gap in Engineering: Design vs. Reality',                                                     cat:'leadership',  thumb:'design-vs-reality.webp',               mins:4,  tag:'Engineering Leadership · Field Experience' },
+    { url:'engineering-decisions.html',            title:'Making Decisions Under Pressure: Lessons From the Field',                                                cat:'leadership',  thumb:'engineering-decisions.webp',           mins:4,  tag:'Engineering Leadership · Project Management' },
+    { url:'envision-sustainability.html',          title:'Sustainability in Infrastructure: A Core Engineering Responsibility',                                    cat:'leadership',  thumb:'envision-sustainability.webp',         mins:4,  tag:'Sustainability · Envision' },
+    { url:'infrastructure-at-scale.html',          title:'Managing Infrastructure at Scale: Beyond Technical Complexity',                                          cat:'leadership',  thumb:'infrastructure-at-scale.webp',         mins:4,  tag:'Engineering Leadership · Infrastructure' },
+    { url:'sustainability-in-design.html',         title:'From Strategy to Specification: Integrating Sustainability in Engineering Design',                       cat:'leadership',  thumb:'sustainability-in-design.webp',        mins:4,  tag:'Sustainability · Design Coordination' },
+    { url:'daf-swro-pretreatment.html',            title:'Technical Deep-Dive: Designing DAF for Large-Scale SWRO Pre-treatment',                                  cat:'desalination',thumb:'daf-swro-pretreatment.webp',           mins:10, tag:'Desalination · DAF · SWRO' },
+    { url:'mega-swro-engineering.html',            title:'The Engineering of Scale: Why Standard Design Is Not Enough for Mega SWRO Plants',                       cat:'desalination',thumb:'mega-swro-engineering.webp',          mins:8,  tag:'Desalination · SWRO · Scale Engineering' },
+    { url:'swro-pretreatment-dilemma.html',        title:'Design Reference: The Strategic Dilemma in SWRO Pre-treatment',                                          cat:'desalination',thumb:'swro-pretreatment-dilemma.webp',       mins:9,  tag:'Desalination · SWRO · UF' },
+    { url:'ro-overdesign-paradox.html',            title:'The Over-Design Paradox: Are Your Safety Margins Actually Killing Your RO Plant?',                       cat:'desalination',thumb:'ro-overdesign-paradox.webp',          mins:7,  tag:'Desalination · RO · Design Philosophy' },
+    { url:'chlorine-swro-disinfection.html',       title:'The Chlorine Journey: Disinfection Science in SWRO Plants',                                              cat:'desalination',thumb:'chlorine-swro-disinfection.webp',     mins:3,  tag:'Desalination · SWRO · Chlorination' },
+    { url:'offshore-intake-design.html',           title:'Offshore Seawater Intake Design: Six Core Engineering Principles',                                       cat:'desalination',thumb:'offshore-intake-design.webp',          mins:3,  tag:'Desalination · Intake Design · Offshore' },
+    { url:'ph-management-swro.html',               title:'pH Management: The Hidden Key to Sustainable SWRO Operation',                                            cat:'desalination',thumb:'ph-management-swro.webp',              mins:3,  tag:'Desalination · SWRO · pH' },
+    { url:'onshore-intake-design.html',            title:'Onshore Intake Design: Bridging Hydraulic Theory and Field Reality',                                     cat:'desalination',thumb:'onshore-intake-design.webp',          mins:3,  tag:'Desalination · Intake Design · Onshore' },
+    { url:'px-energy-recovery.html',               title:'PX Technology: How Energy Recovery Transformed Desalination Economics',                                  cat:'desalination',thumb:'px-energy-recovery.webp',              mins:3,  tag:'Desalination · Energy Recovery · PX' }
   ];
 
   /* ─────────────────────────────────────────────────────────────
@@ -503,12 +503,184 @@
       '  box-shadow:0 4px 20px rgba(0,0,0,0.4);',
       '}',
 
+      /* ── Table of Contents ── */
+      '#article-toc{',
+      '  position:fixed;',
+      '  left:calc(50% + 400px);',
+      '  top:120px;',
+      '  width:210px;',
+      '  background:var(--bg-2,#fbfbfd);',
+      '  border:1px solid var(--border,rgba(0,0,0,0.08));',
+      '  border-radius:14px;',
+      '  padding:16px;',
+      '  display:none;',
+      '  z-index:100;',
+      '  max-height:calc(100vh - 160px);',
+      '  overflow-y:auto;',
+      '}',
+      '@media(min-width:1260px){',
+      '  #article-toc{ display:block; }',
+      '}',
+      '.toc-label{',
+      '  display:block;',
+      '  font-size:10px;',
+      '  font-weight:700;',
+      '  letter-spacing:0.1em;',
+      '  text-transform:uppercase;',
+      '  color:var(--text-tertiary,#86868b);',
+      '  margin-bottom:12px;',
+      '}',
+      '.toc-list{',
+      '  list-style:none;',
+      '  padding:0;',
+      '  margin:0;',
+      '  display:flex;',
+      '  flex-direction:column;',
+      '  gap:2px;',
+      '}',
+      '.toc-list a{',
+      '  display:flex;',
+      '  align-items:baseline;',
+      '  gap:8px;',
+      '  padding:6px 8px;',
+      '  border-radius:8px;',
+      '  font-size:12px;',
+      '  line-height:1.4;',
+      '  color:var(--text-secondary,#6e6e73);',
+      '  text-decoration:none;',
+      '  transition:background 0.15s, color 0.15s;',
+      '}',
+      '.toc-list a:hover{',
+      '  background:var(--bg-4,#ededf0);',
+      '  color:var(--text-primary,#1d1d1f);',
+      '}',
+      '.toc-list a.active{',
+      '  background:rgba(0,113,227,0.08);',
+      '  color:var(--accent,#0071e3);',
+      '  font-weight:600;',
+      '}',
+      '.toc-num{',
+      '  font-size:10px;',
+      '  font-weight:700;',
+      '  color:var(--accent,#0071e3);',
+      '  min-width:14px;',
+      '  flex-shrink:0;',
+      '}',
+      /* Mobile TOC */
+      '#article-toc-mobile{',
+      '  margin-bottom:2rem;',
+      '  border:1px solid var(--border,rgba(0,0,0,0.08));',
+      '  border-radius:14px;',
+      '  overflow:hidden;',
+      '}',
+      '@media(min-width:1260px){',
+      '  #article-toc-mobile{ display:none; }',
+      '}',
+      '.toc-mobile-toggle{',
+      '  width:100%;',
+      '  display:flex;',
+      '  align-items:center;',
+      '  gap:8px;',
+      '  padding:14px 16px;',
+      '  background:var(--bg-2,#fbfbfd);',
+      '  border:none;',
+      '  color:var(--text-primary,#1d1d1f);',
+      '  font-size:13px;',
+      '  font-weight:600;',
+      '  font-family:inherit;',
+      '  cursor:pointer;',
+      '  text-align:left;',
+      '}',
+      '.toc-chevron{ margin-left:auto; transition:transform 0.2s; }',
+      '#article-toc-mobile.open .toc-chevron{ transform:rotate(180deg); }',
+      '.toc-mobile-list{',
+      '  display:none;',
+      '  padding:8px 12px 12px;',
+      '  background:var(--bg-2,#fbfbfd);',
+      '  border-top:1px solid var(--border,rgba(0,0,0,0.06));',
+      '}',
+      '#article-toc-mobile.open .toc-mobile-list{ display:flex; }',
+
+      /* ── Inline CTA ── */
+      '.inline-cta{',
+      '  display:flex;',
+      '  align-items:flex-start;',
+      '  gap:16px;',
+      '  background:rgba(0,113,227,0.05);',
+      '  border:1px solid rgba(0,113,227,0.15);',
+      '  border-left:4px solid var(--accent,#0071e3);',
+      '  border-radius:0 14px 14px 0;',
+      '  padding:20px 24px;',
+      '  margin:2.5rem 0;',
+      '}',
+      ':root[data-theme="dark"] .inline-cta{',
+      '  background:rgba(41,151,255,0.06);',
+      '  border-color:rgba(41,151,255,0.18);',
+      '  border-left-color:#2997ff;',
+      '}',
+      '.inline-cta-icon{ font-size:1.6rem; line-height:1; flex-shrink:0; }',
+      '.inline-cta-title{',
+      '  font-size:15px;',
+      '  font-weight:700;',
+      '  color:var(--text-primary,#1d1d1f);',
+      '  margin-bottom:6px;',
+      '  letter-spacing:-0.01em;',
+      '}',
+      '.inline-cta-text{',
+      '  font-size:14px;',
+      '  color:var(--text-secondary,#6e6e73);',
+      '  line-height:1.6;',
+      '  margin-bottom:14px;',
+      '}',
+      '.inline-cta-btn{',
+      '  display:inline-flex;',
+      '  align-items:center;',
+      '  gap:6px;',
+      '  padding:9px 20px;',
+      '  background:var(--accent,#0071e3);',
+      '  color:#fff !important;',
+      '  border-radius:980px;',
+      '  font-size:13px;',
+      '  font-weight:600;',
+      '  text-decoration:none;',
+      '  transition:opacity 0.2s, transform 0.2s;',
+      '}',
+      '.inline-cta-btn:hover{ opacity:0.88; transform:translateY(-1px); }',
+
+      /* ── Copy buttons ── */
+      '.copy-btn{',
+      '  display:inline-flex;',
+      '  align-items:center;',
+      '  justify-content:center;',
+      '  width:22px;',
+      '  height:22px;',
+      '  border-radius:6px;',
+      '  border:1px solid var(--border,rgba(0,0,0,0.1));',
+      '  background:var(--bg-3,#fff);',
+      '  color:var(--text-tertiary,#86868b);',
+      '  cursor:pointer;',
+      '  font-size:11px;',
+      '  opacity:0;',
+      '  margin-left:8px;',
+      '  transition:opacity 0.15s, background 0.15s, color 0.15s;',
+      '  vertical-align:middle;',
+      '  flex-shrink:0;',
+      '}',
+      'li:hover .copy-btn{ opacity:1; }',
+      '.copy-btn.copied{',
+      '  background:rgba(52,199,89,0.1);',
+      '  border-color:rgba(52,199,89,0.4);',
+      '  color:#34c759;',
+      '  opacity:1;',
+      '}',
+
       /* ── Responsive ── */
       '@media(max-width:768px){',
       '  .related-grid{ grid-template-columns:1fr; gap:12px; }',
       '  .related-articles-section{ padding:48px 20px 60px; }',
       '  .related-thumb{ height:110px; }',
       '  .pdf-btn,.share-btn-li{ padding:8px 16px; font-size:12px; }',
+      '  .inline-cta{ flex-direction:column; gap:10px; padding:16px; }',
       '}',
       '@media(min-width:769px) and (max-width:1024px){',
       '  .related-grid{ grid-template-columns:repeat(2,1fr); }',
@@ -519,13 +691,140 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     10.  INIT
+     10.  TABLE OF CONTENTS
+     ───────────────────────────────────────────────────────────── */
+  function buildTOC() {
+    var body = document.querySelector('.article-body');
+    if (!body) return;
+    var headings = body.querySelectorAll('h2');
+    if (headings.length < 3) return;
+
+    // Assign IDs to headings
+    var items = [];
+    headings.forEach(function (h, i) {
+      if (!h.id) h.id = 'section-' + (i + 1);
+      items.push({ id: h.id, text: h.textContent.trim() });
+    });
+
+    var listHTML = items.map(function (item, i) {
+      return '<li><a href="#' + item.id + '" data-toc-id="' + item.id + '">' +
+               '<span class="toc-num">' + (i + 1) + '</span>' +
+               '<span class="toc-text">' + item.text + '</span>' +
+             '</a></li>';
+    }).join('');
+
+    // Desktop: fixed sidebar
+    var tocEl = document.createElement('nav');
+    tocEl.id = 'article-toc';
+    tocEl.setAttribute('aria-label', 'Article sections');
+    tocEl.innerHTML = '<span class="toc-label">Contents</span><ol class="toc-list">' + listHTML + '</ol>';
+    document.body.appendChild(tocEl);
+
+    // Mobile: collapsible at top of article
+    var mobileToc = document.createElement('nav');
+    mobileToc.id = 'article-toc-mobile';
+    mobileToc.setAttribute('aria-label', 'Article sections');
+    mobileToc.innerHTML =
+      '<button class="toc-mobile-toggle" aria-expanded="false" ' +
+        'onclick="var o=this.parentElement.classList.toggle(\'open\');this.setAttribute(\'aria-expanded\',o)">' +
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>' +
+        ' Table of Contents' +
+        '<svg class="toc-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>' +
+      '</button>' +
+      '<ol class="toc-list toc-mobile-list">' + listHTML + '</ol>';
+    body.insertBefore(mobileToc, body.firstChild);
+
+    // Highlight active section on scroll
+    var allTocLinks = document.querySelectorAll('[data-toc-id]');
+    window.addEventListener('scroll', function () {
+      var scrollY = window.pageYOffset + 140;
+      var activeId = null;
+      headings.forEach(function (h) {
+        if (h.offsetTop <= scrollY) activeId = h.id;
+      });
+      allTocLinks.forEach(function (a) {
+        a.classList.toggle('active', a.getAttribute('data-toc-id') === activeId);
+      });
+    }, { passive: true });
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     11.  INLINE CONSULTATION CTA
+     ───────────────────────────────────────────────────────────── */
+  function injectInlineCTA() {
+    var body = document.querySelector('.article-body');
+    if (!body) return;
+    var headings = body.querySelectorAll('h2');
+    if (headings.length < 2) return;
+
+    // Insert before the 3rd heading (or last if fewer)
+    var targetIdx = Math.min(2, headings.length - 1);
+    var target = headings[targetIdx];
+
+    var cta = document.createElement('div');
+    cta.className = 'inline-cta';
+    cta.innerHTML =
+      '<div class="inline-cta-icon">💬</div>' +
+      '<div class="inline-cta-body">' +
+        '<div class="inline-cta-title">Need expert input on this?</div>' +
+        '<div class="inline-cta-text">I work with engineering teams on hydraulic design, surge analysis, and SWRO projects. Happy to review your design or answer specific questions.</div>' +
+        '<a href="#" class="inline-cta-btn" ' +
+          'onclick="if(typeof Calendly!==\'undefined\'){Calendly.initPopupWidget({url:\'https://calendly.com/mohamed-abokhatwa/30min\'});}else{window.open(\'https://calendly.com/mohamed-abokhatwa/30min\',\'_blank\');}' +
+          'if(window.gtag)gtag(\'event\',\'consultation_click\',{source:\'inline_cta\',page_path:window.location.pathname});return false;">' +
+          'Book a Free Consultation →' +
+        '</a>' +
+      '</div>';
+
+    target.parentNode.insertBefore(cta, target);
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     12.  COPY BUTTONS on list items
+     ───────────────────────────────────────────────────────────── */
+  function initCopyButtons() {
+    var body = document.querySelector('.article-body');
+    if (!body) return;
+    if (!navigator.clipboard) return;
+
+    var items = body.querySelectorAll('li');
+    items.forEach(function (li) {
+      var btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.setAttribute('aria-label', 'Copy');
+      btn.title = 'Copy to clipboard';
+      btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        // Get text without the copy button's own text
+        var text = Array.from(li.childNodes)
+          .filter(function (n) { return n !== btn; })
+          .map(function (n) { return n.textContent; })
+          .join('').trim();
+        navigator.clipboard.writeText(text).then(function () {
+          btn.innerHTML = '✓';
+          btn.classList.add('copied');
+          setTimeout(function () {
+            btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012 2v1"/></svg>';
+            btn.classList.remove('copied');
+          }, 1800);
+        }).catch(function () {});
+      });
+      li.appendChild(btn);
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     13.  INIT
      ───────────────────────────────────────────────────────────── */
   function init() {
     injectCSS();
     initProgressBar();
     updateReadingTime();
     injectArticleActions();
+    buildTOC();
+    injectInlineCTA();
+    initCopyButtons();
     renderRelated();
     initBackToTop();
     initFabTracking();

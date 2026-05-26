@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mohamed Abokhatwa — Water Engineering Insights</title>
+    <link>https://abokhatwa.com/</link>
+    <atom:link href="https://abokhatwa.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Technical articles on hydraulic systems, surge analysis, pipeline design, pump engineering, and SWRO desalination.</description>
+    <language>en-us</language>
+    <lastBuildDate>2026-05-26T00:00:00+03:00</lastBuildDate>
+    <image>
+      <url>https://abokhatwa.com/og-cover.jpg</url>
+      <title>Mohamed Abokhatwa</title>
+      <link>https://abokhatwa.com/</link>
+    </image>
+  <item>
+    <title>Effect of Control Valve Closure Time on Water Hammer Intensity</title>
+    <link>https://abokhatwa.com/water-hammer-control-valve.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/water-hammer-control-valve.html</guid>
+    <category>Surge & Transients</category>
+    <pubDate>2026-05-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Design Criteria for Combination Air Valves in Long-Distance Transmission Mains</title>
+    <link>https://abokhatwa.com/combination-air-valves.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/combination-air-valves.html</guid>
+    <category>Pipeline Design</category>
+    <pubDate>2026-05-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Sizing the Hydropneumatic Surge Vessel in Water Transmission Pipelines</title>
+    <link>https://abokhatwa.com/surge-vessel.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/surge-vessel.html</guid>
+    <category>Surge & Transients</category>
+    <pubDate>2026-05-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Common Mistakes in Hydraulic Modeling of Water Transmission Networks</title>
+    <link>https://abokhatwa.com/hydraulic-mistakes.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/hydraulic-mistakes.html</guid>
+    <category>Hydraulic Design</category>
+    <pubDate>2026-05-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>The Pre-Charge Pressure of the Surge Vessel — How One Number Changes Everything</title>
+    <link>https://abokhatwa.com/pre-charge-pressure.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/pre-charge-pressure.html</guid>
+    <category>Surge & Transients</category>
+    <pubDate>2026-05-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Engineering Guide: Structural Design of Above-Ground Water Pipelines</title>
+    <link>https://abokhatwa.com/above-ground-pipeline-design.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/above-ground-pipeline-design.html</guid>
+    <category>Pipeline Design</category>
+    <pubDate>2026-05-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Mastering Control Valve Transients in Bentley HAMMER: FCV vs. PRV</title>
+    <link>https://abokhatwa.com/control-valve-transients-hammer.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/control-valve-transients-hammer.html</guid>
+    <category>Surge & Transients</category>
+    <pubDate>2026-04-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Demystifying Boundary Conditions: Reservoir vs. Tank in Bentley HAMMER</title>
+    <link>https://abokhatwa.com/boundary-conditions-reservoir-tank.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/boundary-conditions-reservoir-tank.html</guid>
+    <category>Surge & Transients</category>
+    <pubDate>2026-04-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Structural Design Reference: Carbon Steel Pipelines with Cement Mortar Lining</title>
+    <link>https://abokhatwa.com/carbon-steel-pipeline-cml.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/carbon-steel-pipeline-cml.html</guid>
+    <category>Pipeline Design</category>
+    <pubDate>2026-04-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Technical Design Guide: Mastering NPSH in Water Infrastructure</title>
+    <link>https://abokhatwa.com/npsh-water-infrastructure.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/npsh-water-infrastructure.html</guid>
+    <category>Pump Engineering</category>
+    <pubDate>2026-04-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Beyond Static Design: Integrating Transient Analysis with SCADA for Smart Pipelines</title>
+    <link>https://abokhatwa.com/transient-analysis-scada.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/transient-analysis-scada.html</guid>
+    <category>Surge & Transients</category>
+    <pubDate>2026-04-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Technical Design Guide: Managing Cavitation in PRVs and FCVs</title>
+    <link>https://abokhatwa.com/cavitation-prvs-fcvs.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/cavitation-prvs-fcvs.html</guid>
+    <category>Hydraulic Design</category>
+    <pubDate>2026-04-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>The Silent Pump Killer: Vortex Formation and Hydraulic Instability in Wet Well Design</title>
+    <link>https://abokhatwa.com/wet-well-vortex-design.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/wet-well-vortex-design.html</guid>
+    <category>Pump Engineering</category>
+    <pubDate>2026-04-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>The VFD Myth: Why Variable Frequency Drives Aren't a Magic Fix for Poor Hydraulic Design</title>
+    <link>https://abokhatwa.com/vfd-myth-hydraulic-design.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/vfd-myth-hydraulic-design.html</guid>
+    <category>Pump Engineering</category>
+    <pubDate>2026-03-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Air Valves: Just Pipeline Accessories or the Ultimate Safety Guard?</title>
+    <link>https://abokhatwa.com/air-valves-pipeline-safety.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/air-valves-pipeline-safety.html</guid>
+    <category>Pipeline Design</category>
+    <pubDate>2026-03-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Strategic Air Admission in Water Transmission Networks: A Dual Perspective</title>
+    <link>https://abokhatwa.com/air-admission-networks.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/air-admission-networks.html</guid>
+    <category>Surge & Transients</category>
+    <pubDate>2026-03-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Managing the &quot;Top Hill&quot; Challenge in Water Transmission Lines</title>
+    <link>https://abokhatwa.com/top-hill-challenge.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/top-hill-challenge.html</guid>
+    <category>Pipeline Design</category>
+    <pubDate>2026-03-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>From Modeling to Procurement: A Guide to Check Valve Analysis in Bentley HAMMER</title>
+    <link>https://abokhatwa.com/check-valve-hammer.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/check-valve-hammer.html</guid>
+    <category>Surge & Transients</category>
+    <pubDate>2026-03-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Understanding PRV, Altitude Valve, and FCV in Water Transmission Systems</title>
+    <link>https://abokhatwa.com/prv-altitude-valve-fcv.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/prv-altitude-valve-fcv.html</guid>
+    <category>Hydraulic Design</category>
+    <pubDate>2026-03-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Sustainable Pump Selection: Beyond the Duty Point</title>
+    <link>https://abokhatwa.com/sustainable-pump-selection.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/sustainable-pump-selection.html</guid>
+    <category>Pump Engineering</category>
+    <pubDate>2026-02-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Steady State Analysis: The Foundation of Water Transmission Design</title>
+    <link>https://abokhatwa.com/steady-state-analysis.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/steady-state-analysis.html</guid>
+    <category>Hydraulic Design</category>
+    <pubDate>2026-02-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Surge Analysis: An Essential Risk Mitigation Strategy for Pressurized Pipelines</title>
+    <link>https://abokhatwa.com/surge-analysis-risk.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/surge-analysis-risk.html</guid>
+    <category>Surge & Transients</category>
+    <pubDate>2026-02-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>The Biggest Gap in Engineering: Design vs. Reality</title>
+    <link>https://abokhatwa.com/design-vs-reality.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/design-vs-reality.html</guid>
+    <category>Leadership</category>
+    <pubDate>2026-02-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Making Decisions Under Pressure: Lessons From the Field</title>
+    <link>https://abokhatwa.com/engineering-decisions.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/engineering-decisions.html</guid>
+    <category>Leadership</category>
+    <pubDate>2026-02-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Sustainability in Infrastructure: A Core Engineering Responsibility</title>
+    <link>https://abokhatwa.com/envision-sustainability.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/envision-sustainability.html</guid>
+    <category>Leadership</category>
+    <pubDate>2026-01-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Managing Infrastructure at Scale: Beyond Technical Complexity</title>
+    <link>https://abokhatwa.com/infrastructure-at-scale.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/infrastructure-at-scale.html</guid>
+    <category>Leadership</category>
+    <pubDate>2026-01-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>From Strategy to Specification: Integrating Sustainability in Engineering Design</title>
+    <link>https://abokhatwa.com/sustainability-in-design.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/sustainability-in-design.html</guid>
+    <category>Leadership</category>
+    <pubDate>2026-01-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Technical Deep-Dive: Designing DAF for Large-Scale SWRO Pre-treatment</title>
+    <link>https://abokhatwa.com/daf-swro-pretreatment.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/daf-swro-pretreatment.html</guid>
+    <category>Desalination & SWRO</category>
+    <pubDate>2026-04-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>The Engineering of Scale: Why Standard Design Is Not Enough for Mega SWRO Plants</title>
+    <link>https://abokhatwa.com/mega-swro-engineering.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/mega-swro-engineering.html</guid>
+    <category>Desalination & SWRO</category>
+    <pubDate>2026-04-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Design Reference: The Strategic Dilemma in SWRO Pre-treatment</title>
+    <link>https://abokhatwa.com/swro-pretreatment-dilemma.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/swro-pretreatment-dilemma.html</guid>
+    <category>Desalination & SWRO</category>
+    <pubDate>2026-03-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>The Over-Design Paradox: Are Your Safety Margins Actually Killing Your RO Plant?</title>
+    <link>https://abokhatwa.com/ro-overdesign-paradox.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/ro-overdesign-paradox.html</guid>
+    <category>Desalination & SWRO</category>
+    <pubDate>2026-03-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>The Chlorine Journey: Disinfection Science in SWRO Plants</title>
+    <link>https://abokhatwa.com/chlorine-swro-disinfection.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/chlorine-swro-disinfection.html</guid>
+    <category>Desalination & SWRO</category>
+    <pubDate>2026-02-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Offshore Seawater Intake Design: Six Core Engineering Principles</title>
+    <link>https://abokhatwa.com/offshore-intake-design.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/offshore-intake-design.html</guid>
+    <category>Desalination & SWRO</category>
+    <pubDate>2026-02-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>pH Management: The Hidden Key to Sustainable SWRO Operation</title>
+    <link>https://abokhatwa.com/ph-management-swro.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/ph-management-swro.html</guid>
+    <category>Desalination & SWRO</category>
+    <pubDate>2026-02-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>Onshore Intake Design: Bridging Hydraulic Theory and Field Reality</title>
+    <link>https://abokhatwa.com/onshore-intake-design.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/onshore-intake-design.html</guid>
+    <category>Desalination & SWRO</category>
+    <pubDate>2026-01-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  <item>
+    <title>PX Technology: How Energy Recovery Transformed Desalination Economics</title>
+    <link>https://abokhatwa.com/px-energy-recovery.html</link>
+    <guid isPermaLink="true">https://abokhatwa.com/px-energy-recovery.html</guid>
+    <category>Desalination & SWRO</category>
+    <pubDate>2026-01-01T00:00:00+03:00</pubDate>
+    <description>Read the full article on abokhatwa.com</description>
+  </item>
+  </channel>
+</rss>

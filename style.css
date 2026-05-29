@@ -112,6 +112,10 @@ body::before {
   padding: 4px 12px; border-radius: 20px; transition: background 0.2s;
 }
 .lang-switch:hover { background: rgba(0,113,227,0.06); }
+/* Remove pill border inside open mobile menu */
+.nav-links.open .lang-switch {
+  border: none; border-radius: 0; padding: 0;
+}
 
 /* ─── TYPOGRAPHY ──────────────────────────────────────── */
 h1, h2, h3, h4 { font-weight: 600; letter-spacing: -0.02em; color: var(--text-primary); }

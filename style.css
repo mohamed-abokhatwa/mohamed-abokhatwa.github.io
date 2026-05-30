@@ -114,7 +114,7 @@ body::before {
 .lang-switch:hover { background: rgba(0,113,227,0.06); }
 /* Remove pill border inside open mobile menu */
 .nav-links.open .lang-switch {
-  border: none; border-radius: 0; padding: 0;
+  border: none; border-radius: 0; padding: 14px 0;
 }
 
 /* ─── TYPOGRAPHY ──────────────────────────────────────── */

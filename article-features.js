@@ -9,6 +9,7 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'hammer-transient-tips.html',             title:'Tips for Using HAMMER to Understand Interesting Transient Results',                                       cat:'surge',       thumb:'hammer-transient-tips.webp',           mins:12, tag:'Transient Analysis · Bentley HAMMER' },
     { url:'water-hammer-control-valve.html',       title:'Effect of Control Valve Closure Time on Water Hammer Intensity',                                          cat:'surge',       thumb:'water_hammer_control_valve_v2.webp',   mins:15, tag:'Transient Analysis · Water Hammer' },
     { url:'combination-air-valves.html',           title:'Design Criteria for Combination Air Valves in Long-Distance Transmission Mains',                          cat:'pipeline',    thumb:'combination_air_valves_design_criteria.webp', mins:14, tag:'Transmission Pipeline · Air Management' },
     { url:'surge-vessel.html',                     title:'Sizing the Hydropneumatic Surge Vessel in Water Transmission Pipelines',                                  cat:'surge',       thumb:'surge-vessel.webp',                    mins:10, tag:'Surge Analysis · Hydraulic Design' },

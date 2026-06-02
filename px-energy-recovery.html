@@ -141,6 +141,52 @@ document.getElementById('navToggle').addEventListener('click', function() {
 <p>The ~60% reduction in energy consumption directly translates to a proportional reduction in carbon emissions when grid electricity powers the plant. For a 250,000 m³/day plant, PX technology reduces CO₂ emissions by approximately 400,000–500,000 tonnes annually compared to non-recovery operation — making desalination compatible with national decarbonization commitments.</p>
 </div>
 
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<style>
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1px solid var(--border-light)';
+  msg.style.color = 'var(--text-tertiary)';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = 'var(--accent)';
+    msg.style.fontSize = '1.05rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
 <footer>
   <div class="footer-inner">
     <p>© 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">Articles</a></p>

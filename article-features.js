@@ -617,9 +617,9 @@
       '  font-size:13px;',
       '  font-weight:600;',
       '  text-decoration:none;',
-      '  transition:opacity 0.2s, transform 0.2s;',
+      '  transition:background 0.2s;',
       '}',
-      '.inline-cta-btn:hover{ opacity:0.88; transform:translateY(-1px); }',
+      '.inline-cta-btn:hover{ background:#0077ed; }',
 
       /* ── Copy buttons ── */
       '.copy-btn{',

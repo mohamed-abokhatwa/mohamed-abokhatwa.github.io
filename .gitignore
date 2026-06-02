@@ -1,0 +1,9 @@
+# Local/dev artifacts — not deployed
+.claude/
+.DS_Store
+**/.DS_Store
+_originals/
+_backup_redesign/
+
+# Apache config (unused on GitHub Pages)
+.htaccess

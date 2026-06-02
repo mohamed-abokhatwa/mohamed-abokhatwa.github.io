@@ -12,7 +12,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/index-ar.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/"/>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -23,7 +23,7 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/index-ar.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/"/>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -34,7 +34,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/about.html"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/about-ar.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/about.html"/>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -45,7 +45,7 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/about-ar.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/about.html"/>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -56,7 +56,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/services.html"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/services-ar.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/services.html"/>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -67,7 +67,7 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/services-ar.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/services.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/services.html"/>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -79,7 +79,7 @@
   <!-- Hydraulic Calculators -->
   <url>
     <loc>https://abokhatwa.com/calculators.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -87,7 +87,7 @@
   <!-- Lead Magnet -->
   <url>
     <loc>https://abokhatwa.com/pipeline-checklist.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -98,61 +98,61 @@
 
   <url>
     <loc>https://abokhatwa.com/hammer-transient-tips.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/water-hammer-control-valve.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/surge-vessel.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/pre-charge-pressure.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/control-valve-transients-hammer.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/boundary-conditions-reservoir-tank.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/transient-analysis-scada.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/air-admission-networks.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/check-valve-hammer.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/surge-analysis-risk.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -163,31 +163,31 @@
 
   <url>
     <loc>https://abokhatwa.com/combination-air-valves.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/above-ground-pipeline-design.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/carbon-steel-pipeline-cml.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/air-valves-pipeline-safety.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/top-hill-challenge.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -198,25 +198,25 @@
 
   <url>
     <loc>https://abokhatwa.com/npsh-water-infrastructure.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/wet-well-vortex-design.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/vfd-myth-hydraulic-design.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/sustainable-pump-selection.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -227,25 +227,25 @@
 
   <url>
     <loc>https://abokhatwa.com/hydraulic-mistakes.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/cavitation-prvs-fcvs.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/prv-altitude-valve-fcv.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/steady-state-analysis.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -256,55 +256,55 @@
 
   <url>
     <loc>https://abokhatwa.com/daf-swro-pretreatment.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/mega-swro-engineering.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/swro-pretreatment-dilemma.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/ro-overdesign-paradox.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/chlorine-swro-disinfection.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/offshore-intake-design.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/ph-management-swro.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/onshore-intake-design.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/px-energy-recovery.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -315,31 +315,31 @@
 
   <url>
     <loc>https://abokhatwa.com/design-vs-reality.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/engineering-decisions.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/envision-sustainability.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/infrastructure-at-scale.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/sustainability-in-design.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -348,11 +348,11 @@
   <!-- ═══════════════════════════════════════
        CATEGORY PAGES
   ═══════════════════════════════════════ -->
-  <url><loc>https://abokhatwa.com/surge-transients.html</loc><lastmod>2026-05-29</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://abokhatwa.com/pipeline-design.html</loc><lastmod>2026-05-29</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://abokhatwa.com/pump-engineering.html</loc><lastmod>2026-05-29</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://abokhatwa.com/hydraulic-design.html</loc><lastmod>2026-05-29</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://abokhatwa.com/desalination-swro.html</loc><lastmod>2026-05-29</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://abokhatwa.com/leadership-sustainability.html</loc><lastmod>2026-05-29</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://abokhatwa.com/feed.xml</loc><lastmod>2026-05-29</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://abokhatwa.com/surge-transients.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://abokhatwa.com/pipeline-design.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://abokhatwa.com/pump-engineering.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://abokhatwa.com/hydraulic-design.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://abokhatwa.com/desalination-swro.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://abokhatwa.com/leadership-sustainability.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://abokhatwa.com/feed.xml</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
 </urlset>

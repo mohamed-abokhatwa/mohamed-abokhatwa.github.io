@@ -71,7 +71,7 @@
       'left:0',
       'height:3px',
       'width:0%',
-      'background:linear-gradient(90deg,#0071e3 0%,#5b9cf6 100%)',
+      'background:var(--accent,#0071e3)',
       'z-index:10001',
       'border-radius:0 2px 2px 0',
       'transition:width 0.08s linear',
@@ -591,7 +591,8 @@
       '  border-color:rgba(41,151,255,0.18);',
       '  border-left-color:#2997ff;',
       '}',
-      '.inline-cta-icon{ font-size:1.6rem; line-height:1; flex-shrink:0; }',
+      '.inline-cta-icon{ color:var(--accent,#0071e3); flex-shrink:0; display:flex; align-items:center; }',
+      '.inline-cta-icon svg{ width:22px; height:22px; }',
       '.inline-cta-title{',
       '  font-size:15px;',
       '  font-weight:700;',
@@ -730,14 +731,14 @@
     var cta = document.createElement('div');
     cta.className = 'inline-cta';
     cta.innerHTML =
-      '<div class="inline-cta-icon">💬</div>' +
+      '<div class="inline-cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg></div>' +
       '<div class="inline-cta-body">' +
         '<div class="inline-cta-title">Need expert input on this?</div>' +
         '<div class="inline-cta-text">I work with engineering teams on hydraulic design, surge analysis, and SWRO projects. Happy to review your design or answer specific questions.</div>' +
         '<a href="#" class="inline-cta-btn" ' +
           'onclick="if(typeof Calendly!==\'undefined\'){Calendly.initPopupWidget({url:\'https://calendly.com/mohamed-abokhatwa/30min\'});}else{window.open(\'https://calendly.com/mohamed-abokhatwa/30min\',\'_blank\');}' +
           'if(window.gtag)gtag(\'event\',\'consultation_click\',{source:\'inline_cta\',page_path:window.location.pathname});return false;">' +
-          'Book a Free Consultation →' +
+          'Book a Free Consultation' +
         '</a>' +
       '</div>';
 

@@ -223,7 +223,7 @@
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
     <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-      <input type="email" name="EMAIL" id="mc-email" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
       <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
     </form>
@@ -247,7 +247,7 @@ function mcSubmit(e) {
   if (!valid) {
     input.style.border = '1.5px solid #e34000';
     msg.style.color = '#e34000';
-    msg.textContent = '⚠️ Please enter a valid email address (e.g. name@domain.com)';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
     return false;
   }
 
@@ -260,7 +260,7 @@ function mcSubmit(e) {
     msg.style.color = '#0071e3';
     msg.style.fontSize = '1.1rem';
     msg.style.fontWeight = '600';
-    msg.textContent = '✅ Thank you! Please check your email to confirm your subscription.';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
   }, 900);
   return true;
 }

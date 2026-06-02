@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Water Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
@@ -38,15 +38,15 @@
     }
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(48px, 7vw, 80px);
-      font-weight: 400;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
+      font-size: clamp(48px, 7vw, 84px);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
       margin-bottom: 28px;
       max-width: 800px;
     }
     .hero h1 em {
-      font-style: italic;
+      font-style: normal;
       color: var(--text-secondary);
     }
     .hero-desc {
@@ -92,8 +92,8 @@
     .section-title {
       font-family: var(--font-display);
       font-size: clamp(32px, 4vw, 48px);
-      font-weight: 400;
-      letter-spacing: -0.03em;
+      font-weight: 700;
+      letter-spacing: -0.035em;
       color: var(--text-primary);
       margin-bottom: 60px;
     }
@@ -232,9 +232,9 @@
     .stat-num {
       font-family: var(--font-display);
       font-size: 56px;
-      font-weight: 400;
+      font-weight: 700;
       color: var(--text-primary);
-      letter-spacing: -0.03em;
+      letter-spacing: -0.04em;
       line-height: 1;
       margin-bottom: 8px;
     }
@@ -286,9 +286,17 @@
       transform: translateY(-2px);
     }
     .cat-card-icon {
-      font-size: 28px;
-      line-height: 1;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(0,113,227,0.08);
+      color: var(--accent);
+      margin-bottom: 4px;
     }
+    .cat-card-icon svg { width: 22px; height: 22px; }
     .cat-card-title {
       font-size: 16px;
       font-weight: 600;
@@ -465,32 +473,32 @@
   <span class="section-eyebrow">Browse by topic</span>
   <div class="cat-grid">
     <a href="surge-transients.html" class="cat-card">
-      <span class="cat-card-icon">⚡</span>
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
       <div class="cat-card-title">Surge &amp; Transients</div>
       <div class="cat-card-count">10 articles <span class="cat-card-arrow">→</span></div>
     </a>
     <a href="pipeline-design.html" class="cat-card">
-      <span class="cat-card-icon">🔧</span>
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h12a3 3 0 0 1 3 3v0a3 3 0 0 0 3 3"/><path d="M3 9V6m0 3v3"/><circle cx="3" cy="9" r="0.5" fill="currentColor"/><path d="M15 9V7a2 2 0 0 1 2-2h2"/></svg></span>
       <div class="cat-card-title">Pipeline Design</div>
       <div class="cat-card-count">5 articles <span class="cat-card-arrow">→</span></div>
     </a>
     <a href="pump-engineering.html" class="cat-card">
-      <span class="cat-card-icon">⚙️</span>
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20a8 8 0 1 1 16 0"/><path d="M12 20V12l4-3"/><circle cx="12" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></span>
       <div class="cat-card-title">Pump Engineering</div>
       <div class="cat-card-count">4 articles <span class="cat-card-arrow">→</span></div>
     </a>
     <a href="hydraulic-design.html" class="cat-card">
-      <span class="cat-card-icon">💧</span>
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span>
       <div class="cat-card-title">Hydraulic Design</div>
       <div class="cat-card-count">4 articles <span class="cat-card-arrow">→</span></div>
     </a>
     <a href="desalination-swro.html" class="cat-card">
-      <span class="cat-card-icon">🌊</span>
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c2 0 2-1.5 4-1.5S8 8 10 8s2-1.5 4-1.5S16 8 18 8s2-1.5 4-1.5"/><path d="M2 14c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M2 20c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/></svg></span>
       <div class="cat-card-title">Desalination &amp; SWRO</div>
       <div class="cat-card-count">9 articles <span class="cat-card-arrow">→</span></div>
     </a>
     <a href="leadership-sustainability.html" class="cat-card">
-      <span class="cat-card-icon">👔</span>
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="3.5"/><path d="M21 20v-2a4 4 0 0 0-3-3.85"/><path d="M16 3.6a4 4 0 0 1 0 6.8"/></svg></span>
       <div class="cat-card-title">Leadership &amp; Sustainability</div>
       <div class="cat-card-count">5 articles <span class="cat-card-arrow">→</span></div>
     </a>
@@ -511,12 +519,12 @@
     </div>
     <div class="cat-chips">
       <button class="cat-chip active" data-cat="all"          onclick="setCat('all',this)">All Articles</button>
-      <button class="cat-chip"        data-cat="surge"        onclick="setCat('surge',this)">⚡ Surge &amp; Transients</button>
-      <button class="cat-chip"        data-cat="pipeline"     onclick="setCat('pipeline',this)">🔧 Pipeline Design</button>
-      <button class="cat-chip"        data-cat="pumps"        onclick="setCat('pumps',this)">⚙️ Pump Engineering</button>
-      <button class="cat-chip"        data-cat="hydraulic"    onclick="setCat('hydraulic',this)">💧 Hydraulic</button>
-      <button class="cat-chip"        data-cat="desalination" onclick="setCat('desalination',this)">🌊 Desalination</button>
-      <button class="cat-chip"        data-cat="leadership"   onclick="setCat('leadership',this)">👔 Leadership</button>
+      <button class="cat-chip"        data-cat="surge"        onclick="setCat('surge',this)">Surge &amp; Transients</button>
+      <button class="cat-chip"        data-cat="pipeline"     onclick="setCat('pipeline',this)">Pipeline Design</button>
+      <button class="cat-chip"        data-cat="pumps"        onclick="setCat('pumps',this)">Pump Engineering</button>
+      <button class="cat-chip"        data-cat="hydraulic"    onclick="setCat('hydraulic',this)">Hydraulic</button>
+      <button class="cat-chip"        data-cat="desalination" onclick="setCat('desalination',this)">Desalination</button>
+      <button class="cat-chip"        data-cat="leadership"   onclick="setCat('leadership',this)">Leadership</button>
     </div>
   </div>
   <div id="no-results">No articles found — try a different search or category.</div>
@@ -1091,11 +1099,11 @@
 
   <!-- Show More Button -->
   <div id="show-more-wrap" style="text-align:center; padding:2.5rem 0 1rem;">
-    <button id="show-more-btn" onclick="revealArticles()" style="display:inline-flex; align-items:center; gap:10px; padding:0.9rem 2.2rem; background:#fff; color:#0071e3; border:1.5px solid rgba(0,113,227,0.3); border-radius:50px; font-size:0.95rem; font-weight:600; cursor:pointer; font-family:inherit; box-shadow:0 4px 16px rgba(0,0,0,0.06); transition:transform .2s, box-shadow .2s, border-color .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.1)';this.style.borderColor='rgba(0,113,227,0.6)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.06)';this.style.borderColor='rgba(0,113,227,0.3)'">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    <button id="show-more-btn" onclick="revealArticles()" style="display:inline-flex; align-items:center; gap:10px; padding:12px 28px; background:var(--glass); -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur); color:var(--accent); border:1px solid var(--glass-border); border-radius:980px; font-size:15px; font-weight:500; cursor:pointer; font-family:inherit; box-shadow:var(--shadow-glass); transition:transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-glass-hover)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-glass)'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
       Show 31 More Articles
     </button>
-    <div style="margin-top:0.75rem; font-size:12px; color:#9ca3af;">6 of 37 articles shown</div>
+    <div style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">6 of 37 articles shown</div>
   </div>
 
   <div class="stats-row">
@@ -1116,26 +1124,64 @@
 </div>
 
 <!-- ═══════ Lead Magnet Banner ═══════ -->
-<section id="lead-magnet-section" style="padding:3.5rem 2rem; background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%); border-top:1px solid #bfdbfe; border-bottom:1px solid #bfdbfe;">
-  <div style="max-width:860px; margin:0 auto; display:flex; align-items:center; gap:2.5rem; flex-wrap:wrap; justify-content:space-between;">
-    <div style="flex:1; min-width:260px;">
-      <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#0071e3; margin-bottom:10px;">Free Engineering Guide</div>
-      <h2 style="font-size:1.5rem; font-weight:700; color:#1d1d1f; margin-bottom:8px; letter-spacing:-0.02em; line-height:1.3;">10 Common Mistakes in<br>Pressure Pipeline Design</h2>
-      <p style="font-size:0.95rem; color:#4b5563; line-height:1.6; margin:0;">11-page PDF with SVG charts, equations, and professional solutions — completely free.</p>
+<section id="lead-magnet-section" style="padding:80px 24px;">
+  <div class="lead-card">
+    <div class="lead-text">
+      <div class="lead-eyebrow">Free Engineering Guide</div>
+      <h2 class="lead-title">10 Common Mistakes in Pressure Pipeline Design</h2>
+      <p class="lead-desc">An 11-page PDF with charts, equations, and professional solutions — completely free.</p>
+      <ul class="lead-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Transient pressure analysis</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Air pocket management</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Surge vessel sizing</li>
+      </ul>
     </div>
-    <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
-      <div style="font-size:13px; color:#4b5563;">
-        <div style="margin-bottom:4px;">✅ Transient pressure analysis</div>
-        <div style="margin-bottom:4px;">✅ Air pocket management</div>
-        <div>✅ Surge vessel sizing</div>
-      </div>
-      <a href="pipeline-checklist.html" style="display:inline-flex; align-items:center; gap:8px; padding:0.9rem 1.8rem; background:linear-gradient(135deg,#5b9cf6 0%,#0040b8 100%); color:#fff; border-radius:12px; font-size:0.95rem; font-weight:600; text-decoration:none; white-space:nowrap; box-shadow:0 4px 16px rgba(0,113,227,0.35); flex-shrink:0; transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 28px rgba(0,113,227,0.5)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(0,113,227,0.35)'">
-        Download Free PDF
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </a>
-    </div>
+    <a href="pipeline-checklist.html" class="btn btn-primary lead-btn">
+      Download Free PDF
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
   </div>
 </section>
+<style>
+  .lead-card {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    background: var(--glass);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-glass);
+    padding: 48px 52px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .lead-text { flex: 1; min-width: 280px; }
+  .lead-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+  }
+  .lead-title {
+    font-size: 28px; font-weight: 700; color: var(--text-primary);
+    letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 10px;
+  }
+  .lead-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 22px; }
+  .lead-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 28px; }
+  .lead-list li {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 14px; color: var(--text-secondary);
+  }
+  .lead-list svg { width: 16px; height: 16px; color: var(--accent); flex-shrink: 0; }
+  .lead-btn { flex-shrink: 0; padding: 14px 26px; font-size: 15px; }
+  @media (max-width: 768px) {
+    .lead-card { padding: 36px 28px; gap: 28px; }
+    .lead-title { font-size: 23px; }
+    .lead-btn { width: 100%; justify-content: center; }
+  }
+</style>
 
 <footer>
   <div class="footer-inner">
@@ -1150,34 +1196,22 @@
 
 <!-- Floating Consultation Button -->
 <div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
-  <span class="fab-icon">&#128197;</span>
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
   <span class="fab-text">Book a Consultation</span>
 </div>
-<style>
-
-
-
-  50%{transform:translateY(-6px);}
-}
-
-  .fab-consult{padding:1rem;border-radius:50%;}
-  .fab-icon{font-size:1.4rem;}
-}
-</style>
 
 <!-- Newsletter Section -->
 <iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
-<section id="newsletter-section" style="padding:4rem 2rem; text-align:center; background:rgba(0,113,227,0.04); border-top:1px solid rgba(0,113,227,0.1);">
-  <div style="max-width:580px; margin:0 auto;">
-    <div style="font-size:2rem; margin-bottom:0.5rem;">📬</div>
-    <h2 style="font-size:1.7rem; font-weight:700; margin-bottom:0.5rem; color:var(--text-primary);">Water Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:2rem; font-size:1rem; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
-    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
-      <input type="email" name="EMAIL" id="mc-email" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:0.85rem 1.2rem; border-radius:12px; border:1.5px solid rgba(0,113,227,0.2); font-size:0.95rem; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit;">
+<section id="newsletter-section" style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
-      <button type="submit" style="padding:0.85rem 1.8rem; background:linear-gradient(135deg,#5b9cf6 0%,#0040b8 100%); color:#fff; border:none; border-radius:14px; font-size:0.95rem; font-weight:600; cursor:pointer; white-space:nowrap; font-family:inherit; box-shadow:0 4px 15px rgba(0,113,227,0.4); transition:transform .2s,box-shadow .2s;">Subscribe →</button>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
     </form>
-    <div id="mc-msg" style="margin-top:1rem; font-size:0.9rem; color:#aaa;">No spam. Unsubscribe anytime.</div>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
   </div>
 </section>
 <script>
@@ -1296,19 +1330,17 @@ function mcSubmit(e) {
   color:#1d1d1f; padding:.85rem 1.6rem;
   border-radius:50px; font-weight:600;
   font-size:.9rem; cursor:pointer;
-  border:1px solid rgba(255,255,255,0.3);
-  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  border:1px solid rgba(0,0,0,0.06);
+  box-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 28px rgba(0,0,0,.12);
   text-decoration:none;
-  animation:float-fab 4s ease-in-out infinite;
   transition:transform .2s, box-shadow .2s;
 }
 .fab-glass:hover, .fab-consult:hover {
-  transform:translateY(-5px);
-  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+  transform:translateY(-3px);
+  box-shadow:0 2px 6px rgba(0,0,0,.08),0 14px 36px rgba(0,0,0,.16);
 }
 .fab-wa { left:2rem; }
 .fab-consult { right:2rem; }
-@keyframes float-fab{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 @media(max-width:600px){
   .fab-glass-text, .fab-text { display:none; }
   .fab-glass, .fab-consult {
@@ -1319,42 +1351,10 @@ function mcSubmit(e) {
 }
 </style>
 <style>
-#mc-newsletter-form button[type="submit"] {
-  background: linear-gradient(135deg,#5b9cf6 0%,#0040b8 100%) !important;
-  border-radius: 14px !important;
-  box-shadow: 0 4px 15px rgba(0,113,227,0.4) !important;
-  transition: transform .2s, box-shadow .2s !important;
+#mc-email:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,113,227,0.12);
 }
-#mc-newsletter-form button[type="submit"]:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 25px rgba(0,113,227,0.5) !important;
-}
-
-/* ─── Dark mode: Lead Magnet Banner ─── */
-[data-theme="dark"] #lead-magnet-section {
-  background: linear-gradient(135deg, rgba(41,97,255,0.12) 0%, rgba(41,151,255,0.08) 100%) !important;
-  border-top-color: rgba(41,151,255,0.15) !important;
-  border-bottom-color: rgba(41,151,255,0.15) !important;
-}
-[data-theme="dark"] #lead-magnet-section h2 { color: #f5f5f7 !important; }
-[data-theme="dark"] #lead-magnet-section p  { color: #8e8e93 !important; }
-[data-theme="dark"] #lead-magnet-section div[style*="color:#4b5563"] { color: #8e8e93 !important; }
-[data-theme="dark"] #lead-magnet-section div[style*="color:#0071e3"] { color: #2997ff !important; }
-
-/* ─── Dark mode: Newsletter Section ─── */
-[data-theme="dark"] #newsletter-section {
-  background: rgba(41,151,255,0.04) !important;
-  border-top-color: rgba(41,151,255,0.12) !important;
-}
-[data-theme="dark"] #newsletter-section h2 { color: #f5f5f7 !important; }
-[data-theme="dark"] #newsletter-section p  { color: #8e8e93 !important; }
-[data-theme="dark"] #newsletter-section #mc-email {
-  background: #2c2c2e !important;
-  border-color: rgba(41,151,255,0.25) !important;
-  color: #f5f5f7 !important;
-}
-[data-theme="dark"] #newsletter-section #mc-email::placeholder { color: #636366 !important; }
-[data-theme="dark"] #newsletter-section #mc-msg { color: #636366 !important; }
 </style>
 <script src="theme.js"></script>
 </body>

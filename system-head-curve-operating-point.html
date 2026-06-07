@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The System Head Curve &amp; the Operating Point — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Water Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:860px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    /* equations (MathJax) */
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    /* callouts */
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+
+    /* tables */
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    /* interactive figure — a self-contained light instrument panel, legible in both themes */
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    #opStatus{font-size:13px;font-weight:600;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    /* references */
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="A design-grade treatment of the system head curve, pump curve matching, the operating point, BEP/POR/AOR limits, and the oversizing trap — with interactive curves and a worked transmission pump station example.">
+  <meta property="og:title" content="The System Head Curve & the Operating Point | Mohamed Abokhatwa">
+  <meta property="og:description" content="The system head curve, pump curve matching, the operating point, BEP/POR/AOR limits, and the oversizing trap — with interactive curves and a worked pump-station example.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/system-head-curve-operating-point.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-system-head-curve-operating-point.jpg">
+  <meta property="og:image:alt" content="The System Head Curve and the Operating Point">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The System Head Curve & the Operating Point | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="The system head curve, pump curve matching, the operating point, and the oversizing trap — with interactive curves and a worked example.">
+  <link rel="canonical" href="https://abokhatwa.com/system-head-curve-operating-point.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "The System Head Curve & the Operating Point",
+  "description": "A design-grade treatment of the system head curve, pump curve matching, the operating point, BEP/POR/AOR limits, and the oversizing trap — with interactive curves and a worked transmission pump station example.",
+  "image": "https://abokhatwa.com/og-system-head-curve-operating-point.jpg",
+  "datePublished": "2026-06-03",
+  "dateModified": "2026-06-03",
+  "author": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa",
+    "url": "https://abokhatwa.com/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abokhatwa.com/system-head-curve-operating-point.html"
+  }
+}
+  </script>
+<style>
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--text-primary);}
+.breadcrumb-sep{opacity:.4;}
+.breadcrumb-current{color:var(--text-secondary);}.breadcrumb a.breadcrumb-current{color:var(--accent);}.breadcrumb a.breadcrumb-current:hover{opacity:.75;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+<div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="pump-engineering.html" class="breadcrumb-current">Pump Engineering</a></div>
+  <span class="tag">Pump Hydraulics &middot; System Curve &middot; Centrifugal Pumps &middot; Design Criteria</span>
+  <h1>The System Head Curve &amp; the Operating Point</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; PMP, PMI-RMP, ENV SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>June 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>10 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="system-head-curve-operating-point.webp" alt="The System Head Curve and the Operating Point">
+</div>
+
+<div class="article-body">
+<p class="lead">Why the pump you select never operates where the catalogue says it will — and how to make the system, not the salesman, decide the duty point.</p>
+
+<h2 id="anatomy">1 · Anatomy of the system head curve</h2>
+<p>A centrifugal pump does not have a flow rate. It has a <em>capability</em> — its head&ndash;capacity (H&ndash;Q) curve — and the flow it actually delivers is dictated entirely by the resistance of the system connected to it. That resistance, plotted against flow, is the <strong>system head curve</strong>, and the single point where it crosses the pump curve is the only flow and head the machine can physically produce.</p>
+
+<p>Every system head curve is the sum of two physically distinct components:</p>
+
+<p><strong>1. Static head</strong> — the elevation and pressure the pump must overcome <em>regardless of flow</em>. It is the height water must be lifted from the supply liquid level to the discharge level, plus any difference in surface pressure. On a curve it is a horizontal line: it exists even at zero flow.</p>
+
+<div class="eq">\[ H_{static} = (z_2 - z_1) + \frac{p_2 - p_1}{\rho g} \]</div>
+
+<p><strong>2. Dynamic (friction) head</strong> — the energy dissipated moving the liquid through pipe, fittings, valves and equipment. It is zero at zero flow and rises steeply — very nearly with the <em>square</em> of flow. This term bends the curve upward into the familiar parabola.</p>
+
+<div class="callout key">
+  <span class="lbl">The governing identity</span>
+  The total head a pump must develop at any flow \(Q\) is \( \;H_{sys} = H_{static} + H_{friction}(Q)\). Get the split between these two wrong and every downstream decision — pump size, motor rating, VFD economics, surge protection — inherits the error.
+</div>
+
+<h2 id="building">2 · Building the system curve</h2>
+<p>The friction component is computed from a head-loss equation evaluated across the full flow range. Two formulations dominate water practice.</p>
+
+<h3>Darcy&ndash;Weisbach (universal, physically rigorous)</h3>
+<p>Valid for any fluid and flow regime, it expresses loss in terms of the friction factor \(f\):</p>
+<div class="eq">\[ h_f = f\,\frac{L}{D}\,\frac{V^2}{2g} \qquad\Longrightarrow\qquad h_f = \frac{8\,f\,L}{\pi^2 g\,D^5}\,Q^2 \]</div>
+<p>Substituting \(V = 4Q/\pi D^2\) collapses the loss into a clean \(Q^2\) relationship. Minor losses from bends, valves and transitions add as \( \sum K \cdot V^2/2g\), which is also proportional to \(Q^2\). Everything that varies with velocity therefore lumps into a single <strong>system resistance coefficient</strong> \(K\):</p>
+<div class="eq">\[ \boxed{\,H_{sys} = H_{static} + K\,Q^2\,} \qquad K = \frac{8}{\pi^2 g}\!\left[\frac{fL}{D^5} + \frac{\sum K_{minor}}{D^4}\right] \]</div>
+
+<h3>Hazen&ndash;Williams (water-specific, code-friendly)</h3>
+<p>Widely embedded in water-utility design and the basis of most pipeline specifications, it uses an empirical roughness coefficient \(C\):</p>
+<div class="eq">\[ h_f = \frac{10.67\,L\,Q^{1.852}}{C^{1.852}\,D^{4.87}} \quad\text{(SI: }Q\text{ in m}^3/\text{s, }L,D\text{ in m)} \]</div>
+<div class="callout">
+  <span class="lbl">A detail that catches people out</span>
+  Hazen&ndash;Williams scales with \(Q^{1.852}\), not \(Q^2\). The resulting system curve is fractionally <em>flatter</em> than a pure square law. For selection it rarely matters; for transient analysis and high-velocity force mains the difference is worth respecting — and it is one reason Darcy&ndash;Weisbach is preferred when surge and temperature effects are in play.
+</div>
+
+<h3>The shape of the curve tells you the system type</h3>
+<div class="tbl-wrap">
+<table>
+  <caption>Static-to-friction ratio governs system behaviour and control strategy.</caption>
+  <thead>
+    <tr><th>System type</th><th>Static : friction</th><th>Curve shape</th><th>Design implication</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>High-static (transmission lift, reservoir filling)</td><td>High static, low friction</td><td>Nearly flat, high intercept</td><td>VFD savings limited; affinity laws misleading</td></tr>
+    <tr><td>Balanced (typical pump stations)</td><td>Comparable</td><td>Moderate parabola</td><td>Standard selection; modest VFD benefit</td></tr>
+    <tr><td>High-friction (closed loops, long small-bore mains)</td><td>Low static, high friction</td><td>Steep parabola from near origin</td><td>VFD highly effective; cube-law savings approached</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pumpcurve">3 · The pump curve &amp; the operating point</h2>
+<p>The manufacturer supplies the pump H&ndash;Q curve: head falling as flow rises, for a given impeller diameter and speed. Superimpose it on the system curve and they intersect at exactly one flow. That intersection is the <strong>operating point</strong> (or duty point) — the steady-state equilibrium where the head the pump generates equals the head the system demands.</p>
+<p>Approximating both curves as parabolas makes the equilibrium explicit. With a pump curve \(H_p = H_0 - c\,Q^2\) and a system curve \(H_{sys} = H_{static} + d\,Q^2\), setting them equal gives the operating flow in closed form:</p>
+<div class="eq">\[ H_0 - c\,Q^2 = H_{static} + d\,Q^2 \;\Longrightarrow\; Q_{op} = \sqrt{\frac{H_0 - H_{static}}{c + d}} \]</div>
+<p>Two consequences follow immediately, and both are routinely violated on real projects:</p>
+<ul class="clean">
+  <li><strong>Raise the static head</strong> (a fuller reservoir, a higher discharge) and the operating point slides <em>up and to the left</em> — less flow, more head. A pump sized for an empty reservoir is the wrong pump for a full one.</li>
+  <li><strong>Add friction</strong> (a throttled valve, a fouled pipe, an undersized main) and the system curve steepens, again pushing the duty point left. Throttling does not change the pump; it changes the <em>system</em> the pump sees.</li>
+</ul>
+<p>The interactive figure below lets you move both and watch the duty point respond in real time.</p>
+
+<h2 id="interactive">4 · Interactive: matching pump to system</h2>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Live curve matching — transmission pump station</div>
+    <div class="fsub">Drag the sliders. The duty point is recomputed as the intersection of the pump and system curves; efficiency and shaft power update with it.</div>
+  </div>
+  <div class="chart-box"><canvas id="mainChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Static head <span id="vStatic">45 m</span></label>
+      <input type="range" id="sStatic" min="25" max="58" value="45" step="1">
+      <div class="hint">Reservoir level / discharge elevation above the suction water surface.</div>
+    </div>
+    <div class="ctrl">
+      <label>System friction (pipe condition) <span id="vFric">100 %</span></label>
+      <input type="range" id="sFric" min="60" max="200" value="100" step="5">
+      <div class="hint">100% = design (DI, C=130). Higher = ageing / scaling / throttling.</div>
+    </div>
+    <div class="ctrl">
+      <label>Impeller trim <span id="vTrim">100 %</span></label>
+      <input type="range" id="sTrim" min="85" max="100" value="100" step="1">
+      <div class="hint">Affinity scaling: \(H \propto (D'/D)^2\). Brings duty to BEP without throttling.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Duty flow</div><div class="v" id="rQ">1080 <small>m³/h</small></div></div>
+    <div class="cell"><div class="k">Duty head</div><div class="v" id="rH">53 <small>m</small></div></div>
+    <div class="cell"><div class="k">Efficiency</div><div class="v" id="rEff">84 <small>%</small></div></div>
+    <div class="cell"><div class="k">Shaft power</div><div class="v" id="rP">186 <small>kW</small></div></div>
+    <div class="cell"><div class="k">% of BEP &amp; region</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="opStatus"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">Notice that <em>throttling</em> (raising friction) and <em>trimming</em> both move the duty flow toward BEP — but only one of them does it without burning the energy as heat across a valve. Section 8 returns to this.</p>
+
+<h2 id="example">5 · Worked example — transmission pump station</h2>
+<p>A station lifts treated water from a clearwell to an elevated balancing reservoir through a ductile-iron transmission main. The design parameters:</p>
+<div class="tbl-wrap">
+<table>
+  <caption>Given design data and computed system curve.</caption>
+  <thead><tr><th>Parameter</th><th class="num">Value</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>Design flow, \(Q_d\)</td><td class="num">1,080 m³/h (0.30 m³/s)</td><td>Single duty pump</td></tr>
+    <tr><td>Static lift, \(H_{static}\)</td><td class="num">45.0 m</td><td>Clearwell LWL to reservoir TWL</td></tr>
+    <tr><td>Pipe: DI, cement-lined</td><td class="num">DN 500, L = 2,000 m</td><td>Hazen&ndash;Williams C = 130</td></tr>
+    <tr><td>Velocity at \(Q_d\)</td><td class="num">1.53 m/s</td><td>Within 1&ndash;2 m/s economic band</td></tr>
+    <tr><td>Friction loss, \(h_f\)</td><td class="num">8.2 m</td><td>Hazen&ndash;Williams + minor losses</td></tr>
+    <tr><td><strong>Required duty head</strong></td><td class="num"><strong>53.2 m</strong></td><td>\(45.0 + 8.2\)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>The system resistance coefficient back-calculates from the design point:</p>
+<div class="eq">\[ K = \frac{h_f}{Q_d^{\,2}} = \frac{8.2}{1080^2} = 7.0\times10^{-6}\ \text{m}/(\text{m}^3/\text{h})^2 \quad\Rightarrow\quad H_{sys} = 45 + 7.0\times10^{-6}\,Q^2 \]</div>
+
+<p>A pump with a shut-off head \(H_0 = 68\ \text{m}\) and curve \(H_p = 68 - 1.27\times10^{-5}\,Q^2\) is selected. Solving for the intersection:</p>
+<div class="eq">\[ Q_{op} = \sqrt{\frac{68 - 45}{(1.27 + 0.70)\times10^{-5}}} = \sqrt{\frac{23}{1.97\times10^{-5}}} \approx 1{,}080\ \text{m}^3/\text{h}, \quad H_{op} \approx 53\ \text{m} \]</div>
+
+<p>The pump's BEP sits at 1,152 m³/h (η ≈ 84%), so the duty point is at <strong>94% of BEP</strong> — comfortably inside the preferred operating region. The absorbed shaft power:</p>
+<div class="eq">\[ P = \frac{\rho\,g\,Q\,H}{\eta} = \frac{1000\times9.81\times0.30\times53}{0.837} \approx 186\ \text{kW} \]</div>
+<div class="callout">
+  <span class="lbl">Selection verdict</span>
+  A clean match: duty point near BEP, sensible velocity, no throttling needed. Motor would be rated at the next standard frame above 186 kW (e.g. 200&ndash;220 kW) accounting for the runout (right-hand) end of the curve, where power peaks for a radial-flow pump.
+</div>
+
+<h2 id="bep">6 · BEP, POR &amp; AOR — where you are allowed to operate</h2>
+<p>The Best Efficiency Point is not merely the peak of the efficiency curve. It is the flow at which the liquid enters the impeller with minimum incidence, internal recirculation is suppressed, and hydraulic radial and axial loads on the shaft are at their minimum. Drift away from BEP and reliability — not just energy cost — degrades.</p>
+<p>The Hydraulic Institute codifies two windows around BEP <sup class="cite">[1]</sup>:</p>
+<div class="tbl-wrap">
+<table>
+  <caption>Operating regions per ANSI/HI 9.6.3 (Rotodynamic Pumps — Guideline for Operating Regions).</caption>
+  <thead><tr><th>Region</th><th>Typical range</th><th>What happens here</th></tr></thead>
+  <tbody>
+    <tr><td><strong>POR</strong> — Preferred Operating Region</td><td>~70% &ndash; 120% of BEP</td><td>Vibration and loads low; the target band for continuous duty</td></tr>
+    <tr><td><strong>AOR</strong> — Allowable Operating Region</td><td>Manufacturer-defined, wider</td><td>Acceptable but with reduced service life / higher vibration limits</td></tr>
+    <tr><td>Below AOR (low flow)</td><td>&lt; ~40&ndash;50% BEP</td><td>Suction &amp; discharge recirculation, temperature rise, cavitation, shaft deflection</td></tr>
+    <tr><td>Above AOR (runout)</td><td>&gt; ~120&ndash;130% BEP</td><td>NPSH-limited cavitation, motor overload, steep efficiency fall-off</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="callout warn">
+  <span class="lbl">Low-flow operation is the silent killer</span>
+  Running far left of BEP — the classic symptom of an oversized pump — drives internal recirculation that erodes impellers, spikes vibration, and can raise the pumped liquid's temperature toward flashing in a near-deadhead condition. A minimum continuous flow (thermal and stable) must be guaranteed, by a recirculation line if necessary.
+</div>
+
+<h2 id="oversizing">7 · The oversizing trap</h2>
+<p>The most common — and most expensive — selection error in the industry is conservative margin stacking. A process engineer adds 10% to the flow "to be safe", the hydraulic engineer adds another head margin for "future fouling", a third margin covers pipe ageing. Each is individually defensible; compounded, they select a pump whose curve sits well above the true system curve.</p>
+<p>The pump then does one of two things, both bad:</p>
+<ul class="clean">
+  <li><strong>It overpumps.</strong> Against the actual system the duty point lands far to the right — more flow than needed, higher velocity, elevated NPSH demand, motor pushed toward overload.</li>
+  <li><strong>It gets throttled back.</strong> To force design flow, a control valve is closed, adding artificial friction. The duty point moves left of BEP, efficiency collapses, and the throttled energy is dissipated as heat and noise across the valve.</li>
+</ul>
+<p>The figure below contrasts a correctly matched pump with an oversized one throttled to deliver the same design flow.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Matched vs. oversized-and-throttled</div>
+    <div class="fsub">Both deliver 1,080 m³/h — but the oversized pump must be throttled, paying a permanent energy penalty and operating left of BEP.</div>
+  </div>
+  <div class="chart-box"><canvas id="overChart"></canvas></div>
+</div>
+
+<div class="tbl-wrap">
+<table>
+  <caption>The cost of oversizing, both pumps delivering the same 1,080 m³/h.</caption>
+  <thead><tr><th>Metric</th><th class="num">Matched pump</th><th class="num">Oversized + throttled</th></tr></thead>
+  <tbody>
+    <tr><td>Shut-off head</td><td class="num">68 m</td><td class="num">82 m</td></tr>
+    <tr><td>Head actually required by system</td><td class="num">53 m</td><td class="num">53 m</td></tr>
+    <tr><td>Head produced (before valve)</td><td class="num">53 m</td><td class="num">66 m</td></tr>
+    <tr><td>Head burned across throttle valve</td><td class="num">0 m</td><td class="num">~13 m</td></tr>
+    <tr><td>Operating efficiency</td><td class="num">~84%</td><td class="num">~75%</td></tr>
+    <tr><td>Approx. shaft power</td><td class="num">186 kW</td><td class="num">~259 kW</td></tr>
+    <tr><td>% of BEP</td><td class="num">94%</td><td class="num">~78% (and falling)</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="callout warn">
+  <span class="lbl">The number that ends the argument</span>
+  ~73 kW of avoidable loss, continuous. At a 0.18 USD/kWh tariff and 7,000 running hours, that single oversized selection wastes on the order of <strong>USD 90,000 per year</strong> — recurring for the 20-year asset life, before counting the reliability penalty of running off-BEP. Margins are not free.
+</div>
+
+<h2 id="control">8 · Controlling the operating point</h2>
+<p>When the duty point needs to move — because demand varies, or because the selected pump is slightly off — there are three levers, in ascending order of merit:</p>
+<div class="tbl-wrap">
+<table>
+  <caption>Methods to relocate the duty point, with the affinity laws as the analytical backbone.</caption>
+  <thead><tr><th>Method</th><th>Mechanism</th><th>Verdict</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Throttling</strong></td><td>Adds friction; steepens system curve</td><td>Simplest, worst. Energy destroyed across the valve permanently</td></tr>
+    <tr><td><strong>Impeller trim</strong></td><td>Permanently scales the pump curve down: \(H \propto (D'/D)^2\)</td><td>Cheap, permanent, efficient — ideal when the duty is fixed and slightly high</td></tr>
+    <tr><td><strong>Variable speed (VFD)</strong></td><td>Scales the whole curve with speed</td><td>Best for variable demand; savings depend heavily on the static/friction split</td></tr>
+  </tbody>
+</table>
+</div>
+<p>All three are governed by the <strong>affinity laws</strong>, which relate a rotodynamic pump's performance to speed \(N\) (or trimmed diameter):</p>
+<div class="eq">\[ \frac{Q_2}{Q_1} = \frac{N_2}{N_1}, \qquad \frac{H_2}{H_1} = \left(\frac{N_2}{N_1}\right)^{2}, \qquad \frac{P_2}{P_1} = \left(\frac{N_2}{N_1}\right)^{3} \]</div>
+<div class="callout">
+  <span class="lbl">The static-head trap</span>
+  The seductive cube-law power saving (\(P \propto N^3\)) only fully materialises on a <em>high-friction</em> system whose curve passes near the origin. On a high-static system — exactly the transmission lift in our example — the operating point at reduced speed quickly hits the static head and the pump stops delivering. Applying the cube law blindly to a high-static system is the most common VFD-economics mistake in water engineering.
+</div>
+
+<h2 id="checklist">9 · Design checklist &amp; engineering judgement</h2>
+<ul class="clean">
+  <li><strong>Build the system curve before opening any catalogue.</strong> Separate static and friction explicitly; never let a vendor hand you both the system <em>and</em> the pump.</li>
+  <li><strong>Bracket the static head.</strong> Compute duty points at minimum and maximum reservoir/tank levels — the pump must behave at both extremes, not just the design average.</li>
+  <li><strong>Plot the curve family.</strong> Clean vs. fouled (aged \(C\)), single vs. parallel operation, and the future-flow case. The duty point lives somewhere in that envelope, not on a single line.</li>
+  <li><strong>Land the design point at 100&ndash;110% of BEP flow</strong> when growth is expected, so the pump migrates <em>toward</em> BEP over its life rather than away from it.</li>
+  <li><strong>Resist margin stacking.</strong> Apply one rational, documented margin — not three hidden ones. Prefer a trimmable impeller or a VFD over throttling away a fat selection.</li>
+  <li><strong>Verify the suction side independently.</strong> A perfect duty point is worthless if NPSH<sub>a</sub> &lt; NPSH<sub>r</sub> there.</li>
+</ul>
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  You do not select a pump. You select a <em>system</em>, draw its curve, and then find the pump whose BEP sits on that curve at the design flow. Everything else is correction of a selection that should have been right the first time.
+</div>
+
+<hr class="article-divider">
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>Hydraulic Institute (HI). <em>ANSI/HI 9.6.3 — Rotodynamic Pumps: Guideline for Operating Regions.</em> Parsippany, NJ.</li>
+  <li>Hydraulic Institute (HI). <em>ANSI/HI 9.6.1 — Rotodynamic Pumps: Guideline for NPSH Margin.</em></li>
+  <li>Hydraulic Institute (HI). <em>ANSI/HI 14.3 — Rotodynamic Pumps for Design and Application.</em></li>
+  <li>Karassik, I.J., Messina, J.P., Cooper, P., Heald, C.C. <em>Pump Handbook</em>, 4th ed. McGraw-Hill, 2008.</li>
+  <li>Europump &amp; Hydraulic Institute. <em>Pump Life Cycle Costs: A Guide to LCC Analysis for Pumping Systems.</em></li>
+  <li>Gülich, J.F. <em>Centrifugal Pumps</em>, 4th ed. Springer, 2020.</li>
+  <li>U.S. DOE / HI. <em>Improving Pumping System Performance: A Sourcebook for Industry</em>, 2nd ed.</li>
+  <li>AWWA Manual M11, <em>Steel Pipe — A Guide for Design and Installation</em> (head-loss methods &amp; Hazen&ndash;Williams C values).</li>
+  <li>Crane Co. <em>Technical Paper No. 410 (TP-410) — Flow of Fluids Through Valves, Fittings, and Pipe.</em></li>
+</ol>
+
+<div class="tags">#PumpHydraulics #SystemCurve #CentrifugalPumps #OperatingPoint #BEP #PumpSelection #EnergyEfficiency #WaterEngineering</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+
+<script>
+/* ---------- model constants (flow in m^3/h, head in m) ---------- */
+const H0 = 68;               // pump shut-off head, m
+const cPump = 1.269e-5;      // pump curve coefficient
+const Qbep = 1152;           // BEP flow, m^3/h
+const etaBep = 0.84;
+const kEta = 5.894e-7;       // efficiency parabola coefficient
+const QMAX = 1700;
+const rho = 1000, g = 9.81;
+
+function arr(fn, step=20){ const o=[]; for(let q=0;q<=QMAX;q+=step) o.push({x:q,y:fn(q)}); return o; }
+function effOf(q){ return Math.max(0.30, etaBep - kEta*Math.pow(q-Qbep,2)); }
+
+/* ---------- MAIN interactive chart ---------- */
+const sStatic=document.getElementById('sStatic'), sFric=document.getElementById('sFric'), sTrim=document.getElementById('sTrim');
+const vStatic=document.getElementById('vStatic'), vFric=document.getElementById('vFric'), vTrim=document.getElementById('vTrim');
+
+function pumpH(q, trim){ return trim*trim*H0 - cPump*q*q; }            // affinity trim
+function sysH(q, hs, kmul){ return hs + 7.0e-6*kmul*q*q; }
+function solveOp(hs, kmul, trim){
+  const d = 7.0e-6*kmul;
+  const num = trim*trim*H0 - hs;
+  if(num<=0) return {q:0,h:hs};
+  const q = Math.sqrt(num/(cPump+d));
+  return {q, h: hs + d*q*q};
+}
+
+const baseStyle = {borderWidth:2.5, pointRadius:0, tension:0, fill:false};
+let main = new Chart(document.getElementById('mainChart'), {
+  type:'scatter',
+  data:{ datasets:[
+    {label:'Pump curve', data:arr(q=>pumpH(q,1)), borderColor:'#1b4f72', backgroundColor:'#1b4f72', showLine:true, ...baseStyle},
+    {label:'System curve', data:arr(q=>sysH(q,45,1)), borderColor:'#c0392b', backgroundColor:'#c0392b', showLine:true, ...baseStyle},
+    {label:'Efficiency', data:arr(q=>effOf(q)*100), borderColor:'#1e8449', backgroundColor:'#1e8449', borderDash:[6,4], showLine:true, yAxisID:'y2', borderWidth:2, pointRadius:0, tension:0, fill:false},
+    {label:'Duty point', data:[{x:1080,y:53}], borderColor:'#b9770e', backgroundColor:'#b9770e', pointRadius:7, pointHoverRadius:8, pointStyle:'circle', showLine:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest', intersect:false},
+    scales:{
+      x:{type:'linear', min:0, max:QMAX, title:{display:true,text:'Flow  Q  (m³/h)', font:{family:'DM Sans',size:12,weight:'600'}}, grid:{color:'#eef2f5'}, ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0, max:90, title:{display:true,text:'Head  H  (m)', font:{family:'DM Sans',size:12,weight:'600'}}, grid:{color:'#eef2f5'}, ticks:{font:{family:'DM Sans',size:11}}},
+      y2:{position:'right', min:0, max:100, title:{display:true,text:'Efficiency  η  (%)', font:{family:'DM Sans',size:12,weight:'600'}, color:'#1e8449'}, grid:{drawOnChartArea:false}, ticks:{font:{family:'DM Sans',size:11}, color:'#1e8449'}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:12}, usePointStyle:true, boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.x?Math.round(c.parsed.x)+' m³/h, ':''}${c.parsed.y.toFixed(1)}${c.dataset.yAxisID==='y2'?' %':' m'}`}},
+      annotation:{annotations:{
+        por:{type:'box', xMin:0.7*Qbep, xMax:1.2*Qbep, yMin:0, yMax:90, backgroundColor:'rgba(30,132,73,0.06)', borderColor:'rgba(30,132,73,0.25)', borderWidth:1, label:{display:true, content:'POR (70–120% BEP)', position:{x:'center',y:'start'}, color:'#1e8449', font:{family:'DM Sans',size:10,weight:'600'}, backgroundColor:'rgba(255,255,255,0)'}},
+        bep:{type:'line', xMin:Qbep, xMax:Qbep, yMin:0, yMax:90, borderColor:'rgba(30,132,73,0.55)', borderWidth:1.5, borderDash:[4,4], label:{display:true, content:'BEP', position:'end', color:'#1e8449', font:{family:'DM Sans',size:10,weight:'700'}, backgroundColor:'rgba(255,255,255,0.85)'}}
+      }}
+    }
+  }
+});
+
+function updateMain(){
+  const hs = +sStatic.value;
+  const kmul = +sFric.value/100;
+  const trim = +sTrim.value/100;
+  vStatic.textContent = hs+' m';
+  vFric.textContent = sFric.value+' %';
+  vTrim.textContent = sTrim.value+' %';
+
+  main.data.datasets[0].data = arr(q=>pumpH(q,trim));
+  main.data.datasets[1].data = arr(q=>sysH(q,hs,kmul));
+  const op = solveOp(hs,kmul,trim);
+  main.data.datasets[3].data = [{x:op.q, y:op.h}];
+  main.update('none');
+
+  const eff = effOf(op.q);
+  const pct = op.q/Qbep*100;
+  const power = op.q>0 ? (rho*g*(op.q/3600)*op.h/eff)/1000 : 0;
+  document.getElementById('rQ').innerHTML = Math.round(op.q)+' <small>m³/h</small>';
+  document.getElementById('rH').innerHTML = op.h.toFixed(1)+' <small>m</small>';
+  document.getElementById('rEff').innerHTML = (eff*100).toFixed(0)+' <small>%</small>';
+  document.getElementById('rP').innerHTML = Math.round(power)+' <small>kW</small>';
+
+  let cls='good', txt='POR — preferred';
+  if(pct<70 || pct>120){ cls='warn'; txt='AOR — allowable'; }
+  if(pct<50 || pct>132){ cls='bad'; txt='Outside AOR'; }
+  document.getElementById('opStatus').innerHTML = `${pct.toFixed(0)}% &nbsp;<span class="badge ${cls}">${txt}</span>`;
+}
+[sStatic,sFric,sTrim].forEach(s=>s.addEventListener('input',updateMain));
+updateMain();
+
+/* ---------- OVERSIZING comparison chart ---------- */
+const H0b=82, cPumpB=1.10e-5;                 // oversized pump
+const sysFixed=q=>45+7.0e-6*q*q;
+const oversizedPump=q=>H0b-cPumpB*q*q;
+const throttled=q=>45 + ((oversizedPump(1080)-45)/(1080*1080))*q*q;
+
+new Chart(document.getElementById('overChart'), {
+  type:'scatter',
+  data:{ datasets:[
+    {label:'Matched pump (68 m)', data:arr(q=>pumpH(q,1)), borderColor:'#1b4f72', showLine:true, ...baseStyle},
+    {label:'Oversized pump (82 m)', data:arr(oversizedPump), borderColor:'#7d3c98', showLine:true, ...baseStyle, borderDash:[2,2]},
+    {label:'Real system curve', data:arr(sysFixed), borderColor:'#c0392b', showLine:true, ...baseStyle},
+    {label:'System + throttle valve', data:arr(throttled), borderColor:'#e67e22', showLine:true, ...baseStyle, borderDash:[6,4]},
+    {label:'Matched duty (94% BEP)', data:[{x:1080,y:53}], borderColor:'#1b4f72', backgroundColor:'#1b4f72', pointRadius:7, showLine:false},
+    {label:'Throttled duty', data:[{x:1080,y:69.2}], borderColor:'#e67e22', backgroundColor:'#e67e22', pointRadius:7, showLine:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest', intersect:false},
+    scales:{
+      x:{type:'linear', min:0, max:QMAX, title:{display:true,text:'Flow  Q  (m³/h)', font:{family:'DM Sans',size:12,weight:'600'}}, grid:{color:'#eef2f5'}, ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0, max:95, title:{display:true,text:'Head  H  (m)', font:{family:'DM Sans',size:12,weight:'600'}}, grid:{color:'#eef2f5'}, ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5}, usePointStyle:true, boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.x?Math.round(c.parsed.x)+' m³/h, ':''}${c.parsed.y.toFixed(1)} m`}},
+      annotation:{annotations:{
+        burn:{type:'line', xMin:1080, xMax:1080, yMin:53, yMax:69.2, borderColor:'#e67e22', borderWidth:2, label:{display:true, content:'head burned across valve', position:'center', rotation:-90, color:'#e67e22', font:{family:'DM Sans',size:10,weight:'600'}, backgroundColor:'rgba(255,255,255,0.9)'}}
+      }}
+    }
+  }
+});
+
+// safety net: re-size charts once layout is fully settled
+window.addEventListener('load',function(){
+  Chart.getChart('mainChart')&&Chart.getChart('mainChart').resize();
+  Chart.getChart('overChart')&&Chart.getChart('overChart').resize();
+});
+</script>
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

@@ -405,6 +405,14 @@
     [data-theme="dark"] .diagram-box line[stroke="#d1d5db"] { stroke: #8e8e93 !important; }
     [data-theme="dark"] .diagram-box polygon[fill="#9ca3af"],
     [data-theme="dark"] .diagram-box polygon[fill="#6b7280"] { fill: #8e8e93 !important; }
+    /* Dark titles / dark-blue labels that vanish on dark bg */
+    [data-theme="dark"] .diagram-box text[fill="#1d1d1f"],
+    [data-theme="dark"] .diagram-box text[fill="#1c1c1e"] { fill: #f5f5f7 !important; }
+    [data-theme="dark"] .diagram-box text[fill="#1e40af"] { fill: #6ea8ff !important; }
+    [data-theme="dark"] .diagram-box text[fill="#a16207"] { fill: #d99a3a !important; }
+    [data-theme="dark"] .diagram-box line[stroke="#a16207"],
+    [data-theme="dark"] .diagram-box rect[stroke="#a16207"] { stroke: #d99a3a !important; }
+    [data-theme="dark"] .diagram-box line[stroke="#e5e5ea"] { stroke: rgba(255,255,255,0.12) !important; }
     /* Reusable label classes for new diagrams (theme-adaptive) */
     .diagram-box .dgl  { fill: #6b7280; }
     .diagram-box .dgl2 { fill: #9ca3af; }
@@ -643,11 +651,11 @@
         <!-- Dashed datum line -->
         <line x1="20" y1="133" x2="535" y2="133" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4,3"/>
         <text x="485" y="130" font-size="9" fill="#9ca3af">datum</text>
-        <!-- Power labels -->
-        <rect x="20" y="30" width="165" height="52" fill="#f0fdf4" stroke="#34c759" stroke-width="1" rx="8"/>
-        <text x="103" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="#34c759">Power Chain</text>
-        <text x="103" y="62" text-anchor="middle" font-size="10" fill="#34c759">P_hyd → P_shaft → P_motor</text>
-        <text x="103" y="76" text-anchor="middle" font-size="10" fill="#34c759">÷ η_pump   ÷ η_motor</text>
+        <!-- delivery level label -->
+        <text x="316" y="16" text-anchor="middle" font-size="10" class="dgl">delivery level</text>
+        <!-- takeaway -->
+        <text x="103" y="60" text-anchor="middle" font-size="11" class="dgl">pump lifts Q against</text>
+        <text x="103" y="74" text-anchor="middle" font-size="11" class="dgl">total head H</text>
       </svg>
     </div>
   </div>
@@ -752,52 +760,39 @@
     </div>
     <button class="diagram-toggle" onclick="toggleDiagram('np-diag',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l4-4 14 14-4 4z"/><path d="M7 7l2 2M10 6l2 2M13 9l2 2"/></svg> Show Diagram</button>
     <div class="diagram-box" id="np-diag">
-      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" style="font-family:-apple-system,system-ui,sans-serif;">
-        <!-- Top formula box (sized to fit text) -->
-        <rect x="15" y="12" width="285" height="52" fill="#f0fdf4" stroke="#34c759" stroke-width="1" rx="8"/>
-        <text x="158" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="#34c759">NPSHa = (P_atm − P_v)/ρg + Z_s − h_fs</text>
-        <text x="158" y="50" text-anchor="middle" font-size="9" fill="#34c759">must be &gt; NPSHr + 0.5 m safety margin</text>
-        <!-- Temperature / altitude info box -->
-        <rect x="308" y="12" width="230" height="52" fill="#fff8e1" stroke="#ff9500" stroke-width="1" rx="8"/>
-        <text x="423" y="30" text-anchor="middle" font-size="10" font-weight="600" fill="#ff9500">Temperature → P_vapor + ν</text>
-        <text x="423" y="50" text-anchor="middle" font-size="9" fill="#ff9500">Altitude → P_atm (lower at elevation)</text>
+      <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" style="font-family:-apple-system,system-ui,sans-serif;">
         <!-- Open sump / tank -->
-        <rect x="25" y="82" width="100" height="100" fill="#bfdbfe" stroke="#0071e3" stroke-width="1.5" rx="4"/>
-        <!-- Water surface waves -->
-        <path d="M28,102 Q55,96 80,102 Q105,108 122,102" stroke="#0071e3" stroke-width="1.5" fill="none"/>
-        <text x="75" y="94" text-anchor="middle" font-size="9" fill="#1e40af">liquid surface</text>
-        <!-- P_atm arrow pushing down -->
-        <line x1="75" y1="57" x2="75" y2="94" stroke="#636366" stroke-width="1.5"/>
-        <polygon points="70,91 80,91 75,96" fill="#636366"/>
-        <text x="75" y="52" text-anchor="middle" font-size="10" font-weight="600" fill="#636366">P_atm</text>
-        <text x="75" y="65" text-anchor="middle" font-size="9" fill="#636366">(altitude adj.)</text>
-        <!-- Z_s elevation bracket — left of suction pipe, clear of h_fs labels -->
-        <line x1="138" y1="102" x2="138" y2="154" stroke="#ff9500" stroke-width="2"/>
-        <polygon points="133,108 143,108 138,102" fill="#ff9500"/>
-        <polygon points="133,148 143,148 138,154" fill="#ff9500"/>
-        <text x="118" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="#ff9500">Z_s</text>
-        <text x="116" y="140" text-anchor="middle" font-size="8" fill="#ff9500">(+flooded /</text>
-        <text x="116" y="150" text-anchor="middle" font-size="8" fill="#ff9500">−suction lift)</text>
-        <!-- Suction pipe: extended to connect to pump -->
-        <rect x="125" y="145" width="172" height="18" fill="#e0f2fe" stroke="#0071e3" stroke-width="1.5" rx="2"/>
-        <!-- Q flow arrow along pipe -->
-        <line x1="160" y1="154" x2="248" y2="154" stroke="#0071e3" stroke-width="1.5"/>
-        <polygon points="246,149 256,154 246,159" fill="#0071e3"/>
-        <text x="205" y="141" text-anchor="middle" font-size="11" font-weight="600" fill="#0071e3">Q →</text>
-        <!-- h_fs arc placed BELOW the suction pipe (no overlap with Z_s) -->
-        <path d="M128,165 Q215,182 295,165" stroke="#ff3b30" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
-        <text x="215" y="197" text-anchor="middle" font-size="10" font-weight="600" fill="#ff3b30">h_fs — friction loss (Hazen-Williams formula)</text>
+        <rect x="30" y="55" width="105" height="95" fill="#bfdbfe" stroke="#0071e3" stroke-width="1.5" rx="4"/>
+        <path d="M34,76 Q62,70 88,76 Q112,82 131,76" stroke="#0071e3" stroke-width="1.5" fill="none"/>
+        <text x="82" y="68" text-anchor="middle" font-size="10" class="dgl">liquid surface</text>
+        <!-- P_atm arrow pushing down on surface -->
+        <line x1="82" y1="28" x2="82" y2="68" stroke="#636366" stroke-width="1.6"/>
+        <polygon points="77,64 87,64 82,70" fill="#636366"/>
+        <text x="82" y="22" text-anchor="middle" font-size="11" font-weight="600" class="dgl">P_atm  (↓ with altitude)</text>
+        <!-- Z_s static suction head bracket -->
+        <line x1="150" y1="76" x2="150" y2="122" stroke="#ff9500" stroke-width="2"/>
+        <polygon points="145,82 155,82 150,76" fill="#ff9500"/>
+        <polygon points="145,116 155,116 150,122" fill="#ff9500"/>
+        <text x="132" y="103" text-anchor="middle" font-size="12" font-weight="700" fill="#ff9500">Z_s</text>
+        <!-- Suction pipe to pump -->
+        <rect x="135" y="114" width="170" height="17" fill="#e0f2fe" stroke="#0071e3" stroke-width="1.5" rx="2"/>
+        <line x1="168" y1="122" x2="250" y2="122" stroke="#0071e3" stroke-width="1.8"/>
+        <polygon points="248,117 258,122 248,127" fill="#0071e3"/>
+        <text x="208" y="110" text-anchor="middle" font-size="11" font-weight="600" fill="#0071e3">Q →</text>
+        <!-- h_fs suction friction loss arc -->
+        <path d="M138,133 Q220,150 303,133" stroke="#ff3b30" stroke-width="1.6" fill="none" stroke-dasharray="5,3"/>
+        <text x="220" y="164" text-anchor="middle" font-size="11" font-weight="600" fill="#ff3b30">h_fs — suction friction loss</text>
         <!-- Pump circle -->
-        <circle cx="330" cy="154" r="33" fill="#dbeafe" stroke="#0071e3" stroke-width="2"/>
-        <text x="330" y="150" text-anchor="middle" font-size="10" font-weight="700" fill="#0071e3">PUMP</text>
-        <text x="330" y="164" text-anchor="middle" font-size="9" fill="#5b8ccc">suction inlet</text>
-        <!-- P_vapor box -->
-        <rect x="372" y="137" width="90" height="34" fill="#fee2e2" stroke="#ff3b30" stroke-width="1" rx="6"/>
-        <text x="417" y="152" text-anchor="middle" font-size="10" font-weight="600" fill="#ff3b30">P_vapor (T)</text>
-        <text x="417" y="165" text-anchor="middle" font-size="9" fill="#ff3b30">cavitation limit</text>
-        <!-- Datum line -->
-        <line x1="25" y1="210" x2="535" y2="210" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4,3"/>
-        <text x="490" y="207" font-size="9" fill="#9ca3af">datum</text>
+        <circle cx="340" cy="122" r="33" fill="#dbeafe" stroke="#0071e3" stroke-width="2"/>
+        <text x="340" y="119" text-anchor="middle" font-size="11" font-weight="700" fill="#0071e3">PUMP</text>
+        <text x="340" y="132" text-anchor="middle" font-size="9" class="dgl">suction inlet</text>
+        <!-- P_vapor cavitation limit -->
+        <rect x="385" y="105" width="92" height="34" fill="#fee2e2" stroke="#ff3b30" stroke-width="1.2" rx="6"/>
+        <text x="431" y="120" text-anchor="middle" font-size="10" font-weight="700" fill="#ff3b30">P_vapor (T)</text>
+        <text x="431" y="133" text-anchor="middle" font-size="9" fill="#ff3b30">cavitation limit</text>
+        <!-- takeaway caption -->
+        <line x1="30" y1="180" x2="530" y2="180" class="dg-dim" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="280" y="195" text-anchor="middle" font-size="11" class="dgl">keep NPSH available ≥ NPSH required + 0.5 m margin → no cavitation</text>
       </svg>
     </div>
   </div>
@@ -1345,7 +1340,7 @@
         <text x="337" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#34c759">C factor</text>
         <text x="337" y="86" text-anchor="middle" font-size="9" fill="#34c759">higher C = less loss</text>
         <!-- Friction slope label -->
-        <text x="270" y="188" text-anchor="middle" font-size="11" fill="#6b7280">Friction slope S = hf / L (m/m) · C = Hazen-Williams roughness coefficient</text>
+        <text x="270" y="188" text-anchor="middle" font-size="11" class="dgl">the HGL slopes down along the pipe — its slope is the head loss per metre</text>
       </svg>
     </div>
   </div>
@@ -1566,12 +1561,8 @@
         <text x="415" y="110" text-anchor="middle" font-size="9" fill="#8e8e93">K ≈ 0.5–1.0</text>
         <!-- Large pipe continues -->
         <rect x="420" y="40" width="100" height="40" fill="#e0f2fe" stroke="#0071e3" stroke-width="1.5"/>
-        <!-- Formula box -->
-        <rect x="435" y="145" width="105" height="35" fill="#f0fdf4" stroke="#34c759" stroke-width="1" rx="6"/>
-        <text x="488" y="160" text-anchor="middle" font-size="11" fill="#34c759">h_m = K × V²/2g</text>
-        <text x="488" y="174" text-anchor="middle" font-size="9" fill="#34c759">per fitting</text>
-        <!-- Legend: total -->
-        <text x="30" y="165" font-size="11" fill="#6b7280">Total h_m = ΣK × V²/(2g) &nbsp;·&nbsp; V = flow velocity (m/s)</text>
+        <!-- takeaway -->
+        <text x="30" y="170" font-size="11" class="dgl">each fitting adds K × velocity head — sum the K values along the whole run</text>
       </svg>
     </div>
   </div>
@@ -1743,7 +1734,7 @@
         <line x1="40" y1="123" x2="40" y2="133" stroke="#9ca3af"/>
         <line x1="480" y1="123" x2="480" y2="133" stroke="#9ca3af"/>
         <text x="260" y="148" text-anchor="middle" font-size="11" fill="#6b7280">L — pipe length (m)</text>
-        <text x="260" y="164" text-anchor="middle" font-size="9" fill="#8e8e93">Re &lt; 2300 Laminar (f=64/Re)  ·  Re &gt; 4000 Turbulent (Swamee-Jain)</text>
+        <text x="260" y="164" text-anchor="middle" font-size="9" class="dgl">Re &lt; 2300 laminar  ·  2300–4000 transitional  ·  &gt; 4000 turbulent</text>
       </svg>
     </div>
   </div>
@@ -1846,11 +1837,10 @@
         <polygon points="306,50 316,50 311,46" fill="#0071e3"/>
         <line x1="390" y1="123" x2="340" y2="123" stroke="#ff3b30" stroke-width="2.5"/>
         <polygon points="344,118 335,123 344,128" fill="#ff3b30"/>
-        <text x="440" y="116" font-size="11" font-weight="700" fill="#ff3b30">F (thrust)</text>
-        <text x="440" y="130" font-size="9" fill="#ff3b30">= P × A × 2sin(θ/2)</text>
+        <text x="440" y="120" font-size="11" font-weight="700" fill="#ff3b30">F (thrust)</text>
         <path d="M245,110 Q237,103 242,96" stroke="#636366" stroke-width="1.5" fill="none"/>
         <text x="218" y="94" font-size="11" fill="#636366">θ = 90°</text>
-        <text x="160" y="172" text-anchor="middle" font-size="10" fill="#6b7280">Block bearing area = F / σ_soil  ·  minimum depth ≥ 0.6 m</text>
+        <text x="160" y="172" text-anchor="middle" font-size="10" class="dgl">block transfers thrust to undisturbed soil  ·  keep cover ≥ 0.6 m</text>
       </svg>
     </div>
   </div>
@@ -2053,19 +2043,15 @@
         <path d="M155,185 Q120,180 110,155" stroke="#636366" stroke-width="1.5" fill="none" marker-end="none"/>
         <text x="155" y="185" text-anchor="middle" font-size="10" fill="#8e8e93">hoop stress in wall</text>
 
-        <!-- Right panel: formula & SMYS values -->
-        <line x1="310" y1="20" x2="310" y2="180" stroke="#e5e5ea" stroke-width="1"/>
-        <text x="435" y="22" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f">Barlow's Formula</text>
-        <rect x="320" y="30" width="220" height="55" fill="#fff3cd" stroke="#ff9500" stroke-width="1" rx="8"/>
-        <text x="430" y="51" text-anchor="middle" font-size="12" fill="#1d1d1f">P_gross = 2 × SMYS × t / OD</text>
-        <text x="430" y="68" text-anchor="middle" font-size="12" fill="#1d1d1f">P_allow = P_gross × DF / SF</text>
-        <!-- SMYS values -->
-        <text x="320" y="105" font-size="11" font-weight="600" fill="#636366">Typical SMYS values:</text>
-        <text x="320" y="121" font-size="10" fill="#6b7280">Carbon Steel Gr.B: 245 MPa</text>
-        <text x="320" y="136" font-size="10" fill="#6b7280">X42 / X52 / X65: 290–448 MPa</text>
-        <text x="320" y="151" font-size="10" fill="#6b7280">Stainless 316L: 170 MPa</text>
-        <text x="320" y="166" font-size="10" fill="#6b7280">Ductile Iron: 300 MPa</text>
-        <text x="320" y="181" font-size="10" fill="#8e8e93">DF = 0.40–0.72 per pipeline class</text>
+        <!-- Right panel: SMYS quick-reference (formula lives in Show Formula) -->
+        <line x1="320" y1="22" x2="320" y2="178" stroke="#e5e5ea" stroke-width="1"/>
+        <text x="345" y="40" font-size="12" font-weight="700" class="dgl">Typical SMYS (yield)</text>
+        <text x="345" y="64" font-size="11" class="dgl">Carbon Steel Gr.B</text><text x="525" y="64" text-anchor="end" font-size="11" font-weight="600" fill="#ff9500">245 MPa</text>
+        <text x="345" y="86" font-size="11" class="dgl">API X42 / X52 / X65</text><text x="525" y="86" text-anchor="end" font-size="11" font-weight="600" fill="#ff9500">290–448</text>
+        <text x="345" y="108" font-size="11" class="dgl">Ductile Iron</text><text x="525" y="108" text-anchor="end" font-size="11" font-weight="600" fill="#ff9500">300 MPa</text>
+        <text x="345" y="130" font-size="11" class="dgl">Stainless 316L</text><text x="525" y="130" text-anchor="end" font-size="11" font-weight="600" fill="#ff9500">170 MPa</text>
+        <text x="345" y="160" font-size="10" class="dgl">design factor DF = 0.40–0.72</text>
+        <text x="345" y="174" font-size="10" class="dgl">(by pipeline class &amp; location)</text>
       </svg>
     </div>
   </div>
@@ -2430,7 +2416,7 @@
         <polygon points="336,102 344,102 340,107" fill="#9ca3af"/>
         <text x="352" y="98" font-size="10" fill="#6b7280">D</text>
         <!-- wave speed + static P labels -->
-        <text x="256" y="162" text-anchor="middle" font-size="11" fill="#6b7280">a = wave speed (m/s) · P_static = operating pressure (bar)</text>
+        <text x="256" y="162" text-anchor="middle" font-size="11" class="dgl">faster closure &amp; higher wave speed → bigger pressure spike on the valve</text>
       </svg>
     </div>
   </div>
@@ -2529,20 +2515,15 @@
         <polygon points="183,101 192,105 183,109" fill="#0071e3"/>
         <text x="140" y="125" text-anchor="middle" font-size="11" font-weight="600" fill="#0071e3">D (bore)</text>
 
-        <!-- Right panel: material & formula info -->
-        <line x1="295" y1="20" x2="295" y2="170" stroke="#e5e5ea" stroke-width="1"/>
-        <text x="425" y="22" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f">Wave Speed Formula</text>
-        <!-- Formula visual -->
-        <rect x="315" y="35" width="220" height="60" fill="#e8f0fe" stroke="#0071e3" stroke-width="1" rx="8"/>
-        <text x="425" y="56" text-anchor="middle" font-size="12" fill="#1d1d1f">a = √(K/ρ)</text>
-        <line x1="355" y1="64" x2="495" y2="64" stroke="#1d1d1f" stroke-width="1.2"/>
-        <text x="425" y="81" text-anchor="middle" font-size="11" fill="#1d1d1f">√(1 + K·D/(E·t))</text>
-        <!-- Material E values -->
-        <text x="315" y="112" font-size="11" font-weight="600" fill="#636366">Material Young's Modulus E:</text>
-        <text x="315" y="128" font-size="10" fill="#6b7280">Steel: 210 GPa · Ductile Iron: 170 GPa</text>
-        <text x="315" y="143" font-size="10" fill="#6b7280">Concrete: 30 GPa · GRP: 20 GPa</text>
-        <text x="315" y="158" font-size="10" fill="#6b7280">PVC: 3 GPa · HDPE: 0.8 GPa</text>
-        <text x="315" y="174" font-size="10" fill="#8e8e93">Lower E → slower wave speed → lower surge pressure</text>
+        <!-- Right panel: material stiffness quick-reference -->
+        <line x1="300" y1="22" x2="300" y2="172" stroke="#e5e5ea" stroke-width="1"/>
+        <text x="322" y="40" font-size="12" font-weight="700" class="dgl">Young's modulus E</text>
+        <text x="322" y="64" font-size="11" class="dgl">Steel</text><text x="525" y="64" text-anchor="end" font-size="11" font-weight="600" fill="#0071e3">210 GPa</text>
+        <text x="322" y="86" font-size="11" class="dgl">Ductile iron</text><text x="525" y="86" text-anchor="end" font-size="11" font-weight="600" fill="#0071e3">170 GPa</text>
+        <text x="322" y="108" font-size="11" class="dgl">Concrete · GRP</text><text x="525" y="108" text-anchor="end" font-size="11" font-weight="600" fill="#0071e3">30 · 20</text>
+        <text x="322" y="130" font-size="11" class="dgl">PVC · HDPE</text><text x="525" y="130" text-anchor="end" font-size="11" font-weight="600" fill="#0071e3">3 · 0.8</text>
+        <text x="322" y="160" font-size="10" class="dgl">lower E → slower wave →</text>
+        <text x="322" y="174" font-size="10" class="dgl">lower surge pressure</text>
       </svg>
     </div>
   </div>
@@ -2689,7 +2670,7 @@
         <!-- V_vessel label -->
         <text x="310" y="145" text-anchor="middle" font-size="11" fill="#636366">V_vessel (m³)</text>
         <!-- Wave speed + a label -->
-        <text x="170" y="185" text-anchor="middle" font-size="11" fill="#6b7280">a = wave speed (m/s) · Tc = 2L/a (critical closure time)</text>
+        <text x="170" y="185" text-anchor="middle" font-size="11" class="dgl">the gas cushion compresses to absorb the surge (Boyle's law)</text>
       </svg>
     </div>
   </div>
@@ -3472,18 +3453,17 @@
         <text x="280" y="48" text-anchor="middle" font-size="9" fill="#ff3b30">V_fire (fixed, per code)</text>
         <rect x="181" y="56" width="198" height="50" fill="#fff3cd"/>
         <text x="280" y="76" text-anchor="middle" font-size="10" font-weight="700" fill="#ff9500">EMERGENCY</text>
-        <text x="280" y="90" text-anchor="middle" font-size="9" fill="#ff9500">V_emerg = Q_max × hours</text>
+        <text x="280" y="90" text-anchor="middle" font-size="9" fill="#ff9500">supply during outage</text>
         <rect x="181" y="106" width="198" height="63" fill="#bfdbfe" rx="0"/>
         <rect x="181" y="106" width="198" height="63" fill="#bfdbfe"/>
-        <text x="280" y="130" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">OPERATIONAL</text>
-        <text x="280" y="144" text-anchor="middle" font-size="9" fill="#1e40af">V_op = daily demand × %</text>
-        <text x="280" y="158" text-anchor="middle" font-size="9" fill="#1e40af">(balancing + fluctuation)</text>
+        <text x="280" y="133" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">OPERATIONAL</text>
+        <text x="280" y="147" text-anchor="middle" font-size="9" fill="#1e40af">balancing / diurnal swing</text>
         <path d="M110,105 Q140,98 170,105 Q185,109 186,112" stroke="#0071e3" stroke-width="1.5" fill="none"/>
         <text x="100" y="98" text-anchor="middle" font-size="9" fill="#1e40af">inlet</text>
         <line x1="380" y1="135" x2="430" y2="135" stroke="#0071e3" stroke-width="1.5"/>
         <polygon points="426,130 436,135 426,140" fill="#0071e3"/>
         <text x="450" y="130" font-size="9" fill="#1e40af">outlet</text>
-        <text x="280" y="182" text-anchor="middle" font-size="10" fill="#6b7280">V_total = V_op + V_emerg + V_fire</text>
+        <text x="280" y="182" text-anchor="middle" font-size="10" class="dgl">total storage = sum of the three layers</text>
       </svg>
     </div>
   </div>
@@ -3595,7 +3575,7 @@
         <text x="438" y="90" text-anchor="middle" font-size="9" font-weight="700" fill="#34c759">CT check</text>
         <text x="438" y="103" text-anchor="middle" font-size="9" fill="#34c759">C × T₁₀</text>
         <text x="438" y="115" text-anchor="middle" font-size="9" fill="#34c759">≥ CT_req?</text>
-        <text x="280" y="162" text-anchor="middle" font-size="10" fill="#6b7280">CT = C_residual × T_contact × T₁₀/T  [mg·min/L]</text>
+        <text x="280" y="162" text-anchor="middle" font-size="10" class="dgl">disinfection credit = residual × contact time (corrected by baffling T₁₀/T)</text>
       </svg>
     </div>
   </div>

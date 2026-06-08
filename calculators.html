@@ -2515,6 +2515,184 @@
     </div>
   </div>
 
+  <!-- ── NEW: Pipeline Period & Critical Time ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <div class="card-header-text">
+        <h2>Pipeline Period &amp; Critical Time</h2>
+        <p>Is a valve closure "rapid" or "slow"? The 2L/a test that decides the surge</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Pipe Length L</label><div class="field-wrap"><input type="number" id="pc-L" value="5000" step="100" min="1" oninput="calcPC()"><span class="unit">m</span></div></div>
+      <div class="field"><label>Wave Speed a</label><div class="field-wrap"><input type="number" id="pc-a" value="1000" step="25" min="50" oninput="calcPC()"><span class="unit">m/s</span></div></div>
+      <div class="field"><label>Valve Closure Time T</label><div class="field-wrap"><input type="number" id="pc-T" value="10" step="1" min="0" oninput="calcPC()"><span class="unit">s</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Critical Time Test</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="pc-r-tc">—<span class="result-unit">s</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Critical time T_c = 2L/a</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="pc-r-phase">Wave travel L/a: — s</span>
+          <span id="pc-r-ratio">T / T_c: —</span>
+          <span id="pc-r-class">Closure type: —</span>
+        </div>
+      </div>
+      <div id="pc-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('pc-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="pc-f">
+      Critical (pipe) time: T_c = 2L / a<br>
+      ─────────────────────────────<br>
+      T &lt; T_c → rapid closure: full Joukowsky surge develops (ΔH = aV/g)<br>
+      T ≥ T_c → slow closure: surge reduced (use Michaud ΔH = 2LV/gT)
+    </div>
+  </div>
+
+  <!-- ── NEW: Slow Closure Surge (Michaud) ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2-6 4-6 6 0s4 6 6 0 4-6 6 0"/></svg></div>
+      <div class="card-header-text">
+        <h2>Slow-Closure Surge — Michaud</h2>
+        <p>Surge head for gradual valve closure, vs the Joukowsky upper bound</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Pipe Length L</label><div class="field-wrap"><input type="number" id="mi-L" value="5000" step="100" min="1" oninput="calcMI()"><span class="unit">m</span></div></div>
+      <div class="field"><label>Initial Velocity V₀</label><div class="field-wrap"><input type="number" id="mi-V" value="1.5" step="0.1" min="0" oninput="calcMI()"><span class="unit">m/s</span></div></div>
+      <div class="field"><label>Wave Speed a</label><div class="field-wrap"><input type="number" id="mi-a" value="1000" step="25" min="50" oninput="calcMI()"><span class="unit">m/s</span></div></div>
+      <div class="field"><label>Closure Time T</label><div class="field-wrap"><input type="number" id="mi-T" value="20" step="1" min="0.1" oninput="calcMI()"><span class="unit">s</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Surge Head Rise</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="mi-r-dh">—<span class="result-unit">m</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Governing surge ΔH</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="mi-r-jou">Joukowsky (max): — m</span>
+          <span id="mi-r-mic">Michaud (slow): — m</span>
+          <span id="mi-r-tc">Critical time T_c: — s</span>
+          <span id="mi-r-gov">Governed by: —</span>
+        </div>
+      </div>
+      <div id="mi-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('mi-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="mi-f">
+      Joukowsky (T ≤ T_c): ΔH = a·V₀ / g&nbsp;&nbsp;(upper bound)<br>
+      Michaud&nbsp;(T &gt; T_c): ΔH = 2·L·V₀ / (g·T)<br>
+      T_c = 2L/a&nbsp;&nbsp;|&nbsp;&nbsp;g = 9.81 m/s²<br>
+      ─────────────────────────────<br>
+      Linear-closure estimate; real valve laws &amp; line packing need a transient model.
+    </div>
+  </div>
+
+  <!-- ── NEW: Air Valve Sizing ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M12 9a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M9 3h6"/></svg></div>
+      <div class="card-header-text">
+        <h2>Air Valve Sizing</h2>
+        <p>Air-release / vacuum orifice for filling &amp; draining a transmission main</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Pipe Diameter D</label><div class="field-wrap"><input type="number" id="av-D" value="600" step="25" min="25" oninput="calcAV()"><span class="unit">mm</span></div></div>
+      <div class="field"><label>Fill / Drain Velocity</label><div class="field-wrap"><input type="number" id="av-V" value="0.3" step="0.05" min="0.01" oninput="calcAV()"><span class="unit">m/s</span></div></div>
+      <div class="field"><label>Allowable Differential</label><div class="field-wrap"><input type="number" id="av-dp" value="0.35" step="0.05" min="0.05" oninput="calcAV()"><span class="unit">bar</span></div></div>
+      <div class="field"><label>Orifice Coefficient C_d</label><div class="field-wrap"><input type="number" id="av-cd" value="0.6" step="0.05" min="0.4" max="0.9" oninput="calcAV()"><span class="unit">—</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Required Air Capacity &amp; Orifice</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="av-r-do">—<span class="result-unit">mm</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Min. orifice diameter</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="av-r-qw">Water rate: — m³/h</span>
+          <span id="av-r-qa">Required air flow: — L/s</span>
+          <span id="av-r-nom">Suggested nominal AV: — mm</span>
+        </div>
+      </div>
+      <div id="av-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('av-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="av-f">
+      Air rate ≈ water rate: Q_air = A_pipe · V&nbsp;(1:1 displacement)<br>
+      Orifice: Q_air = C_d · A_o · √(2·Δp / ρ_air)&nbsp;→ solve A_o → d_o<br>
+      ρ_air ≈ 1.2 kg/m³&nbsp;|&nbsp;Δp in Pa (subsonic screening)<br>
+      ─────────────────────────────<br>
+      Vacuum (draining/burst) needs LARGE orifice; release needs small.<br>
+      Sizing screen only — confirm with manufacturer flow curves (AWWA C512).
+    </div>
+  </div>
+
+  <!-- ── NEW: Pressure Class Check ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div class="card-header-text">
+        <h2>Pressure Class Check (PN)</h2>
+        <p>Working + surge pressure vs the pipe&apos;s rated class — does it pass?</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Working Pressure</label><div class="field-wrap"><input type="number" id="pn-pw" value="16" step="1" min="0" oninput="calcPN()"><span class="unit">bar</span></div></div>
+      <div class="field"><label>Surge Rise ΔP</label><div class="field-wrap"><input type="number" id="pn-ps" value="6" step="0.5" min="0" oninput="calcPN()"><span class="unit">bar</span></div></div>
+      <div class="field"><label>Pipe Rated Class PN</label><div class="field-wrap"><select id="pn-pn" onchange="document.getElementById('pn-pnv').value=this.value;calcPN()">
+        <option value="6">PN 6</option>
+        <option value="10">PN 10</option>
+        <option value="16">PN 16</option>
+        <option value="25" selected>PN 25</option>
+        <option value="40">PN 40</option>
+      </select></div></div>
+      <div class="field"><label>…or custom PN</label><div class="field-wrap"><input type="number" id="pn-pnv" value="25" step="1" min="1" oninput="calcPN()"><span class="unit">bar</span></div></div>
+      <div class="field"><label>Surge Allowance Factor</label><div class="field-wrap"><input type="number" id="pn-fac" value="1.0" step="0.1" min="1" max="1.5" oninput="calcPN()"><span class="unit">× PN</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Pressure Class Verification</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="pn-r-tot">—<span class="result-unit">bar</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Total (working + surge)</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="pn-r-all">Allowable: — bar</span>
+          <span id="pn-r-util">Utilization: — %</span>
+          <span id="pn-r-marg">Margin: — bar</span>
+        </div>
+      </div>
+      <div id="pn-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('pn-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="pn-f">
+      Total = P_working + ΔP_surge&nbsp;&nbsp;|&nbsp;&nbsp;Allowable = PN × factor<br>
+      ─────────────────────────────<br>
+      Many codes permit a short-term surge allowance (factor 1.2–1.4 × PN).<br>
+      Keep factor = 1.0 for a conservative steady + transient check.
+    </div>
+  </div>
+
 </div><!-- /calc-grid surge -->
 
 <!-- ══════════════════════════════════════════
@@ -3986,6 +4164,93 @@ function calcTE() {
 }
 
 /* ══════════════════════════════
+   NEW — Pipeline Period & Critical Time
+══════════════════════════════ */
+function calcPC() {
+  var L = +document.getElementById('pc-L').value || 0;
+  var a = +document.getElementById('pc-a').value || 0;
+  var T = +document.getElementById('pc-T').value || 0;
+  var Tc = a > 0 ? 2 * L / a : 0;
+  var phase = a > 0 ? L / a : 0;
+  document.getElementById('pc-r-tc').innerHTML = fmt(Tc, 2) + '<span class="result-unit">s</span>';
+  setText('pc-r-phase', 'Wave travel L/a: ' + fmt(phase, 2) + ' s');
+  setText('pc-r-ratio', 'T / T_c: ' + (Tc > 0 ? fmt(T / Tc, 2) : '—'));
+  if (T < Tc) {
+    setText('pc-r-class', 'Closure type: RAPID');
+    setPill('pc-pill', 'pill-danger', '⚠ T = ' + fmt(T,1) + ' s < T_c = ' + fmt(Tc,1) + ' s → rapid: full Joukowsky surge (ΔH = aV/g)');
+  } else {
+    setText('pc-r-class', 'Closure type: slow / gradual');
+    setPill('pc-pill', 'pill-ok', '✓ T = ' + fmt(T,1) + ' s ≥ T_c = ' + fmt(Tc,1) + ' s → slow: surge reduced (use Michaud)');
+  }
+}
+
+/* ══════════════════════════════
+   NEW — Slow-Closure Surge (Michaud)
+══════════════════════════════ */
+function calcMI() {
+  var L = +document.getElementById('mi-L').value || 0;
+  var V = +document.getElementById('mi-V').value || 0;
+  var a = +document.getElementById('mi-a').value || 0;
+  var T = +document.getElementById('mi-T').value || 0;
+  var Tc = a > 0 ? 2 * L / a : 0;
+  var jou = a * V / G;
+  var mic = T > 0 ? 2 * L * V / (G * T) : Infinity;
+  var gov, govName;
+  if (T <= Tc) { gov = jou; govName = 'Joukowsky (rapid closure)'; }
+  else { gov = Math.min(mic, jou); govName = 'Michaud (slow closure)'; }
+  document.getElementById('mi-r-dh').innerHTML = fmt(gov, 1) + '<span class="result-unit">m</span>';
+  setText('mi-r-jou', 'Joukowsky (max): ' + fmt(jou, 1) + ' m');
+  setText('mi-r-mic', 'Michaud (slow): ' + (isFinite(mic) ? fmt(mic, 1) + ' m' : '—'));
+  setText('mi-r-tc', 'Critical time T_c: ' + fmt(Tc, 2) + ' s');
+  setText('mi-r-gov', 'Governed by: ' + govName);
+  if (T <= Tc) setPill('mi-pill', 'pill-danger', '⚠ T ≤ T_c — rapid closure, full ΔH = ' + fmt(jou,1) + ' m. Slow the valve to cut surge.');
+  else setPill('mi-pill', 'pill-ok', '✓ Slow closure: ΔH ≈ ' + fmt(gov,1) + ' m (' + fmt(gov/jou*100,0) + '% of Joukowsky)');
+}
+
+/* ══════════════════════════════
+   NEW — Air Valve Sizing
+══════════════════════════════ */
+function calcAV() {
+  var D  = (+document.getElementById('av-D').value || 0) / 1000; // m
+  var V  = +document.getElementById('av-V').value || 0;          // m/s
+  var dp = (+document.getElementById('av-dp').value || 0) * 1e5; // bar→Pa
+  var Cd = +document.getElementById('av-cd').value || 0.6;
+  var rhoA = 1.2;
+  var Apipe = Math.PI / 4 * D * D;
+  var Qw = Apipe * V;                 // m³/s water (= air displaced)
+  var Qa = Qw;                        // m³/s air
+  var Ao = (Cd > 0 && dp > 0) ? Qa / (Cd * Math.sqrt(2 * dp / rhoA)) : 0; // m²
+  var doo = Ao > 0 ? Math.sqrt(4 * Ao / Math.PI) * 1000 : 0;              // mm
+  var noms = [25, 50, 80, 100, 150, 200, 250, 300];
+  var nom = noms.find(function(s){ return s >= doo; }) || ('>' + noms[noms.length-1]);
+  document.getElementById('av-r-do').innerHTML = fmt(doo, 1) + '<span class="result-unit">mm</span>';
+  setText('av-r-qw', 'Water rate: ' + fmt(Qw * 3600, 1) + ' m³/h');
+  setText('av-r-qa', 'Required air flow: ' + fmt(Qa * 1000, 1) + ' L/s');
+  setText('av-r-nom', 'Suggested nominal AV: ' + nom + ' mm');
+  setPill('av-pill', 'pill-info', '• Min orifice ≈ ' + fmt(doo,0) + ' mm at ' + fmt(dp/1e5,2) + ' bar Δp. Use combination AV; size vacuum (large) for draining/burst.');
+}
+
+/* ══════════════════════════════
+   NEW — Pressure Class Check (PN)
+══════════════════════════════ */
+function calcPN() {
+  var pw  = +document.getElementById('pn-pw').value || 0;
+  var ps  = +document.getElementById('pn-ps').value || 0;
+  var pn  = +document.getElementById('pn-pnv').value || 0;
+  var fac = +document.getElementById('pn-fac').value || 1;
+  var tot = pw + ps;
+  var all = pn * fac;
+  var util = all > 0 ? tot / all * 100 : 0;
+  document.getElementById('pn-r-tot').innerHTML = fmt(tot, 1) + '<span class="result-unit">bar</span>';
+  setText('pn-r-all', 'Allowable: ' + fmt(all, 1) + ' bar (PN ' + fmt(pn,0) + ' × ' + fmt(fac,2) + ')');
+  setText('pn-r-util', 'Utilization: ' + fmt(util, 0) + ' %');
+  setText('pn-r-marg', 'Margin: ' + fmt(all - tot, 1) + ' bar');
+  if (tot > all)        setPill('pn-pill', 'pill-danger', '⚠ FAIL — total ' + fmt(tot,1) + ' bar exceeds ' + fmt(all,1) + ' bar. Upgrade class or add surge protection.');
+  else if (util > 90)   setPill('pn-pill', 'pill-warn', '⚡ Tight: ' + fmt(util,0) + '% of class used — little margin for uncertainty');
+  else                  setPill('pn-pill', 'pill-ok', '✓ PASS — ' + fmt(tot,1) + ' bar ≤ ' + fmt(all,1) + ' bar (' + fmt(util,0) + '% utilization)');
+}
+
+/* ══════════════════════════════
    Init all calculators
 ══════════════════════════════ */
 window.addEventListener('DOMContentLoaded', function() {
@@ -3998,6 +4263,7 @@ window.addEventListener('DOMContentLoaded', function() {
   calcSYS(); calcPE(); calcPS();
   calcUC(); calcCW();
   calcDF(); calcFL(); calcTE();
+  calcPC(); calcMI(); calcAV(); calcPN();
 });
 </script>
 
@@ -4029,6 +4295,10 @@ window.addEventListener('DOMContentLoaded', function() {
     "Water Hammer Surge — Joukowsky": {ref:"Joukowsky head rise · instantaneous closure (upper bound)", art:"surge-transients.html"},
     "Wave Speed (Celerity)": {ref:"Pressure-wave celerity · fluid + pipe-wall elasticity", art:"surge-transients.html"},
     "Surge Vessel — Pre-charge & Volume": {ref:"Air-vessel sizing · Boyle's gas law (PVⁿ = const)", art:"surge-vessel.html"},
+    "Pipeline Period & Critical Time": {ref:"Critical time T_c = 2L/a · rapid vs slow closure", art:"surge-transients.html"},
+    "Slow-Closure Surge — Michaud": {ref:"Gradual closure ΔH = 2LV/gT vs Joukowsky bound", art:"control-valve-transients-hammer.html"},
+    "Air Valve Sizing": {ref:"Air release / vacuum · filling & draining · AWWA C512", art:"air-valves-pipeline-safety.html"},
+    "Pressure Class Check (PN)": {ref:"Working + surge vs pipe rated class (PN)", art:"surge-analysis-risk.html"},
     "Manning's — Gravity Pipe": {ref:"Uniform open-channel flow · Manning's roughness n", art:"hydraulic-design.html"},
     "Manning's — Open Channel": {ref:"Uniform open-channel flow · Manning's roughness n", art:"hydraulic-design.html"},
     "Reservoir / Tank Sizing": {ref:"Balancing / equalization storage from diurnal demand", art:"boundary-conditions-reservoir-tank.html"},

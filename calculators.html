@@ -493,8 +493,8 @@
   <h1>Hydraulic Calculators</h1>
   <p>Field-tested tools for pipeline and water infrastructure engineers. Real formulas. Instant results. No sign-up.</p>
   <div class="calc-hero-stats">
-    <div class="calc-hero-stat"><strong>18</strong>Calculators</div>
-    <div class="calc-hero-stat"><strong>9</strong>Categories</div>
+    <div class="calc-hero-stat"><strong>37</strong>Calculators</div>
+    <div class="calc-hero-stat"><strong>10</strong>Categories</div>
     <div class="calc-hero-stat"><strong>SI</strong>Units</div>
   </div>
 </div>
@@ -2907,10 +2907,156 @@
     </div>
   </div>
 
+  <!-- ── NEW: Critical Depth & Froude Number ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c3 0 3-8 6-8s3 8 6 8 3-4 6-4"/><path d="M3 21h18"/></svg></div>
+      <div class="card-header-text">
+        <h2>Critical Depth &amp; Froude Number</h2>
+        <p>Sub- or super-critical? Flow regime in a rectangular channel</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Flow Rate Q</label><div class="field-wrap"><input type="number" id="cr-Q" value="2.0" step="0.1" min="0.001" oninput="calcCR()"><span class="unit">m³/s</span></div></div>
+      <div class="field"><label>Channel Width b</label><div class="field-wrap"><input type="number" id="cr-b" value="2.0" step="0.1" min="0.05" oninput="calcCR()"><span class="unit">m</span></div></div>
+      <div class="field"><label>Flow Depth y</label><div class="field-wrap"><input type="number" id="cr-y" value="0.8" step="0.05" min="0.01" oninput="calcCR()"><span class="unit">m</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Flow Regime</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="cr-r-fr">—<span class="result-unit"></span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Froude number Fr</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="cr-r-reg">Regime: —</span>
+          <span id="cr-r-v">Velocity: — m/s</span>
+          <span id="cr-r-yc">Critical depth y_c: — m</span>
+          <span id="cr-r-vc">Critical velocity: — m/s</span>
+        </div>
+      </div>
+      <div id="cr-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('cr-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="cr-f">
+      Fr = V / √(g·y)&nbsp;&nbsp;|&nbsp;&nbsp;V = Q / (b·y)<br>
+      Critical depth (rect): y_c = (q² / g)^(1/3), q = Q/b<br>
+      ─────────────────────────────<br>
+      Fr &lt; 1 subcritical (tranquil) · Fr = 1 critical · Fr &gt; 1 supercritical (rapid)<br>
+      Critical/near-critical flow is unstable — avoid designing channels there.
+    </div>
+  </div>
+
 </div><!-- /calc-grid open-channel -->
 
 <!-- ══════════════════════════════════════════
-     CATEGORY 8 — STORAGE & WATER QUALITY
+     CATEGORY 8 — WATER DEMAND & PLANNING
+════════════════════════════════════════════ -->
+<div class="calc-category">
+  <div class="card-icon green" style="width:32px;height:32px;font-size:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+  <h3>Water Demand &amp; Planning</h3>
+  <div class="calc-category-line"></div>
+</div>
+<div class="calc-grid">
+
+  <!-- ── NEW: Water Demand & Peak Factors ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+      <div class="card-header-text">
+        <h2>Water Demand &amp; Peak Factors</h2>
+        <p>Average, max-day and peak-hour demand from population — the design flows</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Population Served</label><div class="field-wrap"><input type="number" id="dm-pop" value="50000" step="1000" min="0" oninput="calcDM()"><span class="unit">cap</span></div></div>
+      <div class="field"><label>Per-Capita Demand</label><div class="field-wrap"><input type="number" id="dm-pc" value="250" step="10" min="0" oninput="calcDM()"><span class="unit">L/cap·d</span></div></div>
+      <div class="field"><label>Max-Day Factor</label><div class="field-wrap"><input type="number" id="dm-md" value="1.5" step="0.1" min="1" oninput="calcDM()"><span class="unit">× avg</span></div></div>
+      <div class="field"><label>Peak-Hour Factor</label><div class="field-wrap"><input type="number" id="dm-ph" value="2.5" step="0.1" min="1" oninput="calcDM()"><span class="unit">× avg</span></div></div>
+      <div class="field"><label>Non-Revenue Water</label><div class="field-wrap"><input type="number" id="dm-nrw" value="15" step="1" min="0" max="80" oninput="calcDM()"><span class="unit">%</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Design Flows</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="dm-r-md">—<span class="result-unit">m³/d</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Max-day demand (incl. NRW)</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="dm-r-avg">Average day: — m³/d</span>
+          <span id="dm-r-ph">Peak hour: — m³/h</span>
+          <span id="dm-r-phl">Peak hour: — L/s</span>
+          <span id="dm-r-mdls">Max day: — L/s</span>
+        </div>
+      </div>
+      <div id="dm-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('dm-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="dm-f">
+      Avg day = pop × per-capita / 1000&nbsp;[m³/d], then ÷ (1 − NRW)<br>
+      Max day = Avg × MDF&nbsp;&nbsp;|&nbsp;&nbsp;Peak hour = Avg × PHF<br>
+      ─────────────────────────────<br>
+      Treatment sized on max-day; network &amp; pumps on peak-hour.<br>
+      Typical MDF 1.4–1.8 · PHF 2.0–3.0 (smaller for larger populations).
+    </div>
+  </div>
+
+  <!-- ── NEW: Balancing / Storage Volume ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M5 13h14"/></svg></div>
+      <div class="card-header-text">
+        <h2>Balancing / Storage Volume</h2>
+        <p>Service-reservoir volume: balancing + emergency + fire reserve</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Max-Day Demand</label><div class="field-wrap"><input type="number" id="bs-mdd" value="18750" step="100" min="0" oninput="calcBS()"><span class="unit">m³/d</span></div></div>
+      <div class="field"><label>Balancing Storage</label><div class="field-wrap"><input type="number" id="bs-bal" value="25" step="1" min="0" max="100" oninput="calcBS()"><span class="unit">% MDD</span></div></div>
+      <div class="field"><label>Emergency Supply</label><div class="field-wrap"><input type="number" id="bs-emh" value="8" step="1" min="0" oninput="calcBS()"><span class="unit">h @ avg</span></div></div>
+      <div class="field"><label>Fire Flow</label><div class="field-wrap"><input type="number" id="bs-ff" value="0" step="5" min="0" oninput="calcBS()"><span class="unit">L/s</span></div></div>
+      <div class="field"><label>Fire Duration</label><div class="field-wrap"><input type="number" id="bs-fd" value="2" step="0.5" min="0" oninput="calcBS()"><span class="unit">h</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Required Storage</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="bs-r-tot">—<span class="result-unit">m³</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Total reservoir volume</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="bs-r-bal">Balancing: — m³</span>
+          <span id="bs-r-em">Emergency: — m³</span>
+          <span id="bs-r-fire">Fire reserve: — m³</span>
+          <span id="bs-r-hrs">≈ — h of max-day demand</span>
+        </div>
+      </div>
+      <div id="bs-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('bs-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="bs-f">
+      Balancing = % × MDD&nbsp;&nbsp;(diurnal equalization, typ. 20–35%)<br>
+      Emergency = hours × average hourly demand<br>
+      Fire reserve = fire flow × duration<br>
+      ─────────────────────────────<br>
+      Total = balancing + emergency + fire. Confirm balancing % from a<br>
+      mass-curve (Rippl) of the actual diurnal demand pattern.
+    </div>
+  </div>
+
+</div><!-- /calc-grid demand -->
+
+<!-- ══════════════════════════════════════════
+     CATEGORY 9 — STORAGE & WATER QUALITY
 ════════════════════════════════════════════ -->
 <div class="calc-category">
   <div class="card-icon blue" style="width:32px;height:32px;font-size:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></div>
@@ -3304,7 +3450,7 @@
 </div><!-- /calc-grid storage -->
 
 <!-- ═══════════════════════════════════════════════════
-     CATEGORY 9 — Economic Pipe Diameter
+     CATEGORY 10 — Economic Pipe Diameter
 ════════════════════════════════════════════════════ -->
 <div class="calc-category">
   <div class="card-icon green" style="width:32px;height:32px;font-size:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><rect x="5" y="11" width="3" height="7" rx="0.5"/><rect x="10.5" y="6" width="3" height="12" rx="0.5"/><rect x="16" y="13" width="3" height="5" rx="0.5"/></svg></div>
@@ -4506,6 +4652,70 @@ function calcWF() {
 }
 
 /* ══════════════════════════════
+   NEW — Critical Depth & Froude
+══════════════════════════════ */
+function calcCR() {
+  var Q = +document.getElementById('cr-Q').value || 0;   // m³/s
+  var b = +document.getElementById('cr-b').value || 0;   // m
+  var y = +document.getElementById('cr-y').value || 0;   // m
+  var A = b * y;
+  var V = A > 0 ? Q / A : 0;
+  var Fr = y > 0 ? V / Math.sqrt(G * y) : 0;
+  var q = b > 0 ? Q / b : 0;                              // unit discharge
+  var yc = Math.pow(q * q / G, 1/3);
+  var Vc = yc > 0 ? q / yc : 0;
+  document.getElementById('cr-r-fr').innerHTML = fmt(Fr, 3) + '<span class="result-unit"></span>';
+  setText('cr-r-v', 'Velocity: ' + fmt(V, 2) + ' m/s');
+  setText('cr-r-yc', 'Critical depth y_c: ' + fmt(yc, 3) + ' m');
+  setText('cr-r-vc', 'Critical velocity: ' + fmt(Vc, 2) + ' m/s');
+  if (Fr < 0.95)      { setText('cr-r-reg', 'Regime: subcritical'); setPill('cr-pill', 'pill-ok', '✓ Fr = ' + fmt(Fr,3) + ' < 1 — subcritical (tranquil) flow, depth > y_c'); }
+  else if (Fr > 1.05) { setText('cr-r-reg', 'Regime: supercritical'); setPill('cr-pill', 'pill-warn', '⚡ Fr = ' + fmt(Fr,3) + ' > 1 — supercritical (rapid), risk of hydraulic jump downstream'); }
+  else                { setText('cr-r-reg', 'Regime: near-critical'); setPill('cr-pill', 'pill-danger', '⚠ Fr ≈ ' + fmt(Fr,3) + ' — near-critical & unstable; redesign away from Fr = 1'); }
+}
+
+/* ══════════════════════════════
+   NEW — Water Demand & Peak Factors
+══════════════════════════════ */
+function calcDM() {
+  var pop = +document.getElementById('dm-pop').value || 0;
+  var pc  = +document.getElementById('dm-pc').value || 0;
+  var md  = +document.getElementById('dm-md').value || 1;
+  var ph  = +document.getElementById('dm-ph').value || 1;
+  var nrw = (+document.getElementById('dm-nrw').value || 0) / 100;
+  var avg = pop * pc / 1000;                 // m³/d (consumption)
+  if (nrw < 1) avg = avg / (1 - nrw);        // gross of NRW
+  var maxd = avg * md;
+  var peakh = avg * ph;                       // m³/d basis
+  document.getElementById('dm-r-md').innerHTML = fmt(maxd, 0) + '<span class="result-unit">m³/d</span>';
+  setText('dm-r-avg', 'Average day: ' + fmt(avg, 0) + ' m³/d');
+  setText('dm-r-ph',  'Peak hour: ' + fmt(peakh / 24, 0) + ' m³/h');
+  setText('dm-r-phl', 'Peak hour: ' + fmt(peakh * 1000 / 86400, 1) + ' L/s');
+  setText('dm-r-mdls','Max day: ' + fmt(maxd * 1000 / 86400, 1) + ' L/s');
+  setPill('dm-pill', 'pill-info', '• Treatment → size on ' + fmt(maxd,0) + ' m³/d (max-day); network/pumps → ' + fmt(peakh/24,0) + ' m³/h (peak-hour)');
+}
+
+/* ══════════════════════════════
+   NEW — Balancing / Storage Volume
+══════════════════════════════ */
+function calcBS() {
+  var mdd = +document.getElementById('bs-mdd').value || 0;   // m³/d
+  var bal = (+document.getElementById('bs-bal').value || 0) / 100;
+  var emh = +document.getElementById('bs-emh').value || 0;    // hours
+  var ff  = +document.getElementById('bs-ff').value || 0;     // L/s
+  var fd  = +document.getElementById('bs-fd').value || 0;     // h
+  var vBal = bal * mdd;
+  var vEm  = emh * (mdd / 24);                                // avg hourly × hours (use mdd/24 as design hourly)
+  var vFire= ff * fd * 3.6;                                   // L/s × h × 3.6 = m³
+  var tot  = vBal + vEm + vFire;
+  document.getElementById('bs-r-tot').innerHTML = fmt(tot, 0) + '<span class="result-unit">m³</span>';
+  setText('bs-r-bal', 'Balancing: ' + fmt(vBal, 0) + ' m³');
+  setText('bs-r-em',  'Emergency: ' + fmt(vEm, 0) + ' m³');
+  setText('bs-r-fire','Fire reserve: ' + fmt(vFire, 0) + ' m³');
+  setText('bs-r-hrs', '≈ ' + (mdd > 0 ? fmt(tot / (mdd / 24), 1) : '—') + ' h of max-day demand');
+  setPill('bs-pill', 'pill-info', '• Total ' + fmt(tot,0) + ' m³ = ' + fmt(vBal,0) + ' balancing + ' + fmt(vEm,0) + ' emergency + ' + fmt(vFire,0) + ' fire');
+}
+
+/* ══════════════════════════════
    Init all calculators
 ══════════════════════════════ */
 window.addEventListener('DOMContentLoaded', function() {
@@ -4520,6 +4730,7 @@ window.addEventListener('DOMContentLoaded', function() {
   calcDF(); calcFL(); calcTE();
   calcPC(); calcMI(); calcAV(); calcPN();
   calcHRT(); calcCLA(); calcCO(); calcWF();
+  calcCR(); calcDM(); calcBS();
 });
 </script>
 
@@ -4557,6 +4768,9 @@ window.addEventListener('DOMContentLoaded', function() {
     "Pressure Class Check (PN)": {ref:"Working + surge vs pipe rated class (PN)", art:"surge-analysis-risk.html"},
     "Manning's — Gravity Pipe": {ref:"Uniform open-channel flow · Manning's roughness n", art:"hydraulic-design.html"},
     "Manning's — Open Channel": {ref:"Uniform open-channel flow · Manning's roughness n", art:"hydraulic-design.html"},
+    "Critical Depth & Froude Number": {ref:"Open-channel regime · Fr = V/√(gy) · critical depth", art:"hydraulic-design.html"},
+    "Water Demand & Peak Factors": {ref:"Design flows · max-day & peak-hour factors", art:""},
+    "Balancing / Storage Volume": {ref:"Service reservoir · balancing + emergency + fire (Rippl)", art:"boundary-conditions-reservoir-tank.html"},
     "Reservoir / Tank Sizing": {ref:"Balancing / equalization storage from diurnal demand", art:"boundary-conditions-reservoir-tank.html"},
     "Chlorine Dosing & CT Check": {ref:"Disinfection CT · USEPA SWTR log-inactivation", art:"chlorine-swro-disinfection.html"},
     "Hydraulic Retention Time": {ref:"Detention time HRT = V/Q · contact & settling basins", art:"boundary-conditions-reservoir-tank.html"},

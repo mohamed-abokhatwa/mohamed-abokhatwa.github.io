@@ -394,6 +394,24 @@
       background: rgba(41,151,255,0.06);
       border-color: rgba(41,151,255,0.15);
     }
+    /* ── Diagram legibility in dark mode (lift neutral grays) ── */
+    [data-theme="dark"] .diagram-box text[fill="#6b7280"],
+    [data-theme="dark"] .diagram-box text[fill="#636366"],
+    [data-theme="dark"] .diagram-box text[fill="#8e8e93"],
+    [data-theme="dark"] .diagram-box text[fill="#4a4a52"] { fill: #c7c7cc !important; }
+    [data-theme="dark"] .diagram-box text[fill="#9ca3af"] { fill: #aeaeb2 !important; }
+    [data-theme="dark"] .diagram-box line[stroke="#9ca3af"],
+    [data-theme="dark"] .diagram-box line[stroke="#6b7280"],
+    [data-theme="dark"] .diagram-box line[stroke="#d1d5db"] { stroke: #8e8e93 !important; }
+    [data-theme="dark"] .diagram-box polygon[fill="#9ca3af"],
+    [data-theme="dark"] .diagram-box polygon[fill="#6b7280"] { fill: #8e8e93 !important; }
+    /* Reusable label classes for new diagrams (theme-adaptive) */
+    .diagram-box .dgl  { fill: #6b7280; }
+    .diagram-box .dgl2 { fill: #9ca3af; }
+    .diagram-box .dg-dim { stroke: #9ca3af; }
+    [data-theme="dark"] .diagram-box .dgl  { fill: #c7c7cc; }
+    [data-theme="dark"] .diagram-box .dgl2 { fill: #aeaeb2; }
+    [data-theme="dark"] .diagram-box .dg-dim { stroke: #8e8e93; }
 
     /* Minor losses table */
     [data-theme="dark"] .fitting-table th {

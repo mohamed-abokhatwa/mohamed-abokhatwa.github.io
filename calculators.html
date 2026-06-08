@@ -4441,10 +4441,10 @@ function calcNS() {
   var Q = parseFloat(document.getElementById('ns-Q').value);
   var H = parseFloat(document.getElementById('ns-H').value);
   if (!N || !Q || !H || N <= 0 || Q <= 0 || H <= 0) return;
-  var Nq = N * Math.sqrt(Q / 3600) / Math.pow(H, 0.75);  // Q in m³/s
-  var Ns = N * Math.sqrt(Q) / Math.pow(H, 0.75);          // Q in m³/h (US convention)
+  var Nq = N * Math.sqrt(Q / 3600) / Math.pow(H, 0.75);          // metric, Q in m³/s
+  var Ns = N * Math.sqrt(Q * 4.40287) / Math.pow(H * 3.280840, 0.75); // US units: Q in gpm, H in ft
   setPrimary('ns-r-Nq', Nq, '');
-  setText('ns-r-ns', 'Ns (Q in m³/h) = ' + fmt(Ns, 1));
+  setText('ns-r-ns', 'Nₛ (US units, gpm·ft) = ' + fmt(Ns, 0));
   var type, cls;
   if (Nq < 15) { type = 'Radial-flow centrifugal — high head, low Q'; cls = 'pill-ok'; }
   else if (Nq < 45) { type = 'Mixed-flow centrifugal'; cls = 'pill-ok'; }
@@ -5008,11 +5008,34 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- ═══ CALCULATOR ENHANCEMENTS — copy / print / references ═══ -->
+<!-- ═══ CALCULATOR TOOLBAR (search + category nav) styles ═══ -->
+<style>
+  .calc-toolbar { position: sticky; top: 52px; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--border); backdrop-filter: blur(14px) saturate(180%); -webkit-backdrop-filter: blur(14px) saturate(180%); }
+  .calc-toolbar-inner { max-width: var(--max-w); margin: 0 auto; padding: 11px 24px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .calc-search { position: relative; flex: 1 1 240px; min-width: 180px; max-width: 360px; }
+  .calc-search svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--text-tertiary); pointer-events: none; }
+  .calc-search input { width: 100%; box-sizing: border-box; padding: 9px 16px 9px 38px; border-radius: 980px; border: 1px solid var(--border); background: var(--bg-3); color: var(--text-primary); font-size: 14px; font-family: inherit; outline: none; }
+  .calc-search input:focus { border-color: var(--accent); }
+  .calc-chips { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
+  .calc-chip { font-size: 12px; font-weight: 500; padding: 6px 13px; border-radius: 980px; border: 1px solid var(--border); background: transparent; color: var(--text-secondary); cursor: pointer; font-family: inherit; white-space: nowrap; transition: background .15s, color .15s, border-color .15s; }
+  .calc-chip:hover { background: var(--bg-4); color: var(--text-primary); }
+  .calc-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .calc-noresults { display: none; text-align: center; padding: 50px 20px; color: var(--text-tertiary); font-size: 15px; }
+  @media (max-width: 600px) {
+    .calc-toolbar { top: 52px; }
+    .calc-toolbar-inner { padding: 10px 16px; gap: 10px; }
+    .calc-search { max-width: none; flex-basis: 100%; }
+  }
+  @media print { .calc-toolbar { display: none !important; } }
+</style>
+
+<!-- ═══ CALCULATOR ENHANCEMENTS — copy / print / share / reset / references ═══ -->
 <script>
 (function(){
   var COPY_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
   var PRINT_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>';
+  var SHARE_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>';
+  var RESET_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M3.5 8a9 9 0 1 0 2.3-3.6L3 8"/></svg>';
 
   var REF = {
     "Pump Hydraulic Power": {ref:"Hydraulic & shaft power · ISO 9906 pump performance", art:"pump-engineering.html"},
@@ -5108,7 +5131,9 @@ window.addEventListener('DOMContentLoaded', function() {
       actions.className='calc-actions';
       actions.innerHTML=
         '<button type="button" class="calc-act act-copy">'+COPY_SVG+'<span>Copy</span></button>'+
-        '<button type="button" class="calc-act act-print">'+PRINT_SVG+'<span>Print / PDF</span></button>';
+        '<button type="button" class="calc-act act-share">'+SHARE_SVG+'<span>Share</span></button>'+
+        '<button type="button" class="calc-act act-print">'+PRINT_SVG+'<span>Print / PDF</span></button>'+
+        '<button type="button" class="calc-act act-reset">'+RESET_SVG+'<span>Reset</span></button>';
       var rb=card.querySelector('.result-box');
       if(rb&&rb.parentNode){ rb.parentNode.insertBefore(actions, rb.nextSibling); }
       else { card.appendChild(actions); }
@@ -5119,7 +5144,15 @@ window.addEventListener('DOMContentLoaded', function() {
           setTimeout(function(){ b.classList.remove('done'); b.querySelector('span').textContent='Copy'; },1600);
         });
       });
+      actions.querySelector('.act-share').addEventListener('click',function(){
+        var b=this;
+        shareCard(card).then(function(){
+          b.classList.add('done'); b.querySelector('span').textContent='Link copied ✓';
+          setTimeout(function(){ b.classList.remove('done'); b.querySelector('span').textContent='Share'; },1800);
+        });
+      });
       actions.querySelector('.act-print').addEventListener('click',function(){ printCalc(card); });
+      actions.querySelector('.act-reset').addEventListener('click',function(){ resetCard(card); });
       var r=REF[title];
       if(r){
         var ref=document.createElement('div');
@@ -5130,8 +5163,106 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',enhance);
-  else enhance();
+  /* ── Shareable URL + Reset to defaults ── */
+  var DEFAULTS={};
+  function captureDefaults(){
+    document.querySelectorAll('.calc-card input, .calc-card select').forEach(function(el){
+      if(el.id) DEFAULTS[el.id]=el.value;
+    });
+  }
+  function recompute(card){
+    card.querySelectorAll('input,select').forEach(function(el){
+      el.dispatchEvent(new Event(el.tagName==='SELECT'?'change':'input',{bubbles:true}));
+    });
+  }
+  function resetCard(card){
+    card.querySelectorAll('input,select').forEach(function(el){
+      if(el.id && DEFAULTS[el.id]!==undefined) el.value=DEFAULTS[el.id];
+    });
+    recompute(card);
+  }
+  function shareCard(card){
+    var parts=[];
+    card.querySelectorAll('input,select').forEach(function(el){
+      if(el.id) parts.push(encodeURIComponent(el.id)+'='+encodeURIComponent(el.value));
+    });
+    var url=location.origin+location.pathname+'#'+parts.join('&');
+    if(navigator.clipboard&&navigator.clipboard.writeText) return navigator.clipboard.writeText(url);
+    var ta=document.createElement('textarea'); ta.value=url; document.body.appendChild(ta); ta.select();
+    try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta);
+    return Promise.resolve();
+  }
+  function applyURL(){
+    var h=(location.hash||'').replace(/^#/,'');
+    if(!h || h.indexOf('=')<0) return;
+    var touched=[];
+    h.split('&').forEach(function(kv){
+      var i=kv.indexOf('='); if(i<0) return;
+      var id=decodeURIComponent(kv.slice(0,i)), val=decodeURIComponent(kv.slice(i+1));
+      var el=document.getElementById(id);
+      if(el && (el.tagName==='INPUT'||el.tagName==='SELECT')){ el.value=val; touched.push(el); }
+    });
+    if(!touched.length) return;
+    var cards=[]; touched.forEach(function(el){ var c=el.closest('.calc-card'); if(c&&cards.indexOf(c)<0) cards.push(c); });
+    cards.forEach(recompute);
+    if(cards[0]) setTimeout(function(){ cards[0].scrollIntoView({block:'center'}); },150);
+  }
+
+  /* ── Search + category quick-nav toolbar ── */
+  var SHORT={'Pumps & Energy':'Pumps','Pump Engineering':'Pump Eng.','Pipe Hydraulics & Flow':'Hydraulics','Advanced Pipe Design':'Pipe Design','Pipe Structural & Selection':'Structural','Transient Analysis & Surge Protection':'Surge','Open Channel & Gravity Flow':'Open Channel','Water Demand & Planning':'Demand','Storage & Water Quality':'Storage','Economic Optimization':'Economic'};
+  function buildToolbar(){
+    var page=document.querySelector('.calc-page'); if(!page) return;
+    var cats=[];
+    document.querySelectorAll('.calc-category').forEach(function(h){
+      var grid=h.nextElementSibling;
+      while(grid && !grid.classList.contains('calc-grid')) grid=grid.nextElementSibling;
+      if(!grid) return;
+      var h3=h.querySelector('h3');
+      cats.push({name:h3?h3.textContent.trim():'', header:h, grid:grid});
+    });
+    if(!cats.length) return;
+    var n=document.querySelectorAll('.calc-card').length;
+    var chips='<button class="calc-chip active" data-cat="__all">All</button>'+
+      cats.map(function(c,i){ return '<button class="calc-chip" data-cat="'+i+'">'+(SHORT[c.name]||c.name)+'</button>'; }).join('');
+    var bar=document.createElement('div'); bar.className='calc-toolbar';
+    bar.innerHTML='<div class="calc-toolbar-inner">'+
+      '<div class="calc-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>'+
+      '<input type="search" id="calcSearch" placeholder="Search '+n+' calculators…" autocomplete="off"></div>'+
+      '<div class="calc-chips">'+chips+'</div></div>';
+    page.parentNode.insertBefore(bar, page);
+    var noRes=document.createElement('div'); noRes.className='calc-noresults'; noRes.textContent='No calculators match your search.';
+    page.insertBefore(noRes, page.firstChild);
+    var state={cat:'__all', q:''};
+    function apply(){
+      var q=state.q.trim().toLowerCase(), total=0;
+      cats.forEach(function(c, ci){
+        var vis=false;
+        c.grid.querySelectorAll('.calc-card').forEach(function(card){
+          var inCat = state.cat==='__all' || ci===+state.cat;
+          var p=card.querySelector('.card-header-text p');
+          var txt=(card.querySelector('h2').textContent+' '+(p?p.textContent:'')).toLowerCase();
+          var show = inCat && (!q || txt.indexOf(q)>=0);
+          card.style.display = show?'':'none';
+          if(show){ vis=true; total++; }
+        });
+        c.header.style.display = vis?'':'none';
+        c.grid.style.display = vis?'':'none';
+      });
+      noRes.style.display = total?'none':'block';
+    }
+    document.getElementById('calcSearch').addEventListener('input',function(){ state.q=this.value; apply(); });
+    bar.querySelectorAll('.calc-chip').forEach(function(ch){
+      ch.addEventListener('click',function(){
+        bar.querySelectorAll('.calc-chip').forEach(function(x){ x.classList.remove('active'); });
+        this.classList.add('active'); state.cat=this.dataset.cat; apply();
+        window.scrollTo({ top: Math.max(0, page.offsetTop-70), behavior:'smooth' });
+      });
+    });
+  }
+
+  function init(){ enhance(); captureDefaults(); applyURL(); buildToolbar(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+  else init();
 })();
 </script>
 

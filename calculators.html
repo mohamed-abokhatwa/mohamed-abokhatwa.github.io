@@ -206,8 +206,45 @@
     }
     .pill-ok     { background: #dcfce7; color: #166534; }
     .pill-warn   { background: #fef9c3; color: #854d0e; }
+    .pill-warning{ background: #fef9c3; color: #854d0e; }
     .pill-danger { background: #fee2e2; color: #991b1b; }
     .pill-info   { background: #dbeafe; color: #1e40af; }
+
+    /* ── Per-calc action row (Copy / Print) ── */
+    .calc-actions { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+    .calc-act {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12.5px; font-weight: 500; padding: 7px 13px;
+      border-radius: 980px; border: 1px solid var(--border, rgba(0,0,0,0.1));
+      background: transparent; color: var(--text-secondary, #6e6e73);
+      cursor: pointer; font-family: inherit;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    .calc-act:hover { background: var(--bg-4, #ededf0); color: var(--text-primary, #1d1d1f); }
+    .calc-act svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .calc-act.done { color: #34c759; border-color: #34c759; }
+    [data-theme="dark"] .calc-act { border-color: rgba(255,255,255,0.14); }
+    [data-theme="dark"] .calc-act:hover { background: rgba(255,255,255,0.06); }
+
+    /* ── Reference / standards line ── */
+    .calc-ref { margin-top: 14px; font-size: 11.5px; color: var(--text-tertiary, #86868b); line-height: 1.6; }
+    .calc-ref strong { color: var(--text-secondary, #6e6e73); font-weight: 600; }
+    .calc-ref a { color: #0071e3; text-decoration: none; }
+    .calc-ref a:hover { text-decoration: underline; }
+
+    /* ── Print / Save-PDF ── */
+    .calc-print-head { display: none; }
+    @media print {
+      nav, .calc-hero, footer, .fab-glass, .fab-consult, #theme-toggle,
+      .nav-hamburger, .calc-actions, .formula-toggle, .diagram-toggle { display: none !important; }
+      body.print-single .calc-category { display: none !important; }
+      body.print-single .calc-card:not(.print-target) { display: none !important; }
+      body.print-single .calc-grid { display: block !important; }
+      .calc-card { box-shadow: none !important; border: 1px solid #ccc !important; break-inside: avoid; margin: 0 0 16px; }
+      .print-target .formula-box, .print-target .diagram-box { display: block !important; }
+      .calc-print-head { display: block !important; margin: 0 0 14px; padding: 0 0 10px; border-bottom: 1px solid #ddd; font-size: 12px; color: #555; }
+      .calc-print-head strong { font-size: 15px; color: #111; display: block; margin-bottom: 2px; }
+    }
 
     /* Formula toggle */
     .formula-toggle {
@@ -3374,6 +3411,115 @@ window.addEventListener('DOMContentLoaded', function() {
   calcTH(); calcAFF(); calcNS();
   calcTNK(); calcCL(); calcEPD();
 });
+</script>
+
+<!-- ═══ CALCULATOR ENHANCEMENTS — copy / print / references ═══ -->
+<script>
+(function(){
+  var COPY_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  var PRINT_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>';
+
+  var REF = {
+    "Pump Hydraulic Power": {ref:"Hydraulic & shaft power · ISO 9906 pump performance", art:"pump-engineering.html"},
+    "NPSH Available": {ref:"Cavitation margin · ISO 9906 / HI 9.6.1 — keep NPSHa ≥ NPSHr + 0.5 m", art:"npsh-water-infrastructure.html"},
+    "Pump Affinity Laws — VSD": {ref:"Affinity laws for variable-speed pumping (Q∝N, H∝N², P∝N³)", art:"vfd-myth-hydraulic-design.html"},
+    "Pump Specific Speed Nₛ": {ref:"Impeller geometry classification · Hydraulic Institute", art:"pump-engineering.html"},
+    "Pipe Friction Loss — Hazen-Williams": {ref:"Empirical head loss · AWWA C150 — water only, fully turbulent", art:"hydraulic-design.html"},
+    "Flow Velocity & Reynolds Number": {ref:"Flow regime · laminar Re<2000, turbulent Re>4000", art:"hydraulic-design.html"},
+    "Minor Losses — Fittings & Valves (K-method)": {ref:"Local losses · Crane TP-410 resistance coefficients", art:"hydraulic-design.html"},
+    "Darcy-Weisbach Friction Loss": {ref:"Universal head loss · Colebrook-White / Moody friction factor", art:"hydraulic-design.html"},
+    "Thrust Block Sizing": {ref:"Unbalanced thrust at bends/tees · AWWA M11 & M55", art:"pipeline-design.html"},
+    "Barlow's Formula — Pipe Pressure Rating": {ref:"Hoop stress & wall thickness · AWWA C200 / ASME B31", art:"pipeline-design.html"},
+    "Water Hammer Surge — Joukowsky": {ref:"Joukowsky head rise · instantaneous closure (upper bound)", art:"surge-transients.html"},
+    "Wave Speed (Celerity)": {ref:"Pressure-wave celerity · fluid + pipe-wall elasticity", art:"surge-transients.html"},
+    "Surge Vessel — Pre-charge & Volume": {ref:"Air-vessel sizing · Boyle's gas law (PVⁿ = const)", art:"surge-vessel.html"},
+    "Manning's — Gravity Pipe": {ref:"Uniform open-channel flow · Manning's roughness n", art:"hydraulic-design.html"},
+    "Manning's — Open Channel": {ref:"Uniform open-channel flow · Manning's roughness n", art:"hydraulic-design.html"},
+    "Reservoir / Tank Sizing": {ref:"Balancing / equalization storage from diurnal demand", art:"boundary-conditions-reservoir-tank.html"},
+    "Chlorine Dosing & CT Check": {ref:"Disinfection CT · USEPA SWTR log-inactivation", art:"chlorine-swro-disinfection.html"},
+    "Economic Pipe Diameter": {ref:"Least life-cycle cost · capital + pumping energy (NPV)", art:"pipeline-design.html"}
+  };
+
+  function copyCalc(card){
+    var title=card.querySelector('h2').textContent.trim();
+    var L=[title+' — abokhatwa.com/calculators',''];
+    L.push('INPUTS');
+    card.querySelectorAll('.field').forEach(function(f){
+      var lab=f.querySelector('label'), inp=f.querySelector('input,select');
+      if(!lab||!inp) return;
+      var val = inp.tagName==='SELECT' ? inp.options[inp.selectedIndex].text : inp.value;
+      var u=f.querySelector('.unit');
+      L.push('  · '+lab.textContent.trim()+': '+val+(u?' '+u.textContent.trim():''));
+    });
+    L.push('','RESULTS');
+    card.querySelectorAll('.result-box').forEach(function(rb){
+      var p=rb.querySelector('.result-primary');
+      if(p){
+        var ue=p.querySelector('.result-unit');
+        var num = ue ? p.textContent.slice(0, p.textContent.length-ue.textContent.length).trim() : p.textContent.trim();
+        L.push('  · '+(num+(ue?' '+ue.textContent.trim():'')).replace(/\s+/g,' ').trim());
+      }
+      rb.querySelectorAll('.result-secondaries span').forEach(function(s){
+        var t=s.textContent.trim(); if(t) L.push('  · '+t);
+      });
+      var pill=rb.querySelector('.pill'); var pt=pill?pill.textContent.trim():'';
+      if(pt && pt!=='—') L.push('  '+pt);
+    });
+    var txt=L.join('\n');
+    if(navigator.clipboard&&navigator.clipboard.writeText) return navigator.clipboard.writeText(txt);
+    var ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta); ta.select();
+    try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta);
+    return Promise.resolve();
+  }
+
+  function printCalc(card){
+    var head=card.querySelector('.calc-print-head');
+    if(!head){ head=document.createElement('div'); head.className='calc-print-head'; card.insertBefore(head, card.firstChild); }
+    var d=new Date().toISOString().slice(0,10);
+    head.innerHTML='<strong>'+card.querySelector('h2').textContent.trim()+'</strong>Mohamed Abokhatwa · abokhatwa.com/calculators · '+d;
+    document.body.classList.add('print-single');
+    card.classList.add('print-target');
+    window.onafterprint=function(){
+      document.body.classList.remove('print-single');
+      card.classList.remove('print-target');
+      window.onafterprint=null;
+    };
+    window.print();
+  }
+
+  function enhance(){
+    document.querySelectorAll('.calc-card').forEach(function(card){
+      var h2=card.querySelector('h2'); if(!h2) return;
+      var title=h2.textContent.trim();
+      var actions=document.createElement('div');
+      actions.className='calc-actions';
+      actions.innerHTML=
+        '<button type="button" class="calc-act act-copy">'+COPY_SVG+'<span>Copy</span></button>'+
+        '<button type="button" class="calc-act act-print">'+PRINT_SVG+'<span>Print / PDF</span></button>';
+      var rb=card.querySelector('.result-box');
+      if(rb&&rb.parentNode){ rb.parentNode.insertBefore(actions, rb.nextSibling); }
+      else { card.appendChild(actions); }
+      actions.querySelector('.act-copy').addEventListener('click',function(){
+        var b=this;
+        copyCalc(card).then(function(){
+          b.classList.add('done'); b.querySelector('span').textContent='Copied ✓';
+          setTimeout(function(){ b.classList.remove('done'); b.querySelector('span').textContent='Copy'; },1600);
+        });
+      });
+      actions.querySelector('.act-print').addEventListener('click',function(){ printCalc(card); });
+      var r=REF[title];
+      if(r){
+        var ref=document.createElement('div');
+        ref.className='calc-ref';
+        ref.innerHTML='<strong>Reference:</strong> '+r.ref+(r.art?' &nbsp;·&nbsp; <a href="'+r.art+'">Read the theory →</a>':'');
+        card.appendChild(ref);
+      }
+    });
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',enhance);
+  else enhance();
+})();
 </script>
 
 <script src="theme.js"></script>

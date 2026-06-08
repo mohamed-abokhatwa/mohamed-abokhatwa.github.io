@@ -2548,7 +2548,11 @@
       P₀ = SF × P_min_abs − 1.013 &nbsp;[bar_g]<br>
       ─────────────────────────────<br>
       All pressures converted to absolute (bar_a = bar_g + 1.013)<br>
-      SF = 0.9 recommended (typical industry practice)
+      SF = 0.9 recommended (typical industry practice)<br>
+      ─────────────────────────────<br>
+      ⚠ V_water here is a rough proxy (½ · Q · 2L/a). True swing depends on the<br>
+      column deceleration & pump inertia — use this only for first-pass sizing,<br>
+      then confirm the vessel with a transient (water-hammer) simulation.
     </div>
     <button class="diagram-toggle" onclick="toggleDiagram('sv-diag',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l4-4 14 14-4 4z"/><path d="M7 7l2 2M10 6l2 2M13 9l2 2"/></svg> Show Diagram</button>
     <div class="diagram-box" id="sv-diag">
@@ -4071,8 +4075,7 @@ function calcSV() {
   setText('sv-r-gas',   'Gas volume (idle): ' + fmt(V_gas) + ' m³');
   setText('sv-r-ratio', 'Max water fill: ' + fmt(fillRatio) + '%');
 
-  var cls = fillRatio > 70 ? 'pill-warn' : 'pill-ok';
-  setPill('sv-pill', cls, 'Vessel: ' + fmt(V_vessel) + ' m³ · Pre-charge: ' + fmt(P0_g) + ' bar_g');
+  setPill('sv-pill', 'pill-warn', '⚠ Preliminary estimate only (' + fmt(V_vessel) + ' m³, pre-charge ' + fmt(P0_g) + ' bar_g) — size air vessels with a full transient (water-hammer) model; this first-pass figure may understate the required volume.');
 }
 
 /* ══════════════════════════════
@@ -4320,7 +4323,8 @@ function calcMOC() {
   R = A / P;
   Q = (1 / n) * A * Math.pow(R, 2 / 3) * Math.pow(S, 0.5);
   V = Q / A;
-  var Fr = V / Math.sqrt(9.81 * (A / (shape === 'rect' ? b : b + 2 * z * y)));
+  var Tw = (shape === 'rect') ? b : (shape === 'trap') ? (b + 2 * z * y) : 2 * Math.sqrt(Math.max(0, y * (b - y)));
+  var Fr = Tw > 0 ? V / Math.sqrt(9.81 * (A / Tw)) : 0;
   setPrimary('moc-r-Q', Q, 'm³/s');
   setText('moc-r-Qm3', fmt(Q * 1000, 1) + ' L/s  |  ' + fmt(Q * 3600, 1) + ' m³/h');
   setText('moc-r-V', 'V = ' + fmt(V, 3) + ' m/s');

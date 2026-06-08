@@ -3131,6 +3131,176 @@
     </div>
   </div>
 
+  <!-- ── NEW: Hydraulic Retention Time ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <div class="card-header-text">
+        <h2>Hydraulic Retention Time</h2>
+        <p>Detention time in any basin or contact tank — and volume for a target HRT</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Flow Rate Q</label><div class="field-wrap"><input type="number" id="hrt-Q" value="250" step="10" min="0.1" oninput="calcHRT()"><span class="unit">m³/h</span></div></div>
+      <div class="field"><label>Tank Volume V</label><div class="field-wrap"><input type="number" id="hrt-V" value="500" step="10" min="0" oninput="calcHRT()"><span class="unit">m³</span></div></div>
+      <div class="field"><label>Target HRT</label><div class="field-wrap"><input type="number" id="hrt-T" value="2" step="0.5" min="0" oninput="calcHRT()"><span class="unit">h</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Detention Time</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="hrt-r-t">—<span class="result-unit">h</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Actual HRT = V / Q</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="hrt-r-min">In minutes: — min</span>
+          <span id="hrt-r-req">Volume for target: — m³</span>
+          <span id="hrt-r-day">Throughput: — m³/day</span>
+        </div>
+      </div>
+      <div id="hrt-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('hrt-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="hrt-f">
+      HRT = V / Q&nbsp;&nbsp;|&nbsp;&nbsp;Required V = Q × target HRT<br>
+      ─────────────────────────────<br>
+      Typical: rapid mix 1–3 min · flocculation 20–40 min<br>
+      sedimentation 2–4 h · chlorine contact ≥ 30 min (then check CT)
+    </div>
+  </div>
+
+  <!-- ── NEW: Clarifier SOR & Weir Loading ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+      <div class="card-header-text">
+        <h2>Clarifier SOR &amp; Weir Loading</h2>
+        <p>Surface overflow rate and weir loading for a circular sedimentation tank</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Flow Rate Q</label><div class="field-wrap"><input type="number" id="cla-Q" value="500" step="10" min="0.1" oninput="calcCLA()"><span class="unit">m³/h</span></div></div>
+      <div class="field"><label>Clarifier Diameter</label><div class="field-wrap"><input type="number" id="cla-D" value="20" step="0.5" min="1" oninput="calcCLA()"><span class="unit">m</span></div></div>
+      <div class="field"><label>Weir Length</label><div class="field-wrap"><input type="number" id="cla-W" value="63" step="1" min="0.1" oninput="calcCLA()"><span class="unit">m</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Loading Rates</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="cla-r-sor">—<span class="result-unit">m/d</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Surface overflow rate</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="cla-r-area">Surface area: — m²</span>
+          <span id="cla-r-weir">Weir loading: — m³/m·d</span>
+          <span id="cla-r-up">Upflow velocity: — m/h</span>
+        </div>
+      </div>
+      <div id="cla-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('cla-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="cla-f">
+      SOR = Q / A_surface&nbsp;&nbsp;(m³/m²·d = m/d) ; A = π/4·D²<br>
+      Weir loading = Q / weir length&nbsp;(m³/m·d)<br>
+      ─────────────────────────────<br>
+      Typical: SOR 24–48 m/d (settling) · weir loading ≤ 250–375 m³/m·d
+    </div>
+  </div>
+
+  <!-- ── NEW: Coagulant / Alum Dose ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7 16h10"/></svg></div>
+      <div class="card-header-text">
+        <h2>Coagulant / Chemical Dose</h2>
+        <p>Daily chemical mass and solution feed rate for alum, ferric, polymer, lime…</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Flow Rate Q</label><div class="field-wrap"><input type="number" id="co-Q" value="1000" step="50" min="0.1" oninput="calcCO()"><span class="unit">m³/h</span></div></div>
+      <div class="field"><label>Dose</label><div class="field-wrap"><input type="number" id="co-d" value="30" step="1" min="0" oninput="calcCO()"><span class="unit">mg/L</span></div></div>
+      <div class="field"><label>Solution Strength</label><div class="field-wrap"><input type="number" id="co-s" value="48" step="1" min="1" max="100" oninput="calcCO()"><span class="unit">% w/w</span></div></div>
+      <div class="field"><label>Solution Density</label><div class="field-wrap"><input type="number" id="co-rho" value="1.33" step="0.01" min="0.8" oninput="calcCO()"><span class="unit">kg/L</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Chemical Demand</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="co-r-kg">—<span class="result-unit">kg/day</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Neat chemical (100%)</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="co-r-ty">Annual: — t/yr</span>
+          <span id="co-r-sol">Solution feed: — L/h</span>
+          <span id="co-r-sold">Solution: — L/day</span>
+        </div>
+      </div>
+      <div id="co-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('co-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="co-f">
+      Mass (kg/day) = Dose(mg/L) × Q(m³/day) / 1000<br>
+      Solution (L/day) = Mass / (strength fraction × density)<br>
+      ─────────────────────────────<br>
+      Typical alum dose 10–60 mg/L; jar-test to confirm for your raw water.
+    </div>
+  </div>
+
+  <!-- ── NEW: Weir / Flume Flow Measurement ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M5 6v6a7 7 0 0 0 14 0V6"/><path d="M9 18l3-4 3 4"/></svg></div>
+      <div class="card-header-text">
+        <h2>Weir / Flume Flow Measurement</h2>
+        <p>Open-channel flow from measured head over a V-notch or rectangular weir</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Device</label><div class="field-wrap"><select id="wf-type" onchange="calcWF()">
+        <option value="v90" selected>V-notch 90° (triangular)</option>
+        <option value="rect">Rectangular (suppressed)</option>
+        <option value="cipo">Cipolletti (trapezoidal)</option>
+      </select></div></div>
+      <div class="field"><label>Head Over Crest H</label><div class="field-wrap"><input type="number" id="wf-H" value="0.20" step="0.01" min="0.01" oninput="calcWF()"><span class="unit">m</span></div></div>
+      <div class="field" id="wf-bwrap"><label>Crest Width b</label><div class="field-wrap"><input type="number" id="wf-b" value="1.0" step="0.1" min="0.1" oninput="calcWF()"><span class="unit">m</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Measured Flow</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="wf-r-q">—<span class="result-unit">L/s</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Discharge Q</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="wf-r-m3h">— m³/h</span>
+          <span id="wf-r-m3s">— m³/s</span>
+          <span id="wf-r-eq">Equation: —</span>
+        </div>
+      </div>
+      <div id="wf-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('wf-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="wf-f">
+      V-notch 90°: Q = 1.38 · H^2.5<br>
+      Rectangular (suppressed): Q = 1.84 · b · H^1.5&nbsp;(Rehbock)<br>
+      Cipolletti: Q = 1.86 · b · H^1.5&nbsp;&nbsp;|&nbsp;&nbsp;Q in m³/s, H &amp; b in m<br>
+      ─────────────────────────────<br>
+      Valid for free-flow, fully ventilated nappe; measure H ≥ 3–4× upstream of crest.
+    </div>
+  </div>
+
 </div><!-- /calc-grid storage -->
 
 <!-- ═══════════════════════════════════════════════════
@@ -4251,6 +4421,91 @@ function calcPN() {
 }
 
 /* ══════════════════════════════
+   NEW — Hydraulic Retention Time
+══════════════════════════════ */
+function calcHRT() {
+  var Q = +document.getElementById('hrt-Q').value || 0;   // m³/h
+  var V = +document.getElementById('hrt-V').value || 0;   // m³
+  var T = +document.getElementById('hrt-T').value || 0;   // h target
+  var hrt = Q > 0 ? V / Q : 0;                            // h
+  var reqV = Q * T;
+  document.getElementById('hrt-r-t').innerHTML = fmt(hrt, 2) + '<span class="result-unit">h</span>';
+  setText('hrt-r-min', 'In minutes: ' + fmt(hrt * 60, 0) + ' min');
+  setText('hrt-r-req', 'Volume for target: ' + fmt(reqV, 0) + ' m³');
+  setText('hrt-r-day', 'Throughput: ' + fmt(Q * 24, 0) + ' m³/day');
+  if (T > 0 && hrt < T)      setPill('hrt-pill', 'pill-warn', '⚠ HRT ' + fmt(hrt,2) + ' h < target ' + fmt(T,2) + ' h — need ≥ ' + fmt(reqV,0) + ' m³ (add ' + fmt(reqV - V,0) + ' m³)');
+  else if (T > 0)            setPill('hrt-pill', 'pill-ok', '✓ HRT ' + fmt(hrt,2) + ' h ≥ target ' + fmt(T,2) + ' h');
+  else                       setPill('hrt-pill', 'pill-info', '• HRT = ' + fmt(hrt,2) + ' h (' + fmt(hrt*60,0) + ' min)');
+}
+
+/* ══════════════════════════════
+   NEW — Clarifier SOR & Weir Loading
+══════════════════════════════ */
+function calcCLA() {
+  var Q = +document.getElementById('cla-Q').value || 0;   // m³/h
+  var D = +document.getElementById('cla-D').value || 0;   // m
+  var W = +document.getElementById('cla-W').value || 0;   // m
+  var Qd = Q * 24;                                        // m³/day
+  var A = Math.PI / 4 * D * D;                            // m²
+  var sor = A > 0 ? Qd / A : 0;                           // m/d
+  var weir = W > 0 ? Qd / W : 0;                          // m³/m·d
+  var up = A > 0 ? Q / A : 0;                             // m/h
+  document.getElementById('cla-r-sor').innerHTML = fmt(sor, 1) + '<span class="result-unit">m/d</span>';
+  setText('cla-r-area', 'Surface area: ' + fmt(A, 1) + ' m²');
+  setText('cla-r-weir', 'Weir loading: ' + fmt(weir, 1) + ' m³/m·d');
+  setText('cla-r-up', 'Upflow velocity: ' + fmt(up, 2) + ' m/h');
+  var msg = [];
+  if (sor > 48) msg.push('SOR ' + fmt(sor,0) + ' high (>48 m/d)');
+  if (weir > 375) msg.push('weir loading ' + fmt(weir,0) + ' high (>375)');
+  if (msg.length) setPill('cla-pill', 'pill-warn', '⚠ ' + msg.join(' · ') + ' — carry-over risk, enlarge tank/weir');
+  else setPill('cla-pill', 'pill-ok', '✓ SOR ' + fmt(sor,1) + ' m/d & weir ' + fmt(weir,0) + ' m³/m·d — within typical limits');
+}
+
+/* ══════════════════════════════
+   NEW — Coagulant / Chemical Dose
+══════════════════════════════ */
+function calcCO() {
+  var Q = +document.getElementById('co-Q').value || 0;    // m³/h
+  var d = +document.getElementById('co-d').value || 0;    // mg/L
+  var s = (+document.getElementById('co-s').value || 0) / 100;
+  var rho = +document.getElementById('co-rho').value || 1;
+  var Qd = Q * 24;                                        // m³/day
+  var kg = d * Qd / 1000;                                 // kg/day neat
+  var sold = (s > 0 && rho > 0) ? kg / (s * rho) : 0;     // L/day solution
+  document.getElementById('co-r-kg').innerHTML = fmt(kg, 1) + '<span class="result-unit">kg/day</span>';
+  setText('co-r-ty', 'Annual: ' + fmt(kg * 365 / 1000, 1) + ' t/yr');
+  setText('co-r-sol', 'Solution feed: ' + fmt(sold / 24, 1) + ' L/h');
+  setText('co-r-sold', 'Solution: ' + fmt(sold, 0) + ' L/day');
+  setPill('co-pill', 'pill-info', '• ' + fmt(d,0) + ' mg/L on ' + fmt(Qd,0) + ' m³/d → ' + fmt(kg,0) + ' kg/d neat (' + fmt(sold,0) + ' L/d at ' + fmt(s*100,0) + '%)');
+}
+
+/* ══════════════════════════════
+   NEW — Weir / Flume Flow Measurement
+══════════════════════════════ */
+function calcWF() {
+  var type = document.getElementById('wf-type').value;
+  var H = +document.getElementById('wf-H').value || 0;
+  var b = +document.getElementById('wf-b').value || 0;
+  var bwrap = document.getElementById('wf-bwrap');
+  var Q, eq;
+  if (type === 'v90') {
+    Q = 1.38 * Math.pow(H, 2.5); eq = 'Q = 1.38·H^2.5';
+    bwrap.style.display = 'none';
+  } else if (type === 'cipo') {
+    Q = 1.86 * b * Math.pow(H, 1.5); eq = 'Q = 1.86·b·H^1.5';
+    bwrap.style.display = '';
+  } else {
+    Q = 1.84 * b * Math.pow(H, 1.5); eq = 'Q = 1.84·b·H^1.5';
+    bwrap.style.display = '';
+  }
+  document.getElementById('wf-r-q').innerHTML = fmt(Q * 1000, 1) + '<span class="result-unit">L/s</span>';
+  setText('wf-r-m3h', fmt(Q * 3600, 1) + ' m³/h');
+  setText('wf-r-m3s', fmt(Q, 4) + ' m³/s');
+  setText('wf-r-eq', 'Equation: ' + eq);
+  setPill('wf-pill', 'pill-info', '• ' + fmt(Q*1000,1) + ' L/s at H = ' + fmt(H,3) + ' m (free-flow nappe assumed)');
+}
+
+/* ══════════════════════════════
    Init all calculators
 ══════════════════════════════ */
 window.addEventListener('DOMContentLoaded', function() {
@@ -4264,6 +4519,7 @@ window.addEventListener('DOMContentLoaded', function() {
   calcUC(); calcCW();
   calcDF(); calcFL(); calcTE();
   calcPC(); calcMI(); calcAV(); calcPN();
+  calcHRT(); calcCLA(); calcCO(); calcWF();
 });
 </script>
 
@@ -4303,6 +4559,10 @@ window.addEventListener('DOMContentLoaded', function() {
     "Manning's — Open Channel": {ref:"Uniform open-channel flow · Manning's roughness n", art:"hydraulic-design.html"},
     "Reservoir / Tank Sizing": {ref:"Balancing / equalization storage from diurnal demand", art:"boundary-conditions-reservoir-tank.html"},
     "Chlorine Dosing & CT Check": {ref:"Disinfection CT · USEPA SWTR log-inactivation", art:"chlorine-swro-disinfection.html"},
+    "Hydraulic Retention Time": {ref:"Detention time HRT = V/Q · contact & settling basins", art:"boundary-conditions-reservoir-tank.html"},
+    "Clarifier SOR & Weir Loading": {ref:"Surface overflow & weir loading rates · Ten-State Standards", art:""},
+    "Coagulant / Chemical Dose": {ref:"Chemical mass balance · confirm dose by jar test", art:"chlorine-swro-disinfection.html"},
+    "Weir / Flume Flow Measurement": {ref:"Open-channel weirs · ISO 1438 · free-flow nappe", art:""},
     "Economic Pipe Diameter": {ref:"Least life-cycle cost · capital + pumping energy (NPV)", art:"pipeline-design.html"}
   };
 

@@ -1484,6 +1484,53 @@
     </div>
   </div>
 
+  <!-- ── NEW: Pressure / Head Unit Converter ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16V4M7 4L3 8M7 4l4 4"/><path d="M17 8v12M17 20l4-4M17 20l-4-4"/></svg></div>
+      <div class="card-header-text">
+        <h2>Pressure &amp; Head Converter</h2>
+        <p>Convert between metres of water head, bar, kPa, psi and feet — instantly</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Value</label><div class="field-wrap"><input type="number" id="uc-val" value="80" step="1" oninput="calcUC()"><span class="unit">&nbsp;</span></div></div>
+      <div class="field"><label>Input Unit</label><div class="field-wrap"><select id="uc-unit" onchange="calcUC()">
+        <option value="m" selected>metres head (m)</option>
+        <option value="bar">bar</option>
+        <option value="kpa">kPa</option>
+        <option value="psi">psi</option>
+        <option value="ft">feet head (ft)</option>
+      </select></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Equivalent Pressure / Head</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="uc-r-bar">—<span class="result-unit">bar</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Pressure</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="uc-r-m">Head: — m water</span>
+          <span id="uc-r-kpa">— kPa</span>
+          <span id="uc-r-psi">— psi</span>
+          <span id="uc-r-ft">— ft water</span>
+        </div>
+      </div>
+      <div id="uc-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('uc-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="uc-f">
+      1 m water = 0.0980665 bar = 9.80665 kPa = 1.42233 psi = 3.28084 ft<br>
+      1 bar = 10.1972 m &nbsp;|&nbsp; 1 psi = 0.70307 m &nbsp;|&nbsp; 1 ft = 0.3048 m<br>
+      ─────────────────────────────<br>
+      Head ↔ pressure assumes water at ρ = 1000 kg/m³ (≈4 °C).
+    </div>
+  </div>
+
 </div><!-- /calc-grid hydraulics -->
 
 <!-- ══════════════════════════════════════════
@@ -1713,6 +1760,57 @@
         <text x="218" y="94" font-size="11" fill="#636366">θ = 90°</text>
         <text x="160" y="172" text-anchor="middle" font-size="10" fill="#6b7280">Block bearing area = F / σ_soil  ·  minimum depth ≥ 0.6 m</text>
       </svg>
+    </div>
+  </div>
+
+  <!-- ── NEW: Colebrook-White Friction Factor ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg></div>
+      <div class="card-header-text">
+        <h2>Colebrook-White Friction Factor</h2>
+        <p>Solve the Darcy friction factor f — the input the Darcy-Weisbach calc needs</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Reynolds Number Re</label><div class="field-wrap"><input type="number" id="cw-Re" value="500000" step="10000" min="1" oninput="calcCW()"><span class="unit">—</span></div></div>
+      <div class="field"><label>Pipe Diameter D</label><div class="field-wrap"><input type="number" id="cw-D" value="400" step="25" min="1" oninput="calcCW()"><span class="unit">mm</span></div></div>
+      <div class="field"><label>Roughness ε</label><div class="field-wrap"><select id="cw-eps" onchange="document.getElementById('cw-epsv').value=this.value;calcCW()">
+        <option value="0.0015">0.0015 — HDPE / PVC (smooth)</option>
+        <option value="0.045" selected>0.045 — New steel / DI</option>
+        <option value="0.15">0.15 — Galvanized / coated</option>
+        <option value="0.26">0.26 — Cast iron</option>
+        <option value="0.6">0.6 — Concrete (smooth)</option>
+        <option value="3.0">3.0 — Riveted / old tuberculated</option>
+      </select></div></div>
+      <div class="field"><label>…or custom ε</label><div class="field-wrap"><input type="number" id="cw-epsv" value="0.045" step="0.001" min="0" oninput="calcCW()"><span class="unit">mm</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Friction Factor</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="cw-r-f">—<span class="result-unit"></span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Darcy f (Colebrook)</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="cw-r-rel">Relative roughness ε/D: —</span>
+          <span id="cw-r-sj">Swamee-Jain f: —</span>
+          <span id="cw-r-reg">Regime: —</span>
+          <span id="cw-r-it">Converged in — iterations</span>
+        </div>
+      </div>
+      <div id="cw-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('cw-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="cw-f">
+      1/√f = −2·log₁₀( (ε/D)/3.7 + 2.51/(Re·√f) )&nbsp;&nbsp;(implicit — iterated)<br>
+      Laminar (Re &lt; 2300): f = 64 / Re<br>
+      Swamee-Jain (explicit): f = 0.25 / [ log₁₀( ε/D/3.7 + 5.74/Re^0.9 ) ]²<br>
+      ─────────────────────────────<br>
+      Feed f into Darcy-Weisbach: h_f = f · (L/D) · V²/2g
     </div>
   </div>
 
@@ -3619,6 +3717,62 @@ function calcPS() {
 }
 
 /* ══════════════════════════════
+   NEW — Pressure / Head Unit Converter
+══════════════════════════════ */
+function calcUC() {
+  var val = +document.getElementById('uc-val').value || 0;
+  var u   = document.getElementById('uc-unit').value;
+  var toM = { m:1, bar:10.197162, kpa:0.1019716, psi:0.703070, ft:0.3048 };
+  var m   = val * toM[u];                 // metres of water head
+  var bar = m * 0.0980665;
+  var kpa = m * 9.80665;
+  var psi = m * 1.422334;
+  var ft  = m * 3.280840;
+  setPrimary('uc-r-bar', bar, 'bar');
+  setText('uc-r-m',   'Head: ' + fmt(m, 3) + ' m water');
+  setText('uc-r-kpa', fmt(kpa, 2) + ' kPa');
+  setText('uc-r-psi', fmt(psi, 3) + ' psi');
+  setText('uc-r-ft',  fmt(ft, 2) + ' ft water');
+  setPill('uc-pill', 'pill-info', '• ' + fmt(val,2) + ' ' + (u==='m'?'m':u==='kpa'?'kPa':u) + ' = ' + fmt(bar,3) + ' bar = ' + fmt(m,2) + ' m head');
+}
+
+/* ══════════════════════════════
+   NEW — Colebrook-White Friction Factor
+══════════════════════════════ */
+function calcCW() {
+  var Re  = +document.getElementById('cw-Re').value || 0;
+  var D   = +document.getElementById('cw-D').value || 0;        // mm
+  var eps = +document.getElementById('cw-epsv').value || 0;     // mm
+  var relK = D > 0 ? eps / D : 0;                               // ε/D
+  setText('cw-r-rel', 'Relative roughness ε/D: ' + fmt(relK, 6));
+  if (Re <= 0) { setPrimary('cw-r-f', NaN, ''); setText('cw-r-sj','Swamee-Jain f: —'); setText('cw-r-reg','Regime: —'); setText('cw-r-it','Converged in — iterations'); setPill('cw-pill','pill-info','—'); return; }
+  if (Re < 2300) {
+    var fl = 64 / Re;
+    document.getElementById('cw-r-f').innerHTML = fmt(fl, 4) + '<span class="result-unit"></span>';
+    setText('cw-r-sj', 'Swamee-Jain f: n/a (laminar)');
+    setText('cw-r-reg', 'Regime: laminar');
+    setText('cw-r-it', 'Direct: f = 64/Re');
+    setPill('cw-pill', 'pill-warn', '⚠ Laminar (Re ' + fmt(Re,0) + ') — Colebrook does not apply; f = 64/Re used');
+    return;
+  }
+  // Iterate Colebrook for 1/sqrt(f)
+  var x = 0.02, it = 0;          // initial guess for f
+  for (it = 1; it <= 60; it++) {
+    var rhs = -2 * Math.log10(relK / 3.7 + 2.51 / (Re * Math.sqrt(x)));
+    var fnew = 1 / (rhs * rhs);
+    if (Math.abs(fnew - x) < 1e-9) { x = fnew; break; }
+    x = fnew;
+  }
+  var sj = 0.25 / Math.pow(Math.log10(relK / 3.7 + 5.74 / Math.pow(Re, 0.9)), 2);
+  document.getElementById('cw-r-f').innerHTML = fmt(x, 4) + '<span class="result-unit"></span>';
+  setText('cw-r-sj', 'Swamee-Jain f: ' + fmt(sj, 4));
+  setText('cw-r-reg', Re < 4000 ? 'Regime: transitional' : 'Regime: turbulent');
+  setText('cw-r-it', 'Converged in ' + it + ' iterations');
+  if (Re < 4000) setPill('cw-pill', 'pill-warn', '⚠ Transitional zone (2300 < Re < 4000) — f is uncertain, avoid designing here');
+  else setPill('cw-pill', 'pill-ok', '✓ f = ' + fmt(x,4) + '  ·  turbulent  ·  ε/D = ' + fmt(relK,5));
+}
+
+/* ══════════════════════════════
    Init all calculators
 ══════════════════════════════ */
 window.addEventListener('DOMContentLoaded', function() {
@@ -3629,6 +3783,7 @@ window.addEventListener('DOMContentLoaded', function() {
   calcTH(); calcAFF(); calcNS();
   calcTNK(); calcCL(); calcEPD();
   calcSYS(); calcPE(); calcPS();
+  calcUC(); calcCW();
 });
 </script>
 
@@ -3650,6 +3805,8 @@ window.addEventListener('DOMContentLoaded', function() {
     "Flow Velocity & Reynolds Number": {ref:"Flow regime · laminar Re<2000, turbulent Re>4000", art:"hydraulic-design.html"},
     "Minor Losses — Fittings & Valves (K-method)": {ref:"Local losses · Crane TP-410 resistance coefficients", art:"hydraulic-design.html"},
     "Darcy-Weisbach Friction Loss": {ref:"Universal head loss · Colebrook-White / Moody friction factor", art:"hydraulic-design.html"},
+    "Colebrook-White Friction Factor": {ref:"Implicit friction factor · Moody chart · Swamee-Jain cross-check", art:"hydraulic-design.html"},
+    "Pressure & Head Converter": {ref:"Head ↔ pressure for water (ρ = 1000 kg/m³)", art:""},
     "Thrust Block Sizing": {ref:"Unbalanced thrust at bends/tees · AWWA M11 & M55", art:"pipeline-design.html"},
     "Barlow's Formula — Pipe Pressure Rating": {ref:"Hoop stress & wall thickness · AWWA C200 / ASME B31", art:"pipeline-design.html"},
     "Water Hammer Surge — Joukowsky": {ref:"Joukowsky head rise · instantaneous closure (upper bound)", art:"surge-transients.html"},

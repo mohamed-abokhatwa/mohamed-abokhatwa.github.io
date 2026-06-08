@@ -1978,6 +1978,146 @@
     </div>
   </div>
 
+  <!-- ── NEW: Flexible Pipe Deflection (Modified Iowa) ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="9" ry="6"/><path d="M3 12c3 2 15 2 18 0"/></svg></div>
+      <div class="card-header-text">
+        <h2>Flexible Pipe Deflection — Iowa</h2>
+        <p>Ring deflection of HDPE / GRP / steel under buried load vs the 5% limit</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Cover Height H</label><div class="field-wrap"><input type="number" id="df-H" value="2.0" step="0.1" min="0" oninput="calcDF()"><span class="unit">m</span></div></div>
+      <div class="field"><label>Backfill Unit Weight γ</label><div class="field-wrap"><input type="number" id="df-g" value="18" step="0.5" min="1" oninput="calcDF()"><span class="unit">kN/m³</span></div></div>
+      <div class="field"><label>Live Load Pressure</label><div class="field-wrap"><input type="number" id="df-ll" value="0" step="5" min="0" oninput="calcDF()"><span class="unit">kPa</span></div></div>
+      <div class="field"><label>Pipe Stiffness PS</label><div class="field-wrap"><input type="number" id="df-ps" value="200" step="10" min="1" oninput="calcDF()"><span class="unit">kPa</span></div></div>
+      <div class="field"><label>Soil Reaction E′</label><div class="field-wrap"><input type="number" id="df-Eu" value="7" step="0.5" min="0.1" oninput="calcDF()"><span class="unit">MPa</span></div></div>
+      <div class="field"><label>Deflection Lag D_L</label><div class="field-wrap"><input type="number" id="df-dl" value="1.5" step="0.1" min="1" max="2" oninput="calcDF()"><span class="unit">—</span></div></div>
+      <div class="field"><label>Bedding Constant K_x</label><div class="field-wrap"><input type="number" id="df-kx" value="0.10" step="0.01" min="0.05" max="0.11" oninput="calcDF()"><span class="unit">—</span></div></div>
+      <div class="field"><label>Allowable Deflection</label><div class="field-wrap"><input type="number" id="df-al" value="5" step="0.5" min="1" max="10" oninput="calcDF()"><span class="unit">%</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Predicted Ring Deflection</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="df-r-pct">—<span class="result-unit">%</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Δy / D</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="df-r-wc">Soil prism pressure: — kPa</span>
+          <span id="df-r-tot">Total vertical load: — kPa</span>
+          <span id="df-r-margin">Margin to allowable: — %</span>
+        </div>
+      </div>
+      <div id="df-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('df-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="df-f">
+      Δy/D = D_L · K_x · (W_c + W_L) / (0.149·PS + 0.061·E′)<br>
+      W_c = γ · H&nbsp;&nbsp;(soil prism pressure)<br>
+      ─────────────────────────────<br>
+      PS &amp; E′ in consistent stiffness units (kPa). Typical limits:<br>
+      5% (steel/DI lined) · 7.5% long-term (GRP) · check product standard.
+    </div>
+  </div>
+
+  <!-- ── NEW: Pipe Flotation / Buoyancy ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="5"/><path d="M3 18c2 0 2 1.5 4.5 1.5S10 18 12 18s2 1.5 4.5 1.5S19 18 21 18"/><path d="M12 5v-2"/></svg></div>
+      <div class="card-header-text">
+        <h2>Pipe Flotation / Buoyancy</h2>
+        <p>Will an empty buried pipe float under a high water table? Uplift safety factor</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Pipe Outside Dia. D_o</label><div class="field-wrap"><input type="number" id="fl-Do" value="1000" step="50" min="50" oninput="calcFL()"><span class="unit">mm</span></div></div>
+      <div class="field"><label>Empty Pipe Weight</label><div class="field-wrap"><input type="number" id="fl-Wp" value="3.0" step="0.5" min="0" oninput="calcFL()"><span class="unit">kN/m</span></div></div>
+      <div class="field"><label>Cover Above Crown H</label><div class="field-wrap"><input type="number" id="fl-H" value="1.5" step="0.1" min="0" oninput="calcFL()"><span class="unit">m</span></div></div>
+      <div class="field"><label>Saturated Backfill γ_sat</label><div class="field-wrap"><input type="number" id="fl-gs" value="20" step="0.5" min="10" oninput="calcFL()"><span class="unit">kN/m³</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Flotation Check (water table at surface)</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="fl-r-fos">—<span class="result-unit"></span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Safety factor vs uplift</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="fl-r-up">Buoyant uplift: — kN/m</span>
+          <span id="fl-r-wp">Pipe weight: — kN/m</span>
+          <span id="fl-r-ws">Submerged soil prism: — kN/m</span>
+        </div>
+      </div>
+      <div id="fl-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('fl-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="fl-f">
+      Uplift F_b = γ_w · (π/4 · D_o²)&nbsp;&nbsp;[kN/m]&nbsp;(γ_w = 9.81 kN/m³)<br>
+      Resisting = W_pipe + (γ_sat − γ_w)·D_o·H&nbsp;(submerged soil prism)<br>
+      FoS = Resisting / Uplift&nbsp;&nbsp;→&nbsp; target ≥ 1.2<br>
+      ─────────────────────────────<br>
+      Conservative: ignores backfill shear &amp; pipe contents. Empty pipe = worst case.
+    </div>
+  </div>
+
+  <!-- ── NEW: Thermal Expansion ── -->
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V5a2 2 0 0 0-4 0v9.76a4 4 0 1 0 4 0z"/><path d="M16 8h3M16 12h3"/></svg></div>
+      <div class="card-header-text">
+        <h2>Pipeline Thermal Expansion</h2>
+        <p>Free movement and restrained thermal stress / thrust from temperature change</p>
+      </div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Pipe Length L</label><div class="field-wrap"><input type="number" id="te-L" value="100" step="10" min="0" oninput="calcTE()"><span class="unit">m</span></div></div>
+      <div class="field"><label>Temperature Change ΔT</label><div class="field-wrap"><input type="number" id="te-dt" value="25" step="1" oninput="calcTE()"><span class="unit">°C</span></div></div>
+      <div class="field"><label>Material (α)</label><div class="field-wrap"><select id="te-mat" onchange="teSetE();calcTE()">
+        <option value="12e-6" data-e="210" selected>Carbon steel — α 12 µ/°C</option>
+        <option value="11e-6" data-e="170">Ductile iron — α 11 µ/°C</option>
+        <option value="150e-6" data-e="0.9">HDPE — α 150 µ/°C</option>
+        <option value="70e-6" data-e="3.0">PVC-U — α 70 µ/°C</option>
+        <option value="25e-6" data-e="20">GRP — α 25 µ/°C</option>
+        <option value="10e-6" data-e="30">Concrete — α 10 µ/°C</option>
+      </select></div></div>
+      <div class="field"><label>Elastic Modulus E</label><div class="field-wrap"><input type="number" id="te-E" value="210" step="1" min="0.1" oninput="calcTE()"><span class="unit">GPa</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Thermal Movement &amp; Stress</div>
+      <div class="result-row">
+        <div>
+          <div class="result-primary" id="te-r-dl">—<span class="result-unit">mm</span></div>
+          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Free expansion ΔL</div>
+        </div>
+        <div class="result-secondaries">
+          <span id="te-r-strain">Thermal strain: — mm/m</span>
+          <span id="te-r-stress">Restrained stress: — MPa</span>
+          <span id="te-r-note">—</span>
+        </div>
+      </div>
+      <div id="te-pill" class="pill pill-info">—</div>
+    </div>
+    <button class="formula-toggle" onclick="toggleFormula('te-f',this)">
+      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#0071e3" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Show Formula
+    </button>
+    <div class="formula-box" id="te-f">
+      Free movement: ΔL = α · L · ΔT<br>
+      Fully restrained stress: σ = E · α · ΔT&nbsp;(independent of length)<br>
+      ─────────────────────────────<br>
+      Free ΔL sizes expansion joints / loops; restrained σ sizes anchors.<br>
+      Plastics (HDPE) move a lot but develop low stress (low E).
+    </div>
+  </div>
+
 </div><!-- /calc-grid structural -->
 
 <!-- ══════════════════════════════════════════
@@ -3773,6 +3913,79 @@ function calcCW() {
 }
 
 /* ══════════════════════════════
+   NEW — Flexible Pipe Deflection (Modified Iowa)
+══════════════════════════════ */
+function calcDF() {
+  var H  = +document.getElementById('df-H').value || 0;
+  var g  = +document.getElementById('df-g').value || 0;
+  var ll = +document.getElementById('df-ll').value || 0;
+  var PS = +document.getElementById('df-ps').value || 0;
+  var Eu = (+document.getElementById('df-Eu').value || 0) * 1000; // MPa→kPa
+  var DL = +document.getElementById('df-dl').value || 1;
+  var Kx = +document.getElementById('df-kx').value || 0.1;
+  var al = +document.getElementById('df-al').value || 5;
+  var Wc = g * H;                       // kPa
+  var tot = Wc + ll;
+  var denom = 0.149 * PS + 0.061 * Eu;
+  var pct = denom > 0 ? DL * Kx * tot / denom * 100 : 0;
+  document.getElementById('df-r-pct').innerHTML = fmt(pct, 2) + '<span class="result-unit">%</span>';
+  setText('df-r-wc', 'Soil prism pressure: ' + fmt(Wc, 1) + ' kPa');
+  setText('df-r-tot', 'Total vertical load: ' + fmt(tot, 1) + ' kPa');
+  setText('df-r-margin', 'Margin to allowable: ' + fmt(al - pct, 2) + ' %');
+  if (pct > al)        setPill('df-pill', 'pill-danger', '⚠ Δy/D = ' + fmt(pct,2) + '% exceeds ' + fmt(al,1) + '% allowable — stiffen pipe, improve E′ (compaction) or bedding');
+  else if (pct > 0.8*al) setPill('df-pill', 'pill-warn', '⚡ Δy/D = ' + fmt(pct,2) + '% — within limit but little margin; verify field compaction (E′)');
+  else                 setPill('df-pill', 'pill-ok', '✓ Δy/D = ' + fmt(pct,2) + '% < ' + fmt(al,1) + '% allowable — adequate ring stiffness');
+}
+
+/* ══════════════════════════════
+   NEW — Pipe Flotation / Buoyancy
+══════════════════════════════ */
+function calcFL() {
+  var Do = (+document.getElementById('fl-Do').value || 0) / 1000; // m
+  var Wp = +document.getElementById('fl-Wp').value || 0;          // kN/m
+  var H  = +document.getElementById('fl-H').value || 0;           // m
+  var gs = +document.getElementById('fl-gs').value || 0;          // kN/m³
+  var gw = 9.81;
+  var Fb = gw * Math.PI / 4 * Do * Do;     // kN/m uplift
+  var Ws = Math.max(0, gs - gw) * Do * H;  // submerged prism, kN/m
+  var resist = Wp + Ws;
+  var fos = Fb > 0 ? resist / Fb : 0;
+  document.getElementById('fl-r-fos').innerHTML = fmt(fos, 2) + '<span class="result-unit"></span>';
+  setText('fl-r-up', 'Buoyant uplift: ' + fmt(Fb, 2) + ' kN/m');
+  setText('fl-r-wp', 'Pipe weight: ' + fmt(Wp, 2) + ' kN/m');
+  setText('fl-r-ws', 'Submerged soil prism: ' + fmt(Ws, 2) + ' kN/m');
+  if (fos < 1.0)      setPill('fl-pill', 'pill-danger', '⚠ FoS = ' + fmt(fos,2) + ' < 1.0 — pipe FLOATS; add cover, concrete ballast or anchors');
+  else if (fos < 1.2) setPill('fl-pill', 'pill-warn', '⚡ FoS = ' + fmt(fos,2) + ' — below 1.2 target; increase cover or add ballast');
+  else                setPill('fl-pill', 'pill-ok', '✓ FoS = ' + fmt(fos,2) + ' ≥ 1.2 — safe against flotation');
+}
+
+/* ══════════════════════════════
+   NEW — Pipeline Thermal Expansion
+══════════════════════════════ */
+function teSetE() {
+  var sel = document.getElementById('te-mat');
+  var e = sel.options[sel.selectedIndex].getAttribute('data-e');
+  if (e) document.getElementById('te-E').value = e;
+}
+function calcTE() {
+  var L  = +document.getElementById('te-L').value || 0;
+  var dt = +document.getElementById('te-dt').value || 0;
+  var a  = parseFloat(document.getElementById('te-mat').value) || 0;
+  var E  = +document.getElementById('te-E').value || 0;   // GPa
+  var dL = a * L * dt * 1000;            // mm
+  var strain = a * dt * 1000;            // mm/m
+  var stress = E * 1000 * a * dt;        // MPa  (GPa·1000=MPa)
+  document.getElementById('te-r-dl').innerHTML = fmt(dL, 1) + '<span class="result-unit">mm</span>';
+  setText('te-r-strain', 'Thermal strain: ' + fmt(strain, 3) + ' mm/m');
+  setText('te-r-stress', 'Restrained stress: ' + fmt(Math.abs(stress), 1) + ' MPa');
+  setText('te-r-note', dL >= 0 ? 'Expansion (heating)' : 'Contraction (cooling)');
+  var amag = Math.abs(dL);
+  if (amag > 50)       setPill('te-pill', 'pill-warn', '⚡ ' + fmt(amag,0) + ' mm free movement — provide expansion joints/loops or restrain & check anchor thrust');
+  else if (amag > 0)   setPill('te-pill', 'pill-ok', '✓ ' + fmt(amag,1) + ' mm free movement · ' + fmt(Math.abs(stress),0) + ' MPa if fully restrained');
+  else                 setPill('te-pill', 'pill-info', '—');
+}
+
+/* ══════════════════════════════
    Init all calculators
 ══════════════════════════════ */
 window.addEventListener('DOMContentLoaded', function() {
@@ -3784,6 +3997,7 @@ window.addEventListener('DOMContentLoaded', function() {
   calcTNK(); calcCL(); calcEPD();
   calcSYS(); calcPE(); calcPS();
   calcUC(); calcCW();
+  calcDF(); calcFL(); calcTE();
 });
 </script>
 
@@ -3808,6 +4022,9 @@ window.addEventListener('DOMContentLoaded', function() {
     "Colebrook-White Friction Factor": {ref:"Implicit friction factor · Moody chart · Swamee-Jain cross-check", art:"hydraulic-design.html"},
     "Pressure & Head Converter": {ref:"Head ↔ pressure for water (ρ = 1000 kg/m³)", art:""},
     "Thrust Block Sizing": {ref:"Unbalanced thrust at bends/tees · AWWA M11 & M55", art:"pipeline-design.html"},
+    "Flexible Pipe Deflection — Iowa": {ref:"Modified Iowa (Spangler) · AWWA M45/M55 · 5% limit", art:"above-ground-pipeline-design.html"},
+    "Pipe Flotation / Buoyancy": {ref:"Uplift check · empty pipe, high water table · FoS ≥ 1.2", art:"pipeline-design.html"},
+    "Pipeline Thermal Expansion": {ref:"Free movement ΔL = αLΔT · restrained σ = EαΔT", art:"above-ground-pipeline-design.html"},
     "Barlow's Formula — Pipe Pressure Rating": {ref:"Hoop stress & wall thickness · AWWA C200 / ASME B31", art:"pipeline-design.html"},
     "Water Hammer Surge — Joukowsky": {ref:"Joukowsky head rise · instantaneous closure (upper bound)", art:"surge-transients.html"},
     "Wave Speed (Celerity)": {ref:"Pressure-wave celerity · fluid + pipe-wall elasticity", art:"surge-transients.html"},

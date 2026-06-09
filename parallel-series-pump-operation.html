@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallel &amp; Series Pump Operation and Staging — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Water Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    /* equations (MathJax) */
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    /* callouts */
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.series{border-left-color:#8e5bd0;} .callout.series .lbl{color:#8e5bd0;}
+
+    /* tables */
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    /* interactive figure — a self-contained light instrument panel, legible in both themes */
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    /* references */
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="A design-grade treatment of parallel and series pump operation: combined-curve construction, the diminishing-returns truth of parallel pumping, series for high-head duty, flat-curve instability and load sharing, and duty/standby/assist staging logic — with interactive curves and worked numerical examples.">
+  <meta property="og:title" content="Parallel & Series Pump Operation and Staging | Mohamed Abokhatwa">
+  <meta property="og:description" content="Why two pumps almost never give twice the flow, why a single pump sometimes gives no flow at all, and how the system curve decides which configuration you need — with interactive curves and worked examples.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/parallel-series-pump-operation.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-parallel-series-pump-operation.jpg">
+  <meta property="og:image:alt" content="Parallel and Series Pump Operation and Staging">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Parallel & Series Pump Operation and Staging | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="Add flows for parallel, heads for series — then find the intersection. Combined curves, the diminishing return, load-sharing failure modes, and duty/standby/assist staging.">
+  <link rel="canonical" href="https://abokhatwa.com/parallel-series-pump-operation.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Parallel & Series Pump Operation and Staging",
+  "description": "A design-grade treatment of parallel and series pump operation: combined-curve construction, the diminishing-returns truth of parallel pumping, series for high-head duty, flat-curve instability and load sharing, and duty/standby/assist staging logic — with interactive curves and worked numerical examples.",
+  "image": "https://abokhatwa.com/og-parallel-series-pump-operation.jpg",
+  "datePublished": "2026-06-09",
+  "dateModified": "2026-06-09",
+  "author": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa",
+    "url": "https://abokhatwa.com/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abokhatwa.com/parallel-series-pump-operation.html"
+  }
+}
+  </script>
+<style>
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--text-primary);}
+.breadcrumb-sep{opacity:.4;}
+.breadcrumb-current{color:var(--text-secondary);}.breadcrumb a.breadcrumb-current{color:var(--accent);}.breadcrumb a.breadcrumb-current:hover{opacity:.75;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+<div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="pump-engineering.html" class="breadcrumb-current">Pump Engineering</a></div>
+  <span class="tag">Pump Hydraulics &middot; Parallel &amp; Series &middot; Pump Staging &middot; Pump Station Design</span>
+  <h1>Parallel &amp; Series Operation and Pump Staging</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>June 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>11 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="parallel-series-pump-operation.webp" alt="Parallel and series pump operation and staging">
+</div>
+
+<div class="article-body">
+<p class="lead">Why two pumps almost never give twice the flow, why a single pump sometimes gives no flow at all, and how the system curve quietly decides which configuration you actually need.</p>
+
+<h2 id="two-ways">1 · Two ways to combine pumps</h2>
+<p>A single pump rarely covers the full operating envelope of a real station. Demand swings between night and peak, redundancy is mandatory, and sometimes one machine simply cannot produce the required head. The answer is to run pumps together — but <em>how</em> you combine them depends entirely on what you are short of: flow, or head.</p>
+
+<p>The combination rules follow directly from the physics of a shared connection, and they are mirror images of each other:</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>The two combination rules — add the quantity that differs, hold the quantity that is shared.</caption>
+  <thead><tr><th>Configuration</th><th>Shared</th><th>Combine by</th><th>Construct the combined curve by…</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Parallel</strong> (common header)</td><td>Same head across each pump</td><td>Adding flows</td><td>Summing \(Q\) <em>horizontally</em> at each head</td></tr>
+    <tr><td><strong>Series</strong> (one feeds the next)</td><td>Same flow through each pump</td><td>Adding heads</td><td>Summing \(H\) <em>vertically</em> at each flow</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="eq">\[ \textbf{Parallel:}\quad Q_{comb}(H)=\sum_i Q_i(H) \qquad\qquad \textbf{Series:}\quad H_{comb}(Q)=\sum_i H_i(Q) \]</div>
+
+<div class="callout key">
+  <span class="lbl">The mistake to never make</span>
+  You cannot read the delivered flow off the combined pump curve alone. The combined curve only tells you what the pumps <em>can</em> do; the system head curve decides where they <em>will</em> operate. Combining pumps reshapes the pump side of the equation — the operating point still lives at the intersection with the system curve, exactly as in <a href="system-head-curve-operating-point.html">the system head curve &amp; operating point</a>.
+</div>
+
+<h2 id="parallel">2 · Parallel operation — and the diminishing return</h2>
+<p>Parallel pumping is the default for water and wastewater stations: multiple identical units on a common suction manifold and a common discharge header, giving flow flexibility and built-in redundancy. The naïve expectation is that two pumps deliver twice the flow, three deliver three times, and so on. They do not — and understanding <em>why</em> is the single most important idea in this article.</p>
+
+<p>When you add a second pump, total flow rises. But more flow through the <em>same</em> pipe means more friction, so the system curve drives the operating head <strong>up</strong>. At that higher head, each individual pump rides further <em>back</em> on its own H&ndash;Q curve and delivers less than it did alone. The combined output is the sum of these reduced contributions — always less than the simple multiple.</p>
+
+<div class="callout warn">
+  <span class="lbl">The rule of thumb that saves projects</span>
+  The flatter the system curve (high static, low friction), the closer parallel pumping approaches the ideal multiple. The steeper the system curve (friction-dominated), the more brutally the gain collapses — two pumps on a friction-heavy main may deliver only ~1.3–1.5× a single pump, while each runs hot, inefficient, and far left of BEP.
+</div>
+
+<p>This is why parallel pumping and high-friction systems are a poor marriage, and why force-main and long-transmission stations must be checked carefully: the second and third units can add cost, energy, and wear while adding very little water.</p>
+
+<h2 id="int-parallel">3 · Interactive: parallel pumps on a system</h2>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Parallel combination — watch each pump back off as you add units</div>
+    <div class="fsub">Increase the pump count and steepen the system. The combined curve shifts right; the duty point climbs the system curve; each pump retreats toward shut-off.</div>
+  </div>
+  <div class="chart-box"><canvas id="parChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Pumps running (N) <span id="vN">1</span></label>
+      <input type="range" id="sN" min="1" max="4" value="1" step="1">
+      <div class="hint">Identical units on a common header.</div>
+    </div>
+    <div class="ctrl">
+      <label>Static head <span id="vStatic">30 m</span></label>
+      <input type="range" id="sStatic" min="10" max="52" value="30" step="1">
+      <div class="hint">Flat (high static) systems reward parallel; steep ones punish it.</div>
+    </div>
+    <div class="ctrl">
+      <label>System friction <span id="vFric">100 %</span></label>
+      <input type="range" id="sFric" min="50" max="180" value="100" step="5">
+      <div class="hint">100% = design. Higher = steeper system curve.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Total flow</div><div class="v" id="rQt">1581 <small>m³/h</small></div></div>
+    <div class="cell"><div class="k">Flow per pump</div><div class="v" id="rQp">1581 <small>m³/h</small></div></div>
+    <div class="cell"><div class="k">Duty head</div><div class="v" id="rH">40 <small>m</small></div></div>
+    <div class="cell"><div class="k">×&nbsp;vs single pump</div><div class="v" id="rMult">1.00 <small>×</small></div></div>
+    <div class="cell"><div class="k">Per-pump region</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="parStatus"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">Set N=2 and watch the “× vs single pump” figure: on the default system it lands near <strong>1.4×</strong>, not 2×. Now drag the static head up (flatter system) and the multiple climbs toward 2; drag friction up (steeper system) and it collapses toward 1.</p>
+
+<h2 id="ex-parallel">4 · Worked example — parallel station</h2>
+<p>Three identical pumps share a header discharging to a reservoir. Each pump curve is \(H = 60 - 8.0\times10^{-6}\,Q^2\) (Q per pump, m³/h), with BEP at 1,400 m³/h and η ≈ 82%. The system is \(H_{sys} = 30 + 4.0\times10^{-6}\,Q_{total}^2\). Solving the intersection for one, two and three running units:</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>Parallel operation on a moderate-friction system — the diminishing return, quantified.</caption>
+  <thead>
+    <tr><th>Units running</th><th class="num">Total flow</th><th class="num">Flow / pump</th><th class="num">Duty head</th><th class="num">% of BEP</th><th class="num">η / pump</th><th class="num">kW / pump</th><th class="num">Specific energy</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1 pump</td><td class="num">1,581 m³/h</td><td class="num">1,581</td><td class="num">40.0 m</td><td class="num">113%</td><td class="num">80%</td><td class="num">215</td><td class="num">0.136 kWh/m³</td></tr>
+    <tr><td>2 pumps</td><td class="num">2,236 m³/h</td><td class="num">1,118</td><td class="num">50.0 m</td><td class="num">80%</td><td class="num">78%</td><td class="num">196</td><td class="num">0.176 kWh/m³</td></tr>
+    <tr><td>3 pumps</td><td class="num">2,488 m³/h</td><td class="num">829</td><td class="num">54.5 m</td><td class="num">59%</td><td class="num">64%</td><td class="num">193</td><td class="num">0.233 kWh/m³</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Read across the table and the lesson is unmistakable:</p>
+<ul class="clean">
+  <li><strong>Two pumps deliver 1.41× the flow of one</strong> (2,236 vs 1,581), not 2×. The third pump adds only 252 m³/h — a 1.57× cumulative multiple for 3× the running plant.</li>
+  <li><strong>Each pump retreats toward shut-off</strong> as units are added: 1,581 → 1,118 → 829 m³/h. By the third unit, every pump runs at just <strong>59% of BEP — below the POR</strong>, in the recirculation-prone zone flagged in <a href="npsh-water-infrastructure.html">the NPSH &amp; low-flow article</a>.</li>
+  <li><strong>Energy per cubic metre nearly doubles</strong>, from 0.136 to 0.233 kWh/m³, because the extra water is pushed against a higher friction head at lower efficiency. Adding pumps to chase flow on a friction-bound system is one of the most expensive habits in the industry.</li>
+</ul>
+
+<div class="callout">
+  <span class="lbl">The design response</span>
+  If three-pump parallel operation lands every unit at 59% of BEP, the pumps — or the pipe — are wrong for the duty. Either select flatter-curve pumps with BEP nearer the low-flow end, upsize the main to flatten the system curve, or accept that the “third pump” is genuinely a standby, not a capacity unit. The hydraulics, not the procurement spreadsheet, must set the answer.
+</div>
+
+<h2 id="stability">5 · Stability &amp; load sharing — where parallel goes wrong</h2>
+<p>Beyond efficiency, parallel operation introduces failure modes that simply do not exist for a single pump. Two deserve permanent residence in your design checklist.</p>
+
+<h3>Match the shut-off heads</h3>
+<p>Two dissimilar pumps in parallel only share load when the system head is below <em>both</em> of their shut-off heads. If the system head rises above the weaker pump's shut-off head, that pump delivers <strong>zero flow</strong> — its check valve slams shut and it churns liquid uselessly, heating up at near-deadhead. Worse, if the check valve leaks or fails, the stronger pump can drive flow <em>backwards</em> through it. Parallel pumps should be identical, or at minimum have closely matched shut-off heads.</p>
+
+<h3>Demand continuously-rising (stable) curves</h3>
+<p>A pump curve that is flat or drooping near shut-off creates the conditions for <strong>hunting</strong>: at one head, two flows are possible. Two such pumps in parallel can swap load unpredictably — one surges forward while the other backs off, then they reverse — producing pressure pulsation, vibration and check-valve hammer. Specify pumps with a head rise to shut-off (typically ≥ 10% above the BEP head) so that for every head there is exactly one stable flow.</p>
+
+<div class="callout warn">
+  <span class="lbl">Field symptom</span>
+  Two “identical” parallel pumps where one ammeter reads high and the other low, with discharge pressure oscillating, is the classic signature of a flat-curve / mismatched-curve load-sharing problem — not a faulty motor. The cure is hydraulic (curve shape and matching), not electrical.
+</div>
+
+<h2 id="series">6 · Series operation — when one pump cannot make the head</h2>
+<p>Series operation stacks heads: the discharge of the first pump becomes the suction of the second, and the same flow passes through both. It is the configuration for <strong>high-head, high-static</strong> duties — booster stations, long transmission lifts, high-rise supply — where a single machine simply cannot reach the required head no matter how far you throttle.</p>
+
+<p>The decisive point: on a high-static system, a pump whose shut-off head is <em>below</em> the static head delivers <strong>nothing</strong>. It cannot even open the discharge against the standing column. No amount of parallel pumps helps — adding pumps in parallel never raises the maximum head. Only series (or a multistage pump, which is series stages in one casing) raises the head ceiling.</p>
+
+<div class="callout series">
+  <span class="lbl">Two engineering cautions unique to series</span>
+  <strong>Pressure rating:</strong> the downstream pump's casing, seals and the pipework between stages see the <em>sum</em> of the heads — rate them for the full series discharge pressure, not a single stage. &nbsp;<strong>NPSH:</strong> cavitation is still governed by the <em>first</em> pump's suction conditions; the lead pump must satisfy NPSH on its own (see <a href="npsh-water-infrastructure.html">NPSH in water infrastructure</a>).
+</div>
+
+<h2 id="int-series">7 · Interactive: series pumps vs a high-static system</h2>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Series stacking — raise the static head until one pump quits</div>
+    <div class="fsub">Heads add vertically. Watch the single-pump duty point vanish the moment static head exceeds its 60 m shut-off, while series-2 and series-3 keep delivering.</div>
+  </div>
+  <div class="chart-box"><canvas id="serChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Static head <span id="vStaticS">95 m</span></label>
+      <input type="range" id="sStaticS" min="40" max="150" value="95" step="2">
+      <div class="hint">Single pump shut-off = 60 m. Above it, one pump delivers zero.</div>
+    </div>
+    <div class="ctrl">
+      <label>System friction <span id="vFricS">100 %</span></label>
+      <input type="range" id="sFricS" min="50" max="180" value="100" step="5">
+      <div class="hint">Series duty climbs up-and-right as friction rises.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">1 pump</div><div class="v" id="rS1" style="font-size:18px;">—</div></div>
+    <div class="cell"><div class="k">2 in series</div><div class="v" id="rS2" style="font-size:18px;">1091 <small>m³/h</small></div></div>
+    <div class="cell"><div class="k">3 in series</div><div class="v" id="rS3" style="font-size:18px;">1712 <small>m³/h</small></div></div>
+    <div class="cell"><div class="k">Min. series needed</div><div class="v" id="rSneed" style="font-size:18px;">2</div></div>
+  </div>
+</div>
+<p class="fig-note">At the default 95 m static, the single-pump curve never reaches the system curve — “1 pump” reads a dash because it physically delivers no flow. Drag static below 60 m and it reappears.</p>
+
+<h2 id="ex-series">8 · Worked example — series booster</h2>
+<p>A transmission lift requires 95 m of static head before any friction. Each available pump is the same unit as before, \(H = 60 - 8.0\times10^{-6}\,Q^2\) (shut-off 60 m). The transmission main gives \(H_{sys} = 95 + 5.0\times10^{-6}\,Q^2\).</p>
+
+<div class="eq">\[ \text{Series-}n:\quad n\!\left(60 - 8.0\times10^{-6}Q^2\right) = 95 + 5.0\times10^{-6}Q^2 \;\Longrightarrow\; Q=\sqrt{\frac{60n-95}{5.0\times10^{-6} + 8.0\times10^{-6}\,n}} \]</div>
+
+<div class="tbl-wrap">
+<table>
+  <caption>Series configurations against a 95 m static system.</caption>
+  <thead><tr><th>Configuration</th><th class="num">Shut-off head</th><th class="num">Reaches 95 m static?</th><th class="num">Duty flow</th><th class="num">Duty head</th></tr></thead>
+  <tbody>
+    <tr><td>1 pump</td><td class="num">60 m</td><td class="num">No — below static</td><td class="num">0 m³/h</td><td class="num">—</td></tr>
+    <tr><td>2 in series</td><td class="num">120 m</td><td class="num">Yes</td><td class="num">1,091 m³/h</td><td class="num">101 m</td></tr>
+    <tr><td>3 in series</td><td class="num">180 m</td><td class="num">Yes</td><td class="num">1,712 m³/h</td><td class="num">110 m</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>A single pump produces no flow at all — its 60 m shut-off head cannot lift the 95 m static column. Two in series deliver 1,091 m³/h at 101 m total head (each pump contributing ~50.5 m), and a third stage raises both flow and head. This is the mirror image of the parallel case: on a high-static system, <strong>series adds capability where parallel adds nothing</strong>.</p>
+
+<div class="callout key">
+  <span class="lbl">The one-line decision rule</span>
+  Short of <em>flow</em> on a relatively flat system → go <strong>parallel</strong>. Short of <em>head</em> on a steep / high-static system → go <strong>series</strong> (or specify a multistage pump). Read your system curve before you decide — the static-to-friction ratio chooses the configuration for you.
+</div>
+
+<h2 id="staging">9 · Staging logic — duty, standby &amp; assist</h2>
+<p>Real stations rarely run a fixed number of pumps. They <em>stage</em> units in and out to track demand, equalise wear, and preserve redundancy. Good staging design turns the curves above into a control philosophy.</p>
+
+<h3>Sizing for redundancy: the N+1 rule</h3>
+<p>Critical water and wastewater stations are built <strong>N+1</strong>: N pumps meet peak duty, plus one full standby so that peak flow is still met with the largest unit out of service for maintenance or failure. For high-criticality assets, N+2 or duty/standby pairs per stream are used. The standby is not a capacity unit — counting it as capacity is a classic and dangerous error.</p>
+
+<h3>Lead / lag / assist control</h3>
+<ul class="clean">
+  <li><strong>Lead pump</strong> starts first and, if variable-speed, modulates to hold the setpoint (level or pressure).</li>
+  <li><strong>Lag / assist pumps</strong> cut in when the lead reaches maximum speed/flow and the setpoint still cannot be held — i.e. when the duty point would otherwise run off the end of the lead pump's curve.</li>
+  <li><strong>Alternation</strong> rotates the lead role between units (by run-hours or starts) so wear is shared and no single pump becomes the “always-on” unit.</li>
+</ul>
+
+<h3>The preferred modern architecture: one VFD lead + fixed-speed lags</h3>
+<p>A widely used and cost-effective scheme runs the lead pump on a variable-frequency drive for fine setpoint control and soft starting, while the assist pumps are fixed-speed and staged on/off. The VFD trims the combined output continuously between discrete pump steps, avoiding both throttling losses and the cost of a drive on every unit. Staging thresholds are set from the combined-curve / system-curve intersections so that each unit cuts in near its own efficient region — not deep in recirculation.</p>
+
+<div class="callout warn">
+  <span class="lbl">Anti-cycling and minimum flow</span>
+  Staging thresholds need hysteresis (separate cut-in and cut-out points) and minimum run timers to prevent rapid start/stop cycling, which destroys motors and check valves. And every pump — especially a lead VFD pump at low speed — must stay above its minimum continuous stable flow; below it, recirculation and heat-up begin regardless of how elegant the control logic is.
+</div>
+
+<h2 id="checklist">10 · Design checklist &amp; engineering judgement</h2>
+<ul class="clean">
+  <li><strong>Plot the combined curve against the real system curve</strong> for every running combination (1, 2, 3 … N) — never assume a flow multiple.</li>
+  <li><strong>Check each pump's % of BEP in every staging step.</strong> If adding a unit drives the others below POR, the configuration is wrong, not merely sub-optimal.</li>
+  <li><strong>For parallel:</strong> use identical units, demand continuously-rising curves (≥10% head rise to shut-off), and match shut-off heads to prevent load-sharing failure.</li>
+  <li><strong>For series:</strong> rate downstream casings and inter-stage pipe for the cumulative pressure, and confirm the lead pump satisfies NPSH alone.</li>
+  <li><strong>Confirm the head ceiling.</strong> If maximum static head approaches a single pump's shut-off, parallel cannot help — you need series or multistage.</li>
+  <li><strong>Size N+1 (minimum).</strong> Standby is not capacity. Document it explicitly so no one “borrows” the spare on the next flow study.</li>
+  <li><strong>Set staging thresholds from the curves,</strong> with hysteresis, anti-cycling timers, minimum-flow protection, and lead alternation for even wear.</li>
+</ul>
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  Combining pumps reshapes what the plant <em>can</em> do; the system curve still decides what it <em>will</em> do. Add flows for parallel, heads for series — then go find the intersection, every single time.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>Jones, G.M. (ed.). <em>Pumping Station Design</em>, 3rd ed. Butterworth-Heinemann, 2008 — the definitive reference for parallel/series staging and station hydraulics.</li>
+  <li>Hydraulic Institute (HI). <em>ANSI/HI 9.6.3 — Rotodynamic Pumps: Guideline for Operating Regions (POR / AOR).</em></li>
+  <li>Hydraulic Institute (HI). <em>ANSI/HI 1.3 — Rotodynamic (Centrifugal) Pumps for Design and Application.</em></li>
+  <li>Hydraulic Institute (HI). <em>ANSI/HI 9.6.1 — Rotodynamic Pumps: Guideline for NPSH Margin.</em></li>
+  <li>Karassik, I.J., Messina, J.P., Cooper, P., Heald, C.C. <em>Pump Handbook</em>, 4th ed. McGraw-Hill, 2008.</li>
+  <li>Gülich, J.F. <em>Centrifugal Pumps</em>, 4th ed. Springer, 2020 (curve stability, parallel hunting).</li>
+  <li>U.S. DOE &amp; Hydraulic Institute. <em>Improving Pumping System Performance: A Sourcebook for Industry</em>, 2nd ed.</li>
+  <li>Europump &amp; Hydraulic Institute. <em>Pump Life Cycle Costs: A Guide to LCC Analysis for Pumping Systems.</em></li>
+  <li>Flowserve / Cameron. <em>Cameron Hydraulic Data Book</em>, 19th ed. (combined-curve construction).</li>
+</ol>
+
+<div class="tags">#PumpHydraulics #ParallelPumps #SeriesPumps #PumpStaging #DutyStandby #PumpStationDesign #NPlusOne #WaterEngineering</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+
+<script>
+/* ---------- shared pump model (flow m^3/h, head m) ---------- */
+const H0p=60, ap=8.0e-6;          // single pump: H = 60 - 8e-6 Q^2
+const Qbep=1400, etaBep=0.82, kEta=5.56e-7;
+const rho=1000, g=9.81;
+function effOf(q){ return Math.max(0.30, etaBep - kEta*Math.pow(q-Qbep,2)); }
+
+/* =====================================================================
+   CHART 1 — PARALLEL
+   ===================================================================== */
+const sN=document.getElementById('sN'), sStatic=document.getElementById('sStatic'), sFric=document.getElementById('sFric');
+const vN=document.getElementById('vN'), vStatic=document.getElementById('vStatic'), vFric=document.getElementById('vFric');
+const Ks_par_base=4.0e-6;
+const PAR_XMAX=5200;
+
+function singlePumpQ(H){ return H<H0p ? Math.sqrt((H0p-H)/ap) : 0; }   // Q of one pump at head H
+function combinedCurve(N){ // points {x:Qtotal,y:H}, H from H0p down to 0
+  const pts=[]; for(let H=H0p; H>=0; H-=1){ pts.push({x:N*singlePumpQ(H), y:H}); } return pts;
+}
+
+function solvePar(N, Hs, Ks){
+  // H_op = (Hs + beta*H0p)/(1+beta), beta = Ks*N^2/ap
+  const beta = Ks*N*N/ap;
+  const H = (Hs + beta*H0p)/(1+beta);
+  if(H>=H0p) return {q:0,h:Hs,qp:0};
+  const qp = singlePumpQ(H);     // per pump
+  return {q:N*qp, h:H, qp:qp};
+}
+
+const baseLine={borderWidth:2.5,pointRadius:0,tension:0,fill:false};
+let parChart=new Chart(document.getElementById('parChart'),{
+  type:'scatter',
+  data:{datasets:[
+    {label:'Single pump', data:combinedCurve(1), borderColor:'#1b4f72', showLine:true, ...baseLine, borderDash:[5,4], borderWidth:2},
+    {label:'Combined curve (N pumps)', data:combinedCurve(1), borderColor:'#1b4f72', showLine:true, ...baseLine},
+    {label:'System curve', data:[], borderColor:'#c0392b', showLine:true, ...baseLine},
+    {label:'Total duty point', data:[], borderColor:'#b9770e', backgroundColor:'#b9770e', pointRadius:7, showLine:false},
+    {label:'Each pump operates here', data:[], borderColor:'#2e86c1', backgroundColor:'#2e86c1', pointRadius:6, pointStyle:'rectRot', showLine:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:0,max:PAR_XMAX,title:{display:true,text:'Flow  Q  (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0,max:70,title:{display:true,text:'Head  H  (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.x?Math.round(c.parsed.x)+' m³/h, ':''}${c.parsed.y.toFixed(1)} m`}},
+      annotation:{annotations:{
+        por:{type:'box',xMin:0.7*Qbep,xMax:1.2*Qbep,yMin:0,yMax:70,backgroundColor:'rgba(30,132,73,0.05)',borderColor:'rgba(30,132,73,0.22)',borderWidth:1,label:{display:true,content:'per-pump POR',position:{x:'center',y:'start'},color:'#1e8449',font:{family:'DM Sans',size:10,weight:'600'}}}
+      }}
+    }
+  }
+});
+
+function updatePar(){
+  const N=+sN.value, Hs=+sStatic.value, Ks=Ks_par_base*(+sFric.value/100);
+  vN.textContent=N; vStatic.textContent=Hs+' m'; vFric.textContent=sFric.value+' %';
+
+  parChart.data.datasets[1].data=combinedCurve(N);
+  const sys=[]; for(let q=0;q<=PAR_XMAX;q+=60) sys.push({x:q,y:Hs+Ks*q*q});
+  parChart.data.datasets[2].data=sys;
+
+  const op=solvePar(N,Hs,Ks);
+  const op1=solvePar(1,Hs,Ks);
+  parChart.data.datasets[3].data = op.q>0 ? [{x:op.q,y:op.h}] : [];
+  parChart.data.datasets[4].data = op.qp>0 ? [{x:op.qp,y:op.h}] : [];
+  parChart.update('none');
+
+  document.getElementById('rQt').innerHTML = Math.round(op.q)+' <small>m³/h</small>';
+  document.getElementById('rQp').innerHTML = Math.round(op.qp)+' <small>m³/h</small>';
+  document.getElementById('rH').innerHTML  = op.h.toFixed(1)+' <small>m</small>';
+  const mult = op1.q>0 ? (op.q/op1.q) : 0;
+  document.getElementById('rMult').innerHTML = mult.toFixed(2)+' <small>×</small>';
+
+  const pct = op.qp/Qbep*100;
+  let cls='good',txt='POR';
+  if(pct<70||pct>120){cls='warn';txt='AOR';}
+  if(pct<50||pct>132){cls='bad';txt='Outside AOR';}
+  document.getElementById('parStatus').innerHTML = op.qp>0 ? `${pct.toFixed(0)}% &nbsp;<span class="badge ${cls}">${txt}</span>` : '<span class="badge bad">no flow</span>';
+}
+[sN,sStatic,sFric].forEach(s=>s.addEventListener('input',updatePar));
+updatePar();
+
+/* =====================================================================
+   CHART 2 — SERIES
+   ===================================================================== */
+const sStaticS=document.getElementById('sStaticS'), sFricS=document.getElementById('sFricS');
+const vStaticS=document.getElementById('vStaticS'), vFricS=document.getElementById('vFricS');
+const Ks_ser_base=5.0e-6;
+const SER_XMAX=2600;
+
+function seriesCurve(n){ const pts=[]; for(let q=0;q<=SER_XMAX;q+=40){ pts.push({x:q,y:n*(H0p-ap*q*q)}); } return pts; }
+function solveSer(n,Hs,Ks){
+  const num=n*H0p-Hs;
+  if(num<=0) return null;
+  const q=Math.sqrt(num/(Ks+n*ap));
+  return {q, h:Hs+Ks*q*q};
+}
+
+let serChart=new Chart(document.getElementById('serChart'),{
+  type:'scatter',
+  data:{datasets:[
+    {label:'1 pump', data:seriesCurve(1), borderColor:'#1b4f72', showLine:true, ...baseLine, borderDash:[5,4], borderWidth:2},
+    {label:'2 in series', data:seriesCurve(2), borderColor:'#2e86c1', showLine:true, ...baseLine},
+    {label:'3 in series', data:seriesCurve(3), borderColor:'#7d3c98', showLine:true, ...baseLine},
+    {label:'System curve', data:[], borderColor:'#c0392b', showLine:true, ...baseLine},
+    {label:'Duty points', data:[], borderColor:'#b9770e', backgroundColor:'#b9770e', pointRadius:7, showLine:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:0,max:SER_XMAX,title:{display:true,text:'Flow  Q  (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0,max:190,title:{display:true,text:'Head  H  (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.x?Math.round(c.parsed.x)+' m³/h, ':''}${c.parsed.y.toFixed(1)} m`}},
+      annotation:{annotations:{
+        shut:{type:'line',yMin:H0p,yMax:H0p,xMin:0,xMax:SER_XMAX,borderColor:'rgba(27,79,114,0.4)',borderWidth:1.5,borderDash:[3,3],label:{display:true,content:'single-pump shut-off (60 m)',position:'start',color:'#1b4f72',font:{family:'DM Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.85)'}},
+        stat:{type:'line',yMin:95,yMax:95,xMin:0,xMax:SER_XMAX,borderColor:'rgba(192,57,43,0.0)',borderWidth:0}
+      }}
+    }
+  }
+});
+
+function updateSer(){
+  const Hs=+sStaticS.value, Ks=Ks_ser_base*(+sFricS.value/100);
+  vStaticS.textContent=Hs+' m'; vFricS.textContent=sFricS.value+' %';
+
+  const sys=[]; for(let q=0;q<=SER_XMAX;q+=40) sys.push({x:q,y:Hs+Ks*q*q});
+  serChart.data.datasets[3].data=sys;
+
+  const pts=[]; const r=[null,null,null];
+  for(let n=1;n<=3;n++){ const s=solveSer(n,Hs,Ks); if(s){ pts.push({x:s.q,y:s.h}); r[n-1]=s; } }
+  serChart.data.datasets[4].data=pts;
+  // move static reference annotation
+  serChart.options.plugins.annotation.annotations.stat={type:'line',yMin:Hs,yMax:Hs,xMin:0,xMax:SER_XMAX,borderColor:'rgba(192,57,43,0.35)',borderWidth:1.2,borderDash:[2,3],label:{display:true,content:'static '+Hs+' m',position:'end',color:'#c0392b',font:{family:'DM Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.85)'}};
+  serChart.update('none');
+
+  const fmt=s=> s? Math.round(s.q)+' <small>m³/h</small>' : '—';
+  document.getElementById('rS1').innerHTML=fmt(r[0]);
+  document.getElementById('rS2').innerHTML=fmt(r[1]);
+  document.getElementById('rS3').innerHTML=fmt(r[2]);
+  const need = r[0]?1 : r[1]?2 : r[2]?3 : '>3';
+  document.getElementById('rSneed').textContent=need;
+}
+[sStaticS,sFricS].forEach(s=>s.addEventListener('input',updateSer));
+updateSer();
+
+/* ---------- chart resize safety net (fixes 0-width on initial mobile-width load) ---------- */
+window.addEventListener('load',function(){ try{parChart.resize();serChart.resize();}catch(e){} });
+</script>
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

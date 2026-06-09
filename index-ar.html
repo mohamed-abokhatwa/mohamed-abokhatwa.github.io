@@ -380,7 +380,7 @@
     <button type="button" class="cat-card" data-cat="surge" onclick="topicFilter('surge',this)">
       <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
       <div class="cat-card-title">التدفق العابر والمطرقة المائية</div>
-      <div class="cat-card-count">١٠ مقالات</div>
+      <div class="cat-card-count">١٢ مقالة</div>
     </button>
     <button type="button" class="cat-card" data-cat="pipeline" onclick="topicFilter('pipeline',this)">
       <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h12a3 3 0 0 1 3 3v0a3 3 0 0 0 3 3"/><path d="M3 9V6m0 3v3"/><path d="M15 9V7a2 2 0 0 1 2-2h2"/></svg></span>
@@ -390,7 +390,7 @@
     <button type="button" class="cat-card" data-cat="pumps" onclick="topicFilter('pumps',this)">
       <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20a8 8 0 1 1 16 0"/><path d="M12 20V12l4-3"/><circle cx="12" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></span>
       <div class="cat-card-title">هندسة المضخات</div>
-      <div class="cat-card-count">٤ مقالات</div>
+      <div class="cat-card-count">٦ مقالات</div>
     </button>
     <button type="button" class="cat-card" data-cat="hydraulic" onclick="topicFilter('hydraulic',this)">
       <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span>
@@ -1144,6 +1144,24 @@ function mcSubmitAr(e) {
 [data-theme="dark"] #newsletter-section #mc-email-ar::placeholder { color: #636366 !important; }
 [data-theme="dark"] #newsletter-section #mc-msg-ar { color: #636366 !important; }
 </style>
+<!-- حساب عدد المقالات لكل تصنيف تلقائيًا (يبقي أرقام "تصفّح حسب الموضوع" محدّثة دائمًا) -->
+<script>
+(function(){
+  function toAr(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
+  function unit(n){ if(n===1) return 'مقالة'; if(n===2) return 'مقالتان'; if(n>=3&&n<=10) return 'مقالات'; return 'مقالة'; }
+  function syncTopicCounts(){
+    var grid=document.getElementById('articlesGrid'); if(!grid) return;
+    document.querySelectorAll('.cat-card[data-cat]').forEach(function(card){
+      var cat=card.getAttribute('data-cat');
+      var n=grid.querySelectorAll('.article-card[data-cat="'+cat+'"]').length;
+      var el=card.querySelector('.cat-card-count');
+      if(el) el.textContent = toAr(n) + ' ' + unit(n);
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',syncTopicCounts);
+  else syncTopicCounts();
+})();
+</script>
 <script src="theme.js"></script>
 </body>
 </html>

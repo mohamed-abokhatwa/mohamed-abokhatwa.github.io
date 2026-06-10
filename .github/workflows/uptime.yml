@@ -1,0 +1,45 @@
+name: Site Uptime Check
+
+# Checks the live site every 30 minutes, after every push, or manually
+# from the Actions tab. A failed run triggers GitHub's automatic
+# email notification to the repository owner.
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check key pages are live and healthy
+        run: |
+          urls=(
+            "https://abokhatwa.com/"
+            "https://abokhatwa.com/index-ar.html"
+            "https://abokhatwa.com/calculators.html"
+            "https://abokhatwa.com/reading-pump-curves.html"
+          )
+          fail=0
+          for u in "${urls[@]}"; do
+            if ! result=$(curl -sS --retry 2 --retry-delay 10 --max-time 20 -o /tmp/body -w '%{http_code} %{time_total}' "$u"); then
+              echo "::error::$u — unreachable after 3 attempts"
+              fail=1
+              continue
+            fi
+            code=${result% *}
+            secs=${result#* }
+            if [ "$code" != "200" ]; then
+              echo "::error::$u — HTTP $code"
+              fail=1
+            elif ! grep -q "Mohamed Abokhatwa" /tmp/body; then
+              echo "::error::$u — returned 200 but content check failed"
+              fail=1
+            else
+              echo "OK  $u  (HTTP 200, ${secs}s)"
+            fi
+          done
+          exit $fail

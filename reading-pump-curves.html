@@ -596,7 +596,7 @@ let sheetChart=new Chart(document.getElementById('sheetChart'),{
       legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8,filter:i=>!/^fam/.test(i.text)}},
       tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${Math.round(c.parsed.x)} m³/h, ${c.parsed.y.toFixed(1)}`}},
       annotation:{annotations:{
-        duty:{type:'line',xMin:1100,xMax:1100,borderColor:'rgba(26,29,33,0.45)',borderWidth:1.5,borderDash:[6,4],label:{display:true,content:'read everything here',position:'end',color:'#1a1d21',font:{family:'DM Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.85)'}},
+        duty:{type:'line',xMin:1100,xMax:1100,borderColor:'rgba(26,29,33,0.45)',borderWidth:1.5,borderDash:[6,4],label:{display:true,content:'read everything here',position:'end',yAdjust:18,color:'#1a1d21',font:{family:'DM Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.85)'}},
         por:{type:'box',xMin:0.7*QBEP_FULL,xMax:1.2*QBEP_FULL,yMin:0,yMax:70,backgroundColor:'rgba(30,132,73,0.05)',borderColor:'rgba(30,132,73,0.22)',borderWidth:1,label:{display:true,content:'POR (70–120% BEP)',position:{x:'center',y:'start'},color:'#1e8449',font:{family:'DM Sans',size:10,weight:'600'}}}
       }}
     }
@@ -655,9 +655,9 @@ let speedChart=new Chart(document.getElementById('speedChart'),{
   type:'scatter',
   data:{datasets:[
     {label:'Full-speed curve (100%)', data:scaledCurve(1), borderColor:'#1b4f72', showLine:true, ...baseLine, borderDash:[5,4], borderWidth:2},
-    {label:'Curve at reduced speed', data:scaledCurve(1), borderColor:'#2e86c1', showLine:true, ...baseLine, borderWidth:3},
+    {label:'Curve at set speed', data:scaledCurve(1), borderColor:'#2e86c1', showLine:true, ...baseLine, borderWidth:3},
     {label:'System curve', data:[], borderColor:'#c0392b', showLine:true, ...baseLine},
-    {label:'BEP migration (iso-efficiency)', data:(()=>{const p=[];for(let q=0;q<=SP_XMAX;q+=40){const h=KBEP*q*q;if(h>70)break;p.push({x:q,y:h});}return p;})(), borderColor:'rgba(30,132,73,0.55)', showLine:true, ...baseLine, borderDash:[2,4], borderWidth:1.8},
+    {label:'BEP migration (iso-efficiency)', data:(()=>{const p=[];for(let q=0;q<=SP_XMAX;q+=40){const h=KBEP*q*q;if(h>75)break;p.push({x:q,y:h});}return p;})(), borderColor:'rgba(30,132,73,0.55)', showLine:true, ...baseLine, borderDash:[2,4], borderWidth:1.8},
     {label:'Duty point', data:[], borderColor:'#b9770e', backgroundColor:'#b9770e', pointRadius:7, showLine:false}
   ]},
   options:{
@@ -665,7 +665,7 @@ let speedChart=new Chart(document.getElementById('speedChart'),{
     interaction:{mode:'nearest',intersect:false},
     scales:{
       x:{type:'linear',min:0,max:SP_XMAX,title:{display:true,text:'Flow  Q  (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
-      y:{min:0,max:70,title:{display:true,text:'Head  H  (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+      y:{min:0,max:75,title:{display:true,text:'Head  H  (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
     },
     plugins:{
       legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
@@ -680,7 +680,7 @@ function updateSpeed(){
 
   const Hduty=60-8.0e-6*Q_FULL_DUTY*Q_FULL_DUTY;                 // 42 m at 1500
   const K=Math.max((Hduty-Hs)/(Q_FULL_DUTY*Q_FULL_DUTY),1e-9);   // system through (1500, 42)
-  const sys=[]; for(let q=0;q<=SP_XMAX;q+=40){const h=Hs+K*q*q; if(h>70)break; sys.push({x:q,y:h});}
+  const sys=[]; for(let q=0;q<=SP_XMAX;q+=40){const h=Hs+K*q*q; if(h>75)break; sys.push({x:q,y:h});}
   speedChart.data.datasets[1].data=scaledCurve(s);
   speedChart.data.datasets[2].data=sys;
 

@@ -390,7 +390,7 @@
     <button type="button" class="cat-card" data-cat="pumps" onclick="topicFilter('pumps',this)">
       <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20a8 8 0 1 1 16 0"/><path d="M12 20V12l4-3"/><circle cx="12" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></span>
       <div class="cat-card-title">هندسة المضخات</div>
-      <div class="cat-card-count">٦ مقالات</div>
+      <div class="cat-card-count">٧ مقالات</div>
     </button>
     <button type="button" class="cat-card" data-cat="hydraulic" onclick="topicFilter('hydraulic',this)">
       <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span>
@@ -425,6 +425,19 @@
 
   <div class="articles-grid" id="articlesGrid">
 
+    <a href="reading-pump-curves.html" class="article-card" data-cat="pumps" data-search="reading manufacturer pump curves قراءة منحنيات المضخات ورقة بيانات الكفاءة القدرة NPSHr قص الدفّاعة قوانين التشابه سرعة VFD تصحيح اللزوجة ISO 9906 تفاوت قبول BEP اختيار المحرك">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering · Curve Reading · Pump Selection</span>
+        <div class="article-card-title">القراءة الصحيحة لمنحنيات المضخات من الشركة المصنّعة</div>
+        <p class="article-card-excerpt">منحنيات السعة والكفاءة والقدرة وNPSHr تعيش على ورقة واحدة — وكل قيمة يجب أن تُقرأ عند التدفق نفسه وعلى قطر الدفّاعة الصحيح. درجات التفاوت في ISO 9906، تصحيحات السرعة والقص واللزوجة، والقراءات الخاطئة الشائعة التي تسبب أعطالًا ميدانية — مع ثلاثة رسوم تفاعلية وأمثلة رقمية.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>13 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="reading-pump-curves.webp" alt="Reading Manufacturer Pump Curves Properly" loading="lazy"></div>
+    </a>
+
     <a href="parallel-series-pump-operation.html" class="article-card" data-cat="pumps" data-search="parallel series pump operation التشغيل على التوازي والتوالي تدريج المضخات احتياطي مساعد N+1 المنحنى المجمّع تناقص العائد تقاسم الحمل معزّز متعدد المراحل VFD محطة ضخ">
       <div class="card-body">
         <span class="article-card-tag">Pump Hydraulics · Parallel &amp; Series · Pump Staging</span>
@@ -451,7 +464,7 @@
       <div class="card-thumb"><img src="system-head-curve-operating-point.webp" alt="The System Head Curve and the Operating Point" loading="lazy"></div>
     </a>
 
-    <a href="surge-scenarios-pump-stations.html" class="article-card" data-cat="surge" data-search="surge scenarios pumping stations سيناريوهات الموجة العابرة محطات الضخ فصل التيار صدمة صمام عدم الرجوع إغلاق صمام غلاف التصميم انفصال العمود المائي joukowsky">
+    <a href="surge-scenarios-pump-stations.html" class="article-card hidden-article" data-cat="surge" data-search="surge scenarios pumping stations سيناريوهات الموجة العابرة محطات الضخ فصل التيار صدمة صمام عدم الرجوع إغلاق صمام غلاف التصميم انفصال العمود المائي joukowsky">
       <div class="card-body">
         <span class="article-card-tag">Hydraulic Transients · Surge Analysis · Pump Stations</span>
         <div class="article-card-title">سيناريوهات المطرقة المائية في محطات الضخ — وأيُّها يحكم التصميم</div>
@@ -901,9 +914,9 @@
   <div id="show-more-wrap" style="text-align:center; padding:2.5rem 0 1rem;">
     <button id="show-more-btn" onclick="revealArticles()" style="display:inline-flex; align-items:center; gap:10px; padding:12px 28px; background:var(--glass); -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur); color:var(--accent); border:1px solid var(--glass-border); border-radius:980px; font-size:15px; font-weight:500; cursor:pointer; font-family:'Cairo',sans-serif; box-shadow:var(--shadow-glass); transition:transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-glass-hover)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-glass)'">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-      عرض 38 مقالة إضافية
+      عرض 39 مقالة إضافية
     </button>
-    <div style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">يُعرض 3 من أصل 41 مقالة</div>
+    <div style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">يُعرض 3 من أصل 42 مقالة</div>
   </div>
 
   <!-- Stats -->

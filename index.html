@@ -503,7 +503,7 @@
     <button type="button" class="cat-card" data-cat="pumps" onclick="topicFilter('pumps',this)">
       <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20a8 8 0 1 1 16 0"/><path d="M12 20V12l4-3"/><circle cx="12" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></span>
       <div class="cat-card-title">Pump Engineering</div>
-      <div class="cat-card-count">6 articles</div>
+      <div class="cat-card-count">7 articles</div>
     </button>
     <button type="button" class="cat-card" data-cat="hydraulic" onclick="topicFilter('hydraulic',this)">
       <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span>
@@ -540,6 +540,22 @@
 
   <div class="articles-grid" id="articlesGrid">
 
+    <a href="reading-pump-curves.html" class="article-card" data-cat="pumps" data-search="reading manufacturer pump curves datasheet H-Q efficiency power P2 NPSHr trim impeller diameter affinity laws speed VFD viscosity correction ISO 9906 HI 14.6 tolerance acceptance grade BEP POR motor sizing non-overloading runout shut-off">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering &middot; Curve Reading &middot; Pump Selection</span>
+        <div class="article-card-title">Reading Manufacturer Pump Curves Properly</div>
+        <p class="article-card-excerpt">H&ndash;Q, efficiency, power and NPSHr live on one sheet — and every value must be read at the same flow, on your trim. ISO 9906 tolerance grades, speed/trim/viscosity corrections, and the classic misreadings that cause field failures — with three interactive charts and worked numbers.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>13 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="reading-pump-curves.webp" alt="Reading Manufacturer Pump Curves Properly" loading="lazy">
+      </div>
+    </a>
+
     <a href="parallel-series-pump-operation.html" class="article-card" data-cat="pumps" data-search="parallel series pump operation staging duty standby assist N+1 combined curve diminishing return load sharing hunting booster multistage VFD lead lag pump station design BEP">
       <div class="card-body">
         <span class="article-card-tag">Pump Hydraulics &middot; Parallel &amp; Series &middot; Pump Staging</span>
@@ -572,7 +588,7 @@
       </div>
     </a>
 
-    <a href="surge-scenarios-pump-stations.html" class="article-card" data-cat="surge" data-search="surge scenarios pumping stations pump trip power failure check valve slam valve closure transient design envelope governing scenario joukowsky downsurge upsurge column separation">
+    <a href="surge-scenarios-pump-stations.html" class="article-card hidden-article" data-cat="surge" data-search="surge scenarios pumping stations pump trip power failure check valve slam valve closure transient design envelope governing scenario joukowsky downsurge upsurge column separation">
       <div class="card-body">
         <span class="article-card-tag">Hydraulic Transients &middot; Surge Analysis &middot; Pump Stations</span>
         <div class="article-card-title">Surge Scenarios in Pumping Stations — and Which One Governs the Design</div>
@@ -1174,9 +1190,9 @@
   <div id="show-more-wrap" style="text-align:center; padding:2.5rem 0 1rem;">
     <button id="show-more-btn" onclick="revealArticles()" style="display:inline-flex; align-items:center; gap:10px; padding:12px 28px; background:var(--glass); -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur); color:var(--accent); border:1px solid var(--glass-border); border-radius:980px; font-size:15px; font-weight:500; cursor:pointer; font-family:inherit; box-shadow:var(--shadow-glass); transition:transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-glass-hover)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-glass)'">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-      Show 38 More Articles
+      Show 39 More Articles
     </button>
-    <div style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">3 of 41 articles shown</div>
+    <div style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">3 of 42 articles shown</div>
   </div>
 
   <div class="stats-row">

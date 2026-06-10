@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Manufacturer Pump Curves Properly — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Water Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    /* equations (MathJax) */
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    /* callouts */
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.visc{border-left-color:#8e5bd0;} .callout.visc .lbl{color:#8e5bd0;}
+
+    /* tables */
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    /* interactive figure — a self-contained light instrument panel, legible in both themes */
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    /* references */
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="How to read a manufacturer pump curve sheet the way a designer must: the H–Q trim family, efficiency, absorbed power P2 and NPSHr read together at one flow; ISO 9906 tolerance grades; speed, trim and viscosity corrections; and the misreadings that cause real field failures — with three interactive charts and worked numbers.">
+  <meta property="og:title" content="Reading Manufacturer Pump Curves Properly | Mohamed Abokhatwa">
+  <meta property="og:description" content="H–Q, efficiency, power and NPSHr live on one sheet and must be read at one flow. Trim families, ISO 9906 tolerances, affinity corrections, viscosity derating — and the classic misreadings that put pumps in trouble.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/reading-pump-curves.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-reading-pump-curves.jpg">
+  <meta property="og:image:alt" content="Reading Manufacturer Pump Curves Properly">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Reading Manufacturer Pump Curves Properly | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="The curve sheet is four families on one chart — and every value must be read at the same flow. Trims, tolerances, affinity and viscosity corrections, and the misreadings that cause field failures.">
+  <link rel="canonical" href="https://abokhatwa.com/reading-pump-curves.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Reading Manufacturer Pump Curves Properly",
+  "description": "How to read a manufacturer pump curve sheet the way a designer must: the H–Q trim family, efficiency, absorbed power P2 and NPSHr read together at one flow; ISO 9906 tolerance grades; speed, trim and viscosity corrections; and the misreadings that cause real field failures.",
+  "image": "https://abokhatwa.com/og-reading-pump-curves.jpg",
+  "datePublished": "2026-06-10",
+  "dateModified": "2026-06-10",
+  "author": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa",
+    "url": "https://abokhatwa.com/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abokhatwa.com/reading-pump-curves.html"
+  }
+}
+  </script>
+<style>
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--text-primary);}
+.breadcrumb-sep{opacity:.4;}
+.breadcrumb-current{color:var(--text-secondary);}.breadcrumb a.breadcrumb-current{color:var(--accent);}.breadcrumb a.breadcrumb-current:hover{opacity:.75;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+<div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="pump-engineering.html" class="breadcrumb-current">Pump Engineering</a></div>
+  <span class="tag">Pump Engineering &middot; Curve Reading &middot; Pump Selection &middot; Datasheets</span>
+  <h1>Reading Manufacturer Pump Curves Properly</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>June 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>13 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="reading-pump-curves.webp" alt="Reading manufacturer pump curves properly — H-Q, efficiency, power and NPSHr families">
+</div>
+
+<div class="article-body">
+<p class="lead">A manufacturer curve sheet is four families of information stacked on one chart — head, efficiency, power and NPSHr — and every one of them must be read at the same flow. Most field failures traced back to “the pump” are really failures to read that sheet properly.</p>
+
+<h2 id="what-it-is">1 · What the curve sheet actually is</h2>
+<p>The performance curve in a pump datasheet is not a drawing — it is <strong>test data</strong>. The manufacturer ran the pump (or a homologous model of it) on a test rig, measured flow, head, power and suction performance, and plotted the results per the acceptance-test standards <strong>ISO 9906</strong> or <strong>ANSI/HI 14.6</strong>. Three consequences follow immediately, and each one changes how you read the sheet:</p>
+
+<ul class="clean">
+  <li><strong>It is valid for one speed, one impeller diameter, and one fluid</strong> — almost always clean cold water, SG = 1.0, at the rated speed printed in the title block. Change any of these and the curve must be corrected, not reused.</li>
+  <li><strong>It carries a tolerance, not a guarantee of exactness.</strong> The acceptance grade (Section 5) defines how far the delivered pump may deviate from the printed line — and ±5% head on a flat curve can move the duty flow a long way.</li>
+  <li><strong>The catalogue chart is usually a family, not your pump.</strong> What you see is the full-diameter and minimum-diameter envelope with intermediate trims. Your pump is <em>one</em> line in that family — and often an interpolated trim between two printed ones.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The single discipline that prevents most errors</span>
+  Draw one vertical line at your duty flow and read <strong>everything</strong> on it: head from the H–Q curve of <em>your trim</em>, efficiency from the η curve, absorbed power from the P2 curve, and NPSHr from the suction curve. Mixing values read at different flows — BEP efficiency with duty-point head, for instance — is the most common and most expensive curve-reading mistake in the industry.
+</div>
+
+<h2 id="families">2 · The four families on one chart</h2>
+<p>A complete curve sheet stacks four relationships against the same flow axis. Each answers a different design question:</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>The four curve families and what each one decides.</caption>
+  <thead><tr><th>Curve</th><th>Axis</th><th>Decides</th><th>Typical misreading</th></tr></thead>
+  <tbody>
+    <tr><td><strong>H–Q</strong> (one per trim)</td><td>Head, m</td><td>Whether the pump meets the duty; where it intersects the system curve</td><td>Reading the envelope or the wrong trim line</td></tr>
+    <tr><td><strong>Efficiency η</strong></td><td>%</td><td>Energy cost; how far the duty sits from BEP</td><td>Quoting BEP efficiency at a non-BEP duty</td></tr>
+    <tr><td><strong>Power P2</strong></td><td>kW</td><td>Motor size — including at end of curve, not just at duty</td><td>Forgetting it is plotted for water, SG = 1.0</td></tr>
+    <tr><td><strong>NPSHr (NPSH3)</strong></td><td>m</td><td>Suction safety, with margin — see <a href="npsh-water-infrastructure.html">the NPSH design guide</a></td><td>Treating NPSHr as “safe” instead of “already cavitating 3%”</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Two of these need a precise definition, because the names mislead:</p>
+<p><strong>P2 is shaft power</strong> — the mechanical power absorbed at the pump coupling, not the electrical power drawn from the wall (that is P1, larger by the motor and drive losses). It relates to the hydraulic power through the pump efficiency:</p>
+
+<div class="eq">\[ P_2=\frac{\rho\, g\, Q\, H}{3.6\times 10^{6}\,\eta} \;\text{kW} \qquad (Q\ \text{in m}^3/\text{h},\ H\ \text{in m},\ \rho\ \text{in kg/m}^3) \]</div>
+
+<p><strong>NPSHr on the sheet is NPSH3</strong> — by definition, the suction head at which the pump has <em>already lost 3% of its head</em> to cavitation. It is a test criterion, not a safety boundary. A pump operating with NPSH available exactly equal to NPSHr is cavitating by definition; HI 9.6.1 margins exist precisely because of this<sup class="cite">[4]</sup>.</p>
+
+<h2 id="int-sheet">3 · Interactive: the curve-sheet explorer</h2>
+<p>The model below is a realistic medium-size water pump at 1,480 rpm with four impeller trims (430 / 410 / 390 / 370 mm). Move the duty flow and switch trims — the vertical line is the “read everything here” discipline made visible.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">One flow, four readings — H, η, P2 and NPSHr on a single sheet</div>
+    <div class="fsub">Solid blue = selected trim; faded blue = the rest of the family. Green = efficiency (right axis), amber = absorbed power P2 (far right axis), red dotted = NPSHr (left axis, metres). The shaded band is the POR (70–120% of BEP) for the selected trim.</div>
+  </div>
+  <div class="chart-box"><canvas id="sheetChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Impeller trim <span id="vTrim">430 mm (full)</span></label>
+      <input type="range" id="sTrim" min="0" max="3" value="0" step="1">
+      <div class="hint">430 / 410 / 390 / 370 mm. Watch BEP migrate left and NPSHr stay put.</div>
+    </div>
+    <div class="ctrl">
+      <label>Duty flow <span id="vQ">1100 m³/h</span></label>
+      <input type="range" id="sQ" min="200" max="2000" value="1100" step="20">
+      <div class="hint">The vertical line — read all four values at this one flow.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Head</div><div class="v" id="rHead">50.3 <small>m</small></div></div>
+    <div class="cell"><div class="k">Efficiency</div><div class="v" id="rEff">85.1 <small>%</small></div></div>
+    <div class="cell"><div class="k">Power P2</div><div class="v" id="rP2">177 <small>kW</small></div></div>
+    <div class="cell"><div class="k">NPSHr</div><div class="v" id="rNpsh">4.4 <small>m</small></div></div>
+    <div class="cell"><div class="k">% of BEP</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rBep"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">Try this: hold the duty at 1,100 m³/h and trim down to 370 mm. Head and power fall — but <strong>NPSHr does not move</strong>, because trimming the outer diameter does nothing to the impeller eye. Then push the flow to 1,800 m³/h and watch NPSHr climb the steep right-hand wall while efficiency collapses.</p>
+
+<h2 id="worked">4 · Worked example — reading one duty completely</h2>
+<p>Required duty: <strong>1,000 m³/h at 45 m</strong>. On the family above, the full 430 mm impeller gives 52.0 m at 1,000 m³/h — too much. The 390 mm trim gives 41.4 m — too little. The <strong>410 mm trim</strong> gives 46.5 m, slightly above the requirement: the correct selection (the surplus is absorbed as the duty point slides marginally up the system curve — never select a trim that falls <em>short</em>).</p>
+
+<p>Now the vertical line at 1,000 m³/h on the 410 mm trim, reading all four families:</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>Complete reading at Q = 1,000 m³/h, 410 mm trim, 1,480 rpm.</caption>
+  <thead><tr><th>Quantity</th><th class="num">Value</th><th>Design consequence</th></tr></thead>
+  <tbody>
+    <tr><td>Head H</td><td class="num">46.5 m</td><td>Meets the 45 m duty with a small surplus ✓</td></tr>
+    <tr><td>Efficiency η</td><td class="num">84.4%</td><td>Duty sits at 94% of this trim's BEP (≈ 1,060 m³/h) — inside POR ✓</td></tr>
+    <tr><td>Power P2</td><td class="num">150 kW</td><td>At end of allowable region (120% BEP ≈ 1,272 m³/h): <strong>175 kW</strong></td></tr>
+    <tr><td>NPSHr (NPSH3)</td><td class="num">4.0 m</td><td>With HI margin ratio 1.3 → require NPSHa ≥ 5.2 m</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>The motor decision shows why the power family must be read across the whole operating region, not at one point: duty power is 150 kW, and the habitual “duty + 10%” rule suggests 165 kW. But if operation can ever reach the right-hand end of the allowable region, absorbed power reaches 175 kW. The next standard IEC rating, <strong>200 kW</strong>, covers both — and the selection is documented as <em>non-overloading across the AOR</em>, not as a margin guess.</p>
+
+<div class="callout">
+  <span class="lbl">Why “end of curve” matters so much</span>
+  For low- and medium-specific-speed pumps, P2 <em>rises</em> continuously toward runout. Any future that lowers system resistance — a second main commissioned, a PRV failing open, a pipe break, even a generous head tolerance — slides the duty right and the power up. Motors tripping on overload during commissioning are very often a power curve read at the duty point only.
+</div>
+
+<h2 id="tolerance">5 · The curve is a band, not a line — ISO 9906 grades</h2>
+<p>Acceptance standards define how far the delivered pump may deviate from the quoted curve. Under ISO 9906:2012 (harmonised with ANSI/HI 14.6), the common grades are<sup class="cite">[1,2]</sup>:</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>ISO 9906:2012 acceptance grades — tolerance on the guarantee point.</caption>
+  <thead><tr><th>Grade</th><th class="num">Flow ΔQ</th><th class="num">Head ΔH</th><th class="num">Efficiency Δη</th><th>Typical use</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1B</strong></td><td class="num">±4.5%</td><td class="num">±3%</td><td class="num">−3%</td><td>Large / high-energy pumps, contractual efficiency</td></tr>
+    <tr><td><strong>2B</strong></td><td class="num">±8%</td><td class="num">±5%</td><td class="num">−5%</td><td>Standard water &amp; wastewater duty (the usual default)</td></tr>
+    <tr><td><strong>3B</strong></td><td class="num">±9%</td><td class="num">±7%</td><td class="num">−7%</td><td>Small, mass-produced pumps</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Grade 1U and 1E variants tighten this further (1U allows only positive tolerance; 1E adds a non-negative efficiency tolerance). The design consequence is rarely appreciated: on a <strong>flat pump curve</strong>, a −5% head tolerance at the duty head can shift the achieved <em>flow</em> by far more than 5% — exactly the geometry problem described in <a href="system-head-curve-operating-point.html">the system head curve article</a>. If the process genuinely needs a minimum flow, specify the guarantee point and grade accordingly, and say so in the datasheet — “Grade 2B” silently accepted from the quotation is a decision, whether you made it or not.</p>
+
+<h2 id="speed-trim">6 · Speed &amp; trim — using the affinity laws on the whole curve</h2>
+<p>Catalogue curves are printed for one speed. Run the pump on a VFD, or order a different trim, and the affinity laws scale the <em>entire curve</em>, point by point:</p>
+
+<div class="eq">\[ \frac{Q_2}{Q_1}=\frac{N_2}{N_1} \qquad \frac{H_2}{H_1}=\left(\frac{N_2}{N_1}\right)^{\!2} \qquad \frac{P_2}{P_1}=\left(\frac{N_2}{N_1}\right)^{\!3} \]</div>
+
+<p>Three corrections to the way these laws are commonly used:</p>
+<ul class="clean">
+  <li><strong>They map curve to curve, not duty to duty.</strong> The laws connect <em>homologous points</em> — the same point on the scaled curve. Your new duty point is found by intersecting the <em>scaled curve</em> with the <em>system curve</em>; it is not the old duty point scaled.</li>
+  <li><strong>% speed ≠ % flow whenever static head exists.</strong> The “20% speed = 20% flow = 50% power” story is true only for purely frictional systems. With static head, flow falls faster than speed — and below the speed where the scaled shut-off head equals the static head, flow stops entirely.</li>
+  <li><strong>Trim is not exactly affinity.</strong> Diameter scaling \(Q\propto D,\ H\propto D^2\) is a first estimate; real trims lose some efficiency and deviate from the square law because the casing stays the same size. Use the manufacturer's <em>tested</em> trim curves for selection, and limit trims to roughly 75–80% of full diameter<sup class="cite">[6]</sup>.</li>
+</ul>
+
+<h2 id="int-speed">7 · Interactive: speed correction against a real system</h2>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">VFD speed scaling — why % speed is not % flow</div>
+    <div class="fsub">The full-speed curve (dashed) scales down with speed; the duty point is the intersection with the system curve (red). The dotted green parabola through the origin is the BEP migration path — duty points on it keep the full-speed efficiency.</div>
+  </div>
+  <div class="chart-box"><canvas id="speedChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Pump speed <span id="vSpd">100 %</span></label>
+      <input type="range" id="sSpd" min="50" max="110" value="100" step="1">
+      <div class="hint">100% = 1,480 rpm. The whole curve scales, not one point.</div>
+    </div>
+    <div class="ctrl">
+      <label>Static head <span id="vStat">20 m</span></label>
+      <input type="range" id="sStat" min="0" max="40" value="20" step="1">
+      <div class="hint">At 0 m the system is pure friction — only then does % speed = % flow.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Duty flow</div><div class="v" id="rQs">1500 <small>m³/h</small></div></div>
+    <div class="cell"><div class="k">% of full-speed flow</div><div class="v" id="rQpct">100 <small>%</small></div></div>
+    <div class="cell"><div class="k">Power P2</div><div class="v" id="rPs">216 <small>kW</small></div></div>
+    <div class="cell"><div class="k">% of full-speed power</div><div class="v" id="rPpct">100 <small>%</small></div></div>
+    <div class="cell"><div class="k">No-flow speed</div><div class="v" id="rNoflow">58 <small>%</small></div></div>
+  </div>
+</div>
+<p class="fig-note">With 20 m static, 90% speed delivers only ≈ 85% flow — and below ≈ 58% speed the pump dead-heads against the static column and delivers nothing. Set static to 0 m and the cube-law story comes back: 90% speed → 90% flow → 73% power.</p>
+
+<h2 id="viscosity">8 · Viscosity — the silent curve killer</h2>
+<p>Everything so far assumed water. Pump a viscous fluid — sludge, glycerine solutions, oils, some polymers — and the water curve must be derated. The Hydraulic Institute method (ANSI/HI 9.6.7) condenses the physics into a single parameter B computed at the water BEP, from which three correction factors follow<sup class="cite">[5]</sup>:</p>
+
+<div class="eq">\[ B=16.5\;\frac{\nu^{0.50}\;H_{BEP}^{0.0625}}{Q_{BEP}^{0.375}\;N^{0.25}} \qquad\Longrightarrow\qquad C_Q,\;C_H,\;C_\eta \]</div>
+
+<p>with ν in cSt, Q in m³/h, H in m and N in rpm. The corrected performance is \(Q_{vis}=C_Q\,Q_w\), \(H_{vis}=C_H\,H_w\), \(\eta_{vis}=C_\eta\,\eta_w\) — and the pattern of the factors is the important lesson: <strong>flow and head survive moderate viscosity almost intact, but efficiency does not.</strong> At 120 cSt on the pump above, B ≈ 2.7: flow and head keep ~99% of their water values, while efficiency keeps only ~90% — and absorbed power rises accordingly (times the fluid SG, on top).</p>
+
+<h2 id="int-visc">9 · Interactive: HI viscosity correction</h2>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Water curve vs viscous curve — efficiency dies first</div>
+    <div class="fsub">Dashed = water test curve; solid = corrected viscous performance per the HI 9.6.7 generalized method (C<sub>H</sub> applied uniformly for clarity). Green pair (right axis) = efficiency. Amber pair (far right axis) = shaft power P2 — the only curve that responds to specific gravity.</div>
+  </div>
+  <div class="chart-box"><canvas id="viscChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Kinematic viscosity <span id="vNu">1 cSt (water)</span></label>
+      <input type="range" id="sNu" min="0" max="100" value="0" step="1">
+      <div class="hint">1 → 500 cSt (log scale). Method valid for 1 &lt; B &lt; 40.</div>
+    </div>
+    <div class="ctrl">
+      <label>Specific gravity <span id="vSG">1.00</span></label>
+      <input type="range" id="sSG" min="85" max="120" value="100" step="1">
+      <div class="hint">Power scales with SG directly — the curve-sheet P2 is for SG = 1.0.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Parameter B</div><div class="v" id="rB">—</div></div>
+    <div class="cell"><div class="k">C<sub>Q</sub> = C<sub>H</sub></div><div class="v" id="rCQ">1.00</div></div>
+    <div class="cell"><div class="k">C<sub style="text-transform:none">η</sub> (efficiency)</div><div class="v" id="rCE">1.00</div></div>
+    <div class="cell"><div class="k"><span style="text-transform:none">η</span> at BEP</div><div class="v" id="rEv">85.1 <small>%</small></div></div>
+    <div class="cell"><div class="k">P2 at BEP vs water</div><div class="v" id="rPv">1.00 <small>×</small></div></div>
+  </div>
+</div>
+<p class="fig-note">Slide to 500 cSt: flow and head still keep ~94% — but efficiency keeps only 74% of its water value (85% → ~63% absolute) and shaft power is up ~19% <em>before</em> the SG multiplier. Then slide the specific gravity up and watch <strong>only the amber power curve</strong> rise: head in metres and efficiency are blind to density — the kilowatts are not. Size the motor for the viscous condition, never from the water sheet.</p>
+
+<div class="callout visc">
+  <span class="lbl">Boundaries of the method</span>
+  The HI correction applies to conventional rotodynamic pumps with Newtonian fluids and roughly 1 &lt; B &lt; 40. Above that — thick sludges, non-Newtonian slurries — the rotodynamic pump itself becomes the wrong machine, and positive-displacement selection should be on the table. The correction is a derating tool, not a licence.
+</div>
+
+<h2 id="misreadings">10 · The misreadings that cause field failures</h2>
+<p>Every one of these is a real failure pattern, and every one originates on paper, not in the machine:</p>
+
+<ul class="clean">
+  <li><strong>Reading the family envelope instead of the quoted trim.</strong> The catalogue page shows max-to-min trim; the delivered pump is one line. A duty read off the full-diameter curve but supplied as a 390 mm trim is short by 10 m of head before it ever starts.</li>
+  <li><strong>Treating the printed line as exact.</strong> A Grade 2B pump may legally deliver 5% less head. On a flat curve crossing a flat system curve, that can be a 15–20% flow shortfall — contractually acceptable, hydraulically disastrous if you never specified the grade.</li>
+  <li><strong>Quoting BEP efficiency at a non-BEP duty.</strong> The energy study used 85%; the pump runs at 70% of BEP where the sheet reads 78%. Every kWh estimate downstream of that number is wrong.</li>
+  <li><strong>Sizing the motor at the duty point.</strong> Rising power toward runout plus any future drop in system resistance equals overload trips. Read P2 at the end of the allowable operating region — and check it again for SG and viscosity if the fluid is not cold water.</li>
+  <li><strong>Reading NPSHr as a safety line.</strong> NPSH3 means 3% head loss <em>already occurring</em>. Apply the HI 9.6.1 margin (ratio ≥ 1.1–1.3 for typical water duties, more for high-energy pumps) above the curve value — at the highest expected flow, where NPSHr is steepest.</li>
+  <li><strong>Expecting trim to fix suction problems.</strong> Trimming reduces head and power; the impeller eye — and therefore NPSHr at a given flow — stays essentially unchanged.</li>
+  <li><strong>Using a 50 Hz curve for a 60 Hz pump (or vice versa).</strong> A 20% speed difference moves head by 44% and power by 73%. Always confirm the rated speed in the title block matches the site supply and motor.</li>
+  <li><strong>Assuming % speed = % flow on a VFD.</strong> True only with zero static head. With static head the turndown range is far narrower than the drive range — and below the no-flow speed the pump churns at shut-off, which is a reliability event, not a control state (see <a href="vfd-myth-hydraulic-design.html">the VFD myth</a>).</li>
+  <li><strong>Ignoring the limits the sheet does not print.</strong> Minimum continuous stable flow (often 40–70% of BEP depending on the pump), maximum casing pressure, and allowable operating region boundaries frequently live in the selection software or the O&amp;M manual — ask for them and put them on the datasheet.</li>
+</ul>
+
+<h2 id="checklist">11 · Curve-reading checklist</h2>
+<ul class="clean">
+  <li><strong>Confirm the title block first:</strong> speed, impeller diameter, fluid, temperature, test standard and acceptance grade — before reading a single value.</li>
+  <li><strong>One vertical line:</strong> read H, η, P2 and NPSHr at the same flow, on the same trim.</li>
+  <li><strong>Locate the duty relative to BEP</strong> and confirm it sits inside the POR (70–120% of BEP per HI 9.6.3) for every expected operating mode — not just the design point.</li>
+  <li><strong>Read power at the end of the allowable region</strong>, correct for SG and viscosity, then size the motor as non-overloading.</li>
+  <li><strong>Add the NPSH margin</strong> to the curve value at the <em>highest</em> expected flow, per HI 9.6.1.</li>
+  <li><strong>Scale curves, not points,</strong> when applying affinity for speed — and use tested trim curves rather than the square law where they exist.</li>
+  <li><strong>Specify the acceptance grade</strong> in the procurement documents if the duty actually matters; demand the witnessed test for large machines.</li>
+  <li><strong>Ask for what is not printed:</strong> MCSF, allowable region limits, maximum working pressure, and the tested — not interpolated — curve for the exact trim supplied.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  The curve sheet answers four questions at every flow — how much head, at what efficiency, for how much power, needing how much suction. Read all four, at one flow, on your trim, with the tolerance and the fluid corrections applied — and the pump will do in the field exactly what it did on paper.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>ISO 9906:2012. <em>Rotodynamic pumps — Hydraulic performance acceptance tests — Grades 1, 2 and 3.</em></li>
+  <li>Hydraulic Institute. <em>ANSI/HI 14.6 — Rotodynamic Pumps for Hydraulic Performance Acceptance Tests.</em></li>
+  <li>Hydraulic Institute. <em>ANSI/HI 9.6.3 — Rotodynamic Pumps: Guideline for Operating Regions (POR / AOR).</em></li>
+  <li>Hydraulic Institute. <em>ANSI/HI 9.6.1 — Rotodynamic Pumps: Guideline for NPSH Margin.</em></li>
+  <li>Hydraulic Institute. <em>ANSI/HI 9.6.7 — Rotodynamic Pumps: Guideline for Effects of Liquid Viscosity on Performance.</em></li>
+  <li>Gülich, J.F. <em>Centrifugal Pumps</em>, 4th ed. Springer, 2020 (trim deviations, curve shapes, suction behaviour).</li>
+  <li>Karassik, I.J., Messina, J.P., Cooper, P., Heald, C.C. <em>Pump Handbook</em>, 4th ed. McGraw-Hill, 2008.</li>
+  <li>Jones, G.M. (ed.). <em>Pumping Station Design</em>, 3rd ed. Butterworth-Heinemann, 2008.</li>
+  <li>Flowserve / Cameron. <em>Cameron Hydraulic Data Book</em>, 19th ed. (curve reading and corrections).</li>
+  <li>U.S. DOE &amp; Hydraulic Institute. <em>Improving Pumping System Performance: A Sourcebook for Industry</em>, 2nd ed.</li>
+</ol>
+
+<div class="tags">#PumpCurves #PumpSelection #CurveReading #NPSH #AffinityLaws #ISO9906 #MotorSizing #ViscosityCorrection #WaterEngineering</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+
+<script>
+/* ---------- the "manufacturer" pump model (Q m³/h, H m, P2 kW) ----------
+   Full impeller 430 mm @ 1480 rpm:
+     H(Q)  = 60 − 8.0e-6 Q²
+     P2(Q) = 70 + 0.0975 Q          (rising toward runout — radial-flow type)
+     η(Q)  = ρgQH / P2  →  BEP ≈ 1100 m³/h, η ≈ 85.1%, H ≈ 50.3 m
+   Trims t = D/430 (430/410/390/370):  H_t = 60t² − 8e-6 Q²,
+     P2_t = (70t³ + 0.0975 t² Q)·(1 + 0.15(1−t))   ← small real-trim η penalty
+   NPSHr(Q) = 2.0 + 2.0e-6 Q²  — independent of trim (same impeller eye). */
+const TRIMS=[430,410,390,370], TBASE=430;
+const QBEP_FULL=1100, N_RPM=1480;
+const XMAX=2200;
+function tOf(i){ return TRIMS[i]/TBASE; }
+function headT(q,t){ return 60*t*t - 8.0e-6*q*q; }
+function p2T(q,t){ return (70*t*t*t + 0.0975*t*t*q)*(1+0.15*(1-t)); }
+function effT(q,t){ const h=headT(q,t); if(h<=0||q<=0) return 0; return Math.max(0, 0.002725*q*h/p2T(q,t)); }
+function npshr(q){ return 2.0 + 2.0e-6*q*q; }
+function runoutQ(t){ return Math.sqrt(60*t*t/8.0e-6); }   // H = 0
+
+const baseLine={borderWidth:2.5,pointRadius:0,tension:0,fill:false};
+const FAM_COLORS=['#1b4f72','#2e86c1','#5dade2','#a9cce3'];
+
+/* =====================================================================
+   CHART 1 — THE CURVE SHEET (H + η + P2 + NPSHr, trim family)
+   ===================================================================== */
+const sTrim=document.getElementById('sTrim'), sQ=document.getElementById('sQ');
+const vTrim=document.getElementById('vTrim'), vQ=document.getElementById('vQ');
+
+function hCurve(t){ const pts=[],qr=Math.min(runoutQ(t),XMAX); for(let q=0;q<=qr;q+=20) pts.push({x:q,y:headT(q,t)}); return pts; }
+function eCurve(t){ const pts=[],qr=Math.min(runoutQ(t)*0.97,XMAX); for(let q=60;q<=qr;q+=20) pts.push({x:q,y:effT(q,t)*100}); return pts; }
+function pCurve(t){ const pts=[],qr=Math.min(runoutQ(t),XMAX); for(let q=0;q<=qr;q+=20) pts.push({x:q,y:p2T(q,t)}); return pts; }
+function nCurve(){ const pts=[]; for(let q=0;q<=XMAX;q+=20) pts.push({x:q,y:npshr(q)}); return pts; }
+function bepOf(t){ // numeric peak of η for trim t
+  let bq=0,be=0; for(let q=200;q<=runoutQ(t);q+=10){ const e=effT(q,t); if(e>be){be=e;bq=q;} } return {q:bq,eta:be};
+}
+
+let sheetChart=new Chart(document.getElementById('sheetChart'),{
+  type:'scatter',
+  data:{datasets:[
+    {label:'H–Q trim family', data:hCurve(tOf(1)), borderColor:'rgba(46,134,193,0.30)', showLine:true, ...baseLine, borderWidth:1.5},
+    {label:'fam2', data:hCurve(tOf(2)), borderColor:'rgba(46,134,193,0.30)', showLine:true, ...baseLine, borderWidth:1.5},
+    {label:'fam3', data:hCurve(tOf(3)), borderColor:'rgba(46,134,193,0.30)', showLine:true, ...baseLine, borderWidth:1.5},
+    {label:'Selected trim H–Q', data:hCurve(1), borderColor:'#1b4f72', showLine:true, ...baseLine, borderWidth:3},
+    {label:'Efficiency η', data:eCurve(1), borderColor:'#1e8449', showLine:true, ...baseLine, borderWidth:2, yAxisID:'yE'},
+    {label:'Power P2', data:pCurve(1), borderColor:'#b9770e', showLine:true, ...baseLine, borderWidth:2, yAxisID:'yP'},
+    {label:'NPSHr', data:nCurve(), borderColor:'#c0392b', showLine:true, ...baseLine, borderWidth:2, borderDash:[4,4]},
+    {label:'Readings at duty', data:[], borderColor:'#1a1d21', backgroundColor:'#1a1d21', pointRadius:5, showLine:false},
+    {label:'BEP', data:[], borderColor:'#1e8449', backgroundColor:'#fff', pointRadius:6, pointStyle:'rectRot', borderWidth:2, showLine:false, yAxisID:'yE'}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:0,max:XMAX,title:{display:true,text:'Flow  Q  (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0,max:70,title:{display:true,text:'Head / NPSHr  (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      yE:{position:'right',min:0,max:100,title:{display:true,text:'Efficiency  (%)',font:{family:'DM Sans',size:12,weight:'600'},color:'#1e8449'},grid:{drawOnChartArea:false},ticks:{font:{family:'DM Sans',size:11},color:'#1e8449'}},
+      yP:{position:'right',min:0,max:320,title:{display:true,text:'Power P2  (kW)',font:{family:'DM Sans',size:12,weight:'600'},color:'#b9770e'},grid:{drawOnChartArea:false},ticks:{font:{family:'DM Sans',size:11},color:'#b9770e'}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8,filter:i=>!/^fam/.test(i.text)}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${Math.round(c.parsed.x)} m³/h, ${c.parsed.y.toFixed(1)}`}},
+      annotation:{annotations:{
+        duty:{type:'line',xMin:1100,xMax:1100,borderColor:'rgba(26,29,33,0.45)',borderWidth:1.5,borderDash:[6,4],label:{display:true,content:'read everything here',position:'end',color:'#1a1d21',font:{family:'DM Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.85)'}},
+        por:{type:'box',xMin:0.7*QBEP_FULL,xMax:1.2*QBEP_FULL,yMin:0,yMax:70,backgroundColor:'rgba(30,132,73,0.05)',borderColor:'rgba(30,132,73,0.22)',borderWidth:1,label:{display:true,content:'POR (70–120% BEP)',position:{x:'center',y:'start'},color:'#1e8449',font:{family:'DM Sans',size:10,weight:'600'}}}
+      }}
+    }
+  }
+});
+
+function updateSheet(){
+  const ti=+sTrim.value, t=tOf(ti), q=+sQ.value;
+  vTrim.textContent=TRIMS[ti]+' mm'+(ti===0?' (full)':'');
+  vQ.textContent=q+' m³/h';
+
+  // family = the three non-selected trims, faded
+  const others=[0,1,2,3].filter(i=>i!==ti);
+  for(let k=0;k<3;k++) sheetChart.data.datasets[k].data=hCurve(tOf(others[k]));
+  sheetChart.data.datasets[3].data=hCurve(t);
+  sheetChart.data.datasets[4].data=eCurve(t);
+  sheetChart.data.datasets[5].data=pCurve(t);
+
+  const H=headT(q,t), E=effT(q,t), P=p2T(q,t), NP=npshr(q);
+  const bep=bepOf(t);
+  const onCurve = H>0;
+  sheetChart.data.datasets[7].data = onCurve ? [{x:q,y:H}] : [];
+  sheetChart.data.datasets[8].data = [{x:bep.q,y:bep.eta*100}];
+
+  sheetChart.options.plugins.annotation.annotations.duty.xMin=q;
+  sheetChart.options.plugins.annotation.annotations.duty.xMax=q;
+  sheetChart.options.plugins.annotation.annotations.por.xMin=0.7*bep.q;
+  sheetChart.options.plugins.annotation.annotations.por.xMax=1.2*bep.q;
+  sheetChart.update('none');
+
+  document.getElementById('rHead').innerHTML = onCurve ? H.toFixed(1)+' <small>m</small>' : '—';
+  document.getElementById('rEff').innerHTML  = onCurve ? (E*100).toFixed(1)+' <small>%</small>' : '—';
+  document.getElementById('rP2').innerHTML   = onCurve ? Math.round(P)+' <small>kW</small>' : '—';
+  document.getElementById('rNpsh').innerHTML = NP.toFixed(1)+' <small>m</small>';
+
+  const pct=q/bep.q*100;
+  let cls='good',txt='POR';
+  if(pct<70||pct>120){cls='warn';txt='AOR';}
+  if(pct<50||pct>132){cls='bad';txt='Outside AOR';}
+  document.getElementById('rBep').innerHTML = onCurve ? `${pct.toFixed(0)}% &nbsp;<span class="badge ${cls}">${txt}</span>` : '<span class="badge bad">beyond runout</span>';
+}
+[sTrim,sQ].forEach(s=>s.addEventListener('input',updateSheet));
+updateSheet();
+
+/* =====================================================================
+   CHART 2 — SPEED SCALING vs SYSTEM CURVE
+   ===================================================================== */
+const sSpd=document.getElementById('sSpd'), sStat=document.getElementById('sStat');
+const vSpd=document.getElementById('vSpd'), vStat=document.getElementById('vStat');
+const SP_XMAX=2200, Q_FULL_DUTY=1500;          // system always passes through full-speed duty at 1500 m³/h
+const HBEP=headT(QBEP_FULL,1), KBEP=HBEP/(QBEP_FULL*QBEP_FULL);   // BEP migration parabola
+
+function scaledCurve(s){ const pts=[]; for(let q=0;q<=SP_XMAX;q+=20){ const h=60*s*s-8.0e-6*q*q; if(h<0)break; pts.push({x:q,y:h}); } return pts; }
+
+let speedChart=new Chart(document.getElementById('speedChart'),{
+  type:'scatter',
+  data:{datasets:[
+    {label:'Full-speed curve (100%)', data:scaledCurve(1), borderColor:'#1b4f72', showLine:true, ...baseLine, borderDash:[5,4], borderWidth:2},
+    {label:'Curve at reduced speed', data:scaledCurve(1), borderColor:'#2e86c1', showLine:true, ...baseLine, borderWidth:3},
+    {label:'System curve', data:[], borderColor:'#c0392b', showLine:true, ...baseLine},
+    {label:'BEP migration (iso-efficiency)', data:(()=>{const p=[];for(let q=0;q<=SP_XMAX;q+=40){const h=KBEP*q*q;if(h>70)break;p.push({x:q,y:h});}return p;})(), borderColor:'rgba(30,132,73,0.55)', showLine:true, ...baseLine, borderDash:[2,4], borderWidth:1.8},
+    {label:'Duty point', data:[], borderColor:'#b9770e', backgroundColor:'#b9770e', pointRadius:7, showLine:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:0,max:SP_XMAX,title:{display:true,text:'Flow  Q  (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0,max:70,title:{display:true,text:'Head  H  (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${Math.round(c.parsed.x)} m³/h, ${c.parsed.y.toFixed(1)} m`}}
+    }
+  }
+});
+
+function updateSpeed(){
+  const s=+sSpd.value/100, Hs=+sStat.value;
+  vSpd.textContent=sSpd.value+' %'; vStat.textContent=Hs+' m';
+
+  const Hduty=60-8.0e-6*Q_FULL_DUTY*Q_FULL_DUTY;                 // 42 m at 1500
+  const K=Math.max((Hduty-Hs)/(Q_FULL_DUTY*Q_FULL_DUTY),1e-9);   // system through (1500, 42)
+  const sys=[]; for(let q=0;q<=SP_XMAX;q+=40){const h=Hs+K*q*q; if(h>70)break; sys.push({x:q,y:h});}
+  speedChart.data.datasets[1].data=scaledCurve(s);
+  speedChart.data.datasets[2].data=sys;
+
+  const num=60*s*s-Hs;
+  let Q=0,H=0,P=0,Epct=0;
+  if(num>0){
+    Q=Math.sqrt(num/(K+8.0e-6)); H=Hs+K*Q*Q;
+    const qe=Q/s;                                  // homologous full-speed flow
+    P=s*s*s*p2T(qe,1);
+  }
+  speedChart.data.datasets[4].data = Q>0 ? [{x:Q,y:H}] : [];
+  speedChart.update('none');
+
+  const Pfull=p2T(Q_FULL_DUTY,1);
+  document.getElementById('rQs').innerHTML = Q>0 ? Math.round(Q)+' <small>m³/h</small>' : '<span class="badge bad">no flow</span>';
+  document.getElementById('rQpct').innerHTML = Q>0 ? (Q/Q_FULL_DUTY*100).toFixed(0)+' <small>%</small>' : '0 <small>%</small>';
+  document.getElementById('rPs').innerHTML = Q>0 ? Math.round(P)+' <small>kW</small>' : '—';
+  document.getElementById('rPpct').innerHTML = Q>0 ? (P/Pfull*100).toFixed(0)+' <small>%</small>' : '—';
+  document.getElementById('rNoflow').innerHTML = Math.ceil(Math.sqrt(Hs/60)*100)+' <small>%</small>';
+}
+[sSpd,sStat].forEach(s=>s.addEventListener('input',updateSpeed));
+updateSpeed();
+
+/* =====================================================================
+   CHART 3 — HI 9.6.7 VISCOSITY CORRECTION
+   ===================================================================== */
+const sNu=document.getElementById('sNu'), sSG=document.getElementById('sSG');
+const vNu=document.getElementById('vNu'), vSG=document.getElementById('vSG');
+
+function nuOf(pos){ return Math.round(Math.pow(10, Math.log10(500)*pos/100)); }   // 1 → 500 cSt, log slider
+function hiFactors(nu){
+  const B=16.5*Math.sqrt(nu)*Math.pow(HBEP,0.0625)/(Math.pow(QBEP_FULL,0.375)*Math.pow(N_RPM,0.25));
+  if(B<=1) return {B:B,CQ:1,CE:1};
+  const CQ=Math.exp(-0.165*Math.pow(Math.log10(B),3.15));
+  const CE=Math.pow(B,-0.0547*Math.pow(B,0.69));
+  return {B:B,CQ:CQ,CE:CE};
+}
+
+function waterH(){ return hCurve(1); }
+function waterE(){ return eCurve(1); }
+function waterP(){ const pts=[],qr=Math.min(runoutQ(1),XMAX); for(let q=0;q<=qr;q+=20) pts.push({x:q,y:p2T(q,1)}); return pts; }
+function viscH(f){ const pts=[]; for(const p of hCurve(1)) pts.push({x:f.CQ*p.x, y:f.CQ*p.y}); return pts; }  // CH = CQ
+function viscE(f){ const pts=[]; for(const p of eCurve(1)) pts.push({x:f.CQ*p.x, y:f.CE*p.y}); return pts; }
+/* P2,vis at the corresponding point = SG · CQ·CH/Cη · P2,water  (CH = CQ) */
+function viscP(f,SG){ const k=SG*f.CQ*f.CQ/f.CE, pts=[]; for(const p of waterP()) pts.push({x:f.CQ*p.x, y:k*p.y}); return pts; }
+
+let viscChart=new Chart(document.getElementById('viscChart'),{
+  type:'scatter',
+  data:{datasets:[
+    {label:'H–Q (water)', data:waterH(), borderColor:'#1b4f72', showLine:true, ...baseLine, borderDash:[5,4], borderWidth:2},
+    {label:'H–Q (viscous)', data:viscH({CQ:1}), borderColor:'#1b4f72', showLine:true, ...baseLine, borderWidth:3},
+    {label:'η (water)', data:waterE(), borderColor:'#1e8449', showLine:true, ...baseLine, borderDash:[5,4], borderWidth:1.8, yAxisID:'yE'},
+    {label:'η (viscous)', data:viscE({CQ:1,CE:1}), borderColor:'#1e8449', showLine:true, ...baseLine, borderWidth:2.6, yAxisID:'yE'},
+    {label:'P2 (water)', data:waterP(), borderColor:'rgba(185,119,14,0.55)', showLine:true, ...baseLine, borderDash:[5,4], borderWidth:1.8, yAxisID:'yP'},
+    {label:'P2 (viscous)', data:viscP({CQ:1,CE:1},1), borderColor:'#b9770e', showLine:true, ...baseLine, borderWidth:2.6, yAxisID:'yP'}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:0,max:XMAX,title:{display:true,text:'Flow  Q  (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0,max:70,title:{display:true,text:'Head  H  (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      yE:{position:'right',min:0,max:100,title:{display:true,text:'Efficiency  (%)',font:{family:'DM Sans',size:12,weight:'600'},color:'#1e8449'},grid:{drawOnChartArea:false},ticks:{font:{family:'DM Sans',size:11},color:'#1e8449'}},
+      yP:{position:'right',min:0,max:500,title:{display:true,text:'Power P2  (kW)',font:{family:'DM Sans',size:12,weight:'600'},color:'#b9770e'},grid:{drawOnChartArea:false},ticks:{font:{family:'DM Sans',size:11},color:'#b9770e'}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${Math.round(c.parsed.x)} m³/h, ${c.parsed.y.toFixed(1)}`}}
+    }
+  }
+});
+
+function updateVisc(){
+  const nu=nuOf(+sNu.value), SG=+sSG.value/100;
+  vNu.textContent=nu+' cSt'+(nu<=1?' (water)':'');
+  vSG.textContent=SG.toFixed(2);
+
+  const f=hiFactors(nu);
+  viscChart.data.datasets[1].data=viscH(f);
+  viscChart.data.datasets[3].data=viscE(f);
+  viscChart.data.datasets[5].data=viscP(f,SG);
+  viscChart.update('none');
+
+  const etaW=effT(QBEP_FULL,1);
+  const etaV=f.CE*etaW;
+  // P_vis / P_water at BEP = SG · CQ · CH / Cη   (CH = CQ at BEP)
+  const pRatio=SG*f.CQ*f.CQ/f.CE;
+  document.getElementById('rB').textContent = f.B<1 ? '< 1' : f.B.toFixed(2);
+  document.getElementById('rCQ').textContent = f.CQ.toFixed(3);
+  document.getElementById('rCE').textContent = f.CE.toFixed(3);
+  document.getElementById('rEv').innerHTML = (etaV*100).toFixed(1)+' <small>%</small>';
+  document.getElementById('rPv').innerHTML = pRatio.toFixed(2)+' <small>×</small>';
+}
+[sNu,sSG].forEach(s=>s.addEventListener('input',updateVisc));
+updateVisc();
+
+/* ---------- chart resize safety net (fixes 0-width on initial mobile-width load) ---------- */
+window.addEventListener('load',function(){ try{sheetChart.resize();speedChart.resize();viscChart.resize();}catch(e){} });
+</script>
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

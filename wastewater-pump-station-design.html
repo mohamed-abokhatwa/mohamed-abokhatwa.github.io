@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wastewater Pump Station Design — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Water Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    /* equations (MathJax) */
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    /* callouts */
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    /* tables */
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    /* interactive figure — a self-contained light instrument panel, legible in both themes */
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    /* references */
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="A design-grade guide to wastewater pump stations: non-clog, vortex and chopper impeller selection with the energy price of clog resistance; force-main minimum scouring velocity; wet-well active volume and cycle-time mathematics; and self-cleaning design per ANSI/HI 9.8 — with three interactive design charts and worked numbers.">
+  <meta property="og:title" content="Wastewater Pump Station Design | Mohamed Abokhatwa">
+  <meta property="og:description" content="Clogging, not efficiency, is failure mode #1. Impeller selection, the V = T·Q/4 wet-well rule, scouring velocity for force mains, and self-cleaning geometry — with interactive charts and worked examples.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/wastewater-pump-station-design.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-wastewater-pump-station-design.jpg">
+  <meta property="og:image:alt" content="Wastewater Pump Station Design">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wastewater Pump Station Design | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="Non-clog vs vortex vs chopper, force-main scouring velocity, wet-well active volume &amp; cycle time, and self-cleaning design — the wastewater station, engineered honestly.">
+  <link rel="canonical" href="https://abokhatwa.com/wastewater-pump-station-design.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Wastewater Pump Station Design",
+  "description": "A design-grade guide to wastewater pump stations: non-clog, vortex and chopper impeller selection, force-main minimum scouring velocity, wet-well active volume and cycle-time mathematics, and self-cleaning design per ANSI/HI 9.8.",
+  "image": "https://abokhatwa.com/og-wastewater-pump-station-design.jpg",
+  "datePublished": "2026-06-11",
+  "dateModified": "2026-06-11",
+  "author": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa",
+    "url": "https://abokhatwa.com/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abokhatwa.com/wastewater-pump-station-design.html"
+  }
+}
+  </script>
+<style>
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--text-primary);}
+.breadcrumb-sep{opacity:.4;}
+.breadcrumb-current{color:var(--text-secondary);}.breadcrumb a.breadcrumb-current{color:var(--accent);}.breadcrumb a.breadcrumb-current:hover{opacity:.75;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+<div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="pump-engineering.html" class="breadcrumb-current">Pump Engineering</a></div>
+  <span class="tag">Pump Engineering &middot; Wastewater &middot; Wet Well &middot; Force Main</span>
+  <h1>Wastewater Pump Station Design — Impellers, Wet Wells &amp; Force Mains</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>June 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>12 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="wastewater-pump-station-design.webp" alt="Wastewater pump station design — wet well, submersible pumps and force main">
+</div>
+
+<div class="article-body">
+<p class="lead">A clean-water pump is selected for efficiency. A wastewater pump is selected to <em>keep running</em> — through rags, wipes, grit and grease — and only then for efficiency. Get that order wrong and the station's true cost is measured in blocked impellers, midnight call-outs and septic force mains.</p>
+
+<h2 id="flip">1 · Wastewater flips the design priorities</h2>
+<p>Everything in this station fights you. The fluid carries stringy solids that braid themselves into ropes around impeller vanes, grease that congeals on every surface above the waterline, and grit that settles in any corner where velocity drops. The flow arrives in daily waves you do not control, so the pumps start and stop all day instead of holding a duty point. And whatever sits still for too long — in the wet well or in the force main — turns septic and produces H<sub>2</sub>S, which destroys concrete and announces the station to the neighbourhood.</p>
+
+<p>Hence the design order of a wastewater station, which this article follows:</p>
+<ul class="clean">
+  <li><strong>An impeller that will not clog</strong> on the solids actually arriving — accepting an efficiency penalty with open eyes (Sections 2–3).</li>
+  <li><strong>A force main that scours itself</strong> at least once a day, so grit and grease never accumulate (Sections 4–5).</li>
+  <li><strong>A wet well sized for the motors</strong> — enough active volume that pumps don't cycle to death, small enough that sewage doesn't sit and turn septic (Sections 6–7).</li>
+  <li><strong>Geometry that cleans itself</strong>, because anything that needs a vacuum truck monthly was designed wrong (Section 8).</li>
+</ul>
+
+<div class="callout warn">
+  <span class="lbl">The modern enemy: wipes</span>
+  Sewage has changed. "Flushable" wipes do not disintegrate; they spin into ropes that bridge impeller vanes and choke pumps that handled 1990s sewage happily. Clogging from wipes and rags is today's <strong>failure mode #1</strong> in wastewater pumping — ahead of bearings, seals and motors — and it is a <em>selection</em> problem before it is ever a maintenance problem.
+</div>
+
+<h2 id="impellers">2 · Impeller selection — buying clog resistance with efficiency</h2>
+<p>Every wastewater impeller is a compromise between three things: hydraulic efficiency, <strong>free solids passage</strong> (the largest sphere that passes through), and rag handling (resistance to stringy material wrapping the leading edges). The main families:</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>Wastewater impeller families — typical values for mid-size submersible pumps.</caption>
+  <thead><tr><th>Impeller</th><th class="num">Typical η</th><th class="num">Free passage</th><th>Character</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Two-vane non-clog (closed channel)</strong></td><td class="num">70–80%</td><td class="num">~75–100 mm</td><td>The workhorse for municipal sewage; good η, decent passage; rags can still bridge two leading edges</td></tr>
+    <tr><td><strong>Single-vane non-clog</strong></td><td class="num">65–75%</td><td class="num">~80–100 mm</td><td>One continuous channel — better rag passage than two-vane, slightly lower η, higher unbalance (bearing care)</td></tr>
+    <tr><td><strong>Screw-centrifugal</strong></td><td class="num">75–85%</td><td class="num">~75–100 mm</td><td>Single helical vane "screws" solids through; excellent rag handling <em>and</em> high η; gentle on solids; premium price</td></tr>
+    <tr><td><strong>Vortex (recessed)</strong></td><td class="num">35–50%</td><td class="num">≈ full branch bore</td><td>Impeller sits out of the flow path — solids barely touch it; nearly unclogable and grit-tolerant; pays ~30 efficiency points for it</td></tr>
+    <tr><td><strong>Chopper / grinder</strong></td><td class="num">50–65%</td><td class="num">cuts instead of passing</td><td>Cutting elements shred rags and wipes; for wipes-heavy catchments and small-bore rising mains; sharpening is a maintenance item</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Two selection rules anchor the choice. First, the regulatory floor: pumps handling raw sewage should pass a <strong>75 mm (3 in) sphere</strong> as a minimum — the long-standing Ten-State Standards requirement<sup class="cite">[2]</sup>. Second, match the impeller to the <em>catchment</em>, not the catalogue: a gravity-fed municipal station with upstream screening can run efficient channel impellers; an unscreened station serving a community generous with wipes needs screw-centrifugal, vortex or chopper hydraulics, and the energy bill of that choice should be computed, not feared.</p>
+
+<div class="callout key">
+  <span class="lbl">The honest trade</span>
+  A pump that clogs weekly "saves" energy you never collect: every blockage is a crane lift, two technicians, and an hour of bypass risk. But the reverse mistake is real too — specifying vortex impellers "to be safe" on a screened 200 kW duty wastes tens of thousands of dollars a year (see the chart below, and the <a href="pump-life-cycle-cost.html">life-cycle cost article</a> for the 20-year arithmetic). Quantify both sides; never decide on fear.
+</div>
+
+<h2 id="int-imp">3 · Interactive: the price of clog resistance</h2>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Efficiency vs free passage — and what the gap costs per year</div>
+    <div class="fsub">Each marker is an impeller family (typical mid-size values). Set your duty and operating hours: the readouts price the energy difference between the efficient choice (screw-centrifugal) and the safe choice (vortex) at $0.08/kWh.</div>
+  </div>
+  <div class="chart-box"><canvas id="impChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Station flow <span id="vQ1">60 L/s</span></label>
+      <input type="range" id="sQ1" min="10" max="200" value="60" step="5">
+      <div class="hint">Duty flow per running pump.</div>
+    </div>
+    <div class="ctrl">
+      <label>Total head <span id="vH1">20 m</span></label>
+      <input type="range" id="sH1" min="5" max="60" value="20" step="1">
+      <div class="hint">Static lift + force-main friction at duty.</div>
+    </div>
+    <div class="ctrl">
+      <label>Running hours <span id="vHr1">3000 h/yr</span></label>
+      <input type="range" id="sHr1" min="500" max="8000" value="3000" step="100">
+      <div class="hint">Wastewater duty is intermittent — use the real pumped hours.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Hydraulic power</div><div class="v" id="rPh">11.8 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Screw-centrifugal (80%)</div><div class="v" id="rPsc">14.7 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Vortex (45%)</div><div class="v" id="rPvx">26.2 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Vortex energy premium</div><div class="v" id="rPen">$2,750<small>/yr</small></div></div>
+    <div class="cell"><div class="k">Extra energy</div><div class="v" id="rPenPct">+78 <small>%</small></div></div>
+  </div>
+</div>
+<p class="fig-note">At the default duty the vortex choice costs ≈ $2,750/yr more in electricity — about $32,000 in present value over 20 years. If upstream screening or a screw-centrifugal impeller can handle the catchment's solids reliably, that is the prize. If the station clogs twice a month, $2,750 is the cheapest insurance you will ever buy.</p>
+
+<h2 id="forcemain">4 · The force main — design for scour, check for septicity</h2>
+<p>A wastewater force main has a hydraulic requirement no clean-water main has: it must <strong>resuspend and flush out its own sediment</strong>. Grit settles whenever velocity drops below roughly 0.6 m/s; grease films grow in sluggish mains. The classic criteria<sup class="cite">[2,3]</sup>:</p>
+
+<ul class="clean">
+  <li><strong>v ≥ 0.6 m/s (2 ft/s)</strong> — minimum to keep sewage solids moving; must be reached at least once per day, every day.</li>
+  <li><strong>v ≈ 1.0–1.1 m/s (3.5 ft/s)</strong> — re-suspension velocity: flushes grit that settled during low-flow periods. Good practice is to reach this regularly (e.g. during peak pumping or a deliberate flushing cycle).</li>
+  <li><strong>v ≤ ~2.4–3.0 m/s</strong> — above this, friction and surge pressures climb steeply and energy is wasted; check transients explicitly (see <a href="surge-scenarios-pump-stations.html">surge scenarios in pumping stations</a>).</li>
+</ul>
+
+<div class="eq">\[ v=\frac{Q}{A}=\frac{4Q}{\pi D^2} \qquad\qquad h_f=10.67\,\frac{L\,Q^{1.852}}{C^{1.852}\,D^{4.87}} \;\;\text{(Hazen–Williams)} \]</div>
+
+<p>The diameter decision is therefore a squeeze from both sides: too large and the main never scours (grit bed, grease, rising friction, septicity); too small and friction devours energy and surge margins. <strong>Worked example:</strong> a duty of 60 L/s in DN200 gives \(v = 0.060/0.0314 = 1.91\) m/s — comfortably scouring, ~20 m/km of friction. The same flow in DN300 gives 0.85 m/s: it <em>never</em> reaches re-suspension velocity, and the "conservative" larger pipe quietly becomes a grit trap. The minimum daily flow matters as much as the peak: this station must also push ≥ 28 L/s (the 0.9 m/s flow in DN200) at least once a day.</p>
+
+<div class="callout warn">
+  <span class="lbl">Septicity is a time problem</span>
+  Sulphide generation grows with retention time: as a rule of thumb, keep total time in the wet well plus force main under <strong>30–60 minutes</strong> where possible, and compute the travel time honestly — a 2 km DN200 main holds 63 m³; at an average 20 L/s that is <strong>52 minutes</strong> of anaerobic incubation per slug. Long mains need air/vacuum valves rated for sewage, odour control at the discharge manhole, and sometimes chemical dosing — all cheaper to admit at design stage.
+</div>
+
+<h2 id="int-fm">5 · Interactive: force-main velocity checker</h2>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Velocity vs flow for the DN family — deposition, scour and surge bands</div>
+    <div class="fsub">Each line is one nominal diameter. The marker is your selection. Red band = solids deposit (&lt; 0.6 m/s); amber = marginal (0.6–0.9); green = self-cleansing (0.9–2.4); above 2.4 m/s check friction and surge.</div>
+  </div>
+  <div class="chart-box"><canvas id="fmChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Pumped flow <span id="vQ2">60 L/s</span></label>
+      <input type="range" id="sQ2" min="5" max="150" value="60" step="1">
+      <div class="hint">Flow while pumping (per running combination, not average inflow).</div>
+    </div>
+    <div class="ctrl">
+      <label>Force main diameter <span id="vDN">DN200</span></label>
+      <input type="range" id="sDN" min="0" max="4" value="1" step="1">
+      <div class="hint">DN150 / 200 / 250 / 300 / 350 (ID ≈ nominal).</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Velocity</div><div class="v" id="rV">1.91 <small>m/s</small></div></div>
+    <div class="cell"><div class="k">Status</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVstat"></span></div></div>
+    <div class="cell"><div class="k">Flow at 0.6 m/s</div><div class="v" id="rQ06">19 <small>L/s</small></div></div>
+    <div class="cell"><div class="k">Flow at 0.9 m/s</div><div class="v" id="rQ09">28 <small>L/s</small></div></div>
+    <div class="cell"><div class="k">Friction (C=120)</div><div class="v" id="rHf">21 <small>m/km</small></div></div>
+  </div>
+</div>
+<p class="fig-note">Try the "conservative" mistake: keep 60 L/s and step the diameter up to DN300 — velocity falls to 0.85 m/s, permanently below the re-suspension band. In force mains, <strong>oversizing is not conservative; it is a sedimentation design</strong>. Size for scour at the everyday flow, then verify friction and surge at peak.</p>
+
+<h2 id="wetwell">6 · The wet well — active volume and the cycle-time law</h2>
+<p>A fixed-speed pump in a wet well lives by a simple, brutal rhythm: the well fills, the pump starts, draws the level down, stops, and the well fills again. Too small an active volume and the pump starts so often it cooks its motor and contactor. Too large and sewage sits long enough to go septic. The mathematics is one of the most elegant results in station design.</p>
+
+<p>With pump capacity \(Q_p\) and steady inflow \(q\), one cycle takes the fill time plus the draw-down time of the active volume \(V\):</p>
+
+<div class="eq">\[ T(q)=\frac{V}{q}+\frac{V}{Q_p-q} \qquad\Rightarrow\qquad T_{min}=T\!\left(\tfrac{Q_p}{2}\right)=\frac{4V}{Q_p} \]</div>
+
+<p>The cycle is <em>shortest</em> when inflow equals exactly half the pump capacity — the worst case the design must survive. If the motor allows \(Z\) starts per hour (cycle time \(T_{min} = 3600/Z\) seconds), the minimum active volume follows directly:</p>
+
+<div class="eq">\[ \boxed{\;V_{min}=\frac{T_{min}\,Q_p}{4}=\frac{900\,Q_p}{Z}\;}\qquad (V \text{ in m}^3,\; Q_p \text{ in m}^3/\text{s},\; Z \text{ in starts/hr}) \]</div>
+
+<p><strong>Worked example:</strong> one duty pump at \(Q_p\) = 60 L/s, motor rated for 10 starts/hour → \(T_{min}\) = 360 s → \(V_{min} = 360 \times 0.060 / 4 = \) <strong>5.4 m³</strong> of active volume between start and stop levels. Check the other side: at half-capacity inflow (30 L/s) the well turns over in \(5.4/0.030 = \) 180 s — fresh sewage, no septicity. Both constraints satisfied with metres to spare.</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>Typical allowable starts per hour (confirm with the motor/drive supplier — this is a warranty number, not folklore).</caption>
+  <thead><tr><th>Motor size</th><th class="num">Typical starts/hour</th><th class="num">Min cycle time</th></tr></thead>
+  <tbody>
+    <tr><td>Small submersible ≤ 15 kW</td><td class="num">12–15</td><td class="num">4–5 min</td></tr>
+    <tr><td>15–90 kW</td><td class="num">8–10</td><td class="num">6–8 min</td></tr>
+    <tr><td>&gt; 90 kW, soft-start / large dry-pit</td><td class="num">4–6</td><td class="num">10–15 min</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Three refinements every real design adds: <strong>alternation</strong> of duty pumps multiplies the allowable station starts (two alternating pumps ≈ half the starts each); <strong>staggered stop levels</strong> for lag pumps prevent simultaneous cycling; and a <strong>VFD changes the problem entirely</strong> — at variable speed the pump tracks inflow instead of cycling, and the wet well can shrink toward its septicity-optimal minimum (but verify the force main still sees its scouring velocity at reduced speed — the trap covered in <a href="vfd-myth-hydraulic-design.html">the VFD myth</a>).</p>
+
+<h2 id="int-ww">7 · Interactive: cycle time &amp; active volume</h2>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">The cycle-time U-curve — worst case at half pump capacity</div>
+    <div class="fsub">The curve is cycle time vs inflow for your active volume; the dashed red line is the motor's minimum allowed cycle. If the curve dips below the line, the motor exceeds its start rating. The marker rides the bottom of the U — always at exactly half the pump capacity, however you change the sliders.</div>
+  </div>
+  <div class="chart-box"><canvas id="wwChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Pump capacity <span id="vQp">60 L/s</span></label>
+      <input type="range" id="sQp" min="20" max="200" value="60" step="5">
+      <div class="hint">Duty flow of the running pump — widens the U and moves its centre (Qp/2).</div>
+    </div>
+    <div class="ctrl">
+      <label>Allowed starts <span id="vZ">10 /hr</span></label>
+      <input type="range" id="sZ" min="4" max="15" value="10" step="1">
+      <div class="hint">From the motor datasheet — see the table above.</div>
+    </div>
+    <div class="ctrl">
+      <label>Active volume <span id="vVol">100 % of Vmin</span></label>
+      <input type="range" id="sVol" min="50" max="250" value="100" step="5">
+      <div class="hint">Drag below 100% and watch the curve violate the start limit.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Required Vmin</div><div class="v" id="rVmin">5.4 <small>m³</small></div></div>
+    <div class="cell"><div class="k">Active volume</div><div class="v" id="rVact">5.4 <small>m³</small></div></div>
+    <div class="cell"><div class="k">Worst-case starts</div><div class="v" id="rZw">10 <small>/hr</small></div></div>
+    <div class="cell"><div class="k">Start limit</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rZstat"></span></div></div>
+    <div class="cell"><div class="k">Turnover @ ½Qp</div><div class="v" id="rTurn">3.0 <small>min</small></div></div>
+  </div>
+</div>
+<p class="fig-note">Notice the shape: cycle time rises steeply toward very low and very high inflow — the dangerous zone is the broad middle. This is why "the station is fine at night and fine at peak" proves nothing: the killing inflow is <strong>half the pump capacity</strong>, which most stations cross twice a day, every day.</p>
+
+<h2 id="selfclean">8 · Self-cleaning design — geometry does the maintenance</h2>
+<p>Whatever the level controls do, solids obey the geometry. A wet well that accumulates grease mats and grit cones was shaped wrong on the drawing board:</p>
+
+<ul class="clean">
+  <li><strong>Benching:</strong> slope the floor at 45–60° toward the pump inlets, with no horizontal shelf anywhere below top water level. Flat floor = grit beach.</li>
+  <li><strong>Minimum floor footprint:</strong> the smaller the wetted floor, the higher the local velocities and the less material settles — the active volume should come from <em>depth</em> and the level range, not from a generous plan area.</li>
+  <li><strong>Inlet placement:</strong> drop the incoming sewer where it will not aerate the pump suction or fire a jet across it (free-fall entrains air; air in a sewage impeller means lost capacity and noise). Baffle if the geometry forces a bad angle — and check the suction conditions exactly as in <a href="wet-well-vortex-design.html">the wet-well vortex article</a>.</li>
+  <li><strong>Submergence:</strong> respect the ANSI/HI 9.8 minimum, \(S = D(1+2.3\,Fr_D)\), at the lowest pumping level<sup class="cite">[1]</sup> — vortex-swallowed air is capacity lost precisely when the well is nearly empty and you need the pump most.</li>
+  <li><strong>Trench-type wet wells</strong> (HI 9.8 Appendix): a narrow trench under the pumps with steep side walls, designed to be <strong>pump-down cleaned</strong> — periodically running the last pump below normal stop level so the trench velocity sweeps accumulated solids into the pump. One automated purge cycle a day replaces the vacuum truck.</li>
+  <li><strong>Grease management:</strong> the start/stop level band itself scrubs the walls — a wider operating band passes the waterline over more wall area; combine with washdown provisions at stations receiving restaurant catchments.</li>
+</ul>
+
+<div class="callout green">
+  <span class="lbl">The design test</span>
+  Walk the section drawing and ask: where does a sand grain settle, and where does a wipe-rope lodge, at <em>every</em> water level the controls allow? If the answer anywhere is "on this surface, indefinitely", the geometry — not the operator — owns that problem.
+</div>
+
+<h2 id="checklist">9 · Design checklist</h2>
+<ul class="clean">
+  <li><strong>Impeller:</strong> ≥ 75 mm sphere passage minimum; choose the family from the catchment's solids load and screening, then price the efficiency gap over 20 years — both directions.</li>
+  <li><strong>Redundancy:</strong> N+1 with automatic alternation; peak inflow met with the largest unit out of service.</li>
+  <li><strong>Force main:</strong> ≥ 0.6 m/s daily, ≈ 1.0 m/s regularly for re-suspension, surge-checked at the top end; travel time computed against septicity; sewage-rated air valves at the profile's high points.</li>
+  <li><strong>Wet well volume:</strong> \(V_{min} = 900\,Q_p/Z\) per duty pump, then verify turnover time at average inflow stays within the septicity budget.</li>
+  <li><strong>Levels:</strong> stop level above HI 9.8 submergence; start levels staggered; alarm and overflow levels with genuinely usable freeboard volume.</li>
+  <li><strong>Geometry:</strong> benched floor, minimum footprint, controlled inlet entry, and a pump-down cleaning routine designed in — not retrofitted.</li>
+  <li><strong>Controls:</strong> alternation, anti-cycle timers, minimum-run timers; if VFD, verify force-main scour velocity at minimum speed.</li>
+  <li><strong>Maintainability:</strong> guide-rail lifting clear of the benching, davit reach over each pump, isolation on both sides of every check valve — the best hydraulic design fails if nobody can lift the pump.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  Pick the impeller for the solids, the pipe for the scour, the volume for the motor, and the geometry for self-cleaning — in that order — and the wastewater station becomes what it should be: boring.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>Hydraulic Institute. <em>ANSI/HI 9.8 — Rotodynamic Pumps for Pump Intake Design</em> (wet-well geometry, submergence, trench-type wet wells).</li>
+  <li>GLUMRB. <em>Recommended Standards for Wastewater Facilities</em> ("Ten-State Standards") — solids passage, velocities, wet-well detention.</li>
+  <li>Water Environment Federation. <em>Design of Wastewater and Stormwater Pumping Stations</em>, WEF Manual of Practice No. FD-4.</li>
+  <li>Jones, G.M. (ed.). <em>Pumping Station Design</em>, 3rd ed. Butterworth-Heinemann, 2008 — cycle-time mathematics, force mains, station layout.</li>
+  <li>Metcalf &amp; Eddy / AECOM. <em>Wastewater Engineering: Collection and Pumping of Wastewater.</em> McGraw-Hill.</li>
+  <li>U.S. EPA. <em>Design Manual: Odor and Corrosion Control in Sanitary Sewerage Systems and Treatment Plants</em> (septicity, H₂S, retention time).</li>
+  <li>Xylem/Flygt. <em>Design Recommendations for Pumping Stations with Submersible Sewage Pumps</em> (manufacturer design guide; sump geometry and cleaning functions).</li>
+  <li>Gülich, J.F. <em>Centrifugal Pumps</em>, 4th ed. Springer, 2020 (impeller types and solids-handling hydraulics).</li>
+  <li>Hydraulic Institute. <em>ANSI/HI 9.6.3 — Rotodynamic Pumps: Guideline for Operating Regions.</em></li>
+</ol>
+
+<div class="tags">#WastewaterPumping #PumpStationDesign #WetWell #ForceMain #NonClog #VortexImpeller #ChopperPump #ScouringVelocity #CycleTime #SelfCleaning</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+
+<script>
+const baseLine={borderWidth:2.5,pointRadius:0,tension:0,fill:false};
+
+/* =====================================================================
+   CHART 1 — IMPELLER TRADE-OFF (η vs free passage + annual energy cost)
+   ===================================================================== */
+const TAR1=0.08;
+const FAMS=[
+  {name:'Two-vane non-clog',   x:90,  eta:0.78, color:'#1b4f72'},
+  {name:'Single-vane non-clog',x:100, eta:0.72, color:'#2e86c1'},
+  {name:'Screw-centrifugal',   x:88,  eta:0.80, color:'#1e8449'},
+  {name:'Vortex (recessed)',   x:150, eta:0.45, color:'#c0392b'},
+  {name:'Chopper',             x:35,  eta:0.58, color:'#b9770e'}
+];
+const sQ1=document.getElementById('sQ1'), sH1=document.getElementById('sH1'), sHr1=document.getElementById('sHr1');
+const vQ1=document.getElementById('vQ1'), vH1=document.getElementById('vH1'), vHr1=document.getElementById('vHr1');
+
+let impChart=new Chart(document.getElementById('impChart'),{
+  type:'scatter',
+  data:{datasets:FAMS.map(f=>({label:f.name, data:[{x:f.x,y:f.eta*100}], borderColor:f.color, backgroundColor:f.color, pointRadius:9, pointHoverRadius:11, showLine:false}))},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:0,max:170,title:{display:true,text:'Effective free solids passage  (mm)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:30,max:90,title:{display:true,text:'Typical pump efficiency  (%)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.x} mm passage, η ${c.parsed.y.toFixed(0)}%`}},
+      annotation:{annotations:{
+        floor:{type:'line',xMin:75,xMax:75,borderColor:'rgba(192,57,43,0.5)',borderWidth:1.5,borderDash:[5,4],label:{display:true,content:'75 mm sphere — raw sewage minimum',position:'end',color:'#c0392b',font:{family:'DM Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.88)',rotation:-90}}
+      }}
+    }
+  }
+});
+
+function updateImp(){
+  const Q=+sQ1.value, H=+sH1.value, hrs=+sHr1.value;
+  vQ1.textContent=Q+' L/s'; vH1.textContent=H+' m'; vHr1.textContent=hrs+' h/yr';
+  const Ph=9.81*Q*H/1000;                       // kW hydraulic
+  const Psc=Ph/0.80, Pvx=Ph/0.45;
+  const dCost=(Pvx-Psc)*hrs*TAR1;
+  document.getElementById('rPh').innerHTML  = Ph.toFixed(1)+' <small>kW</small>';
+  document.getElementById('rPsc').innerHTML = Psc.toFixed(1)+' <small>kW</small>';
+  document.getElementById('rPvx').innerHTML = Pvx.toFixed(1)+' <small>kW</small>';
+  document.getElementById('rPen').innerHTML = '$'+Math.round(dCost).toLocaleString('en-US')+'<small>/yr</small>';
+  document.getElementById('rPenPct').innerHTML = '+'+((Pvx/Psc-1)*100).toFixed(0)+' <small>%</small>';
+}
+[sQ1,sH1,sHr1].forEach(s=>s.addEventListener('input',updateImp));
+updateImp();
+
+/* =====================================================================
+   CHART 2 — FORCE-MAIN VELOCITY CHECKER
+   ===================================================================== */
+const DNS=[150,200,250,300,350];
+const FM_COLORS=['#7d3c98','#1b4f72','#2e86c1','#5dade2','#a9cce3'];
+const sQ2=document.getElementById('sQ2'), sDN=document.getElementById('sDN');
+const vQ2=document.getElementById('vQ2'), vDN=document.getElementById('vDN');
+
+function areaOf(dn){ const D=dn/1000; return Math.PI*D*D/4; }
+function vLine(dn){ const pts=[],A=areaOf(dn); for(let q=0;q<=150;q+=2){ const v=q/1000/A; if(v>3.6) break; pts.push({x:q,y:v}); } return pts; }
+function hwSlope(Q,dn){ const D=dn/1000; return 10.67*Math.pow(Q/1000,1.852)/(Math.pow(120,1.852)*Math.pow(D,4.87))*1000; } // m/km
+
+let fmChart=new Chart(document.getElementById('fmChart'),{
+  type:'scatter',
+  data:{datasets:[
+    ...DNS.map((dn,i)=>({label:'DN'+dn, data:vLine(dn), borderColor:FM_COLORS[i], showLine:true, ...baseLine, borderWidth:i===1?3:1.8})),
+    {label:'Your selection', data:[], borderColor:'#b9770e', backgroundColor:'#b9770e', pointRadius:8, showLine:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:0,max:150,title:{display:true,text:'Pumped flow  Q  (L/s)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0,suggestedMax:3.5,title:{display:true,text:'Velocity  v  (m/s)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${Math.round(c.parsed.x)} L/s, ${c.parsed.y.toFixed(2)} m/s`}},
+      annotation:{annotations:{
+        dep:{type:'box',yMin:0,yMax:0.6,backgroundColor:'rgba(192,57,43,0.07)',borderWidth:0,label:{display:true,content:'deposition < 0.6',position:{x:'end',y:'center'},color:'#c0392b',font:{family:'DM Sans',size:10,weight:'600'}}},
+        marg:{type:'box',yMin:0.6,yMax:0.9,backgroundColor:'rgba(185,119,14,0.07)',borderWidth:0,label:{display:true,content:'marginal 0.6–0.9',position:{x:'end',y:'center'},color:'#b9770e',font:{family:'DM Sans',size:10,weight:'600'}}},
+        ok:{type:'box',yMin:0.9,yMax:2.4,backgroundColor:'rgba(30,132,73,0.06)',borderWidth:0,label:{display:true,content:'self-cleansing 0.9–2.4',position:{x:'end',y:'center'},color:'#1e8449',font:{family:'DM Sans',size:10,weight:'600'}}}
+      }}
+    }
+  }
+});
+
+function updateFM(){
+  const Q=+sQ2.value, dn=DNS[+sDN.value], A=areaOf(dn);
+  vQ2.textContent=Q+' L/s'; vDN.textContent='DN'+dn;
+  DNS.forEach((d,i)=>{ fmChart.data.datasets[i].borderWidth = (i===+sDN.value)?3:1.8; });
+  const v=Q/1000/A;
+  fmChart.data.datasets[5].data=[{x:Q,y:v}];
+  fmChart.update('none');
+
+  const q06=0.6*A*1000, q09=0.9*A*1000;
+  document.getElementById('rV').innerHTML=v.toFixed(2)+' <small>m/s</small>';
+  let st;
+  if(v<0.6) st='<span class="badge bad">deposition — solids settle</span>';
+  else if(v<0.9) st='<span class="badge warn">marginal — no re-suspension</span>';
+  else if(v<=2.4) st='<span class="badge good">self-cleansing</span>';
+  else st='<span class="badge warn">high — check friction & surge</span>';
+  document.getElementById('rVstat').innerHTML=st;
+  document.getElementById('rQ06').innerHTML=Math.round(q06)+' <small>L/s</small>';
+  document.getElementById('rQ09').innerHTML=Math.round(q09)+' <small>L/s</small>';
+  document.getElementById('rHf').innerHTML=hwSlope(Q,dn).toFixed(1)+' <small>m/km</small>';
+}
+[sQ2,sDN].forEach(s=>s.addEventListener('input',updateFM));
+updateFM();
+
+/* =====================================================================
+   CHART 3 — WET-WELL CYCLE TIME
+   T(q) = V/q + V/(Qp−q) ;  Tmin = 4V/Qp at q = Qp/2 ;  Vmin = 900·Qp/Z
+   ===================================================================== */
+const sQp=document.getElementById('sQp'), sZ=document.getElementById('sZ'), sVol=document.getElementById('sVol');
+const vQp=document.getElementById('vQp'), vZ=document.getElementById('vZ'), vVol=document.getElementById('vVol');
+
+let wwChart=new Chart(document.getElementById('wwChart'),{
+  type:'scatter',
+  data:{datasets:[
+    {label:'Cycle time at this volume', data:[], borderColor:'#1b4f72', showLine:true, ...baseLine, borderWidth:3},
+    {label:'Worst case (q = Qp/2)', data:[], borderColor:'#b9770e', backgroundColor:'#b9770e', pointRadius:8, showLine:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:0,max:210,title:{display:true,text:'Inflow  q  (L/s)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0,max:18,title:{display:true,text:'Cycle time  (minutes)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: inflow ${c.parsed.x.toFixed(0)} L/s, ${c.parsed.y.toFixed(1)} min`}},
+      annotation:{annotations:{
+        tc:{type:'line',yMin:6,yMax:6,borderColor:'rgba(192,57,43,0.65)',borderWidth:2,borderDash:[6,4],label:{display:true,content:'motor minimum cycle (3600/Z)',position:'end',color:'#c0392b',font:{family:'DM Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.88)'}}
+      }}
+    }
+  }
+});
+
+function updateWW(){
+  const Qp=+sQp.value/1000, Z=+sZ.value, pct=+sVol.value;
+  vQp.textContent=sQp.value+' L/s'; vZ.textContent=Z+' /hr'; vVol.textContent=pct+' % of Vmin';
+
+  const Tc=3600/Z;                       // s
+  const Vmin=Tc*Qp/4;                    // m³
+  const V=Vmin*pct/100;
+
+  const pts=[];
+  for(let p=4;p<=96;p+=0.5){
+    const q=Qp*p/100;                    // m³/s
+    const T=(V/q+V/(Qp-q))/60;           // min
+    pts.push({x:q*1000,y:T});            // x in L/s
+  }
+  wwChart.data.datasets[0].data=pts;
+  const Tworst=4*V/Qp/60;
+  wwChart.data.datasets[1].data=[{x:Qp*1000/2,y:Tworst}];
+  wwChart.options.plugins.annotation.annotations.tc.yMin=Tc/60;
+  wwChart.options.plugins.annotation.annotations.tc.yMax=Tc/60;
+  wwChart.options.scales.y.max=Math.max(12, Math.ceil(3*Tc/60));
+  wwChart.update('none');
+
+  const Zworst=3600/(4*V/Qp);            // starts/hr at worst case
+  document.getElementById('rVmin').innerHTML=Vmin.toFixed(1)+' <small>m³</small>';
+  document.getElementById('rVact').innerHTML=V.toFixed(1)+' <small>m³</small>';
+  document.getElementById('rZw').innerHTML=Zworst.toFixed(1).replace(/\.0$/,'')+' <small>/hr</small>';
+  document.getElementById('rZstat').innerHTML = (Zworst<=Z+1e-9)
+    ? '<span class="badge good">within motor rating</span>'
+    : '<span class="badge bad">exceeds '+Z+' starts/hr</span>';
+  document.getElementById('rTurn').innerHTML=(V/(Qp/2)/60).toFixed(1)+' <small>min</small>';
+}
+[sQp,sZ,sVol].forEach(s=>s.addEventListener('input',updateWW));
+updateWW();
+
+/* ---------- chart resize safety net (fixes 0-width on initial mobile-width load) ---------- */
+window.addEventListener('load',function(){ try{impChart.resize();fmChart.resize();wwChart.resize();}catch(e){} });
+</script>
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

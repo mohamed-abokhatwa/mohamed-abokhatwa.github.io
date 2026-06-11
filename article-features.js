@@ -9,6 +9,7 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'wastewater-pump-station-design.html',   title:'Wastewater Pump Station Design — Impellers, Wet Wells & Force Mains',                                    cat:'pumps',       thumb:'wastewater-pump-station-design.webp',  mins:12, tag:'Pump Engineering · Wastewater' },
     { url:'pump-life-cycle-cost.html',             title:'Life-Cycle Cost & Energy Efficiency — Where the Real Money Sits',                                        cat:'pumps',       thumb:'pump-life-cycle-cost.webp',            mins:11, tag:'Pump Engineering · Life-Cycle Cost' },
     { url:'reading-pump-curves.html',              title:'Reading Manufacturer Pump Curves Properly',                                                              cat:'pumps',       thumb:'reading-pump-curves.webp',             mins:13, tag:'Pump Engineering · Curve Reading' },
     { url:'parallel-series-pump-operation.html',   title:'Parallel & Series Operation and Pump Staging',                                                           cat:'pumps',       thumb:'parallel-series-pump-operation.webp',  mins:11, tag:'Pump Hydraulics · Parallel & Series' },

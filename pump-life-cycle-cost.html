@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pump Life-Cycle Cost &amp; Energy Efficiency — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Water Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    /* equations (MathJax) */
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    /* callouts */
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    /* tables */
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    /* interactive figure — a self-contained light instrument panel, legible in both themes */
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    /* references */
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="A design-grade treatment of pump life-cycle cost: the Europump/HI LCC methodology, present-value mathematics, specific energy (kWh/m³) benchmarking, MEI and IE efficiency floors — and a 20-year worked example showing where the real money sits, with three interactive cost explorers.">
+  <meta property="og:title" content="Pump Life-Cycle Cost & Energy Efficiency | Mohamed Abokhatwa">
+  <meta property="og:description" content="Purchase price is ~6% of what a continuously running pump costs over 20 years — energy is ~84%. LCC methodology, kWh/m³ benchmarking, MEI floors, and the efficiency premium that pays for itself in under 2 years.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/pump-life-cycle-cost.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-pump-life-cycle-cost.jpg">
+  <meta property="og:image:alt" content="Pump Life-Cycle Cost and Energy Efficiency">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pump Life-Cycle Cost & Energy Efficiency | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="The cheapest pump is rarely the cheapest pump. Europump/HI LCC methodology, specific energy benchmarking, MEI — and where the real money sits over 20 years.">
+  <link rel="canonical" href="https://abokhatwa.com/pump-life-cycle-cost.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Pump Life-Cycle Cost & Energy Efficiency",
+  "description": "A design-grade treatment of pump life-cycle cost: the Europump/HI LCC methodology, present-value mathematics, specific energy (kWh/m³) benchmarking, MEI and IE efficiency floors — and a 20-year worked example showing where the real money sits.",
+  "image": "https://abokhatwa.com/og-pump-life-cycle-cost.jpg",
+  "datePublished": "2026-06-11",
+  "dateModified": "2026-06-11",
+  "author": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa",
+    "url": "https://abokhatwa.com/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abokhatwa.com/pump-life-cycle-cost.html"
+  }
+}
+  </script>
+<style>
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--text-primary);}
+.breadcrumb-sep{opacity:.4;}
+.breadcrumb-current{color:var(--text-secondary);}.breadcrumb a.breadcrumb-current{color:var(--accent);}.breadcrumb a.breadcrumb-current:hover{opacity:.75;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+<div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="pump-engineering.html" class="breadcrumb-current">Pump Engineering</a></div>
+  <span class="tag">Pump Engineering &middot; Life-Cycle Cost &middot; Energy Efficiency &middot; LCC</span>
+  <h1>Life-Cycle Cost &amp; Energy Efficiency — Where the Real Money Sits</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>June 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>12 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="pump-life-cycle-cost.webp" alt="Pump life-cycle cost and energy efficiency over twenty years">
+</div>
+
+<div class="article-body">
+<p class="lead">The purchase price of a continuously running water pump is roughly 6% of what it will cost you over twenty years. Energy is over 80%. Every procurement decision made on capital price alone is a decision to overpay — quietly, monthly, for two decades.</p>
+
+<h2 id="iceberg">1 · The iceberg: what a pump actually costs</h2>
+<p>Life-cycle cost (LCC) analysis, formalised by the joint <strong>Europump / Hydraulic Institute</strong> methodology<sup class="cite">[1]</sup>, prices a pumping system across its whole service life, not at the purchase order. The method sums eight cost elements:</p>
+
+<div class="eq">\[ LCC = C_{ic} + C_{in} + C_{e} + C_{o} + C_{m} + C_{s} + C_{env} + C_{d} \]</div>
+
+<div class="tbl-wrap">
+<table>
+  <caption>The eight Europump/HI cost elements — and who typically "owns" each one.</caption>
+  <thead><tr><th>Element</th><th>What it covers</th><th>Typical share*</th></tr></thead>
+  <tbody>
+    <tr><td><strong>C<sub>ic</sub></strong> — initial cost</td><td>Pump, motor, drive, base — the purchase order</td><td class="num">5–15%</td></tr>
+    <tr><td><strong>C<sub>in</sub></strong> — installation</td><td>Civil, piping, electrical, commissioning</td><td class="num">3–10%</td></tr>
+    <tr><td><strong>C<sub>e</sub></strong> — energy</td><td>Electricity over the service life</td><td class="num"><strong>40–85%</strong></td></tr>
+    <tr><td><strong>C<sub>o</sub></strong> — operation</td><td>Labour and supervision attributable to the system</td><td class="num">2–8%</td></tr>
+    <tr><td><strong>C<sub>m</sub></strong> — maintenance</td><td>Routine and predicted repairs, spares, overhauls</td><td class="num">5–15%</td></tr>
+    <tr><td><strong>C<sub>s</sub></strong> — downtime</td><td>Loss of production / service when the system stops</td><td class="num">site-specific</td></tr>
+    <tr><td><strong>C<sub>env</sub></strong> — environmental</td><td>Disposal of parts, contamination, permits</td><td class="num">&lt;2%</td></tr>
+    <tr><td><strong>C<sub>d</sub></strong> — decommissioning</td><td>Removal and site restoration at end of life</td><td class="num">&lt;1%</td></tr>
+  </tbody>
+</table>
+</div>
+<p style="font-size:13px;color:var(--text-tertiary);margin-top:-12px;">* Across all pump types the industry-average energy share is ~40–50%<sup class="cite">[1,2]</sup>; for continuously running water transmission and distribution pumps it is routinely 70–85%, as the worked example below shows.</p>
+
+<p>Because the costs arrive in different years, they must be compared in <strong>present value</strong>. A recurring annual cost \(C_a\) over \(n\) years at discount rate \(r\) is worth today:</p>
+
+<div class="eq">\[ PV = C_a \cdot \frac{1-(1+r)^{-n}}{r} \qquad\text{e.g. } n=20,\; r=6\% \;\Rightarrow\; PV = 11.47\,C_a \]</div>
+
+<p>That factor of <strong>11.47</strong> is the whole story in one number: every dollar of annual energy cost you design into the system today is an <em>eleven-and-a-half dollar</em> commitment in present-value terms. (The same mathematics — as a capital recovery factor — drives the <a href="calculators.html#economic-pipe-diameter">economic pipe diameter calculator</a>.)</p>
+
+<div class="callout key">
+  <span class="lbl">The procurement trap</span>
+  Capital cost is visible, budgeted and negotiated once; energy is invisible, unbudgeted at tender stage, and paid 175,000 hours in a row. Any evaluation that scores bids on purchase price without a priced energy clause systematically selects the <strong>most expensive</strong> system. The fix is procedural, not technical: put kWh/m³ — with a guarantee and a test standard — in the bid evaluation formula.
+</div>
+
+<h2 id="int-lcc">2 · Interactive: the 20-year cost explorer</h2>
+<p>Set your station's numbers and watch where the money goes. The chart accumulates each cost in present value, year by year; the dashed line is everything you paid on day one.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Cumulative present-value cost over 20 years</div>
+    <div class="fsub">Capital (pump + installation, dashed) is paid once at year 0. Energy (blue) and maintenance (green) accumulate — discounted at your rate. The amber line is total LCC. Capital is estimated at $600/kW installed; maintenance at 6% of capital per year.</div>
+  </div>
+  <div class="chart-box"><canvas id="lccChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Absorbed power P2 <span id="vP2">200 kW</span></label>
+      <input type="range" id="sP2" min="50" max="500" value="200" step="10">
+      <div class="hint">Shaft power at duty — read it off the curve sheet, at your duty.</div>
+    </div>
+    <div class="ctrl">
+      <label>Operating hours <span id="vHrs">6000 h/yr</span></label>
+      <input type="range" id="sHrs" min="2000" max="8760" value="6000" step="40">
+      <div class="hint">Continuous transmission duty ≈ 6,000–8,760 h/yr.</div>
+    </div>
+    <div class="ctrl">
+      <label>Electricity tariff <span id="vTar">0.08 $/kWh</span></label>
+      <input type="range" id="sTar" min="4" max="20" value="8" step="1">
+      <div class="hint">Blended industrial tariff.</div>
+    </div>
+    <div class="ctrl">
+      <label>Discount rate <span id="vDis">6 %</span></label>
+      <input type="range" id="sDis" min="0" max="12" value="6" step="0.5">
+      <div class="hint">Real (inflation-adjusted) cost of capital.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">20-yr LCC (PV)</div><div class="v" id="rLCC">$1.30<small>M</small></div></div>
+    <div class="cell"><div class="k">Energy share</div><div class="v" id="rEshare">84 <small>%</small></div></div>
+    <div class="cell"><div class="k">Energy / year</div><div class="v" id="rEyr">1.20 <small>GWh</small></div></div>
+    <div class="cell"><div class="k">Energy = capital by</div><div class="v" id="rCross">year 2</div></div>
+  </div>
+</div>
+<p class="fig-note">On the defaults — a 200 kW pump at 6,000 h/yr — the energy bill overtakes the <em>entire installed capital cost</em> during <strong>year 2</strong>, and never looks back. Drag the hours up to 8,760 (continuous) and it happens within the first 14 months.</p>
+
+<h2 id="worked">3 · Worked example — a 200 kW transmission pump, priced honestly</h2>
+<p>A transmission pump absorbs 200 kW at duty and runs 6,000 h/yr. Electricity costs $0.08/kWh; the discount rate is 6%; the horizon is 20 years. Energy per year: \(200 \times 6{,}000 = 1.2\) GWh → $96,000/yr.</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>20-year life-cycle cost in present value (r = 6%).</caption>
+  <thead><tr><th>Cost element</th><th class="num">Basis</th><th class="num">Present value</th><th class="num">Share</th></tr></thead>
+  <tbody>
+    <tr><td>Pump + motor purchase</td><td class="num">paid year 0</td><td class="num">$80,000</td><td class="num">6.1%</td></tr>
+    <tr><td>Installation &amp; commissioning</td><td class="num">paid year 0</td><td class="num">$40,000</td><td class="num">3.0%</td></tr>
+    <tr><td><strong>Energy</strong></td><td class="num">$96,000/yr × 11.47</td><td class="num"><strong>$1,101,000</strong></td><td class="num"><strong>83.7%</strong></td></tr>
+    <tr><td>Maintenance &amp; spares</td><td class="num">$8,000/yr × 11.47</td><td class="num">$91,800</td><td class="num">7.0%</td></tr>
+    <tr><td>Decommissioning</td><td class="num">$10,000 in year 20</td><td class="num">$3,100</td><td class="num">0.2%</td></tr>
+    <tr><td><strong>Total LCC</strong></td><td class="num"></td><td class="num"><strong>$1,316,000</strong></td><td class="num">100%</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Read the shares again: the item every tender meeting argues about — the purchase price — is <strong>6%</strong> of the truth. The item almost no tender meeting prices — energy — is <strong>84%</strong>. The pump is not a product purchase; it is an energy contract with a machine attached.</p>
+
+<div class="callout">
+  <span class="lbl">What one efficiency point is worth here</span>
+  At this duty, raising wire-to-water efficiency by a single percentage point cuts absorbed power by ≈ 2.5 kW, worth ≈ $1,200/yr — about <strong>$13,600 in present value over 20 years, per point</strong>. A pump 5 points better than the cheap alternative is "worth" $68,000 extra before it costs you anything. That arithmetic, not the brochure, is how selection should be scored.
+</div>
+
+<h2 id="premium">4 · The efficiency premium — paying more to pay less</h2>
+<p>The standard procurement dilemma: Pump A is cheaper; Pump B costs more but is more efficient. The LCC method converts the dilemma into arithmetic. With duty 1,000 m³/h at 50 m, hydraulic power is fixed at \(P_{hyd}=\rho g Q H = 136.3\) kW — what varies is how much electricity each pump's <strong>wire-to-water efficiency</strong> needs to deliver it:</p>
+
+<div class="eq">\[ P_{wire}=\frac{\rho\, g\, Q\, H}{3.6\times 10^{6}\,\eta_{wire\text{-}to\text{-}water}} \qquad \eta_{w2w}=\eta_{pump}\cdot\eta_{motor}\cdot\eta_{drive} \]</div>
+
+<div class="tbl-wrap">
+<table>
+  <caption>Two compliant bids for the same duty (1,000 m³/h @ 50 m, 6,000 h/yr, $0.08/kWh).</caption>
+  <thead><tr><th></th><th class="num">Pump A (low bid)</th><th class="num">Pump B (+$12,000)</th><th class="num">Difference</th></tr></thead>
+  <tbody>
+    <tr><td>Wire-to-water efficiency</td><td class="num">72%</td><td class="num">78%</td><td class="num">+6 pts</td></tr>
+    <tr><td>Absorbed power</td><td class="num">189.2 kW</td><td class="num">174.7 kW</td><td class="num">−14.6 kW</td></tr>
+    <tr><td>Energy cost / year</td><td class="num">$90,800</td><td class="num">$83,800</td><td class="num">−$7,000</td></tr>
+    <tr><td>Simple payback of premium</td><td class="num">—</td><td class="num"></td><td class="num"><strong>1.7 years</strong></td></tr>
+    <tr><td>20-yr PV saving (after premium)</td><td class="num">—</td><td class="num"></td><td class="num"><strong>≈ $68,000</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Pump B repays its premium before the second summer and then returns roughly <em>five times the premium</em> in present value. And this is the conservative version: it assumes both pumps hold their efficiency for 20 years, while in reality the cheaper hydraulic tends to be the one running further from BEP, eroding faster — see <a href="sustainable-pump-selection.html">sustainable pump selection</a>.</p>
+
+<h2 id="int-premium">5 · Interactive: is the better pump worth it?</h2>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Cumulative cost of two bids — watch them cross</div>
+    <div class="fsub">Both lines include capital at year 0 plus discounted energy (duty 1,000 m³/h @ 50 m, 6,000 h/yr, r = 6%). Where the premium pump's line drops below the cheap pump's line is the payback point.</div>
+  </div>
+  <div class="chart-box"><canvas id="premChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Premium for Pump B <span id="vDC">$12,000</span></label>
+      <input type="range" id="sDC" min="0" max="50000" value="12000" step="1000">
+      <div class="hint">Extra capital vs the low bid (base price $80,000).</div>
+    </div>
+    <div class="ctrl">
+      <label>Pump A — η wire-to-water <span id="vEA">72 %</span></label>
+      <input type="range" id="sEA" min="55" max="85" value="72" step="1">
+      <div class="hint">Pump × motor × drive, all at the duty point.</div>
+    </div>
+    <div class="ctrl">
+      <label>Pump B — η wire-to-water <span id="vEB">78 %</span></label>
+      <input type="range" id="sEB" min="55" max="90" value="78" step="1">
+      <div class="hint">Set it below Pump A and watch the verdict flip.</div>
+    </div>
+    <div class="ctrl">
+      <label>Electricity tariff <span id="vTar2">0.08 $/kWh</span></label>
+      <input type="range" id="sTar2" min="4" max="20" value="8" step="1">
+      <div class="hint">Higher tariffs shorten every payback.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Power saved</div><div class="v" id="rDkw">14.6 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Saving / year</div><div class="v" id="rSave">$7,000</div></div>
+    <div class="cell"><div class="k">Simple payback</div><div class="v" id="rPB">1.7 <small>yr</small></div></div>
+    <div class="cell"><div class="k">20-yr PV saving</div><div class="v" id="rNPV">$68,200</div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVerdict"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">Try the stress test every evaluation should run: halve the tariff to $0.04 — Pump B <em>still</em> pays back in under 4 years. Efficiency premiums on continuously running pumps survive almost any realistic assumption; that is why scoring them out of the bid is indefensible.</p>
+
+<h2 id="specific-energy">6 · Specific energy — the KPI that cuts through</h2>
+<p>Power tells you what the pump draws; it does not tell you whether that is <em>good</em>. The benchmarking metric that does is <strong>specific energy</strong> — kilowatt-hours per cubic metre delivered:</p>
+
+<div class="eq">\[ E_s=\frac{P_{wire}}{Q}=\frac{\rho\, g\, H}{3.6\times 10^{6}\,\eta_{w2w}} \;\;\text{kWh/m}^3 \;=\; 0.002725\,\frac{H}{\eta_{w2w}} \]</div>
+
+<p>Three properties make it the right KPI:</p>
+<ul class="clean">
+  <li><strong>It is flow-independent</strong> — only head and wire-to-water efficiency remain, so stations of different sizes become directly comparable.</li>
+  <li><strong>It prices the whole chain</strong> — a worn impeller, a throttled valve, an IE1 motor and an oversized pump all surface as the same symptom: more kWh per m³.</li>
+  <li><strong>It is trendable from SCADA</strong> — energy meter ÷ flow meter, computed monthly. Rising \(E_s\) at constant head is the cheapest condition-monitoring instrument you will ever install.</li>
+</ul>
+
+<p>Two warnings keep it honest. First, compare like with like — \(E_s\) scales with head, so a 150 m booster is not "worse" than a 30 m distribution pump; benchmark against the <em>same duty</em>, or normalise as \(E_s/H\) (kWh/m³ per metre of lift). Second, in branched systems compute it per pumping stage, not for the network average, or good and bad stations cancel each other out<sup class="cite">[9]</sup>.</p>
+
+<h2 id="int-es">7 · Interactive: benchmark your station</h2>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Specific energy vs wire-to-water efficiency — where do you sit?</div>
+    <div class="fsub">The curve is E<sub>s</sub> for your head across the full efficiency range; the marker is your station. The shaded band (η ≥ 75%) is where a well-engineered, well-selected, well-maintained system should operate. Annual figures use 6,000 h/yr.</div>
+  </div>
+  <div class="chart-box"><canvas id="esChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Total head <span id="vH3">50 m</span></label>
+      <input type="range" id="sH3" min="10" max="150" value="50" step="5">
+      <div class="hint">Static + friction at the duty point.</div>
+    </div>
+    <div class="ctrl">
+      <label>Wire-to-water efficiency <span id="vEff3">72 %</span></label>
+      <input type="range" id="sEff3" min="40" max="90" value="72" step="1">
+      <div class="hint">From SCADA: hydraulic power out ÷ electrical power in.</div>
+    </div>
+    <div class="ctrl">
+      <label>Station flow <span id="vQ3">1000 m³/h</span></label>
+      <input type="range" id="sQ3" min="100" max="3000" value="1000" step="50">
+      <div class="hint">Scales the annual energy, cost and CO₂ figures.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Specific energy</div><div class="v" id="rEs">0.189 <small>kWh/m³</small></div></div>
+    <div class="cell"><div class="k">Energy / year</div><div class="v" id="rEgy">1.14 <small>GWh</small></div></div>
+    <div class="cell"><div class="k">Cost / year ($0.08)</div><div class="v" id="rCost">$90,800</div></div>
+    <div class="cell"><div class="k">CO₂ / year (0.45 kg/kWh)</div><div class="v" id="rCO2">511 <small>t</small></div></div>
+  </div>
+</div>
+<p class="fig-note">Slide the efficiency from 72% to 78% — six points — and watch ≈ $7,000/yr and ≈ 39 tonnes of CO₂/yr disappear at this single station. Now imagine the utility has forty stations. Specific energy is where energy programmes and <a href="envision-sustainability.html">sustainability commitments</a> stop being slogans and become a number with a trend line.</p>
+
+<h2 id="mei">8 · MEI and the regulatory floor</h2>
+<p>Since 2013 the EU Ecodesign framework has made the worst pumps illegal to sell, using the <strong>Minimum Efficiency Index (MEI)</strong> — a statistical ranking of a pump's hydraulic efficiency (at 75%, 100% and 110% of BEP flow) against the market distribution of its type<sup class="cite">[3]</sup>:</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>MEI under EU Regulation 547/2012 (clean-water pumps: end-suction, in-line, vertical &amp; submersible multistage).</caption>
+  <thead><tr><th class="num">MEI</th><th>Meaning</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td class="num">0.10</td><td>Worst 10% of the 2012 market excluded</td><td>Mandatory from Jan 2013</td></tr>
+    <tr><td class="num"><strong>0.40</strong></td><td>Worst 40% excluded</td><td><strong>Mandatory from Jan 2015 — the current floor</strong></td></tr>
+    <tr><td class="num">0.70</td><td>Roughly the best third of the market</td><td>The benchmark value — specify it, don't just accept 0.40</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Three design-desk consequences:</p>
+<ul class="clean">
+  <li><strong>MEI ≥ 0.4 is a floor, not a target.</strong> It only removes the catastrophically bad. For continuously running duties, specifying MEI ≥ 0.7 costs little and bakes the efficiency premium of Section 4 into the tender.</li>
+  <li><strong>The motor has its own floor:</strong> EU 2019/1781 mandates <strong>IE3</strong> for most motors 0.75–1,000 kW (since July 2021) and <strong>IE4</strong> for 75–200 kW (since July 2023)<sup class="cite">[4]</sup>. An IE3→IE4 step is worth ~1 efficiency point — recall what a point is worth from Section 3.</li>
+  <li><strong>MEI rates the bare pump, not your system.</strong> A MEI 0.7 pump selected off-BEP, throttled, or driven through a poor system curve can still produce a dreadful kWh/m³ — which is why Europump's <em>Extended Product Approach</em> evaluates pump + motor + drive against the actual load profile<sup class="cite">[6]</sup>. Regulation trims the worst hardware; only design controls the energy bill.</li>
+</ul>
+
+<h2 id="where">9 · Where the real money hides — ranked</h2>
+<p>Pulling the article together: over a 20-year horizon, these are the decisions that actually move the LCC of a typical water pumping system, in descending order of leverage:</p>
+
+<ul class="clean">
+  <li><strong>1. The system you make the pump fight</strong> — pipe diameter, fittings and control philosophy set the head. Friction head is purchased in perpetuity: the <a href="calculators.html#economic-pipe-diameter">economic diameter</a> trade-off and valve-free control (VFD vs throttling — see <a href="vfd-myth-hydraulic-design.html">the VFD myth</a>) dwarf every hardware choice.</li>
+  <li><strong>2. Where the duty sits on the curve</strong> — a pump at 80% of BEP burns the brochure efficiency; the <a href="system-head-curve-operating-point.html">oversizing trap</a> is an LCC catastrophe sold as "margin". Staging and <a href="parallel-series-pump-operation.html">parallel operation</a> decide this for every flow the station actually sees, not just the design point.</li>
+  <li><strong>3. Wire-to-water hardware</strong> — pump MEI/efficiency, motor IE class, drive losses. This is the 1.7-year-payback territory of Section 4.</li>
+  <li><strong>4. Keeping it there</strong> — wear ring clearances, impeller condition, alignment. A 3–5 point efficiency erosion between overhauls is common and invisible without the \(E_s\) trend.</li>
+  <li><strong>5. The tariff structure</strong> — time-of-use pumping against storage can cut $/kWh without touching a single machine; it needs the storage and controls designed in from day one.</li>
+</ul>
+
+<div class="callout warn">
+  <span class="lbl">The mistake that outranks them all</span>
+  Treating LCC as a report written <em>after</em> selection to justify it. The Europump/HI method is a <strong>comparison tool between design alternatives while they are still alternatives</strong> — two diameters, two control philosophies, two staging plans, two bids. Run it at concept stage with honest hours and tariffs, and the 20-year answer usually contradicts the capital-cost answer. That contradiction is the entire value of the method.
+</div>
+
+<h2 id="checklist">10 · LCC checklist for the design desk</h2>
+<ul class="clean">
+  <li><strong>Price energy at concept stage</strong> — duty power × real operating hours × tariff × PV factor, for every alternative on the table.</li>
+  <li><strong>Use honest hours</strong> — the load profile (how many hours at which flow), not the design point alone; that is the Extended Product Approach in one sentence.</li>
+  <li><strong>Put kWh/m³ in the tender</strong> — guaranteed at stated duties, tested per ISO 9906 / HI 14.6 (grade specified — see <a href="reading-pump-curves.html">reading pump curves properly</a>), with damages tied to the shortfall.</li>
+  <li><strong>Specify MEI ≥ 0.7 and the IE class</strong>, not just "compliant".</li>
+  <li><strong>Score bids on PV of (capital + energy + maintenance)</strong> — never on capital alone.</li>
+  <li><strong>Trend specific energy monthly</strong> from SCADA per station; investigate any sustained rise at constant head.</li>
+  <li><strong>Re-run the LCC at major renewals</strong> — an impeller replacement is a free opportunity to re-select for the duty the station actually runs, which is rarely the duty it was designed for.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  Over twenty years the purchase price is a rounding error and the energy bill is the asset. Design the system head down, put the duty on BEP, buy the efficiency premium, and measure kWh/m³ forever — that is where the real money sits.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>Europump &amp; Hydraulic Institute. <em>Pump Life Cycle Costs: A Guide to LCC Analysis for Pumping Systems</em>, 2nd ed. — the founding methodology and the eight cost elements.</li>
+  <li>U.S. DOE &amp; Hydraulic Institute. <em>Improving Pumping System Performance: A Sourcebook for Industry</em>, 2nd ed.</li>
+  <li>European Commission Regulation (EU) No 547/2012 — ecodesign requirements for water pumps (MEI), implementing Directive 2009/125/EC.</li>
+  <li>European Commission Regulation (EU) 2019/1781 — ecodesign requirements for electric motors and variable speed drives (IE classes).</li>
+  <li>Hydraulic Institute. <em>ANSI/HI 9.6.3 — Rotodynamic Pumps: Guideline for Operating Regions (POR / AOR).</em></li>
+  <li>Europump. <em>Extended Product Approach for Pumps</em> — energy assessment of pump + motor + drive against load profiles, 2014.</li>
+  <li>ISO/ASME 14414:2019. <em>Pump system energy assessment.</em></li>
+  <li>Jones, G.M. (ed.). <em>Pumping Station Design</em>, 3rd ed. Butterworth-Heinemann, 2008.</li>
+  <li>Gülich, J.F. <em>Centrifugal Pumps</em>, 4th ed. Springer, 2020.</li>
+  <li>Hydraulic Institute. <em>ANSI/HI 14.6 — Rotodynamic Pumps for Hydraulic Performance Acceptance Tests.</em></li>
+</ol>
+
+<div class="tags">#LifeCycleCost #LCC #EnergyEfficiency #SpecificEnergy #kWhm3 #MEI #PumpSelection #WireToWater #WaterEngineering #Sustainability</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+
+<script>
+/* ---------- shared economics ---------- */
+const YEARS=20;
+function annuity(n,r){ return r>0 ? (1-Math.pow(1+r,-n))/r : n; }
+const baseLine={borderWidth:2.5,pointRadius:0,tension:0,fill:false};
+const fmtK=v=>'$'+Math.round(v/1000)+'k';
+const fmtM=v=>'$'+(v/1e6).toFixed(2)+'M';
+function fmtMoney(v){ return v>=1e6 ? fmtM(v) : '$'+Math.round(v).toLocaleString('en-US'); }
+
+/* =====================================================================
+   CHART 1 — 20-YEAR LCC EXPLORER
+   capital $600/kW installed · maintenance 6% of capital per year
+   ===================================================================== */
+const sP2=document.getElementById('sP2'), sHrs=document.getElementById('sHrs'), sTar=document.getElementById('sTar'), sDis=document.getElementById('sDis');
+const vP2=document.getElementById('vP2'), vHrs=document.getElementById('vHrs'), vTar=document.getElementById('vTar'), vDis=document.getElementById('vDis');
+
+let lccChart=new Chart(document.getElementById('lccChart'),{
+  type:'scatter',
+  data:{datasets:[
+    {label:'Capital (paid at year 0)', data:[], borderColor:'rgba(91,107,123,0.7)', showLine:true, ...baseLine, borderDash:[6,4], borderWidth:2},
+    {label:'Cumulative energy (PV)', data:[], borderColor:'#1b4f72', showLine:true, ...baseLine, borderWidth:3},
+    {label:'Cumulative maintenance (PV)', data:[], borderColor:'#1e8449', showLine:true, ...baseLine, borderWidth:2},
+    {label:'Total LCC (PV)', data:[], borderColor:'#b9770e', showLine:true, ...baseLine, borderWidth:3},
+    {label:'Energy = capital', data:[], borderColor:'#c0392b', backgroundColor:'#c0392b', pointRadius:7, showLine:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:0,max:YEARS,title:{display:true,text:'Year',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},stepSize:2}},
+      y:{min:0,title:{display:true,text:'Cumulative present value  (US$ ×1000)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>v/1000}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: year ${(+c.parsed.x).toFixed(1).replace(/\.0$/,'')}, ${fmtK(c.parsed.y)}`}}
+    }
+  }
+});
+
+function updateLCC(){
+  const P2=+sP2.value, hrs=+sHrs.value, tar=+sTar.value/100, r=+sDis.value/100;
+  vP2.textContent=P2+' kW'; vHrs.textContent=hrs+' h/yr'; vTar.textContent=tar.toFixed(2)+' $/kWh'; vDis.textContent=(+sDis.value).toFixed(1).replace('.0','')+' %';
+
+  const capital=600*P2;                  // pump + motor + installation
+  const maintYr=0.06*capital;
+  const energyYr=P2*hrs*tar;             // $
+  const kwhYr=P2*hrs;
+
+  const cap=[], ce=[], cm=[], tot=[];
+  for(let n=0;n<=YEARS;n++){
+    const a=annuity(n,r);
+    const e=energyYr*a, m=maintYr*a;
+    cap.push({x:n,y:capital}); ce.push({x:n,y:e}); cm.push({x:n,y:m}); tot.push({x:n,y:capital+e+m});
+  }
+  /* exact crossing: energyYr·annuity(t) = capital → t = −ln(1−r·a*)/ln(1+r), a* = capital/energyYr */
+  let cross=null;
+  const aStar=capital/energyYr;
+  if(r>0){ if(r*aStar<1){ const t=Math.log(1-r*aStar)/-Math.log(1+r); if(t<=YEARS) cross=t; } }
+  else if(aStar<=YEARS) cross=aStar;
+  lccChart.data.datasets[0].data=cap;
+  lccChart.data.datasets[1].data=ce;
+  lccChart.data.datasets[2].data=cm;
+  lccChart.data.datasets[3].data=tot;
+  lccChart.data.datasets[4].data = cross!==null ? [{x:cross,y:capital}] : [];
+  lccChart.update('none');
+
+  const lcc=capital+energyYr*annuity(YEARS,r)+maintYr*annuity(YEARS,r);
+  const eShare=energyYr*annuity(YEARS,r)/lcc*100;
+  document.getElementById('rLCC').innerHTML = (lcc>=1e6 ? '$'+(lcc/1e6).toFixed(2)+'<small>M</small>' : '$'+Math.round(lcc/1000)+'<small>k</small>');
+  document.getElementById('rEshare').innerHTML = eShare.toFixed(0)+' <small>%</small>';
+  document.getElementById('rEyr').innerHTML = (kwhYr/1e6).toFixed(2)+' <small>GWh</small>';
+  document.getElementById('rCross').textContent = cross!==null ? 'year '+Math.max(1,Math.ceil(cross)) : 'beyond 20 yr';
+}
+[sP2,sHrs,sTar,sDis].forEach(s=>s.addEventListener('input',updateLCC));
+updateLCC();
+
+/* =====================================================================
+   CHART 2 — EFFICIENCY PREMIUM PAYBACK
+   duty 1000 m³/h @ 50 m → hydraulic 136.25 kW · 6000 h/yr · r = 6%
+   ===================================================================== */
+const PHYD=1000*9.81*1000*50/3.6e6;      // 136.25 kW
+const HRS2=6000, R2=0.06, CAP_A=80000;
+const sDC=document.getElementById('sDC'), sEA=document.getElementById('sEA'), sEB=document.getElementById('sEB'), sTar2=document.getElementById('sTar2');
+const vDC=document.getElementById('vDC'), vEA=document.getElementById('vEA'), vEB=document.getElementById('vEB'), vTar2=document.getElementById('vTar2');
+
+let premChart=new Chart(document.getElementById('premChart'),{
+  type:'scatter',
+  data:{datasets:[
+    {label:'Pump A — low bid', data:[], borderColor:'#c0392b', showLine:true, ...baseLine, borderWidth:2.5},
+    {label:'Pump B — efficiency premium', data:[], borderColor:'#1b4f72', showLine:true, ...baseLine, borderWidth:2.5},
+    {label:'Payback point', data:[], borderColor:'#1e8449', backgroundColor:'#1e8449', pointRadius:7, showLine:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:0,max:YEARS,title:{display:true,text:'Year',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},stepSize:2}},
+      y:{min:0,title:{display:true,text:'Cumulative cost: capital + energy (PV, US$ ×1000)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>v/1000}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: year ${(+c.parsed.x).toFixed(1).replace(/\.0$/,'')}, ${fmtK(c.parsed.y)}`}}
+    }
+  }
+});
+
+function updatePrem(){
+  const dC=+sDC.value, eA=+sEA.value/100, eB=+sEB.value/100, tar=+sTar2.value/100;
+  vDC.textContent='$'+dC.toLocaleString('en-US'); vEA.textContent=sEA.value+' %'; vEB.textContent=sEB.value+' %'; vTar2.textContent=tar.toFixed(2)+' $/kWh';
+
+  const PA=PHYD/eA, PB=PHYD/eB;
+  const costA=PA*HRS2*tar, costB=PB*HRS2*tar;
+  const dKw=PA-PB, saveYr=costA-costB;
+
+  const a=[], b=[];
+  for(let n=0;n<=YEARS;n++){
+    const f=annuity(n,R2);
+    a.push({x:n,y:CAP_A+costA*f}); b.push({x:n,y:CAP_A+dC+costB*f});
+  }
+  /* exact crossing: annuity(t) = dC/saveYr  →  t = −ln(1−r·a*)/ln(1+r) */
+  let pay=null;
+  if(saveYr>0){
+    const aStar=dC/saveYr;
+    if(R2*aStar<1){ const t=Math.log(1-R2*aStar)/-Math.log(1+R2); if(t<=YEARS) pay={x:t,y:CAP_A+costA*aStar}; }
+  }
+  premChart.data.datasets[0].data=a;
+  premChart.data.datasets[1].data=b;
+  premChart.data.datasets[2].data = pay ? [pay] : [];
+  premChart.update('none');
+
+  const npvSave=saveYr*annuity(YEARS,R2)-dC;
+  const simplePB= saveYr>0 ? dC/saveYr : Infinity;
+  document.getElementById('rDkw').innerHTML = dKw.toFixed(1)+' <small>kW</small>';
+  document.getElementById('rSave').textContent = (saveYr<0?'−':'')+'$'+Math.abs(Math.round(saveYr)).toLocaleString('en-US');
+  document.getElementById('rPB').innerHTML = saveYr>0 ? (simplePB<0.05?'immediate':simplePB.toFixed(1)+' <small>yr</small>') : '—';
+  document.getElementById('rNPV').textContent = (npvSave<0?'−':'')+'$'+Math.abs(Math.round(npvSave)).toLocaleString('en-US');
+  let v;
+  if(saveYr<=0) v='<span class="badge bad">B never pays back</span>';
+  else if(npvSave>0 && simplePB<=5) v='<span class="badge good">B wins — buy the efficiency</span>';
+  else if(npvSave>0) v='<span class="badge warn">B wins, slowly</span>';
+  else v='<span class="badge bad">premium too high</span>';
+  document.getElementById('rVerdict').innerHTML=v;
+}
+[sDC,sEA,sEB,sTar2].forEach(s=>s.addEventListener('input',updatePrem));
+updatePrem();
+
+/* =====================================================================
+   CHART 3 — SPECIFIC ENERGY BENCHMARK
+   Es = 0.002725 · H / η  · annual figures at 6000 h/yr, $0.08/kWh, 0.45 kgCO2/kWh
+   ===================================================================== */
+const HRS3=6000, TAR3=0.08, CO2F=0.45;
+const sH3=document.getElementById('sH3'), sEff3=document.getElementById('sEff3'), sQ3=document.getElementById('sQ3');
+const vH3=document.getElementById('vH3'), vEff3=document.getElementById('vEff3'), vQ3=document.getElementById('vQ3');
+
+function esOf(H,eta){ return 0.002725*H/eta; }
+function esCurve(H){ const pts=[]; for(let e=40;e<=90;e+=1) pts.push({x:e,y:esOf(H,e/100)}); return pts; }
+
+let esChart=new Chart(document.getElementById('esChart'),{
+  type:'scatter',
+  data:{datasets:[
+    {label:'Es at this head', data:esCurve(50), borderColor:'#1b4f72', showLine:true, ...baseLine, borderWidth:3},
+    {label:'Your station', data:[{x:72,y:esOf(50,0.72)}], borderColor:'#b9770e', backgroundColor:'#b9770e', pointRadius:8, showLine:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:40,max:90,title:{display:true,text:'Wire-to-water efficiency  (%)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0,title:{display:true,text:'Specific energy  Es  (kWh/m³)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: η ${c.parsed.x}%, ${c.parsed.y.toFixed(3)} kWh/m³`}},
+      annotation:{annotations:{
+        good:{type:'box',xMin:75,xMax:90,backgroundColor:'rgba(30,132,73,0.06)',borderColor:'rgba(30,132,73,0.25)',borderWidth:1,label:{display:true,content:'well-engineered (η ≥ 75%)',position:{x:'center',y:'start'},color:'#1e8449',font:{family:'DM Sans',size:10,weight:'600'}}}
+      }}
+    }
+  }
+});
+
+function updateEs(){
+  const H=+sH3.value, eta=+sEff3.value/100, Q=+sQ3.value;
+  vH3.textContent=H+' m'; vEff3.textContent=sEff3.value+' %'; vQ3.textContent=Q+' m³/h';
+
+  esChart.data.datasets[0].data=esCurve(H);
+  const es=esOf(H,eta);
+  esChart.data.datasets[1].data=[{x:eta*100,y:es}];
+  esChart.update('none');
+
+  const volYr=Q*HRS3;                    // m³/yr
+  const kwhYr=es*volYr;
+  document.getElementById('rEs').innerHTML = es.toFixed(3)+' <small>kWh/m³</small>';
+  document.getElementById('rEgy').innerHTML = kwhYr>=1e6 ? (kwhYr/1e6).toFixed(2)+' <small>GWh</small>' : Math.round(kwhYr/1000)+' <small>MWh</small>';
+  document.getElementById('rCost').textContent = '$'+Math.round(kwhYr*TAR3).toLocaleString('en-US');
+  document.getElementById('rCO2').innerHTML = Math.round(kwhYr*CO2F/1000).toLocaleString('en-US')+' <small>t</small>';
+}
+[sH3,sEff3,sQ3].forEach(s=>s.addEventListener('input',updateEs));
+updateEs();
+
+/* ---------- chart resize safety net (fixes 0-width on initial mobile-width load) ---------- */
+window.addEventListener('load',function(){ try{lccChart.resize();premChart.resize();esChart.resize();}catch(e){} });
+</script>
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

@@ -9,7 +9,7 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
-    { url:'pump-life-cycle-cost.html',             title:'Life-Cycle Cost & Energy Efficiency — Where the Real Money Sits',                                        cat:'pumps',       thumb:'pump-life-cycle-cost.webp',            mins:12, tag:'Pump Engineering · Life-Cycle Cost' },
+    { url:'pump-life-cycle-cost.html',             title:'Life-Cycle Cost & Energy Efficiency — Where the Real Money Sits',                                        cat:'pumps',       thumb:'pump-life-cycle-cost.webp',            mins:11, tag:'Pump Engineering · Life-Cycle Cost' },
     { url:'reading-pump-curves.html',              title:'Reading Manufacturer Pump Curves Properly',                                                              cat:'pumps',       thumb:'reading-pump-curves.webp',             mins:13, tag:'Pump Engineering · Curve Reading' },
     { url:'parallel-series-pump-operation.html',   title:'Parallel & Series Operation and Pump Staging',                                                           cat:'pumps',       thumb:'parallel-series-pump-operation.webp',  mins:11, tag:'Pump Hydraulics · Parallel & Series' },
     { url:'system-head-curve-operating-point.html',title:'The System Head Curve & the Operating Point',                                                            cat:'pumps',       thumb:'system-head-curve-operating-point.webp',mins:10, tag:'Pump Hydraulics · System Curve' },
@@ -119,6 +119,9 @@
     var spans = byline.querySelectorAll('span');
     for (var i = 0; i < spans.length; i++) {
       if (spans[i].textContent.indexOf('min read') !== -1) {
+        /* data-mins-fixed: keep the hand-set value (used when the auto count
+           sits on a rounding boundary and flips between devices) */
+        if (spans[i].hasAttribute('data-mins-fixed')) return;
         spans[i].textContent = mins + ' min read';
         return;
       }

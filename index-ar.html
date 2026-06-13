@@ -953,9 +953,9 @@
   <div id="show-more-wrap" style="text-align:center; padding:2.5rem 0 1rem;">
     <button id="show-more-btn" onclick="revealArticles()" style="display:inline-flex; align-items:center; gap:10px; padding:12px 28px; background:var(--glass); -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur); color:var(--accent); border:1px solid var(--glass-border); border-radius:980px; font-size:15px; font-weight:500; cursor:pointer; font-family:'Cairo',sans-serif; box-shadow:var(--shadow-glass); transition:transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-glass-hover)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-glass)'">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-      عرض 41 مقالة إضافية
+      عرض ٤٢ مقالة إضافية
     </button>
-    <div style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">يُعرض 3 من أصل 44 مقالة</div>
+    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">يُعرض ٣ من أصل ٤٥ مقالة</div>
   </div>
 
   <!-- Stats -->
@@ -1210,8 +1210,24 @@ function mcSubmitAr(e) {
       if(el) el.textContent = toAr(n) + ' ' + unit(n);
     });
   }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',syncTopicCounts);
-  else syncTopicCounts();
+  function syncShowMore(){
+    var grid=document.getElementById('articlesGrid'); if(!grid) return;
+    var total=grid.querySelectorAll('.article-card').length;
+    var hidden=grid.querySelectorAll('.article-card.hidden-article').length;
+    var btn=document.getElementById('show-more-btn');
+    if(btn){
+      var svg=btn.querySelector('svg'); btn.textContent='';
+      if(svg) btn.appendChild(svg);
+      btn.appendChild(document.createTextNode(' عرض ' + toAr(hidden) + ' ' + unit(hidden) + ' إضافية'));
+    }
+    var cnt=document.getElementById('show-more-count');
+    if(cnt) cnt.textContent = 'يُعرض ' + toAr(total-hidden) + ' من أصل ' + toAr(total) + ' ' + unit(total);
+    var wrap=document.getElementById('show-more-wrap');
+    if(wrap && hidden===0) wrap.style.display='none';
+  }
+  function run(){ syncTopicCounts(); syncShowMore(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run);
+  else run();
 })();
 </script>
 <script src="theme.js"></script>

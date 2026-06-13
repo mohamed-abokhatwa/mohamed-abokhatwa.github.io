@@ -1,0 +1,16 @@
+#!/bin/sh
+# Block any commit that would leave the article counts out of sync.
+# Activated via:  git config core.hooksPath scripts/githooks   (run once per clone)
+# Bypass once (not recommended):  git commit --no-verify
+root=$(git rev-parse --show-toplevel)
+if command -v python3 >/dev/null 2>&1; then
+  if ! python3 "$root/scripts/check-articles.py"; then
+    echo "" >&2
+    echo "pre-commit: article counts are out of sync — commit aborted." >&2
+    echo "Register the new article in article-features.js + both index grids," >&2
+    echo "and update the category-count chips. Re-run: python3 scripts/check-articles.py" >&2
+    exit 1
+  fi
+else
+  echo "pre-commit: python3 not found — skipping article-count check." >&2
+fi

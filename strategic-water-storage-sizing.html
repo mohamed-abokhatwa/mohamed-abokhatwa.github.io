@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategic Water Storage — Why We Store, and How Much — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Water Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    /* equations (MathJax) */
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    /* callouts */
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    /* tables */
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    /* interactive figure — a self-contained light instrument panel, legible in both themes */
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    /* references */
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="Why drinking-water systems store water at all, and how much: the three storages in every strategic reservoir — balancing (operational), fire and emergency — sized from the demand curve with the mass-curve method, plus the water-age penalty of over-sizing. Three interactive sizing charts and a worked example for a town of 50,000.">
+  <meta property="og:title" content="Strategic Water Storage — Why We Store, and How Much | Mohamed Abokhatwa">
+  <meta property="og:description" content="Every strategic reservoir holds three volumes at once: balancing, fire and emergency. How the demand curve sizes each one with the mass-curve method — and why a bigger tank quietly destroys your chlorine residual.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/strategic-water-storage-sizing.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-strategic-water-storage-sizing.jpg">
+  <meta property="og:image:alt" content="Strategic Water Storage Reservoir Sizing">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Strategic Water Storage — Why We Store, and How Much | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="Balancing + fire + emergency: the three volumes inside every storage reservoir, sized from the demand curve — and the water-age tax you pay for over-sizing.">
+  <link rel="canonical" href="https://abokhatwa.com/strategic-water-storage-sizing.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Strategic Water Storage — Why We Store, and How Much",
+  "description": "Why drinking-water systems store water at all and how much: the three storages in every strategic reservoir — balancing, fire and emergency — sized from the demand curve with the mass-curve method, and the water-age penalty of over-sizing.",
+  "image": "https://abokhatwa.com/og-strategic-water-storage-sizing.jpg",
+  "datePublished": "2026-06-13",
+  "dateModified": "2026-06-13",
+  "author": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa",
+    "url": "https://abokhatwa.com/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abokhatwa.com/strategic-water-storage-sizing.html"
+  }
+}
+  </script>
+<style>
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--text-primary);}
+.breadcrumb-sep{opacity:.4;}
+.breadcrumb-current{color:var(--text-secondary);}.breadcrumb a.breadcrumb-current{color:var(--accent);}.breadcrumb a.breadcrumb-current:hover{opacity:.75;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+<div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="hydraulic-design.html" class="breadcrumb-current">Hydraulic Design</a></div>
+  <span class="tag">Hydraulic Design &middot; Water Storage &middot; Reservoir Sizing &middot; Strategic Storage</span>
+  <h1>Strategic Water Storage — Why We Store, and How Much</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>June 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>12 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="strategic-water-storage-sizing.webp" alt="Strategic water storage reservoir feeding a city distribution network">
+</div>
+
+<div class="article-body">
+<p class="lead">A water source delivers at the rate that is cheapest to build and run — steady, around the clock. A city drinks in pulses: almost nothing at 4 a.m., a wall of demand at 7. Storage is the buffer that absorbs the difference. Get its volume wrong in one direction and taps run dry at the morning peak; wrong in the other, and the water sits so long the chlorine dies before it reaches the house. This is the engineering of that single number.</p>
+
+<h2 id="why">1 · Why store water at all</h2>
+<p>The instinct that "more storage is safer" is the most expensive instinct in distribution design. Storage exists to <strong>decouple supply from demand</strong> — to let the production side (the treatment plant, the well field, the transmission main) run at a flat, efficient, capital-minimal rate while the consumption side does whatever 200,000 people decide to do with their taps. A reservoir buys four distinct things at once:</p>
+<ul class="clean">
+  <li><strong>It flattens the production rate.</strong> Without storage, the plant and the transmission main must be sized for the <em>peak hour</em>. With storage, they are sized for the <em>maximum day</em> — a far smaller, cheaper number. The tank pays for the pipe it lets you not build.</li>
+  <li><strong>It holds pressure.</strong> An elevated reservoir or a ground tank feeding a booster sets the hydraulic grade line; it stabilises pressure across the network as demand swings, and rides through pump stop/start transients (see <a href="boundary-conditions-reservoir-tank.html">reservoir vs. tank boundary conditions</a>).</li>
+  <li><strong>It survives failure.</strong> When a pump trips, a main breaks, or the power fails, storage is the only thing standing between the city and a dry network — the minutes-to-hours of grace in which the system is repaired.</li>
+  <li><strong>It fights fire.</strong> The single largest instantaneous draw a network ever sees is not a person — it is a fire hydrant. Storage holds that volume so the distribution mains do not have to carry it.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The governing idea</span>
+  Storage is not a tank of "spare water." It is four overlapping insurance policies — <strong>balancing, pressure, emergency and fire</strong> — stacked into one structure. You size each policy separately, then ask the structure to hold the sum. Sizing the tank as a single round number is how systems end up simultaneously too small for the morning peak and too big for the chlorine.
+</div>
+
+<h2 id="three">2 · The three volumes inside every reservoir</h2>
+<p>Strip away the pressure-holding role (which is about <em>elevation</em>, not volume) and a storage reservoir holds three stacked volumes. Every credible design standard — the Ten States Standards<sup class="cite">[1]</sup>, AWWA M31<sup class="cite">[2]</sup> and M32<sup class="cite">[3]</sup> — partitions storage this way:</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>The three storage components — what sets each, and what it is insuring against.</caption>
+  <thead><tr><th>Component</th><th>Sized by</th><th>Insures against</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Balancing (operational / equalizing)</strong></td><td>The daily demand curve vs. the supply rate</td><td>The predictable diurnal peak — every single day</td></tr>
+    <tr><td><strong>Fire</strong></td><td>Needed fire flow × duration (code / risk)</td><td>The largest credible single fire</td></tr>
+    <tr><td><strong>Emergency</strong></td><td>Credible outage duration × demand</td><td>Pump trip, main break, power loss</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Two of these scale with the population; one does not. Balancing and emergency storage grow with demand. <strong>Fire storage is set by the worst building, not the headcount</strong> — a town of 5,000 with a hospital can need more fire storage than a bedroom suburb of 50,000. That single asymmetry, which we will see in the second chart, governs the shape of small-system storage.</p>
+
+<h2 id="demand">3 · From population to the numbers that size a tank</h2>
+<p>Everything starts with three demand figures derived from the population \(P\) and the per-capita demand \(q\):</p>
+
+<div class="eq">\[ \text{ADD} = P\,q \qquad \text{MDD} = f_d\cdot\text{ADD} \qquad \text{PHD} = f_h\cdot\frac{\text{ADD}}{24} \]</div>
+
+<p>where ADD is the <strong>average-day demand</strong>, MDD the <strong>maximum-day demand</strong> (the busiest day of the year, \(f_d\approx1.4\text{–}1.8\)), and PHD the <strong>peak-hour demand</strong> rate (\(f_h\approx2.0\text{–}3.0\) relative to the average hour). The production system is built for MDD; storage absorbs the gap between MDD-rate supply and PHD-rate demand. A worked anchor we will carry through the article:</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>Demand basis — a town of 50,000 at 250 L/capita·day.</caption>
+  <thead><tr><th>Quantity</th><th class="num">Value</th><th class="num">Rate</th></tr></thead>
+  <tbody>
+    <tr><td>Average-day demand (ADD)</td><td class="num">12,500 m³/d</td><td class="num">521 m³/h</td></tr>
+    <tr><td>Maximum-day demand (MDD), f<sub>d</sub>=1.5</td><td class="num">18,750 m³/d</td><td class="num">781 m³/h</td></tr>
+    <tr><td>Peak-hour demand (PHD), f<sub>h</sub>=2.5</td><td class="num">—</td><td class="num">1,302 m³/h</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="balancing">4 · Balancing storage — the mass-curve method</h2>
+<p>This is the volume you can compute from first principles, and the one engineers most often guess instead. On the maximum day, the source supplies a near-constant flow; consumption follows the diurnal curve. Whenever supply exceeds demand (at night) the tank fills; whenever demand exceeds supply (morning and evening peaks) the tank drains. The required <strong>balancing volume</strong> is the full travel between the fullest and emptiest the tank gets — the peak-to-trough range of the cumulative net inflow. This is the classic <strong>Rippl mass-curve</strong><sup class="cite">[4]</sup>:</p>
+
+<div class="eq">\[ V_{bal} = \max_t\!\Big[\textstyle\sum (Q_{in}-Q_{out})\Big] - \min_t\!\Big[\textstyle\sum (Q_{in}-Q_{out})\Big] \]</div>
+
+<p>Two design levers move this number hard. The first is the <strong>shape of the demand curve</strong>: a peakier city (a hot climate, strong evening culture) needs more balancing volume. The second — the one designers control — is the <strong>pumping window</strong>: a source that pumps 24 hours a day needs the least storage; one that pumps only 14 hours (to dodge peak electricity tariffs, or because the well can't run continuously) front-loads all its inflow into part of the day and forces the tank to carry the rest. Off-peak pumping is real money saved on the energy bill (<a href="pump-life-cycle-cost.html">life-cycle cost</a>) — paid for in concrete.</p>
+
+<h2 id="int-balancing">5 · Interactive: the diurnal balance</h2>
+<p>The blue curve is the city drinking through the day; the amber line is the source supplying it. Where blue is below amber, the tank fills; where blue rises above amber, the tank drains. The balancing volume is the total swing between those phases.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Maximum-day supply vs. demand — and the storage it forces</div>
+    <div class="fsub">Demand (blue) follows a typical municipal diurnal pattern scaled to your max-day total. Supply (amber) is the constant rate the source runs at to deliver the whole day's volume within the pumping window. Where supply sits above demand the tank fills; where demand rises above supply it drains — and with a short pumping window the supply rate can exceed even the peak hour, filling the tank fast then coasting.</div>
+  </div>
+  <div class="chart-box"><canvas id="balChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Maximum-day demand <span id="vMDD">18,750 m³/d</span></label>
+      <input type="range" id="sMDD" min="5000" max="40000" value="18750" step="250">
+      <div class="hint">The busiest day of the year — what the source is sized for.</div>
+    </div>
+    <div class="ctrl">
+      <label>Pumping window <span id="vTp">24 h/day</span></label>
+      <input type="range" id="sTp" min="10" max="24" value="24" step="1">
+      <div class="hint">Hours/day the source actually delivers. Shorter = cheaper power, bigger tank.</div>
+    </div>
+    <div class="ctrl">
+      <label>Diurnal peak factor <span id="vPf">1.6 ×</span></label>
+      <input type="range" id="sPf" min="1.2" max="3" value="1.6" step="0.1">
+      <div class="hint">Peak-hour demand ÷ average-hour demand. Hotter, peakier cities sit higher.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Balancing volume</div><div class="v" id="rBal">3,420 <small>m³</small></div></div>
+    <div class="cell"><div class="k">As % of max day</div><div class="v" id="rBalPct">18 <small>%</small></div></div>
+    <div class="cell"><div class="k">Supply rate</div><div class="v" id="rQin">781 <small>m³/h</small></div></div>
+    <div class="cell"><div class="k">Peak demand rate</div><div class="v" id="rQpk">1,250 <small>m³/h</small></div></div>
+  </div>
+</div>
+<p class="fig-note">On the defaults — 24-hour pumping, a moderate peak factor — balancing storage lands near <strong>18% of the maximum day</strong>, squarely inside the 15–25% range the textbooks quote. Now drag the pumping window down to 14 hours: the same city suddenly needs well over 30% of MDD in concrete, because the source is silent for ten hours the tank must cover alone. That trade — kilowatt-hours against cubic metres — is the central economic decision in balancing storage.</p>
+
+<h2 id="fire">6 · Fire storage — the volume you hope never to move</h2>
+<p>Fire storage is sized by a flow the network may never see, held for a duration it hopes never to need:</p>
+
+<div class="eq">\[ V_{fire} = Q_{fire}\cdot t_{fire} \]</div>
+
+<p>The <strong>needed fire flow</strong> \(Q_{fire}\) is not an engineering free choice — it comes from the fire code and the insurance schedule (ISO in North America; local civil-defence requirements in the Gulf), driven by the largest building's construction, area and occupancy<sup class="cite">[2,5]</sup>. A residential district might need 2,000–4,000 L/min; a hospital, mall or industrial unit can demand 8,000–16,000 L/min. The duration \(t_{fire}\) scales with that flow, typically 2 hours for modest demands rising to 4 hours for the largest.</p>
+
+<p>For our town, take a governing requirement of 8,000 L/min (480 m³/h) for 3 hours:</p>
+<div class="eq">\[ V_{fire} = 480\ \text{m}^3/\text{h} \times 3\ \text{h} = 1{,}440\ \text{m}^3 \]</div>
+
+<div class="callout warn">
+  <span class="lbl">The mistake that quietly starves hydrants</span>
+  Fire storage is <strong>dedicated</strong> — it must still be there at the end of the maximum day, after the balancing volume has cycled. A tank sized to the demand peak alone, with no separate fire allowance, looks fine on every ordinary day and fails on the one day it is the only thing that matters. Always carry fire as its own line, on top of balancing — never assume the daily swing "covers it."
+</div>
+
+<h2 id="emergency">7 · Emergency storage — sizing for the day supply fails</h2>
+<p>Emergency storage answers a risk question, not a hydraulics one: <em>how long must the network survive with no inflow at all?</em> A trip that auto-restarts is minutes; a ruptured transmission main with no parallel feed can be a day. The volume is the credible outage duration carried at the demand prevailing during it:</p>
+
+<div class="eq">\[ V_{em} = \text{ADD}\cdot\frac{t_{out}}{24} \]</div>
+
+<p>The right \(t_{out}\) is a deliberate engineering and economic judgement — set by source redundancy, the presence of a second feed, repair-crew response time, and how much risk the utility will hold. A single-source system with an 8-hour credible outage:</p>
+<div class="eq">\[ V_{em} = 12{,}500\ \text{m}^3/\text{d}\times\frac{8}{24} = 4{,}167\ \text{m}^3 \]</div>
+
+<p>This is the component most sensitive to <em>system architecture</em>, not tank design: build a second independent transmission feed and the credible outage — and the storage it demands — collapses. Storage and redundancy are substitute goods; the cheapest resilience is usually a mix of both, decided together (see <a href="infrastructure-at-scale.html">infrastructure at scale</a>).</p>
+
+<h2 id="int-stack">8 · Interactive: the total-storage stack</h2>
+<p>Now assemble all three across the full range of community sizes. Watch what happens at the small end: fire storage — flat, code-driven, indifferent to population — towers over everything. At the large end, demand-driven balancing and emergency storage take over and fire becomes a rounding error.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Total storage vs. population — and what dominates it</div>
+    <div class="fsub">Three stacked components against population. Balancing (blue) and emergency (green) scale with demand; fire (amber) is fixed by code. The dashed marker is your selected town. Read the crossover: below it, you are building a fire tank; above it, a demand tank.</div>
+  </div>
+  <div class="chart-box"><canvas id="stackChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Population <span id="vPop">50,000</span></label>
+      <input type="range" id="sPop" min="2000" max="200000" value="50000" step="1000">
+      <div class="hint">Sets the marker; drives ADD, balancing and emergency.</div>
+    </div>
+    <div class="ctrl">
+      <label>Per-capita demand <span id="vQ">250 L/c·d</span></label>
+      <input type="range" id="sQ" min="120" max="400" value="250" step="10">
+      <div class="hint">Gulf municipal demand runs high; temperate cities lower.</div>
+    </div>
+    <div class="ctrl">
+      <label>Needed fire flow <span id="vQf">8,000 L/min</span></label>
+      <input type="range" id="sQf" min="2000" max="16000" value="8000" step="500">
+      <div class="hint">From the fire code — set by the worst building, not the population.</div>
+    </div>
+    <div class="ctrl">
+      <label>Credible outage <span id="vTout">8 h</span></label>
+      <input type="range" id="sTout" min="0" max="24" value="8" step="1">
+      <div class="hint">How long the network must ride through with no inflow.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Total storage</div><div class="v" id="rTot">9,030 <small>m³</small></div></div>
+    <div class="cell"><div class="k">Days of avg demand</div><div class="v" id="rDays">0.72 <small>d</small></div></div>
+    <div class="cell"><div class="k">Per capita</div><div class="v" id="rPc">181 <small>L</small></div></div>
+    <div class="cell"><div class="k">Largest component</div><div class="v" id="rDom" style="font-size:16px;margin-top:6px;">Emergency</div></div>
+  </div>
+</div>
+<p class="fig-note">Slide the population down to 5,000: fire storage — unchanged at 1,440 m³ — becomes the tallest band by far, and the per-capita storage figure roughly triples. This is why small communities carry so much "spare" water per head, and why fire flow, not demand, writes the cheque for rural storage. Slide it up to 200,000 and fire all but vanishes beneath the demand stack.</p>
+
+<h2 id="water-age">9 · The hidden cost of storage — water age</h2>
+<p>Here is the tension that makes storage a genuine optimisation rather than a "bigger is safer" exercise. Every cubic metre of storage is a cubic metre of <strong>residence time</strong>. The turnover time — roughly the tank volume divided by the throughput — is how long water sits between treatment and tap:</p>
+
+<div class="eq">\[ \tau = \frac{V}{\text{ADD}} \qquad C = C_0\,e^{-k\,\tau} \]</div>
+
+<p>Chlorine residual decays approximately first-order with time, at a bulk rate \(k\) that climbs with temperature — brutally relevant in the Gulf. Oversize the reservoir "to be safe" and you stretch \(\tau\); stretch \(\tau\) and the disinfectant residual collapses, nitrification and taste-and-odour problems set in, and trihalomethanes keep forming in the dark<sup class="cite">[6,7,8]</sup>. WHO and most utilities hold a residual of at least <strong>0.2 mg/L at the far tap</strong><sup class="cite">[9]</sup>; an over-built tank quietly spends that margin.</p>
+
+<div class="callout">
+  <span class="lbl">Two policies pulling opposite ways</span>
+  Resilience says <em>store more</em>. Water quality says <em>store less, turn it over faster</em>. The reservoir that is generous on emergency storage and the reservoir that delivers fresh, well-chlorinated water are, past a point, <strong>different reservoirs</strong>. Good design resolves this not by guessing a volume but by managing turnover — active mixing, inlet/outlet placement that prevents short-circuiting and dead zones, and operating bands that cycle the water rather than letting it stratify and stagnate.
+</div>
+
+<h2 id="int-age">10 · Interactive: turnover &amp; residual</h2>
+<p>Set how many days of supply you store, and watch the chlorine that survives to the tap. The curve is first-order decay; the marker is your turnover time; the red zone is below the 0.2 mg/L floor.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Chlorine residual vs. storage turnover time</div>
+    <div class="fsub">Residual C = C₀·e<sup>−kt</sup> for your inlet dose and decay rate. The marker sits at your turnover time τ = stored days. Cross into the shaded band and the water leaves the reservoir below the regulatory residual floor.</div>
+  </div>
+  <div class="chart-box"><canvas id="ageChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Storage (days of supply) <span id="vDsup">0.7 d</span></label>
+      <input type="range" id="sDsup" min="0.3" max="5" value="0.7" step="0.1">
+      <div class="hint">Total storage ÷ average-day demand — your turnover time τ.</div>
+    </div>
+    <div class="ctrl">
+      <label>Inlet chlorine C₀ <span id="vC0">1.0 mg/L</span></label>
+      <input type="range" id="sC0" min="0.4" max="2" value="1.0" step="0.1">
+      <div class="hint">Free-chlorine residual entering the reservoir.</div>
+    </div>
+    <div class="ctrl">
+      <label>Bulk decay rate k <span id="vK">0.5 /day</span></label>
+      <input type="range" id="sK" min="0.1" max="1.5" value="0.5" step="0.05">
+      <div class="hint">Rises sharply with temperature — Gulf summers sit high.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Turnover time</div><div class="v" id="rTau">0.7 <small>d</small></div></div>
+    <div class="cell"><div class="k">Residual at outlet</div><div class="v" id="rC">0.70 <small>mg/L</small></div></div>
+    <div class="cell"><div class="k">Chlorine lost</div><div class="v" id="rLost">30 <small>%</small></div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVerdict"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">Start at the lean 0.7-day design and the residual holds comfortably. Now do what nervous committees do — drag storage to 3 days "for resilience" — and watch the residual fall through the floor, especially once you nudge \(k\) up to a summer value. That is the cost of over-sizing made visible: not money, but the disinfectant that was supposed to reach the last house.</p>
+
+<h2 id="checklist">11 · Sizing checklist for the design desk</h2>
+<ul class="clean">
+  <li><strong>Build the demand basis first</strong> — ADD, MDD and PHD from population and a defensible per-capita figure; storage is downstream of these three numbers.</li>
+  <li><strong>Size balancing from the mass curve</strong>, on the maximum-day pattern, at the <em>actual</em> pumping window — not a 15–25% rule of thumb pulled from a textbook for a different city.</li>
+  <li><strong>Carry fire storage as a separate, dedicated line</strong> — needed fire flow × duration from the code, set by the worst building, never assumed to be "covered" by the daily swing.</li>
+  <li><strong>Decide emergency storage with the redundancy decision</strong> — a second feed and more storage are substitute resilience; price them together, not in separate meetings.</li>
+  <li><strong>Sum, then test turnover</strong> — compute τ = V/ADD and the resulting residual. If the resilient volume fails the water-age check, the answer is mixing and operating bands, not a bigger or smaller tank chosen by feel.</li>
+  <li><strong>Design the inlet/outlet for circulation</strong> — opposed nozzles, fill-and-draw operating bands, no short-circuit path. Volume without turnover is a liability, not a reserve.</li>
+  <li><strong>Re-run at the design horizon</strong> — storage sized for today's population is under-built for year 20 and over-aged for year 1; state the year it is sized for.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  A storage reservoir holds three volumes — balancing, fire and emergency — sized by three different questions, then asked to hold the sum without letting the water grow old. Compute each from first principles, decide emergency storage alongside redundancy, and let turnover, not nerves, set the final number.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>Great Lakes&ndash;Upper Mississippi River Board (GLUMRB). <em>Recommended Standards for Water Works (Ten States Standards)</em> — finished-water storage requirements.</li>
+  <li>American Water Works Association. <em>Manual M31 — Distribution System Requirements for Fire Protection.</em></li>
+  <li>American Water Works Association. <em>Manual M32 — Computer Modeling of Water Distribution Systems.</em></li>
+  <li>Rippl, W. <em>The Capacity of Storage Reservoirs for Water Supply</em>, Proc. ICE, 1883 — the mass-curve method.</li>
+  <li>Insurance Services Office (ISO). <em>Guide for Determination of Needed Fire Flow</em>; see also NFPA 22 — Water Tanks for Private Fire Protection.</li>
+  <li>U.S. EPA. <em>Effects of Water Age on Distribution System Water Quality.</em> Office of Water, 2002.</li>
+  <li>Walski, T.M., Chase, D.V., Savic, D.A. et al. <em>Advanced Water Distribution Modeling and Management.</em> Haestad/Bentley Press.</li>
+  <li>American Water Works Association. <em>Manual M42 — Steel Water-Storage Tanks</em>; AWWA G200 — Distribution Systems Operation and Management.</li>
+  <li>World Health Organization. <em>Guidelines for Drinking-water Quality</em>, 4th ed. — disinfectant residual at the point of use.</li>
+</ol>
+
+<div class="tags">#WaterStorage #StrategicStorage #ReservoirSizing #BalancingStorage #MassCurve #FireFlow #EmergencyStorage #WaterAge #ChlorineResidual #WaterDistribution #HydraulicDesign</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+
+<script>
+/* ---------- shared helpers ---------- */
+const baseLine={borderWidth:2.5,pointRadius:0,tension:0.25,fill:false};
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+
+/* typical municipal diurnal pattern (hourly, mean ≈ 1) */
+const PAT=[0.4,0.3,0.3,0.3,0.4,0.7,1.1,1.5,1.6,1.4,1.3,1.2,1.2,1.2,1.1,1.0,1.0,1.1,1.4,1.6,1.5,1.2,0.8,0.5];
+const PATmean=PAT.reduce((a,b)=>a+b,0)/24;
+const PATnorm=PAT.map(v=>v/PATmean);          // mean exactly 1
+const basePeak=Math.max(...PATnorm);          // ≈ 1.59
+
+/* reshape the pattern so its peak ≈ the chosen peak factor.
+   Clamp at a small positive floor (demand can never be negative) then
+   renormalise so the mean stays exactly 1 — i.e. the daily total stays = MDD. */
+function shaped(pf){
+  const k=(pf-1)/(basePeak-1);
+  const m=PATnorm.map(v=>Math.max(0.05,1+(v-1)*k));
+  const mean=m.reduce((a,b)=>a+b,0)/24;
+  return m.map(v=>v/mean);
+}
+/* pumping window of length tp hours, centred on the night (starts 22:00) */
+function pumpOn(h,tp){ for(let i=0;i<tp;i++){ if((22+i)%24===h) return true; } return false; }
+
+/* balancing volume via the Rippl mass curve (m³) */
+function balancing(MDD,tp,pf){
+  const pat=shaped(pf), qIn=MDD/tp;
+  let cum=0,mn=0,mx=0;
+  for(let h=0;h<24;h++){
+    const dem=MDD/24*pat[h];
+    const inf=pumpOn(h,tp)?qIn:0;
+    cum+=inf-dem;
+    if(cum<mn)mn=cum; if(cum>mx)mx=cum;
+  }
+  return mx-mn;
+}
+
+/* =====================================================================
+   CHART 1 — DIURNAL SUPPLY vs DEMAND
+   ===================================================================== */
+const sMDD=document.getElementById('sMDD'), sTp=document.getElementById('sTp'), sPf=document.getElementById('sPf');
+const vMDD=document.getElementById('vMDD'), vTp=document.getElementById('vTp'), vPf=document.getElementById('vPf');
+
+let balChart=new Chart(document.getElementById('balChart'),{
+  type:'line',
+  data:{labels:[...Array(25).keys()],datasets:[
+    {label:'Demand (m³/h)', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.10)', showLine:true, ...baseLine, borderWidth:3, fill:true},
+    {label:'Supply (m³/h)', data:[], borderColor:'#b9770e', showLine:true, ...baseLine, borderWidth:2.5, tension:0, stepped:true}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    scales:{
+      x:{title:{display:true,text:'Hour of day',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},stepSize:2,callback:v=>v+':00'}},
+      y:{min:0,title:{display:true,text:'Flow rate  (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt0(c.parsed.y)} m³/h at ${c.parsed.x}:00`}}
+    }
+  }
+});
+
+function updateBal(){
+  const MDD=+sMDD.value, tp=+sTp.value, pf=+sPf.value;
+  vMDD.textContent=fmt0(MDD)+' m³/d'; vTp.textContent=tp+' h/day'; vPf.textContent=pf.toFixed(1)+' ×';
+  const pat=shaped(pf), qIn=MDD/tp;
+  const dem=[], sup=[];
+  for(let h=0;h<=24;h++){
+    const hh=h%24;
+    dem.push(MDD/24*pat[hh]);
+    sup.push(pumpOn(hh,tp)?qIn:0);
+  }
+  balChart.data.datasets[0].data=dem;
+  balChart.data.datasets[1].data=sup;
+  balChart.update('none');
+
+  const V=balancing(MDD,tp,pf);
+  const qPk=Math.max(...pat)*MDD/24;
+  document.getElementById('rBal').innerHTML=fmt0(V)+' <small>m³</small>';
+  document.getElementById('rBalPct').innerHTML=Math.round(V/MDD*100)+' <small>%</small>';
+  document.getElementById('rQin').innerHTML=fmt0(qIn)+' <small>m³/h</small>';
+  document.getElementById('rQpk').innerHTML=fmt0(qPk)+' <small>m³/h</small>';
+}
+[sMDD,sTp,sPf].forEach(s=>s.addEventListener('input',updateBal));
+updateBal();
+
+/* =====================================================================
+   CHART 2 — TOTAL STORAGE STACK vs POPULATION
+   ===================================================================== */
+const sPop=document.getElementById('sPop'), sQ=document.getElementById('sQ'), sQf=document.getElementById('sQf'), sTout=document.getElementById('sTout');
+const vPop=document.getElementById('vPop'), vQ=document.getElementById('vQ'), vQf=document.getElementById('vQf'), vTout=document.getElementById('vTout');
+const FD=1.5, PF2=1.6, TFIRE=3, BALFRAC=null; // balancing computed via mass curve at 24h pumping
+
+const popAxis=[]; for(let p=2000;p<=200000;p+=4000) popAxis.push(p);
+
+/* Manual cumulative areas — Chart.js stacking is index-based and misbehaves on a
+   linear x-axis, so we cumulate by hand and fill each band to the one below it.
+   Each point carries v = the individual component value for the tooltip. */
+let stackChart=new Chart(document.getElementById('stackChart'),{
+  type:'line',
+  data:{datasets:[
+    {label:'Balancing', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.45)', ...baseLine, tension:0.2, borderWidth:1.5, fill:'origin'},
+    {label:'Emergency', data:[], borderColor:'#1e8449', backgroundColor:'rgba(30,132,73,0.45)',  ...baseLine, tension:0.2, borderWidth:1.5, fill:'-1'},
+    {label:'Fire',      data:[], borderColor:'#b9770e', backgroundColor:'rgba(185,119,14,0.45)',  ...baseLine, tension:0.2, borderWidth:1.5, fill:'-1'}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    scales:{
+      x:{type:'linear',min:2000,max:200000,title:{display:true,text:'Population served',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>v>=1000?(v/1000)+'k':v}},
+      y:{min:0,title:{display:true,text:'Storage volume  (m³, stacked)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>fmt0(v)}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{title:items=>'Population '+fmt0(items[0].parsed.x), label:c=>`${c.dataset.label}: ${fmt0(c.raw.v)} m³`}},
+      annotation:{annotations:{marker:{type:'line',xMin:50000,xMax:50000,borderColor:'#c0392b',borderWidth:1.5,borderDash:[5,4],label:{display:true,content:'your town',position:'start',font:{size:10,family:'DM Sans'},color:'#c0392b',backgroundColor:'rgba(255,255,255,0.85)'}}}}
+    }
+  }
+});
+
+function comps(P,q,Qf,tout){
+  const add=P*q/1000;            // m³/d
+  const mdd=FD*add;
+  const bal=balancing(mdd,24,PF2);
+  const fire=Qf/1000*60*TFIRE;   // L/min → m³/h → ×h
+  const em=add*tout/24;
+  return {add,bal,fire,em,tot:bal+fire+em};
+}
+
+function updateStack(){
+  const P=+sPop.value, q=+sQ.value, Qf=+sQf.value, tout=+sTout.value;
+  vPop.textContent=fmt0(P); vQ.textContent=q+' L/c·d'; vQf.textContent=fmt0(Qf)+' L/min'; vTout.textContent=tout+' h';
+
+  const bal=[],em=[],fire=[];
+  popAxis.forEach(p=>{
+    const c=comps(p,q,Qf,tout);
+    bal.push ({x:p, y:c.bal,              v:c.bal});   // bottom band
+    em.push  ({x:p, y:c.bal+c.em,         v:c.em});    // stacked above balancing
+    fire.push({x:p, y:c.bal+c.em+c.fire,  v:c.fire});  // top band = total envelope
+  });
+  stackChart.data.datasets[0].data=bal;
+  stackChart.data.datasets[1].data=em;
+  stackChart.data.datasets[2].data=fire;
+  stackChart.options.plugins.annotation.annotations.marker.xMin=P;
+  stackChart.options.plugins.annotation.annotations.marker.xMax=P;
+  stackChart.update('none');
+
+  const c=comps(P,q,Qf,tout);
+  document.getElementById('rTot').innerHTML=fmt0(c.tot)+' <small>m³</small>';
+  document.getElementById('rDays').innerHTML=(c.tot/c.add).toFixed(2)+' <small>d</small>';
+  document.getElementById('rPc').innerHTML=fmt0(c.tot/P*1000)+' <small>L</small>';
+  const names=['Balancing','Fire','Emergency'], vals=[c.bal,c.fire,c.em];
+  document.getElementById('rDom').textContent=names[vals.indexOf(Math.max(...vals))];
+}
+[sPop,sQ,sQf,sTout].forEach(s=>s.addEventListener('input',updateStack));
+updateStack();
+
+/* =====================================================================
+   CHART 3 — CHLORINE RESIDUAL vs TURNOVER TIME
+   ===================================================================== */
+const sDsup=document.getElementById('sDsup'), sC0=document.getElementById('sC0'), sK=document.getElementById('sK');
+const vDsup=document.getElementById('vDsup'), vC0=document.getElementById('vC0'), vK=document.getElementById('vK');
+const FLOOR=0.2;
+
+let ageChart=new Chart(document.getElementById('ageChart'),{
+  type:'line',
+  data:{datasets:[
+    {label:'Residual C = C₀·e^(−kt)', data:[], borderColor:'#1b4f72', showLine:true, ...baseLine, borderWidth:3, tension:0.25},
+    {label:'Your turnover time', data:[], borderColor:'#c0392b', backgroundColor:'#c0392b', pointRadius:7, showLine:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:0,max:5,title:{display:true,text:'Time in storage  (days)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0,title:{display:true,text:'Free chlorine residual  (mg/L)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${(+c.parsed.y).toFixed(2)} mg/L at ${(+c.parsed.x).toFixed(1)} d`}},
+      annotation:{annotations:{floor:{type:'box',yMin:0,yMax:FLOOR,backgroundColor:'rgba(192,57,43,0.10)',borderWidth:0,label:{display:true,content:'below 0.2 mg/L floor',position:{x:'start',y:'center'},font:{size:10,family:'DM Sans'},color:'#c0392b'}}}}
+    }
+  }
+});
+
+function updateAge(){
+  const tau=+sDsup.value, C0=+sC0.value, k=+sK.value;
+  vDsup.textContent=tau.toFixed(1)+' d'; vC0.textContent=C0.toFixed(1)+' mg/L'; vK.textContent=k.toFixed(2)+' /day';
+  const curve=[]; for(let t=0;t<=5;t+=0.1) curve.push({x:t,y:C0*Math.exp(-k*t)});
+  const C=C0*Math.exp(-k*tau);
+  ageChart.data.datasets[0].data=curve;
+  ageChart.data.datasets[1].data=[{x:tau,y:C}];
+  ageChart.update('none');
+
+  document.getElementById('rTau').innerHTML=tau.toFixed(1)+' <small>d</small>';
+  document.getElementById('rC').innerHTML=C.toFixed(2)+' <small>mg/L</small>';
+  document.getElementById('rLost').innerHTML=Math.round((1-C/C0)*100)+' <small>%</small>';
+  const v=document.getElementById('rVerdict');
+  if(C>=0.5){ v.innerHTML='<span class="badge good">Healthy</span>'; }
+  else if(C>=FLOOR){ v.innerHTML='<span class="badge warn">Marginal</span>'; }
+  else { v.innerHTML='<span class="badge bad">Below floor</span>'; }
+}
+[sDsup,sC0,sK].forEach(s=>s.addEventListener('input',updateAge));
+updateAge();
+
+/* ---------- chart resize safety net (fixes 0-width on initial mobile-width load) ---------- */
+window.addEventListener('load',function(){ try{balChart.resize();stackChart.resize();ageChart.resize();}catch(e){} });
+</script>
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

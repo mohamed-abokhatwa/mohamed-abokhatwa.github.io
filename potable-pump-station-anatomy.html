@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anatomy of a Large Potable-Water Pumping Station — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Water Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    /* equations (MathJax) */
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    /* callouts */
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    /* tables */
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    /* interactive figure — a self-contained light instrument panel, legible in both themes */
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    /* references */
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="A large potable-water pumping station is a system, not a pump: duty and standby units sized by firm capacity and the N+1 rule, staging across the daily demand curve, the case for a VFD lead, and the suction-side NPSH physics that decides where the pumps sit. Three interactive design charts and a worked station for a town of 50,000.">
+  <meta property="og:title" content="Anatomy of a Large Potable-Water Pumping Station | Mohamed Abokhatwa">
+  <meta property="og:description" content="How many pumps, how much standby, how they follow the day, and why they sit low: firm capacity and the N+1 rule, VFD staging, and NPSH on the suction side — with three interactive design charts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/potable-pump-station-anatomy.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-potable-pump-station-anatomy.jpg">
+  <meta property="og:image:alt" content="Anatomy of a Large Potable-Water Pumping Station">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Anatomy of a Large Potable-Water Pumping Station | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="Duty + standby, firm capacity and N+1, VFD staging across the day, and the NPSH physics of the suction side — the station as a system, in three interactive charts.">
+  <link rel="canonical" href="https://abokhatwa.com/potable-pump-station-anatomy.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Anatomy of a Large Potable-Water Pumping Station",
+  "description": "A large potable-water pumping station as a system: duty and standby units sized by firm capacity and the N+1 rule, staging across the demand curve, the VFD lead, and the suction-side NPSH physics that sets pump elevation.",
+  "image": "https://abokhatwa.com/og-potable-pump-station-anatomy.jpg",
+  "datePublished": "2026-06-16",
+  "dateModified": "2026-06-16",
+  "author": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa",
+    "url": "https://abokhatwa.com/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abokhatwa.com/potable-pump-station-anatomy.html"
+  }
+}
+  </script>
+<style>
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--text-primary);}
+.breadcrumb-sep{opacity:.4;}
+.breadcrumb-current{color:var(--text-secondary);}.breadcrumb a.breadcrumb-current{color:var(--accent);}.breadcrumb a.breadcrumb-current:hover{opacity:.75;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+<div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="pump-engineering.html" class="breadcrumb-current">Pump Engineering</a></div>
+  <span class="tag">Pump Engineering &middot; Pumping Stations &middot; Firm Capacity &middot; Potable Water</span>
+  <h1>Anatomy of a Large Potable-Water Pumping Station</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>June 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>14 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="potable-pump-station-anatomy.webp" alt="Cutaway of a large potable-water pumping station with a bank of vertical pumps, suction and discharge headers">
+</div>
+
+<div class="article-body">
+<p class="lead">A pumping station is the one place in a water system where civil, mechanical and electrical engineering meet inside a single room — and the one most often designed as if it were a single pump bolted to a single motor. It is not. It is a fleet that must cover the busiest hour of the year with its largest machine switched off, follow a demand that swings five-fold across the day without short-cycling, and never let the pressure on its suction flanges fall low enough to boil the water it is moving. This is how that room is put together, and the three numbers that govern it.</p>
+
+<h2 id="system">1 · A station is a system, not a pump</h2>
+<p>The pump is the part everyone photographs. It is also the part least likely to fail the project. A large potable station fails — on paper at the design review, or at 7&nbsp;a.m. in its third summer — for reasons that have nothing to do with the impeller and everything to do with how the machines are arranged, sequenced and fed:</p>
+<ul class="clean">
+  <li><strong>It is sized for redundancy, not just flow.</strong> The duty point tells you how much water; the <em>firm capacity</em> rule tells you how many machines, because the station must still deliver with one unit out for maintenance or failure.</li>
+  <li><strong>It must follow a moving target.</strong> Demand is not a number, it is a curve — almost flat at night, a wall at the morning peak. A bank of pumps that can only run flat-out either floods the storage or hammers itself to death cycling on and off.</li>
+  <li><strong>It lives or dies on its suction side.</strong> Discharge problems announce themselves; suction problems hide until the pump is cavitating, eroding and losing head. Where the pumps sit relative to the water surface is decided here, before the slab is poured.</li>
+  <li><strong>It is full of hardware that is not pumps.</strong> Check valves, isolation valves, the suction and discharge manifolds, flow meters, surge protection and the control logic are where most of the operating trouble actually lives.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The governing idea</span>
+  A pumping station answers three questions, in order: <strong>how many machines</strong> (firm capacity and the N+1 rule), <strong>how they share the day</strong> (staging and variable speed), and <strong>how they are fed</strong> (NPSH and submergence on the suction side). Get the flow right and these three wrong, and you have a correctly-sized station that trips, cycles and cavitates.
+</div>
+
+<h2 id="layout">2 · The layout — what the room actually contains</h2>
+<p>Walk a large potable station from the water in to the water out and you pass through a fixed sequence of parts. The two dominant arrangements differ in where the pumps sit relative to the water:</p>
+<ul class="clean">
+  <li><strong>The suction source</strong> — a clearwell, a ground reservoir or a suction header off a transmission main. For a station drawing from a wet well or sump, the <em>intake geometry</em> (approach channel, submergence, anti-vortex baffles) is a design discipline of its own<sup class="cite">[1]</sup>.</li>
+  <li><strong>Dry-pit vs. wet-pit.</strong> In a <strong>dry-pit</strong> (dry-well) station the pumps stand in a dry gallery beside the water, fed through suction pipework — accessible, but they must be set low enough for positive suction. In a <strong>wet-pit</strong> arrangement vertical-turbine or submersible pumps hang directly in the water, buying suction conditions at the cost of access.</li>
+  <li><strong>The suction manifold</strong> — the common header feeding every pump, sized for a low velocity (typically &le;&nbsp;1.5&nbsp;m/s) so that no single pump starves the next.</li>
+  <li><strong>The pumps and drivers</strong> — the duty + standby fleet, each with its own isolation valve, check valve and (increasingly) variable-frequency drive.</li>
+  <li><strong>The discharge manifold and metering</strong> — where the individual pump discharges combine, the flow is measured, and the station hands the water to the transmission main or distribution network.</li>
+  <li><strong>Surge protection</strong> — vessels, valves or tanks that absorb the transient when several pumps trip together (see <a href="surge-scenarios-pump-stations.html">surge scenarios in pump stations</a> and <a href="surge-vessel.html">surge vessels</a>).</li>
+</ul>
+<p>Everything downstream of this article — selection, surge, control — has its own treatment on this site. Here we build the skeleton: how many pumps, how they run, and how they are fed.</p>
+
+<h2 id="duty">3 · From demand to the duty point</h2>
+<p>A potable station exists to move a known volume against a known head. The volume comes from the same demand basis that sizes the storage it usually feeds<sup class="cite">[2]</sup> — population \(P\) and per-capita demand \(q\) give the average, maximum and peak-hour demands:</p>
+
+<div class="eq">\[ \text{ADD} = P\,q \qquad \text{MDD} = f_d\cdot\text{ADD} \qquad \text{PHD} = f_h\cdot\frac{\text{ADD}}{24} \]</div>
+
+<p>Which of these sets the duty flow depends on what the station does. A <strong>transfer / high-lift station</strong> pumping into a storage reservoir is sized for the maximum-day rate over its pumping window — storage absorbs the hourly swing (the subject of <a href="strategic-water-storage-sizing.html">strategic storage sizing</a>). A <strong>distribution booster</strong> pumping straight into the network with little downstream storage must instead meet the <em>peak-hour</em> demand directly. The same town, two very different stations:</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>Duty basis — a town of 50,000 at 250 L/capita·day, the worked anchor carried through this article.</caption>
+  <thead><tr><th>Quantity</th><th class="num">Value</th><th class="num">Rate</th></tr></thead>
+  <tbody>
+    <tr><td>Average-day demand (ADD)</td><td class="num">12,500 m³/d</td><td class="num">521 m³/h</td></tr>
+    <tr><td>Maximum-day demand (MDD), f<sub>d</sub>=1.5 — <em>transfer duty</em></td><td class="num">18,750 m³/d</td><td class="num">781 m³/h</td></tr>
+    <tr><td>Peak-hour demand (PHD), f<sub>h</sub>=2.5 — <em>booster duty</em></td><td class="num">—</td><td class="num">1,302 m³/h</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>The head is the total dynamic head the pump must overcome — the static lift between suction and discharge water surfaces plus all friction at the duty flow. Take a representative <strong>TDH of 60&nbsp;m</strong> (45&nbsp;m static lift + 15&nbsp;m friction) for our transfer station at 781&nbsp;m³/h. The hydraulic and shaft power follow directly<sup class="cite">[7]</sup>:</p>
+
+<div class="eq">\[ P_{shaft} = \frac{\rho\,g\,Q\,H}{\eta} = \frac{1000\times9.81\times0.217\times60}{0.80} \approx 160\ \text{kW} \]</div>
+
+<p>That 160&nbsp;kW is the <em>whole station's</em> shaft power at full duty. The next decision — how to split it into machines — is where the station is really designed.</p>
+
+<h2 id="howmany">4 · How many pumps? Firm capacity and the N+1 rule</h2>
+<p>You never build one pump to do the whole duty. The single most important reliability rule in pumping-station design is <strong>firm capacity</strong>: the station must deliver its design flow with its <em>largest unit out of service</em><sup class="cite">[4]</sup>. With \(N\) duty units and \(S\) standby units, each sized at \(q = Q_{duty}/N\):</p>
+
+<div class="eq">\[ q=\frac{Q_{duty}}{N} \qquad Q_{firm}=(N+S-1)\,q \;\ge\; Q_{duty} \]</div>
+
+<p>The minimum that satisfies this is \(S=1\): one standby. That is the famous <strong>N+1 rule</strong>. Note what it does <em>not</em> say — it does not fix how many duty units you choose. That is a second, independent decision, and it trades two things against each other:</p>
+<ul class="clean">
+  <li><strong>The cost of redundancy.</strong> One standby out of \(N\) duty units is a redundancy premium of \(S/N\). Three duty pumps + one standby is a 33% premium; six + one is only 17%. <em>More, smaller units make the spare cheaper.</em></li>
+  <li><strong>Granularity (turndown).</strong> With \(N\) equal fixed-speed units the smallest step you can deliver is one unit. More units means a finer staircase and a closer match to low night demand — fewer starts, less short-cycling.</li>
+</ul>
+<p>Pulling the other way: more units means more valves, more pipework, more starters and more footprint. The right number is rarely one or two and rarely eight — for a station this size, <strong>three or four duty units plus one standby</strong> is the usual sweet spot. The first chart makes the trade visible.</p>
+
+<h2 id="int-redundancy">5 · Interactive: the redundancy–granularity trade-off</h2>
+<p>Choose the station's full duty flow, the number of duty units and how much standby you carry. The bars show how big each machine must be at every candidate fleet size; the line shows the redundancy premium it carries. The highlighted bar is your choice — and the firm-capacity verdict warns you the moment the standby drops to zero.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Fleet size — unit capacity and the cost of standby</div>
+    <div class="fsub">For each candidate number of duty units, the blue bar is how big each machine must be (duty flow ÷ N) and the amber line is the redundancy premium — the cost of the standby fleet as a percentage of duty capacity (S ÷ N). More, smaller units shrink both the machine and the relative cost of its spare; the price you pay is more valves, starters and floor area. The highlighted bar is your selected fleet.</div>
+  </div>
+  <div class="chart-box"><canvas id="redChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Station duty flow <span id="vQmd">781 m³/h</span></label>
+      <input type="range" id="sQmd" min="200" max="4000" value="781" step="1">
+      <div class="hint">The full flow the station must deliver — MDD-rate for a transfer station, PHD for a booster.</div>
+    </div>
+    <div class="ctrl">
+      <label>Duty units (N) <span id="vN">3</span></label>
+      <input type="range" id="sN" min="2" max="8" value="3" step="1">
+      <div class="hint">How many equal machines share the duty flow. Each is sized at Q ÷ N.</div>
+    </div>
+    <div class="ctrl">
+      <label>Standby units (S) <span id="vS">1</span></label>
+      <input type="range" id="sS" min="0" max="2" value="1" step="1">
+      <div class="hint">S = 1 is the N+1 rule. S = 0 means no firm capacity — any outage starves the duty.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Unit size</div><div class="v" id="rUnit">260 <small>m³/h</small></div></div>
+    <div class="cell"><div class="k">Installed capacity</div><div class="v" id="rInst">1,041 <small>m³/h</small></div></div>
+    <div class="cell"><div class="k">Turndown</div><div class="v" id="rTurn">3 <small>: 1</small></div></div>
+    <div class="cell"><div class="k">Firm capacity</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rFirm"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">Start at three duty units + one standby: each machine is a third of the duty, a 33% redundancy premium buys full firm capacity, and the bank turns down 3:1. Slide the standby to zero and the verdict turns red — the station now fails the moment any pump is touched. Raise the duty count to six and the units shrink, the premium falls toward 17% and the turndown sharpens to 6:1 — the classic argument for more, smaller machines, paid for in extra valves, starters and slab.</p>
+
+<h2 id="staging">6 · Following the day — staging and the case for a VFD</h2>
+<p>A fleet of equal fixed-speed pumps can only deliver in lumps: one unit, two units, three. Real demand is a smooth curve. The controller closes the gap by <strong>staging</strong> — cutting a pump in when demand climbs past the capacity online, dropping one out when it falls. Between steps, the surplus has to go somewhere: into rising storage, or — if there is none — into a pump that switches on and off too often. Excessive starts are the quiet killer of motors, contactors and bearings; standards cap them at roughly <strong>6–10 starts per hour</strong> for medium motors<sup class="cite">[8]</sup>.</p>
+<p>A <strong>variable-frequency drive on the lead pump</strong> dissolves the staircase. The base demand is carried by fixed-speed units; the lead pump's speed trims the remainder continuously, so the station's output tracks demand almost exactly. The affinity laws make this cheap at part load — power falls with roughly the cube of speed — which is why variable-speed pumping is now standard for anything with a wide demand swing<sup class="cite">[9]</sup> (with the caveats in <a href="vfd-myth-hydraulic-design.html">the VFD myth</a>, since a system with high static head does not enjoy the full cube-law saving). The second chart shows both regimes on the same day.</p>
+
+<h2 id="int-staging">7 · Interactive: pump staging across the day</h2>
+<p>The blue area is the day's demand. The amber staircase is what a bank of equal fixed-speed pumps actually delivers as it stages up and down; the green line is the smooth output of the same bank with a VFD trimming the lead pump. Watch the gap between staircase and demand — that is the water a fixed-speed station must dump into storage, and the cycling it inflicts on itself.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Staging a pump bank against the daily demand curve</div>
+    <div class="fsub">Demand (blue) is a typical municipal diurnal pattern scaled to your max-day total. The amber staircase is the fixed-speed bank cutting units in and out; the green line is the same bank with a VFD lead pump trimming the remainder. The taller the steps, the more the station over-pumps at low demand and the harder it cycles.</div>
+  </div>
+  <div class="chart-box"><canvas id="stageChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Maximum-day demand <span id="vMDD">18,750 m³/d</span></label>
+      <input type="range" id="sMDD" min="5000" max="40000" value="18750" step="250">
+      <div class="hint">Scales the whole demand curve. The bank is sized to meet the peak hour.</div>
+    </div>
+    <div class="ctrl">
+      <label>Number of units online <span id="vNb">4</span></label>
+      <input type="range" id="sNb" min="2" max="8" value="4" step="1">
+      <div class="hint">Equal units sharing the peak. Fewer units = taller steps = more cycling.</div>
+    </div>
+    <div class="ctrl">
+      <label>Diurnal peak factor <span id="vPf">2.0 ×</span></label>
+      <input type="range" id="sPf" min="1.2" max="3" value="2.0" step="0.1">
+      <div class="hint">Peak-hour ÷ average-hour demand. Peakier cities swing harder.</div>
+    </div>
+    <div class="ctrl">
+      <label>VFD on lead pump <span id="vVfd">On</span></label>
+      <input type="range" id="sVfd" min="0" max="1" value="1" step="1">
+      <div class="hint">Off: pure fixed-speed staircase. On: lead pump trims the remainder smoothly.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Units at peak</div><div class="v" id="rPeakU">4 <small>/ 4</small></div></div>
+    <div class="cell"><div class="k">Units at night</div><div class="v" id="rNightU">1 <small></small></div></div>
+    <div class="cell"><div class="k">Night over-supply</div><div class="v" id="rSpill">— <small>%</small></div></div>
+    <div class="cell"><div class="k">Control mode</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rMode"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">With four fixed-speed units the night-time staircase over-pumps the network by a wide margin — every cubic metre of that surplus is short-cycling unless storage soaks it up. Switch the VFD on and the green line lies almost on the demand curve: the over-supply collapses, the cycling stops, and the part-load energy bill falls with it. Drop to two units and the steps grow so tall that even the storage struggles to absorb them.</p>
+
+<h2 id="npsh">8 · The suction side — NPSH, submergence and why pumps sit low</h2>
+<p>Everything so far is about the discharge side — flow and head out of the station. The failures that erode impellers and quietly steal head come from the <em>suction</em> side. A pump does not suck water; atmospheric pressure pushes it in. If the absolute pressure at the impeller eye falls to the water's vapour pressure, the water flashes to vapour, the bubbles collapse violently on the blades, and the pump <strong>cavitates</strong> — losing head, vibrating, and pitting metal. The margin against this is <strong>Net Positive Suction Head</strong>:</p>
+
+<div class="eq">\[ \text{NPSH}_a = \frac{P_{atm}-P_{vap}}{\rho g} + H_s - H_f \]</div>
+
+<p>where \(H_s\) is the static head on the suction (positive when the water surface sits <em>above</em> the pump — flooded suction; negative for a suction lift) and \(H_f\) is the friction loss in the suction line. The pump supplies its own requirement, \(\text{NPSH}_r\), which rises steeply with flow and is fixed by the impeller. The design rule is simply that the available always beats the required, with a safety margin<sup class="cite">[2,3]</sup>:</p>
+
+<div class="eq">\[ \text{NPSH}_a \;\ge\; \text{NPSH}_r + \text{margin} \qquad (\text{margin}\approx 0.5\text{–}1.0\ \text{m, or per HI / vendor}) \]</div>
+
+<p>Two terms in \(\text{NPSH}_a\) are brutal in a hot climate. The vapour-pressure term grows fast with temperature — water at 45&nbsp;°C costs roughly a metre of head that 20&nbsp;°C water does not — and the static term turns negative the moment the pump sits above its water source. This is the whole reason large pumps are set <em>low</em>, often below the suction water surface: every metre of flooded suction is a metre added straight to \(\text{NPSH}_a\). For the full derivation, the suction-lift versus flooded-suction cases and worked temperature corrections, see the dedicated guide on <a href="npsh-water-infrastructure.html">mastering NPSH in water infrastructure</a>. The third chart lets you push these terms until the pump cavitates.</p>
+
+<h2 id="int-npsh">9 · Interactive: NPSH margin vs. flow</h2>
+<p>The blue curve is the head available at the impeller; the amber curve is what the pump demands, climbing with flow. Where blue stays above amber, the pump is safe; where they meet, it cavitates. The marker is your operating flow. Push the water temperature up or the suction level down and watch the safe margin close.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Net Positive Suction Head — available vs. required</div>
+    <div class="fsub">NPSH available (blue) falls gently with flow as suction friction grows; NPSH required (amber) climbs steeply with flow, fixed by the impeller. The red marker sits at your operating flow per pump. When the marker drops into the shaded band — available below required-plus-margin — the pump is cavitating.</div>
+  </div>
+  <div class="chart-box"><canvas id="npshChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Suction water level <span id="vLev">+2.0 m</span></label>
+      <input type="range" id="sLev" min="-6" max="8" value="2" step="0.5">
+      <div class="hint">Water surface relative to the pump centreline. Positive = flooded suction; negative = suction lift.</div>
+    </div>
+    <div class="ctrl">
+      <label>Water temperature <span id="vT">30 °C</span></label>
+      <input type="range" id="sT" min="10" max="55" value="30" step="1">
+      <div class="hint">Drives the vapour-pressure term — Gulf summers sit high and steal margin.</div>
+    </div>
+    <div class="ctrl">
+      <label>Operating flow per pump <span id="vQp">260 m³/h</span></label>
+      <input type="range" id="sQp" min="60" max="390" value="260" step="5">
+      <div class="hint">Sets the marker. Running a pump far right of its duty raises NPSHr sharply.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">NPSH available</div><div class="v" id="rNa">11.1 <small>m</small></div></div>
+    <div class="cell"><div class="k">NPSH required</div><div class="v" id="rNr">4.0 <small>m</small></div></div>
+    <div class="cell"><div class="k">Margin</div><div class="v" id="rMar">7.1 <small>m</small></div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rNv"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">At a flooded suction of +2&nbsp;m and 30&nbsp;°C water the duty point carries a comfortable 7&nbsp;m of margin. Now do what a tight site forces: drag the suction level negative to lift the water, and push the temperature to a summer 50&nbsp;°C. The blue curve sinks, the margin closes, and somewhere on the way the marker falls into the red — the same pump, cavitating, because of where it sits and how warm the water is, not because of anything on its discharge flange.</p>
+
+<h2 id="hardware">10 · The hardware between the pumps</h2>
+<p>Most operating trouble in a station lives in the valves and fittings, not the impellers. The essential pieces, and what each is really for:</p>
+<div class="tbl-wrap">
+<table>
+  <caption>The non-pump hardware that makes a station work — and the failure each prevents.</caption>
+  <thead><tr><th>Component</th><th>Role</th><th>What it prevents</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Isolation valves</strong> (suction &amp; discharge)</td><td>Take one unit out without draining the station</td><td>Shutting the whole station down to service one pump</td></tr>
+    <tr><td><strong>Check valve</strong> (per pump)</td><td>Stop reverse flow when a pump stops</td><td>Backspin, and the slam transient on trip (sized/timed to the surge study)</td></tr>
+    <tr><td><strong>Suction &amp; discharge manifolds</strong></td><td>Combine the units at low velocity</td><td>One pump starving another; manifold head loss eating duty head</td></tr>
+    <tr><td><strong>Flow metering</strong></td><td>Measure station output for control and accounting</td><td>Blind operation; no basis for staging or leak detection downstream</td></tr>
+    <tr><td><strong>Surge protection</strong></td><td>Absorb the transient on multi-pump trip</td><td>Column separation and pipe rupture (see <a href="surge-scenarios-pump-stations.html">surge scenarios</a>)</td></tr>
+    <tr><td><strong>Control &amp; SCADA</strong></td><td>Stage on demand / reservoir level; protect on fault</td><td>Short-cycling, dry running, dead-heading, run-out</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout warn">
+  <span class="lbl">The mistake that ages a station fast</span>
+  Sizing every pump identically and running the same machine as lead every day. Equal units are good for redundancy, but a fixed lead accumulates all the wear and all the starts. Good control logic <strong>rotates</strong> the duty so running hours and starts spread evenly across the fleet — the difference between four pumps that all reach overhaul together and one exhausted pump beside three nearly-new ones.
+</div>
+
+<h2 id="checklist">11 · Design &amp; commissioning checklist</h2>
+<ul class="clean">
+  <li><strong>Fix the duty first</strong> — decide transfer (MDD-rate into storage) vs. booster (PHD into network); the choice changes the flow by nearly a factor of two.</li>
+  <li><strong>Set the fleet by firm capacity</strong> — N duty + at least one standby, sized so the station meets duty with the largest unit out. Never accept a single-pump or N+0 station for potable supply.</li>
+  <li><strong>Choose the duty count deliberately</strong> — balance redundancy premium, turndown and footprint; three or four + one is usually right at this scale.</li>
+  <li><strong>Match the bank to the curve</strong> — verify the night turndown does not force more than ~6–10 starts/hour; add a VFD lead where the swing is wide or storage is thin.</li>
+  <li><strong>Check NPSH at the worst case</strong> — highest water temperature, lowest suction level, highest flow (run-out), with the required safety margin. Set the pump elevation from this, not from the architecture.</li>
+  <li><strong>Run the surge study before fixing check valves</strong> — the multi-pump power-failure trip sets the valve type, timing and the surge vessel (see <a href="surge-scenarios-pump-stations.html">surge scenarios</a>).</li>
+  <li><strong>Specify duty rotation and protection</strong> — alternate the lead, and protect every unit against dry run, dead-head and run-out in the control logic.</li>
+  <li><strong>Witness the firm-capacity test at commissioning</strong> — prove the station meets design flow with one unit locked out, at the design head, before handover.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  Size the flow, then design the fleet: enough machines to deliver with the largest one out, staged finely enough — with a VFD where the day swings hard — to follow demand without cycling, and set low enough that the suction never starves. The pump is the easy part; the station is everything around it.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>Hydraulic Institute. <em>ANSI/HI 9.8 — Rotodynamic Pumps for Pump Intake Design</em> — sump geometry, submergence and anti-vortex provisions.</li>
+  <li>Hydraulic Institute. <em>ANSI/HI 9.6.1 — Rotodynamic Pumps Guideline for NPSH Margin.</em></li>
+  <li>Hydraulic Institute. <em>ANSI/HI 9.6.3 — Rotodynamic Pumps Guideline for Allowable Operating Region.</em></li>
+  <li>Great Lakes&ndash;Upper Mississippi River Board (GLUMRB). <em>Recommended Standards for Water Works (Ten States Standards)</em> — pumping-station firm capacity with the largest unit out of service.</li>
+  <li>American Water Works Association. <em>Manual M32 — Computer Modeling of Water Distribution Systems</em>; AWWA G200 — Distribution Systems Operation and Management.</li>
+  <li>Sanks, R.L. et al. <em>Pumping Station Design.</em> Butterworth-Heinemann — the standard reference on station layout and hydraulics.</li>
+  <li>Karassik, I.J., Messina, J.P., Cooper, P., Heald, C.C. <em>Pump Handbook.</em> McGraw-Hill.</li>
+  <li>U.S. EPA / NEMA. <em>Motor starts-per-hour limits and pump-station control practice</em> — short-cycling and motor protection.</li>
+  <li>Hydraulic Institute &amp; Europump. <em>Variable Speed Pumping: A Guide to Successful Applications.</em></li>
+</ol>
+
+<div class="tags">#PumpingStation #PotableWater #FirmCapacity #NPlusOne #PumpRedundancy #PumpStaging #VFD #VariableSpeedPumping #NPSH #SuctionDesign #PumpEngineering #WaterInfrastructure</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+
+<script>
+/* ---------- shared helpers ---------- */
+const baseLine={borderWidth:2.5,pointRadius:0,tension:0.25,fill:false};
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+
+/* typical municipal diurnal pattern (hourly, mean ≈ 1) */
+const PAT=[0.4,0.3,0.3,0.3,0.4,0.7,1.1,1.5,1.6,1.4,1.3,1.2,1.2,1.2,1.1,1.0,1.0,1.1,1.4,1.6,1.5,1.2,0.8,0.5];
+const PATmean=PAT.reduce((a,b)=>a+b,0)/24;
+const PATnorm=PAT.map(v=>v/PATmean);          // mean exactly 1
+const basePeak=Math.max(...PATnorm);          // ≈ 1.59
+
+/* reshape the pattern so its peak ≈ the chosen peak factor.
+   Clamp at a small positive floor (demand can never be negative) then
+   renormalise so the mean stays exactly 1 — i.e. the daily total stays = MDD. */
+function shaped(pf){
+  const k=(pf-1)/(basePeak-1);
+  const m=PATnorm.map(v=>Math.max(0.05,1+(v-1)*k));
+  const mean=m.reduce((a,b)=>a+b,0)/24;
+  return m.map(v=>v/mean);
+}
+
+/* =====================================================================
+   CHART 1 — REDUNDANCY (premium) vs GRANULARITY (turndown) across fleet size
+   ===================================================================== */
+const sQmd=document.getElementById('sQmd'), sN=document.getElementById('sN'), sS=document.getElementById('sS');
+const vQmd=document.getElementById('vQmd'), vN=document.getElementById('vN'), vS=document.getElementById('vS');
+const NRANGE=[2,3,4,5,6,7,8];
+
+let redChart=new Chart(document.getElementById('redChart'),{
+  data:{labels:NRANGE,datasets:[
+    {type:'bar', label:'Unit size (m³/h)', data:[], backgroundColor:[], borderColor:'#1b4f72', borderWidth:1, yAxisID:'y', order:2},
+    {type:'line', label:'Redundancy premium (%)', data:[], borderColor:'#b9770e', backgroundColor:'#b9770e', borderWidth:2.5, pointRadius:3, tension:0, yAxisID:'y1', order:1}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    scales:{
+      x:{title:{display:true,text:'Number of duty units (N)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{display:false},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{position:'left',min:0,title:{display:true,text:'Unit size  (m³/h each)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>fmt0(v)}},
+      y1:{position:'right',min:0,suggestedMax:60,title:{display:true,text:'Redundancy premium  (% of duty)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{drawOnChartArea:false},ticks:{font:{family:'DM Sans',size:11},callback:v=>v+'%'}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{title:items=>'N = '+items[0].label+' duty units', label:c=>c.dataset.type==='bar'?`Unit size: ${fmt0(c.parsed.y)} m³/h`:`Redundancy premium: ${c.parsed.y}%`}}
+    }
+  }
+});
+
+function updateRed(){
+  const Qmd=+sQmd.value, N=+sN.value, S=+sS.value;
+  vQmd.textContent=fmt0(Qmd)+' m³/h'; vN.textContent=N; vS.textContent=S;
+
+  const units=NRANGE.map(n=>Math.round(Qmd/n));
+  const prem=NRANGE.map(n=>Math.round(S/n*100));
+  const cols=NRANGE.map(n=>n===N?'rgba(27,79,114,0.85)':'rgba(27,79,114,0.30)');
+  redChart.data.datasets[0].data=units;
+  redChart.data.datasets[0].backgroundColor=cols;
+  redChart.data.datasets[1].data=prem;
+  redChart.update('none');
+
+  const unit=Qmd/N, inst=(N+S)*unit, firm=(N+S-1)*unit;
+  document.getElementById('rUnit').innerHTML=fmt0(unit)+' <small>m³/h</small>';
+  document.getElementById('rInst').innerHTML=fmt0(inst)+' <small>m³/h</small>';
+  document.getElementById('rTurn').innerHTML=N+' <small>: 1</small>';
+  const fv=document.getElementById('rFirm');
+  if(S>=1 && firm>=Qmd-1e-6){ fv.innerHTML='<span class="badge good">N+'+S+' &middot; firm OK</span>'; }
+  else { fv.innerHTML='<span class="badge bad">No firm capacity</span>'; }
+}
+[sQmd,sN,sS].forEach(s=>s.addEventListener('input',updateRed));
+updateRed();
+
+/* =====================================================================
+   CHART 2 — PUMP STAGING ACROSS THE DAY (fixed-speed staircase vs VFD)
+   ===================================================================== */
+const sMDD=document.getElementById('sMDD'), sNb=document.getElementById('sNb'), sPf=document.getElementById('sPf'), sVfd=document.getElementById('sVfd');
+const vMDD=document.getElementById('vMDD'), vNb=document.getElementById('vNb'), vPf=document.getElementById('vPf'), vVfd=document.getElementById('vVfd');
+
+let stageChart=new Chart(document.getElementById('stageChart'),{
+  type:'line',
+  data:{labels:[...Array(25).keys()],datasets:[
+    {label:'Demand (m³/h)', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.10)', showLine:true, ...baseLine, borderWidth:2.5, fill:true},
+    {label:'Fixed-speed staircase', data:[], borderColor:'#b9770e', showLine:true, ...baseLine, borderWidth:2.5, tension:0, stepped:true},
+    {label:'With VFD lead', data:[], borderColor:'#1e8449', showLine:true, ...baseLine, borderWidth:2.5, tension:0.2}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    scales:{
+      x:{title:{display:true,text:'Hour of day',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},stepSize:2,callback:v=>v+':00'}},
+      y:{min:0,title:{display:true,text:'Flow rate  (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt0(c.parsed.y)} m³/h at ${c.parsed.x}:00`}}
+    }
+  }
+});
+
+function updateStage(){
+  const MDD=+sMDD.value, N=+sNb.value, pf=+sPf.value, vfdOn=+sVfd.value===1;
+  vMDD.textContent=fmt0(MDD)+' m³/d'; vNb.textContent=N; vPf.textContent=pf.toFixed(1)+' ×'; vVfd.textContent=vfdOn?'On':'Off';
+
+  const pat=shaped(pf);
+  const avgRate=MDD/24;
+  const peakRate=Math.max(...pat)*avgRate;       // the bank is sized to the peak hour
+  const unit=peakRate/N;                          // equal-unit size
+  const dem=[], stair=[], vfd=[];
+  let peakU=0, nightU=99, spillSum=0, demSum=0;
+  for(let h=0;h<=24;h++){
+    const hh=h%24;
+    const d=avgRate*pat[hh];
+    const onFS=Math.min(N,Math.ceil(d/unit-1e-9))||1;   // at least one pump online
+    const capFS=onFS*unit;
+    dem.push(d);
+    stair.push(capFS);
+    vfd.push(d);                                   // VFD lead trims to demand exactly
+    if(h<24){
+      peakU=Math.max(peakU,onFS);
+      nightU=Math.min(nightU,onFS);
+      spillSum+=(capFS-d); demSum+=d;
+    }
+  }
+  stageChart.data.datasets[0].data=dem;
+  stageChart.data.datasets[1].data=stair;
+  stageChart.data.datasets[2].data=vfd;
+  stageChart.data.datasets[1].hidden=false;
+  stageChart.data.datasets[2].hidden=!vfdOn;
+  stageChart.update('none');
+
+  document.getElementById('rPeakU').innerHTML=peakU+' <small>/ '+N+'</small>';
+  document.getElementById('rNightU').innerHTML=nightU+' <small></small>';
+  const spillPct=vfdOn?0:Math.round(spillSum/demSum*100);
+  document.getElementById('rSpill').innerHTML=spillPct+' <small>%</small>';
+  const mv=document.getElementById('rMode');
+  if(vfdOn){ mv.innerHTML='<span class="badge good">VFD — smooth</span>'; }
+  else if(spillPct>15){ mv.innerHTML='<span class="badge bad">Cycling</span>'; }
+  else { mv.innerHTML='<span class="badge warn">Stepped</span>'; }
+}
+[sMDD,sNb,sPf,sVfd].forEach(s=>s.addEventListener('input',updateStage));
+updateStage();
+
+/* =====================================================================
+   CHART 3 — NPSH AVAILABLE vs REQUIRED across flow
+   ===================================================================== */
+const sLev=document.getElementById('sLev'), sT=document.getElementById('sT'), sQp=document.getElementById('sQp');
+const vLev=document.getElementById('vLev'), vT=document.getElementById('vT'), vQp=document.getElementById('vQp');
+const QDUTY=260, ATM=10.33, NPSHR_DUTY=4.0, HF_DUTY=0.8, MARGIN_REQ=1.0;
+
+/* saturation vapour pressure (kPa) — Magnus/Alduchov-Eskridge; head in m = kPa/9.81 */
+function vapHead(T){ const es=0.61094*Math.exp(17.625*T/(T+243.04)); return es/9.81; }
+
+let npshChart=new Chart(document.getElementById('npshChart'),{
+  type:'line',
+  data:{datasets:[
+    {label:'NPSH available', data:[], borderColor:'#1b4f72', showLine:true, ...baseLine, borderWidth:3, tension:0.2},
+    {label:'NPSH required', data:[], borderColor:'#b9770e', showLine:true, ...baseLine, borderWidth:3, tension:0.2},
+    {label:'Operating flow', data:[], borderColor:'#c0392b', backgroundColor:'#c0392b', pointRadius:7, showLine:false}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'nearest',intersect:false},
+    scales:{
+      x:{type:'linear',min:60,max:390,title:{display:true,text:'Flow per pump  (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0,title:{display:true,text:'NPSH  (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${(+c.parsed.y).toFixed(1)} m at ${fmt0(c.parsed.x)} m³/h`}},
+      annotation:{annotations:{danger:{type:'box',display:false,xMin:390,xMax:390,backgroundColor:'rgba(192,57,43,0.10)',borderWidth:0}}}
+    }
+  }
+});
+
+function npshA(Q,lev,T){ const x=Q/QDUTY; return ATM + lev - HF_DUTY*x*x - vapHead(T); }
+function npshR(Q){ const x=Q/QDUTY; return NPSHR_DUTY*x*x; }
+
+function updateNpsh(){
+  const lev=+sLev.value, T=+sT.value, Qp=+sQp.value;
+  vLev.textContent=(lev>=0?'+':'')+lev.toFixed(1)+' m'; vT.textContent=T+' °C'; vQp.textContent=fmt0(Qp)+' m³/h';
+
+  const na=[], nr=[];
+  for(let Q=60;Q<=390;Q+=10){ na.push({x:Q,y:npshA(Q,lev,T)}); nr.push({x:Q,y:npshR(Q)}); }
+  const naP=npshA(Qp,lev,T), nrP=npshR(Qp), margin=naP-nrP;
+  npshChart.data.datasets[0].data=na;
+  npshChart.data.datasets[1].data=nr;
+  npshChart.data.datasets[2].data=[{x:Qp,y:naP}];
+
+  /* shade the flows where available falls below required + margin */
+  let qx=null;
+  for(let Q=60;Q<=390;Q+=2){ if(npshA(Q,lev,T)-npshR(Q)<MARGIN_REQ){ qx=Q; break; } }
+  const ann=npshChart.options.plugins.annotation.annotations.danger;
+  if(qx!==null){ ann.display=true; ann.xMin=qx; ann.xMax=390;
+    ann.label={display:true,content:'cavitation risk',position:{x:'center',y:'start'},font:{size:10,family:'DM Sans'},color:'#c0392b'};
+  } else { ann.display=false; }
+  npshChart.update('none');
+
+  document.getElementById('rNa').innerHTML=naP.toFixed(1)+' <small>m</small>';
+  document.getElementById('rNr').innerHTML=nrP.toFixed(1)+' <small>m</small>';
+  document.getElementById('rMar').innerHTML=margin.toFixed(1)+' <small>m</small>';
+  const v=document.getElementById('rNv');
+  if(margin>=MARGIN_REQ){ v.innerHTML='<span class="badge good">Safe margin</span>'; }
+  else if(margin>=0){ v.innerHTML='<span class="badge warn">Marginal</span>'; }
+  else { v.innerHTML='<span class="badge bad">Cavitating</span>'; }
+}
+[sLev,sT,sQp].forEach(s=>s.addEventListener('input',updateNpsh));
+updateNpsh();
+
+/* ---------- chart resize safety net (fixes 0-width on initial mobile-width load) ---------- */
+window.addEventListener('load',function(){ try{redChart.resize();stageChart.resize();npshChart.resize();}catch(e){} });
+</script>
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

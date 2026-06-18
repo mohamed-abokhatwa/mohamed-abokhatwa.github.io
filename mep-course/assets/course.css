@@ -115,17 +115,23 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
 /* ============================================================
    COURSE HERO  (calm, site-styled)
    ============================================================ */
-.course-hero{padding:120px 0 44px;border-bottom:1px solid var(--border)}
-.course-hero h1{margin:0 0 14px;font-family:var(--font-display);font-size:clamp(32px,5vw,52px);
-  line-height:1.08;letter-spacing:-0.035em;font-weight:700;color:var(--text-primary);max-width:880px}
-.course-hero p{margin:0;max-width:780px;color:var(--text-secondary);font-size:18px;line-height:1.7}
+.course-hero{padding:118px 0 56px}
+.course-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.course-hero h1{margin:0 0 14px;font-family:var(--font-display);font-size:clamp(30px,4vw,46px);
+  line-height:1.1;letter-spacing:-0.035em;font-weight:700;color:var(--text-primary)}
+.course-hero p{margin:0;color:var(--text-secondary);font-size:17.5px;line-height:1.7}
+.course-hero-media img{width:100%;height:auto;display:block;border-radius:16px}
+:root[data-theme="dark"] .course-hero-media img{border:1px solid var(--border)}
+@media(max-width:760px){
+  .course-hero{padding:96px 0 36px}
+  .course-hero-grid{grid-template-columns:1fr;gap:26px}
+  .course-hero-media{max-width:460px}
+}
 .course-hero .kicker{display:inline-block;color:var(--accent);font-weight:600;font-size:12px;
   letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
 .course-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);
   text-decoration:none;margin-bottom:34px;transition:var(--transition)}
 .course-hero .back:hover{color:var(--text-primary)}
-.course-hero-img{max-width:var(--maxw);margin:26px auto 0;padding:0 22px}
-.course-hero-img img{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow-glass)}
 
 /* ---- Layout w/ side nav ---- */
 .layout{display:grid;grid-template-columns:240px 1fr;gap:36px;padding:30px 0 60px}

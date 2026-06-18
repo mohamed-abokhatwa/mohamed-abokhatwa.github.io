@@ -61,14 +61,17 @@ window.initBackToTop = function(){
   },{passive:true});
 };
 
-document.addEventListener('DOMContentLoaded',()=>{
-  window.applyChartTheme && applyChartTheme();
-  window.themeCharts && themeCharts();
-  window.initScrollSpy && initScrollSpy();
-  window.initBackToTop && initBackToTop();
+function courseBoot(){
+  try{ window.applyChartTheme && applyChartTheme(); }catch(e){}
+  try{ window.themeCharts && themeCharts(); }catch(e){}
+  try{ window.initScrollSpy && initScrollSpy(); }catch(e){}
+  try{ window.initBackToTop && initBackToTop(); }catch(e){}
   // Re-theme charts whenever the site theme toggles
   if(window.Chart){
-    new MutationObserver(()=>window.themeCharts && themeCharts())
-      .observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+    try{ new MutationObserver(()=>window.themeCharts && themeCharts())
+      .observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']}); }catch(e){}
   }
-});
+}
+// Run now if the DOM is already parsed (script loaded late), else wait.
+if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',courseBoot); }
+else { courseBoot(); }

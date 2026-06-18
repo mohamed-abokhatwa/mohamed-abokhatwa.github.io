@@ -12,6 +12,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MEP Engineering for Megatall Buildings — Course</title>
 <link rel="stylesheet" href="assets/course.css">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body class="mep-body">
 
@@ -50,7 +52,7 @@
     <h2 style="margin-top:0;border:0">How to use this course</h2>
     <p class="lead">This is a <strong>detailed design reference</strong>, not an overview. After the fundamentals, each discipline module follows the system <strong>from its source to the last component in the room</strong> — and every component gets the same treatment:</p>
     <p style="margin:0 0 10px"><span class="pill">Role</span><span class="pill">Design method &amp; formula</span><span class="pill">Worked numeric example</span><span class="pill">In the software (how to get accurate results)</span><span class="pill code">Code reference</span></p>
-    <p style="margin-bottom:0">Build order is <strong>mechanical-first</strong>: Fundamentals → HVAC → Plumbing → Fire, then Electrical, ELV/BMS and Vertical Transport. Each discipline is tied to its standard engineering software (HVAC → Carrier HAP, Revit, AFT Fathom, CONTAM; others use their own industry tools).</p>
+    <p style="margin-bottom:0">The modules follow a <strong>mechanical-first</strong> path — Fundamentals → HVAC → Plumbing → Fire, then Electrical, ELV/BMS and Vertical Transport — but each module is self-contained, so you can jump straight to any discipline. Each is tied to its standard engineering software (HVAC → Carrier HAP, Revit, AFT Fathom, CONTAM; others use their own industry tools).</p>
   </div>
 
   <h2>Modules</h2>
@@ -60,49 +62,42 @@
       <div class="num">MODULE 0</div>
       <h3>MEP Fundamentals</h3>
       <p>Units &amp; quantities, the three governing physics, the master concept of vertical pressure zoning, plant floors, stack effect, and the codes that govern everything.</p>
-      <span class="status ready">Ready</span>
     </a>
 
     <a class="modcard" href="module-1-hvac.html">
       <div class="num">MODULE 1</div>
       <h3>HVAC — source to terminal</h3>
       <p>The full chain: chiller plant → heat rejection → pumps → vertical CHW zoning → AHU → ducts → VAV → FCU → room diffuser → controls → smoke control. 17 components, each with design steps, numeric example &amp; software how-to (HAP, Revit, AFT, CONTAM).</p>
-      <span class="status ready">Ready · detailed</span>
     </a>
 
     <a class="modcard" href="module-2-plumbing.html">
       <div class="num">MODULE 2</div>
       <h3>Plumbing &amp; Public Health — source to tap</h3>
       <p>Mains &amp; storage → transfer pumps → pressure zoning → boosters → pipe sizing → hot water &amp; Legionella → valves &amp; surge → drainage/vent stacks → storm → fixtures → reuse → installation. 14 components, each with design, numbers &amp; software (AFT, Revit, manufacturer tools).</p>
-      <span class="status ready">Ready · detailed</span>
     </a>
 
     <a class="modcard" href="module-3-fire.html">
       <div class="num">MODULE 3</div>
       <h3>Fire Protection — reserve to sprinkler</h3>
       <p>Fire strategy → fire-water storage → fire pumps (NFPA 20 curve) → riser zoning/PRVs → standpipes → sprinklers (density/area) → special hazards → valves/FDC → installation → Civil Defense commissioning.</p>
-      <span class="status ready">Ready · detailed</span>
     </a>
 
     <a class="modcard" href="module-4-electrical.html">
       <div class="num">MODULE 4</div>
       <h3>Electrical &amp; Standby Power — grid to socket</h3>
       <p>Load estimate → HV intake → transformers → LV switchgear &amp; fault → risers/busways → cable sizing &amp; volt-drop → boards → generators/UPS → lighting → earthing/lightning → installation. Tools: ETAP, DIALux.</p>
-      <span class="status ready">Ready · detailed</span>
     </a>
 
     <a class="modcard" href="module-5-fa-elv.html">
       <div class="num">MODULE 5</div>
       <h3>Fire Alarm, ELV/ICT &amp; BMS</h3>
       <p>Detection &amp; voice evacuation, FA battery sizing, BMS/BACnet, structured cabling, CCTV/access/security, in-building coverage, and the integration &amp; cause-and-effect that ties it all together.</p>
-      <span class="status ready">Ready · detailed</span>
     </a>
 
     <a class="modcard" href="module-6-vertical-transport.html">
       <div class="num">MODULE 6</div>
       <h3>Vertical Transport</h3>
       <p>Traffic analysis (handling capacity &amp; interval) → arrangement/zoning &amp; sky lobbies → lift types &amp; ropes → machine/shaft → firefighting lifts → escalators → dispatch control → power. Tool: Elevate.</p>
-      <span class="status ready">Ready · detailed</span>
     </a>
 
   </div>
@@ -121,9 +116,101 @@
 
 <footer>
   <div class="footer-inner">
-    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="../">All Articles</a> &nbsp;&middot;&nbsp; <a href="index.html">Course Home</a></p>
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
   </div>
 </footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+[data-theme="dark"] .fab-glass, [data-theme="dark"] .fab-consult {
+  background:rgba(40,40,44,0.55); color:#f5f5f7; border-color:rgba(255,255,255,0.14);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
 
 <script src="../theme.js"></script>
 </body>

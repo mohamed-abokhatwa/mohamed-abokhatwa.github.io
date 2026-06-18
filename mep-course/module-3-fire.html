@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JRFPTBLVT4');</script>
+<script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 3 — Fire Protection | MEP for Tall Buildings</title>
+<link rel="stylesheet" href="assets/course.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  .box.sw{background:#f3eefb;border-color:#7a4fb5}.box.sw .t{color:#5e3a99}
+  .compo{background:#fff;border:1px solid var(--line);border-left:6px solid var(--red);border-radius:12px;padding:6px 22px 18px;box-shadow:var(--shadow);margin:26px 0}
+  .compo .tag{display:inline-block;background:var(--red);color:#fff;font-size:12px;font-weight:700;letter-spacing:.5px;padding:3px 12px 3px 22px;border-radius:0 0 8px 8px;margin-left:-22px}
+  .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 22px;font-size:13px}
+  .flow .n{background:#fde4e2;color:var(--red);border-radius:8px;padding:6px 10px;font-weight:600}
+  .flow .n.cur{background:var(--red);color:#fff}.flow .ar{color:#d9776f;font-weight:700}
+  .param{font-size:14.5px}.param th{background:#eef6fb;color:var(--navy)}
+</style>
+</head>
+<body class="mep-body">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../">Articles</a></li>
+      <li><a href="../calculators.html">Calculators</a></li>
+      <li><a href="index.html" class="active">Course</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){var open=document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open',open);this.setAttribute('aria-expanded',open);});
+</script>
+
+<section class="course-hero"><div class="wrap">
+  <a class="back" href="index.html">&larr; Back to course home</a>
+  <span class="kicker">Module 3 · Detailed reference</span>
+  <h1>Fire Protection — From the Water Reserve to the Sprinkler</h1>
+  <p>The water-based life-safety system: dedicated fire-water storage, fire pumps, zoned standpipes and sprinklers carried up the tower, plus special-hazard suppression — all under the fire code and the Civil Defense authority. Every component: role, design, worked numbers, software and code.</p>
+</div></section>
+
+<div class="wrap"><div class="layout">
+
+<aside class="sidenav">
+  <div class="grp">Source &amp; pressure</div>
+  <a href="#strategy">3.1 Strategy &amp; criteria</a>
+  <a href="#storage">3.2 Fire-water storage</a>
+  <a href="#pumps">3.3 Fire pumps</a>
+  <a href="#zoning">3.4 Zoning the riser</a>
+  <div class="grp">Delivery systems</div>
+  <a href="#standpipe">3.5 Standpipes &amp; hose</a>
+  <a href="#sprinkler">3.6 Sprinkler systems</a>
+  <a href="#special">3.7 Special hazards</a>
+  <div class="grp">Control &amp; site</div>
+  <a href="#valves">3.8 Valves &amp; accessories</a>
+  <a href="#install">3.9 Installation &amp; tricks</a>
+  <a href="#cx">3.10 Commissioning</a>
+  <a href="#glossary">Terms &amp; abbreviations</a>
+  <a href="#refs">References</a>
+</aside>
+
+<main class="content">
+
+<div class="figure">
+<svg viewBox="0 0 760 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fire protection chain">
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#b4232c"/></marker></defs>
+  <g font-family="sans-serif" font-size="11" text-anchor="middle">
+    <rect x="15" y="85" width="96" height="46" rx="8" fill="#0B3D5C"/><text x="63" y="105" fill="#fff">Fire-water</text><text x="63" y="121" fill="#fff">tanks</text>
+    <rect x="139" y="85" width="96" height="46" rx="8" fill="#b4232c"/><text x="187" y="105" fill="#fff">Fire pumps</text><text x="187" y="121" fill="#fff">(per zone)</text>
+    <rect x="263" y="85" width="110" height="46" rx="8" fill="#d9776f"/><text x="318" y="105" fill="#fff">Risers +</text><text x="318" y="121" fill="#fff">zoning/PRV</text>
+    <rect x="401" y="40" width="120" height="42" rx="8" fill="#1769AA"/><text x="461" y="58" fill="#fff">Standpipes</text><text x="461" y="73" fill="#fff">(hose valves)</text>
+    <rect x="401" y="120" width="120" height="42" rx="8" fill="#2E8BC0"/><text x="461" y="138" fill="#fff">Sprinklers</text><text x="461" y="153" fill="#fff">(every floor)</text>
+    <rect x="549" y="80" width="110" height="46" rx="8" fill="#eafaf0" stroke="#1f7a3d"/><text x="604" y="100" fill="#1f7a3d">Sprinkler head</text><text x="604" y="116" fill="#1f7a3d">/ hose (room)</text>
+    <line x1="111" y1="108" x2="137" y2="108" stroke="#b4232c" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="235" y1="108" x2="261" y2="108" stroke="#b4232c" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="373" y1="100" x2="399" y2="70" stroke="#b4232c" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="373" y1="116" x2="399" y2="140" stroke="#b4232c" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="521" y1="70" x2="560" y2="95" stroke="#b4232c" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="521" y1="140" x2="560" y2="112" stroke="#b4232c" stroke-width="2" marker-end="url(#a)"/>
+    <text x="380" y="195" font-weight="700" fill="#b4232c">Stored fire water → pumped &amp; zoned up the tower → delivered through sprinklers &amp; fire-brigade hose valves</text>
+  </g>
+</svg>
+<div class="cap">Figure 3-0 · The fire-protection chain. Each box is a section below. (Original schematic.)</div>
+</div>
+
+<div class="box warn"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg> This is life-safety, code-driven design</div>Fire protection is the least "free" discipline: it follows the fire code and the <strong>Authority Having Jurisdiction (Civil Defense)</strong> almost literally. The numbers here teach the method — the governing values are set by the adopted NFPA editions referenced in <strong>SBC 801</strong> and by the AHJ.</div>
+
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></svg> Constants, symbols &amp; conversions used in the worked examples</div>
+<table class="t param" style="margin:6px 0 0">
+<tr><th>Symbol / constant</th><th>Value</th><th>What it is</th></tr>
+<tr><td>ρ (water) / g</td><td>1000 kg/m³ / 9.81 m/s²</td><td>For the pump-power formula.</td></tr>
+<tr><td>η (eta)</td><td>0.75 typical</td><td>Pump efficiency (decimal).</td></tr>
+<tr><td>1 gpm</td><td>= 3.785 L/min</td><td>US gallons/min → litres/min (NFPA uses gpm).</td></tr>
+<tr><td>100 psi</td><td>≈ 6.9 bar ≈ 70 m head</td><td>Required residual at the top hose valve.</td></tr>
+<tr><td>1 m³/s</td><td>= 1000 L/s</td><td>Flow conversion.</td></tr>
+<tr><td>COP (in heat-rejection)</td><td>—</td><td>Chiller efficiency (not fire — referenced from HVAC where relevant).</td></tr>
+</table>
+<p style="margin:8px 0 0"><strong>Key formulas:</strong> water reserve <span class="formula" style="background:#fff;color:var(--navy)">V = design flow × duration</span> · pump power <span class="formula" style="background:#fff;color:var(--navy)">P = ρ·g·Q·H ÷ η</span> · sprinkler head flow <span class="formula" style="background:#fff;color:var(--navy)">Q = K·√P</span> · demand <span class="formula" style="background:#fff;color:var(--navy)">= density × design area</span></p></div>
+
+<!-- 3.1 -->
+<h2 id="strategy">3.1 Fire strategy &amp; design criteria</h2>
+<p><strong>Role:</strong> the fire strategy defines hazard classification, what systems are required, water demand, durations, and the zoning concept — agreed with the AHJ before sizing anything.</p>
+<table class="t param">
+<tr><th>Input</th><th>Typical (tall mixed-use)</th><th>Source</th></tr>
+<tr><td>Occupancy hazard</td><td>Light (hotel rooms/residential) to Ordinary (retail, BOH, car park)</td><td>NFPA 13</td></tr>
+<tr><td>Systems required</td><td>Full sprinklers + standpipes + fire pumps + special hazards</td><td>SBC 801 / NFPA 1</td></tr>
+<tr><td>Water-supply duration</td><td>Sprinkler 30–60 min; standpipe per code; combined per AHJ</td><td>NFPA 13/14</td></tr>
+<tr><td>Min residual at top hose valve</td><td>6.9 bar (100 psi) for 65 mm; 4.5 bar (65 psi) for 40 mm</td><td>NFPA 14</td></tr>
+</table>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>SBC 801 (Saudi Fire Code), NFPA 1; classification NFPA 13; life safety/egress NFPA 101; AHJ = Saudi Civil Defense (DGCD).</div>
+
+<!-- 3.2 -->
+<div class="flow"><span class="n cur">FIRE-WATER STORAGE</span><span class="ar">→</span><span class="n">pumps</span><span class="ar">→</span><span class="n">zoning</span><span class="ar">→</span><span class="n">standpipes/sprinklers</span><span class="ar">→</span><span class="n">head</span></div>
+<h2 id="storage">3.2 Fire-water storage</h2>
+<p><strong>Role:</strong> a <strong>dedicated</strong> reserve — never shared below draw-off with domestic water — sized for the worst-case simultaneous demand × required duration. In a tall building, tanks are distributed up the tower so each zone's pumps have suction.</p>
+<div class="example">
+  <h4>Worked example 3.2 · Fire reserve volume</h4>
+  <div class="step"><span class="given">Given:</span> design demand (sprinkler + inside/outside hose) = 2,500 gpm = 9,460 L/min = 157.7 L/s; required duration 60 min.</div>
+  <div class="step">Reserve = 9,460 × 60 = 567,600 L = <strong>~568 m³</strong>.</div>
+  <div class="result">~568 m³ dedicated fire reserve (often split between a ground tank and high-level tanks per zone). Confirm demand &amp; duration with the AHJ — they govern.</div>
+</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Tanks: NFPA 22; private mains NFPA 24; dedicated reserve &amp; duration: NFPA 13/14, SBC 801.</div>
+
+<!-- 3.3 -->
+<h2 id="pumps">3.3 Fire pumps</h2>
+<p><strong>Role:</strong> provide the rated flow at the rated pressure for the most demanding zone. Listed fire pumps follow a defined performance curve and are arranged with a <strong>jockey pump</strong> (holds standby pressure) and usually a <strong>diesel + electric</strong> duty/standby pair. Tall buildings use <strong>series / zoned pumping</strong>.</p>
+<h4>The NFPA 20 pump curve</h4>
+<p>A listed fire pump must deliver: ≤140% of rated pressure at churn (0 flow), 100% at rated flow, and ≥65% of rated pressure at 150% of rated flow. The design point and the building demand must sit under this curve.</p>
+<div class="chartbox">
+  <canvas id="pumpCurve"></canvas>
+  <div class="cap">NFPA 20 fire-pump performance envelope: churn ≤140%, rated 100%, and ≥65% at 150% flow. Equipment and zoning are checked against this. (Illustrative.)</div>
+</div>
+<div class="example">
+  <h4>Worked example 3.3 · Fire-pump duty &amp; power for a zone</h4>
+  <div class="step"><span class="given">Given:</span> zone demand Q = 9,460 L/min = 0.158 m³/s; required head = static lift 120 m + friction 25 m + 70 m (≈6.9 bar residual) = <strong>215 m (~21 bar)</strong>; pump efficiency η = 0.75.</div>
+  <div class="step">Hydraulic power: P = ρgQH ÷ η = 1000 × 9.81 × 0.158 × 215 ÷ 0.75 = <strong>444 kW</strong>.</div>
+  <div class="result">~444 kW fire-pump (electric + diesel standby). Keep zone working pressure under the <strong>NFPA 14 limit (350 psi / 24 bar)</strong> — if exceeded, add another pumping stage / zone higher up.</div>
+</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Run the network demand &amp; residuals in a <strong>hydraulic calc tool</strong> (PIPENET Sprinkler/Spray, Elite Fire, HASS, AFT). Select the listed pump from the <strong>manufacturer</strong> against the NFPA 20 curve; verify the design and 150% points and the zone max pressure.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Fire pumps: NFPA 20; standpipe pressure limit: NFPA 14; controllers &amp; power: NFPA 20 / NFPA 110.</div>
+
+<!-- 3.4 -->
+<h2 id="zoning">3.4 Zoning the fire riser</h2>
+<p><strong>Role:</strong> as with domestic water, the standpipe/sprinkler riser is split into pressure zones so no component exceeds its rating. Zones are fed by series pumps + break tanks, with <strong>PRVs</strong> on hose valves where static pressure is too high (NFPA 14 limits outlet pressures).</p>
+<div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Key takeaway</div>NFPA 14 caps system pressure at ~350 psi (24 bar) and hose-valve outlet pressure (PRV needed above ~100–175 psi). These two limits set how tall each fire zone can be — typically ~20–25 floors.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Zoning, max pressures, PRV on hose valves: NFPA 14; pumps in series: NFPA 20.</div>
+
+<!-- 3.5 -->
+<div class="flow"><span class="n">pumps</span><span class="ar">→</span><span class="n cur">STANDPIPES + HOSE</span></div>
+<h2 id="standpipe">3.5 Standpipes &amp; fire-brigade hose valves</h2>
+<p><strong>Role:</strong> wet vertical pipes with hose-valve outlets at every floor/stair so firefighters get water at height without dragging hose up the building. Class I (fire-brigade 65 mm), II (occupant 40 mm — now rare), or III (both).</p>
+<div class="example">
+  <h4>Worked example 3.5 · Standpipe demand (NFPA 14)</h4>
+  <div class="step"><span class="given">Given:</span> a multi-standpipe building. NFPA 14: 500 gpm for the first (most remote) standpipe + 250 gpm each additional, capped at 2,500 gpm; min 100 psi residual at the topmost 65 mm outlet.</div>
+  <div class="step">3 standpipes → 500 + 250 + 250 = 1,000 gpm; large buildings reach the 2,500 gpm cap.</div>
+  <div class="result">Design the pumps/risers for the capped demand at 100 psi residual at the highest outlet — the controlling case for fire-pump head.</div>
+</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Standpipes: NFPA 14 (flow, residual pressures, outlet locations); SBC 801; AHJ hose-valve requirements.</div>
+
+<!-- 3.6 -->
+<div class="flow"><span class="n">risers</span><span class="ar">→</span><span class="n cur">SPRINKLERS</span><span class="ar">→</span><span class="n">head (room)</span></div>
+<h2 id="sprinkler">3.6 Sprinkler systems &amp; the head in the room</h2>
+<p><strong>Role:</strong> automatic detection + suppression at the ceiling of (almost) every space. Wet-pipe is standard in conditioned towers. Designed by the <strong>density/area</strong> method (or full hydraulic calc): a design density (mm/min) over the most hydraulically demanding area.</p>
+<table class="t param">
+<tr><th>Hazard</th><th>Density</th><th>Design area</th></tr>
+<tr><td>Light (hotel room, residential, office)</td><td>~4.1 mm/min (0.10 gpm/ft²)</td><td>~140 m² (1,500 ft²)</td></tr>
+<tr><td>Ordinary Group 1 (retail, BOH)</td><td>~6.1 mm/min (0.15 gpm/ft²)</td><td>~140 m²</td></tr>
+<tr><td>Car park / storage</td><td>Ordinary 2 / special</td><td>per NFPA 13</td></tr>
+</table>
+<div class="example">
+  <h4>Worked example 3.6 · Sprinkler demand (density/area)</h4>
+  <div class="step"><span class="given">Given:</span> Ordinary Hazard Gp 1: density 6.1 mm/min over design area 140 m².</div>
+  <div class="step">Sprinkler flow at the area = 6.1 L/min·m² × 140 m² = <strong>854 L/min</strong> (≈ 226 gpm) at the head, before adding hose allowance.</div>
+  <div class="step">Add inside+outside hose allowance (e.g. +950 L/min) and solve the network by hydraulic calc → required source flow &amp; pressure.</div>
+  <div class="result">~854 L/min over the remote area + hose; head spacing ≤ 12–21 m² coverage each; the hydraulic calc proves the most remote head still gets its minimum pressure (~0.5 bar).</div>
+</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Build the sprinkler network in <strong>PIPENET (Sprinkler/Spray)</strong>, <strong>Elite Fire</strong> or <strong>HASS</strong>: enter K-factors, densities, design area &amp; pipe layout; the tool runs the NFPA 13 area/density hydraulic calc and proves the most-remote-area pressure/flow. Model layout in Revit.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Sprinklers: NFPA 13 (densities, spacing, hydraulic calc); ITM later: NFPA 25; under SBC 801.</div>
+
+<!-- 3.7 -->
+<h2 id="special">3.7 Special-hazard suppression</h2>
+<table class="t param">
+<tr><th>System</th><th>Where</th><th>Code</th></tr>
+<tr><td>Clean-agent gaseous (e.g. inert/HFC, novel agents)</td><td>IT/data, telecom, major electrical &amp; control rooms (no water)</td><td>NFPA 2001</td></tr>
+<tr><td>Wet-chemical hood suppression</td><td>Commercial/hotel kitchens (grease)</td><td>NFPA 17A / NFPA 96</td></tr>
+<tr><td>Water mist</td><td>Selected atria/machinery/heritage spaces</td><td>NFPA 750</td></tr>
+<tr><td>Foam</td><td>Fuel/generator day-tank rooms</td><td>NFPA 11</td></tr>
+<tr><td>Portable extinguishers</td><td>Everywhere as backup</td><td>NFPA 10</td></tr>
+</table>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>NFPA 2001, 17A, 96, 750, 11, 10 — all under SBC 801 &amp; Civil Defense approval.</div>
+
+<!-- 3.8 -->
+<h2 id="valves">3.8 Valves, accessories &amp; the fire-brigade interface</h2>
+<ul>
+<li><strong>Alarm/control valves</strong> (wet alarm valve, flow switches, tamper switches) — initiate alarm &amp; monitor each zone (interfaced to fire alarm, Module 5).</li>
+<li><strong>PRVs on hose valves/sprinkler zones</strong> — keep outlet pressures within NFPA 14/13 limits.</li>
+<li><strong>Fire Department Connection (FDC)</strong> — lets the brigade pump into the system from outside.</li>
+<li><strong>Test &amp; drain, check valves, isolation (supervised) valves, pressure gauges.</strong></li>
+</ul>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Valve supervision &amp; FDC: NFPA 13/14; monitoring interface: NFPA 72.</div>
+
+<!-- 3.9 -->
+<h2 id="install">3.9 Installation, accessories &amp; field tricks</h2>
+<table class="t param">
+<tr><th>Item</th><th>Field rule / trick</th></tr>
+<tr><td>Seismic bracing &amp; sway restraint</td><td>NFPA 13 requires lateral/longitudinal bracing &amp; flexible couplings — vital on tall buildings (SBC 301).</td></tr>
+<tr><td>Listed components only</td><td>Every pipe, fitting, valve, head must be UL/FM listed for fire service; AHJ rejects non-listed.</td></tr>
+<tr><td>Pitch &amp; drainage</td><td>Pitch pipes to drains; auxiliary drains at trapped sections.</td></tr>
+<tr><td>Head clearance &amp; obstruction rules</td><td>Keep heads clear of obstructions and within distance-to-ceiling rules — coordinate with HVAC/lighting in BIM.</td></tr>
+<tr><td>Hydrostatic test 200 psi / 2 h</td><td>NFPA 13/14 require a 200 psi (or +50 psi over working) 2-hour test before acceptance.</td></tr>
+<tr><td>Spare heads &amp; wrench cabinet</td><td>Provide the code spare-head cabinet at handover.</td></tr>
+<tr><td>Firestopping at penetrations</td><td>Tested/listed firestop at every rated-barrier crossing.</td></tr>
+</table>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Bracing &amp; testing: NFPA 13/14; listing: UL/FM; seismic: SBC 301; firestop: UL systems / NFPA 101.</div>
+
+<!-- 3.10 -->
+<h2 id="cx">3.10 Testing &amp; commissioning (with the AHJ)</h2>
+<ul>
+<li><strong>Hydrostatic &amp; flush</strong> of all piping; <strong>fire-pump acceptance test</strong> (churn, rated, 150% points witnessed) per NFPA 20.</li>
+<li><strong>Main drain &amp; flow-switch tests</strong>; alarm/monitoring verified to the fire-alarm panel (Module 5).</li>
+<li><strong>Integrated cause-and-effect</strong> test with smoke control, lifts &amp; alarm, witnessed by <strong>Civil Defense</strong> before occupancy.</li>
+</ul>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Acceptance: NFPA 13/14/20; integrated test: NFPA 4; AHJ sign-off: Civil Defense / SBC 801.</div>
+
+<h2 id="glossary">Terms &amp; abbreviations</h2>
+<p>Plain-English meaning of the fire-protection terms used in this module.</p>
+<table class="t param">
+<tr><th>Term</th><th>What it means (plain English)</th></tr>
+<tr><td>AHJ</td><td>Authority Having Jurisdiction — here, Saudi Civil Defense, who approve &amp; inspect fire systems.</td></tr>
+<tr><td>Hazard classification</td><td>How combustible a space is (Light / Ordinary / etc.) — sets sprinkler density.</td></tr>
+<tr><td>Sprinkler</td><td>A ceiling head that opens at a set temperature and sprays water on the fire automatically.</td></tr>
+<tr><td>Density / area method</td><td>Designing sprinklers by a water density (mm/min) applied over the most demanding floor area.</td></tr>
+<tr><td>K-factor</td><td>A sprinkler head's flow constant — relates flow to pressure (Q = K√P).</td></tr>
+<tr><td>Standpipe</td><td>A wet vertical pipe with hose-valve outlets so firefighters get water on every floor.</td></tr>
+<tr><td>Hose valve / FDC</td><td>Hose valve = firefighter's outlet on a standpipe; FDC = Fire Department Connection, where the brigade pumps water in from outside.</td></tr>
+<tr><td>Fire pump</td><td>The pump providing fire-system flow &amp; pressure; follows the NFPA 20 performance curve.</td></tr>
+<tr><td>Churn / rated / 150% points</td><td>Three points on the pump curve: no flow (churn), design flow (rated), and overload (150% flow).</td></tr>
+<tr><td>Jockey pump</td><td>A small pump that maintains standby pressure so the main fire pump doesn't start needlessly.</td></tr>
+<tr><td>PRV</td><td>Pressure-Reducing Valve — keeps hose-valve/sprinkler pressures within code limits in tall zones.</td></tr>
+<tr><td>Residual pressure</td><td>The pressure still available at the topmost outlet during flow (e.g. 100 psi / 6.9 bar required).</td></tr>
+<tr><td>gpm / psi</td><td>US units common in NFPA: gallons per minute (flow), pounds per square inch (pressure). 100 psi ≈ 6.9 bar.</td></tr>
+<tr><td>Wet-pipe system</td><td>Sprinkler pipework permanently filled with water (standard in heated/cooled buildings).</td></tr>
+<tr><td>Clean agent</td><td>A gas (not water) that suppresses fire in IT/electrical rooms without damaging equipment (NFPA 2001).</td></tr>
+<tr><td>Listed (UL/FM)</td><td>Components tested &amp; approved by UL or FM for fire service — the AHJ requires listed parts.</td></tr>
+<tr><td>Cause-and-effect</td><td>The matrix defining what each alarm triggers (alarms, smoke control, lift recall, etc.).</td></tr>
+<tr><td>ITM</td><td>Inspection, Testing &amp; Maintenance (NFPA 25) — keeping the system working after handover.</td></tr>
+</table>
+
+<!-- refs -->
+<h2 id="refs">References &amp; software map</h2>
+<table class="t param">
+<tr><th>Task</th><th>Software</th><th>Code</th></tr>
+<tr><td>Sprinkler/standpipe hydraulic calc</td><td>PIPENET (Sprinkler/Spray), Elite Fire, HASS</td><td>NFPA 13/14</td></tr>
+<tr><td>Fire-pump selection &amp; curve check</td><td>Manufacturer tools (against NFPA 20 curve)</td><td>NFPA 20</td></tr>
+<tr><td>Surge / transient on tall risers</td><td>AFT Impulse / Bentley HAMMER</td><td>engineering practice</td></tr>
+<tr><td>Layout &amp; coordination</td><td>Revit MEP + Navisworks</td><td>NFPA 13 obstruction rules</td></tr>
+</table>
+<ul class="refs">
+<li>SBC 801 — Saudi Fire Code (adopts NFPA by reference); NFPA 1 Fire Code.</li>
+<li>NFPA 13 (sprinklers), 14 (standpipes), 20 (pumps), 22 (tanks), 24 (mains), 25 (ITM).</li>
+<li>NFPA 2001, 17A, 96, 750, 11, 10 (special hazards &amp; extinguishers); NFPA 4 (integrated test).</li>
+<li>NFPA 101 (life safety); Saudi Civil Defense (DGCD) requirements; UL/FM listings.</li>
+</ul>
+<div class="box note"><div class="t">Note</div>Worked numbers teach the method; fire design is governed by the NFPA editions referenced in SBC 801 and by the AHJ. Confirm all values with the code and Civil Defense.</div>
+
+<div class="prevnext">
+  <a href="module-2-plumbing.html"><div class="dir">← Previous</div>Module 2 · Plumbing</a>
+  <a class="nx" href="module-4-electrical.html"><div class="dir">Next →</div>Module 4 · Electrical &amp; Standby Power</a>
+</div>
+
+</main>
+</div></div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="../">All Articles</a> &nbsp;&middot;&nbsp; <a href="index.html">Course Home</a></p>
+  </div>
+</footer>
+
+<script src="assets/course.js"></script>
+<script>
+new Chart(document.getElementById('pumpCurve'),{
+  type:'line',
+  data:{ labels:['0% (churn)','50%','100% (rated)','150%'],
+    datasets:[{ label:'% of rated pressure', data:[140,128,100,65],
+      borderColor:'#b4232c', backgroundColor:'rgba(180,35,44,.12)', fill:true, tension:.2,
+      borderWidth:3, pointRadius:5, pointBackgroundColor:'#0B3D5C' }]},
+  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.2,
+    scales:{ x:{title:{display:true,text:'Flow (% of rated)'}}, y:{title:{display:true,text:'Pressure (% of rated)'}, suggestedMin:0, suggestedMax:160} },
+    plugins:{ legend:{display:false}, title:{display:true,text:'NFPA 20 fire-pump performance envelope',color:'#0B3D5C',font:{size:13}} } }
+});
+</script>
+<script src="../theme.js"></script>
+</body>
+</html>

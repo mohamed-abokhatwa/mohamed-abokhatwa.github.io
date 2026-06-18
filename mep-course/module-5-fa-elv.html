@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JRFPTBLVT4');</script>
+<script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 5 — Fire Alarm, ELV/ICT &amp; BMS | MEP for Tall Buildings</title>
+<link rel="stylesheet" href="assets/course.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  .box.sw{background:#f3eefb;border-color:#7a4fb5}.box.sw .t{color:#5e3a99}
+  .compo{background:#fff;border:1px solid var(--line);border-left:6px solid #2E8BC0;border-radius:12px;padding:6px 22px 18px;box-shadow:var(--shadow);margin:26px 0}
+  .compo .tag{display:inline-block;background:#1769AA;color:#fff;font-size:12px;font-weight:700;letter-spacing:.5px;padding:3px 12px 3px 22px;border-radius:0 0 8px 8px;margin-left:-22px}
+  .param{font-size:14.5px}.param th{background:#eef6fb;color:var(--navy)}
+</style>
+</head>
+<body class="mep-body">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../">Articles</a></li>
+      <li><a href="../calculators.html">Calculators</a></li>
+      <li><a href="index.html" class="active">Course</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){var open=document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open',open);this.setAttribute('aria-expanded',open);});
+</script>
+
+<section class="course-hero"><div class="wrap">
+  <a class="back" href="index.html">&larr; Back to course home</a>
+  <span class="kicker">Module 5 · Detailed reference</span>
+  <h1>Fire Alarm, ELV/ICT &amp; BMS — The Building's Nervous System</h1>
+  <p>The low-voltage "brains": fire detection &amp; voice evacuation, the building management system, structured cabling and data, security (CCTV/access), and the integration that ties them — and the fire systems — together. Every subsystem: role, design, worked numbers, software and code.</p>
+</div></section>
+
+<div class="wrap"><div class="layout">
+
+<aside class="sidenav">
+  <div class="grp">Life safety</div>
+  <a href="#arch">5.1 Architecture</a>
+  <a href="#detection">5.2 Fire detection &amp; alarm</a>
+  <a href="#voice">5.3 Voice evac &amp; mass notification</a>
+  <a href="#fapower">5.4 FA standby power</a>
+  <div class="grp">Controls &amp; data</div>
+  <a href="#bms">5.5 BMS / BAS</a>
+  <a href="#cabling">5.6 Structured cabling / ICT</a>
+  <div class="grp">Security &amp; coverage</div>
+  <a href="#security">5.7 CCTV, access, intrusion</a>
+  <a href="#coverage">5.8 In-building coverage / PA</a>
+  <div class="grp">Make it work</div>
+  <a href="#integration">5.9 Integration &amp; network</a>
+  <a href="#install">5.10 Installation &amp; tricks</a>
+  <a href="#cx">5.11 Commissioning</a>
+  <a href="#glossary">Terms &amp; abbreviations</a>
+  <a href="#refs">References</a>
+</aside>
+
+<main class="content">
+
+<div class="box note"><div class="t">A different kind of system</div>These are <strong>signal</strong> systems, not flow systems — so we organise by subsystem. But the design discipline is identical: <strong>Role → Design method → Worked numbers → Software → Code.</strong> The unifying theme in a tall building is <em>integration</em>: fire, BMS, security, lifts and power all talk to each other and to the fire command centre.</div>
+
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></svg> Symbols &amp; conversions used in the worked examples</div>
+<table class="t param" style="margin:6px 0 0">
+<tr><th>Symbol</th><th>Unit</th><th>What it is</th></tr>
+<tr><td>I<sub>sup</sub> / I<sub>alarm</sub></td><td>amps (A)</td><td>Standby (quiescent) current / alarm current — from the device schedule.</td></tr>
+<tr><td>t<sub>standby</sub> / t<sub>alarm</sub></td><td>hours</td><td>Required standby (e.g. 24 h) &amp; alarm (e.g. 5 min = 0.083 h) periods — set by code/AHJ.</td></tr>
+<tr><td>derating</td><td>1.25</td><td>Battery ageing/safety factor.</td></tr>
+<tr><td>bitrate</td><td>Mbit/s</td><td>Camera stream rate (CCTV storage).</td></tr>
+</table>
+<p style="margin:8px 0 0"><strong>Key formulas:</strong> battery <span class="formula" style="background:#fff;color:var(--navy)">Ah = (I<sub>sup</sub>·t<sub>standby</sub> + I<sub>alarm</sub>·t<sub>alarm</sub>) × 1.25</span> · daily storage <span class="formula" style="background:#fff;color:var(--navy)">GB/day = bitrate × 86,400 s ÷ 8 ÷ 1000</span> &nbsp;<span style="color:var(--muted);font-size:13px">(÷8 converts bits→bytes; 86,400 = seconds in a day)</span></p></div>
+
+<!-- 5.1 -->
+<h2 id="arch">5.1 System architecture</h2>
+<p>ELV (Extra-Low-Voltage) systems share a backbone: distributed equipment/telecom rooms up the tower, a structured-cabling network, and head-ends in a control/security room and the fire command centre. The fire-alarm system is separate and listed, but <strong>interfaces</strong> with everything for cause-and-effect.</p>
+<div class="figure">
+<svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ELV architecture">
+  <g font-family="sans-serif" font-size="11" text-anchor="middle">
+    <rect x="300" y="20" width="160" height="40" rx="8" fill="#0B3D5C"/><text x="380" y="38" fill="#fff">Fire Command Centre /</text><text x="380" y="53" fill="#fff">Head-ends (BMS,Security,ICT)</text>
+    <rect x="30" y="120" width="130" height="46" rx="8" fill="#b4232c"/><text x="95" y="140" fill="#fff">Fire alarm</text><text x="95" y="156" fill="#fff">(FACP + loops)</text>
+    <rect x="180" y="120" width="130" height="46" rx="8" fill="#1769AA"/><text x="245" y="140" fill="#fff">BMS / BAS</text><text x="245" y="156" fill="#fff">(controllers)</text>
+    <rect x="330" y="120" width="130" height="46" rx="8" fill="#2E8BC0"/><text x="395" y="140" fill="#fff">Structured</text><text x="395" y="156" fill="#fff">cabling / ICT</text>
+    <rect x="480" y="120" width="130" height="46" rx="8" fill="#7a4fb5"/><text x="545" y="140" fill="#fff">Security</text><text x="545" y="156" fill="#fff">(CCTV/access)</text>
+    <rect x="630" y="120" width="110" height="46" rx="8" fill="#1f7a3d"/><text x="685" y="140" fill="#fff">PA / DAS /</text><text x="685" y="156" fill="#fff">IPTV</text>
+    <g stroke="#9aa7b3" stroke-width="1.5">
+      <line x1="95" y1="120" x2="330" y2="60"/><line x1="245" y1="120" x2="350" y2="60"/>
+      <line x1="395" y1="120" x2="390" y2="60"/><line x1="545" y1="120" x2="420" y2="60"/><line x1="685" y1="120" x2="440" y2="60"/>
+    </g>
+    <text x="380" y="190" font-weight="700" fill="#0B3D5C">All subsystems integrate to the head-ends &amp; fire command centre for monitoring and cause-and-effect</text>
+  </g>
+</svg>
+<div class="cap">Figure 5-0 · ELV/FA architecture — independent subsystems, integrated for control. (Original schematic.)</div>
+</div>
+
+<!-- 5.2 -->
+<h2 id="detection">5.2 Fire detection &amp; alarm</h2>
+<p><strong>Role:</strong> detect fire early and initiate alarm + cause-and-effect. An addressable Fire Alarm Control Panel (FACP) runs loops of devices: smoke/heat detectors, multi-sensors, manual call points, beam &amp; aspirating detectors for big volumes, plus interface modules to plant.</p>
+<div class="example">
+  <h4>Worked example 5.2 · Smoke-detector coverage</h4>
+  <div class="step"><span class="given">Given:</span> open floor 1,000 m², smooth flat ceiling; spot smoke detector nominal coverage ≈ 81 m² (≈9.1 m / 30 ft spacing).</div>
+  <div class="step">Detectors ≈ 1,000 ÷ 81 = 12.3 → <strong>≥ 13</strong>, then adjust for beams, partitions and HVAC airflow (high air change reduces spacing).</div>
+  <div class="result">~13+ detectors before adjustment; add detection in voids, ducts (duct smoke detectors for HVAC shutdown), and per-room devices in hotel/residential. Loop loading kept below the panel's device limit.</div>
+</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Detection &amp; spacing: NFPA 72; duct detection &amp; HVAC shutdown: NFPA 72/90A; under SBC 801 &amp; Civil Defense.</div>
+
+<!-- 5.3 -->
+<h2 id="voice">5.3 Voice evacuation &amp; mass notification</h2>
+<p><strong>Role:</strong> in a tall building you cannot evacuate everyone at once — you use <strong>phased/voice evacuation</strong> with intelligible voice messages by zone, controlled from the fire command centre, following a <strong>cause-and-effect matrix</strong> (what each alarm triggers: messages, smoke control, lift recall, door release, etc.).</p>
+<table class="t param">
+<tr><th>Design point</th><th>Target</th></tr>
+<tr><td>Speech intelligibility</td><td>STI ≥ 0.50 (or CIS ≥ 0.70) in occupied areas</td></tr>
+<tr><td>Evacuation strategy</td><td>Phased (alarm floor + above/below first), managed from FCC</td></tr>
+<tr><td>Survivability</td><td>Circuit integrity / fire-rated cabling so the system works during the fire</td></tr>
+</table>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Voice/MNS &amp; intelligibility: NFPA 72 (Ch. 18/24); egress strategy: NFPA 101; SBC 801 / Civil Defense.</div>
+
+<!-- 5.4 -->
+<h2 id="fapower">5.4 Fire-alarm standby power (battery sizing)</h2>
+<p><strong>Role:</strong> the FA system must survive a mains failure — batteries (or generator + batteries) sized for a supervisory period plus an alarm period.</p>
+<div class="chartbox">
+  <canvas id="batt"></canvas>
+  <div class="controls">
+    <label>Total supervisory (quiescent) current: <input type="range" id="isup" min="1" max="10" step="0.5" value="2"><span class="val"><span id="isupVal">2</span> A</span></label>
+    <span style="color:var(--muted)">→ battery ≈ <span class="val" id="ahVal">—</span> Ah</span>
+  </div>
+  <div class="cap">Required battery capacity vs supervisory current, for 24 h standby + 5 min alarm with a 1.25 derating factor (illustrative; voice systems often need longer alarm periods). Drag to explore.</div>
+</div>
+<div class="example">
+  <h4>Worked example 5.4 · Battery capacity</h4>
+  <div class="step"><span class="given">Given:</span> supervisory current 2 A; alarm current 8 A; standby 24 h; alarm 5 min (0.083 h); derating 1.25.</div>
+  <div class="step">Ah = (2 × 24 + 8 × 0.083) × 1.25 = (48 + 0.67) × 1.25 = <strong>60.8 Ah</strong>.</div>
+  <div class="result">Select sealed batteries ≥ 61 Ah (next standard up). Voice/MNS and some AHJs require longer standby/alarm — confirm the required periods.</div>
+</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Secondary power &amp; battery calc: NFPA 72 (24 h + 5/15 min); NFPA 110/111 where generator/UPS backs FA.</div>
+
+<!-- 5.5 -->
+<h2 id="bms">5.5 BMS / BAS — building management</h2>
+<p><strong>Role:</strong> monitor and control the mechanical/electrical plant (HVAC, pumps, chillers, energy metering, lighting control) to optimise comfort and energy and to report faults. Architecture: field sensors/actuators → DDC controllers → network → head-end/graphics, on <strong>BACnet (ISO 16484)</strong>.</p>
+<ul>
+<li><strong>Points list</strong> — every monitored/controlled point (AI/AO/DI/DO) is scheduled per plant item; the count sizes controllers and network.</li>
+<li><strong>Sequences of operation</strong> — written control logic (chiller staging, CHW/condenser-water reset, optimum start, demand-controlled ventilation, pump DP control).</li>
+<li><strong>Integration</strong> — to power meters, lifts, FA (read-only for smoke control), generators.</li>
+</ul>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>The points list &amp; sequences are documented (often in vendor tools — Siemens Desigo, Honeywell, JCI Metasys) and the energy benefit of resets/optimisation proven in the <strong>HAP/energy model</strong>. Network architecture drawn in Revit/Visio.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>BACnet/interoperability: ISO 16484-5; control strategies &amp; DCV: ASHRAE 90.1 &amp; 62.1 / SBC 601.</div>
+
+<!-- 5.6 -->
+<h2 id="cabling">5.6 Structured cabling &amp; ICT</h2>
+<p><strong>Role:</strong> the building's data backbone — telecom rooms (TR) per floor/zone, vertical backbone (fibre) and horizontal copper to outlets, supporting IT, Wi-Fi, BMS, security and PA over a converged IP network. Data centres follow TIA-942.</p>
+<div class="example">
+  <h4>Worked example 5.6 · Horizontal channel length</h4>
+  <div class="step"><span class="given">Given:</span> TIA-568 limits a copper horizontal <strong>permanent link to 90 m</strong> (+10 m patch/equipment cords = 100 m channel).</div>
+  <div class="step">→ Telecom rooms must be located so no outlet's cable route exceeds 90 m. On a large floor plate that fixes the <strong>number &amp; position of TRs</strong>.</div>
+  <div class="result">Place a TR per zone/floor so every workstation is ≤ 90 m of cable route; backbone between TRs and to the main equipment room is fibre.</div>
+</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Cabling: ANSI/TIA-568, -569 (pathways), ISO/IEC 11801; data centre: TIA-942; BICSI TDMM; telecom regulator (e.g. CITC).</div>
+
+<!-- 5.7 -->
+<h2 id="security">5.7 Security — CCTV, access control, intrusion</h2>
+<p><strong>Role:</strong> protect people &amp; assets: IP CCTV (cameras, VMS, storage), access control (readers, controllers, electric locks integrated to FA for fail-safe egress), and intrusion detection — all on the converged network.</p>
+<div class="example">
+  <h4>Worked example 5.7 · CCTV storage</h4>
+  <div class="step"><span class="given">Given:</span> 200 cameras at 4 Mbit/s each (H.265), recording 24/7 for 30 days retention.</div>
+  <div class="step">Per camera/day = 4 Mbit/s × 86,400 s ÷ 8 = 43,200 Mbit = 5.4 GB/day → ×30 = 162 GB; ×200 cameras ≈ <strong>32 TB</strong> (×~1.2 overhead ≈ 39 TB).</div>
+  <div class="result">~40 TB usable storage for 30-day retention; size the recording servers/SAN accordingly and the network bandwidth (200 × 4 = 800 Mbit/s).</div>
+</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>CCTV: IEC 62676 / EN 50132; access &amp; egress release interlocked to FA: NFPA 101 / 72; security authority requirements (e.g. HCIS for major KSA projects).</div>
+
+<!-- 5.8 -->
+<h2 id="coverage">5.8 In-building coverage &amp; public address</h2>
+<p><strong>Role:</strong> reliable wireless and broadcast inside a structure that blocks signal: <strong>DAS</strong> (distributed antenna system) for cellular &amp; first-responder radio coverage (often mandated by Civil Defense), Wi-Fi, public address/background music, and IPTV. First-responder radio coverage is a life-safety requirement in tall buildings.</p>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>First-responder radio coverage: NFPA 1/72 &amp; AHJ; PA/VA overlaps NFPA 72; telecom: CITC.</div>
+
+<!-- 5.9 -->
+<h2 id="integration">5.9 Integration &amp; network architecture</h2>
+<p><strong>Role:</strong> tie it together so the building behaves as one system in an emergency — the <strong>cause-and-effect matrix</strong> is the master document: an alarm at a device triggers voice messages, smoke-control fans, lift recall, door release, AHU shutdown/damper action, and signals the FCC. Subsystems integrate over IP/BACnet with a clear, cyber-secure network design and redundancy.</p>
+<div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> The cause-and-effect matrix</div>This single matrix is the heart of tall-building life safety — it must be agreed with Civil Defense and proven by an integrated test before occupancy.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Integration &amp; survivability: NFPA 72; integrated testing: NFPA 4; cyber/network: ISA/IEC 62443 (OT security) where applicable.</div>
+
+<!-- 5.10 -->
+<h2 id="install">5.10 Installation, accessories &amp; field tricks</h2>
+<table class="t param">
+<tr><th>Item</th><th>Field rule / trick</th></tr>
+<tr><td>Dedicated ELV containment, segregated from power</td><td>Keep data/FA away from power cables (min separation) to avoid EMI; separate fire-alarm containment.</td></tr>
+<tr><td>Fire-rated / fire-survival cabling</td><td>FA, voice, smoke-control &amp; firefighting-lift control on circuit-integrity cable.</td></tr>
+<tr><td>Firestopping &amp; fire-rated TR doors</td><td>Seal every penetration; telecom/equipment rooms fire-rated &amp; cooled (a heat load to HVAC).</td></tr>
+<tr><td>Labelling, testing &amp; certification of cabling</td><td>Every link tested &amp; certified (e.g. Fluke) and labelled to TIA-606.</td></tr>
+<tr><td>Earthing/bonding of racks, trays, DAS</td><td>Proper ELV earthing for safety &amp; signal integrity.</td></tr>
+<tr><td>Spare capacity</td><td>Spare TR space, containment fill &amp; panel loop capacity for future devices.</td></tr>
+<tr><td>Device location coordination</td><td>Detectors clear of supply diffusers; call points/strobes per code height; coordinate in BIM.</td></tr>
+</table>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Cabling install/test: TIA-568/606, BICSI; fire-survival cable: BS/IEC; firestop: UL/NFPA; separation: SBC 401/TIA.</div>
+
+<!-- 5.11 -->
+<h2 id="cx">5.11 Commissioning</h2>
+<ul>
+<li><strong>FA:</strong> 100% device test, battery/standby test, voice intelligibility (STI) survey, and the full <strong>cause-and-effect</strong> verification with smoke control, lifts &amp; power — witnessed by Civil Defense.</li>
+<li><strong>BMS:</strong> point-to-point verification, sequence functional tests, trend/graphics check.</li>
+<li><strong>ICT/security:</strong> link certification, VMS/access functional tests, DAS coverage survey.</li>
+</ul>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Integrated test: NFPA 4; FA acceptance: NFPA 72; commissioning: ASHRAE Gl 0 (BMS); cabling: TIA test standards.</div>
+
+<h2 id="glossary">Terms &amp; abbreviations</h2>
+<p>Plain-English meaning of the fire-alarm, ELV and BMS terms used in this module.</p>
+<table class="t param">
+<tr><th>Term</th><th>What it means (plain English)</th></tr>
+<tr><td>ELV</td><td>Extra-Low-Voltage — the "signal" systems (alarm, data, controls, security), not power.</td></tr>
+<tr><td>FACP / addressable loop</td><td>Fire Alarm Control Panel; an addressable loop is a wired circuit where every device has its own ID.</td></tr>
+<tr><td>NAC</td><td>Notification Appliance Circuit — drives sounders/strobes that warn occupants.</td></tr>
+<tr><td>Supervisory (quiescent) current</td><td>The small standby current the system draws normally — used to size standby batteries.</td></tr>
+<tr><td>Cause-and-effect matrix</td><td>The master table of what each alarm triggers (voice messages, smoke control, lift recall, door release…).</td></tr>
+<tr><td>Voice evacuation / PAVA</td><td>Public Address / Voice Alarm — intelligible spoken messages instead of just bells, evacuating by zone.</td></tr>
+<tr><td>MNS</td><td>Mass Notification System — broadcasts emergency messages building-wide.</td></tr>
+<tr><td>STI</td><td>Speech Transmission Index — a measure of how intelligible speech is (target ≥ 0.5).</td></tr>
+<tr><td>Phased evacuation</td><td>Evacuating the fire floor and those above/below first, not everyone at once (needed in tall buildings).</td></tr>
+<tr><td>BMS / BAS</td><td>Building Management / Automation System — monitors &amp; controls the mechanical/electrical plant.</td></tr>
+<tr><td>DDC controller</td><td>Direct Digital Control — the field computer that runs control logic for plant.</td></tr>
+<tr><td>BACnet</td><td>The open communication protocol (ISO 16484) that lets different building systems talk to each other.</td></tr>
+<tr><td>Points list (AI/AO/DI/DO)</td><td>Every monitored/controlled signal: Analog/Digital Inputs &amp; Outputs — the count sizes the controllers.</td></tr>
+<tr><td>Sequence of operation</td><td>The written control logic (e.g. how chillers stage, how a valve modulates).</td></tr>
+<tr><td>Structured cabling</td><td>The standardised network of cables/outlets/rooms carrying data, Wi-Fi, security, etc.</td></tr>
+<tr><td>Backbone / horizontal / channel</td><td>Backbone = vertical/main cabling (usually fibre); horizontal = floor cabling to outlets (≤90 m link).</td></tr>
+<tr><td>TR (telecom room)</td><td>The floor/zone room housing network equipment and cable terminations.</td></tr>
+<tr><td>VMS</td><td>Video Management System — records and manages CCTV cameras.</td></tr>
+<tr><td>Access control</td><td>Card/biometric readers &amp; electric locks controlling who enters where (released on fire alarm for escape).</td></tr>
+<tr><td>DAS</td><td>Distributed Antenna System — spreads cellular/first-responder radio signal inside the building.</td></tr>
+<tr><td>DCV</td><td>Demand-Controlled Ventilation — uses CO₂ sensors to supply only the fresh air actually needed.</td></tr>
+</table>
+
+<!-- refs -->
+<h2 id="refs">References &amp; software map</h2>
+<table class="t param">
+<tr><th>Task</th><th>Software</th><th>Code</th></tr>
+<tr><td>FA design, battery &amp; cause-effect</td><td>Vendor tools + battery/voltage-drop calc sheets; matrix in Excel</td><td>NFPA 72 / 4; SBC 801</td></tr>
+<tr><td>BMS points &amp; sequences</td><td>Siemens Desigo / Honeywell / JCC Metasys; energy in HAP</td><td>ISO 16484; ASHRAE 90.1/62.1</td></tr>
+<tr><td>Structured cabling / ICT</td><td>Revit/Visio layouts; link certification tools</td><td>TIA-568/569/942; ISO 11801</td></tr>
+<tr><td>CCTV/security bandwidth &amp; storage</td><td>Manufacturer VMS calculators</td><td>IEC 62676 / EN 50132</td></tr>
+</table>
+<ul class="refs">
+<li>NFPA 72 (Fire Alarm &amp; Signaling), NFPA 4 (integrated testing), NFPA 101 (life safety); under SBC 801 &amp; Civil Defense.</li>
+<li>ISO 16484 (BACnet/BAS); ASHRAE 90.1 / 62.1 / SBC 601 (control strategies).</li>
+<li>ANSI/TIA-568, -569, -606, -942; ISO/IEC 11801; BICSI TDMM; CITC telecom rules.</li>
+<li>IEC 62676 / EN 50132 (CCTV); HCIS security requirements (major KSA projects); IEC 62443 (OT cyber).</li>
+</ul>
+<div class="box note"><div class="t">Note</div>Worked numbers teach the method, not stamped design. Battery periods, intelligibility and coverage are AHJ-governed — confirm with Civil Defense and the project spec.</div>
+
+<div class="prevnext">
+  <a href="module-4-electrical.html"><div class="dir">← Previous</div>Module 4 · Electrical</a>
+  <a class="nx" href="module-6-vertical-transport.html"><div class="dir">Next →</div>Module 6 · Vertical Transport</a>
+</div>
+
+</main>
+</div></div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="../">All Articles</a> &nbsp;&middot;&nbsp; <a href="index.html">Course Home</a></p>
+  </div>
+</footer>
+
+<script src="assets/course.js"></script>
+<script>
+const isups=[]; for(let x=1;x<=10;x+=0.5) isups.push(x);
+function ah(i){ return +(((i*24)+(8*5/60))*1.25).toFixed(1); }
+const batt=new Chart(document.getElementById('batt'),{
+  type:'line',
+  data:{ labels:isups, datasets:[{ label:'Required battery (Ah)', data:isups.map(ah),
+    borderColor:'#1769AA', backgroundColor:'rgba(23,105,170,.12)', fill:true, tension:.2, pointRadius:0, borderWidth:3 }]},
+  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.1,
+    scales:{ x:{title:{display:true,text:'Supervisory current (A)'}}, y:{title:{display:true,text:'Battery (Ah)'}, beginAtZero:true} },
+    plugins:{ legend:{display:false}, title:{display:true,text:'FA battery: 24 h standby + 5 min alarm × 1.25 derating',color:'#0B3D5C',font:{size:13}} } }
+});
+const isup=document.getElementById('isup'), isupVal=document.getElementById('isupVal'), ahVal=document.getElementById('ahVal');
+function updB(){ isupVal.textContent=isup.value; ahVal.textContent=ah(+isup.value); }
+isup.addEventListener('input',updB); updB();
+</script>
+<script src="../theme.js"></script>
+</body>
+</html>

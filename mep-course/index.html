@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JRFPTBLVT4');</script>
+<script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP Engineering for Megatall Buildings — Course</title>
+<link rel="stylesheet" href="assets/course.css">
+</head>
+<body class="mep-body">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../">Articles</a></li>
+      <li><a href="../calculators.html">Calculators</a></li>
+      <li><a href="index.html" class="active">Course</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){var open=document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open',open);this.setAttribute('aria-expanded',open);});
+</script>
+
+<section class="course-hero"><div class="wrap">
+  <span class="kicker">Self-study engineering course · English</span>
+  <h1>MEP Engineering for Megatall Buildings</h1>
+  <p>From first principles to real design — Mechanical, Electrical &amp; Plumbing systems for tall and super-tall (megatall) mixed-use buildings. Concept first, then component-by-component design, with interactive graphs, original schematics, worked numeric examples, and every key figure tied to a code or standard.</p>
+</div></section>
+
+<div class="wrap">
+
+  <div class="card" style="margin-top:26px">
+    <h2 style="margin-top:0;border:0">How to use this course</h2>
+    <p class="lead">This is a <strong>detailed design reference</strong>, not an overview. After the fundamentals, each discipline module follows the system <strong>from its source to the last component in the room</strong> — and every component gets the same treatment:</p>
+    <p style="margin:0 0 10px"><span class="pill">Role</span><span class="pill">Design method &amp; formula</span><span class="pill">Worked numeric example</span><span class="pill">In the software (how to get accurate results)</span><span class="pill code">Code reference</span></p>
+    <p style="margin-bottom:0">Build order is <strong>mechanical-first</strong>: Fundamentals → HVAC → Plumbing → Fire, then Electrical, ELV/BMS and Vertical Transport. Each discipline is tied to its standard engineering software (HVAC → Carrier HAP, Revit, AFT Fathom, CONTAM; others use their own industry tools).</p>
+  </div>
+
+  <h2>Modules</h2>
+  <div class="grid2">
+
+    <a class="modcard" href="module-0-fundamentals.html">
+      <div class="num">MODULE 0</div>
+      <h3>MEP Fundamentals</h3>
+      <p>Units &amp; quantities, the three governing physics, the master concept of vertical pressure zoning, plant floors, stack effect, and the codes that govern everything.</p>
+      <span class="status ready">Ready</span>
+    </a>
+
+    <a class="modcard" href="module-1-hvac.html">
+      <div class="num">MODULE 1</div>
+      <h3>HVAC — source to terminal</h3>
+      <p>The full chain: chiller plant → heat rejection → pumps → vertical CHW zoning → AHU → ducts → VAV → FCU → room diffuser → controls → smoke control. 17 components, each with design steps, numeric example &amp; software how-to (HAP, Revit, AFT, CONTAM).</p>
+      <span class="status ready">Ready · detailed</span>
+    </a>
+
+    <a class="modcard" href="module-2-plumbing.html">
+      <div class="num">MODULE 2</div>
+      <h3>Plumbing &amp; Public Health — source to tap</h3>
+      <p>Mains &amp; storage → transfer pumps → pressure zoning → boosters → pipe sizing → hot water &amp; Legionella → valves &amp; surge → drainage/vent stacks → storm → fixtures → reuse → installation. 14 components, each with design, numbers &amp; software (AFT, Revit, manufacturer tools).</p>
+      <span class="status ready">Ready · detailed</span>
+    </a>
+
+    <a class="modcard" href="module-3-fire.html">
+      <div class="num">MODULE 3</div>
+      <h3>Fire Protection — reserve to sprinkler</h3>
+      <p>Fire strategy → fire-water storage → fire pumps (NFPA 20 curve) → riser zoning/PRVs → standpipes → sprinklers (density/area) → special hazards → valves/FDC → installation → Civil Defense commissioning.</p>
+      <span class="status ready">Ready · detailed</span>
+    </a>
+
+    <a class="modcard" href="module-4-electrical.html">
+      <div class="num">MODULE 4</div>
+      <h3>Electrical &amp; Standby Power — grid to socket</h3>
+      <p>Load estimate → HV intake → transformers → LV switchgear &amp; fault → risers/busways → cable sizing &amp; volt-drop → boards → generators/UPS → lighting → earthing/lightning → installation. Tools: ETAP, DIALux.</p>
+      <span class="status ready">Ready · detailed</span>
+    </a>
+
+    <a class="modcard" href="module-5-fa-elv.html">
+      <div class="num">MODULE 5</div>
+      <h3>Fire Alarm, ELV/ICT &amp; BMS</h3>
+      <p>Detection &amp; voice evacuation, FA battery sizing, BMS/BACnet, structured cabling, CCTV/access/security, in-building coverage, and the integration &amp; cause-and-effect that ties it all together.</p>
+      <span class="status ready">Ready · detailed</span>
+    </a>
+
+    <a class="modcard" href="module-6-vertical-transport.html">
+      <div class="num">MODULE 6</div>
+      <h3>Vertical Transport</h3>
+      <p>Traffic analysis (handling capacity &amp; interval) → arrangement/zoning &amp; sky lobbies → lift types &amp; ropes → machine/shaft → firefighting lifts → escalators → dispatch control → power. Tool: Elevate.</p>
+      <span class="status ready">Ready · detailed</span>
+    </a>
+
+  </div>
+
+  <div class="box code" style="margin-top:26px">
+    <div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> On codes &amp; references</div>
+    Every key value, rule and method in this course is attributed to a recognised code or standard — the Saudi Building Code (SBC) suite, NFPA, ASHRAE, IEC, CIBSE and others. <strong>Editions matter:</strong> in Saudi Arabia the legally binding edition of an NFPA/ASHRAE standard is the one referenced by the relevant SBC code (2018), unless the project specification requires newer. Always verify against the current code and the project spec before using anything here in real design. A full code register sits in your shared library (<em>MEP Codes &amp; Standards Register</em>).
+  </div>
+
+  <div class="box warn">
+    <div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg> Scope &amp; honesty note</div>
+    This is an educational course. Diagrams are <strong>original schematics</strong> created to teach the concepts — not manufacturer drawings or photographs. Worked numbers are realistic teaching examples, not a substitute for project-specific calculations stamped by a licensed engineer.
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="../">All Articles</a> &nbsp;&middot;&nbsp; <a href="index.html">Course Home</a></p>
+  </div>
+</footer>
+
+<script src="../theme.js"></script>
+</body>
+</html>

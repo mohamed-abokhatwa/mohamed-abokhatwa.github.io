@@ -28,6 +28,58 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- ═══════════════════════════════════════
+       MEP COURSE (self-study, English)
+  ═══════════════════════════════════════ -->
+  <url>
+    <loc>https://abokhatwa.com/mep-course/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/mep-course/module-0-fundamentals.html</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/mep-course/module-1-hvac.html</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/mep-course/module-2-plumbing.html</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/mep-course/module-3-fire.html</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/mep-course/module-4-electrical.html</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/mep-course/module-5-fa-elv.html</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/mep-course/module-6-vertical-transport.html</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- About EN -->
   <url>
     <loc>https://abokhatwa.com/about.html</loc>

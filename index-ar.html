@@ -166,6 +166,18 @@
     .stat-label { font-size: 14px; color: var(--text-tertiary); }
 
     /* ── Filter UI (AR) ── */
+    .course-promo { display:flex; align-items:center; gap:32px; justify-content:space-between;
+      text-decoration:none; padding:34px 40px; border-radius:var(--radius);
+      background:linear-gradient(135deg,rgba(0,113,227,0.10),rgba(0,113,227,0.03));
+      border:1px solid var(--glass-border); box-shadow:var(--shadow-glass); transition:var(--transition); overflow:hidden; }
+    .course-promo:hover { box-shadow:var(--shadow-glass-hover); transform:translateY(-2px); border-color:rgba(0,113,227,0.3); }
+    .course-promo-eyebrow { display:inline-block; font-size:11px; font-weight:600; letter-spacing:.06em; color:var(--accent); margin-bottom:12px; }
+    .course-promo-text h2 { font-family:'Cairo',sans-serif; font-size:clamp(22px,3.5vw,32px); font-weight:700; color:var(--text-primary); margin-bottom:12px; line-height:1.3; }
+    .course-promo-text p { color:var(--text-secondary); font-size:16px; line-height:1.8; margin-bottom:22px; max-width:640px; }
+    .course-promo-art { flex:0 0 auto; color:var(--accent); opacity:.85; }
+    .course-promo-art svg { width:120px; height:150px; }
+    @media (max-width:720px) { .course-promo { flex-direction:column-reverse; align-items:flex-start; padding:28px 24px; gap:18px; } .course-promo-art svg { width:84px; height:104px; } }
+
     .filter-ui { margin-bottom: 36px; }
     .search-wrap { position: relative; margin-bottom: 16px; }
     .search-wrap svg { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); pointer-events: none; }
@@ -337,6 +349,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="index-ar.html" class="active">المقالات</a></li>
       <li><a href="calculators.html">الحاسبات</a></li>
+      <li><a href="mep-course/">الدورة</a></li>
       <li><a href="services-ar.html">الخدمات</a></li>
       <li><a href="about-ar.html">نبذة</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
@@ -371,6 +384,25 @@
     <span class="cert">Envision SP</span>
     <span class="cert">OSHA 30-Hour</span>
   </div>
+</div>
+
+<!-- MEP Course promo banner -->
+<div style="max-width:var(--max-w);margin:0 auto;padding:0 24px 8px;">
+  <a href="mep-course/" class="course-promo">
+    <div class="course-promo-text">
+      <span class="course-promo-eyebrow">جديد · دورة تعليمية ذاتية · بالإنجليزية</span>
+      <h2>هندسة MEP للمباني الشاهقة (Megatall)</h2>
+      <p>من المبادئ الأولى إلى التصميم الفعلي — أنظمة التكييف والسباكة والحريق والكهرباء والتيار الخفيف/BMS والنقل الرأسي للأبراج فائقة الارتفاع. رسوم بيانية تفاعلية، ومخططات أصلية، وأمثلة رقمية، وكل قيمة مرتبطة بكود أو معيار.</p>
+      <span class="btn btn-primary">استكشف الوحدات السبع ←</span>
+    </div>
+    <div class="course-promo-art" aria-hidden="true">
+      <svg viewBox="0 0 64 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 78V18l12-10 12 10v60"/><path d="M8 78V40l12-8M44 32l12 8v38"/>
+        <path d="M26 26h0M32 26h0M38 26h0M26 36h0M32 36h0M38 36h0M26 46h0M32 46h0M38 46h0M26 56h0M32 56h0M38 56h0"/>
+        <path d="M4 78h56"/>
+      </svg>
+    </div>
+  </a>
 </div>
 
 <!-- ARTICLES -->

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JRFPTBLVT4');</script>
+<script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 4 — Electrical &amp; Standby Power | MEP for Tall Buildings</title>
+<link rel="stylesheet" href="assets/course.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  .box.sw{background:#f3eefb;border-color:#7a4fb5}.box.sw .t{color:#5e3a99}
+  .compo{background:#fff;border:1px solid var(--line);border-left:6px solid #b7791f;border-radius:12px;padding:6px 22px 18px;box-shadow:var(--shadow);margin:26px 0}
+  .compo .tag{display:inline-block;background:#b7791f;color:#fff;font-size:12px;font-weight:700;letter-spacing:.5px;padding:3px 12px 3px 22px;border-radius:0 0 8px 8px;margin-left:-22px}
+  .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 22px;font-size:13px}
+  .flow .n{background:#fbefd6;color:#8a5a12;border-radius:8px;padding:6px 10px;font-weight:600}
+  .flow .n.cur{background:#b7791f;color:#fff}.flow .ar{color:#c9912f;font-weight:700}
+  .param{font-size:14.5px}.param th{background:#eef6fb;color:var(--navy)}
+</style>
+</head>
+<body class="mep-body">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../">Articles</a></li>
+      <li><a href="../calculators.html">Calculators</a></li>
+      <li><a href="index.html" class="active">Course</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){var open=document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open',open);this.setAttribute('aria-expanded',open);});
+</script>
+
+<section class="course-hero"><div class="wrap">
+  <a class="back" href="index.html">&larr; Back to course home</a>
+  <span class="kicker">Module 4 · Detailed reference</span>
+  <h1>Electrical &amp; Standby Power — From the Grid to the Socket</h1>
+  <p>The power path: utility HV intake and substation, transformers, main LV switchgear, standby generators and UPS, risers and busways up the tower, distribution boards, final circuits — to the light fitting and socket. Plus earthing and lightning protection. Every component: role, design, worked numbers, software and code.</p>
+</div></section>
+
+<div class="wrap"><div class="layout">
+
+<aside class="sidenav">
+  <div class="grp">Demand &amp; source</div>
+  <a href="#load">4.1 Load estimate</a>
+  <a href="#intake">4.2 HV intake &amp; substation</a>
+  <a href="#transformer">4.3 Transformers</a>
+  <div class="grp">Distribution</div>
+  <a href="#lv">4.4 LV switchgear &amp; fault</a>
+  <a href="#risers">4.5 Risers &amp; busways</a>
+  <a href="#cable">4.6 Cable/feeder sizing</a>
+  <a href="#boards">4.7 Boards &amp; final circuits</a>
+  <div class="grp">Resilience &amp; loads</div>
+  <a href="#standby">4.8 Generators &amp; UPS</a>
+  <a href="#lighting">4.9 Lighting</a>
+  <a href="#earthing">4.10 Earthing &amp; lightning</a>
+  <div class="grp">Site</div>
+  <a href="#install">4.11 Installation &amp; tricks</a>
+  <a href="#cx">4.12 Commissioning</a>
+  <a href="#glossary">Terms &amp; abbreviations</a>
+  <a href="#refs">References</a>
+</aside>
+
+<main class="content">
+
+<div class="figure">
+<svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Electrical chain">
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#b7791f"/></marker></defs>
+  <g font-family="sans-serif" font-size="10.5" text-anchor="middle">
+    <rect x="10" y="80" width="84" height="44" rx="8" fill="#0B3D5C"/><text x="52" y="99" fill="#fff">Utility HV</text><text x="52" y="114" fill="#fff">intake</text>
+    <rect x="112" y="80" width="84" height="44" rx="8" fill="#b7791f"/><text x="154" y="99" fill="#fff">Transformers</text><text x="154" y="114" fill="#fff">HV→LV</text>
+    <rect x="214" y="80" width="84" height="44" rx="8" fill="#c9912f"/><text x="256" y="99" fill="#fff">Main LV</text><text x="256" y="114" fill="#fff">switchgear</text>
+    <rect x="316" y="80" width="84" height="44" rx="8" fill="#d4a64d"/><text x="358" y="99" fill="#fff">Risers /</text><text x="358" y="114" fill="#fff">busways</text>
+    <rect x="418" y="80" width="84" height="44" rx="8" fill="#dcb86e"/><text x="460" y="99" fill="#0B3D5C">Distribution</text><text x="460" y="114" fill="#0B3D5C">boards</text>
+    <rect x="520" y="80" width="84" height="44" rx="8" fill="#e7cf99"/><text x="562" y="99" fill="#0B3D5C">Final</text><text x="562" y="114" fill="#0B3D5C">circuits</text>
+    <rect x="622" y="78" width="92" height="48" rx="8" fill="#eafaf0" stroke="#1f7a3d"/><text x="668" y="97" fill="#1f7a3d">Light / socket</text><text x="668" y="113" fill="#1f7a3d">/ motor</text>
+    <line x1="94" y1="102" x2="110" y2="102" stroke="#b7791f" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="196" y1="102" x2="212" y2="102" stroke="#b7791f" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="298" y1="102" x2="314" y2="102" stroke="#b7791f" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="400" y1="102" x2="416" y2="102" stroke="#b7791f" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="502" y1="102" x2="518" y2="102" stroke="#b7791f" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="604" y1="102" x2="620" y2="102" stroke="#b7791f" stroke-width="2" marker-end="url(#a)"/>
+    <rect x="316" y="20" width="84" height="40" rx="8" fill="#b4232c"/><text x="358" y="38" fill="#fff">Generators</text><text x="358" y="53" fill="#fff">+ UPS</text>
+    <line x1="358" y1="80" x2="358" y2="62" stroke="#b4232c" stroke-width="2" marker-end="url(#a)"/>
+    <text x="380" y="175" font-weight="700" fill="#8a5a12">Grid → stepped down → distributed up the tower → boards → the socket; standby backs up essential loads</text>
+  </g>
+</svg>
+<div class="cap">Figure 4-0 · The electrical chain. Each box is a section below. (Original schematic.)</div>
+</div>
+
+<div class="box note"><div class="t">Section layout</div><strong>Role → Design method &amp; formula → Worked numeric example → In the software → Code reference.</strong> Core formula throughout: three-phase power <span class="formula" style="background:#eef6fb;color:var(--navy)">P = √3 · V · I · pf</span>.</div>
+
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></svg> Constants, symbols &amp; conversions used in the worked examples</div>
+<table class="t param" style="margin:6px 0 0">
+<tr><th>Symbol</th><th>Value / unit</th><th>What it is</th></tr>
+<tr><td>√3</td><td>= 1.732</td><td>The three-phase factor.</td></tr>
+<tr><td>P / S / pf</td><td>kW / kVA / 0–1</td><td>Real power / apparent power / power factor. S = P ÷ pf.</td></tr>
+<tr><td>V / I</td><td>volts / amps</td><td>Line voltage / current.</td></tr>
+<tr><td>%Z</td><td>e.g. 6%</td><td>Transformer impedance — limits fault current.</td></tr>
+<tr><td>E / Φ / UF / MF</td><td>lux / lumens / 0–1 / 0–1</td><td>Target light level / lamp output / utilisation &amp; maintenance factors (lumen method).</td></tr>
+</table>
+<p style="margin:8px 0 0"><strong>Key formulas:</strong> current <span class="formula" style="background:#fff;color:var(--navy)">I = S ÷ (√3·V)</span> · fault <span class="formula" style="background:#fff;color:var(--navy)">I<sub>fault</sub> ≈ I<sub>full-load</sub> ÷ (%Z÷100)</span> · volt-drop <span class="formula" style="background:#fff;color:var(--navy)">V<sub>d</sub> = (mV/A/m × I × L) ÷ 1000</span> · luminaires <span class="formula" style="background:#fff;color:var(--navy)">N = (E·A) ÷ (Φ·UF·MF)</span></p></div>
+
+<!-- 4.1 -->
+<h2 id="load">4.1 Load estimate &amp; demand</h2>
+<p><strong>Role:</strong> total the connected load, apply diversity/demand factors, and add spare capacity — this sizes the supply, transformers and generators.</p>
+<div class="example">
+  <h4>Worked example 4.1 · Building maximum demand</h4>
+  <div class="step"><span class="given">Given:</span> stack of floors 100,000 m²; load density (lighting+power+HVAC+VT) ≈ 100 W/m² connected; diversity 0.8; pf 0.9; +15% spare.</div>
+  <div class="step">Connected = 100,000 × 100 = 10,000 kW; demand = 10,000 × 0.8 = 8,000 kW.</div>
+  <div class="step">Apparent power: S = P ÷ pf = 8,000 ÷ 0.9 = 8,889 kVA; +15% spare ≈ <strong>10,200 kVA (~10.2 MVA)</strong>.</div>
+  <div class="result">~10 MVA design demand for this stack — sets the substation, transformer count and standby sizing. (A full tower is tens of MVA, taken at HV.)</div>
+</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Demand/diversity: SBC 401, IEC 60364-1 / NEC Art. 220; energy: SBC 601 / ASHRAE 90.1.</div>
+
+<!-- 4.2 -->
+<div class="flow"><span class="n cur">HV INTAKE</span><span class="ar">→</span><span class="n">transformers</span><span class="ar">→</span><span class="n">LV gear</span><span class="ar">→</span><span class="n">risers</span><span class="ar">→</span><span class="n">boards</span><span class="ar">→</span><span class="n">socket</span></div>
+<h2 id="intake">4.2 HV intake &amp; substation</h2>
+<p><strong>Role:</strong> the utility (e.g. SEC) delivers at high/medium voltage (e.g. 13.8/33 kV) into the building's main substation — HV switchgear, metering, protection. Tens of MVA can only enter at HV; bringing it in at LV would need impossibly large cables.</p>
+<div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Why HV up the tower</div>Power = √3·V·I. At higher voltage the <em>current</em> for the same power is far lower → much smaller conductors and far less voltage drop. So MV is distributed <em>up</em> the tower to local transformer rooms — the central idea of tall-building electrical design (mirrors how HVAC/water are zoned).</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Utility interface: SEC distribution code; HV switchgear: IEC 62271; substation: SBC 401, IEC 61936.</div>
+
+<!-- 4.3 -->
+<h2 id="transformer">4.3 Transformers</h2>
+<p><strong>Role:</strong> step MV down to LV (400/230 V). Distributed as <strong>unit substations on plant floors</strong> up the tower (dry-type/cast-resin indoors for fire safety). Sized in kVA with N+1.</p>
+<div class="example">
+  <h4>Worked example 4.3 · Transformer count</h4>
+  <div class="step"><span class="given">Given:</span> 10.2 MVA demand; standard 2,500 kVA dry-type units; loaded to ~80%.</div>
+  <div class="step">Usable per unit ≈ 2,000 kVA → number = 10,200 ÷ 2,000 = 5.1 → <strong>6 units</strong>; add 1 spare per group for N+1.</div>
+  <div class="result">~6–7 × 2,500 kVA cast-resin transformers in distributed substations up the tower, each feeding its zone's LV switchboard. Provide ventilation/cooling for transformer rooms (a heat load back to HVAC).</div>
+</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Model the whole network in <strong>ETAP</strong> (or SKM/DIgSILENT): enter sources, transformers, cables, loads → run load-flow (sizing &amp; voltage), short-circuit (breaker duty) and protection coordination. Transformer impedance feeds the fault study.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Transformers: IEC 60076; dry-type IEC 60076-11; losses/efficiency: SBC 601 / SASO; rooms: SBC 401/801.</div>
+
+<!-- 4.4 -->
+<h2 id="lv">4.4 Main LV switchgear &amp; fault level</h2>
+<p><strong>Role:</strong> the main LV board distributes transformer output to risers, with protective devices (ACBs/MCCBs) whose <strong>breaking capacity</strong> must exceed the prospective short-circuit current. Type-tested assemblies to IEC 61439.</p>
+<div class="example">
+  <h4>Worked example 4.4 · Fault level &amp; breaker duty</h4>
+  <div class="step"><span class="given">Given:</span> 2,500 kVA transformer, impedance Z = 6%, LV 400 V.</div>
+  <div class="step">Full-load current I = S ÷ (√3·V) = 2,500,000 ÷ (1.732 × 400) = 3,608 A.</div>
+  <div class="step">Symmetrical fault ≈ I ÷ Z = 3,608 ÷ 0.06 = <strong>60.1 kA</strong>.</div>
+  <div class="result">Specify switchgear &amp; breakers with breaking capacity ≥ ~65 kA at the main board. Verify with the ETAP short-circuit study (multiple transformers in parallel raise the fault level).</div>
+</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Assemblies: IEC 61439; breaking capacity &amp; protection: IEC 60947 / 60364; SBC 401.</div>
+
+<!-- 4.5 -->
+<h2 id="risers">4.5 Risers &amp; busbar trunking (busways)</h2>
+<p><strong>Role:</strong> carry power up the tower from substations to floor boards. Large vertical feeders use <strong>busbar trunking (busway)</strong> with floor tap-offs — compact, fire-rated, and easy to tap, far better than bundles of cables in a tall riser.</p>
+<div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tall-building detail</div>Busways need <strong>expansion units</strong> to absorb building/thermal movement over height, fire barriers at floor crossings, and seismic support (SBC 301).</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Busway: IEC 61439-6; fire barriers &amp; firestop: SBC 801 / UL systems.</div>
+
+<!-- 4.6 -->
+<h2 id="cable">4.6 Cable / feeder sizing — current, volt-drop, fault</h2>
+<p><strong>Role:</strong> size every feeder for three checks: <strong>current-carrying capacity</strong> (with derating), <strong>voltage drop</strong>, and <strong>short-circuit withstand</strong>. In a tall building, voltage drop on long risers is the tough one.</p>
+<div class="chartbox">
+  <canvas id="vdrop"></canvas>
+  <div class="controls">
+    <label>Feeder length (riser height): <input type="range" id="len" min="50" max="500" step="10" value="200"><span class="val"><span id="lenVal">200</span> m</span></label>
+    <span class="val">LV 400 V: <span id="lvVal">11.0</span>%</span>
+    <span class="val">MV 11 kV: <span id="mvVal">0.015</span>%</span>
+  </div>
+  <div class="cap">Approximate voltage drop for the <em>same power</em> sent at LV (400 V) vs MV (11 kV) over a riser. MV drop is tiny — which is why transformers are pushed up the tower and only short LV runs serve each zone. Drag to read the drop at any riser height.</div>
+</div>
+<div class="example">
+  <h4>Worked example 4.6 · Feeder current &amp; volt-drop check</h4>
+  <div class="step"><span class="given">Given:</span> a 250 kVA board fed at 400 V over 40 m; cable volt-drop 0.6 mV/A/m.</div>
+  <div class="step">Current I = 250,000 ÷ (√3 × 400) = 361 A.</div>
+  <div class="step">Volt-drop = (0.6 mV/A/m × 361 A × 40 m) ÷ 1000 = 8.66 V = 8.66 ÷ 400 = <strong>2.2%</strong> <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> (< 4–5% limit).</div>
+  <div class="result">Cable passes volt-drop; also confirm its derated ampacity ≥ 361 A and short-circuit withstand from the fault study. Limits: total volt-drop typically ≤ 4% (power) / 3% (lighting).</div>
+</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div><strong>ETAP/SKM</strong> auto-sizes cables checking ampacity (with grouping/temperature derating), voltage drop and short-circuit withstand, and runs protection-coordination (TCC) curves. Containment routed/clashed in Revit + Navisworks.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Ampacity/derating &amp; volt-drop: IEC 60364-5-52, SBC 401, NEC Art. 310; volt-drop limits: SBC 401 / CIBSE.</div>
+
+<!-- 4.7 -->
+<h2 id="boards">4.7 Distribution boards &amp; final circuits</h2>
+<p><strong>Role:</strong> floor/zone distribution boards split power into final circuits (lighting, sockets, mechanical, etc.), each protected by an MCB/RCBO sized to the cable and load, with earth-fault/RCD protection for socket and wet-area circuits.</p>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Final circuits, RCD/earth-fault: IEC 60364-4-41, SBC 401, NEC; boards IEC 61439-3.</div>
+
+<!-- 4.8 -->
+<div class="flow"><span class="n">normal supply</span><span class="ar">+</span><span class="n cur">STANDBY: GENERATORS + UPS</span></div>
+<h2 id="standby">4.8 Standby power — generators &amp; UPS</h2>
+<p><strong>Role:</strong> keep <strong>life-safety and essential loads</strong> running when the grid fails — fire pumps, smoke-control fans, firefighting lifts, emergency lighting, fire alarm, BMS, and selected services. Diesel generators (with fuel storage) provide standby; UPS bridges the gap and protects critical/IT loads with no break.</p>
+<div class="example">
+  <h4>Worked example 4.8 · Generator sizing for essential load</h4>
+  <div class="step"><span class="given">Given:</span> essential load = 30% of the 8,000 kW demand = 2,400 kW; genset loaded to 0.8; pf 0.8.</div>
+  <div class="step">kW size = 2,400 ÷ 0.8 = 3,000 kW; kVA = 3,000 ÷ 0.8 = <strong>3,750 kVA</strong>.</div>
+  <div class="step">Use e.g. 3 × 1,500 kVA gensets (N+1), with motor-start (transient) and the fire-pump starting kVA checked. Fuel for the required run-time per code.</div>
+  <div class="result">~3 × 1,500 kVA standby gensets; size fuel storage for the code duration; UPS (e.g. 10–15 min) for FA/BMS/IT and any no-break load. Verify start transients in ETAP.</div>
+</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Emergency/standby power: NFPA 110 (gensets), NFPA 111 (UPS/stored energy), SBC 401/801; life-safety loads: NFPA 101.</div>
+
+<!-- 4.9 -->
+<div class="flow"><span class="n">boards</span><span class="ar">→</span><span class="n cur">LIGHTING (the fitting)</span></div>
+<h2 id="lighting">4.9 Lighting — the fitting in the room</h2>
+<p><strong>Role:</strong> deliver the design illuminance (lux) at the right quality (uniformity, glare UGR, colour) and low energy. Plus <strong>emergency lighting</strong> on escape routes. Designed by the lumen method, then verified by point calculation.</p>
+<div class="example">
+  <h4>Worked example 4.9 · Lumen method (office)</h4>
+  <div class="step"><span class="given">Given:</span> office 100 m²; target 400 lux; luminaire 4,000 lm; utilisation factor UF 0.6; maintenance factor MF 0.8.</div>
+  <div class="step">N = (E × A) ÷ (Φ × UF × MF) = (400 × 100) ÷ (4,000 × 0.6 × 0.8) = 40,000 ÷ 1,920 = <strong>20.8 → 21 luminaires</strong>.</div>
+  <div class="result">~21 luminaires on a uniform grid; verify uniformity &amp; UGR in DIALux, and check lighting power density against the energy code.</div>
+</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Model rooms in <strong>DIALux evo</strong> (or Relux) with real photometric (IES/LDT) files → it computes lux, uniformity, UGR and the lighting power density to check against <strong>ASHRAE 90.1 / SBC 601</strong>. Emergency lighting verified for escape-route lux &amp; duration.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Illuminance &amp; quality: EN 12464-1 / IES; LPD limits: ASHRAE 90.1 / SBC 601; emergency lighting: NFPA 101 / EN 1838.</div>
+
+<!-- 4.10 -->
+<h2 id="earthing">4.10 Earthing &amp; lightning protection</h2>
+<p><strong>Role:</strong> a building-wide <strong>earthing/grounding</strong> system (equipotential bonding, earth electrodes, low earth resistance) for safety and equipment, plus a <strong>lightning protection system (LPS)</strong> — essential on a very tall structure that is a prime strike target.</p>
+<table class="t param">
+<tr><th>System</th><th>Design point</th><th>Code</th></tr>
+<tr><td>Earthing/grounding</td><td>Low earth resistance, full equipotential bonding, dedicated clean earth for IT</td><td>IEC 60364-5-54, IEEE 142/1100</td></tr>
+<tr><td>Lightning protection</td><td>Air terminals/mesh, down-conductors, ring earths; protection level from risk assessment</td><td>IEC 62305 / NFPA 780</td></tr>
+<tr><td>Surge protection (SPD)</td><td>At intake &amp; sub-boards to protect electronics</td><td>IEC 62305-4 / IEC 61643</td></tr>
+</table>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Earthing: IEC 60364-5-54, IEEE 142/1100; LPS: IEC 62305 / NFPA 780; SPD: IEC 61643.</div>
+
+<!-- 4.11 -->
+<h2 id="install">4.11 Installation, accessories &amp; field tricks</h2>
+<table class="t param">
+<tr><th>Item</th><th>Field rule / trick</th></tr>
+<tr><td>Cable containment (tray/ladder/trunking/conduit)</td><td>Size for ~40% fill + spare; segregate LV/ELV/fire cabling to avoid interference.</td></tr>
+<tr><td>Fire-rated &amp; fire-survival cabling</td><td>Life-safety circuits (fire pumps, smoke fans, FA) on fire-rated cable maintaining circuit integrity.</td></tr>
+<tr><td>Firestopping at penetrations</td><td>Tested/listed firestop at every rated-barrier crossing (busways &amp; trays).</td></tr>
+<tr><td>Busway expansion &amp; seismic support</td><td>Expansion units for building movement; bracing per SBC 301.</td></tr>
+<tr><td>Labelling, phase identification, as-builts</td><td>Clear circuit schedules &amp; labelling for safe maintenance.</td></tr>
+<tr><td>Segregation of services in risers</td><td>Keep power away from sensitive ELV/data; bond cable armour &amp; trays.</td></tr>
+<tr><td>Spare ways &amp; capacity</td><td>Leave ~20–25% spare ways in boards &amp; containment for future loads.</td></tr>
+</table>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Installation: IEC 60364-5 / SBC 401 / NEC; fire-survival cable: BS/IEC standards; firestop: UL / NFPA; seismic: SBC 301.</div>
+
+<!-- 4.12 -->
+<h2 id="cx">4.12 Testing &amp; commissioning</h2>
+<ul>
+<li><strong>Insulation resistance, continuity, earth-loop &amp; RCD tests</strong>; phase rotation; polarity.</li>
+<li><strong>Functional tests:</strong> generator auto-start &amp; load transfer (ATS), UPS autonomy, protection settings (per the coordination study), busway integrity.</li>
+<li><strong>Integrated tests</strong> with fire (generators feeding fire pumps/smoke fans), witnessed for AHJ sign-off.</li>
+</ul>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Verification: IEC 60364-6, SBC 401; generator/ATS: NFPA 110; coordination: IEC 60947.</div>
+
+<h2 id="glossary">Terms &amp; abbreviations</h2>
+<p>Plain-English meaning of the electrical terms used in this module.</p>
+<table class="t param">
+<tr><th>Term</th><th>What it means (plain English)</th></tr>
+<tr><td>HV / MV / LV</td><td>High / Medium / Low Voltage. Power enters at HV/MV and is stepped down to LV (400/230 V) for use.</td></tr>
+<tr><td>kW / kVA / pf</td><td>kW = real power (does work); kVA = apparent power (what the kit must be rated for); power factor (pf) = kW ÷ kVA.</td></tr>
+<tr><td>√3 (root-3)</td><td>The 1.732 factor in three-phase power: P = √3 · V · I · pf.</td></tr>
+<tr><td>Demand / diversity factor</td><td>Not all loads run at once — diversity reduces the connected total to a realistic maximum demand.</td></tr>
+<tr><td>Transformer</td><td>Device that changes voltage (MV→LV); rated in kVA.</td></tr>
+<tr><td>Impedance (%Z)</td><td>A transformer's internal resistance to fault current; sets how big a short-circuit can be.</td></tr>
+<tr><td>Fault level / breaking capacity (kA)</td><td>The short-circuit current that could flow; breakers must safely interrupt at least this much.</td></tr>
+<tr><td>Switchgear</td><td>The assembly of breakers/protection that distributes and protects circuits.</td></tr>
+<tr><td>ACB / MCCB / MCB / RCBO / RCD</td><td>Types of circuit breaker / earth-fault protection, from large (ACB) to final-circuit (MCB), with RCD/RCBO adding shock protection.</td></tr>
+<tr><td>Busway / busbar trunking</td><td>A compact prefabricated power "highway" up a riser, with tap-off points per floor.</td></tr>
+<tr><td>Voltage drop</td><td>The voltage lost along a cable; kept within limits (~4%) so equipment gets enough voltage.</td></tr>
+<tr><td>Ampacity / derating</td><td>A cable's safe current; reduced ("derated") for heat, grouping and installation conditions.</td></tr>
+<tr><td>Generator (genset) / ATS</td><td>Standby engine-generator; ATS = Automatic Transfer Switch that switches loads to it on power loss.</td></tr>
+<tr><td>UPS</td><td>Uninterruptible Power Supply — battery system giving no-break power to critical loads.</td></tr>
+<tr><td>Essential / life-safety loads</td><td>Loads that must keep running on standby power (fire pumps, smoke fans, firefighting lifts, emergency lighting).</td></tr>
+<tr><td>Lux / lumen method</td><td>Lux = light level on a surface; the lumen method calculates how many luminaires give the target lux.</td></tr>
+<tr><td>UF / MF / UGR / LPD</td><td>Utilisation &amp; Maintenance Factors (lighting efficiency), Unified Glare Rating, Lighting Power Density (energy limit).</td></tr>
+<tr><td>Earthing / grounding &amp; bonding</td><td>Connecting metalwork to earth for safety so faults trip protection and people aren't shocked.</td></tr>
+<tr><td>LPS / SPD</td><td>Lightning Protection System / Surge Protection Device — protect the structure &amp; electronics from strikes/surges.</td></tr>
+<tr><td>NEC / IEC</td><td>The US (NFPA 70) and international (IEC 60364) electrical installation code families; SBC 401 is NEC-based.</td></tr>
+</table>
+
+<!-- refs -->
+<h2 id="refs">References &amp; software map</h2>
+<table class="t param">
+<tr><th>Task</th><th>Software</th><th>Code</th></tr>
+<tr><td>Load-flow, cable &amp; transformer sizing, fault &amp; protection</td><td>ETAP, SKM PowerTools, DIgSILENT</td><td>IEC 60364, 60076, 61439, 60947; SBC 401</td></tr>
+<tr><td>Lighting design &amp; LPD</td><td>DIALux evo, Relux</td><td>EN 12464-1; ASHRAE 90.1 / SBC 601</td></tr>
+<tr><td>Containment routing &amp; coordination</td><td>Revit MEP + Navisworks</td><td>IEC 60364-5; SBC 401</td></tr>
+<tr><td>Lightning risk &amp; LPS</td><td>Risk tools to IEC 62305 / NFPA 780</td><td>IEC 62305 / NFPA 780</td></tr>
+</table>
+<ul class="refs">
+<li>SBC 401 — Saudi Electrical Code (NEC-based); SBC 601 — Energy; SBC 801 — Fire.</li>
+<li>IEC 60364 (LV installations), 60076 (transformers), 61439 (assemblies), 60947 (switchgear), 60364-5-52 (cables).</li>
+<li>NFPA 70 (NEC); NFPA 110/111 (standby/UPS); NFPA 101 (life safety); NFPA 780 / IEC 62305 (lightning).</li>
+<li>SEC distribution code; IEEE 142/1100 (earthing/power quality); EN 12464-1 (lighting); SASO efficiency.</li>
+</ul>
+<div class="box note"><div class="t">Note</div>Worked numbers teach the method, not stamped design. Confirm code editions/clauses against SBC and the project spec; size real equipment in the network software.</div>
+
+<div class="prevnext">
+  <a href="module-3-fire.html"><div class="dir">← Previous</div>Module 3 · Fire Protection</a>
+  <a class="nx" href="module-5-fa-elv.html"><div class="dir">Next →</div>Module 5 · Fire Alarm, ELV/ICT/BMS</a>
+</div>
+
+</main>
+</div></div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="../">All Articles</a> &nbsp;&middot;&nbsp; <a href="index.html">Course Home</a></p>
+  </div>
+</footer>
+
+<script src="assets/course.js"></script>
+<script>
+// Voltage drop LV vs MV vs length (same power, illustrative)
+const lens=[]; for(let x=50;x<=500;x+=25) lens.push(x);
+// drop % proportional to length; LV high, MV ~ (400/11000)^2 lower for same power
+function lv(L){ return +(2.2*L/40).toFixed(1); }       // ~2.2% at 40 m baseline scaled
+function mv(L){ return +(2.2*L/40*Math.pow(400/11000,2)*1).toFixed(3); }
+const vd=new Chart(document.getElementById('vdrop'),{
+  type:'line',
+  data:{ labels:lens, datasets:[
+    {label:'Volt-drop at LV 400 V (%)', data:lens.map(lv), borderColor:'#b4232c', backgroundColor:'rgba(180,35,44,.10)', fill:true, tension:.2, pointRadius:0, borderWidth:3},
+    {label:'Volt-drop at MV 11 kV (%)', data:lens.map(mv), borderColor:'#1f7a3d', borderWidth:3, pointRadius:0, tension:.2}
+  ]},
+  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.1,
+    scales:{ x:{title:{display:true,text:'Riser length (m)'}}, y:{title:{display:true,text:'Voltage drop (%)'}, beginAtZero:true} },
+    plugins:{ legend:{position:'top'}, title:{display:true,text:'Same power: LV drops fast over height, MV barely — so push MV up the tower',color:'#0B3D5C',font:{size:13}} } }
+});
+const len=document.getElementById('len'), lenVal=document.getElementById('lenVal'),
+      lvVal=document.getElementById('lvVal'), mvVal=document.getElementById('mvVal');
+function updLen(){
+  const L=+len.value; lenVal.textContent=L;
+  lvVal.textContent=lv(L).toFixed(1);
+  mvVal.textContent=mv(L).toFixed(3);
+}
+len.addEventListener('input',updLen); updLen();
+</script>
+<script src="../theme.js"></script>
+</body>
+</html>

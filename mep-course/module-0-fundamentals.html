@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JRFPTBLVT4');</script>
+<script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 0 — MEP Fundamentals | MEP for Megatall Buildings</title>
+<link rel="stylesheet" href="assets/course.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body class="mep-body">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../">Articles</a></li>
+      <li><a href="../calculators.html">Calculators</a></li>
+      <li><a href="index.html" class="active">Course</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){var open=document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open',open);this.setAttribute('aria-expanded',open);});
+</script>
+
+<section class="course-hero"><div class="wrap">
+  <a class="back" href="index.html">&larr; Back to course home</a>
+  <span class="kicker">Module 0</span>
+  <h1>MEP Fundamentals</h1>
+  <p>The shared language and physics behind every MEP system — and the one idea that shapes a super-tall tower more than any other: what happens to pressure when you go up a kilometre.</p>
+</div></section>
+
+<div class="wrap"><div class="layout">
+
+<aside class="sidenav">
+  <div class="grp">Concepts</div>
+  <a href="#what">0.1 What MEP is</a>
+  <a href="#units">0.2 Units &amp; quantities</a>
+  <a href="#physics">0.3 The three physics</a>
+  <a href="#height">0.4 The height problem</a>
+  <div class="grp">The big idea</div>
+  <a href="#zoning">0.5 Vertical zoning</a>
+  <a href="#plant">0.6 Plant floors</a>
+  <a href="#stack">0.7 Stack effect</a>
+  <div class="grp">Practice</div>
+  <a href="#codes">0.8 Codes &amp; authorities</a>
+  <a href="#process">0.9 Design process</a>
+  <a href="#glossary">Terms &amp; abbreviations</a>
+  <a href="#refs">References</a>
+</aside>
+
+<main class="content">
+
+<p class="lead">MEP stands for <strong>Mechanical, Electrical and Plumbing</strong> — the systems that make a building habitable: cooling and ventilation, water in and out, power and lighting, fire protection, controls, and the lifts that move people. In a megatall tower the MEP can be a third of the construction cost and is the main driver of how the building is zoned and serviced.</p>
+
+<h2 id="what">0.1 What MEP is — and why it dominates a megatall</h2>
+<p>On a normal building MEP follows the architecture. On a super-tall tower it is the other way around: the <em>physics of height</em> forces decisions (where plant floors go, how many pressure zones, how power gets up the building) that the architecture must accommodate. The taller the building, the more MEP governs.</p>
+
+<div class="grid3">
+  <div class="card"><h4 style="margin-top:0">Mechanical (M)</h4><p style="margin:0;color:var(--muted);font-size:15px">HVAC (cooling, heating, ventilation), smoke control, central plant. Covered in <a class="ref" href="module-1-hvac.html">Module 1</a>.</p></div>
+  <div class="card"><h4 style="margin-top:0">Electrical (E)</h4><p style="margin:0;color:var(--muted);font-size:15px">HV/MV/LV power, transformers, generators, lighting, lightning protection, ELV/BMS.</p></div>
+  <div class="card"><h4 style="margin-top:0">Plumbing (P) &amp; Fire</h4><p style="margin:0;color:var(--muted);font-size:15px">Domestic water, drainage, hot water, and fire protection (sprinklers, standpipes, pumps).</p></div>
+</div>
+
+<h2 id="units">0.2 Units &amp; the quantities you must feel</h2>
+<p>Engineering uses SI units. More important than memorising them is developing a <em>feel</em> for the few quantities MEP keeps returning to: <strong>pressure/head, flow, power and temperature</strong>.</p>
+
+<table class="t">
+<tr><th>Quantity</th><th>SI unit</th><th>Useful conversions / feel</th></tr>
+<tr><td>Pressure</td><td>pascal (Pa); 1 kPa = 1000 Pa; 1 bar = 100 kPa</td><td><strong>1 bar ≈ 10.2 m of water head</strong> ≈ atmospheric pressure. Plumbing fittings often rated PN16 / PN25 (16 / 25 bar).</td></tr>
+<tr><td>Head (pressure as height)</td><td>metre (m) of fluid</td><td>10 m water ≈ 1 bar ≈ 98 kPa. The natural unit for pumps and tall risers.</td></tr>
+<tr><td>Flow rate</td><td>m³/s; common: L/s, m³/h</td><td>1 L/s = 3.6 m³/h. A hotel room basin ≈ 0.1–0.2 L/s.</td></tr>
+<tr><td>Power</td><td>watt (W); kW; MW</td><td>Cooling also in <strong>tons of refrigeration (TR)</strong>: 1 TR = 3.517 kW. A big tower chiller plant = tens of MW.</td></tr>
+<tr><td>Temperature</td><td>kelvin (K) / °C</td><td>ΔT of 1 K = 1 °C. Chilled water is typically supplied at 5–7 °C.</td></tr>
+<tr><td>Energy</td><td>joule (J); kWh</td><td>Used for consumption, generator fuel, and energy codes (SBC 601 / ASHRAE 90.1).</td></tr>
+</table>
+
+<div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Key takeaway</div>The single most useful conversion in tall-building MEP is <strong>1 bar ≈ 10.2 m of water</strong>. It links the height of the building directly to the pressure your pipes, pumps and fittings must survive.</div>
+
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></svg> Constants used in the worked examples</div>
+<table class="t param" style="margin:6px 0 0">
+<tr><th>Symbol / constant</th><th>Value</th><th>What it is</th></tr>
+<tr><td>ρ (rho)</td><td>1000 kg/m³ (water)</td><td>Density — fixed property of water.</td></tr>
+<tr><td>g</td><td>9.81 m/s²</td><td>Acceleration due to gravity — fixed constant.</td></tr>
+<tr><td>h</td><td>(per example)</td><td>Height of the fluid column (m) — from the Given.</td></tr>
+<tr><td>1 bar</td><td>≈ 100 kPa ≈ 10.2 m water</td><td>Pressure-to-head conversion.</td></tr>
+<tr><td>T (in stack formula)</td><td>in kelvin (K = °C + 273)</td><td>Absolute temperature.</td></tr>
+</table>
+<p style="margin:8px 0 0"><strong>Key formulas:</strong> column pressure <span class="formula" style="background:#fff;color:var(--navy)">P = ρ · g · h</span> · stack effect <span class="formula" style="background:#fff;color:var(--navy)">ΔP = ρ · g · h · (T<sub>i</sub> − T<sub>o</sub>) ÷ T<sub>i</sub></span></p></div>
+
+<h2 id="physics">0.3 The three physics behind all MEP</h2>
+<p>Almost every MEP calculation is one of three things:</p>
+<ol>
+<li><strong>Fluid flow &amp; pressure</strong> — water, chilled water and air all obey the same logic: a pump or fan adds energy (head/pressure), friction and height take it away. Governs plumbing, fire, chilled-water and air systems.</li>
+<li><strong>Heat transfer</strong> — heat flows from hot to cold by conduction, convection and radiation. Governs cooling loads, ventilation and the whole HVAC system.</li>
+<li><strong>Electrical power</strong> — <span class="formula" style="background:#eef6fb;color:var(--navy)">P = V × I × √3 × pf</span> (three-phase). Governs distribution sizing, transformers and generators.</li>
+</ol>
+
+<h4>Energy balance for a fluid (the engineer's workhorse)</h4>
+<p>The steady-flow energy equation says the pump head supplied must equal the static lift plus all friction and fitting losses:</p>
+<p style="text-align:center"><span class="formula" style="background:#eef6fb;color:var(--navy);font-size:17px">H<sub>pump</sub> = H<sub>static</sub> (height) + H<sub>friction</sub> + H<sub>fittings</sub> + H<sub>residual</sub></span></p>
+<p>In a low building <em>H<sub>static</sub></em> is small. In a kilometre tower it is enormous — and that single term is what forces vertical zoning.</p>
+
+<h2 id="height">0.4 The height problem — pressure builds with depth</h2>
+<p>A column of water (or chilled water, or fire water) presses down on whatever is below it. The pressure at the bottom of a static column is:</p>
+<p style="text-align:center"><span class="formula" style="background:#eef6fb;color:var(--navy);font-size:18px">P = ρ · g · h</span></p>
+<p>where ρ ≈ 1000 kg/m³ (water), g = 9.81 m/s², and h is the height of the column in metres. Plot it and the problem is obvious:</p>
+
+<div class="chartbox">
+  <canvas id="presChart"></canvas>
+  <div class="controls">
+    <label>Max allowable working pressure per zone:
+      <input type="range" id="zoneP" min="4" max="16" step="1" value="10">
+      <span class="val"><span id="zonePval">10</span> bar</span>
+    </label>
+    <span style="color:var(--muted)">→ zones needed for a 1,000 m tower: <span class="val" id="zoneN">10</span></span>
+  </div>
+  <div class="cap">Static water pressure vs height in a 1,000 m tower. Drag the slider to set the pressure each zone's pipework/fittings can take — the tool shows how many vertical zones the building must be split into. (P = ρgh, water.)</div>
+</div>
+
+<div class="example">
+  <h4>Worked example 0-A · Pressure at the base of a 1 km water riser</h4>
+  <div class="step"><span class="given">Given:</span> a single un-zoned water riser, height h = 1,000 m, water ρ = 1000 kg/m³, g = 9.81 m/s².</div>
+  <div class="step">Pressure at the base:
+    <div class="formula">P = ρ · g · h = 1000 × 9.81 × 1000 = 9.81 × 10⁶ Pa</div>
+  </div>
+  <div class="step">Convert: 9.81 × 10⁶ Pa = <strong>98.1 bar</strong> ≈ 1,000 m of head (as expected, since 1 bar ≈ 10.2 m).</div>
+  <div class="step">Typical building pipe/fittings are rated PN16–PN25 (16–25 bar). 98 bar would burst them many times over.</div>
+  <div class="result">∴ A kilometre tower cannot be served by one pressure zone. If each zone is limited to ~10 bar working pressure, you need on the order of <strong>10 vertical pressure zones</strong> for the water system — the same logic applies to chilled water and fire water.</div>
+</div>
+
+<h2 id="zoning">0.5 The master concept — vertical pressure zoning</h2>
+<p>This is the single most important idea in super-tall MEP. Instead of one tall column, the building is split vertically into <strong>zones</strong>, each only ~10–15 floors tall. Within each zone the static pressure stays within what normal equipment can handle. Between zones, the pressure is "reset" using one of two devices:</p>
+<ul>
+<li><strong>Break tanks</strong> — water is delivered into an open tank at a high level; the pressure below it starts again from zero (atmospheric). Pumps then draw from the tank to feed the zone.</li>
+<li><strong>Pressure-reducing valves (PRVs)</strong> — where water cascades <em>down</em> into a lower zone, a PRV drops the pressure to the zone's working range.</li>
+</ul>
+
+<div class="figure">
+<svg viewBox="0 0 760 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vertical pressure zoning riser diagram">
+  <defs>
+    <marker id="arrU" markerWidth="9" markerHeight="9" refX="4.5" refY="8" orient="auto"><path d="M4.5,0 L9,9 L0,9 Z" fill="#1769AA"/></marker>
+    <marker id="arrD" markerWidth="9" markerHeight="9" refX="4.5" refY="1" orient="auto"><path d="M0,0 L9,0 L4.5,9 Z" fill="#b4232c"/></marker>
+  </defs>
+  <!-- tower outline -->
+  <rect x="250" y="20" width="260" height="430" fill="#f5f8fb" stroke="#cdd9e3"/>
+  <!-- zones -->
+  <g font-family="sans-serif" font-size="12">
+    <!-- Zone bands -->
+    <rect x="250" y="40"  width="260" height="100" fill="#eef6fb" stroke="#cdd9e3"/>
+    <rect x="250" y="140" width="260" height="100" fill="#e6f0f8" stroke="#cdd9e3"/>
+    <rect x="250" y="240" width="260" height="100" fill="#dbe9f5" stroke="#cdd9e3"/>
+    <rect x="250" y="340" width="260" height="110" fill="#d0e2f2" stroke="#cdd9e3"/>
+    <text x="380" y="95"  text-anchor="middle" fill="#0B3D5C" font-weight="700">Zone 4 (top)</text>
+    <text x="380" y="195" text-anchor="middle" fill="#0B3D5C" font-weight="700">Zone 3</text>
+    <text x="380" y="295" text-anchor="middle" fill="#0B3D5C" font-weight="700">Zone 2</text>
+    <text x="380" y="405" text-anchor="middle" fill="#0B3D5C" font-weight="700">Zone 1 (base)</text>
+  </g>
+  <!-- break tanks -->
+  <g>
+    <rect x="300" y="44" width="46" height="20" fill="#bfe3ff" stroke="#1769AA"/>
+    <rect x="300" y="144" width="46" height="20" fill="#bfe3ff" stroke="#1769AA"/>
+    <rect x="300" y="244" width="46" height="20" fill="#bfe3ff" stroke="#1769AA"/>
+    <text x="323" y="34" text-anchor="middle" font-size="10" fill="#0B3D5C">break tank</text>
+  </g>
+  <!-- transfer riser up (left) -->
+  <line x1="270" y1="445" x2="270" y2="54" stroke="#1769AA" stroke-width="3" marker-end="url(#arrU)"/>
+  <text x="255" y="250" font-size="11" fill="#1769AA" transform="rotate(-90 255 250)">transfer pumps lift water up ↑</text>
+  <!-- booster pumps (circles) at each zone -->
+  <g fill="#fff" stroke="#1769AA" stroke-width="2">
+    <circle cx="360" cy="120" r="9"/><circle cx="360" cy="220" r="9"/><circle cx="360" cy="320" r="9"/><circle cx="360" cy="420" r="9"/>
+  </g>
+  <text x="372" y="424" font-size="10" fill="#0B3D5C">booster pump (P) per zone</text>
+  <!-- PRV cascade down (right) -->
+  <line x1="490" y1="60" x2="490" y2="440" stroke="#b4232c" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#arrD)"/>
+  <text x="500" y="250" font-size="11" fill="#b4232c" transform="rotate(-90 500 250)">PRV cascade down ↓</text>
+  <g fill="#ffd1cf" stroke="#b4232c"><rect x="483" y="150" width="14" height="14"/><rect x="483" y="250" width="14" height="14"/><rect x="483" y="350" width="14" height="14"/></g>
+  <text x="505" y="160" font-size="10" fill="#b4232c">PRV</text>
+  <!-- city supply -->
+  <rect x="120" y="420" width="90" height="30" fill="#eafaf0" stroke="#1f7a3d"/>
+  <text x="165" y="439" text-anchor="middle" font-size="11" fill="#1f7a3d">city / ground tank</text>
+  <line x1="210" y1="435" x2="270" y2="435" stroke="#1769AA" stroke-width="3"/>
+  <!-- title -->
+  <text x="60" y="30" font-size="13" font-weight="700" fill="#0B3D5C">Two strategies, often combined:</text>
+  <text x="60" y="50" font-size="11" fill="#1769AA">▲ pump UP to high break tanks, boost into each zone</text>
+  <text x="60" y="68" font-size="11" fill="#b4232c">▼ cascade DOWN through PRVs into lower zones</text>
+</svg>
+<div class="cap">Figure 0-1 · Vertical pressure zoning — the defining MEP strategy of a super-tall tower. The same idea reappears for domestic water, fire water and chilled water. (Original schematic.)</div>
+</div>
+
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code basis</div>
+Pressure limits and zoning for plumbing follow <strong>SBC 701</strong> (Saudi Sanitary Code) and the <strong>International Plumbing Code (IPC)</strong>; fire-water zoning follows <strong>NFPA 14</strong> (standpipes) and <strong>NFPA 20</strong> (pumps). Maximum static pressures at fixtures and the need for PRVs are code-mandated, not optional.</div>
+
+<h2 id="plant">0.6 Plant floors &amp; sky lobbies</h2>
+<p>Because you cannot serve a kilometre from the basement, the heavy MEP equipment is <strong>distributed up the tower</strong> on dedicated <em>mechanical / plant floors</em>, usually coinciding with <em>sky lobbies</em> (the transfer floors where occupants change lifts). Each plant floor houses the break tanks, booster and fire pumps, chilled-water heat exchangers, transformers, generators and air-handling units for the zone above it.</p>
+
+<div class="figure">
+<svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plant floors distributed up a tower">
+  <!-- tower -->
+  <polygon points="300,20 400,20 430,360 270,360" fill="#f5f8fb" stroke="#cdd9e3"/>
+  <!-- floor lines -->
+  <g stroke="#e2e9f0"><line x1="285" y1="80" x2="415" y2="80"/><line x1="280" y1="160" x2="420" y2="160"/><line x1="275" y1="250" x2="425" y2="250"/></g>
+  <!-- plant floors highlighted -->
+  <g>
+    <rect x="289" y="70" width="122" height="14" fill="#1769AA"/>
+    <rect x="282" y="150" width="136" height="14" fill="#1769AA"/>
+    <rect x="276" y="240" width="148" height="14" fill="#1769AA"/>
+    <rect x="270" y="338" width="160" height="20" fill="#0B3D5C"/>
+  </g>
+  <g font-family="sans-serif" font-size="12" fill="#0B3D5C">
+    <text x="450" y="82">Plant floor — Zone 4 (boosters, HX, AHU)</text>
+    <text x="450" y="162">Plant floor — Zone 3 (sky lobby)</text>
+    <text x="450" y="252">Plant floor — Zone 2 (sky lobby)</text>
+    <text x="450" y="353" fill="#fff">—</text>
+    <text x="450" y="353">Basement / podium — main intake, chillers, gensets</text>
+  </g>
+  <text x="40" y="200" font-size="12" fill="#5b6b7a" transform="rotate(-90 40 200)">≈ 1,000 m height</text>
+</svg>
+<div class="cap">Figure 0-2 · MEP plant is distributed up the tower at sky lobbies, each serving the zone above. (Original schematic.)</div>
+</div>
+
+<div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Key takeaway</div>Vertical zoning + distributed plant floors are <em>the</em> structural idea of super-tall MEP. Once you understand them, every discipline (water, fire, chilled water, electrical risers) becomes a variation on the same theme.</div>
+
+<h2 id="stack">0.7 Stack effect</h2>
+<p>Warm air is lighter than cold air. Over a tall building the inside/outside temperature difference creates a pressure difference that drives air up through shafts, stairs and lift wells (in winter) or down (in summer with hot outside air). This is the <strong>stack effect</strong>, and at a kilometre it is powerful enough to slam doors, whistle through lift lobbies and spread smoke. The theoretical stack pressure is:</p>
+<p style="text-align:center"><span class="formula" style="background:#eef6fb;color:var(--navy)">ΔP = ρ<sub>o</sub> · g · h · (T<sub>i</sub> − T<sub>o</sub>) / T<sub>i</sub></span> &nbsp;(temperatures in kelvin)</p>
+
+<div class="chartbox">
+  <canvas id="stackChart"></canvas>
+  <div class="controls">
+    <label>Outdoor temperature:
+      <input type="range" id="tOut" min="-10" max="48" step="1" value="2">
+      <span class="val"><span id="tOutVal">2</span> °C</span>
+    </label>
+    <label>Indoor: <span class="val">24 °C</span></label>
+  </div>
+  <div class="cap">Theoretical stack pressure vs building height for different outdoor temperatures. A large indoor–outdoor temperature difference (a cold winter day, or a very hot day with heavily cooled interiors) creates the strongest stack effect. Drag to explore.</div>
+</div>
+
+<p><strong>Mitigation</strong> (introduced here, detailed in <a class="ref" href="module-1-hvac.html">Module 1</a>): airlock/revolving entrance doors, compartmentalised and pressurised lift lobbies, well-sealed shafts, and stairwell pressurisation — which doubles as the smoke-control system (<a class="ref" href="#codes">NFPA 92</a>).</p>
+
+<h2 id="codes">0.8 Codes &amp; authorities — who sets the rules</h2>
+<p>Nothing in MEP is invented from scratch; every value traces to a code. For a Saudi tower the hierarchy is:</p>
+<table class="t">
+<tr><th>Layer</th><th>What it governs</th><th>Examples</th></tr>
+<tr><td><strong>Saudi Building Code (SBC)</strong></td><td>The mandatory national code suite</td><td>SBC 501 (mechanical), 701 (plumbing), 401 (electrical), 601 (energy), 801 (fire)</td></tr>
+<tr><td><strong>Referenced standards</strong></td><td>Adopted <em>by reference</em> inside SBC</td><td>NFPA (fire), ASHRAE (HVAC/energy), NEC, IEC</td></tr>
+<tr><td><strong>Authorities (AHJ)</strong></td><td>Approve &amp; inspect</td><td>Civil Defense (fire/life-safety), SEC (power), NWC (water), SASO (products)</td></tr>
+<tr><td><strong>Sustainability</strong></td><td>Performance targets</td><td>Mostadam, LEED, SBC 601 / ASHRAE 90.1</td></tr>
+</table>
+<div class="box warn"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg> The edition trap</div>In KSA the binding edition of, say, NFPA 13 or ASHRAE 90.1 is <strong>the edition that SBC references</strong> (SBC 2018), not automatically the newest. Cite the SBC-referenced edition unless the project spec requires a later one. Your shared <em>MEP Codes &amp; Standards Register</em> lists all of these.</div>
+
+<h2 id="process">0.9 How an MEP design actually progresses</h2>
+<div class="figure">
+<svg viewBox="0 0 760 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MEP design process flow">
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 Z" fill="#1769AA"/></marker></defs>
+  <g font-family="sans-serif" font-size="12" text-anchor="middle">
+    <g>
+      <rect x="10"  y="40" width="120" height="48" rx="8" fill="#eef6fb" stroke="#1769AA"/><text x="70"  y="60">Concept /</text><text x="70" y="76">criteria</text>
+      <rect x="170" y="40" width="120" height="48" rx="8" fill="#e6f0f8" stroke="#1769AA"/><text x="230" y="60">Schematic</text><text x="230" y="76">design (loads, zones)</text>
+      <rect x="330" y="40" width="120" height="48" rx="8" fill="#dbe9f5" stroke="#1769AA"/><text x="390" y="60">Detailed</text><text x="390" y="76">design &amp; BIM</text>
+      <rect x="490" y="40" width="120" height="48" rx="8" fill="#d0e2f2" stroke="#1769AA"/><text x="550" y="60">IFC + shop</text><text x="550" y="76">drawings</text>
+      <rect x="650" y="40" width="100" height="48" rx="8" fill="#0B3D5C"/><text x="700" y="60" fill="#fff">Testing &amp;</text><text x="700" y="76" fill="#fff">commissioning</text>
+    </g>
+    <line x1="130" y1="64" x2="168" y2="64" stroke="#1769AA" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="290" y1="64" x2="328" y2="64" stroke="#1769AA" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="450" y1="64" x2="488" y2="64" stroke="#1769AA" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="610" y1="64" x2="648" y2="64" stroke="#1769AA" stroke-width="2" marker-end="url(#a)"/>
+    <text x="380" y="20" font-weight="700" fill="#0B3D5C">Design develops left → right; each stage adds detail and is reviewed against codes</text>
+  </g>
+</svg>
+<div class="cap">Figure 0-3 · The MEP design lifecycle. As a Technical Manager you drive coordination, code-compliance reviews and approvals at every gate.</div>
+</div>
+<p>Each discipline module in this course follows the same arc: <strong>criteria → loads/sizing → system selection → distribution &amp; zoning → worked example</strong>.</p>
+
+<h2 id="glossary">Terms &amp; abbreviations</h2>
+<p>Plain-English meaning of the terms used in this module.</p>
+<table class="t param">
+<tr><th>Term</th><th>What it means (plain English)</th></tr>
+<tr><td>MEP</td><td>Mechanical, Electrical &amp; Plumbing — the building's services.</td></tr>
+<tr><td>Head</td><td>Pressure expressed as a height of water. 10 m of head ≈ 1 bar. The natural unit for pumps and tall risers.</td></tr>
+<tr><td>Static / hydrostatic pressure</td><td>Pressure caused by the weight of the fluid column standing above a point — it grows the deeper (lower) you are.</td></tr>
+<tr><td>Residual pressure</td><td>The pressure still left at an outlet/fixture after height and friction have taken their share.</td></tr>
+<tr><td>Friction loss</td><td>Pressure "used up" overcoming friction as fluid flows through pipe/duct and fittings.</td></tr>
+<tr><td>ρ (rho) / density</td><td>Mass per unit volume; water ≈ 1,000 kg/m³.</td></tr>
+<tr><td>Pa / kPa / bar</td><td>Pressure units. 1 bar = 100 kPa ≈ atmospheric ≈ 10.2 m of water.</td></tr>
+<tr><td>PN rating</td><td>Pressure class of a pipe/fitting — e.g. PN16 = safe for 16 bar working pressure.</td></tr>
+<tr><td>Pressure zone</td><td>A vertical slice of the building (≈10–15 floors) kept within a safe pressure range.</td></tr>
+<tr><td>Break tank</td><td>An open tank part-way up that "resets" water pressure to atmospheric before it is pumped on.</td></tr>
+<tr><td>PRV (pressure-reducing valve)</td><td>A valve that drops pressure to a safe level when water cascades down into a lower zone.</td></tr>
+<tr><td>Plant / mechanical floor</td><td>A level dedicated to MEP equipment (pumps, tanks, transformers, air units) serving a zone.</td></tr>
+<tr><td>Sky lobby</td><td>A transfer floor where occupants change between shuttle and local lifts; often shares a plant floor.</td></tr>
+<tr><td>Stack effect</td><td>Air pushed up (or down) through shafts, stairs and lifts by the temperature difference between inside and outside — strong in tall buildings.</td></tr>
+<tr><td>TR (ton of refrigeration)</td><td>A unit of cooling power. 1 TR = 3.517 kW.</td></tr>
+<tr><td>AHJ</td><td>Authority Having Jurisdiction — the body that approves and inspects the design (e.g. Civil Defense for fire).</td></tr>
+<tr><td>SBC</td><td>Saudi Building Code — the mandatory national code suite (501 mechanical, 401 electrical, 701 plumbing, 601 energy, 801 fire).</td></tr>
+<tr><td>NFPA / ASHRAE / IPC / CIBSE</td><td>Standards bodies: NFPA (fire), ASHRAE (HVAC &amp; energy), IPC (plumbing, US), CIBSE (UK building-services guides).</td></tr>
+</table>
+
+<h2 id="refs">References &amp; further reading</h2>
+<ul class="refs">
+<li>Saudi Building Code — <strong>SBC 501</strong> (Mechanical), <strong>SBC 701</strong> (Sanitary/Plumbing), <strong>SBC 401</strong> (Electrical), <strong>SBC 601</strong> (Energy), <strong>SBC 801</strong> (Fire), 2018 edition. Saudi Building Code National Committee.</li>
+<li><strong>NFPA 14</strong> Standpipe &amp; Hose Systems; <strong>NFPA 20</strong> Stationary Fire Pumps; <strong>NFPA 92</strong> Smoke Control Systems (editions as referenced by SBC 801).</li>
+<li><strong>ASHRAE Handbook — Fundamentals</strong>, chapters on fluid flow, heat transfer and psychrometrics.</li>
+<li><strong>CIBSE Guide G</strong> (Public Health &amp; Plumbing) and <strong>Guide B</strong> (Heating, Ventilating, Air Conditioning) — tall-building distribution and zoning.</li>
+<li>CTBUH (Council on Tall Buildings and Urban Habitat) technical papers on MEP for super-tall buildings.</li>
+</ul>
+<div class="box note"><div class="t">Note on references</div>Citations identify the governing documents; clause numbers and current editions must be confirmed against the live code and the project specification before use in design.</div>
+
+<div class="prevnext">
+  <a href="index.html"><div class="dir">← Back</div>Course home</a>
+  <a class="nx" href="module-1-hvac.html"><div class="dir">Next →</div>Module 1 · HVAC &amp; Cooling</a>
+</div>
+
+</main>
+</div></div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="../">All Articles</a> &nbsp;&middot;&nbsp; <a href="index.html">Course Home</a></p>
+  </div>
+</footer>
+
+<script src="assets/course.js"></script>
+<script>
+// ---- Pressure vs height chart ----
+const heights = [];
+for(let h=0; h<=1000; h+=50) heights.push(h);
+const presData = heights.map(h => +(1000*9.81*h/1e5).toFixed(1)); // bar
+const presChart = new Chart(document.getElementById('presChart'), {
+  type:'line',
+  data:{ labels:heights, datasets:[
+    { label:'Static water pressure (bar)', data:presData, borderColor:'#1769AA',
+      backgroundColor:'rgba(23,105,170,.12)', fill:true, tension:.15, pointRadius:0, borderWidth:3 },
+    { label:'Zone working-pressure limit', data:heights.map(()=>10),
+      borderColor:'#b4232c', borderDash:[6,5], pointRadius:0, borderWidth:2 }
+  ]},
+  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.1,
+    scales:{ x:{ title:{display:true,text:'Height up the tower (m)'} },
+             y:{ title:{display:true,text:'Pressure (bar)'}, beginAtZero:true } },
+    plugins:{ legend:{position:'top'},
+      title:{display:true,text:'Static pressure builds with height — P = ρgh',color:'#0B3D5C',font:{size:14}} } }
+});
+const zoneP=document.getElementById('zoneP'), zonePval=document.getElementById('zonePval'), zoneN=document.getElementById('zoneN');
+function updZone(){
+  const lim=+zoneP.value; zonePval.textContent=lim;
+  presChart.data.datasets[1].data = heights.map(()=>lim);
+  presChart.update('none');
+  // zones for 1000 m: each zone height = lim*10.2 m
+  const zoneH = lim*10.2; zoneN.textContent = Math.ceil(1000/zoneH);
+}
+zoneP.addEventListener('input',updZone); updZone();
+
+// ---- Stack effect chart ----
+const Ti = 24+273.15;
+function stackSeries(toC){
+  const To = toC+273.15;
+  // Stack (buoyancy) pressure = g·h·(ρo − ρi); for air ρ ≈ 353/T (kg/m³),
+  // so ΔP = 9.81·353·h·|1/To − 1/Ti| ≈ 3463·h·|1/To − 1/Ti|  (Pa). [ASHRAE Fundamentals]
+  return heights.map(h => +(3463*h*Math.abs(1/To - 1/Ti)).toFixed(0)); // Pa
+}
+const stackChart = new Chart(document.getElementById('stackChart'), {
+  type:'line',
+  data:{ labels:heights, datasets:[
+    { label:'Stack pressure (Pa)', data:stackSeries(2), borderColor:'#0B3D5C',
+      backgroundColor:'rgba(11,61,92,.10)', fill:true, tension:.15, pointRadius:0, borderWidth:3 }
+  ]},
+  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.1,
+    scales:{ x:{title:{display:true,text:'Height (m)'}},
+             y:{title:{display:true,text:'Stack pressure (Pa)'}, beginAtZero:true} },
+    plugins:{ legend:{display:false},
+      title:{display:true,text:'Stack effect grows with height and temperature difference',color:'#0B3D5C',font:{size:14}} } }
+});
+const tOut=document.getElementById('tOut'), tOutVal=document.getElementById('tOutVal');
+tOut.addEventListener('input',()=>{ tOutVal.textContent=tOut.value;
+  stackChart.data.datasets[0].data = stackSeries(+tOut.value); stackChart.update('none'); });
+</script>
+<script src="../theme.js"></script>
+</body>
+</html>

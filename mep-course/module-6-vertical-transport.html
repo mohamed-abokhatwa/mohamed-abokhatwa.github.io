@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JRFPTBLVT4');</script>
+<script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 6 — Vertical Transport | MEP for Tall Buildings</title>
+<link rel="stylesheet" href="assets/course.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  .box.sw{background:#f3eefb;border-color:#7a4fb5}.box.sw .t{color:#5e3a99}
+  .compo{background:#fff;border:1px solid var(--line);border-left:6px solid #2E8BC0;border-radius:12px;padding:6px 22px 18px;box-shadow:var(--shadow);margin:26px 0}
+  .compo .tag{display:inline-block;background:#1769AA;color:#fff;font-size:12px;font-weight:700;letter-spacing:.5px;padding:3px 12px 3px 22px;border-radius:0 0 8px 8px;margin-left:-22px}
+  .param{font-size:14.5px}.param th{background:#eef6fb;color:var(--navy)}
+</style>
+</head>
+<body class="mep-body">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../">Articles</a></li>
+      <li><a href="../calculators.html">Calculators</a></li>
+      <li><a href="index.html" class="active">Course</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){var open=document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open',open);this.setAttribute('aria-expanded',open);});
+</script>
+
+<section class="course-hero"><div class="wrap">
+  <a class="back" href="index.html">&larr; Back to course home</a>
+  <span class="kicker">Module 6 · Detailed reference</span>
+  <h1>Vertical Transport — Moving People Up a Kilometre</h1>
+  <p>Lifts and escalators are a project within the project. We start from traffic analysis (how many lifts and how fast), through zoning and sky lobbies, the machine, ropes and shaft, firefighting lifts, escalators, dispatch control and power — to installation and commissioning. Every component: role, design, worked numbers, software and code.</p>
+</div></section>
+
+<div class="wrap"><div class="layout">
+
+<aside class="sidenav">
+  <div class="grp">The design driver</div>
+  <a href="#traffic">6.1 Traffic analysis</a>
+  <a href="#zoning">6.2 Arrangement &amp; zoning</a>
+  <div class="grp">The equipment</div>
+  <a href="#types">6.3 Types &amp; drive</a>
+  <a href="#mechanical">6.4 Machine, ropes, rails</a>
+  <a href="#shaft">6.5 Shaft, pit, headroom</a>
+  <div class="grp">Safety &amp; others</div>
+  <a href="#firefighting">6.6 Firefighting lifts</a>
+  <a href="#escalators">6.7 Escalators</a>
+  <div class="grp">Make it work</div>
+  <a href="#control">6.8 Dispatch control</a>
+  <a href="#power">6.9 Power &amp; regen</a>
+  <a href="#install">6.10 Installation &amp; tricks</a>
+  <a href="#cx">6.11 Commissioning</a>
+  <a href="#glossary">Terms &amp; abbreviations</a>
+  <a href="#refs">References</a>
+</aside>
+
+<main class="content">
+
+<div class="box note"><div class="t">Section layout</div><strong>Role → Design method → Worked numbers → Software → Code.</strong> The design driver here is unusual: it starts with a <em>traffic simulation</em>, which then dictates the number, speed, size and arrangement of every lift.</div>
+
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></svg> Symbols &amp; constants used in the worked examples</div>
+<table class="t param" style="margin:6px 0 0">
+<tr><th>Symbol</th><th>Meaning</th></tr>
+<tr><td>P</td><td>Passengers carried per trip (≈ 80% of car capacity).</td></tr>
+<tr><td>L</td><td>Number of lifts in the group.</td></tr>
+<tr><td>U</td><td>Population served by that group.</td></tr>
+<tr><td>RTT</td><td>Round-trip time (seconds) — from the traffic simulation.</td></tr>
+<tr><td>300</td><td>The number of seconds in 5 minutes (handling capacity is measured per 5 min).</td></tr>
+</table>
+<p style="margin:8px 0 0"><strong>Key formulas:</strong> handling capacity <span class="formula" style="background:#fff;color:var(--navy)">HC% = (300·P·L) ÷ (RTT·U) × 100</span> · waiting interval <span class="formula" style="background:#fff;color:var(--navy)">Interval = RTT ÷ L</span> · travel time <span class="formula" style="background:#fff;color:var(--navy)">t = distance ÷ speed</span></p></div>
+
+<!-- 6.1 -->
+<h2 id="traffic">6.1 Traffic analysis — the starting point</h2>
+<p><strong>Role:</strong> determine how many lifts, of what speed and size, satisfy the building population's demand at peak (up-peak in the morning, or two-way/lunch peaks). Two key metrics:</p>
+<ul>
+<li><strong>Handling capacity (HC%)</strong> — the % of the population a group can move in 5 minutes. Targets: offices ~11–15%, residential/hotel lower.</li>
+<li><strong>Interval (waiting)</strong> — average time between car arrivals at the main lobby; target ≤ ~25–30 s (offices).</li>
+</ul>
+<p>Both come from the <strong>Round-Trip Time (RTT)</strong> — the time for one car to serve a full up-peak cycle:</p>
+<p style="text-align:center"><span class="formula" style="background:#eef6fb;color:var(--navy)">HC% = (300 · P · L) ÷ (RTT · U) × 100 &nbsp;&nbsp;|&nbsp;&nbsp; Interval = RTT ÷ L</span></p>
+<p style="font-size:14px;color:var(--muted)">P = passengers carried per trip (≈80% of car capacity), L = number of lifts in the group, U = population served by the group, RTT in seconds.</p>
+
+<div class="chartbox">
+  <canvas id="trafficChart"></canvas>
+  <div class="controls">
+    <label>Lifts in the group (L): <input type="range" id="L" min="2" max="10" step="1" value="6"><span class="val"><span id="Lval">6</span></span></label>
+    <span style="color:var(--muted)">HC ≈ <span class="val" id="hc">—</span>% &nbsp;·&nbsp; interval ≈ <span class="val" id="intv">—</span> s</span>
+  </div>
+  <div class="cap">Handling capacity and interval vs number of lifts in a group (P=13, RTT=180 s, U=1,000). More cars raise capacity and cut waiting — but cost shaft space, which is why tall buildings zone and use sky-lobby shuttles. Drag L.</div>
+</div>
+<div class="example">
+  <h4>Worked example 6.1 · Size a lift group for a zone</h4>
+  <div class="step"><span class="given">Given:</span> rise zone population U = 1,000; car capacity 1,600 kg ≈ 21 persons, filled to ~62% → P = 13/trip; calculated RTT = 180 s; group of L = 6 lifts.</div>
+  <div class="step">HC% = (300 × 13 × 6) ÷ (180 × 1,000) × 100 = 23,400 ÷ 180,000 × 100 = <strong>13.0%</strong> <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> (meets office target).</div>
+  <div class="step">Interval = RTT ÷ L = 180 ÷ 6 = <strong>30 s</strong> <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>.</div>
+  <div class="result">6 lifts per zone meet both targets. If population were higher or RTT longer, you add lifts or split into more rise zones / add shuttles — the core of tall-building lift planning.</div>
+</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Run up-peak and full-day simulations in <strong>Elevate (Peters Research)</strong> (or manufacturer traffic tools): enter floor populations, heights, car size/speed, door times, and dispatch algorithm → it computes RTT, HC%, interval and queue lengths for each configuration. Iterate car count/speed/zoning until targets are met.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code &amp; guidance</div>Traffic design: CIBSE Guide D (Transportation in Buildings); ISO 8100 / ISO 4190; manufacturer data.</div>
+
+<!-- 6.2 -->
+<h2 id="zoning">6.2 Arrangement &amp; zoning (sky lobbies, double-deck, shuttles)</h2>
+<p><strong>Role:</strong> you cannot run one set of lifts the full height — it wastes core space and time. The building is split into <strong>rise zones</strong>, each served by a local group, plus high-speed <strong>shuttle lifts</strong> to <strong>sky lobbies</strong> where occupants transfer. <strong>Double-deck</strong> cars (two cabins serving two floors at once) and shuttle expresses are used in super-tall towers to maximise capacity per shaft.</p>
+<div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Why zoning saves the core</div>Lift shafts consume valuable floor plate. Zoning + sky-lobby shuttles + double-deck cars move more people through fewer shafts, freeing rentable/usable area — a major architectural-MEP trade-off.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Arrangement &amp; capacity: CIBSE Guide D; ISO 8100; fire/egress interface: SBC 801 / NFPA 101.</div>
+
+<!-- 6.3 -->
+<h2 id="types">6.3 Lift types &amp; drive</h2>
+<table class="t param">
+<tr><th>Type</th><th>Use</th></tr>
+<tr><td>Gearless traction (PM/AC, VVVF drive)</td><td>Standard for mid/high-rise &amp; high speed — efficient, smooth</td></tr>
+<tr><td>Machine-Room-Less (MRL)</td><td>Low/mid-rise where no machine room is wanted</td></tr>
+<tr><td>Double-deck / shuttle</td><td>Super-tall — capacity &amp; express runs to sky lobbies</td></tr>
+<tr><td>Hydraulic</td><td>Very low rise only (not for towers)</td></tr>
+</table>
+<div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> The rope problem at height</div>Conventional <strong>steel hoist ropes</strong> become too heavy to lift their own weight beyond ~500 m rise, forcing a transfer/shuttle. <strong>Carbon-fibre belts</strong> (much lighter &amp; stronger) extend single rises toward ~1,000 m — a key enabler of megatall single-shaft runs.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Lift safety: EN 81-20/-50 (Europe) or ASME A17.1/CSA B44 (US); choose the basis per project spec; ISO 8100.</div>
+
+<!-- 6.4 -->
+<h2 id="mechanical">6.4 Machine, ropes, counterweight, rails &amp; safeties</h2>
+<p><strong>Role:</strong> the traction machine (motor + sheave) drives the roped car against a <strong>counterweight</strong> (≈ car + 50% load, to balance and cut motor size); <strong>guide rails</strong> align car &amp; counterweight; safety gear, overspeed governor and buffers stop the car safely.</p>
+<div class="example">
+  <h4>Worked example 6.4 · Travel time &amp; speed</h4>
+  <div class="step"><span class="given">Given:</span> a shuttle serving a sky lobby 400 m up; rated speed 8 m/s.</div>
+  <div class="step">Pure run time = 400 ÷ 8 = 50 s, + acceleration/deceleration + door times (~10–15 s) ≈ <strong>~65 s</strong> per trip.</div>
+  <div class="result">Speed is chosen so express trips stay acceptable: super-tall shuttles run 8–10+ m/s. Higher speed shortens RTT (feeds 6.1) but raises cost and needs pressure-controlled cabs for ear comfort.</div>
+</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Components &amp; safeties: EN 81-20/-50 / ASME A17.1; ropes/suspension &amp; factors of safety per the adopted code.</div>
+
+<!-- 6.5 -->
+<h2 id="shaft">6.5 Shaft, pit, headroom &amp; lobby (the builder's-work)</h2>
+<p><strong>Role:</strong> the lift needs a code-compliant <strong>shaft</strong> (size, smoke venting/pressurisation), a <strong>pit</strong> (buffer/clearance below the lowest floor) and <strong>headroom</strong> (clearance above the top floor), plus lobbies sized for waiting crowds. These dimensions come from the manufacturer's drawings + code clearances and are a key structural-MEP coordination item.</p>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Shaft/pit/headroom clearances: EN 81-20 / ASME A17.1; shaft pressurisation &amp; fire: NFPA 92/101, SBC 801.</div>
+
+<!-- 6.6 -->
+<h2 id="firefighting">6.6 Firefighting lifts &amp; fire operation</h2>
+<p><strong>Role:</strong> dedicated <strong>firefighting lifts</strong> let the brigade reach fire floors and serve as part of the evacuation strategy; all lifts perform <strong>fire recall</strong> (return to a designated floor and park) on alarm. Critical and mandatory in tall buildings.</p>
+<table class="t param">
+<tr><th>Function</th><th>Standard</th></tr>
+<tr><td>Firefighting lift (protected lobby, power, water protection)</td><td>EN 81-72</td></tr>
+<tr><td>Lift behaviour in a fire (recall logic)</td><td>EN 81-73</td></tr>
+<tr><td>Landing-door fire resistance</td><td>EN 81-58</td></tr>
+<tr><td>Occupant evacuation lifts (where used)</td><td>EN 81-76 / code &amp; AHJ</td></tr>
+</table>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>EN 81-72/-73/-58/-76; fire recall &amp; standby power: SBC 801 / NFPA 101 / 110; AHJ = Civil Defense.</div>
+
+<!-- 6.7 -->
+<h2 id="escalators">6.7 Escalators &amp; moving walks</h2>
+<p><strong>Role:</strong> high-capacity transport between a few levels (podium, retail, lobby). Sized by step width and speed for throughput; safety features (combs, brakes, balustrades) per code.</p>
+<div class="example">
+  <h4>Worked example 6.7 · Escalator capacity</h4>
+  <div class="step"><span class="given">Given:</span> 1,000 mm step width (≈ theoretical 9,000 persons/h nominal; realistic ~6,000–7,500 persons/h at 0.5 m/s).</div>
+  <div class="result">Use the realistic throughput (not the theoretical maximum) for design; provide enough units for the podium/retail peak flow.</div>
+</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Escalators/moving walks: EN 115 / ASME A17.1; capacity guidance: CIBSE Guide D.</div>
+
+<!-- 6.8 -->
+<h2 id="control">6.8 Dispatch &amp; group control</h2>
+<p><strong>Role:</strong> the brain that assigns cars to calls. Modern towers use <strong>destination control (DCS)</strong> — passengers enter their floor at a lobby terminal and are grouped into cars by destination, cutting stops and RTT dramatically versus conventional up/down buttons. This directly improves the 6.1 metrics.</p>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div><strong>Elevate</strong> models conventional vs destination control so you can quantify the RTT/interval improvement and reduce the number of shafts needed.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Control &amp; functional safety per EN 81-20 / ASME A17.1; DCS accessibility provisions.</div>
+
+<!-- 6.9 -->
+<h2 id="power">6.9 Power, regeneration &amp; standby</h2>
+<p><strong>Role:</strong> lifts are big, intermittent electrical loads with high starting demand. <strong>Regenerative drives</strong> feed braking energy back to the supply (a real energy saving on tall, busy lifts). Firefighting and life-safety lifts must be on <strong>standby power</strong> (Module 4) and ride through transfer.</p>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Supply &amp; standby: SBC 401 / NFPA 110; regenerative drives &amp; efficiency: ISO 25745 (energy), SBC 601.</div>
+
+<!-- 6.10 -->
+<h2 id="install">6.10 Installation, accessories &amp; field tricks</h2>
+<table class="t param">
+<tr><th>Item</th><th>Field rule / trick</th></tr>
+<tr><td>Builder's-work coordination</td><td>Shaft plumbness, insert/bracket fixings, pit waterproofing &amp; sump — agree early; errors are very costly at height.</td></tr>
+<tr><td>Guide-rail alignment &amp; bracket spacing</td><td>Precise alignment for ride quality &amp; high speed.</td></tr>
+<tr><td>Shaft pressurisation &amp; smoke vents</td><td>Coordinate with HVAC smoke-control (Module 1) &amp; fire (Module 3/5).</td></tr>
+<tr><td>Machine-room cooling, sound &amp; vibration isolation</td><td>Machine spaces need cooling (heat load to HVAC) &amp; isolation to avoid structure-borne noise.</td></tr>
+<tr><td>Standby power &amp; firefighting-lift cabling</td><td>Fire-survival supply &amp; controls to firefighting lifts.</td></tr>
+<tr><td>JumpLifts during construction</td><td>Temporary use of the permanent shaft speeds construction of super-tall towers — plan for it.</td></tr>
+</table>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Installation &amp; safety: EN 81-20/-50 / ASME A17.1; seismic provisions EN 81-77; SBC 301/801.</div>
+
+<!-- 6.11 -->
+<h2 id="cx">6.11 Testing &amp; commissioning</h2>
+<ul>
+<li>Load/overspeed/safety-gear &amp; buffer tests; ride-quality &amp; levelling; door &amp; safety-circuit functional tests.</li>
+<li><strong>Fire recall &amp; firefighting-lift operation</strong> verified, integrated with fire alarm &amp; smoke control — witnessed by Civil Defense.</li>
+<li>Traffic performance verified against the simulation; statutory inspection &amp; certification before use.</li>
+</ul>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Acceptance &amp; inspection: EN 81-20 / ASME A17.1/A17.2; fire integration: NFPA 4 / SBC 801.</div>
+
+<h2 id="glossary">Terms &amp; abbreviations</h2>
+<p>Plain-English meaning of the vertical-transport terms used in this module.</p>
+<table class="t param">
+<tr><th>Term</th><th>What it means (plain English)</th></tr>
+<tr><td>Vertical transport (VT)</td><td>Lifts (elevators), escalators and moving walks.</td></tr>
+<tr><td>Traffic analysis</td><td>A simulation of how people use the lifts at peak, to decide how many lifts and how fast.</td></tr>
+<tr><td>Handling capacity (HC%)</td><td>The % of the building population the lift group can move in 5 minutes.</td></tr>
+<tr><td>Interval (waiting time)</td><td>Average time between cars arriving at the main lobby; lower = less waiting.</td></tr>
+<tr><td>RTT (round-trip time)</td><td>Time for one car to complete a full up-peak cycle; drives HC% and interval.</td></tr>
+<tr><td>Up-peak</td><td>The morning rush when everyone travels up — usually the hardest case.</td></tr>
+<tr><td>Rise zone</td><td>A band of floors served by one lift group (the building is split into several).</td></tr>
+<tr><td>Sky lobby / shuttle</td><td>A transfer floor where people switch from a high-speed express (shuttle) lift to local lifts.</td></tr>
+<tr><td>Double-deck lift</td><td>A lift with two stacked cabins serving two floors at once — more capacity per shaft.</td></tr>
+<tr><td>Traction / gearless</td><td>A roped lift driven by a motor + sheave; gearless (direct-drive) is used for high speed.</td></tr>
+<tr><td>MRL</td><td>Machine-Room-Less — the drive sits in the shaft, no separate machine room.</td></tr>
+<tr><td>Counterweight</td><td>A weight that balances the car (≈ car + 50% load) so the motor does less work.</td></tr>
+<tr><td>Governor / safety gear / buffer</td><td>Safety devices that detect overspeed, grip the rails to stop the car, and cushion it at the bottom.</td></tr>
+<tr><td>Guide rails</td><td>Steel rails that keep the car and counterweight aligned in the shaft.</td></tr>
+<tr><td>Carbon-fibre belt</td><td>A lightweight, strong replacement for steel ropes that allows much taller single rises.</td></tr>
+<tr><td>Pit / headroom</td><td>The clearance space below the lowest floor (pit) and above the top floor (headroom).</td></tr>
+<tr><td>Firefighting lift</td><td>A protected lift (own lobby, power, water protection) for the fire brigade (EN 81-72).</td></tr>
+<tr><td>Fire recall</td><td>All lifts automatically return to a safe floor and park on a fire alarm (EN 81-73).</td></tr>
+<tr><td>DCS / destination control</td><td>Passengers enter their floor at the lobby; the system groups them into cars — cutting stops and waiting.</td></tr>
+<tr><td>Regenerative drive</td><td>A drive that feeds braking energy back to the supply, saving energy.</td></tr>
+<tr><td>JumpLift</td><td>Temporary use of the permanent lift shaft during construction to speed the build.</td></tr>
+</table>
+
+<!-- refs -->
+<h2 id="refs">References &amp; software map</h2>
+<table class="t param">
+<tr><th>Task</th><th>Software</th><th>Code/standard</th></tr>
+<tr><td>Traffic analysis (RTT, HC%, interval), DCS comparison</td><td>Elevate (Peters Research); manufacturer traffic tools</td><td>CIBSE Guide D; ISO 8100</td></tr>
+<tr><td>Arrangement &amp; shaft layout</td><td>Revit + manufacturer GA drawings</td><td>EN 81-20 / ASME A17.1</td></tr>
+<tr><td>Energy class</td><td>Manufacturer tools</td><td>ISO 25745; SBC 601</td></tr>
+</table>
+<ul class="refs">
+<li>EN 81-20 &amp; EN 81-50 (lift design &amp; testing); EN 81-72 (firefighting lifts), -73 (fire behaviour), -58 (landing-door fire), -76 (evacuation), -77 (seismic).</li>
+<li>ASME A17.1 / CSA B44 (US safety code); EN 115 (escalators); ISO 8100 / ISO 4190 / ISO 25745.</li>
+<li>CIBSE Guide D — Transportation Systems in Buildings (traffic design).</li>
+<li>SBC 801 / 401 / 301; NFPA 101 / 110 / 4; Saudi Civil Defense (firefighting lifts &amp; recall).</li>
+</ul>
+<div class="box note"><div class="t">Note</div>Worked numbers teach the method; lift count, speed and zoning come from a full traffic simulation and the manufacturer's engineering. Confirm code basis (EN vs ASME) and AHJ requirements with the project spec.</div>
+
+<div class="prevnext">
+  <a href="module-5-fa-elv.html"><div class="dir">← Previous</div>Module 5 · Fire Alarm, ELV/BMS</a>
+  <a class="nx" href="index.html"><div class="dir">Finish →</div>Back to course home</a>
+</div>
+
+</main>
+</div></div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="../">All Articles</a> &nbsp;&middot;&nbsp; <a href="index.html">Course Home</a></p>
+  </div>
+</footer>
+
+<script src="assets/course.js"></script>
+<script>
+const Ls=[2,3,4,5,6,7,8,9,10]; const P=13, RTT=180, U=1000;
+const hcArr=Ls.map(L=>+ (300*P*L/(RTT*U)*100).toFixed(1));
+const intArr=Ls.map(L=>+(RTT/L).toFixed(0));
+const tc=new Chart(document.getElementById('trafficChart'),{
+  data:{ labels:Ls, datasets:[
+    {type:'bar', label:'Handling capacity (%)', data:hcArr, backgroundColor:'rgba(23,105,170,.55)', yAxisID:'y'},
+    {type:'line', label:'Interval (s)', data:intArr, borderColor:'#b4232c', borderWidth:3, pointRadius:3, yAxisID:'y1', tension:.2}
+  ]},
+  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.1,
+    scales:{ x:{title:{display:true,text:'Lifts in group (L)'}},
+      y:{position:'left',title:{display:true,text:'Handling capacity (%)'},beginAtZero:true},
+      y1:{position:'right',title:{display:true,text:'Interval (s)'},beginAtZero:true,grid:{drawOnChartArea:false}} },
+    plugins:{ legend:{position:'top'}, title:{display:true,text:'More cars → higher capacity & shorter waiting (P=13, RTT=180 s, U=1,000)',color:'#0B3D5C',font:{size:12.5}} } }
+});
+const L=document.getElementById('L'), Lval=document.getElementById('Lval'), hc=document.getElementById('hc'), intv=document.getElementById('intv');
+function updT(){ const l=+L.value; Lval.textContent=l; hc.textContent=(300*P*l/(RTT*U)*100).toFixed(1); intv.textContent=(RTT/l).toFixed(0); }
+L.addEventListener('input',updT); updT();
+</script>
+<script src="../theme.js"></script>
+</body>
+</html>

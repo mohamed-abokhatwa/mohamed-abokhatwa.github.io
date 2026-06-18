@@ -9,6 +9,7 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'distribution-network-looped-branched.html', title:'Distribution Network Design: Looped vs Branched',                                                    cat:'pipeline',    thumb:'distribution-network-looped-branched.webp', mins:13, tag:'Distribution Design · Looped vs Branched' },
     { url:'potable-pump-station-anatomy.html',     title:'Anatomy of a Large Potable-Water Pumping Station',                                                       cat:'pumps',       thumb:'potable-pump-station-anatomy.webp',    mins:14, tag:'Pump Engineering · Pumping Stations' },
     { url:'strategic-water-storage-sizing.html',   title:'Strategic Water Storage — Why We Store, and How Much',                                                   cat:'hydraulic',   thumb:'strategic-water-storage-sizing.webp',  mins:12, tag:'Hydraulic Design · Water Storage' },
     { url:'wastewater-pump-station-design.html',   title:'Wastewater Pump Station Design — Impellers, Wet Wells & Force Mains',                                    cat:'pumps',       thumb:'wastewater-pump-station-design.webp',  mins:12, tag:'Pump Engineering · Wastewater' },

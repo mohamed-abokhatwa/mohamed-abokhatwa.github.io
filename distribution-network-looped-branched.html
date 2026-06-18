@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distribution Network Design: Looped vs Branched — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Water Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    /* equations (MathJax) */
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    /* callouts */
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    /* tables */
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    /* original schematic */
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:16px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    /* interactive figure — a self-contained light instrument panel, legible in both themes */
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    /* references */
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="Looped vs branched (dead-end) water distribution networks: how the topology decides pressure, reliability, water quality and cost. Why a loop splits the flow and halves the head loss, why a single break isolates a tree but not a grid, why dead-ends go stale — with three interactive design charts and a worked network.">
+  <meta property="og:title" content="Distribution Network Design: Looped vs Branched | Mohamed Abokhatwa">
+  <meta property="og:description" content="The shape of the network sets its pressure, reliability and water quality before a single pipe is sized. Looped grids vs branched dead-ends — flow splitting, the n-1 rule, water age, and fire flow — in three interactive charts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/distribution-network-looped-branched.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-distribution-network-looped-branched.jpg">
+  <meta property="og:image:alt" content="Looped grid versus branched dead-end water distribution network schematic">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Distribution Network Design: Looped vs Branched | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="Why looping a distribution network halves the head loss, survives a pipe break, and keeps chlorine alive — branched vs looped in three interactive charts.">
+  <link rel="canonical" href="https://abokhatwa.com/distribution-network-looped-branched.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Distribution Network Design: Looped vs Branched",
+  "description": "Looped vs branched (dead-end) water distribution networks: how topology decides pressure, reliability, water quality and cost — flow splitting and head loss, the n-1 redundancy rule, water age and chlorine decay, and fire flow.",
+  "image": "https://abokhatwa.com/og-distribution-network-looped-branched.jpg",
+  "datePublished": "2026-06-18",
+  "dateModified": "2026-06-18",
+  "author": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa",
+    "url": "https://abokhatwa.com/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abokhatwa.com/distribution-network-looped-branched.html"
+  }
+}
+  </script>
+<style>
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--text-primary);}
+.breadcrumb-sep{opacity:.4;}
+.breadcrumb-current{color:var(--text-secondary);}.breadcrumb a.breadcrumb-current{color:var(--accent);}.breadcrumb a.breadcrumb-current:hover{opacity:.75;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+<div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="pipeline-design.html" class="breadcrumb-current">Pipeline Design</a></div>
+  <span class="tag">Distribution Design &middot; Looped vs Branched &middot; Network Hydraulics &middot; Water Quality</span>
+  <h1>Distribution Network Design: Looped vs Branched</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>June 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>13 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="distribution-network-looped-branched.webp" alt="Schematic comparing a looped grid water distribution network with a branched dead-end network fed from one reservoir">
+</div>
+
+<div class="article-body">
+<p class="lead">Everything upstream of the distribution network is a single decision repeated: one transmission main, one pumping station, one reservoir. The distribution network is the first time the water has to be in many places at once — and the way you connect those places, before you size a single pipe, quietly fixes four things that are expensive to fix later: the pressure at the worst house, what happens when a backhoe finds a main, whether the chlorine is still alive at the edge of town, and how much pipe you bought to get there. That decision has a name: looped or branched.</p>
+
+<h2 id="why">1 · The shape is the decision</h2>
+<p>Pipe sizing, valve selection and pump heads are all reversible on paper until late in design. Network <em>topology</em> is not. Once the corridors are committed and the pipe is in the ground, converting a branched system to a looped one means re-trenching streets that are already paved. So the looped-vs-branched choice is made first, and it sets the ceiling on everything that follows:</p>
+<ul class="clean">
+  <li><strong>Pressure</strong> — how far the head from the source actually reaches the last connection at peak demand.</li>
+  <li><strong>Reliability</strong> — how many customers lose water when one pipe is taken out by a break or a repair.</li>
+  <li><strong>Water quality</strong> — whether water moves fast enough to hold a disinfectant residual, or sits long enough to go stale.</li>
+  <li><strong>Cost</strong> — how much pipe length, and of what diameter, the layout demands.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The governing idea</span>
+  A <strong>branched</strong> network gives every point a single path to the source — cheap, simple, and fragile. A <strong>looped</strong> network gives every point at least two paths — more pipe, but the redundancy splits the flow, steadies the pressure, survives a break, and keeps the water moving. Almost every quality of a distribution system traces back to how many paths the water has.
+</div>
+
+<h2 id="topologies">2 · Branched vs looped — the two topologies</h2>
+<p>Strip a distribution network to its skeleton and there are only two ways to wire it:</p>
+<ul class="clean">
+  <li><strong>Branched (tree / dead-end).</strong> A main splits into sub-mains, which split into smaller pipes, ending in closed <em>dead-ends</em>. Water reaches every node by exactly one route. It mirrors how a town grows outward, uses the least pipe, and is the easiest to lay and to model by hand.</li>
+  <li><strong>Looped (grid / gridiron).</strong> Pipes are closed into loops so that every node is fed from two or more directions. Flow divides between the paths according to head loss, and finds its own balance — the basis of the classic <a href="hydraulic-design.html">Hardy Cross</a> network analysis<sup class="cite">[5]</sup>.</li>
+</ul>
+
+<div class="schematic">
+<svg viewBox="0 0 720 270" role="img" aria-label="Branched dead-end network versus looped grid network, both fed from one reservoir">
+  <style>
+    .pipe{stroke:var(--accent);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+    .node{fill:var(--bg-3);stroke:var(--text-tertiary);stroke-width:1.5;}
+    .src{fill:var(--accent);}
+    .lbl{fill:var(--text-tertiary);font-family:-apple-system,'Inter',sans-serif;font-size:12px;}
+    .dead{fill:var(--danger);}
+    .tl{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:13px;font-weight:600;}
+  </style>
+  <!-- BRANCHED (left) -->
+  <text x="34" y="22" class="tl">Branched · dead-ends</text>
+  <rect x="30" y="74" width="26" height="20" rx="3" class="src"/>
+  <text x="30" y="112" class="lbl">source</text>
+  <path class="pipe" d="M56 84 H150"/>
+  <path class="pipe" d="M150 84 V60 M150 84 V160"/>
+  <path class="pipe" d="M150 160 H108 M150 160 H212"/>
+  <path class="pipe" d="M212 160 V112 M212 160 V208"/>
+  <circle class="node" cx="150" cy="84" r="5"/>
+  <circle class="node" cx="150" cy="160" r="5"/>
+  <circle class="node" cx="212" cy="160" r="5"/>
+  <!-- dead ends -->
+  <circle class="dead" cx="150" cy="60" r="5"/>
+  <circle class="dead" cx="108" cy="160" r="5"/>
+  <circle class="dead" cx="212" cy="112" r="5"/>
+  <circle class="dead" cx="212" cy="208" r="5"/>
+  <text x="30" y="250" class="lbl">red = dead-ends (single path, no circulation)</text>
+
+  <!-- divider -->
+  <line x1="360" y1="44" x2="360" y2="234" stroke="var(--border)" stroke-width="1"/>
+
+  <!-- LOOPED (right) -->
+  <text x="410" y="22" class="tl">Looped · grid</text>
+  <rect x="404" y="74" width="26" height="20" rx="3" class="src"/>
+  <text x="404" y="112" class="lbl">source</text>
+  <path class="pipe" d="M430 84 H478"/>
+  <!-- 3×3 grid: closed loops -->
+  <path class="pipe" d="M478 84 H548 H618"/>
+  <path class="pipe" d="M478 150 H548 H618"/>
+  <path class="pipe" d="M478 208 H548 H618"/>
+  <path class="pipe" d="M478 84 V150 V208"/>
+  <path class="pipe" d="M548 84 V150 V208"/>
+  <path class="pipe" d="M618 84 V150 V208"/>
+  <circle class="node" cx="478" cy="84" r="5"/><circle class="node" cx="548" cy="84" r="5"/><circle class="node" cx="618" cy="84" r="5"/>
+  <circle class="node" cx="478" cy="150" r="5"/><circle class="node" cx="548" cy="150" r="5"/><circle class="node" cx="618" cy="150" r="5"/>
+  <circle class="node" cx="478" cy="208" r="5"/><circle class="node" cx="548" cy="208" r="5"/><circle class="node" cx="618" cy="208" r="5"/>
+  <text x="410" y="250" class="lbl">every node fed from two or more directions</text>
+</svg>
+  <div class="cap">Original schematic. Left: a branched tree terminating in dead-ends — one path per node. Right: a looped grid — closed circuits give every node redundant paths.</div>
+</div>
+
+<h2 id="hydraulics">3 · The hydraulics: how each shares the flow</h2>
+<p>The difference is not stylistic — it changes the arithmetic of head loss. Friction in a water main follows the Hazen-Williams relation, where the loss climbs with very nearly the <em>square</em> of the flow it carries<sup class="cite">[9]</sup>:</p>
+
+<div class="eq">\[ h_f = \frac{10.67\,L\,Q^{1.852}}{C^{1.852}\,D^{4.87}} \]</div>
+
+<p>That exponent of 1.852 on \(Q\) is the whole story. In a <strong>branched</strong> main, one pipe carries the <em>entire</em> downstream demand to the far node. In a <strong>looped</strong> main, the same far node is reached from two directions, so each leg carries only part of the flow — and because loss scales with \(Q^{1.852}\), halving the flow in a pipe cuts its head loss to about \(0.5^{1.852}\approx 0.28\) — barely a quarter. Redundancy is not only about reliability; it buys back pressure for free.</p>
+
+<div class="tbl-wrap">
+<table>
+  <caption>The same far node, 2&nbsp;km from the source, DN300 ductile iron (C&nbsp;=&nbsp;130), peak demand 100&nbsp;L/s — fed as a dead-end vs. through a loop.</caption>
+  <thead><tr><th>Path to the far node</th><th class="num">Flow per pipe</th><th class="num">Length</th><th class="num">Head loss</th></tr></thead>
+  <tbody>
+    <tr><td>Branched — one pipe carries it all</td><td class="num">100 L/s</td><td class="num">2.0 km</td><td class="num">12.84 m</td></tr>
+    <tr><td>Looped — flow splits ~50/50, two legs</td><td class="num">50 L/s each</td><td class="num">1.0 km each</td><td class="num">1.78 m</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Same pipe, same node, same demand: <strong>12.8&nbsp;m of head lost as a dead-end versus 1.8&nbsp;m through a loop</strong> — roughly a seven-fold difference, all of it pressure delivered to the customer instead of burned in friction. The first interactive chart lets you push these numbers.</p>
+
+<h2 id="int-pressure">4 · Interactive: pressure along the network</h2>
+<p>This is the pressure profile from the source to the far node, 2&nbsp;km away, for the same demand carried two ways: a branched dead-end (one pipe, full flow) and a loop (flow split between two legs). Drop the diameter or raise the demand and watch the branched line dive through the minimum-pressure floor while the looped line holds.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Pressure from source to far node — branched vs looped</div>
+    <div class="fsub">Hazen-Williams head loss (C = 130) over a 2 km corridor to the far node. Branched (amber) carries the full demand in one pipe; looped (blue) splits it between two legs. The dashed red line is the minimum acceptable pressure (≈ 14 m / 20 psi). Where the amber line crosses it, the dead-end customers are below code.</div>
+  </div>
+  <div class="chart-box"><canvas id="pressChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Peak demand at far node <span id="vQ">100 L/s</span></label>
+      <input type="range" id="sQ" min="20" max="300" value="100" step="5">
+      <div class="hint">The flow the corridor must deliver to the far end at peak hour.</div>
+    </div>
+    <div class="ctrl">
+      <label>Pipe diameter <span id="vDN">DN300</span></label>
+      <input type="range" id="sDN" min="150" max="500" value="300" step="50">
+      <div class="hint">Same diameter used for the dead-end and for each leg of the loop.</div>
+    </div>
+    <div class="ctrl">
+      <label>Source head <span id="vH0">50 m</span></label>
+      <input type="range" id="sH0" min="30" max="80" value="50" step="1">
+      <div class="hint">Hydraulic grade at the source (reservoir level or pump head).</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Branched far node</div><div class="v" id="rPb">37 <small>m</small></div></div>
+    <div class="cell"><div class="k">Looped far node</div><div class="v" id="rPl">46 <small>m</small></div></div>
+    <div class="cell"><div class="k">Gained by looping</div><div class="v" id="rGain">9 <small>m</small></div></div>
+    <div class="cell"><div class="k">Branched verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rPv"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">At the default 100&nbsp;L/s through DN300 both layouts hold pressure — but the looped node sits ~9&nbsp;m higher. Drag the demand toward 200&nbsp;L/s, or the diameter down to DN200, and the branched line plunges below the 14&nbsp;m floor while the loop is still comfortable. The dead-end forces you to buy a bigger pipe to do what a loop does with circulation.</p>
+
+<h2 id="reliability">5 · Reliability — one break, and who keeps water</h2>
+<p>A distribution network is not designed for the day everything works; it is designed for the day a contractor's auger goes through a main, or a valve has to be closed for a new connection. This is the <strong>n&minus;1</strong> idea: the system should still deliver with any one element out of service<sup class="cite">[4]</sup>.</p>
+<p>Here the two topologies could not be more different. In a branched tree, every pipe is the <em>only</em> pipe feeding everything beyond it — so a single break or closed valve isolates the entire sub-tree downstream. Break the main near the source and the whole town goes dark. In a looped grid, closing one segment simply re-routes the water the other way around the loop; pressure dips, but supply continues. The second chart makes the contrast concrete.</p>
+
+<h2 id="int-break">6 · Interactive: the impact of a single pipe break</h2>
+<p>Take a corridor of <em>n</em> nodes in series. The bars show the share of customers who lose supply when one pipe segment is taken out, depending on <em>where</em> the break is. In the branched system the loss grows the closer the break is to the source; in the looped system, a single break isolates no one.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Customers cut off by a single pipe failure</div>
+    <div class="fsub">A line of n nodes. Amber bars: with a branched layout, a break in segment k isolates every node beyond it. Green: with a looped layout, the flow re-routes and a single break isolates no one. The highlighted bar is the break location you selected.</div>
+  </div>
+  <div class="chart-box"><canvas id="relChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Nodes served (n) <span id="vN">10</span></label>
+      <input type="range" id="sN" min="4" max="20" value="10" step="1">
+      <div class="hint">Number of demand nodes along the corridor.</div>
+    </div>
+    <div class="ctrl">
+      <label>Break location (segment) <span id="vBrk">1</span></label>
+      <input type="range" id="sBrk" min="1" max="10" value="1" step="1">
+      <div class="hint">1 = nearest the source (worst for a tree), n = at the far end.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Branched — this break</div><div class="v" id="rBcur">100 <small>%</small></div></div>
+    <div class="cell"><div class="k">Branched — worst case</div><div class="v" id="rBworst">100 <small>%</small></div></div>
+    <div class="cell"><div class="k">Looped — any single break</div><div class="v" id="rLoop">0 <small>%</small></div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rRv"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">Slide the break toward the source: in the branched layout the cut-off share climbs to 100% — one spade through the wrong pipe and the whole line is dry. The looped layout stays flat at zero for any single failure; it takes a second, simultaneous break to isolate a node. That is the entire reliability argument for looping, in one chart.</p>
+
+<h2 id="quality">7 · Water quality — why dead-ends go stale</h2>
+<p>The hidden cost of a dead-end is not hydraulic, it is chemical. Treated water leaves the plant with a disinfectant residual — typically free chlorine — that must survive all the way to the last tap. Chlorine decays with time spent in the pipe (its <em>water age</em>), following roughly first-order kinetics<sup class="cite">[7]</sup>:</p>
+
+<div class="eq">\[ C = C_0\,e^{-k\,t} \]</div>
+
+<p>In a looped network water is always in transit — flow passing through a pipe on its way somewhere else keeps the age low and the residual high. A dead-end has no through-traffic: the only water that moves is the little drawn at the end itself, so a large-diameter stub with light demand can hold water for <em>days</em>. As the age climbs, the residual collapses, disinfection by-products (THMs) form, and taste, odour and bacterial regrowth follow. This is why the standards actively discourage dead-end mains and, where they are unavoidable, require looping, blow-off (flushing) valves, or automatic flushers<sup class="cite">[1]</sup>.</p>
+
+<h2 id="int-age">8 · Interactive: water age and chlorine at the far node</h2>
+<p>The curve is the chlorine residual decaying with water age. The two markers are the same far node served two ways: as a looped segment with through-flow (low age, left) and as a dead-end fed only by its own small demand (high age, right). Lower the demand or pick a more reactive water and watch the dead-end marker fall through the 0.2&nbsp;mg/L line that most utilities hold as the minimum at the extremities.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Chlorine residual vs. water age — dead-end vs. looped node</div>
+    <div class="fsub">First-order decay C = C₀·e<sup>−kt</sup> for a DN300 × 800 m branch (56.5 m³). The dead-end age is the pipe volume divided by the node's own demand; the looped age assumes through-circulation flushing it roughly 10× faster. The dashed red line is a 0.2 mg/L minimum residual.</div>
+  </div>
+  <div class="chart-box"><canvas id="wqChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Demand at the node <span id="vQn">0.5 L/s</span></label>
+      <input type="range" id="sQn" min="0.1" max="3" value="0.5" step="0.1">
+      <div class="hint">Low demand on a large main is the classic stagnation trap.</div>
+    </div>
+    <div class="ctrl">
+      <label>Chlorine decay rate k <span id="vK">0.5 /day</span></label>
+      <input type="range" id="sK" min="0.2" max="1.5" value="0.5" step="0.1">
+      <div class="hint">Higher for warm or organic-rich water — chlorine dies faster.</div>
+    </div>
+    <div class="ctrl">
+      <label>Residual leaving plant C₀ <span id="vC0">1.0 mg/L</span></label>
+      <input type="range" id="sC0" min="0.5" max="2" value="1.0" step="0.1">
+      <div class="hint">Free chlorine dose entering the network.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Dead-end water age</div><div class="v" id="rAge">31 <small>h</small></div></div>
+    <div class="cell"><div class="k">Residual — dead-end</div><div class="v" id="rCd">0.5 <small>mg/L</small></div></div>
+    <div class="cell"><div class="k">Residual — looped</div><div class="v" id="rCl">0.9 <small>mg/L</small></div></div>
+    <div class="cell"><div class="k">Dead-end verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rWv"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">At a healthy demand the dead-end just holds the line; throttle the demand toward 0.2&nbsp;L/s — a big main with almost nothing drawn off it — and the age runs to days and the residual falls below 0.2&nbsp;mg/L. The looped marker barely moves: circulation is the cheapest water-quality measure there is.</p>
+
+<h2 id="fire">9 · Fire flow — the case looping wins outright</h2>
+<p>Domestic demand is modest and steady; the fire flow is a sudden, enormous draw at one hydrant — often several times the peak-hour demand of the whole zone, for a couple of hours, while pressure everywhere must stay above ~20&nbsp;psi (14&nbsp;m)<sup class="cite">[2]</sup>. A branched main has to carry that entire fire flow down a single pipe, and the \(Q^{1.852}\) law makes the head loss explode — dead-end hydrants routinely fail their flow test. A looped main delivers the same fire flow from two or more directions at once, each leg carrying a fraction, so the network holds its pressure. For any area with fire-protection requirements, looping the supply mains is effectively mandatory; AWWA's fire-protection manual is built around it<sup class="cite">[2]</sup>.</p>
+
+<h2 id="cost">10 · Cost vs. reliability — and when each one wins</h2>
+<p>None of this makes branched networks wrong. Looping costs more pipe — sometimes 20–40% more length in the supply mains — and that money has to come from somewhere. The engineering is in matching the topology to the duty:</p>
+<ul class="clean">
+  <li><strong>Loop the supply and arterial mains</strong> in any urban or suburban area, anywhere with fire flow, and around critical users (hospitals, industry). This is the backbone and it must be redundant.</li>
+  <li><strong>Branch the final service connections.</strong> The short pipe from a looped main to a single building is, sensibly, a dead-end — looping every house would be absurd. The art is keeping these stubs short.</li>
+  <li><strong>Accept branched layouts</strong> in genuinely low-density or rural extensions, at the growing edge of a network, and where a future loop is planned but not yet built — provided you manage the consequences.</li>
+  <li><strong>Where a dead-end is unavoidable</strong>, design the cure in from day one: a flushing/blow-off valve at the end, automatic flushers where age is critical, and a diameter no larger than the demand needs so the water still turns over.</li>
+</ul>
+<p>The dominant real-world pattern is therefore a <strong>hybrid</strong>: a looped grid of supply mains carrying the reliability, water quality and fire flow, with branched service lines hanging off it. The question is rarely "looped or branched?" for the whole system — it is "what is looped, and what is allowed to dead-end?"</p>
+
+<div class="callout green">
+  <span class="lbl">Design rule of thumb</span>
+  Loop everything that carries fire flow or serves more than a handful of customers; allow dead-ends only on short service stubs or low-demand fringes, and only with a flushing point. Model the looped network in <a href="hydraulic-design.html">a hydraulic solver</a> (EPANET / Hardy Cross) — looped flows cannot be found by hand the way branched ones can<sup class="cite">[8]</sup>.
+</div>
+
+<h2 id="checklist">11 · The design checklist</h2>
+<ul class="clean">
+  <li><strong>Loop the supply mains</strong> — every arterial and sub-arterial main fed from two directions; reserve dead-ends for short service stubs.</li>
+  <li><strong>Hold the minimum pressure</strong> — ≥ 20 psi (14 m) under all conditions including fire flow; ≥ 35 psi (25 m) desirable in normal operation<sup class="cite">[1]</sup>.</li>
+  <li><strong>Satisfy n&minus;1</strong> — check that closing any single segment still serves every node above the minimum pressure.</li>
+  <li><strong>Deliver the fire flow</strong> — verify required flow at each hydrant from two directions while holding residual pressure<sup class="cite">[2]</sup>.</li>
+  <li><strong>Bound the water age</strong> — keep velocities live; eliminate or flush dead-ends; avoid oversizing mains "for the future" when it lets water stagnate today.</li>
+  <li><strong>Check the velocities</strong> — roughly 0.6–2.0 m/s at peak; too low feeds stagnation, too high spikes head loss and surge.</li>
+  <li><strong>Model it</strong> — build the looped network in EPANET or an equivalent and balance the loops (Hardy Cross / gradient method) before committing pipe sizes<sup class="cite">[3]</sup>.</li>
+  <li><strong>Plan the valving</strong> — enough isolation valves that any single break can be isolated without cutting off a large block.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  Branched networks are cheaper and simpler and fail in every way that matters — pressure, reliability, water quality and fire flow — the moment the system is stressed. Loop the mains, branch only the service stubs, and the same source reaches farther, survives a break, and arrives still disinfected.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>Great Lakes&ndash;Upper Mississippi River Board (GLUMRB). <em>Recommended Standards for Water Works (Ten States Standards)</em> — distribution mains, minimum pressure, dead-end mains and looping requirements.</li>
+  <li>American Water Works Association. <em>Manual M31 — Distribution System Requirements for Fire Protection.</em></li>
+  <li>American Water Works Association. <em>Manual M32 — Computer Modeling of Water Distribution Systems.</em></li>
+  <li>American Water Works Association. <em>Manual G200 — Distribution Systems Operation and Management</em> (reliability and n&minus;1 practice).</li>
+  <li>Cross, H. (1936). <em>Analysis of Flow in Networks of Conduits or Conductors.</em> Univ. of Illinois Engineering Experiment Station, Bulletin 286.</li>
+  <li>Walski, T.M., Chase, D.V., Savic, D.A., et al. <em>Advanced Water Distribution Modeling and Management.</em> Haestad / Bentley Institute Press.</li>
+  <li>U.S. EPA. <em>Effects of Water Age on Distribution System Water Quality</em> (2002); and AWWA water-quality guidance on disinfectant residuals.</li>
+  <li>U.S. EPA. <em>EPANET 2.2 — Hydraulic and Water Quality Modeling</em>, user manual.</li>
+  <li>Williams, G.S. &amp; Hazen, A. <em>Hydraulic Tables</em> — the Hazen-Williams head-loss relation used throughout.</li>
+</ol>
+
+<div class="tags">#DistributionNetwork #LoopedNetwork #BranchedNetwork #DeadEnds #WaterDistribution #NetworkHydraulics #HardyCross #EPANET #WaterAge #ChlorineResidual #FireFlow #Redundancy #PipelineDesign #WaterInfrastructure</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+
+<script>
+/* ---------- shared helpers ---------- */
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const HW_C=130, LKM=2;                       // Hazen-Williams C, corridor length (km)
+/* head-loss gradient (m per km) for flow Q (L/s) in pipe DN (mm) */
+function grad(Qlps,DNmm){
+  const Q=Qlps/1000, D=DNmm/1000;
+  return 10.67*1000*Math.pow(Q,1.852)/(Math.pow(HW_C,1.852)*Math.pow(D,4.87));
+}
+
+/* =====================================================================
+   CHART 1 — PRESSURE PROFILE: branched (full flow) vs looped (split)
+   ===================================================================== */
+const sQ=document.getElementById('sQ'), sDN=document.getElementById('sDN'), sH0=document.getElementById('sH0');
+const vQ=document.getElementById('vQ'), vDN=document.getElementById('vDN'), vH0=document.getElementById('vH0');
+const PMIN=14;                                // minimum acceptable pressure (m ≈ 20 psi)
+const XS=[]; for(let x=0;x<=LKM+1e-9;x+=0.2) XS.push(+x.toFixed(1));
+
+let pressChart=new Chart(document.getElementById('pressChart'),{
+  type:'line',
+  data:{labels:XS,datasets:[
+    {label:'Branched (dead-end)', data:[], borderColor:'#b9770e', backgroundColor:'rgba(185,119,14,0.08)', borderWidth:2.5, pointRadius:0, tension:0.15, fill:false},
+    {label:'Looped (split flow)', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.10)', borderWidth:3, pointRadius:0, tension:0.15, fill:true},
+    {label:'Minimum pressure', data:[], borderColor:'#c0392b', borderDash:[6,5], borderWidth:1.6, pointRadius:0}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    scales:{
+      x:{title:{display:true,text:'Distance from source (km)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{title:{display:true,text:'Pressure head (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{title:items=>items[0].label+' km from source', label:c=>`${c.dataset.label}: ${fmt1(c.parsed.y)} m`}}
+    }
+  }
+});
+
+function updatePress(){
+  const Q=+sQ.value, DN=+sDN.value, H0=+sH0.value;
+  vQ.textContent=Q+' L/s'; vDN.textContent='DN'+DN; vH0.textContent=H0+' m';
+  const gB=grad(Q,DN), gL=grad(Q/2,DN);
+  pressChart.data.datasets[0].data=XS.map(x=>+(H0-gB*x).toFixed(2));
+  pressChart.data.datasets[1].data=XS.map(x=>+(H0-gL*x).toFixed(2));
+  pressChart.data.datasets[2].data=XS.map(()=>PMIN);
+  pressChart.update('none');
+  const pB=H0-gB*LKM, pL=H0-gL*LKM;
+  document.getElementById('rPb').innerHTML=fmt0(pB)+' <small>m</small>';
+  document.getElementById('rPl').innerHTML=fmt0(pL)+' <small>m</small>';
+  document.getElementById('rGain').innerHTML=fmt0(pL-pB)+' <small>m</small>';
+  const v=document.getElementById('rPv');
+  if(pB>=25){ v.innerHTML='<span class="badge good">comfortable</span>'; }
+  else if(pB>=PMIN){ v.innerHTML='<span class="badge warn">marginal</span>'; }
+  else { v.innerHTML='<span class="badge bad">below minimum</span>'; }
+}
+[sQ,sDN,sH0].forEach(s=>s.addEventListener('input',updatePress));
+updatePress();
+
+/* =====================================================================
+   CHART 2 — SINGLE-BREAK IMPACT: branched (downstream isolated) vs looped (0)
+   ===================================================================== */
+const sN=document.getElementById('sN'), sBrk=document.getElementById('sBrk');
+const vN=document.getElementById('vN'), vBrk=document.getElementById('vBrk');
+
+let relChart=new Chart(document.getElementById('relChart'),{
+  data:{labels:[],datasets:[
+    {type:'bar', label:'Branched — customers cut off', data:[], backgroundColor:[], borderColor:'#b9770e', borderWidth:1, order:2},
+    {type:'line', label:'Looped — customers cut off (always 0)', data:[], borderColor:'#1e8449', backgroundColor:'#1e8449', borderWidth:3.5, pointRadius:4, pointBackgroundColor:'#1e8449', tension:0, order:1}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    scales:{
+      x:{title:{display:true,text:'Break location (segment, 1 = nearest source)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{display:false},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:-8,max:100,title:{display:true,text:'Customers without supply (%)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>v<0?'':v+'%'}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{title:items=>'Break at segment '+items[0].label, label:c=>`${c.dataset.label}: ${fmt0(c.parsed.y)}%`}}
+    }
+  }
+});
+
+function updateRel(){
+  let N=+sN.value;
+  if(+sBrk.max!==N){ sBrk.max=N; if(+sBrk.value>N) sBrk.value=N; }
+  const brk=+sBrk.value;
+  vN.textContent=N; vBrk.textContent=brk;
+  const labels=[], bars=[], cols=[], loop=[];
+  for(let k=1;k<=N;k++){
+    labels.push(k);
+    bars.push(+((N-k+1)/N*100).toFixed(1));   // nodes k..N isolated
+    loop.push(0);
+    cols.push(k===brk?'rgba(185,119,14,0.9)':'rgba(185,119,14,0.35)');
+  }
+  relChart.data.labels=labels;
+  relChart.data.datasets[0].data=bars;
+  relChart.data.datasets[0].backgroundColor=cols;
+  relChart.data.datasets[1].data=loop;
+  relChart.update('none');
+  const cur=(N-brk+1)/N*100;
+  document.getElementById('rBcur').innerHTML=fmt0(cur)+' <small>%</small>';
+  document.getElementById('rBworst').innerHTML='100 <small>%</small>';
+  document.getElementById('rLoop').innerHTML='0 <small>%</small>';
+  document.getElementById('rRv').innerHTML='<span class="badge good">looped survives n&minus;1</span>';
+}
+[sN,sBrk].forEach(s=>s.addEventListener('input',updateRel));
+updateRel();
+
+/* =====================================================================
+   CHART 3 — WATER AGE & CHLORINE: dead-end vs looped marker on decay curve
+   ===================================================================== */
+const sQn=document.getElementById('sQn'), sK=document.getElementById('sK'), sC0=document.getElementById('sC0');
+const vQn=document.getElementById('vQn'), vK=document.getElementById('vK'), vC0=document.getElementById('vC0');
+const BR_D=300, BR_L=800;                                   // branch DN300 x 800 m
+const BR_V=Math.PI/4*Math.pow(BR_D/1000,2)*BR_L;           // volume m³ (≈56.5)
+const TRANSIT=10;                                           // looped circulation flushes ~10x faster
+const CTHR=0.2;                                             // min residual mg/L
+const TS=[]; for(let t=0;t<=96;t+=2) TS.push(t);
+
+let wqChart=new Chart(document.getElementById('wqChart'),{
+  data:{datasets:[
+    {type:'line', label:'Chlorine residual', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.08)', borderWidth:3, pointRadius:0, tension:0.25, fill:true},
+    {type:'line', label:'Minimum residual', data:[], borderColor:'#c0392b', borderDash:[6,5], borderWidth:1.6, pointRadius:0},
+    {type:'scatter', label:'Looped node', data:[], backgroundColor:'#1e8449', borderColor:'#fff', borderWidth:2, pointRadius:7, pointHoverRadius:8},
+    {type:'scatter', label:'Dead-end node', data:[], backgroundColor:'#b9770e', borderColor:'#fff', borderWidth:2, pointRadius:7, pointHoverRadius:8}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    scales:{
+      x:{type:'linear',min:0,max:96,title:{display:true,text:'Water age (hours in the network)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},stepSize:12}},
+      y:{min:0,title:{display:true,text:'Free chlorine residual (mg/L)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt1(c.parsed.y)} mg/L at ${fmt0(c.parsed.x)} h`}}
+    }
+  }
+});
+
+function updateWq(){
+  const Qn=+sQn.value, k=+sK.value, C0=+sC0.value;
+  vQn.textContent=fmt1(Qn)+' L/s'; vK.textContent=fmt1(k)+' /day'; vC0.textContent=fmt1(C0)+' mg/L';
+  const C=t=>C0*Math.exp(-k*t/24);                       // t in hours, k per day
+  const ageDead=BR_V/(Qn*3.6);                           // h = m³ / (L/s*3.6)
+  const ageLoop=ageDead/TRANSIT;
+  const xmax=Math.max(96, Math.ceil(ageDead/12)*12);     // extend axis so the marker stays on the curve
+  const curve=[]; for(let i=0;i<=60;i++){const t=xmax*i/60; curve.push({x:+t.toFixed(1),y:+C(t).toFixed(3)});}
+  wqChart.data.datasets[0].data=curve;
+  wqChart.data.datasets[1].data=[{x:0,y:CTHR},{x:xmax,y:CTHR}];
+  wqChart.options.scales.x.max=xmax;
+  wqChart.options.scales.x.ticks.stepSize=xmax<=96?12:24;
+  const cd=C(ageDead), cl=C(ageLoop);
+  wqChart.data.datasets[2].data=[{x:+ageLoop.toFixed(1),y:+cl.toFixed(3)}];
+  wqChart.data.datasets[3].data=[{x:+ageDead.toFixed(1),y:+cd.toFixed(3)}];
+  wqChart.update('none');
+  document.getElementById('rAge').innerHTML=fmt0(ageDead)+' <small>h</small>';
+  document.getElementById('rCd').innerHTML=fmt1(cd)+' <small>mg/L</small>';
+  document.getElementById('rCl').innerHTML=fmt1(cl)+' <small>mg/L</small>';
+  const v=document.getElementById('rWv');
+  if(cd>=CTHR+0.1){ v.innerHTML='<span class="badge good">residual held</span>'; }
+  else if(cd>=CTHR){ v.innerHTML='<span class="badge warn">borderline</span>'; }
+  else { v.innerHTML='<span class="badge bad">residual lost</span>'; }
+}
+[sQn,sK,sC0].forEach(s=>s.addEventListener('input',updateWq));
+updateWq();
+
+window.addEventListener('load',function(){ try{pressChart.resize();relChart.resize();wqChart.resize();}catch(e){} });
+</script>
+
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

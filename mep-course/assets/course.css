@@ -268,3 +268,12 @@ sup.fn{color:var(--accent);font-weight:700;font-size:12px}
 .mep-body .box.sw{background:var(--sw-bg);border-color:var(--sw-border)}
 .mep-body .box.sw .t{color:var(--sw-text)}
 .mep-body .flow .n{background:var(--sky);color:var(--accent)}
+
+/* back-to-top button (matches the rest of the site) */
+#back-to-top{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(10px);
+  width:44px;height:44px;border-radius:50%;background:var(--bg-3);border:1.5px solid var(--border);
+  box-shadow:0 4px 20px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.06);color:var(--text-primary);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:9998;opacity:0;
+  pointer-events:none;transition:opacity .25s ease, transform .25s ease, box-shadow .2s ease}
+#back-to-top:hover{box-shadow:0 8px 28px rgba(0,0,0,0.18);transform:translateX(-50%) translateY(-2px) !important}
+:root[data-theme="dark"] #back-to-top{box-shadow:0 4px 20px rgba(0,0,0,0.4)}

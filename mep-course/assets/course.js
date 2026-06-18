@@ -45,10 +45,27 @@ window.initScrollSpy = function(){
   map.forEach(m=>obs.observe(m.el));
 };
 
+// Back-to-top button (self-contained, matches the rest of the site)
+window.initBackToTop = function(){
+  if(document.getElementById('back-to-top')) return;
+  var btn=document.createElement('button');
+  btn.id='back-to-top'; btn.setAttribute('aria-label','Back to top'); btn.title='Back to top';
+  btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+  btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  document.body.appendChild(btn);
+  window.addEventListener('scroll',function(){
+    var s=window.pageYOffset||document.documentElement.scrollTop, v=s>500;
+    btn.style.opacity=v?'1':'0';
+    btn.style.pointerEvents=v?'auto':'none';
+    btn.style.transform=v?'translateX(-50%) translateY(0)':'translateX(-50%) translateY(10px)';
+  },{passive:true});
+};
+
 document.addEventListener('DOMContentLoaded',()=>{
   window.applyChartTheme && applyChartTheme();
   window.themeCharts && themeCharts();
   window.initScrollSpy && initScrollSpy();
+  window.initBackToTop && initBackToTop();
   // Re-theme charts whenever the site theme toggles
   if(window.Chart){
     new MutationObserver(()=>window.themeCharts && themeCharts())

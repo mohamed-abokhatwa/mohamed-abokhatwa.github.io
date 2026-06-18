@@ -124,6 +124,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
 .course-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);
   text-decoration:none;margin-bottom:34px;transition:var(--transition)}
 .course-hero .back:hover{color:var(--text-primary)}
+.course-hero-img{max-width:var(--maxw);margin:26px auto 0;padding:0 22px}
+.course-hero-img img{width:100%;height:auto;display:block;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow-glass)}
 
 /* ---- Layout w/ side nav ---- */
 .layout{display:grid;grid-template-columns:240px 1fr;gap:36px;padding:30px 0 60px}

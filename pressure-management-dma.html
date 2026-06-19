@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pressure Management & District Metered Areas (DMA) — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Water Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    /* equations (MathJax) */
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    /* callouts */
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    /* tables */
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    /* original schematic */
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:16px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    /* interactive figure — a self-contained light instrument panel, legible in both themes */
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    /* references */
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="Pressure management and District Metered Areas (DMA): pressure is the master variable for leakage. The FAVAD/N1 leakage–pressure law, dividing the network into DMAs to measure and localise loss, minimum night flow, and fixed vs time vs flow-modulated PRV control — with three interactive charts and worked numbers.">
+  <meta property="og:title" content="Pressure Management & District Metered Areas (DMA) | Mohamed Abokhatwa">
+  <meta property="og:description" content="Pressure is the master variable for leakage. The FAVAD/N1 law, DMAs and minimum night flow, and flow-modulated PRV control — the engineering of Non-Revenue Water, in three interactive charts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/pressure-management-dma.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-pressure-management-dma.jpg">
+  <meta property="og:image:alt" content="District Metered Area with a pressure-reducing valve on the metered inlet">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pressure Management & District Metered Areas (DMA) | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="Why dropping average pressure cuts leakage more than proportionally, how DMAs and minimum night flow find the loss, and why flow-modulated PRVs win — in three interactive charts.">
+  <link rel="canonical" href="https://abokhatwa.com/pressure-management-dma.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Pressure Management & District Metered Areas (DMA)",
+  "description": "Pressure management and DMAs for leakage and Non-Revenue Water control: the FAVAD/N1 leakage-pressure law, minimum night flow, and fixed vs time vs flow-modulated PRV control.",
+  "image": "https://abokhatwa.com/og-pressure-management-dma.jpg",
+  "datePublished": "2026-06-18",
+  "dateModified": "2026-06-18",
+  "author": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa",
+    "url": "https://abokhatwa.com/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abokhatwa.com/pressure-management-dma.html"
+  }
+}
+  </script>
+<style>
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--text-primary);}
+.breadcrumb-sep{opacity:.4;}
+.breadcrumb-current{color:var(--text-secondary);}.breadcrumb a.breadcrumb-current{color:var(--accent);}.breadcrumb a.breadcrumb-current:hover{opacity:.75;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+<div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="pipeline-design.html" class="breadcrumb-current">Pipeline Design</a></div>
+  <span class="tag">Distribution Design &middot; Pressure Management &middot; DMA &middot; Non-Revenue Water</span>
+  <h1>Pressure Management &amp; District Metered Areas (DMA)</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>June 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>13 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="pressure-management-dma.webp" alt="A district metered area fed through a single metered inlet with a pressure-reducing valve, boundary valves closed">
+</div>
+
+<div class="article-body">
+<p class="lead">A new distribution network leaks the day it is commissioned, and leaks more every year after. You cannot dig up every joint, and you cannot hear most of the loss. But there is one variable that controls how fast water escapes a pipe through every crack and loose fitting at once — pressure — and one way to see where the loss is hiding without opening the ground: divide the network into measured zones and listen to it at three in the morning. This is the engineering of leakage control: pressure management and the District Metered Area.</p>
+
+<h2 id="why">1 · Pressure is the master variable</h2>
+<p>Most of what a water utility loses is not dramatic. The visible burst that floods a street is a small fraction; the bulk of <strong>Non-Revenue Water (NRW)</strong> is background leakage — a constant weep from thousands of joints, fittings and hairline cracks, none big enough to surface<sup class="cite">[1]</sup>. Three things make all of it worse, and pressure drives every one:</p>
+<ul class="clean">
+  <li><strong>Leakage flow.</strong> Every leak is an orifice; the higher the pressure behind it, the faster it flows — and, crucially, the leak area itself often <em>grows</em> with pressure, so the effect is more than the simple square-root of an orifice.</li>
+  <li><strong>Burst frequency.</strong> High and, especially, <em>fluctuating</em> pressure fatigues pipes and joints. Cutting peak pressure and pressure transients measurably lowers new-burst rates, which is leakage you never have to find.</li>
+  <li><strong>Pressure-dependent consumption.</strong> Some demand (and waste) simply rises with pressure at the tap. Lower the pressure to what the service actually needs and that component falls too.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The governing idea</span>
+  Leakage is not a fixed quantity you chase pipe by pipe — it is a <strong>function of pressure across the whole zone at once</strong>. Manage the pressure down to what the service genuinely requires, and you cut every leak in the zone simultaneously, slow the rate of new bursts, and trim wasteful demand — without finding a single one. The <strong>DMA</strong> is the instrument that lets you measure it and act on it.
+</div>
+
+<h2 id="favad">2 · The leakage–pressure law (FAVAD &amp; N1)</h2>
+<p>If a leak were a rigid hole, flow would follow the orifice equation and rise with the square root of pressure (an exponent of 0.5). In reality many leak paths — longitudinal splits, joints, plastic pipe — open wider as pressure rises, so the area is variable. The <strong>FAVAD</strong> principle (Fixed and Variable Area Discharges) captures this with a single power law<sup class="cite">[2]</sup>:</p>
+
+<div class="eq">\[ \frac{L_1}{L_0} = \left(\frac{P_1}{P_0}\right)^{N_1} \]</div>
+
+<p>where \(L\) is leakage, \(P\) is the average zone pressure, and the exponent \(N_1\) typically runs from <strong>0.5</strong> (round holes in rigid metal) through <strong>~1.0</strong> for a mixed network, to <strong>1.5</strong> and above where flexible pipe and background leakage dominate<sup class="cite">[3]</sup>. The practical consequence is large: with \(N_1 = 1.0\), a <strong>15&nbsp;m cut from a 55&nbsp;m average pressure</strong> — about 31% — removes <strong>about a third of the leakage</strong>, and with a higher \(N_1\) the saving is greater still. Pressure management is the single most cost-effective leakage intervention there is.</p>
+
+<h2 id="int-favad">3 · Interactive: leakage vs. pressure</h2>
+<p>This is the FAVAD curve: leakage as a share of its value at today's pressure. Drag the managed pressure down and read how much leakage goes with it; change \(N_1\) to see how the gain depends on what your network is made of. The shaded band is the minimum service pressure you must never drop the critical point below.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Leakage as a function of average zone pressure (FAVAD)</div>
+    <div class="fsub">Leakage relative to the present operating point, L/L₀ = (P/P₀)^N₁. The blue marker is today's pressure; the green marker is the managed pressure you choose. The red band below ~14 m is the minimum service pressure floor. Steeper curves (higher N₁) mean a bigger leakage payback for the same pressure cut.</div>
+  </div>
+  <div class="chart-box"><canvas id="leakChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Present average pressure <span id="vP0">55 m</span></label>
+      <input type="range" id="sP0" min="30" max="80" value="55" step="1">
+      <div class="hint">Average zone pressure (AZP) before management.</div>
+    </div>
+    <div class="ctrl">
+      <label>Managed average pressure <span id="vP1">38 m</span></label>
+      <input type="range" id="sP1" min="12" max="78" value="38" step="1">
+      <div class="hint">Target AZP after the PRV — limited by the critical (lowest) node.</div>
+    </div>
+    <div class="ctrl">
+      <label>Leakage exponent N₁ <span id="vN1">1.0</span></label>
+      <input type="range" id="sN1" min="0.5" max="1.5" value="1.0" step="0.05">
+      <div class="hint">0.5 ≈ rigid metal/round holes · 1.0 ≈ mixed network · 1.5 ≈ plastic/background.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Managed leakage</div><div class="v" id="rLk">69 <small>% of now</small></div></div>
+    <div class="cell"><div class="k">Leakage saved</div><div class="v" id="rSave">31 <small>%</small></div></div>
+    <div class="cell"><div class="k">Pressure cut</div><div class="v" id="rCut">17 <small>m</small></div></div>
+    <div class="cell"><div class="k">Critical point</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rPv"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">Start from a 55&nbsp;m zone and bring it to 38&nbsp;m: with N₁&nbsp;=&nbsp;1.0 that is ~31% less leakage, every leak in the zone, for the price of one valve. Push N₁ to 1.5 (a plastic network) and the same cut saves over 40%. Drag the managed pressure into the red band and the verdict warns — you have starved the highest or furthest customer.</p>
+
+<h2 id="dma">4 · The DMA — dividing the network to see the loss</h2>
+<p>You cannot manage what you cannot measure, and a whole city's network is too big to measure as one thing. The <strong>District Metered Area</strong> solves both: the network is permanently divided into discrete zones of typically <strong>500–3,000 connections</strong>, each fed through <em>one</em> (or a few) flow-metered inlets, with all other boundary pipes valved shut<sup class="cite">[4]</sup>. That single change unlocks the whole discipline:</p>
+<ul class="clean">
+  <li><strong>You can measure the loss.</strong> Continuous inlet flow tells you exactly how much water enters the zone — and how that compares with what is billed.</li>
+  <li><strong>You can localise it.</strong> A rising night flow in one DMA points the leakage team at a few streets instead of a city.</li>
+  <li><strong>You can manage the pressure.</strong> A single inlet is the natural place to put a PRV and control the pressure of the entire zone at once (the subject of <a href="prv-altitude-valve-fcv.html">PRVs, altitude and float-control valves</a>).</li>
+</ul>
+<p>The cost is real, and it is the mirror image of the previous article: closing boundary valves <strong>removes loops</strong>, so a DMA trades some of the redundancy, pressure stability and circulation of a <a href="distribution-network-looped-branched.html">looped network</a> for measurability and control. Good DMA design keeps the zones small enough to manage but large enough to preserve resilience, and re-opens boundary valves for fire flow or emergencies.</p>
+
+<div class="schematic">
+<svg viewBox="0 0 720 250" role="img" aria-label="A district metered area fed through one metered inlet with a pressure-reducing valve, boundary valves closed">
+  <style>
+    .pm-pipe{stroke:var(--accent);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+    .pm-ext{stroke:var(--text-tertiary);stroke-width:2;fill:none;stroke-dasharray:2 5;opacity:.7;}
+    .pm-node{fill:var(--bg-3);stroke:var(--text-tertiary);stroke-width:1.5;}
+    .pm-src{fill:var(--accent);}
+    .pm-lbl{fill:var(--text-tertiary);font-family:-apple-system,'Inter',sans-serif;font-size:12px;}
+    .pm-tl{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:13px;font-weight:600;}
+    .pm-closed{stroke:var(--danger);stroke-width:2.5;}
+  </style>
+  <text x="34" y="24" class="pm-tl">One District Metered Area — single metered inlet, boundary valves closed</text>
+  <!-- supply main -->
+  <rect x="30" y="120" width="26" height="20" rx="3" class="pm-src"/>
+  <text x="26" y="156" class="pm-lbl">supply main</text>
+  <path class="pm-pipe" d="M56 130 H150"/>
+  <!-- meter + PRV symbol -->
+  <circle cx="120" cy="130" r="9" fill="none" stroke="var(--accent)" stroke-width="2"/>
+  <text x="120" y="134" text-anchor="middle" class="pm-lbl" style="font-size:10px;fill:var(--accent);">M</text>
+  <path d="M150 122 l16 8 l-16 8 z" fill="var(--accent)"/><path d="M166 122 l-16 8 l16 8 z" fill="var(--accent)"/>
+  <text x="158" y="112" text-anchor="middle" class="pm-lbl" style="fill:var(--accent);">PRV</text>
+  <!-- the DMA grid (inside) -->
+  <rect x="190" y="70" width="320" height="150" rx="10" fill="none" stroke="var(--border)" stroke-width="1.5"/>
+  <path class="pm-pipe" d="M166 130 H230"/>
+  <path class="pm-pipe" d="M230 100 H470 M230 145 H470 M230 190 H470"/>
+  <path class="pm-pipe" d="M230 100 V190 M310 100 V190 M390 100 V190 M470 100 V190"/>
+  <g class="pm-node">
+    <circle cx="230" cy="100" r="4"/><circle cx="310" cy="100" r="4"/><circle cx="390" cy="100" r="4"/><circle cx="470" cy="100" r="4"/>
+    <circle cx="230" cy="145" r="4"/><circle cx="310" cy="145" r="4"/><circle cx="390" cy="145" r="4"/><circle cx="470" cy="145" r="4"/>
+    <circle cx="230" cy="190" r="4"/><circle cx="310" cy="190" r="4"/><circle cx="390" cy="190" r="4"/><circle cx="470" cy="190" r="4"/>
+  </g>
+  <!-- closed boundary valves (to neighbours) -->
+  <path class="pm-ext" d="M510 100 H560 M510 145 H560 M510 190 H560"/>
+  <g class="pm-closed"><path d="M524 94 l12 12 M536 94 l-12 12"/><path d="M524 139 l12 12 M536 139 l-12 12"/><path d="M524 184 l12 12 M536 184 l-12 12"/></g>
+  <text x="566" y="149" class="pm-lbl">closed<tspan x="566" dy="14">boundary</tspan><tspan x="566" dy="14">valves</tspan></text>
+  <text x="350" y="240" text-anchor="middle" class="pm-lbl">one zone · one metered, pressure-controlled inlet</text>
+</svg>
+  <div class="cap">Original schematic. The zone is sealed except for one metered inlet carrying a PRV; every other connection to neighbouring zones is valved shut, so all flow in and all the zone's pressure are controlled at a single point.</div>
+</div>
+
+<h2 id="mnf">5 · Minimum night flow — measuring leakage</h2>
+<p>The DMA's most powerful trick happens while the city sleeps. Between about <strong>02:00 and 04:00</strong> legitimate demand falls to its daily minimum, so most of what still flows through the inlet is leakage. The <strong>minimum night flow (MNF)</strong> is therefore the clearest window onto loss<sup class="cite">[5]</sup>:</p>
+
+<div class="eq">\[ \text{Leakage} \approx \text{MNF} - \text{legitimate night use} \]</div>
+
+<p>Subtract a small, estimated allowance for genuine night consumption (toilets, a few night-shift users, the rare large user) from the measured MNF, and what remains is the zone's real loss. Track it night after night and a step up means a new burst has started — found within a day, in one small zone, long before anyone phones it in. The next chart builds a DMA's daily inflow and reads its leakage straight off the night.</p>
+
+<h2 id="int-mnf">6 · Interactive: minimum night flow &amp; leakage</h2>
+<p>The blue area is the zone's metered inflow across the day — legitimate demand riding on a flat bed of leakage. The lowest point, around 03:00, is the minimum night flow; subtract the dashed legitimate-night-use line and the gap is the leakage you are paying for.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">A DMA's daily inflow and its minimum night flow</div>
+    <div class="fsub">Inflow = legitimate demand (a diurnal pattern) + a near-constant leakage. The marker at 03:00 is the minimum night flow (MNF); the dashed amber line is the estimated legitimate night use. Leakage ≈ MNF − legitimate night use — the band between them.</div>
+  </div>
+  <div class="chart-box"><canvas id="mnfChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Connections in the DMA <span id="vNc">1,500</span></label>
+      <input type="range" id="sNc" min="300" max="4000" value="1500" step="50">
+      <div class="hint">Service connections fed by the zone (typical DMA: 500–3,000).</div>
+    </div>
+    <div class="ctrl">
+      <label>Legitimate use <span id="vUse">600 L/conn·d</span></label>
+      <input type="range" id="sUse" min="250" max="1000" value="600" step="10">
+      <div class="hint">Average daily consumption per connection (sets the demand curve).</div>
+    </div>
+    <div class="ctrl">
+      <label>Leakage level <span id="vLeak">12 L/s</span></label>
+      <input type="range" id="sLeak" min="1" max="40" value="12" step="0.5">
+      <div class="hint">The constant background loss you are trying to detect.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Minimum night flow</div><div class="v" id="rMnf">15 <small>L/s</small></div></div>
+    <div class="cell"><div class="k">Legit. night use</div><div class="v" id="rNight">3 <small>L/s</small></div></div>
+    <div class="cell"><div class="k">Estimated leakage</div><div class="v" id="rLeak">12 <small>L/s</small></div></div>
+    <div class="cell"><div class="k">Leakage share</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rShare"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">A 1,500-connection zone with 12&nbsp;L/s of leakage shows a minimum night flow around 15&nbsp;L/s — almost all of it loss, because real night use is tiny. Slide the leakage down and watch the night floor fall toward the legitimate line; that downward step is exactly what a repaired burst looks like on the monitoring chart.</p>
+
+<h2 id="prv">7 · Controlling the pressure — fixed, time, and flow-modulated</h2>
+<p>Once a DMA has a single inlet, a <a href="prv-altitude-valve-fcv.html">pressure-reducing valve</a> there governs the whole zone. There are three levels of sophistication<sup class="cite">[6]</sup>:</p>
+<ul class="clean">
+  <li><strong>Fixed-outlet.</strong> The PRV holds a constant downstream pressure regardless of flow. Simple and a big improvement on no control — but it must be set high enough for the <em>peak-hour</em> critical point, which means it over-pressurises the zone all night, exactly when demand is lowest and leakage worst.</li>
+  <li><strong>Time-modulated.</strong> The outlet pressure is dropped on a clock during the known night hours. Cheap, effective, but blind — it cannot react to an unusual demand (a fire, a hot evening).</li>
+  <li><strong>Flow-modulated.</strong> The controller reads the inlet flow and sets just enough pressure to keep the critical point at target for the <em>actual</em> demand — high at the peak, low at night. It removes the night over-pressure that fixed control cannot, capturing the most leakage. Beware the suction-side and high-differential conditions that can make a hard-working PRV <a href="cavitation-prvs-fcvs.html">cavitate</a>.</li>
+</ul>
+
+<h2 id="int-pm">8 · Interactive: pressure management across the day</h2>
+<p>Three ways to run the same zone: no control (pressure floats high all day), a fixed-outlet PRV, and a flow-modulated PRV that tracks demand. Watch the night, between midnight and dawn — that is where flow-modulation peels away the over-pressure the fixed valve is forced to keep, and where most of the extra leakage saving comes from.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Zone pressure across the day — three control modes</div>
+    <div class="fsub">Outlet pressure for an uncontrolled inlet (flat high), a fixed-outlet PRV (flat at setpoint), and a flow-modulated PRV that follows demand to hold the critical point at target. The dashed red line is the minimum the critical point allows. The extra leakage saving uses the FAVAD law on the day's average pressure.</div>
+  </div>
+  <div class="chart-box"><canvas id="pmChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Uncontrolled inlet pressure <span id="vPin">62 m</span></label>
+      <input type="range" id="sPin" min="40" max="90" value="62" step="1">
+      <div class="hint">Pressure with no PRV — set by the source / upstream zone.</div>
+    </div>
+    <div class="ctrl">
+      <label>Fixed PRV setpoint <span id="vSet">40 m</span></label>
+      <input type="range" id="sSet" min="20" max="70" value="40" step="1">
+      <div class="hint">The constant outlet the fixed valve must hold for the peak-hour critical point.</div>
+    </div>
+    <div class="ctrl">
+      <label>Critical-point minimum <span id="vMin">22 m</span></label>
+      <input type="range" id="sMin" min="14" max="40" value="22" step="1">
+      <div class="hint">Lowest pressure the worst node may see; the modulated valve floats toward this at night.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Avg pressure — fixed</div><div class="v" id="rApFix">40 <small>m</small></div></div>
+    <div class="cell"><div class="k">Avg pressure — modulated</div><div class="v" id="rApMod">31 <small>m</small></div></div>
+    <div class="cell"><div class="k">Extra leakage cut</div><div class="v" id="rExtra">18 <small>%</small></div></div>
+    <div class="cell"><div class="k">Night pressure — mod.</div><div class="v" id="rNp">23 <small>m</small></div></div>
+  </div>
+</div>
+<p class="fig-note">The fixed PRV already strips the zone of the uncontrolled over-pressure. The flow-modulated valve then takes the night pressure down toward the critical-point minimum — where leakage runs hardest — for a further double-digit cut on top of the fixed valve, at the cost of a smarter controller and a watch on cavitation.</p>
+
+<h2 id="tradeoffs">9 · The trade-offs to design around</h2>
+<p>Pressure management and DMAs are not free wins; they reshape the network's behaviour:</p>
+<ul class="clean">
+  <li><strong>Lost redundancy.</strong> Closed boundary valves un-loop the network, so a burst inside a DMA has fewer alternative paths. Keep DMAs from getting so small that a single failure isolates many customers, and design boundary valves to re-open for emergencies and fire flow.</li>
+  <li><strong>Water age.</strong> Less circulation and lower velocities can raise residence time and threaten the disinfectant residual at the extremities — the same dead-end risk from the <a href="distribution-network-looped-branched.html">looped-vs-branched</a> trade.</li>
+  <li><strong>Fire flow.</strong> A single metered inlet and a reduced pressure must still meet the required fire flow at the critical hydrant; this often sets the PRV setpoint and the inlet size, and is why boundary valves are designed to open.</li>
+  <li><strong>Transients.</strong> A fast-acting modulating PRV that hunts, or that slams on a demand step, can introduce <a href="surge-vessel.html">surges</a> — tune the control, and check the valve is not driven into <a href="cavitation-prvs-fcvs.html">cavitation</a> at high differential.</li>
+</ul>
+
+<div class="callout green">
+  <span class="lbl">Design rule of thumb</span>
+  Size DMAs at roughly 500–3,000 connections; meter every inlet and monitor minimum night flow nightly; set the PRV from the peak-hour critical point and fire flow, then add flow modulation where the night over-pressure (and N₁) justifies it. Always verify the critical point holds and the valve will not cavitate at maximum differential<sup class="cite">[6]</sup>.
+</div>
+
+<h2 id="checklist">10 · The design checklist</h2>
+<ul class="clean">
+  <li><strong>Define the DMAs</strong> — 500–3,000 connections, sensible hydraulic boundaries, one (or few) metered inlets; map every boundary valve.</li>
+  <li><strong>Meter and log every inlet</strong> — continuous flow (and ideally inlet pressure) to a data system; establish a night-flow baseline.</li>
+  <li><strong>Find the critical point</strong> — the lowest-pressure node at peak demand sets the floor for any pressure reduction.</li>
+  <li><strong>Set the PRV</strong> — from the critical point and the fire-flow case; choose fixed, time- or flow-modulated to match the night over-pressure and N₁.</li>
+  <li><strong>Hold minimum pressure</strong> — ≥ ~14 m (20 psi) at the critical point under all conditions including fire flow<sup class="cite">[7]</sup>.</li>
+  <li><strong>Check cavitation &amp; transients</strong> — verify the valve at maximum differential and tune modulation so it does not surge (<a href="cavitation-prvs-fcvs.html">cavitation in PRVs/FCVs</a>).</li>
+  <li><strong>Preserve resilience</strong> — boundary valves that open for fire/emergencies; watch water age at the extremities.</li>
+  <li><strong>Run the water balance</strong> — close the loop with an AWWA M36 audit and track the Infrastructure Leakage Index (ILI) over time<sup class="cite">[1]</sup>.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  Leakage is a function of pressure, and pressure is controllable. Split the network into measured DMAs, read the loss from the minimum night flow, and bring the pressure down to what the service truly needs — with a flow-modulated PRV where the night over-pressure earns it — and you cut every leak in the zone at once, slow the next burst, and find the ones you cannot hear.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>American Water Works Association. <em>Manual M36 — Water Audits and Loss Control Programs</em> (water balance, Non-Revenue Water, Infrastructure Leakage Index).</li>
+  <li>Lambert, A.O. (2001). <em>What do we know about pressure–leakage relationships in distribution systems?</em> IWA Conference on System Approach to Leakage Control — the FAVAD concept.</li>
+  <li>May, J. (1994). <em>Pressure-dependent leakage.</em> World Water &amp; Environmental Engineering — origin of the N1 leakage exponent.</li>
+  <li>UKWIR / WRc. <em>A Manual of DMA Practice</em> — district metered area design, sizing and monitoring.</li>
+  <li>Thornton, J., Sturm, R., Kunkel, G. <em>Water Loss Control.</em> McGraw-Hill — minimum night flow analysis, BABE/component methods.</li>
+  <li>IWA Water Loss Specialist Group. <em>Pressure management: principles, PRVs and flow modulation</em>; and manufacturer application guides for modulated control.</li>
+  <li>Great Lakes&ndash;Upper Mississippi River Board (GLUMRB). <em>Recommended Standards for Water Works (Ten States Standards)</em> — minimum distribution pressure.</li>
+  <li>AWWA. <em>Manual M32 — Computer Modeling of Water Distribution Systems</em> (locating the critical point, AZP).</li>
+</ol>
+
+<div class="tags">#PressureManagement #DMA #DistrictMeteredArea #NonRevenueWater #NRW #LeakageControl #FAVAD #MinimumNightFlow #PRV #FlowModulation #WaterLoss #DistributionNetwork #PipelineDesign #WaterInfrastructure</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+
+<script>
+/* ---------- shared helpers ---------- */
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+
+/* typical municipal diurnal pattern (hourly, mean ≈ 1) */
+const PAT=[0.4,0.3,0.3,0.3,0.4,0.7,1.1,1.5,1.6,1.4,1.3,1.2,1.2,1.2,1.1,1.0,1.0,1.1,1.4,1.6,1.5,1.2,0.8,0.5];
+const PATmean=PAT.reduce((a,b)=>a+b,0)/24;
+const PATnorm=PAT.map(v=>v/PATmean);          // mean exactly 1
+const PATpeak=Math.max(...PATnorm);
+
+/* =====================================================================
+   CHART 1 — LEAKAGE vs PRESSURE (FAVAD)
+   ===================================================================== */
+const sP0=document.getElementById('sP0'), sP1=document.getElementById('sP1'), sN1=document.getElementById('sN1');
+const vP0=document.getElementById('vP0'), vP1=document.getElementById('vP1'), vN1=document.getElementById('vN1');
+const PFLOOR=14;
+const PXS=[]; for(let p=10;p<=80;p+=2) PXS.push(p);
+
+let leakChart=new Chart(document.getElementById('leakChart'),{
+  data:{labels:PXS,datasets:[
+    {type:'line', label:'Leakage (% of present)', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.10)', borderWidth:3, pointRadius:0, tension:0.2, fill:true, order:3},
+    {type:'scatter', label:'Present pressure', data:[], backgroundColor:'#1b4f72', borderColor:'#fff', borderWidth:2, pointRadius:7, order:1},
+    {type:'scatter', label:'Managed pressure', data:[], backgroundColor:'#1e8449', borderColor:'#fff', borderWidth:2, pointRadius:7, order:1}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    scales:{
+      x:{type:'linear',min:10,max:80,title:{display:true,text:'Average zone pressure (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},stepSize:10}},
+      y:{min:0,title:{display:true,text:'Leakage  (% of present)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>v+'%'}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt0(c.parsed.y)}% at ${fmt0(c.parsed.x)} m`}},
+      annotation:{annotations:{floor:{type:'box',xMin:0,xMax:PFLOOR,backgroundColor:'rgba(192,57,43,0.10)',borderWidth:0,
+        label:{display:true,content:'below min pressure',position:{x:'center',y:'center'},rotation:-90,font:{size:10,family:'DM Sans'},color:'#c0392b'}}}}
+    }
+  }
+});
+
+function updateLeak(){
+  const P0=+sP0.value, P1=+sP1.value, N1=+sN1.value;
+  vP0.textContent=P0+' m'; vP1.textContent=P1+' m'; vN1.textContent=N1.toFixed(2);
+  const L=p=>100*Math.pow(p/P0,N1);
+  leakChart.data.datasets[0].data=PXS.map(p=>({x:p,y:+L(p).toFixed(1)}));
+  leakChart.data.datasets[1].data=[{x:P0,y:100}];
+  leakChart.data.datasets[2].data=[{x:P1,y:+L(P1).toFixed(1)}];
+  leakChart.update('none');
+  const lk=L(P1), saved=100-lk;
+  document.getElementById('rLk').innerHTML=fmt0(lk)+' <small>% of now</small>';
+  document.getElementById('rSave').innerHTML=fmt0(saved)+' <small>%</small>';
+  document.getElementById('rCut').innerHTML=fmt0(P0-P1)+' <small>m</small>';
+  const v=document.getElementById('rPv');
+  if(P1<PFLOOR){ v.innerHTML='<span class="badge bad">below minimum</span>'; }
+  else if(P1<20){ v.innerHTML='<span class="badge warn">watch critical point</span>'; }
+  else { v.innerHTML='<span class="badge good">headroom OK</span>'; }
+}
+[sP0,sP1,sN1].forEach(s=>s.addEventListener('input',updateLeak));
+updateLeak();
+
+/* =====================================================================
+   CHART 2 — MINIMUM NIGHT FLOW
+   ===================================================================== */
+const sNc=document.getElementById('sNc'), sUse=document.getElementById('sUse'), sLeak=document.getElementById('sLeak');
+const vNc=document.getElementById('vNc'), vUse=document.getElementById('vUse'), vLeak=document.getElementById('vLeak');
+const NIGHT_H=3;   // 03:00 minimum
+
+let mnfChart=new Chart(document.getElementById('mnfChart'),{
+  type:'line',
+  data:{labels:[...Array(25).keys()],datasets:[
+    {label:'DMA inflow (L/s)', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.12)', borderWidth:2.5, pointRadius:0, tension:0.25, fill:true, order:3},
+    {label:'Legitimate night use', data:[], borderColor:'#b9770e', borderDash:[6,5], borderWidth:1.8, pointRadius:0, order:2},
+    {type:'scatter', label:'Minimum night flow', data:[], backgroundColor:'#c0392b', borderColor:'#fff', borderWidth:2, pointRadius:7, order:1}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    scales:{
+      x:{title:{display:true,text:'Hour of day',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},stepSize:2,callback:v=>v+':00'}},
+      y:{min:0,title:{display:true,text:'Flow rate  (L/s)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt1(c.parsed.y)} L/s`}}
+    }
+  }
+});
+
+function updateMnf(){
+  const Nc=+sNc.value, use=+sUse.value, leak=+sLeak.value;
+  vNc.textContent=fmt0(Nc); vUse.textContent=use+' L/conn·d'; vLeak.textContent=fmt1(leak)+' L/s';
+  const legitAvg=Nc*use/86400;                 // L/s average legitimate demand
+  const dem=[], night=[], mnfPt=[];
+  for(let h=0;h<=24;h++){
+    const hh=h%24;
+    dem.push(+(legitAvg*PATnorm[hh]+leak).toFixed(2));
+  }
+  const legitNight=legitAvg*PATnorm[NIGHT_H];
+  for(let h=0;h<=24;h++) night.push(+legitNight.toFixed(2));
+  const mnf=legitNight+leak;
+  mnfChart.data.datasets[0].data=dem;
+  mnfChart.data.datasets[1].data=night;
+  mnfChart.data.datasets[2].data=[{x:NIGHT_H,y:+mnf.toFixed(2)}];
+  mnfChart.update('none');
+  const dailyAvgInflow=legitAvg+leak;
+  document.getElementById('rMnf').innerHTML=fmt1(mnf)+' <small>L/s</small>';
+  document.getElementById('rNight').innerHTML=fmt1(legitNight)+' <small>L/s</small>';
+  document.getElementById('rLeak').innerHTML=fmt1(leak)+' <small>L/s</small>';
+  const share=leak/dailyAvgInflow*100;
+  const v=document.getElementById('rShare');
+  if(share>=40){ v.innerHTML='<span class="badge bad">'+fmt0(share)+'% loss</span>'; }
+  else if(share>=20){ v.innerHTML='<span class="badge warn">'+fmt0(share)+'% loss</span>'; }
+  else { v.innerHTML='<span class="badge good">'+fmt0(share)+'% loss</span>'; }
+}
+[sNc,sUse,sLeak].forEach(s=>s.addEventListener('input',updateMnf));
+updateMnf();
+
+/* =====================================================================
+   CHART 3 — PRESSURE MANAGEMENT MODES
+   ===================================================================== */
+const sPin=document.getElementById('sPin'), sSet=document.getElementById('sSet'), sMin=document.getElementById('sMin');
+const vPin=document.getElementById('vPin'), vSet=document.getElementById('vSet'), vMin=document.getElementById('vMin');
+const N1_PM=1.0;
+
+let pmChart=new Chart(document.getElementById('pmChart'),{
+  type:'line',
+  data:{labels:[...Array(25).keys()],datasets:[
+    {label:'No control', data:[], borderColor:'#c0392b', borderWidth:2, pointRadius:0, tension:0, borderDash:[5,4]},
+    {label:'Fixed-outlet PRV', data:[], borderColor:'#b9770e', borderWidth:2.5, pointRadius:0, tension:0},
+    {label:'Flow-modulated PRV', data:[], borderColor:'#1e8449', backgroundColor:'rgba(30,132,73,0.08)', borderWidth:3, pointRadius:0, tension:0.25, fill:true},
+    {label:'Critical-point minimum', data:[], borderColor:'#1b4f72', borderDash:[2,4], borderWidth:1.6, pointRadius:0}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    scales:{
+      x:{title:{display:true,text:'Hour of day',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},stepSize:2,callback:v=>v+':00'}},
+      y:{min:0,title:{display:true,text:'Outlet pressure  (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt1(c.parsed.y)} m at ${c.parsed.x}:00`}}
+    }
+  }
+});
+
+function updatePm(){
+  const Pin=+sPin.value; let Pset=+sSet.value; const Pmin=+sMin.value;
+  if(Pset<Pmin) Pset=Pmin;
+  vPin.textContent=Pin+' m'; vSet.textContent=Pset+' m'; vMin.textContent=Pmin+' m';
+  const none=[], fix=[], mod=[], mn=[];
+  let sumFixL=0, sumModL=0, sumMod=0, nightMod=99;
+  for(let h=0;h<=24;h++){
+    const hh=h%24;
+    const dr=PATnorm[hh]/PATpeak;               // demand ratio 0..1
+    const m=Pmin+(Pset-Pmin)*dr;                // modulated: floats to Pmin at night, Pset at peak
+    none.push(Pin); fix.push(Pset); mod.push(+m.toFixed(2)); mn.push(Pmin);
+    if(h<24){ sumFixL+=Math.pow(Pset,N1_PM); sumModL+=Math.pow(m,N1_PM); sumMod+=m; nightMod=Math.min(nightMod,m); }
+  }
+  pmChart.data.datasets[0].data=none;
+  pmChart.data.datasets[1].data=fix;
+  pmChart.data.datasets[2].data=mod;
+  pmChart.data.datasets[3].data=mn;
+  pmChart.update('none');
+  const avgMod=sumMod/24, extra=(1-(sumModL/24)/Math.pow(Pset,N1_PM))*100;
+  document.getElementById('rApFix').innerHTML=fmt0(Pset)+' <small>m</small>';
+  document.getElementById('rApMod').innerHTML=fmt0(avgMod)+' <small>m</small>';
+  document.getElementById('rExtra').innerHTML=fmt0(extra)+' <small>%</small>';
+  document.getElementById('rNp').innerHTML=fmt0(nightMod)+' <small>m</small>';
+}
+[sPin,sSet,sMin].forEach(s=>s.addEventListener('input',updatePm));
+updatePm();
+
+window.addEventListener('load',function(){ try{leakChart.resize();mnfChart.resize();pmChart.resize();}catch(e){} });
+</script>
+
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

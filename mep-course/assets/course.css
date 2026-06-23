@@ -122,6 +122,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
 .course-hero p{margin:0;color:var(--text-secondary);font-size:17.5px;line-height:1.7}
 .course-hero-media img{width:100%;height:auto;display:block;border-radius:16px}
 :root[data-theme="dark"] .course-hero-media img{border:1px solid var(--border)}
+/* inline SVG hero art (per-module line illustrations) */
+.course-hero-art{display:flex;align-items:center;justify-content:center}
+.course-hero-art svg{width:100%;max-width:330px;height:auto;display:block}
+.course-hero-art .st{stroke:var(--accent);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.course-hero-art .st2{stroke:var(--text-tertiary);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:.65}
+.course-hero-art .fl{fill:var(--accent);opacity:.10}
+.course-hero-art .dot{fill:var(--accent)}
+@media(max-width:760px){.course-hero-art{max-width:300px;margin:0 auto}}
 @media(max-width:760px){
   .course-hero{padding:96px 0 36px}
   .course-hero-grid{grid-template-columns:1fr;gap:26px}

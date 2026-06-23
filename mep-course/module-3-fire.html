@@ -50,11 +50,29 @@
   document.getElementById('navToggle').addEventListener('click', function(){var open=document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open',open);this.setAttribute('aria-expanded',open);});
 </script>
 
-<section class="course-hero"><div class="wrap">
-  <a class="back" href="index.html">&larr; Back to course home</a>
-  <span class="kicker">Module 3 · Detailed reference</span>
-  <h1>Fire Protection — From the Water Reserve to the Sprinkler</h1>
-  <p>The water-based life-safety system: dedicated fire-water storage, fire pumps, zoned standpipes and sprinklers carried up the tower, plus special-hazard suppression — all under the fire code and the Civil Defense authority. Every component: role, design, worked numbers, software and code.</p>
+<section class="course-hero"><div class="wrap course-hero-grid">
+  <div class="course-hero-text">
+    <a class="back" href="index.html">&larr; Back to course home</a>
+    <span class="kicker">Module 3 · Detailed reference</span>
+    <h1>Fire Protection — From the Water Reserve to the Sprinkler</h1>
+    <p>The water-based life-safety system: dedicated fire-water storage, fire pumps, zoned standpipes and sprinklers carried up the tower, plus special-hazard suppression — all under the fire code and the Civil Defense authority. Every component: role, design, worked numbers, software and code.</p>
+  </div>
+  <div class="course-hero-art" aria-hidden="true">
+    <svg viewBox="0 0 240 260">
+      <!-- fire-water tank -->
+      <path class="fl" d="M26 150 H90 V232 H26 Z"/>
+      <path class="st" d="M26 150 H90 V232 H26 Z"/><path class="st2" d="M26 168 H90"/>
+      <!-- fire pump -->
+      <circle class="st" cx="118" cy="210" r="14"/><path class="st" d="M118 210 L128 202"/>
+      <path class="st" d="M90 210 H104"/>
+      <!-- standpipe riser -->
+      <path class="st" d="M132 210 H170 V30"/>
+      <!-- sprinkler branches + heads -->
+      <path class="st2" d="M170 64 H96 M170 116 H110 M170 168 H100"/>
+      <path class="st" d="M96 64 v10 M110 116 v10 M100 168 v10"/>
+      <circle class="dot" cx="96" cy="78" r="3.4"/><circle class="dot" cx="110" cy="130" r="3.4"/><circle class="dot" cx="100" cy="182" r="3.4"/>
+    </svg>
+  </div>
 </div></section>
 
 <div class="wrap"><div class="layout">

@@ -50,11 +50,30 @@
   document.getElementById('navToggle').addEventListener('click', function(){var open=document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open',open);this.setAttribute('aria-expanded',open);});
 </script>
 
-<section class="course-hero"><div class="wrap">
-  <a class="back" href="index.html">&larr; Back to course home</a>
-  <span class="kicker">Module 4 · Detailed reference</span>
-  <h1>Electrical &amp; Standby Power — From the Grid to the Socket</h1>
-  <p>The power path: utility HV intake and substation, transformers, main LV switchgear, standby generators and UPS, risers and busways up the tower, distribution boards, final circuits — to the light fitting and socket. Plus earthing and lightning protection. Every component: role, design, worked numbers, software and code.</p>
+<section class="course-hero"><div class="wrap course-hero-grid">
+  <div class="course-hero-text">
+    <a class="back" href="index.html">&larr; Back to course home</a>
+    <span class="kicker">Module 4 · Detailed reference</span>
+    <h1>Electrical &amp; Standby Power — From the Grid to the Socket</h1>
+    <p>The power path: utility HV intake and substation, transformers, main LV switchgear, standby generators and UPS, risers and busways up the tower, distribution boards, final circuits — to the light fitting and socket. Plus earthing and lightning protection. Every component: role, design, worked numbers, software and code.</p>
+  </div>
+  <div class="course-hero-art" aria-hidden="true">
+    <svg viewBox="0 0 240 260">
+      <!-- transformer (two coils) -->
+      <circle class="st" cx="58" cy="206" r="20"/><circle class="st" cx="86" cy="206" r="20"/>
+      <path class="st" d="M86 196 H150"/>
+      <!-- busbar riser -->
+      <path class="st" d="M150 226 V30"/><path class="st2" d="M156 226 V30"/>
+      <!-- distribution boards off the riser -->
+      <rect class="st" x="96" y="56" width="34" height="24" rx="3"/>
+      <rect class="st" x="96" y="120" width="34" height="24" rx="3"/>
+      <rect class="st" x="96" y="184" width="34" height="24" rx="3"/>
+      <path class="st2" d="M150 68 H130 M150 132 H130 M150 196 H130"/>
+      <!-- lightning bolt at top -->
+      <path class="st" d="M150 30 H188 M168 30 V14"/>
+      <path class="dot" d="M150 38 l10 0 l-6 9 l9 0 l-14 16 l4 -12 l-9 0 z"/>
+    </svg>
+  </div>
 </div></section>
 
 <div class="wrap"><div class="layout">

@@ -55,11 +55,35 @@
   document.getElementById('navToggle').addEventListener('click', function(){var open=document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open',open);this.setAttribute('aria-expanded',open);});
 </script>
 
-<section class="course-hero"><div class="wrap">
-  <a class="back" href="index.html">&larr; Back to course home</a>
-  <span class="kicker">Module 1 · Detailed reference</span>
-  <h1>HVAC — From the Chiller Plant to the Diffuser</h1>
-  <p>A component-by-component reference for the central chilled-water system of a super-tall tower. We follow the cooling from its source — the chiller plant — through every device, pipe and duct, to the last grille in a hotel room. Each component gives you: what it is, how to design it, a worked numeric example, how to do it in the software, and the governing code.</p>
+<section class="course-hero"><div class="wrap course-hero-grid">
+  <div class="course-hero-text">
+    <a class="back" href="index.html">&larr; Back to course home</a>
+    <span class="kicker">Module 1 · Detailed reference</span>
+    <h1>HVAC — From the Chiller Plant to the Diffuser</h1>
+    <p>A component-by-component reference for the central chilled-water system of a super-tall tower. We follow the cooling from its source — the chiller plant — through every device, pipe and duct, to the last grille in a hotel room. Each component gives you: what it is, how to design it, a worked numeric example, how to do it in the software, and the governing code.</p>
+  </div>
+  <div class="course-hero-art" aria-hidden="true">
+    <svg viewBox="0 0 260 240">
+      <!-- cooling tower -->
+      <path class="fl" d="M24 40 H92 V96 H24 Z"/>
+      <path class="st" d="M24 40 H92 V96 H24 Z"/>
+      <circle class="st" cx="42" cy="58" r="9"/><circle class="st" cx="74" cy="58" r="9"/>
+      <path class="st2" d="M24 78 H92"/>
+      <!-- chilled-water pipes to chiller -->
+      <path class="st" d="M58 96 V120 H150"/>
+      <!-- chiller -->
+      <path class="fl" d="M150 104 H236 V140 H150 Z"/>
+      <path class="st" d="M150 104 H236 V140 H150 Z"/>
+      <circle class="st" cx="172" cy="122" r="8"/><path class="st2" d="M196 112 H224 M196 122 H224 M196 132 H224"/>
+      <!-- supply duct down to AHU -->
+      <path class="st" d="M193 140 V172 H96"/>
+      <!-- AHU + diffuser -->
+      <path class="fl" d="M40 164 H96 V200 H40 Z"/>
+      <path class="st" d="M40 164 H96 V200 H40 Z"/>
+      <path class="st2" d="M40 200 L30 214 M68 200 L68 214 M96 200 L106 214"/>
+      <circle class="dot" cx="58" cy="120" r="3"/>
+    </svg>
+  </div>
 </div></section>
 
 <div class="wrap"><div class="layout">

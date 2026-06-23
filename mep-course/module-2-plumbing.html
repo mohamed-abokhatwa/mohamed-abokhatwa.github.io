@@ -50,11 +50,32 @@
   document.getElementById('navToggle').addEventListener('click', function(){var open=document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('open',open);this.setAttribute('aria-expanded',open);});
 </script>
 
-<section class="course-hero"><div class="wrap">
+<section class="course-hero"><div class="wrap course-hero-grid">
+  <div class="course-hero-text">
   <a class="back" href="index.html">&larr; Back to course home</a>
   <span class="kicker">Module 2 · Detailed reference</span>
   <h1>Plumbing &amp; Public Health — From the Mains to the Tap</h1>
   <p>We follow the water from the incoming city main and storage tanks, up the tower through pressure zones and booster pumps, to the last tap in a bathroom — then back down the drainage and vent stacks to the sewer. Every component: role, design method, worked numbers, software, and code.</p>
+  </div>
+  <div class="course-hero-art" aria-hidden="true">
+    <svg viewBox="0 0 240 260">
+      <!-- roof tank -->
+      <path class="fl" d="M150 24 H214 V60 H150 Z"/>
+      <path class="st" d="M150 24 H214 V60 H150 Z"/><path class="st2" d="M150 38 H214"/>
+      <!-- riser down -->
+      <path class="st" d="M182 60 V232"/>
+      <!-- booster pump on riser -->
+      <circle class="st" cx="182" cy="150" r="11"/><path class="st" d="M182 150 L190 144"/>
+      <!-- branches to fixtures -->
+      <path class="st2" d="M182 92 H96 M182 130 H120 M182 196 H80"/>
+      <circle class="st" cx="92" cy="92" r="6"/>
+      <circle class="st" cx="116" cy="130" r="6"/>
+      <circle class="st" cx="76" cy="196" r="6"/>
+      <!-- ground main -->
+      <path class="st" d="M150 232 H214"/>
+      <circle class="dot" cx="182" cy="60" r="3"/>
+    </svg>
+  </div>
 </div></section>
 
 <div class="wrap"><div class="layout">

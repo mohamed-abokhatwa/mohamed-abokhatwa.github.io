@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 5 — Fire Alarm, ELV/ICT &amp; BMS | MEP for Tall Buildings</title>
-<link rel="stylesheet" href="assets/course.css">
+<link rel="stylesheet" href="assets/course.css?v=2">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -137,13 +137,24 @@
 <!-- 5.4 -->
 <h2 id="fapower">5.4 Fire-alarm standby power (battery sizing)</h2>
 <p><strong>Role:</strong> the FA system must survive a mains failure — batteries (or generator + batteries) sized for a supervisory period plus an alarm period.</p>
-<div class="chartbox">
-  <canvas id="batt"></canvas>
-  <div class="controls">
-    <label>Total supervisory (quiescent) current: <input type="range" id="isup" min="1" max="10" step="0.5" value="2"><span class="val"><span id="isupVal">2</span> A</span></label>
-    <span style="color:var(--muted)">→ battery ≈ <span class="val" id="ahVal">—</span> Ah</span>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Fire-alarm battery sizing (NFPA 72)</div>
+    <div class="fsub">The standby battery carries the quiescent (supervisory) load for the required standby period, then the alarm load for the alarm period (5 min here), with a derating factor (~1.25) for ageing and temperature.</div>
   </div>
-  <div class="cap">Required battery capacity vs supervisory current, for 24 h standby + 5 min alarm with a 1.25 derating factor (illustrative; voice systems often need longer alarm periods). Drag to explore.</div>
+  <div class="chart-box"><canvas id="batt"></canvas></div>
+  <div class="controls">
+    <div class="ctrl"><label>Supervisory current <span id="vIs">2.0 A</span></label><input type="range" id="sIs" min="0.5" max="10" value="2" step="0.5"><div class="hint">Quiescent draw of the panel + all devices.</div></div>
+    <div class="ctrl"><label>Standby period <span id="vHr">24 h</span></label><input type="range" id="sHr" min="24" max="72" value="24" step="12"><div class="hint">Required standby (24 h typical; 60–72 h for some occupancies).</div></div>
+    <div class="ctrl"><label>Alarm current <span id="vIa">8 A</span></label><input type="range" id="sIa" min="2" max="20" value="8" step="1"><div class="hint">Full-alarm draw (notification appliances) for 5 min.</div></div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Standby</div><div class="v" id="rStb">48 <small>Ah</small></div></div>
+    <div class="cell"><div class="k">Alarm</div><div class="v" id="rAl">0.7 <small>Ah</small></div></div>
+    <div class="cell"><div class="k">Required ×1.25</div><div class="v" id="rTot">61 <small>Ah</small></div></div>
+    <div class="cell"><div class="k">Pick a battery</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rPick"></span></div></div>
+  </div>
+  <div class="cap">Required battery vs supervisory current for the chosen standby period (alarm 5 min × 1.25 derating), with your operating point marked.</div>
 </div>
 <div class="example">
   <h4>Worked example 5.4 · Battery capacity</h4>
@@ -372,19 +383,37 @@ function mcSubmit(e) {
 
 <script src="assets/course.js"></script>
 <script>
-const isups=[]; for(let x=1;x<=10;x+=0.5) isups.push(x);
-function ah(i){ return +(((i*24)+(8*5/60))*1.25).toFixed(1); }
+const AX={family:'DM Sans',size:12,weight:'600'}, TK={family:'DM Sans',size:11};
+const fmt0=v=>Math.round(v).toLocaleString('en-US'), fmt1=v=>v.toFixed(1);
+function axis(t,zero){return {title:{display:true,text:t,font:AX,color:'#1b4f72'},grid:{color:'#eef2f5'},ticks:{font:TK,color:'#5b6b7b'},beginAtZero:!!zero};}
+const STD=[7,12,18,26,38,65,100,150,200];
+function ah(i,H,Ia){ return ((i*H)+(Ia*5/60))*1.25; }
+const ISX=[]; for(let x=0.5;x<=10.01;x+=0.5) ISX.push(+x.toFixed(1));
+const sIs=document.getElementById('sIs'), sHr=document.getElementById('sHr'), sIa=document.getElementById('sIa');
+const vIs=document.getElementById('vIs'), vHr=document.getElementById('vHr'), vIa=document.getElementById('vIa');
 const batt=new Chart(document.getElementById('batt'),{
-  type:'line',
-  data:{ labels:isups, datasets:[{ label:'Required battery (Ah)', data:isups.map(ah),
-    borderColor:'#1769AA', backgroundColor:'rgba(23,105,170,.12)', fill:true, tension:.2, pointRadius:0, borderWidth:3 }]},
-  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.1,
-    scales:{ x:{title:{display:true,text:'Supervisory current (A)'}}, y:{title:{display:true,text:'Battery (Ah)'}, beginAtZero:true} },
-    plugins:{ legend:{display:false}, title:{display:true,text:'FA battery: 24 h standby + 5 min alarm × 1.25 derating',color:'#0B3D5C',font:{size:13}} } }
+  data:{labels:ISX,datasets:[
+    {type:'line', label:'Required battery (Ah)', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.10)', fill:true, tension:.2, pointRadius:0, borderWidth:3},
+    {type:'scatter', label:'Your design', data:[], backgroundColor:'#b9770e', borderColor:'#fff', borderWidth:2, pointRadius:7}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:Object.assign(axis('Supervisory current (A)'),{type:'linear',min:0,max:10}),y:axis('Battery (Ah)',true)},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} Ah at ${fmt1(c.parsed.x)} A`}}}}
 });
-const isup=document.getElementById('isup'), isupVal=document.getElementById('isupVal'), ahVal=document.getElementById('ahVal');
-function updB(){ isupVal.textContent=isup.value; ahVal.textContent=ah(+isup.value); }
-isup.addEventListener('input',updB); updB();
+function updB(){
+  const i=+sIs.value, H=+sHr.value, Ia=+sIa.value;
+  vIs.textContent=fmt1(i)+' A'; vHr.textContent=H+' h'; vIa.textContent=Ia+' A';
+  batt.data.datasets[0].data=ISX.map(x=>({x:x,y:+ah(x,H,Ia).toFixed(1)}));
+  const stb=i*H, al=Ia*5/60, tot=ah(i,H,Ia);
+  batt.data.datasets[1].data=[{x:i,y:+tot.toFixed(1)}];
+  batt.update('none');
+  document.getElementById('rStb').innerHTML=fmt0(stb)+' <small>Ah</small>';
+  document.getElementById('rAl').innerHTML=fmt1(al)+' <small>Ah</small>';
+  document.getElementById('rTot').innerHTML=fmt0(tot)+' <small>Ah</small>';
+  const pick=STD.find(s=>s>=tot)||'>200';
+  document.getElementById('rPick').innerHTML='<span class="badge good">'+pick+' Ah</span>';
+}
+[sIs,sHr,sIa].forEach(s=>s.addEventListener('input',updB)); updB();
 </script>
 <script src="../theme.js"></script>
 </body>

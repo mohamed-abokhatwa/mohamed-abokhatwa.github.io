@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 6 — Vertical Transport | MEP for Tall Buildings</title>
-<link rel="stylesheet" href="assets/course.css">
+<link rel="stylesheet" href="assets/course.css?v=2">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -102,13 +102,24 @@
 <p style="text-align:center"><span class="formula">HC% = (300 · P · L) ÷ (RTT · U) × 100 &nbsp;&nbsp;|&nbsp;&nbsp; Interval = RTT ÷ L</span></p>
 <p style="font-size:14px;color:var(--muted)">P = passengers carried per trip (≈80% of car capacity), L = number of lifts in the group, U = population served by the group, RTT in seconds.</p>
 
-<div class="chartbox">
-  <canvas id="trafficChart"></canvas>
-  <div class="controls">
-    <label>Lifts in the group (L): <input type="range" id="L" min="2" max="10" step="1" value="6"><span class="val"><span id="Lval">6</span></span></label>
-    <span style="color:var(--muted)">HC ≈ <span class="val" id="hc">—</span>% &nbsp;·&nbsp; interval ≈ <span class="val" id="intv">—</span> s</span>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Lift group: handling capacity &amp; interval vs car count</div>
+    <div class="fsub">5-minute handling capacity HC% = 300·P·L ÷ (RTT·U), and waiting interval = RTT ÷ L. More cars raise capacity and cut waiting — at the cost of shaft space, which is why tall towers zone and use sky-lobby shuttles. (P = 13 passengers/car.)</div>
   </div>
-  <div class="cap">Handling capacity and interval vs number of lifts in a group (P=13, RTT=180 s, U=1,000). More cars raise capacity and cut waiting — but cost shaft space, which is why tall buildings zone and use sky-lobby shuttles. Drag L.</div>
+  <div class="chart-box"><canvas id="trafficChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl"><label>Lifts in the group <span id="vL">6</span></label><input type="range" id="sL" min="2" max="10" value="6" step="1"><div class="hint">Cars serving the zone from the main lobby.</div></div>
+    <div class="ctrl"><label>Population served <span id="vU">1,000</span></label><input type="range" id="sU" min="300" max="3000" value="1000" step="100"><div class="hint">People in the zone this group serves.</div></div>
+    <div class="ctrl"><label>Round-trip time <span id="vR">180 s</span></label><input type="range" id="sR" min="100" max="260" value="180" step="5"><div class="hint">Time for one car to complete an up-peak cycle (from the simulation).</div></div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Handling capacity</div><div class="v" id="rHC">13.0 <small>%</small></div></div>
+    <div class="cell"><div class="k">Interval</div><div class="v" id="rInt">30 <small>s</small></div></div>
+    <div class="cell"><div class="k">Cars selected</div><div class="v" id="rLn">6</div></div>
+    <div class="cell"><div class="k">Office target</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rTv"></span></div></div>
+  </div>
+  <div class="cap">Bars: 5-min handling capacity for each group size; line: interval. Your selected group is highlighted. Office target ≈ 11–15% HC and ≤ 25–30 s interval.</div>
 </div>
 <div class="example">
   <h4>Worked example 6.1 · Size a lift group for a zone</h4>
@@ -360,23 +371,41 @@ function mcSubmit(e) {
 
 <script src="assets/course.js"></script>
 <script>
-const Ls=[2,3,4,5,6,7,8,9,10]; const P=13, RTT=180, U=1000;
-const hcArr=Ls.map(L=>+ (300*P*L/(RTT*U)*100).toFixed(1));
-const intArr=Ls.map(L=>+(RTT/L).toFixed(0));
+const AX={family:'DM Sans',size:12,weight:'600'}, TK={family:'DM Sans',size:11};
+const fmt0=v=>Math.round(v).toLocaleString('en-US'), fmt1=v=>v.toFixed(1);
+function axis(t,zero){return {title:{display:true,text:t,font:AX,color:'#1b4f72'},grid:{color:'#eef2f5'},ticks:{font:TK,color:'#5b6b7b'},beginAtZero:!!zero};}
+const LEG={labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8,color:'#5b6b7b'}};
+const Ls=[2,3,4,5,6,7,8,9,10], P=13;
+const sL=document.getElementById('sL'), sU=document.getElementById('sU'), sR=document.getElementById('sR');
+const vL=document.getElementById('vL'), vU=document.getElementById('vU'), vR=document.getElementById('vR');
 const tc=new Chart(document.getElementById('trafficChart'),{
-  data:{ labels:Ls, datasets:[
-    {type:'bar', label:'Handling capacity (%)', data:hcArr, backgroundColor:'rgba(23,105,170,.55)', yAxisID:'y'},
-    {type:'line', label:'Interval (s)', data:intArr, borderColor:'#b4232c', borderWidth:3, pointRadius:3, yAxisID:'y1', tension:.2}
+  data:{labels:Ls,datasets:[
+    {type:'bar', label:'Handling capacity (%)', data:[], backgroundColor:[], borderColor:'#1b4f72', borderWidth:1, yAxisID:'y', order:2},
+    {type:'line', label:'Interval (s)', data:[], borderColor:'#b9770e', backgroundColor:'#b9770e', borderWidth:2.5, pointRadius:3, yAxisID:'y1', tension:.2, order:1}
   ]},
-  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.1,
-    scales:{ x:{title:{display:true,text:'Lifts in group (L)'}},
-      y:{position:'left',title:{display:true,text:'Handling capacity (%)'},beginAtZero:true},
-      y1:{position:'right',title:{display:true,text:'Interval (s)'},beginAtZero:true,grid:{drawOnChartArea:false}} },
-    plugins:{ legend:{position:'top'}, title:{display:true,text:'More cars → higher capacity & shorter waiting (P=13, RTT=180 s, U=1,000)',color:'#0B3D5C',font:{size:12.5}} } }
+  options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+    scales:{x:Object.assign(axis('Lifts in the group (L)'),{grid:{display:false}}),
+      y:Object.assign(axis('Handling capacity (%)',true),{position:'left'}),
+      y1:Object.assign(axis('Interval (s)',true),{position:'right',grid:{drawOnChartArea:false}})},
+    plugins:{legend:LEG,tooltip:{callbacks:{title:i=>'L = '+i[0].label+' cars',label:c=>c.dataset.type==='bar'?`HC: ${fmt1(c.parsed.y)}%`:`Interval: ${fmt0(c.parsed.y)} s`}}}}
 });
-const L=document.getElementById('L'), Lval=document.getElementById('Lval'), hc=document.getElementById('hc'), intv=document.getElementById('intv');
-function updT(){ const l=+L.value; Lval.textContent=l; hc.textContent=(300*P*l/(RTT*U)*100).toFixed(1); intv.textContent=(RTT/l).toFixed(0); }
-L.addEventListener('input',updT); updT();
+function updT(){
+  const l=+sL.value, U=+sU.value, RTT=+sR.value;
+  vL.textContent=l; vU.textContent=fmt0(U); vR.textContent=RTT+' s';
+  tc.data.datasets[0].data=Ls.map(n=>+(300*P*n/(RTT*U)*100).toFixed(1));
+  tc.data.datasets[0].backgroundColor=Ls.map(n=>n===l?'rgba(27,79,114,0.85)':'rgba(27,79,114,0.30)');
+  tc.data.datasets[1].data=Ls.map(n=>+(RTT/n).toFixed(0));
+  tc.update('none');
+  const hc=300*P*l/(RTT*U)*100, intv=RTT/l;
+  document.getElementById('rHC').innerHTML=fmt1(hc)+' <small>%</small>';
+  document.getElementById('rInt').innerHTML=fmt0(intv)+' <small>s</small>';
+  document.getElementById('rLn').textContent=l;
+  const v=document.getElementById('rTv');
+  if(hc>=11 && intv<=30) v.innerHTML='<span class="badge good">meets office</span>';
+  else if(hc>=8 && intv<=40) v.innerHTML='<span class="badge warn">marginal</span>';
+  else v.innerHTML='<span class="badge bad">below target</span>';
+}
+[sL,sU,sR].forEach(s=>s.addEventListener('input',updT)); updT();
 </script>
 <script src="../theme.js"></script>
 </body>

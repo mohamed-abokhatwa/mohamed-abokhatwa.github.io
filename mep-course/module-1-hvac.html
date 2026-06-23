@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 1 — HVAC: Source-to-Terminal Reference | MEP for Megatall Buildings</title>
-<link rel="stylesheet" href="assets/course.css">
+<link rel="stylesheet" href="assets/course.css?v=2">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -212,9 +212,31 @@
     <span style="color:var(--muted);font-size:13.5px">where <strong>3,060</strong> = one chiller's load (3.06 MW × 1,000 = 3,060 kW); <strong>4.187</strong> = specific heat of water; <strong>7</strong> = the chosen ΔT (°C) from the criteria; and for water 1 kg/s ≈ 1 L/s.</span></div>
   <div class="result">5 × ~870 TR water-cooled centrifugal chillers (4 duty + 1 standby), ~104 L/s evaporator flow each. Staging them matches the part-load profile and protects efficiency (see IPLV below).</div>
 </div>
-<div class="chartbox">
-  <canvas id="iplv"></canvas>
-  <div class="cap">Chiller efficiency (kW/TR — lower is better) vs % load. Centrifugal chillers are <em>most</em> efficient at part load, which is why we install several smaller chillers and stage them. This is the basis of the IPLV rating.</div>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Water-cooled centrifugal chiller — efficiency vs part load (IPLV)</div>
+    <div class="fsub">kW per ton of refrigeration (lower is better) across the load range. Centrifugal chillers are most efficient near part load — which is why several smaller machines are staged. Set the operating load and machine size to read the input power and the efficiency penalty versus the best point.</div>
+  </div>
+  <div class="chart-box"><canvas id="iplv"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Chiller load <span id="vLd">75 %</span></label>
+      <input type="range" id="sLd" min="25" max="100" value="75" step="1">
+      <div class="hint">Fraction of the machine's rated capacity it is running at right now.</div>
+    </div>
+    <div class="ctrl">
+      <label>Chiller rated capacity <span id="vTR">1,000 TR</span></label>
+      <input type="range" id="sTR" min="200" max="3000" value="1000" step="50">
+      <div class="hint">Nameplate cooling capacity of one machine (1 TR = 3.517 kW).</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Efficiency at load</div><div class="v" id="rKwt">0.50 <small>kW/TR</small></div></div>
+    <div class="cell"><div class="k">Cooling delivered</div><div class="v" id="rTR">750 <small>TR</small></div></div>
+    <div class="cell"><div class="k">Input power</div><div class="v" id="rKw">375 <small>kW</small></div></div>
+    <div class="cell"><div class="k">vs best point</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rEff"></span></div></div>
+  </div>
+  <div class="cap">IPLV curve with your operating point marked; kW/TR is interpolated between the 25/50/75/100% rating points. Centrifugal chillers bottom out near 50% load.</div>
 </div>
 <div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Take the <strong>block load from HAP</strong> as plant capacity. Select actual machines in the <strong>manufacturer's selection software</strong> (e.g. Carrier ECAT, Trane Select Assist, York) — enter CHW supply/return temps, condenser water temps and fouling to get the certified <strong>AHRI 550/590</strong> kW/TR and IPLV. Confirm the part-load (IPLV) meets <strong>ASHRAE 90.1 / SBC 601</strong> minimums.</div>
 <div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Performance rating: AHRI 550/590. Min efficiency: ASHRAE 90.1 / SBC 601. Refrigerant &amp; machinery room safety: ASHRAE 15 &amp; 34, SBC 501.</div>
@@ -685,18 +707,44 @@ function mcSubmit(e) {
 
 <script src="assets/course.js"></script>
 <script>
-new Chart(document.getElementById('iplv'),{
-  type:'line',
-  data:{ labels:['25%','50%','75%','100%'],
-    datasets:[{ label:'Efficiency (kW/TR — lower is better)', data:[0.55,0.45,0.50,0.62],
-      borderColor:'#1769AA', backgroundColor:'rgba(23,105,170,.12)', fill:true, tension:.3,
-      borderWidth:3, pointRadius:4, pointBackgroundColor:'#0B3D5C' }]},
-  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.2,
-    scales:{ x:{title:{display:true,text:'Chiller % load'}},
-             y:{title:{display:true,text:'kW per ton'}, reverse:false} },
-    plugins:{ legend:{display:false},
-      title:{display:true,text:'Water-cooled centrifugal chiller — best efficiency near part load (IPLV)',color:'#0B3D5C',font:{size:13}} } }
+const AX={family:'DM Sans',size:12,weight:'600'}, TK={family:'DM Sans',size:11};
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+function axis(t,zero){return {title:{display:true,text:t,font:AX,color:'#1b4f72'},grid:{color:'#eef2f5'},ticks:{font:TK,color:'#5b6b7b'},beginAtZero:!!zero};}
+const LEG={labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8,color:'#5b6b7b'}};
+
+const LX=[25,50,75,100], LY=[0.55,0.45,0.50,0.62], BEST=Math.min(...LY);
+function kwt(load){
+  if(load<=25)return LY[0]; if(load>=100)return LY[3];
+  for(let i=0;i<3;i++){ if(load<=LX[i+1]){ const t=(load-LX[i])/(LX[i+1]-LX[i]); return LY[i]+t*(LY[i+1]-LY[i]); } }
+  return LY[3];
+}
+const sLd=document.getElementById('sLd'), sTR=document.getElementById('sTR');
+const vLd=document.getElementById('vLd'), vTR=document.getElementById('vTR');
+const iplv=new Chart(document.getElementById('iplv'),{
+  data:{datasets:[
+    {type:'line', label:'kW/TR vs load', data:LX.map((x,i)=>({x:x,y:LY[i]})), borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.10)', fill:true, tension:.35, borderWidth:3, pointRadius:3, pointBackgroundColor:'#1b4f72'},
+    {type:'scatter', label:'Operating point', data:[], backgroundColor:'#b9770e', borderColor:'#fff', borderWidth:2, pointRadius:7}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:Object.assign(axis('Chiller load (%)'),{type:'linear',min:25,max:100,ticks:{font:TK,color:'#5b6b7b',stepSize:25,callback:v=>v+'%'}}),
+            y:axis('kW per ton (lower is better)')},
+    plugins:{legend:LEG,tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y.toFixed(3)} kW/TR at ${fmt0(c.parsed.x)}%`}}}}
 });
+function updIplv(){
+  const load=+sLd.value, rated=+sTR.value, e=kwt(load);
+  vLd.textContent=load+' %'; vTR.textContent=fmt0(rated)+' TR';
+  iplv.data.datasets[1].data=[{x:load,y:+e.toFixed(3)}];
+  iplv.update('none');
+  const tr=rated*load/100, kw=tr*3.517*e, pen=(e/BEST-1)*100;
+  document.getElementById('rKwt').innerHTML=e.toFixed(2)+' <small>kW/TR</small>';
+  document.getElementById('rTR').innerHTML=fmt0(tr)+' <small>TR</small>';
+  document.getElementById('rKw').innerHTML=fmt0(kw)+' <small>kW</small>';
+  const v=document.getElementById('rEff');
+  if(pen<6) v.innerHTML='<span class="badge good">+'+fmt0(pen)+'% · near best</span>';
+  else if(pen<20) v.innerHTML='<span class="badge warn">+'+fmt0(pen)+'%</span>';
+  else v.innerHTML='<span class="badge bad">+'+fmt0(pen)+'%</span>';
+}
+[sLd,sTR].forEach(s=>s.addEventListener('input',updIplv)); updIplv();
 </script>
 <script src="../theme.js"></script>
 </body>

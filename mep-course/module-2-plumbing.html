@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 2 — Plumbing &amp; Public Health (PHE) | MEP for Tall Buildings</title>
-<link rel="stylesheet" href="assets/course.css">
+<link rel="stylesheet" href="assets/course.css?v=2">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -131,13 +131,23 @@
 <li><strong>Average daily demand</strong> (m³/day) — for storage &amp; utility sizing, from per-capita / per-key figures.</li>
 <li><strong>Peak instantaneous demand</strong> (L/s) — for pipe &amp; pump sizing, from the <strong>loading-unit / fixture-unit</strong> method (probabilistic — not all fixtures run at once). The fixture-unit total converts to a design flow via a Hunter-type curve.</li>
 </ul>
-<div class="chartbox">
-  <canvas id="hunter"></canvas>
-  <div class="controls">
-    <label>Total loading units (LU): <input type="range" id="lu" min="50" max="3000" step="50" value="800"><span class="val"><span id="luVal">800</span> LU</span></label>
-    <span style="color:var(--muted)">→ design flow ≈ <span class="val" id="qVal">—</span> L/s</span>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Probable demand vs loading units (Hunter-type)</div>
+    <div class="fsub">Simultaneous demand flattens as fixtures multiply — doubling the fixtures does not double the design flow, because not all run at once. Pick the total loading units and a pipe size to read the design flow and the resulting velocity.</div>
   </div>
-  <div class="cap">Probable simultaneous demand vs total loading units (Hunter-type curve). The curve flattens — doubling fixtures does <em>not</em> double design flow, because simultaneous use falls. Drag to read a design flow.</div>
+  <div class="chart-box"><canvas id="hunter"></canvas></div>
+  <div class="controls">
+    <div class="ctrl"><label>Total loading units <span id="vLU">800 LU</span></label><input type="range" id="sLU" min="50" max="3000" value="800" step="50"><div class="hint">Sum of the fixture loading units served by the pipe.</div></div>
+    <div class="ctrl"><label>Pipe diameter <span id="vDN">DN150</span></label><input type="range" id="sDN" min="80" max="400" value="150" step="10"><div class="hint">Internal diameter of the supply main carrying that demand.</div></div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Design flow</div><div class="v" id="rQ">24 <small>L/s</small></div></div>
+    <div class="cell"><div class="k">Design flow</div><div class="v" id="rQh">85 <small>m³/h</small></div></div>
+    <div class="cell"><div class="k">Velocity</div><div class="v" id="rVel">1.3 <small>m/s</small></div></div>
+    <div class="cell"><div class="k">Velocity check</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVv"></span></div></div>
+  </div>
+  <div class="cap">Hunter-type demand curve with your operating point; velocity = Q ÷ pipe area. Aim for roughly 0.9–2.4 m/s.</div>
 </div>
 <div class="example">
   <h4>Worked example 2.1 · Daily demand, a residential/hotel tower</h4>
@@ -496,20 +506,39 @@ function mcSubmit(e) {
 
 <script src="assets/course.js"></script>
 <script>
-// Hunter-type curve: probable demand (L/s) vs loading units (illustrative smooth curve)
-const lus=[]; for(let x=0;x<=3000;x+=100) lus.push(x);
-function demand(lu){ return +(0.6*Math.pow(lu,0.55)).toFixed(1); } // illustrative
+const AX={family:'DM Sans',size:12,weight:'600'}, TK={family:'DM Sans',size:11};
+const fmt0=v=>Math.round(v).toLocaleString('en-US'), fmt1=v=>v.toFixed(1);
+function axis(t,zero){return {title:{display:true,text:t,font:AX,color:'#1b4f72'},grid:{color:'#eef2f5'},ticks:{font:TK,color:'#5b6b7b'},beginAtZero:!!zero};}
+const LEG={labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8,color:'#5b6b7b'}};
+
+function demand(lu){ return 0.6*Math.pow(lu,0.55); } // L/s (illustrative Hunter-type)
+const LUS=[]; for(let x=0;x<=3000;x+=100) LUS.push(x);
+const sLU=document.getElementById('sLU'), sDN=document.getElementById('sDN');
+const vLU=document.getElementById('vLU'), vDN=document.getElementById('vDN');
 const hunter=new Chart(document.getElementById('hunter'),{
-  type:'line',
-  data:{ labels:lus, datasets:[{ label:'Probable design flow (L/s)', data:lus.map(demand),
-    borderColor:'#1769AA', backgroundColor:'rgba(23,105,170,.12)', fill:true, tension:.25, pointRadius:0, borderWidth:3 }]},
-  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.1,
-    scales:{ x:{title:{display:true,text:'Total loading units (LU)'}}, y:{title:{display:true,text:'Design flow (L/s)'},beginAtZero:true} },
-    plugins:{ legend:{display:false}, title:{display:true,text:'Simultaneous demand flattens as fixtures increase (Hunter-type)',color:'#0B3D5C',font:{size:13}} } }
+  data:{labels:LUS,datasets:[
+    {type:'line', label:'Probable design flow (L/s)', data:LUS.map(x=>({x:x,y:+demand(x).toFixed(2)})), borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.10)', fill:true, tension:.25, pointRadius:0, borderWidth:3},
+    {type:'scatter', label:'Operating point', data:[], backgroundColor:'#b9770e', borderColor:'#fff', borderWidth:2, pointRadius:7}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:Object.assign(axis('Total loading units (LU)'),{type:'linear',min:0,max:3000}),y:axis('Design flow (L/s)',true)},
+    plugins:{legend:LEG,tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt1(c.parsed.y)} L/s at ${fmt0(c.parsed.x)} LU`}}}}
 });
-const lu=document.getElementById('lu'), luVal=document.getElementById('luVal'), qVal=document.getElementById('qVal');
-function updLu(){ luVal.textContent=lu.value; qVal.textContent=demand(+lu.value); }
-lu.addEventListener('input',updLu); updLu();
+function updHunter(){
+  const lu=+sLU.value, DN=+sDN.value, Q=demand(lu);
+  vLU.textContent=fmt0(lu)+' LU'; vDN.textContent='DN'+DN;
+  hunter.data.datasets[1].data=[{x:lu,y:+Q.toFixed(2)}];
+  hunter.update('none');
+  const vel=(Q/1000)/(Math.PI/4*Math.pow(DN/1000,2));
+  document.getElementById('rQ').innerHTML=fmt1(Q)+' <small>L/s</small>';
+  document.getElementById('rQh').innerHTML=fmt0(Q*3.6)+' <small>m³/h</small>';
+  document.getElementById('rVel').innerHTML=fmt1(vel)+' <small>m/s</small>';
+  const v=document.getElementById('rVv');
+  if(vel<0.9) v.innerHTML='<span class="badge warn">low · may settle</span>';
+  else if(vel<=2.4) v.innerHTML='<span class="badge good">in range</span>';
+  else v.innerHTML='<span class="badge bad">high · noise/erosion</span>';
+}
+[sLU,sDN].forEach(s=>s.addEventListener('input',updHunter)); updHunter();
 </script>
 <script src="../theme.js"></script>
 </body>

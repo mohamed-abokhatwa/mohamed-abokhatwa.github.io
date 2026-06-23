@@ -7,26 +7,6 @@ window.applyChartTheme = function(){
   Chart.defaults.font.size = 13;
 };
 
-// Re-colour every Chart instance for the current light/dark theme
-window.themeCharts = function(){
-  if(!window.Chart || !Chart.instances) return;
-  var cs  = getComputedStyle(document.documentElement);
-  var txt = cs.getPropertyValue('--text-primary').trim()   || '#1d1d1f';
-  var mut = cs.getPropertyValue('--text-secondary').trim() || '#6e6e73';
-  var grid= cs.getPropertyValue('--border').trim()         || 'rgba(0,0,0,0.1)';
-  Object.values(Chart.instances).forEach(function(ch){
-    var p = ch.options.plugins || {};
-    if(p.title)  p.title.color = txt;
-    if(p.legend){ p.legend.labels = p.legend.labels || {}; p.legend.labels.color = mut; }
-    Object.values(ch.options.scales || {}).forEach(function(sc){
-      sc.ticks = sc.ticks || {}; sc.ticks.color = mut;
-      sc.grid  = sc.grid  || {}; sc.grid.color  = grid;
-      if(sc.title) sc.title.color = mut;
-    });
-    ch.update('none');
-  });
-};
-
 // Scroll-spy for the side nav
 window.initScrollSpy = function(){
   const links = Array.from(document.querySelectorAll('.sidenav a[href^="#"]'));
@@ -63,14 +43,8 @@ window.initBackToTop = function(){
 
 function courseBoot(){
   try{ window.applyChartTheme && applyChartTheme(); }catch(e){}
-  try{ window.themeCharts && themeCharts(); }catch(e){}
   try{ window.initScrollSpy && initScrollSpy(); }catch(e){}
   try{ window.initBackToTop && initBackToTop(); }catch(e){}
-  // Re-theme charts whenever the site theme toggles
-  if(window.Chart){
-    try{ new MutationObserver(()=>window.themeCharts && themeCharts())
-      .observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']}); }catch(e){}
-  }
 }
 // Run now if the DOM is already parsed (script loaded late), else wait.
 if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',courseBoot); }

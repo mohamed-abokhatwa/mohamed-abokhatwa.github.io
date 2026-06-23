@@ -198,15 +198,29 @@ table.t th{background:var(--accent);color:#fff;text-align:left;padding:10px 12px
 table.t td{padding:9px 12px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary)}
 table.t tr:nth-child(even) td{background:var(--bg-2)}
 
-/* chart container */
-.chartbox{background:var(--bg-3);border:1px solid var(--border);border-radius:14px;padding:16px 16px 8px;
-  box-shadow:var(--shadow-glass);margin:18px 0}
-.chartbox .cap{font-size:13px;color:var(--text-tertiary);margin-top:8px;text-align:center}
-.chartbox canvas{max-height:340px}
-.controls{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:6px 0 12px;font-size:14px}
-.controls label{color:var(--text-secondary)}
-.controls input[type=range]{vertical-align:middle;accent-color:var(--accent)}
-.controls .val{font-weight:700;color:var(--accent)}
+/* interactive figure — a self-contained light instrument panel, legible in both themes */
+.fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass)}
+.fig-head{padding:18px 22px 6px}
+.fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72}
+.fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5}
+.chart-box{position:relative;height:430px;padding:8px 14px 18px}
+@media(max-width:640px){.chart-box{height:340px}}
+.fig .cap{font-size:12.5px;color:#5b6b7b;padding:0 22px 16px;text-align:center;line-height:1.5}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb}
+.ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px}
+.ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:#1b4f72}
+.ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed}
+.readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed}
+.readout .cell:last-child{border-right:none}
+.readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b}
+.readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px}
+.readout .v small{font-size:13px;font-weight:500;color:#5b6b7b}
+.badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600}
+.badge.good{background:#d5f5e3;color:#1e8449}
+.badge.warn{background:#fdebd0;color:#b9770e}
+.badge.bad{background:#fadbd8;color:#c0392b}
 
 /* svg figure — kept on a light surface in both themes so the
    navy/coloured schematics stay legible in dark mode */

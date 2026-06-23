@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 3 — Fire Protection | MEP for Tall Buildings</title>
-<link rel="stylesheet" href="assets/course.css">
+<link rel="stylesheet" href="assets/course.css?v=2">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -144,9 +144,23 @@
 <p><strong>Role:</strong> provide the rated flow at the rated pressure for the most demanding zone. Listed fire pumps follow a defined performance curve and are arranged with a <strong>jockey pump</strong> (holds standby pressure) and usually a <strong>diesel + electric</strong> duty/standby pair. Tall buildings use <strong>series / zoned pumping</strong>.</p>
 <h4>The NFPA 20 pump curve</h4>
 <p>A listed fire pump must deliver: ≤140% of rated pressure at churn (0 flow), 100% at rated flow, and ≥65% of rated pressure at 150% of rated flow. The design point and the building demand must sit under this curve.</p>
-<div class="chartbox">
-  <canvas id="pumpCurve"></canvas>
-  <div class="cap">NFPA 20 fire-pump performance envelope: churn ≤140%, rated 100%, and ≥65% at 150% flow. Equipment and zoning are checked against this. (Illustrative.)</div>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">NFPA 20 fire-pump performance envelope</div>
+    <div class="fsub">A fire pump must hold a defined curve: churn (shut-off) ≤ 140% of rated pressure, 100% at the rated point, and ≥ 65% of rated pressure at 150% of rated flow. Set the rated duty to read the curve in real units.</div>
+  </div>
+  <div class="chart-box"><canvas id="pumpCurve"></canvas></div>
+  <div class="controls">
+    <div class="ctrl"><label>Rated flow <span id="vQr">150 L/s</span></label><input type="range" id="sQr" min="30" max="300" value="150" step="5"><div class="hint">The pump's 100% duty flow — the system is sized at this point.</div></div>
+    <div class="ctrl"><label>Rated pressure <span id="vHr">9 bar</span></label><input type="range" id="sHr" min="4" max="16" value="9" step="0.5"><div class="hint">Rated discharge pressure at the duty flow.</div></div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Churn (≤140%)</div><div class="v" id="rChurn">12.6 <small>bar</small></div></div>
+    <div class="cell"><div class="k">Flow at 150%</div><div class="v" id="rQ150">225 <small>L/s</small></div></div>
+    <div class="cell"><div class="k">Pressure at 150%</div><div class="v" id="rH150">5.9 <small>bar</small></div></div>
+    <div class="cell"><div class="k">Envelope</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rEnv"></span></div></div>
+  </div>
+  <div class="cap">Pump pressure vs flow scaled to your rated duty; the three marked points are the NFPA 20 envelope limits.</div>
 </div>
 <div class="example">
   <h4>Worked example 3.3 · Fire-pump duty &amp; power for a zone</h4>
@@ -389,16 +403,30 @@ function mcSubmit(e) {
 
 <script src="assets/course.js"></script>
 <script>
-new Chart(document.getElementById('pumpCurve'),{
+const AX={family:'DM Sans',size:12,weight:'600'}, TK={family:'DM Sans',size:11};
+const fmt0=v=>Math.round(v).toLocaleString('en-US'), fmt1=v=>v.toFixed(1);
+function axis(t,zero){return {title:{display:true,text:t,font:AX,color:'#1b4f72'},grid:{color:'#eef2f5'},ticks:{font:TK,color:'#5b6b7b'},beginAtZero:!!zero};}
+const FX=[0,0.5,1.0,1.5], FY=[1.40,1.28,1.00,0.65];
+const sQr=document.getElementById('sQr'), sHr=document.getElementById('sHr');
+const vQr=document.getElementById('vQr'), vHr=document.getElementById('vHr');
+const pumpCurve=new Chart(document.getElementById('pumpCurve'),{
   type:'line',
-  data:{ labels:['0% (churn)','50%','100% (rated)','150%'],
-    datasets:[{ label:'% of rated pressure', data:[140,128,100,65],
-      borderColor:'#b4232c', backgroundColor:'rgba(180,35,44,.12)', fill:true, tension:.2,
-      borderWidth:3, pointRadius:5, pointBackgroundColor:'#0B3D5C' }]},
-  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.2,
-    scales:{ x:{title:{display:true,text:'Flow (% of rated)'}}, y:{title:{display:true,text:'Pressure (% of rated)'}, suggestedMin:0, suggestedMax:160} },
-    plugins:{ legend:{display:false}, title:{display:true,text:'NFPA 20 fire-pump performance envelope',color:'#0B3D5C',font:{size:13}} } }
+  data:{datasets:[{label:'Pump curve', data:[], borderColor:'#c0392b', backgroundColor:'rgba(192,57,43,0.10)', fill:true, tension:.2, borderWidth:3, pointRadius:5, pointBackgroundColor:'#1b4f72'}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:Object.assign(axis('Flow (L/s)'),{type:'linear',min:0,beginAtZero:true}),y:axis('Pressure (bar)',true)},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${fmt1(c.parsed.y)} bar at ${fmt0(c.parsed.x)} L/s`}}}}
 });
+function updPump(){
+  const Qr=+sQr.value, Hr=+sHr.value;
+  vQr.textContent=Qr+' L/s'; vHr.textContent=Hr+' bar';
+  pumpCurve.data.datasets[0].data=FX.map((f,i)=>({x:+(f*Qr).toFixed(1),y:+(FY[i]*Hr).toFixed(2)}));
+  pumpCurve.update('none');
+  document.getElementById('rChurn').innerHTML=fmt1(1.40*Hr)+' <small>bar</small>';
+  document.getElementById('rQ150').innerHTML=fmt0(1.5*Qr)+' <small>L/s</small>';
+  document.getElementById('rH150').innerHTML=fmt1(0.65*Hr)+' <small>bar</small>';
+  document.getElementById('rEnv').innerHTML='<span class="badge good">NFPA 20 envelope</span>';
+}
+[sQr,sHr].forEach(s=>s.addEventListener('input',updPump)); updPump();
 </script>
 <script src="../theme.js"></script>
 </body>

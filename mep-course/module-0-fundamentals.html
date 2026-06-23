@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 0 — MEP Fundamentals | MEP for Megatall Buildings</title>
-<link rel="stylesheet" href="assets/course.css">
+<link rel="stylesheet" href="assets/course.css?v=2">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -124,16 +124,31 @@
 <p style="text-align:center"><span class="formula" style="font-size:18px">P = ρ · g · h</span></p>
 <p>where ρ ≈ 1000 kg/m³ (water), g = 9.81 m/s², and h is the height of the column in metres. Plot it and the problem is obvious:</p>
 
-<div class="chartbox">
-  <canvas id="presChart"></canvas>
-  <div class="controls">
-    <label>Max allowable working pressure per zone:
-      <input type="range" id="zoneP" min="4" max="16" step="1" value="10">
-      <span class="val"><span id="zonePval">10</span> bar</span>
-    </label>
-    <span style="color:var(--muted)">→ zones needed for a 1,000 m tower: <span class="val" id="zoneN">10</span></span>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Static pressure up the tower — and the zones it forces</div>
+    <div class="fsub">Static water pressure P = ρgh builds with height. Set the tower height and the pressure each zone's pipework and fittings can take; the panel shows how many vertical pressure zones the building must be split into — each needing its own break tank or PRV floor.</div>
   </div>
-  <div class="cap">Static water pressure vs height in a 1,000 m tower. Drag the slider to set the pressure each zone's pipework/fittings can take — the tool shows how many vertical zones the building must be split into. (P = ρgh, water.)</div>
+  <div class="chart-box"><canvas id="presChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Tower height <span id="vH">1,000 m</span></label>
+      <input type="range" id="sH" min="100" max="1000" value="1000" step="20">
+      <div class="hint">Height from the lowest served level to the top.</div>
+    </div>
+    <div class="ctrl">
+      <label>Zone pressure limit <span id="vZP">10 bar</span></label>
+      <input type="range" id="sZP" min="4" max="16" value="10" step="1">
+      <div class="hint">Max working pressure of the zone's pipes &amp; fittings (PN rating). 1 bar ≈ 10.2 m.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Pressure at base</div><div class="v" id="rBase">98 <small>bar</small></div></div>
+    <div class="cell"><div class="k">Zone height</div><div class="v" id="rZH">102 <small>m</small></div></div>
+    <div class="cell"><div class="k">Pressure zones</div><div class="v" id="rZN">10</div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rZV"></span></div></div>
+  </div>
+  <div class="cap">Static water pressure vs height (P = ρgh). The dashed line is the per-zone pressure limit; where the curve crosses it, a new pressure zone must begin.</div>
 </div>
 
 <div class="example">
@@ -243,16 +258,31 @@ Pressure limits and zoning for plumbing follow <strong>SBC 701</strong> (Saudi S
 <p>Warm air is lighter than cold air. Over a tall building the inside/outside temperature difference creates a pressure difference that drives air up through shafts, stairs and lift wells (in winter) or down (in summer with hot outside air). This is the <strong>stack effect</strong>, and at a kilometre it is powerful enough to slam doors, whistle through lift lobbies and spread smoke. The theoretical stack pressure is:</p>
 <p style="text-align:center"><span class="formula">ΔP = ρ<sub>o</sub> · g · h · (T<sub>i</sub> − T<sub>o</sub>) / T<sub>i</sub></span> &nbsp;(temperatures in kelvin)</p>
 
-<div class="chartbox">
-  <canvas id="stackChart"></canvas>
-  <div class="controls">
-    <label>Outdoor temperature:
-      <input type="range" id="tOut" min="-10" max="48" step="1" value="2">
-      <span class="val"><span id="tOutVal">2</span> °C</span>
-    </label>
-    <label>Indoor: <span class="val">24 °C</span></label>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Stack pressure vs height and temperature difference</div>
+    <div class="fsub">The theoretical stack pressure ΔP = 3463·h·|1/T₀ − 1/Tᵢ| (Pa, T in K). A large indoor–outdoor temperature difference — a cold winter day, or a hot day with heavily cooled interiors — and great height together drive the strongest stack effect.</div>
   </div>
-  <div class="cap">Theoretical stack pressure vs building height for different outdoor temperatures. A large indoor–outdoor temperature difference (a cold winter day, or a very hot day with heavily cooled interiors) creates the strongest stack effect. Drag to explore.</div>
+  <div class="chart-box"><canvas id="stackChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Outdoor temperature <span id="vTo">2 °C</span></label>
+      <input type="range" id="sTo" min="-10" max="48" value="2" step="1">
+      <div class="hint">Indoor held at 24 °C. The bigger the gap, the stronger the effect.</div>
+    </div>
+    <div class="ctrl">
+      <label>Tower height <span id="vSH">1,000 m</span></label>
+      <input type="range" id="sSH" min="100" max="1000" value="1000" step="20">
+      <div class="hint">Stack pressure grows in direct proportion to height.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Temp difference</div><div class="v" id="rDT">22 <small>K</small></div></div>
+    <div class="cell"><div class="k">Stack at top</div><div class="v" id="rSP">935 <small>Pa</small></div></div>
+    <div class="cell"><div class="k">≈ pressure</div><div class="v" id="rDF">95 <small>mm w.g.</small></div></div>
+    <div class="cell"><div class="k">Severity</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rSV"></span></div></div>
+  </div>
+  <div class="cap">Theoretical stack pressure vs height for the chosen outdoor temperature (Tᵢ = 24 °C). 1 mm w.g. ≈ 9.81 Pa.</div>
 </div>
 
 <p><strong>Mitigation</strong> (introduced here, detailed in <a class="ref" href="module-1-hvac.html">Module 1</a>): airlock/revolving entrance doors, compartmentalised and pressurised lift lobbies, well-sealed shafts, and stairwell pressurisation — which doubles as the smoke-control system (<a class="ref" href="#codes">NFPA 92</a>).</p>
@@ -433,57 +463,75 @@ function mcSubmit(e) {
 
 <script src="assets/course.js"></script>
 <script>
-// ---- Pressure vs height chart ----
-const heights = [];
-for(let h=0; h<=1000; h+=50) heights.push(h);
-const presData = heights.map(h => +(1000*9.81*h/1e5).toFixed(1)); // bar
-const presChart = new Chart(document.getElementById('presChart'), {
-  type:'line',
-  data:{ labels:heights, datasets:[
-    { label:'Static water pressure (bar)', data:presData, borderColor:'#1769AA',
-      backgroundColor:'rgba(23,105,170,.12)', fill:true, tension:.15, pointRadius:0, borderWidth:3 },
-    { label:'Zone working-pressure limit', data:heights.map(()=>10),
-      borderColor:'#b4232c', borderDash:[6,5], pointRadius:0, borderWidth:2 }
-  ]},
-  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.1,
-    scales:{ x:{ title:{display:true,text:'Height up the tower (m)'} },
-             y:{ title:{display:true,text:'Pressure (bar)'}, beginAtZero:true } },
-    plugins:{ legend:{position:'top'},
-      title:{display:true,text:'Static pressure builds with height — P = ρgh',color:'#0B3D5C',font:{size:14}} } }
-});
-const zoneP=document.getElementById('zoneP'), zonePval=document.getElementById('zonePval'), zoneN=document.getElementById('zoneN');
-function updZone(){
-  const lim=+zoneP.value; zonePval.textContent=lim;
-  presChart.data.datasets[1].data = heights.map(()=>lim);
-  presChart.update('none');
-  // zones for 1000 m: each zone height = lim*10.2 m
-  const zoneH = lim*10.2; zoneN.textContent = Math.ceil(1000/zoneH);
-}
-zoneP.addEventListener('input',updZone); updZone();
+/* shared instrument-chart helpers */
+const AX={family:'DM Sans',size:12,weight:'600'}, TK={family:'DM Sans',size:11};
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+function axis(t,zero){return {title:{display:true,text:t,font:AX,color:'#1b4f72'},grid:{color:'#eef2f5'},ticks:{font:TK,color:'#5b6b7b'},beginAtZero:!!zero};}
+const LEG={labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8,color:'#5b6b7b'}};
 
-// ---- Stack effect chart ----
-const Ti = 24+273.15;
-function stackSeries(toC){
-  const To = toC+273.15;
-  // Stack (buoyancy) pressure = g·h·(ρo − ρi); for air ρ ≈ 353/T (kg/m³),
-  // so ΔP = 9.81·353·h·|1/To − 1/Ti| ≈ 3463·h·|1/To − 1/Ti|  (Pa). [ASHRAE Fundamentals]
-  return heights.map(h => +(3463*h*Math.abs(1/To - 1/Ti)).toFixed(0)); // Pa
-}
-const stackChart = new Chart(document.getElementById('stackChart'), {
+/* ===== Chart 1 — static pressure & pressure zones ===== */
+const sH=document.getElementById('sH'), sZP=document.getElementById('sZP');
+const vH=document.getElementById('vH'), vZP=document.getElementById('vZP');
+const presChart=new Chart(document.getElementById('presChart'),{
   type:'line',
-  data:{ labels:heights, datasets:[
-    { label:'Stack pressure (Pa)', data:stackSeries(2), borderColor:'#0B3D5C',
-      backgroundColor:'rgba(11,61,92,.10)', fill:true, tension:.15, pointRadius:0, borderWidth:3 }
+  data:{labels:[],datasets:[
+    {label:'Static pressure (bar)', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.10)', fill:true, tension:.12, pointRadius:0, borderWidth:3},
+    {label:'Zone pressure limit', data:[], borderColor:'#c0392b', borderDash:[6,5], pointRadius:0, borderWidth:2}
   ]},
-  options:{ responsive:true, maintainAspectRatio:true, aspectRatio:2.1,
-    scales:{ x:{title:{display:true,text:'Height (m)'}},
-             y:{title:{display:true,text:'Stack pressure (Pa)'}, beginAtZero:true} },
-    plugins:{ legend:{display:false},
-      title:{display:true,text:'Stack effect grows with height and temperature difference',color:'#0B3D5C',font:{size:14}} } }
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:axis('Distance below top water level (m)'),y:axis('Pressure (bar)',true)},
+    plugins:{legend:Object.assign({position:'top'},LEG)}}
 });
-const tOut=document.getElementById('tOut'), tOutVal=document.getElementById('tOutVal');
-tOut.addEventListener('input',()=>{ tOutVal.textContent=tOut.value;
-  stackChart.data.datasets[0].data = stackSeries(+tOut.value); stackChart.update('none'); });
+function updPres(){
+  const H=+sH.value, lim=+sZP.value;
+  vH.textContent=fmt0(H)+' m'; vZP.textContent=lim+' bar';
+  const xs=[]; for(let i=0;i<=20;i++) xs.push(Math.round(H*i/20));
+  presChart.data.labels=xs;
+  presChart.data.datasets[0].data=xs.map(h=>+(1000*9.81*h/1e5).toFixed(2));
+  presChart.data.datasets[1].data=xs.map(()=>lim);
+  presChart.update('none');
+  const base=1000*9.81*H/1e5, zoneH=lim*10.2, zones=Math.max(1,Math.ceil(H/zoneH));
+  document.getElementById('rBase').innerHTML=fmt0(base)+' <small>bar</small>';
+  document.getElementById('rZH').innerHTML=fmt0(zoneH)+' <small>m</small>';
+  document.getElementById('rZN').textContent=zones;
+  const v=document.getElementById('rZV');
+  if(zones<=1) v.innerHTML='<span class="badge good">single zone</span>';
+  else if(zones<=4) v.innerHTML='<span class="badge warn">'+zones+' zones</span>';
+  else v.innerHTML='<span class="badge bad">'+zones+' zones</span>';
+}
+[sH,sZP].forEach(s=>s.addEventListener('input',updPres)); updPres();
+
+/* ===== Chart 2 — stack effect ===== */
+const Ti=24+273.15;
+const sTo=document.getElementById('sTo'), sSH=document.getElementById('sSH');
+const vTo=document.getElementById('vTo'), vSH=document.getElementById('vSH');
+const stackChart=new Chart(document.getElementById('stackChart'),{
+  type:'line',
+  data:{labels:[],datasets:[
+    {label:'Stack pressure (Pa)', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.10)', fill:true, tension:.12, pointRadius:0, borderWidth:3}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:axis('Height (m)'),y:axis('Stack pressure (Pa)',true)},
+    plugins:{legend:{display:false}}}
+});
+function updStack(){
+  const toC=+sTo.value, To=toC+273.15, H=+sSH.value;
+  vTo.textContent=toC+' °C'; vSH.textContent=fmt0(H)+' m';
+  const k=3463*Math.abs(1/To-1/Ti);
+  const xs=[]; for(let i=0;i<=20;i++) xs.push(Math.round(H*i/20));
+  stackChart.data.labels=xs;
+  stackChart.data.datasets[0].data=xs.map(h=>+(k*h).toFixed(0));
+  stackChart.update('none');
+  const top=k*H, dt=Math.abs(toC-24);
+  document.getElementById('rDT').innerHTML=fmt0(dt)+' <small>K</small>';
+  document.getElementById('rSP').innerHTML=fmt0(top)+' <small>Pa</small>';
+  document.getElementById('rDF').innerHTML=fmt0(top/9.81)+' <small>mm w.g.</small>';
+  const v=document.getElementById('rSV');
+  if(top<50) v.innerHTML='<span class="badge good">minor</span>';
+  else if(top<200) v.innerHTML='<span class="badge warn">noticeable</span>';
+  else v.innerHTML='<span class="badge bad">severe</span>';
+}
+[sTo,sSH].forEach(s=>s.addEventListener('input',updStack)); updStack();
 </script>
 <script src="../theme.js"></script>
 </body>

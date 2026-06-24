@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-Revenue Water (NRW): Water Balance, the ILI & the Economic Level of Leakage — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Water Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    /* equations (MathJax) */
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    /* callouts */
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    /* tables */
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    /* original schematic */
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:16px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    /* interactive figure — a self-contained light instrument panel, legible in both themes */
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    /* references */
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="Non-Revenue Water (NRW): the engineering and economics of water loss. The IWA water balance that splits system input into revenue and non-revenue water, real vs apparent losses, the UARL formula and the Infrastructure Leakage Index (ILI), and the economic level of leakage — with three interactive charts and worked numbers.">
+  <meta property="og:title" content="Non-Revenue Water (NRW): Water Balance, the ILI & the Economic Level of Leakage | Mohamed Abokhatwa">
+  <meta property="og:description" content="Why % NRW is a poor KPI, how the IWA water balance and the Infrastructure Leakage Index measure loss properly, and where the economic level of leakage sits — in three interactive charts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/non-revenue-water-leakage.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-non-revenue-water-leakage.jpg">
+  <meta property="og:image:alt" content="The IWA standard water balance — system input volume splitting into revenue water and non-revenue water">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Non-Revenue Water (NRW): Water Balance, the ILI & the Economic Level of Leakage | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="The IWA water balance, real vs apparent losses, the UARL/ILI, and the economic level of leakage — the management of water loss, in three interactive charts.">
+  <link rel="canonical" href="https://abokhatwa.com/non-revenue-water-leakage.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Non-Revenue Water (NRW): Water Balance, the ILI & the Economic Level of Leakage",
+  "description": "The engineering and economics of water loss: the IWA water balance, real vs apparent losses, the UARL formula and the Infrastructure Leakage Index (ILI), and the economic level of leakage.",
+  "image": "https://abokhatwa.com/og-non-revenue-water-leakage.jpg",
+  "datePublished": "2026-06-23",
+  "dateModified": "2026-06-23",
+  "author": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa",
+    "url": "https://abokhatwa.com/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abokhatwa.com/non-revenue-water-leakage.html"
+  }
+}
+  </script>
+<style>
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--text-primary);}
+.breadcrumb-sep{opacity:.4;}
+.breadcrumb-current{color:var(--text-secondary);}.breadcrumb a.breadcrumb-current{color:var(--accent);}.breadcrumb a.breadcrumb-current:hover{opacity:.75;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+<div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="pipeline-design.html" class="breadcrumb-current">Pipeline Design</a></div>
+  <span class="tag">Non-Revenue Water &middot; Water Balance &middot; ILI &middot; Economic Level of Leakage</span>
+  <h1>Non-Revenue Water: The Water Balance, the ILI &amp; the Economic Level of Leakage</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>June 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>14 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="non-revenue-water-leakage.webp" alt="The IWA standard water balance — system input volume splitting into authorised consumption and water losses, and into revenue and non-revenue water">
+</div>
+
+<div class="article-body">
+<p class="lead">Every utility produces more water than it sells. The gap — the water that is pumped, treated and paid for but never billed — is <strong>Non-Revenue Water</strong>, and in many networks it is a quarter to a half of everything that enters the pipes. It is also the most misunderstood number in the business: managers quote a single percentage, boards set targets against it, and almost all of them are measuring the wrong thing. This is the discipline that fixes that — a standard way to account for every drop, an honest index of how leaky the network really is, and the economics that tell you when to stop chasing leaks.</p>
+
+<h2 id="what">1 · What Non-Revenue Water actually is</h2>
+<p><strong>Non-Revenue Water (NRW)</strong> is simply the difference between the water a utility puts into its network — the <em>system input volume</em> — and the water it bills its customers for. It is tempting to read that as "leakage," but NRW is broader and more interesting than that. It is made of three very different things<sup class="cite">[1]</sup>:</p>
+<ul class="clean">
+  <li><strong>Real (physical) losses</strong> — water that physically escapes the system: background leakage from joints and fittings, reported bursts, and unreported leaks that run until found. This is the part you fix with valves, pressure and excavation.</li>
+  <li><strong>Apparent (commercial) losses</strong> — water that is delivered and used but never correctly billed: under-registering customer meters, data and billing errors, and unauthorised consumption (theft, illegal connections). The water reaches a tap; the revenue does not.</li>
+  <li><strong>Unbilled authorised consumption</strong> — water the utility legitimately gives away or uses itself: mains flushing, firefighting, public fountains, and genuinely unmetered legal use.</li>
+</ul>
+<p>The reason the distinction matters is that the three have completely different cures and completely different costs. A litre of <em>real</em> loss costs only what it cost to produce and pump. A litre of <em>apparent</em> loss is far more expensive — it was treated, pumped <em>and</em> delivered, and it should have earned the full retail tariff, so you lose the margin too. Lumping them into one percentage hides exactly the information you need to act<sup class="cite">[2]</sup>.</p>
+
+<div class="callout warn">
+  <span class="lbl">Why "% NRW" is a poor KPI</span>
+  A percentage moves when either number moves. Sell more water in a wet year and your NRW <em>percentage</em> falls while you lose exactly the same volume. Two utilities can both report "30% NRW" while one leaks twice as much per kilometre of main as the other. Percentage is fine for a headline; it is useless for engineering. To manage loss you need <strong>volumes</strong>, split by type, and a <strong>physical index</strong> that accounts for the size and pressure of the network — the subjects of this article.
+</div>
+
+<h2 id="balance">2 · The IWA water balance</h2>
+<p>The international standard for accounting water loss is the <strong>IWA / AWWA water balance</strong><sup class="cite">[1][3]</sup>. It is a single bookkeeping table that starts from the system input volume and divides it, step by step, until every drop is in exactly one box. Read it left to right and two columns fall out the right-hand side: <strong>Revenue Water</strong> (what you billed) and <strong>Non-Revenue Water</strong> (everything else).</p>
+
+<div class="schematic">
+<svg viewBox="0 0 720 380" role="img" aria-label="The IWA standard water balance: system input volume splits into authorised consumption and water losses, then into billed/unbilled and apparent/real, grouping into revenue water and non-revenue water">
+  <style>
+    .wb-box{stroke-width:1.4;rx:6;}
+    .wb-t{font-family:-apple-system,'Inter',sans-serif;font-size:12px;font-weight:600;}
+    .wb-s{font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;}
+    .wb-title{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:13px;font-weight:700;}
+    .wb-rev{fill:#1e8449;} .wb-unb{fill:#5b6b7b;} .wb-app{fill:#b9770e;} .wb-real{fill:#c0392b;}
+  </style>
+  <text x="12" y="22" class="wb-title">The IWA water balance — every drop of system input in exactly one box</text>
+
+  <!-- Col 1: System Input Volume -->
+  <rect x="12" y="44" width="104" height="320" rx="6" fill="var(--accent)" opacity="0.92"/>
+  <text x="64" y="196" text-anchor="middle" class="wb-t" fill="#fff" transform="rotate(-90 64 196)">System Input Volume</text>
+
+  <!-- Col 2: Authorised / Losses -->
+  <rect x="126" y="44" width="120" height="150" rx="6" fill="var(--bg-4)" stroke="var(--border)"/>
+  <text x="186" y="112" text-anchor="middle" class="wb-t" fill="var(--text-primary)">Authorised</text>
+  <text x="186" y="128" text-anchor="middle" class="wb-t" fill="var(--text-primary)">Consumption</text>
+  <rect x="126" y="200" width="120" height="164" rx="6" fill="var(--bg-4)" stroke="var(--border)"/>
+  <text x="186" y="278" text-anchor="middle" class="wb-t" fill="var(--text-primary)">Water Losses</text>
+
+  <!-- Col 3: sub-components -->
+  <rect x="256" y="44" width="190" height="96" rx="6" fill="#1e8449" opacity="0.16" stroke="#1e8449"/>
+  <text x="266" y="80" class="wb-t" fill="var(--text-primary)">Billed Authorised</text>
+  <text x="266" y="98" class="wb-s" fill="var(--text-secondary)">billed metered + billed</text>
+  <text x="266" y="112" class="wb-s" fill="var(--text-secondary)">unmetered consumption</text>
+
+  <rect x="256" y="146" width="190" height="48" rx="6" fill="#5b6b7b" opacity="0.16" stroke="#5b6b7b"/>
+  <text x="266" y="168" class="wb-t" fill="var(--text-primary)">Unbilled Authorised</text>
+  <text x="266" y="184" class="wb-s" fill="var(--text-secondary)">flushing, firefighting, own use</text>
+
+  <rect x="256" y="200" width="190" height="70" rx="6" fill="#b9770e" opacity="0.16" stroke="#b9770e"/>
+  <text x="266" y="224" class="wb-t" fill="var(--text-primary)">Apparent Losses</text>
+  <text x="266" y="240" class="wb-s" fill="var(--text-secondary)">meter under-registration,</text>
+  <text x="266" y="254" class="wb-s" fill="var(--text-secondary)">billing/data error, theft</text>
+
+  <rect x="256" y="276" width="190" height="88" rx="6" fill="#c0392b" opacity="0.16" stroke="#c0392b"/>
+  <text x="266" y="300" class="wb-t" fill="var(--text-primary)">Real Losses</text>
+  <text x="266" y="316" class="wb-s" fill="var(--text-secondary)">background leakage, reported</text>
+  <text x="266" y="330" class="wb-s" fill="var(--text-secondary)">+ unreported bursts, tank</text>
+  <text x="266" y="344" class="wb-s" fill="var(--text-secondary)">overflows</text>
+
+  <!-- Col 4: Revenue / Non-Revenue -->
+  <rect x="456" y="44" width="120" height="96" rx="6" fill="#1e8449" opacity="0.9"/>
+  <text x="516" y="86" text-anchor="middle" class="wb-t" fill="#fff">Revenue</text>
+  <text x="516" y="102" text-anchor="middle" class="wb-t" fill="#fff">Water</text>
+
+  <rect x="456" y="146" width="120" height="218" rx="6" fill="#c0392b" opacity="0.9"/>
+  <text x="516" y="246" text-anchor="middle" class="wb-t" fill="#fff">Non-Revenue</text>
+  <text x="516" y="262" text-anchor="middle" class="wb-t" fill="#fff">Water (NRW)</text>
+
+  <!-- bracket connectors -->
+  <path d="M446 92 H456" stroke="#1e8449" stroke-width="1.6" fill="none"/>
+  <path d="M446 170 H456 M446 235 H456 M446 320 H456" stroke="#c0392b" stroke-width="1.4" fill="none" opacity="0.7"/>
+  <text x="588" y="250" class="wb-s" fill="var(--text-tertiary)" transform="rotate(90 588 250)">unbilled + apparent + real</text>
+</svg>
+  <div class="cap">Original schematic of the IWA/AWWA M36 water balance. Revenue Water is only the billed-authorised box; everything else — unbilled authorised consumption, apparent losses and real losses — is Non-Revenue Water.</div>
+</div>
+
+<p>The balance is built top-down: you meter the system input, you total what you billed, and you estimate the smaller boxes (unbilled use, meter error, unauthorised use) so that the components add up. The single most valuable output is not the percentage — it is the split between <strong>real</strong> and <strong>apparent</strong> losses, because that tells you whether your money belongs in the field (finding leaks) or in the back office (fixing meters and billing).</p>
+
+<h2 id="int-balance">3 · Interactive: build your water balance</h2>
+<p>Set the system input and the three loss components and watch the balance assemble. The green block is the revenue you actually collect; the grey, amber and red blocks together are Non-Revenue Water. Notice how a small slice of <em>apparent</em> loss can cost as much revenue as a much larger slice of <em>real</em> loss — because apparent loss is billed at the full tariff, not just production cost.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">The water balance, as volumes</div>
+    <div class="fsub">System input volume split into billed authorised (revenue water), unbilled authorised, apparent losses and real losses. NRW is everything that is not billed. The value of loss applies the full retail tariff to apparent losses (lost revenue) and the marginal production cost to real losses and unbilled authorised use.</div>
+  </div>
+  <div class="chart-box"><canvas id="balChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>System input volume <span id="vSiv">20,000 m³/d</span></label>
+      <input type="range" id="sSiv" min="5000" max="60000" value="20000" step="500">
+      <div class="hint">All water entering the network (own sources + imports).</div>
+    </div>
+    <div class="ctrl">
+      <label>Real losses <span id="vReal">18 %</span></label>
+      <input type="range" id="sReal" min="2" max="45" value="18" step="1">
+      <div class="hint">Physical leakage — the field problem (pressure, ALC, repairs).</div>
+    </div>
+    <div class="ctrl">
+      <label>Apparent losses <span id="vApp">7 %</span></label>
+      <input type="range" id="sApp" min="1" max="25" value="7" step="1">
+      <div class="hint">Meter error, billing error, theft — the back-office problem.</div>
+    </div>
+    <div class="ctrl">
+      <label>Unbilled authorised <span id="vUnb">3 %</span></label>
+      <input type="range" id="sUnb" min="0" max="8" value="3" step="0.5">
+      <div class="hint">Flushing, firefighting, utility own use.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Non-Revenue Water</div><div class="v" id="rNrw">28 <small>%</small></div></div>
+    <div class="cell"><div class="k">NRW volume</div><div class="v" id="rNrwV">5,600 <small>m³/d</small></div></div>
+    <div class="cell"><div class="k">Value of loss</div><div class="v" id="rVal">— <small>k$/yr</small></div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rBalBadge"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">A 20,000 m³/d system at 18% real + 7% apparent + 3% unbilled is 28% NRW. Hold the volume and drag <em>apparent</em> loss up by a few points: the revenue value climbs far faster than the same change in real loss, because every apparent litre is priced at the retail tariff. That is why a leak-only programme can miss half the money.</p>
+
+<h2 id="real-apparent">4 · Real vs apparent — two problems, two cures</h2>
+<p>Because they cost differently and are fixed differently, the two loss families need separate programmes:</p>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Aspect</th><th>Real (physical) losses</th><th>Apparent (commercial) losses</th></tr></thead>
+  <tbody>
+    <tr><td>Where the water goes</td><td>Into the ground — leaks &amp; bursts</td><td>To a customer, unbilled</td></tr>
+    <tr><td>Unit cost</td><td>Variable production + pumping cost</td><td>Full retail tariff (lost revenue)</td></tr>
+    <tr><td>Driven by</td><td>Pressure, pipe age/material, repair speed</td><td>Meter age/sizing, data systems, theft</td></tr>
+    <tr><td>Found by</td><td>DMA night flow, acoustic survey, step tests</td><td>Meter testing, data audits, field inspection</td></tr>
+    <tr><td>Fixed by</td><td>Pressure management, ALC, pipe renewal</td><td>Meter replacement, billing reform, enforcement</td></tr>
+  </tbody>
+</table>
+</div>
+<p>The real-loss programme is the engineering one, and it leans directly on the two previous articles: <a href="pressure-management-dma.html">pressure management and DMAs</a> to measure and suppress leakage, and the <a href="distribution-network-looped-branched.html">network topology</a> that decides how easily you can zone the system in the first place. The rest of this article is about <em>measuring</em> the real-loss problem honestly and knowing <em>how far</em> to push it.</p>
+
+<h2 id="ili">5 · Measuring real losses properly — UARL and the ILI</h2>
+<p>How leaky is "leaky"? Litres per day means nothing without context: a 2,000-km network will always lose more than a 50-km one. The IWA solution is to compare your <strong>Current Annual Real Losses (CARL)</strong> against a physics-based floor — the <strong>Unavoidable Annual Real Losses (UARL)</strong>: the lowest leakage a well-run network of that exact size and pressure could achieve, with today's technology and unlimited budget<sup class="cite">[4]</sup>.</p>
+
+<div class="eq">\[ \text{UARL (L/day)} = (18\,L_m + 0.8\,N_c + 25\,L_p)\times P \]</div>
+
+<p>where \(L_m\) is mains length (km), \(N_c\) the number of service connections, \(L_p\) the total length of private underground pipe (km, from the street edge to the customer meter), and \(P\) the average operating pressure (m). The three coefficients capture the three places water unavoidably escapes: the mains, the connections, and the customer's own pipe. Divide your real losses by this floor and you get the dimensionless <strong>Infrastructure Leakage Index</strong><sup class="cite">[4][5]</sup>:</p>
+
+<div class="eq">\[ \text{ILI} = \frac{\text{CARL}}{\text{UARL}} \]</div>
+
+<p>An ILI of 1.0 is the theoretical best; an ILI of 4 means you are losing four times the unavoidable minimum. Because it is normalised for length, connections and pressure, the ILI lets you compare a Riyadh network with a London one, or track one network honestly across the years even as it grows. The World Bank maps it onto management bands<sup class="cite">[5]</sup>:</p>
+
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>ILI band</th><th class="num">ILI (developed)</th><th>What it means</th></tr></thead>
+  <tbody>
+    <tr><td><strong>A</strong></td><td class="num">1 – 2</td><td>Excellent — further loss reduction may be uneconomic</td></tr>
+    <tr><td><strong>B</strong></td><td class="num">2 – 4</td><td>Good — scope to improve in specific areas</td></tr>
+    <tr><td><strong>C</strong></td><td class="num">4 – 8</td><td>Poor — intensify pressure management and ALC</td></tr>
+    <tr><td><strong>D</strong></td><td class="num">&gt; 8</td><td>Very inefficient — resource-poor management of loss</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="int-ili">6 · Interactive: UARL &amp; the Infrastructure Leakage Index</h2>
+<p>Enter your network's size and pressure to compute the unavoidable floor, then set your current real losses to read the ILI. (For clarity this calculator assumes meters at the property boundary, so the private-pipe term \(L_p\) is taken as zero — add it where customer meters sit well inside the plot.) Watch how the floor itself <em>rises with pressure</em>: drop the average pressure and even the unavoidable minimum falls, which is exactly why pressure management is the first move.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Current real losses vs the unavoidable floor (ILI)</div>
+    <div class="fsub">UARL = (18·Lₘ + 0.8·N_c)·P litres/day. The green bar is the unavoidable floor for your network; the red bar is your current real losses; their ratio is the ILI. The recoverable leakage is the gap between them.</div>
+  </div>
+  <div class="chart-box"><canvas id="iliChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Mains length Lₘ <span id="vLm">250 km</span></label>
+      <input type="range" id="sLm" min="20" max="800" value="250" step="10">
+      <div class="hint">Total length of distribution mains.</div>
+    </div>
+    <div class="ctrl">
+      <label>Service connections N_c <span id="vNc">20,000</span></label>
+      <input type="range" id="sNc" min="2000" max="80000" value="20000" step="1000">
+      <div class="hint">Number of service connections on the network.</div>
+    </div>
+    <div class="ctrl">
+      <label>Average pressure P <span id="vP">45 m</span></label>
+      <input type="range" id="sP" min="20" max="80" value="45" step="1">
+      <div class="hint">Average operating pressure across the network.</div>
+    </div>
+    <div class="ctrl">
+      <label>Current real losses <span id="vCarl">4,000 m³/d</span></label>
+      <input type="range" id="sCarl" min="200" max="15000" value="4000" step="100">
+      <div class="hint">Measured physical loss (e.g. from DMA night-flow analysis).</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">UARL (floor)</div><div class="v" id="rUarl">923 <small>m³/d</small></div></div>
+    <div class="cell"><div class="k">Recoverable</div><div class="v" id="rRec">3,077 <small>m³/d</small></div></div>
+    <div class="cell"><div class="k">ILI</div><div class="v" id="rIli">4.3</div></div>
+    <div class="cell"><div class="k">Band</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rIliBadge"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">A 250-km, 20,000-connection network at 45 m has an unavoidable floor near 920 m³/d. Losing 4,000 m³/d puts the ILI at about 4.3 — band C, "intensify control." Now drop the pressure to 35 m: the floor falls and, in reality, so would your actual losses (via the <a href="pressure-management-dma.html">FAVAD law</a>) — the two moves compound.</p>
+
+<h2 id="pillars">7 · The four pillars of leakage management</h2>
+<p>Real losses are held down by four levers acting together — the IWA's "four pillars." Take away any one and leakage creeps back up toward the unmanaged level<sup class="cite">[2][6]</sup>:</p>
+<ul class="clean">
+  <li><strong>Pressure management.</strong> The highest-return, lowest-cost lever: lower the average zone pressure to what the service needs and every leak shrinks at once, and fewer new bursts form. (See <a href="pressure-management-dma.html">pressure management &amp; DMAs</a>.)</li>
+  <li><strong>Active leakage control (ALC).</strong> Don't wait for leaks to surface — go looking. DMA night-flow monitoring flags which zone is leaking; acoustic loggers, correlators and step tests pinpoint where.</li>
+  <li><strong>Speed &amp; quality of repairs.</strong> A located leak keeps running until it is fixed; shortening the awareness-location-repair time directly cuts the volume lost per leak.</li>
+  <li><strong>Asset management &amp; renewal.</strong> Targeted mains and service-connection replacement lowers the burst frequency the other three pillars have to fight — the long-term floor.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The life of a leak</span>
+  Every litre of unreported leakage is lost over three phases: <strong>awareness</strong> (how long before you know a leak exists), <strong>location</strong> (how long to find it), and <strong>repair</strong> (how long to fix it). DMAs and night-flow monitoring crush the first two; a responsive repair crew crushes the third. The volume lost is leak rate × total run time — so cutting run time is as powerful as cutting the number of leaks.
+</div>
+
+<h2 id="ell">8 · The economic level of leakage</h2>
+<p>You can almost always find and fix one more leak — but should you? Beyond a point, the cost of looking harder exceeds the value of the water you would save. That crossover is the <strong>Economic Level of Leakage (ELL)</strong>: the leakage at which the total cost to the utility is lowest<sup class="cite">[6][7]</sup>.</p>
+<p>Two costs pull in opposite directions. The <strong>value of water lost</strong> rises with leakage — more leakage, more wasted production. The <strong>cost of active leakage control</strong> rises as leakage <em>falls</em> — to hold a lower level you must survey more often and chase smaller leaks. Add them and the total is a U-shaped curve; its lowest point is the ELL. Pushing leakage below the ELL is not "better" — it is spending two pounds to save one.</p>
+
+<h2 id="int-ell">9 · Interactive: the economic level of leakage</h2>
+<p>The red curve is the rising value of water lost; the amber curve is the cost of the leakage control needed to hold each level; the navy curve is their sum. The marker sits at the economic level of leakage — the minimum of the total. Move your current leakage to see how much you could save by reaching the ELL — or whether you have already over-invested past it.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Total cost of leakage vs. leakage level</div>
+    <div class="fsub">Value of water lost = unit cost × leakage (rising). Cost of active leakage control ≈ budget × (reference ÷ leakage) (rising as leakage falls). Total = the sum; its minimum is the economic level of leakage (ELL).</div>
+  </div>
+  <div class="chart-box"><canvas id="ellChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Unit cost of water <span id="vCw">0.60 $/m³</span></label>
+      <input type="range" id="sCw" min="0.2" max="2" value="0.6" step="0.05">
+      <div class="hint">Marginal cost of producing &amp; pumping a lost m³ (use tariff for apparent loss).</div>
+    </div>
+    <div class="ctrl">
+      <label>Leakage-control intensity <span id="vC0">400 k$/yr</span></label>
+      <input type="range" id="sC0" min="100" max="1500" value="400" step="25">
+      <div class="hint">Annual ALC spend to hold leakage at the 1,000 m³/d reference level.</div>
+    </div>
+    <div class="ctrl">
+      <label>Current leakage <span id="vLcur">3,000 m³/d</span></label>
+      <input type="range" id="sLcur" min="400" max="8000" value="3000" step="100">
+      <div class="hint">Where you are now — compare against the economic optimum.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Economic level (ELL)</div><div class="v" id="rEll">1,350 <small>m³/d</small></div></div>
+    <div class="cell"><div class="k">Total cost at ELL</div><div class="v" id="rEllCost">0.59 <small>M$/yr</small></div></div>
+    <div class="cell"><div class="k">Your total cost</div><div class="v" id="rCurCost">0.79 <small>M$/yr</small></div></div>
+    <div class="cell"><div class="k">Potential saving</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rEllBadge"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">With water at $0.60/m³ and a $400k/yr control budget, the economic level sits near 1,350 m³/d. Sitting at 3,000 m³/d costs about $0.2M/yr more than necessary — that gap is your business case for more ALC. Push the unit cost of water up (scarcity, energy, desalinated supply) and the optimum moves left: the more your water is worth, the harder it pays to chase the leaks.</p>
+
+<h2 id="checklist">10 · The NRW management checklist</h2>
+<ul class="clean">
+  <li><strong>Meter the system input</strong> — you cannot balance what you cannot measure; bulk-meter every source and import.</li>
+  <li><strong>Build the IWA water balance</strong> — split NRW into real, apparent and unbilled; report <em>volumes</em>, not just a percentage<sup class="cite">[1]</sup>.</li>
+  <li><strong>Compute the ILI</strong> — normalise real losses against UARL so you can benchmark and track honestly over time<sup class="cite">[4]</sup>.</li>
+  <li><strong>Attack apparent loss in parallel</strong> — meter testing/right-sizing, billing-data audits, and enforcement; this is the cheapest revenue you will ever recover.</li>
+  <li><strong>Work the four pillars</strong> — pressure management first, then active leakage control, fast repairs, and targeted renewal<sup class="cite">[2]</sup>.</li>
+  <li><strong>Zone the network</strong> — establish <a href="pressure-management-dma.html">DMAs</a> and monitor minimum night flow so leakage is found in days, not when it surfaces.</li>
+  <li><strong>Find the economic level</strong> — set the leakage target at the ELL, and revisit it whenever the cost of water changes<sup class="cite">[6]</sup>.</li>
+  <li><strong>Make it permanent</strong> — NRW reduction is not a project but a standing programme; without it, leakage rebounds toward the unmanaged level.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  Stop quoting a single percentage. Account for every drop with the IWA water balance, separate the field problem (real losses) from the back-office problem (apparent losses), measure how leaky you truly are with the ILI, and drive leakage down to the economic level — no further — with pressure management, active leakage control, fast repairs and renewal.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>American Water Works Association. <em>Manual M36 — Water Audits and Loss Control Programs</em> (the IWA/AWWA water balance, NRW components, validity scoring).</li>
+  <li>Farley, M. &amp; Trow, S. <em>Losses in Water Distribution Networks: A Practitioner's Guide to Assessment, Monitoring and Control.</em> IWA Publishing.</li>
+  <li>IWA Water Loss Specialist Group. <em>Best Practice Standard Water Balance and terminology</em> (Alegre et al., performance indicators).</li>
+  <li>Lambert, A.O. &amp; Hirner, W. (2000). <em>Losses from Water Supply Systems: Standard Terminology and Recommended Performance Measures</em> — the UARL formula and the Infrastructure Leakage Index.</li>
+  <li>Liemberger, R. &amp; McKenzie, R. <em>Accuracy Limitations of the ILI — Is it an Appropriate Indicator for Developing Countries?</em> (World Bank Institute ILI management bands).</li>
+  <li>Thornton, J., Sturm, R. &amp; Kunkel, G. <em>Water Loss Control.</em> McGraw-Hill — four pillars, ALC, and economic intervention.</li>
+  <li>UKWIR / Tripartite Group. <em>Best Practice Principles in the Economic Level of Leakage Calculation.</em></li>
+  <li>World Bank. <em>The Challenge of Reducing Non-Revenue Water in Developing Countries</em> (Kingdom, Liemberger &amp; Marin) — PPP and programme economics.</li>
+</ol>
+
+<div class="tags">#NonRevenueWater #NRW #WaterLoss #WaterBalance #LeakageControl #RealLosses #ApparentLosses #ILI #InfrastructureLeakageIndex #UARL #EconomicLevelOfLeakage #ELL #PressureManagement #DMA #ActiveLeakageControl #AWWA #M36 #IWA #PipelineDesign #WaterInfrastructure</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+
+<script>
+/* ---------- shared helpers ---------- */
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const fmt2=v=>v.toFixed(2);
+
+/* =====================================================================
+   CHART 1 — WATER BALANCE (stacked horizontal bar)
+   ===================================================================== */
+const sSiv=document.getElementById('sSiv'), sReal=document.getElementById('sReal'),
+      sApp=document.getElementById('sApp'), sUnb=document.getElementById('sUnb');
+const vSiv=document.getElementById('vSiv'), vReal=document.getElementById('vReal'),
+      vApp=document.getElementById('vApp'), vUnb=document.getElementById('vUnb');
+const TARIFF=0.9;     // $/m³ full retail tariff (apparent + unbilled valued here)
+const PRODCOST=0.45;  // $/m³ marginal production cost (real losses valued here)
+
+let balChart=new Chart(document.getElementById('balChart'),{
+  type:'bar',
+  data:{labels:['Water balance'],datasets:[
+    {label:'Billed authorised (Revenue Water)', data:[], backgroundColor:'#1e8449', borderWidth:0, stack:'s'},
+    {label:'Unbilled authorised', data:[], backgroundColor:'#5b6b7b', borderWidth:0, stack:'s'},
+    {label:'Apparent losses', data:[], backgroundColor:'#b9770e', borderWidth:0, stack:'s'},
+    {label:'Real losses', data:[], backgroundColor:'#c0392b', borderWidth:0, stack:'s'}
+  ]},
+  options:{
+    indexAxis:'y', responsive:true, maintainAspectRatio:false,
+    scales:{
+      x:{stacked:true,min:0,title:{display:true,text:'Volume (m³/day)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>fmt0(v)}},
+      y:{stacked:true,grid:{display:false},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt0(c.parsed.x)} m³/d`}}
+    }
+  }
+});
+
+function updateBal(){
+  const siv=+sSiv.value; let real=+sReal.value, app=+sApp.value, unb=+sUnb.value;
+  let billed=100-real-app-unb;
+  if(billed<0){ billed=0; }
+  vSiv.textContent=fmt0(siv)+' m³/d'; vReal.textContent=real+' %'; vApp.textContent=app+' %'; vUnb.textContent=unb+' %';
+  const vB=siv*billed/100, vU=siv*unb/100, vA=siv*app/100, vR=siv*real/100;
+  balChart.data.datasets[0].data=[+vB.toFixed(0)];
+  balChart.data.datasets[1].data=[+vU.toFixed(0)];
+  balChart.data.datasets[2].data=[+vA.toFixed(0)];
+  balChart.data.datasets[3].data=[+vR.toFixed(0)];
+  balChart.update('none');
+  const nrwPct=real+app+unb, nrwVol=siv*nrwPct/100;
+  // value of loss: apparent losses at full tariff (lost revenue); real losses + unbilled authorised at marginal production cost
+  const valLoss=(vA*TARIFF + (vR+vU)*PRODCOST)*365/1000;   // k$/yr
+  document.getElementById('rNrw').innerHTML=fmt0(nrwPct)+' <small>%</small>';
+  document.getElementById('rNrwV').innerHTML=fmt0(nrwVol)+' <small>m³/d</small>';
+  document.getElementById('rVal').innerHTML=fmt0(valLoss)+' <small>k$/yr</small>';
+  const v=document.getElementById('rBalBadge');
+  if(nrwPct>=35){ v.innerHTML='<span class="badge bad">high loss</span>'; }
+  else if(nrwPct>=20){ v.innerHTML='<span class="badge warn">room to improve</span>'; }
+  else { v.innerHTML='<span class="badge good">well controlled</span>'; }
+}
+[sSiv,sReal,sApp,sUnb].forEach(s=>s.addEventListener('input',updateBal));
+updateBal();
+
+/* =====================================================================
+   CHART 2 — UARL & THE ILI
+   ===================================================================== */
+const sLm=document.getElementById('sLm'), sNc=document.getElementById('sNc'),
+      sP=document.getElementById('sP'), sCarl=document.getElementById('sCarl');
+const vLm=document.getElementById('vLm'), vNc=document.getElementById('vNc'),
+      vP=document.getElementById('vP'), vCarl=document.getElementById('vCarl');
+
+let iliChart=new Chart(document.getElementById('iliChart'),{
+  type:'bar',
+  data:{labels:['UARL — unavoidable floor','CARL — current real losses'],datasets:[
+    {label:'Real losses (m³/day)', data:[], backgroundColor:['#1e8449','#c0392b'], borderWidth:0, barPercentage:0.6}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    scales:{
+      x:{grid:{display:false},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{min:0,title:{display:true,text:'Real losses (m³/day)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>fmt0(v)}}
+    },
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} m³/d`}}
+    }
+  }
+});
+
+function updateIli(){
+  const Lm=+sLm.value, Nc=+sNc.value, P=+sP.value, carl=+sCarl.value;
+  vLm.textContent=fmt0(Lm)+' km'; vNc.textContent=fmt0(Nc); vP.textContent=P+' m'; vCarl.textContent=fmt0(carl)+' m³/d';
+  const uarlLday=(18*Lm + 0.8*Nc)*P;        // litres/day
+  const uarl=uarlLday/1000;                  // m³/day
+  const ili=carl/uarl;
+  const rec=Math.max(0,carl-uarl);
+  iliChart.data.datasets[0].data=[+uarl.toFixed(0),+carl.toFixed(0)];
+  iliChart.update('none');
+  document.getElementById('rUarl').innerHTML=fmt0(uarl)+' <small>m³/d</small>';
+  document.getElementById('rRec').innerHTML=fmt0(rec)+' <small>m³/d</small>';
+  document.getElementById('rIli').textContent=fmt1(ili);
+  const v=document.getElementById('rIliBadge');
+  if(ili<2){ v.innerHTML='<span class="badge good">band A</span>'; }
+  else if(ili<4){ v.innerHTML='<span class="badge good">band B</span>'; }
+  else if(ili<8){ v.innerHTML='<span class="badge warn">band C</span>'; }
+  else { v.innerHTML='<span class="badge bad">band D</span>'; }
+}
+[sLm,sNc,sP,sCarl].forEach(s=>s.addEventListener('input',updateIli));
+updateIli();
+
+/* =====================================================================
+   CHART 3 — ECONOMIC LEVEL OF LEAKAGE
+   ===================================================================== */
+const sCw=document.getElementById('sCw'), sC0=document.getElementById('sC0'), sLcur=document.getElementById('sLcur');
+const vCw=document.getElementById('vCw'), vC0=document.getElementById('vC0'), vLcur=document.getElementById('vLcur');
+const LREF=1000;   // m³/day reference level for the ALC-cost model
+const LXS=[]; for(let L=200;L<=8000;L+=100) LXS.push(L);
+
+let ellChart=new Chart(document.getElementById('ellChart'),{
+  data:{labels:LXS,datasets:[
+    {type:'line', label:'Value of water lost', data:[], borderColor:'#c0392b', borderWidth:2, pointRadius:0, tension:0.2},
+    {type:'line', label:'Cost of leakage control', data:[], borderColor:'#b9770e', borderWidth:2, pointRadius:0, tension:0.2},
+    {type:'line', label:'Total cost', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.08)', borderWidth:3, pointRadius:0, tension:0.2, fill:true},
+    {type:'scatter', label:'Economic level (ELL)', data:[], backgroundColor:'#1e8449', borderColor:'#fff', borderWidth:2, pointRadius:7},
+    {type:'scatter', label:'Your current level', data:[], backgroundColor:'#c0392b', borderColor:'#fff', borderWidth:2, pointRadius:7}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    scales:{
+      x:{type:'linear',min:200,max:8000,title:{display:true,text:'Leakage level (m³/day)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>fmt0(v)}},
+      y:{min:0,title:{display:true,text:'Annual cost (M$/yr)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt2(c.parsed.y)} M$/yr at ${fmt0(c.parsed.x)} m³/d`}}
+    }
+  }
+});
+
+function updateEll(){
+  const cw=+sCw.value, C0=+sC0.value, Lcur=+sLcur.value;   // C0 in k$/yr
+  vCw.textContent=fmt2(cw)+' $/m³'; vC0.textContent=fmt0(C0)+' k$/yr'; vLcur.textContent=fmt0(Lcur)+' m³/d';
+  const C0$=C0*1000;
+  const water=L=>cw*L*365;            // $/yr
+  const alc=L=>C0$*LREF/L;            // $/yr
+  const total=L=>water(L)+alc(L);
+  ellChart.data.datasets[0].data=LXS.map(L=>({x:L,y:+(water(L)/1e6).toFixed(3)}));
+  ellChart.data.datasets[1].data=LXS.map(L=>({x:L,y:+(alc(L)/1e6).toFixed(3)}));
+  ellChart.data.datasets[2].data=LXS.map(L=>({x:L,y:+(total(L)/1e6).toFixed(3)}));
+  const Lstar=Math.sqrt(C0$*LREF/(cw*365));
+  ellChart.data.datasets[3].data=[{x:Lstar,y:+(total(Lstar)/1e6).toFixed(3)}];
+  ellChart.data.datasets[4].data=[{x:Lcur,y:+(total(Lcur)/1e6).toFixed(3)}];
+  ellChart.update('none');
+  document.getElementById('rEll').innerHTML=fmt0(Lstar)+' <small>m³/d</small>';
+  document.getElementById('rEllCost').innerHTML=fmt2(total(Lstar)/1e6)+' <small>M$/yr</small>';
+  document.getElementById('rCurCost').innerHTML=fmt2(total(Lcur)/1e6)+' <small>M$/yr</small>';
+  const saving=(total(Lcur)-total(Lstar))/1e6;
+  const v=document.getElementById('rEllBadge');
+  if(Lcur>Lstar*1.15){ v.innerHTML='<span class="badge warn">save '+fmt2(saving)+' M$/yr</span>'; }
+  else if(Lcur<Lstar*0.85){ v.innerHTML='<span class="badge bad">over-spending on ALC</span>'; }
+  else { v.innerHTML='<span class="badge good">near optimum</span>'; }
+}
+[sCw,sC0,sLcur].forEach(s=>s.addEventListener('input',updateEll));
+updateEll();
+
+window.addEventListener('load',function(){ try{balChart.resize();iliChart.resize();ellChart.resize();}catch(e){} });
+</script>
+
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

@@ -9,6 +9,7 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'nrw-monitoring-netbase-wms.html',        title:'Monitoring & Controlling Non-Revenue Water with NETBASE WMS',                                            cat:'pipeline',    thumb:'nrw-monitoring-netbase-wms.webp',      mins:16, tag:'Non-Revenue Water · Smart Water · WMS' },
     { url:'non-revenue-water-leakage.html',        title:'Non-Revenue Water: The Water Balance, the ILI & the Economic Level of Leakage',                          cat:'pipeline',    thumb:'non-revenue-water-leakage.webp',       mins:14, tag:'Non-Revenue Water · Water Balance · ILI' },
     { url:'pressure-management-dma.html',          title:'Pressure Management & District Metered Areas (DMA)',                                                     cat:'pipeline',    thumb:'pressure-management-dma.webp',         mins:13, tag:'Distribution Design · Pressure Management · DMA' },
     { url:'distribution-network-looped-branched.html', title:'Distribution Network Design: Looped vs Branched',                                                    cat:'pipeline',    thumb:'distribution-network-looped-branched.webp', mins:13, tag:'Distribution Design · Looped vs Branched' },

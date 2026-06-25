@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoring & Controlling Non-Revenue Water with NETBASE WMS — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Water Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    /* equations (MathJax) */
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    /* callouts */
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    /* tables */
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    /* original schematic */
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:16px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    /* interactive figure — a self-contained light instrument panel, legible in both themes */
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    /* references */
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="How Non-Revenue Water is monitored and controlled in practice with a Water Management System like NETBASE: the smart-water data chain from loggers and SCADA to the night-flow engine, converting minimum night flow to daily leakage (net night flow, night-day factor, pressure correction), burst alarming, detection latency, and prioritising where to send crews — with three interactive charts, worked numbers and the in-software workflow.">
+  <meta property="og:title" content="Monitoring & Controlling Non-Revenue Water with NETBASE WMS | Mohamed Abokhatwa">
+  <meta property="og:description" content="The smart-water workflow for NRW: loggers and SCADA into a WMS, the night-flow engine, burst alarms, detection latency, and crew prioritisation — the in-software detail, in three interactive charts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/nrw-monitoring-netbase-wms.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-nrw-monitoring-netbase-wms.jpg">
+  <meta property="og:image:alt" content="A smart-water control dashboard monitoring district metered areas and night flow">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Monitoring & Controlling Non-Revenue Water with NETBASE WMS | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="The smart-water data chain, the night-flow engine, burst alarming, detection latency and crew prioritisation — how a WMS like NETBASE turns data into recovered water.">
+  <link rel="canonical" href="https://abokhatwa.com/nrw-monitoring-netbase-wms.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Monitoring & Controlling Non-Revenue Water with NETBASE WMS",
+  "description": "The practical smart-water workflow for monitoring and controlling Non-Revenue Water with a Water Management System: data acquisition from loggers and SCADA, the night-flow engine (net night flow, night-day factor, pressure correction), burst alarming, detection latency, and crew prioritisation.",
+  "image": "https://abokhatwa.com/og-nrw-monitoring-netbase-wms.jpg",
+  "datePublished": "2026-06-25",
+  "dateModified": "2026-06-25",
+  "author": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa",
+    "url": "https://abokhatwa.com/about.html"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohamed Abokhatwa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://abokhatwa.com/nrw-monitoring-netbase-wms.html"
+  }
+}
+  </script>
+<style>
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+.breadcrumb a:hover{color:var(--text-primary);}
+.breadcrumb-sep{opacity:.4;}
+.breadcrumb-current{color:var(--text-secondary);}.breadcrumb a.breadcrumb-current{color:var(--accent);}.breadcrumb a.breadcrumb-current:hover{opacity:.75;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+<div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="pipeline-design.html" class="breadcrumb-current">Pipeline Design</a></div>
+  <span class="tag">Non-Revenue Water &middot; Smart Water &middot; WMS &middot; NETBASE</span>
+  <h1>Monitoring &amp; Controlling Non-Revenue Water with NETBASE WMS</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>June 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>16 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img src="nrw-monitoring-netbase-wms.webp" alt="A smart-water control room dashboard monitoring district metered areas, night flow trends and pressure across a city network">
+</div>
+
+<div class="article-body">
+<p class="lead">The previous two articles built the theory: divide the network into <a href="pressure-management-dma.html">District Metered Areas</a>, read the loss from minimum night flow, and account for every drop with the <a href="non-revenue-water-leakage.html">water balance and the ILI</a>. But a water balance built once a year, by hand, is a post-mortem. To actually <em>control</em> Non-Revenue Water you need the loss measured every night, every DMA, automatically — and a system that turns that torrent of data into a short, ranked list of where to send a crew tomorrow morning. That system is a Water Management System (WMS) such as <strong>NETBASE</strong>, and this is how it works, end to end.</p>
+
+<h2 id="why">1 · From a yearly audit to a living network</h2>
+<p>Manual leakage control has a fatal latency. A burst that starts the day after your annual survey can run for months before anyone notices the bill. Smart NRW management closes that gap by instrumenting the network and letting software watch it continuously. The shift is from <em>knowing how much you lost last year</em> to <em>knowing which zone started leaking last night</em>. Three capabilities make that possible<sup class="cite">[1][2]</sup>:</p>
+<ul class="clean">
+  <li><strong>Permanent measurement.</strong> Flow and pressure loggers on every DMA inlet, reporting continuously instead of during an annual visit.</li>
+  <li><strong>Automated analysis.</strong> The WMS computes each DMA's night flow, converts it to a daily leakage volume, and compares it with that zone's own history — every day, for hundreds of zones at once.</li>
+  <li><strong>Exception-based action.</strong> Instead of reading every chart, engineers react to <em>alarms</em>: the zones whose loss has stepped up. The data does the watching; people do the fixing.</li>
+</ul>
+
+<h2 id="chain">2 · The smart-water data chain</h2>
+<p>A WMS sits in the middle of a layered architecture. Each layer has a job, and the value of the system is only as good as the weakest one — bad data in, bad decisions out. Read it left to right: the field measures, communications carry, the WMS stores and analyses, and people and valves act — then the loop repeats<sup class="cite">[2][5]</sup>.</p>
+
+<div class="schematic">
+<svg viewBox="0 0 720 270" role="img" aria-label="The smart-water data chain: field sensors and loggers, communications, the WMS such as NETBASE, analytics, and action, with a feedback loop">
+  <style>
+    .sw-b{rx:10;}
+    .sw-t{font-family:-apple-system,'Inter',sans-serif;font-size:12.5px;font-weight:700;fill:var(--text-primary);}
+    .sw-s{font-family:-apple-system,'Inter',sans-serif;font-size:10px;fill:var(--text-secondary);}
+    .sw-ar{stroke:var(--accent);stroke-width:2.2;fill:none;marker-end:url(#ah);}
+    .sw-fb{stroke:var(--text-tertiary);stroke-width:1.8;fill:none;stroke-dasharray:5 5;marker-end:url(#ah2);}
+  </style>
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="var(--accent)"/></marker>
+    <marker id="ah2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="var(--text-tertiary)"/></marker>
+  </defs>
+  <text x="12" y="22" class="sw-t" style="font-size:13px;">The smart-water data chain — measure → carry → analyse → act → repeat</text>
+
+  <!-- 5 stage boxes -->
+  <rect x="12"  y="60" width="120" height="92" class="sw-b" fill="var(--accent)" opacity="0.12" stroke="var(--accent)"/>
+  <text x="24" y="84" class="sw-t">1 · Field</text>
+  <text x="24" y="104" class="sw-s">flow + pressure</text>
+  <text x="24" y="118" class="sw-s">loggers, DMA</text>
+  <text x="24" y="132" class="sw-s">meters, AMI</text>
+
+  <rect x="156" y="60" width="120" height="92" class="sw-b" fill="var(--bg-4)" stroke="var(--border)"/>
+  <text x="168" y="84" class="sw-t">2 · Comms</text>
+  <text x="168" y="104" class="sw-s">cellular / NB-IoT</text>
+  <text x="168" y="118" class="sw-s">SCADA / RTU</text>
+  <text x="168" y="132" class="sw-s">scheduled + alarm</text>
+
+  <rect x="300" y="60" width="120" height="92" class="sw-b" fill="#1b4f72" opacity="0.92"/>
+  <text x="312" y="84" class="sw-t" style="fill:#fff;">3 · WMS</text>
+  <text x="312" y="104" class="sw-s" style="fill:#dce6ef;">NETBASE</text>
+  <text x="312" y="118" class="sw-s" style="fill:#dce6ef;">historian +</text>
+  <text x="312" y="132" class="sw-s" style="fill:#dce6ef;">DMA engine</text>
+
+  <rect x="444" y="60" width="120" height="92" class="sw-b" fill="var(--bg-4)" stroke="var(--border)"/>
+  <text x="456" y="84" class="sw-t">4 · Analytics</text>
+  <text x="456" y="104" class="sw-s">night flow,</text>
+  <text x="456" y="118" class="sw-s">alarms, leakage,</text>
+  <text x="456" y="132" class="sw-s">pressure</text>
+
+  <rect x="588" y="60" width="120" height="92" class="sw-b" fill="#1e8449" opacity="0.14" stroke="#1e8449"/>
+  <text x="600" y="84" class="sw-t">5 · Action</text>
+  <text x="600" y="104" class="sw-s">crews locate</text>
+  <text x="600" y="118" class="sw-s">&amp; repair;</text>
+  <text x="600" y="132" class="sw-s">PRV control</text>
+
+  <!-- forward arrows -->
+  <path class="sw-ar" d="M132 106 H154"/>
+  <path class="sw-ar" d="M276 106 H298"/>
+  <path class="sw-ar" d="M420 106 H442"/>
+  <path class="sw-ar" d="M564 106 H586"/>
+
+  <!-- feedback loop: action back to field -->
+  <path class="sw-fb" d="M648 152 V200 H64 V152"/>
+  <text x="356" y="216" text-anchor="middle" class="sw-s">closed loop — fixing a leak and trimming pressure changes what the field measures next</text>
+</svg>
+  <div class="cap">Original schematic. The WMS (NETBASE) is the historian and analytics core; it is fed by field loggers/SCADA over scheduled and alarm-driven communications, and its output drives field crews and pressure control — which in turn change the next measurements.</div>
+</div>
+
+<p>The data sources differ in what they see and how often, and a good WMS fuses all of them onto one time-base:</p>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Source</th><th>What it gives</th><th>Typical interval</th></tr></thead>
+  <tbody>
+    <tr><td>DMA inlet flow logger</td><td>Zone inflow → night flow, the core leakage signal</td><td>Log 15 min; send 1–24 h (or on alarm)</td></tr>
+    <tr><td>Pressure logger (AZP / critical point)</td><td>Average zone pressure, for the leakage–pressure correction</td><td>Log 1–15 min</td></tr>
+    <tr><td>SCADA / RTU (reservoirs, pumps, PRVs)</td><td>Levels, pump status, valve position</td><td>Near real-time</td></tr>
+    <tr><td>Customer meters / AMI</td><td>Billed consumption → apparent loss, legitimate night use</td><td>Daily–hourly</td></tr>
+    <tr><td>GIS</td><td>Mains length, connections, DMA boundaries, asset attributes</td><td>Static, periodically synced</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="acquire">3 · Step one — acquisition and the unglamorous art of clean data</h2>
+<p>Every leakage figure the WMS ever produces rests on the quality of the raw signal, so the first job inside the software is <strong>data validation</strong>, not analysis. Loggers drop out, modems miss a call, a meter ices up, a clock drifts. Before night flow means anything, NETBASE-class platforms run each channel through validation, gap-filling and correction<sup class="cite">[3][5]</sup>:</p>
+<ul class="clean">
+  <li><strong>Time synchronisation.</strong> Every logger and SCADA tag must share one clock, or the night window will sample the wrong hour. Confirm the data is in the correct time zone and that daylight-saving shifts are handled.</li>
+  <li><strong>Unit and scaling check.</strong> Verify the meter's pulse weight / K-factor and engineering units (L/s vs m³/h vs Ml/d) at import; a wrong scale factor silently multiplies every result.</li>
+  <li><strong>Spike and flat-line removal.</strong> Reject physically impossible jumps and stuck values, and flag — don't silently invent — missing periods. Short gaps can be interpolated; long ones should be excluded so they cannot poison the night-flow average.</li>
+  <li><strong>DMA integrity.</strong> The single most common cause of a wrong night flow is a boundary valve that is supposed to be shut but is passing, or a second feed nobody logged. Periodic closed-valve / zero-pressure tests prove the zone is truly sealed.</li>
+</ul>
+
+<div class="callout warn">
+  <span class="lbl">Garbage in, alarms out</span>
+  An un-validated network throws false alarms (a logger gap looks like a burst) and misses real ones (a leaking boundary valve inflates the baseline until a true burst hides inside it). Most "the software is wrong" complaints are really data or DMA-integrity problems. Budget as much effort for data governance as for analysis.
+</div>
+
+<h2 id="nightflow">4 · Step two — the night-flow engine</h2>
+<p>This is the analytical heart of the WMS, and it is worth understanding exactly what the software does between the raw inlet flow and the leakage number on the dashboard. It runs every DMA, every night<sup class="cite">[2][3][4]</sup>.</p>
+
+<h3>4.1 Find the minimum night flow</h3>
+<p>Between roughly <strong>02:00 and 04:00</strong> legitimate demand bottoms out, so the inlet flow is dominated by leakage. The WMS picks the minimum sustained flow in that window — the <strong>minimum night flow (MNF)</strong>.</p>
+
+<h3>4.2 Subtract legitimate night use</h3>
+<p>Not all of the MNF is loss. A residual of genuine night consumption remains — toilet cisterns, a few night-shift users, the occasional large customer. The standard estimate is an allowance per property plus any metered <em>exceptional</em> night users<sup class="cite">[3]</sup>:</p>
+<div class="eq">\[ \text{NNF} = \text{MNF} - \big(N_p \times q_{\text{legit}} + Q_{\text{exceptional}}\big) \]</div>
+<p>where NNF is the <strong>net night flow</strong> (the leakage component at night), \(N_p\) the number of properties, and \(q_{\text{legit}}\) a per-property night allowance (a common default is ≈ 1.7 L/property/hour). Exceptional users (a hospital, a factory) are measured separately and removed explicitly, not averaged in.</p>
+
+<h3>4.3 Convert night leakage to a daily volume</h3>
+<p>Leakage at 3 a.m. is <em>not</em> the daily average leakage, because pressure is highest at night and — by the <a href="pressure-management-dma.html">FAVAD law</a> — leakage rises with pressure. To turn the net night flow into a daily volume you apply the <strong>Night-Day Factor (NDF)</strong>: the number of "night-equivalent" hours in the day once you account for the lower daytime pressure<sup class="cite">[3][4]</sup>:</p>
+<div class="eq">\[ \text{Daily leakage} = \text{NNF} \times \text{NDF}, \qquad \text{NDF} = \sum_{h=1}^{24}\left(\frac{P_h}{P_{\text{night}}}\right)^{N_1} \]</div>
+<p>With constant pressure the NDF would be 24; because daytime pressure is lower, it is typically <strong>20–22</strong>. This pressure correction is exactly why a co-located pressure logger matters: without it, the WMS over-states daily leakage by assuming night conditions all day.</p>
+
+<div class="callout key">
+  <span class="lbl">Worked example — one DMA, one night</span>
+  A 1,500-property DMA logs <strong>MNF = 12.0 m³/h</strong>. Legitimate night use = 1,500 × 1.7 L/prop·h = <strong>2.55 m³/h</strong>, so <strong>NNF = 9.45 m³/h</strong>. With an AZP-derived <strong>NDF = 20</strong>, daily leakage ≈ 9.45 × 20 = <strong>189 m³/day</strong> — about 126 L/property/day. Track that number nightly and a sudden jump is a new burst; a slow creep is rising background leakage telling you the zone is due for attention.
+</div>
+
+<h2 id="int-trend">5 · Interactive: nightly monitoring &amp; the burst alarm</h2>
+<p>This is the view an engineer actually lives in: one DMA's minimum night flow, night after night. The WMS learns the zone's baseline and sets an alarm threshold above it; when a burst steps the night flow up across that line, the zone alarms and lands on tomorrow's work list. Set the background leakage, drop in a burst, and tune how sensitive the alarm is — then watch how fast it fires and how much water escapes before it does.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">One DMA's minimum night flow over 30 nights</div>
+    <div class="fsub">Each point is a night's MNF. The dashed line is the learned baseline; the red line is the alarm threshold (baseline + sensitivity). A burst starts on night 15 and steps every later night up. The alarm fires the first night MNF crosses the threshold.</div>
+  </div>
+  <div class="chart-box"><canvas id="trendChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Background leakage (night) <span id="vBg">10 m³/h</span></label>
+      <input type="range" id="sBg" min="3" max="25" value="10" step="0.5">
+      <div class="hint">The DMA's baseline minimum night flow before the burst.</div>
+    </div>
+    <div class="ctrl">
+      <label>Burst size <span id="vBurst">6 m³/h</span></label>
+      <input type="range" id="sBurst" min="0" max="20" value="6" step="0.5">
+      <div class="hint">Extra night flow added from night 15 onward.</div>
+    </div>
+    <div class="ctrl">
+      <label>Alarm sensitivity <span id="vSens">3.0 m³/h</span></label>
+      <input type="range" id="sSens" min="0.5" max="10" value="3" step="0.5">
+      <div class="hint">Threshold above baseline. Tighter = earlier alarms but more false ones.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Alarm threshold</div><div class="v" id="rThr">13 <small>m³/h</small></div></div>
+    <div class="cell"><div class="k">Time to alarm</div><div class="v" id="rDays">1 <small>night</small></div></div>
+    <div class="cell"><div class="k">Lost before alarm</div><div class="v" id="rLost">— <small>m³</small></div></div>
+    <div class="cell"><div class="k">Status</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rTrendBadge"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">A 6 m³/h burst on a 10 m³/h baseline with a 3 m³/h threshold trips the alarm the very next night — days, not months, after it started. Now shrink the burst toward the threshold: it takes longer to stand out from the nightly scatter, and more water is lost before detection. Loosen the sensitivity too far and a real burst can hide in the noise; tighten it too far and ordinary variation cries wolf. Tuning that line per DMA is the daily craft of running a WMS.</p>
+
+<h2 id="int-latency">6 · Interactive: how often you read the data decides how much you lose</h2>
+<p>Detecting a burst quickly is worth real water, and detection speed is capped by how often the loggers actually deliver data. A logger that records every 15 minutes but only dials home once a day cannot warn you any faster than once a day. This chart traces the water lost from the moment a burst starts until the WMS first sees it — for a traditional daily read versus the transmission interval you choose.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Cumulative water lost before a burst is detected</div>
+    <div class="fsub">A burst starts at hour 0 and loses water at a constant rate. The WMS only sees it at the next data delivery. The blue marker is detection on a once-daily read; the green marker is detection at your chosen transmission interval.</div>
+  </div>
+  <div class="chart-box"><canvas id="latChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Burst flow <span id="vQ">5 L/s</span></label>
+      <input type="range" id="sQ" min="1" max="30" value="5" step="0.5">
+      <div class="hint">Continuous loss rate of the new burst.</div>
+    </div>
+    <div class="ctrl">
+      <label>Transmission interval <span id="vInt">6 h</span></label>
+      <input type="range" id="sInt" min="0.25" max="24" value="6" step="0.25">
+      <div class="hint">How often loggers deliver data (15 min … 24 h). Logging can be finer, but detection waits for delivery.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Detection delay</div><div class="v" id="rDelay">6 <small>h</small></div></div>
+    <div class="cell"><div class="k">Lost before detection</div><div class="v" id="rLatLost">108 <small>m³</small></div></div>
+    <div class="cell"><div class="k">Lost on daily read</div><div class="v" id="rLatDaily">432 <small>m³</small></div></div>
+    <div class="cell"><div class="k">Water saved</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rLatBadge"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">A 5 L/s burst loses 18 m³ every hour. Found on the next day's read, that is up to ~432 m³ gone; moved to a 6-hour delivery, ~108 m³; on 15-minute near-real-time telemetry, almost nothing. This is the business case for more frequent communications and event-driven alarming — and the reason "fast logging on alarm" modes exist on modern loggers. More data is not vanity; it is recovered water.</p>
+
+<h2 id="pressure">7 · Step three — closing the loop with pressure</h2>
+<p>Monitoring tells you where the loss is; the cheapest control acts on all of it at once. Because the WMS already holds each zone's flow and pressure, it is the natural place to drive <strong>pressure management</strong>. Modern PRV controllers accept a flow signal and modulate the outlet so the critical point sits at target for the actual demand — high at peak, low at night — and the WMS both supplies that flow signal and verifies the result by watching night flow fall<sup class="cite">[2][6]</sup>. The full mechanics — fixed, time- and flow-modulated control, and the FAVAD payback — are covered in <a href="pressure-management-dma.html">pressure management &amp; DMAs</a>; here the point is that the same platform that <em>detects</em> the loss also <em>commands the valve</em> and <em>confirms the saving</em>, all on one set of data.</p>
+
+<h2 id="prioritise">8 · Step four — deciding where to dig first</h2>
+<p>A city has hundreds of DMAs and a handful of leakage crews. The WMS turns the night-flow results into a ranked work list so the limited teams attack the zones with the most recoverable water first — the difference between current leakage and that zone's achievable level. It is a classic Pareto problem: a small number of DMAs usually hold most of the recoverable loss.</p>
+
+<h2 id="int-priority">9 · Interactive: prioritising the crews</h2>
+<p>Twelve DMAs, ranked by recoverable leakage. You have only so many crews this cycle — drag the count and the WMS assigns them to the worst zones first. Watch how quickly the cumulative line climbs: tackling the top few zones captures the majority of the recoverable water, which is why ranking beats working the network in map order.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Recoverable leakage by DMA — where the crews should go</div>
+    <div class="fsub">Bars are each DMA's recoverable leakage (m³/day), sorted worst-first. The green bars are the zones your crews reach this cycle. The navy line is the cumulative share of total recoverable loss captured.</div>
+  </div>
+  <div class="chart-box"><canvas id="priChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Crews available this cycle <span id="vCrew">4</span></label>
+      <input type="range" id="sCrew" min="1" max="12" value="4" step="1">
+      <div class="hint">Each crew tackles one DMA (worst first).</div>
+    </div>
+    <div class="ctrl">
+      <label>Value of recovered water <span id="vUv">0.60 $/m³</span></label>
+      <input type="range" id="sUv" min="0.2" max="2" value="0.6" step="0.05">
+      <div class="hint">Marginal value of a recovered m³ — sets the annual benefit.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">DMAs addressed</div><div class="v" id="rDmas">4 <small>of 12</small></div></div>
+    <div class="cell"><div class="k">Water recovered</div><div class="v" id="rRec2">1,930 <small>m³/d</small></div></div>
+    <div class="cell"><div class="k">Share of total</div><div class="v" id="rShare2">62 <small>%</small></div></div>
+    <div class="cell"><div class="k">Annual value</div><div class="v" id="rAnn">— <small>k$/yr</small></div></div>
+  </div>
+</div>
+<p class="fig-note">With four crews on the worst four of twelve zones you capture about 62% of all recoverable water — the Pareto pay-off. Adding crews five and six helps far less per crew: the curve flattens. The WMS makes this visible so management funds the crews that matter and stops spreading effort evenly across zones that barely leak.</p>
+
+<h2 id="apparent">10 · Don't forget apparent loss — AMI and the meter</h2>
+<p>Everything so far attacks <em>real</em> losses. The other half of NRW — <a href="non-revenue-water-leakage.html">apparent loss</a> — lives in the same data platform. Advanced Metering Infrastructure (AMI) streams customer consumption into the WMS, which lets it: size the legitimate-night-use allowance from real night consumption instead of a default; flag stopped or under-registering meters by their profile; detect zero-consumption accounts that should not be zero; and tighten the water balance because billed volume is now measured continuously, not estimated. Real and apparent loss share one system of record<sup class="cite">[1][7]</sup>.</p>
+
+<h2 id="inside">11 · Inside the software — getting accurate results</h2>
+<p>The platform is only as good as how it is set up. The settings and habits that separate a trustworthy WMS deployment from a noisy one<sup class="cite">[3][5]</sup>:</p>
+<ul class="clean">
+  <li><strong>Prove the DMA before you trust the number.</strong> Run a closed-valve test on commissioning and periodically; an unlogged second feed or a passing boundary valve corrupts every night flow that follows.</li>
+  <li><strong>Set the night window deliberately.</strong> Confirm 02:00–04:00 is genuinely the local minimum for that zone; shift it for areas with unusual demand (industrial, irrigation, different time zone/culture).</li>
+  <li><strong>Calibrate legitimate night use, don't accept the default.</strong> Use AMI or a night-use study to set the per-property allowance and to list exceptional users explicitly; the 1.7 L/prop·h figure is a starting point, not gospel.</li>
+  <li><strong>Feed it real pressure for the NDF.</strong> Compute the night-day factor from a measured AZP profile, not an assumption — it directly scales the daily leakage volume.</li>
+  <li><strong>Tune alarm thresholds per DMA.</strong> Quiet residential zones tolerate tight thresholds; mixed-use zones need wider ones. Review false-alarm and missed-event rates and adjust — a blanket threshold fails everywhere at once.</li>
+  <li><strong>Check meter K-factors and units at every import.</strong> A single wrong scale factor is the most common silent error in the whole chain.</li>
+  <li><strong>Integrate GIS and the hydraulic model.</strong> Pull mains length and connection counts from GIS for UARL/ILI; export validated demands to the calibrated <a href="distribution-network-looped-branched.html">network model</a> (EPANET, WaterGEMS, InfoWorks) so monitoring and modelling agree.</li>
+  <li><strong>Govern the data continuously.</strong> Watch logger battery and signal health, communication success rates, and gap statistics; a fleet of silent loggers is a dashboard of comforting lies.</li>
+</ul>
+
+<div class="callout green">
+  <span class="lbl">The operating rhythm</span>
+  Each morning the WMS presents the overnight exceptions: DMAs whose night flow stepped up (probable bursts) and those creeping up (rising background leakage). Crews are dispatched worst-first; pressure is modulated where the night over-pressure earns it; repairs and pressure changes feed back into the next night's data. NRW control becomes a daily loop, not an annual campaign.
+</div>
+
+<h2 id="checklist">12 · The implementation checklist</h2>
+<ul class="clean">
+  <li><strong>Instrument the DMAs</strong> — flow at every inlet, pressure at AZP/critical point, with adequate logging and transmission frequency for your detection target.</li>
+  <li><strong>Establish the data backbone</strong> — reliable communications, a validated import into the WMS, one synchronised clock, correct units and K-factors.</li>
+  <li><strong>Configure the night-flow engine</strong> — night window, legitimate night use, exceptional users, and a measured NDF per zone.</li>
+  <li><strong>Set and tune alarms</strong> — per-DMA thresholds; review false/missed rates and adjust.</li>
+  <li><strong>Wire in pressure control</strong> — flow-modulated PRVs driven and verified by the platform.</li>
+  <li><strong>Prioritise and dispatch</strong> — rank by recoverable loss; send crews worst-first; track run-time to repair.</li>
+  <li><strong>Add AMI for apparent loss</strong> — calibrate night use, catch meter faults, tighten the balance.</li>
+  <li><strong>Integrate GIS and model</strong> — for ILI benchmarking and for keeping monitoring and the hydraulic model consistent.</li>
+  <li><strong>Govern and review</strong> — logger health, data completeness, and a monthly ILI/water-balance trend, not just a yearly number.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  A WMS like NETBASE turns a network of loggers into a nightly verdict: it validates the data, computes each DMA's leakage from the net night flow with a measured pressure correction, alarms the zones that stepped up, ranks them by recoverable water, and drives the pressure that suppresses all of it — converting raw telemetry into the shortest possible list of where to dig tomorrow.
+</div>
+
+<h2 id="refs">References &amp; further reading</h2>
+<ol class="refs">
+  <li>American Water Works Association. <em>Manual M36 — Water Audits and Loss Control Programs</em> (water balance, NRW components, real vs apparent loss).</li>
+  <li>Farley, M. &amp; Trow, S. <em>Losses in Water Distribution Networks: A Practitioner's Guide to Assessment, Monitoring and Control.</em> IWA Publishing — DMA monitoring and night-flow analysis.</li>
+  <li>UK Water Industry / WRc. <em>Managing Leakage</em> series — esp. <em>Report E: Interpreting Measured Night Flows</em> (net night flow, legitimate night use, hour-to-day / night-day factor).</li>
+  <li>Lambert, A.O. &amp; Morrison, J.A.E. <em>Recent developments in pressure–leakage relationships and night-day factors.</em> IWA Water Loss conferences (FAVAD / N1).</li>
+  <li>Ovarro (formerly Servelec Technologies / Technolog). <em>NETBASE Water Network Management Software</em> — product and application documentation (DMA management, night-line analysis, alarms, pressure management, reporting).</li>
+  <li>Thornton, J., Sturm, R. &amp; Kunkel, G. <em>Water Loss Control.</em> McGraw-Hill — active leakage control, intervention and pressure management.</li>
+  <li>IWA / smart-water references on AMI, telemetry and data validation for water utilities; AWWA standards for metering accuracy.</li>
+  <li>EPANET (US EPA); Bentley OpenFlows WaterGEMS; Autodesk/Innovyze InfoWorks WS Pro — hydraulic model integration and demand calibration; Esri ArcGIS for GIS/asset data.</li>
+</ol>
+
+<div class="tags">#NonRevenueWater #NRW #SmartWater #NETBASE #WMS #WaterManagementSystem #LeakageControl #DMA #MinimumNightFlow #NetNightFlow #NightDayFactor #BurstDetection #SCADA #Telemetry #DataLoggers #AMI #PressureManagement #GIS #HydraulicModel #WaterLoss #PipelineDesign #WaterInfrastructure</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Water Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on hydraulic systems, surge protection, and water infrastructure — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+
+<script>
+/* ---------- shared helpers ---------- */
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const fmt2=v=>v.toFixed(2);
+/* deterministic night-to-night noise so sliders don't reshuffle the chart */
+const NZ=[]; (function(){let s=987654321; for(let i=0;i<40;i++){ s=(s*1103515245+12345)&0x7fffffff; NZ.push(s/0x7fffffff-0.5);} })();
+
+/* =====================================================================
+   CHART 1 — NIGHTLY MNF MONITORING & BURST ALARM
+   ===================================================================== */
+const sBg=document.getElementById('sBg'), sBurst=document.getElementById('sBurst'), sSens=document.getElementById('sSens');
+const vBg=document.getElementById('vBg'), vBurst=document.getElementById('vBurst'), vSens=document.getElementById('vSens');
+const NIGHTS=30, BDAY=15;          // burst starts on night 15 (index 14)
+const RISE=0.015;                  // slow natural rise in background leakage per night
+
+let trendChart=new Chart(document.getElementById('trendChart'),{
+  data:{labels:[...Array(NIGHTS).keys()].map(i=>i+1),datasets:[
+    {type:'line', label:'Minimum night flow', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.08)', borderWidth:2.5, pointRadius:2.5, tension:0.15, fill:true, order:4},
+    {type:'line', label:'Learned baseline', data:[], borderColor:'#5b6b7b', borderDash:[6,5], borderWidth:1.6, pointRadius:0, order:3},
+    {type:'line', label:'Alarm threshold', data:[], borderColor:'#c0392b', borderWidth:1.8, pointRadius:0, order:2},
+    {type:'scatter', label:'Alarm fired', data:[], backgroundColor:'#c0392b', borderColor:'#fff', borderWidth:2, pointRadius:8, order:1}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    scales:{
+      x:{title:{display:true,text:'Night',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},stepSize:2}},
+      y:{min:0,title:{display:true,text:'Minimum night flow (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt1(c.parsed.y)} m³/h`}},
+      annotation:{annotations:{burst:{type:'line',xMin:BDAY-1,xMax:BDAY-1,borderColor:'#b9770e',borderWidth:1.4,borderDash:[4,4],
+        label:{display:true,content:'burst starts',position:'start',font:{size:10,family:'DM Sans'},color:'#b9770e',backgroundColor:'rgba(255,255,255,0.85)'}}}}
+    }
+  }
+});
+
+function updateTrend(){
+  const bg=+sBg.value, burst=+sBurst.value, sens=+sSens.value;
+  vBg.textContent=fmt1(bg)+' m³/h'; vBurst.textContent=fmt1(burst)+' m³/h'; vSens.textContent=fmt1(sens)+' m³/h';
+  const series=[];
+  for(let i=0;i<NIGHTS;i++){
+    let v=bg + i*RISE + NZ[i]*0.5;       // baseline + slow rise + deterministic noise
+    if(i>=BDAY-1) v+=burst;              // burst from night 15
+    series.push(+v.toFixed(2));
+  }
+  // baseline learned from the pre-burst nights
+  let pre=0; for(let i=0;i<BDAY-1;i++) pre+=series[i]; pre/=(BDAY-1);
+  const thr=pre+sens;
+  // first night at/after burst that crosses threshold
+  let alarmIdx=-1;
+  for(let i=BDAY-1;i<NIGHTS;i++){ if(series[i]>=thr){ alarmIdx=i; break; } }
+  trendChart.data.datasets[0].data=series.map((y,i)=>({x:i+1,y}));
+  trendChart.data.datasets[1].data=series.map((_,i)=>({x:i+1,y:+pre.toFixed(2)}));
+  trendChart.data.datasets[2].data=series.map((_,i)=>({x:i+1,y:+thr.toFixed(2)}));
+  trendChart.data.datasets[3].data= alarmIdx>=0 ? [{x:alarmIdx+1,y:series[alarmIdx]}] : [];
+  trendChart.update('none');
+  document.getElementById('rThr').innerHTML=fmt1(thr)+' <small>m³/h</small>';
+  const badge=document.getElementById('rTrendBadge');
+  if(alarmIdx<0){
+    document.getElementById('rDays').innerHTML='—';
+    document.getElementById('rLost').innerHTML='&infin; <small>(undetected)</small>';
+    badge.innerHTML='<span class="badge bad">burst hidden</span>';
+  } else {
+    const nights=alarmIdx-(BDAY-1);
+    // water lost from burst onset to detection: burst rate over the elapsed days (+ the running detection day)
+    const lost=burst*24*(nights+0.5);
+    document.getElementById('rDays').innerHTML=(nights===0?'next':fmt0(nights))+' <small>night'+(nights>1?'s':'')+'</small>';
+    document.getElementById('rLost').innerHTML=fmt0(lost)+' <small>m³</small>';
+    if(nights<=1) badge.innerHTML='<span class="badge good">caught fast</span>';
+    else if(nights<=4) badge.innerHTML='<span class="badge warn">slow to alarm</span>';
+    else badge.innerHTML='<span class="badge bad">late alarm</span>';
+  }
+}
+[sBg,sBurst,sSens].forEach(s=>s.addEventListener('input',updateTrend));
+updateTrend();
+
+/* =====================================================================
+   CHART 2 — DETECTION LATENCY vs DATA FREQUENCY
+   ===================================================================== */
+const sQ=document.getElementById('sQ'), sInt=document.getElementById('sInt');
+const vQ=document.getElementById('vQ'), vInt=document.getElementById('vInt');
+const TXS=[]; for(let t=0;t<=48;t+=1) TXS.push(t);
+
+let latChart=new Chart(document.getElementById('latChart'),{
+  data:{labels:TXS,datasets:[
+    {type:'line', label:'Cumulative water lost', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.10)', borderWidth:3, pointRadius:0, tension:0, fill:true, order:3},
+    {type:'scatter', label:'Detected — your interval', data:[], backgroundColor:'#1e8449', borderColor:'#fff', borderWidth:2, pointRadius:8, order:1},
+    {type:'scatter', label:'Detected — daily read', data:[], backgroundColor:'#1b4f72', borderColor:'#fff', borderWidth:2, pointRadius:7, order:2}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    scales:{
+      x:{type:'linear',min:0,max:48,title:{display:true,text:'Hours since the burst started',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},stepSize:6,callback:v=>v+'h'}},
+      y:{min:0,title:{display:true,text:'Cumulative water lost (m³)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>fmt0(v)}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt0(c.parsed.y)} m³ at ${fmt0(c.parsed.x)} h`}}
+    }
+  }
+});
+
+function updateLat(){
+  const q=+sQ.value, intv=+sInt.value;          // q in L/s, interval in h
+  vQ.textContent=fmt1(q)+' L/s'; vInt.textContent=(intv<1?fmt2(intv):fmt1(intv))+' h';
+  const qh=q*3.6;                                 // m³/h
+  latChart.data.datasets[0].data=TXS.map(t=>({x:t,y:+(qh*t).toFixed(1)}));
+  const dDelay=intv, lostChosen=qh*dDelay, lostDaily=qh*24;
+  latChart.data.datasets[1].data=[{x:dDelay,y:+lostChosen.toFixed(1)}];
+  latChart.data.datasets[2].data=[{x:24,y:+lostDaily.toFixed(1)}];
+  latChart.update('none');
+  document.getElementById('rDelay').innerHTML=(intv<1?fmt2(intv):fmt1(intv))+' <small>h</small>';
+  document.getElementById('rLatLost').innerHTML=fmt0(lostChosen)+' <small>m³</small>';
+  document.getElementById('rLatDaily').innerHTML=fmt0(lostDaily)+' <small>m³</small>';
+  const saved=lostDaily-lostChosen, pct=saved/lostDaily*100;
+  const v=document.getElementById('rLatBadge');
+  if(pct>=66) v.innerHTML='<span class="badge good">'+fmt0(pct)+'% less lost</span>';
+  else if(pct>=25) v.innerHTML='<span class="badge warn">'+fmt0(pct)+'% less lost</span>';
+  else v.innerHTML='<span class="badge bad">'+fmt0(pct)+'% less lost</span>';
+}
+[sQ,sInt].forEach(s=>s.addEventListener('input',updateLat));
+updateLat();
+
+/* =====================================================================
+   CHART 3 — DMA PRIORITISATION (PARETO)
+   ===================================================================== */
+const sCrew=document.getElementById('sCrew'), sUv=document.getElementById('sUv');
+const vCrew=document.getElementById('vCrew'), vUv=document.getElementById('vUv');
+const DMA=[620,540,410,360,290,240,200,150,120,90,60,35];     // recoverable m³/d, sorted worst-first
+const DTOT=DMA.reduce((a,b)=>a+b,0);
+const DLAB=DMA.map((_,i)=>'D'+(i+1));
+let cum=0; const CUMPCT=DMA.map(v=>{cum+=v; return +(cum/DTOT*100).toFixed(1);});
+
+let priChart=new Chart(document.getElementById('priChart'),{
+  data:{labels:DLAB,datasets:[
+    {type:'bar', label:'Recoverable leakage (m³/d)', data:DMA, backgroundColor:[], borderWidth:0, yAxisID:'y', order:2},
+    {type:'line', label:'Cumulative share (%)', data:CUMPCT, borderColor:'#1b4f72', backgroundColor:'#1b4f72', borderWidth:2.5, pointRadius:3, tension:0.2, yAxisID:'y1', order:1}
+  ]},
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    scales:{
+      x:{grid:{display:false},ticks:{font:{family:'DM Sans',size:11}}},
+      y:{position:'left',min:0,title:{display:true,text:'Recoverable leakage (m³/day)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>fmt0(v)}},
+      y1:{position:'right',min:0,max:100,title:{display:true,text:'Cumulative share (%)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{drawOnChartArea:false},ticks:{font:{family:'DM Sans',size:11},callback:v=>v+'%'}}
+    },
+    plugins:{
+      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>c.dataset.type==='bar'?`${fmt0(c.parsed.y)} m³/d`:`${fmt1(c.parsed.y)}% cumulative`}}
+    }
+  }
+});
+
+function updatePri(){
+  const crews=+sCrew.value, uv=+sUv.value;
+  vCrew.textContent=crews; vUv.textContent=fmt2(uv)+' $/m³';
+  priChart.data.datasets[0].backgroundColor=DMA.map((_,i)=> i<crews ? '#1e8449' : '#c3ccd5');
+  priChart.update('none');
+  let rec=0; for(let i=0;i<crews;i++) rec+=DMA[i];
+  const pct=rec/DTOT*100, ann=rec*365*uv/1000;     // k$/yr
+  document.getElementById('rDmas').innerHTML=crews+' <small>of 12</small>';
+  document.getElementById('rRec2').innerHTML=fmt0(rec)+' <small>m³/d</small>';
+  document.getElementById('rShare2').innerHTML=fmt0(pct)+' <small>%</small>';
+  document.getElementById('rAnn').innerHTML=fmt0(ann)+' <small>k$/yr</small>';
+}
+[sCrew,sUv].forEach(s=>s.addEventListener('input',updatePri));
+updatePri();
+
+window.addEventListener('load',function(){ try{trendChart.resize();latChart.resize();priChart.resize();}catch(e){} });
+</script>
+
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

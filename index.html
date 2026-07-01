@@ -544,6 +544,11 @@
       <div class="cat-card-title">Leadership &amp; Sustainability</div>
       <div class="cat-card-count">5 articles</div>
     </button>
+    <button type="button" class="cat-card" data-cat="hvac" onclick="topicFilter('hvac',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/><path d="M12 5.5 9.5 3M12 5.5 14.5 3M12 18.5 9.5 21M12 18.5 14.5 21M5.5 12 3 9.5M5.5 12 3 14.5M18.5 12 21 9.5M18.5 12 21 14.5"/></svg></span>
+      <div class="cat-card-title">HVAC &amp; Cooling</div>
+      <div class="cat-card-count">1 article</div>
+    </button>
   </div>
 </div>
 
@@ -563,6 +568,22 @@
   <div id="no-results">No articles found — try a different search or category.</div>
 
   <div class="articles-grid" id="articlesGrid">
+
+    <a href="chiller-plant-design.html" class="article-card" data-cat="hvac" data-search="chiller plant design HVAC cooling central chilled water configurations constant primary secondary variable primary flow VPF series counterflow air-cooled water-cooled centrifugal screw scroll absorption compressor cooling tower condenser water approach range wet bulb staging part load IPLV kW/ton oversizing N+1 redundancy low delta-T syndrome decoupler ASHRAE 90.1 15 550 590 VFD variable speed pumping affinity laws commissioning TAB balancing reverse return air separator refrigerant machinery room district cooling MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Chiller Plant &middot; Design &middot; Installation</span>
+        <div class="article-card-title">Chiller Plant Design: Configurations, Design Pitfalls &amp; Installation Problems</div>
+        <p class="article-card-excerpt">A chiller plant is the largest energy user in most buildings, and where design on paper diverges most from the plant that runs. The configurations (constant primary, primary–secondary, variable primary flow, series counterflow), the design pitfalls — sizing, staging, part-load efficiency and the Low Delta-T Syndrome — and the installation problems that wreck real plants, in three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>16 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="chiller-plant-design.webp" alt="Chiller Plant Design: Configurations, Design Pitfalls & Installation Problems" loading="lazy">
+      </div>
+    </a>
 
     <a href="nrw-monitoring-netbase-wms.html" class="article-card" data-cat="pipeline" data-search="non-revenue water NRW monitoring control NETBASE WMS water management system smart water leakage control DMA minimum night flow MNF net night flow night-day factor NDF legitimate night use burst detection alarm SCADA telemetry data loggers AMI smart metering pressure management flow modulated PRV GIS hydraulic model EPANET WaterGEMS InfoWorks Ovarro Servelec Technolog data validation prioritisation pareto water resources optimization pipeline design">
       <div class="card-body">
@@ -596,7 +617,7 @@
       </div>
     </a>
 
-    <a href="pressure-management-dma.html" class="article-card" data-cat="pipeline" data-search="pressure management district metered area DMA non-revenue water NRW leakage control FAVAD N1 leakage exponent minimum night flow MNF pressure reducing valve PRV fixed time flow modulated outlet average zone pressure critical point burst frequency infrastructure leakage index ILI water audit AWWA M36 water loss IWA pipeline design">
+    <a href="pressure-management-dma.html" class="article-card hidden-article" data-cat="pipeline" data-search="pressure management district metered area DMA non-revenue water NRW leakage control FAVAD N1 leakage exponent minimum night flow MNF pressure reducing valve PRV fixed time flow modulated outlet average zone pressure critical point burst frequency infrastructure leakage index ILI water audit AWWA M36 water loss IWA pipeline design">
       <div class="card-body">
         <span class="article-card-tag">Distribution Design &middot; Pressure Management &middot; DMA &middot; Non-Revenue Water</span>
         <div class="article-card-title">Pressure Management &amp; District Metered Areas (DMA)</div>
@@ -1615,7 +1636,7 @@ function mcSubmit(e) {
       var cat=card.getAttribute('data-cat');
       var n=grid.querySelectorAll('.article-card[data-cat="'+cat+'"]').length;
       var el=card.querySelector('.cat-card-count');
-      if(el) el.textContent = n + ' articles';
+      if(el) el.textContent = n + (n===1 ? ' article' : ' articles');
     });
   }
   function syncShowMore(){

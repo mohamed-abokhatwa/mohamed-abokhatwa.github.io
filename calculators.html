@@ -519,8 +519,8 @@
   <h1>Engineering Calculators</h1>
   <p>Field-tested tools for water, infrastructure and MEP engineers. Real formulas. Instant results. No sign-up.</p>
   <div class="calc-hero-stats">
-    <div class="calc-hero-stat"><strong>36</strong>Calculators</div>
-    <div class="calc-hero-stat"><strong>10</strong>Categories</div>
+    <div class="calc-hero-stat"><strong>49</strong>Calculators</div>
+    <div class="calc-hero-stat"><strong>15</strong>Categories</div>
     <div class="calc-hero-stat unit-switch">
       <div class="unit-toggle" role="group" aria-label="Unit system">
         <button type="button" id="ut-si" onclick="setUnits('si')">SI</button>
@@ -3896,6 +3896,359 @@
   </p>
 </div>
 
+<div class="calc-category">
+  <div class="card-icon blue" style="width:32px;height:32px;font-size:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+  <h3>HVAC &amp; Cooling</h3>
+  <div class="calc-category-line"></div>
+</div>
+<div class="calc-grid">
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Chilled Water Flow</h2><p>Chilled-water flow from cooling load and ΔT</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Cooling Load</label><div class="field-wrap"><input type="number" id="cwf-tr" value="200" step="10" min="0" oninput="calcCWF()"><span class="unit">TR</span></div></div>
+      <div class="field"><label>Chilled-water ΔT</label><div class="field-wrap"><input type="number" id="cwf-dt" value="5.5" step="0.5" min="0" oninput="calcCWF()"><span class="unit">°C</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Chilled-Water Flow</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="cwf-r-flow">—<span class="result-unit">L/s</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Design flow</div></div>
+        <div class="result-secondaries">
+          <span id="cwf-r-m3h">= — m³/h</span>
+          <span id="cwf-r-load">Cooling load: — kW</span>
+          <span id="cwf-r-rule">Rule: — L/s per kW</span>
+        </div>
+      </div>
+      <div id="cwf-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Cooling Load (rule of thumb)</h2><p>Quick cooling load from area and load intensity</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Floor Area</label><div class="field-wrap"><input type="number" id="clr-area" value="500" step="10" min="0" oninput="calcCLR()"><span class="unit">m²</span></div></div>
+      <div class="field"><label>Load Intensity</label><div class="field-wrap"><input type="number" id="clr-wm2" value="120" step="5" min="0" oninput="calcCLR()"><span class="unit">W/m²</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Cooling Load</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="clr-r-tr">—<span class="result-unit">TR</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Total cooling</div></div>
+        <div class="result-secondaries">
+          <span id="clr-r-kw">= — kW</span>
+          <span id="clr-r-area">Floor area: — m²</span>
+          <span id="clr-r-spec">Intensity: — W/m²</span>
+        </div>
+      </div>
+      <div id="clr-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Fan Power</h2><p>Shaft power from airflow and static pressure</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Airflow Q</label><div class="field-wrap"><input type="number" id="fan-Q" value="10000" step="100" min="0" oninput="calcFAN()" data-conv="air_m3h"><span class="unit" data-conv="air_m3h">m³/h</span></div></div>
+      <div class="field"><label>Static Pressure</label><div class="field-wrap"><input type="number" id="fan-dp" value="500" step="10" min="0" oninput="calcFAN()"><span class="unit">Pa</span></div></div>
+      <div class="field"><label>Fan Efficiency</label><div class="field-wrap"><input type="number" id="fan-eff" value="65" step="1" min="0" oninput="calcFAN()"><span class="unit">%</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Fan Shaft Power</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="fan-r-kw">—<span class="result-unit">kW</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">At the fan shaft</div></div>
+        <div class="result-secondaries">
+          <span id="fan-r-air">Airflow: — m³/h</span>
+          <span id="fan-r-dp">Static pressure: — Pa</span>
+          <span id="fan-r-motor">Suggested motor: — kW</span>
+        </div>
+      </div>
+      <div id="fan-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Duct Sizing (velocity)</h2><p>Round-duct diameter from airflow and target velocity</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Airflow Q</label><div class="field-wrap"><input type="number" id="duct-Q" value="5000" step="100" min="0" oninput="calcDUCT()" data-conv="air_m3h"><span class="unit" data-conv="air_m3h">m³/h</span></div></div>
+      <div class="field"><label>Target Velocity</label><div class="field-wrap"><input type="number" id="duct-V" value="6" step="0.5" min="0" oninput="calcDUCT()"><span class="unit">m/s</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Round Duct Diameter</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="duct-r-d">—<span class="result-unit">mm</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Equivalent round</div></div>
+        <div class="result-secondaries">
+          <span id="duct-r-area">Cross-section: — m²</span>
+          <span id="duct-r-air">Airflow: — m³/h</span>
+          <span id="duct-r-v">Velocity: — m/s</span>
+        </div>
+      </div>
+      <div id="duct-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+</div><!-- /calc-grid hvac -->
+
+<div class="calc-category">
+  <div class="card-icon purple" style="width:32px;height:32px;font-size:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+  <h3>Electrical</h3>
+  <div class="calc-category-line"></div>
+</div>
+<div class="calc-grid">
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Cable Voltage Drop</h2><p>3-phase copper cable volt-drop and % check</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Current I</label><div class="field-wrap"><input type="number" id="vd-I" value="100" step="5" min="0" oninput="calcVD()"><span class="unit">A</span></div></div>
+      <div class="field"><label>Run Length L</label><div class="field-wrap"><input type="number" id="vd-L" value="80" step="1" min="0" oninput="calcVD()"><span class="unit">m</span></div></div>
+      <div class="field"><label>Conductor Size</label><div class="field-wrap"><input type="number" id="vd-A" value="95" step="1" min="0" oninput="calcVD()"><span class="unit">mm²</span></div></div>
+      <div class="field"><label>System Voltage</label><div class="field-wrap"><input type="number" id="vd-V" value="400" step="10" min="0" oninput="calcVD()"><span class="unit">V</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Voltage Drop</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="vd-r-pct">—<span class="result-unit">%</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Of nominal voltage</div></div>
+        <div class="result-secondaries">
+          <span id="vd-r-v">Voltage drop: — V</span>
+          <span id="vd-r-r">Cable R: — Ω/km</span>
+          <span id="vd-r-len">Run length: — m</span>
+        </div>
+      </div>
+      <div id="vd-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Motor Full-Load Current</h2><p>3-phase motor FLC from rating and voltage</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Motor Power</label><div class="field-wrap"><input type="number" id="flc-P" value="55" step="1" min="0" oninput="calcFLC()"><span class="unit">kW</span></div></div>
+      <div class="field"><label>Voltage</label><div class="field-wrap"><input type="number" id="flc-V" value="400" step="10" min="0" oninput="calcFLC()"><span class="unit">V</span></div></div>
+      <div class="field"><label>Power Factor</label><div class="field-wrap"><input type="number" id="flc-pf" value="0.85" step="0.01" min="0" oninput="calcFLC()"><span class="unit">—</span></div></div>
+      <div class="field"><label>Efficiency</label><div class="field-wrap"><input type="number" id="flc-eff" value="93" step="1" min="0" oninput="calcFLC()"><span class="unit">%</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Full-Load Current</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="flc-r-i">—<span class="result-unit">A</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Line current</div></div>
+        <div class="result-secondaries">
+          <span id="flc-r-kva">Apparent power: — kVA</span>
+          <span id="flc-r-p">Motor rating: — kW</span>
+          <span id="flc-r-cb">Breaker ≥ — A</span>
+        </div>
+      </div>
+      <div id="flc-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Generator / Transformer Sizing</h2><p>kVA from connected load, demand and PF</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Connected Load</label><div class="field-wrap"><input type="number" id="gen-load" value="800" step="10" min="0" oninput="calcGEN()" data-conv="kwe"><span class="unit" data-conv="kwe">kW</span></div></div>
+      <div class="field"><label>Power Factor</label><div class="field-wrap"><input type="number" id="gen-pf" value="0.8" step="0.01" min="0" oninput="calcGEN()"><span class="unit">—</span></div></div>
+      <div class="field"><label>Demand Factor</label><div class="field-wrap"><input type="number" id="gen-dem" value="70" step="1" min="0" oninput="calcGEN()"><span class="unit">%</span></div></div>
+      <div class="field"><label>Spare Margin</label><div class="field-wrap"><input type="number" id="gen-spare" value="25" step="1" min="0" oninput="calcGEN()"><span class="unit">%</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Required Rating</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="gen-r-kva">—<span class="result-unit">kVA</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">With spare margin</div></div>
+        <div class="result-secondaries">
+          <span id="gen-r-dem">Demand load: — kW</span>
+          <span id="gen-r-base">Base: — kVA</span>
+          <span id="gen-r-pick">Next standard set: — kVA</span>
+        </div>
+      </div>
+      <div id="gen-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+</div><!-- /calc-grid electrical -->
+
+<div class="calc-category">
+  <div class="card-icon green" style="width:32px;height:32px;font-size:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+  <h3>Fire Protection</h3>
+  <div class="calc-category-line"></div>
+</div>
+<div class="calc-grid">
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Sprinkler Demand</h2><p>Design flow from density × area + hose</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Design Area</label><div class="field-wrap"><input type="number" id="spr-area" value="144" step="1" min="0" oninput="calcSPR()"><span class="unit">m²</span></div></div>
+      <div class="field"><label>Density</label><div class="field-wrap"><input type="number" id="spr-dens" value="5" step="0.25" min="0" oninput="calcSPR()"><span class="unit">mm/min</span></div></div>
+      <div class="field"><label>Hose Allowance</label><div class="field-wrap"><input type="number" id="spr-hose" value="6" step="0.5" min="0" oninput="calcSPR()"><span class="unit">L/s</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Total Demand</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="spr-r-total">—<span class="result-unit">L/s</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Sprinklers + hose</div></div>
+        <div class="result-secondaries">
+          <span id="spr-r-spr">Sprinkler flow: — L/s</span>
+          <span id="spr-r-lmin">= — L/min</span>
+          <span id="spr-r-hose">Hose allowance: — L/s</span>
+        </div>
+      </div>
+      <div id="spr-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Fire Pump &amp; Storage</h2><p>Fire-water storage and NFPA-20 pump points</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Required Flow</label><div class="field-wrap"><input type="number" id="fp-Q" value="50" step="1" min="0" oninput="calcFP()"><span class="unit">L/s</span></div></div>
+      <div class="field"><label>Rated Head</label><div class="field-wrap"><input type="number" id="fp-H" value="90" step="1" min="0" oninput="calcFP()"><span class="unit">m</span></div></div>
+      <div class="field"><label>Duration</label><div class="field-wrap"><input type="number" id="fp-dur" value="60" step="5" min="0" oninput="calcFP()"><span class="unit">min</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Fire-Water Storage</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="fp-r-stor">—<span class="result-unit">m³</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">For the duration</div></div>
+        <div class="result-secondaries">
+          <span id="fp-r-q150">150% flow: — L/s</span>
+          <span id="fp-r-churn">Churn head (140%): — m</span>
+          <span id="fp-r-kw">Pump power: — kW</span>
+        </div>
+      </div>
+      <div id="fp-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+</div><!-- /calc-grid fire -->
+
+<div class="calc-category">
+  <div class="card-icon blue" style="width:32px;height:32px;font-size:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+  <h3>Plumbing &amp; PHE</h3>
+  <div class="calc-category-line"></div>
+</div>
+<div class="calc-grid">
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Hunter Fixture-Unit Demand</h2><p>Probable design flow from loading units</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Loading Units</label><div class="field-wrap"><input type="number" id="hu-lu" value="200" step="5" min="0" oninput="calcHU()"><span class="unit">LU</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Design Flow</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="hu-r-q">—<span class="result-unit">L/s</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Probable demand</div></div>
+        <div class="result-secondaries">
+          <span id="hu-r-m3h">= — m³/h</span>
+          <span id="hu-r-lu">Fixture units: — LU</span>
+          <span id="hu-r-note">Empirical Hunter fit</span>
+        </div>
+      </div>
+      <div id="hu-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Hot-Water Storage</h2><p>Storage volume and heater from occupancy</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Occupants</label><div class="field-wrap"><input type="number" id="hws-occ" value="200" step="5" min="0" oninput="calcHWS()"><span class="unit">cap</span></div></div>
+      <div class="field"><label>Hot Water / person</label><div class="field-wrap"><input type="number" id="hws-per" value="25" step="1" min="0" oninput="calcHWS()"><span class="unit">L/cap·d</span></div></div>
+      <div class="field"><label>Storage Fraction</label><div class="field-wrap"><input type="number" id="hws-frac" value="40" step="1" min="0" oninput="calcHWS()"><span class="unit">%</span></div></div>
+      <div class="field"><label>Heat-up ΔT</label><div class="field-wrap"><input type="number" id="hws-dt" value="45" step="1" min="0" oninput="calcHWS()"><span class="unit">°C</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Storage Volume</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="hws-r-vol">—<span class="result-unit">m³</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Usable hot store</div></div>
+        <div class="result-secondaries">
+          <span id="hws-r-daily">Daily demand: — L</span>
+          <span id="hws-r-kw">Heater (2 h recovery): — kW</span>
+          <span id="hws-r-note"></span>
+        </div>
+      </div>
+      <div id="hws-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+</div><!-- /calc-grid plumbing -->
+
+<div class="calc-category">
+  <div class="card-icon purple" style="width:32px;height:32px;font-size:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+  <h3>Vertical Transport &amp; ELV</h3>
+  <div class="calc-category-line"></div>
+</div>
+<div class="calc-grid">
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Lift Traffic (HC &amp; interval)</h2><p>5-minute handling capacity and interval</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Population</label><div class="field-wrap"><input type="number" id="lt-pop" value="1000" step="10" min="0" oninput="calcLT()"><span class="unit">cap</span></div></div>
+      <div class="field"><label>Number of Lifts</label><div class="field-wrap"><input type="number" id="lt-n" value="4" step="1" min="0" oninput="calcLT()"><span class="unit">—</span></div></div>
+      <div class="field"><label>Round-Trip Time</label><div class="field-wrap"><input type="number" id="lt-rtt" value="120" step="5" min="0" oninput="calcLT()"><span class="unit">s</span></div></div>
+      <div class="field"><label>Car Capacity</label><div class="field-wrap"><input type="number" id="lt-cap" value="13" step="1" min="0" oninput="calcLT()"><span class="unit">cap</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">5-min Handling Capacity</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="lt-r-hc">—<span class="result-unit">%</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Of population</div></div>
+        <div class="result-secondaries">
+          <span id="lt-r-int">Interval: — s</span>
+          <span id="lt-r-cars">Cars: —</span>
+          <span id="lt-r-fill">At 80% car fill</span>
+        </div>
+      </div>
+      <div id="lt-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <div class="card-header">
+      <div class="card-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+      <div class="card-header-text"><h2>Fire-Alarm Battery</h2><p>Standby + alarm battery sizing (×1.25)</p></div>
+    </div>
+    <div class="input-grid g2">
+      <div class="field"><label>Supervisory Current</label><div class="field-wrap"><input type="number" id="fab-isup" value="0.5" step="0.1" min="0" oninput="calcFAB()"><span class="unit">A</span></div></div>
+      <div class="field"><label>Standby Time</label><div class="field-wrap"><input type="number" id="fab-hst" value="24" step="1" min="0" oninput="calcFAB()"><span class="unit">h</span></div></div>
+      <div class="field"><label>Alarm Current</label><div class="field-wrap"><input type="number" id="fab-ial" value="3" step="0.1" min="0" oninput="calcFAB()"><span class="unit">A</span></div></div>
+      <div class="field"><label>Alarm Duration</label><div class="field-wrap"><input type="number" id="fab-amin" value="5" step="1" min="0" oninput="calcFAB()"><span class="unit">min</span></div></div>
+    </div>
+    <div class="result-box">
+      <div class="result-label">Battery Capacity</div>
+      <div class="result-row">
+        <div><div class="result-primary" id="fab-r-ah">—<span class="result-unit">Ah</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">With 25% margin</div></div>
+        <div class="result-secondaries">
+          <span id="fab-r-st">Standby: — Ah</span>
+          <span id="fab-r-al">Alarm: — Ah</span>
+          <span id="fab-r-pick">Next standard: — Ah</span>
+        </div>
+      </div>
+      <div id="fab-pill" class="pill pill-info">—</div>
+    </div>
+  </div>
+
+</div><!-- /calc-grid vt -->
+
 </div><!-- /calc-page -->
 
 <!-- ═══ FOOTER ═══ -->
@@ -4018,28 +4371,36 @@ const UNITS = {
   'kN/m²': {us:'psi',   f:0.145037738},
   'kN/m':  {us:'lbf/ft',f:68.52177},
   'kN':    {us:'kip',   f:0.2248089},
-  'kW':    {us:'HP',    f:1.341022}
-  /* Temperature (°C) intentionally NOT converted: fields mix absolute temps
-     (e.g. water temperature) with differences (ΔT), which convert differently. */
+  'kW':    {us:'HP',    f:1.341022},
+  'Pa':    {us:'in wg', f:0.00401463},
+  'W/m²':  {us:'BTU/h·ft²', f:0.316998}
+  /* Temperature (°C) intentionally NOT converted (mix of absolute + ΔT). */
 };
+/* explicit per-field overrides (data-conv) for units whose US form is context-specific */
+const CONV = {
+  'air_m3h': {si:'m³/h', us:'CFM', f:0.588578},   /* AIR flow, not water */
+  'air_ls':  {si:'L/s',  us:'CFM', f:2.118880},
+  'kwe':     {si:'kW',   us:'kW',  f:1}           /* electrical / thermal kW: never HP */
+};
+function UDEF(k){ if(!k) return null; if(CONV[k]) return CONV[k]; if(UNITS[k]) return {si:k, us:UNITS[k].us, f:UNITS[k].f}; return null; }
 var SYS = (function(){ try { return localStorage.getItem('calc-units')||'si'; } catch(e){ return 'si'; } })();
 var MANAGED = [], LABELS = [];
 function roundDisp(v){ if(!isFinite(v)) return v; var a=Math.abs(v); var p = a>=100?1 : a>=10?2 : a>=1?3 : 4; return parseFloat(v.toFixed(p)); }
-function uLabel(k){ return (SYS==='us' && UNITS[k]) ? UNITS[k].us : k; }
+function uLabel(k){ var d=UDEF(k); if(!d) return k; return SYS==='us' ? d.us : d.si; }
 /* read an input, always return SI number (0 when blank) */
 function SIV(id){
   var el=document.getElementById(id); if(!el) return 0;
   var v=parseFloat(el.value); if(isNaN(v)) return 0;
-  var d=el.dataset.udim;
-  if(d && SYS==='us' && UNITS[d]) return v/UNITS[d].f;
+  var d=UDEF(el.dataset.udim);
+  if(d && SYS==='us') return v/d.f;
   return v;
 }
 /* format an SI value + unit for the current system (used by secondary results) */
 function VU(val, k, dec){
   if(dec===undefined) dec=2;
-  var d=UNITS[k];
+  var d=UDEF(k);
   if(d && SYS==='us') return fmt(val*d.f, dec)+' '+d.us;
-  return fmt(val, dec)+' '+k;
+  return fmt(val, dec)+' '+(d?d.si:k);
 }
 function inUC(el){ var c=el.closest&&el.closest('.calc-card'); return !!(c && c.querySelector('input[id^="uc-"]')); }
 function discoverUnits(){
@@ -4047,8 +4408,8 @@ function discoverUnits(){
   document.querySelectorAll('.calc-page input[type=number]').forEach(function(el){
     if(!el.id || el.id.indexOf('uc-')===0) return;      /* skip the unit-converter tool */
     var sp=el.parentElement && el.parentElement.querySelector('.unit');
-    var key=sp?sp.textContent.trim():null;
-    if(key && UNITS[key]){
+    var key=el.dataset.conv || (sp?sp.textContent.trim():null);
+    if(key && UDEF(key)){
       el.dataset.udim=key;
       el.dataset.si=String(parseFloat(el.value));
       el.addEventListener('input', function(){ var v=SIV(el.id); el.dataset.si=String(v); });
@@ -4057,17 +4418,18 @@ function discoverUnits(){
   });
   document.querySelectorAll('.calc-page .unit, .calc-page .result-unit').forEach(function(sp){
     if(inUC(sp)) return;
-    sp.dataset.usi=sp.textContent.trim();
+    var key=sp.dataset.conv || sp.textContent.trim();
+    sp.dataset.usi = UDEF(key) ? key : sp.textContent.trim();
     LABELS.push(sp);
   });
 }
 function applyUnits(toSys){
   MANAGED.forEach(function(el){
-    var d=el.dataset.udim, si=parseFloat(el.dataset.si);
-    if(isNaN(si)||!UNITS[d]) return;
-    el.value = roundDisp(toSys==='us' ? si*UNITS[d].f : si);
+    var d=UDEF(el.dataset.udim), si=parseFloat(el.dataset.si);
+    if(isNaN(si)||!d) return;
+    el.value = roundDisp(toSys==='us' ? si*d.f : si);
   });
-  LABELS.forEach(function(sp){ var k=sp.dataset.usi; sp.textContent=(toSys==='us'&&UNITS[k])?UNITS[k].us:k; });
+  LABELS.forEach(function(sp){ var d=UDEF(sp.dataset.usi); if(d) sp.textContent=(toSys==='us')?d.us:d.si; });
   SYS=toSys; try{ localStorage.setItem('calc-units',SYS); }catch(e){}
 }
 function updateToggleUI(){
@@ -4085,8 +4447,143 @@ function runAllCalcs(){
   calcSYS(); calcPE(); calcUC(); calcCW(); calcDF(); calcFL(); calcTE();
   calcPC(); calcMI(); calcAV(); calcPN(); calcHRT(); calcCLA(); calcCO();
   calcWF(); calcCR(); calcDM(); calcBS();
+  calcCWF(); calcCLR(); calcFAN(); calcDUCT(); calcVD(); calcFLC(); calcGEN();
+  calcSPR(); calcFP(); calcHU(); calcHWS(); calcLT(); calcFAB();
 }
 /* =========================================================================== */
+
+/* ================= MEP CALCULATORS ================= */
+function calcCWF(){
+  var TR=SIV('cwf-tr'), dt=SIV('cwf-dt'); var kw=TR*3.517;
+  var Lps= dt>0? kw/(4.187*dt):0; var m3h=Lps*3.6;
+  setPrimary('cwf-r-flow', Lps, 'L/s');
+  setText('cwf-r-m3h','= '+VU(m3h,'m³/h',1));
+  setText('cwf-r-load','Cooling load: '+VU(kw,'kwe',1));
+  setText('cwf-r-rule','Rule: '+fmt(kw>0?Lps/kw:0,3)+' L/s per kW');
+  if(dt<4) setPill('cwf-pill','pill-warn','⚠ Low ΔT — high flow & pumping energy');
+  else if(dt>7) setPill('cwf-pill','pill-info','Wide ΔT — low flow, watch coil selection');
+  else setPill('cwf-pill','pill-ok','✓ Typical design ΔT');
+}
+function calcCLR(){
+  var area=SIV('clr-area'), wm2=SIV('clr-wm2'); var kw=area*wm2/1000, tr=kw/3.517;
+  setPrimary('clr-r-tr', tr, 'TR');
+  setText('clr-r-kw','= '+VU(kw,'kwe',1));
+  setText('clr-r-area','Floor area: '+VU(area,'m²',0));
+  setText('clr-r-spec','Intensity: '+VU(wm2,'W/m²',0));
+  if(wm2<80) setPill('clr-pill','pill-info','Light load (≈ residential/light office)');
+  else if(wm2<=160) setPill('clr-pill','pill-ok','✓ Typical office / commercial');
+  else setPill('clr-pill','pill-warn','⚠ Heavy load (data / kitchen / retail)');
+}
+function calcFAN(){
+  var Q=SIV('fan-Q'), dp=SIV('fan-dp'), eff=SIV('fan-eff')/100;
+  var kw= eff>0? (Q/3600)*dp/eff/1000:0; var motor=kw/0.9;
+  setPrimary('fan-r-kw', kw, 'kW');
+  setText('fan-r-air','Airflow: '+VU(Q,'air_m3h',0));
+  setText('fan-r-dp','Static pressure: '+VU(dp,'Pa',0));
+  setText('fan-r-motor','Suggested motor: '+VU(motor,'kW',1));
+  if(eff*100<55) setPill('fan-pill','pill-warn','⚠ Low fan efficiency — review selection');
+  else setPill('fan-pill','pill-ok','✓ Efficiency '+fmt(eff*100,0)+'%');
+}
+function calcDUCT(){
+  var Q=SIV('duct-Q'), V=SIV('duct-V'); var Qs=Q/3600; var A= V>0?Qs/V:0;
+  var D=Math.sqrt(4*A/Math.PI)*1000;
+  setPrimary('duct-r-d', D, 'mm');
+  setText('duct-r-area','Cross-section: '+VU(A,'m²',3));
+  setText('duct-r-air','Airflow: '+VU(Q,'air_m3h',0));
+  setText('duct-r-v','Velocity: '+VU(V,'m/s',1));
+  if(V<4) setPill('duct-pill','pill-info','Low velocity — quiet, larger duct');
+  else if(V<=8) setPill('duct-pill','pill-ok','✓ Typical velocity range');
+  else setPill('duct-pill','pill-warn','⚠ High velocity — noise & pressure loss');
+}
+function calcVD(){
+  var I=SIV('vd-I'), L=SIV('vd-L'), A=SIV('vd-A'), Vn=SIV('vd-V');
+  var rho=0.0225; var R= A>0? rho/A:0; var Vd=Math.sqrt(3)*I*R*L; var pct= Vn>0? Vd/Vn*100:0;
+  setPrimary('vd-r-pct', pct, '%');
+  setText('vd-r-v','Voltage drop: '+VU(Vd,'V',2));
+  setText('vd-r-r','Cable R: '+fmt(R*1000,3)+' Ω/km');
+  setText('vd-r-len','Run length: '+VU(L,'m',0));
+  if(pct<=3) setPill('vd-pill','pill-ok','✓ Within 3% (feeder/branch)');
+  else if(pct<=5) setPill('vd-pill','pill-warn','⚠ 3–5% — acceptable only to final circuits');
+  else setPill('vd-pill','pill-danger','✗ Exceeds 5% — increase size');
+}
+function calcFLC(){
+  var P=SIV('flc-P'), Vn=SIV('flc-V'), pf=SIV('flc-pf'), eff=SIV('flc-eff')/100;
+  var den=Math.sqrt(3)*Vn*pf*eff; var I= den>0? P*1000/den:0;
+  setPrimary('flc-r-i', I, 'A');
+  setText('flc-r-kva','Apparent power: '+fmt((pf*eff)>0?P/(pf*eff):0,1)+' kVA');
+  setText('flc-r-p','Motor rating: '+VU(P,'kW',1));
+  setText('flc-r-cb','Breaker ≥ '+fmt(I*1.25,0)+' A');
+  setPill('flc-pill','pill-info','3-phase · line current at full load');
+}
+function calcGEN(){
+  var load=SIV('gen-load'), pf=SIV('gen-pf'), dem=SIV('gen-dem')/100, spare=SIV('gen-spare')/100;
+  var demkW=load*dem; var kva= pf>0? demkW/pf:0; var kvaS=kva*(1+spare);
+  var sizes=[10,15,20,30,40,50,63,80,100,125,160,200,250,315,400,500,630,800,1000,1250,1600,2000,2500];
+  var pick=sizes.find(function(x){return x>=kvaS}); pick=pick?pick+' kVA':'> 2500 kVA';
+  setPrimary('gen-r-kva', kvaS, 'kVA');
+  setText('gen-r-dem','Demand load: '+VU(demkW,'kwe',0));
+  setText('gen-r-base','Base: '+fmt(kva,0)+' kVA');
+  setText('gen-r-pick','Next standard set: '+pick);
+  setPill('gen-pill','pill-info','Sized on demand × (1 + spare)');
+}
+function calcSPR(){
+  var area=SIV('spr-area'), dens=SIV('spr-dens'), hose=SIV('spr-hose');
+  var Lmin=area*dens; var Lps=Lmin/60; var total=Lps+hose;
+  setPrimary('spr-r-total', total, 'L/s');
+  setText('spr-r-spr','Sprinkler flow: '+VU(Lps,'L/s',1));
+  setText('spr-r-lmin','= '+fmt(Lmin,0)+' L/min');
+  setText('spr-r-hose','Hose allowance: '+VU(hose,'L/s',1));
+  setPill('spr-pill','pill-info','Flow = density × area + hose');
+}
+function calcFP(){
+  var Q=SIV('fp-Q'), H=SIV('fp-H'), dur=SIV('fp-dur');
+  var stor=Q*dur*0.06; var q150=Q*1.5; var churn=H*1.4; var kw=(9.81*(Q/1000)*H)/0.7;
+  setPrimary('fp-r-stor', stor, 'm³');
+  setText('fp-r-q150','150% flow: '+VU(q150,'L/s',1));
+  setText('fp-r-churn','Churn head (140%): '+VU(churn,'m',0));
+  setText('fp-r-kw','Pump power: '+VU(kw,'kW',1));
+  setPill('fp-pill','pill-info','NFPA-20 pump envelope + storage');
+}
+function calcHU(){
+  var lu=SIV('hu-lu'); var Lps=0.6*Math.pow(lu>0?lu:0,0.55); var m3h=Lps*3.6;
+  setPrimary('hu-r-q', Lps, 'L/s');
+  setText('hu-r-m3h','= '+VU(m3h,'m³/h',1));
+  setText('hu-r-lu','Fixture units: '+fmt(lu,0)+' LU');
+  setText('hu-r-note','Empirical Hunter-curve fit');
+  setPill('hu-pill','pill-info','Probable simultaneous demand');
+}
+function calcHWS(){
+  var occ=SIV('hws-occ'), per=SIV('hws-per'), frac=SIV('hws-frac')/100, dt=SIV('hws-dt');
+  var dailyL=occ*per; var storL=dailyL*frac; var storM3=storL/1000;
+  var kw= storM3*1000*4.187*dt/3600/2;
+  setPrimary('hws-r-vol', storM3, 'm³');
+  setText('hws-r-daily','Daily demand: '+fmt(dailyL,0)+' L');
+  setText('hws-r-kw','Heater (2 h recovery): '+VU(kw,'kwe',1));
+  setText('hws-r-note','Store ≈ '+fmt(frac*100,0)+'% of daily demand');
+  setPill('hws-pill','pill-info','Storage + recovery heater');
+}
+function calcLT(){
+  var pop=SIV('lt-pop'), n=SIV('lt-n'), rtt=SIV('lt-rtt'), cap=SIV('lt-cap');
+  var fill=cap*0.8; var hc= (rtt>0&&pop>0)? (300*fill*n)/(rtt*pop)*100:0; var itv= n>0? rtt/n:0;
+  setPrimary('lt-r-hc', hc, '%');
+  setText('lt-r-int','Interval: '+fmt(itv,1)+' s');
+  setText('lt-r-cars','Cars: '+fmt(n,0)+' × '+fmt(cap,0)+' persons');
+  setText('lt-r-fill','At 80% car fill');
+  if(hc>=12) setPill('lt-pill','pill-ok','✓ Meets office target (≥12%)');
+  else if(hc>=10) setPill('lt-pill','pill-warn','⚠ Marginal (10–12%)');
+  else setPill('lt-pill','pill-danger','✗ Below target — add/ speed up lifts');
+}
+function calcFAB(){
+  var isup=SIV('fab-isup'), hst=SIV('fab-hst'), ial=SIV('fab-ial'), amin=SIV('fab-amin');
+  var stAh=isup*hst, alAh=ial*amin/60; var ah=(stAh+alAh)*1.25;
+  var sizes=[7,12,18,26,38,65,100,150,200]; var pick=sizes.find(function(x){return x>=ah}); pick=pick?pick+' Ah':'> 200 Ah';
+  setPrimary('fab-r-ah', ah, 'Ah');
+  setText('fab-r-st','Standby: '+fmt(stAh,1)+' Ah');
+  setText('fab-r-al','Alarm: '+fmt(alAh,2)+' Ah');
+  setText('fab-r-pick','Next standard: '+pick);
+  setPill('fab-pill','pill-info','(standby + alarm) × 1.25');
+}
+/* =================================================== */
 
 /* ── Helpers ── */
 function fmt(n, d=2) {
@@ -4096,7 +4593,7 @@ function fmt(n, d=2) {
 function setPrimary(id, val, unit='') {
   var el = document.getElementById(id);
   if (!el) return;
-  var d = UNITS[unit];
+  var d = UDEF(unit);
   var shown = (d && SYS==='us') ? val*d.f : val;
   var ulab = d ? uLabel(unit) : unit;
   el.innerHTML = (isFinite(shown) && !isNaN(shown) ? fmt(shown) : '—') +
@@ -5357,7 +5854,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   /* ── Search + category quick-nav toolbar ── */
-  var SHORT={'Pumps & Energy':'Pumps','Pump Engineering':'Pump Eng.','Pipe Hydraulics & Flow':'Hydraulics','Advanced Pipe Design':'Pipe Design','Pipe Structural & Selection':'Structural','Transient Analysis & Surge Protection':'Surge','Open Channel & Gravity Flow':'Open Channel','Water Demand & Planning':'Demand','Storage & Water Quality':'Storage','Economic Optimization':'Economic'};
+  var SHORT={'Pumps & Energy':'Pumps','Pump Engineering':'Pump Eng.','Pipe Hydraulics & Flow':'Hydraulics','Advanced Pipe Design':'Pipe Design','Pipe Structural & Selection':'Structural','Transient Analysis & Surge Protection':'Surge','Open Channel & Gravity Flow':'Open Channel','Water Demand & Planning':'Demand','Storage & Water Quality':'Storage','Economic Optimization':'Economic','HVAC & Cooling':'HVAC','Electrical':'Electrical','Fire Protection':'Fire','Plumbing & PHE':'Plumbing','Vertical Transport & ELV':'Lifts & ELV'};
   function buildToolbar(){
     var page=document.querySelector('.calc-page'); if(!page) return;
     var cats=[];

@@ -4148,7 +4148,11 @@
       <div class="card-header-text"><h2>Hunter Fixture-Unit Demand</h2><p>Probable design flow from loading units</p></div>
     </div>
     <div class="input-grid g2">
-      <div class="field"><label>Loading Units</label><div class="field-wrap"><input type="number" id="hu-lu" value="200" step="5" min="0" oninput="calcHU()"><span class="unit">LU</span></div></div>
+      <div class="field"><label>Fixture Units (WSFU)</label><div class="field-wrap"><input type="number" id="hu-lu" value="200" step="5" min="0" oninput="calcHU()"><span class="unit">LU</span></div></div>
+      <div class="field"><label>System Type</label><div class="field-wrap"><select id="hu-sys" onchange="calcHU()">
+        <option value="ft" selected>Flush tanks (gravity)</option>
+        <option value="fv">Flush valves (flushometer)</option>
+      </select></div></div>
     </div>
     <div class="result-box">
       <div class="result-label">Design Flow</div>
@@ -4544,13 +4548,27 @@ function calcFP(){
   setText('fp-r-kw','Pump power: '+VU(kw,'kW',1));
   setPill('fp-pill','pill-info','NFPA-20 pump envelope + storage');
 }
+/* Hunter's curve — probable demand (US GPM) vs water-supply fixture units (WSFU).
+   Two curves: flush tanks (gravity) and flush valves (flushometer). */
+function huInterp(fu, t){
+  if(fu<=0) return 0;
+  if(fu<=t[0][0]) return t[0][1]*fu/t[0][0];
+  for(var i=0;i<t.length-1;i++){ if(fu<=t[i+1][0]){ var r=(fu-t[i][0])/(t[i+1][0]-t[i][0]); return t[i][1]+r*(t[i+1][1]-t[i][1]); } }
+  var n=t.length, m=(t[n-1][1]-t[n-2][1])/(t[n-1][0]-t[n-2][0]);
+  return t[n-1][1]+m*(fu-t[n-1][0]);
+}
 function calcHU(){
-  var lu=SIV('hu-lu'); var Lps=0.6*Math.pow(lu>0?lu:0,0.55); var m3h=Lps*3.6;
+  var lu=SIV('hu-lu');
+  var sys=(document.getElementById('hu-sys')||{}).value||'ft';
+  var FT=[[1,3],[5,6.5],[10,8],[20,14],[30,18],[40,21],[50,24],[60,26],[80,31],[100,35],[150,44],[200,51],[300,65],[400,76],[500,86],[750,108],[1000,127],[1500,159],[2000,186],[3000,232],[5000,300]];
+  var FV=[[5,15],[10,27],[20,35],[30,41],[40,46],[50,51],[60,55],[80,62],[100,68],[150,81],[200,92],[300,109],[400,124],[500,137],[750,165],[1000,189],[1500,226],[2000,256],[3000,308],[5000,380]];
+  var gpm=huInterp(lu, sys==='fv'?FV:FT);
+  var Lps=gpm/15.850323, m3h=Lps*3.6;
   setPrimary('hu-r-q', Lps, 'L/s');
   setText('hu-r-m3h','= '+VU(m3h,'m³/h',1));
-  setText('hu-r-lu','Fixture units: '+fmt(lu,0)+' LU');
-  setText('hu-r-note','Empirical Hunter-curve fit');
-  setPill('hu-pill','pill-info','Probable simultaneous demand');
+  setText('hu-r-lu','Fixture units: '+fmt(lu,0)+' WSFU · '+(sys==='fv'?'flush valves':'flush tanks'));
+  setText('hu-r-note','Hunter curve ('+(sys==='fv'?'flushometer':'gravity tank')+') — verify vs code table');
+  setPill('hu-pill','pill-info','Probable simultaneous demand (Hunter method)');
 }
 function calcHWS(){
   var occ=SIV('hws-occ'), per=SIV('hws-per'), frac=SIV('hws-frac')/100, dt=SIV('hws-dt');

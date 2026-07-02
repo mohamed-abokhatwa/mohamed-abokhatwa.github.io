@@ -521,7 +521,19 @@
   <div class="calc-hero-stats">
     <div class="calc-hero-stat"><strong>36</strong>Calculators</div>
     <div class="calc-hero-stat"><strong>10</strong>Categories</div>
-    <div class="calc-hero-stat"><strong>SI</strong>Units</div>
+    <div class="calc-hero-stat unit-switch">
+      <div class="unit-toggle" role="group" aria-label="Unit system">
+        <button type="button" id="ut-si" onclick="setUnits('si')">SI</button>
+        <button type="button" id="ut-us" onclick="setUnits('us')">US</button>
+      </div>
+      <span>Units</span>
+    </div>
+    <style>
+      .unit-switch{display:flex;flex-direction:column;align-items:center;gap:6px;}
+      .unit-toggle{display:inline-flex;border:1px solid var(--border,#d2d2d7);border-radius:980px;overflow:hidden;background:var(--bg-3,#f5f5f7);}
+      .unit-toggle button{border:0;background:transparent;padding:5px 16px;font-size:14px;font-weight:800;cursor:pointer;color:var(--text-tertiary,#8e8e93);font-family:inherit;transition:background .15s,color .15s;}
+      .unit-toggle button.active{background:var(--accent,#0071e3);color:#fff;}
+    </style>
   </div>
 </div>
 
@@ -3985,6 +3997,97 @@ function mcSubmit(e) {
 <script>
 const RHO = 1000, G = 9.81;
 
+/* ================= UNIT SYSTEM ENGINE (SI <-> US customary) ================= */
+const UNITS = {
+  'm':     {us:'ft',    f:3.280840},
+  'mm':    {us:'in',    f:0.0393701},
+  'm²':    {us:'ft²',   f:10.763910},
+  'm³':    {us:'gal',   f:264.172},
+  'm³/h':  {us:'GPM',   f:4.402868},
+  'L/s':   {us:'GPM',   f:15.850323},
+  'm³/s':  {us:'MGD',   f:22.824465},
+  'm³/day':{us:'MGD',   f:0.000264172},
+  'm³/d':  {us:'MGD',   f:0.000264172},
+  'm/s':   {us:'ft/s',  f:3.280840},
+  'bar':   {us:'psi',   f:14.503774},
+  'bar_g': {us:'psig',  f:14.503774},
+  'kPa':   {us:'psi',   f:0.145037738},
+  'MPa':   {us:'psi',   f:145.037738},
+  'GPa':   {us:'ksi',   f:145.037738},
+  'kN/m³': {us:'pcf',   f:6.365880},
+  'kN/m²': {us:'psi',   f:0.145037738},
+  'kN/m':  {us:'lbf/ft',f:68.52177},
+  'kN':    {us:'kip',   f:0.2248089},
+  'kW':    {us:'HP',    f:1.341022}
+  /* Temperature (°C) intentionally NOT converted: fields mix absolute temps
+     (e.g. water temperature) with differences (ΔT), which convert differently. */
+};
+var SYS = (function(){ try { return localStorage.getItem('calc-units')||'si'; } catch(e){ return 'si'; } })();
+var MANAGED = [], LABELS = [];
+function roundDisp(v){ if(!isFinite(v)) return v; var a=Math.abs(v); var p = a>=100?1 : a>=10?2 : a>=1?3 : 4; return parseFloat(v.toFixed(p)); }
+function uLabel(k){ return (SYS==='us' && UNITS[k]) ? UNITS[k].us : k; }
+/* read an input, always return SI number (0 when blank) */
+function SIV(id){
+  var el=document.getElementById(id); if(!el) return 0;
+  var v=parseFloat(el.value); if(isNaN(v)) return 0;
+  var d=el.dataset.udim;
+  if(d && SYS==='us' && UNITS[d]) return v/UNITS[d].f;
+  return v;
+}
+/* format an SI value + unit for the current system (used by secondary results) */
+function VU(val, k, dec){
+  if(dec===undefined) dec=2;
+  var d=UNITS[k];
+  if(d && SYS==='us') return fmt(val*d.f, dec)+' '+d.us;
+  return fmt(val, dec)+' '+k;
+}
+function inUC(el){ var c=el.closest&&el.closest('.calc-card'); return !!(c && c.querySelector('input[id^="uc-"]')); }
+function discoverUnits(){
+  MANAGED=[]; LABELS=[];
+  document.querySelectorAll('.calc-page input[type=number]').forEach(function(el){
+    if(!el.id || el.id.indexOf('uc-')===0) return;      /* skip the unit-converter tool */
+    var sp=el.parentElement && el.parentElement.querySelector('.unit');
+    var key=sp?sp.textContent.trim():null;
+    if(key && UNITS[key]){
+      el.dataset.udim=key;
+      el.dataset.si=String(parseFloat(el.value));
+      el.addEventListener('input', function(){ var v=SIV(el.id); el.dataset.si=String(v); });
+      MANAGED.push(el);
+    }
+  });
+  document.querySelectorAll('.calc-page .unit, .calc-page .result-unit').forEach(function(sp){
+    if(inUC(sp)) return;
+    sp.dataset.usi=sp.textContent.trim();
+    LABELS.push(sp);
+  });
+}
+function applyUnits(toSys){
+  MANAGED.forEach(function(el){
+    var d=el.dataset.udim, si=parseFloat(el.dataset.si);
+    if(isNaN(si)||!UNITS[d]) return;
+    el.value = roundDisp(toSys==='us' ? si*UNITS[d].f : si);
+  });
+  LABELS.forEach(function(sp){ var k=sp.dataset.usi; sp.textContent=(toSys==='us'&&UNITS[k])?UNITS[k].us:k; });
+  SYS=toSys; try{ localStorage.setItem('calc-units',SYS); }catch(e){}
+}
+function updateToggleUI(){
+  var si=document.getElementById('ut-si'), us=document.getElementById('ut-us');
+  if(si) si.classList.toggle('active', SYS==='si');
+  if(us) us.classList.toggle('active', SYS==='us');
+}
+function setUnits(sys){ if(sys===SYS){ updateToggleUI(); return; } applyUnits(sys); runAllCalcs(); updateToggleUI(); }
+function toggleUnits(){ setUnits(SYS==='si'?'us':'si'); }
+function unitsInit(){ discoverUnits(); if(SYS==='us') applyUnits('us'); updateToggleUI(); }
+function runAllCalcs(){
+  calcWH(); calcWS(); calcSV(); calcHW(); calcRE(); calcML();
+  calcPP(); calcNP(); calcBL(); calcMGP(); calcMOC(); calcDW();
+  calcTH(); calcAFF(); calcNS(); calcTNK(); calcCL(); calcEPD();
+  calcSYS(); calcPE(); calcUC(); calcCW(); calcDF(); calcFL(); calcTE();
+  calcPC(); calcMI(); calcAV(); calcPN(); calcHRT(); calcCLA(); calcCO();
+  calcWF(); calcCR(); calcDM(); calcBS();
+}
+/* =========================================================================== */
+
 /* ── Helpers ── */
 function fmt(n, d=2) {
   if (!isFinite(n) || isNaN(n)) return '—';
@@ -3993,8 +4096,11 @@ function fmt(n, d=2) {
 function setPrimary(id, val, unit='') {
   var el = document.getElementById(id);
   if (!el) return;
-  el.innerHTML = (isFinite(val) && !isNaN(val) ? fmt(val) : '—') +
-    (unit ? '<span class="result-unit">' + unit + '</span>' : '');
+  var d = UNITS[unit];
+  var shown = (d && SYS==='us') ? val*d.f : val;
+  var ulab = d ? uLabel(unit) : unit;
+  el.innerHTML = (isFinite(shown) && !isNaN(shown) ? fmt(shown) : '—') +
+    (ulab ? '<span class="result-unit">' + ulab + '</span>' : '');
 }
 function setPill(id, cls, text) {
   var el = document.getElementById(id);
@@ -4033,17 +4139,17 @@ function toggleDiagram(id, btn) {
    CALC 1 — Water Hammer
 ══════════════════════════════ */
 function calcWH() {
-  var Q  = +document.getElementById('wh-Q').value  || 0;
-  var D  = +document.getElementById('wh-D').value  || 0;
-  var a  = +document.getElementById('wh-a').value  || 0;
-  var L  = +document.getElementById('wh-L').value  || 0;
-  var P0 = +document.getElementById('wh-p0').value || 0;
+  var Q  = SIV('wh-Q')  || 0;
+  var D  = SIV('wh-D')  || 0;
+  var a  = SIV('wh-a')  || 0;
+  var L  = SIV('wh-L')  || 0;
+  var P0 = SIV('wh-p0') || 0;
 
   // Calculate ΔV from Q and D
   var D_m = D / 1000;
   var A   = Math.PI * D_m * D_m / 4;
   var V   = A > 0 ? (Q / 3600) / A : 0;
-  document.getElementById('wh-v-display').textContent = fmt(V, 3) + ' m/s';
+  document.getElementById('wh-v-display').textContent = VU(V,'m/s',3);
 
   var dP_bar = RHO * a * V / 1e5;
   var dP_m   = RHO * a * V / (RHO * G);
@@ -4051,25 +4157,25 @@ function calcWH() {
   var Tc     = (a > 0 && L > 0) ? 2 * L / a : 0;
 
   setPrimary('wh-r-bar', dP_bar, 'bar');
-  setText('wh-r-total', 'Total max. pressure: ' + fmt(Ptotal) + ' bar');
-  setText('wh-r-m',     fmt(dP_m, 0) + ' m surge head');
+  setText('wh-r-total', 'Total max. pressure: ' + VU(Ptotal,'bar'));
+  setText('wh-r-m',     VU(dP_m,'m',0) + ' surge head');
   setText('wh-r-tc',    'Critical closure time Tc: ' + fmt(Tc, 1) + ' s');
 
   if (dP_bar > 10)
-    setPill('wh-pill','pill-danger','⚠ ' + fmt(dP_bar) + ' bar surge — protection required');
+    setPill('wh-pill','pill-danger','⚠ ' + VU(dP_bar,'bar') + ' surge — protection required');
   else if (dP_bar > 5)
-    setPill('wh-pill','pill-warn','⚡ ' + fmt(dP_bar) + ' bar surge — review protection');
+    setPill('wh-pill','pill-warn','⚡ ' + VU(dP_bar,'bar') + ' surge — review protection');
   else
-    setPill('wh-pill','pill-ok','✓ ' + fmt(dP_bar) + ' bar — moderate surge');
+    setPill('wh-pill','pill-ok','✓ ' + VU(dP_bar,'bar') + ' — moderate surge');
 }
 
 /* ══════════════════════════════
    CALC 2 — Wave Speed
 ══════════════════════════════ */
 function calcWS() {
-  var D_mm = +document.getElementById('ws-D').value || 0;
-  var t_mm = +document.getElementById('ws-t').value || 0;
-  var E    = +document.getElementById('ws-mat').value;
+  var D_mm = SIV('ws-D') || 0;
+  var t_mm = SIV('ws-t') || 0;
+  var E    = SIV('ws-mat');
   var D = D_mm / 1000, t = t_mm / 1000;
   var K = 2.1e9;
   if (D <= 0 || t <= 0 || E <= 0) { setPrimary('ws-r-a','—','m/s'); return; }
@@ -4078,9 +4184,9 @@ function calcWS() {
   setPrimary('ws-r-a', a, 'm/s');
   var cls = a > 1200 ? 'Rigid pipe (high wave speed)' : a > 800 ? 'Semi-rigid pipe' : 'Flexible pipe (low wave speed)';
   setText('ws-r-class', cls);
-  setText('ws-r-note', 'Use ' + fmt(a,0) + ' m/s in Water Hammer calculator ↑');
+  setText('ws-r-note', 'Use ' + VU(a,'m/s',0) + ' in Water Hammer calculator ↑');
 
-  var pillTxt = 'a = ' + fmt(a,0) + ' m/s — ' + (a > 1200 ? 'rigid' : a > 800 ? 'semi-rigid' : 'flexible');
+  var pillTxt = 'a = ' + VU(a,'m/s',0) + ' — ' + (a > 1200 ? 'rigid' : a > 800 ? 'semi-rigid' : 'flexible');
   setPill('ws-pill','pill-info', pillTxt);
 }
 
@@ -4088,12 +4194,12 @@ function calcWS() {
    CALC 3 — Surge Vessel
 ══════════════════════════════ */
 function calcSV() {
-  var Q    = +document.getElementById('sv-Q').value    || 0;
-  var D    = +document.getElementById('sv-D').value    || 0;
-  var L    = +document.getElementById('sv-L').value    || 0;
-  var a    = +document.getElementById('sv-a').value    || 0;
-  var Pmin = +document.getElementById('sv-pmin').value || 0;
-  var Pmax = +document.getElementById('sv-pmax').value || 0;
+  var Q    = SIV('sv-Q')    || 0;
+  var D    = SIV('sv-D')    || 0;
+  var L    = SIV('sv-L')    || 0;
+  var a    = SIV('sv-a')    || 0;
+  var Pmin = SIV('sv-pmin') || 0;
+  var Pmax = SIV('sv-pmax') || 0;
   var SF   = 0.9; // standard industry practice
 
   // Intermediate calculations
@@ -4104,9 +4210,9 @@ function calcSV() {
   var Vw   = (Q / 3600) * Tc / 2; // surge volume ≈ avg flow × half wave period
 
   // Display intermediate values
-  document.getElementById('sv-calc-v').textContent  = fmt(V, 2) + ' m/s';
+  document.getElementById('sv-calc-v').textContent  = VU(V,'m/s',2);
   document.getElementById('sv-calc-tc').textContent = fmt(Tc, 1) + ' s';
-  document.getElementById('sv-calc-vw').textContent = fmt(Vw, 2) + ' m³';
+  document.getElementById('sv-calc-vw').textContent = VU(Vw,'m³',2);
 
   var Patm   = 1.013;
   var Pmin_a = Pmin + Patm;
@@ -4123,21 +4229,21 @@ function calcSV() {
   var fillRatio = Vw / V_vessel * 100;
 
   setPrimary('sv-r-vol', V_vessel, 'm³');
-  setText('sv-r-p0',    'Pre-charge P₀: ' + fmt(P0_g) + ' bar_g');
-  setText('sv-r-gas',   'Gas volume (idle): ' + fmt(V_gas) + ' m³');
+  setText('sv-r-p0',    'Pre-charge P₀: ' + VU(P0_g,'bar_g'));
+  setText('sv-r-gas',   'Gas volume (idle): ' + VU(V_gas,'m³'));
   setText('sv-r-ratio', 'Max water fill: ' + fmt(fillRatio) + '%');
 
-  setPill('sv-pill', 'pill-warn', '⚠ Preliminary estimate only (' + fmt(V_vessel) + ' m³, pre-charge ' + fmt(P0_g) + ' bar_g) — size air vessels with a full transient (water-hammer) model; this first-pass figure may understate the required volume.');
+  setPill('sv-pill', 'pill-warn', '⚠ Preliminary estimate only (' + VU(V_vessel,'m³') + ', pre-charge ' + VU(P0_g,'bar_g') + ') — size air vessels with a full transient (water-hammer) model; this first-pass figure may understate the required volume.');
 }
 
 /* ══════════════════════════════
    CALC 4 — Hazen-Williams
 ══════════════════════════════ */
 function calcHW() {
-  var Q_m3h = +document.getElementById('hw-Q').value || 0;
-  var D_mm  = +document.getElementById('hw-D').value || 0;
-  var L     = +document.getElementById('hw-L').value || 0;
-  var C     = +document.getElementById('hw-C').value || 140;
+  var Q_m3h = SIV('hw-Q') || 0;
+  var D_mm  = SIV('hw-D') || 0;
+  var L     = SIV('hw-L') || 0;
+  var C     = SIV('hw-C') || 140;
 
   var Q = Q_m3h / 3600; // m³/s
   var D = D_mm  / 1000; // m
@@ -4155,24 +4261,24 @@ function calcHW() {
   var regime = Re < 2000 ? 'Laminar' : Re < 4000 ? 'Transitional' : 'Turbulent';
 
   setPrimary('hw-r-hf', hf, 'm');
-  setText('hw-r-dp',    'Pressure loss: ' + fmt(dP_bar, 3) + ' bar');
-  setText('hw-r-v',     'Velocity: ' + fmt(V) + ' m/s');
-  setText('hw-r-slope', 'Friction slope: ' + fmt(slope, 1) + ' m/km');
+  setText('hw-r-dp',    'Pressure loss: ' + VU(dP_bar,'bar',3));
+  setText('hw-r-v',     'Velocity: ' + VU(V,'m/s'));
+  setText('hw-r-slope', 'Friction slope: ' + VU(slope,'m',1) + '/km');
   setText('hw-r-re',    'Reynolds: ' + (Re >= 1000 ? fmt(Re/1000,1)+'k' : fmt(Re,0)) + ' · ' + regime);
 
-  if (V > 3.5)       setPill('hw-pill','pill-danger','⚠ Velocity ' + fmt(V) + ' m/s — too high, erosion risk');
-  else if (V > 3.0)  setPill('hw-pill','pill-warn',  '⚡ Velocity ' + fmt(V) + ' m/s — verify pipe class');
-  else if (V < 0.3)  setPill('hw-pill','pill-warn',  '⚡ Velocity ' + fmt(V) + ' m/s — sedimentation risk');
-  else               setPill('hw-pill','pill-ok',    '✓ Velocity ' + fmt(V) + ' m/s — within design range');
+  if (V > 3.5)       setPill('hw-pill','pill-danger','⚠ Velocity ' + VU(V,'m/s') + ' — too high, erosion risk');
+  else if (V > 3.0)  setPill('hw-pill','pill-warn',  '⚡ Velocity ' + VU(V,'m/s') + ' — verify pipe class');
+  else if (V < 0.3)  setPill('hw-pill','pill-warn',  '⚡ Velocity ' + VU(V,'m/s') + ' — sedimentation risk');
+  else               setPill('hw-pill','pill-ok',    '✓ Velocity ' + VU(V,'m/s') + ' — within design range');
 }
 
 /* ══════════════════════════════
    CALC 5 — Velocity & Reynolds
 ══════════════════════════════ */
 function calcRE() {
-  var Q_m3h = +document.getElementById('re-Q').value || 0;
-  var D_mm  = +document.getElementById('re-D').value || 0;
-  var T     = +document.getElementById('re-T').value || 20;
+  var Q_m3h = SIV('re-Q') || 0;
+  var D_mm  = SIV('re-D') || 0;
+  var T     = SIV('re-T') || 20;
 
   var Q = Q_m3h / 3600;
   var D = D_mm  / 1000;
@@ -4198,7 +4304,7 @@ function calcRE() {
    CALC 6 — Minor Losses
 ══════════════════════════════ */
 function calcML() {
-  var V = +document.getElementById('ml-V').value || 0;
+  var V = SIV('ml-V') || 0;
   var vh = V * V / (2 * G);
   document.getElementById('ml-vh').textContent = fmt(vh, 4);
 
@@ -4214,18 +4320,18 @@ function calcML() {
 
   setPrimary('ml-r-h', h_minor, 'm');
   setText('ml-r-k',   'ΣK = ' + fmt(K_total, 2));
-  setText('ml-r-dp',  'Pressure loss: ' + fmt(dP_bar, 4) + ' bar');
-  setText('ml-r-leq', 'Equiv. pipe length: ' + fmt(L_eq, 1) + ' m (D=100mm, f=0.02)');
+  setText('ml-r-dp',  'Pressure loss: ' + VU(dP_bar,'bar',4));
+  setText('ml-r-leq', 'Equiv. pipe length: ' + VU(L_eq,'m',1) + ' (D=100mm, f=0.02)');
 }
 
 /* ══════════════════════════════
    CALC 7 — Pump Power
 ══════════════════════════════ */
 function calcPP() {
-  var Q  = +document.getElementById('pp-Q').value  || 0;
-  var H  = +document.getElementById('pp-H').value  || 0;
-  var ep = (+document.getElementById('pp-ep').value || 78) / 100;
-  var em = (+document.getElementById('pp-em').value || 93) / 100;
+  var Q  = SIV('pp-Q')  || 0;
+  var H  = SIV('pp-H')  || 0;
+  var ep = (SIV('pp-ep') || 78) / 100;
+  var em = (SIV('pp-em') || 93) / 100;
 
   var P_hyd   = RHO * G * (Q / 3600) * H / 1000; // kW
   var P_shaft = ep > 0 ? P_hyd / ep : 0;
@@ -4235,9 +4341,9 @@ function calcPP() {
   var std = sizes.find(function(s){ return s >= P_motor * 1.1; }) || '>' + sizes[sizes.length-1];
 
   setPrimary('pp-r-motor', P_motor, 'kW');
-  setText('pp-r-hyd',   'Hydraulic power: ' + fmt(P_hyd)   + ' kW');
-  setText('pp-r-shaft', 'Shaft power: '     + fmt(P_shaft) + ' kW');
-  setText('pp-r-std',   'Standard motor: '  + std          + ' kW');
+  setText('pp-r-hyd',   'Hydraulic power: ' + VU(P_hyd,'kW'));
+  setText('pp-r-shaft', 'Shaft power: '     + VU(P_shaft,'kW'));
+  setText('pp-r-std',   'Standard motor: '  + (typeof std === 'number' ? VU(std, 'kW', std < 10 ? 1 : 0) : std + ' kW'));
   setText('pp-r-daily', 'Energy @ 24h: '    + fmt(P_motor * 24) + ' kWh/day');
 
   var eff_overall = P_hyd / (P_motor || 1) * 100;
@@ -4250,13 +4356,13 @@ function calcPP() {
    CALC 8 — NPSH Available
 ══════════════════════════════ */
 function calcNP() {
-  var T   = +document.getElementById('np-T').value   || 20;
-  var alt = +document.getElementById('np-alt').value || 0;
-  var Zs  = +document.getElementById('np-Zs').value  || 0;
-  var Q   = +document.getElementById('np-Q').value   || 0;
-  var D   = +document.getElementById('np-D').value   || 0;
-  var L   = +document.getElementById('np-L').value   || 0;
-  var C   = +document.getElementById('np-C').value   || 140;
+  var T   = SIV('np-T')   || 20;
+  var alt = SIV('np-alt') || 0;
+  var Zs  = SIV('np-Zs')  || 0;
+  var Q   = SIV('np-Q')   || 0;
+  var D   = SIV('np-D')   || 0;
+  var L   = SIV('np-L')   || 0;
+  var C   = SIV('np-C')   || 140;
 
   // Calculate suction pipe friction loss (Hazen-Williams)
   var Q_m3s = Q / 3600;
@@ -4279,14 +4385,14 @@ function calcNP() {
   var P_vap_m = P_vap / (RHO * G);
 
   setPrimary('np-r-npsha', NPSHa, 'm');
-  setText('np-r-patm', 'P_atm: ' + fmt(P_atm_m) + ' m (' + fmt(P_atm/1e5,3) + ' bar)');
-  setText('np-r-pv',   'P_vapor: ' + fmt(P_vap_m) + ' m at ' + T + '°C');
-  setText('np-r-rec',  'Suction h_fs: ' + fmt(hfs,3) + ' m · V: ' + fmt(V,2) + ' m/s · Margin ≥ 0.5 m above NPSHr');
+  setText('np-r-patm', 'P_atm: ' + VU(P_atm_m,'m') + ' (' + VU(P_atm/1e5,'bar',3) + ')');
+  setText('np-r-pv',   'P_vapor: ' + VU(P_vap_m,'m') + ' at ' + T + '°C');
+  setText('np-r-rec',  'Suction h_fs: ' + VU(hfs,'m',3) + ' · V: ' + VU(V,'m/s',2) + ' · Margin ≥ ' + VU(0.5,'m',1) + ' above NPSHr');
 
   if (NPSHa < 0)      setPill('np-pill','pill-danger','⚠ NPSHa negative — cavitation certain');
-  else if (NPSHa < 2) setPill('np-pill','pill-danger','⚠ NPSHa = ' + fmt(NPSHa) + ' m — cavitation risk, review design');
-  else if (NPSHa < 4) setPill('np-pill','pill-warn',  '⚡ NPSHa = ' + fmt(NPSHa) + ' m — verify pump NPSHr');
-  else                setPill('np-pill','pill-ok',    '✓ NPSHa = ' + fmt(NPSHa) + ' m — adequate margin');
+  else if (NPSHa < 2) setPill('np-pill','pill-danger','⚠ NPSHa = ' + VU(NPSHa,'m') + ' — cavitation risk, review design');
+  else if (NPSHa < 4) setPill('np-pill','pill-warn',  '⚡ NPSHa = ' + VU(NPSHa,'m') + ' — verify pump NPSHr');
+  else                setPill('np-pill','pill-ok',    '✓ NPSHa = ' + VU(NPSHa,'m') + ' — adequate margin');
 }
 
 /* ══════════════════════════════
@@ -4299,11 +4405,11 @@ document.getElementById('bl-mat').addEventListener('change', function() {
 
 function calcBL() {
   var matSel = document.getElementById('bl-mat').value;
-  var SMYS   = matSel === 'custom' ? (+document.getElementById('bl-smys-custom').value || 0) : +matSel;
-  var OD     = +document.getElementById('bl-OD').value || 0;
-  var t      = +document.getElementById('bl-t').value  || 0;
-  var DF     = +document.getElementById('bl-df').value || 0.60;
-  var SF     = +document.getElementById('bl-SF').value || 1.5;
+  var SMYS   = matSel === 'custom' ? (SIV('bl-smys-custom') || 0) : +matSel;
+  var OD     = SIV('bl-OD') || 0;
+  var t      = SIV('bl-t')  || 0;
+  var DF     = SIV('bl-df') || 0.60;
+  var SF     = SIV('bl-SF') || 1.5;
 
   if (SMYS <= 0 || OD <= 0 || t <= 0) { setPrimary('bl-r-bar','—','bar'); return; }
 
@@ -4319,34 +4425,34 @@ function calcBL() {
   var PN_nearest = PN.length ? PN[PN.length-1] : '< PN2.5';
 
   setPrimary('bl-r-bar', P_allow_bar, 'bar');
-  setText('bl-r-mpa',   'Allowable: ' + fmt(P_allow_MPa) + ' MPa');
-  setText('bl-r-gross', 'Gross yield pressure: ' + fmt(P_gross_bar) + ' bar');
+  setText('bl-r-mpa',   'Allowable: ' + VU(P_allow_MPa,'MPa'));
+  setText('bl-r-gross', 'Gross yield pressure: ' + VU(P_gross_bar,'bar'));
   setText('bl-r-pn',    'Nearest PN class: PN' + PN_nearest);
 
   if (P_allow_bar < 5)       setPill('bl-pill','pill-warn',  '⚡ Low pressure rating — check wall thickness');
   else if (P_allow_bar > 50) setPill('bl-pill','pill-ok',    '✓ High-pressure class: PN' + PN_nearest);
-  else                       setPill('bl-pill','pill-ok',    '✓ Pressure rating PN' + PN_nearest + ' (' + fmt(P_allow_bar) + ' bar)');
+  else                       setPill('bl-pill','pill-ok',    '✓ Pressure rating PN' + PN_nearest + ' (' + VU(P_allow_bar,'bar') + ')');
 }
 
 /* ══════════════════════════════
    CALC 10 — Manning's Gravity Pipe
 ══════════════════════════════ */
 function calcMGP() {
-  var n = parseFloat(document.getElementById('mgp-n').value);
-  var D = parseFloat(document.getElementById('mgp-D').value) / 1000;
-  var S = parseFloat(document.getElementById('mgp-S').value) / 1000;
+  var n = parseFloat(SIV('mgp-n'));
+  var D = parseFloat(SIV('mgp-D')) / 1000;
+  var S = parseFloat(SIV('mgp-S')) / 1000;
   if (!n || !D || !S || D <= 0 || S <= 0 || n <= 0) return;
   var A = Math.PI * D * D / 4;
   var R = D / 4;
   var Q = (1 / n) * A * Math.pow(R, 2 / 3) * Math.pow(S, 0.5);
   var V = Q / A;
   setPrimary('mgp-r-Q', Q * 1000, 'L/s');
-  setText('mgp-r-Qm3', fmt(Q * 3600, 1) + ' m³/h');
-  setText('mgp-r-V', 'V = ' + fmt(V, 3) + ' m/s');
-  setText('mgp-r-R', 'Hydraulic radius R = ' + fmt(R * 1000, 1) + ' mm');
-  if (V < 0.6) setPill('mgp-pill', 'pill-danger', '⚠ V = ' + fmt(V, 2) + ' m/s — below self-cleansing (min 0.6 m/s)');
-  else if (V > 3.0) setPill('mgp-pill', 'pill-warning', '⚠ V = ' + fmt(V, 2) + ' m/s — risk of erosion (>3 m/s)');
-  else setPill('mgp-pill', 'pill-ok', '✓ Self-cleansing velocity met — V = ' + fmt(V, 2) + ' m/s');
+  setText('mgp-r-Qm3', VU(Q * 3600,'m³/h',1));
+  setText('mgp-r-V', 'V = ' + VU(V,'m/s',3));
+  setText('mgp-r-R', 'Hydraulic radius R = ' + VU(R * 1000,'mm',1));
+  if (V < 0.6) setPill('mgp-pill', 'pill-danger', '⚠ V = ' + VU(V,'m/s',2) + ' — below self-cleansing (min 0.6 m/s)');
+  else if (V > 3.0) setPill('mgp-pill', 'pill-warning', '⚠ V = ' + VU(V,'m/s',2) + ' — risk of erosion (>3 m/s)');
+  else setPill('mgp-pill', 'pill-ok', '✓ Self-cleansing velocity met — V = ' + VU(V,'m/s',2));
 }
 
 /* ══════════════════════════════
@@ -4354,11 +4460,11 @@ function calcMGP() {
 ══════════════════════════════ */
 function calcMOC() {
   var shape = document.getElementById('moc-shape').value;
-  var n = parseFloat(document.getElementById('moc-n').value);
-  var b = parseFloat(document.getElementById('moc-b').value);
-  var y = parseFloat(document.getElementById('moc-y').value);
-  var S = parseFloat(document.getElementById('moc-S').value) / 1000;
-  var z = parseFloat(document.getElementById('moc-z').value) || 0;
+  var n = parseFloat(SIV('moc-n'));
+  var b = parseFloat(SIV('moc-b'));
+  var y = parseFloat(SIV('moc-y'));
+  var S = parseFloat(SIV('moc-S')) / 1000;
+  var z = parseFloat(SIV('moc-z')) || 0;
   if (!n || !b || !y || !S || n <= 0 || b <= 0 || y <= 0 || S <= 0) return;
   var A, P, R, Q, V;
   if (shape === 'rect') {
@@ -4378,13 +4484,13 @@ function calcMOC() {
   var Tw = (shape === 'rect') ? b : (shape === 'trap') ? (b + 2 * z * y) : 2 * Math.sqrt(Math.max(0, y * (b - y)));
   var Fr = Tw > 0 ? V / Math.sqrt(9.81 * (A / Tw)) : 0;
   setPrimary('moc-r-Q', Q, 'm³/s');
-  setText('moc-r-Qm3', fmt(Q * 1000, 1) + ' L/s  |  ' + fmt(Q * 3600, 1) + ' m³/h');
-  setText('moc-r-V', 'V = ' + fmt(V, 3) + ' m/s');
+  setText('moc-r-Qm3', VU(Q * 1000,'L/s',1) + '  |  ' + VU(Q * 3600,'m³/h',1));
+  setText('moc-r-V', 'V = ' + VU(V,'m/s',3));
   setText('moc-r-Fr', 'Froude Fr = ' + fmt(Fr, 3) + (Fr < 1 ? ' (sub-critical)' : ' (super-critical)'));
-  setText('moc-r-AR', 'A = ' + fmt(A, 4) + ' m²  ·  R = ' + fmt(R, 4) + ' m');
-  if (V < 0.3) setPill('moc-pill', 'pill-warning', '⚠ V = ' + fmt(V, 2) + ' m/s — sedimentation risk');
-  else if (V > 5.0) setPill('moc-pill', 'pill-danger', '⚠ V = ' + fmt(V, 2) + ' m/s — erosion risk (>5 m/s)');
-  else setPill('moc-pill', 'pill-ok', '✓ Acceptable velocity — V = ' + fmt(V, 2) + ' m/s');
+  setText('moc-r-AR', 'A = ' + VU(A,'m²',4) + '  ·  R = ' + VU(R,'m',4));
+  if (V < 0.3) setPill('moc-pill', 'pill-warning', '⚠ V = ' + VU(V,'m/s',2) + ' — sedimentation risk');
+  else if (V > 5.0) setPill('moc-pill', 'pill-danger', '⚠ V = ' + VU(V,'m/s',2) + ' — erosion risk (>5 m/s)');
+  else setPill('moc-pill', 'pill-ok', '✓ Acceptable velocity — V = ' + VU(V,'m/s',2));
 }
 
 function mocShapeChange() {
@@ -4397,11 +4503,11 @@ function mocShapeChange() {
    CALC 12 — Darcy-Weisbach
 ══════════════════════════════ */
 function calcDW() {
-  var D   = parseFloat(document.getElementById('dw-D').value) / 1000;    // mm → m
-  var L   = parseFloat(document.getElementById('dw-L').value);            // m
-  var Qls = parseFloat(document.getElementById('dw-Q').value) / 1000;    // L/s → m³/s
-  var T   = parseFloat(document.getElementById('dw-T').value);            // °C
-  var e   = parseFloat(document.getElementById('dw-eps').value) / 1000;  // mm → m
+  var D   = parseFloat(SIV('dw-D')) / 1000;    // mm → m
+  var L   = parseFloat(SIV('dw-L'));            // m
+  var Qls = parseFloat(SIV('dw-Q')) / 1000;    // L/s → m³/s
+  var T   = parseFloat(SIV('dw-T'));            // °C
+  var e   = parseFloat(SIV('dw-eps')) / 1000;  // mm → m
   if (!D || !L || !Qls || D <= 0 || L <= 0 || Qls <= 0) return;
   var A   = Math.PI * D * D / 4;
   var V   = Qls / A;
@@ -4419,9 +4525,9 @@ function calcDW() {
   var hf   = f * (L / D) * (V * V) / (2 * 9.81);
   var dPbar = hf * 1000 * 9.81 / 1e5;
   setPrimary('dw-r-hf', hf, 'm');
-  setText('dw-r-dP', 'Pressure drop: ' + fmt(dPbar, 4) + ' bar  (' + fmt(hf * 9.81, 1) + ' kPa)');
+  setText('dw-r-dP', 'Pressure drop: ' + VU(dPbar,'bar',4) + '  (' + VU(hf * 9.81,'kPa',1) + ')');
   setText('dw-r-f', 'Friction factor f: ' + fmt(f, 6));
-  setText('dw-r-Re', 'Re: ' + Math.round(Re).toLocaleString() + '  ·  V: ' + fmt(V, 3) + ' m/s');
+  setText('dw-r-Re', 'Re: ' + Math.round(Re).toLocaleString() + '  ·  V: ' + VU(V,'m/s',3));
   var regime = Re < 2300 ? 'Laminar flow (f = 64/Re)' : Re < 4000 ? 'Transitional flow' : 'Turbulent flow (Swamee-Jain)';
   setText('dw-r-regime', regime);
   setPill('dw-pill', Re < 4000 ? 'pill-warning' : 'pill-ok', regime + '  |  Re = ' + Math.round(Re).toLocaleString());
@@ -4432,10 +4538,10 @@ function calcDW() {
 ══════════════════════════════ */
 function calcTH() {
   var fit  = document.getElementById('th-fit').value;
-  var D    = parseFloat(document.getElementById('th-D').value) / 1000;   // mm → m
-  var P    = parseFloat(document.getElementById('th-P').value) * 1e5;    // bar → Pa
-  var sig  = parseFloat(document.getElementById('th-sig').value) * 1000; // kN/m² → N/m²
-  var ang  = parseFloat(document.getElementById('th-ang').value) || 45;
+  var D    = parseFloat(SIV('th-D')) / 1000;   // mm → m
+  var P    = parseFloat(SIV('th-P')) * 1e5;    // bar → Pa
+  var sig  = parseFloat(SIV('th-sig')) * 1000; // kN/m² → N/m²
+  var ang  = parseFloat(SIV('th-ang')) || 45;
   if (!D || !P || !sig || D <= 0 || P <= 0 || sig <= 0) return;
   // Show/hide custom angle row
   document.getElementById('th-ang-row').style.display = (fit === 'custom') ? '' : 'none';
@@ -4450,37 +4556,37 @@ function calcTH() {
   var Ab   = F / sig;
   var side = Math.sqrt(Ab);
   setPrimary('th-r-F', F / 1000, 'kN');
-  setText('th-r-area', 'Block bearing area: ' + fmt(Ab, 3) + ' m²');
-  setText('th-r-side', 'Square block side: ' + fmt(side, 2) + ' m  (' + fmt(side * 100, 0) + ' cm × ' + fmt(side * 100, 0) + ' cm)');
+  setText('th-r-area', 'Block bearing area: ' + VU(Ab,'m²',3));
+  setText('th-r-side', 'Square block side: ' + VU(side,'m',2) + '  (' + fmt(side * 100, 0) + ' cm × ' + fmt(side * 100, 0) + ' cm)');
   if (Ab > 4) setText('th-r-note', 'Large area required — consider restrained joint system');
   else setText('th-r-note', 'Standard block dimensions acceptable');
-  if (Ab > 4) setPill('th-pill', 'pill-warning', '⚠ Block area ' + fmt(Ab, 2) + ' m² — consider restrained joints');
-  else setPill('th-pill', 'pill-ok', '✓ F = ' + fmt(F / 1000, 2) + ' kN  |  Block ' + fmt(side * 100, 0) + '×' + fmt(side * 100, 0) + ' cm');
+  if (Ab > 4) setPill('th-pill', 'pill-warning', '⚠ Block area ' + VU(Ab,'m²',2) + ' — consider restrained joints');
+  else setPill('th-pill', 'pill-ok', '✓ F = ' + VU(F / 1000,'kN',2) + '  |  Block ' + fmt(side * 100, 0) + '×' + fmt(side * 100, 0) + ' cm');
 }
 
 /* ══════════════════════════════
    CALC 14 — Pump Affinity Laws
 ══════════════════════════════ */
 function calcAFF() {
-  var N1 = parseFloat(document.getElementById('aff-N1').value);
-  var Q1 = parseFloat(document.getElementById('aff-Q1').value);
-  var H1 = parseFloat(document.getElementById('aff-H1').value);
-  var P1 = parseFloat(document.getElementById('aff-P1').value);
-  var N2 = parseFloat(document.getElementById('aff-N2').value);
+  var N1 = parseFloat(SIV('aff-N1'));
+  var Q1 = parseFloat(SIV('aff-Q1'));
+  var H1 = parseFloat(SIV('aff-H1'));
+  var P1 = parseFloat(SIV('aff-P1'));
+  var N2 = parseFloat(SIV('aff-N2'));
   if (!N1 || !Q1 || !H1 || !P1 || !N2 || N1 <= 0 || N2 <= 0) return;
   var ratio = N2 / N1;
   var Q2 = Q1 * ratio;
   var H2 = H1 * ratio * ratio;
   var P2 = P1 * ratio * ratio * ratio;
   setPrimary('aff-r-Q2', Q2, 'm³/h');
-  setText('aff-r-H2', 'H₂ = ' + fmt(H2, 2) + ' m');
-  setText('aff-r-P2', 'P₂ = ' + fmt(P2, 2) + ' kW');
+  setText('aff-r-H2', 'H₂ = ' + VU(H2,'m',2));
+  setText('aff-r-P2', 'P₂ = ' + VU(P2,'kW',2));
   setText('aff-r-ratio', 'Speed ratio N₂/N₁ = ' + fmt(ratio, 3));
   var saving = (1 - P2 / P1) * 100;
   if (N2 < N1)
     setPill('aff-pill', 'pill-ok', '✓ Speed ↓' + fmt((1 - ratio) * 100, 1) + '% → Power saving ' + fmt(saving, 1) + '%');
   else if (N2 > N1)
-    setPill('aff-pill', 'pill-warning', '⚠ Speed ↑ — verify motor for P₂ = ' + fmt(P2, 2) + ' kW');
+    setPill('aff-pill', 'pill-warning', '⚠ Speed ↑ — verify motor for P₂ = ' + VU(P2,'kW',2));
   else
     setPill('aff-pill', 'pill-ok', '✓ Same speed — no change');
 }
@@ -4489,9 +4595,9 @@ function calcAFF() {
    CALC 15 — Specific Speed Nq
 ══════════════════════════════ */
 function calcNS() {
-  var N = parseFloat(document.getElementById('ns-N').value);
-  var Q = parseFloat(document.getElementById('ns-Q').value);
-  var H = parseFloat(document.getElementById('ns-H').value);
+  var N = parseFloat(SIV('ns-N'));
+  var Q = parseFloat(SIV('ns-Q'));
+  var H = parseFloat(SIV('ns-H'));
   if (!N || !Q || !H || N <= 0 || Q <= 0 || H <= 0) return;
   var Nq = N * Math.sqrt(Q / 3600) / Math.pow(H, 0.75);          // metric, Q in m³/s
   var Ns = N * Math.sqrt(Q * 4.40287) / Math.pow(H * 3.280840, 0.75); // US units: Q in gpm, H in ft
@@ -4511,11 +4617,11 @@ function calcNS() {
    CALC 16 — Reservoir / Tank Sizing
 ══════════════════════════════ */
 function calcTNK() {
-  var Qd    = parseFloat(document.getElementById('tnk-Qd').value);    // m³/day total demand
-  var opPct = parseFloat(document.getElementById('tnk-op').value);    // % operational storage
-  var Qmax  = parseFloat(document.getElementById('tnk-Qmax').value);  // m³/h peak demand
-  var emH   = parseFloat(document.getElementById('tnk-emerg').value); // hours emergency
-  var Vfire = parseFloat(document.getElementById('tnk-fire').value);  // m³ fire reserve
+  var Qd    = parseFloat(SIV('tnk-Qd'));    // m³/day total demand
+  var opPct = parseFloat(SIV('tnk-op'));    // % operational storage
+  var Qmax  = parseFloat(SIV('tnk-Qmax'));  // m³/h peak demand
+  var emH   = parseFloat(SIV('tnk-emerg')); // hours emergency
+  var Vfire = parseFloat(SIV('tnk-fire'));  // m³ fire reserve
   if (!Qd || Qd <= 0) return;
   var Vop   = Qd * (opPct / 100);
   var Vem   = (Qmax || 0) * emH;
@@ -4523,24 +4629,24 @@ function calcTNK() {
   var Vtot  = Vop + Vem + Vf;
   var side  = Math.pow(Vtot, 1 / 3);
   setPrimary('tnk-r-V', Vtot, 'm³');
-  setText('tnk-r-op', 'Operational: ' + fmt(Vop, 0) + ' m³  (' + opPct + '% of daily demand)');
-  setText('tnk-r-emerg', 'Emergency: ' + fmt(Vem, 0) + ' m³  (' + emH + ' h × ' + fmt(Qmax || 0, 0) + ' m³/h peak)');
-  setText('tnk-r-fire', 'Fire reserve: ' + fmt(Vf, 0) + ' m³');
-  setText('tnk-r-dim', 'Cubic tank ≈ ' + fmt(side, 1) + ' m × ' + fmt(side, 1) + ' m × ' + fmt(side, 1) + ' m');
-  if (Vtot > 10000) setPill('tnk-pill', 'pill-warning', '⚠ ' + fmt(Vtot, 0) + ' m³ — large tank, consider multiple compartments');
-  else setPill('tnk-pill', 'pill-ok', '✓ Total tank volume = ' + fmt(Vtot, 0) + ' m³');
+  setText('tnk-r-op', 'Operational: ' + VU(Vop,'m³',0) + '  (' + opPct + '% of daily demand)');
+  setText('tnk-r-emerg', 'Emergency: ' + VU(Vem,'m³',0) + '  (' + emH + ' h × ' + VU(Qmax || 0,'m³/h',0) + ' peak)');
+  setText('tnk-r-fire', 'Fire reserve: ' + VU(Vf,'m³',0));
+  setText('tnk-r-dim', 'Cubic tank ≈ ' + VU(side,'m',1) + ' × ' + VU(side,'m',1) + ' × ' + VU(side,'m',1));
+  if (Vtot > 10000) setPill('tnk-pill', 'pill-warning', '⚠ ' + VU(Vtot,'m³',0) + ' — large tank, consider multiple compartments');
+  else setPill('tnk-pill', 'pill-ok', '✓ Total tank volume = ' + VU(Vtot,'m³',0));
 }
 
 /* ══════════════════════════════
    CALC 17 — Chlorine Dosing & CT
 ══════════════════════════════ */
 function calcCL() {
-  var Q      = parseFloat(document.getElementById('cl-Q').value);       // m³/h
-  var dose   = parseFloat(document.getElementById('cl-dose').value);    // mg/L applied
-  var demand = parseFloat(document.getElementById('cl-demand').value);  // mg/L chlorine demand
-  var T      = parseFloat(document.getElementById('cl-T').value);       // min contact time
-  var eff    = parseFloat(document.getElementById('cl-eff').value) / 100; // T10/T as fraction
-  var CTreq  = parseFloat(document.getElementById('cl-CT').value);     // mg·min/L required
+  var Q      = parseFloat(SIV('cl-Q'));       // m³/h
+  var dose   = parseFloat(SIV('cl-dose'));    // mg/L applied
+  var demand = parseFloat(SIV('cl-demand'));  // mg/L chlorine demand
+  var T      = parseFloat(SIV('cl-T'));       // min contact time
+  var eff    = parseFloat(SIV('cl-eff')) / 100; // T10/T as fraction
+  var CTreq  = parseFloat(SIV('cl-CT'));     // mg·min/L required
   if (!Q || !dose || !T || Q <= 0 || T <= 0) return;
   var residual = Math.max(0, dose - (demand || 0));                     // mg/L residual
   var rateKgH  = Q * dose / 1000;                                       // kg/h
@@ -4558,14 +4664,14 @@ function calcCL() {
    CALC 18 — Economic Pipe Diameter
 ══════════════════════════════ */
 function calcEPD() {
-  var Q   = parseFloat(document.getElementById('epd-Q').value) / 3600;   // m³/h → m³/s
-  var f   = parseFloat(document.getElementById('epd-f').value);
-  var Ce  = parseFloat(document.getElementById('epd-Ce').value);          // $/kWh
-  var eta = parseFloat(document.getElementById('epd-eta').value) / 100;   // fraction
-  var Hop = parseFloat(document.getElementById('epd-Hop').value);         // h/yr
-  var ir  = parseFloat(document.getElementById('epd-i').value) / 100;     // fraction
-  var Nyr = parseFloat(document.getElementById('epd-N').value);           // years
-  var k   = parseFloat(document.getElementById('epd-k').value);           // $/m/mm
+  var Q   = parseFloat(SIV('epd-Q')) / 3600;   // m³/h → m³/s
+  var f   = parseFloat(SIV('epd-f'));
+  var Ce  = parseFloat(SIV('epd-Ce'));          // $/kWh
+  var eta = parseFloat(SIV('epd-eta')) / 100;   // fraction
+  var Hop = parseFloat(SIV('epd-Hop'));         // h/yr
+  var ir  = parseFloat(SIV('epd-i')) / 100;     // fraction
+  var Nyr = parseFloat(SIV('epd-N'));           // years
+  var k   = parseFloat(SIV('epd-k'));           // $/m/mm
 
   if (!Q || !f || !Ce || !eta || !Hop || !ir || !Nyr || !k) return;
   if (Q <= 0 || f <= 0 || eta <= 0) return;
@@ -4600,27 +4706,27 @@ function calcEPD() {
   });
 
   setPrimary('epd-r-D', D_mm, 'mm');
-  setText('epd-r-DN', 'Nearest standard DN: DN ' + dn + '  (' + (dn >= D_mm ? '+' : '') + fmt(dn - D_mm, 0) + ' mm)');
-  setText('epd-r-V', 'Velocity at D_econ: ' + fmt(V, 2) + ' m/s');
+  setText('epd-r-DN', 'Nearest standard DN: DN ' + dn + '  (' + (dn >= D_mm ? '+' : '') + VU(dn - D_mm,'mm',0) + ')');
+  setText('epd-r-V', 'Velocity at D_econ: ' + VU(V,'m/s',2));
   setText('epd-r-cap', 'Annual capital cost: ' + fmt(cap_pm, 2) + ' $/m');
   setText('epd-r-eng', 'Annual energy cost: ' + fmt(eng_pm, 2) + ' $/m');
   setText('epd-r-CRF', 'CRF = ' + fmt(CRF * 100, 3) + '%  |  Total annual cost = ' + fmt(cap_pm + eng_pm, 2) + ' $/m');
 
-  if (V < 0.5) setPill('epd-pill', 'pill-warning', '⚠ V = ' + fmt(V,2) + ' m/s at D_econ — sedimentation risk, consider minimum velocity constraints');
-  else if (V > 3.0) setPill('epd-pill', 'pill-danger', '⚠ V = ' + fmt(V,2) + ' m/s at D_econ — exceeds erosion limit, check inputs');
-  else setPill('epd-pill', 'pill-ok', '✓ D_econ = ' + fmt(D_mm,0) + ' mm  ·  DN ' + dn + '  ·  V = ' + fmt(V,2) + ' m/s');
+  if (V < 0.5) setPill('epd-pill', 'pill-warning', '⚠ V = ' + VU(V,'m/s',2) + ' at D_econ — sedimentation risk, consider minimum velocity constraints');
+  else if (V > 3.0) setPill('epd-pill', 'pill-danger', '⚠ V = ' + VU(V,'m/s',2) + ' at D_econ — exceeds erosion limit, check inputs');
+  else setPill('epd-pill', 'pill-ok', '✓ D_econ = ' + VU(D_mm,'mm',0) + '  ·  DN ' + dn + '  ·  V = ' + VU(V,'m/s',2));
 }
 
 /* ══════════════════════════════
    NEW — System Head Curve & Operating Point
 ══════════════════════════════ */
 function calcSYS() {
-  var Hs = +document.getElementById('sys-Hs').value || 0;
-  var H0 = +document.getElementById('sys-H0').value || 0;
-  var Qr = +document.getElementById('sys-Qr').value || 0;
-  var Hr = +document.getElementById('sys-Hr').value || 0;
-  var hf = +document.getElementById('sys-hf').value || 0;
-  var Qd = +document.getElementById('sys-Qd').value || 0;
+  var Hs = SIV('sys-Hs') || 0;
+  var H0 = SIV('sys-H0') || 0;
+  var Qr = SIV('sys-Qr') || 0;
+  var Hr = SIV('sys-Hr') || 0;
+  var hf = SIV('sys-hf') || 0;
+  var Qd = SIV('sys-Qd') || 0;
   var a = (Qr > 0) ? (H0 - Hr) / (Qr * Qr) : 0;
   var R = (Qd > 0) ? hf / (Qd * Qd) : 0;
   if (!(H0 > Hs) || (a + R) <= 0 || a <= 0) {
@@ -4638,27 +4744,27 @@ function calcSYS() {
   var Hp = H0 - a * Q * Q;        // pump head at Q* (must equal H — validation)
   var pct = Qr > 0 ? Q / Qr * 100 : 0;
   setPrimary('sys-r-Q', Q, 'm³/h');
-  setText('sys-r-H', 'Operating head H*: ' + fmt(H, 1) + ' m');
+  setText('sys-r-H', 'Operating head H*: ' + VU(H,'m',1));
   setText('sys-r-pct', 'Flow vs rated: ' + fmt(pct, 0) + ' %');
-  setText('sys-r-a', '= ' + fmt(Hs, 0) + ' m static + ' + fmt(Hfric, 0) + ' m friction at Q*');
-  setText('sys-r-R', 'Pump & system curves meet at ' + fmt(Hp, 1) + ' m ✓');
+  setText('sys-r-a', '= ' + VU(Hs,'m',0) + ' static + ' + VU(Hfric,'m',0) + ' friction at Q*');
+  setText('sys-r-R', 'Pump & system curves meet at ' + VU(Hp,'m',1) + ' ✓');
   var farMsg = (Qd > 0 && Math.abs(Q - Qd) / Qd > 0.2) ? ' · duty sits ' + (Q > Qd ? 'above' : 'below') + ' your design flow — the pump is ' + (Q > Qd ? 'oversized' : 'undersized') + ' for this system' : '';
   if (pct < 70)       setPill('sys-pill', 'pill-warn', '⚠ Q* = ' + fmt(pct,0) + '% of rated — left of BEP, low-flow recirculation & heating risk' + farMsg);
   else if (pct > 120) setPill('sys-pill', 'pill-warn', '⚠ Q* = ' + fmt(pct,0) + '% of rated — right of BEP, check NPSH margin & motor load' + farMsg);
-  else                setPill('sys-pill', 'pill-ok',   '✓ Duty: ' + fmt(Q,0) + ' m³/h @ ' + fmt(H,1) + ' m — ' + fmt(pct,0) + '% of rated (near BEP)' + farMsg);
+  else                setPill('sys-pill', 'pill-ok',   '✓ Duty: ' + VU(Q,'m³/h',0) + ' @ ' + VU(H,'m',1) + ' — ' + fmt(pct,0) + '% of rated (near BEP)' + farMsg);
 }
 
 /* ══════════════════════════════
    NEW — Pump Energy & Specific Energy Cost
 ══════════════════════════════ */
 function calcPE() {
-  var Q  = +document.getElementById('pe-Q').value || 0;
-  var H  = +document.getElementById('pe-H').value || 0;
-  var ep = (+document.getElementById('pe-ep').value || 78) / 100;
-  var em = (+document.getElementById('pe-em').value || 93) / 100;
-  var hr = +document.getElementById('pe-hr').value || 0;
-  var dy = +document.getElementById('pe-day').value || 0;
-  var tar= +document.getElementById('pe-tar').value || 0;
+  var Q  = SIV('pe-Q') || 0;
+  var H  = SIV('pe-H') || 0;
+  var ep = (SIV('pe-ep') || 78) / 100;
+  var em = (SIV('pe-em') || 93) / 100;
+  var hr = SIV('pe-hr') || 0;
+  var dy = SIV('pe-day') || 0;
+  var tar= SIV('pe-tar') || 0;
   var P_hyd = RHO * G * (Q / 3600) * H / 1000;       // kW
   var P_in  = (ep > 0 && em > 0) ? P_hyd / (ep * em) : 0; // kW
   var annKWh = P_in * hr * dy;
@@ -4666,7 +4772,7 @@ function calcPE() {
   var spec   = Q > 0 ? P_in / Q : 0;                 // kWh/m³
   var cpm    = spec * tar;                            // SAR/m³
   setPrimary('pe-r-cost', cost, 'SAR/yr');
-  setText('pe-r-pin',  'Input power: ' + fmt(P_in, 1) + ' kW');
+  setText('pe-r-pin',  'Input power: ' + VU(P_in,'kW',1));
   setText('pe-r-mwh',  'Annual energy: ' + fmt(annKWh / 1000, 1) + ' MWh/yr');
   setText('pe-r-spec', 'Specific energy: ' + fmt(spec, 3) + ' kWh/m³');
   setText('pe-r-cpm',  'Cost per m³: ' + fmt(cpm, 3) + ' SAR/m³');
@@ -4680,7 +4786,7 @@ function calcPE() {
    NEW — Pressure / Head Unit Converter
 ══════════════════════════════ */
 function calcUC() {
-  var val = +document.getElementById('uc-val').value || 0;
+  var val = SIV('uc-val') || 0;
   var u   = document.getElementById('uc-unit').value;
   var toM = { m:1, bar:10.197162, kpa:0.1019716, psi:0.703070, ft:0.3048 };
   var m   = val * toM[u];                 // metres of water head
@@ -4700,9 +4806,9 @@ function calcUC() {
    NEW — Colebrook-White Friction Factor
 ══════════════════════════════ */
 function calcCW() {
-  var Re  = +document.getElementById('cw-Re').value || 0;
-  var D   = +document.getElementById('cw-D').value || 0;        // mm
-  var eps = +document.getElementById('cw-epsv').value || 0;     // mm
+  var Re  = SIV('cw-Re') || 0;
+  var D   = SIV('cw-D') || 0;        // mm
+  var eps = SIV('cw-epsv') || 0;     // mm
   var relK = D > 0 ? eps / D : 0;                               // ε/D
   setText('cw-r-rel', 'Relative roughness ε/D: ' + fmt(relK, 6));
   if (Re <= 0) { setPrimary('cw-r-f', NaN, ''); setText('cw-r-sj','Swamee-Jain f: —'); setText('cw-r-reg','Regime: —'); setText('cw-r-it','Converged in — iterations'); setPill('cw-pill','pill-info','—'); return; }
@@ -4736,21 +4842,21 @@ function calcCW() {
    NEW — Flexible Pipe Deflection (Modified Iowa)
 ══════════════════════════════ */
 function calcDF() {
-  var H  = +document.getElementById('df-H').value || 0;
-  var g  = +document.getElementById('df-g').value || 0;
-  var ll = +document.getElementById('df-ll').value || 0;
-  var PS = +document.getElementById('df-ps').value || 0;
-  var Eu = (+document.getElementById('df-Eu').value || 0) * 1000; // MPa→kPa
-  var DL = +document.getElementById('df-dl').value || 1;
-  var Kx = +document.getElementById('df-kx').value || 0.1;
-  var al = +document.getElementById('df-al').value || 5;
+  var H  = SIV('df-H') || 0;
+  var g  = SIV('df-g') || 0;
+  var ll = SIV('df-ll') || 0;
+  var PS = SIV('df-ps') || 0;
+  var Eu = (SIV('df-Eu') || 0) * 1000; // MPa→kPa
+  var DL = SIV('df-dl') || 1;
+  var Kx = SIV('df-kx') || 0.1;
+  var al = SIV('df-al') || 5;
   var Wc = g * H;                       // kPa
   var tot = Wc + ll;
   var denom = 0.149 * PS + 0.061 * Eu;
   var pct = denom > 0 ? DL * Kx * tot / denom * 100 : 0;
   document.getElementById('df-r-pct').innerHTML = fmt(pct, 2) + '<span class="result-unit">%</span>';
-  setText('df-r-wc', 'Soil prism pressure: ' + fmt(Wc, 1) + ' kPa');
-  setText('df-r-tot', 'Total vertical load: ' + fmt(tot, 1) + ' kPa');
+  setText('df-r-wc', 'Soil prism pressure: ' + VU(Wc,'kPa',1));
+  setText('df-r-tot', 'Total vertical load: ' + VU(tot,'kPa',1));
   setText('df-r-margin', 'Margin to allowable: ' + fmt(al - pct, 2) + ' %');
   if (pct > al)        setPill('df-pill', 'pill-danger', '⚠ Δy/D = ' + fmt(pct,2) + '% exceeds ' + fmt(al,1) + '% allowable — stiffen pipe, improve E′ (compaction) or bedding');
   else if (pct > 0.8*al) setPill('df-pill', 'pill-warn', '⚡ Δy/D = ' + fmt(pct,2) + '% — within limit but little margin; verify field compaction (E′)');
@@ -4761,19 +4867,19 @@ function calcDF() {
    NEW — Pipe Flotation / Buoyancy
 ══════════════════════════════ */
 function calcFL() {
-  var Do = (+document.getElementById('fl-Do').value || 0) / 1000; // m
-  var Wp = +document.getElementById('fl-Wp').value || 0;          // kN/m
-  var H  = +document.getElementById('fl-H').value || 0;           // m
-  var gs = +document.getElementById('fl-gs').value || 0;          // kN/m³
+  var Do = (SIV('fl-Do') || 0) / 1000; // m
+  var Wp = SIV('fl-Wp') || 0;          // kN/m
+  var H  = SIV('fl-H') || 0;           // m
+  var gs = SIV('fl-gs') || 0;          // kN/m³
   var gw = 9.81;
   var Fb = gw * Math.PI / 4 * Do * Do;     // kN/m uplift
   var Ws = Math.max(0, gs - gw) * Do * H;  // submerged prism, kN/m
   var resist = Wp + Ws;
   var fos = Fb > 0 ? resist / Fb : 0;
   document.getElementById('fl-r-fos').innerHTML = fmt(fos, 2) + '<span class="result-unit"></span>';
-  setText('fl-r-up', 'Buoyant uplift: ' + fmt(Fb, 2) + ' kN/m');
-  setText('fl-r-wp', 'Pipe weight: ' + fmt(Wp, 2) + ' kN/m');
-  setText('fl-r-ws', 'Submerged soil prism: ' + fmt(Ws, 2) + ' kN/m');
+  setText('fl-r-up', 'Buoyant uplift: ' + VU(Fb,'kN/m',2));
+  setText('fl-r-wp', 'Pipe weight: ' + VU(Wp,'kN/m',2));
+  setText('fl-r-ws', 'Submerged soil prism: ' + VU(Ws,'kN/m',2));
   if (fos < 1.0)      setPill('fl-pill', 'pill-danger', '⚠ FoS = ' + fmt(fos,2) + ' < 1.0 — pipe FLOATS; add cover, concrete ballast or anchors');
   else if (fos < 1.2) setPill('fl-pill', 'pill-warn', '⚡ FoS = ' + fmt(fos,2) + ' — below 1.2 target; increase cover or add ballast');
   else                setPill('fl-pill', 'pill-ok', '✓ FoS = ' + fmt(fos,2) + ' ≥ 1.2 — safe against flotation');
@@ -4788,20 +4894,20 @@ function teSetE() {
   if (e) document.getElementById('te-E').value = e;
 }
 function calcTE() {
-  var L  = +document.getElementById('te-L').value || 0;
-  var dt = +document.getElementById('te-dt').value || 0;
-  var a  = parseFloat(document.getElementById('te-mat').value) || 0;
-  var E  = +document.getElementById('te-E').value || 0;   // GPa
+  var L  = SIV('te-L') || 0;
+  var dt = SIV('te-dt') || 0;
+  var a  = parseFloat(SIV('te-mat')) || 0;
+  var E  = SIV('te-E') || 0;   // GPa
   var dL = a * L * dt * 1000;            // mm
   var strain = a * dt * 1000;            // mm/m
   var stress = E * 1000 * a * dt;        // MPa  (GPa·1000=MPa)
   document.getElementById('te-r-dl').innerHTML = fmt(dL, 1) + '<span class="result-unit">mm</span>';
-  setText('te-r-strain', 'Thermal strain: ' + fmt(strain, 3) + ' mm/m');
-  setText('te-r-stress', 'Restrained stress: ' + fmt(Math.abs(stress), 1) + ' MPa');
+  setText('te-r-strain', 'Thermal strain: ' + VU(strain,'mm',3) + '/m');
+  setText('te-r-stress', 'Restrained stress: ' + VU(Math.abs(stress), 'MPa', 1));
   setText('te-r-note', dL >= 0 ? 'Expansion (heating)' : 'Contraction (cooling)');
   var amag = Math.abs(dL);
-  if (amag > 50)       setPill('te-pill', 'pill-warn', '⚡ ' + fmt(amag,0) + ' mm free movement — provide expansion joints/loops or restrain & check anchor thrust');
-  else if (amag > 0)   setPill('te-pill', 'pill-ok', '✓ ' + fmt(amag,1) + ' mm free movement · ' + fmt(Math.abs(stress),0) + ' MPa if fully restrained');
+  if (amag > 50)       setPill('te-pill', 'pill-warn', '⚡ ' + VU(amag,'mm',0) + ' free movement — provide expansion joints/loops or restrain & check anchor thrust');
+  else if (amag > 0)   setPill('te-pill', 'pill-ok', '✓ ' + VU(amag,'mm',1) + ' free movement · ' + fmt(Math.abs(stress),0) + ' MPa if fully restrained');
   else                 setPill('te-pill', 'pill-info', '—');
 }
 
@@ -4809,9 +4915,9 @@ function calcTE() {
    NEW — Pipeline Period & Critical Time
 ══════════════════════════════ */
 function calcPC() {
-  var L = +document.getElementById('pc-L').value || 0;
-  var a = +document.getElementById('pc-a').value || 0;
-  var T = +document.getElementById('pc-T').value || 0;
+  var L = SIV('pc-L') || 0;
+  var a = SIV('pc-a') || 0;
+  var T = SIV('pc-T') || 0;
   var Tc = a > 0 ? 2 * L / a : 0;
   var phase = a > 0 ? L / a : 0;
   document.getElementById('pc-r-tc').innerHTML = fmt(Tc, 2) + '<span class="result-unit">s</span>';
@@ -4830,10 +4936,10 @@ function calcPC() {
    NEW — Slow-Closure Surge (Michaud)
 ══════════════════════════════ */
 function calcMI() {
-  var L = +document.getElementById('mi-L').value || 0;
-  var V = +document.getElementById('mi-V').value || 0;
-  var a = +document.getElementById('mi-a').value || 0;
-  var T = +document.getElementById('mi-T').value || 0;
+  var L = SIV('mi-L') || 0;
+  var V = SIV('mi-V') || 0;
+  var a = SIV('mi-a') || 0;
+  var T = SIV('mi-T') || 0;
   var Tc = a > 0 ? 2 * L / a : 0;
   var jou = a * V / G;
   var mic = T > 0 ? 2 * L * V / (G * T) : Infinity;
@@ -4841,22 +4947,22 @@ function calcMI() {
   if (T <= Tc) { gov = jou; govName = 'Joukowsky (rapid closure)'; }
   else { gov = Math.min(mic, jou); govName = 'Michaud (slow closure)'; }
   document.getElementById('mi-r-dh').innerHTML = fmt(gov, 1) + '<span class="result-unit">m</span>';
-  setText('mi-r-jou', 'Joukowsky (max): ' + fmt(jou, 1) + ' m');
-  setText('mi-r-mic', 'Michaud (slow): ' + (isFinite(mic) ? fmt(mic, 1) + ' m' : '—'));
+  setText('mi-r-jou', 'Joukowsky (max): ' + VU(jou,'m',1));
+  setText('mi-r-mic', 'Michaud (slow): ' + (isFinite(mic) ? VU(mic,'m',1) : '—'));
   setText('mi-r-tc', 'Critical time T_c: ' + fmt(Tc, 2) + ' s');
   setText('mi-r-gov', 'Governed by: ' + govName);
-  if (T <= Tc) setPill('mi-pill', 'pill-danger', '⚠ T ≤ T_c — rapid closure, full ΔH = ' + fmt(jou,1) + ' m. Slow the valve to cut surge.');
-  else setPill('mi-pill', 'pill-ok', '✓ Slow closure: ΔH ≈ ' + fmt(gov,1) + ' m (' + fmt(gov/jou*100,0) + '% of Joukowsky)');
+  if (T <= Tc) setPill('mi-pill', 'pill-danger', '⚠ T ≤ T_c — rapid closure, full ΔH = ' + VU(jou,'m',1) + '. Slow the valve to cut surge.');
+  else setPill('mi-pill', 'pill-ok', '✓ Slow closure: ΔH ≈ ' + VU(gov,'m',1) + ' (' + fmt(gov/jou*100,0) + '% of Joukowsky)');
 }
 
 /* ══════════════════════════════
    NEW — Air Valve Sizing
 ══════════════════════════════ */
 function calcAV() {
-  var D  = (+document.getElementById('av-D').value || 0) / 1000; // m
-  var V  = +document.getElementById('av-V').value || 0;          // m/s
-  var dp = (+document.getElementById('av-dp').value || 0) * 1e5; // bar→Pa
-  var Cd = +document.getElementById('av-cd').value || 0.6;
+  var D  = (SIV('av-D') || 0) / 1000; // m
+  var V  = SIV('av-V') || 0;          // m/s
+  var dp = (SIV('av-dp') || 0) * 1e5; // bar→Pa
+  var Cd = SIV('av-cd') || 0.6;
   var rhoA = 1.2;
   var Apipe = Math.PI / 4 * D * D;
   var Qw = Apipe * V;                 // m³/s water (= air displaced)
@@ -4866,46 +4972,46 @@ function calcAV() {
   var noms = [25, 50, 80, 100, 150, 200, 250, 300];
   var nom = noms.find(function(s){ return s >= doo; }) || ('>' + noms[noms.length-1]);
   document.getElementById('av-r-do').innerHTML = fmt(doo, 1) + '<span class="result-unit">mm</span>';
-  setText('av-r-qw', 'Water rate: ' + fmt(Qw * 3600, 1) + ' m³/h');
-  setText('av-r-qa', 'Required air flow: ' + fmt(Qa * 1000, 1) + ' L/s');
-  setText('av-r-nom', 'Suggested nominal AV: ' + nom + ' mm');
-  setPill('av-pill', 'pill-info', '• Min orifice ≈ ' + fmt(doo,0) + ' mm at ' + fmt(dp/1e5,2) + ' bar Δp. Use combination AV; size vacuum (large) for draining/burst.');
+  setText('av-r-qw', 'Water rate: ' + VU(Qw * 3600,'m³/h',1));
+  setText('av-r-qa', 'Required air flow: ' + VU(Qa * 1000,'L/s',1));
+  setText('av-r-nom', 'Suggested nominal AV: ' + VU(nom, 'mm', 1));
+  setPill('av-pill', 'pill-info', '• Min orifice ≈ ' + VU(doo,'mm',0) + ' at ' + VU(dp/1e5,'bar',2) + ' Δp. Use combination AV; size vacuum (large) for draining/burst.');
 }
 
 /* ══════════════════════════════
    NEW — Pressure Class Check (PN)
 ══════════════════════════════ */
 function calcPN() {
-  var pw  = +document.getElementById('pn-pw').value || 0;
-  var ps  = +document.getElementById('pn-ps').value || 0;
-  var pn  = +document.getElementById('pn-pnv').value || 0;
-  var fac = +document.getElementById('pn-fac').value || 1;
+  var pw  = SIV('pn-pw') || 0;
+  var ps  = SIV('pn-ps') || 0;
+  var pn  = SIV('pn-pnv') || 0;
+  var fac = SIV('pn-fac') || 1;
   var tot = pw + ps;
   var all = pn * fac;
   var util = all > 0 ? tot / all * 100 : 0;
   document.getElementById('pn-r-tot').innerHTML = fmt(tot, 1) + '<span class="result-unit">bar</span>';
-  setText('pn-r-all', 'Allowable: ' + fmt(all, 1) + ' bar (PN ' + fmt(pn,0) + ' × ' + fmt(fac,2) + ')');
+  setText('pn-r-all', 'Allowable: ' + VU(all,'bar',1) + ' (PN ' + fmt(pn,0) + ' × ' + fmt(fac,2) + ')');
   setText('pn-r-util', 'Utilization: ' + fmt(util, 0) + ' %');
-  setText('pn-r-marg', 'Margin: ' + fmt(all - tot, 1) + ' bar');
-  if (tot > all)        setPill('pn-pill', 'pill-danger', '⚠ FAIL — total ' + fmt(tot,1) + ' bar exceeds ' + fmt(all,1) + ' bar. Upgrade class or add surge protection.');
+  setText('pn-r-marg', 'Margin: ' + VU(all - tot,'bar',1));
+  if (tot > all)        setPill('pn-pill', 'pill-danger', '⚠ FAIL — total ' + VU(tot,'bar',1) + ' exceeds ' + VU(all,'bar',1) + '. Upgrade class or add surge protection.');
   else if (util > 90)   setPill('pn-pill', 'pill-warn', '⚡ Tight: ' + fmt(util,0) + '% of class used — little margin for uncertainty');
-  else                  setPill('pn-pill', 'pill-ok', '✓ PASS — ' + fmt(tot,1) + ' bar ≤ ' + fmt(all,1) + ' bar (' + fmt(util,0) + '% utilization)');
+  else                  setPill('pn-pill', 'pill-ok', '✓ PASS — ' + VU(tot,'bar',1) + ' ≤ ' + VU(all,'bar',1) + ' (' + fmt(util,0) + '% utilization)');
 }
 
 /* ══════════════════════════════
    NEW — Hydraulic Retention Time
 ══════════════════════════════ */
 function calcHRT() {
-  var Q = +document.getElementById('hrt-Q').value || 0;   // m³/h
-  var V = +document.getElementById('hrt-V').value || 0;   // m³
-  var T = +document.getElementById('hrt-T').value || 0;   // h target
+  var Q = SIV('hrt-Q') || 0;   // m³/h
+  var V = SIV('hrt-V') || 0;   // m³
+  var T = SIV('hrt-T') || 0;   // h target
   var hrt = Q > 0 ? V / Q : 0;                            // h
   var reqV = Q * T;
   document.getElementById('hrt-r-t').innerHTML = fmt(hrt, 2) + '<span class="result-unit">h</span>';
   setText('hrt-r-min', 'In minutes: ' + fmt(hrt * 60, 0) + ' min');
-  setText('hrt-r-req', 'Volume for target: ' + fmt(reqV, 0) + ' m³');
-  setText('hrt-r-day', 'Throughput: ' + fmt(Q * 24, 0) + ' m³/day');
-  if (T > 0 && hrt < T)      setPill('hrt-pill', 'pill-warn', '⚠ HRT ' + fmt(hrt,2) + ' h < target ' + fmt(T,2) + ' h — need ≥ ' + fmt(reqV,0) + ' m³ (add ' + fmt(reqV - V,0) + ' m³)');
+  setText('hrt-r-req', 'Volume for target: ' + VU(reqV,'m³',0));
+  setText('hrt-r-day', 'Throughput: ' + VU(Q * 24,'m³/day',0));
+  if (T > 0 && hrt < T)      setPill('hrt-pill', 'pill-warn', '⚠ HRT ' + fmt(hrt,2) + ' h < target ' + fmt(T,2) + ' h — need ≥ ' + VU(reqV,'m³',0) + ' (add ' + VU(reqV - V,'m³',0) + ')');
   else if (T > 0)            setPill('hrt-pill', 'pill-ok', '✓ HRT ' + fmt(hrt,2) + ' h ≥ target ' + fmt(T,2) + ' h');
   else                       setPill('hrt-pill', 'pill-info', '• HRT = ' + fmt(hrt,2) + ' h (' + fmt(hrt*60,0) + ' min)');
 }
@@ -4914,33 +5020,33 @@ function calcHRT() {
    NEW — Clarifier SOR & Weir Loading
 ══════════════════════════════ */
 function calcCLA() {
-  var Q = +document.getElementById('cla-Q').value || 0;   // m³/h
-  var D = +document.getElementById('cla-D').value || 0;   // m
-  var W = +document.getElementById('cla-W').value || 0;   // m
+  var Q = SIV('cla-Q') || 0;   // m³/h
+  var D = SIV('cla-D') || 0;   // m
+  var W = SIV('cla-W') || 0;   // m
   var Qd = Q * 24;                                        // m³/day
   var A = Math.PI / 4 * D * D;                            // m²
   var sor = A > 0 ? Qd / A : 0;                           // m/d
   var weir = W > 0 ? Qd / W : 0;                          // m³/m·d
   var up = A > 0 ? Q / A : 0;                             // m/h
   document.getElementById('cla-r-sor').innerHTML = fmt(sor, 1) + '<span class="result-unit">m/d</span>';
-  setText('cla-r-area', 'Surface area: ' + fmt(A, 1) + ' m²');
-  setText('cla-r-weir', 'Weir loading: ' + fmt(weir, 1) + ' m³/m·d');
-  setText('cla-r-up', 'Upflow velocity: ' + fmt(up, 2) + ' m/h');
+  setText('cla-r-area', 'Surface area: ' + VU(A,'m²',1));
+  setText('cla-r-weir', 'Weir loading: ' + VU(weir,'m³',1) + '/m·d');
+  setText('cla-r-up', 'Upflow velocity: ' + VU(up,'m',2) + '/h');
   var msg = [];
   if (sor > 48) msg.push('SOR ' + fmt(sor,0) + ' high (>48 m/d)');
   if (weir > 375) msg.push('weir loading ' + fmt(weir,0) + ' high (>375)');
   if (msg.length) setPill('cla-pill', 'pill-warn', '⚠ ' + msg.join(' · ') + ' — carry-over risk, enlarge tank/weir');
-  else setPill('cla-pill', 'pill-ok', '✓ SOR ' + fmt(sor,1) + ' m/d & weir ' + fmt(weir,0) + ' m³/m·d — within typical limits');
+  else setPill('cla-pill', 'pill-ok', '✓ SOR ' + VU(sor,'m',1) + '/d & weir ' + VU(weir,'m³',0) + '/m·d — within typical limits');
 }
 
 /* ══════════════════════════════
    NEW — Coagulant / Chemical Dose
 ══════════════════════════════ */
 function calcCO() {
-  var Q = +document.getElementById('co-Q').value || 0;    // m³/h
-  var d = +document.getElementById('co-d').value || 0;    // mg/L
-  var s = (+document.getElementById('co-s').value || 0) / 100;
-  var rho = +document.getElementById('co-rho').value || 1;
+  var Q = SIV('co-Q') || 0;    // m³/h
+  var d = SIV('co-d') || 0;    // mg/L
+  var s = (SIV('co-s') || 0) / 100;
+  var rho = SIV('co-rho') || 1;
   var Qd = Q * 24;                                        // m³/day
   var kg = d * Qd / 1000;                                 // kg/day neat
   var sold = (s > 0 && rho > 0) ? kg / (s * rho) : 0;     // L/day solution
@@ -4948,7 +5054,7 @@ function calcCO() {
   setText('co-r-ty', 'Annual: ' + fmt(kg * 365 / 1000, 1) + ' t/yr');
   setText('co-r-sol', 'Solution feed: ' + fmt(sold / 24, 1) + ' L/h');
   setText('co-r-sold', 'Solution: ' + fmt(sold, 0) + ' L/day');
-  setPill('co-pill', 'pill-info', '• ' + fmt(d,0) + ' mg/L on ' + fmt(Qd,0) + ' m³/d → ' + fmt(kg,0) + ' kg/d neat (' + fmt(sold,0) + ' L/d at ' + fmt(s*100,0) + '%)');
+  setPill('co-pill', 'pill-info', '• ' + fmt(d,0) + ' mg/L on ' + VU(Qd,'m³/d',0) + ' → ' + fmt(kg,0) + ' kg/d neat (' + fmt(sold,0) + ' L/d at ' + fmt(s*100,0) + '%)');
 }
 
 /* ══════════════════════════════
@@ -4956,8 +5062,8 @@ function calcCO() {
 ══════════════════════════════ */
 function calcWF() {
   var type = document.getElementById('wf-type').value;
-  var H = +document.getElementById('wf-H').value || 0;
-  var b = +document.getElementById('wf-b').value || 0;
+  var H = SIV('wf-H') || 0;
+  var b = SIV('wf-b') || 0;
   var bwrap = document.getElementById('wf-bwrap');
   var Q, eq;
   if (type === 'v90') {
@@ -4971,19 +5077,19 @@ function calcWF() {
     bwrap.style.display = '';
   }
   document.getElementById('wf-r-q').innerHTML = fmt(Q * 1000, 1) + '<span class="result-unit">L/s</span>';
-  setText('wf-r-m3h', fmt(Q * 3600, 1) + ' m³/h');
-  setText('wf-r-m3s', fmt(Q, 4) + ' m³/s');
+  setText('wf-r-m3h', VU(Q * 3600,'m³/h',1));
+  setText('wf-r-m3s', VU(Q,'m³/s',4));
   setText('wf-r-eq', 'Equation: ' + eq);
-  setPill('wf-pill', 'pill-info', '• ' + fmt(Q*1000,1) + ' L/s at H = ' + fmt(H,3) + ' m (free-flow nappe assumed)');
+  setPill('wf-pill', 'pill-info', '• ' + VU(Q*1000,'L/s',1) + ' at H = ' + VU(H,'m',3) + ' (free-flow nappe assumed)');
 }
 
 /* ══════════════════════════════
    NEW — Critical Depth & Froude
 ══════════════════════════════ */
 function calcCR() {
-  var Q = +document.getElementById('cr-Q').value || 0;   // m³/s
-  var b = +document.getElementById('cr-b').value || 0;   // m
-  var y = +document.getElementById('cr-y').value || 0;   // m
+  var Q = SIV('cr-Q') || 0;   // m³/s
+  var b = SIV('cr-b') || 0;   // m
+  var y = SIV('cr-y') || 0;   // m
   var A = b * y;
   var V = A > 0 ? Q / A : 0;
   var Fr = y > 0 ? V / Math.sqrt(G * y) : 0;
@@ -4991,9 +5097,9 @@ function calcCR() {
   var yc = Math.pow(q * q / G, 1/3);
   var Vc = yc > 0 ? q / yc : 0;
   document.getElementById('cr-r-fr').innerHTML = fmt(Fr, 3) + '<span class="result-unit"></span>';
-  setText('cr-r-v', 'Velocity: ' + fmt(V, 2) + ' m/s');
-  setText('cr-r-yc', 'Critical depth y_c: ' + fmt(yc, 3) + ' m');
-  setText('cr-r-vc', 'Critical velocity: ' + fmt(Vc, 2) + ' m/s');
+  setText('cr-r-v', 'Velocity: ' + VU(V,'m/s',2));
+  setText('cr-r-yc', 'Critical depth y_c: ' + VU(yc,'m',3));
+  setText('cr-r-vc', 'Critical velocity: ' + VU(Vc,'m/s',2));
   if (Fr < 0.95)      { setText('cr-r-reg', 'Regime: subcritical'); setPill('cr-pill', 'pill-ok', '✓ Fr = ' + fmt(Fr,3) + ' < 1 — subcritical (tranquil) flow, depth > y_c'); }
   else if (Fr > 1.05) { setText('cr-r-reg', 'Regime: supercritical'); setPill('cr-pill', 'pill-warn', '⚡ Fr = ' + fmt(Fr,3) + ' > 1 — supercritical (rapid), risk of hydraulic jump downstream'); }
   else                { setText('cr-r-reg', 'Regime: near-critical'); setPill('cr-pill', 'pill-danger', '⚠ Fr ≈ ' + fmt(Fr,3) + ' — near-critical & unstable; redesign away from Fr = 1'); }
@@ -5003,60 +5109,50 @@ function calcCR() {
    NEW — Water Demand & Peak Factors
 ══════════════════════════════ */
 function calcDM() {
-  var pop = +document.getElementById('dm-pop').value || 0;
-  var pc  = +document.getElementById('dm-pc').value || 0;
-  var md  = +document.getElementById('dm-md').value || 1;
-  var ph  = +document.getElementById('dm-ph').value || 1;
-  var nrw = (+document.getElementById('dm-nrw').value || 0) / 100;
+  var pop = SIV('dm-pop') || 0;
+  var pc  = SIV('dm-pc') || 0;
+  var md  = SIV('dm-md') || 1;
+  var ph  = SIV('dm-ph') || 1;
+  var nrw = (SIV('dm-nrw') || 0) / 100;
   var avg = pop * pc / 1000;                 // m³/d (consumption)
   if (nrw < 1) avg = avg / (1 - nrw);        // gross of NRW
   var maxd = avg * md;
   var peakh = avg * ph;                       // m³/d basis
   document.getElementById('dm-r-md').innerHTML = fmt(maxd, 0) + '<span class="result-unit">m³/d</span>';
-  setText('dm-r-avg', 'Average day: ' + fmt(avg, 0) + ' m³/d');
-  setText('dm-r-ph',  'Peak hour: ' + fmt(peakh / 24, 0) + ' m³/h');
-  setText('dm-r-phl', 'Peak hour: ' + fmt(peakh * 1000 / 86400, 1) + ' L/s');
-  setText('dm-r-mdls','Max day: ' + fmt(maxd * 1000 / 86400, 1) + ' L/s');
-  setPill('dm-pill', 'pill-info', '• Treatment → size on ' + fmt(maxd,0) + ' m³/d (max-day); network/pumps → ' + fmt(peakh/24,0) + ' m³/h (peak-hour)');
+  setText('dm-r-avg', 'Average day: ' + VU(avg,'m³/d',0));
+  setText('dm-r-ph',  'Peak hour: ' + VU(peakh / 24,'m³/h',0));
+  setText('dm-r-phl', 'Peak hour: ' + VU(peakh * 1000 / 86400,'L/s',1));
+  setText('dm-r-mdls','Max day: ' + VU(maxd * 1000 / 86400,'L/s',1));
+  setPill('dm-pill', 'pill-info', '• Treatment → size on ' + VU(maxd,'m³/d',0) + ' (max-day); network/pumps → ' + VU(peakh/24,'m³/h',0) + ' (peak-hour)');
 }
 
 /* ══════════════════════════════
    NEW — Balancing / Storage Volume
 ══════════════════════════════ */
 function calcBS() {
-  var mdd = +document.getElementById('bs-mdd').value || 0;   // m³/d
-  var bal = (+document.getElementById('bs-bal').value || 0) / 100;
-  var emh = +document.getElementById('bs-emh').value || 0;    // hours
-  var ff  = +document.getElementById('bs-ff').value || 0;     // L/s
-  var fd  = +document.getElementById('bs-fd').value || 0;     // h
+  var mdd = SIV('bs-mdd') || 0;   // m³/d
+  var bal = (SIV('bs-bal') || 0) / 100;
+  var emh = SIV('bs-emh') || 0;    // hours
+  var ff  = SIV('bs-ff') || 0;     // L/s
+  var fd  = SIV('bs-fd') || 0;     // h
   var vBal = bal * mdd;
   var vEm  = emh * (mdd / 24);                                // avg hourly × hours (use mdd/24 as design hourly)
   var vFire= ff * fd * 3.6;                                   // L/s × h × 3.6 = m³
   var tot  = vBal + vEm + vFire;
   document.getElementById('bs-r-tot').innerHTML = fmt(tot, 0) + '<span class="result-unit">m³</span>';
-  setText('bs-r-bal', 'Balancing: ' + fmt(vBal, 0) + ' m³');
-  setText('bs-r-em',  'Emergency: ' + fmt(vEm, 0) + ' m³');
-  setText('bs-r-fire','Fire reserve: ' + fmt(vFire, 0) + ' m³');
+  setText('bs-r-bal', 'Balancing: ' + VU(vBal,'m³',0));
+  setText('bs-r-em',  'Emergency: ' + VU(vEm,'m³',0));
+  setText('bs-r-fire','Fire reserve: ' + VU(vFire,'m³',0));
   setText('bs-r-hrs', '≈ ' + (mdd > 0 ? fmt(tot / (mdd / 24), 1) : '—') + ' h of max-day demand');
-  setPill('bs-pill', 'pill-info', '• Total ' + fmt(tot,0) + ' m³ = ' + fmt(vBal,0) + ' balancing + ' + fmt(vEm,0) + ' emergency + ' + fmt(vFire,0) + ' fire');
+  setPill('bs-pill', 'pill-info', '• Total ' + VU(tot,'m³',0) + ' = ' + fmt(vBal,0) + ' balancing + ' + fmt(vEm,0) + ' emergency + ' + fmt(vFire,0) + ' fire');
 }
 
 /* ══════════════════════════════
    Init all calculators
 ══════════════════════════════ */
 window.addEventListener('DOMContentLoaded', function() {
-  calcWH(); calcWS(); calcSV();
-  calcHW(); calcRE(); calcML();
-  calcPP(); calcNP(); calcBL();
-  calcMGP(); calcMOC(); calcDW();
-  calcTH(); calcAFF(); calcNS();
-  calcTNK(); calcCL(); calcEPD();
-  calcSYS(); calcPE();
-  calcUC(); calcCW();
-  calcDF(); calcFL(); calcTE();
-  calcPC(); calcMI(); calcAV(); calcPN();
-  calcHRT(); calcCLA(); calcCO(); calcWF();
-  calcCR(); calcDM(); calcBS();
+  unitsInit();
+  runAllCalcs();
 });
 </script>
 

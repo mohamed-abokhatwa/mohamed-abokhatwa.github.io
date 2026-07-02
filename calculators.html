@@ -4760,7 +4760,7 @@ function calcHW() {
   setPrimary('hw-r-hf', hf, 'm');
   setText('hw-r-dp',    'Pressure loss: ' + VU(dP_bar,'bar',3));
   setText('hw-r-v',     'Velocity: ' + VU(V,'m/s'));
-  setText('hw-r-slope', 'Friction slope: ' + VU(slope,'m',1) + '/km');
+  setText('hw-r-slope', 'Friction slope: ' + fmt(slope,1) + ' m/km');
   setText('hw-r-re',    'Reynolds: ' + (Re >= 1000 ? fmt(Re/1000,1)+'k' : fmt(Re,0)) + ' · ' + regime);
 
   if (V > 3.5)       setPill('hw-pill','pill-danger','⚠ Velocity ' + VU(V,'m/s') + ' — too high, erosion risk');
@@ -5398,13 +5398,13 @@ function calcTE() {
   var dL = a * L * dt * 1000;            // mm
   var strain = a * dt * 1000;            // mm/m
   var stress = E * 1000 * a * dt;        // MPa  (GPa·1000=MPa)
-  document.getElementById('te-r-dl').innerHTML = fmt(dL, 1) + '<span class="result-unit">mm</span>';
-  setText('te-r-strain', 'Thermal strain: ' + VU(strain,'mm',3) + '/m');
+  setPrimary('te-r-dl', dL, 'mm');
+  setText('te-r-strain', 'Thermal strain: ' + fmt(strain,3) + ' mm/m');
   setText('te-r-stress', 'Restrained stress: ' + VU(Math.abs(stress), 'MPa', 1));
   setText('te-r-note', dL >= 0 ? 'Expansion (heating)' : 'Contraction (cooling)');
   var amag = Math.abs(dL);
   if (amag > 50)       setPill('te-pill', 'pill-warn', '⚡ ' + VU(amag,'mm',0) + ' free movement — provide expansion joints/loops or restrain & check anchor thrust');
-  else if (amag > 0)   setPill('te-pill', 'pill-ok', '✓ ' + VU(amag,'mm',1) + ' free movement · ' + fmt(Math.abs(stress),0) + ' MPa if fully restrained');
+  else if (amag > 0)   setPill('te-pill', 'pill-ok', '✓ ' + VU(amag,'mm',1) + ' free movement · ' + VU(Math.abs(stress),'MPa',0) + ' if fully restrained');
   else                 setPill('te-pill', 'pill-info', '—');
 }
 
@@ -5443,7 +5443,7 @@ function calcMI() {
   var gov, govName;
   if (T <= Tc) { gov = jou; govName = 'Joukowsky (rapid closure)'; }
   else { gov = Math.min(mic, jou); govName = 'Michaud (slow closure)'; }
-  document.getElementById('mi-r-dh').innerHTML = fmt(gov, 1) + '<span class="result-unit">m</span>';
+  setPrimary('mi-r-dh', gov, 'm');
   setText('mi-r-jou', 'Joukowsky (max): ' + VU(jou,'m',1));
   setText('mi-r-mic', 'Michaud (slow): ' + (isFinite(mic) ? VU(mic,'m',1) : '—'));
   setText('mi-r-tc', 'Critical time T_c: ' + fmt(Tc, 2) + ' s');
@@ -5468,7 +5468,7 @@ function calcAV() {
   var doo = Ao > 0 ? Math.sqrt(4 * Ao / Math.PI) * 1000 : 0;              // mm
   var noms = [25, 50, 80, 100, 150, 200, 250, 300];
   var nom = noms.find(function(s){ return s >= doo; }) || ('>' + noms[noms.length-1]);
-  document.getElementById('av-r-do').innerHTML = fmt(doo, 1) + '<span class="result-unit">mm</span>';
+  setPrimary('av-r-do', doo, 'mm');
   setText('av-r-qw', 'Water rate: ' + VU(Qw * 3600,'m³/h',1));
   setText('av-r-qa', 'Required air flow: ' + VU(Qa * 1000,'L/s',1));
   setText('av-r-nom', 'Suggested nominal AV: ' + VU(nom, 'mm', 1));
@@ -5486,7 +5486,7 @@ function calcPN() {
   var tot = pw + ps;
   var all = pn * fac;
   var util = all > 0 ? tot / all * 100 : 0;
-  document.getElementById('pn-r-tot').innerHTML = fmt(tot, 1) + '<span class="result-unit">bar</span>';
+  setPrimary('pn-r-tot', tot, 'bar');
   setText('pn-r-all', 'Allowable: ' + VU(all,'bar',1) + ' (PN ' + fmt(pn,0) + ' × ' + fmt(fac,2) + ')');
   setText('pn-r-util', 'Utilization: ' + fmt(util, 0) + ' %');
   setText('pn-r-marg', 'Margin: ' + VU(all - tot,'bar',1));
@@ -5527,13 +5527,13 @@ function calcCLA() {
   var up = A > 0 ? Q / A : 0;                             // m/h
   document.getElementById('cla-r-sor').innerHTML = fmt(sor, 1) + '<span class="result-unit">m/d</span>';
   setText('cla-r-area', 'Surface area: ' + VU(A,'m²',1));
-  setText('cla-r-weir', 'Weir loading: ' + VU(weir,'m³',1) + '/m·d');
-  setText('cla-r-up', 'Upflow velocity: ' + VU(up,'m',2) + '/h');
+  setText('cla-r-weir', 'Weir loading: ' + fmt(weir,1) + ' m³/m·d');
+  setText('cla-r-up', 'Upflow velocity: ' + fmt(up,2) + ' m/h');
   var msg = [];
   if (sor > 48) msg.push('SOR ' + fmt(sor,0) + ' high (>48 m/d)');
   if (weir > 375) msg.push('weir loading ' + fmt(weir,0) + ' high (>375)');
   if (msg.length) setPill('cla-pill', 'pill-warn', '⚠ ' + msg.join(' · ') + ' — carry-over risk, enlarge tank/weir');
-  else setPill('cla-pill', 'pill-ok', '✓ SOR ' + VU(sor,'m',1) + '/d & weir ' + VU(weir,'m³',0) + '/m·d — within typical limits');
+  else setPill('cla-pill', 'pill-ok', '✓ SOR ' + fmt(sor,1) + ' m/d & weir ' + fmt(weir,0) + ' m³/m·d — within typical limits');
 }
 
 /* ══════════════════════════════
@@ -5573,7 +5573,7 @@ function calcWF() {
     Q = 1.84 * b * Math.pow(H, 1.5); eq = 'Q = 1.84·b·H^1.5';
     bwrap.style.display = '';
   }
-  document.getElementById('wf-r-q').innerHTML = fmt(Q * 1000, 1) + '<span class="result-unit">L/s</span>';
+  setPrimary('wf-r-q', Q * 1000, 'L/s');
   setText('wf-r-m3h', VU(Q * 3600,'m³/h',1));
   setText('wf-r-m3s', VU(Q,'m³/s',4));
   setText('wf-r-eq', 'Equation: ' + eq);
@@ -5615,7 +5615,7 @@ function calcDM() {
   if (nrw < 1) avg = avg / (1 - nrw);        // gross of NRW
   var maxd = avg * md;
   var peakh = avg * ph;                       // m³/d basis
-  document.getElementById('dm-r-md').innerHTML = fmt(maxd, 0) + '<span class="result-unit">m³/d</span>';
+  setPrimary('dm-r-md', maxd, 'm³/d');
   setText('dm-r-avg', 'Average day: ' + VU(avg,'m³/d',0));
   setText('dm-r-ph',  'Peak hour: ' + VU(peakh / 24,'m³/h',0));
   setText('dm-r-phl', 'Peak hour: ' + VU(peakh * 1000 / 86400,'L/s',1));
@@ -5636,7 +5636,7 @@ function calcBS() {
   var vEm  = emh * (mdd / 24);                                // avg hourly × hours (use mdd/24 as design hourly)
   var vFire= ff * fd * 3.6;                                   // L/s × h × 3.6 = m³
   var tot  = vBal + vEm + vFire;
-  document.getElementById('bs-r-tot').innerHTML = fmt(tot, 0) + '<span class="result-unit">m³</span>';
+  setPrimary('bs-r-tot', tot, 'm³');
   setText('bs-r-bal', 'Balancing: ' + VU(vBal,'m³',0));
   setText('bs-r-em',  'Emergency: ' + VU(vEm,'m³',0));
   setText('bs-r-fire','Fire reserve: ' + VU(vFire,'m³',0));

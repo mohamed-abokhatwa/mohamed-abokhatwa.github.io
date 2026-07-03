@@ -10,11 +10,6 @@
     gtag('config', 'G-JRFPTBLVT4');
   </script>
   <meta charset="UTF-8">
-  <link rel="preconnect" href="https://assets.calendly.com">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Surge Scenarios in Pumping Stations — Which One Governs the Design — Mohamed Abokhatwa</title>
@@ -23,6 +18,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <style>
     .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
     .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
@@ -92,7 +88,7 @@
 
     @media(max-width:600px){ .chart-box{height:300px;} }
   </style>
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   <meta name="description" content="A scenario-by-scenario analysis of hydraulic transients in pumping stations — pump trip, start-up, check-valve slam, and valve closure — and which event truly governs the transient design envelope.">
   <meta property="og:title" content="Surge Scenarios in Pumping Stations — Which One Governs the Design | Mohamed Abokhatwa">
@@ -185,7 +181,7 @@
 </div>
 
 <div class="hero-img-wrap">
-  <img fetchpriority="high" width="1376" height="768" src="surge-scenarios-pump-stations.webp" alt="Surge Scenarios in Pumping Stations">
+  <img src="surge-scenarios-pump-stations.webp" alt="Surge Scenarios in Pumping Stations">
 </div>
 
 <div class="article-body">
@@ -528,7 +524,6 @@ function mcSubmit(e) {
 #mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 // ---- Chart.js shared config ----
 const ACCENT='#1b4f72', DANGER='#c0392b', WARN='#e67e22', OK='#1e8449', GREY='#7f8c8d', BROWN='#8a6d3b';

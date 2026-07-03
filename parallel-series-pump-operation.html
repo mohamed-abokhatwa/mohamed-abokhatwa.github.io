@@ -10,11 +10,6 @@
     gtag('config', 'G-JRFPTBLVT4');
   </script>
   <meta charset="UTF-8">
-  <link rel="preconnect" href="https://assets.calendly.com">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parallel &amp; Series Pump Operation and Staging — Mohamed Abokhatwa</title>
@@ -23,6 +18,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
   <script>
     MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
   </script>
@@ -98,7 +95,7 @@
     .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
     .article-body ol.refs em{color:var(--text-tertiary);}
   </style>
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   <meta name="description" content="A design-grade treatment of parallel and series pump operation: combined-curve construction, the diminishing-returns truth of parallel pumping, series for high-head duty, flat-curve instability and load sharing, and duty/standby/assist staging logic — with interactive curves and worked numerical examples.">
   <meta property="og:title" content="Parallel & Series Pump Operation and Staging | Mohamed Abokhatwa">
@@ -191,7 +188,7 @@
 </div>
 
 <div class="hero-img-wrap">
-  <img fetchpriority="high" width="1376" height="768" src="parallel-series-pump-operation.webp" alt="Parallel and series pump operation and staging">
+  <img src="parallel-series-pump-operation.webp" alt="Parallel and series pump operation and staging">
 </div>
 
 <div class="article-body">
@@ -522,8 +519,6 @@ function mcSubmit(e) {
 #mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
 <script>
 /* ---------- shared pump model (flow m^3/h, head m) ---------- */
 const H0p=60, ap=8.0e-6;          // single pump: H = 60 - 8e-6 Q^2

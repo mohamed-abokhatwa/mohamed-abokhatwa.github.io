@@ -10,10 +10,6 @@
     gtag('config', 'G-JRFPTBLVT4');
   </script>
   <meta charset="UTF-8">
-  <link rel="preconnect" href="https://assets.calendly.com">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Computing a Transient Simulation in Bentley HAMMER: A Step-by-Step Workflow — Mohamed Abokhatwa</title>
@@ -45,7 +41,7 @@
     .article-figure figcaption{font-size:13px;color:var(--text-tertiary);margin-top:11px;line-height:1.6;text-align:center;}
     .step-pill{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--accent);background:rgba(0,113,227,0.08);padding:3px 12px;border-radius:980px;margin-bottom:8px;}
   </style>
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   <meta name="description" content="A step-by-step Bentley HAMMER workflow for computing a transient simulation — pump shutdown setup, wave speed, calculation options, EPS initialization, profiles, and reading the transient envelope.">
   <meta property="og:title" content="Computing a Transient Simulation in Bentley HAMMER | Mohamed Abokhatwa">
@@ -138,7 +134,7 @@
 </div>
 
 <div class="hero-img-wrap">
-  <img fetchpriority="high" width="1376" height="768" src="hammer-transient-simulation-workflow.webp" alt="Computing a Transient Simulation in Bentley HAMMER">
+  <img src="hammer-transient-simulation-workflow.webp" alt="Computing a Transient Simulation in Bentley HAMMER">
 </div>
 
 <div class="article-body">
@@ -152,14 +148,14 @@
 <p>Before touching any transient settings, decide which version of the model you will analyze. A full distribution model carries hundreds of junctions, demands, and looped mains — most of which contribute almost nothing to the transient response of the main line.</p>
 
 <figure class="article-figure">
-  <img width="960" height="513" src="hammer-sim-full-model.jpg" alt="Full distribution network model in Bentley HAMMER with hundreds of junctions and looped mains" loading="lazy">
+  <img src="hammer-sim-full-model.jpg" alt="Full distribution network model in Bentley HAMMER with hundreds of junctions and looped mains" loading="lazy">
   <figcaption>The full distribution model — accurate, but heavy. Every pipe needs a wave speed, and zero-flow or looped sections add transient-specific complications.</figcaption>
 </figure>
 
 <p>If you own Bentley WaterGEMS, the <strong>Skelebrator</strong> tool can collapse that full model into a <strong>hydraulically equivalent</strong> skeleton in minutes. It lumps demands onto the remaining nodes and combines pipes in series and parallel so that flows and hydraulic grades stay identical to the full model. The result is a clean transmission line from pump station to tank — the part that actually experiences the worst surges.</p>
 
 <figure class="article-figure">
-  <img width="960" height="513" src="hammer-sim-skeletonized.jpg" alt="Skeletonized hydraulically equivalent model showing the pump-to-tank transmission line" loading="lazy">
+  <img src="hammer-sim-skeletonized.jpg" alt="Skeletonized hydraulically equivalent model showing the pump-to-tank transmission line" loading="lazy">
   <figcaption>The skeletonized model: hydraulically equivalent, but with far fewer elements to configure for transient analysis. This is the model we run.</figcaption>
 </figure>
 
@@ -184,7 +180,7 @@
 </ul>
 
 <figure class="article-figure">
-  <img width="960" height="513" src="hammer-sim-pump-curve.jpg" alt="Pump definition Transient tab in HAMMER showing the four-quadrant head and torque characteristic curves" loading="lazy">
+  <img src="hammer-sim-pump-curve.jpg" alt="Pump definition Transient tab in HAMMER showing the four-quadrant head and torque characteristic curves" loading="lazy">
   <figcaption>The Transient tab of the pump definition. The four-quadrant characteristic curves let HAMMER model reverse flow and reverse rotation as the pump spins down after the trip.</figcaption>
 </figure>
 
@@ -198,7 +194,7 @@
 <p>Rather than computing it by hand, use the <strong>Wave Speed Calculator</strong> under the Tools menu. Pick your liquid from the engineering library (here, <strong>water at 20&nbsp;°C</strong>), then select the pipe material — the library already stores the <strong>Young's modulus</strong> and <strong>Poisson's ratio</strong> for materials like <strong>ductile iron</strong>. Add the wall thickness and restraint condition, then apply the result to all pipes at once.</p>
 
 <figure class="article-figure">
-  <img width="960" height="513" src="hammer-sim-wave-speed.jpg" alt="Wave Speed Calculator and engineering material library in HAMMER for ductile iron pipe" loading="lazy">
+  <img src="hammer-sim-wave-speed.jpg" alt="Wave Speed Calculator and engineering material library in HAMMER for ductile iron pipe" loading="lazy">
   <figcaption>The Wave Speed Calculator pulls material properties (Young's modulus, Poisson's ratio) straight from the engineering library, then applies a consistent wave speed across every pipe in the model.</figcaption>
 </figure>
 
@@ -224,7 +220,7 @@
 <p>If your initial conditions come from an Extended Period Simulation, you must tell HAMMER <em>which moment in time</em> to freeze as the steady starting state. This matters enormously: starting the transient when the pump is off would simulate nothing.</p>
 
 <figure class="article-figure">
-  <img width="960" height="513" src="hammer-sim-eps-cycle.jpg" alt="EPS flow graph showing tank hydraulic grade cycling and pump flow switching on and off over 24 hours" loading="lazy">
+  <img src="hammer-sim-eps-cycle.jpg" alt="EPS flow graph showing tank hydraulic grade cycling and pump flow switching on and off over 24 hours" loading="lazy">
   <figcaption>The 24-hour EPS cycle: the tank level (upper curve) rises and falls as the pump (lower curve) switches on and off. We initialize the transient at hour 7 — when the pump is running and the tank is near full.</figcaption>
 </figure>
 
@@ -255,7 +251,7 @@
 <p>Open the <strong>Transient Results Viewer</strong> (its toolbar icon, or <em>Analysis &rarr; Transient Results Viewer</em>). The first tab shows profiles; the other two show graphs at your selected points.</p>
 
 <figure class="article-figure">
-  <img width="960" height="513" src="hammer-sim-envelope.jpg" alt="Transient envelope profile in HAMMER: maximum and minimum hydraulic grade lines, ground profile, initial HGL, and a vapor volume spike at the high point" loading="lazy">
+  <img src="hammer-sim-envelope.jpg" alt="Transient envelope profile in HAMMER: maximum and minimum hydraulic grade lines, ground profile, initial HGL, and a vapor volume spike at the high point" loading="lazy">
   <figcaption>The transient envelope. <strong>Red</strong> = maximum HGL, <strong>blue</strong> = minimum HGL over the whole run, <strong>green</strong> = ground elevation, <strong>black</strong> = initial steady HGL. The spike in the top panel is the <strong>vapor volume</strong> forming at the high point.</figcaption>
 </figure>
 
@@ -274,7 +270,7 @@
 <p>What happens when that vapor pocket finally collapses is the most dangerous event in the whole simulation. The two water columns on either side of the cavity rush back together and <strong>slam</strong> — an effect hydraulically identical to instantaneous valve closure. Water is nearly incompressible, so the sudden change in momentum produces a severe pressure spike, like a head-on collision.</p>
 
 <figure class="article-figure">
-  <img width="960" height="513" src="hammer-sim-column-separation.jpg" alt="HAMMER profile at the moment of column separation rejoining, showing a sharp pressure spike propagating along the pipeline" loading="lazy">
+  <img src="hammer-sim-column-separation.jpg" alt="HAMMER profile at the moment of column separation rejoining, showing a sharp pressure spike propagating along the pipeline" loading="lazy">
   <figcaption>Column separation rejoining. The slam drives the maximum pressures seen across most of the model; the rebound then reflects as a low-pressure wave, dragging minimum pressures down elsewhere.</figcaption>
 </figure>
 

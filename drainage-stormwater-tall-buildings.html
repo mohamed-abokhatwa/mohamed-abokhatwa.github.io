@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drainage & Stormwater in Tall Buildings: Stacks, Venting, Trap Seals & Siphonic Roofs — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:16px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid #cdd6df;border-radius:8px;font-size:13px;font-family:inherit;background:#fff;color:#1a1d21;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="Sanitary drainage and stormwater for tall and super-tall buildings from a design perspective: how a drainage stack really works (terminal velocity, annular flow, air entrainment), sizing with the Wyly-Eaton stack equation, the air-pressure regime and trap-seal protection (±375 Pa), ventilation systems (primary/secondary vents, Sovent, PAPA/AAV), stack offsets and the base bend, gravity vs siphonic roof drainage, basement pumping — with three interactive charts, worked numbers and installation tricks.">
+  <meta property="og:title" content="Drainage & Stormwater in Tall Buildings: Stacks, Venting, Trap Seals & Siphonic Roofs | Mohamed Abokhatwa">
+  <meta property="og:description" content="How drainage stacks, air-pressure transients, trap-seal protection, ventilation, stack offsets and siphonic roof drainage are actually designed and installed in tall buildings — in three interactive charts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/drainage-stormwater-tall-buildings.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-drainage-stormwater-tall-buildings.jpg">
+  <meta property="og:image:alt" content="A cutaway of a tall building's drainage stack, vent stack, branch connections and the base bend discharging to the drain">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Drainage & Stormwater in Tall Buildings: Stacks, Venting, Trap Seals & Siphonic Roofs | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="The engineering of tall-building drainage: stack capacity, the air-pressure regime and trap seals, ventilation strategies, offsets, and gravity vs siphonic roofs — three interactive charts.">
+  <link rel="canonical" href="https://abokhatwa.com/drainage-stormwater-tall-buildings.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Drainage & Stormwater in Tall Buildings: Stacks, Venting, Trap Seals & Siphonic Roofs",
+  "description": "A design-perspective guide to sanitary drainage and stormwater in tall buildings: stack hydraulics and the Wyly-Eaton capacity equation, the air-pressure regime and trap-seal protection, ventilation systems, stack offsets, and gravity vs siphonic roof drainage.",
+  "image": "https://abokhatwa.com/og-drainage-stormwater-tall-buildings.jpg",
+  "datePublished": "2026-07-03",
+  "dateModified": "2026-07-03",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/drainage-stormwater-tall-buildings.html" }
+}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Plumbing &amp; Drainage</span></div>
+  <span class="tag">Plumbing &amp; Drainage &middot; Tall Buildings &middot; Stacks &middot; Stormwater</span>
+  <h1>Drainage &amp; Stormwater in Tall Buildings: Stacks, Venting, Trap Seals &amp; Siphonic Roofs</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Technical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>July 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>17 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="drainage-stormwater-tall-buildings.webp" alt="Cutaway of a tall building's sanitary drainage stack with branch connections, a parallel vent stack, a stack offset and the base bend discharging to the below-ground drain">
+</div>
+
+<div class="article-body">
+<p class="lead">Water supply goes <em>up</em> a tower under pressure you control; drainage comes <em>down</em> under gravity you do not. A single soil stack in a super-tall building can drop waste through 300 metres or more, and what governs its design is not the water at all — it is the <strong>air</strong>. The falling water drags a column of air with it, and the pressure swings that air creates will empty the water seals in the traps, letting sewer gas into apartments, unless the whole system is engineered to keep those pressures inside a band a few centimetres of water wide. This is the discipline of tall-building drainage: sizing the stacks, managing the air, protecting the seals, turning the offsets, and getting the storm off the roof — all by gravity, with almost no margin for error.</p>
+
+<h2 id="why">1 · Why tall-building drainage is hard</h2>
+<p>In a two-storey house the drainage barely matters. In a 60-storey tower it is one of the most failure-prone systems in the building, for reasons that are all consequences of height<sup class="cite">[1][2]</sup>:</p>
+<ul class="clean">
+  <li><strong>It is one long fall.</strong> Waste discharged on floor 55 arrives at the base moving fast and carrying a great deal of entrained air. The energy has to go somewhere.</li>
+  <li><strong>The air, not the water, sets the rules.</strong> Falling water in the stack behaves like a piston, pulling air down with it. That airflow, meeting the resistance of fittings, the base bend and the below-ground drain, generates <strong>suction near the top and back-pressure near the base</strong> — the enemy of every trap seal in the building.</li>
+  <li><strong>Trap seals are tiny.</strong> A typical trap holds only a <strong>50&nbsp;mm</strong> water seal. A pressure transient of a few hundred pascals — a few centimetres of water — is enough to blow it out or siphon it away, and once the seal is gone, sewer gas has a clear path into occupied rooms.</li>
+  <li><strong>You cannot repipe a tower.</strong> Stacks are cast into the cores and shafts. Getting the sizing, venting and offsets right on the drawing board is the only chance you get.</li>
+</ul>
+
+<h2 id="hydraulics">2 · How a drainage stack really works</h2>
+<p>The intuition that water "falls faster and faster" down a tall stack is wrong, and the correction is the key to the whole subject. Discharged water does not fill the pipe; it clings to the wall as an <strong>annular sheet</strong> spiralling down, with a core of air in the middle. Friction with the pipe wall and drag from the air quickly balance gravity, so the sheet reaches a <strong>terminal velocity</strong> — typically only <strong>3–5&nbsp;m/s</strong> — within a few storeys (the <em>terminal length</em>), and does not accelerate after that no matter how tall the building<sup class="cite">[2][3]</sup>. That single fact is why a 300&nbsp;m stack is sized almost the same as a 30&nbsp;m one.</p>
+<p>Because the water runs as an annulus, the stack is <strong>never designed to run full</strong>. It is sized so the water occupies only a fraction of the cross-section — leaving the central air core free to move — and that fraction is the master design variable.</p>
+
+<div class="callout key">
+  <span class="lbl">The governing idea</span>
+  A drainage stack is an <strong>air-management device that happens to carry water</strong>. Keep the water to a thin annulus (a quarter to a third of the cross-section), keep a clear air core, and provide that air core a low-resistance path to atmosphere — and the destructive pressure swings never build. Fail to, and the traps empty. Everything that follows is in service of that idea.
+</div>
+
+<h2 id="sizing">3 · Sizing the stack</h2>
+<p>Loads are counted in <strong>discharge units (DU)</strong> or fixture units — each fixture rated by how much and how often it discharges — and the total is converted to a design flow. Codes then set the stack diameter from the flow and the permissible fill. The most physical basis is the <strong>Wyly-Eaton equation</strong>, which gives the flow a stack can carry at a chosen fraction of cross-section occupied by water<sup class="cite">[3][4]</sup>:</p>
+<div class="eq">\[ Q_{\text{stack}} = 3.15\times10^{-4}\; r_s^{\,5/3}\; d^{\,8/3} \]</div>
+<p>where \(Q\) is in L/s, \(d\) is the stack inside diameter in mm, and \(r_s\) is the ratio of water cross-section to pipe cross-section. Codes cap \(r_s\) at roughly <strong>1/4 to 1/3</strong> (EN&nbsp;12056 works to a filling degree; the IPC/UPC tabulate the same physics as capacities per diameter). Push \(r_s\) higher to squeeze more flow into a smaller pipe and you choke the air core — the pressure regime becomes violent and the traps go. The next chart is this equation.</p>
+
+<h2 id="int-capacity">4 · Interactive: stack capacity vs diameter &amp; fill</h2>
+<p>Set the fill ratio and read how much a stack of each diameter can carry. The dashed lines are the code-typical limits (1/4 and 1/3 full); keep your operating point between them. Notice how strongly capacity depends on diameter — it rises with \(d^{8/3}\), so one pipe size up buys a lot of flow — and how tempting, and dangerous, it is to chase capacity by letting the stack run fuller.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Drainage-stack capacity (Wyly-Eaton)</div>
+    <div class="fsub">Q = 3.15×10⁻⁴ · rₛ^(5/3) · d^(8/3) (L/s, mm). The blue curve is capacity at your chosen fill ratio; the faint lines are the 1/4- and 1/3-full code limits. The marker is your selected diameter.</div>
+  </div>
+  <div class="chart-box"><canvas id="capChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Stack diameter <span id="vD">100 mm</span></label>
+      <input type="range" id="sD" min="50" max="300" value="100" step="5">
+      <div class="hint">Inside diameter of the soil/waste stack.</div>
+    </div>
+    <div class="ctrl">
+      <label>Fill ratio rₛ <span id="vR">0.29</span></label>
+      <input type="range" id="sR" min="0.16" max="0.40" value="0.29" step="0.01">
+      <div class="hint">Fraction of cross-section occupied by water (code limit ≈ 1/4–1/3).</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Stack capacity</div><div class="v" id="rQ">8.7 <small>L/s</small></div></div>
+    <div class="cell"><div class="k">= flow</div><div class="v" id="rQm">31 <small>m³/h</small></div></div>
+    <div class="cell"><div class="k">≈ discharge units</div><div class="v" id="rDU">300 <small>DU</small></div></div>
+    <div class="cell"><div class="k">Fill</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rFill"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">A 100&nbsp;mm stack at a filling ratio of 7/24 (≈0.29) carries about 8.7&nbsp;L/s — enough for a few hundred discharge units. Slide the fill toward 0.40 and the same pipe appears to carry far more, but the badge turns red: you have starved the air core, and in a tall stack that is exactly the condition that empties trap seals. The safe move is always the next diameter up, not a fuller pipe.</p>
+
+<h2 id="pressure">5 · The air-pressure regime &amp; trap seals</h2>
+<p>Now the heart of it. As the annular water falls, it entrains air and drags it downward; that induced airflow must be replaced from the top and must escape at the bottom. Along the way it produces a characteristic pressure profile<sup class="cite">[2][5]</sup>:</p>
+<ul class="clean">
+  <li><strong>Suction (negative pressure) in the upper stack.</strong> Where discharge enters and the flow becomes annular, the accelerating air draws pressure down. A branch connected here can have its trap <em>siphoned</em> — the seal pulled out into the stack.</li>
+  <li><strong>Back-pressure (positive) at the base.</strong> At the foot, the falling water hits the base bend and the horizontal drain, momentarily compressing the air ahead of it. That positive pulse travels back up and can <em>blow</em> the seal out of a low-level trap, bubbling sewage gas into the room.</li>
+</ul>
+<p>Both must be held within the trap's tolerance. The widely used limit is about <strong>±375&nbsp;Pa</strong> (≈ ±38&nbsp;mm water) at any appliance connection — comfortably inside a 50&nbsp;mm seal with margin for evaporation and momentum effects<sup class="cite">[1][5]</sup>. Exceed it and seals are lost. The tools to stay inside it are ventilation and good detailing, and the next chart shows how they reshape the profile.</p>
+
+<div class="schematic">
+<svg viewBox="0 0 720 400" role="img" aria-label="A tall-building drainage stack with branch connections, a parallel vent stack with cross-vents, a stack offset with relief vents, and the base bend with a relief vent discharging to the below-ground drain">
+  <style>
+    .dr-soil{stroke:var(--accent);stroke-width:5;fill:none;stroke-linecap:round;}
+    .dr-vent{stroke:var(--text-tertiary);stroke-width:2.4;fill:none;stroke-dasharray:2 5;}
+    .dr-br{stroke:var(--accent);stroke-width:2.6;fill:none;}
+    .dr-drain{stroke:#c0392b;stroke-width:5;fill:none;stroke-linecap:round;opacity:.85;}
+    .dr-lbl{fill:var(--text-secondary);font-family:-apple-system,'Inter',sans-serif;font-size:11px;}
+    .dr-tl{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:12.5px;font-weight:700;}
+    .dr-neg{fill:#c0392b;} .dr-pos{fill:#1e8449;}
+  </style>
+  <text x="12" y="20" class="dr-tl">One-pipe stack with a parallel vent — the tall-building standard</text>
+
+  <!-- soil stack (with an offset near the middle) -->
+  <path class="dr-soil" d="M150 44 V150 L200 200 V300 L150 340 V360"/>
+  <!-- vent stack -->
+  <path class="dr-vent" d="M110 44 V360"/>
+  <!-- vent terminal to atmosphere -->
+  <path class="dr-vent" d="M110 44 H150"/><text x="60" y="40" class="dr-lbl">to atmosphere</text>
+  <!-- branches at floors with traps -->
+  <g class="dr-br">
+    <path d="M150 70 H250"/><path d="M150 100 H250"/><path d="M200 250 H300"/><path d="M150 320 H250"/>
+  </g>
+  <!-- cross vents (branch vent back to vent stack) -->
+  <path class="dr-vent" d="M110 70 H150 M110 100 H150 M110 250 H200 M110 320 H150"/>
+  <!-- floor markers -->
+  <text x="255" y="74" class="dr-lbl">upper branch — suction risk</text>
+  <text x="305" y="254" class="dr-lbl">branch below offset</text>
+  <text x="255" y="324" class="dr-lbl">low branch — back-pressure risk</text>
+  <!-- suction / pressure annotations -->
+  <text x="30" y="120" class="dr-lbl dr-neg" transform="rotate(-90 30 120)">− suction (upper)</text>
+  <text x="30" y="330" class="dr-lbl dr-pos" transform="rotate(-90 30 330)">+ back-pressure (base)</text>
+  <!-- the offset relief vents -->
+  <path class="dr-vent" d="M200 200 H240"/><text x="245" y="204" class="dr-lbl">relief vent above &amp; below offset</text>
+  <!-- base bend + relief + drain -->
+  <path class="dr-soil" d="M150 360 Q150 385 175 385 H300"/>
+  <path class="dr-vent" d="M175 385 V350 H150"/><text x="185" y="345" class="dr-lbl">base relief vent</text>
+  <path class="dr-drain" d="M300 385 H560"/>
+  <text x="430" y="378" text-anchor="middle" class="dr-lbl">below-ground drain (keep the base clear zone)</text>
+  <circle cx="150" cy="360" r="4" class="dr-pos"/>
+</svg>
+  <div class="cap">Original schematic. The soil stack (blue) collects branch discharges; a parallel vent stack (dashed) cross-connected at branches gives the air core a low-resistance path, flattening the suction and back-pressure. Relief vents bracket the offset and the base bend — the two zones where pressure spikes.</div>
+</div>
+
+<h2 id="venting">6 · Ventilation — how the air is tamed</h2>
+<p>Ventilation is simply giving the entrained air an easier route than through the traps. There is a ladder of approaches, in rising order of capability and cost<sup class="cite">[1][4]</sup>:</p>
+<ul class="clean">
+  <li><strong>Primary ventilated stack (single-stack).</strong> The stack is carried full-bore up through the roof, open to atmosphere. Adequate for modest heights and loads; the air breathes through the top of the same pipe.</li>
+  <li><strong>Secondary / parallel vent (one-pipe with relief).</strong> A separate vent stack runs alongside and is cross-connected to the soil stack at intervals (and at branches). This is the tall-building workhorse — it short-circuits the pressure build-up and keeps the profile flat over great heights.</li>
+  <li><strong>Special single-stack fittings.</strong> <em>Sovent</em>-type aerator fittings at each floor and a de-aerator at the base condition the flow so a single stack behaves like a vented one — saving the second riser in space-tight cores.</li>
+  <li><strong>Active control — PAPA &amp; AAV.</strong> A <em>Positive Air Pressure Attenuator</em> (PAPA) absorbs the positive transient at the base; <em>air admittance valves</em> (one-way) admit air to relieve suction locally. Used to solve specific pressure problems and to cut vent pipework, but they are engineered components, not a licence to under-size the stack.</li>
+</ul>
+
+<h2 id="int-pressure">7 · Interactive: the pressure profile &amp; trap-seal survival</h2>
+<p>This is the pressure regime along the stack — suction plotted to the left, back-pressure to the right, height running up the page. Set the building height and how hard the stack is working, then change the ventilation strategy and watch the profile pull inside the ±375&nbsp;Pa band. The verdict tells you whether the traps survive. (The shape is indicative; real numbers for a specific tower come from a transient air-pressure simulation.)</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Air-pressure profile up the stack, vs the trap-seal limit</div>
+    <div class="fsub">Negative (suction) in the upper wet stack, positive (back-pressure) at the base. The red band is beyond ±375 Pa — the trap-seal limit. Better ventilation squeezes the whole profile toward the centre line.</div>
+  </div>
+  <div class="chart-box"><canvas id="presChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Building height <span id="vH">40 floors</span></label>
+      <input type="range" id="sH" min="10" max="80" value="40" step="1">
+      <div class="hint">Number of storeys served by the stack.</div>
+    </div>
+    <div class="ctrl">
+      <label>Stack loading <span id="vL">80 %</span></label>
+      <input type="range" id="sL" min="20" max="100" value="80" step="1">
+      <div class="hint">Peak flow as a share of the stack's capacity.</div>
+    </div>
+    <div class="ctrl">
+      <label>Ventilation strategy</label>
+      <select id="sV">
+        <option value="1.0">Single stack, no relief</option>
+        <option value="0.62">Primary ventilated stack</option>
+        <option value="0.4" selected>Parallel (secondary) vent</option>
+        <option value="0.28">Sovent / de-aerator system</option>
+        <option value="0.2">Parallel vent + PAPA at base</option>
+      </select>
+      <div class="hint">How much the air is given an easier route than the traps.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Peak suction</div><div class="v" id="rSuc">−320 <small>Pa</small></div></div>
+    <div class="cell"><div class="k">Base back-pressure</div><div class="v" id="rBase">+240 <small>Pa</small></div></div>
+    <div class="cell"><div class="k">Limit</div><div class="v" id="rLim">±375 <small>Pa</small></div></div>
+    <div class="cell"><div class="k">Trap seals</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVerdict"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">Run a 40-storey stack at 80% of capacity on a single pipe with no relief and both peaks punch through ±375&nbsp;Pa — seals lost, sewer gas in the building. Switch to a parallel vent and the profile collapses inside the band. Push the height to 70 storeys and you may need the parallel vent <em>and</em> a base PAPA to stay safe — which is exactly why super-tall towers carry both.</p>
+
+<h2 id="offsets">8 · Offsets &amp; the base of the stack — where it goes wrong</h2>
+<p>Two locations concentrate almost all the trouble, and both deserve dedicated detailing<sup class="cite">[2][4]</sup>:</p>
+<ul class="clean">
+  <li><strong>The base bend.</strong> Where the vertical stack turns to horizontal, the fast annular sheet slows abruptly, the air ahead is compressed, and a <strong>hydraulic jump</strong> forms in the drain. Use a <strong>large-radius (or two 45°) bend</strong>, keep a generous <strong>clear zone</strong> — no branch connections within a metre or so downstream of the base — and provide a <strong>relief vent</strong> at the foot so the positive pulse can escape upward instead of through low-level traps.</li>
+  <li><strong>Offsets.</strong> Where a stack must step sideways (around a transfer structure or a change of core), the vertical flow is interrupted, water backs up, and pressure spikes above and below. Prefer offsets in the "dry" upper part of the stack; keep them shallow; and <strong>relieve both sides</strong> with vents. Avoid branch connections close to an offset.</li>
+</ul>
+
+<div class="callout warn">
+  <span class="lbl">The classic failure</span>
+  A tower's traps gurgle and smell on the lower floors after a busy morning. The cause is almost always the base: a tight base bend with a branch too close, no base relief vent, and a stack sized a touch too full — so every peak discharge slams a positive pulse into the low-level traps. It is designed-in, and it is very hard to fix after the cores are poured. Get the base detail right on paper.
+</div>
+
+<h2 id="storm">9 · Stormwater &amp; roof drainage — gravity vs siphonic</h2>
+<p>The roof (and podium and terraces) of a tall building can shed an enormous instantaneous flow in a storm, and it has to leave without ponding — roof ponding is both a leakage and a <em>structural</em> load risk. Design flow follows directly from area and rainfall intensity<sup class="cite">[6]</sup>:</p>
+<div class="eq">\[ Q\,(\text{L/s}) = \frac{A\,(\text{m}^2)\times i\,(\text{mm/h})}{3600} \]</div>
+<p>where \(i\) is the design rainfall intensity for the chosen return period and duration (a short, intense burst governs — often 75–150&nbsp;mm/h or more). There are two ways to get that flow down<sup class="cite">[6][7]</sup>:</p>
+<ul class="clean">
+  <li><strong>Gravity (conventional).</strong> Outlets feed vertical downpipes that run part-full (about a third), sloped horizontal carriers, many penetrations and falls. Simple and robust; but many pipes, large diameters, and lots of coordination in a tight core.</li>
+  <li><strong>Siphonic.</strong> Baffled outlets exclude air so the pipework <strong>primes and runs full-bore</strong>. The full pipe develops sub-atmospheric pressure that drives the flow — so a small-bore, <strong>level</strong> collector can drain a whole roof through a single stack, with far less pipe and no falls. The payoff is huge in a tall building; the price is that siphonic systems are <strong>design-sensitive</strong> — they must be balanced by a specialist and are unforgiving of ad-hoc site changes.</li>
+</ul>
+
+<h2 id="int-storm">10 · Interactive: roof flow &amp; pipe size, gravity vs siphonic</h2>
+<p>Set the roof area and design rainfall and read the storm flow, then compare the vertical pipe each system needs to carry it. Siphonic runs full-bore at higher velocity, so it always needs a smaller pipe — and, crucially, one level collector instead of many sloped ones.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Storm flow and required downpipe — gravity vs siphonic</div>
+    <div class="fsub">Design flow Q = A·i/3600. Gravity downpipe sized to run ~1/3 full; siphonic sized full-bore at ~3.5 m/s. The lines show required diameter vs rainfall intensity; the markers are your design point.</div>
+  </div>
+  <div class="chart-box"><canvas id="stormChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Roof / catchment area <span id="vA">800 m²</span></label>
+      <input type="range" id="sA" min="100" max="4000" value="800" step="50">
+      <div class="hint">Plan area draining to the system (roof + podium share).</div>
+    </div>
+    <div class="ctrl">
+      <label>Design rainfall intensity <span id="vI">100 mm/h</span></label>
+      <input type="range" id="sI" min="25" max="250" value="100" step="5">
+      <div class="hint">For the chosen return period &amp; short duration.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Storm design flow</div><div class="v" id="rQs">22 <small>L/s</small></div></div>
+    <div class="cell"><div class="k">Gravity downpipe</div><div class="v" id="rDg">— <small>mm</small></div></div>
+    <div class="cell"><div class="k">Siphonic pipe</div><div class="v" id="rDs">— <small>mm</small></div></div>
+    <div class="cell"><div class="k">Diameter saved</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rSave"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">An 800&nbsp;m² catchment at 100&nbsp;mm/h sheds about 22&nbsp;L/s. Gravity wants a ~130&nbsp;mm downpipe running a third full; siphonic carries the same flow full-bore in ~90&nbsp;mm — and replaces a tree of sloped carriers with one level, small-bore collector. On a large roof over a slender core, that difference decides whether the drainage fits at all.</p>
+
+<h2 id="below">11 · Below the sewer — basement pumping &amp; the rest</h2>
+<p>Whatever falls below the level of the public sewer cannot drain by gravity and must be <strong>pumped</strong>. Basements, car parks and lowest-level plant discharge to a <strong>sump / packaged pumping station or sewage ejector</strong>, with duty-plus-standby pumps, a check valve and an <strong>anti-flooding (backflow) device</strong> so a surcharged public sewer cannot back up into the building<sup class="cite">[1][8]</sup>. A few more essentials that decide whether the system works in service:</p>
+<ul class="clean">
+  <li><strong>Grease &amp; solids interception</strong> for kitchens; separate greasy waste and cool it before it hits the stack.</li>
+  <li><strong>Separate systems.</strong> Keep foul, waste, and stormwater separate (and greywater if reused); never let a storm surcharge push into the foul stack.</li>
+  <li><strong>Ventilated below-ground drain.</strong> The horizontal drain leaving the base needs its own venting so the base back-pressure has somewhere to go.</li>
+</ul>
+
+<h2 id="install">12 · Installation &amp; execution tricks</h2>
+<p>Even a perfect design fails on site without these — and drainage defects are miserable to trace and expensive to open up<sup class="cite">[1][4]</sup>:</p>
+<ul class="clean">
+  <li><strong>Support the stack for its own weight and movement.</strong> A tall cast-iron or HDPE stack is heavy and expands; provide proper riser supports/anchors at each floor and expansion sockets (or electrofusion detailing for HDPE) so thermal movement does not open joints.</li>
+  <li><strong>Fire-stop every floor penetration.</strong> Plastic stacks need intumescent fire collars at each slab so a fire cannot travel the shaft; this is a code and life-safety item, routinely missed until inspection.</li>
+  <li><strong>Kill the noise.</strong> Falling water in a stack is loud. Use low-noise pipe (cast iron or mineral-filled PP), acoustic lagging, and keep stacks out of party walls and bedheads — acoustic complaints are the most common post-occupancy drainage issue.</li>
+  <li><strong>Access for rodding.</strong> Provide accessible rodding eyes at the base, at offsets and at intervals; a tall stack <em>will</em> block one day and you must be able to clear it.</li>
+  <li><strong>Protect the trap seals in practice.</strong> Deep seals (75&nbsp;mm) where evaporation or pressure is a risk; trap-seal protection valves on infrequently used branches; and never connect a branch into the base clear zone or next to an offset.</li>
+  <li><strong>Test before you close up.</strong> Air (or water) test every section for tightness, and commission any siphonic system and PAPA/AAV components to the specialist's design — then witness it.</li>
+</ul>
+
+<h2 id="checklist">13 · The design &amp; installation checklist</h2>
+<ul class="clean">
+  <li><strong>Count the load</strong> — discharge/fixture units per stack; convert to design flow.</li>
+  <li><strong>Size for a clear air core</strong> — stack at 1/4–1/3 full (Wyly-Eaton / code table); go up a size rather than run fuller.</li>
+  <li><strong>Ventilate for height</strong> — parallel vent for tall stacks; add Sovent or PAPA where space or pressure demands; hold ±375&nbsp;Pa at every connection.</li>
+  <li><strong>Detail the base &amp; offsets</strong> — large-radius base bend, base relief vent, clear zone, relieved offsets, no branches in the danger zones.</li>
+  <li><strong>Design the storm</strong> — area × intensity for the right return period; choose gravity or siphonic deliberately; keep roofs from ponding.</li>
+  <li><strong>Pump what can't fall</strong> — sump/ejector with duty+standby, check valve and backflow protection below sewer level.</li>
+  <li><strong>Build it right</strong> — supports &amp; expansion, fire collars, acoustic treatment, rodding access, deep/protected seals, and a witnessed pressure/commissioning test.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  Design the stack as an air-management device: keep the water to a thin annulus, give the air core a low-resistance vented path, and hold the pressure at every trap inside ±375&nbsp;Pa — then detail the base and offsets where the pressure spikes, choose gravity or siphonic for the roof on purpose, pump what falls below the sewer, and build it with the supports, fire-stops, acoustics and access that keep it working for the life of the tower.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>CIBSE. <em>Guide G — Public Health and Plumbing Engineering</em> (sanitary drainage, stack sizing, trap-seal retention, pumping).</li>
+  <li>Swaffield, J.A. <em>Transient Airflow in Building Drainage Systems.</em> Spon/Routledge — the authority on stack air-pressure and trap-seal behaviour.</li>
+  <li>Wyly, R.S. &amp; Eaton, H.N. (US National Bureau of Standards). <em>Capacities of stacks in sanitary drainage systems</em> — the stack-capacity and air-pressure work behind the codes.</li>
+  <li>BS EN 12056-2 <em>Gravity drainage systems inside buildings — Sanitary pipework, layout and calculation</em>; and IPC / UPC drainage-fixture-unit and stack-sizing tables.</li>
+  <li>Gormley, M. &amp; Swaffield, J.A. <em>Air pressure transient control in building drainage systems</em> (PAPA / active control research).</li>
+  <li>BS EN 12056-3 <em>Roof drainage, layout and calculation</em>; and rainfall-intensity data for the design return period.</li>
+  <li>BS 8490 / ASPE guidance on <em>siphonic roof drainage</em> design and commissioning.</li>
+  <li>Saudi Building Code <em>SBC 701 — Plumbing Code</em>, and ASPE <em>Plumbing Engineering Design Handbook</em> (drainage, venting, sumps, backflow).</li>
+</ol>
+
+<div class="tags">#Drainage #SanitaryDrainage #Stormwater #TallBuildings #SoilStack #VentStack #TrapSeal #AirPressure #Siphonic #RoofDrainage #WylyEaton #EN12056 #PAPA #AAV #Sovent #StackOffset #BaseBend #Plumbing #PublicHealthEngineering #MEP #BuildingServices</div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+<!-- End WhatsApp Button -->
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600; font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none; transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover { transform:translateY(-5px); box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4); }
+.fab-wa { left:2rem; } .fab-consult { right:2rem; }
+@media(max-width:600px){ .fab-glass-text, .fab-text { display:none; } .fab-glass, .fab-consult { width:52px; height:52px; padding:0; border-radius:50%; justify-content:center; } }
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+/* ---------- shared helpers ---------- */
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}};
+
+/* =====================================================================
+   CHART 1 — STACK CAPACITY (Wyly-Eaton)
+   ===================================================================== */
+const sD=document.getElementById('sD'), sR=document.getElementById('sR');
+const vD=document.getElementById('vD'), vR=document.getElementById('vR');
+const KWE=3.15e-4;
+const capQ=(r,d)=>KWE*Math.pow(r,5/3)*Math.pow(d,8/3);      // L/s
+const DXS=[]; for(let d=50;d<=300;d+=5) DXS.push(d);
+
+let capChart=new Chart(document.getElementById('capChart'),{
+  data:{labels:DXS,datasets:[
+    {type:'line', label:'Capacity at chosen fill', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.08)', borderWidth:3, pointRadius:0, tension:0.2, fill:true, order:4},
+    {type:'line', label:'1/4 full', data:[], borderColor:'#b9770e', borderWidth:1.4, borderDash:[5,4], pointRadius:0, order:3},
+    {type:'line', label:'1/3 full', data:[], borderColor:'#c0392b', borderWidth:1.4, borderDash:[5,4], pointRadius:0, order:2},
+    {type:'scatter', label:'Selected diameter', data:[], backgroundColor:'#1e8449', borderColor:'#fff', borderWidth:2, pointRadius:8, order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:50,max:300,title:{display:true,text:'Stack diameter (mm)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{min:0,title:{display:true,text:'Capacity (L/s)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt1(c.parsed.y)} L/s at ${fmt0(c.parsed.x)} mm`}}}}
+});
+function updateCap(){
+  const d=+sD.value, r=+sR.value;
+  vD.textContent=d+' mm'; vR.textContent=r.toFixed(2);
+  capChart.data.datasets[0].data=DXS.map(x=>({x:x,y:+capQ(r,x).toFixed(2)}));
+  capChart.data.datasets[1].data=DXS.map(x=>({x:x,y:+capQ(0.25,x).toFixed(2)}));
+  capChart.data.datasets[2].data=DXS.map(x=>({x:x,y:+capQ(1/3,x).toFixed(2)}));
+  const Q=capQ(r,d);
+  capChart.data.datasets[3].data=[{x:d,y:+Q.toFixed(2)}];
+  capChart.update('none');
+  const DU=Math.pow(Q/0.5,2);           // EN 12056: Q = K√(ΣDU), K≈0.5
+  document.getElementById('rQ').innerHTML=fmt1(Q)+' <small>L/s</small>';
+  document.getElementById('rQm').innerHTML=fmt0(Q*3.6)+' <small>m³/h</small>';
+  document.getElementById('rDU').innerHTML=fmt0(DU)+' <small>DU</small>';
+  const v=document.getElementById('rFill');
+  if(r>1/3+0.001) v.innerHTML='<span class="badge bad">'+fmt0(r*100)+'% — air core choked</span>';
+  else if(r>0.30) v.innerHTML='<span class="badge warn">'+fmt0(r*100)+'% — at limit</span>';
+  else v.innerHTML='<span class="badge good">'+fmt0(r*100)+'% — clear air core</span>';
+}
+[sD,sR].forEach(s=>s.addEventListener('input',updateCap)); updateCap();
+
+/* =====================================================================
+   CHART 2 — AIR-PRESSURE PROFILE vs TRAP-SEAL LIMIT
+   ===================================================================== */
+const sH=document.getElementById('sH'), sL=document.getElementById('sL'), sV=document.getElementById('sV');
+const vH=document.getElementById('vH'), vL=document.getElementById('vL');
+const LIMIT=375;
+const HXS=[]; for(let h=0;h<=1.0001;h+=0.05) HXS.push(+h.toFixed(2));   // 0=base .. 1=top
+
+let presChart=new Chart(document.getElementById('presChart'),{
+  data:{datasets:[
+    {type:'line', label:'Air pressure', data:[], borderColor:'#1b4f72', borderWidth:3, pointRadius:0, tension:0.4, order:2}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:-700,max:700,title:{display:true,text:'Air pressure (Pa)  —  suction ← · → back-pressure',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{min:0,max:1,title:{display:true,text:'Height up the stack (0 = base, 1 = top)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11},callback:v=>v===0?'base':v===1?'top':''}}},
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.x)} Pa`}},
+      annotation:{annotations:{
+        safe:{type:'box',xMin:-LIMIT,xMax:LIMIT,backgroundColor:'rgba(30,132,73,0.07)',borderWidth:0},
+        lo:{type:'line',xMin:-LIMIT,xMax:-LIMIT,borderColor:'#c0392b',borderWidth:1.5,borderDash:[5,4],label:{display:true,content:'−375 Pa',position:'start',font:{size:10,family:'DM Sans'},color:'#c0392b',backgroundColor:'rgba(255,255,255,0.85)'}},
+        hi:{type:'line',xMin:LIMIT,xMax:LIMIT,borderColor:'#c0392b',borderWidth:1.5,borderDash:[5,4],label:{display:true,content:'+375 Pa',position:'start',font:{size:10,family:'DM Sans'},color:'#c0392b',backgroundColor:'rgba(255,255,255,0.85)'}},
+        zero:{type:'line',xMin:0,xMax:0,borderColor:'#9aa7b2',borderWidth:1}
+      }}}}
+});
+function bump(h,c,w){ return Math.exp(-Math.pow((h-c)/w,2)); }
+function updatePres(){
+  const H=+sH.value, L=+sL.value/100, vent=+sV.value;
+  vH.textContent=H+' floors'; vL.textContent=fmt0(L*100)+' %';
+  const scale=(H/40)*L*vent;
+  const Psuc=500*scale;               // peak suction magnitude
+  const Pbase=400*scale;              // peak base back-pressure
+  const data=HXS.map(h=>{
+    const pos=Pbase*Math.exp(-h/0.12);          // positive near base, decays up
+    const neg=-Psuc*bump(h,0.72,0.24);          // suction bump in upper wet stack
+    return {x:+(pos+neg).toFixed(0), y:h};
+  });
+  presChart.data.datasets[0].data=data;
+  presChart.update('none');
+  const peakSuc=Math.min(...data.map(p=>p.x));
+  const peakBase=Math.max(...data.map(p=>p.x));
+  document.getElementById('rSuc').innerHTML=fmt0(peakSuc)+' <small>Pa</small>';
+  document.getElementById('rBase').innerHTML='+'+fmt0(peakBase)+' <small>Pa</small>';
+  const worst=Math.max(Math.abs(peakSuc),Math.abs(peakBase));
+  const v=document.getElementById('rVerdict');
+  if(worst<=LIMIT*0.8) v.innerHTML='<span class="badge good">seals safe</span>';
+  else if(worst<=LIMIT) v.innerHTML='<span class="badge warn">little margin</span>';
+  else v.innerHTML='<span class="badge bad">seals lost</span>';
+}
+[sH,sL,sV].forEach(s=>s.addEventListener('input',updatePres)); updatePres();
+
+/* =====================================================================
+   CHART 3 — ROOF FLOW, GRAVITY vs SIPHONIC PIPE
+   ===================================================================== */
+const sA=document.getElementById('sA'), sI=document.getElementById('sI');
+const vA=document.getElementById('vA'), vI=document.getElementById('vI');
+const IXS=[]; for(let i=25;i<=250;i+=5) IXS.push(i);
+const Dgrav=Q=>Math.pow(Q/(KWE*Math.pow(1/3,5/3)),3/8);       // mm, ~1/3 full (Wyly-Eaton)
+const Dsiph=Q=>Math.sqrt(4*(Q/1000)/(Math.PI*3.5))*1000;      // mm, full bore at ~3.5 m/s
+
+let stormChart=new Chart(document.getElementById('stormChart'),{
+  data:{labels:IXS,datasets:[
+    {type:'line', label:'Gravity downpipe Ø', data:[], borderColor:'#b9770e', backgroundColor:'rgba(185,119,14,0.06)', borderWidth:2.5, pointRadius:0, tension:0.2, fill:false, order:3},
+    {type:'line', label:'Siphonic pipe Ø', data:[], borderColor:'#1e8449', backgroundColor:'rgba(30,132,73,0.08)', borderWidth:3, pointRadius:0, tension:0.2, fill:true, order:2},
+    {type:'scatter', label:'Design point', data:[], backgroundColor:'#1b4f72', borderColor:'#fff', borderWidth:2, pointRadius:7, order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:25,max:250,title:{display:true,text:'Rainfall intensity (mm/h)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{min:0,title:{display:true,text:'Required pipe diameter (mm)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt0(c.parsed.y)} mm`}}}}
+});
+function updateStorm(){
+  const A=+sA.value, i=+sI.value; vA.textContent=fmt0(A)+' m²'; vI.textContent=i+' mm/h';
+  const Qf=ii=>A*ii/3600;                          // L/s at intensity ii
+  stormChart.data.datasets[0].data=IXS.map(ii=>({x:ii,y:+Dgrav(Qf(ii)).toFixed(0)}));
+  stormChart.data.datasets[1].data=IXS.map(ii=>({x:ii,y:+Dsiph(Qf(ii)).toFixed(0)}));
+  const Q=Qf(i), dg=Dgrav(Q), ds=Dsiph(Q);
+  stormChart.data.datasets[2].data=[{x:i,y:+dg.toFixed(0)},{x:i,y:+ds.toFixed(0)}];
+  stormChart.update('none');
+  document.getElementById('rQs').innerHTML=fmt1(Q)+' <small>L/s</small>';
+  document.getElementById('rDg').innerHTML=fmt0(dg)+' <small>mm</small>';
+  document.getElementById('rDs').innerHTML=fmt0(ds)+' <small>mm</small>';
+  const save=(1-ds/dg)*100;
+  document.getElementById('rSave').innerHTML='<span class="badge good">'+fmt0(save)+'% smaller</span>';
+}
+[sA,sI].forEach(s=>s.addEventListener('input',updateStorm)); updateStorm();
+
+window.addEventListener('load',function(){ try{capChart.resize();presChart.resize();stormChart.resize();}catch(e){} });
+</script>
+
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

@@ -9,6 +9,7 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'stack-effect-tall-buildings.html',        title:'Stack Effect in Megatall Buildings: The Neutral Plane, Door Forces, Shaft Compartmentation & the Energy Penalty', cat:'hvac',        thumb:'stack-effect-tall-buildings.webp',        mins:19, tag:'Building Physics \u00b7 Stack Effect \u00b7 Tall Buildings' },
     { url:'firefighting-tall-buildings.html',        title:'Firefighting in Megatall Buildings: Pressure Zones, Standpipes, Stack Effect & Smoke Control',            cat:'fire',        thumb:'firefighting-tall-buildings.webp',        mins:18, tag:'Fire Protection · Megatall Buildings' },
     { url:'drainage-stormwater-tall-buildings.html', title:'Drainage & Stormwater in Tall Buildings: Stacks, Venting, Trap Seals & Siphonic Roofs',                  cat:'plumbing',    thumb:'drainage-stormwater-tall-buildings.webp', mins:17, tag:'Plumbing & Drainage · Tall Buildings' },
     { url:'chiller-plant-design.html',              title:'Chiller Plant Design: Configurations, Design Pitfalls & Installation Problems',                           cat:'hvac',        thumb:'chiller-plant-design.webp',            mins:16, tag:'HVAC & Cooling · Chiller Plant Design' },

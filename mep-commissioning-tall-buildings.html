@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commissioning MEP in Megatall Buildings: Phased Handover, the Integrated Systems Test &amp; Seasonal Returns — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:16px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#c0392b;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid #cdd6df;border-radius:8px;font-size:13px;font-family:inherit;background:#fff;color:#1a1d21;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="Commissioning MEP systems in megatall buildings: why phased handover makes commissioning a pipeline rather than a phase, staggered zone programmes that turn 48 weeks into 23, the balancing effort nobody budgets and the design decisions that remove it, seasonal and deferred commissioning written into the contract, correcting capacity tests to design conditions, and the integrated systems test as the only test that proves the building — with three interactive charts and practical measures.">
+  <meta property="og:title" content="Commissioning MEP in Megatall Buildings: Phased Handover, the Integrated Systems Test &amp; Seasonal Returns | Mohamed Abokhatwa">
+  <meta property="og:description" content="Six zones commissioned sequentially take 48 weeks; staggered they take 23. Three thousand terminals is over 400 man-days nobody put in the tender. And every defect the first zone catches costs 4 times less to fix than the same one found after handover.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/mep-commissioning-tall-buildings.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-mep-commissioning-tall-buildings.jpg">
+  <meta property="og:image:alt" content="Technical cutaway of a megatall tower during phased handover, showing lower zones complete and occupied, a middle zone under active commissioning with test equipment on a mechanical floor, and upper zones still under construction">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Commissioning MEP in Megatall Buildings: Phased Handover, the Integrated Systems Test &amp; Seasonal Returns | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="Six zones commissioned sequentially take 48 weeks; staggered they take 23. Three thousand terminals is over 400 man-days nobody put in the tender. And every defect the first zone catches costs 4 times less to fix than the same one found after handover.">
+  <link rel="canonical" href="https://abokhatwa.com/mep-commissioning-tall-buildings.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Commissioning MEP in Megatall Buildings: Phased Handover, the Integrated Systems Test &amp; Seasonal Returns",
+  "description": "A design-perspective guide to commissioning MEP in megatall buildings: designing for testability and zone isolation, staggered commissioning programmes, balancing effort estimation, seasonal and deferred commissioning, correction of capacity tests to design conditions, and the integrated systems test.",
+  "image": "https://abokhatwa.com/og-mep-commissioning-tall-buildings.jpg",
+  "datePublished": "2026-08-14",
+  "dateModified": "2026-08-14",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/mep-commissioning-tall-buildings.html" }
+}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Tall-Building Systems</span></div>
+  <span class="tag">Tall-Building Systems &middot; Commissioning &middot; Integrated Systems Test &middot; Handover</span>
+  <h1>Commissioning MEP in Megatall Buildings: Phased Handover, the Integrated Systems Test &amp; Seasonal Returns</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>August 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>15 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="mep-commissioning-tall-buildings.webp" alt="Technical cutaway of a megatall tower during phased handover, showing lower zones complete and occupied, a middle zone under active commissioning with test equipment on a mechanical floor, and upper zones still under construction">
+</div>
+
+<div class="article-body">
+
+<p class="lead">A megatall tower cannot be commissioned the way a normal building is commissioned, because the normal way assumes the building is finished before you start. A 150-storey tower is occupied from the bottom while the top is still being clad; its systems are zoned so that no single test proves anything about the whole; and its design conditions — peak wet bulb, winter stack effect, full occupancy — occur on days that have nothing to do with the programme. Run it sequentially and the commissioning of six zones takes <strong>48 weeks</strong>. Overlap it properly and the same work takes <strong>23</strong>. That is not a scheduling refinement; it is the difference between commissioning driving the handover date and commissioning fitting inside it.</p>
+
+<h2 id="why">1 · Why the normal model breaks</h2>
+<ul class="clean">
+  <li><strong>Handover is phased, so testing must be too.</strong> Lower floors are occupied while upper ones are under construction. Every zone must be independently testable, independently certifiable and independently isolatable — which is a <em>design</em> requirement, not a site arrangement.</li>
+  <li><strong>Nothing can be tested in isolation.</strong> A zone's chilled water depends on a heat exchanger on a mechanical floor two zones up; its pressurisation interacts with a stack effect generated by the whole building; its lifts share a shaft with everything. Zone tests prove components; only an integrated test proves the building.</li>
+  <li><strong>The design conditions are seasonal and you will miss them.</strong> Peak wet bulb, the winter stack case and the Gulf summer reverse stack all occur in narrow windows. A programme that reaches commissioning in March will test none of them.</li>
+  <li><strong>The volume is industrial.</strong> Three thousand terminal devices at 45 minutes each is <strong>280 man-days</strong> of balancing alone — before witnessing, before re-tests, before the integrated systems test.</li>
+  <li><strong>Temporary systems become permanent habits.</strong> Towers run on temporary cooling and power for years during fit-out; the transition to permanent systems is itself a commissioning event that is almost never planned as one.</li>
+</ul>
+
+<h2 id="int-programme">2 · Interactive: sequential versus overlapped zone commissioning</h2>
+<p>The single most effective move is to stop treating commissioning as a phase at the end and start treating it as a <strong>pipeline</strong> — each zone entering the same sequence a few weeks behind the one above it.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Commissioning programme duration — sequential vs staggered zones</div>
+    <div class="fsub">Sequential: zones commissioned one after another. Staggered: each zone starts a fixed interval after the previous, so the work overlaps. Total = duration + (zones − 1) × stagger.</div>
+  </div>
+  <div class="chart-box"><canvas id="progChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Zones <span id="vZ">6</span></label>
+      <input type="range" id="sZ" min="2" max="14" value="6" step="1">
+      <div class="hint">Independently commissionable vertical zones.</div>
+    </div>
+    <div class="ctrl">
+      <label>Weeks per zone <span id="vW">8</span></label>
+      <input type="range" id="sW" min="2" max="20" value="8" step="1">
+      <div class="hint">Static, dynamic and witness testing for one zone.</div>
+    </div>
+    <div class="ctrl">
+      <label>Stagger interval <span id="vS">3 weeks</span></label>
+      <input type="range" id="sS" min="1" max="12" value="3" step="1">
+      <div class="hint">How soon the next zone can start behind the previous one — limited by team size and by construction access.</div>
+    </div>
+    <div class="ctrl">
+      <label>Commissioning teams <span id="vT">3</span></label>
+      <input type="range" id="sT" min="1" max="8" value="3" step="1">
+      <div class="hint">Parallel teams available. Fewer teams force a longer stagger.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Sequential</div><div class="v" id="rSq">48 <small>weeks</small></div></div>
+    <div class="cell"><div class="k">Staggered</div><div class="v" id="rSt">23 <small>weeks</small></div></div>
+    <div class="cell"><div class="k">Time saved</div><div class="v" id="rSv">52 <small>%</small></div></div>
+    <div class="cell"><div class="k">Peak zones live</div><div class="v" id="rPk">3</div></div>
+    <div class="cell"><div class="k">Feasible?</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">Six zones at eight weeks each is <strong>48 weeks sequentially</strong> and <strong>23 weeks</strong> at a three-week stagger — but only if you have the teams to run three zones concurrently, which is what the readout checks. Push the stagger down to one week and the theoretical duration falls further while the required team count rises past what any contractor will mobilise. The real constraint is rarely the testing; it is <strong>having enough zones actually finished and isolatable</strong> to enter the pipeline, which comes straight back to whether the design provided zone isolation, zone metering and zone-level control in the first place.</p>
+
+<h2 id="int-effort">3 · Interactive: the effort nobody budgets</h2>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Balancing and witness testing effort</div>
+    <div class="fsub">Man-days = devices × minutes ÷ 60 ÷ working hours, with an allowance for re-tests. Witnessing is counted separately because it consumes the client&rsquo;s and the consultant&rsquo;s time as well as the contractor&rsquo;s.</div>
+  </div>
+  <div class="chart-box"><canvas id="effChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Terminal devices <span id="vN">3000</span></label>
+      <input type="range" id="sN" min="200" max="12000" value="3000" step="100">
+      <div class="hint">VAV boxes, fan coils, valves and grilles to be set and proved.</div>
+    </div>
+    <div class="ctrl">
+      <label>Minutes per device <span id="vM">45</span></label>
+      <input type="range" id="sM" min="15" max="120" value="45" step="5">
+      <div class="hint">Realistic including access, ladder time and paperwork.</div>
+    </div>
+    <div class="ctrl">
+      <label>Re-test allowance <span id="vR">30 %</span></label>
+      <input type="range" id="sR" min="0" max="80" value="30" step="5">
+      <div class="hint">Proportion needing a second visit. Optimism here is how programmes fail.</div>
+    </div>
+    <div class="ctrl">
+      <label>Witness sample <span id="vP">10 %</span></label>
+      <input type="range" id="sP" min="0" max="100" value="10" step="1">
+      <div class="hint">Share witnessed by the consultant or client.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Balancing</div><div class="v" id="rMd">281 <small>man-days</small></div></div>
+    <div class="cell"><div class="k">With re-tests</div><div class="v" id="rRt">366 <small>man-days</small></div></div>
+    <div class="cell"><div class="k">Witnessing</div><div class="v" id="rWt">37 <small>man-days</small></div></div>
+    <div class="cell"><div class="k">Total</div><div class="v" id="rTt">403 <small>man-days</small></div></div>
+    <div class="cell"><div class="k">4 teams of 2</div><div class="v" id="rWk">10 <small>weeks</small></div></div>
+  </div>
+</div>
+<p class="fig-note">Three thousand terminals at 45 minutes is <strong>281 man-days</strong>, and a realistic 30&nbsp;% re-test allowance takes it to <strong>366</strong>. Add witnessing and it is over <strong>400 man-days</strong> — <strong>10 weeks of solid work for four two-person teams</strong>, on one building, for balancing alone. That number is almost never in the programme at tender, and it is the single most common cause of commissioning being compressed at the end. Two design decisions cut it dramatically: <strong>pressure-independent control valves</strong>, which remove most of the proportional balancing entirely, and <strong>networked terminal controllers</strong> that can be set and verified from a laptop rather than from a ladder. Both are specified years before anyone counts man-days.</p>
+
+<h2 id="seasonal">4 · The seasonal problem, and what to do about it</h2>
+<p>Several systems can only be proved at conditions the programme will not reach:</p>
+<ul class="clean">
+  <li><strong>Cooling tower and chiller capacity</strong> — meaningful only near the design wet bulb. Test at the achievable condition and <strong>correct to design using the manufacturer's certified performance curves</strong>, recording both the raw and corrected results. This is standard practice and it is accepted; what is not accepted is a bare reading at a mild condition presented as a pass.</li>
+  <li><strong>Stack-effect-dependent systems</strong> — stair and lift pressurisation, door forces, revolving door behaviour. Measure the actual differential pressures at the temperature you have, and extrapolate with the stack equation from <a href="stack-effect-tall-buildings.html">stack effect</a>; then re-test in the design season and hold retention against it.</li>
+  <li><strong>Heating and low-load performance</strong> — often untestable at handover in a Gulf summer. Schedule an explicit seasonal return visit into the contract with a defined scope and a defined payment.</li>
+  <li><strong>Full-occupancy behaviour</strong> — internal gains, lift traffic, domestic water demand and drainage loading only appear with people in the building. A twelve-month post-occupancy review with trend data is where these are actually resolved.</li>
+</ul>
+<p>The contractual answer is to write <strong>deferred and seasonal commissioning into the contract from the start</strong>, with retention tied to it. If it is not in the contract it will not happen, because by then everyone has demobilised.</p>
+
+<h2 id="ist">5 · The integrated systems test</h2>
+<p>Zone tests prove that equipment works. The <strong>integrated systems test</strong> proves that the building works — and in a tall building it is the only test that means anything, because every life-safety function is a chain across several packages:</p>
+<ul class="clean">
+  <li><strong>Fire alarm → smoke control → lifts → doors → power.</strong> A single detector activation must produce the right damper positions, the right fan states, lift recall, door releases, pressurisation start-up and generator changeover. Each package tests its own end; almost nobody tests the chain.</li>
+  <li><strong>The cause-and-effect matrix is the deliverable.</strong> It must exist as a signed document before testing, listing every input and every required output. Testing without it is a demonstration, not a test.</li>
+  <li><strong>Test the failure cases, not just the success cases.</strong> Loss of normal power during smoke control; a damper that fails to prove; a fan that does not start; two simultaneous alarms in different zones. These are the scenarios that reveal design assumptions.</li>
+  <li><strong>Rehearse it.</strong> An IST on a megatall involves dozens of people across many packages and takes days. Run a dry rehearsal of each scenario before the witnessed test; the first attempt always finds interface defects that are nobody's package.</li>
+  <li><strong>Re-test after every change.</strong> Any subsequent alteration to the matrix invalidates part of the test, and on a phased handover there will be changes.</li>
+</ul>
+
+<div class="callout warn">
+  <span class="lbl">The defect that costs a hundred times more</span>
+  A design coordination error found in a model costs an hour. The same error found during installation costs a rework. Found at commissioning it costs a rework plus a programme delay plus a re-test. Found after handover it costs all of that plus disruption to an occupied, revenue-generating building — and on a phased-handover tower, that means working above and below tenants who have already moved in. This is why <strong>early partial commissioning of the first zone is worth far more than its own scope</strong>: it is a full-scale prototype, and whatever it finds is a systemic defect that would otherwise have been built five more times.
+</div>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Relative cost of fixing a defect, by the stage it is found</div>
+    <div class="fsub">An illustrative model of the cost-escalation principle, not measured data — the shape is what matters. Cost multipliers are set relative to the same defect corrected during design.</div>
+  </div>
+  <div class="chart-box"><canvas id="defChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Defects in the first zone <span id="vD">120</span></label>
+      <input type="range" id="sD" min="10" max="600" value="120" step="10">
+      <div class="hint">Systemic issues a full prototype zone would expose.</div>
+    </div>
+    <div class="ctrl">
+      <label>Zones that repeat them <span id="vRz">5</span></label>
+      <input type="range" id="sRz" min="1" max="12" value="5" step="1">
+      <div class="hint">Remaining zones that would build the same defect.</div>
+    </div>
+    <div class="ctrl">
+      <label>Cost per defect at design <span id="vC">2000</span></label>
+      <input type="range" id="sC" min="200" max="20000" value="2000" step="100">
+      <div class="hint">Cost to correct one defect on paper, in your currency.</div>
+    </div>
+    <div class="ctrl">
+      <label>Caught by early zone <span id="vF">70 %</span></label>
+      <input type="range" id="sF" min="0" max="100" value="70" step="1">
+      <div class="hint">Share of systemic defects an early prototype zone would catch.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">If found at design</div><div class="v" id="rCd">1.4 <small>M</small></div></div>
+    <div class="cell"><div class="k">At commissioning</div><div class="v" id="rCc">36 <small>M</small></div></div>
+    <div class="cell"><div class="k">Post-handover</div><div class="v" id="rCp">144 <small>M</small></div></div>
+    <div class="cell"><div class="k">Saved by prototype</div><div class="v" id="rCs">25 <small>M</small></div></div>
+    <div class="cell"><div class="k">Per defect</div><div class="v" id="rLv">4<small>×</small></div></div>
+  </div>
+</div>
+<p class="fig-note">The numbers here are illustrative — the multipliers are a modelling convention, not measurement — but the <em>shape</em> is not in dispute and it is the whole argument for front-loading. Commissioning one zone early, as a genuine prototype with full witness testing, converts a set of defects that would have been repeated five more times into a single correction applied once. Every defect it catches costs about <strong>4× less</strong> to put right than the same defect found after handover, and on the default assumptions the prototype avoids roughly <strong>13&nbsp;M</strong> of correction cost. Put it in the programme as a deliverable with its own milestone, and give it enough float that its findings can actually be fed back into the remaining zones — a prototype whose lessons arrive after the other zones are built is just an expensive first zone.</p>
+
+<h2 id="install">6 · Practical measures that actually work</h2>
+<ul class="clean">
+  <li><strong>Design for testability.</strong> Zone isolation valves and dampers, zone metering, test points either side of every item of plant, permanent flow measurement on every major circuit, and access to every device. If a system cannot be isolated it cannot be phase-handed-over.</li>
+  <li><strong>Appoint an independent commissioning authority early</strong> — at design stage, not at practical completion — with authority to review the design for commissionability and to sign off the strategy.</li>
+  <li><strong>Write the commissioning specification into the tender</strong> with the man-day estimate, the seasonal returns, the IST scope and the witness sampling all quantified. What is not priced will not be resourced.</li>
+  <li><strong>Instrument for evidence.</strong> Permanent differential-pressure sensors on critical doors, state-of-charge on storage, approach on every heat exchanger, and BMS trending switched on from first energisation. Most commissioning arguments are about missing data.</li>
+  <li><strong>Insist on a signed cause-and-effect matrix</strong> before any integrated testing, and control its revisions.</li>
+  <li><strong>Record the conditions with every result.</strong> Outdoor dry bulb, wet bulb, wind and occupancy alongside every reading — without them a result cannot be corrected, compared or defended later.</li>
+  <li><strong>Plan the temporary-to-permanent transition</strong> as a commissioning event with its own method statement, because switching a partly occupied tower from temporary to permanent cooling or power is one of the highest-risk operations in the whole programme.</li>
+  <li><strong>Hand over data, not just documents.</strong> Point-cloud scans of plant floors, as-set valve schedules, the trend archive and the commissioning records in a usable format — see the handover discussion in <a href="mechanical-floors-tall-buildings.html">mechanical floors</a>.</li>
+</ul>
+
+<h2 id="checklist">7 · The design &amp; delivery checklist</h2>
+<ul class="clean">
+  <li><strong>Make every zone independently testable and isolatable</strong> — a design requirement, decided at concept.</li>
+  <li><strong>Plan commissioning as a staggered pipeline</strong>, and check the team count the stagger implies.</li>
+  <li><strong>Estimate the man-days honestly</strong> and put them in the tender.</li>
+  <li><strong>Specify PICVs and networked controllers</strong> to cut the balancing effort at source.</li>
+  <li><strong>Commission the first zone early as a prototype</strong>, with float to feed the findings back.</li>
+  <li><strong>Write seasonal and deferred commissioning into the contract</strong>, with retention attached.</li>
+  <li><strong>Correct capacity tests to design conditions</strong> using certified curves, recording raw and corrected values.</li>
+  <li><strong>Produce and sign the cause-and-effect matrix</strong> before any integrated test; rehearse the IST; test the failure cases.</li>
+  <li><strong>Trend from first energisation</strong> and record conditions with every reading.</li>
+  <li><strong>Plan the temporary-to-permanent switchover</strong> as a controlled event.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  Commissioning a megatall building is a <strong>pipeline, not a phase</strong>: staggering six zones turns 48 weeks into 23, but only if the design made each zone isolatable, meterable and controllable — which is a concept-stage decision, not a site one. Budget the effort honestly (three thousand terminals is over <strong>400 man-days</strong>, and PICVs remove most of it), commission the <strong>first zone early as a genuine prototype</strong> so its defects are corrected once instead of built five more times, write the <strong>seasonal returns into the contract</strong> because nothing untested at handover will ever be tested afterwards, and treat the <strong>integrated systems test</strong> as the only test that proves the building — everything before it proves equipment.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>ASHRAE Guideline 0 <em>The Commissioning Process</em> and Guideline 1.1 <em>HVAC&amp;R Technical Requirements for the Commissioning Process</em>.</li>
+  <li>CIBSE <em>Commissioning Code M — Commissioning Management</em>, and Codes A, B, C, R and W for air, water, control and distribution systems.</li>
+  <li>BSRIA <em>BG 8 Model Commissioning Plan</em> and <em>BG 49 Commissioning Air Systems</em> / <em>BG 2 Commissioning Water Systems</em>.</li>
+  <li>ANSI/ASHRAE/IES Standard 90.1 and LEED / Estidama / Mostadam commissioning and enhanced-commissioning requirements.</li>
+  <li>NFPA 3 <em>Standard for Commissioning of Fire Protection and Life Safety Systems</em> and NFPA 4 <em>Standard for Integrated Fire Protection and Life Safety System Testing</em> — the basis of the integrated systems test.</li>
+  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed. — phased handover, zone commissioning and vertical logistics.</li>
+  <li>CTI ATC-105 and ARI/AHRI certification programmes — correction of capacity test results to design conditions.</li>
+  <li>Soft Landings framework (BSRIA BG 54) — aftercare, seasonal commissioning and post-occupancy review.</li>
+</ol>
+
+<div class="tags">#Commissioning #Cx #IntegratedSystemsTest #IST #NFPA3 #NFPA4 #CauseAndEffect #TallBuildings #MegatallBuildings #PhasedHandover #ZoneCommissioning #Balancing #PICV #WitnessTesting #SeasonalCommissioning #DeferredCommissioning #SoftLandings #PostOccupancy #Trending #BMS #Testability #CommissioningAuthority #BSRIA #CIBSE #ASHRAEGuideline0 #MEP #BuildingServices</div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const fmt2=v=>v.toFixed(2);
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}};
+
+/* ---------- CHART 1 : programme ---------- */
+const sZ=document.getElementById('sZ'),sW=document.getElementById('sW'),
+      sS=document.getElementById('sS'),sT=document.getElementById('sT');
+const seq=(z,w)=>z*w;
+const stag=(z,w,s)=>w+(z-1)*s;
+let progChart=new Chart(document.getElementById('progChart'),{
+  data:{datasets:[
+    {type:'line',label:'Sequential',data:[],borderColor:'#c0392b',backgroundColor:'rgba(192,57,43,0.08)',borderWidth:3,pointRadius:0,fill:true,order:3},
+    {type:'line',label:'Staggered pipeline',data:[],borderColor:'#1b4f72',backgroundColor:'rgba(27,79,114,0.14)',borderWidth:3,pointRadius:0,fill:true,order:2},
+    {type:'scatter',label:'Your programme',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:2,max:14,title:{display:true,text:'Number of zones',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Commissioning duration (weeks)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} weeks for ${fmt0(c.parsed.x)} zones`}}}}
+});
+function updProg(){
+  const z=+sZ.value,w=+sW.value,s=+sS.value,t=+sT.value;
+  document.getElementById('vZ').textContent=z;
+  document.getElementById('vW').textContent=w;
+  document.getElementById('vS').textContent=s+' weeks';
+  document.getElementById('vT').textContent=t;
+  const xs=[];for(let x=2;x<=14;x++)xs.push(x);
+  progChart.data.datasets[0].data=xs.map(x=>({x:x,y:seq(x,w)}));
+  progChart.data.datasets[1].data=xs.map(x=>({x:x,y:stag(x,w,s)}));
+  const A=seq(z,w), B=stag(z,w,s);
+  progChart.data.datasets[2].data=[{x:z,y:B}];
+  progChart.update('none');
+  const concurrent=Math.min(z,Math.ceil(w/s));
+  document.getElementById('rSq').innerHTML=fmt0(A)+' <small>weeks</small>';
+  document.getElementById('rSt').innerHTML=fmt0(B)+' <small>weeks</small>';
+  document.getElementById('rSv').innerHTML=fmt0(100*(1-B/A))+' <small>%</small>';
+  document.getElementById('rPk').textContent=concurrent;
+  const v=document.getElementById('rVd');
+  if(concurrent<=t)      v.innerHTML='<span class="badge good">teams sufficient</span>';
+  else if(concurrent<=t+1)v.innerHTML='<span class="badge warn">one team short</span>';
+  else                   v.innerHTML='<span class="badge bad">not enough teams for this stagger</span>';
+}
+[sZ,sW,sS,sT].forEach(s=>s.addEventListener('input',updProg));updProg();
+
+/* ---------- CHART 2 : effort ---------- */
+const sN=document.getElementById('sN'),sM=document.getElementById('sM'),
+      sR=document.getElementById('sR'),sP=document.getElementById('sP');
+const HRS=8;
+let effChart=new Chart(document.getElementById('effChart'),{
+  data:{datasets:[
+    {type:'line',label:'Total effort (man-days)',data:[],borderColor:'#c0392b',backgroundColor:'rgba(192,57,43,0.08)',borderWidth:3,pointRadius:0,fill:true,order:3},
+    {type:'line',label:'Balancing only',data:[],borderColor:'#1b4f72',borderWidth:2.5,borderDash:[6,4],pointRadius:0,order:2},
+    {type:'scatter',label:'Your project',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:200,max:12000,title:{display:true,text:'Terminal devices',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Effort (man-days)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} man-days for ${fmt0(c.parsed.x)} devices`}}}}
+});
+function updEff(){
+  const N=+sN.value,M=+sM.value,R=+sR.value/100,P=+sP.value/100;
+  document.getElementById('vN').textContent=N;
+  document.getElementById('vM').textContent=M;
+  document.getElementById('vR').textContent=fmt0(R*100)+' %';
+  document.getElementById('vP').textContent=fmt0(P*100)+' %';
+  const bal=n=>n*M/60/HRS;
+  const tot=n=>bal(n)*(1+R)+bal(n)*(1+R)*P;
+  const xs=[];for(let x=200;x<=12000;x+=100)xs.push(x);
+  effChart.data.datasets[0].data=xs.map(x=>({x:x,y:+tot(x).toFixed(0)}));
+  effChart.data.datasets[1].data=xs.map(x=>({x:x,y:+bal(x).toFixed(0)}));
+  effChart.data.datasets[2].data=[{x:N,y:+tot(N).toFixed(0)}];
+  effChart.update('none');
+  const b=bal(N), rt=b*(1+R), wt=rt*P;
+  document.getElementById('rMd').innerHTML=fmt0(b)+' <small>man-days</small>';
+  document.getElementById('rRt').innerHTML=fmt0(rt)+' <small>man-days</small>';
+  document.getElementById('rWt').innerHTML=fmt0(wt)+' <small>man-days</small>';
+  document.getElementById('rTt').innerHTML=fmt0(rt+wt)+' <small>man-days</small>';
+  document.getElementById('rWk').innerHTML=fmt0((rt+wt)/8/5)+' <small>weeks</small>';
+}
+[sN,sM,sR,sP].forEach(s=>s.addEventListener('input',updEff));updEff();
+
+/* ---------- CHART 3 : defect cost escalation ---------- */
+const sD=document.getElementById('sD'),sRz=document.getElementById('sRz'),
+      sC=document.getElementById('sC'),sF=document.getElementById('sF');
+const STAGES=['Design','Procurement','Installation','Commissioning','Post-handover'];
+const MULT=[1,3,8,25,100];
+let defChart=new Chart(document.getElementById('defChart'),{
+  type:'bar',
+  data:{labels:STAGES,datasets:[{label:'Cost to correct (millions)',data:[],backgroundColor:[],borderColor:'#fff',borderWidth:1}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{...AX,ticks:{font:{family:'DM Sans',size:11}}},
+            y:{type:'logarithmic',title:{display:true,text:'Cost to correct (millions, log scale)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:c=>`${fmt2(c.parsed.y)} M`}}}}
+});
+function updDef(){
+  const D=+sD.value,Rz=+sRz.value,C=+sC.value,F=+sF.value/100;
+  document.getElementById('vD').textContent=D;
+  document.getElementById('vRz').textContent=Rz;
+  document.getElementById('vC').textContent=C;
+  document.getElementById('vF').textContent=fmt0(F*100)+' %';
+  const total=D*(1+Rz);      // defect instances if repeated across zones
+  const vals=MULT.map(m=>total*C*m/1e6);
+  defChart.data.datasets[0].data=vals.map(v=>+v.toFixed(3));
+  defChart.data.datasets[0].backgroundColor=MULT.map((m,i)=>i>=3?'#c0392b':'#1b4f72');
+  defChart.update('none');
+  // prototype: caught defects corrected once at commissioning cost; the rest repeat post-handover
+  const withoutProto=total*C*MULT[4]/1e6;
+  const withProto=(D*F*C*MULT[3] + (total-D*F)*C*MULT[4])/1e6;
+  document.getElementById('rCd').innerHTML=fmt1(vals[0])+' <small>M</small>';
+  document.getElementById('rCc').innerHTML=fmt0(vals[3])+' <small>M</small>';
+  document.getElementById('rCp').innerHTML=fmt0(vals[4])+' <small>M</small>';
+  document.getElementById('rCs').innerHTML=fmt0(withoutProto-withProto)+' <small>M</small>';
+  document.getElementById('rLv').innerHTML=fmt0(MULT[4]/MULT[3])+'<small>×</small>';
+}
+[sD,sRz,sC,sF].forEach(s=>s.addEventListener('input',updDef));updDef();
+
+window.addEventListener('load',function(){try{progChart.resize();effChart.resize();defChart.resize();}catch(e){}});
+
+</script>
+
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

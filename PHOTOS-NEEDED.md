@@ -177,3 +177,137 @@ colours, thin crisp linework, high contrast.
 Aspect ratio 16:9, wide landscape composition.
 Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
 ```
+
+---
+
+## 8 · domestic-hot-water-legionella-tall-buildings
+
+```text
+A highly detailed technical cross-section illustration of a supertall skyscraper showing its
+DOMESTIC HOT WATER system. On a mechanical floor, show large cylindrical calorifiers or storage
+vessels glowing warmly. From them, show a hot flow riser ascending through the floors above and a
+second, returning recirculation riser descending back to the plant, with small branch connections
+at every floor and a small valve on each return branch where it rejoins the riser.
+
+Render the flow riser as a warm amber glowing line and the recirculation return as a slightly
+cooler orange, so the eye reads a continuous circulating loop rather than a dead-end pipe.
+
+Style: precise mechanical engineering cutaway, cinematic lighting, dark slate and deep navy
+background, warm amber and cool blue as the only accent colours, thin crisp linework, high
+contrast, scientific rather than decorative.
+
+Aspect ratio 16:9, wide landscape, full tower height visible.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```
+
+---
+
+## 9 · building-movement-mep-tall-buildings
+
+```text
+A highly detailed technical cutaway illustration of a vertical SERVICES SHAFT inside a supertall
+skyscraper, seen in section over many floors. Show a single large steel riser pipe running the
+full height. At two points show heavy fixed anchor brackets clamping the pipe rigidly to the
+concrete wall; between them show slender sliding guide collars, and midway show a corrugated
+metal bellows expansion joint compressed between two of the anchors.
+
+Suggest movement: render faint directional arrows or a subtle ghosted outline showing the pipe
+having shifted slightly relative to the structure, and show the surrounding concrete core in a
+cooler tone to read as the building itself moving.
+
+Style: precise mechanical engineering cutaway, cinematic lighting, dark slate and deep navy
+background, cool blue for the structure and warm amber for the pipe and anchors, thin crisp
+linework, high contrast.
+
+Aspect ratio 16:9, wide landscape composition.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```
+
+---
+
+## 10 · district-cooling-ets-tall-buildings
+
+```text
+A highly detailed technical cutaway illustration of a DISTRICT COOLING energy transfer station in
+the basement of a supertall tower. In the foreground show two large plate heat exchangers, their
+stacked plate packs clearly visible. Entering from the left, show heavy district network pipes
+with a large control valve and a strainer on them; leaving to the right and rising upward, show
+the building's own chilled water risers heading into the tower above.
+
+Render the district primary side as a deep cool blue and the building secondary side as a
+lighter blue, meeting at the heat exchangers, so the hydraulic separation is visually obvious.
+Show a compact inline meter on the primary pipe.
+
+Style: precise mechanical engineering cutaway, cinematic lighting, dark slate and deep navy
+background, two shades of blue plus warm amber accents, thin crisp linework, high contrast.
+
+Aspect ratio 16:9, wide landscape composition.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```
+
+---
+
+## 11 · car-park-ventilation-tall-buildings
+
+```text
+A highly detailed technical cutaway illustration of a large underground CAR PARK beneath a
+supertall tower, seen in wide section. Show rows of parked cars, structural columns, and a low
+ceiling with no ductwork at all. Instead, show a series of small cylindrical jet fans mounted
+tight to the ceiling at intervals, each driving a luminous cone of air horizontally across the
+space toward a large extract shaft at one end.
+
+Render the airflow as pale blue-white streamlines sweeping the full length of the car park and
+converging into the extract shaft. Show a vehicle ramp rising away at one side.
+
+Style: precise mechanical engineering cutaway, cinematic lighting, dark slate and deep navy
+background, cool blue-white airflow and warm amber accents on the fans, thin crisp linework,
+high contrast.
+
+Aspect ratio 16:9, wide landscape composition.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```
+
+---
+
+## 12 · thermal-energy-storage-tall-buildings
+
+```text
+A highly detailed technical cutaway illustration of an ICE THERMAL STORAGE plant in the basement
+of a supertall tower. Show a row of very large rectangular storage tanks, cut open to reveal
+dense bundles of coiled pipework inside surrounded by pale blue ice. Connect them with heavy
+glycol pipework to a bank of chillers on one side and a plate heat exchanger on the other, from
+which the building's chilled water risers ascend into the tower above.
+
+Render the ice and the cold glycol as a very pale, almost white-blue, and the building side as a
+warmer blue, so the temperature difference reads visually. Suggest the enormous scale of the
+tanks against the surrounding structure.
+
+Style: precise mechanical engineering cutaway, cinematic lighting, dark slate and deep navy
+background, pale ice-blue and warm amber as the only accent colours, thin crisp linework.
+
+Aspect ratio 16:9, wide landscape composition.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```
+
+---
+
+## 13 · mep-commissioning-tall-buildings
+
+```text
+A highly detailed technical cross-section illustration of a supertall skyscraper during PHASED
+HANDOVER, cut open vertically to show three clearly different states stacked up the building.
+The lower third: finished, warmly lit, occupied floors with furniture and glazing complete. The
+middle third: a zone under active commissioning — bare but complete services, a mechanical floor
+lit brightly, portable test instruments and temporary cabling visible. The upper third: still
+under construction, structural frame exposed, no cladding, a crane visible at the top.
+
+Make the three zones read as three distinct bands of completion up the same tower, separated by
+mechanical floors.
+
+Style: precise architectural and mechanical engineering cutaway, cinematic lighting, dark slate
+and deep navy background, warm amber for the finished floors and cool blue for the unfinished
+ones, thin crisp linework, high contrast.
+
+Aspect ratio 16:9, wide landscape, full tower visible top to bottom.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```

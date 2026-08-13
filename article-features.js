@@ -9,6 +9,8 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'mep-commissioning-tall-buildings.html', title:'Commissioning MEP in Megatall Buildings: Phased Handover, the Integrated Systems Test & Seasonal Returns', cat:'tallmep', thumb:'mep-commissioning-tall-buildings.webp', mins:15, tag:'Tall-Building Systems · Commissioning · Handover' },
+    { url:'thermal-energy-storage-tall-buildings.html', title:'Thermal Energy Storage for Megatall Buildings: Ice vs Water, Peak Shaving & the Tariff That Pays for It', cat:'hvac', thumb:'thermal-energy-storage-tall-buildings.webp', mins:15, tag:'HVAC · Thermal Storage · Peak Shaving' },
     { url:'car-park-ventilation-tall-buildings.html', title:'Car Park Ventilation in Tall-Building Podiums: CO Dilution, Jet Fans, Fire Mode & the EV Question', cat:'hvac', thumb:'car-park-ventilation-tall-buildings.webp', mins:14, tag:'HVAC · Car Park Ventilation · Smoke Extract' },
     { url:'district-cooling-ets-tall-buildings.html', title:'District Cooling & Energy Transfer Stations for Megatall Buildings: Delta-T, Approach & Metering', cat:'hvac', thumb:'district-cooling-ets-tall-buildings.webp', mins:16, tag:'HVAC · District Cooling · ETS' },
     { url:'building-movement-mep-tall-buildings.html', title:'Building Movement & MEP in Megatall Buildings: Thermal Expansion, Column Shortening & Anchor Loads', cat:'tallmep', thumb:'building-movement-mep-tall-buildings.webp', mins:16, tag:'Tall-Building Systems · Movement · Riser Support' },

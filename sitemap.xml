@@ -8,6 +8,18 @@
 
   <!-- Homepage EN -->
   <url>
+    <loc>https://abokhatwa.com/mep-commissioning-tall-buildings.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/thermal-energy-storage-tall-buildings.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://abokhatwa.com/car-park-ventilation-tall-buildings.html</loc>
     <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>

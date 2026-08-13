@@ -9,6 +9,9 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'vertical-transportation-mep-tall-buildings.html', title:'Lifts & MEP in Megatall Buildings: Machine-Room Heat, Piston Effect & Hoistway Pressurisation', cat:'tallmep', thumb:'vertical-transportation-mep-tall-buildings.webp', mins:16, tag:'Tall-Building Systems · Lifts · MEP Interfaces' },
+    { url:'refrigerant-systems-tall-buildings.html', title:'Refrigerant Systems & VRF in Megatall Buildings: Flash Gas, Oil Return & the Concentration Limit', cat:'hvac', thumb:'refrigerant-systems-tall-buildings.webp', mins:16, tag:'HVAC · Refrigerant · VRF · ASHRAE 15' },
+    { url:'cooling-towers-heat-rejection-tall-buildings.html', title:'Cooling Towers & Heat Rejection in Megatall Buildings: The Open Circuit, Wet-Bulb Approach & the Water Balance', cat:'hvac', thumb:'cooling-towers-heat-rejection-tall-buildings.webp', mins:18, tag:'HVAC · Cooling Towers · Heat Rejection' },
     { url:'outdoor-air-ventilation-tall-buildings.html', title:'Outdoor Air & Ventilation in Megatall Buildings: Wind Pressure, Intake Strategy, Energy Recovery & Filtration', cat:'hvac', thumb:'outdoor-air-ventilation-tall-buildings.webp', mins:17, tag:'HVAC · Ventilation · Outdoor Air' },
     { url:'mechanical-floors-tall-buildings.html', title:'Mechanical Floors in Megatall Buildings: Spacing, Zone Heights, Riser Economics & Layout', cat:'tallmep', thumb:'mechanical-floors-tall-buildings.webp', mins:17, tag:'Tall-Building Systems · Mechanical Floors' },
     { url:'domestic-water-tall-buildings.html', title:'Domestic Water Supply in Megatall Buildings: Demand, Pressure Zoning, PRVs & the Energy of Height', cat:'plumbing', thumb:'domestic-water-tall-buildings.webp', mins:18, tag:'Plumbing · Domestic Water · Tall Buildings' },

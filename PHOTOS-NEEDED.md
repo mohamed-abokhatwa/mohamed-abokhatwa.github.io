@@ -311,3 +311,28 @@ ones, thin crisp linework, high contrast.
 Aspect ratio 16:9, wide landscape, full tower visible top to bottom.
 Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
 ```
+
+---
+
+## 14 · kitchen-exhaust-grease-risers-tall-buildings
+
+```text
+A highly detailed technical cross-section illustration of a tall building showing a COMMERCIAL
+KITCHEN EXHAUST system. At the lower part of the frame, show a restaurant kitchen in cutaway with
+a large stainless extract canopy over a cooking range, with faint cooking vapour rising into it.
+From the canopy, show a single heavy rectangular duct rising vertically through a dedicated
+enclosed shaft, unbroken, all the way up through many floors to a discharge fan on the roof with a
+vertical plume leaving it.
+
+Emphasise that the riser is continuous and isolated in its own shaft, separate from everything
+else, with small access hatches visible at intervals along it.
+
+Render the extract airflow as a warm amber glow inside the duct against a cool blue building.
+
+Style: precise mechanical engineering cutaway, cinematic lighting, dark slate and deep navy
+background, warm amber and cool blue as the only accent colours, thin crisp linework, high
+contrast.
+
+Aspect ratio 16:9, wide landscape, full height from kitchen to roof visible.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```

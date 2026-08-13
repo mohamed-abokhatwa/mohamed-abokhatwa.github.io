@@ -9,6 +9,7 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'kitchen-exhaust-grease-risers-tall-buildings.html', title:'Kitchen Exhaust & Grease Risers in Tall Buildings: Transport Velocity, Turndown & Make-Up Air', cat:'hvac', thumb:'kitchen-exhaust-grease-risers-tall-buildings.webp', mins:14, tag:'HVAC · Kitchen Ventilation · Grease Risers' },
     { url:'mep-commissioning-tall-buildings.html', title:'Commissioning MEP in Megatall Buildings: Phased Handover, the Integrated Systems Test & Seasonal Returns', cat:'tallmep', thumb:'mep-commissioning-tall-buildings.webp', mins:15, tag:'Tall-Building Systems · Commissioning · Handover' },
     { url:'thermal-energy-storage-tall-buildings.html', title:'Thermal Energy Storage for Megatall Buildings: Ice vs Water, Peak Shaving & the Tariff That Pays for It', cat:'hvac', thumb:'thermal-energy-storage-tall-buildings.webp', mins:15, tag:'HVAC · Thermal Storage · Peak Shaving' },
     { url:'car-park-ventilation-tall-buildings.html', title:'Car Park Ventilation in Tall-Building Podiums: CO Dilution, Jet Fans, Fire Mode & the EV Question', cat:'hvac', thumb:'car-park-ventilation-tall-buildings.webp', mins:14, tag:'HVAC · Car Park Ventilation · Smoke Extract' },

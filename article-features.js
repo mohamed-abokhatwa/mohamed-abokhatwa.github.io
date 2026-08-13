@@ -9,6 +9,9 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'building-movement-mep-tall-buildings.html', title:'Building Movement & MEP in Megatall Buildings: Thermal Expansion, Column Shortening & Anchor Loads', cat:'tallmep', thumb:'building-movement-mep-tall-buildings.webp', mins:16, tag:'Tall-Building Systems · Movement · Riser Support' },
+    { url:'domestic-hot-water-legionella-tall-buildings.html', title:'Domestic Hot Water & Legionella Control in Megatall Buildings: Temperature Regime, Recirculation & Storage', cat:'plumbing', thumb:'domestic-hot-water-legionella-tall-buildings.webp', mins:16, tag:'Plumbing · Hot Water · Legionella' },
+    { url:'vibration-noise-control-tall-buildings.html', title:'Vibration & Noise Control for MEP in Megatall Buildings: Static Deflection, Flanking Paths & Plant-Room Acoustics', cat:'tallmep', thumb:'vibration-noise-control-tall-buildings.webp', mins:16, tag:'Tall-Building Systems · Vibration · Acoustics' },
     { url:'vertical-transportation-mep-tall-buildings.html', title:'Lifts & MEP in Megatall Buildings: Machine-Room Heat, Piston Effect & Hoistway Pressurisation', cat:'tallmep', thumb:'vertical-transportation-mep-tall-buildings.webp', mins:16, tag:'Tall-Building Systems · Lifts · MEP Interfaces' },
     { url:'refrigerant-systems-tall-buildings.html', title:'Refrigerant Systems & VRF in Megatall Buildings: Flash Gas, Oil Return & the Concentration Limit', cat:'hvac', thumb:'refrigerant-systems-tall-buildings.webp', mins:16, tag:'HVAC · Refrigerant · VRF · ASHRAE 15' },
     { url:'cooling-towers-heat-rejection-tall-buildings.html', title:'Cooling Towers & Heat Rejection in Megatall Buildings: The Open Circuit, Wet-Bulb Approach & the Water Balance', cat:'hvac', thumb:'cooling-towers-heat-rejection-tall-buildings.webp', mins:18, tag:'HVAC · Cooling Towers · Heat Rejection' },

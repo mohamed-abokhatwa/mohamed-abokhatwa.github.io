@@ -8,6 +8,24 @@
 
   <!-- Homepage EN -->
   <url>
+    <loc>https://abokhatwa.com/outdoor-air-ventilation-tall-buildings.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/mechanical-floors-tall-buildings.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/domestic-water-tall-buildings.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://abokhatwa.com/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://abokhatwa.com/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://abokhatwa.com/index-ar.html"/>

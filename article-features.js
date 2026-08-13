@@ -9,6 +9,9 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'outdoor-air-ventilation-tall-buildings.html', title:'Outdoor Air & Ventilation in Megatall Buildings: Wind Pressure, Intake Strategy, Energy Recovery & Filtration', cat:'hvac', thumb:'outdoor-air-ventilation-tall-buildings.webp', mins:17, tag:'HVAC · Ventilation · Outdoor Air' },
+    { url:'mechanical-floors-tall-buildings.html', title:'Mechanical Floors in Megatall Buildings: Spacing, Zone Heights, Riser Economics & Layout', cat:'tallmep', thumb:'mechanical-floors-tall-buildings.webp', mins:17, tag:'Tall-Building Systems · Mechanical Floors' },
+    { url:'domestic-water-tall-buildings.html', title:'Domestic Water Supply in Megatall Buildings: Demand, Pressure Zoning, PRVs & the Energy of Height', cat:'plumbing', thumb:'domestic-water-tall-buildings.webp', mins:18, tag:'Plumbing · Domestic Water · Tall Buildings' },
     { url:'chilled-water-pumps-tall-buildings.html', title:'Chilled-Water Pumps in Megatall Buildings: Static vs Friction Head, Pressure Zoning, Heat-Exchanger Cascades & Part-Load Control', cat:'hvac',        thumb:'chilled-water-pumps-tall-buildings.webp', mins:20, tag:'HVAC \u00b7 Chilled Water \u00b7 Pump Selection' },
     { url:'stack-effect-tall-buildings.html',        title:'Stack Effect in Megatall Buildings: The Neutral Plane, Door Forces, Shaft Compartmentation & the Energy Penalty', cat:'hvac',        thumb:'stack-effect-tall-buildings.webp',        mins:19, tag:'Building Physics \u00b7 Stack Effect \u00b7 Tall Buildings' },
     { url:'firefighting-tall-buildings.html',        title:'Firefighting in Megatall Buildings: Pressure Zones, Standpipes, Stack Effect & Smoke Control',            cat:'fire',        thumb:'firefighting-tall-buildings.webp',        mins:18, tag:'Fire Protection · Megatall Buildings' },

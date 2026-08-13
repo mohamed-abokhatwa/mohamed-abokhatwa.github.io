@@ -336,3 +336,27 @@ contrast.
 Aspect ratio 16:9, wide landscape, full height from kitchen to roof visible.
 Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
 ```
+
+---
+
+## 15 · basement-dewatering-drainage-tall-buildings
+
+```text
+A highly detailed technical cross-section illustration of a DEEP BASEMENT beneath a supertall
+tower, cut vertically to show four or five basement levels below ground with the tower base rising
+above. Show the surrounding earth in section, with a clearly marked groundwater table line well
+above the lowest slab, and fine luminous blue streamlines of water seeping through the ground
+toward the structure from both sides and from below.
+
+Beneath the base slab, show a granular drainage layer with collector pipes running to a deep sump
+pit at one corner, containing two submersible pumps on guide rails, with a discharge pipe rising
+all the way to ground level.
+
+Render the groundwater and seepage as cool blue and the structure in neutral grey.
+
+Style: precise geotechnical and mechanical engineering cutaway, cinematic lighting, dark slate and
+deep navy background, cool blue and warm amber as the only accent colours, thin crisp linework.
+
+Aspect ratio 16:9, wide landscape composition.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```

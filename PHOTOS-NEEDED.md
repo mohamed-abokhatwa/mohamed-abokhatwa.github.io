@@ -360,3 +360,24 @@ deep navy background, cool blue and warm amber as the only accent colours, thin 
 Aspect ratio 16:9, wide landscape composition.
 Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
 ```
+
+---
+
+## 16 · water-treatment-building-systems
+
+```text
+A highly detailed technical cutaway illustration of a WATER TREATMENT installation inside a
+chiller plant room. In the foreground show a skid with chemical dosing pots and small dosing
+pumps connected by fine tubing to the main pipework, alongside a tall cylindrical side-stream
+sand filter with its own pump. On the main pipe show a coupon and sample station.
+
+To one side, show a cutaway section through a condenser tube revealing a pale scale layer built
+up on its inner wall, with heat flow arrows being obstructed by it.
+
+Style: precise mechanical engineering cutaway, cinematic lighting, dark slate and deep navy
+background, cool blue for the water and warm amber for the equipment, thin crisp linework, high
+contrast.
+
+Aspect ratio 16:9, wide landscape composition.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```

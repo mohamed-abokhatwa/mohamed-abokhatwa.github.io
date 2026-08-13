@@ -95,10 +95,10 @@ BODY = r"""
     <div class="cell"><div class="k">Total shortening</div><div class="v" id="rTs">694 <small>mm</small></div></div>
     <div class="cell"><div class="k">Acts on services</div><div class="v" id="rPs">278 <small>mm</small></div></div>
     <div class="cell"><div class="k">Per 40 m zone</div><div class="v" id="rPz">18.5 <small>mm</small></div></div>
-    <div class="cell"><div class="k">vs thermal</div><div class="v" id="rVt">2.6<small>×</small></div></div>
+    <div class="cell"><div class="k">vs thermal</div><div class="v" id="rVt">1.3<small>×</small></div></div>
   </div>
 </div>
-<p class="fig-note">On a 600&nbsp;m tower the structure shortens by about <strong>694&nbsp;mm</strong> in total, of which roughly <strong>278&nbsp;mm</strong> arrives after the services are fixed — <strong>two and a half times</strong> the thermal movement of the same steel riser, and in the same direction for a chilled-water system. The two are additive and they must be summed before the compensators are sized. Note the readout per zone: even broken into 40&nbsp;m bays the structure still delivers 18&nbsp;mm of shortening into each one, on top of the thermal swing, which is why "we have expansion joints" is not the same as "we have allowed for movement".</p>
+<p class="fig-note">On a 600&nbsp;m tower the structure shortens by about <strong>694&nbsp;mm</strong> in total, of which roughly <strong>278&nbsp;mm</strong> arrives after the services are fixed — about <strong>1.3 times</strong> the thermal movement of a 600&nbsp;m steel riser through 30&nbsp;K (216&nbsp;mm), and in the same direction for a chilled-water system. The two are additive and they must be summed before the compensators are sized. Note the readout per zone: even broken into 40&nbsp;m bays the structure still delivers 18&nbsp;mm of shortening into each one, on top of the thermal swing, which is why "we have expansion joints" is not the same as "we have allowed for movement".</p>
 
 <h2 id="anchors">4 · Anchors, guides and compensators</h2>
 <p>The design method is always the same three moves, in order:</p>
@@ -111,7 +111,7 @@ BODY = r"""
 
 <div class="callout key">
   <span class="lbl">The number that surprises people: pressure thrust</span>
-  A bellows does not resist pressure the way a pipe does; the pressure acting on its effective area pushes the anchors apart. For a 219&nbsp;mm bellows at 16&nbsp;bar that is about <strong>72&nbsp;kN of pressure thrust</strong>, plus the spring force of compressing it — around <strong>80&nbsp;kN total, eight tonnes</strong>, applied to a bracket bolted to a shaft wall. Anchors either side of an unrestrained bellows are among the most heavily loaded fixings in the entire MEP installation, and they are routinely detailed as though they carried only pipe weight. Use tied or pressure-balanced bellows where the anchor cannot take the thrust, and always issue the anchor loads to the structural engineer.
+  A bellows does not resist pressure the way a pipe does; the pressure acting on its effective area pushes the anchors apart. For a 219&nbsp;mm bellows at 16&nbsp;bar that is about <strong>95&nbsp;kN of pressure thrust</strong>, plus the spring force of compressing it — around <strong>110&nbsp;kN total, eleven tonnes</strong>, applied to a bracket bolted to a shaft wall. Anchors either side of an unrestrained bellows are among the most heavily loaded fixings in the entire MEP installation, and they are routinely detailed as though they carried only pipe weight. Use tied or pressure-balanced bellows where the anchor cannot take the thrust, and always issue the anchor loads to the structural engineer.
 </div>
 
 <div class="fig">
@@ -144,13 +144,13 @@ BODY = r"""
   </div>
   <div class="readout">
     <div class="cell"><div class="k">Loop leg</div><div class="v" id="rLl">11.5 <small>m</small></div></div>
-    <div class="cell"><div class="k">Pressure thrust</div><div class="v" id="rPt">72 <small>kN</small></div></div>
+    <div class="cell"><div class="k">Pressure thrust</div><div class="v" id="rPt">95 <small>kN</small></div></div>
     <div class="cell"><div class="k">Spring force</div><div class="v" id="rSf">15 <small>kN</small></div></div>
-    <div class="cell"><div class="k">Anchor load</div><div class="v" id="rAl">87 <small>kN</small></div></div>
-    <div class="cell"><div class="k">In tonnes</div><div class="v" id="rTn">8.9 <small>t</small></div></div>
+    <div class="cell"><div class="k">Anchor load</div><div class="v" id="rAl">110 <small>kN</small></div></div>
+    <div class="cell"><div class="k">In tonnes</div><div class="v" id="rTn">11.2 <small>t</small></div></div>
   </div>
 </div>
-<p class="fig-note">A DN200 riser absorbing 100&nbsp;mm needs an <strong>11.5&nbsp;m loop leg</strong> — which does not exist in a services shaft — so it gets a bellows, and the bellows loads its anchors with <strong>87&nbsp;kN</strong>. That is nearly nine tonnes on a fixing detail that is often drawn as a channel bracket. Two design responses: use <strong>tied or pressure-balanced bellows</strong> so the thrust is carried within the assembly rather than by the building, or place the anchor at a structural element that can genuinely take it and get the load formally accepted. Either way, the number has to be calculated and issued — this is the single most under-transmitted load in MEP design.</p>
+<p class="fig-note">A DN200 riser absorbing 100&nbsp;mm needs an <strong>11.5&nbsp;m loop leg</strong> — which does not exist in a services shaft — so it gets a bellows, and the bellows loads its anchors with <strong>110&nbsp;kN</strong>. That is over eleven tonnes on a fixing detail that is often drawn as a channel bracket. Two design responses: use <strong>tied or pressure-balanced bellows</strong> so the thrust is carried within the assembly rather than by the building, or place the anchor at a structural element that can genuinely take it and get the load formally accepted. Either way, the number has to be calculated and issued — this is the single most under-transmitted load in MEP design.</p>
 
 <h2 id="detailing">5 · Detailing that accommodates movement</h2>
 <ul class="clean">
@@ -189,7 +189,7 @@ BODY = r"""
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  A megatall tower shortens by roughly <strong>700&nbsp;mm</strong> over its life and about <strong>280&nbsp;mm of that lands on services already installed</strong> — two and a half times the thermal movement of the same steel riser, and additive to it. Meanwhile the core and perimeter shorten by different amounts, quietly shearing every horizontal run between them. Ask the structural engineer for the post-installation and differential figures, choose pipe materials knowing that plastics move ten times as far as steel, set anchors before compensators, and above all <strong>calculate the bellows pressure thrust and issue it</strong> — because eighty kilonewtons on a bracket detailed for pipe weight is how risers come down.
+  A megatall tower shortens by roughly <strong>700&nbsp;mm</strong> over its life and about <strong>280&nbsp;mm of that lands on services already installed</strong> — comparable to the thermal movement of the same steel riser, and additive to it. Meanwhile the core and perimeter shorten by different amounts, quietly shearing every horizontal run between them. Ask the structural engineer for the post-installation and differential figures, choose pipe materials knowing that plastics move ten times as far as steel, set anchors before compensators, and above all <strong>calculate the bellows pressure thrust and issue it</strong> — because a hundred kilonewtons on a bracket detailed for pipe weight is how risers come down.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>

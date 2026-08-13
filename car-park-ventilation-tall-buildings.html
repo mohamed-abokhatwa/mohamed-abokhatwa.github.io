@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Park Ventilation in Tall-Building Podiums: CO Dilution, Jet Fans, Fire Mode &amp; the EV Question — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:16px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#c0392b;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid #cdd6df;border-radius:8px;font-size:13px;font-family:inherit;background:#fff;color:#1a1d21;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="Car park ventilation design for tall-building podiums and basements: why a prescriptive air-change rule over-sizes the system by three and a half times against actual CO dilution, demand-controlled ventilation and the cube law, jet fans versus ducted distribution and the clear height they give back, fire mode with make-up air, damper zoning and temperature-rated fans, and what electric vehicles change — with two interactive charts and installation tricks.">
+  <meta property="og:title" content="Car Park Ventilation in Tall-Building Podiums: CO Dilution, Jet Fans, Fire Mode &amp; the EV Question | Mohamed Abokhatwa">
+  <meta property="og:description" content="A prescriptive 10 air changes an hour demands 41.7 m3/s where CO dilution needs 11.6. Demand control cuts fan energy by 90 percent, and jet fans give back 300-500 mm of clear height across the whole basement.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/car-park-ventilation-tall-buildings.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-car-park-ventilation-tall-buildings.jpg">
+  <meta property="og:image:alt" content="Technical cutaway of a tall-building basement car park showing ceiling-mounted jet fans driving air across the parking bays toward extract shafts, with the vehicle ramp and make-up air louvres indicated">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Car Park Ventilation in Tall-Building Podiums: CO Dilution, Jet Fans, Fire Mode &amp; the EV Question | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="A prescriptive 10 air changes an hour demands 41.7 m3/s where CO dilution needs 11.6. Demand control cuts fan energy by 90 percent, and jet fans give back 300-500 mm of clear height across the whole basement.">
+  <link rel="canonical" href="https://abokhatwa.com/car-park-ventilation-tall-buildings.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Car Park Ventilation in Tall-Building Podiums: CO Dilution, Jet Fans, Fire Mode &amp; the EV Question",
+  "description": "A design-perspective guide to car park ventilation in tall-building podiums: contaminant dilution versus prescriptive air-change rates, demand-controlled ventilation energy, jet fan versus ducted systems, fire-mode design, make-up air, damper zoning and the implications of electric vehicles.",
+  "image": "https://abokhatwa.com/og-car-park-ventilation-tall-buildings.jpg",
+  "datePublished": "2026-08-14",
+  "dateModified": "2026-08-14",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/car-park-ventilation-tall-buildings.html" }
+}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">HVAC &amp; Cooling</span></div>
+  <span class="tag">HVAC &middot; Car Park Ventilation &middot; Jet Fans &middot; Smoke Extract</span>
+  <h1>Car Park Ventilation in Tall-Building Podiums: CO Dilution, Jet Fans, Fire Mode &amp; the EV Question</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>August 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>14 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="car-park-ventilation-tall-buildings.webp" alt="Technical cutaway of a tall-building basement car park showing ceiling-mounted jet fans driving air across the parking bays toward extract shafts, with the vehicle ramp and make-up air louvres indicated">
+</div>
+
+<div class="article-body">
+
+<p class="lead">The car park is the least glamorous space in a megatall development and the one most likely to be grossly over-ventilated. It is usually sized by a prescriptive air-change rate copied from a code table — six, ten, sometimes twelve air changes an hour — and that rule produces, for a typical 5,000&nbsp;m² basement, a system of <strong>41.7&nbsp;m³/s</strong> when the actual contaminant load needs <strong>11.6</strong>. The factor of three and a half buys nothing: no better air, no better safety. It buys a bigger fan, a bigger shaft through the podium, a bigger electrical supply and a permanent energy bill. And it is the same mistake as the Hunter curve in <a href="domestic-water-tall-buildings.html">domestic water</a> — a prescriptive rule written for a different generation of the thing it regulates.</p>
+
+<h2 id="two">1 · Two duties, two completely different systems</h2>
+<p>A car park ventilation system does two unrelated jobs, and confusing them is the root of most bad designs:</p>
+<ul class="clean">
+  <li><strong>Normal ventilation</strong> — dilute vehicle exhaust, principally carbon monoxide, to a safe concentration. This is a <em>contaminant dilution</em> problem, it is highly intermittent, and it should be demand-controlled.</li>
+  <li><strong>Fire mode</strong> — clear smoke to allow firefighting access, or in a designed smoke-control system, hold smoke back from an escape route. This is a <em>high-temperature, short-duration</em> problem with completely different equipment requirements.</li>
+</ul>
+<p>They share ductwork and fans but almost nothing else. Fire mode usually governs the fan and the shaft; normal mode governs the energy. Design both explicitly, and never let the fire-mode airflow become the normal-mode airflow by default — which is exactly what a single-speed system does.</p>
+
+<h2 id="int-co">2 · Interactive: prescriptive air changes vs actual CO dilution</h2>
+<p>Dilution ventilation is a mass balance: the airflow needed is the contaminant generation rate divided by the concentration you will allow.</p>
+<div class="eq">\[ Q \;=\; \frac{E}{C_{limit} - C_{ambient}} \]</div>
+<p>with \(E\) the CO generation rate from vehicle movements and \(C\) the concentration. Compare that with what the air-change rule gives for the same space.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Ventilation rate — CO dilution vs prescriptive air changes</div>
+    <div class="fsub">Q = E/(C&#108;&#105;&#109;&#105;&#116;). CO limit converted at 1.145 mg/m³ per ppm. The prescriptive line is the code air-change rate applied to the same volume.</div>
+  </div>
+  <div class="chart-box"><canvas id="coChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Car park area <span id="vA">5000 m²</span></label>
+      <input type="range" id="sA" min="500" max="40000" value="5000" step="250">
+      <div class="hint">Floor area of the ventilated compartment.</div>
+    </div>
+    <div class="ctrl">
+      <label>Clear height <span id="vH">3.0 m</span></label>
+      <input type="range" id="sH" min="2.2" max="4.5" value="3" step="0.1">
+      <div class="hint">Used only for the air-change calculation.</div>
+    </div>
+    <div class="ctrl">
+      <label>Vehicle movements <span id="vM">150 /h</span></label>
+      <input type="range" id="sM" min="10" max="800" value="150" step="10">
+      <div class="hint">Peak-hour movements in this compartment. Each is a start plus a short manoeuvre.</div>
+    </div>
+    <div class="ctrl">
+      <label>CO limit <span id="vC">25 ppm</span></label>
+      <input type="range" id="sC" min="10" max="100" value="25" step="1">
+      <div class="hint">8-hour TWA is 25–30 ppm; short-term limits are far higher.</div>
+    </div>
+    <div class="ctrl">
+      <label>Prescriptive rate <span id="vR">10 ACH</span></label>
+      <input type="range" id="sR" min="3" max="14" value="10" step="1">
+      <div class="hint">The code air-change rate you are being asked to apply.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">CO-based flow</div><div class="v" id="rQc">11.6 <small>m³/s</small></div></div>
+    <div class="cell"><div class="k">Prescriptive flow</div><div class="v" id="rQp">41.7 <small>m³/s</small></div></div>
+    <div class="cell"><div class="k">Over-sizing</div><div class="v" id="rOv">3.6<small>×</small></div></div>
+    <div class="cell"><div class="k">Equivalent ACH</div><div class="v" id="rAc">2.8</div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">A 5,000&nbsp;m² basement at 150 movements an hour needs about <strong>11.6&nbsp;m³/s</strong> to hold 25&nbsp;ppm — an effective 2.8 air changes an hour. The 10&nbsp;ACH rule demands <strong>41.7&nbsp;m³/s</strong>. Both numbers are defensible in their own terms; only one reflects the building. The practical resolution is <strong>demand-controlled ventilation</strong>: install the fan capacity the code requires, and then run it on CO and NO₂ sensors so it spends almost all its life near the dilution rate rather than the prescriptive one. Modern codes increasingly permit exactly this, and it converts an over-sized system from an energy problem into a resilience margin.</p>
+
+<h2 id="int-energy">3 · Interactive: what demand control is worth</h2>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Annual fan energy — constant speed vs CO demand control</div>
+    <div class="fsub">P = Q·Δp/η. Under demand control the flow follows occupancy and the power follows the cube law, with a minimum ventilation floor held at all times.</div>
+  </div>
+  <div class="chart-box"><canvas id="engChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Design airflow <span id="vQ">42 m³/s</span></label>
+      <input type="range" id="sQ" min="5" max="200" value="42" step="1">
+      <div class="hint">Installed capacity, usually set by the fire case or the code rate.</div>
+    </div>
+    <div class="ctrl">
+      <label>System pressure <span id="vP">250 Pa</span></label>
+      <input type="range" id="sP" min="60" max="600" value="250" step="10">
+      <div class="hint">Ducted systems 200–400 Pa; jet-fan systems far lower.</div>
+    </div>
+    <div class="ctrl">
+      <label>Average demand <span id="vD">35 %</span></label>
+      <input type="range" id="sD" min="10" max="100" value="35" step="1">
+      <div class="hint">Mean flow fraction over the year under CO control.</div>
+    </div>
+    <div class="ctrl">
+      <label>Minimum flow floor <span id="vF">20 %</span></label>
+      <input type="range" id="sF" min="0" max="60" value="20" step="1">
+      <div class="hint">Continuous minimum some codes require regardless of CO.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Constant speed</div><div class="v" id="rEc">92 <small>MWh/yr</small></div></div>
+    <div class="cell"><div class="k">Demand controlled</div><div class="v" id="rEd">7 <small>MWh/yr</small></div></div>
+    <div class="cell"><div class="k">Saving</div><div class="v" id="rSv">92 <small>%</small></div></div>
+    <div class="cell"><div class="k">Design fan power</div><div class="v" id="rPw">16 <small>kW</small></div></div>
+    <div class="cell"><div class="k">If jet-fan (120 Pa)</div><div class="v" id="rJf">3 <small>MWh/yr</small></div></div>
+  </div>
+</div>
+<p class="fig-note">A 42&nbsp;m³/s ducted system at 250&nbsp;Pa running continuously uses about <strong>92&nbsp;MWh a year</strong>. Put it on CO control with a 35&nbsp;% average demand and it falls to around <strong>7&nbsp;MWh</strong> — because power follows the cube of flow, a two-thirds reduction in flow is a 96&nbsp;% reduction in power. Then note the second lever: replacing ducted distribution with jet fans cuts the system pressure to roughly 120&nbsp;Pa and halves what remains. Demand control and low system resistance compound, and together they are the difference between a car park that costs a hundred megawatt-hours a year and one that costs three.</p>
+
+<h2 id="jetfan">4 · Jet fans versus ducted distribution</h2>
+<p>A jet-fan (impulse) system deletes the supply and extract ductwork inside the car park and moves air with a series of small high-velocity induction fans that push it toward the extract shafts. In a tall-building podium the advantages are structural before they are mechanical:</p>
+<ul class="clean">
+  <li><strong>It gives back the ceiling void.</strong> A 42&nbsp;m³/s ducted system needs roughly <strong>6&nbsp;m² of duct cross-section</strong>. Removing it typically wins 300–500&nbsp;mm of clear height, which across a deep basement can be a whole additional parking level for the same excavation.</li>
+  <li><strong>Far lower system pressure</strong>, because there is no duct run — most of the resistance is at the shafts alone.</li>
+  <li><strong>Better coverage.</strong> A CFD-designed jet-fan layout sweeps the whole floor plate rather than relying on grille positions, and it removes the stagnant pockets that ducted systems leave in corners.</li>
+  <li><strong>It requires CFD, not a rule of thumb.</strong> The design is a momentum problem; jet-fan positions, orientations and thrust must be modelled for both normal and fire cases, including a fan-out-of-service scenario. A jet-fan system laid out by eye is a genuine risk.</li>
+  <li><strong>Fire mode is where it earns or fails.</strong> The system must be shown to produce the required smoke clearance or containment with the design fire in the worst location, with the shafts and make-up air paths modelled honestly.</li>
+</ul>
+
+<h2 id="fire">5 · Fire mode, make-up air and the things that are always missed</h2>
+<ul class="clean">
+  <li><strong>Extract needs make-up.</strong> A high extract rate with no designed inlet path simply pulls the car park into deep negative pressure, the fans run far off their curve, and doors become unopenable. Provide dedicated make-up air with its own free area, and check the resulting door forces — the same arithmetic as in <a href="stack-effect-tall-buildings.html">stack effect</a>.</li>
+  <li><strong>Fans must be rated for temperature.</strong> Smoke-extract fans are certified to a temperature-time class (commonly 300&nbsp;°C for 60&nbsp;minutes, sometimes 400&nbsp;°C/120&nbsp;min); so must their motors, bearings, flexible connections, supports and cabling. A correctly rated fan on unrated cable is a system that fails in the first ten minutes.</li>
+  <li><strong>Power must survive.</strong> Fire-mode fans need protected, segregated supplies with a designed changeover, and the changeover must be tested as part of the fire sequence rather than as an electrical test.</li>
+  <li><strong>Zone the extract.</strong> Extracting from the whole basement at once is usually the wrong strategy; extract from the fire zone and hold the adjacent ones, which requires dampers that are rated, actuated, monitored and — critically — accessible for testing.</li>
+  <li><strong>Design for the sprinkler interaction.</strong> Cooled smoke loses buoyancy and stratifies low, which changes the extract strategy fundamentally. Agree with the fire engineer whether the design fire is sprinkler-controlled and model accordingly.</li>
+  <li><strong>Do not forget the ramp.</strong> The vehicle ramp is a chimney connecting every level and the outside; it drives its own stack flow, short-circuits extract, and is often the uncontrolled make-up path nobody drew.</li>
+</ul>
+
+<h2 id="ev">6 · The change nobody has finished designing for: electric vehicles</h2>
+<p>The contaminant basis of every car park ventilation code is combustion exhaust. As fleets electrify, CO generation falls toward zero — and two new problems replace it:</p>
+<ul class="clean">
+  <li><strong>The dilution case weakens, so the fire case governs completely.</strong> If CO is no longer the driver, normal ventilation approaches a nominal minimum and the entire system exists for fire. That is a cleaner design basis, and it argues even more strongly for demand control.</li>
+  <li><strong>The fire itself is different.</strong> A lithium-ion battery fire releases far more energy over a longer period than a conventional vehicle fire, is difficult to extinguish with water, and produces hydrogen fluoride and other toxic products. Sprinkler assumptions, design fire size and extract duration all need revisiting, and the guidance is still moving.</li>
+  <li><strong>Charging adds electrical load and heat</strong> in a space designed for neither, and concentrates risk where the chargers are grouped.</li>
+</ul>
+<p>The honest position for a project designing today is to size the smoke system against a credible EV fire scenario agreed with the fire engineer and the authority, provide detection appropriate to it, and keep the ventilation capacity and the charger layout coordinated rather than letting the chargers arrive as a tenant fit-out afterthought.</p>
+
+<h2 id="install">7 · Installation &amp; execution tricks</h2>
+<ul class="clean">
+  <li><strong>Place CO sensors where the gas is</strong> — at breathing height, near ramps, near queuing and parking bays, away from the extract grilles that will read clean air and hold the fans off.</li>
+  <li><strong>Add NO₂ sensing where diesel is significant.</strong> CO alone under-reads the hazard from a diesel fleet, and the two do not track each other.</li>
+  <li><strong>Commission the fire mode end to end</strong> — detection, damper actuation and proving, fan changeover to the fire supply, ramp-up time and the make-up air path — as a single witnessed sequence, and repeat it annually.</li>
+  <li><strong>Prove the make-up air path is open.</strong> Blocked or later-glazed inlet louvres are the commonest defect found on a fire-mode test, and the system fails silently until the day it matters.</li>
+  <li><strong>Measure the actual airflow</strong> at commissioning rather than accepting a fan speed. Traverse the shafts and record it; jet-fan systems in particular need shaft flow verification because there is no duct to measure.</li>
+  <li><strong>Fit the fans where they can be maintained.</strong> Jet fans are ceiling-mounted at high level over parked cars; provide an access strategy that does not require closing half the car park.</li>
+  <li><strong>Label and interlock the dampers</strong> to the fire matrix, with position proving to the BMS — a damper without proving is an assumption.</li>
+</ul>
+
+<h2 id="checklist">8 · The design &amp; installation checklist</h2>
+<ul class="clean">
+  <li><strong>Calculate the dilution rate as well as the code rate</strong>, and use the difference to justify demand control.</li>
+  <li><strong>Design fire mode and normal mode separately</strong>, with fire usually setting capacity and normal setting energy.</li>
+  <li><strong>Evaluate jet fans against ducted</strong> on clear height first, energy second.</li>
+  <li><strong>Require CFD</strong> for any impulse system, covering fire mode and fan-out-of-service.</li>
+  <li><strong>Design the make-up air path explicitly</strong> and check the resulting door forces.</li>
+  <li><strong>Specify the temperature-time class</strong> for fans, motors, supports and cabling together.</li>
+  <li><strong>Zone the extract</strong> with rated, proven, accessible dampers.</li>
+  <li><strong>Agree the EV fire scenario</strong> with the fire engineer and coordinate charger locations.</li>
+  <li><strong>Commission the whole fire sequence</strong> and measure real airflow, not fan speed.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  Car park ventilation is <strong>two systems sharing one set of fans</strong>: a dilution system that a prescriptive air-change rule over-sizes by roughly three and a half times, and a smoke system that genuinely needs the capacity. Install what fire requires, then run it on CO and NO₂ so it lives near the dilution rate — that alone is a 90&nbsp;% energy reduction, and choosing jet fans over ducts halves what is left while giving back 300–500&nbsp;mm of clear height across the whole basement. Then design the part everyone forgets: <strong>the make-up air path</strong>, because an extract system with no designed inlet is a set of fans running off their curve behind doors nobody can open.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>ASHRAE <em>Handbook — HVAC Applications</em>, Enclosed Vehicular Facilities chapter — contaminant generation, dilution ventilation and design criteria for car parks.</li>
+  <li>ANSI/ASHRAE Standard 62.1 — ventilation rates for parking garages; and ASHRAE 90.1 for demand-controlled ventilation and fan power limits.</li>
+  <li>BS 7346-7 — <em>Code of practice on functional recommendations and calculation methods for smoke and heat control systems for covered car parks</em>; and EN 12101 series for smoke control components.</li>
+  <li>NFPA 88A <em>Standard for Parking Structures</em> and NFPA 92 <em>Standard for Smoke Control Systems</em>.</li>
+  <li>CIBSE <em>Guide B2</em> and CIBSE TM 33; and the Saudi Building Code <em>SBC 501</em> and <em>SBC 801</em> for mechanical and fire provisions.</li>
+  <li>Occupational exposure limits for carbon monoxide and nitrogen dioxide — ACGIH TLVs and national OEL schedules.</li>
+  <li>Guidance on electric vehicle fire risk in covered car parks — including work by BRE, the Fire Protection Association and national fire research bodies; still developing at the time of writing.</li>
+  <li>Manufacturer and CFD-practice guidance on impulse (jet fan) ventilation design, including fan-out-of-service and fire-case modelling.</li>
+</ol>
+
+<div class="tags">#CarParkVentilation #BasementVentilation #JetFans #ImpulseVentilation #SmokeExtract #TallBuildings #MegatallBuildings #Podium #CODilution #DemandControlledVentilation #COSensors #NO2 #CFD #FireMode #MakeUpAir #SmokeControl #BS73467 #NFPA88A #NFPA92 #FanEnergy #AffinityLaws #ClearHeight #ElectricVehicles #EVFire #Commissioning #MEP #BuildingServices #HVAC</div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="/">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const fmt2=v=>v.toFixed(2);
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}};
+const PPM2MG=1.145;      // mg/m3 per ppm CO
+const E_MOVE=8.0;        // g CO per vehicle movement
+
+/* ---------- CHART 1 : CO vs prescriptive ---------- */
+const sA=document.getElementById('sA'),sH=document.getElementById('sH'),
+      sM=document.getElementById('sM'),sC=document.getElementById('sC'),sR=document.getElementById('sR');
+const coFlow=(moves,limit)=>(moves*E_MOVE)/3600/(limit*PPM2MG/1000);
+const preFlow=(A,h,ach)=>A*h*ach/3600;
+let coChart=new Chart(document.getElementById('coChart'),{
+  data:{datasets:[
+    {type:'line',label:'Prescriptive air-change rate',data:[],borderColor:'#c0392b',backgroundColor:'rgba(192,57,43,0.08)',borderWidth:3,pointRadius:0,fill:true,order:3},
+    {type:'line',label:'CO dilution requirement',data:[],borderColor:'#1b4f72',borderWidth:3,pointRadius:0,order:2},
+    {type:'scatter',label:'Your car park',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:500,max:40000,title:{display:true,text:'Car park area (m²)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Ventilation rate (m³/s)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt1(c.parsed.y)} m³/s at ${fmt0(c.parsed.x)} m²`}}}}
+});
+function updCo(){
+  const A=+sA.value,h=+sH.value,M=+sM.value,C=+sC.value,R=+sR.value;
+  document.getElementById('vA').textContent=A+' m²';
+  document.getElementById('vH').textContent=fmt1(h)+' m';
+  document.getElementById('vM').textContent=M+' /h';
+  document.getElementById('vC').textContent=C+' ppm';
+  document.getElementById('vR').textContent=R+' ACH';
+  const dens=M/A;   // movements per m2 per hour, held constant across the sweep
+  const xs=[];for(let x=500;x<=40000;x+=250)xs.push(x);
+  coChart.data.datasets[0].data=xs.map(x=>({x:x,y:+preFlow(x,h,R).toFixed(2)}));
+  coChart.data.datasets[1].data=xs.map(x=>({x:x,y:+coFlow(dens*x,C).toFixed(2)}));
+  const qc=coFlow(M,C), qp=preFlow(A,h,R);
+  coChart.data.datasets[2].data=[{x:A,y:+qc.toFixed(2)}];
+  coChart.update('none');
+  document.getElementById('rQc').innerHTML=fmt1(qc)+' <small>m³/s</small>';
+  document.getElementById('rQp').innerHTML=fmt1(qp)+' <small>m³/s</small>';
+  document.getElementById('rOv').innerHTML=fmt1(qp/qc)+'<small>×</small>';
+  document.getElementById('rAc').innerHTML=fmt1(qc*3600/(A*h));
+  const v=document.getElementById('rVd'), r=qp/qc;
+  if(r<1)        v.innerHTML='<span class="badge bad">code rate is not enough</span>';
+  else if(r<1.5) v.innerHTML='<span class="badge good">well matched</span>';
+  else if(r<3)   v.innerHTML='<span class="badge warn">over-sized — use demand control</span>';
+  else           v.innerHTML='<span class="badge bad">heavily over-sized</span>';
+}
+[sA,sH,sM,sC,sR].forEach(s=>s.addEventListener('input',updCo));updCo();
+
+/* ---------- CHART 2 : fan energy ---------- */
+const sQ=document.getElementById('sQ'),sP=document.getElementById('sP'),
+      sD=document.getElementById('sD'),sF=document.getElementById('sF');
+const ETA=0.65, HRS=8760;
+const kW=(Q,dp)=>Q*dp/1000/ETA;
+let engChart=new Chart(document.getElementById('engChart'),{
+  data:{datasets:[
+    {type:'line',label:'Constant speed',data:[],borderColor:'#c0392b',borderWidth:2.5,borderDash:[6,4],pointRadius:0,order:3},
+    {type:'line',label:'CO demand controlled',data:[],borderColor:'#1b4f72',backgroundColor:'rgba(27,79,114,0.10)',borderWidth:3,pointRadius:0,fill:true,order:2},
+    {type:'scatter',label:'Your system',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:10,max:100,title:{display:true,text:'Average demand (% of design flow)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Annual fan energy (MWh)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt1(c.parsed.y)} MWh at ${fmt0(c.parsed.x)} %`}}}}
+});
+function updEng(){
+  const Q=+sQ.value,P=+sP.value,D=+sD.value,F=+sF.value;
+  document.getElementById('vQ').textContent=Q+' m³/s';
+  document.getElementById('vP').textContent=P+' Pa';
+  document.getElementById('vD').textContent=D+' %';
+  document.getElementById('vF').textContent=F+' %';
+  const full=kW(Q,P)*HRS/1000;
+  const dc=d=>{const f=Math.max(d/100,F/100);return kW(Q,P)*Math.pow(f,3)*HRS/1000;};
+  const xs=[];for(let x=10;x<=100;x+=1)xs.push(x);
+  engChart.data.datasets[0].data=xs.map(x=>({x:x,y:+full.toFixed(1)}));
+  engChart.data.datasets[1].data=xs.map(x=>({x:x,y:+dc(x).toFixed(2)}));
+  engChart.data.datasets[2].data=[{x:D,y:+dc(D).toFixed(2)}];
+  engChart.update('none');
+  const e=dc(D);
+  document.getElementById('rEc').innerHTML=fmt0(full)+' <small>MWh/yr</small>';
+  document.getElementById('rEd').innerHTML=fmt1(e)+' <small>MWh/yr</small>';
+  document.getElementById('rSv').innerHTML=fmt0(100*(1-e/full))+' <small>%</small>';
+  document.getElementById('rPw').innerHTML=fmt0(kW(Q,P))+' <small>kW</small>';
+  const jf=kW(Q,120)*Math.pow(Math.max(D/100,F/100),3)*HRS/1000;
+  document.getElementById('rJf').innerHTML=fmt1(jf)+' <small>MWh/yr</small>';
+}
+[sQ,sP,sD,sF].forEach(s=>s.addEventListener('input',updEng));updEng();
+
+window.addEventListener('load',function(){try{coChart.resize();engChart.resize();}catch(e){}});
+
+</script>
+
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

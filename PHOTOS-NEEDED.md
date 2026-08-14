@@ -497,3 +497,25 @@ networks, thin crisp linework, high contrast.
 Aspect ratio 16:9, wide landscape, full tower visible top to bottom.
 Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
 ```
+
+---
+
+## 22 · refuse-chutes-waste-tall-buildings
+
+```text
+A highly detailed technical cross-section illustration of a supertall tower's REFUSE CHUTE. Show a
+single wide vertical steel chute running through many floors inside an enclosed shaft, with small
+hopper doors visible on each floor level. Inside the chute, show a bag mid-fall with faint motion
+blur and streaked air lines behind it to convey high speed.
+
+At the top of the chute, show a small extract fan with airflow drawn upward out of the shaft. At
+the base, show a discharge chamber opening into a basement refuse room containing a compactor and
+a row of large waste bins.
+
+Style: precise mechanical engineering cutaway, cinematic lighting, dark slate and deep navy
+background, cool blue for the shaft and warm amber for the moving bag and the plant, thin crisp
+linework, high contrast.
+
+Aspect ratio 16:9, wide landscape, full chute height visible from top extract to basement.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```

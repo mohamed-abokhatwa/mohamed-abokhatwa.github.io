@@ -381,3 +381,26 @@ contrast.
 Aspect ratio 16:9, wide landscape composition.
 Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
 ```
+
+---
+
+## 17 · atrium-smoke-control-tall-buildings
+
+```text
+A highly detailed technical cross-section illustration of a tall ATRIUM inside a supertall
+building, showing smoke management in action. At the atrium floor, show a small fire with a
+luminous grey-white smoke plume rising and visibly widening as it entrains air on the way up.
+Near the roof, show the smoke collecting into a distinct horizontal layer contained by downstand
+screens, with several extract fans drawing from it.
+
+At low level around the perimeter, show wide open louvres and doorways admitting replacement air
+as gentle pale blue streamlines moving slowly inward, deliberately contrasted with the fast rising
+plume. Show balcony edges of several floors overlooking the atrium.
+
+Style: precise architectural and fire engineering cutaway, cinematic lighting, dark slate and deep
+navy background, pale grey-white smoke, warm amber at the fire and cool blue for the make-up air,
+thin crisp linework, high contrast.
+
+Aspect ratio 16:9, wide landscape, full atrium height visible.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```

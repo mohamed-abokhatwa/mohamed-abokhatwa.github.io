@@ -9,6 +9,7 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'atrium-smoke-control-tall-buildings.html', title:'Atrium Smoke Control in Tall Buildings: Filling Time, Plume Entrainment & the Make-Up Air Problem', cat:'fire', thumb:'atrium-smoke-control-tall-buildings.webp', mins:15, tag:'Fire Protection · Smoke Control · Atria' },
     { url:'water-treatment-building-systems.html', title:'Water Treatment for Building HVAC Systems: What Fouling Really Costs, Filtration & Corrosion Life', cat:'hvac', thumb:'water-treatment-building-systems.webp', mins:15, tag:'HVAC · Water Treatment · Fouling' },
     { url:'basement-dewatering-drainage-tall-buildings.html', title:'Deep Basement Dewatering & Drainage for Megatall Buildings: Inflow, Uplift & Safety-Critical Pumps', cat:'plumbing', thumb:'basement-dewatering-drainage-tall-buildings.webp', mins:15, tag:'Plumbing · Dewatering · Basement Drainage' },
     { url:'kitchen-exhaust-grease-risers-tall-buildings.html', title:'Kitchen Exhaust & Grease Risers in Tall Buildings: Transport Velocity, Turndown & Make-Up Air', cat:'hvac', thumb:'kitchen-exhaust-grease-risers-tall-buildings.webp', mins:14, tag:'HVAC · Kitchen Ventilation · Grease Risers' },

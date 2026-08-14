@@ -452,3 +452,26 @@ linework, high contrast.
 Aspect ratio 16:9, wide landscape, both towers fully visible.
 Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
 ```
+
+---
+
+## 20 · greywater-reuse-tall-buildings
+
+```text
+A highly detailed technical cross-section illustration of a supertall tower showing its WATER
+REUSE system. Through the occupied floors, show two distinct drainage stacks side by side: one
+carrying greywater from showers and basins rendered in a pale blue-green, the other carrying
+blackwater in a darker tone, so the separation reads immediately.
+
+In the basement, show a compact treatment plant in cutaway: a balance tank, a membrane bioreactor
+with visible membrane cassettes and fine aeration bubbles, and a treated water tank. From the
+treated tank, show a distinct riser in a violet-purple tone rising back up the tower, and a branch
+running sideways to feed cooling towers.
+
+Style: precise mechanical and process engineering cutaway, cinematic lighting, dark slate and deep
+navy background, pale blue-green, violet and warm amber as the accent colours, thin crisp
+linework, high contrast.
+
+Aspect ratio 16:9, wide landscape, full tower height visible.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```

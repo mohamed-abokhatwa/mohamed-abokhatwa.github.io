@@ -652,6 +652,41 @@ footer a:hover { color: var(--text-primary); }
 }
 
 /* ═══════════════════════════════════════════════════════════
+   FAB BUTTONS — BASE
+   Shared by every page. Older articles also carry an identical
+   inline copy in a trailing <style>; that simply overrides with
+   the same values and can be removed page-by-page over time.
+═══════════════════════════════════════════════════════════ */
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.fab-wa      { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
    FAB BUTTONS — DARK MODE
 ═══════════════════════════════════════════════════════════ */
 [data-theme="dark"] .fab-glass,

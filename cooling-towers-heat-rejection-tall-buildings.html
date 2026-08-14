@@ -186,24 +186,33 @@
 
 <p class="lead">There is one line in a tall-building chilled-water schematic that behaves completely differently from all the others, and it catches out engineers who have spent their careers on closed systems. The condenser water circuit is <strong>open</strong> — it ends in a cooling tower basin that is exposed to atmosphere — so the return column does not push back. The pump lifts the full height, every second, forever. Put the chillers in the basement and the towers on the roof of a 300&nbsp;m tower and you have just specified <strong>817&nbsp;kW of condenser pumping</strong> to move heat you could have moved for a tenth of that. This single distinction, more than any efficiency curve, is what dictates where heat rejection plant goes in a tall building — and in the Gulf it competes with a second constraint that is becoming the harder one: the towers will drink about <strong>2,400&nbsp;m³ of water a day</strong>.</p>
 
-<h2 id="open">1 · The open-circuit trap</h2>
-<p>In a closed chilled-water loop the water that goes up comes back down and the static head cancels, which is why a 600&nbsp;m tower needs only tens of metres of pump head — the argument set out in <a href="chilled-water-pumps-tall-buildings.html">chilled-water pumps</a>. A condenser water circuit ends in an open basin, so there is no returning column to balance the rising one:</p>
-<div class="eq">\[ H_{CW} \;=\; \underbrace{z_{basin} - z_{pump}}_{\text{real static lift}} \;+\; h_{f} \;+\; h_{nozzle} \]</div>
-<p>Every metre between the pump and the tower basin is head the pump must produce continuously. The consequences drive the whole architecture:</p>
+<h2 id="open">1 · The open circuit: what cancels and what does not</h2>
+<p>In a closed chilled-water loop the water that goes up comes back down and the static head cancels, which is why a 600&nbsp;m tower needs only tens of metres of pump head — the argument set out in <a href="chilled-water-pumps-tall-buildings.html">chilled-water pumps</a>. The condenser circuit is the one loop in the building with an open surface in it, and the near-universal assumption is that this breaks the cancellation. It does not — <em>provided</em> the return leg runs full and sealed back to the pump suction:</p>
+<div class="eq">\[ H_{CW} \;=\; \underbrace{z_{header} - z_{basin}}_{\text{a few metres, at the tower}} \;+\; h_{f} \;+\; h_{nozzle} \]</div>
+<p>The break in the circuit sits at the top, where the water is at atmospheric pressure anyway. The rising column still has a falling column behind it, so the pump's <em>differential</em> head is friction, nozzle pressure and the short lift from the basin water level to the distribution header — not the height of the building. This is standard tower-pump sizing [1][2], and it is worth stating plainly because the opposite is asserted constantly.</p>
+<p><strong>What does not cancel is pressure.</strong> Static head that is recovered energetically is still present mechanically. Every metre between the plant and the tower basin puts 0.0981&nbsp;bar on the condenser barrels, pumps, valves, strainers and gaskets at the bottom of the riser. At 150&nbsp;m that is 14.7&nbsp;bar — already past a standard 150&nbsp;psi waterbox. At 600&nbsp;m it is 59&nbsp;bar, past anything in a catalogue.</p>
+<p><strong>And the cancellation is conditional</strong>, which is where the real risk lives. It is lost — completely — if:</p>
 <ul class="clean">
-  <li><strong>Chillers go near their towers.</strong> Not in the basement with the towers on the roof, but on a high mechanical floor immediately below a tower deck, or paired at intermediate levels.</li>
+  <li>the return discharges into an <strong>open sump or break tank</strong> at plant level, which some designs do deliberately to escape the pressure class problem. The pump then really does lift the full height, permanently.</li>
+  <li>the return riser runs <strong>part-full</strong> — undersized, badly vented, or air-bound — so only part of the column is working for you.</li>
+  <li><strong>Start-up.</strong> With an empty riser the pump must fill it against the full lift, running far out on its curve at a flow and NPSH it was never selected for. Size the motor and the check valve arrangement for that case, not just the running case.</li>
+  <li><strong>Shutdown drain-down.</strong> The riser empties back into the basin. The basin, or a dedicated drain-down tank, has to hold it — otherwise the tower overflows on every stop and the sump runs dry on every start.</li>
+</ul>
+<p>Those four bullets, not the ρgh, are what drive the architecture:</p>
+<ul class="clean">
+  <li><strong>Chillers go near their towers</strong> — on a high mechanical floor immediately below a tower deck, or paired at intermediate levels. The reason is pressure class and drain-down volume, not pump power.</li>
   <li><strong>Or the circuit gets closed.</strong> A plate heat exchanger between an open tower circuit and a closed building circuit converts the problem back into a closed one — at the cost of an approach, exactly the trade described for chilled water zoning.</li>
   <li><strong>Or the towers come down.</strong> Podium-level or basement-intake towers with the chillers alongside, accepting the architectural and acoustic consequences.</li>
   <li><strong>Closed-circuit (fluid) coolers</strong> avoid the open basin entirely, at a penalty in approach and footprint.</li>
 </ul>
 
-<h2 id="int-lift">2 · Interactive: what the open circuit costs</h2>
-<p>Set how far the tower basin sits above the condenser pumps. The blue curve is condenser pump power against that separation; the red line is what the same duty would cost if the circuit were closed and only friction had to be overcome.</p>
+<h2 id="int-lift">2 · Interactive: what the open circuit really costs</h2>
+<p>Set how far the tower basin sits above the condenser pumps. The blue line is the pump power when the return column is kept full and sealed — flat, because the static cancels. The red curve is the same duty once that column is broken. The dotted line, on the right axis, is the static pressure the plant sits at regardless of which case you are in.</p>
 
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Condenser pump power vs tower height above the pumps</div>
-    <div class="fsub">Open circuit: H = static lift + friction + nozzle pressure. Closed circuit (via a plate heat exchanger): friction only. P = Q·H/(102·η).</div>
+    <div class="fsub">P = Q·H/(102·η). Sealed full return column: H = friction + nozzle only, independent of height. Broken column (open sump at plant level, or a part-full riser): H = static lift + friction + nozzle. Via a plate heat exchanger: friction + nozzle + 8 m for the exchanger. The dotted line is the static pressure at the plant, 0.0981 bar per metre, against standard 150 psi and 300 psi waterbox ratings.</div>
   </div>
   <div class="chart-box"><canvas id="liftChart"></canvas></div>
   <div class="controls">
@@ -229,14 +238,14 @@
     </div>
   </div>
   <div class="readout">
-    <div class="cell"><div class="k">Open-circuit head</div><div class="v" id="rH">175 <small>m</small></div></div>
-    <div class="cell"><div class="k">Open-circuit power</div><div class="v" id="rP">440 <small>kW</small></div></div>
-    <div class="cell"><div class="k">If closed via HX</div><div class="v" id="rPc">83 <small>kW</small></div></div>
-    <div class="cell"><div class="k">Penalty</div><div class="v" id="rPn">357 <small>kW</small></div></div>
-    <div class="cell"><div class="k">Annual penalty</div><div class="v" id="rAn">1,874 <small>MWh</small></div></div>
+    <div class="cell"><div class="k">Static at the plant</div><div class="v" id="rH">14.7 <small>bar</small></div></div>
+    <div class="cell"><div class="k">Pump · sealed column</div><div class="v" id="rP">63 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Pump · via plate HX</div><div class="v" id="rPc">83 <small>kW</small></div></div>
+    <div class="cell"><div class="k">If the column breaks</div><div class="v" id="rPn">440 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Pressure class</div><div class="v" id="rAn"><span class="badge warn">300 psi rating needed</span></div></div>
   </div>
 </div>
-<p class="fig-note">Lift the basin 150&nbsp;m above the pumps and the condenser set needs <strong>175&nbsp;m of head and 440&nbsp;kW</strong>, against 83&nbsp;kW if the same heat were moved through a closed loop — a <strong>357&nbsp;kW</strong> continuous penalty, about <strong>1,870&nbsp;MWh a year</strong> at typical run hours. That is the entire argument for putting chillers on high mechanical floors rather than in the basement, and it is why the roof-tower-basement-chiller arrangement that works perfectly in a ten-storey building is indefensible in a tower. Note the counter-argument the chart does not show: interposing a heat exchanger to close the loop costs an approach of about 1&nbsp;K on the condenser side, which is roughly a 2.5&nbsp;% chiller penalty — real, but far smaller than the pumping it saves.</p>
+<p class="fig-note">Lift the basin 150&nbsp;m above the pumps and the plant sits at <strong>14.7&nbsp;bar</strong> — past a standard 150&nbsp;psi waterbox before anything else has happened — while the pump, if the return column is kept full and sealed, needs only 25&nbsp;m of head and <strong>63&nbsp;kW</strong>. Break that column and the same duty costs <strong>440&nbsp;kW</strong>: a 377&nbsp;kW continuous penalty, about <strong>1,980&nbsp;MWh a year</strong>, bought entirely with a hydraulic detail. So the open circuit's real cost is <em>pressure class</em>, and its real risk is whether the return leg stays full — at start-up, at part load, and after every trip. Closing the loop through a plate heat exchanger costs about 8&nbsp;m of extra pumping (83&nbsp;kW) and roughly 1&nbsp;K of condenser approach, which is about 2.5&nbsp;% on the chiller; what it buys is a building-side circuit that never sees the tower's static at all. That, not pump energy, is why the exchanger is usually the right answer above about 100&nbsp;m.</p>
 
 <h2 id="approach">3 · Approach, range and where the efficiency actually is</h2>
 <p>A cooling tower is defined by two temperature differences and one ambient condition<sup class="cite">[1][2]</sup>:</p>
@@ -363,7 +372,8 @@
 
 <h2 id="checklist">9 · The design &amp; installation checklist</h2>
 <ul class="clean">
-  <li><strong>Recognise the open circuit</strong> — locate chillers near their towers, or close the loop with a heat exchanger, and never lift condenser water hundreds of metres by default.</li>
+  <li><strong>Prove the return column</strong> — full, sealed and vented correctly, so the static actually cancels; then check the start-up and drain-down cases separately, because that is where it does not.</li>
+  <li><strong>Size the condenser side on pressure class</strong> — locate chillers near their towers or close the loop with a plate heat exchanger, and never let a waterbox inherit hundreds of metres of static by default.</li>
   <li><strong>Design on the site wet bulb</strong>, and check what the approach is really worth against chiller power.</li>
   <li><strong>Optimise approach on total plant power</strong>, not on tower first cost — the answer is colder than it looks.</li>
   <li><strong>Specify condenser-water reset</strong> against measured wet bulb, with the chiller's minimum entering temperature respected.</li>
@@ -377,7 +387,7 @@
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  Condenser water is the one <strong>open</strong> circuit in the building, so the pump lifts the full height — put the chillers next to their towers or close the loop with a heat exchanger, because a 150&nbsp;m separation is a 357&nbsp;kW permanent penalty. Design the tower on the site's <strong>wet bulb</strong>, optimise the approach on chiller-plus-fan power rather than tower cost (the balance lands near 5&nbsp;K and moves with the fan-to-chiller power ratio), and treat the water balance as a first-order design output: 2,400&nbsp;m³ a day is what a 50&nbsp;MW plant drinks, and the cycles of concentration — not the towers — decide how much of that you can give back.
+  Condenser water is the one <strong>open</strong> circuit in the building, but the static still cancels as long as the return column stays full and sealed — what does not cancel is the <strong>pressure</strong>, so a 150&nbsp;m separation is 14.7&nbsp;bar on the waterbox, and a broken return column is a 377&nbsp;kW permanent penalty you will never see on a schematic. Design the tower on the site's <strong>wet bulb</strong>, optimise the approach on chiller-plus-fan power rather than tower cost (the balance lands near 5&nbsp;K and moves with the fan-to-chiller power ratio), and treat the water balance as a first-order design output: 2,400&nbsp;m³ a day is what a 50&nbsp;MW plant drinks, and the cycles of concentration — not the towers — decide how much of that you can give back.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
@@ -461,17 +471,26 @@ const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}};
 const sZ=document.getElementById('sZ'),sQ=document.getElementById('sQ'),
       sF=document.getElementById('sF'),sE=document.getElementById('sE');
 const pkW=(Q,H,e)=>Q*H/(102*e);
+const BARM=0.0981, HX_DP=8;          // bar per m of water; plate-HX + extra pipework head, m
+const LBL={size:10,family:'DM Sans'};
 let liftChart=new Chart(document.getElementById('liftChart'),{
   data:{datasets:[
-    {type:'line',label:'Open circuit (tower basin open to air)',data:[],borderColor:'#c0392b',backgroundColor:'rgba(192,57,43,0.08)',borderWidth:3,pointRadius:0,fill:true,order:3},
-    {type:'line',label:'Closed via plate heat exchanger',data:[],borderColor:'#1b4f72',borderWidth:3,pointRadius:0,order:2},
-    {type:'scatter',label:'Your plant',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+    {type:'line',label:'Broken return column',data:[],borderColor:'#c0392b',borderWidth:3,pointRadius:0,order:5,yAxisID:'y'},
+    {type:'line',label:'Sealed return column — static cancels',data:[],borderColor:'#1b4f72',borderWidth:3,pointRadius:0,order:4,yAxisID:'y'},
+    {type:'line',label:'Via plate heat exchanger',data:[],borderColor:'#1e8449',borderWidth:2.2,borderDash:[6,4],pointRadius:0,order:3,yAxisID:'y'},
+    {type:'line',label:'Static pressure (right axis)',data:[],borderColor:'#6b4f9e',borderWidth:2,borderDash:[2,3],pointRadius:0,order:2,yAxisID:'y1'},
+    {type:'scatter',label:'Your plant',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1,yAxisID:'y'}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
     scales:{x:{type:'linear',min:5,max:600,title:{display:true,text:'Tower basin above the condenser pumps (m)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
-            y:{type:'linear',min:0,title:{display:true,text:'Condenser pump shaft power (kW)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+            y:{type:'logarithmic',min:30,position:'left',title:{display:true,text:'Condenser pump shaft power (kW, log)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y1:{type:'linear',min:0,position:'right',title:{display:true,text:'Static pressure at the plant (bar)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{drawOnChartArea:false},ticks:{font:{family:'DM Sans',size:11}}}},
     plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
-      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} kW at ${fmt0(c.parsed.x)} m`}}}}
+      tooltip:{callbacks:{label:c=>c.dataset.yAxisID==='y1'?`${fmt1(c.parsed.y)} bar at ${fmt0(c.parsed.x)} m`:`${fmt0(c.parsed.y)} kW at ${fmt0(c.parsed.x)} m`}},
+      annotation:{annotations:{
+        pn150:{type:'line',scaleID:'y1',value:10.3,borderColor:'#b9770e',borderWidth:1.3,borderDash:[5,4],label:{display:true,content:'150 psi waterbox',position:'start',font:LBL,color:'#b9770e',backgroundColor:'rgba(255,255,255,0.85)'}},
+        pn300:{type:'line',scaleID:'y1',value:20.7,borderColor:'#c0392b',borderWidth:1.3,borderDash:[5,4],label:{display:true,content:'300 psi waterbox',position:'end',font:LBL,color:'#c0392b',backgroundColor:'rgba(255,255,255,0.85)'}}
+      }}}}
 });
 function updLift(){
   const z=+sZ.value,Q=+sQ.value,f=+sF.value,e=+sE.value/100;
@@ -481,15 +500,21 @@ function updLift(){
   document.getElementById('vE').textContent=fmt0(e*100)+' %';
   const xs=[];for(let h=5;h<=600;h+=5)xs.push(h);
   liftChart.data.datasets[0].data=xs.map(h=>({x:h,y:+pkW(Q,h+f,e).toFixed(0)}));
-  liftChart.data.datasets[1].data=xs.map(h=>({x:h,y:+pkW(Q,f+8,e).toFixed(0)}));
-  const Ho=z+f, Po=pkW(Q,Ho,e), Pc=pkW(Q,f+8,e);
-  liftChart.data.datasets[2].data=[{x:z,y:+Po.toFixed(0)}];
+  liftChart.data.datasets[1].data=xs.map(h=>({x:h,y:+pkW(Q,f,e).toFixed(0)}));
+  liftChart.data.datasets[2].data=xs.map(h=>({x:h,y:+pkW(Q,f+HX_DP,e).toFixed(0)}));
+  liftChart.data.datasets[3].data=xs.map(h=>({x:h,y:+(h*BARM).toFixed(2)}));
+  const Ps=pkW(Q,f,e), Px=pkW(Q,f+HX_DP,e), Pb=pkW(Q,z+f,e), bar=z*BARM;
+  liftChart.data.datasets[4].data=[{x:z,y:+Ps.toFixed(0)}];
+  liftChart.options.scales.y1.max=+(600*BARM*1.05).toFixed(1);
   liftChart.update('none');
-  document.getElementById('rH').innerHTML=fmt0(Ho)+' <small>m</small>';
-  document.getElementById('rP').innerHTML=fmt0(Po)+' <small>kW</small>';
-  document.getElementById('rPc').innerHTML=fmt0(Pc)+' <small>kW</small>';
-  document.getElementById('rPn').innerHTML=fmt0(Po-Pc)+' <small>kW</small>';
-  document.getElementById('rAn').innerHTML=fmt0((Po-Pc)*5250/1000)+' <small>MWh</small>';
+  document.getElementById('rH').innerHTML=fmt1(bar)+' <small>bar</small>';
+  document.getElementById('rP').innerHTML=fmt0(Ps)+' <small>kW</small>';
+  document.getElementById('rPc').innerHTML=fmt0(Px)+' <small>kW</small>';
+  document.getElementById('rPn').innerHTML=fmt0(Pb)+' <small>kW</small>';
+  const v=document.getElementById('rAn');
+  if(bar<=10.3)      v.innerHTML='<span class="badge good">150 psi is enough</span>';
+  else if(bar<=20.7) v.innerHTML='<span class="badge warn">300 psi rating needed</span>';
+  else               v.innerHTML='<span class="badge bad">plate heat exchanger required</span>';
 }
 [sZ,sQ,sF,sE].forEach(s=>s.addEventListener('input',updLift));updLift();
 

@@ -292,7 +292,7 @@
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Diesel fire pump fuel tank and run time</div>
-    <div class="fsub">NFPA 20 base tank = 5.07 L per rated hp, plus 5 % for expansion and sump. Run time from the engine&rsquo;s consumption at full load.</div>
+    <div class="fsub">NFPA 20 base tank = 1 US gallon (3.785 L) per rated hp, plus 5 % for expansion and sump. Note the common slip: 5.07 L is the same rule expressed per <em>kilowatt</em>, and applying it per horsepower over-sizes the tank by a third. Confirm the exact expansion and sump allowance against the edition of NFPA 20 your project cites. Run time from the engine&rsquo;s consumption at full load.</div>
   </div>
   <div class="chart-box"><canvas id="fpChart"></canvas></div>
   <div class="controls">
@@ -318,14 +318,14 @@
     </div>
   </div>
   <div class="readout">
-    <div class="cell"><div class="k">NFPA 20 base tank</div><div class="v" id="rFb">1,597 <small>L</small></div></div>
-    <div class="cell"><div class="k">Run time on base tank</div><div class="v" id="rFt">25.3 <small>h</small></div></div>
+    <div class="cell"><div class="k">NFPA 20 base tank</div><div class="v" id="rFb">1,192 <small>L</small></div></div>
+    <div class="cell"><div class="k">Run time on base tank</div><div class="v" id="rFt">18.9 <small>h</small></div></div>
     <div class="cell"><div class="k">Needed for run time</div><div class="v" id="rFn2">504 <small>L</small></div></div>
-    <div class="cell"><div class="k">Total, all sets</div><div class="v" id="rFa">6,388 <small>L</small></div></div>
+    <div class="cell"><div class="k">Total, all sets</div><div class="v" id="rFa">4,769 <small>L</small></div></div>
     <div class="cell"><div class="k">Governing</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rFv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 300&nbsp;hp fire pump driver takes a <strong>1,597&nbsp;L</strong> base tank under the NFPA&nbsp;20 rule, which at 0.21&nbsp;L/hp·h is over <strong>25 hours</strong> of running — far more than the eight hours the fire strategy asks for. That is deliberate: the rule is a prescriptive minimum designed to remove judgement, and in a zoned megatall with a pump set per zone it means <strong>four separate dedicated tanks totalling 6,400&nbsp;L</strong>, each with its own bund, fill point, level monitoring and weekly test regime. Do not attempt to consolidate them into one tank serving several pump rooms — the whole point of the rule is that each set is independent of every other system in the building.</p>
+<p class="fig-note">A 300&nbsp;hp fire pump driver takes a <strong>1,192&nbsp;L</strong> base tank under the NFPA&nbsp;20 rule, which at 0.21&nbsp;L/hp·h is nearly <strong>19 hours</strong> of running — far more than the eight hours the fire strategy asks for. That is deliberate: the rule is a prescriptive minimum designed to remove judgement, and in a zoned megatall with a pump set per zone it means <strong>four separate dedicated tanks totalling 4,800&nbsp;L</strong>, each with its own bund, fill point, level monitoring and weekly test regime. Do not attempt to consolidate them into one tank serving several pump rooms — the whole point of the rule is that each set is independent of every other system in the building.</p>
 
 <h2 id="quality">6 · Fuel that has been standing for five years</h2>
 <p>The commonest cause of a standby system failing is not the machine, it is the fuel. Diesel in a rarely used tank degrades in three ways at once, and all three are designed against rather than maintained against:</p>
@@ -526,7 +526,7 @@ function updRiser(){
 /* ---------- CHART 3 : fire pump fuel ---------- */
 const sFh=document.getElementById('sFh'),sFc=document.getElementById('sFc'),
       sFr=document.getElementById('sFr'),sFn=document.getElementById('sFn');
-const NFPA_L_PER_HP=5.07, NFPA_MARGIN=1.05;
+const NFPA_L_PER_HP=3.785, NFPA_MARGIN=1.05;   // NFPA 20: 1 US gal (3.785 L) per rated hp — note 5.07 is the per-kW figure
 let fpChart=new Chart(document.getElementById('fpChart'),{
   data:{datasets:[
     {type:'line',label:'NFPA 20 base tank (L)',data:[],borderColor:'#1b4f72',backgroundColor:'rgba(27,79,114,0.10)',borderWidth:3,pointRadius:0,fill:true,order:3},

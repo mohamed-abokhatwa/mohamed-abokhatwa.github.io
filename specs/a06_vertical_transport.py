@@ -106,11 +106,11 @@ BODY = r"""
     <div class="cell"><div class="k">Annulus velocity</div><div class="v" id="rVa">15.0 <small>m/s</small></div></div>
     <div class="cell"><div class="k">Piston pressure</div><div class="v" id="rDp">162 <small>Pa</small></div></div>
     <div class="cell"><div class="k">Max speed OK</div><div class="v" id="rVm">6.1 <small>m/s</small></div></div>
-    <div class="cell"><div class="k">Blockage for OK</div><div class="v" id="rBm">0.41</div></div>
+    <div class="cell"><div class="k">Blockage for OK</div><div class="v" id="rBm">0.48</div></div>
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rPv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 10&nbsp;m/s car at 60&nbsp;% blockage produces <strong>162&nbsp;Pa</strong>, comfortably past the point where landing doors bind — and that is before any stack pressure is added. Hold the same speed and open the shaft out to 41&nbsp;% blockage and the pressure falls inside tolerance. The chart's real message is the exponent: pressure goes as the <em>square</em> of both speed and the blockage function, so the shaft dimension chosen in the concept design is worth far more than anything the MEP engineer can add later.</p>
+<p class="fig-note">A 10&nbsp;m/s car at 60&nbsp;% blockage produces <strong>162&nbsp;Pa</strong>, comfortably past the point where landing doors bind — and that is before any stack pressure is added. Hold the same speed and open the shaft out to 48&nbsp;% blockage and the pressure falls inside tolerance. The chart's real message is the exponent: pressure goes as the <em>square</em> of both speed and the blockage function, so the shaft dimension chosen in the concept design is worth far more than anything the MEP engineer can add later.</p>
 
 <h2 id="pressurisation">4 · Hoistway and lobby pressurisation</h2>
 <p>Fire-service lifts, occupant-evacuation lifts and, increasingly, all lifts in a tall building require the shaft or its lobby to be held at positive pressure so smoke cannot enter. The airflow follows from the leakage area and the pressure to be held:</p>
@@ -126,7 +126,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Hoistway pressurisation airflow vs leakage area</div>
-    <div class="fsub">Q = C&#100;·A·√(2Δp/ρ) with C&#100; = 1.0 on effective leakage area. Landing-door leakage dominates and scales with the number of floors served.</div>
+    <div class="fsub">Q = 0.83·A·√Δp — the EN 12101-6 / NFPA 92 form, with a discharge coefficient of 0.65 folded into the constant — applied to effective leakage area. An open landing door is taken as 2.0 m² of free area. Landing-door leakage dominates and scales with the number of floors served.</div>
   </div>
   <div class="chart-box"><canvas id="pressChart"></canvas></div>
   <div class="controls">
@@ -153,13 +153,13 @@ BODY = r"""
   </div>
   <div class="readout">
     <div class="cell"><div class="k">Closed-door leakage</div><div class="v" id="rAl">1.20 <small>m²</small></div></div>
-    <div class="cell"><div class="k">Flow, doors closed</div><div class="v" id="rQc">11.0 <small>m³/s</small></div></div>
-    <div class="cell"><div class="k">Flow, doors open</div><div class="v" id="rQo">39.7 <small>m³/s</small></div></div>
-    <div class="cell"><div class="k">Fan duct at 12 m/s</div><div class="v" id="rDa">3.3 <small>m²</small></div></div>
-    <div class="cell"><div class="k">Turndown needed</div><div class="v" id="rTd">3.6<small>×</small></div></div>
+    <div class="cell"><div class="k">Flow, doors closed</div><div class="v" id="rQc">7.0 <small>m³/s</small></div></div>
+    <div class="cell"><div class="k">Flow, doors open</div><div class="v" id="rQo">30.5 <small>m³/s</small></div></div>
+    <div class="cell"><div class="k">Fan duct at 12 m/s</div><div class="v" id="rDa">2.5 <small>m²</small></div></div>
+    <div class="cell"><div class="k">Turndown needed</div><div class="v" id="rTd">4.3<small>×</small></div></div>
   </div>
 </div>
-<p class="fig-note">Sixty landing doors at 0.02&nbsp;m² each give <strong>1.2&nbsp;m² of leakage</strong> and need <strong>11&nbsp;m³/s</strong> just to hold 50&nbsp;Pa with everything shut — rising to nearly <strong>40&nbsp;m³/s</strong> with two doors open. That <strong>3.6:1 turndown</strong> between the two design cases is the whole control problem: a fan big enough for the open-door case will destroy the closed-door case unless relief or variable speed is provided, and a fan sized for the closed-door case simply fails when the fire service opens a door. Specify both cases explicitly and commission both.</p>
+<p class="fig-note">Sixty landing doors at 0.02&nbsp;m² each give <strong>1.2&nbsp;m² of leakage</strong> and need <strong>7.0&nbsp;m³/s</strong> just to hold 50&nbsp;Pa with everything shut — rising to <strong>30.5&nbsp;m³/s</strong> if the same 50&nbsp;Pa has to be held with two doors open. That <strong>4.3:1 turndown</strong> between the two design cases is the whole control problem: a fan big enough for the open-door case will destroy the closed-door case unless relief or variable speed is provided, and a fan sized for the closed-door case simply fails when the fire service opens a door. One caveat that decides how much air you actually buy: the codes do not require full pressure to be held with a door open. EN 12101-6 and NFPA 92 set the open-door case as a <em>velocity</em> through the opening — typically 0.75–2&nbsp;m/s — which is a fraction of the air needed to hold 50&nbsp;Pa. Establish with the authority which criterion applies before selecting the fan, then specify and commission both cases explicitly.</p>
 
 <h2 id="install">5 · Installation, coordination &amp; execution tricks</h2>
 <ul class="clean">
@@ -304,8 +304,8 @@ function updPiston(){
 /* ---------- CHART 3 : hoistway pressurisation ---------- */
 const sFl=document.getElementById('sFl'),sAd=document.getElementById('sAd'),
       sDp=document.getElementById('sDp'),sOd=document.getElementById('sOd');
-const OPEN_A=0.9;   // m2 effective open area of one landing door
-const flow=(A,dp)=>A*Math.sqrt(2*dp/RHO);
+const OPEN_A=2.0;   // m2 free area of one open landing door (1.0 x 2.1 m)
+const flow=(A,dp)=>0.83*A*Math.sqrt(dp);   // EN 12101-6 / NFPA 92 form, Cd 0.65 folded into the 0.83
 let pressChart=new Chart(document.getElementById('pressChart'),{
   data:{datasets:[
     {type:'line',label:'Doors closed',data:[],borderColor:'#1b4f72',backgroundColor:'rgba(27,79,114,0.10)',borderWidth:3,pointRadius:0,fill:true,order:3},
@@ -350,7 +350,7 @@ SPEC = dict(
     breadcrumb='Tall-Building Systems',
     tag_line='Tall-Building Systems &middot; Vertical Transportation &middot; MEP Interfaces',
     desc='The MEP interfaces of vertical transportation in megatall buildings: lift machine-room heat gain and why it is a plant room needing chilled water on essential power, regenerative drives, piston effect pressure from high-speed cars and why shaft blockage ratio dominates it, hoistway and lobby pressurisation and the turndown between the doors-open and doors-closed design cases, pit drainage and fire sequence coordination — with three interactive charts and installation tricks.',
-    og_desc='A bank of eight lifts dumps 108 kW into a room nobody scheduled, a 10 m/s car generates 160 Pa of piston pressure on top of the stack effect, and hoistway pressurisation has a 3.6:1 turndown between its two code cases.',
+    og_desc='A bank of eight lifts dumps 108 kW into a room nobody scheduled, a 10 m/s car generates 162 Pa of piston pressure on top of the stack effect, and hoistway pressurisation has a 3.6:1 turndown between its two code cases.',
     ld_desc='A design-perspective guide to the MEP interfaces of lifts in megatall buildings: machine-room heat gain and cooling, regenerative drives, piston effect and shaft blockage ratio, hoistway and lobby pressurisation design cases, pit drainage, shunt trip and fire sequence coordination.',
     img_alt='Technical cutaway of a megatall tower&rsquo;s lift core showing a high-speed car in its hoistway with air displaced around it, the machine room above with its drives and cooling plant, and pressurisation ductwork injecting into the shaft at several levels',
     en_tag='Tall-Building Systems &middot; Lifts &middot; MEP Interfaces &middot; Megatall',

@@ -235,11 +235,11 @@
     <div class="cell"><div class="k">Area-optimal N</div><div class="v" id="rNo">2</div></div>
     <div class="cell"><div class="k">Loss at your N</div><div class="v" id="rLn">4,984 <small>m²</small></div></div>
     <div class="cell"><div class="k">Of gross area</div><div class="v" id="rPc">3.32 <small>%</small></div></div>
-    <div class="cell"><div class="k">Cost vs optimum</div><div class="v" id="rDf">1,015 <small>m²</small></div></div>
+    <div class="cell"><div class="k">Cost vs optimum</div><div class="v" id="rDf">1,016 <small>m²</small></div></div>
     <div class="cell"><div class="k">Zone height</div><div class="v" id="rZh">38 <small>floors</small></div></div>
   </div>
 </div>
-<p class="fig-note">At the default the area optimum is <strong>two</strong> mechanical floors (2.65&nbsp;% of gross area) but four costs only 3.32&nbsp;% — about 1,000&nbsp;m² more, or roughly one extra floor's worth, spread over a 150-storey building. That is a small price for halving every pressure zone, and it is the number to bring to the coordination meeting. Now drag the riser intensity: at 1.0&nbsp;m² per floor served, typical of a fully central all-air system, the optimum jumps and the shafts dominate — which is the quantitative argument for floor-by-floor air handling.</p>
+<p class="fig-note">At the default the area optimum is <strong>two</strong> mechanical floors (2.65&nbsp;% of gross area) but four costs only 3.32&nbsp;% — about 1,000&nbsp;m² more, or roughly one extra floor's worth, spread over a 150-storey building. That is a small price for halving every pressure zone, and it is the number to bring to the coordination meeting. Now drag the riser intensity: at 1.0&nbsp;m² per floor served, typical of a fully central all-air system, the optimum moves to three and the shaft term overtakes the mechanical-floor term — which is the quantitative argument for floor-by-floor air handling.</p>
 
 <h2 id="int-duct">4 · Interactive: why central air distribution does not scale</h2>
 <p>The riser intensity above is not a constant — it is a design choice, and air is what dominates it. This shows the vertical supply-and-return duct cross-section needed as one air-handling plant serves more and more floors, against the outdoor-air-only riser that a floor-by-floor or DOAS arrangement needs instead.</p>
@@ -247,7 +247,7 @@
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Vertical duct riser area vs floors served by one plant</div>
-    <div class="fsub">Q = n·A·q. Riser area = 1.8·Q/v, counting supply and return together. The blue line is the same building served by floor-by-floor air handling, where only outdoor air rides the riser.</div>
+    <div class="fsub">Q = n·A·q. Riser area = 1.8·Q/v, the 1.8 counting supply plus a return duct at 80&nbsp;% of the supply area. The blue line is the same building served by floor-by-floor air handling, where only outdoor air rides the riser — taken as 10&nbsp;% of the supply volume at two-thirds the duct velocity, since outdoor-air risers are run slower for acoustic reasons.</div>
   </div>
   <div class="chart-box"><canvas id="ductChart"></canvas></div>
   <div class="controls">
@@ -280,7 +280,7 @@
     <div class="cell"><div class="k">DOAS riser</div><div class="v" id="rDo">1.3 <small>m²</small></div></div>
   </div>
 </div>
-<p class="fig-note">One plant serving 40 floors needs a <strong>9&nbsp;m² riser — a 3.0&nbsp;m square shaft</strong>, running the full height of the zone. Push it to 120 floors and it becomes 27&nbsp;m², a 5.2&nbsp;m square shaft, before you have added a single water or electrical riser. Serve the same floors with floor-by-floor air handling and only outdoor air rides the riser: <strong>1.4&nbsp;m²</strong>. That is the real reason tall office towers moved to floor-by-floor AHUs — not fan energy, not control, but the fact that the vertical duct was consuming the product being sold. The counter-argument is maintenance: you have swapped four large machines in a plant room for a hundred small ones in ceilings, which is a facilities cost that lasts as long as the building.</p>
+<p class="fig-note">One plant serving 40 floors needs a <strong>9&nbsp;m² riser — a 3.0&nbsp;m square shaft</strong>, running the full height of the zone. Push it to 120 floors and it becomes 27&nbsp;m², a 5.2&nbsp;m square shaft, before you have added a single water or electrical riser. Serve those same 120 floors with floor-by-floor air handling and only outdoor air rides the riser: <strong>4.0&nbsp;m²</strong>, a 2.0&nbsp;m square shaft — a seventh of the area. That is the real reason tall office towers moved to floor-by-floor AHUs — not fan energy, not control, but the fact that the vertical duct was consuming the product being sold. The counter-argument is maintenance: you have swapped four large machines in a plant room for a hundred small ones in ceilings, which is a facilities cost that lasts as long as the building.</p>
 
 <h2 id="governing">5 · The governing constraint: whose zone height wins?</h2>
 <p>Every pressure-bearing system in the tower has a maximum zone height, and they are wildly different. This is the calculation that should be done first, in one table, before the mechanical floors are located — because <strong>the shortest one governs the whole building</strong>, and it is almost never the one people expect.</p>
@@ -288,7 +288,7 @@
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Maximum vertical zone height by system</div>
-    <div class="fsub">Zone height = allowable pressure / 0.0981 bar·m⁻¹. Domestic water is shown two ways: zoned on the fixture comfort window alone, and zoned on riser pipe class with floor PRVs doing the fine control.</div>
+    <div class="fsub">Zone height = allowable pressure / 0.0981 bar·m⁻¹. Domestic water is shown two ways: zoned on the fixture comfort window alone, and zoned on riser pipe class with floor PRVs doing the fine control. The three pipe-class bars are the raw rating over the gradient; netting off the residual each system must still hold at the top of its zone shortens them by roughly 10&nbsp;% — the domestic riser, for example, falls from 163&nbsp;m to 148&nbsp;m once a 1.5&nbsp;bar top residual is allowed for.</div>
   </div>
   <div class="chart-box"><canvas id="govChart"></canvas></div>
   <div class="controls">

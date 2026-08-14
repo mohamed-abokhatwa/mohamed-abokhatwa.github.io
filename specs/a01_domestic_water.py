@@ -69,7 +69,7 @@ BODY = r"""
 <div class="eq">\[ H_{zone} \;=\; \frac{p_{max}-p_{min}}{0.0981} \qquad \text{(m, bar)} \]</div>
 <p>With a 1.5&nbsp;bar minimum and a 5.0&nbsp;bar maximum that is <strong>35.7&nbsp;m — about ten storeys</strong>. A 600&nbsp;m tower would need <strong>seventeen</strong> pressure zones, each with its own tank or pump set. Nobody builds that. The way out is to separate the two constraints:</p>
 <ul class="clean">
-  <li><strong>Let the riser carry high pressure, and break it at the floor.</strong> Run the riser at its pipe rating (PN16 → 163&nbsp;m of column) and fit a <strong>floor or apartment pressure-reducing valve</strong> on each branch. The riser zone is now set by pipe class, not by tap comfort: four zones instead of seventeen. The PRVs become the most safety-critical, most numerous, least-maintained components in the building — which is the trade you are making.</li>
+  <li><strong>Let the riser carry high pressure, and break it at the floor.</strong> Run the riser at its pipe rating (PN16 with a 1.5&nbsp;bar top residual → 148&nbsp;m of column) and fit a <strong>floor or apartment pressure-reducing valve</strong> on each branch. The riser zone is now set by pipe class, not by tap comfort: five zones instead of seventeen. The PRVs become the most safety-critical, most numerous, least-maintained components in the building — which is the trade you are making.</li>
   <li><strong>Use PRV cascades within a zone.</strong> Intermediate PRVs every few floors on the riser, each dropping the pressure back into the window, with the branch pressure checked at the top <em>and</em> bottom fixture of every PRV group.</li>
   <li><strong>Exploit gravity down-feed.</strong> Feeding down from a high tank gives the top floors of the zone the low pressure they need naturally, with the highest pressures at the bottom of the down-feed where PRVs are easiest to group.</li>
 </ul>
@@ -85,7 +85,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Domestic riser pressure profile — comfort zoning vs riser zoning with floor PRVs</div>
-    <div class="fsub">Static pressure p = 0.0981·h below each zone's supply point. Zone height = (p&#109;&#97;&#120; − p&#109;&#105;&#110;)/0.0981 for comfort zoning, and PN/0.0981 for riser zoning. Dashed lines are the fixture pressure limits.</div>
+    <div class="fsub">Static pressure p = 0.0981·h below each zone's supply point. Zone height = (p&#109;&#97;&#120; − p&#109;&#105;&#110;)/0.0981 for comfort zoning, and (PN &minus; p&#109;&#105;&#110;)/0.0981 for riser zoning, so the pipe reaches exactly its rating at the foot of the zone. Dashed lines are the fixture pressure limits.</div>
   </div>
   <div class="chart-box"><canvas id="zoneChart"></canvas></div>
   <div class="controls">
@@ -113,12 +113,12 @@ BODY = r"""
   <div class="readout">
     <div class="cell"><div class="k">Comfort zone height</div><div class="v" id="rZc">36 <small>m</small></div></div>
     <div class="cell"><div class="k">Zones · comfort only</div><div class="v" id="rNc">17</div></div>
-    <div class="cell"><div class="k">Zones · riser + PRVs</div><div class="v" id="rNr">4</div></div>
+    <div class="cell"><div class="k">Zones · riser + PRVs</div><div class="v" id="rNr">5</div></div>
     <div class="cell"><div class="k">Floor PRV groups</div><div class="v" id="rPrv">17</div></div>
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">The default case is stark: a 3.5&nbsp;bar comfort window is worth <strong>36&nbsp;m</strong>, so a 600&nbsp;m tower needs <strong>17</strong> tank-and-pump zones if the riser itself must stay inside the window. Zone the riser on PN16 instead and it falls to <strong>4</strong> — but you have now committed to roughly 17 floors' worth of PRV groups per riser, every one of which must be scheduled, set, tested and maintained. Widen the window by a single bar and you save two or three zones; that is why the choice of tapware, and its permitted maximum pressure, is a decision the mechanical engineer should be making early rather than inheriting late.</p>
+<p class="fig-note">The default case is stark: a 3.5&nbsp;bar comfort window is worth <strong>36&nbsp;m</strong>, so a 600&nbsp;m tower needs <strong>17</strong> tank-and-pump zones if the riser itself must stay inside the window. Zone the riser on PN16 instead and it falls to <strong>5</strong> — but you have now committed to roughly <strong>seventeen PRV groups</strong> per riser, one for every comfort-window's worth of height, every one of which must be scheduled, set, tested and maintained. Widen the window by a single bar and you save two or three zones; that is why the choice of tapware, and its permitted maximum pressure, is a decision the mechanical engineer should be making early rather than inheriting late.</p>
 
 <h2 id="architecture">6 · Supply architectures</h2>
 <ul class="clean">
@@ -310,7 +310,7 @@ function updZone(){
   document.getElementById('vPn').textContent=fmt1(pn)+' bar';
   document.getElementById('vPx').textContent=fmt1(px)+' bar';
   document.getElementById('vPN').textContent='PN'+PN;
-  const zc=Math.max(1,(px-pn))/BARM, zr=PN/BARM;
+  const zc=Math.max(1,(px-pn))/BARM, zr=Math.max(1,(PN-pn))/BARM;
   zoneChart.data.datasets[0].data=saw(H,zc,pn);
   zoneChart.data.datasets[1].data=saw(H,zr,pn);
   zoneChart.options.scales.x.max=Math.max(PN*1.08,px*1.15);
@@ -327,7 +327,7 @@ function updZone(){
   const v=document.getElementById('rVd');
   if(px<=pn) v.innerHTML='<span class="badge bad">no usable window</span>';
   else if(nc<=3) v.innerHTML='<span class="badge good">comfort zoning is viable</span>';
-  else if(nr<=4) v.innerHTML='<span class="badge warn">riser zoning + PRVs needed</span>';
+  else if(nr<=6) v.innerHTML='<span class="badge warn">riser zoning + PRVs needed</span>';
   else v.innerHTML='<span class="badge bad">many zones either way</span>';
 }
 [sH,sPn,sPx,sPN].forEach(s=>s.addEventListener('input',updZone));updZone();

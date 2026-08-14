@@ -49,7 +49,7 @@ BODY = r"""
     <div class="cell"><div class="k">Water footprint</div><div class="v" id="rFw">2,293 <small>m²</small></div></div>
   </div>
 </div>
-<p class="fig-note">128&nbsp;MWh as chilled water is <strong>13,757&nbsp;m³</strong> — a 2,293&nbsp;m² tank farm six metres deep, which is most of a basement level and fourteen thousand tonnes of structural load. As ice it is <strong>1,538&nbsp;m³</strong> and about 256&nbsp;m². That ratio is why almost every tall-building thermal store is latent rather than sensible, and it is also why the decision has to be made before the basement is designed: nobody finds 2,300&nbsp;m² of tank space in a completed scheme. Note how sensitive the water case is to the ΔT slider — a stratified tank that only achieves 6&nbsp;K instead of 9&nbsp;K is half as useful, and stratification quality is a real, and commonly disappointing, design risk.</p>
+<p class="fig-note">128&nbsp;MWh as chilled water is <strong>13,757&nbsp;m³</strong> — a 2,293&nbsp;m² tank farm six metres deep, which is most of a basement level and fourteen thousand tonnes of structural load. As ice it is <strong>1,538&nbsp;m³</strong> and about 256&nbsp;m². That ratio is why almost every tall-building thermal store is latent rather than sensible, and it is also why the decision has to be made before the basement is designed: nobody finds 2,300&nbsp;m² of tank space in a completed scheme. Note how sensitive the water case is to the ΔT slider — a stratified tank that manages only 6&nbsp;K instead of 9&nbsp;K needs 50&nbsp;% more volume for the same stored energy, and stratification quality is a real, and commonly disappointing, design risk.</p>
 
 <h2 id="int-peak">3 · Interactive: what peak shaving buys</h2>
 <p>With <strong>full storage</strong> the chillers do not run on-peak at all; with <strong>partial storage</strong> — almost always the right answer — the chillers run more or less continuously at a lower rating and storage covers the difference at peak.</p>
@@ -130,7 +130,7 @@ BODY = r"""
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At a 0.32/0.18 tariff split, shifting 128&nbsp;MWh of cooling a day over 250 days moves about 23&nbsp;MWh of <em>electricity</em> a day into the night, worth <strong>0.82&nbsp;M gross</strong> — less roughly <strong>0.41&nbsp;M</strong> of extra electricity from the ice-making penalty, for a net <strong>0.41&nbsp;M a year</strong> before any avoided demand charge. Note how much of the gross the penalty eats: half of it, at this tariff. Now drag the two rates together: as the ratio falls below about 1.4 the COP penalty eats most of the benefit and the scheme has to be justified on capacity alone. <strong>Check the tariff before the tanks.</strong> And check its stability — a storage scheme is a twenty-five-year asset justified by a tariff structure that a regulator can revise in a year, which is a genuine commercial risk worth stating in the design report rather than discovering later.</p>
+<p class="fig-note">At a 0.32/0.18 tariff split, shifting 128&nbsp;MWh of cooling a day over 250 days moves about 23&nbsp;MWh of <em>electricity</em> a day into the night, worth <strong>0.81&nbsp;M gross</strong> — less roughly <strong>0.41&nbsp;M</strong> of extra electricity from the ice-making penalty, for a net <strong>0.41&nbsp;M a year</strong> before any avoided demand charge. Note how much of the gross the penalty eats: half of it, at this tariff. Now drag the two rates together: as the ratio falls below about 1.4 the COP penalty eats most of the benefit and the scheme has to be justified on capacity alone. <strong>Check the tariff before the tanks.</strong> And check its stability — a storage scheme is a twenty-five-year asset justified by a tariff structure that a regulator can revise in a year, which is a genuine commercial risk worth stating in the design report rather than discovering later.</p>
 
 <h2 id="types">5 · Choosing the storage type</h2>
 <ul class="clean">
@@ -265,8 +265,7 @@ function updPeak(){
   const ch=L*lf, st=L*(1-lf)*op;
   peakChart.data.datasets[2].data=[{x:lf*100,y:+ch.toFixed(2)}];
   peakChart.update('none');
-  // extra energy: the stored share is produced at a worse COP
-  const share=(1-lf)*op/24/ (lf + (1-lf)*op/24) ;
+  // extra energy: the stored share of the day's cooling is produced at a worse COP
   const extra=100*((1-lf)*op/(lf*24))*(1/(1-cp)-1);
   document.getElementById('rCh').innerHTML=fmt0(ch)+' <small>MW</small>';
   document.getElementById('rCs').innerHTML=fmt0(100*(1-lf))+' <small>%</small>';
@@ -300,8 +299,6 @@ function updEcon(){
   document.getElementById('vDy').textContent=dy;
   // electricity to make the shifted cooling, day vs ice COP
   const eDay=sh/COP_BASE, eIce=sh/(COP_BASE*(1-COP_PEN));
-  const gross=r=>sh/COP_BASE*(off*r-off)*dy/1e6;
-  const net=r=>(eDay*off*r - eIce*off)*dy/1e6*-1*-1;
   const xs=[];for(let r=1;r<=4;r+=0.05)xs.push(+r.toFixed(2));
   econChart.data.datasets[0].data=xs.map(r=>({x:r,y:+((eDay*(off*r)-eIce*off)*1000*dy/1e6).toFixed(3)}));
   econChart.data.datasets[1].data=xs.map(r=>({x:r,y:+((eDay*(off*r)-eDay*off)*1000*dy/1e6).toFixed(3)}));

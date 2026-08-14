@@ -43,13 +43,13 @@ BODY = r"""
   </div>
   <div class="readout">
     <div class="cell"><div class="k">D-value</div><div class="v" id="rD">14.1 <small>min</small></div></div>
-    <div class="cell"><div class="k">Time for target</div><div class="v" id="rTt">57 <small>min</small></div></div>
-    <div class="cell"><div class="k">Achieved in time</div><div class="v" id="rAc">4.2 <small>log</small></div></div>
+    <div class="cell"><div class="k">Time for target</div><div class="v" id="rTt">56 <small>min</small></div></div>
+    <div class="cell"><div class="k">Achieved in time</div><div class="v" id="rAc">4.3 <small>log</small></div></div>
     <div class="cell"><div class="k">At 60 °C</div><div class="v" id="rT60">8 <small>min</small></div></div>
     <div class="cell"><div class="k">Regime</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At <strong>55&nbsp;°C</strong> a 4-log kill takes about <strong>57 minutes</strong>; at <strong>60&nbsp;°C</strong> it takes <strong>8 minutes</strong>; at 50&nbsp;°C it takes nearly seven hours; and at 46&nbsp;°C — a return leg that has sagged only a few degrees — it takes well over a day, which in a circulating system means never. That steepness is the entire reason the codes specify 60&nbsp;°C storage and a 55&nbsp;°C minimum return rather than a comfortable-sounding 50: the margin is not comfort, it is two orders of magnitude of kill rate. It is also why the number that matters is the temperature at the <em>worst</em> point in the loop, measured, not the boiler set-point.</p>
+<p class="fig-note">At <strong>55&nbsp;°C</strong> a 4-log kill takes about <strong>56 minutes</strong>; at <strong>60&nbsp;°C</strong> it takes <strong>8 minutes</strong>; at 50&nbsp;°C it takes nearly seven hours; and at 46&nbsp;°C — a return leg that has sagged only a few degrees — it takes well over a day, which in a circulating system means never. That steepness is the entire reason the codes specify 60&nbsp;°C storage and a 55&nbsp;°C minimum return rather than a comfortable-sounding 50: the margin is not comfort, it is two orders of magnitude of kill rate. It is also why the number that matters is the temperature at the <em>worst</em> point in the loop, measured, not the boiler set-point.</p>
 
 <h2 id="recirc">3 · The recirculation loop — the system's real weak point</h2>
 <p>A tall building cannot wait for hot water to travel 300&nbsp;m, so the hot water circulates continuously and returns to the plant. That loop is what keeps the system safe, and it fails in ways that are invisible from the plant room:</p>
@@ -89,14 +89,14 @@ BODY = r"""
     </div>
   </div>
   <div class="readout">
-    <div class="cell"><div class="k">Loop heat loss</div><div class="v" id="rQ">5.2 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Loop heat loss</div><div class="v" id="rQ">5.1 <small>kW</small></div></div>
     <div class="cell"><div class="k">Return flow</div><div class="v" id="rF">0.25 <small>L/s</small></div></div>
     <div class="cell"><div class="k">Annual loss</div><div class="v" id="rA">45 <small>MWh</small></div></div>
-    <div class="cell"><div class="k">If badly lagged</div><div class="v" id="rB">10.3 <small>kW</small></div></div>
+    <div class="cell"><div class="k">If badly lagged</div><div class="v" id="rB">17.2 <small>kW</small></div></div>
     <div class="cell"><div class="k">Return temp OK?</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVr"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 1,200&nbsp;m loop of DN65 at a decent 0.6&nbsp;W/m²K loses about <strong>5.2&nbsp;kW continuously — 45&nbsp;MWh a year</strong>, and needs only <strong>0.25&nbsp;L/s</strong> of return flow to hold a 5&nbsp;K drop. Two things follow. First, the return flow is <em>tiny</em>, which is exactly why it distributes so badly without thermostatic balancing valves: at these flows a small imbalance starves a branch completely. Second, the standing loss runs 8,760 hours a year and is often larger than any efficiency measure applied to the heat source — so insulation thickness on the circulating loop is a first-order energy decision, not a detail.</p>
+<p class="fig-note">A 1,200&nbsp;m loop of DN65 at a decent 0.6&nbsp;W/m²K loses about <strong>5.1&nbsp;kW continuously — 45&nbsp;MWh a year</strong>, and needs only <strong>0.25&nbsp;L/s</strong> of return flow to hold a 5&nbsp;K drop. Two things follow. First, the return flow is <em>tiny</em>, which is exactly why it distributes so badly without thermostatic balancing valves: at these flows a small imbalance starves a branch completely. Second, the standing loss runs 8,760 hours a year and is often larger than any efficiency measure applied to the heat source — so insulation thickness on the circulating loop is a first-order energy decision, not a detail.</p>
 
 <h2 id="int-storage">4 · Interactive: storage versus instantaneous</h2>
 <p>Hot water demand is spiky — a hotel's morning peak or a residential tower's evening peak lasts under an hour. You can meet it with raw heater capacity or with stored volume, and in a tall building the trade also involves plant space, structural weight and Legionella risk.</p>

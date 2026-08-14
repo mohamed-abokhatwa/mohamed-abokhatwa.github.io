@@ -86,7 +86,7 @@ BODY = r"""
     <div class="cell"><div class="k">Balancing</div><div class="v" id="rMd">281 <small>man-days</small></div></div>
     <div class="cell"><div class="k">With re-tests</div><div class="v" id="rRt">366 <small>man-days</small></div></div>
     <div class="cell"><div class="k">Witnessing</div><div class="v" id="rWt">37 <small>man-days</small></div></div>
-    <div class="cell"><div class="k">Total</div><div class="v" id="rTt">403 <small>man-days</small></div></div>
+    <div class="cell"><div class="k">Total</div><div class="v" id="rTt">402 <small>man-days</small></div></div>
     <div class="cell"><div class="k">4 teams of 2</div><div class="v" id="rWk">10 <small>weeks</small></div></div>
   </div>
 </div>
@@ -149,7 +149,7 @@ BODY = r"""
     <div class="cell"><div class="k">If found at design</div><div class="v" id="rCd">1.4 <small>M</small></div></div>
     <div class="cell"><div class="k">At commissioning</div><div class="v" id="rCc">36 <small>M</small></div></div>
     <div class="cell"><div class="k">Post-handover</div><div class="v" id="rCp">144 <small>M</small></div></div>
-    <div class="cell"><div class="k">Saved by prototype</div><div class="v" id="rCs">25 <small>M</small></div></div>
+    <div class="cell"><div class="k">Saved by prototype</div><div class="v" id="rCs">13 <small>M</small></div></div>
     <div class="cell"><div class="k">Per defect</div><div class="v" id="rLv">4<small>×</small></div></div>
   </div>
 </div>

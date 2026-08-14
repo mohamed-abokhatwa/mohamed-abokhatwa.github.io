@@ -67,7 +67,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Secondary supply temperature and coil area penalty vs HX approach</div>
-    <div class="fsub">Secondary supply = primary supply + approach. Coil area factor taken as the inverse ratio of LMTD against a reference selection, with room air at 24 °C and off-coil at 13 °C.</div>
+    <div class="fsub">Secondary supply = primary supply + approach. Coil area factor taken as the inverse ratio of counterflow LMTD against a reference selection, with room air on at 24 °C and off the coil at 13 °C.</div>
   </div>
   <div class="chart-box"><canvas id="apChart"></canvas></div>
   <div class="controls">
@@ -95,12 +95,12 @@ BODY = r"""
   <div class="readout">
     <div class="cell"><div class="k">Secondary supply</div><div class="v" id="rSs">6.0 <small>°C</small></div></div>
     <div class="cell"><div class="k">Secondary return</div><div class="v" id="rSr">14.0 <small>°C</small></div></div>
-    <div class="cell"><div class="k">LMTD</div><div class="v" id="rLm">8.5 <small>K</small></div></div>
+    <div class="cell"><div class="k">LMTD</div><div class="v" id="rLm">8.4 <small>K</small></div></div>
     <div class="cell"><div class="k">Coil area factor</div><div class="v" id="rCa">1.00<small>×</small></div></div>
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rAv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">With a 4.5&nbsp;°C primary and a 1.5&nbsp;K approach the building gets <strong>6.0&nbsp;°C</strong> — exactly the reference selection, so the coils are unchanged. Loosen the approach to 3&nbsp;K to save money on plates and the secondary rises to 7.5&nbsp;°C, the LMTD shrinks, and <strong>every coil in the tower needs roughly 15&nbsp;% more area</strong> to deliver the same duty. That is the approach paid for twice: once in the exchanger you did not buy, and again in a thousand coils and the fan energy to push air through them. Buy the plates.</p>
+<p class="fig-note">With a 4.5&nbsp;°C primary and a 1.5&nbsp;K approach the building gets <strong>6.0&nbsp;°C</strong> — exactly the reference selection, so the coils are unchanged. Loosen the approach to 3&nbsp;K to save money on plates and the secondary rises to 7.5&nbsp;°C, the LMTD shrinks from 8.4&nbsp;K to 6.9&nbsp;K, and <strong>every coil in the tower needs roughly 22&nbsp;% more area</strong> to deliver the same duty. That is the approach paid for twice: once in the exchanger you did not buy, and again in a thousand coils and the fan energy to push air through them. Buy the plates.</p>
 
 <h2 id="int-meter">5 · Interactive: the meter is the cash register</h2>
 <p>A BTU meter computes energy from a flow measurement and a temperature <em>difference</em>. Because the difference is small, the temperature sensors contribute far more uncertainty than their absolute accuracy suggests — and the smaller your ΔT, the worse it gets.</p>
@@ -137,7 +137,7 @@ BODY = r"""
     <div class="cell"><div class="k">Temperature term</div><div class="v" id="rTe">2.36 <small>%</small></div></div>
     <div class="cell"><div class="k">Total uncertainty</div><div class="v" id="rTu">2.79 <small>%</small></div></div>
     <div class="cell"><div class="k">In money</div><div class="v" id="rMo">0.28 <small>M/yr</small></div></div>
-    <div class="cell"><div class="k">At ΔT 4 K</div><div class="v" id="rM4">3.83 <small>%</small></div></div>
+    <div class="cell"><div class="k">At ΔT 4 K</div><div class="v" id="rM4">3.84 <small>%</small></div></div>
     <div class="cell"><div class="k">Class</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rMv"></span></div></div>
   </div>
 </div>
@@ -248,8 +248,11 @@ const sPs=document.getElementById('sPs'),sAp=document.getElementById('sAp'),
       sSd=document.getElementById('sSd'),sRf=document.getElementById('sRf');
 const T_ROOM=24, T_OFF=13;
 function lmtd(sup,dT){
-  const d1=T_ROOM-sup, d2=T_OFF-(sup+dT);
-  if(d1<=0||d2<=0||Math.abs(d1-d2)<1e-6) return Math.max(0.1,(d1+d2)/2);
+  /* counterflow coil: air 24 -> 13 against water sup -> sup+dT.
+     Air in meets water out; air out meets water in. */
+  const d1=T_ROOM-(sup+dT), d2=T_OFF-sup;
+  if(d1<=0||d2<=0) return 0.1;
+  if(Math.abs(d1-d2)<1e-6) return (d1+d2)/2;
   return (d1-d2)/Math.log(d1/d2);
 }
 let apChart=new Chart(document.getElementById('apChart'),{

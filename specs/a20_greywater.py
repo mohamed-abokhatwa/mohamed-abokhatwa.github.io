@@ -16,7 +16,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Greywater available against the demands that can use it</div>
-    <div class="fsub">Indoor demand from population and per-capita consumption, split by end use. Cooling tower makeup at 1.5 m³/h per MW of heat rejection, running the stated hours.</div>
+    <div class="fsub">Indoor demand from population and per-capita consumption, split by end use. Cooling tower makeup at 2.0 m³/h per MW of heat rejection — 1.5 of evaporation plus blowdown at four cycles of concentration, the same basis as the <a href="cooling-towers-heat-rejection-tall-buildings.html">cooling tower water balance</a>.</div>
   </div>
   <div class="chart-box"><canvas id="balChart"></canvas></div>
   <div class="controls">
@@ -45,11 +45,11 @@ BODY = r"""
     <div class="cell"><div class="k">Indoor demand</div><div class="v" id="rDm">440 <small>m³/d</small></div></div>
     <div class="cell"><div class="k">Greywater available</div><div class="v" id="rGw">238 <small>m³/d</small></div></div>
     <div class="cell"><div class="k">WC flushing demand</div><div class="v" id="rWc">123 <small>m³/d</small></div></div>
-    <div class="cell"><div class="k">Tower makeup</div><div class="v" id="rTm">1,800 <small>m³/d</small></div></div>
+    <div class="cell"><div class="k">Tower makeup</div><div class="v" id="rTm">2,400 <small>m³/d</small></div></div>
     <div class="cell"><div class="k">Match</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rMv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 2,000-person tower produces <strong>238&nbsp;m³/d</strong> of greywater against a WC flushing demand of only <strong>123&nbsp;m³/d</strong> — so a flush-only scheme discards nearly half its source, and the treatment plant is sized by the <em>sink</em>, not the source. Now bring the cooling plant in: 50&nbsp;MW of rejection needs <strong>1,800&nbsp;m³/d</strong> of makeup, which the greywater covers only 13&nbsp;% of. That is the design conclusion in both directions: <strong>in a water-cooled tower the sink is effectively unlimited</strong>, so collect every drop you can and treat to the quality the towers need; in a district-cooled or air-cooled tower the sink is small, so size on flushing plus irrigation and do not over-collect. Note also that greywater into cooling towers demands a higher treatment standard than flushing — you are creating an aerosol.</p>
+<p class="fig-note">A 2,000-person tower produces <strong>238&nbsp;m³/d</strong> of greywater against a WC flushing demand of only <strong>123&nbsp;m³/d</strong> — so a flush-only scheme discards nearly half its source, and the treatment plant is sized by the <em>sink</em>, not the source. Now bring the cooling plant in: 50&nbsp;MW of rejection needs <strong>2,400&nbsp;m³/d</strong> of makeup, which the greywater covers only 10&nbsp;% of. That is the design conclusion in both directions: <strong>in a water-cooled tower the sink is effectively unlimited</strong>, so collect every drop you can and treat to the quality the towers need; in a district-cooled or air-cooled tower the sink is small, so size on flushing plus irrigation and do not over-collect. Note also that greywater into cooling towers demands a higher treatment standard than flushing — you are creating an aerosol.</p>
 
 <h2 id="quality">3 · Treatment: to what standard, and why that decides everything</h2>
 <p>Reuse standards differ sharply by end use, and the required quality drives the entire plant selection:</p>
@@ -198,7 +198,7 @@ const fmt0=v=>Math.round(v).toLocaleString('en-US');
 const fmt1=v=>v.toFixed(1);
 const fmt2=v=>v.toFixed(2);
 const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}};
-const WC_FRAC=0.28, TOWER_M3_PER_MW_H=1.5;
+const WC_FRAC=0.28, TOWER_M3_PER_MW_H=2.0;   // evaporation 1.5 + blowdown at 4 cycles of concentration
 
 /* ---------- CHART 1 : water balance ---------- */
 const sP=document.getElementById('sP'),sD=document.getElementById('sD'),

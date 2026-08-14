@@ -99,7 +99,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Make-up air shortfall and the resulting pressure</div>
-    <div class="fsub">Shortfall = exhaust − dedicated make-up. Δp estimated from Q = C&#100;·A·√(2Δp/ρ) across the kitchen&rsquo;s leakage and door openings.</div>
+    <div class="fsub">Shortfall = exhaust − dedicated make-up. Δp estimated by inverting Q = 0.83·A·√Δp — the EN 12101-6 / NFPA 92 form, with a discharge coefficient of 0.65 folded into the constant — across the kitchen&rsquo;s leakage and door openings. The make-up air load uses the dry-air mass flow at 40 °C / 55 % RH rather than a fixed density.</div>
   </div>
   <div class="chart-box"><canvas id="muChart"></canvas></div>
   <div class="controls">
@@ -126,13 +126,13 @@ BODY = r"""
   </div>
   <div class="readout">
     <div class="cell"><div class="k">Shortfall</div><div class="v" id="rSf">0.72 <small>m³/s</small></div></div>
-    <div class="cell"><div class="k">Kitchen pressure</div><div class="v" id="rDp">−2.5 <small>Pa</small></div></div>
+    <div class="cell"><div class="k">Kitchen pressure</div><div class="v" id="rDp">−6.1 <small>Pa</small></div></div>
     <div class="cell"><div class="k">Make-up needed</div><div class="v" id="rMn">4.08 <small>m³/s</small></div></div>
-    <div class="cell"><div class="k">Cooling on make-up</div><div class="v" id="rCl">290 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Cooling on make-up</div><div class="v" id="rCl">261 <small>kW</small></div></div>
     <div class="cell"><div class="k">Status</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rMv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">Providing 85&nbsp;% dedicated make-up leaves a <strong>0.72&nbsp;m³/s</strong> shortfall — deliberately, so the kitchen stays slightly negative and odours do not migrate into the restaurant. With a reasonable opening area that is only a few pascals, which is exactly right. Drop the make-up to 60&nbsp;% and the kitchen goes strongly negative, doors become hard to open, the hoods lose capture because air is arriving sideways through the doorway rather than from the make-up plenum, and in a tall building the deficit is ultimately drawn down the lift shaft. Note the last readout: conditioning <strong>4&nbsp;m³/s</strong> of humid Gulf outdoor air is nearly <strong>290&nbsp;kW</strong> of cooling — which is why partially untempered or evaporatively cooled make-up air, delivered locally at the hood, is worth designing properly rather than dumping the whole load on the building's chilled water.</p>
+<p class="fig-note">Providing 85&nbsp;% dedicated make-up leaves a <strong>0.72&nbsp;m³/s</strong> shortfall — deliberately, so the kitchen stays slightly negative and odours do not migrate into the restaurant. With a reasonable opening area that is only a few pascals, which is exactly right. Drop the make-up to 60&nbsp;% and the kitchen goes strongly negative, doors become hard to open, the hoods lose capture because air is arriving sideways through the doorway rather than from the make-up plenum, and in a tall building the deficit is ultimately drawn down the lift shaft. Note the last readout: conditioning <strong>4&nbsp;m³/s</strong> of humid Gulf outdoor air is over <strong>260&nbsp;kW</strong> of cooling — which is why partially untempered or evaporatively cooled make-up air, delivered locally at the hood, is worth designing properly rather than dumping the whole load on the building's chilled water.</p>
 
 <h2 id="fire">5 · Fire strategy for the riser</h2>
 <ul class="clean">
@@ -279,7 +279,7 @@ function updTurn(){
 /* ---------- CHART 3 : make-up air ---------- */
 const sQe=document.getElementById('sQe'),sMu=document.getElementById('sMu'),
       sAo=document.getElementById('sAo'),sDt=document.getElementById('sDt');
-const dpFromQ=(Q,A)=>0.5*RHO*Math.pow(Q/Math.max(A,0.01),2);
+const dpFromQ=(Q,A)=>Math.pow(Q/(0.83*Math.max(A,0.01)),2);   // inverse of the EN 12101-6 / NFPA 92 form Q = 0.83·A·√Δp
 let muChart=new Chart(document.getElementById('muChart'),{
   data:{datasets:[
     {type:'line',label:'Kitchen negative pressure (Pa)',data:[],borderColor:'#c0392b',backgroundColor:'rgba(192,57,43,0.08)',borderWidth:3,pointRadius:0,fill:true,order:3},
@@ -309,7 +309,7 @@ function updMu(){
   document.getElementById('rSf').innerHTML=fmt2(sf)+' <small>m³/s</small>';
   document.getElementById('rDp').innerHTML='−'+fmt1(dp)+' <small>Pa</small>';
   document.getElementById('rMn').innerHTML=fmt2(Qe*mu)+' <small>m³/s</small>';
-  document.getElementById('rCl').innerHTML=fmt0(1.2*Qe*mu*(107-47.8))+' <small>kW</small>';
+  document.getElementById('rCl').innerHTML=fmt0((Qe*mu/0.924)*(107-47.8))+' <small>kW</small>';   // 0.924 m³/kg dry air at 40 °C / 55 % RH
   const v=document.getElementById('rMv');
   if(dp>dt)        v.innerHTML='<span class="badge bad">too negative — capture will fail</span>';
   else if(mu>=0.98)v.innerHTML='<span class="badge warn">no negative bias — odour risk</span>';

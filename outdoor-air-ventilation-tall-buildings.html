@@ -261,7 +261,7 @@
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Total-enthalpy recovery from outdoor air</div>
-    <div class="fsub">h = 1.006·T + W(2501 + 1.86·T), with W from temperature and relative humidity. Recovered load = ρ·Q·Δh·ε against exhaust air at 24 °C / 50 % RH.</div>
+    <div class="fsub">h = 1.006·T + W(2501 + 1.86·T), with W from temperature and relative humidity. Load = ṁ·Δh and recovered load = ṁ·Δh·ε against exhaust air at 24 °C / 50 % RH, with the dry-air mass flow ṁ = Q/v taken from the moist-air specific volume rather than a fixed density — at 40 °C that alone is a 10 % correction.</div>
   </div>
   <div class="chart-box"><canvas id="ervChart"></canvas></div>
   <div class="controls">
@@ -289,12 +289,12 @@
   <div class="readout">
     <div class="cell"><div class="k">Outdoor enthalpy</div><div class="v" id="rHo">107 <small>kJ/kg</small></div></div>
     <div class="cell"><div class="k">Enthalpy gap</div><div class="v" id="rDh">59 <small>kJ/kg</small></div></div>
-    <div class="cell"><div class="k">Untreated OA load</div><div class="v" id="rL0">712 <small>kW</small></div></div>
-    <div class="cell"><div class="k">Recovered</div><div class="v" id="rRe">498 <small>kW</small></div></div>
-    <div class="cell"><div class="k">Chiller saved</div><div class="v" id="rTr">142 <small>TR</small></div></div>
+    <div class="cell"><div class="k">Untreated OA load</div><div class="v" id="rL0">642 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Recovered</div><div class="v" id="rRe">449 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Chiller saved</div><div class="v" id="rTr">128 <small>TR</small></div></div>
   </div>
 </div>
-<p class="fig-note">The regional split is stark. At <strong>Jeddah</strong> conditions (40&nbsp;°C, 55&nbsp;%) the outdoor air carries 107&nbsp;kJ/kg against 48&nbsp;kJ/kg leaving the building — a <strong>59&nbsp;kJ/kg</strong> gap, so 10&nbsp;m³/s of fresh air is a 712&nbsp;kW load and a 70&nbsp;% wheel recovers <strong>498&nbsp;kW</strong>, about 142 tons of chiller you never have to buy or run. Drag the humidity down to 15&nbsp;% for <strong>Riyadh</strong> and the gap collapses to about 18&nbsp;kJ/kg and the recovery to 155&nbsp;kW. Same building, same wheel, a third of the benefit — which is why energy recovery is close to mandatory on the coast and a genuine cost-benefit question inland. Note also what this says about leakage: in Jeddah every extra litre of uncontrolled infiltration costs about three times what it costs in Riyadh.</p>
+<p class="fig-note">The regional split is stark. At <strong>Jeddah</strong> conditions (40&nbsp;°C, 55&nbsp;%) the outdoor air carries 107&nbsp;kJ/kg against 48&nbsp;kJ/kg leaving the building — a <strong>59&nbsp;kJ/kg</strong> gap, so 10&nbsp;m³/s of fresh air is a 642&nbsp;kW load and a 70&nbsp;% wheel recovers <strong>449&nbsp;kW</strong>, about 128 tons of chiller you never have to buy or run. Drag the humidity down to 15&nbsp;% for <strong>Riyadh</strong> and the outdoor air ends up <em>drier</em> than the air leaving the building: the gap collapses to about 10&nbsp;kJ/kg, the load to 113&nbsp;kW and the recovery to 79&nbsp;kW. Same building, same wheel, under a fifth of the benefit — which is why energy recovery is close to mandatory on the coast and a genuine cost-benefit question inland. Note also what this says about leakage: in Jeddah every extra litre of uncontrolled infiltration costs nearly six times what it costs in Riyadh.</p>
 
 <h2 id="int-filter">6 · Interactive: the quiet cost of filtration</h2>
 <p>Filters are specified on capture efficiency and forgotten. Their pressure drop, however, runs 8,760 hours a year and rises as they load. Over a filter's life the fan spends far more energy pushing through it than the filter itself costs.</p>
@@ -373,7 +373,7 @@
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  At 600&nbsp;m an ordinary day produces <strong>600&nbsp;Pa across the building</strong> — more than the fan's own static — so intake location, damper selection and plenum separation are ventilation design, not architectural detailing. Recover the outdoor air's enthalpy where the climate is humid, because on the coast fresh air is most of the latent load and a wheel is worth a third of your chiller; specify filters on depth rather than class, because their pressure drop runs all year; and separate ventilation from cooling so the riser carries a tenth of the air and the fresh air is something you can actually measure.
+  At 600&nbsp;m an ordinary day produces <strong>600&nbsp;Pa across the building</strong> — more than the fan's own static — so intake location, damper selection and plenum separation are ventilation design, not architectural detailing. Recover the outdoor air's enthalpy where the climate is humid, because on the coast fresh air is most of the latent load and a wheel is worth well over a hundred tons of chiller; specify filters on depth rather than class, because their pressure drop runs all year; and separate ventilation from cooling so the riser carries a tenth of the air and the fresh air is something you can actually measure.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
@@ -506,6 +506,7 @@ const sOt=document.getElementById('sOt'),sOr=document.getElementById('sOr'),
       sOq=document.getElementById('sOq'),sEf=document.getElementById('sEf');
 const enth=(T,W)=>1.006*T+W*(2501+1.86*T);
 function humRatio(T,rh,P){P=P||101.325;const pws=0.61094*Math.exp(17.625*T/(T+243.04));const pw=rh*pws;return 0.62198*pw/(P-pw);}
+const specVol=(T,W)=>0.287*(T+273.15)*(1+1.6078*W)/101.325;   // m³ per kg dry air
 const H_RET=enth(24,humRatio(24,0.50));
 let ervChart=new Chart(document.getElementById('ervChart'),{
   data:{datasets:[
@@ -526,10 +527,10 @@ function updErv(){
   document.getElementById('vOq').textContent=fmt1(Q)+' m³/s';
   document.getElementById('vEf').textContent=fmt0(ef*100)+' %';
   const xs=[];for(let r=5;r<=90;r+=1)xs.push(r);
-  const load=r=>Math.max(0,RHO*Q*(enth(T,humRatio(T,r/100))-H_RET));
+  const load=r=>{const W=humRatio(T,r/100);return Math.max(0,(Q/specVol(T,W))*(enth(T,W)-H_RET));};
   ervChart.data.datasets[0].data=xs.map(r=>({x:r,y:+load(r).toFixed(0)}));
   ervChart.data.datasets[1].data=xs.map(r=>({x:r,y:+(load(r)*(1-ef)).toFixed(0)}));
-  const ho=enth(T,humRatio(T,rh)), dh=ho-H_RET, L0=Math.max(0,RHO*Q*dh), rec=L0*ef;
+  const Wo=humRatio(T,rh), ho=enth(T,Wo), dh=ho-H_RET, L0=Math.max(0,(Q/specVol(T,Wo))*dh), rec=L0*ef;
   ervChart.data.datasets[2].data=[{x:rh*100,y:+L0.toFixed(0)}];
   ervChart.update('none');
   document.getElementById('rHo').innerHTML=fmt0(ho)+' <small>kJ/kg</small>';

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">Every megatall tower sits on a deep basement, and every deep basement sits below the water table. That creates two problems that behave nothing like each other. One is <strong>flow</strong>: how much water arrives, which depends almost entirely on the ground and barely at all on the building — the same 20&nbsp;m excavation takes <strong>3&nbsp;L/s</strong> in silt and <strong>326&nbsp;L/s</strong> in sand and gravel, a factor of a hundred set by a soil parameter the MEP engineer does not control. The other is <strong>pressure</strong>: a water table 30&nbsp;m above the slab pushes up at <strong>294&nbsp;kPa</strong> — thirty tonnes on every square metre — and that is a structural decision the drainage design must be coordinated with, not a pumping problem at all.</p>
+<p class="lead">Every megatall tower sits on a deep basement, and every deep basement sits below the water table. That creates two problems that behave nothing like each other. One is <strong>flow</strong>: how much water arrives, which depends almost entirely on the ground and barely at all on the building — the same 20&nbsp;m excavation takes <strong>3&nbsp;L/s</strong> in silt (k = 10&#8315;&#8310;&nbsp;m/s) and <strong>326&nbsp;L/s</strong> in clean sand (k = 10&#8315;&#179;&nbsp;m/s), a factor of a hundred set by a soil parameter the MEP engineer does not control. The other is <strong>pressure</strong>: a water table 30&nbsp;m above the slab pushes up at <strong>294&nbsp;kPa</strong> — thirty tonnes on every square metre — and that is a structural decision the drainage design must be coordinated with, not a pumping problem at all.</p>
 
 <h2 id="two">1 · Two strategies, decided by somebody else</h2>
 <p>Before any pump is sized, the project has chosen one of two fundamentally different approaches, usually on structural and geotechnical advice:</p>
@@ -46,12 +46,12 @@ BODY = r"""
   <div class="readout">
     <div class="cell"><div class="k">Theoretical inflow</div><div class="v" id="rQ">46 <small>L/s</small></div></div>
     <div class="cell"><div class="k">Design inflow</div><div class="v" id="rQd">93 <small>L/s</small></div></div>
-    <div class="cell"><div class="k">Per day</div><div class="v" id="rDay">8,020 <small>m³</small></div></div>
+    <div class="cell"><div class="k">Per day</div><div class="v" id="rDay">8,019 <small>m³</small></div></div>
     <div class="cell"><div class="k">Radius of influence</div><div class="v" id="rRi">600 <small>m</small></div></div>
     <div class="cell"><div class="k">Regime</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">The chart is a warning as much as a calculator. A 20&nbsp;m drawdown over a 40&nbsp;m radius takes about <strong>3&nbsp;L/s in silt and 326&nbsp;L/s in sand and gravel</strong> — the same building, the same excavation, a hundredfold difference driven by a parameter that is measured, not designed. Two consequences: never size a permanent dewatering system from a soil description, only from a <strong>pumping test</strong>; and note the radius of influence, which at high permeability reaches kilometres — permanent dewatering in a permeable aquifer draws down neighbouring ground, and settlement of adjacent structures is a real and litigated risk that belongs in the design discussion.</p>
+<p class="fig-note">The chart is a warning as much as a calculator. A 20&nbsp;m drawdown over a 40&nbsp;m radius takes about <strong>3&nbsp;L/s in silt (k = 10&#8315;&#8310;&nbsp;m/s) and 326&nbsp;L/s in clean sand (k = 10&#8315;&#179;&nbsp;m/s)</strong> — the same building, the same excavation, a hundredfold difference driven by a parameter that is measured, not designed. Two consequences: never size a permanent dewatering system from a soil description, only from a <strong>pumping test</strong>; and note the radius of influence, which at high permeability reaches kilometres — permanent dewatering in a permeable aquifer draws down neighbouring ground, and settlement of adjacent structures is a real and litigated risk that belongs in the design discussion.</p>
 
 <h2 id="int-uplift">3 · Interactive: uplift, and why the drainage layer exists</h2>
 
@@ -87,7 +87,7 @@ BODY = r"""
     <div class="cell"><div class="k">Uplift pressure</div><div class="v" id="rU">196 <small>kPa</small></div></div>
     <div class="cell"><div class="k">Resisting load</div><div class="v" id="rRe">108 <small>kPa</small></div></div>
     <div class="cell"><div class="k">Net uplift</div><div class="v" id="rN">88 <small>kPa</small></div></div>
-    <div class="cell"><div class="k">Per 1000 m²</div><div class="v" id="rTn">9,000 <small>t</small></div></div>
+    <div class="cell"><div class="k">Per 1000 m²</div><div class="v" id="rTn">8,991 <small>t</small></div></div>
     <div class="cell"><div class="k">Status</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rSt"></span></div></div>
   </div>
 </div>
@@ -138,7 +138,7 @@ BODY = r"""
     <div class="cell"><div class="k">Annual at 50 % duty</div><div class="v" id="rAn">106 <small>MWh</small></div></div>
   </div>
 </div>
-<p class="fig-note">A 40&nbsp;L/s duty pump at ten starts an hour needs <strong>3.6&nbsp;m³ of active volume</strong> — and lifting from 25&nbsp;m costs <strong>0.168&nbsp;kWh/m³</strong>, which running at half duty all year is about <strong>106&nbsp;MWh</strong>. Two design points follow. Raise the permitted starts and the sump shrinks, but check it against the motor rather than assuming; and note that the specific energy is modest per cubic metre but the volumes in a permeable site are enormous — at 326&nbsp;L/s the same 25&nbsp;m lift is a continuous 130&nbsp;kW load, which belongs in the building's energy model and its essential-power sizing, not in a footnote.</p>
+<p class="fig-note">A 40&nbsp;L/s duty pump at ten starts an hour needs <strong>3.6&nbsp;m³ of active volume</strong> — and lifting from 25&nbsp;m costs <strong>0.168&nbsp;kWh/m³</strong>, which running at half duty all year is about <strong>106&nbsp;MWh</strong>. Two design points follow. Raise the permitted starts and the sump shrinks, but check it against the motor rather than assuming; and note that the specific energy is modest per cubic metre but the volumes in a permeable site are enormous — at 326&nbsp;L/s the same 25&nbsp;m lift is a continuous 197&nbsp;kW load, which belongs in the building's energy model and its essential-power sizing, not in a footnote.</p>
 
 <h2 id="drainage">5 · The rest of the basement drainage</h2>
 <p>Groundwater is only one of the inflows a deep basement has to handle, and the others arrive suddenly:</p>

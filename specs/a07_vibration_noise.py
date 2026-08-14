@@ -32,7 +32,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Vibration transmissibility vs isolator static deflection</div>
-    <div class="fsub">f&#110; = 15.76/√δ, T = 1/|(f/f&#110;)² − 1| for a lightly damped mount. Isolation efficiency = (1 − T). The shaded region below f/f&#110; = √2 is amplification, not isolation.</div>
+    <div class="fsub">f&#110; = 15.76/√δ with δ in mm. T = √(1+(2ζr)²) ⁄ √((1−r²)²+(2ζr)²), with r = f/f&#110; and ζ the damping ratio. Isolation efficiency = (1 − T). The shaded band is the deflection range in which the <em>turndown</em> speed sits below f/f&#110; = √2 — amplification, not isolation.</div>
   </div>
   <div class="chart-box"><canvas id="vibChart"></canvas></div>
   <div class="controls">
@@ -231,6 +231,7 @@ let vibChart=new Chart(document.getElementById('vibChart'),{
     plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       tooltip:{callbacks:{label:c=>`T = ${c.parsed.y.toFixed(4)} at ${fmt0(c.parsed.x)} mm`}},
       annotation:{annotations:{
+        amp:{type:'box',xScaleID:'x',yScaleID:'y',xMin:2,xMax:2,backgroundColor:'rgba(192,57,43,0.09)',borderWidth:0,label:{display:true,content:'amplifies',position:{x:'center',y:'start'},rotation:270,font:{size:10,family:'DM Sans'},color:'#c0392b'}},
         one:{type:'line',scaleID:'y',yScaleID:'y',value:1,borderColor:'#b9770e',borderWidth:1.6,borderDash:[5,4],label:{display:true,content:'T = 1 — no isolation',position:'start',font:{size:10,family:'DM Sans'},color:'#b9770e',backgroundColor:'rgba(255,255,255,0.85)'}}
       }}}}
 });
@@ -246,6 +247,8 @@ function updVib(){
   vibChart.data.datasets[1].data=xs.map(x=>({x:x,y:+trans(ft,x,z).toFixed(5)}));
   const T=trans(f,d,z), Tt=trans(ft,d,z);
   vibChart.data.datasets[2].data=[{x:d,y:+T.toFixed(5)}];
+  const dCrit=ft>0?Math.pow(15.76*Math.SQRT2/ft,2):0;
+  vibChart.options.plugins.annotation.annotations.amp.xMax=Math.max(2,Math.min(100,dCrit));
   vibChart.update('none');
   const ratio=f/fnat(d);
   document.getElementById('rFn').innerHTML=fmt2(fnat(d))+' <small>Hz</small>';

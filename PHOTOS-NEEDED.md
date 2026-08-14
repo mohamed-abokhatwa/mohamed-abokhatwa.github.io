@@ -429,3 +429,26 @@ contrast.
 Aspect ratio 16:9, wide landscape, full tower visible top to bottom.
 Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
 ```
+
+---
+
+## 19 · cooling-load-modelling-tall-buildings
+
+```text
+A highly detailed technical illustration comparing TWO SUPERTALL TOWERS of identical height side
+by side against a dark sky. The left tower is slender with a small square floor plate; the right
+tower is noticeably wider with a large floor plate. Both are shown semi-transparent so their
+stacked floor plates read clearly.
+
+Render warm amber solar energy striking the façades as fine directional rays, visibly denser and
+more intense on the upper two thirds of both towers and dimmer near their bases where surrounding
+lower buildings cast shade. Make it visually obvious that the slender tower has far more façade
+surface relative to its interior volume.
+
+Style: precise architectural and building-physics illustration, cinematic lighting, dark slate and
+deep navy background, warm amber for solar and cool blue for the building interiors, thin crisp
+linework, high contrast.
+
+Aspect ratio 16:9, wide landscape, both towers fully visible.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```

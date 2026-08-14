@@ -7,3 +7,5 @@ _backup_redesign/
 
 # Apache config (unused on GitHub Pages)
 .htaccess
+__pycache__/
+*.pyc

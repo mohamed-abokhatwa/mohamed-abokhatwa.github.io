@@ -9,6 +9,7 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'bms-controls-architecture-tall-buildings.html', title:'BMS & Controls Architecture for Megatall Buildings: Point Count, Field Networks & Trending', cat:'tallmep', thumb:'bms-controls-architecture-tall-buildings.webp', mins:14, tag:'Tall-Building Systems · BMS · Controls' },
     { url:'greywater-reuse-tall-buildings.html', title:'Greywater & Water Reuse in Megatall Buildings: Matching Source to Sink, Treatment & Dual Pipework', cat:'plumbing', thumb:'greywater-reuse-tall-buildings.webp', mins:14, tag:'Plumbing · Water Reuse · Greywater' },
     { url:'cooling-load-modelling-tall-buildings.html', title:'Cooling Load & Energy Modelling for Megatall Buildings: Façade Ratio, Solar by Height & Diversity', cat:'hvac', thumb:'cooling-load-modelling-tall-buildings.webp', mins:15, tag:'HVAC · Cooling Load · Energy Modelling' },
     { url:'fuel-oil-systems-tall-buildings.html', title:'Fuel Oil Systems for Generators & Fire Pumps in Megatall Buildings: Storage, Risers & Fuel Quality', cat:'tallmep', thumb:'fuel-oil-systems-tall-buildings.webp', mins:14, tag:'Tall-Building Systems · Fuel Oil · Standby Power' },

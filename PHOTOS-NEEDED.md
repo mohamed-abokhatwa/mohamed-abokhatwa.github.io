@@ -475,3 +475,25 @@ linework, high contrast.
 Aspect ratio 16:9, wide landscape, full tower height visible.
 Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
 ```
+
+---
+
+## 21 · bms-controls-architecture-tall-buildings
+
+```text
+A highly detailed technical diagram-style illustration of a supertall tower's CONTROL NETWORK,
+shown as a cutaway of the building with the network drawn over it. Show a single bright vertical
+fibre-optic backbone running the full height of the core, glowing cool blue. At each of four
+mechanical floors, show a compact controller cabinet where the backbone terminates into a node.
+
+From each node, show short horizontal branch networks fanning out across the floors of that zone
+as fine amber lines, each ending in small controller icons on the occupied floors. Make it
+visually obvious that the tower is divided into four network zones matching four mechanical zones.
+
+Style: precise technical network diagram overlaid on an architectural cutaway, cinematic lighting,
+dark slate and deep navy background, cool blue for the backbone and warm amber for the field
+networks, thin crisp linework, high contrast.
+
+Aspect ratio 16:9, wide landscape, full tower visible top to bottom.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```

@@ -404,3 +404,28 @@ thin crisp linework, high contrast.
 Aspect ratio 16:9, wide landscape, full atrium height visible.
 Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
 ```
+
+---
+
+## 18 · fuel-oil-systems-tall-buildings
+
+```text
+A highly detailed technical cross-section illustration of a supertall tower showing its DIESEL
+FUEL system. At the base, in a basement plant room, show two large horizontal bulk fuel storage
+tanks sitting inside a low bunded containment kerb, with a transfer pump skid beside them. From
+there, show a single slender fuel pipe rising through a protected shaft the full height of the
+tower.
+
+Near the top, on a mechanical floor, show a small day tank feeding a row of large standby
+generator sets, with their exhaust stacks rising to the roof.
+
+Render the fuel path as a warm amber line running the full height against the cool blue structure,
+so the eye follows it from basement to crown.
+
+Style: precise mechanical engineering cutaway, cinematic lighting, dark slate and deep navy
+background, warm amber and cool blue as the only accent colours, thin crisp linework, high
+contrast.
+
+Aspect ratio 16:9, wide landscape, full tower visible top to bottom.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```

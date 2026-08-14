@@ -519,3 +519,25 @@ linework, high contrast.
 Aspect ratio 16:9, wide landscape, full chute height visible from top extract to basement.
 Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
 ```
+
+---
+
+## 23 · pools-wellness-mep-tall-buildings
+
+```text
+A highly detailed technical cutaway illustration of a ROOFTOP INFINITY POOL on top of a supertall
+tower, seen in section. Show the pool tank with an infinity edge on one side, water spilling over
+it into a catchment channel, and below the deck a large balance tank receiving that overflow.
+Alongside, in a plant room cut open, show sand filters, circulation pumps and a dosing skid, with
+pipework running back to the pool inlets.
+
+Above the water, show wind flowing fast across the exposed surface as fine pale streamlines, with
+faint vapour rising from the water into it, to convey evaporation being driven by the wind. Show
+the city far below and the horizon beyond.
+
+Style: precise mechanical engineering cutaway, cinematic lighting, dark slate and deep navy
+background, cool blue for water and warm amber for plant, thin crisp linework, high contrast.
+
+Aspect ratio 16:9, wide landscape composition.
+Absolutely no text, no letters, no numbers, no labels, no logos, no watermarks.
+```

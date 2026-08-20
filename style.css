@@ -84,27 +84,27 @@
   --rule-2:         #e5eae8;
 
   /* channels — colour carries meaning here, not decoration */
-  --water:          #0a6b5e;
-  --air:            #2f6484;
-  --fire:           #a85307;
-  --water-w:        rgba(10,107,94,0.10);
-  --air-w:          rgba(47,100,132,0.10);
-  --fire-w:         rgba(168,83,7,0.10);
+  --water:          #085f53;
+  --air:            #2a5975;
+  --fire:           #964904;
+  --water-w:        rgba(8,95,83,0.10);
+  --air-w:          rgba(42,89,117,0.10);
+  --fire-w:         rgba(150,73,4,0.10);
 
   /* semantics */
-  --accent:         #0a6b5e;
-  --accent-light:   #0a6b5e;
-  --accent-2:       #a85307;
+  --accent:         #085f53;
+  --accent-light:   #085f53;
+  --accent-2:       #964904;
   --on-accent:      #ffffff;
   --success:        #276e37;
-  --danger:         #b33a2b;
-  --warning:        #8a6408;
+  --danger:         #a13326;
+  --warning:        #7a5806;
   --success-w:      rgba(39,110,55,0.10);
-  --danger-w:       rgba(179,58,43,0.10);
-  --warning-w:      rgba(138,100,8,0.10);
+  --danger-w:       rgba(161,51,38,0.10);
+  --warning-w:      rgba(122,88,6,0.10);
 
   /* data series, in drawing order */
-  --s1: #0a6b5e;  --s2: #2f6484;  --s3: #c2560a;
+  --s1: #085f53;  --s2: #2a5975;  --s3: #c2560a;
   --s4: #6b4f7c;  --s5: #5b6b68;  --s6: #7a6a1f;
 
   /* the flat sheet replaces the frosted glass */
@@ -394,7 +394,7 @@ th {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   border-bottom: 1px solid var(--text-tertiary);
   background: transparent;
 }

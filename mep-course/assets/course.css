@@ -13,8 +13,8 @@
   --shadow-glass:0 1px 1px rgba(12,21,19,.03),0 10px 30px -12px rgba(12,21,19,.14);
   --shadow-glass-hover:0 1px 2px rgba(12,21,19,.05),0 16px 40px -14px rgba(12,21,19,.20);
   --text-primary:#0c1513; --text-secondary:#4e5c58; --text-tertiary:#5f6d69;
-  --accent:#0a6b5e; --success:#276e37; --danger:#b33a2b; --warning:#8a6408;
-  --fire:#a85307; --air:#2f6484; --water:#0a6b5e; --on-accent:#ffffff;
+  --accent:#085f53; --success:#276e37; --danger:#a13326; --warning:#7a5806;
+  --fire:#964904; --air:#2a5975; --water:#085f53; --on-accent:#ffffff;
   --font-display:'Archivo','IBM Plex Sans',system-ui,-apple-system,'Helvetica Neue',sans-serif;
   --font-body:'IBM Plex Sans',system-ui,-apple-system,'Helvetica Neue',sans-serif;
   --font-mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -71,8 +71,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
    SITE NAV  (faithful copy of abokhatwa.com nav)
    ============================================================ */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:52px;display:flex;align-items:center;
-  background:var(--sheet);backdrop-filter:blur(24px) saturate(200%);
-  -webkit-backdrop-filter:blur(24px) saturate(200%);border-bottom:1px solid rgba(0,0,0,0.07)}
+  background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(24px) saturate(200%);border-bottom:1px solid var(--border)}
 :root[data-theme="dark"] .nav{background:color-mix(in srgb, var(--bg) 88%, transparent);border-bottom-color:var(--border);}
 .nav-inner{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--text-primary);text-decoration:none;letter-spacing:-0.015em}
@@ -105,11 +105,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
   .nav-hamburger{display:flex}
   .theme-toggle{width:30px;height:30px;margin-left:2px}
   .nav-links{display:none;position:absolute;top:52px;left:0;right:0;flex-direction:column;gap:0;padding:8px 24px 20px;
-    background:var(--sheet);backdrop-filter:blur(24px) saturate(200%);
-    -webkit-backdrop-filter:blur(24px) saturate(200%);border-bottom:1px solid rgba(0,0,0,0.08)}
+    background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(24px) saturate(200%);border-bottom:1px solid var(--border)}
   :root[data-theme="dark"] .nav-links{background:var(--bg);border-bottom-color:var(--border);}
   .nav-links.open{display:flex}
-  .nav-links a{display:block;padding:14px 0;font-size:17px;border-bottom:1px solid rgba(0,0,0,0.06)}
+  .nav-links a{display:block;padding:14px 0;font-size:17px;border-bottom:1px solid var(--border)}
   :root[data-theme="dark"] .nav-links a{border-bottom-color:rgba(255,255,255,0.06);}
   .nav-links li:last-child a{border-bottom:none}
 }
@@ -192,9 +192,15 @@ a.ref{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--ac
   padding:4px 9px;border-radius:6px;display:inline-block;font-size:15px;line-height:1.6}
 
 /* worked example (intentional dark card, works in both themes) */
-.example{background:#0e2a3d;color:#e8f1f8;border-radius:3px;padding:20px 22px;margin:20px 0;box-shadow:var(--shadow-glass)}
-.example h4{color:#7fd1ff;margin:0 0 10px;font-size:16px;letter-spacing:.3px;text-transform:uppercase}
-.example .step{margin:10px 0;padding-left:14px;border-left:2px solid #2a5a7a}
+/* the worked example is always a dark plate, so the inks are rebound inside
+   it: anything using var(--text-*) or var(--muted) then resolves legibly */
+.example{background:var(--code-bg);border-radius:3px;padding:20px 22px;margin:20px 0;
+  box-shadow:var(--shadow-glass);
+  --text-primary:#e8f1f8; --text-secondary:#adc0cd; --text-tertiary:#94a9b8;
+  --ink:#e8f1f8; --muted:#adc0cd; --line:#2a3f4d; --border:#2a3f4d;
+  color:var(--text-primary)}
+.example h4{color:#7fd1ff;margin:0 0 10px;font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.example .step{margin:10px 0;padding-inline-start:14px;border-inline-start:2px solid #3d6d8c}
 .example .formula{font-family:'SF Mono',Consolas,monospace;background:#0a2030;padding:8px 12px;
   border-radius:7px;display:inline-block;margin:4px 0;color:#bfe3ff;font-size:15px}
 .example .result{background:#15482f;border:1px solid #2f8f57;border-radius:8px;padding:10px 14px;
@@ -204,29 +210,29 @@ a.ref{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--ac
 /* tables */
 table.t{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px;background:var(--bg-3);
   border-radius:3px;overflow:hidden;box-shadow:var(--shadow-glass)}
-table.t th{background:var(--accent);color:#fff;text-align:left;padding:10px 12px;font-weight:600}
+table.t th{background:var(--accent);color:var(--on-accent);text-align:left;padding:10px 12px;font-weight:600}
 table.t td{padding:9px 12px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary)}
 table.t tr:nth-child(even) td{background:var(--bg-2)}
 
 /* interactive figure — a self-contained light instrument panel, legible in both themes */
-.fig{margin:30px 0;border:1px solid var(--border);border-radius:3px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass)}
+.fig{margin:30px 0;border:1px solid var(--border);border-radius:3px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass)}
 .fig-head{padding:18px 22px 6px}
-.fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72}
-.fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5}
+.fig-head .ftitle{font-weight:700;font-size:15px;color:var(--air)}
+.fig-head .fsub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5}
 .chart-box{position:relative;height:430px;padding:8px 14px 18px}
 @media(max-width:640px){.chart-box{height:340px}}
-.fig .cap{font-size:12.5px;color:#5b6b7b;padding:0 22px 16px;text-align:center;line-height:1.5}
-.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb}
-.ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px}
-.ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums}
-.ctrl input[type=range]{width:100%;accent-color:#1b4f72}
-.ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45}
-.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed}
-.readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed}
+.fig .cap{font-size:12.5px;color:var(--text-secondary);padding:0 22px 16px;text-align:center;line-height:1.5}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid var(--border);background:var(--bg-2)}
+.ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px}
+.ctrl label span{color:var(--air);font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--air)}
+.ctrl .hint{font-size:11.5px;color:var(--text-secondary);margin-top:4px;line-height:1.45}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid var(--border)}
+.readout .cell{padding:14px 16px;border-right:1px solid var(--border)}
 .readout .cell:last-child{border-right:none}
-.readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b}
-.readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px}
-.readout .v small{font-size:13px;font-weight:500;color:#5b6b7b}
+.readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary)}
+.readout .v{font-size:22px;font-weight:700;color:var(--air);font-variant-numeric:tabular-nums;margin-top:2px}
+.readout .v small{font-size:13px;font-weight:500;color:var(--text-secondary)}
 .badge{display:inline-block;padding:3px 9px;border-radius:2px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.04em}
 .badge.good{background:color-mix(in srgb, var(--success) 12%, transparent);color:var(--success)}
 .badge.warn{background:color-mix(in srgb, var(--warning) 12%, transparent);color:var(--warning)}
@@ -234,9 +240,9 @@ table.t tr:nth-child(even) td{background:var(--bg-2)}
 
 /* svg figure — kept on a light surface in both themes so the
    navy/coloured schematics stay legible in dark mode */
-.figure{background:#f8fafc;border:1px solid var(--border);border-radius:3px;padding:14px;box-shadow:var(--shadow-glass);margin:18px 0}
+.figure{background:#f4f7f9;--text-primary:#0c1513;--text-secondary:#43524e;--text-tertiary:#5f6d69;--muted:#43524e;color:#0c1513;border:1px solid var(--border);border-radius:3px;padding:14px;box-shadow:var(--shadow-glass);margin:18px 0}
 :root[data-theme="dark"] .figure{background:#eef2f6;}
-.figure .cap{color:#5b6b7a !important}
+.figure .cap{color:#43524e !important}
 .figure svg{width:100%;height:auto;display:block}
 .figure .cap{font-size:13px;color:var(--text-tertiary);margin-top:10px;text-align:center}
 
@@ -269,7 +275,7 @@ footer a:hover{color:var(--text-primary)}
 .btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:15px;font-weight:500;
   padding:12px 22px;border-radius:980px;border:none;cursor:pointer;text-decoration:none;transition:var(--transition);letter-spacing:-0.01em}
 .btn-primary{background:var(--accent);color:var(--on-accent)}
-.btn-primary:hover{background:#0077ed}
+.btn-primary:hover{opacity:.85}
 
 .refs{font-size:14px;color:var(--text-secondary)}
 .refs li{margin:6px 0}

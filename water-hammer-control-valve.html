@@ -33,7 +33,7 @@
   <title>Control Valve Closure Time &amp; Water Hammer — Mohamed Abokhatwa</title>
   <meta name="description" content="How control valve closure time directly drives water hammer pressure surges — engineering analysis, Joukowsky equation, and closure time optimization for…">
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -118,7 +118,7 @@
     /* ── Scenario table ── */
     .scenario-table{width:100%;border-collapse:collapse;font-size:14px;margin:1.5rem 0;}
     .scenario-table thead tr{background:color-mix(in srgb, var(--accent) 7%, transparent);}
-    .scenario-table th{padding:11px 12px;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text-tertiary);border-bottom:1px solid var(--border);}
+    .scenario-table th{padding:11px 12px;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary);border-bottom:1px solid var(--border);}
     .scenario-table td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,0.05);color:var(--text-secondary);font-size:13.5px;text-align:center;}
     .scenario-table td:first-child{text-align:left;font-weight:500;color:var(--text-primary);}
     .scenario-table tbody tr:last-child td{border-bottom:none;}
@@ -140,7 +140,7 @@
 
     /* ── Comparison table ── */
     .compare-table{width:100%;border-collapse:collapse;font-size:14px;margin:1.5rem 0;}
-    .compare-table th{padding:11px 14px;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text-tertiary);border-bottom:1px solid var(--border);text-align:left;}
+    .compare-table th{padding:11px 14px;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary);border-bottom:1px solid var(--border);text-align:left;}
     .compare-table td{padding:11px 14px;border-bottom:1px solid rgba(0,0,0,0.05);color:var(--text-secondary);font-size:14px;vertical-align:top;line-height:1.6;}
     .compare-table td:first-child{font-weight:500;color:var(--text-primary);}
     .compare-table tbody tr:last-child td{border-bottom:none;}
@@ -167,7 +167,7 @@
     /* ── Material table ── */
     .material-table{width:100%;border-collapse:collapse;font-size:14px;margin:1.5rem 0;}
     .material-table thead tr{background:color-mix(in srgb, var(--accent) 7%, transparent);}
-    .material-table th{padding:10px 14px;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text-tertiary);border-bottom:1px solid var(--border);}
+    .material-table th{padding:10px 14px;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary);border-bottom:1px solid var(--border);}
     .material-table td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,0.05);color:var(--text-secondary);font-size:14px;text-align:center;}
     .material-table td:first-child{text-align:left;font-weight:500;color:var(--text-primary);}
     .material-table tbody tr:last-child td{border-bottom:none;}
@@ -715,7 +715,11 @@ const C = {};
     C.accent=v('--accent'); C.danger=v('--danger'); C.warn=v('--warning');
     C.success=v('--success'); C.text=v('--text-secondary'); C.grid=v('--border'); }
   __syncC();
-  new MutationObserver(__syncC).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  new MutationObserver(function(){ __syncC();
+    /* colours are written into markup, so redraw after a theme flip */
+    ['calcSize','drawSpacing','updateProfile','updateSurge','update','drawValve']
+      .forEach(function(fn){ try{ if(typeof window[fn]==='function') window[fn](); }catch(e){} });
+  }).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 
 // ── State ─────────────────────────────────────────────────────────────────────
 const st = { L:2000, a:1000, v:1.5, p0:8, tv:4, pn:16 };
@@ -970,7 +974,7 @@ function mcSubmit(e) {
 <style>
 #mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }
 </style>
-<script src="article-features.js?v=4"></script>
-<script src="theme.js?v=4"></script>
+<script src="article-features.js?v=5"></script>
+<script src="theme.js?v=5"></script>
 </body>
 </html>

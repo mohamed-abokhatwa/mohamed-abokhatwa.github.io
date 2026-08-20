@@ -34,7 +34,7 @@
 {"@type":"ListItem","position":3,"name":"Module 1 — HVAC: Source to Terminal","item":"https://abokhatwa.com/mep-course/module-1-hvac.html"}]},
 {"@type":"LearningResource","name":"Module 1 — HVAC: Source to Terminal","description":"HVAC for super-tall towers from source to terminal — chiller plant, heat rejection, pumps, vertical chilled-water zoning, AHUs, ducts, VAV/FCU, controls and smoke control, with worked numbers and code references.","url":"https://abokhatwa.com/mep-course/module-1-hvac.html","learningResourceType":"Course module","educationalLevel":"Professional","inLanguage":"en","isPartOf":{"@type":"Course","name":"MEP Engineering for Megatall Buildings","url":"https://abokhatwa.com/mep-course/"},"author":{"@type":"Person","name":"Mohamed Abokhatwa"}}]}
 </script>
-<link rel="stylesheet" href="assets/course.css?v=4">
+<link rel="stylesheet" href="assets/course.css?v=5">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <style>
@@ -258,7 +258,7 @@
   <div class="step">Select 4 working + 1 standby (N+1) → each = 12.24 / 4 = <strong>3.06 MW (≈ 870 TR)</strong> chillers, 5 installed.</div>
   <div class="step">Evaporator flow per chiller — rearrange Q = ṁ·c<sub>p</sub>·ΔT to ṁ = Q ÷ (c<sub>p</sub> × ΔT):
     <div class="formula">ṁ = 3,060 kW ÷ (4.187 kJ/kg·K × 7 K) = 104 kg/s ≈ 104 L/s</div>
-    <span style="color:var(--muted);font-size:13.5px">where <strong>3,060</strong> = one chiller's load (3.06 MW × 1,000 = 3,060 kW); <strong>4.187</strong> = specific heat of water; <strong>7</strong> = the chosen ΔT (°C) from the criteria; and for water 1 kg/s ≈ 1 L/s.</span></div>
+    <span style="color:var(--text-secondary);font-size:13.5px">where <strong>3,060</strong> = one chiller's load (3.06 MW × 1,000 = 3,060 kW); <strong>4.187</strong> = specific heat of water; <strong>7</strong> = the chosen ΔT (°C) from the criteria; and for water 1 kg/s ≈ 1 L/s.</span></div>
   <div class="result">5 × ~870 TR water-cooled centrifugal chillers (4 duty + 1 standby), ~104 L/s evaporator flow each. Staging them matches the part-load profile and protects efficiency (see IPLV below).</div>
 </div>
 <div class="fig">
@@ -301,7 +301,7 @@
   <div class="step"><span class="given">Given:</span> chiller evaporator load 3,060 kW, COP = 6.0, condenser ΔT (range) = 5 °C, design wet-bulb 30 °C, approach 4 °C → cold water 34 °C.</div>
   <div class="step">Heat rejected = chiller load + the compressor's own work = Q × (1 + 1/COP):
     <div class="formula">Q<sub>cond</sub> = 3,060 kW × (1 + 1/6) = 3,570 kW</div>
-    <span style="color:var(--muted);font-size:13.5px">where <strong>3,060</strong> kW = the chiller's cooling load and <strong>6</strong> = its COP (efficiency); 1/6 adds the compressor heat.</span></div>
+    <span style="color:var(--text-secondary);font-size:13.5px">where <strong>3,060</strong> kW = the chiller's cooling load and <strong>6</strong> = its COP (efficiency); 1/6 adds the compressor heat.</span></div>
   <div class="step">Condenser-water flow: ṁ = 3,570 ÷ (4.187 × 5) = <strong>170 L/s</strong> per chiller.</div>
   <div class="step">Evaporation make-up ≈ 0.8 × Q<sub>cond</sub> ÷ 2,400 kJ/kg = 0.8 × 3,570 / 2,400 = 1.19 kg/s ≈ <strong>1.2 L/s</strong> (≈ 4.3 m³/h) per chiller, plus drift &amp; blowdown (total make-up ≈ 1.5–2× evaporation).</div>
   <div class="result">~3,570 kW rejected, ~170 L/s condenser water, ~1.2 L/s evaporative make-up per chiller. In a district-cooling scheme these towers are off-site; the tower just sizes the intake HX for 12.24 MW.</div>
@@ -755,7 +755,7 @@ function mcSubmit(e) {
 
 <script src="assets/course.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-  <script src="../chart-theme.js?v=4"></script>
+  <script src="../chart-theme.js?v=5"></script>
 <script>
 const AX={family:'IBM Plex Sans',size:12,weight:'600'}, TK={family:'IBM Plex Sans',size:11};
 const fmt0=v=>Math.round(v).toLocaleString('en-US');
@@ -796,6 +796,6 @@ function updIplv(){
 }
 [sLd,sTR].forEach(s=>s.addEventListener('input',updIplv)); updIplv();
 </script>
-<script src="../theme.js?v=4"></script>
+<script src="../theme.js?v=5"></script>
 </body>
 </html>

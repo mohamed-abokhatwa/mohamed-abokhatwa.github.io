@@ -1,0 +1,2156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohamed Abokhatwa — Water Engineering</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+  <style>
+    .hero {
+      padding: 160px 24px 80px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 7vw, 84px);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      margin-bottom: 28px;
+      max-width: 800px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--text-secondary);
+    }
+    .hero-desc {
+      font-size: 19px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+    .hero-certs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 0;
+      margin-top: 44px;
+    }
+    .cert {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: var(--text-tertiary);
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+    .cert:not(:last-child)::after {
+      content: "";
+      flex: none;
+      width: 1px;
+      height: 12px;
+      background: currentColor;
+      opacity: 0.22;
+      margin: 0 16px;
+    }
+    @media (max-width: 600px) {
+      .cert:not(:last-child)::after { margin: 0 11px; }
+    }
+    .articles-section {
+      padding: 100px 24px 28px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      color: var(--text-primary);
+      margin-bottom: 60px;
+    }
+    .articles-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    /* ── Article Card ── */
+    .article-card {
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-glass);
+      padding: 40px 40px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      transition: var(--transition);
+    }
+    .article-card:hover {
+      background: var(--glass-hover);
+      box-shadow: var(--shadow-glass-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ── Card body (text) ── */
+    .card-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .article-card-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .article-card-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .article-card-excerpt {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+    .article-card-meta {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .article-card-arrow {
+      margin-left: auto;
+      font-size: 18px;
+      color: var(--text-tertiary);
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .article-card:hover .article-card-arrow {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    /* ── Thumbnail ── */
+    .card-thumb {
+      width: 160px;
+      height: 100px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+      opacity: 0.88;
+      transition: filter 0.45s ease, opacity 0.45s ease;
+    }
+    /* Blue tint overlay */
+    .card-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 113, 227, 0.18);
+      pointer-events: none;
+      transition: opacity 0.45s ease;
+    }
+    /* On hover: reveal original colours */
+    .article-card:hover .card-thumb img {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+    .article-card:hover .card-thumb::after {
+      opacity: 0;
+    }
+
+    /* ── Stats ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 80px;
+    }
+    .stat {
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-glass);
+      padding: 48px 40px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .stat:hover {
+      background: var(--glass-hover);
+      box-shadow: var(--shadow-glass-hover);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-tertiary);
+    }
+
+    /* ── Responsive ── */
+    @media(max-width:768px) {
+      .stats-row { grid-template-columns: 1fr; }
+      .card-thumb { display: none; }
+      .article-card { padding: 32px 24px; gap: 0; }
+      .hero { padding: 120px 20px 80px; }
+      .articles-section { padding: 60px 20px; }
+      .section-title { margin-bottom: 32px; }
+      .article-card-arrow { display: none; }
+    }
+
+    /* ── Browse by Category ── */
+    .cat-section {
+      padding: 80px 24px 0;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 0;
+    }
+    .cat-card {
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-glass);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition);
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+      text-align: start;
+      width: 100%;
+    }
+    .cat-card:hover {
+      background: var(--glass-hover);
+      box-shadow: var(--shadow-glass-hover);
+      transform: translateY(-2px);
+    }
+    .cat-card.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent), var(--shadow-glass);
+    }
+    .cat-card.active .cat-card-icon {
+      background: var(--accent);
+      color: #fff;
+    }
+    .cat-card-icon {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      background: rgba(0,113,227,0.08);
+      color: var(--accent);
+      margin-bottom: 0;
+    }
+    .cat-card-icon svg { width: 16px; height: 16px; }
+    .cat-card-title {
+      flex: 1;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    .cat-card-count {
+      font-size: 12.5px;
+      color: var(--text-tertiary);
+      margin-top: 0;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .cat-card-arrow {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .cat-card:hover .cat-card-arrow {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+    @media(max-width:768px) {
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .cat-section { padding: 60px 20px 0; }
+    }
+    @media(max-width:480px) {
+      .cat-grid { grid-template-columns: 1fr; }
+    }
+
+    .feature-strip{max-width:var(--max-w);margin:48px auto 0;padding:0 24px;display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .feature-card{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;border-radius:18px;
+      border:1px solid var(--border);background:var(--bg-3);text-decoration:none;transition:var(--transition);}
+    .feature-card:hover{transform:translateY(-2px);border-color:var(--accent);}
+    .feature-ic{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+      background:var(--bg-4);color:var(--accent);flex:0 0 auto;}
+    .feature-card .fk{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+    .feature-card h3{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--text-primary);
+      margin:5px 0 6px;letter-spacing:-.015em;}
+    .feature-card p{font-size:14px;line-height:1.55;color:var(--text-secondary);margin:0;}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="Mohamed Abokhatwa — Strategic Technical & Engineering Manager with 22+ years across large-scale water infrastructure and high-rise building MEP, currently Mechanical Manager on Jeddah Tower.">
+  <meta property="og:title" content="Mohamed Abokhatwa | Water Infrastructure Engineering Manager">
+  <meta property="og:description" content="Mohamed Abokhatwa — Strategic Technical & Engineering Manager with 22+ years across large-scale water infrastructure and high-rise building MEP, currently Mechanical Manager on Jeddah Tower.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/">
+  <meta property="og:image" content="https://abokhatwa.com/og-cover.jpg?v=3">
+  <meta property="og:image:alt" content="Mohamed Abokhatwa | Water Infrastructure Engineering Manager">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mohamed Abokhatwa | Water Infrastructure Engineering Manager">
+  <meta name="twitter:description" content="Mohamed Abokhatwa — Strategic Technical & Engineering Manager with 22+ years across large-scale water infrastructure and high-rise building MEP, currently Mechanical Manager on Jeddah Tower.">
+  <meta name="twitter:image" content="https://abokhatwa.com/og-cover.jpg?v=3">
+  <link rel="canonical" href="https://abokhatwa.com/">
+  <link rel="alternate" hreflang="en" href="https://abokhatwa.com/">
+  <link rel="alternate" hreflang="ar" href="https://abokhatwa.com/index-ar.html">
+  <link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://abokhatwa.com/#person",
+        "name": "Mohamed Abokhatwa",
+        "url": "https://abokhatwa.com/",
+        "image": "https://abokhatwa.com/profile.jpg",
+        "jobTitle": "Water Engineering Manager",
+        "description": "Strategic Technical & Engineering Manager with 22+ years in large-scale water transmission and treatment, hydraulic analysis, and high-rise building MEP; Mechanical Manager on Jeddah Tower.",
+        "email": "mailto:mohamed@abokhatwa.com",
+        "telephone": "+966541706700",
+        "address": { "@type": "PostalAddress", "addressLocality": "Riyadh", "addressCountry": "SA" },
+        "sameAs": ["https://www.linkedin.com/in/abokhatwa"],
+        "knowsAbout": ["Water Infrastructure", "Hydraulic Analysis", "Surge Analysis", "Pipeline Design", "Pump Engineering", "Desalination (SWRO)"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://abokhatwa.com/#website",
+        "url": "https://abokhatwa.com/",
+        "name": "Mohamed Abokhatwa — Water Engineering",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://abokhatwa.com/#person" }
+      }
+    ]
+  }
+  </script>
+  <style>
+    .hidden-article { display: none !important; }
+    .hidden-article.visible { display: flex !important; animation: articleFadeIn 0.4s ease forwards; }
+    @keyframes articleFadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ── Filter UI ── */
+    .course-promo { display:flex; align-items:center; gap:32px; justify-content:space-between;
+      text-decoration:none; padding:34px 40px; border-radius:var(--radius);
+      background:linear-gradient(135deg,rgba(0,113,227,0.10),rgba(0,113,227,0.03));
+      border:1px solid var(--glass-border); box-shadow:var(--shadow-glass); transition:var(--transition); overflow:hidden; }
+    .course-promo:hover { box-shadow:var(--shadow-glass-hover); transform:translateY(-2px); border-color:rgba(0,113,227,0.3); }
+    .course-promo-eyebrow { display:inline-block; font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+    .course-promo-text h2 { font-family:var(--font-display); font-size:clamp(24px,3.5vw,34px); font-weight:700; letter-spacing:-.03em; color:var(--text-primary); margin-bottom:12px; line-height:1.12; }
+    .course-promo-text p { color:var(--text-secondary); font-size:16px; line-height:1.6; margin-bottom:22px; max-width:640px; }
+    .course-promo-art { flex:0 0 auto; color:var(--accent); opacity:.85; }
+    .course-promo-art svg { width:120px; height:150px; }
+    @media (max-width:720px) { .course-promo { flex-direction:column-reverse; align-items:flex-start; padding:28px 24px; gap:18px; } .course-promo-art svg { width:84px; height:104px; } }
+
+    .filter-ui { margin-bottom: 36px; }
+    .search-wrap {
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    #article-search {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 18px 13px 48px;
+      border-radius: 14px;
+      border: 1.5px solid var(--glass-border);
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    #article-search::placeholder { color: var(--text-tertiary); }
+    #article-search:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,113,227,0.1);
+      background: var(--bg-3);
+    }
+    /* When filtering is active: override hidden-article so all can be shown/hidden by JS */
+    .articles-grid.filtering .article-card        { display: flex !important; }
+    .articles-grid.filtering .article-card.f-hide { display: none !important; }
+
+    #no-results { display:none; padding:60px 0; text-align:center; color:var(--text-tertiary); font-size:16px; }
+  </style>
+</head>
+<body>
+<div id="legacy-bar" style="position:sticky;top:0;z-index:99999;background:#1d1d1f;color:#f5f5f7;font:500 13px/1.4 -apple-system,BlinkMacSystemFont,Inter,Helvetica,Arial,sans-serif;padding:9px 16px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center;"><span>You are viewing the previous design of abokhatwa.com, archived 21 August 2026.</span><a href="https://abokhatwa.com/" style="color:#6fb3d6;text-decoration:underline;">Go to the current site</a></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="hero">
+  <span class="hero-eyebrow fade-up">Water &middot; Infrastructure &middot; MEP</span>
+  <h1 class="fade-up-2">Technical insights<br><em>From the field</em></h1>
+  <p class="hero-desc fade-up-3">Over 22 years designing and managing large-scale infrastructure projects across Saudi Arabia — practical engineering for water systems and MEP (building-services), through in-depth articles, calculators and a full course.</p>
+</div>
+
+<!-- MEP Course promo banner -->
+<div style="max-width:var(--max-w);margin:0 auto;padding:0 24px 8px;">
+  <a href="mep-course/" class="course-promo">
+    <div class="course-promo-text">
+      <span class="course-promo-eyebrow">New · Self-study course</span>
+      <h2>MEP Engineering for Megatall Buildings</h2>
+      <p>From first principles to real design — HVAC, plumbing, fire, electrical, ELV/BMS and vertical transport for super-tall towers. Interactive graphs, original schematics, worked numbers, and every key figure tied to a code.</p>
+      <span class="btn btn-primary">Explore the 7 modules →</span>
+    </div>
+    <div class="course-promo-art" aria-hidden="true">
+      <svg viewBox="0 0 64 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 78V18l12-10 12 10v60"/><path d="M8 78V40l12-8M44 32l12 8v38"/>
+        <path d="M26 26h0M32 26h0M38 26h0M26 36h0M32 36h0M38 36h0M26 46h0M32 46h0M38 46h0M26 56h0M32 56h0M38 56h0"/>
+        <path d="M4 78h56"/>
+      </svg>
+    </div>
+  </a>
+</div>
+
+<div class="cat-section">
+  <span class="section-eyebrow">Browse by topic</span>
+  <div class="cat-grid">
+    <button type="button" class="cat-card" data-cat="surge" onclick="topicFilter('surge',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
+      <div class="cat-card-title">Surge &amp; Transients</div>
+      <div class="cat-card-count">12 articles</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="pipeline" onclick="topicFilter('pipeline',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h12a3 3 0 0 1 3 3v0a3 3 0 0 0 3 3"/><path d="M3 9V6m0 3v3"/><circle cx="3" cy="9" r="0.5" fill="currentColor"/><path d="M15 9V7a2 2 0 0 1 2-2h2"/></svg></span>
+      <div class="cat-card-title">Pipeline Design</div>
+      <div class="cat-card-count">9 articles</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="pumps" onclick="topicFilter('pumps',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20a8 8 0 1 1 16 0"/><path d="M12 20V12l4-3"/><circle cx="12" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+      <div class="cat-card-title">Pump Engineering</div>
+      <div class="cat-card-count">10 articles</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="hydraulic" onclick="topicFilter('hydraulic',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span>
+      <div class="cat-card-title">Hydraulic Design</div>
+      <div class="cat-card-count">5 articles</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="desalination" onclick="topicFilter('desalination',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c2 0 2-1.5 4-1.5S8 8 10 8s2-1.5 4-1.5S16 8 18 8s2-1.5 4-1.5"/><path d="M2 14c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M2 20c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/></svg></span>
+      <div class="cat-card-title">Desalination &amp; SWRO</div>
+      <div class="cat-card-count">10 articles</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="leadership" onclick="topicFilter('leadership',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="3.5"/><path d="M21 20v-2a4 4 0 0 0-3-3.85"/><path d="M16 3.6a4 4 0 0 1 0 6.8"/></svg></span>
+      <div class="cat-card-title">Leadership &amp; Sustainability</div>
+      <div class="cat-card-count">5 articles</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="hvac" onclick="topicFilter('hvac',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/><path d="M12 5.5 9.5 3M12 5.5 14.5 3M12 18.5 9.5 21M12 18.5 14.5 21M5.5 12 3 9.5M5.5 12 3 14.5M18.5 12 21 9.5M18.5 12 21 14.5"/></svg></span>
+      <div class="cat-card-title">HVAC &amp; Cooling</div>
+      <div class="cat-card-count">12 articles</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="plumbing" onclick="topicFilter('plumbing',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v7a4 4 0 0 0 4 4v0a4 4 0 0 0 4-4V2"/><path d="M12 13v9"/><path d="M9 22h6"/><path d="M6 6h4M14 6h4"/></svg></span>
+      <div class="cat-card-title">Plumbing &amp; Drainage</div>
+      <div class="cat-card-count">7 articles</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="fire" onclick="topicFilter('fire',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
+      <div class="cat-card-title">Fire Protection</div>
+      <div class="cat-card-count">2 articles</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="tallmep" onclick="topicFilter('tallmep',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M3 21h18"/><path d="M7 8h10M7 12h10M7 16h10"/><path d="M12 4V2"/></svg></span>
+      <div class="cat-card-title">Tall-Building Systems</div>
+      <div class="cat-card-count">7 articles</div>
+    </button>
+  </div>
+</div>
+
+
+<div class="feature-strip">
+  <a class="feature-card" href="one-tower.html">
+    <span class="feature-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M3 21h18"/><path d="M7 9h10M7 13h10M7 17h10"/></svg></span>
+    <span>
+      <span class="fk">Interactive</span>
+      <h3>One Tower</h3>
+      <p>Every model on this site, coupled to one building. Change the height and watch the pressure zones, mechanical floors, cooling plant and water balance move together.</p>
+    </span>
+  </a>
+  <a class="feature-card" href="megatall-handbook.html">
+    <span class="feature-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+    <span>
+      <span class="fk">Collected edition</span>
+      <h3>The Megatall MEP Handbook</h3>
+      <p>Twenty-nine chapters on tall-building services as one printable volume &mdash; eight hours of reading, 86 worked models, in the order it should be read.</p>
+    </span>
+  </a>
+</div>
+
+<div class="articles-section">
+  <span class="section-eyebrow">Published articles</span>
+  <h2 class="section-title">Technical Writing</h2>
+
+  <!-- ── Search & Filter ── -->
+  <div class="filter-ui">
+    <div class="search-wrap">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aeaeb2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="search" id="article-search" aria-label="Search articles" placeholder="Search articles…" autocomplete="off" oninput="filterArticles()">
+    </div>
+  </div>
+  <div id="no-results">No articles found — try a different search or category.</div>
+
+  <div class="articles-grid" id="articlesGrid">
+
+    <a href="six-kilowatt-litre-water-energy-tall-buildings.html" class="article-card" data-cat="desalination" data-search="water energy nexus desalination SWRO specific energy consumption pressure exchanger energy recovery device PX ERD kWh per m3 recovery ratio feed pressure transmission pumping head Riyadh Jeddah Gulf tall buildings megatall domestic water lift pumping energy cooling tower makeup evaporation blowdown cycles of concentration embodied energy chiller COP condensate recovery greywater reuse dry cooler hybrid cooler water conservation sustainability design basis MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination &amp; Water-Energy &middot; Tall Buildings</span>
+        <div class="article-card-title">The Six-Kilowatt Litre: What Water Really Costs by the Time It Reaches the Top of a Gulf Tower</div>
+        <p class="article-card-excerpt">Desalination stops at the plant fence and building services start at the site boundary, so nobody adds up the whole chain. A litre reaching a top-floor tap costs about <strong>6 kWh/m³</strong> on the coast and <strong>10 inland</strong>, where transmission — not desalination — is the largest term. The tower then evaporates 2,400 m³ a day off its cooling towers, carrying embodied energy equal to roughly <strong>a tenth of the chiller plant&rsquo;s own consumption</strong> and appearing on no energy model. With three interactive charts and the levers ranked by what they actually return.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>18 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/six-kilowatt-litre-water-energy-tall-buildings.webp" width="320" height="200" alt="The Six-Kilowatt Litre: What Water Really Costs by the Time It Reaches the Top of a Gulf Tower" loading="lazy">
+      </div>
+    </a>
+
+    <a href="pools-wellness-mep-tall-buildings.html" class="article-card" data-cat="plumbing" data-search="swimming pool wellness spa MEP tall buildings megatall rooftop infinity edge evaporation ASHRAE correlation vapour pressure air velocity wind boundary layer latent load makeup water pool cover windbreak shelter water temperature turnover period circulation flow filtration velocity sand filter filter area backwash flow disposal balance tank displacement surge bather load skimmer deck level overflow disinfection chlorine bromine residual UV ozone chloramines combined chlorine automatic dosing pH interlock spa Legionella HSG282 PWTAG heat pump dehumidifier heat recovery structural load sloshing dynamic mass tuned sloshing damper waterproofing tanking test fill leak detection makeup metering chemical storage plant access commissioning MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Pools &middot; Wellness &middot; Rooftop</span>
+        <div class="article-card-title">Pools &amp; Wellness MEP in Megatall Buildings: Rooftop Evaporation, Turnover &amp; the Load on the Roof</div>
+        <p class="article-card-excerpt">Every megatall tower has a pool, and increasingly it is on the roof &mdash; which transforms an ordinary building service into one of the hardest loads in the building, because evaporation depends on <strong>air movement</strong> and at 300&nbsp;m there is a great deal of it. The same 400&nbsp;m&sup2; of water loses <strong>384&nbsp;kg an hour</strong> exposed: a <strong>262&nbsp;kW</strong> latent load and 9&nbsp;m&sup3; a day of makeup. Shelter it and that falls to 104&nbsp;kW &mdash; architecture beating plant. Plus turnover, backwash, balance tanks, spa risk and the 900-tonne mass at roof level &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>14 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/pools-wellness-mep-tall-buildings.webp" width="320" height="200" alt="Pools &amp; Wellness MEP in Megatall Buildings: Rooftop Evaporation, Turnover &amp; the Load on the Roof" loading="lazy">
+      </div>
+    </a>
+
+    <a href="refuse-chutes-waste-tall-buildings.html" class="article-card" data-cat="plumbing" data-search="refuse chute waste handling tall buildings megatall terminal velocity drag impact energy discharge chamber shock absorber retarding device compactor waste generation rate bulk density loose compacted store sizing collection interval refuse room vehicle access chute stack effect odour control negative pressure continuous top extract make-up air hopper door self closing gasketed interlock fire rated shaft NFPA 82 BS 5906 in-chute sprinkler fusible link fire alarm interlock structure borne noise resilient mounting acoustic isolation bedroom criterion recycling streams multiple chutes diverter vacuum waste collection pneumatic core planning wash down drainage commissioning MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Refuse Chutes &middot; Waste &middot; Megatall</span>
+        <div class="article-card-title">Refuse Chutes &amp; Waste Handling in Megatall Buildings: Impact Energy, Odour Control &amp; Noise</div>
+        <p class="article-card-excerpt">A refuse chute is the only system in a tall building deliberately designed to drop objects hundreds of metres in free fall. A five-kilogram bag reaches <strong>103&nbsp;km/h</strong> and gets to 90&nbsp;% of terminal velocity in the first 70&nbsp;metres &mdash; so a 600&nbsp;m chute is no worse than a mid-rise one, but it delivers <strong>2,000&nbsp;J per bag</strong> into a base detail that must be designed for it. Plus the chute as a 200&nbsp;Pa chimney pushing odour out of the upper hoppers, fire interlocks, and the structure-borne noise of a bag at 100&nbsp;km/h beside a bedroom &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>14 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/refuse-chutes-waste-tall-buildings.webp" width="320" height="200" alt="Refuse Chutes &amp; Waste Handling in Megatall Buildings: Impact Energy, Odour Control &amp; Noise" loading="lazy">
+      </div>
+    </a>
+
+    <a href="bms-controls-architecture-tall-buildings.html" class="article-card" data-cat="tallmep" data-search="BMS building management system building automation controls architecture tall buildings megatall point count field devices BACnet MS/TP RS-485 segment limit 32 devices 127 addresses baud rate 9600 76800 poll cycle token passing response time IP backbone zone controller network hierarchy mechanical zoning life safety interface fire alarm cause and effect hardwired listed network smoke control damper actuation lift recall generator changeover interface matrix trending sample interval retention change of value data volume storage metering hierarchy sub-metering thermal energy meter EN 1434 tenant billing naming convention alarm philosophy alarm flood open protocol owned database OT security VLAN IEC 62443 sequence of operation Guideline 36 functional testing commissioning handover MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; BMS &middot; Controls &middot; Metering</span>
+        <div class="article-card-title">BMS &amp; Controls Architecture for Megatall Buildings: Point Count, Field Networks &amp; Trending</div>
+        <p class="article-card-excerpt">A megatall tower has around <strong>30,000 control points</strong>, and the field networks that carry them do not scale gracefully. Five hundred points on one BACnet MS/TP trunk is a <strong>3.6-second poll cycle</strong>; let a single legacy device force 9,600 baud and it becomes twenty-nine. A 150-floor building needs roughly <strong>ninety field segments</strong>, which is why the architecture must be an IP backbone with zone-level controllers matching the mechanical zoning. Plus the life-safety boundary, trending that costs 168&nbsp;GB a decade, and metering hierarchies that close &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>14 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/bms-controls-architecture-tall-buildings.webp" width="320" height="200" alt="BMS &amp; Controls Architecture for Megatall Buildings: Point Count, Field Networks &amp; Trending" loading="lazy">
+      </div>
+    </a>
+
+    <a href="greywater-reuse-tall-buildings.html" class="article-card hidden-article" data-cat="plumbing" data-search="greywater water reuse recycling tall buildings megatall water balance source sink matching indoor demand per capita showers basins laundry WC flushing irrigation cooling tower makeup condensate recovery groundwater reuse dewatering treatment standard membrane bioreactor MBR turbidity BOD disinfection residual chlorine aerosol Legionella nutrients phosphorus biofilm balance tank treated storage hydraulic retention time plant footprint odour control dual pipework purple pipe cross connection colour coding marking potable top-up air gap type AA AB backflow prevention automatic bypass out of spec quality monitoring metering reuse fraction payback operating cost tariff subsidy Estidama Mostadam LEED BS 8525 NSF 350 WHO commissioning MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Water Reuse &middot; Greywater &middot; Megatall</span>
+        <div class="article-card-title">Greywater &amp; Water Reuse in Megatall Buildings: Matching Source to Sink, Treatment &amp; Dual Pipework</div>
+        <p class="article-card-excerpt">Water reuse is usually presented as a sustainability gesture and designed as an afterthought, which is why so many schemes end up starved or overflowing. It is actually a <strong>matching problem</strong>: greywater is about <em>twice</em> the volume WC flushing can absorb, so a flush-only scheme throws half its source away &mdash; while the cooling towers next door drink <strong>1,800&nbsp;m&sup3; a day</strong> that the same greywater covers only 13&nbsp;% of. Treatment standards by end use, plant and storage sizing, honest economics with operating cost included, and the dual pipework that these schemes actually fail on &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>14 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/greywater-reuse-tall-buildings.webp" width="320" height="200" alt="Greywater &amp; Water Reuse in Megatall Buildings: Matching Source to Sink, Treatment &amp; Dual Pipework" loading="lazy">
+      </div>
+    </a>
+
+    <a href="cooling-load-modelling-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="cooling load calculation energy modelling building simulation tall buildings megatall facade ratio floor plate slender wide envelope driven internally driven glazing U-value SHGC solar heat gain coefficient shading urban canopy solar gain by height orientation zoning perimeter core simultaneous heating and cooling diversity factor connected load simultaneous load mixed use office hotel residential schedules plant sizing redundancy N+1 turndown part load stack effect infiltration coupled airflow thermal simulation ASHRAE 140 Guideline 14 calibration Appendix G radiant time series CIBSE TM54 sensitivity analysis future tenant load MEP building services HVAC">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Cooling Load &middot; Modelling &middot; Diversity</span>
+        <div class="article-card-title">Cooling Load &amp; Energy Modelling for Megatall Buildings: Façade Ratio, Solar by Height &amp; Diversity</div>
+        <p class="article-card-excerpt">Two towers of identical height can have completely different cooling loads, plant and economics &mdash; because one has a 30&nbsp;m floor plate and the other a 60&nbsp;m one. The slender tower carries twice the fa&ccedil;ade per square metre of floor and is <strong>60&nbsp;% envelope-driven</strong>; the wide one is internally driven at 43&nbsp;%. Plus what really changes with height (the crown sees <strong>2.5&times;</strong> the solar gain of the podium for identical glass), and the diversity that turns a 50&nbsp;MW connected load into a 30&nbsp;MW plant &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>15 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/cooling-load-modelling-tall-buildings.webp" width="320" height="200" alt="Cooling Load &amp; Energy Modelling for Megatall Buildings: Façade Ratio, Solar by Height &amp; Diversity" loading="lazy">
+      </div>
+    </a>
+
+    <a href="fuel-oil-systems-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="fuel oil diesel storage standby generators emergency power fire pumps tall buildings megatall NFPA 110 NFPA 20 NFPA 30 NFPA 37 bulk tank day tank permitted quantity code cap transfer pump duty standby essential power automatic changeover overfill prevention gravity overflow return leg fuel riser static pressure PN16 PN40 intermediate tanks staged double containment double wall pipe leak detection remote isolation shut off bunding 110 percent fill point tanker spill kit fuel polishing water drain breather drier microbial contamination diesel bug FAME biodiesel oxidation gum load bank testing building load test commissioning fire command centre MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; Fuel Oil &middot; Standby Power &middot; Fire Pumps</span>
+        <div class="article-card-title">Fuel Oil Systems for Generators &amp; Fire Pumps in Megatall Buildings: Storage, Risers &amp; Fuel Quality</div>
+        <p class="article-card-excerpt">Standby generators and diesel fire pumps only matter on the day everything else has failed &mdash; and both run on a fuel that must be stored in quantity, moved vertically through occupied floors, and kept ready for years without degrading. A 5&nbsp;MW set with 24 hours of autonomy needs <strong>26&nbsp;m&sup3; &mdash; 22 tonnes</strong> of diesel; put the generators on a 300&nbsp;m mechanical floor and the riser carries <strong>25&nbsp;bar of flammable liquid</strong> through occupied space. Plus NFPA&nbsp;20 dedicated fire pump fuel, and the five-year-old diesel that actually causes standby failures &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>14 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/fuel-oil-systems-tall-buildings.webp" width="320" height="200" alt="Fuel Oil Systems for Generators &amp; Fire Pumps in Megatall Buildings: Storage, Risers &amp; Fuel Quality" loading="lazy">
+      </div>
+    </a>
+
+    <a href="atrium-smoke-control-tall-buildings.html" class="article-card hidden-article" data-cat="fire" data-search="atrium smoke control smoke management tall buildings megatall podium NFPA 92 smoke filling correlation clear layer descent design fire heat release rate sprinkler controlled axisymmetric plume entrainment mass flow flame height convective fraction layer temperature exhaust volume smoke reservoir channelling screen depth make-up air velocity limit 1.02 m/s free area plugholing extract points destratification pre-stratification solar glazed roof stack effect natural buoyancy ventilation mechanical exhaust depressurisation temperature time class essential power motorised louvre position proving hot smoke test AS 4391 BS 7346-4 BS 9999 EN 12101 CFD performance based design SFPE commissioning MEP building services fire engineering">
+      <div class="card-body">
+        <span class="article-card-tag">Fire Protection &middot; Smoke Control &middot; Atria &middot; Tall Buildings</span>
+        <div class="article-card-title">Atrium Smoke Control in Tall Buildings: Filling Time, Plume Entrainment &amp; the Make-Up Air Problem</div>
+        <p class="article-card-excerpt">Every megatall development has an atrium, and every atrium is a compartment the fire code was not written for &mdash; its whole purpose is that it is <em>not</em> divided. A 5&nbsp;MW fire drops the clear layer in a 20&nbsp;m atrium to head height in about nine minutes; holding it at 6&nbsp;m needs <strong>33&nbsp;m&sup3;/s</strong> of exhaust. The exhaust is the easy half: the same air has to come back in below 1&nbsp;m/s, which means <strong>32&nbsp;m&sup2; of free opening</strong> &mdash; an architectural decision no fan can fix later. Plus plugholing, pre-stratification and hot smoke testing &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>15 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/atrium-smoke-control-tall-buildings.webp" width="320" height="200" alt="Atrium Smoke Control in Tall Buildings: Filling Time, Plume Entrainment &amp; the Make-Up Air Problem" loading="lazy">
+      </div>
+    </a>
+
+    <a href="water-treatment-building-systems.html" class="article-card hidden-article" data-cat="hvac" data-search="water treatment building HVAC chilled water condenser water scale corrosion biofouling biofilm Legionella fouling factor thermal resistance condenser approach chiller power penalty heat flux calcium carbonate silica scale side stream filtration sand filter centrifugal separator cut point turnover time basin sweep corrosion rate mils per year mpy coupon monitoring pitting factor microbiologically influenced corrosion MIC under deposit closed system oxygen make-up metering leak detection pre-commission cleaning BSRIA BG29 chemical cleaning passivation white rust galvanic dissimilar metals inhibitor depletion dosing pot sample point cycles of concentration blowdown conductivity control oxidising non-oxidising biocide makeup pre-treatment softening reverse osmosis strainer differential pressure approach trending ASHRAE 188 commissioning MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Water Treatment &middot; Fouling &middot; Corrosion</span>
+        <div class="article-card-title">Water Treatment for Building HVAC Systems: What Fouling Really Costs, Filtration &amp; Corrosion Life</div>
+        <p class="article-card-excerpt">Water treatment is the last line in the tender, the first thing value-engineered out, and the only system whose neglect degrades every other system at once. Half a millimetre of scale &mdash; what you would call &ldquo;a bit of a film&rdquo; &mdash; raises the condensing approach by 5&nbsp;K and the chiller&rsquo;s power by <strong>12.5&nbsp;%</strong>, continuously, invisibly. Meanwhile a pitting factor of four turns a comfortable 59-year corrosion allowance into <strong>15 years</strong>. Side-stream filtration, closed-system oxygen control, cooling tower chemistry, and the monitoring that must be designed in &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>15 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/water-treatment-building-systems.webp" width="320" height="200" alt="Water Treatment for Building HVAC Systems: What Fouling Really Costs, Filtration &amp; Corrosion Life" loading="lazy">
+      </div>
+    </a>
+
+    <a href="basement-dewatering-drainage-tall-buildings.html" class="article-card hidden-article" data-cat="plumbing" data-search="basement dewatering groundwater control deep basement tall buildings megatall permeability Darcy seepage Sichardt radius of influence pumping test settlement neighbouring structures tanked basement drained basement BS 8102 waterproofing grades under slab drainage layer hydrostatic uplift buoyancy tension piles anchors raft thickness sump design active volume cycle time starts per hour submersible pump guide rail duty standby essential power alarm levels duty rotation confined space ramp water firefighting discharge sprinkler drainage oil interceptor silt trap foul separation sewer surcharge backflow anti-flood valve groundwater reuse cooling tower makeup abstraction consent CIRIA C750 commissioning MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Dewatering &middot; Basement &middot; Megatall</span>
+        <div class="article-card-title">Deep Basement Dewatering &amp; Drainage for Megatall Buildings: Inflow, Uplift &amp; Safety-Critical Pumps</div>
+        <p class="article-card-excerpt">Every megatall tower sits on a deep basement below the water table, and that creates two problems that behave nothing like each other. The <strong>flow</strong> is set almost entirely by the ground &mdash; the same 20&nbsp;m excavation takes 3&nbsp;L/s in silt and <strong>326&nbsp;L/s</strong> in sand and gravel. The <strong>pressure</strong> is set by the water table: 20&nbsp;m above the slab is <strong>9,000 tonnes</strong> of uplift on a 1,000&nbsp;m&sup2; raft. Choose a drained basement to relieve it and the dewatering pumps become structural elements protecting the room that holds all the building&rsquo;s plant &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>15 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/basement-dewatering-drainage-tall-buildings.webp" width="320" height="200" alt="Deep Basement Dewatering &amp; Drainage for Megatall Buildings: Inflow, Uplift &amp; Safety-Critical Pumps" loading="lazy">
+      </div>
+    </a>
+
+    <a href="kitchen-exhaust-grease-risers-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="kitchen exhaust grease duct grease riser tall buildings megatall mixed use commercial kitchen hood wall canopy island canopy capture and containment exhaust rate duty light medium heavy transport velocity minimum velocity 500 fpm demand controlled kitchen ventilation DCKV turndown fan power cube law make-up air tempered air untempered kitchen pressure negative odour migration NFPA 96 continuously welded liquid tight access doors cleaning schedule fire rated shaft duct wrap clearance to combustibles hood suppression wet chemical UL 300 no fire dampers roof discharge dispersion intake separation grease filters baffle cartridge UV ozone commissioning smoke test MEP building services HVAC">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Kitchen Ventilation &middot; Grease Risers &middot; Fire</span>
+        <div class="article-card-title">Kitchen Exhaust &amp; Grease Risers in Tall Buildings: Transport Velocity, Turndown &amp; Make-Up Air</div>
+        <p class="article-card-excerpt">A mixed-use tower puts kitchens on the podium and near the crown, and every one needs a duct that runs unbroken to the roof &mdash; lined with combustible deposit, passing through occupied floors, at once a ventilation system, a fire hazard and a fire-rated compartment. It is governed by a rule no other duct obeys: a <strong>minimum</strong> velocity. Design at 10&nbsp;m/s and demand control reaches 25&nbsp;% flow and 12&nbsp;% fan power, entirely within the limit. Plus make-up air and the pressure relationship that decides whether the hoods capture at all &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>14 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/kitchen-exhaust-grease-risers-tall-buildings.webp" width="320" height="200" alt="Kitchen Exhaust &amp; Grease Risers in Tall Buildings: Transport Velocity, Turndown &amp; Make-Up Air" loading="lazy">
+      </div>
+    </a>
+
+    <a href="mep-commissioning-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="commissioning Cx MEP tall buildings megatall phased handover zone commissioning staggered programme pipeline testability isolation zone metering balancing man-days terminal devices VAV fan coil PICV pressure independent control valve networked controllers witness testing sampling re-test allowance seasonal commissioning deferred commissioning retention capacity test correction certified curves wet bulb integrated systems test IST cause and effect matrix NFPA 3 NFPA 4 fire alarm smoke control lift recall generator changeover failure scenarios rehearsal commissioning authority independent BSRIA BG 8 BG 49 CIBSE Commissioning Code M soft landings post occupancy trending BMS temporary to permanent transition MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; Commissioning &middot; IST &middot; Handover</span>
+        <div class="article-card-title">Commissioning MEP in Megatall Buildings: Phased Handover, the Integrated Systems Test &amp; Seasonal Returns</div>
+        <p class="article-card-excerpt">A megatall tower cannot be commissioned the normal way, because the normal way assumes the building is finished before you start. Six zones done sequentially take <strong>48 weeks</strong>; staggered as a pipeline they take <strong>23</strong> &mdash; but only if the design made each zone isolatable. Three thousand terminals is over <strong>400 man-days</strong> that is almost never in the tender, and PICVs remove most of it. Plus seasonal returns written into the contract, correcting capacity tests to design conditions, and why the first zone commissioned early as a prototype is worth 4 times less to fix per defect &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>15 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/mep-commissioning-tall-buildings.webp" width="320" height="200" alt="Commissioning MEP in Megatall Buildings: Phased Handover, the Integrated Systems Test &amp; Seasonal Returns" loading="lazy">
+      </div>
+    </a>
+
+    <a href="thermal-energy-storage-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="thermal energy storage TES cool storage ice storage chilled water storage stratified tank thermocline diffuser phase change material PCM encapsulated ice ice on coil internal melt ice harvesting tall buildings megatall peak shaving load shifting full storage partial storage load factor chiller capacity reduction plant room substation demand charge tariff arbitrage on-peak off-peak rate ratio COP penalty glycol low temperature chiller state of charge control sequence forecast based charging demand limiting commissioning charge discharge cycle ASHRAE 150 Guideline 4 structural load insulation vapour barrier condensation MEP building services HVAC">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Thermal Storage &middot; Ice Storage &middot; Peak Shaving</span>
+        <div class="article-card-title">Thermal Energy Storage for Megatall Buildings: Ice vs Water, Peak Shaving &amp; the Tariff That Pays for It</div>
+        <p class="article-card-excerpt">Thermal storage is the only way to buy cooling at one time and use it at another &mdash; but in a tower a physical constraint settles the design before economics is discussed. Storing 128&nbsp;MWh as chilled water needs <strong>13,757&nbsp;m&sup3;</strong>, nearly fourteen thousand tonnes; as ice it is <strong>1,538&nbsp;m&sup3;</strong>. Partial storage cuts chiller capacity by 40&nbsp;%, the tariff arbitrage pays over a million a year &mdash; and making ice costs about a quarter of your COP, so the plant uses 11&nbsp;% more energy. Storage buys capacity, not efficiency &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>15 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/thermal-energy-storage-tall-buildings.webp" width="320" height="200" alt="Thermal Energy Storage for Megatall Buildings: Ice vs Water, Peak Shaving &amp; the Tariff That Pays for It" loading="lazy">
+      </div>
+    </a>
+
+    <a href="car-park-ventilation-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="car park ventilation basement garage podium tall buildings megatall CO dilution carbon monoxide NO2 nitrogen dioxide exposure limit TWA prescriptive air changes ACH demand controlled ventilation CO sensors placement jet fan impulse ventilation ducted distribution clear height CFD momentum fan out of service smoke extract fire mode temperature rated fan 300C 60 min 400C damper zoning proving make-up air free area door force negative pressure ramp stack effect sprinkler cooled smoke stratification electric vehicle EV fire lithium ion battery charger load BS 7346-7 NFPA 88A NFPA 92 ASHRAE 62.1 commissioning fire sequence MEP building services HVAC">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Car Park Ventilation &middot; Jet Fans &middot; Fire Mode</span>
+        <div class="article-card-title">Car Park Ventilation in Tall-Building Podiums: CO Dilution, Jet Fans, Fire Mode &amp; the EV Question</div>
+        <p class="article-card-excerpt">The car park is the least glamorous space in a development and the one most likely to be grossly over-ventilated. A prescriptive 10 air changes an hour demands <strong>41.7&nbsp;m&sup3;/s</strong> where the actual CO dilution needs <strong>11.6</strong> &mdash; and the factor of three and a half buys nothing but a bigger fan and a permanent bill. Demand control, jet fans versus ducts and the 300&ndash;500&nbsp;mm of clear height they give back, fire mode and the make-up air path everyone forgets, and what electric vehicles change &mdash; with two interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>14 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/car-park-ventilation-tall-buildings.webp" width="320" height="200" alt="Car Park Ventilation in Tall-Building Podiums: CO Dilution, Jet Fans, Fire Mode &amp; the EV Question" loading="lazy">
+      </div>
+    </a>
+
+    <a href="district-cooling-ets-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="district cooling energy transfer station ETS tall buildings megatall delta-T low delta-T return temperature capacity charge demand charge consumption charge tariff contract penalty contracted flow plate heat exchanger approach fouling plate pack gasket pressure independent control valve PICV valve authority two port three port bypass decoupler BTU meter energy meter EN 1434 OIML R75 matched sensor pair Pt100 flow meter accuracy straight lengths electromagnetic ultrasonic measurement uncertainty network pressure transient water hammer strainer side stream filtration commissioning trending alarm ASHRAE district cooling guide IDEA CIBSE CP1 MEP building services HVAC">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; District Cooling &middot; ETS &middot; Megatall</span>
+        <div class="article-card-title">District Cooling &amp; Energy Transfer Stations for Megatall Buildings: Delta-T, Approach &amp; Metering</div>
+        <p class="article-card-excerpt">Connecting a tower to a district network does not simplify the design &mdash; it replaces a plant you control with a contract you cannot renegotiate, and &Delta;T stops being an efficiency metric and becomes a bill. Deliver 4&nbsp;K where you promised 8&nbsp;K and the <strong>capacity charge doubles</strong> for identical cooling. The heat-exchanger approach you pay for twice (1.5&nbsp;K saved on plates comes back as 15&nbsp;% more coil area in every room), pressure-independent valves, and why at low &Delta;T the temperature sensors &mdash; not the flow meter &mdash; dominate what you pay &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>16 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/district-cooling-ets-tall-buildings.webp" width="320" height="200" alt="District Cooling &amp; Energy Transfer Stations for Megatall Buildings: Delta-T, Approach &amp; Metering" loading="lazy">
+      </div>
+    </a>
+
+    <a href="building-movement-mep-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="building movement thermal expansion column shortening creep shrinkage differential shortening tall buildings megatall supertall MEP risers pipe support anchors guides expansion loop guided cantilever bellows axial compensator tied bellows pressure balanced pressure thrust spring rate anchor load structural interface coefficient of expansion carbon steel stainless copper PPR PEX PVC plastics riser branch swing arm slab penetration sleeve fire stopping movement rated movement joint podium tower interface seismic restraint snubber cold pull pre-set installation temperature travel indicator survey datum EJMA ASME B31.1 Eurocode 2 ACI 209 CTBUH SMACNA commissioning building services">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; Building Movement &middot; Riser Support &middot; Anchors</span>
+        <div class="article-card-title">Building Movement &amp; MEP in Megatall Buildings: Thermal Expansion, Column Shortening &amp; Anchor Loads</div>
+        <p class="article-card-excerpt">A megatall tower is not a static object. It shortens by roughly <strong>700&nbsp;mm</strong> over its life as the concrete creeps and dries, and about <strong>280&nbsp;mm of that arrives after the risers are anchored</strong> &mdash; two and a half times their thermal movement, and additive to it. Core and perimeter shorten by different amounts, quietly shearing every horizontal run between them. Plus why plastic risers move ten times as far as steel, how to size an expansion loop, and the bellows pressure thrust that puts <strong>eight tonnes</strong> on a bracket detailed for pipe weight &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>16 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/building-movement-mep-tall-buildings.webp" width="320" height="200" alt="Building Movement &amp; MEP in Megatall Buildings: Thermal Expansion, Column Shortening &amp; Anchor Loads" loading="lazy">
+      </div>
+    </a>
+
+    <a href="domestic-hot-water-legionella-tall-buildings.html" class="article-card hidden-article" data-cat="plumbing" data-search="domestic hot water DHW service water heating Legionella legionnaires disease tall buildings megatall plumbing temperature regime 60 degrees storage 55 degrees return thermal disinfection D-value log reduction z-value growth range 20 45 scald risk thermostatic mixing valve TMV failsafe point of use recirculation loop heat loss standing loss return flow thermostatic balancing valve dynamic balancing dead leg stagnation infrequently used outlets automatic flushing storage calorifier instantaneous heater recovery rate turnover tank weight cold water below 20 shaft layout insulation thickness thermometer pocket commissioning to temperature chlorination disinfection water safety plan ACOP L8 HSG274 ASHRAE 188 CIBSE TM13 BS 8558 MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Hot Water &middot; Legionella &middot; Megatall</span>
+        <div class="article-card-title">Domestic Hot Water &amp; Legionella Control in Megatall Buildings: Temperature Regime, Recirculation &amp; Storage</div>
+        <p class="article-card-excerpt">Hot water is the only building service that can harm people through ordinary operation rather than through failure &mdash; and the design is a genuine conflict, because hot enough to be safe is hot enough to scald. At 55&nbsp;&deg;C a 4-log kill takes an hour, at 60&nbsp;&deg;C eight minutes, and at 46&nbsp;&deg;C it never happens. Why the answer is spatial rather than thermal, why a recirculation return flow of a quarter of a litre per second is what makes remote branches fail, dead legs, storage versus turnover, and keeping cold water cold in a warm shaft &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>16 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/domestic-hot-water-legionella-tall-buildings.webp" width="320" height="200" alt="Domestic Hot Water &amp; Legionella Control in Megatall Buildings: Temperature Regime, Recirculation &amp; Storage" loading="lazy">
+      </div>
+    </a>
+
+    <a href="vibration-noise-control-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="vibration isolation noise control acoustics building services MEP tall buildings megatall mechanical floors transmissibility static deflection natural frequency frequency ratio resonance amplification spring isolator neoprene pad inertia base housekeeping pad snubber seismic restraint flanking path flexible connector resilient hanger pipe riser clamping grout bridge fire stop sound bridge plant room absorption reverberant field room constant sound power sound pressure transmission loss partition double leaf NR rating NC rating regenerated noise duct velocity silencer insertion loss blade pass frequency tonal noise VFD variable speed 50 log law commissioning ASHRAE CIBSE Guide B4 BS 8233 SMACNA seismic building services">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; Vibration &middot; Acoustics &middot; Mechanical Floors</span>
+        <div class="article-card-title">Vibration &amp; Noise Control for MEP in Megatall Buildings: Static Deflection, Flanking Paths &amp; Plant-Room Acoustics</div>
+        <p class="article-card-excerpt">Every mechanical floor sits directly above somebody&rsquo;s bedroom. Vibration isolation is governed by one ratio, and below &radic;2 an isolator <em>amplifies</em> rather than isolates &mdash; so a 6&nbsp;mm pad under a 600&nbsp;rpm machine gives 29&nbsp;% isolation and under anything slower makes it worse. Why you specify static deflection and never isolator type, why the check must be at minimum VFD speed, the flanking paths that leak past perfect isolators, plant-room absorption versus partition transmission loss, and variable speed as a free 8&nbsp;dB &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>16 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/vibration-noise-control-tall-buildings.webp" width="320" height="200" alt="Vibration &amp; Noise Control for MEP in Megatall Buildings: Static Deflection, Flanking Paths &amp; Plant-Room Acoustics" loading="lazy">
+      </div>
+    </a>
+
+    <a href="vertical-transportation-mep-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="vertical transportation lifts elevators MEP interface tall buildings megatall supertall machine room heat gain MRL machine room less drive cabinet motor losses duty cycle regenerative drive harmonics essential power N+1 cooling chilled water ambient limit derating piston effect blockage ratio car speed annulus velocity shaft dimension inter-shaft venting aerodynamic shroud landing door differential stack effect hoistway pressurisation lobby pressurisation NFPA 92 EN 12101-6 doors open doors closed turndown relief damper multi-level injection firefighter lift occupant evacuation elevator pit drainage sump oil separator sprinkler shunt trip phase 1 recall fire alarm interface commissioning CIBSE Guide D EN 81-20 ASME A17.1 ISO 25745 MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; Lifts &middot; MEP Interfaces &middot; Megatall</span>
+        <div class="article-card-title">Lifts &amp; MEP in Megatall Buildings: Machine-Room Heat, Piston Effect &amp; Hoistway Pressurisation</div>
+        <p class="article-card-excerpt">The lifts are somebody else&rsquo;s package, yet four of their consequences are squarely MEP. A bank of eight machines dumps <strong>108&nbsp;kW</strong> into a room that is usually unconditioned in the concept design; the hoistway is the building&rsquo;s dominant chimney; a car at 10&nbsp;m/s and 60&nbsp;% blockage generates <strong>160&nbsp;Pa</strong> of piston pressure on top of the stack effect, fixed far more cheaply by shaft dimension than by equipment; and pressurisation has a <strong>3.6:1 turndown</strong> between its doors-open and doors-closed cases &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>16 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/vertical-transportation-mep-tall-buildings.webp" width="320" height="200" alt="Lifts &amp; MEP in Megatall Buildings: Machine-Room Heat, Piston Effect &amp; Hoistway Pressurisation" loading="lazy">
+      </div>
+    </a>
+
+    <a href="refrigerant-systems-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="refrigerant VRF variable refrigerant flow DX direct expansion tall buildings megatall supertall high-rise flash gas sub-cooling liquid line static head vertical lift saturation slope height limit condensing unit above evaporator oil return suction riser velocity minimum load double riser oil trap pipe sizing do not oversize ASHRAE 15 ASHRAE 34 refrigerant concentration limit RCL smallest occupied space A1 A2L A3 safety group flammability LFL R410A R32 R134a R1234yf low GWP F-Gas machinery room leak detection emergency ventilation 70 root G purge control nitrogen purge brazing evacuation micron vacuum rise test weighed charge leak check register commissioning minimum load MEP building services HVAC">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Refrigerant &middot; VRF &middot; ASHRAE 15</span>
+        <div class="article-card-title">Refrigerant Systems &amp; VRF in Megatall Buildings: Flash Gas, Oil Return &amp; the Concentration Limit</div>
+        <p class="article-card-excerpt">Refrigerant is the only fluid in the building that is a gas and a liquid at once, and that is what makes towers hard. A 100&nbsp;m liquid lift costs 9.3&nbsp;bar and about 15&nbsp;K of sub-cooling you do not have &mdash; the real reason VRF catalogues state height limits &mdash; unless you put the condensing plant above the evaporators and let the liquid fall. Suction risers sized for minimum load so the oil comes back, the ASHRAE&nbsp;15 concentration limit set by the smallest room the circuit serves, what the A2L transition does to allowable charge, and machinery room ventilation at 70&radic;G &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>16 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/refrigerant-systems-tall-buildings.webp" width="320" height="200" alt="Refrigerant Systems &amp; VRF in Megatall Buildings: Flash Gas, Oil Return &amp; the Concentration Limit" loading="lazy">
+      </div>
+    </a>
+
+    <a href="cooling-towers-heat-rejection-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="cooling towers heat rejection condenser water tall buildings megatall supertall open circuit closed circuit static lift plate heat exchanger chiller location mechanical floor fluid cooler approach range wet bulb design wet bulb condenser water reset chiller efficiency penalty tower fan power optimisation evaporation blowdown cycles of concentration makeup water balance side stream filtration treated sewage effluent water scarcity drift eliminator plume abatement recirculation intake obstruction wind at height structural wet weight basin equalisation drain back freeboard NPSH submergence passivation white rust Legionella ASHRAE 188 HSG274 CTI ATC-105 commissioning MEP building services HVAC">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Cooling Towers &middot; Heat Rejection &middot; Megatall</span>
+        <div class="article-card-title">Cooling Towers &amp; Heat Rejection in Megatall Buildings: The Open Circuit, Wet-Bulb Approach &amp; the Water Balance</div>
+        <p class="article-card-excerpt">One line in a tall-building chilled-water schematic behaves completely differently from all the others: the condenser circuit is <em>open</em>, so the return column never pushes back and the pump lifts the full height forever. Put the chillers in the basement and the towers on a 300&nbsp;m roof and that is 817&nbsp;kW of pumping. Approach and wet-bulb optimisation against combined chiller and fan power, why the optimum is colder than the specification says, the water balance that has a 50&nbsp;MW plant drinking 2,400&nbsp;m&sup3; a day, plume and recirculation at height, and Legionella control &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>18 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/cooling-towers-heat-rejection-tall-buildings.webp" width="320" height="200" alt="Cooling Towers &amp; Heat Rejection in Megatall Buildings: The Open Circuit, Wet-Bulb Approach &amp; the Water Balance" loading="lazy">
+      </div>
+    </a>
+
+    <a href="outdoor-air-ventilation-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="outdoor air ventilation fresh air tall buildings megatall supertall high-rise indoor air quality IAQ wind pressure boundary layer power law terrain exponent pressure coefficient windward leeward air intake louvre free area face velocity plenum short circuit motorised damper reversal exhaust discharge separation dispersion re-entrainment plume cooling tower drift generator flue energy recovery enthalpy wheel ERV HRV effectiveness latent load psychrometrics humidity ratio dehumidification DOAS dedicated outdoor air system demand controlled ventilation CO2 filtration ISO 16890 ePM1 MERV pressure drop filter depth fan energy leakage class commissioning ASHRAE 62.1 90.1 sand salt corrosion MEP building services HVAC">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Ventilation &middot; Outdoor Air &middot; Megatall</span>
+        <div class="article-card-title">Outdoor Air &amp; Ventilation in Megatall Buildings: Wind Pressure, Intake Strategy, Energy Recovery &amp; Filtration</div>
+        <p class="article-card-excerpt">Outdoor air is the one thing a tall building cannot manufacture &mdash; it has to be captured from a moving atmosphere that behaves very differently at 600&nbsp;m. Why an ordinary 10&nbsp;m/s street wind becomes 600&nbsp;Pa across the building and short-circuits any shared intake plenum, how to place intakes and discharges, what a total-enthalpy wheel is actually worth in Jeddah versus Riyadh (three times the difference), the annual fan energy hidden in filter pressure drop, and the case for separating ventilation from cooling &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>17 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/outdoor-air-ventilation-tall-buildings.webp" width="320" height="200" alt="Outdoor Air &amp; Ventilation in Megatall Buildings: Wind Pressure, Intake Strategy, Energy Recovery &amp; Filtration" loading="lazy">
+      </div>
+    </a>
+
+    <a href="mechanical-floors-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="mechanical floors plant rooms tall buildings megatall supertall high-rise vertical zoning pressure break zone height core planning riser shaft area economics lettable area gross floor area duct riser sizing central all-air floor by floor AHU DOAS outdoor air riser velocity governing constraint domestic water comfort window PRV chilled water pressure class PN16 fire standpipe rating refuge floor outrigger belt truss sky lobby lift zoning plant layout maintenance access pull space tube pull rigging lifting beam knock out panel bunding drainage leak detection plant ventilation acoustic isolation BSRIA rules of thumb coordination BIM MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; Mechanical Floors &middot; Vertical Zoning &middot; Core Planning</span>
+        <div class="article-card-title">Mechanical Floors in Megatall Buildings: Spacing, Zone Heights, Riser Economics &amp; Layout</div>
+        <p class="article-card-excerpt">Three consultants will tell you where the mechanical floors go, and none of them is the MEP engineer &mdash; yet their spacing sets the vertical zone height that every pressure system in the tower must live inside. The area economics of plant floors versus riser shafts, why central all-air distribution stops scaling around 40 floors, the zone-height table that decides the building (domestic water governs at 36&nbsp;m until you fix it with PRVs), making levels coincide with outriggers and refuge floors, and layout for rigging and maintenance &mdash; with three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>17 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/mechanical-floors-tall-buildings.webp" width="320" height="200" alt="Mechanical Floors in Megatall Buildings: Spacing, Zone Heights, Riser Economics &amp; Layout" loading="lazy">
+      </div>
+    </a>
+
+    <a href="domestic-water-tall-buildings.html" class="article-card hidden-article" data-cat="plumbing" data-search="domestic water potable water supply tall buildings megatall supertall high-rise plumbing demand estimation Hunter curve fixture units WSFU water supply fixture unit binomial probability IAPMO water demand calculator DIN 1988 EN 806 simultaneous demand diversity pressure zoning fixture pressure window minimum flowing pressure maximum static pressure PRV pressure reducing valve floor PRV riser zoning pipe class PN16 break tank transfer pump booster pump hydropneumatic variable speed gravity down-feed roof tank cascade series pumping specific energy kWh per m3 storage turnover water quality chlorine residual stagnation compartmented tank backflow prevention cross connection air gap RPZ vacuum breaker water hammer Joukowsky arrestor disinfection zone metering commissioning MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Domestic Water &middot; Pressure Zoning &middot; Megatall</span>
+        <div class="article-card-title">Domestic Water Supply in Megatall Buildings: Demand, Pressure Zoning, PRVs &amp; the Energy of Height</div>
+        <p class="article-card-excerpt">Fire water reaches the top floor once; domestic water has to reach it every time somebody opens a tap. The pressure window at a fixture is only 3.5&nbsp;bar wide &mdash; worth 36&nbsp;m of building &mdash; so a 600&nbsp;m tower needs seventeen zones unless you zone the riser on pipe class and control at the floor. Why the 1940 Hunter curve over-predicts modern demand by three times, gravity down-feed vs zone-boosted pumping and what height costs in kWh/m&sup3;, storage turnover and water quality, backflow and transients &mdash; with three interactive charts and installation tricks.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>18 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/domestic-water-tall-buildings.webp" width="320" height="200" alt="Domestic Water Supply in Megatall Buildings: Demand, Pressure Zoning, PRVs &amp; the Energy of Height" loading="lazy">
+      </div>
+    </a>
+
+    <a href="chilled-water-pumps-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="chilled water pumps CHW pump selection sizing tall buildings megatall supertall high-rise closed loop static head friction head net static cancels pressure zoning PN16 PN25 PN40 pressure class plate heat exchanger cascade approach parallel fed high pressure primary riser plant supply temperature chiller penalty delta-T design flow Darcy-Weisbach riser velocity index circuit head build-up safety factor oversizing impeller trim primary secondary decoupler variable primary flow VPF tertiary distributed pumping series BEP POR AOR Hydraulic Institute parallel operation flat curve hunting non-overloading motor NPSH expansion vessel point of no pressure change fill pressure air separation PICV pressure independent control valve valve authority two-port VFD minimum speed DP reset differential pressure sensor affinity laws staging inertia base laser alignment pipe strain eccentric reducer triple duty valve strainer commissioning ASHRAE 90.1 CIBSE MEP building services HVAC">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Chilled Water &middot; Pump Selection &middot; Megatall</span>
+        <div class="article-card-title">Chilled-Water Pumps in Megatall Buildings: Static vs Friction Head, Pressure Zoning, Heat-Exchanger Cascades &amp; Part-Load Control</div>
+        <p class="article-card-excerpt">The pump needs 39 m of head; the pipe at the base must hold 600 m &mdash; and getting those two the wrong way round is the most expensive mistake in tall-building chilled water. Why a closed loop cancels the static column, how to build the head honestly without padding it, vertical pressure zoning and the heat-exchanger cascade that can drive plant supply below the freezing limit, pumping architectures, BEP/POR selection, the expansion vessel on the suction, and how DP sensor location changes part-load power by 4&times; &mdash; with three interactive charts and installation tricks.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>20 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/chilled-water-pumps-tall-buildings.webp" width="320" height="200" alt="Chilled-Water Pumps in Megatall Buildings: Static vs Friction Head, Pressure Zoning, Heat-Exchanger Cascades &amp; Part-Load Control" loading="lazy">
+      </div>
+    </a>
+
+    <a href="stack-effect-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="stack effect chimney effect tall buildings megatall supertall high-rise building physics neutral plane neutral pressure level NPL driving pressure gradient temperature difference reverse stack summer downward smoke movement door opening force 133 N 30 lbf door closer egress shaft compartmentation sky lobby mechanical floor lift elevator hoistway landing door shaft vent piston effect vestibule airlock revolving door loading dock refuse chute slab edge seal fire stopping airtightness air barrier air permeability infiltration ASHRAE 90.1 Fundamentals NFPA 92 EN 12101-6 stair pressurization smoke control commissioning blower door trap seal condensation energy penalty MEP building services HVAC">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Building Physics &middot; Stack Effect &middot; Megatall Buildings</span>
+        <div class="article-card-title">Stack Effect in Megatall Buildings: The Neutral Plane, Door Forces, Shaft Compartmentation &amp; the Energy Penalty</div>
+        <p class="article-card-excerpt">There is a chimney inside your building that nobody drew and nobody sized. How big the stack pressure really gets (270 Pa over 600 m), where the neutral plane sits and how to move it deliberately, why a stair door needs 347 N to open, why Gulf towers are governed by the summer reverse stack rather than winter, how sky-lobby compartmentation and vestibules fix it, and the megawatt-scale infiltration penalty &mdash; with three interactive charts and installation tricks.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>19 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/stack-effect-tall-buildings.webp" width="320" height="200" alt="Stack Effect in Megatall Buildings: The Neutral Plane, Door Forces, Shaft Compartmentation &amp; the Energy Penalty" loading="lazy">
+      </div>
+    </a>
+
+    <a href="firefighting-tall-buildings.html" class="article-card hidden-article" data-cat="fire" data-search="firefighting fire protection tall buildings megatall supertall high-rise standpipe hose NFPA 14 sprinkler NFPA 13 fire pump NFPA 20 pressure zoning static pressure vertical zones transfer tank break tank cascade series pumping gravity down-feed pressure reducing valve PRV residual pressure stack effect neutral plane smoke control stair pressurization NFPA 92 door force smoke management refuge floor fire lift evacuation elevator phased evacuation defend in place fire command centre life safety IBC SBC 801 CTBUH Klote smoke movement MEP building services fire engineering">
+      <div class="card-body">
+        <span class="article-card-tag">Fire Protection &middot; Megatall Buildings &middot; Standpipes &middot; Smoke Control</span>
+        <div class="article-card-title">Firefighting in Megatall Buildings: Pressure Zones, Standpipes, Stack Effect &amp; Smoke Control</div>
+        <p class="article-card-excerpt">An aerial ladder reaches the tenth floor; a megatall tower has eighty more above it — so the building must fight its own fire. Why static pressure forces vertical pressure zoning of the standpipes, how water is pumped and stored up the tower, the NFPA 14 residual pressures that govern, the stack effect and door-force problem that defeats smoke control, stair pressurization, fire-pump duty, refuge floors and phased evacuation — with three interactive charts and installation tricks.</p>
+        <div class="article-card-meta">
+          <span>July 2026</span>
+          <span>18 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/firefighting-tall-buildings.webp" width="320" height="200" alt="Firefighting in Megatall Buildings: Pressure Zones, Standpipes, Stack Effect &amp; Smoke Control" loading="lazy">
+      </div>
+    </a>
+
+    <a href="drainage-stormwater-tall-buildings.html" class="article-card hidden-article" data-cat="plumbing" data-search="sanitary drainage stormwater tall buildings soil stack waste stack vent stack ventilation trap seal air pressure suction back-pressure terminal velocity annular flow Wyly-Eaton stack capacity discharge fixture units EN 12056 IPC UPC siphonic roof drainage gravity downpipe rainfall intensity PAPA AAV Sovent air admittance valve stack offset base bend hydraulic jump relief vent basement pumping sump ejector backflow grease fire collar acoustic Swaffield public health plumbing MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Tall Buildings &middot; Stacks &middot; Stormwater</span>
+        <div class="article-card-title">Drainage &amp; Stormwater in Tall Buildings: Stacks, Venting, Trap Seals &amp; Siphonic Roofs</div>
+        <p class="article-card-excerpt">Water goes up under pressure you control; drainage comes down under gravity you don't — and what governs the design is the air. How a drainage stack really works (terminal velocity, annular flow, air entrainment), sizing with Wyly-Eaton, the air-pressure regime and trap-seal protection (±375 Pa), ventilation, stack offsets and the base bend, and gravity vs siphonic roofs — with three interactive charts and installation tricks.</p>
+        <div class="article-card-meta">
+          <span>July 2026</span>
+          <span>17 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/drainage-stormwater-tall-buildings.webp" width="320" height="200" alt="Drainage & Stormwater in Tall Buildings: Stacks, Venting, Trap Seals & Siphonic Roofs" loading="lazy">
+      </div>
+    </a>
+
+    <a href="chiller-plant-design.html" class="article-card hidden-article" data-cat="hvac" data-search="chiller plant design HVAC cooling central chilled water configurations constant primary secondary variable primary flow VPF series counterflow air-cooled water-cooled centrifugal screw scroll absorption compressor cooling tower condenser water approach range wet bulb staging part load IPLV kW/ton oversizing N+1 redundancy low delta-T syndrome decoupler ASHRAE 90.1 15 550 590 VFD variable speed pumping affinity laws commissioning TAB balancing reverse return air separator refrigerant machinery room district cooling MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Chiller Plant &middot; Design &middot; Installation</span>
+        <div class="article-card-title">Chiller Plant Design: Configurations, Design Pitfalls &amp; Installation Problems</div>
+        <p class="article-card-excerpt">A chiller plant is the largest energy user in most buildings, and where design on paper diverges most from the plant that runs. The configurations (constant primary, primary–secondary, variable primary flow, series counterflow), the design pitfalls — sizing, staging, part-load efficiency and the Low Delta-T Syndrome — and the installation problems that wreck real plants, in three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>16 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/chiller-plant-design.webp" width="320" height="200" alt="Chiller Plant Design: Configurations, Design Pitfalls & Installation Problems" loading="lazy">
+      </div>
+    </a>
+
+    <a href="nrw-monitoring-netbase-wms.html" class="article-card hidden-article" data-cat="pipeline" data-search="non-revenue water NRW monitoring control NETBASE WMS water management system smart water leakage control DMA minimum night flow MNF net night flow night-day factor NDF legitimate night use burst detection alarm SCADA telemetry data loggers AMI smart metering pressure management flow modulated PRV GIS hydraulic model EPANET WaterGEMS InfoWorks Ovarro Servelec Technolog data validation prioritisation pareto water resources optimization pipeline design">
+      <div class="card-body">
+        <span class="article-card-tag">Non-Revenue Water &middot; Smart Water &middot; WMS &middot; NETBASE</span>
+        <div class="article-card-title">Monitoring &amp; Controlling Non-Revenue Water with NETBASE WMS</div>
+        <p class="article-card-excerpt">A water balance built once a year is a post-mortem; controlling NRW means measuring the loss every night, in every zone, automatically. How a Water Management System like NETBASE runs the smart-water data chain — loggers and SCADA into the night-flow engine, burst alarms, detection latency, and ranking where to send the crews — with three interactive charts and the in-software workflow.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>16 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/nrw-monitoring-netbase-wms.webp" width="320" height="200" alt="Monitoring & Controlling Non-Revenue Water with NETBASE WMS" loading="lazy">
+      </div>
+    </a>
+
+    <a href="non-revenue-water-leakage.html" class="article-card hidden-article" data-cat="pipeline" data-search="non-revenue water NRW water loss water balance IWA AWWA M36 real losses apparent losses commercial losses unbilled authorised consumption revenue water leakage control ILI infrastructure leakage index UARL unavoidable annual real losses CARL economic level of leakage ELL active leakage control ALC minimum night flow DMA pressure management meter under-registration billing error theft four pillars pipeline design">
+      <div class="card-body">
+        <span class="article-card-tag">Non-Revenue Water &middot; Water Balance &middot; ILI &middot; Economic Level of Leakage</span>
+        <div class="article-card-title">Non-Revenue Water: The Water Balance, the ILI &amp; the Economic Level of Leakage</div>
+        <p class="article-card-excerpt">Every utility produces more water than it sells. Why a single "% NRW" is the wrong KPI, how the IWA water balance separates the field problem (real losses) from the back-office one (apparent losses), how the Infrastructure Leakage Index measures loss honestly, and where the economic level of leakage sits — in three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>14 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/non-revenue-water-leakage.webp" width="320" height="200" alt="Non-Revenue Water: The Water Balance, the ILI & the Economic Level of Leakage" loading="lazy">
+      </div>
+    </a>
+
+    <a href="pressure-management-dma.html" class="article-card hidden-article" data-cat="pipeline" data-search="pressure management district metered area DMA non-revenue water NRW leakage control FAVAD N1 leakage exponent minimum night flow MNF pressure reducing valve PRV fixed time flow modulated outlet average zone pressure critical point burst frequency infrastructure leakage index ILI water audit AWWA M36 water loss IWA pipeline design">
+      <div class="card-body">
+        <span class="article-card-tag">Distribution Design &middot; Pressure Management &middot; DMA &middot; Non-Revenue Water</span>
+        <div class="article-card-title">Pressure Management &amp; District Metered Areas (DMA)</div>
+        <p class="article-card-excerpt">Pressure is the master variable for leakage. The FAVAD/N₁ law that makes a pressure cut save more than its share, dividing the network into DMAs to read the loss from minimum night flow, and fixed vs flow-modulated PRV control — the engineering of Non-Revenue Water, in three interactive charts.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>13 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/pressure-management-dma.webp" width="320" height="200" alt="Pressure Management & District Metered Areas (DMA)" loading="lazy">
+      </div>
+    </a>
+
+    <a href="distribution-network-looped-branched.html" class="article-card hidden-article" data-cat="pipeline" data-search="distribution network looped branched dead-end dead ends grid gridiron tree topology water distribution design redundancy reliability n-1 single pipe break isolation valve pressure head loss Hazen-Williams flow splitting Hardy Cross EPANET water age chlorine residual decay stagnation fire flow looping AWWA Ten States Standards pipeline design">
+      <div class="card-body">
+        <span class="article-card-tag">Distribution Design &middot; Looped vs Branched &middot; Network Hydraulics &middot; Water Quality</span>
+        <div class="article-card-title">Distribution Network Design: Looped vs Branched</div>
+        <p class="article-card-excerpt">The shape of the network fixes its pressure, reliability, water quality and cost before a pipe is sized: why a loop splits the flow and cuts head loss to a quarter, why a single break isolates a tree but not a grid, and why dead-ends go stale — with three interactive design charts.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>13 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/distribution-network-looped-branched.webp" width="320" height="200" alt="Distribution Network Design: Looped vs Branched" loading="lazy">
+      </div>
+    </a>
+
+    <a href="potable-pump-station-anatomy.html" class="article-card hidden-article" data-cat="pumps" data-search="potable water pumping station anatomy design duty standby firm capacity N+1 redundancy number of pumps unit size turndown granularity staging VFD variable frequency drive variable speed pumping diurnal demand curve booster transfer high lift NPSH net positive suction head submergence cavitation suction lift flooded suction dry pit wet pit dry well manifold header check valve isolation valve flow meter surge SCADA control firm capacity test Hydraulic Institute Ten States Standards Sanks pump handbook">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering &middot; Pumping Stations &middot; Firm Capacity &middot; Potable Water</span>
+        <div class="article-card-title">Anatomy of a Large Potable-Water Pumping Station</div>
+        <p class="article-card-excerpt">A station is a system, not a pump: duty + standby sized by firm capacity and the N+1 rule, staging across the daily demand curve, the case for a VFD lead, and the suction-side NPSH physics that decides where the pumps sit. Three interactive design charts and a worked station for a town of 50,000.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>14 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/potable-pump-station-anatomy.webp" width="320" height="200" alt="Anatomy of a Large Potable-Water Pumping Station" loading="lazy">
+      </div>
+    </a>
+
+    <a href="strategic-water-storage-sizing.html" class="article-card hidden-article" data-cat="hydraulic" data-search="strategic water storage reservoir tank sizing balancing operational equalizing storage mass curve Rippl diurnal demand curve maximum day peak hour factor fire flow fire storage emergency storage outage redundancy water age turnover detention time chlorine residual decay disinfectant distribution Ten States Standards AWWA M31 M32 fire protection">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Design &middot; Water Storage &middot; Reservoir Sizing</span>
+        <div class="article-card-title">Strategic Water Storage — Why We Store, and How Much</div>
+        <p class="article-card-excerpt">Every storage reservoir holds three volumes at once — balancing, fire and emergency — each sized by a different question. The mass-curve method for the daily peak, the code-driven fire volume that ignores population, the redundancy trade behind emergency storage, and the water-age tax you pay for over-sizing — with three interactive sizing charts and a worked town of 50,000.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>12 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/strategic-water-storage-sizing.webp" width="320" height="200" alt="Strategic Water Storage Reservoir Sizing" loading="lazy">
+      </div>
+    </a>
+
+    <a href="wastewater-pump-station-design.html" class="article-card hidden-article" data-cat="pumps" data-search="wastewater pump station design sewage non-clog vortex chopper grinder impeller selection free passage solids wipes rags force main scouring velocity wet well active volume cycle time starts per hour self-cleaning trench benching septicity H2S submersible">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering &middot; Wastewater &middot; Wet Well &middot; Force Main</span>
+        <div class="article-card-title">Wastewater Pump Station Design — Impellers, Wet Wells &amp; Force Mains</div>
+        <p class="article-card-excerpt">Clogging — not efficiency — is failure mode #1. Non-clog vs vortex vs chopper selection with the energy price of clog resistance, force-main scouring velocity, the V = T·Q/4 wet-well law, and self-cleaning geometry per ANSI/HI 9.8 — with three interactive design charts.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>12 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/wastewater-pump-station-design.webp" width="320" height="200" alt="Wastewater Pump Station Design" loading="lazy">
+      </div>
+    </a>
+
+    <a href="pump-life-cycle-cost.html" class="article-card hidden-article" data-cat="pumps" data-search="life cycle cost LCC energy efficiency Europump HI methodology specific energy kWh/m3 benchmarking MEI minimum efficiency index IE3 IE4 motor wire-to-water present value payback efficiency premium tender procurement sustainability CO2">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering &middot; Life-Cycle Cost &middot; Energy</span>
+        <div class="article-card-title">Life-Cycle Cost &amp; Energy Efficiency — Where the Real Money Sits</div>
+        <p class="article-card-excerpt">Purchase price is ~6% of what a continuously running pump costs over 20 years — energy is ~84%. The Europump/HI LCC methodology, specific energy (kWh/m³) benchmarking, MEI and IE floors, and the efficiency premium that pays back in under two years — with three interactive cost explorers.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>11 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/pump-life-cycle-cost.webp" width="320" height="200" alt="Pump Life-Cycle Cost and Energy Efficiency" loading="lazy">
+      </div>
+    </a>
+
+    <a href="reading-pump-curves.html" class="article-card hidden-article" data-cat="pumps" data-search="reading manufacturer pump curves datasheet H-Q efficiency power P2 NPSHr trim impeller diameter affinity laws speed VFD viscosity correction ISO 9906 HI 14.6 tolerance acceptance grade BEP POR motor sizing non-overloading runout shut-off">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering &middot; Curve Reading &middot; Pump Selection</span>
+        <div class="article-card-title">Reading Manufacturer Pump Curves Properly</div>
+        <p class="article-card-excerpt">H&ndash;Q, efficiency, power and NPSHr live on one sheet — and every value must be read at the same flow, on your trim. ISO 9906 tolerance grades, speed/trim/viscosity corrections, and the classic misreadings that cause field failures — with three interactive charts and worked numbers.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>13 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/reading-pump-curves.webp" width="320" height="200" alt="Reading Manufacturer Pump Curves Properly" loading="lazy">
+      </div>
+    </a>
+
+    <a href="parallel-series-pump-operation.html" class="article-card hidden-article" data-cat="pumps" data-search="parallel series pump operation staging duty standby assist N+1 combined curve diminishing return load sharing hunting booster multistage VFD lead lag pump station design BEP">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Hydraulics &middot; Parallel &amp; Series &middot; Pump Staging</span>
+        <div class="article-card-title">Parallel &amp; Series Operation and Pump Staging</div>
+        <p class="article-card-excerpt">Why two pumps almost never give twice the flow, why a single pump sometimes gives none at all, and how the system curve decides the configuration. Combined curves, the diminishing return, load-sharing failure modes, and duty/standby/assist staging — with two interactive charts.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>11 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/parallel-series-pump-operation.webp" width="320" height="200" alt="Parallel and Series Pump Operation and Staging" loading="lazy">
+      </div>
+    </a>
+
+    <a href="system-head-curve-operating-point.html" class="article-card hidden-article" data-cat="pumps" data-search="system head curve operating point duty point pump curve matching BEP POR AOR oversizing trap centrifugal pump selection affinity laws throttling impeller trim VFD interactive">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Hydraulics &middot; System Curve &middot; Centrifugal Pumps</span>
+        <div class="article-card-title">The System Head Curve &amp; the Operating Point</div>
+        <p class="article-card-excerpt">Why the pump you select never operates where the catalogue says it will. Static vs. friction head, the duty-point intersection, BEP/POR/AOR limits, and the costly oversizing trap — with two interactive curve-matching charts and a worked pump-station example.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>10 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/system-head-curve-operating-point.webp" width="320" height="200" alt="The System Head Curve and the Operating Point" loading="lazy">
+      </div>
+    </a>
+
+    <a href="surge-scenarios-pump-stations.html" class="article-card hidden-article" data-cat="surge" data-search="surge scenarios pumping stations pump trip power failure check valve slam valve closure transient design envelope governing scenario joukowsky downsurge upsurge column separation">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Transients &middot; Surge Analysis &middot; Pump Stations</span>
+        <div class="article-card-title">Surge Scenarios in Pumping Stations — and Which One Governs the Design</div>
+        <p class="article-card-excerpt">Pump trip, start-up, check-valve slam, emergency closure — which event actually sets the design pressure? A scenario-by-scenario walk through the transient envelope, with three interactive charts and a worked 5 km ductile-iron example.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>11 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/surge-scenarios-pump-stations.webp" width="320" height="200" alt="Surge Scenarios in Pumping Stations" loading="lazy">
+      </div>
+    </a>
+
+    <a href="hammer-transient-simulation-workflow.html" class="article-card hidden-article" data-cat="surge" data-search="compute transient simulation bentley hammer pump shutdown wave speed calculation options EPS profiles transient envelope column separation skeletonized">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis &middot; Bentley HAMMER &middot; Pump Shutdown</span>
+        <div class="article-card-title">Computing a Transient Simulation in Bentley HAMMER: A Step-by-Step Workflow</div>
+        <p class="article-card-excerpt">From an existing water model to a full surge study — pump shutdown setup, four-quadrant pump physics, wave speed, calculation options, EPS initialization, and reading the transient envelope where the column-separation slam appears.</p>
+        <div class="article-card-meta">
+          <span>June 2026</span>
+          <span>9 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/hammer-transient-simulation-workflow.webp" width="320" height="200" alt="Computing a Transient Simulation in Bentley HAMMER" loading="lazy">
+      </div>
+    </a>
+
+    <a href="hammer-transient-tips.html" class="article-card hidden-article" data-cat="surge" data-search="hammer transient results air valve bentley simulation profile animation extended node data">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis &middot; Bentley HAMMER &middot; Air Valves</span>
+        <div class="article-card-title">Tips for Using HAMMER to Understand Interesting Transient Results</div>
+        <p class="article-card-excerpt">Why do results get <em>worse</em> after adding air valves? Why does a big surge appear with no air pocket visible? Answers to the five questions engineers ask most often after their first HAMMER simulation — plus profile animation setup and Extended Node Data walkthrough.</p>
+        <div class="article-card-meta">
+          <span>May 2026</span>
+          <span>12 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/hammer-transient-tips.webp" width="320" height="200" alt="HAMMER Transient Analysis Tips" loading="lazy">
+      </div>
+    </a>
+
+    <a href="water-hammer-control-valve.html" class="article-card hidden-article" data-cat="surge" data-search="water hammer control valve closure time transient analysis bentley">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis &middot; Water Hammer &middot; Bentley HAMMER</span>
+        <div class="article-card-title">Effect of Control Valve Closure Time on Water Hammer Intensity</div>
+        <p class="article-card-excerpt">The complete mathematical framework governing surge pressure vs. closure time — from the Joukowsky equation and critical time T<sub>c</sub> to the slow-closure attenuation formula. Includes three interactive calculators, an eight-scenario numerical example, and a detailed workflow for modelling valve closure in Bentley OpenFlows HAMMER.</p>
+        <div class="article-card-meta">
+          <span>May 2026</span>
+          <span>15 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/water_hammer_control_valve_v2.webp" width="320" height="200" alt="Control Valve Closure Time and Water Hammer" loading="lazy">
+      </div>
+    </a>
+
+    <a href="combination-air-valves.html" class="article-card hidden-article" data-cat="pipeline" data-search="combination air valves transmission main pipeline design sizing placement">
+      <div class="card-body">
+        <span class="article-card-tag">Transmission Pipeline Design &middot; Air Management</span>
+        <div class="article-card-title">Design Criteria for Combination Air Valves in Long-Distance Transmission Mains</div>
+        <p class="article-card-excerpt">A systematic methodology for selecting, sizing, and locating Combination Air Valves (CAVs) on long transmission mains — from dual-float mechanics and orifice sizing calculations to HGL-based placement, water hammer surge interaction, and installation requirements. Includes interactive diagrams and a DN 800 mm worked example.</p>
+        <div class="article-card-meta">
+          <span>May 2026</span>
+          <span>14 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/combination_air_valves_design_criteria.webp" width="320" height="200" alt="Combination Air Valves in Transmission Mains" loading="lazy">
+      </div>
+    </a>
+
+    <a href="surge-vessel.html" class="article-card hidden-article" data-cat="surge" data-search="surge vessel hydropneumatic sizing water transmission pipeline bentley hammer">
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis &middot; Hydraulic Design</span>
+        <div class="article-card-title">Sizing the Hydropneumatic Surge Vessel in Water Transmission Pipelines</div>
+        <p class="article-card-excerpt">A design engineer's approach to surge vessel sizing — from model inputs to Bentley HAMMER simulation outputs. Includes worked numerical examples, sensitivity analysis, and a practical design checklist.</p>
+        <div class="article-card-meta">
+          <span>May 2026</span>
+          <span>10 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/surge-vessel.webp" alt="Hydropneumatic Surge Vessel" loading="lazy">
+      </div>
+    </a>
+
+    <a href="hydraulic-mistakes.html" class="article-card hidden-article" data-cat="hydraulic" data-search="hydraulic modeling mistakes water transmission networks pipeline design">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Modeling &middot; Pipeline Design</span>
+        <div class="article-card-title">Common Mistakes in Hydraulic Modeling of Water Transmission Networks</div>
+        <p class="article-card-excerpt">Six critical and recurring mistakes in hydraulic modeling — from ignoring transient analysis entirely to specifying surge protection without simulation. A practitioner's perspective from 700+ km+ pipeline projects.</p>
+        <div class="article-card-meta">
+          <span>May 2026</span>
+          <span>8 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/hydraulic_modeling_mistakes.webp" width="320" height="200" alt="Hydraulic Modeling Control Room" loading="lazy">
+      </div>
+    </a>
+
+    <a href="pre-charge-pressure.html" class="article-card hidden-article" data-cat="surge" data-search="pre-charge pressure surge vessel design sensitive parameter transient">
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis &middot; Surge Vessel Design</span>
+        <div class="article-card-title">The Pre-Charge Pressure of the Surge Vessel — How One Number Changes Everything</div>
+        <p class="article-card-excerpt">The most sensitive parameter in surge vessel design — and the most frequently set incorrectly. A worked numerical analysis showing how a P&#8320; error of just 11% requires a vessel 46% larger, and how wrong P&#8320; renders an otherwise correctly sized vessel completely ineffective.</p>
+        <div class="article-card-meta">
+          <span>May 2026</span>
+          <span>12 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/IMG_4656.webp" width="320" height="200" alt="Pre-Charge Pressure Surge Vessel" loading="lazy">
+      </div>
+    </a>
+
+    <a href="above-ground-pipeline-design.html" class="article-card hidden-article" data-cat="pipeline" data-search="above ground pipeline structural design span thermal expansion ASME wind load">
+      <div class="card-body">
+        <span class="article-card-tag">Structural Design &middot; Pipeline Engineering &middot; ASME</span>
+        <div class="article-card-title">Engineering Guide: Structural Design of Above-Ground Water Pipelines</div>
+        <p class="article-card-excerpt">Above-ground pipelines are structural beams — not buried conduits. A systematic methodology for calculating maximum allowable span (bending stress and deflection criteria), managing thermal expansion, and designing for wind loads. Includes worked example for DN 600 steel pipe and a comprehensive design checklist.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>12 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/above-ground-pipeline-design.webp" width="320" height="200" alt="Structural Design of Above-Ground Water Pipelines" loading="lazy">
+      </div>
+    </a>
+
+    <a href="control-valve-transients-hammer.html" class="article-card hidden-article" data-cat="surge" data-search="control valve transients bentley hammer FCV PRV closure time TCV">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis &middot; Bentley HAMMER &middot; Valve Control</span>
+        <div class="article-card-title">Mastering Control Valve Transients in Bentley HAMMER: FCV vs. PRV</div>
+        <p class="article-card-excerpt">FCVs and PRVs behave very differently during transient events. A practical guide to modelling control valve closure using the TCV approach in HAMMER — including manufacturer Cv curves, Dead Time (1&ndash;3 s), and the 4L/a closure time rule for protecting high points on large transmission mains.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>10 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/control-valve-transients-hammer.webp" width="320" height="200" alt="Control Valve Transients in Bentley HAMMER" loading="lazy">
+      </div>
+    </a>
+
+    <a href="boundary-conditions-reservoir-tank.html" class="article-card hidden-article" data-cat="surge" data-search="boundary conditions reservoir tank bentley hammer transient modelling">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis &middot; Bentley HAMMER &middot; Modelling</span>
+        <div class="article-card-title">Demystifying Boundary Conditions: Reservoir vs. Tank in Bentley HAMMER</div>
+        <p class="article-card-excerpt">Choosing the wrong boundary condition is a common modelling error with serious consequences. A rigorous comparison of Reservoir (fixed HGL) vs. Tank (dynamic HGL) in HAMMER — with guidance on SWRO desalination intakes, strategic transmission mains, and the numerical instability trap of undersized Tank areas.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>9 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/boundary-conditions-reservoir-tank.webp" width="320" height="200" alt="Reservoir vs Tank Boundary Conditions in Bentley HAMMER" loading="lazy">
+      </div>
+    </a>
+
+    <a href="carbon-steel-pipeline-cml.html" class="article-card hidden-article" data-cat="pipeline" data-search="carbon steel pipeline cement mortar lining CML structural design AWWA">
+      <div class="card-body">
+        <span class="article-card-tag">Structural Design &middot; Pipeline Engineering &middot; AWWA M11</span>
+        <div class="article-card-title">Structural Design Reference: Carbon Steel Pipelines with Cement Mortar Lining</div>
+        <p class="article-card-excerpt">CML lining cracks at 2% deflection — far before the steel yields. A complete five-phase design walkthrough for DN 1600 mm steel pipelines under highway loading: D/t ratio check, hoop stress, Modified Iowa Equation for deflection, and vacuum buckling stability. Final wall thickness: 14 mm.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>11 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/carbon-steel-pipeline-cml.webp" width="320" height="200" alt="Carbon Steel Pipeline with Cement Mortar Lining" loading="lazy">
+      </div>
+    </a>
+
+    <a href="npsh-water-infrastructure.html" class="article-card hidden-article" data-cat="pumps" data-search="NPSH pump design suction lift flooded cavitation water infrastructure">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Design &middot; Hydraulic Engineering &middot; NPSH</span>
+        <div class="article-card-title">Technical Design Guide: Mastering NPSH in Water Infrastructure</div>
+        <p class="article-card-excerpt">NPSH is the make-or-break parameter in pump station layout. A scenario-based guide covering suction lift, flooded suction, and submersible configurations — with vapor pressure corrections at 40&ndash;45&deg;C seawater temperatures and a complete worked example for an SWRO intake pump station.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>10 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/npsh-water-infrastructure.webp" width="320" height="200" alt="NPSH in Water Infrastructure Pump Design" loading="lazy">
+      </div>
+    </a>
+
+    <a href="transient-analysis-scada.html" class="article-card hidden-article" data-cat="surge" data-search="transient analysis SCADA digital twin surge smart pipeline pressure transducer">
+      <div class="card-body">
+        <span class="article-card-tag">SCADA &middot; Digital Twin &middot; Surge Analysis</span>
+        <div class="article-card-title">Beyond Static Design: Integrating Transient Analysis with SCADA for Smart Pipelines</div>
+        <p class="article-card-excerpt">Static surge models become obsolete as systems age. A technical guide to building a Digital Twin for Surge — integrating 100 Hz pressure transducers, the Allievi equation in real time, and adaptive PID valve closure logic — to continuously protect 1200 mm+ transmission mains against pump trip events.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>9 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/transient-analysis-scada.webp" width="320" height="200" alt="Integrating Transient Analysis with SCADA Systems" loading="lazy">
+      </div>
+    </a>
+
+    <a href="cavitation-prvs-fcvs.html" class="article-card hidden-article" data-cat="hydraulic" data-search="cavitation PRV FCV pressure reducing valve flow control anti-cavitation">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Design &middot; Cavitation &middot; Valve Engineering</span>
+        <div class="article-card-title">Technical Design Guide: Managing Cavitation in PRVs and FCVs</div>
+        <p class="article-card-excerpt">A 15-to-3 bar PRV pressure drop yields &sigma; = 0.25 — severe cavitation territory where standard valves fail within months. The Cavitation Index explained with two worked examples, and three proven mitigation strategies: multi-stage reduction, anti-cavitation trim cages, and downstream orifice plates.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>8 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/cavitation-prvs-fcvs.webp" width="320" height="200" alt="Managing Cavitation in PRVs and FCVs" loading="lazy">
+      </div>
+    </a>
+
+    <a href="wet-well-vortex-design.html" class="article-card hidden-article" data-cat="pumps" data-search="wet well vortex pump station design suction ANSI HI hydraulic instability">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Station Design &middot; Wet Well &middot; ANSI/HI 9.8</span>
+        <div class="article-card-title">The Silent Pump Killer: Vortex Formation and Hydraulic Instability in Wet Well Design</div>
+        <p class="article-card-excerpt">A swirl angle of just 3&ndash;5&deg; at the suction bell significantly degrades pump efficiency and causes premature bearing failure. ANSI/HI 9.8 geometric constraints — submergence formula, back wall clearance, floor clearance — with guidance on trench-type wet wells and the role of physical scale modeling vs. CFD.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>9 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/wet-well-vortex-design.webp" width="320" height="200" alt="Vortex Formation in Wet Well Design" loading="lazy">
+      </div>
+    </a>
+
+    <a href="vfd-myth-hydraulic-design.html" class="article-card hidden-article" data-cat="pumps" data-search="VFD variable frequency drive hydraulic design pump dead-head impeller trimming">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering &middot; Energy Efficiency &middot; VFD</span>
+        <div class="article-card-title">The VFD Myth: Why Variable Frequency Drives Aren't a "Magic Fix" for Poor Hydraulic Design</div>
+        <p class="article-card-excerpt">In high-static-head systems, reducing VFD frequency too far causes Dead-Head conditions — the pump rotates, consumes power, and moves zero water. A practitioner's guide to when VFDs work and when they don't, including impeller trimming and parallel pumping as more appropriate alternatives.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>8 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/vfd-myth-hydraulic-design.webp" width="320" height="200" alt="VFD Myth in Hydraulic Design" loading="lazy">
+      </div>
+    </a>
+
+    <a href="air-valves-pipeline-safety.html" class="article-card hidden-article" data-cat="pipeline" data-search="air valves pipeline safety design sizing placement vacuum AWWA M51">
+      <div class="card-body">
+        <span class="article-card-tag">Pipeline Safety &middot; Air Valve Design &middot; AWWA M51</span>
+        <div class="article-card-title">Air Valves: Just Pipeline Accessories or the Ultimate Safety Guard?</div>
+        <p class="article-card-excerpt">Improper air valve sizing and placement is a leading cause of large-diameter pipeline failure. A rigorous design methodology for DN 1000+ mains — HGL-based placement, vacuum protection sizing at &Delta;P = 0.35 bar limit, filling velocity below 0.3 m/s, and how to specify triple-function non-slam combination valves.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>9 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/air-valves-pipeline-safety.webp" width="320" height="200" alt="Air Valves as Pipeline Safety Guards" loading="lazy">
+      </div>
+    </a>
+
+    <a href="air-admission-networks.html" class="article-card hidden-article" data-cat="surge" data-search="air admission water transmission surge analysis HAMMER DGCM protection">
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis &middot; Air Management &middot; Pipeline Design</span>
+        <div class="article-card-title">Strategic Air Admission in Water Transmission Networks: A Dual Perspective</div>
+        <p class="article-card-excerpt">Air is both enemy and ally — throttling flow in steady state, yet preventing catastrophic collapse during pump trips. The HAMMER Discrete Gas Cavity Model (DGCM) limitation explained, with a hybrid protection strategy combining air valves and surge vessels for large transmission mains.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>8 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/air-admission-networks.webp" width="320" height="200" alt="Strategic Air Admission in Water Transmission Networks" loading="lazy">
+      </div>
+    </a>
+
+    <a href="top-hill-challenge.html" class="article-card hidden-article" data-cat="pipeline" data-search="top hill pipeline summit HGL air binding column separation transmission">
+      <div class="card-body">
+        <span class="article-card-tag">Pipeline Design &middot; Surge Analysis &middot; HGL Management</span>
+        <div class="article-card-title">Managing the "Top Hill" Challenge in Water Transmission Lines</div>
+        <p class="article-card-excerpt">When a pipeline summit approaches the HGL, two failure modes emerge: air binding in steady state and column separation during pump trips. Design rules: maintain 5&ndash;10 m HGL clearance above pipe profile, minimum 0.3% ascending slope, and full vacuum-rated pipe class at critical summits.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>5 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/top-hill-challenge.webp" width="320" height="200" alt="Top Hill Challenge in Water Transmission" loading="lazy">
+      </div>
+    </a>
+
+    <a href="check-valve-hammer.html" class="article-card hidden-article" data-cat="surge" data-search="check valve hammer modeling procurement bentley HAMMER closing time">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis &middot; Check Valve &middot; Procurement</span>
+        <div class="article-card-title">From Modeling to Procurement: A Guide to Check Valve Analysis in Bentley HAMMER</div>
+        <p class="article-card-excerpt">A 0.1-second adjustment in HAMMER is a procurement decision worth thousands. How check valve closing time and cracking pressure in the transient model translate directly into nozzle check valve specifications — and how the right specification can reduce pipeline pressure class from PN25 to PN16.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>5 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/check-valve-hammer.webp" width="320" height="200" alt="Check Valve Analysis in Bentley HAMMER" loading="lazy">
+      </div>
+    </a>
+
+    <a href="prv-altitude-valve-fcv.html" class="article-card hidden-article" data-cat="hydraulic" data-search="PRV altitude valve FCV pressure reducing flow control water transmission">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Control &middot; Valve Selection &middot; Water Transmission</span>
+        <div class="article-card-title">Understanding PRV, Altitude Valve, and FCV in Water Transmission Systems</div>
+        <p class="article-card-excerpt">Three valves with fundamentally different control objectives and hydraulic behaviours. A concise comparison of PRV (downstream pressure), Altitude Valve (tank level), and FCV (flow rate limitation), with guidance on modern multi-pilot single-valve integration for compact valve chambers.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>5 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/prv-altitude-valve-fcv.webp" width="320" height="200" alt="PRV Altitude Valve FCV in Water Transmission" loading="lazy">
+      </div>
+    </a>
+
+    <a href="sustainable-pump-selection.html" class="article-card hidden-article" data-cat="pumps" data-search="sustainable pump selection life cycle cost BEP efficiency VFD IE3 IE5">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering &middot; Energy Efficiency &middot; Sustainability</span>
+        <div class="article-card-title">Sustainable Pump Selection: Beyond the Duty Point</div>
+        <p class="article-card-excerpt">The pump purchase price is only 10&ndash;15% of total life cycle cost. Energy accounts for 80%. A framework for sustainable pump selection covering life cycle cost analysis, BEP operation, wire-to-water efficiency (IE3&ndash;IE5 motors), and designing pump stations for future demand growth.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>5 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/sustainable-pump-selection.webp" width="320" height="200" alt="Sustainable Pump Selection in Water Infrastructure" loading="lazy">
+      </div>
+    </a>
+
+    <a href="steady-state-analysis.html" class="article-card hidden-article" data-cat="hydraulic" data-search="steady state analysis water transmission design hydraulic modeling friction">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Modeling &middot; Steady State &middot; Pipeline Design</span>
+        <div class="article-card-title">Steady State Analysis: The Foundation of Water Transmission Design</div>
+        <p class="article-card-excerpt">Every transient model begins from steady-state initial conditions. An incorrect baseline produces incorrect surge results. The three pillars — friction loss optimisation, BEP operating point verification, and pressure management — explained as the essential prerequisite to any surge study.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>5 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/steady-state-analysis.webp" width="320" height="200" alt="Steady State Analysis Foundation" loading="lazy">
+      </div>
+    </a>
+
+    <a href="surge-analysis-risk.html" class="article-card hidden-article" data-cat="surge" data-search="surge analysis risk mitigation pipeline safety transient water hammer">
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis &middot; Risk Management &middot; Pipeline Safety</span>
+        <div class="article-card-title">Surge Analysis: An Essential Risk Mitigation Strategy for Pressurized Pipelines</div>
+        <p class="article-card-excerpt">Surge analysis conducted after design is complete leads to expensive retrofits — pressure class upgrades, added vessel chambers, and revised pump station layouts. A practitioner's perspective on integrating transient analysis into the early design phase, from 700+ km pipeline projects in Saudi Arabia.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>5 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/surge-analysis-risk.webp" width="320" height="200" alt="Surge Analysis Risk Mitigation" loading="lazy">
+      </div>
+    </a>
+
+    <a href="design-vs-reality.html" class="article-card hidden-article" data-cat="leadership" data-search="design reality gap engineering buildability field project delivery">
+      <div class="card-body">
+        <span class="article-card-tag">Engineering Leadership &middot; Project Delivery &middot; Field Experience</span>
+        <div class="article-card-title">The Biggest Gap in Engineering: Design vs. Reality</div>
+        <p class="article-card-excerpt">The gap between what is drawn and what can actually be built and operated costs projects dearly when ignored. Lessons on designing for buildability, anticipating field realities such as space constraints and unexpected interferences, and why "perfect designs" that cannot be executed are not a success.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>4 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/design-vs-reality.webp" width="320" height="200" alt="Design vs Reality in Engineering" loading="lazy">
+      </div>
+    </a>
+
+    <a href="engineering-decisions.html" class="article-card hidden-article" data-cat="leadership" data-search="engineering decisions under pressure field experience leadership project">
+      <div class="card-body">
+        <span class="article-card-tag">Engineering Leadership &middot; Project Management &middot; Field Experience</span>
+        <div class="article-card-title">Making Decisions Under Pressure: Lessons From the Field</div>
+        <p class="article-card-excerpt">The hardest engineering decisions are not made in the office — they are made on site, with incomplete information and no time. A reflection on the role of experience, judgment, and leadership in field decision-making, from 22 years of major water infrastructure delivery across Saudi Arabia.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>4 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/engineering-decisions.webp" width="320" height="200" alt="Engineering Decision Making Under Pressure" loading="lazy">
+      </div>
+    </a>
+
+    <a href="envision-sustainability.html" class="article-card hidden-article" data-cat="leadership" data-search="envision sustainability infrastructure ENV SP water engineering">
+      <div class="card-body">
+        <span class="article-card-tag">Sustainability &middot; Envision &middot; ENV SP &middot; Infrastructure</span>
+        <div class="article-card-title">Sustainability in Infrastructure: A Core Engineering Responsibility</div>
+        <p class="article-card-excerpt">Sustainability is engineered in — not appended after the fact. The Envision framework applied to water infrastructure design, covering resilience, resource efficiency, and community enhancement as engineering disciplines rather than policy aspirations — with practical applications in Saudi Arabian water projects.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>4 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/envision-sustainability.webp" width="320" height="200" alt="Sustainability in Infrastructure Engineering" loading="lazy">
+      </div>
+    </a>
+
+    <a href="infrastructure-at-scale.html" class="article-card hidden-article" data-cat="leadership" data-search="infrastructure scale engineering management project stakeholder leadership">
+      <div class="card-body">
+        <span class="article-card-tag">Engineering Leadership &middot; Project Management &middot; Infrastructure</span>
+        <div class="article-card-title">Managing Infrastructure at Scale: Beyond Technical Complexity</div>
+        <p class="article-card-excerpt">Projects don't fail from a lack of expertise — they fail when alignment, ownership, and decision-making are not managed effectively at scale. Lessons from 100+ km pipeline networks and 200,000 m&sup3;/day treatment facilities in Saudi Arabia on managing multidisciplinary teams and stakeholder expectations.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>4 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/infrastructure-at-scale.webp" width="320" height="200" alt="Managing Infrastructure at Scale" loading="lazy">
+      </div>
+    </a>
+
+    <a href="sustainability-in-design.html" class="article-card hidden-article" data-cat="leadership" data-search="sustainability design specification engineering coordination infrastructure">
+      <div class="card-body">
+        <span class="article-card-tag">Sustainability &middot; Design Coordination &middot; Infrastructure</span>
+        <div class="article-card-title">From Strategy to Specification: Integrating Sustainability in Engineering Design</div>
+        <p class="article-card-excerpt">Sustainability commitments only become real when reflected in engineering specifications, material selections, and design decisions. How sustainability professionals must be embedded in the design process from the earliest concept stage — and how early drawing integration is the key to future-proof infrastructure.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span>
+          <span>4 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="../thumbs/sustainability-in-design.webp" width="320" height="200" alt="Integrating Sustainability in Engineering Design" loading="lazy">
+      </div>
+    </a>
+
+    <a href="daf-swro-pretreatment.html" class="article-card hidden-article" data-cat="desalination" data-search="DAF dissolved air flotation SWRO pre-treatment desalination">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination · SWRO · DAF · Pre-treatment</span>
+        <div class="article-card-title">Technical Deep-Dive: Designing DAF for Large-Scale SWRO Pre-treatment</div>
+        <p class="article-card-excerpt">A technical guide to DAF system design for mega-scale SWRO plants — surface loading rates, retention times, air-to-solids ratio, and micro-bubble mechanics for a 300,000 m³/day facility.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span><span>10 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/daf-swro-pretreatment.webp" width="320" height="200" alt="Daf Swro Pretreatment" loading="lazy"></div>
+    </a>
+
+    <a href="mega-swro-engineering.html" class="article-card hidden-article" data-cat="desalination" data-search="mega SWRO desalination scale engineering pressure exchanger energy">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination · SWRO · Scale Engineering · Energy</span>
+        <div class="article-card-title">The Engineering of Scale: Why Standard Design Isn't Enough for Mega SWRO Plants</div>
+        <p class="article-card-excerpt">Advanced optimization strategies for SWRO facilities exceeding 500,000 m³/day — center port feed, pressure exchanger over-flush, and super duplex steel for 70+ bar systems.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span><span>8 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/mega-swro-engineering.webp" width="320" height="200" alt="Mega Swro Engineering" loading="lazy"></div>
+    </a>
+
+    <a href="swro-pretreatment-dilemma.html" class="article-card hidden-article" data-cat="desalination" data-search="SWRO pre-treatment UF lamella sand filter desalination SDI">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination · SWRO · UF · Pre-treatment</span>
+        <div class="article-card-title">Design Reference: The Strategic Dilemma in SWRO Pre-treatment — Lamella + PSF vs. UF & Ceramic</div>
+        <p class="article-card-excerpt">Conventional gravity clarification + sand filtration versus membrane-based pre-treatment — trade-offs in SDI performance, space, and lifecycle costs for 100,000 m³/day plants.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span><span>9 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/swro-pretreatment-dilemma.webp" width="320" height="200" alt="Swro Pretreatment Dilemma" loading="lazy"></div>
+    </a>
+
+    <a href="ro-overdesign-paradox.html" class="article-card hidden-article" data-cat="desalination" data-search="RO overdesign paradox safety margin desalination flux pump BEP">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination · RO · Design Philosophy · Optimization</span>
+        <div class="article-card-title">The Over-Design Paradox: Are Your Safety Margins Actually Killing Your RO Plant?</div>
+        <p class="article-card-excerpt">Why excessive safety margins backfire in RO plant design — flux distribution imbalances, pump BEP deviations, and the case for lean design with precise pretreatment control.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span><span>7 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/ro-overdesign-paradox.webp" width="320" height="200" alt="Ro Overdesign Paradox" loading="lazy"></div>
+    </a>
+
+    <a href="chlorine-swro-disinfection.html" class="article-card hidden-article" data-cat="desalination" data-search="chlorine SWRO disinfection electro-chlorination sodium bisulfite membranes">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination · SWRO · Chlorination · Water Treatment</span>
+        <div class="article-card-title">The Chlorine Journey: Disinfection Science in SWRO Plants</div>
+        <p class="article-card-excerpt">How chlorine acts as a double-edged sword in SWRO — from electro-chlorination at 0.5–1.0 mg/L to critical de-chlorination with sodium bisulfite before polyamide membranes.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span><span>3 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/chlorine-swro-disinfection.webp" width="320" height="200" alt="Chlorine Swro Disinfection" loading="lazy"></div>
+    </a>
+
+    <a href="offshore-intake-design.html" class="article-card hidden-article" data-cat="desalination" data-search="offshore seawater intake design engineering biofouling screen depth">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination · Intake Design · Offshore · Hydraulics</span>
+        <div class="article-card-title">Offshore Seawater Intake Design: Six Core Engineering Principles</div>
+        <p class="article-card-excerpt">Designing offshore intakes for 30+ year lifespan — screen velocity limits, depth positioning below the photosynthetic zone, biofouling control, and rock armor for 100-year storm return periods.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span><span>3 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/offshore-intake-design.webp" width="320" height="200" alt="Offshore Intake Design" loading="lazy"></div>
+    </a>
+
+    <a href="ph-management-swro.html" class="article-card hidden-article" data-cat="desalination" data-search="pH management SWRO desalination sustainable operation scaling boron">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination · SWRO · pH · Sustainability</span>
+        <div class="article-card-title">pH Management: The Hidden Key to Sustainable SWRO Operation</div>
+        <p class="article-card-excerpt">Strategic pH control across all SWRO stages — acid dosing to prevent CaCO₃ scaling, pH elevation for boron rejection, and re-mineralization to protect distribution network integrity.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span><span>3 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/ph-management-swro.webp" width="320" height="200" alt="Ph Management Swro" loading="lazy"></div>
+    </a>
+
+    <a href="onshore-intake-design.html" class="article-card hidden-article" data-cat="desalination" data-search="onshore intake design SWRO hydraulic theory field wet well screening">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination · Intake Design · Onshore · Hydraulics</span>
+        <div class="article-card-title">Onshore Intake Design: Bridging Hydraulic Theory and Field Reality</div>
+        <p class="article-card-excerpt">Practical onshore intake design for SWRO — receiving chamber velocities per HI 9.8, coarse and fine screening specs, suction basin 2.5D Rule, and hydraulic retention to prevent submerged vortices.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span><span>3 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/onshore-intake-design.webp" width="320" height="200" alt="Onshore Intake Design" loading="lazy"></div>
+    </a>
+
+    <a href="px-energy-recovery.html" class="article-card hidden-article" data-cat="desalination" data-search="PX pressure exchanger energy recovery desalination economics isobaric">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination · Energy Recovery · PX · Sustainability</span>
+        <div class="article-card-title">PX Technology: How Energy Recovery Transformed Desalination Economics</div>
+        <p class="article-card-excerpt">How isobaric Pressure Exchanger (PX) devices achieve ~60% reduction in energy consumption — transforming SWRO from an energy-intensive process into an economically and environmentally viable solution.</p>
+        <div class="article-card-meta">
+          <span>April 2026</span><span>3 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/px-energy-recovery.webp" width="320" height="200" alt="Px Energy Recovery" loading="lazy"></div>
+    </a>
+  </div><!-- end articles-grid -->
+
+  <!-- Show More Button -->
+  <div id="show-more-wrap" style="text-align:center; padding:2.5rem 0 1rem;">
+    <button id="show-more-btn" onclick="revealArticles()" style="display:inline-flex; align-items:center; gap:10px; padding:12px 28px; background:var(--glass); -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur); color:var(--accent); border:1px solid var(--glass-border); border-radius:980px; font-size:15px; font-weight:500; cursor:pointer; font-family:inherit; box-shadow:var(--shadow-glass); transition:transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-glass-hover)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-glass)'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      Show 42 More Articles
+    </button>
+    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">3 of 45 articles shown</div>
+  </div>
+
+</div>
+
+<!-- ═══════ Lead Magnet Banner ═══════ -->
+<section id="lead-magnet-section" style="padding:80px 24px;">
+  <div class="lead-card">
+    <div class="lead-text">
+      <div class="lead-eyebrow">Free Engineering Guide</div>
+      <h2 class="lead-title">10 Common Mistakes in Pressure Pipeline Design</h2>
+      <p class="lead-desc">An 11-page PDF with charts, equations, and professional solutions — completely free.</p>
+      <ul class="lead-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Transient pressure analysis</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Air pocket management</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Surge vessel sizing</li>
+      </ul>
+    </div>
+    <a href="pipeline-checklist.html" class="btn btn-primary lead-btn">
+      Download Free PDF
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </div>
+</section>
+<style>
+  .lead-card {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    background: var(--glass);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-glass);
+    padding: 48px 52px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .lead-text { flex: 1; min-width: 280px; }
+  .lead-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+  }
+  .lead-title {
+    font-size: 28px; font-weight: 700; color: var(--text-primary);
+    letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 10px;
+  }
+  .lead-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 22px; }
+  .lead-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 28px; }
+  .lead-list li {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 14px; color: var(--text-secondary);
+  }
+  .lead-list svg { width: 16px; height: 16px; color: var(--accent); flex-shrink: 0; }
+  .lead-btn { flex-shrink: 0; padding: 14px 26px; font-size: 15px; }
+  @media (max-width: 768px) {
+    .lead-card { padding: 36px 28px; gap: 28px; }
+    .lead-title { font-size: 23px; }
+    .lead-btn { width: 100%; justify-content: center; }
+  }
+</style>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="about.html">About</a></p>
+  </div>
+</footer>
+
+
+
+
+
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section id="newsletter-section" style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+/* ── Show More ── */
+function revealArticles() {
+  var hidden = document.querySelectorAll('.hidden-article');
+  var wrap   = document.getElementById('show-more-wrap');
+  hidden.forEach(function(el, i) {
+    setTimeout(function() { el.classList.add('visible'); }, i * 40);
+  });
+  wrap.style.transition = 'opacity 0.3s ease';
+  wrap.style.opacity = '0';
+  setTimeout(function(){ wrap.style.display = 'none'; }, 300);
+  if (window.gtag) gtag('event', 'show_more_articles', { event_category: 'engagement' });
+}
+
+/* ── Search & Filter ── */
+var _currentCat = 'all';
+
+/* Topic cards act as the filter: click to filter, click again to clear */
+function topicFilter(cat, el) {
+  var wasActive = el.classList.contains('active');
+  document.querySelectorAll('.cat-card').forEach(function(c){ c.classList.remove('active'); });
+  if (wasActive) {
+    _currentCat = 'all';
+  } else {
+    _currentCat = cat;
+    el.classList.add('active');
+    var sec = document.querySelector('.articles-section');
+    if (sec) window.scrollTo({ top: sec.offsetTop - 60, behavior: 'smooth' });
+  }
+  filterArticles();
+  if (window.gtag && !wasActive) gtag('event', 'topic_filter', { event_category: 'engagement', event_label: cat });
+}
+
+function filterArticles() {
+  var query  = (document.getElementById('article-search').value || '').trim().toLowerCase();
+  var grid   = document.getElementById('articlesGrid');
+  var wrap   = document.getElementById('show-more-wrap');
+  var noRes  = document.getElementById('no-results');
+  var cards  = document.querySelectorAll('#articlesGrid .article-card');
+  var active = _currentCat !== 'all' || query.length > 0;
+
+  if (active) {
+    // Filtering mode: show grid with override, hide Show-More
+    grid.classList.add('filtering');
+    if (wrap) wrap.style.display = 'none';
+    var visible = 0;
+    cards.forEach(function(card) {
+      var cat    = (card.getAttribute('data-cat') || '').toLowerCase();
+      var search = (card.getAttribute('data-search') || '') + ' ' + (card.textContent || '');
+      search = search.toLowerCase();
+      var catOk  = _currentCat === 'all' || cat === _currentCat;
+      var srchOk = !query || search.indexOf(query) !== -1;
+      if (catOk && srchOk) {
+        card.classList.remove('f-hide');
+        visible++;
+      } else {
+        card.classList.add('f-hide');
+      }
+    });
+    noRes.style.display = visible === 0 ? 'block' : 'none';
+  } else {
+    // Default mode: remove filtering class, restore Show-More
+    grid.classList.remove('filtering');
+    cards.forEach(function(card) { card.classList.remove('f-hide'); });
+    noRes.style.display = 'none';
+    // Only restore show-more if articles haven't been revealed yet
+    var anyVisible = document.querySelectorAll('.hidden-article.visible').length;
+    if (wrap && anyVisible === 0) wrap.style.display = '';
+  }
+}
+
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+
+  // Strong validation
+  var parts = email.split('@');
+  var valid = parts.length === 2
+    && parts[0].length >= 2
+    && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2
+    && parts[1].split('.').pop().length >= 2;
+
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = 'Thank you! Please check your email to confirm your subscription.';
+  }, 900);
+  return true;
+}
+</script>
+<!-- End Newsletter Section -->
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<!-- End WhatsApp Button -->
+<style>
+/* === Unified FAB Buttons === */
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600;
+  font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(0,0,0,0.06);
+  box-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 28px rgba(0,0,0,.12);
+  text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+}
+.fab-glass:hover, .fab-consult:hover {
+  transform:translateY(-3px);
+  box-shadow:0 2px 6px rgba(0,0,0,.08),0 14px 36px rgba(0,0,0,.16);
+}
+.fab-wa { left:2rem; }
+.fab-consult { right:2rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text { display:none; }
+  .fab-glass, .fab-consult {
+    width:52px; height:52px;
+    padding:0; border-radius:50%;
+    justify-content:center;
+  }
+}
+</style>
+<style>
+#mc-email:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,113,227,0.12);
+}
+</style>
+<!-- Auto-count articles per topic (keeps "Browse by topic" counts always current) -->
+<script>
+(function(){
+  function syncTopicCounts(){
+    var grid=document.getElementById('articlesGrid'); if(!grid) return;
+    document.querySelectorAll('.cat-card[data-cat]').forEach(function(card){
+      var cat=card.getAttribute('data-cat');
+      var n=grid.querySelectorAll('.article-card[data-cat="'+cat+'"]').length;
+      var el=card.querySelector('.cat-card-count');
+      if(el) el.textContent = n + (n===1 ? ' article' : ' articles');
+    });
+  }
+  function syncShowMore(){
+    var grid=document.getElementById('articlesGrid'); if(!grid) return;
+    var total=grid.querySelectorAll('.article-card').length;
+    var hidden=grid.querySelectorAll('.article-card.hidden-article').length;
+    var btn=document.getElementById('show-more-btn');
+    if(btn){
+      var svg=btn.querySelector('svg'); btn.textContent='';
+      if(svg) btn.appendChild(svg);
+      btn.appendChild(document.createTextNode(' Show '+hidden+' More Articles'));
+    }
+    var cnt=document.getElementById('show-more-count');
+    if(cnt) cnt.textContent=(total-hidden)+' of '+total+' articles shown';
+    var wrap=document.getElementById('show-more-wrap');
+    if(wrap && hidden===0) wrap.style.display='none';
+  }
+  function run(){ syncTopicCounts(); syncShowMore(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run);
+  else run();
+})();
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

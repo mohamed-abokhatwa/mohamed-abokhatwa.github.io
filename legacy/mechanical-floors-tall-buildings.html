@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mechanical Floors in Megatall Buildings: Spacing, Zone Heights, Riser Economics &amp; Layout — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:16px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#c0392b;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid #cdd6df;border-radius:8px;font-size:13px;font-family:inherit;background:#fff;color:#1a1d21;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:#1b4f72;text-decoration:none;border:1px solid #cdd6df;border-radius:980px;padding:4px 11px;background:#fff;transition:.18s;}
+    .calc-link:hover{border-color:#1b4f72;background:#f2f6fa;}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="Mechanical floor design in megatall buildings: what a plant level is really for, the area economics of mechanical floors versus riser shafts, why central all-air distribution does not scale, the zone-height table that decides the whole building and why domestic water usually governs it, making levels coincide with outriggers and refuge floors, layout for maintainability and rigging — with three interactive charts and installation tricks.">
+  <meta property="og:title" content="Mechanical Floors in Megatall Buildings: Spacing, Zone Heights, Riser Economics &amp; Layout | Mohamed Abokhatwa">
+  <meta property="og:description" content="The spacing of the mechanical floors sets the vertical zone height, and the zone height governs every pressure system in the tower. The area economics, why central air does not scale, and the one table that should exist before the structural scheme freezes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/mechanical-floors-tall-buildings.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-mechanical-floors-tall-buildings.jpg">
+  <meta property="og:image:alt" content="Cutaway of a megatall tower highlighting its double-height mechanical floors at intervals up the core, each packed with air-handling plant, pumps, tanks and heat exchangers, with the riser shafts running between them">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mechanical Floors in Megatall Buildings: Spacing, Zone Heights, Riser Economics &amp; Layout | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="The spacing of the mechanical floors sets the vertical zone height, and the zone height governs every pressure system in the tower. The area economics, why central air does not scale, and the one table that should exist before the structural scheme freezes.">
+  <link rel="canonical" href="https://abokhatwa.com/mechanical-floors-tall-buildings.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Mechanical Floors in Megatall Buildings: Spacing, Zone Heights, Riser Economics &amp; Layout",
+  "description": "A design-perspective guide to mechanical floors in megatall buildings: their role as pressure breaks and distribution origins, the area trade-off against riser shafts, duct riser scaling and floor-by-floor air handling, the governing zone-height calculation across systems, coincidence with structural and refuge levels, and layout for maintenance and rigging.",
+  "image": "https://abokhatwa.com/og-mechanical-floors-tall-buildings.jpg",
+  "datePublished": "2026-08-14",
+  "dateModified": "2026-08-14",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/mechanical-floors-tall-buildings.html" }
+}
+  </script>
+</head>
+<body>
+<div id="legacy-bar" style="position:sticky;top:0;z-index:99999;background:#1d1d1f;color:#f5f5f7;font:500 13px/1.4 -apple-system,BlinkMacSystemFont,Inter,Helvetica,Arial,sans-serif;padding:9px 16px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center;"><span>You are viewing the previous design of abokhatwa.com, archived 21 August 2026.</span><a href="https://abokhatwa.com/" style="color:#6fb3d6;text-decoration:underline;">Go to the current site</a></div>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="index.html">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Tall-Building Systems</span></div>
+  <span class="tag">Tall-Building Systems &middot; Mechanical Floors &middot; Vertical Zoning &middot; Core Planning</span>
+  <h1>Mechanical Floors in Megatall Buildings: Spacing, Zone Heights, Riser Economics &amp; Layout</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>August 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>17 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="../mechanical-floors-tall-buildings.webp" alt="Cutaway of a megatall tower highlighting its double-height mechanical floors at intervals up the core, each packed with air-handling plant, pumps, tanks and heat exchangers, with the riser shafts running between them">
+</div>
+
+<div class="article-body">
+
+<p class="lead">Ask where the mechanical floors go in a megatall tower and you will get three different answers from three consultants — and none of them will be the MEP engineer's. The structural engineer wants them where the outriggers are. The fire engineer wants them where the refuge floors are. The developer wants as few as possible, because a mechanical floor is a floor nobody pays rent for. The mechanical engineer, meanwhile, has the only quantitative case in the room, and usually arrives with it too late: <strong>the spacing of the mechanical floors is what sets the vertical zone height, and the vertical zone height is what every pressure-bearing system in the building has to live inside.</strong> Get the spacing decided in the structural coordination meeting and you will spend the next four years designing around it.</p>
+
+<h2 id="why">1 · What a mechanical floor is actually for</h2>
+<p>A mechanical floor is not storage for equipment. It is a <strong>pressure break, a distribution origin and a maintenance base</strong>, and each of those has a different optimal spacing:</p>
+<ul class="clean">
+  <li><strong>A pressure break.</strong> Every water-bearing system — chilled water, domestic water, fire standpipe, drainage — accumulates static pressure at 0.0981&nbsp;bar per metre. A mechanical floor is where that column is interrupted with a tank, a heat exchanger or a pump set, so the equipment below it never sees more than its rating.</li>
+  <li><strong>A distribution origin.</strong> Air-handling plant on a mechanical floor serves the floors above and below it, so the vertical duct only has to span half a zone rather than the whole tower. That is what keeps the riser shafts from eating the floor plate.</li>
+  <li><strong>A maintenance base.</strong> Plant that cannot be reached, rigged and replaced is plant that will be run to failure. Every mechanical floor needs a route from the goods lift to every machine, and a knock-out panel or hatch big enough for the largest replaceable component.</li>
+  <li><strong>A compartmentation break.</strong> Terminating shafts at mechanical floors is the single most effective control on <a href="stack-effect-tall-buildings.html">stack effect</a>, and it is also where smoke zones and fire compartments naturally align.</li>
+</ul>
+
+<h2 id="economics">2 · The area economics — and why they mislead</h2>
+<p>There is a real optimisation buried here, and it is worth doing because it is so often asserted without numbers. Adding mechanical floors costs whole floors of lettable area. But it <em>saves</em> shaft area on every other floor, because a riser that only serves one zone carries a fraction of the load. With \(F\) floors of area \(A\), \(N\) mechanical floors, and a riser cross-section of \(k\) per floor served, the total area lost is approximately:</p>
+<div class="eq">\[ L(N) \;=\; \underbrace{N\,A}_{\text{mechanical floors}} \;+\; \underbrace{\frac{k\,F^{2}}{2N}}_{\text{shafts on every floor}} \qquad\Longrightarrow\qquad N^{*} = F\sqrt{\frac{k}{2A}} \]</div>
+<p>Run it for a real tower — 150 floors of 1,000&nbsp;m², 0.35&nbsp;m² of riser per floor served — and the optimum is <strong>two</strong> mechanical floors, costing about 2.65&nbsp;% of gross floor area. Real megatall towers have five to ten. The economics are not wrong; they are simply not the binding constraint. <strong>Mechanical floors are sited by pressure, fire and structure, and the area calculation only tells you what that decision costs.</strong> Knowing the number is still valuable: it is the difference between "we need another mechanical floor" and "another mechanical floor costs 0.7&nbsp;% of your lettable area and here is what it buys."</p>
+
+<h2 id="int-area">3 · Interactive: the area cost of mechanical floors</h2>
+<p>Set the tower and the riser intensity. The red curve is area lost to mechanical floors, the blue is area lost to shafts on every floor, and the dark curve is the total — a shallow U whose minimum is the area-optimal count. Watch how flat the bottom is: between two and four mechanical floors the total barely moves, which is exactly why other disciplines get to win this argument.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Lettable area lost vs number of mechanical floors</div>
+    <div class="fsub">L(N) = N·A + k·F²/(2N). Mechanical-floor loss rises linearly; shaft loss falls as 1/N because each riser serves fewer floors. k is the riser cross-section required per floor served, covering air, water, drainage and electrical risers together.</div>
+  </div>
+  <div class="chart-box"><canvas id="areaChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Floors <span id="vF">150</span></label>
+      <input type="range" id="sF" min="20" max="200" value="150" step="5">
+      <div class="hint">Occupied floors served by the risers.</div>
+    </div>
+    <div class="ctrl">
+      <label>Floor plate <span id="vA">1000 m²</span></label>
+      <input type="range" id="sA" min="400" max="3000" value="1000" step="50">
+      <div class="hint">Gross area of one typical floor.</div>
+    </div>
+    <div class="ctrl">
+      <label>Riser area per floor served <span id="vK">0.35 m²</span></label>
+      <input type="range" id="sK" min="0.1" max="1.2" value="0.35" step="0.01">
+      <div class="hint">All risers combined. Central all-air systems push this up hard; floor-by-floor air handling pushes it right down.</div>
+    </div>
+    <div class="ctrl">
+      <label>Mechanical floors <span id="vN">4</span></label>
+      <input type="range" id="sN" min="1" max="16" value="4" step="1">
+      <div class="hint">Marker position on the curve.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Area-optimal N</div><div class="v" id="rNo">2</div></div>
+    <div class="cell"><div class="k">Loss at your N</div><div class="v" id="rLn">4,984 <small>m²</small></div></div>
+    <div class="cell"><div class="k">Of gross area</div><div class="v" id="rPc">3.32 <small>%</small></div></div>
+    <div class="cell"><div class="k">Cost vs optimum</div><div class="v" id="rDf">1,016 <small>m²</small></div></div>
+    <div class="cell"><div class="k">Zone height</div><div class="v" id="rZh">38 <small>floors</small></div></div>
+  </div>
+</div>
+<p class="fig-note">At the default the area optimum is <strong>two</strong> mechanical floors (2.65&nbsp;% of gross area) but four costs only 3.32&nbsp;% — about 1,000&nbsp;m² more, or roughly one extra floor's worth, spread over a 150-storey building. That is a small price for halving every pressure zone, and it is the number to bring to the coordination meeting. Now drag the riser intensity: at 1.0&nbsp;m² per floor served, typical of a fully central all-air system, the optimum moves to three and the shaft term overtakes the mechanical-floor term — which is the quantitative argument for floor-by-floor air handling.</p>
+
+<h2 id="int-duct">4 · Interactive: why central air distribution does not scale</h2>
+<p>The riser intensity above is not a constant — it is a design choice, and air is what dominates it. This shows the vertical supply-and-return duct cross-section needed as one air-handling plant serves more and more floors, against the outdoor-air-only riser that a floor-by-floor or DOAS arrangement needs instead.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Vertical duct riser area vs floors served by one plant</div>
+    <div class="fsub">Q = n·A·q. Riser area = 1.8·Q/v, the 1.8 counting supply plus a return duct at 80&nbsp;% of the supply area. The blue line is the same building served by floor-by-floor air handling, where only outdoor air rides the riser — taken as 10&nbsp;% of the supply volume at two-thirds the duct velocity, since outdoor-air risers are run slower for acoustic reasons.</div>
+    <a class="calc-link" href="calculators.html#calc-duct"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h6"/></svg>Open Duct sizing by velocity as a calculator</a>
+  </div>
+  <div class="chart-box"><canvas id="ductChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Floors per plant <span id="vDn">40</span></label>
+      <input type="range" id="sDn" min="5" max="140" value="40" step="1">
+      <div class="hint">Floors served by one central air-handling plant.</div>
+    </div>
+    <div class="ctrl">
+      <label>Floor plate <span id="vDa">1000 m²</span></label>
+      <input type="range" id="sDa" min="400" max="3000" value="1000" step="50">
+      <div class="hint">Conditioned area per floor.</div>
+    </div>
+    <div class="ctrl">
+      <label>Supply air rate <span id="vDq">1.50 L/s·m²</span></label>
+      <input type="range" id="sDq" min="0.6" max="3" value="1.5" step="0.05">
+      <div class="hint">Design supply airflow per square metre. Higher in dense or glazed floors.</div>
+    </div>
+    <div class="ctrl">
+      <label>Duct velocity <span id="vDv">12 m/s</span></label>
+      <input type="range" id="sDv" min="6" max="20" value="12" step="0.5">
+      <div class="hint">Riser velocity. Pushing it up shrinks the shaft and costs fan power and noise.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Air volume</div><div class="v" id="rQ">60 <small>m³/s</small></div></div>
+    <div class="cell"><div class="k">Riser area</div><div class="v" id="rAr">9.0 <small>m²</small></div></div>
+    <div class="cell"><div class="k">Square shaft</div><div class="v" id="rSq">3.0 <small>m</small></div></div>
+    <div class="cell"><div class="k">Of floor plate</div><div class="v" id="rPf">0.90 <small>%</small></div></div>
+    <div class="cell"><div class="k">DOAS riser</div><div class="v" id="rDo">1.3 <small>m²</small></div></div>
+  </div>
+</div>
+<p class="fig-note">One plant serving 40 floors needs a <strong>9&nbsp;m² riser — a 3.0&nbsp;m square shaft</strong>, running the full height of the zone. Push it to 120 floors and it becomes 27&nbsp;m², a 5.2&nbsp;m square shaft, before you have added a single water or electrical riser. Serve those same 120 floors with floor-by-floor air handling and only outdoor air rides the riser: <strong>4.0&nbsp;m²</strong>, a 2.0&nbsp;m square shaft — a seventh of the area. That is the real reason tall office towers moved to floor-by-floor AHUs — not fan energy, not control, but the fact that the vertical duct was consuming the product being sold. The counter-argument is maintenance: you have swapped four large machines in a plant room for a hundred small ones in ceilings, which is a facilities cost that lasts as long as the building.</p>
+
+<h2 id="governing">5 · The governing constraint: whose zone height wins?</h2>
+<p>Every pressure-bearing system in the tower has a maximum zone height, and they are wildly different. This is the calculation that should be done first, in one table, before the mechanical floors are located — because <strong>the shortest one governs the whole building</strong>, and it is almost never the one people expect.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Maximum vertical zone height by system</div>
+    <div class="fsub">Zone height = allowable pressure / 0.0981 bar·m⁻¹. Domestic water is shown two ways: zoned on the fixture comfort window alone, and zoned on riser pipe class with floor PRVs doing the fine control. The three pipe-class bars are the raw rating over the gradient; netting off the residual each system must still hold at the top of its zone shortens them by roughly 10&nbsp;% — the domestic riser, for example, falls from 163&nbsp;m to 148&nbsp;m once a 1.5&nbsp;bar top residual is allowed for.</div>
+    <a class="calc-link" href="calculators.html#calc-pn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h6"/></svg>Open Pressure class check as a calculator</a>
+  </div>
+  <div class="chart-box"><canvas id="govChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Domestic comfort window <span id="vGw">3.5 bar</span></label>
+      <input type="range" id="sGw" min="1.5" max="6" value="3.5" step="0.1">
+      <div class="hint">Maximum minus minimum acceptable fixture pressure.</div>
+    </div>
+    <div class="ctrl">
+      <label>Domestic riser class <span id="vGd">PN16</span></label>
+      <input type="range" id="sGd" min="10" max="40" value="16" step="1">
+      <div class="hint">With floor PRVs, the riser can run at its pipe rating.</div>
+    </div>
+    <div class="ctrl">
+      <label>Chilled-water class <span id="vGc">PN16</span></label>
+      <input type="range" id="sGc" min="10" max="40" value="16" step="1">
+      <div class="hint">Rating of zone coils, valves and fittings.</div>
+    </div>
+    <div class="ctrl">
+      <label>Standpipe rating <span id="vGf">12 bar</span></label>
+      <input type="range" id="sGf" min="8" max="34" value="12" step="1">
+      <div class="hint">Hose-valve and standpipe working pressure.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Governing height</div><div class="v" id="rGz">36 <small>m</small></div></div>
+    <div class="cell"><div class="k">Governed by</div><div class="v" id="rGb" style="font-size:14px;margin-top:8px;">domestic comfort</div></div>
+    <div class="cell"><div class="k">If PRVs at floors</div><div class="v" id="rGp">122 <small>m</small></div></div>
+    <div class="cell"><div class="k">Zones in 600 m</div><div class="v" id="rGn">17</div></div>
+    <div class="cell"><div class="k">With PRVs</div><div class="v" id="rGm">5</div></div>
+  </div>
+</div>
+<p class="fig-note">The bars are not close. Chilled water at PN16 tolerates 163&nbsp;m and a standard standpipe 122&nbsp;m, but domestic water zoned on tap comfort alone tolerates just <strong>36&nbsp;m</strong> — and if you let that govern, a 600&nbsp;m tower needs seventeen mechanical levels. Break that one constraint with floor PRVs (see <a href="domestic-water-tall-buildings.html">domestic water supply</a>) and the governing system becomes the fire standpipe at 122&nbsp;m, giving five zones. <strong>One decision about tapware and PRVs changes the number of mechanical floors in the building by a factor of three.</strong> That is why this table belongs in the concept report, not the tender drawings.</p>
+
+<h2 id="layout">6 · Laying the floor out</h2>
+<ul class="clean">
+  <li><strong>Start from the replacement route, not the plant.</strong> Draw the path from the goods lift to every machine, at the size of the largest indivisible component, before you place anything. If a chiller cannot be replaced without demolition, the layout has failed regardless of how efficiently it packs.</li>
+  <li><strong>Give every machine its pull space.</strong> Tube-pull for shell-and-tube chillers, coil-pull and filter-face access for AHUs, shaft-withdrawal for pumps. Mark it on the drawing as reserved space and defend it in coordination — it is the first thing another trade will route through.</li>
+  <li><strong>Separate wet and dry.</strong> Keep electrical rooms, generators and control panels away from and ideally above pump rooms, tanks and heat exchangers. Then bund and drain the wet side properly, with a floor gully sized for the largest credible leak and a leak-detection alarm, because the floor below is somebody's ceiling.</li>
+  <li><strong>Height is the scarce dimension.</strong> Mechanical floors are usually double-height, and the coordination fight is vertical: ducts want depth, pipes want gradient, cable containment wants clearance, and the structure is deeper here because outriggers often land on the same level. Resolve the vertical stack early in the model.</li>
+  <li><strong>Put the riser take-offs where the shafts actually are.</strong> A mechanical floor that requires a 30&nbsp;m horizontal run to reach its own riser has wasted the pressure break it was built to provide.</li>
+  <li><strong>Design for acoustic isolation from day one.</strong> A mechanical floor sits directly under and over occupied space; see <a href="stack-effect-tall-buildings.html">the compartmentation discussion</a> for the shaft side and treat structure-borne transmission as a floor-level design problem, not an equipment selection detail.</li>
+</ul>
+
+<h2 id="coincide">7 · Making the levels coincide</h2>
+<p>The cheapest mechanical floor is one that was going to exist anyway. In a well-coordinated megatall these functions are deliberately stacked on the same levels:</p>
+<ul class="clean">
+  <li><strong>Structural outrigger or belt-truss levels</strong> — already partially obstructed and unattractive as lettable space, and already stiff enough to carry heavy plant.</li>
+  <li><strong>Refuge floors</strong> — required by code at intervals, already protected and already a shaft-compartmentation break.</li>
+  <li><strong>Fire and MEP pressure zone breaks</strong> — tanks, pumps and heat exchangers for every wet system.</li>
+  <li><strong>Lift zone terminations and sky lobbies</strong> — where hoistways stop and the stack-effect column is already being interrupted.</li>
+  <li><strong>Façade maintenance and BMU levels</strong> — plant, davits and access already concentrated.</li>
+</ul>
+<p>When these coincide the tower gets its pressure breaks essentially free. When they do not — when the outriggers are at levels 30 and 90 but the water zoning wants 40 and 80 — the building pays twice, and the argument usually gets settled by whoever is furthest along in their design. That is why the MEP zoning table has to exist before the structural scheme freezes.</p>
+
+<h2 id="install">8 · Installation &amp; execution tricks</h2>
+<ul class="clean">
+  <li><strong>Rig the plant in before the floor above is closed.</strong> Sequence the heavy equipment deliveries against the structural programme and, where that is impossible, cast a removable slab panel or design a permanent lifting beam and hatch. Retro-fitting a 12-tonne chiller through a completed core is a demolition job.</li>
+  <li><strong>Install a permanent lifting beam over every major machine</strong>, rated and certified, with the SWL painted on it. It costs almost nothing during construction and it is used for the next sixty years.</li>
+  <li><strong>Set out the plinths from the riser, not the wall.</strong> Cumulative setting-out error on a mechanical floor lands on the shortest connection, which is always the one to the riser.</li>
+  <li><strong>Waterproof and drain the whole floor</strong>, not just the plant rooms — tank rooms, pump rooms and heat exchanger rooms all get tanked, bunded and drained to a gully with a high-level alarm.</li>
+  <li><strong>Provide dedicated plant ventilation and cooling</strong> and check it against the real heat rejection of the equipment on the floor. A mechanical floor packed with drives, transformers and pump motors is a substantial internal load, and plant rooms that run at 45&nbsp;°C halve the life of the electronics in them.</li>
+  <li><strong>Photograph and scan the floor before closing ceilings.</strong> A point-cloud of every mechanical floor at completion is the single most useful handover deliverable for a building that will be modified for decades.</li>
+  <li><strong>Label to a plan.</strong> Every valve, damper and machine tagged to the BMS naming convention at installation, with a laminated schematic mounted on the wall of each plant room.</li>
+</ul>
+
+<h2 id="checklist">9 · The design &amp; installation checklist</h2>
+<ul class="clean">
+  <li><strong>Build the zone-height table first</strong> — every pressure system, its rating, its maximum zone height; the shortest governs.</li>
+  <li><strong>Decide the domestic water strategy early</strong>, because it is usually the governing constraint and it is fixable with PRVs.</li>
+  <li><strong>Quantify the area cost</strong> of each additional mechanical floor and bring the number to coordination.</li>
+  <li><strong>Choose the air strategy on shaft area</strong>, not on fan energy — it dominates the riser intensity.</li>
+  <li><strong>Force coincidence</strong> with outriggers, refuge floors, lift zone breaks and BMU levels.</li>
+  <li><strong>Lay out from the replacement route</strong>, with pull space reserved and defended.</li>
+  <li><strong>Separate wet from dry</strong>, bund and drain everything, alarm the gullies.</li>
+  <li><strong>Plan the rigging</strong> against the construction programme, with permanent lifting beams and hatches.</li>
+  <li><strong>Ventilate and cool the plant floor</strong> for its real internal gain.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  Mechanical floors are the tower's <strong>pressure breaks</strong>, and their spacing is set by whichever system has the shortest allowable zone — almost always domestic water, at 36&nbsp;m, until you break that constraint with floor PRVs and hand the job to the fire standpipe at 122&nbsp;m. The area economics say two mechanical floors; the pressure, fire and structural reality says five to ten; the useful contribution from the mechanical engineer is not the optimum but <strong>the price of each one and what it buys</strong> — brought to the table before the structural scheme freezes, because after that the zone heights are somebody else's decision and you will be designing around them for four years.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed. — mechanical floor location and spacing, vertical zoning strategy, plant distribution.</li>
+  <li>Council on Tall Buildings and Urban Habitat (CTBUH) — technical guides on tall building services, core planning and refuge floor provision.</li>
+  <li>CIBSE <em>Guide D — Transportation Systems in Buildings</em> and <em>Guide B</em> — core planning, sky lobbies and the interaction of lift zoning with plant levels.</li>
+  <li>ASHRAE <em>Handbook — HVAC Systems and Equipment</em>, Air Handling and Distribution chapters — riser sizing, duct velocity and central vs decentralised air-handling arrangements.</li>
+  <li>International Building Code (IBC) and Saudi Building Code <em>SBC 801</em> — refuge floor and high-rise provisions that fix candidate mechanical levels.</li>
+  <li>Hydraulic Institute and ASHRAE guidance on plant room layout, equipment access and maintenance clearances.</li>
+  <li>BSRIA <em>Rules of Thumb</em> (BG 9) — riser and plant space allowances for early-stage area planning.</li>
+  <li>Institution of Structural Engineers / CTBUH guidance on outrigger and belt-truss levels in tall buildings, and their coordination with services floors.</li>
+</ol>
+
+<div class="tags">#MechanicalFloors #PlantRooms #TallBuildings #MegatallBuildings #SupertallBuildings #VerticalZoning #PressureZoning #RiserDesign #ShaftDesign #CorePlanning #SkyLobby #RefugeFloor #Outrigger #FloorByFloorAHU #DOAS #DuctRiser #SpacePlanning #Maintainability #Rigging #Coordination #BIM #MEP #BuildingServices #HVAC</div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const fmt2=v=>v.toFixed(2);
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}};
+const BARM=0.0981;
+
+/* ---------- CHART 1 : area economics ---------- */
+const sF=document.getElementById('sF'),sA=document.getElementById('sA'),
+      sK=document.getElementById('sK'),sN=document.getElementById('sN');
+const lossMech=(N,A)=>N*A, lossShaft=(N,F,k)=>k*F*F/(2*N);
+let areaChart=new Chart(document.getElementById('areaChart'),{
+  data:{datasets:[
+    {type:'line',label:'Mechanical-floor area',data:[],borderColor:'#c0392b',borderWidth:2.2,borderDash:[6,4],pointRadius:0,order:4},
+    {type:'line',label:'Shaft area on all floors',data:[],borderColor:'#1b4f72',borderWidth:2.2,borderDash:[6,4],pointRadius:0,order:3},
+    {type:'line',label:'Total area lost',data:[],borderColor:'#1a1d21',backgroundColor:'rgba(26,29,33,0.07)',borderWidth:3,pointRadius:0,fill:true,order:2},
+    {type:'scatter',label:'Your choice',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:1,max:16,title:{display:true,text:'Number of mechanical floors',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Lettable area lost (m²)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} m² at N=${c.parsed.x}`}}}}
+});
+function updArea(){
+  const F=+sF.value,A=+sA.value,k=+sK.value,N=+sN.value;
+  document.getElementById('vF').textContent=F;
+  document.getElementById('vA').textContent=A+' m²';
+  document.getElementById('vK').textContent=fmt2(k)+' m²';
+  document.getElementById('vN').textContent=N;
+  const xs=[];for(let n=1;n<=16;n++)xs.push(n);
+  areaChart.data.datasets[0].data=xs.map(n=>({x:n,y:+lossMech(n,A).toFixed(0)}));
+  areaChart.data.datasets[1].data=xs.map(n=>({x:n,y:+lossShaft(n,F,k).toFixed(0)}));
+  areaChart.data.datasets[2].data=xs.map(n=>({x:n,y:+(lossMech(n,A)+lossShaft(n,F,k)).toFixed(0)}));
+  const Ln=lossMech(N,A)+lossShaft(N,F,k);
+  areaChart.data.datasets[3].data=[{x:N,y:+Ln.toFixed(0)}];
+  areaChart.update('none');
+  const Nopt=Math.max(1,Math.round(F*Math.sqrt(k/(2*A))));
+  const Lopt=lossMech(Nopt,A)+lossShaft(Nopt,F,k);
+  document.getElementById('rNo').textContent=Nopt;
+  document.getElementById('rLn').innerHTML=fmt0(Ln)+' <small>m²</small>';
+  document.getElementById('rPc').innerHTML=fmt2(100*Ln/(F*A))+' <small>%</small>';
+  document.getElementById('rDf').innerHTML=fmt0(Math.abs(Ln-Lopt))+' <small>m²</small>';
+  document.getElementById('rZh').innerHTML=fmt0(F/N)+' <small>floors</small>';
+}
+[sF,sA,sK,sN].forEach(s=>s.addEventListener('input',updArea));updArea();
+
+/* ---------- CHART 2 : duct riser ---------- */
+const sDn=document.getElementById('sDn'),sDa=document.getElementById('sDa'),
+      sDq=document.getElementById('sDq'),sDv=document.getElementById('sDv');
+const OA_FRAC=0.10, RF=1.8;
+function duct(n,A,q,v){const Q=n*A*q/1000;return {Q:Q,ar:RF*Q/v};}
+let ductChart=new Chart(document.getElementById('ductChart'),{
+  data:{datasets:[
+    {type:'line',label:'Central all-air riser (supply + return)',data:[],borderColor:'#c0392b',backgroundColor:'rgba(192,57,43,0.08)',borderWidth:3,pointRadius:0,fill:true,order:3},
+    {type:'line',label:'Floor-by-floor AHU — outdoor air only',data:[],borderColor:'#1b4f72',borderWidth:3,pointRadius:0,order:2},
+    {type:'scatter',label:'Your plant',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:5,max:140,title:{display:true,text:'Floors served by one plant',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Vertical duct riser area (m²)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt1(c.parsed.y)} m² at ${fmt0(c.parsed.x)} floors`}}}}
+});
+function updDuct(){
+  const n=+sDn.value,A=+sDa.value,q=+sDq.value,v=+sDv.value;
+  document.getElementById('vDn').textContent=n;
+  document.getElementById('vDa').textContent=A+' m²';
+  document.getElementById('vDq').textContent=fmt2(q)+' L/s·m²';
+  document.getElementById('vDv').textContent=fmt1(v)+' m/s';
+  const xs=[];for(let i=5;i<=140;i+=1)xs.push(i);
+  ductChart.data.datasets[0].data=xs.map(i=>({x:i,y:+duct(i,A,q,v).ar.toFixed(2)}));
+  ductChart.data.datasets[1].data=xs.map(i=>({x:i,y:+(RF*i*A*q*OA_FRAC/1000/(v*0.667)).toFixed(2)}));
+  const r=duct(n,A,q,v);
+  ductChart.data.datasets[2].data=[{x:n,y:+r.ar.toFixed(2)}];
+  ductChart.update('none');
+  const oa=RF*n*A*q*OA_FRAC/1000/(v*0.667);
+  document.getElementById('rQ').innerHTML=fmt0(r.Q)+' <small>m³/s</small>';
+  document.getElementById('rAr').innerHTML=fmt1(r.ar)+' <small>m²</small>';
+  document.getElementById('rSq').innerHTML=fmt1(Math.sqrt(r.ar))+' <small>m</small>';
+  document.getElementById('rPf').innerHTML=fmt2(100*r.ar/A)+' <small>%</small>';
+  document.getElementById('rDo').innerHTML=fmt1(oa)+' <small>m²</small>';
+}
+[sDn,sDa,sDq,sDv].forEach(s=>s.addEventListener('input',updDuct));updDuct();
+
+/* ---------- CHART 3 : governing zone height ---------- */
+const sGw=document.getElementById('sGw'),sGd=document.getElementById('sGd'),
+      sGc=document.getElementById('sGc'),sGf=document.getElementById('sGf');
+let govChart=new Chart(document.getElementById('govChart'),{
+  type:'bar',
+  data:{labels:['Domestic\ncomfort window','Domestic riser\n+ floor PRVs','Chilled water','Fire standpipe'],
+    datasets:[{label:'Maximum zone height (m)',data:[],backgroundColor:[],borderColor:'#fff',borderWidth:1}]},
+  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+    scales:{x:{type:'linear',min:0,title:{display:true,text:'Maximum vertical zone height (m)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{...AX,ticks:{font:{family:'DM Sans',size:11}}}},
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.x)} m`}}}}
+});
+function updGov(){
+  const w=+sGw.value,d=+sGd.value,c=+sGc.value,f=+sGf.value;
+  document.getElementById('vGw').textContent=fmt1(w)+' bar';
+  document.getElementById('vGd').textContent='PN'+d;
+  document.getElementById('vGc').textContent='PN'+c;
+  document.getElementById('vGf').textContent=f+' bar';
+  const vals=[w/BARM,d/BARM,c/BARM,f/BARM];
+  const gov=Math.min(...vals), gi=vals.indexOf(gov);
+  govChart.data.datasets[0].data=vals.map(v=>+v.toFixed(0));
+  govChart.data.datasets[0].backgroundColor=vals.map((v,i)=>i===gi?'#c0392b':'#1b4f72');
+  govChart.update('none');
+  const names=['domestic comfort','domestic riser','chilled water','fire standpipe'];
+  const withPrv=Math.min(d/BARM,c/BARM,f/BARM);
+  document.getElementById('rGz').innerHTML=fmt0(gov)+' <small>m</small>';
+  document.getElementById('rGb').textContent=names[gi];
+  document.getElementById('rGp').innerHTML=fmt0(withPrv)+' <small>m</small>';
+  document.getElementById('rGn').textContent=Math.ceil(600/gov);
+  document.getElementById('rGm').textContent=Math.ceil(600/withPrv);
+}
+[sGw,sGd,sGc,sGf].forEach(s=>s.addEventListener('input',updGov));updGov();
+
+window.addEventListener('load',function(){try{areaChart.resize();ductChart.resize();govChart.resize();}catch(e){}});
+
+</script>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<!-- End WhatsApp Button -->
+
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

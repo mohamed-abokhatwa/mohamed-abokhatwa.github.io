@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Tower &mdash; A Coupled Model of a Tall Building's MEP &mdash; Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="An interactive coupled model of a whole tall building: change the height, floor plate, pressure class or climate and watch the domestic and fire pressure zones, the chilled-water cascade, the mechanical floors, the riser shafts, the cooling load, the tower makeup and the stack pressure all move together.">
+  <meta property="og:title" content="One Tower — A Coupled Model of a Tall Building's MEP | Mohamed Abokhatwa">
+  <meta property="og:description" content="An interactive coupled model of a whole tall building: change the height, floor plate, pressure class or climate and watch the domestic and fire pressure zones, the chilled-water cascade, the mechanical floors, the riser shafts, the cooling load, the tower makeup and the stack pressure all move together.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/one-tower.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-mechanical-floors-tall-buildings.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://abokhatwa.com/one-tower.html">
+<style>
+  .ot-hero{max-width:1180px;margin:0 auto;padding:130px 24px 34px;}
+  .ot-hero .back{display:inline-flex;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:40px;}
+  .ot-hero .back:hover{color:var(--text-primary);}
+  .ot-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:block;}
+  .ot-hero h1{font-family:var(--font-display);font-size:clamp(44px,7vw,78px);font-weight:700;letter-spacing:-.04em;line-height:1;margin:0 0 20px;}
+  .ot-lede{font-size:19px;line-height:1.65;color:var(--text-secondary);max-width:72ch;margin:0;}
+  .ot-wrap{max-width:1180px;margin:0 auto;padding:0 24px 110px;}
+
+  .ot-controls{background:var(--bg-3);border:1px solid var(--border);border-radius:18px;padding:22px 24px 24px;margin-bottom:26px;}
+  .ot-ctrl-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;}
+  .ot-ctrl-title{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text-tertiary);}
+  .ot-presets{display:flex;flex-wrap:wrap;gap:8px;}
+  .ot-preset{font-family:inherit;font-size:12.5px;font-weight:500;padding:7px 14px;border-radius:980px;
+    border:1px solid var(--border-light);background:var(--bg-4);color:var(--text-secondary);cursor:pointer;transition:.18s;}
+  .ot-preset:hover{color:var(--text-primary);border-color:var(--accent);}
+  .ot-preset.on{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .ot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px 22px;}
+  .ot-c label{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:5px;}
+  .ot-c label b{color:var(--accent);font-variant-numeric:tabular-nums;font-weight:600;}
+  .ot-c input[type=range]{width:100%;accent-color:var(--accent);}
+  .ot-hint{display:block;font-size:11.5px;line-height:1.45;color:var(--text-tertiary);margin-top:4px;}
+  .ot-hint a{color:var(--accent);}
+
+  .ot-section-card{background:var(--bg-3);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:26px;}
+  .ot-sec-head{padding:20px 24px 4px;}
+  .ot-sec-title{font-size:16px;font-weight:700;color:var(--text-primary);}
+  .ot-sec-sub{font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.55;max-width:80ch;}
+  .ot-svg-wrap{padding:10px 14px 4px;overflow-x:auto;}
+  .ot-svg-wrap svg{width:100%;min-width:640px;height:auto;display:block;}
+  .ot-verdict{padding:14px 24px 20px;font-size:14.5px;color:var(--text-secondary);line-height:1.6;border-top:1px solid var(--border);}
+  .ot-verdict b{color:var(--text-primary);}
+
+  .ot-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(288px,1fr));gap:16px;margin-bottom:26px;}
+  .ot-card{background:var(--bg-3);border:1px solid var(--border);border-radius:16px;padding:18px 20px 16px;display:flex;flex-direction:column;}
+  .ot-card-h{display:flex;align-items:center;gap:9px;margin-bottom:13px;}
+  .ot-dot{width:9px;height:9px;border-radius:3px;flex:0 0 auto;}
+  .ot-card-t{font-size:14.5px;font-weight:700;color:var(--text-primary);}
+  .ot-rows{display:flex;flex-direction:column;gap:8px;flex:1;}
+  .ot-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:13.5px;}
+  .ot-row span{color:var(--text-tertiary);}
+  .ot-row b{color:var(--text-primary);font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;}
+  .ot-row b small{font-weight:400;color:var(--text-tertiary);font-size:11.5px;margin-left:2px;}
+  .ot-link{margin-top:14px;font-size:12.5px;color:var(--accent);text-decoration:none;display:inline-flex;gap:5px;}
+  .ot-link:hover{text-decoration:underline;}
+  .ot-flag{margin-top:11px;font-size:12px;line-height:1.5;padding:8px 10px;border-radius:8px;}
+  .ot-flag.warn{background:rgba(185,119,14,.13);color:#b9770e;}
+  .ot-flag.bad{background:rgba(192,57,43,.13);color:#c0392b;}
+  .ot-flag.good{background:rgba(30,132,73,.13);color:#1e8449;}
+
+  .ot-energy{background:var(--bg-3);border:1px solid var(--border);border-radius:18px;padding:20px 24px 22px;margin-bottom:26px;}
+  .ot-energy-head{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:16px;}
+  .ot-energy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;}
+  .ot-e{padding:2px 18px 2px 0;border-right:1px solid var(--border);}
+  .ot-e:last-child{border-right:none;}
+  .ot-e-k{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--text-tertiary);}
+  .ot-e-v{font-family:var(--font-display);font-size:27px;font-weight:700;color:var(--text-primary);font-variant-numeric:tabular-nums;line-height:1.2;margin-top:2px;}
+  .ot-e-v small{font-size:12px;font-weight:500;color:var(--text-tertiary);}
+  .ot-energy-note{font-size:13.5px;color:var(--text-tertiary);line-height:1.6;margin:16px 0 0;max-width:88ch;}
+  .ot-energy-note b{color:var(--text-primary);}
+
+  .ot-foot-note{border-top:1px solid var(--border);padding-top:22px;}
+  .ot-foot-note p{font-size:14px;line-height:1.7;color:var(--text-tertiary);margin:0 0 12px;max-width:92ch;}
+  .ot-foot-note a{color:var(--accent);}
+  .ot-foot-note strong{color:var(--text-secondary);}
+  @media(max-width:640px){
+    .ot-hero{padding-top:110px;}
+    .ot-e{border-right:none;border-bottom:1px solid var(--border);padding:10px 0;}
+    .ot-e:last-child{border-bottom:none;}
+  }
+</style>
+</head>
+<body>
+<div id="legacy-bar" style="position:sticky;top:0;z-index:99999;background:#1d1d1f;color:#f5f5f7;font:500 13px/1.4 -apple-system,BlinkMacSystemFont,Inter,Helvetica,Arial,sans-serif;padding:9px 16px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center;"><span>You are viewing the previous design of abokhatwa.com, archived 21 August 2026.</span><a href="https://abokhatwa.com/" style="color:#6fb3d6;text-decoration:underline;">Go to the current site</a></div>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="ot-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <span class="tag">Interactive &middot; Coupled model &middot; Tall-Building MEP</span>
+  <h1>One Tower</h1>
+  <p class="ot-lede">Every interactive model on this site assumes its own private building. This page gives them one building to share. Change the height and watch the pressure zones, the mechanical floors, the riser shafts, the cooling plant, the water balance and the stack pressure all move together &mdash; because in a real tower they do.</p>
+</div>
+
+<div class="ot-wrap">
+
+  <!-- ================= CONTROLS ================= -->
+  <div class="ot-controls" id="otControls">
+    <div class="ot-ctrl-head">
+      <span class="ot-ctrl-title">The building</span>
+      <div class="ot-presets">
+        <button class="ot-preset" data-preset="mega">Megatall, Gulf coast</button>
+        <button class="ot-preset" data-preset="inland">Same tower, inland</button>
+        <button class="ot-preset" data-preset="super">Supertall office</button>
+        <button class="ot-preset" data-preset="res">Slender residential</button>
+      </div>
+    </div>
+    <div class="ot-grid">
+      <div class="ot-c"><label>Tower height <b id="vH">600 m</b></label><input type="range" id="sH" min="100" max="1000" value="600" step="10"><span class="ot-hint">Height served by the risers.</span></div>
+      <div class="ot-c"><label>Floor to floor <b id="vFh">4.0 m</b></label><input type="range" id="sFh" min="3" max="5" value="4" step="0.1"><span class="ot-hint">Sets the floor count and the fa&ccedil;ade area per square metre of floor.</span></div>
+      <div class="ot-c"><label>Floor plate side <b id="vS">45 m</b></label><input type="range" id="sS" min="20" max="90" value="45" step="1"><span class="ot-hint">Square plate. The single most consequential number on this page.</span></div>
+      <div class="ot-c"><label>Occupant density <b id="vDen">18 m&sup2;/p</b></label><input type="range" id="sDen" min="8" max="40" value="18" step="1"><span class="ot-hint">Net area per person. Offices 10&ndash;14; residential 30&ndash;40.</span></div>
+      <div class="ot-c"><label>Riser pressure class <b id="vPN">PN16</b></label><input type="range" id="sPN" min="10" max="40" value="16" step="1"><span class="ot-hint">Domestic and chilled-water riser rating.</span></div>
+      <div class="ot-c"><label>Standpipe limit <b id="vPf">12 bar</b></label><input type="range" id="sPf" min="8" max="24" value="12" step="1"><span class="ot-hint">Maximum pressure at a hose valve.</span></div>
+      <div class="ot-c"><label>Winter outdoor temp <b id="vTo">&minus;5 &deg;C</b></label><input type="range" id="sTo" min="-25" max="20" value="-5" step="1"><span class="ot-hint">Drives stack effect. Set above indoor for the Gulf summer reversal.</span></div>
+      <div class="ot-c"><label>Internal gain <b id="vI">35 W/m&sup2;</b></label><input type="range" id="sI" min="15" max="80" value="35" step="1"><span class="ot-hint">Lighting, equipment and people.</span></div>
+      <div class="ot-c"><label>Glazing U-value <b id="vU">1.80</b></label><input type="range" id="sU" min="0.8" max="3" value="1.8" step="0.05"><span class="ot-hint">W/m&sup2;K for the whole fa&ccedil;ade.</span></div>
+      <div class="ot-c"><label>Delivered water energy <b id="vSec">6.1 kWh/m&sup3;</b></label><input type="range" id="sSec" min="0.5" max="12" value="6.1" step="0.1"><span class="ot-hint">From <a href="six-kilowatt-litre-water-energy-tall-buildings.html">the six-kilowatt litre</a>. Coast &asymp; 6, inland &asymp; 10.</span></div>
+    </div>
+  </div>
+
+  <!-- ================= SECTION DRAWING ================= -->
+  <div class="ot-section-card">
+    <div class="ot-sec-head">
+      <div class="ot-sec-title">The same tower, zoned five ways</div>
+      <div class="ot-sec-sub">Each column breaks the height by a different constraint. The shortest column governs where the mechanical floors go &mdash; and it is almost never the one people expect.</div>
+    </div>
+    <div class="ot-svg-wrap"><svg id="otSvg" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Vertical section comparing the pressure zones of each system up the tower"></svg></div>
+    <div class="ot-verdict" id="otVerdict"></div>
+  </div>
+
+  <!-- ================= SYSTEM CARDS ================= -->
+  <div class="ot-cards" id="otCards"></div>
+
+  <!-- ================= ENERGY STRIP ================= -->
+  <div class="ot-energy">
+    <div class="ot-energy-head">Where the energy goes, per year</div>
+    <div class="ot-energy-grid" id="otEnergy"></div>
+    <p class="ot-energy-note" id="otEnergyNote"></p>
+  </div>
+
+  <div class="ot-foot-note">
+    <p>Every relation on this page is the one used in the article it links to, with the same constants and the same stated assumptions. Nothing here is a new model &mdash; the only new thing is that they are all being fed the same building at the same time. That is also the point: a change to the floor plate is not a fa&ccedil;ade decision, and a change to the tapware pressure limit is not a plumbing decision.</p>
+    <p><strong>Where the numbers come from.</strong> Stack pressure from <a href="stack-effect-tall-buildings.html">stack effect</a>; pressure zoning from <a href="domestic-water-tall-buildings.html">domestic water</a> and <a href="firefighting-tall-buildings.html">firefighting</a>; the zone-height table and riser economics from <a href="mechanical-floors-tall-buildings.html">mechanical floors</a>; envelope and diversity from <a href="cooling-load-modelling-tall-buildings.html">cooling load</a>; static head and heat-exchanger cascade from <a href="chilled-water-pumps-tall-buildings.html">chilled-water pumps</a>; makeup from <a href="cooling-towers-heat-rejection-tall-buildings.html">cooling towers</a>; machine-room heat from <a href="vertical-transportation-mep-tall-buildings.html">lifts and MEP</a>; delivered water energy from <a href="six-kilowatt-litre-water-energy-tall-buildings.html">the six-kilowatt litre</a>.</p>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script>
+(function(){
+"use strict";
+var f0=function(v){return Math.round(v).toLocaleString('en-US');},
+    f1=function(v){return v.toFixed(1);},
+    f2=function(v){return v.toFixed(2);},
+    f3=function(v){return v.toFixed(3);};
+var BARM=0.0981, NET=0.75, EVAP=1.5, REJ=1.25, COP=5.5, HRS=4000;
+
+var IDS=['H','Fh','S','Den','PN','Pf','To','I','U','Sec'];
+function el(id){return document.getElementById(id);}
+function val(k){return +el('s'+k).value;}
+
+/* ---------------- the coupled model ---------------- */
+function model(){
+  var H=val('H'), fh=val('Fh'), s=val('S'), den=val('Den'), PN=val('PN'),
+      Pf=val('Pf'), To=val('To'), I=val('I'), U=val('U'), sec=val('Sec');
+  var Ti=22, pmin=1.5, pmax=5.0, SOLAR=500, SUNLIT=0.5, SHGC=0.25,
+      q_air=1.5, v_duct=12, k_riser=0.35;
+  var r={};
+  r.H=H; r.sec=sec;
+  r.floors=Math.round(H/fh);
+  r.plate=s*s;
+  r.gfa=r.floors*r.plate;
+  r.occ=r.gfa*NET/den;
+
+  /* stack effect — 3460(1/To - 1/Ti)h, neutral plane at mid-height */
+  r.dpTotal=Math.abs(3460*(1/(To+273.15)-1/(Ti+273.15))*H);
+  r.dpDoor=r.dpTotal/2;
+  var W=1.0,d=0.06,Fdc=60,Ad=W*2.1;
+  r.doorForce=Fdc+W*Ad*r.dpDoor/(2*(W-d));
+  r.reversed=(To>Ti);
+
+  /* domestic water */
+  r.domZoneH=Math.max(1,PN-pmin)/BARM;
+  r.domZones=Math.ceil(H/r.domZoneH);
+  r.comfortH=Math.max(1,pmax-pmin)/BARM;
+  r.prvGroups=Math.ceil(H/r.comfortH);
+  var fx=r.occ*0.35, p=0.02, qf=0.15;
+  r.domQ=fx*p*qf+1.96*qf*Math.sqrt(fx*p*(1-p));
+  r.domDay=r.occ*0.22;
+  r.domE=(H/2+30)/(367*0.70);
+  r.domGWh=r.domDay*365*r.domE/1e6;
+
+  /* fire standpipe */
+  r.fireZoneH=Pf/BARM;
+  r.fireZones=Math.ceil(H/r.fireZoneH);
+
+  /* chilled water */
+  r.chwStatic=H*BARM;
+  r.chwZoneH=PN/BARM;
+  r.chwStages=Math.ceil(r.chwStatic/PN);
+
+  /* the governing zone height — comfort window is broken by floor PRVs */
+  r.govern=Math.min(r.domZoneH, r.fireZoneH, r.chwZoneH);
+  r.governBy = (r.govern===r.fireZoneH)?'fire standpipe'
+             : (r.govern===r.domZoneH)?'domestic riser':'chilled water';
+  r.mechZone=Math.ceil(H/r.govern);
+  r.mechOpt=Math.max(1,Math.round(r.floors*Math.sqrt(k_riser/(2*r.plate))));
+  r.mechN=Math.max(r.mechOpt,r.mechZone);
+  r.mechLoss=r.mechN*r.plate + k_riser*r.floors*r.floors/(2*r.mechN);
+  r.mechPct=100*r.mechLoss/r.gfa;
+
+  /* air risers */
+  r.floorsPerPlant=r.floors/Math.max(r.mechN,1);
+  r.airQ=r.floorsPerPlant*r.plate*q_air/1000;
+  r.riserCentral=1.8*r.airQ/v_duct;
+  r.riserDoas=1.8*r.airQ*0.10/(v_duct*0.667);
+
+  /* cooling load */
+  r.facRatio=4*fh/s;
+  r.envW=r.facRatio*(U*20+SHGC*SOLAR*SUNLIT);
+  r.intW=I;
+  r.totW=r.envW+r.intW;
+  r.envShare=100*r.envW/r.totW;
+  r.connMW=r.totW*r.gfa/1e6;
+  var nz=Math.max(r.floors/4,1);
+  r.div=0.55+(1-0.55)/Math.sqrt(nz);
+  r.coolMW=r.connMW*r.div;
+
+  /* heat rejection + water */
+  r.rejMW=r.coolMW*REJ;
+  r.mkH=2.0*r.rejMW;
+  r.mkD=r.mkH*24;
+  r.waterGWh=r.mkH*HRS*sec/1e6;
+
+  /* lifts */
+  r.lifts=Math.max(2,Math.ceil(r.occ/400));
+  r.liftKW=r.lifts*150*(1-0.80)*0.45;
+
+  /* energy roll-up */
+  r.chillerGWh=r.coolMW/COP*HRS/1000;
+  r.fanGWh=r.airQ*r.mechN*1200/1000/0.65*HRS/1e6;
+  r.liftGWh=r.liftKW*HRS/1e6*2.2;
+  r.totalGWh=r.chillerGWh+r.fanGWh+r.domGWh+r.liftGWh;
+  return r;
+}
+
+/* ---------------- the section drawing ---------------- */
+var COLS=[
+  {key:'dom',  name:'Domestic riser',  col:'#2E7DB8'},
+  {key:'fire', name:'Fire standpipe',  col:'#C0392B'},
+  {key:'chw',  name:'Chilled water',   col:'#1E8449'},
+  {key:'mech', name:'Mechanical floors',col:'#B9770E'},
+  {key:'prv',  name:'PRV groups',      col:'#6B4F9E'}
+];
+function draw(r){
+  var W=900,Hh=520,top=44,bot=42,x0=132,colW=132,gap=20;
+  var hpx=Hh-top-bot;
+  var y=function(m){return top+hpx*(1-m/r.H);};
+  var o=[];
+  o.push('<defs><linearGradient id="stackg" x1="0" y1="0" x2="0" y2="1">'+
+    '<stop offset="0%" stop-color="#c0392b" stop-opacity=".30"/>'+
+    '<stop offset="50%" stop-color="#c0392b" stop-opacity="0"/>'+
+    '<stop offset="50%" stop-color="#2E7DB8" stop-opacity="0"/>'+
+    '<stop offset="100%" stop-color="#2E7DB8" stop-opacity=".30"/></linearGradient></defs>');
+
+  /* height axis */
+  o.push('<line x1="60" y1="'+top+'" x2="60" y2="'+(top+hpx)+'" stroke="#9aa4ad" stroke-width="1"/>');
+  var stepM=r.H>700?200:(r.H>300?100:50);
+  for(var m=0;m<=r.H+1;m+=stepM){
+    var yy=y(m);
+    o.push('<line x1="55" y1="'+yy.toFixed(1)+'" x2="60" y2="'+yy.toFixed(1)+'" stroke="#9aa4ad"/>');
+    o.push('<text x="50" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end" font-family="DM Sans,sans-serif" font-size="10.5" fill="#7a848d">'+m+'</text>');
+  }
+  o.push('<text x="24" y="'+(top+hpx/2)+'" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#7a848d" transform="rotate(-90 24 '+(top+hpx/2)+')">Height above grade (m)</text>');
+
+  /* stack pressure ribbon behind everything */
+  o.push('<rect x="66" y="'+top+'" width="52" height="'+hpx+'" fill="url(#stackg)" rx="3"/>');
+  o.push('<line x1="92" y1="'+(top+hpx/2).toFixed(1)+'" x2="118" y2="'+(top+hpx/2).toFixed(1)+'" stroke="#7a848d" stroke-width="1" stroke-dasharray="4 3"/>');
+  o.push('<text x="92" y="'+(top+hpx/2-6).toFixed(1)+'" font-family="DM Sans,sans-serif" font-size="9.5" fill="#7a848d">neutral plane</text>');
+  o.push('<text x="92" y="'+(top-8)+'" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10.5" font-weight="600" fill="#7a848d">Stack &Delta;p</text>');
+
+  var zoneOf={dom:r.domZoneH, fire:r.fireZoneH, chw:r.chwZoneH, mech:r.H/r.mechN, prv:r.comfortH};
+  var cntOf ={dom:r.domZones, fire:r.fireZones, chw:r.chwStages, mech:r.mechN, prv:r.prvGroups};
+
+  COLS.forEach(function(c,i){
+    var x=x0+i*(colW+gap), zh=zoneOf[c.key], n=cntOf[c.key];
+    var isGov=(c.key==='mech');
+    o.push('<rect x="'+x+'" y="'+top+'" width="'+colW+'" height="'+hpx+'" fill="'+c.col+'" fill-opacity="'+(isGov?0.14:0.07)+'" stroke="'+c.col+'" stroke-opacity=".45" stroke-width="1" rx="4"/>');
+    for(var k=1;k<n;k++){
+      var m2=Math.min(k*zh,r.H); if(m2>=r.H) break;
+      var yy=y(m2);
+      o.push('<line x1="'+x+'" y1="'+yy.toFixed(1)+'" x2="'+(x+colW)+'" y2="'+yy.toFixed(1)+'" stroke="'+c.col+'" stroke-width="1.6" stroke-opacity=".85"/>');
+    }
+    if(n<=14){
+      for(var k2=0;k2<n;k2++){
+        var a=k2*zh, b=Math.min((k2+1)*zh,r.H);
+        if(a>=r.H) break;
+        var ym=(y(a)+y(b))/2;
+        if(y(a)-y(b)>15) o.push('<text x="'+(x+colW/2)+'" y="'+(ym+3.5).toFixed(1)+'" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10.5" fill="'+c.col+'" font-weight="600">'+(k2+1)+'</text>');
+      }
+    }
+    o.push('<text x="'+(x+colW/2)+'" y="'+(top-22)+'" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11.5" font-weight="700" fill="'+c.col+'">'+c.name+'</text>');
+    o.push('<text x="'+(x+colW/2)+'" y="'+(top-8)+'" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10.5" fill="#7a848d">'+n+' &times; '+f0(Math.min(zh,r.H))+' m</text>');
+    o.push('<text x="'+(x+colW/2)+'" y="'+(top+hpx+20)+'" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10.5" fill="#7a848d">'+(isGov?'governed by '+r.governBy:'')+'</text>');
+  });
+  document.getElementById('otSvg').innerHTML=o.join('');
+}
+
+/* ---------------- cards ---------------- */
+function row(k,v,u){return '<div class="ot-row"><span>'+k+'</span><b>'+v+(u?' <small>'+u+'</small>':'')+'</b></div>';}
+function card(col,title,rows,link,linkText,flag){
+  return '<div class="ot-card"><div class="ot-card-h"><span class="ot-dot" style="background:'+col+'"></span>'+
+    '<span class="ot-card-t">'+title+'</span></div><div class="ot-rows">'+rows+'</div>'+
+    (flag?'<div class="ot-flag '+flag[0]+'">'+flag[1]+'</div>':'')+
+    '<a class="ot-link" href="'+link+'">'+linkText+' &#8594;</a></div>';
+}
+function render(r){
+  var c=[];
+  c.push(card('#5B6670','The building',
+    row('Floors','<b>'+f0(r.floors)+'</b>')+row('Gross floor area',f0(r.gfa),'m&sup2;')+
+    row('Occupants',f0(r.occ))+row('Fa&ccedil;ade per m&sup2; floor',f3(r.facRatio),'m&sup2;/m&sup2;'),
+    'mechanical-floors-tall-buildings.html','Mechanical floors'));
+
+  c.push(card('#C0392B','Stack effect',
+    row('Total &Delta;p, ground to top',f0(r.dpTotal),'Pa')+
+    row('At a lobby door',f0(r.dpDoor),'Pa')+
+    row('Force on that door',f0(r.doorForce),'N')+
+    row('Neutral plane',f0(r.H/2),'m'),
+    'stack-effect-tall-buildings.html','Stack effect',
+    r.reversed?['warn','Outdoor is warmer than indoor &mdash; the stack reverses and the pressure gradient inverts.']
+    : (r.doorForce>133?['bad','Over the 133 N code limit &mdash; the door will not open. Vestibules or shaft compartmentation required.']
+      : (r.doorForce>110?['warn','Approaching the 133 N limit at design conditions.']:null))));
+
+  c.push(card('#2E7DB8','Domestic water',
+    row('Riser zones',f0(r.domZones))+
+    row('Zone height',f0(r.domZoneH),'m')+
+    row('Peak demand',f1(r.domQ),'L/s')+
+    row('Pumping energy',f2(r.domE),'kWh/m&sup3;'),
+    'domestic-water-tall-buildings.html','Domestic water',
+    ['good',f0(r.prvGroups)+' floor PRV groups keep the taps inside the comfort window.']));
+
+  c.push(card('#C0392B','Fire standpipe',
+    row('Standpipe zones',f0(r.fireZones))+
+    row('Zone height',f0(r.fireZoneH),'m')+
+    row('Static at the lowest valve',f1(Math.min(r.fireZoneH,r.H)*BARM),'bar')+
+    row('Pump stages',f0(r.fireZones)),
+    'firefighting-tall-buildings.html','Firefighting'));
+
+  c.push(card('#1E8449','Chilled water',
+    row('Static at the base',f1(r.chwStatic),'bar')+
+    row('Heat-exchanger stages',f0(r.chwStages))+
+    row('Zone height at rating',f0(r.chwZoneH),'m')+
+    row('Riser cross-section',f1(r.riserCentral),'m&sup2;'),
+    'chilled-water-pumps-tall-buildings.html','Chilled-water pumps',
+    r.chwStages>1?['warn',f0(r.chwStages)+' cascade stages &mdash; each one costs an approach and a pump set.']:null));
+
+  c.push(card('#B9770E','Mechanical floors',
+    row('Floors required',f0(r.mechN))+
+    row('Governed by','<b>'+r.governBy+'</b>')+
+    row('Area-optimal count',f0(r.mechOpt))+
+    row('Lettable area lost',f1(r.mechPct),'%'),
+    'mechanical-floors-tall-buildings.html','Mechanical floors',
+    r.mechN>r.mechOpt?['warn','Pressure zoning, not area economics, is setting the count &mdash; by a factor of '+f1(r.mechN/r.mechOpt)+'.']:null));
+
+  c.push(card('#6B4F9E','Air distribution',
+    row('Floors per plant',f0(r.floorsPerPlant))+
+    row('Central all-air riser',f1(r.riserCentral),'m&sup2;')+
+    row('Floor-by-floor / DOAS',f1(r.riserDoas),'m&sup2;')+
+    row('Saved by going DOAS',f1(r.riserCentral-r.riserDoas),'m&sup2;'),
+    'outdoor-air-ventilation-tall-buildings.html','Outdoor air'));
+
+  c.push(card('#1B4F72','Cooling load',
+    row('Envelope',f0(r.envW),'W/m&sup2;')+
+    row('Internal',f0(r.intW),'W/m&sup2;')+
+    row('Connected',f1(r.connMW),'MW')+
+    row('Simultaneous (&times;'+f2(r.div)+')','<b>'+f1(r.coolMW)+'</b>','MW'),
+    'cooling-load-modelling-tall-buildings.html','Cooling load',
+    [r.envShare>=58?'bad':(r.envShare>=45?'warn':'good'),
+     'Envelope is '+f0(r.envShare)+' % of the load &mdash; '+(r.envShare>=58?'an envelope-driven tower.':(r.envShare>=45?'balanced.':'an internally-driven tower.'))]));
+
+  c.push(card('#5EAADD','Heat rejection &amp; water',
+    row('Heat rejected',f1(r.rejMW),'MW')+
+    row('Tower makeup',f0(r.mkD),'m&sup3;/day')+
+    row('Annual makeup',f0(r.mkH*HRS),'m&sup3;')+
+    row('Energy inside that water',f2(r.waterGWh),'GWh/yr'),
+    'cooling-towers-heat-rejection-tall-buildings.html','Cooling towers'));
+
+  c.push(card('#8A6D3B','Lifts',
+    row('Lifts',f0(r.lifts))+
+    row('Machine-room heat',f0(r.liftKW),'kW')+
+    row('Cooling for it',f1(r.liftKW/3.517),'TR')+
+    row('Piston pressure at 10 m/s',f0(0.5*1.2*1.2*Math.pow(10*0.6/0.4,2)),'Pa'),
+    'vertical-transportation-mep-tall-buildings.html','Lifts &amp; MEP'));
+
+  document.getElementById('otCards').innerHTML=c.join('');
+
+  /* verdict under the drawing */
+  document.getElementById('otVerdict').innerHTML=
+    'The shortest column is the <b>'+r.governBy+'</b> at <b>'+f0(r.govern)+'&nbsp;m</b>, so the tower needs <b>'+
+    f0(r.mechZone)+' pressure breaks</b> &mdash; against '+f0(r.mechOpt)+
+    ' that the riser-area economics alone would justify. '+
+    (r.prvGroups>r.mechN
+      ? 'The tap comfort window is shorter still, at '+f0(r.comfortH)+'&nbsp;m &mdash; which is exactly why it is broken with '+f0(r.prvGroups)+' floor PRV groups instead of being allowed to demand '+f0(r.prvGroups)+' mechanical floors.'
+      : 'At this pressure class the comfort window is no longer the binding constraint.');
+
+  /* energy strip */
+  var E=[['Chillers',r.chillerGWh],['Air movement',r.fanGWh],['Water pumping',r.domGWh],['Lifts',r.liftGWh]];
+  var g=E.map(function(e){return '<div class="ot-e"><div class="ot-e-k">'+e[0]+'</div><div class="ot-e-v">'+f2(e[1])+'<small> GWh</small></div></div>';});
+  g.push('<div class="ot-e"><div class="ot-e-k">Building total</div><div class="ot-e-v">'+f1(r.totalGWh)+'<small> GWh</small></div></div>');
+  g.push('<div class="ot-e"><div class="ot-e-k">Embodied in evaporated water</div><div class="ot-e-v">'+f2(r.waterGWh)+'<small> GWh</small></div></div>');
+  document.getElementById('otEnergy').innerHTML=g.join('');
+  document.getElementById('otEnergyNote').innerHTML=
+    'The water the cooling towers evaporate carries embodied energy equal to <b>'+f1(100*r.waterGWh/r.chillerGWh)+
+    '&nbsp;% of what the chillers themselves consume</b> &mdash; a term that appears on no building energy model. '+
+    'Drag the delivered water energy from 6 to 10&nbsp;kWh/m&sup3; to move the tower from the coast to the interior and watch it climb.';
+}
+
+/* ---------------- presets ---------------- */
+var PRE={
+  mega:  {H:600,Fh:4.0,S:45,Den:18,PN:16,Pf:12,To:-5,I:35,U:1.8,Sec:6.1},
+  inland:{H:600,Fh:4.0,S:45,Den:18,PN:16,Pf:12,To:2, I:35,U:1.8,Sec:10.1},
+  super: {H:380,Fh:3.9,S:52,Den:12,PN:16,Pf:12,To:-8,I:45,U:1.6,Sec:6.1},
+  res:   {H:300,Fh:3.2,S:28,Den:35,PN:16,Pf:12,To:-3,I:22,U:2.2,Sec:6.1}
+};
+function applyPreset(k){
+  var p=PRE[k]; if(!p) return;
+  IDS.forEach(function(id){ if(p[id]!==undefined) el('s'+id).value=p[id]; });
+  [].forEach.call(document.querySelectorAll('.ot-preset'),function(b){b.classList.toggle('on',b.dataset.preset===k);});
+  update();
+}
+
+/* ---------------- wiring ---------------- */
+function labels(){
+  el('vH').textContent=val('H')+' m';
+  el('vFh').textContent=f1(val('Fh'))+' m';
+  el('vS').textContent=val('S')+' m';
+  el('vDen').innerHTML=val('Den')+' m&sup2;/p';
+  el('vPN').textContent='PN'+val('PN');
+  el('vPf').textContent=val('Pf')+' bar';
+  el('vTo').innerHTML=(val('To')<0?'&minus;'+Math.abs(val('To')):val('To'))+' &deg;C';
+  el('vI').innerHTML=val('I')+' W/m&sup2;';
+  el('vU').textContent=f2(val('U'));
+  el('vSec').innerHTML=f1(val('Sec'))+' kWh/m&sup3;';
+}
+function update(){ labels(); var r=model(); draw(r); render(r); window.__ot=r; }
+IDS.forEach(function(id){ el('s'+id).addEventListener('input',function(){
+  [].forEach.call(document.querySelectorAll('.ot-preset'),function(b){b.classList.remove('on');});
+  update();
+}); });
+[].forEach.call(document.querySelectorAll('.ot-preset'),function(b){
+  b.addEventListener('click',function(){applyPreset(b.dataset.preset);});
+});
+applyPreset('mega');
+window.addEventListener('resize',function(){ if(window.__ot) draw(window.__ot); });
+})();
+</script>
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<!-- End WhatsApp Button -->
+
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

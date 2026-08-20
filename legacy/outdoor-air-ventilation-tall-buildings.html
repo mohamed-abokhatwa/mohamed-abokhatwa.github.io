@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outdoor Air &amp; Ventilation in Megatall Buildings: Wind Pressure, Intake Strategy, Energy Recovery &amp; Filtration — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:16px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#c0392b;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid #cdd6df;border-radius:8px;font-size:13px;font-family:inherit;background:#fff;color:#1a1d21;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:#1b4f72;text-decoration:none;border:1px solid #cdd6df;border-radius:980px;padding:4px 11px;background:#fff;transition:.18s;}
+    .calc-link:hover{border-color:#1b4f72;background:#f2f6fa;}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="Outdoor air and ventilation design in megatall buildings: how wind pressure at height exceeds the fan external static and short-circuits shared plenums, intake and discharge location and dispersion, what total-enthalpy recovery is really worth in a humid coastal versus dry inland climate, the annual fan energy hidden in filter pressure drop, and the case for separating ventilation from cooling — with three interactive charts and installation tricks.">
+  <meta property="og:title" content="Outdoor Air &amp; Ventilation in Megatall Buildings: Wind Pressure, Intake Strategy, Energy Recovery &amp; Filtration | Mohamed Abokhatwa">
+  <meta property="og:description" content="At 600 m an ordinary 10 m/s wind produces 600 Pa across the building — more than the fan static. Plus what an enthalpy wheel is worth in Jeddah versus Riyadh, and the annual energy hiding in your filter bank.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/outdoor-air-ventilation-tall-buildings.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-outdoor-air-ventilation-tall-buildings.jpg">
+  <meta property="og:image:alt" content="Technical cutaway of a megatall tower&rsquo;s ventilation system showing outdoor-air intake louvres on a mechanical floor, wind pressure acting on the windward and leeward faces, an energy recovery wheel and filter bank inside the air-handling plant, and the fresh-air riser feeding the floors">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Outdoor Air &amp; Ventilation in Megatall Buildings: Wind Pressure, Intake Strategy, Energy Recovery &amp; Filtration | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="At 600 m an ordinary 10 m/s wind produces 600 Pa across the building — more than the fan static. Plus what an enthalpy wheel is worth in Jeddah versus Riyadh, and the annual energy hiding in your filter bank.">
+  <link rel="canonical" href="https://abokhatwa.com/outdoor-air-ventilation-tall-buildings.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Outdoor Air &amp; Ventilation in Megatall Buildings: Wind Pressure, Intake Strategy, Energy Recovery &amp; Filtration",
+  "description": "A design-perspective guide to outdoor air and ventilation in megatall buildings: boundary-layer wind pressure at intakes, plenum and damper strategy, intake and exhaust separation, total-enthalpy recovery evaluated on real psychrometrics, filtration pressure drop and fan energy, and dedicated outdoor-air systems.",
+  "image": "https://abokhatwa.com/og-outdoor-air-ventilation-tall-buildings.jpg",
+  "datePublished": "2026-08-14",
+  "dateModified": "2026-08-14",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/outdoor-air-ventilation-tall-buildings.html" }
+}
+  </script>
+</head>
+<body>
+<div id="legacy-bar" style="position:sticky;top:0;z-index:99999;background:#1d1d1f;color:#f5f5f7;font:500 13px/1.4 -apple-system,BlinkMacSystemFont,Inter,Helvetica,Arial,sans-serif;padding:9px 16px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center;"><span>You are viewing the previous design of abokhatwa.com, archived 21 August 2026.</span><a href="https://abokhatwa.com/" style="color:#6fb3d6;text-decoration:underline;">Go to the current site</a></div>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="index.html">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">HVAC &amp; Cooling</span></div>
+  <span class="tag">HVAC &middot; Ventilation &middot; Outdoor Air &middot; Megatall Buildings</span>
+  <h1>Outdoor Air &amp; Ventilation in Megatall Buildings: Wind Pressure, Intake Strategy, Energy Recovery &amp; Filtration</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>August 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>17 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="../outdoor-air-ventilation-tall-buildings.webp" alt="Technical cutaway of a megatall tower&rsquo;s ventilation system showing outdoor-air intake louvres on a mechanical floor, wind pressure acting on the windward and leeward faces, an energy recovery wheel and filter bank inside the air-handling plant, and the fresh-air riser feeding the floors">
+</div>
+
+<div class="article-body">
+
+<p class="lead">Outdoor air is the one thing a tall building cannot manufacture. Everything else — cooling, heat, water, power — can be generated, stored or zoned. Fresh air has to be captured from a moving atmosphere, at a height where that atmosphere is doing something very different from what it does at ground level, and then dragged through a filter bank and up a shaft to a hundred floors of people. In a megatall tower the ventilation system is fighting three things at once: <strong>wind pressures that exceed the fan's own static</strong>, an outdoor state that in a coastal Gulf summer carries more than twice the enthalpy of the air being thrown away, and a filtration duty that quietly consumes more fan energy over a year than the fan was ever sized to notice.</p>
+
+<h2 id="why">1 · Why outdoor air is different up there</h2>
+<ul class="clean">
+  <li><strong>The wind is a pressure source, not a breeze.</strong> Wind speed grows with height as a power law, and dynamic pressure grows with its square. At 600&nbsp;m a wind that is a mild 10&nbsp;m/s at street level produces a windward-to-leeward pressure difference across the tower of about <strong>600&nbsp;Pa</strong> — larger than the external static of many air-handling units. An intake that is not designed for it will be over-pressurised, reversed, or both, depending on the hour.</li>
+  <li><strong>Intake location cannot be an afterthought.</strong> At height, the choices are few: the façade, a mechanical floor louvre, or the roof. Each has a different relationship with the wind, with the exhaust discharges, and with the plume from cooling towers and generators.</li>
+  <li><strong>The outdoor state is not the same air you left downstairs.</strong> Temperature falls roughly 6.5&nbsp;°C per kilometre, particulate loading falls markedly above the street canyon, and humidity behaves differently near a coast. On a 600&nbsp;m tower those are small but real differences, and they push in the designer's favour — a rare thing.</li>
+  <li><strong>Stack effect is superimposed on everything.</strong> The ventilation system does not operate in a neutral building; it operates inside the pressure regime described in <a href="stack-effect-tall-buildings.html">stack effect</a>. Supply and extract balance that works in the shoulder season can invert in winter or in a Gulf summer.</li>
+  <li><strong>Fresh air is the dominant latent load.</strong> In a humid coastal climate the outdoor air is where nearly all the dehumidification energy goes, which makes energy recovery not a refinement but a primary design decision.</li>
+</ul>
+
+<h2 id="wind">2 · Wind pressure at the intake</h2>
+<p>Wind speed increases with height through the atmospheric boundary layer, conventionally modelled as a power law, and the pressure it exerts on a façade is the dynamic pressure modified by a surface pressure coefficient<sup class="cite">[1][2]</sup>:</p>
+<div class="eq">\[ V(z) = V_{10}\left(\frac{z}{10}\right)^{\alpha}, \qquad p = C_p\,\tfrac{1}{2}\rho V(z)^2 \]</div>
+<p>with \(\alpha\) about 0.14 in open terrain and 0.25–0.33 in a city, \(C_p\) roughly <strong>+0.8 on the windward face</strong> and <strong>−0.5 to −0.7 on the leeward and side faces</strong>. The consequences for a façade intake are severe and asymmetric: on the windward side the wind <em>helps</em> the intake and over-ventilates, while a relief or exhaust louvre on the same face may reverse; on the leeward side the negative pressure fights the fan and starves it.</p>
+
+<div class="callout warn">
+  <span class="lbl">The failure that looks like a controls problem</span>
+  A tower with façade intakes on more than one orientation, all connected to a common plenum, has built a <strong>wind-driven short circuit</strong>. On a windy day the windward louvre pressurises the plenum and air pours <em>out</em> of the leeward louvre without ever passing a coil. Outdoor-air flow measurement reads correctly at the fan and the floors are still starved. The fix is architectural — separate plenums per orientation, or an intake on one orientation only, or a roof intake — and it cannot be commissioned away.
+</div>
+
+<h2 id="int-wind">3 · Interactive: wind pressure on the intake</h2>
+<p>Set the site wind and terrain and read the pressure the intake will actually see, up the height of the tower, against the external static the fan was sized for.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Wind pressure at a façade intake vs height</div>
+    <div class="fsub">V(z) = V&#8321;&#8320;·(z/10)^α, p = C&#112;·½ρV², ρ = 1.2 kg/m³. Windward C&#112; = +0.8, leeward C&#112; = −0.5. The dashed line is the fan external static for comparison.</div>
+  </div>
+  <div class="chart-box"><canvas id="windChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Wind speed at 10 m <span id="vV">10 m/s</span></label>
+      <input type="range" id="sV" min="2" max="25" value="10" step="0.5">
+      <div class="hint">A representative windy-day speed, not the structural design gust.</div>
+    </div>
+    <div class="ctrl">
+      <label>Terrain exponent α <span id="vAl">0.25</span></label>
+      <input type="range" id="sAl" min="0.1" max="0.4" value="0.25" step="0.01">
+      <div class="hint">0.14 open coast, 0.25 suburban, 0.33 dense city.</div>
+    </div>
+    <div class="ctrl">
+      <label>Intake height <span id="vZ">600 m</span></label>
+      <input type="range" id="sZ" min="20" max="1000" value="600" step="10">
+      <div class="hint">Height of the louvre above grade.</div>
+    </div>
+    <div class="ctrl">
+      <label>Fan external static <span id="vFs">400 Pa</span></label>
+      <input type="range" id="sFs" min="100" max="1200" value="400" step="25">
+      <div class="hint">What the AHU was selected to overcome.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Wind at intake</div><div class="v" id="rV">27.8 <small>m/s</small></div></div>
+    <div class="cell"><div class="k">Windward</div><div class="v" id="rWw">+372 <small>Pa</small></div></div>
+    <div class="cell"><div class="k">Leeward</div><div class="v" id="rLw">−232 <small>Pa</small></div></div>
+    <div class="cell"><div class="k">Across building</div><div class="v" id="rAc">604 <small>Pa</small></div></div>
+    <div class="cell"><div class="k">vs fan static</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">A 10&nbsp;m/s street-level wind — an ordinary day, not a storm — becomes <strong>27.8&nbsp;m/s at 600&nbsp;m</strong> and produces <strong>+372&nbsp;Pa windward and −232&nbsp;Pa leeward</strong>, a difference of 604&nbsp;Pa across the building. Against a 400&nbsp;Pa fan that is not a correction, it is the dominant term: the same unit is wildly over-supplied on one face and cannot deliver on the other. Design intakes for the pressure they will actually see, use motorised rather than gravity dampers where reversal is credible, and give each orientation its own plenum and its own flow measurement.</p>
+
+<h2 id="location">4 · Choosing the intake and discharge strategy</h2>
+<ul class="clean">
+  <li><strong>Mechanical-floor louvres.</strong> The default: intake and discharge on the plant levels, which puts them at the pressure break and keeps duct runs short. Separate intake and exhaust by orientation and by height, and never place them on the same face without checking the re-entrainment geometry against the prevailing wind.</li>
+  <li><strong>Roof intake.</strong> Cleanest air and the most predictable pressure field, but it commits the building to a full-height outdoor-air riser and it puts the intake in the same airspace as cooling tower plume, generator exhaust and helipad operations.</li>
+  <li><strong>Separation from discharges is a dispersion calculation, not a rule of thumb.</strong> Cooling tower drift, generator and boiler flues, kitchen exhaust and toilet extract all need a stack-height and separation assessment; ASHRAE gives the geometric method and dispersion modelling is warranted where the plume is significant.<sup class="cite">[3]</sup></li>
+  <li><strong>Louvre free area is not the louvre size.</strong> Weather louvres run 40–60&nbsp;% free area, and rain-defence louvres less; size on the free area and hold face velocity down (typically below 2–2.5&nbsp;m/s) or the louvre becomes both a water entry point and a noise source.</li>
+  <li><strong>Plan for sand and salt.</strong> In the Gulf both are design conditions rather than exceptions: pre-filters ahead of the fine stage, accessible wash-down at the louvre, and corrosion-resistant coil and casing specification.</li>
+</ul>
+
+<h2 id="int-recovery">5 · Interactive: what energy recovery is worth in your climate</h2>
+<p>Outdoor air must be dragged from its own state to the supply state, and the air being exhausted is already most of the way there. A total-enthalpy device — a wheel or a membrane exchanger — recovers both heat and moisture, and its value depends entirely on how far apart the two air streams are. In a dry inland climate that gap is modest. On a humid coast it is enormous.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Total-enthalpy recovery from outdoor air</div>
+    <div class="fsub">h = 1.006·T + W(2501 + 1.86·T), with W from temperature and relative humidity. Load = ṁ·Δh and recovered load = ṁ·Δh·ε against exhaust air at 24 °C / 50 % RH, with the dry-air mass flow ṁ = Q/v taken from the moist-air specific volume rather than a fixed density — at 40 °C that alone is a 10 % correction.</div>
+  </div>
+  <div class="chart-box"><canvas id="ervChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Outdoor temperature <span id="vOt">40 °C</span></label>
+      <input type="range" id="sOt" min="25" max="50" value="40" step="0.5">
+      <div class="hint">Summer design dry-bulb.</div>
+    </div>
+    <div class="ctrl">
+      <label>Outdoor relative humidity <span id="vOr">55 %</span></label>
+      <input type="range" id="sOr" min="5" max="90" value="55" step="1">
+      <div class="hint">Riyadh ≈ 15 % at peak; Jeddah, Dubai and Doha ≈ 50–60 %.</div>
+    </div>
+    <div class="ctrl">
+      <label>Outdoor air volume <span id="vOq">10.0 m³/s</span></label>
+      <input type="range" id="sOq" min="1" max="40" value="10" step="0.5">
+      <div class="hint">Total fresh air for the zone or tower.</div>
+    </div>
+    <div class="ctrl">
+      <label>Recovery effectiveness ε <span id="vEf">70 %</span></label>
+      <input type="range" id="sEf" min="0" max="85" value="70" step="1">
+      <div class="hint">Total-enthalpy wheels reach 70–80 %; plate and membrane devices less.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Outdoor enthalpy</div><div class="v" id="rHo">107 <small>kJ/kg</small></div></div>
+    <div class="cell"><div class="k">Enthalpy gap</div><div class="v" id="rDh">59 <small>kJ/kg</small></div></div>
+    <div class="cell"><div class="k">Untreated OA load</div><div class="v" id="rL0">642 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Recovered</div><div class="v" id="rRe">449 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Chiller saved</div><div class="v" id="rTr">128 <small>TR</small></div></div>
+  </div>
+</div>
+<p class="fig-note">The regional split is stark. At <strong>Jeddah</strong> conditions (40&nbsp;°C, 55&nbsp;%) the outdoor air carries 107&nbsp;kJ/kg against 48&nbsp;kJ/kg leaving the building — a <strong>59&nbsp;kJ/kg</strong> gap, so 10&nbsp;m³/s of fresh air is a 642&nbsp;kW load and a 70&nbsp;% wheel recovers <strong>449&nbsp;kW</strong>, about 128 tons of chiller you never have to buy or run. Drag the humidity down to 15&nbsp;% for <strong>Riyadh</strong> and the outdoor air ends up <em>drier</em> than the air leaving the building: the gap collapses to about 10&nbsp;kJ/kg, the load to 113&nbsp;kW and the recovery to 79&nbsp;kW. Same building, same wheel, under a fifth of the benefit — which is why energy recovery is close to mandatory on the coast and a genuine cost-benefit question inland. Note also what this says about leakage: in Jeddah every extra litre of uncontrolled infiltration costs nearly six times what it costs in Riyadh.</p>
+
+<h2 id="int-filter">6 · Interactive: the quiet cost of filtration</h2>
+<p>Filters are specified on capture efficiency and forgotten. Their pressure drop, however, runs 8,760 hours a year and rises as they load. Over a filter's life the fan spends far more energy pushing through it than the filter itself costs.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Fan energy to overcome filtration</div>
+    <div class="fsub">P = Q·Δp/η&#102;&#97;&#110;. The curve is annual energy against the average pressure drop over the filter's life — roughly midway between clean and change-out.</div>
+    <a class="calc-link" href="calculators.html#calc-fan"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h6"/></svg>Open Fan power as a calculator</a>
+  </div>
+  <div class="chart-box"><canvas id="filtChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Air volume <span id="vFq">10.0 m³/s</span></label>
+      <input type="range" id="sFq" min="1" max="40" value="10" step="0.5">
+      <div class="hint">Airflow through the filter bank.</div>
+    </div>
+    <div class="ctrl">
+      <label>Average pressure drop <span id="vFd">175 Pa</span></label>
+      <input type="range" id="sFd" min="40" max="400" value="175" step="5">
+      <div class="hint">Mean over the life. A clean ePM1 60 % filter starts near 100 Pa and is changed near 250.</div>
+    </div>
+    <div class="ctrl">
+      <label>Fan + drive efficiency <span id="vFe">65 %</span></label>
+      <input type="range" id="sFe" min="40" max="80" value="65" step="1">
+      <div class="hint">Total, including motor and drive.</div>
+    </div>
+    <div class="ctrl">
+      <label>Annual run hours <span id="vFh">6000 h</span></label>
+      <input type="range" id="sFh" min="2000" max="8760" value="6000" step="100">
+      <div class="hint">Central plant in a mixed-use tower runs most of the year.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Fan power</div><div class="v" id="rFp">2.7 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Annual energy</div><div class="v" id="rFe">16,154 <small>kWh</small></div></div>
+    <div class="cell"><div class="k">If 50 Pa lower</div><div class="v" id="rFl">11,538 <small>kWh</small></div></div>
+    <div class="cell"><div class="k">Saving</div><div class="v" id="rFs">4,615 <small>kWh</small></div></div>
+    <div class="cell"><div class="k">Across 20 AHUs</div><div class="v" id="rF20">92 <small>MWh</small></div></div>
+  </div>
+</div>
+<p class="fig-note">One AHU at 10&nbsp;m³/s and a 175&nbsp;Pa average filter loss spends about <strong>16,150&nbsp;kWh a year</strong> just on filtration. Specify a deeper filter with more media area for the same efficiency class — dropping the average by 50&nbsp;Pa — and you save 4,615&nbsp;kWh on that one unit, <strong>92&nbsp;MWh across twenty units</strong>, every year, for nothing but a slightly deeper filter housing decided at design stage. Depth is the cheapest energy measure in an air system, and it is only available before the AHU is ordered.</p>
+
+<h2 id="strategy">7 · Ventilation strategy: DOAS and the case for separating jobs</h2>
+<p>The dominant modern arrangement in tall buildings is to <strong>separate ventilation from cooling</strong>: a dedicated outdoor-air system conditions and dehumidifies fresh air centrally and delivers it at neutral or slightly cool temperature, while sensible cooling is handled locally by fan-coils, chilled beams or floor AHUs. The advantages compound in a tower:</p>
+<ul class="clean">
+  <li><strong>The riser carries only fresh air</strong> — roughly a tenth of the air volume of an all-air system, which is the shaft-area argument made in <a href="mechanical-floors-tall-buildings.html">mechanical floors</a>.</li>
+  <li><strong>Ventilation is measurable and guaranteed.</strong> Fresh air is delivered by a dedicated path with its own flow measurement, rather than being a fraction of a variable supply that falls with load.</li>
+  <li><strong>Dehumidification is done once, properly.</strong> The DOAS coil handles the latent load at a deep dew point; the local units run dry and stay clean.</li>
+  <li><strong>Demand control actually works.</strong> CO₂ sensing modulates a stream that is only fresh air, so the response is direct and the savings real.</li>
+</ul>
+<p>The counterweight is that a DOAS makes the outdoor-air riser a single point of failure and demands rigorous air balancing, because there is no large recirculating stream to hide errors in.</p>
+
+<h2 id="install">8 · Installation &amp; execution tricks</h2>
+<ul class="clean">
+  <li><strong>Measure outdoor air where it can be measured.</strong> Fit a proper airflow measuring station in a straight duct section on the fresh-air path of every AHU, not a differential-pressure guess across a damper. Without it, ventilation compliance is an assertion.</li>
+  <li><strong>Motorise the intake and relief dampers</strong> where wind reversal is credible, with end-switch proving, and interlock them with the fan so a stopped unit is not a wind-driven hole in the façade.</li>
+  <li><strong>Drain every louvre plenum.</strong> Rain and wash-down water will get in; give it a bunded, drained, corrosion-protected floor with a trapped outlet, and check the trap depth against the plenum pressure — a shallow trap on a negative plenum simply blows dry.</li>
+  <li><strong>Set the filter change-out on pressure, not on a calendar</strong>, with a differential-pressure switch and a BMS trend on every bank. Changing early wastes filters; changing late wastes far more in fan energy.</li>
+  <li><strong>Seal the AHU and the ductwork to a stated class.</strong> At the pressures a tall building generates, casing and duct leakage is not a rounding error; specify the leakage class, test it, and reject on the test.</li>
+  <li><strong>Commission across seasons and across wind.</strong> Ventilation rates verified on a still day in March tell you very little; re-verify on a windy day and in the design season, and record the outdoor conditions alongside every reading.</li>
+  <li><strong>Protect the coils during construction.</strong> Running AHUs for temporary conditioning without construction filters is how a tower starts life with a fouled coil and a permanent capacity deficit.</li>
+</ul>
+
+<h2 id="checklist">9 · The design &amp; installation checklist</h2>
+<ul class="clean">
+  <li><strong>Calculate the wind pressure at every intake and discharge</strong>, on every orientation, and design the dampers and plenums for it.</li>
+  <li><strong>Never share a plenum across orientations</strong> without a means of preventing wind-driven short-circuit.</li>
+  <li><strong>Do the separation and dispersion assessment</strong> for towers, flues, kitchen and toilet exhaust against every intake.</li>
+  <li><strong>Evaluate total-enthalpy recovery on real local psychrometrics</strong> — it is transformative on a humid coast and marginal inland.</li>
+  <li><strong>Specify filters on depth and life-cycle pressure drop</strong>, not on capture class alone.</li>
+  <li><strong>Separate ventilation from cooling</strong> where the shaft area or the latent load justifies it.</li>
+  <li><strong>Measure the outdoor air</strong> with a real flow station on every unit.</li>
+  <li><strong>Design for sand, salt and wash-down</strong> at every louvre.</li>
+  <li><strong>Commission in wind and in season</strong>, recording outdoor conditions with every result.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  At 600&nbsp;m an ordinary day produces <strong>600&nbsp;Pa across the building</strong> — more than the fan's own static — so intake location, damper selection and plenum separation are ventilation design, not architectural detailing. Recover the outdoor air's enthalpy where the climate is humid, because on the coast fresh air is most of the latent load and a wheel is worth well over a hundred tons of chiller; specify filters on depth rather than class, because their pressure drop runs all year; and separate ventilation from cooling so the riser carries a tenth of the air and the fresh air is something you can actually measure.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>ASHRAE <em>Handbook — Fundamentals</em>, Airflow Around Buildings and Climatic Design Information chapters — boundary-layer wind profiles, pressure coefficients and design weather data.</li>
+  <li>EN 1991-1-4 (Eurocode 1, wind actions) and ASCE 7 — wind speed profiles, terrain categories and external pressure coefficients.</li>
+  <li>ASHRAE <em>Handbook — HVAC Applications</em>, Building Air Intake and Exhaust Design — separation distances, plume dispersion and re-entrainment geometry.</li>
+  <li>ANSI/ASHRAE Standard 62.1 — <em>Ventilation for Acceptable Indoor Air Quality</em>: outdoor air rates, intake location and demand-controlled ventilation.</li>
+  <li>ANSI/ASHRAE/IES Standard 90.1 — energy recovery requirements, fan power limits and filtration allowances.</li>
+  <li>ISO 16890 / EN 779 — air filter classification (ePM1, ePM2.5, ePM10) and test methods; and Eurovent guidance on filter life-cycle energy.</li>
+  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed. — outdoor air strategy, riser planning and intake location in tall buildings.</li>
+  <li>CIBSE <em>Guide B2 — Ventilation and Ductwork</em>; and Saudi Building Code <em>SBC 501</em> mechanical provisions.</li>
+</ol>
+
+<div class="tags">#Ventilation #OutdoorAir #FreshAir #IAQ #TallBuildings #MegatallBuildings #WindPressure #PressureCoefficient #BoundaryLayer #AirIntake #Louvre #EnergyRecovery #EnthalpyWheel #ERV #DOAS #Dehumidification #Psychrometrics #Filtration #ISO16890 #FanEnergy #ASHRAE62 #ASHRAE901 #DemandControlledVentilation #Commissioning #MEP #BuildingServices #HVAC</div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const fmt2=v=>v.toFixed(2);
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}};
+const RHO=1.2;
+
+/* ---------- CHART 1 : wind at intake ---------- */
+const sV=document.getElementById('sV'),sAl=document.getElementById('sAl'),
+      sZ=document.getElementById('sZ'),sFs=document.getElementById('sFs');
+const CPW=0.8, CPL=-0.5;
+const vAt=(v10,a,z)=>v10*Math.pow(Math.max(z,1)/10,a);
+let windChart=new Chart(document.getElementById('windChart'),{
+  data:{datasets:[
+    {type:'line',label:'Windward (Cₚ +0.8)',data:[],borderColor:'#c0392b',borderWidth:3,pointRadius:0,order:3},
+    {type:'line',label:'Leeward (Cₚ −0.5)',data:[],borderColor:'#1b4f72',borderWidth:3,pointRadius:0,order:2},
+    {type:'scatter',label:'Your intake',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',title:{display:true,text:'Pressure on the louvre (Pa)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Height above grade (m)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.x)} Pa at ${fmt0(c.parsed.y)} m`}},
+      annotation:{annotations:{
+        fs:{type:'line',scaleID:'x',value:0,borderColor:'#b9770e',borderWidth:1.5,borderDash:[5,4],label:{display:true,content:'fan static',position:'start',font:{size:10,family:'DM Sans'},color:'#b9770e',backgroundColor:'rgba(255,255,255,0.85)'}}
+      }}}}
+});
+function updWind(){
+  const v10=+sV.value,a=+sAl.value,z=+sZ.value,fs=+sFs.value;
+  document.getElementById('vV').textContent=fmt1(v10)+' m/s';
+  document.getElementById('vAl').textContent=fmt2(a);
+  document.getElementById('vZ').textContent=z+' m';
+  document.getElementById('vFs').textContent=fs+' Pa';
+  const ys=[];for(let h=10;h<=1000;h+=10)ys.push(h);
+  windChart.data.datasets[0].data=ys.map(h=>({x:+(CPW*0.5*RHO*Math.pow(vAt(v10,a,h),2)).toFixed(0),y:h}));
+  windChart.data.datasets[1].data=ys.map(h=>({x:+(CPL*0.5*RHO*Math.pow(vAt(v10,a,h),2)).toFixed(0),y:h}));
+  const v=vAt(v10,a,z), q=0.5*RHO*v*v;
+  windChart.data.datasets[2].data=[{x:+(CPW*q).toFixed(0),y:z}];
+  const span=Math.max(CPW*q*1.15,fs*1.15,60);
+  windChart.options.scales.x.min=-span; windChart.options.scales.x.max=span;
+  windChart.options.scales.y.max=1000;
+  windChart.options.plugins.annotation.annotations.fs.value=fs;
+  windChart.update('none');
+  document.getElementById('rV').innerHTML=fmt1(v)+' <small>m/s</small>';
+  document.getElementById('rWw').innerHTML='+'+fmt0(CPW*q)+' <small>Pa</small>';
+  document.getElementById('rLw').innerHTML=fmt0(CPL*q)+' <small>Pa</small>';
+  document.getElementById('rAc').innerHTML=fmt0((CPW-CPL)*q)+' <small>Pa</small>';
+  const e=document.getElementById('rVd'), r=(CPW*q)/fs;
+  if(r<0.25)      e.innerHTML='<span class="badge good">minor</span>';
+  else if(r<0.75) e.innerHTML='<span class="badge warn">significant</span>';
+  else            e.innerHTML='<span class="badge bad">wind dominates the fan</span>';
+}
+[sV,sAl,sZ,sFs].forEach(s=>s.addEventListener('input',updWind));updWind();
+
+/* ---------- CHART 2 : enthalpy recovery ---------- */
+const sOt=document.getElementById('sOt'),sOr=document.getElementById('sOr'),
+      sOq=document.getElementById('sOq'),sEf=document.getElementById('sEf');
+const enth=(T,W)=>1.006*T+W*(2501+1.86*T);
+function humRatio(T,rh,P){P=P||101.325;const pws=0.61094*Math.exp(17.625*T/(T+243.04));const pw=rh*pws;return 0.62198*pw/(P-pw);}
+const specVol=(T,W)=>0.287*(T+273.15)*(1+1.6078*W)/101.325;   // m³ per kg dry air
+const H_RET=enth(24,humRatio(24,0.50));
+let ervChart=new Chart(document.getElementById('ervChart'),{
+  data:{datasets:[
+    {type:'line',label:'Untreated outdoor-air load',data:[],borderColor:'#c0392b',borderWidth:3,pointRadius:0,order:3},
+    {type:'line',label:'Load after recovery',data:[],borderColor:'#1b4f72',backgroundColor:'rgba(27,79,114,0.10)',borderWidth:3,pointRadius:0,fill:true,order:2},
+    {type:'scatter',label:'Your climate',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:5,max:90,title:{display:true,text:'Outdoor relative humidity (%)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Outdoor-air cooling load (kW)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} kW at ${fmt0(c.parsed.x)} % RH`}}}}
+});
+function updErv(){
+  const T=+sOt.value,rh=+sOr.value/100,Q=+sOq.value,ef=+sEf.value/100;
+  document.getElementById('vOt').textContent=fmt1(T)+' °C';
+  document.getElementById('vOr').textContent=fmt0(rh*100)+' %';
+  document.getElementById('vOq').textContent=fmt1(Q)+' m³/s';
+  document.getElementById('vEf').textContent=fmt0(ef*100)+' %';
+  const xs=[];for(let r=5;r<=90;r+=1)xs.push(r);
+  const load=r=>{const W=humRatio(T,r/100);return Math.max(0,(Q/specVol(T,W))*(enth(T,W)-H_RET));};
+  ervChart.data.datasets[0].data=xs.map(r=>({x:r,y:+load(r).toFixed(0)}));
+  ervChart.data.datasets[1].data=xs.map(r=>({x:r,y:+(load(r)*(1-ef)).toFixed(0)}));
+  const Wo=humRatio(T,rh), ho=enth(T,Wo), dh=ho-H_RET, L0=Math.max(0,(Q/specVol(T,Wo))*dh), rec=L0*ef;
+  ervChart.data.datasets[2].data=[{x:rh*100,y:+L0.toFixed(0)}];
+  ervChart.update('none');
+  document.getElementById('rHo').innerHTML=fmt0(ho)+' <small>kJ/kg</small>';
+  document.getElementById('rDh').innerHTML=fmt0(dh)+' <small>kJ/kg</small>';
+  document.getElementById('rL0').innerHTML=fmt0(L0)+' <small>kW</small>';
+  document.getElementById('rRe').innerHTML=fmt0(rec)+' <small>kW</small>';
+  document.getElementById('rTr').innerHTML=fmt0(rec/3.517)+' <small>TR</small>';
+}
+[sOt,sOr,sOq,sEf].forEach(s=>s.addEventListener('input',updErv));updErv();
+
+/* ---------- CHART 3 : filtration ---------- */
+const sFq=document.getElementById('sFq'),sFd=document.getElementById('sFd'),
+      sFe=document.getElementById('sFe'),sFh=document.getElementById('sFh');
+let filtChart=new Chart(document.getElementById('filtChart'),{
+  data:{datasets:[
+    {type:'line',label:'Annual filtration energy',data:[],borderColor:'#1b4f72',backgroundColor:'rgba(27,79,114,0.10)',borderWidth:3,pointRadius:0,fill:true,order:2},
+    {type:'scatter',label:'Your bank',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:40,max:400,title:{display:true,text:'Average filter pressure drop (Pa)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Annual fan energy for filtration (kWh)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} kWh at ${fmt0(c.parsed.x)} Pa`}}}}
+});
+function updFilt(){
+  const Q=+sFq.value,dp=+sFd.value,eta=+sFe.value/100,hrs=+sFh.value;
+  document.getElementById('vFq').textContent=fmt1(Q)+' m³/s';
+  document.getElementById('vFd').textContent=dp+' Pa';
+  document.getElementById('vFe').textContent=fmt0(eta*100)+' %';
+  document.getElementById('vFh').textContent=hrs+' h';
+  const kwh=d=>Q*d/1000/eta*hrs;
+  const xs=[];for(let d=40;d<=400;d+=5)xs.push(d);
+  filtChart.data.datasets[0].data=xs.map(d=>({x:d,y:+kwh(d).toFixed(0)}));
+  filtChart.data.datasets[1].data=[{x:dp,y:+kwh(dp).toFixed(0)}];
+  filtChart.update('none');
+  const e0=kwh(dp), e1=kwh(Math.max(40,dp-50));
+  document.getElementById('rFp').innerHTML=fmt1(Q*dp/1000/eta)+' <small>kW</small>';
+  document.getElementById('rFe').innerHTML=fmt0(e0)+' <small>kWh</small>';
+  document.getElementById('rFl').innerHTML=fmt0(e1)+' <small>kWh</small>';
+  document.getElementById('rFs').innerHTML=fmt0(e0-e1)+' <small>kWh</small>';
+  document.getElementById('rF20').innerHTML=fmt0(20*(e0-e1)/1000)+' <small>MWh</small>';
+}
+[sFq,sFd,sFe,sFh].forEach(s=>s.addEventListener('input',updFilt));updFilt();
+
+window.addEventListener('load',function(){try{windChart.resize();ervChart.resize();filtChart.resize();}catch(e){}});
+
+</script>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<!-- End WhatsApp Button -->
+
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

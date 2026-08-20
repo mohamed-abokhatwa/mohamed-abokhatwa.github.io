@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Movement &amp; MEP in Megatall Buildings: Thermal Expansion, Column Shortening &amp; Anchor Loads — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:16px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#c0392b;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid #cdd6df;border-radius:8px;font-size:13px;font-family:inherit;background:#fff;color:#1a1d21;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:#1b4f72;text-decoration:none;border:1px solid #cdd6df;border-radius:980px;padding:4px 11px;background:#fff;transition:.18s;}
+    .calc-link:hover{border-color:#1b4f72;background:#f2f6fa;}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="Building movement and MEP in megatall buildings: thermal expansion of risers and why plastics move ten times as far as steel, concrete creep and shrinkage shortening a tower by hundreds of millimetres with a third to a half arriving after the services are fixed, differential core-to-perimeter shortening that shears every horizontal run, expansion loop sizing, and the bellows pressure thrust that loads an anchor with eighty kilonewtons — with three interactive charts and installation tricks.">
+  <meta property="og:title" content="Building Movement &amp; MEP in Megatall Buildings: Thermal Expansion, Column Shortening &amp; Anchor Loads | Mohamed Abokhatwa">
+  <meta property="og:description" content="A megatall tower shortens by about 700 mm over its life and 280 mm of that lands on services already installed. Plus the bellows pressure thrust that puts eight tonnes on a bracket detailed for pipe weight.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/building-movement-mep-tall-buildings.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-building-movement-mep-tall-buildings.jpg">
+  <meta property="og:image:alt" content="Technical cutaway of a megatall tower services shaft showing a tall riser with fixed anchors, sliding guides and an axial bellows compensator between them, with the surrounding concrete core indicated as shortening over time">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Building Movement &amp; MEP in Megatall Buildings: Thermal Expansion, Column Shortening &amp; Anchor Loads | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="A megatall tower shortens by about 700 mm over its life and 280 mm of that lands on services already installed. Plus the bellows pressure thrust that puts eight tonnes on a bracket detailed for pipe weight.">
+  <link rel="canonical" href="https://abokhatwa.com/building-movement-mep-tall-buildings.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Building Movement &amp; MEP in Megatall Buildings: Thermal Expansion, Column Shortening &amp; Anchor Loads",
+  "description": "A design-perspective guide to building movement and MEP in megatall buildings: thermal expansion by material, elastic, creep and shrinkage shortening and the post-installation residual, differential core-to-perimeter shortening, anchors, guides and compensators, expansion loop sizing and bellows pressure thrust.",
+  "image": "https://abokhatwa.com/og-building-movement-mep-tall-buildings.jpg",
+  "datePublished": "2026-08-14",
+  "dateModified": "2026-08-14",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/building-movement-mep-tall-buildings.html" }
+}
+  </script>
+</head>
+<body>
+<div id="legacy-bar" style="position:sticky;top:0;z-index:99999;background:#1d1d1f;color:#f5f5f7;font:500 13px/1.4 -apple-system,BlinkMacSystemFont,Inter,Helvetica,Arial,sans-serif;padding:9px 16px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center;"><span>You are viewing the previous design of abokhatwa.com, archived 21 August 2026.</span><a href="https://abokhatwa.com/" style="color:#6fb3d6;text-decoration:underline;">Go to the current site</a></div>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="index.html">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Tall-Building Systems</span></div>
+  <span class="tag">Tall-Building Systems &middot; Building Movement &middot; Riser Support &middot; Anchors</span>
+  <h1>Building Movement &amp; MEP in Megatall Buildings: Thermal Expansion, Column Shortening &amp; Anchor Loads</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>August 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>16 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="../building-movement-mep-tall-buildings.webp" alt="Technical cutaway of a megatall tower services shaft showing a tall riser with fixed anchors, sliding guides and an axial bellows compensator between them, with the surrounding concrete core indicated as shortening over time">
+</div>
+
+<div class="article-body">
+
+<p class="lead">A megatall tower is not a static object. It gets shorter as the concrete creeps and dries, by hundreds of millimetres over its life. Its core and its perimeter shorten by <em>different</em> amounts, so the two ends of every horizontal pipe drift apart. It leans and returns in the wind, twice a minute. And the services inside it expand and contract with their own contents — a plastic riser through 30&nbsp;K over 600&nbsp;m moves <strong>2.7 metres</strong>. None of this appears on a hydraulic calculation, none of it is in the pipe schedule, and all of it is capable of tearing a riser apart. Building movement is the quiet structural problem hidden inside every MEP package in a tall building.</p>
+
+<h2 id="four">1 · Four movements, four different timescales</h2>
+<ul class="clean">
+  <li><strong>Thermal, in the service itself</strong> — minutes to hours. A chilled-water riser fills at ambient and runs at 6&nbsp;°C; a hot water riser runs at 60&nbsp;°C. The pipe changes length every time the system starts.</li>
+  <li><strong>Elastic shortening of the structure</strong> — immediate, as each floor's load is applied. Largely complete before the services are installed, but not entirely.</li>
+  <li><strong>Creep and shrinkage</strong> — months to decades. Concrete under sustained load keeps deforming, and it dries and shrinks. Together these dominate, and roughly <strong>a third to a half of the total happens after the pipework is fixed</strong>.</li>
+  <li><strong>Wind sway and differential temperature</strong> — seconds to hours, and reversible. The tower leans, and the sunlit face grows relative to the shaded one, twisting the frame slightly.</li>
+</ul>
+<p>The first is the pipe moving inside a stationary building. The rest are the <em>building</em> moving around a pipe that would rather stay where it is. Both have to be designed for, and they are additive.</p>
+
+<h2 id="int-thermal">2 · Interactive: thermal movement in the riser</h2>
+<p>The classic \( \Delta L = \alpha L \Delta T\) — but in a tower \(L\) is enormous, and the coefficient depends brutally on the material you chose for reasons that had nothing to do with movement.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Thermal movement of a vertical riser</div>
+    <div class="fsub">ΔL = α·L·ΔT. ΔT is measured from the installation temperature to the operating extreme — not from the design ambient. Plastics move an order of magnitude more than steel.</div>
+    <a class="calc-link" href="calculators.html#calc-te"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h6"/></svg>Open Pipeline thermal expansion as a calculator</a>
+  </div>
+  <div class="chart-box"><canvas id="thermChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Riser length <span id="vL">300 m</span></label>
+      <input type="range" id="sL" min="20" max="800" value="300" step="10">
+      <div class="hint">Length between anchors, not the building height — anchoring is the design variable.</div>
+    </div>
+    <div class="ctrl">
+      <label>Temperature swing <span id="vT">30 K</span></label>
+      <input type="range" id="sT" min="5" max="80" value="30" step="1">
+      <div class="hint">Install temperature to operating extreme. A chilled riser installed at 45 °C and run at 6 °C swings 39 K.</div>
+    </div>
+    <div class="ctrl">
+      <label>Coefficient α <span id="vA">12.0 ×10⁻⁶</span></label>
+      <input type="range" id="sA" min="10" max="160" value="12" step="1">
+      <div class="hint">Steel 12, stainless 16, copper 17, PVC-U 70, PPR / PE-X ≈ 150 ×10⁻⁶ /K.</div>
+    </div>
+    <div class="ctrl">
+      <label>Anchor spacing <span id="vS">60 m</span></label>
+      <input type="range" id="sS" min="5" max="200" value="60" step="5">
+      <div class="hint">Distance between fixed anchors. This is what you actually control.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Total movement</div><div class="v" id="rDl">108 <small>mm</small></div></div>
+    <div class="cell"><div class="k">Per anchor bay</div><div class="v" id="rDb">21.6 <small>mm</small></div></div>
+    <div class="cell"><div class="k">Anchor bays</div><div class="v" id="rNb">5</div></div>
+    <div class="cell"><div class="k">Loop leg needed</div><div class="v" id="rLp">5.3 <small>m</small></div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">A 300&nbsp;m steel riser through 30&nbsp;K moves <strong>108&nbsp;mm</strong> overall — manageable if you break it into anchor bays so each one only has to absorb about 22&nbsp;mm. Now drag the coefficient to 150 for PPR or PE-X: the same riser moves <strong>1.35&nbsp;metres</strong>, and over 600&nbsp;m it is 2.7&nbsp;m. Plastic pipe is chosen for corrosion resistance, weight and cost, and in a tall riser it brings a movement problem an order of magnitude larger than the steel it replaced. That is not an argument against it — it is an argument for designing the anchors, guides and compensators <em>as part of choosing the material</em>, rather than discovering the consequence on site.</p>
+
+<h2 id="shortening">3 · Column shortening — the movement nobody tells you about</h2>
+<p>Concrete under sustained compression keeps deforming for years, and it shrinks as it dries. The total vertical strain is the sum of three parts:</p>
+<div class="eq">\[ \varepsilon_{total} \;=\; \underbrace{\frac{\sigma}{E}}_{\text{elastic}} \;+\; \underbrace{\phi\,\frac{\sigma}{E}}_{\text{creep}} \;+\; \underbrace{\varepsilon_{sh}}_{\text{shrinkage}} \]</div>
+<p>with \(\phi\) the creep coefficient, typically 1.5–2.5. For a column at 10&nbsp;MPa in 35&nbsp;GPa concrete with 300&nbsp;µε of shrinkage, the total is around 1,150&nbsp;µε — and over 600&nbsp;m of building that is roughly <strong>690&nbsp;mm of vertical shortening</strong>. Structural engineers know this and compensate for most of it during construction by casting floors slightly high. What matters to the MEP engineer is the <strong>residual</strong>: the portion that occurs <em>after</em> the risers are installed and anchored, which is commonly a third to a half of the total — <strong>200 to 350&nbsp;mm on a 600&nbsp;m tower.</strong></p>
+
+<div class="callout warn">
+  <span class="lbl">The one that actually breaks things: differential shortening</span>
+  The core and the perimeter columns carry different stresses, have different volume-to-surface ratios and dry at different rates, so they do <strong>not shorten by the same amount</strong>. A differential of 50–100&nbsp;mm between core and perimeter over the height of a megatall tower is normal. Every horizontal pipe, duct and cable tray that spans from the core to the façade is therefore being slowly sheared. A rigidly connected branch at the perimeter will either pull its joint apart or tear its support out of the slab, and it will do it silently over five years — long after the defects period, and it will be diagnosed as poor workmanship.
+</div>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Structural shortening and the part that acts on your pipework</div>
+    <div class="fsub">ε = σ/E·(1+φ) + ε&#115;&#104;. The dark band is total shortening; the blue is the post-installation residual that the services actually have to absorb.</div>
+  </div>
+  <div class="chart-box"><canvas id="shortChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Building height <span id="vH">600 m</span></label>
+      <input type="range" id="sH" min="100" max="1000" value="600" step="10">
+      <div class="hint">Height over which the shortening accumulates.</div>
+    </div>
+    <div class="ctrl">
+      <label>Sustained stress <span id="vSt">10 MPa</span></label>
+      <input type="range" id="sSt" min="4" max="20" value="10" step="0.5">
+      <div class="hint">Working compressive stress in the column or core wall.</div>
+    </div>
+    <div class="ctrl">
+      <label>Creep coefficient φ <span id="vPh">2.0</span></label>
+      <input type="range" id="sPh" min="1" max="3.5" value="2" step="0.1">
+      <div class="hint">Higher for younger concrete at loading and for thinner sections.</div>
+    </div>
+    <div class="ctrl">
+      <label>Post-installation share <span id="vPo">40 %</span></label>
+      <input type="range" id="sPo" min="15" max="70" value="40" step="1">
+      <div class="hint">Fraction of the total occurring after the risers are anchored.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Total strain</div><div class="v" id="rEp">1,157 <small>µε</small></div></div>
+    <div class="cell"><div class="k">Total shortening</div><div class="v" id="rTs">694 <small>mm</small></div></div>
+    <div class="cell"><div class="k">Acts on services</div><div class="v" id="rPs">278 <small>mm</small></div></div>
+    <div class="cell"><div class="k">Per 40 m zone</div><div class="v" id="rPz">18.5 <small>mm</small></div></div>
+    <div class="cell"><div class="k">vs thermal</div><div class="v" id="rVt">1.3<small>×</small></div></div>
+  </div>
+</div>
+<p class="fig-note">On a 600&nbsp;m tower the structure shortens by about <strong>694&nbsp;mm</strong> in total, of which roughly <strong>278&nbsp;mm</strong> arrives after the services are fixed — about <strong>1.3 times</strong> the thermal movement of a 600&nbsp;m steel riser through 30&nbsp;K (216&nbsp;mm), and in the same direction for a chilled-water system. The two are additive and they must be summed before the compensators are sized. Note the readout per zone: even broken into 40&nbsp;m bays the structure still delivers 18&nbsp;mm of shortening into each one, on top of the thermal swing, which is why "we have expansion joints" is not the same as "we have allowed for movement".</p>
+
+<h2 id="anchors">4 · Anchors, guides and compensators</h2>
+<p>The design method is always the same three moves, in order:</p>
+<ul class="clean">
+  <li><strong>Decide where the pipe is <em>not</em> allowed to move</strong> — the anchors. An anchor is a structural connection carrying real force, and it must be designed and issued to the structural engineer with a load, not drawn as a bracket.</li>
+  <li><strong>Force the movement into one direction</strong> — the guides. Between anchors, guides let the pipe slide axially and prevent it buckling sideways. Guide spacing comes from the buckling calculation, and the first guides either side of a compensator are much closer than the rest.</li>
+  <li><strong>Give the movement somewhere to go</strong> — expansion loops, offsets, or bellows/axial compensators.</li>
+</ul>
+<p>Loops are preferred where space allows because they cannot fail suddenly, need no maintenance and impose only guiding forces. A guided-cantilever loop leg is roughly \( L=\sqrt{3ED\Delta/S_a}\), which for a 219&nbsp;mm riser absorbing 100&nbsp;mm needs an <strong>11.5&nbsp;m</strong> leg — usually impossible in a shaft, which is why tall risers use bellows.</p>
+
+<div class="callout key">
+  <span class="lbl">The number that surprises people: pressure thrust</span>
+  A bellows does not resist pressure the way a pipe does; the pressure acting on its effective area pushes the anchors apart. For a 219&nbsp;mm bellows at 16&nbsp;bar that is about <strong>95&nbsp;kN of pressure thrust</strong>, plus the spring force of compressing it — around <strong>110&nbsp;kN total, eleven tonnes</strong>, applied to a bracket bolted to a shaft wall. Anchors either side of an unrestrained bellows are among the most heavily loaded fixings in the entire MEP installation, and they are routinely detailed as though they carried only pipe weight. Use tied or pressure-balanced bellows where the anchor cannot take the thrust, and always issue the anchor loads to the structural engineer.
+</div>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Expansion loop size and bellows anchor load</div>
+    <div class="fsub">Loop leg L = √(3EDΔ/S&#97;) for a guided cantilever. Anchor force = pressure thrust (P·A&#101;&#102;&#102;) + bellows spring rate × movement.</div>
+  </div>
+  <div class="chart-box"><canvas id="anchChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Pipe outside diameter <span id="vD">219 mm</span></label>
+      <input type="range" id="sD" min="50" max="600" value="219" step="5">
+      <div class="hint">Riser OD. Bigger pipe needs a bigger loop and produces more thrust.</div>
+    </div>
+    <div class="ctrl">
+      <label>Movement to absorb <span id="vM">100 mm</span></label>
+      <input type="range" id="sM" min="10" max="300" value="100" step="5">
+      <div class="hint">Thermal plus post-installation structural, summed.</div>
+    </div>
+    <div class="ctrl">
+      <label>Operating pressure <span id="vP">16 bar</span></label>
+      <input type="range" id="sP" min="4" max="40" value="16" step="1">
+      <div class="hint">Static plus pump pressure at that point in the riser.</div>
+    </div>
+    <div class="ctrl">
+      <label>Bellows spring rate <span id="vK">150 N/mm</span></label>
+      <input type="range" id="sK" min="30" max="600" value="150" step="10">
+      <div class="hint">From the bellows data sheet. Stiffer bellows load the anchor harder.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Loop leg</div><div class="v" id="rLl">11.5 <small>m</small></div></div>
+    <div class="cell"><div class="k">Pressure thrust</div><div class="v" id="rPt">95 <small>kN</small></div></div>
+    <div class="cell"><div class="k">Spring force</div><div class="v" id="rSf">15 <small>kN</small></div></div>
+    <div class="cell"><div class="k">Anchor load</div><div class="v" id="rAl">110 <small>kN</small></div></div>
+    <div class="cell"><div class="k">In tonnes</div><div class="v" id="rTn">11.2 <small>t</small></div></div>
+  </div>
+</div>
+<p class="fig-note">A DN200 riser absorbing 100&nbsp;mm needs an <strong>11.5&nbsp;m loop leg</strong> — which does not exist in a services shaft — so it gets a bellows, and the bellows loads its anchors with <strong>110&nbsp;kN</strong>. That is over eleven tonnes on a fixing detail that is often drawn as a channel bracket. Two design responses: use <strong>tied or pressure-balanced bellows</strong> so the thrust is carried within the assembly rather than by the building, or place the anchor at a structural element that can genuinely take it and get the load formally accepted. Either way, the number has to be calculated and issued — this is the single most under-transmitted load in MEP design.</p>
+
+<h2 id="detailing">5 · Detailing that accommodates movement</h2>
+<ul class="clean">
+  <li><strong>Branches from a moving riser must be flexible.</strong> Take branches off with a swing arm or an offset long enough to flex, never with a short rigid tee straight into a fixed branch. A 20&nbsp;mm riser movement against a rigid branch is a fatigue crack at the weld.</li>
+  <li><strong>Slab penetrations need clearance and a movement-tolerant seal.</strong> A pipe grouted solid into a slab is an unintended anchor, and it will win against the bracket you designed. Sleeve every penetration, and choose a fire-stop that is rated <em>with</em> movement.</li>
+  <li><strong>Horizontal runs from core to perimeter need articulation.</strong> This is the differential-shortening path: provide flexibility, expansion joints, or slotted supports at the perimeter end, and never fix both ends rigidly.</li>
+  <li><strong>Coordinate with building movement joints.</strong> Where the structure has a movement joint, every service crossing it gets a designed flexible crossing — this is elementary and it is still missed on podium-to-tower interfaces, where the movement is largest.</li>
+  <li><strong>Consider seismic and wind restraint together with expansion.</strong> These pull in opposite directions: restraint wants stiffness, expansion wants freedom. The answer is directional — restrain laterally, free axially — and a snubber that is set hard against the pipe defeats both.</li>
+  <li><strong>Insulation and cladding must move too.</strong> Rigid insulation carried through a guide, or metal cladding fixed across an expansion device, transfers force and tears. Detail the insulation at every compensator explicitly.</li>
+</ul>
+
+<h2 id="install">6 · Installation &amp; execution tricks</h2>
+<ul class="clean">
+  <li><strong>Record the installation temperature</strong> and cold-pull or pre-set every compensator to suit it. A bellows installed at neutral on a 45&nbsp;°C day and then run at 6&nbsp;°C spends its whole life at one end of its travel, halving its usable range and its fatigue life.</li>
+  <li><strong>Install anchors before the pipe is filled</strong> and verify each against the design load; an anchor added later, after the riser has already found its position, does not do what the calculation assumed.</li>
+  <li><strong>Check guides are actually free.</strong> Guides seized by over-tightening, by insulation packed into them or by debris are the commonest cause of a riser buckling. Inspect and record.</li>
+  <li><strong>Leave the travel indicators visible.</strong> Bellows and spring supports come with position indicators — do not bury them behind cladding, and photograph their as-installed positions.</li>
+  <li><strong>Survey the riser at intervals.</strong> Take datum readings at a few levels at handover and re-survey after twelve and thirty-six months; structural shortening is slow and a trend caught early is a cheap adjustment.</li>
+  <li><strong>Do not weld a temporary restraint and leave it.</strong> Temporary construction restraints on risers must be removed and their removal signed off — a forgotten one is an unintended anchor at full stiffness.</li>
+  <li><strong>Give the facilities team the movement drawing.</strong> Anchor and guide positions, expected travel and inspection intervals belong in the O&amp;M; without it, a future alteration will cut the riser at an anchor.</li>
+</ul>
+
+<h2 id="checklist">7 · The design &amp; installation checklist</h2>
+<ul class="clean">
+  <li><strong>Sum all four movements</strong> — thermal, elastic, creep-and-shrinkage residual, and sway — before sizing anything.</li>
+  <li><strong>Get the post-installation shortening figure from the structural engineer</strong>, including the core-to-perimeter differential. Ask for it explicitly; it will not be offered.</li>
+  <li><strong>Choose pipe material with its expansion coefficient in view</strong>, especially for plastics in tall risers.</li>
+  <li><strong>Set anchors first, then guides, then compensators</strong> — in that order.</li>
+  <li><strong>Calculate and issue every anchor load</strong>, including bellows pressure thrust, to the structural engineer.</li>
+  <li><strong>Use tied or pressure-balanced bellows</strong> where thrust cannot be carried by the structure.</li>
+  <li><strong>Articulate every core-to-perimeter run</strong> and every movement-joint crossing.</li>
+  <li><strong>Sleeve penetrations</strong> with movement-rated fire-stopping; never grout a pipe solid.</li>
+  <li><strong>Pre-set compensators to the recorded install temperature</strong> and verify guides are free.</li>
+  <li><strong>Survey at handover and re-survey</strong> at twelve and thirty-six months.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  A megatall tower shortens by roughly <strong>700&nbsp;mm</strong> over its life and about <strong>280&nbsp;mm of that lands on services already installed</strong> — comparable to the thermal movement of the same steel riser, and additive to it. Meanwhile the core and perimeter shorten by different amounts, quietly shearing every horizontal run between them. Ask the structural engineer for the post-installation and differential figures, choose pipe materials knowing that plastics move ten times as far as steel, set anchors before compensators, and above all <strong>calculate the bellows pressure thrust and issue it</strong> — because a hundred kilonewtons on a bracket detailed for pipe weight is how risers come down.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>ASME B31.1 <em>Power Piping</em> and B31.3 <em>Process Piping</em> — flexibility analysis, expansion stress ranges, anchor and guide design, and the guided-cantilever method.</li>
+  <li>EJMA <em>Standards of the Expansion Joint Manufacturers Association</em> — bellows selection, pressure thrust, spring rates, tied and pressure-balanced arrangements.</li>
+  <li>fib Model Code / EN 1992-1-1 (Eurocode 2) and ACI 209 — creep and shrinkage prediction models for concrete, and long-term deformation.</li>
+  <li>CTBUH and Institution of Structural Engineers guidance on <em>column shortening in tall buildings</em>, differential shortening and construction compensation.</li>
+  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed. — riser support, movement accommodation and structural interface.</li>
+  <li>CIBSE <em>Guide B</em> and BSRIA guidance on pipework support, anchors, guides and thermal movement in building services.</li>
+  <li>SMACNA <em>Seismic Restraint Manual</em> — restraint arrangements compatible with thermal movement and directional freedom.</li>
+  <li>Manufacturer technical data for PP-R, PE-X and PVC-U systems — expansion coefficients, support spacing and compensation detailing for plastics.</li>
+</ol>
+
+<div class="tags">#BuildingMovement #ThermalExpansion #ColumnShortening #Creep #Shrinkage #DifferentialShortening #TallBuildings #MegatallBuildings #Risers #PipeSupport #Anchors #Guides #ExpansionLoop #Bellows #ExpansionJoint #PressureThrust #EJMA #ASMEB311 #FlexibilityAnalysis #MovementJoint #SeismicRestraint #FireStopping #PPR #PEX #Commissioning #StructuralInterface #MEP #BuildingServices</div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const fmt2=v=>v.toFixed(2);
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}};
+
+/* ---------- CHART 1 : thermal movement ---------- */
+const sL=document.getElementById('sL'),sT=document.getElementById('sT'),
+      sA=document.getElementById('sA'),sS=document.getElementById('sS');
+const dL=(a,L,dT)=>a*1e-6*L*dT*1000;   // mm
+const loopLeg=(D,d)=>Math.sqrt(3*200000*D*d/100)/1000;  // m
+let thermChart=new Chart(document.getElementById('thermChart'),{
+  data:{datasets:[
+    {type:'line',label:'Your material',data:[],borderColor:'#c0392b',backgroundColor:'rgba(192,57,43,0.08)',borderWidth:3,pointRadius:0,fill:true,order:4},
+    {type:'line',label:'Carbon steel (α = 12)',data:[],borderColor:'#1b4f72',borderWidth:2.2,borderDash:[6,4],pointRadius:0,order:3},
+    {type:'line',label:'PPR / PE-X (α = 150)',data:[],borderColor:'#1e8449',borderWidth:2.2,borderDash:[2,4],pointRadius:0,order:2},
+    {type:'scatter',label:'Your riser',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:20,max:800,title:{display:true,text:'Riser length (m)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'logarithmic',title:{display:true,text:'Thermal movement (mm, log scale)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} mm at ${fmt0(c.parsed.x)} m`}}}}
+});
+function updTherm(){
+  const L=+sL.value,dT=+sT.value,a=+sA.value,sp=+sS.value;
+  document.getElementById('vL').textContent=L+' m';
+  document.getElementById('vT').textContent=dT+' K';
+  document.getElementById('vA').textContent=fmt1(a)+' ×10⁻⁶';
+  document.getElementById('vS').textContent=sp+' m';
+  const xs=[];for(let x=20;x<=800;x+=10)xs.push(x);
+  thermChart.data.datasets[0].data=xs.map(x=>({x:x,y:+dL(a,x,dT).toFixed(2)}));
+  thermChart.data.datasets[1].data=xs.map(x=>({x:x,y:+dL(12,x,dT).toFixed(2)}));
+  thermChart.data.datasets[2].data=xs.map(x=>({x:x,y:+dL(150,x,dT).toFixed(2)}));
+  const tot=dL(a,L,dT), bay=dL(a,Math.min(sp,L),dT), n=Math.max(1,Math.ceil(L/sp));
+  thermChart.data.datasets[3].data=[{x:L,y:+tot.toFixed(2)}];
+  thermChart.update('none');
+  document.getElementById('rDl').innerHTML=fmt0(tot)+' <small>mm</small>';
+  document.getElementById('rDb').innerHTML=fmt1(bay)+' <small>mm</small>';
+  document.getElementById('rNb').textContent=n;
+  document.getElementById('rLp').innerHTML=fmt1(loopLeg(219,bay))+' <small>m</small>';
+  const v=document.getElementById('rVd');
+  if(bay<15)      v.innerHTML='<span class="badge good">absorbable in a loop</span>';
+  else if(bay<50) v.innerHTML='<span class="badge warn">bellows likely needed</span>';
+  else            v.innerHTML='<span class="badge bad">reduce anchor spacing</span>';
+}
+[sL,sT,sA,sS].forEach(s=>s.addEventListener('input',updTherm));updTherm();
+
+/* ---------- CHART 2 : column shortening ---------- */
+const sH=document.getElementById('sH'),sSt=document.getElementById('sSt'),
+      sPh=document.getElementById('sPh'),sPo=document.getElementById('sPo');
+const E_C=35000, SHRINK=300;
+const strain=(st,ph)=>st/E_C*1e6*(1+ph)+SHRINK;
+let shortChart=new Chart(document.getElementById('shortChart'),{
+  data:{datasets:[
+    {type:'line',label:'Total structural shortening',data:[],borderColor:'#1a1d21',backgroundColor:'rgba(26,29,33,0.07)',borderWidth:3,pointRadius:0,fill:true,order:3},
+    {type:'line',label:'Acting on installed services',data:[],borderColor:'#1b4f72',backgroundColor:'rgba(27,79,114,0.14)',borderWidth:3,pointRadius:0,fill:true,order:2},
+    {type:'scatter',label:'Your tower',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:100,max:1000,title:{display:true,text:'Building height (m)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Vertical shortening (mm)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} mm at ${fmt0(c.parsed.x)} m`}}}}
+});
+function updShort(){
+  const H=+sH.value,st=+sSt.value,ph=+sPh.value,po=+sPo.value/100;
+  document.getElementById('vH').textContent=H+' m';
+  document.getElementById('vSt').textContent=fmt1(st)+' MPa';
+  document.getElementById('vPh').textContent=fmt1(ph);
+  document.getElementById('vPo').textContent=fmt0(po*100)+' %';
+  const eps=strain(st,ph);
+  const xs=[];for(let x=100;x<=1000;x+=10)xs.push(x);
+  shortChart.data.datasets[0].data=xs.map(x=>({x:x,y:+(eps*1e-6*x*1000).toFixed(1)}));
+  shortChart.data.datasets[1].data=xs.map(x=>({x:x,y:+(po*eps*1e-6*x*1000).toFixed(1)}));
+  const tot=eps*1e-6*H*1000, act=po*tot;
+  shortChart.data.datasets[2].data=[{x:H,y:+tot.toFixed(1)}];
+  shortChart.update('none');
+  const therm=12e-6*H*30*1000;
+  document.getElementById('rEp').innerHTML=fmt0(eps)+' <small>µε</small>';
+  document.getElementById('rTs').innerHTML=fmt0(tot)+' <small>mm</small>';
+  document.getElementById('rPs').innerHTML=fmt0(act)+' <small>mm</small>';
+  document.getElementById('rPz').innerHTML=fmt1(act*40/H)+' <small>mm</small>';
+  document.getElementById('rVt').innerHTML=fmt1(act/therm)+'<small>×</small>';
+}
+[sH,sSt,sPh,sPo].forEach(s=>s.addEventListener('input',updShort));updShort();
+
+/* ---------- CHART 3 : anchors & loops ---------- */
+const sD=document.getElementById('sD'),sM=document.getElementById('sM'),
+      sP=document.getElementById('sP'),sK=document.getElementById('sK');
+const effArea=D=>Math.PI*Math.pow((D*1.25)/1000,2)/4;   // bellows effective area ~ 1.25x pipe OD
+let anchChart=new Chart(document.getElementById('anchChart'),{
+  data:{datasets:[
+    {type:'line',label:'Anchor load (kN)',data:[],borderColor:'#c0392b',backgroundColor:'rgba(192,57,43,0.08)',borderWidth:3,pointRadius:0,fill:true,yAxisID:'y',order:3},
+    {type:'line',label:'Expansion loop leg (m)',data:[],borderColor:'#1b4f72',borderWidth:2.5,borderDash:[6,4],pointRadius:0,yAxisID:'y1',order:2},
+    {type:'scatter',label:'Your riser',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,yAxisID:'y',order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:50,max:600,title:{display:true,text:'Pipe outside diameter (mm)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',position:'left',min:0,title:{display:true,text:'Anchor load (kN)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y1:{type:'linear',position:'right',min:0,title:{display:true,text:'Loop leg (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{drawOnChartArea:false},ticks:{font:{family:'DM Sans',size:11}}}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}}}}
+});
+function updAnch(){
+  const D=+sD.value,m=+sM.value,P=+sP.value,k=+sK.value;
+  document.getElementById('vD').textContent=D+' mm';
+  document.getElementById('vM').textContent=m+' mm';
+  document.getElementById('vP').textContent=P+' bar';
+  document.getElementById('vK').textContent=k+' N/mm';
+  const thrust=d=>effArea(d)*P*1e5/1000;   // kN
+  const xs=[];for(let x=50;x<=600;x+=10)xs.push(x);
+  anchChart.data.datasets[0].data=xs.map(x=>({x:x,y:+(thrust(x)+k*m/1000).toFixed(1)}));
+  anchChart.data.datasets[1].data=xs.map(x=>({x:x,y:+loopLeg(x,m).toFixed(2)}));
+  const T=thrust(D), S=k*m/1000;
+  anchChart.data.datasets[2].data=[{x:D,y:+(T+S).toFixed(1)}];
+  anchChart.update('none');
+  document.getElementById('rLl').innerHTML=fmt1(loopLeg(D,m))+' <small>m</small>';
+  document.getElementById('rPt').innerHTML=fmt0(T)+' <small>kN</small>';
+  document.getElementById('rSf').innerHTML=fmt0(S)+' <small>kN</small>';
+  document.getElementById('rAl').innerHTML=fmt0(T+S)+' <small>kN</small>';
+  document.getElementById('rTn').innerHTML=fmt1((T+S)/9.81)+' <small>t</small>';
+}
+[sD,sM,sP,sK].forEach(s=>s.addEventListener('input',updAnch));updAnch();
+
+window.addEventListener('load',function(){try{thermChart.resize();shortChart.resize();anchChart.resize();}catch(e){}});
+
+</script>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<!-- End WhatsApp Button -->
+
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

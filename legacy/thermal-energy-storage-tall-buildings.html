@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thermal Energy Storage for Megatall Buildings: Ice vs Water, Peak Shaving &amp; the Tariff That Pays for It — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:right;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:16px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
+    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
+    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:#c0392b;}
+    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid #cdd6df;border-radius:8px;font-size:13px;font-family:inherit;background:#fff;color:#1a1d21;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
+    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
+    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge.good{background:#d5f5e3;color:#1e8449;}
+    .badge.warn{background:#fdebd0;color:#b9770e;}
+    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:#1b4f72;text-decoration:none;border:1px solid #cdd6df;border-radius:980px;padding:4px 11px;background:#fff;transition:.18s;}
+    .calc-link:hover{border-color:#1b4f72;background:#f2f6fa;}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="Thermal energy storage for megatall buildings: why storage density decides the design before economics does, chilled water versus ice versus phase-change materials, partial storage peak shaving and the chiller capacity it saves, the honest energy penalty from ice-making COP, tariff arbitrage and when it stops paying, and the control sequences where storage projects actually fail — with three interactive charts and installation tricks.">
+  <meta property="og:title" content="Thermal Energy Storage for Megatall Buildings: Ice vs Water, Peak Shaving &amp; the Tariff That Pays for It | Mohamed Abokhatwa">
+  <meta property="og:description" content="128 MWh is 13,757 m3 as chilled water and 1,538 m3 as ice. Storage in a tower is a density question before it is an economics question — and it buys capacity, not energy.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/thermal-energy-storage-tall-buildings.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-thermal-energy-storage-tall-buildings.jpg">
+  <meta property="og:image:alt" content="Technical cutaway of a megatall tower basement showing large ice thermal storage tanks with internal coil bundles, connected by glycol pipework to low-temperature chillers and a plate heat exchanger serving the building chilled-water risers">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Thermal Energy Storage for Megatall Buildings: Ice vs Water, Peak Shaving &amp; the Tariff That Pays for It | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="128 MWh is 13,757 m3 as chilled water and 1,538 m3 as ice. Storage in a tower is a density question before it is an economics question — and it buys capacity, not energy.">
+  <link rel="canonical" href="https://abokhatwa.com/thermal-energy-storage-tall-buildings.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Thermal Energy Storage for Megatall Buildings: Ice vs Water, Peak Shaving &amp; the Tariff That Pays for It",
+  "description": "A design-perspective guide to thermal energy storage in megatall buildings: storage media and density, partial versus full storage, chiller capacity savings, the ice-making COP penalty, tariff arbitrage economics, control sequences and commissioning.",
+  "image": "https://abokhatwa.com/og-thermal-energy-storage-tall-buildings.jpg",
+  "datePublished": "2026-08-14",
+  "dateModified": "2026-08-14",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/thermal-energy-storage-tall-buildings.html" }
+}
+  </script>
+</head>
+<body>
+<div id="legacy-bar" style="position:sticky;top:0;z-index:99999;background:#1d1d1f;color:#f5f5f7;font:500 13px/1.4 -apple-system,BlinkMacSystemFont,Inter,Helvetica,Arial,sans-serif;padding:9px 16px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center;"><span>You are viewing the previous design of abokhatwa.com, archived 21 August 2026.</span><a href="https://abokhatwa.com/" style="color:#6fb3d6;text-decoration:underline;">Go to the current site</a></div>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="index.html" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="index.html">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">HVAC &amp; Cooling</span></div>
+  <span class="tag">HVAC &middot; Thermal Energy Storage &middot; Ice Storage &middot; Peak Shaving</span>
+  <h1>Thermal Energy Storage for Megatall Buildings: Ice vs Water, Peak Shaving &amp; the Tariff That Pays for It</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>August 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>15 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="../thermal-energy-storage-tall-buildings.webp" alt="Technical cutaway of a megatall tower basement showing large ice thermal storage tanks with internal coil bundles, connected by glycol pipework to low-temperature chillers and a plate heat exchanger serving the building chilled-water risers">
+</div>
+
+<div class="article-body">
+
+<p class="lead">Thermal storage is the only way to buy cooling at one time and use it at another, and in a Gulf tower that arbitrage is worth a great deal — a 40&nbsp;MW plant shifting its peak can cut its chiller capacity by <strong>40&nbsp;%</strong> and take a real bite out of its electricity bill. But it comes with a physical constraint that decides the entire design before economics is even discussed: storing 128&nbsp;MWh as chilled water needs <strong>13,757 cubic metres of tank — nearly fourteen thousand tonnes</strong>. That does not go in a tower. As ice it is 1,538&nbsp;m³, roughly nine times more compact, and suddenly it fits in a basement. Thermal storage in a tall building is therefore an <em>ice</em> question, or it is not a question at all.</p>
+
+<h2 id="why">1 · Why storage and towers are an awkward fit</h2>
+<ul class="clean">
+  <li><strong>Storage is heavy and towers hate weight.</strong> Water stores about 9.3&nbsp;kWh per tonne at an 8&nbsp;K ΔT. Any meaningful capacity is thousands of tonnes and belongs at or below grade, never up the building.</li>
+  <li><strong>Latent storage is nine times denser.</strong> Ice stores its heat as a phase change at 333&nbsp;kJ/kg rather than as sensible heat over a few kelvin, which is why every space-constrained project ends up looking at it.</li>
+  <li><strong>The tariff is what pays for it.</strong> The economics come from the difference between on-peak and off-peak electricity and from avoided demand charges. Where that difference is small, storage is a resilience and capacity measure rather than an energy one — and should be argued as such.</li>
+  <li><strong>Making ice costs efficiency.</strong> A chiller producing −6&nbsp;°C brine instead of 6&nbsp;°C water loses roughly a quarter to a third of its COP. Storage does not save energy; it <em>moves</em> it, and it moves slightly more than it shifted.</li>
+  <li><strong>It buys capacity, which in a megatall is worth more than energy.</strong> A smaller chiller plant means a smaller plant room, smaller electrical infrastructure, smaller cooling towers and less water — the compounding benefit that is usually left out of the payback calculation.</li>
+</ul>
+
+<h2 id="int-vol">2 · Interactive: how much tank, and of what</h2>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Storage volume by medium</div>
+    <div class="fsub">Sensible storage V = E/(ρ·c&#112;·ΔT); latent (ice) V = E/(h&#102;·packing). Chilled water depends entirely on the ΔT you can actually stratify; ice does not.</div>
+    <a class="calc-link" href="calculators.html#calc-tnk"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h6"/></svg>Open Reservoir / tank sizing as a calculator</a>
+  </div>
+  <div class="chart-box"><canvas id="volChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Stored capacity <span id="vE">128 MWh</span></label>
+      <input type="range" id="sE" min="5" max="400" value="128" step="1">
+      <div class="hint">Cooling to be delivered from storage over the on-peak period.</div>
+    </div>
+    <div class="ctrl">
+      <label>Chilled-water ΔT <span id="vD">8.0 K</span></label>
+      <input type="range" id="sD" min="5" max="14" value="8" step="0.5">
+      <div class="hint">Usable stratified difference — not the design coil ΔT. Stratified tanks rarely beat 9–10 K in practice.</div>
+    </div>
+    <div class="ctrl">
+      <label>Ice packing factor <span id="vP">90 %</span></label>
+      <input type="range" id="sP" min="60" max="100" value="90" step="1">
+      <div class="hint">Usable fraction of tank volume for internal-melt ice-on-coil systems.</div>
+    </div>
+    <div class="ctrl">
+      <label>Available plant height <span id="vHt">6.0 m</span></label>
+      <input type="range" id="sHt" min="3" max="15" value="6" step="0.5">
+      <div class="hint">To convert volume into the footprint you actually have to find.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Chilled water</div><div class="v" id="rVw">13,757 <small>m³</small></div></div>
+    <div class="cell"><div class="k">Ice</div><div class="v" id="rVi">1,538 <small>m³</small></div></div>
+    <div class="cell"><div class="k">Compactness</div><div class="v" id="rRt">8.9<small>×</small></div></div>
+    <div class="cell"><div class="k">Ice footprint</div><div class="v" id="rFp">256 <small>m²</small></div></div>
+    <div class="cell"><div class="k">Water footprint</div><div class="v" id="rFw">2,293 <small>m²</small></div></div>
+  </div>
+</div>
+<p class="fig-note">128&nbsp;MWh as chilled water is <strong>13,757&nbsp;m³</strong> — a 2,293&nbsp;m² tank farm six metres deep, which is most of a basement level and fourteen thousand tonnes of structural load. As ice it is <strong>1,538&nbsp;m³</strong> and about 256&nbsp;m². That ratio is why almost every tall-building thermal store is latent rather than sensible, and it is also why the decision has to be made before the basement is designed: nobody finds 2,300&nbsp;m² of tank space in a completed scheme. Note how sensitive the water case is to the ΔT slider — a stratified tank that manages only 6&nbsp;K instead of 9&nbsp;K needs 50&nbsp;% more volume for the same stored energy, and stratification quality is a real, and commonly disappointing, design risk.</p>
+
+<h2 id="int-peak">3 · Interactive: what peak shaving buys</h2>
+<p>With <strong>full storage</strong> the chillers do not run on-peak at all; with <strong>partial storage</strong> — almost always the right answer — the chillers run more or less continuously at a lower rating and storage covers the difference at peak.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Chiller capacity and storage size vs load factor</div>
+    <div class="fsub">Partial storage: chiller sized at the daily mean load (peak × load factor); storage carries the on-peak difference. Load factor is the daily average cooling divided by the peak.</div>
+  </div>
+  <div class="chart-box"><canvas id="peakChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Peak cooling load <span id="vL">40 MW</span></label>
+      <input type="range" id="sL" min="5" max="150" value="40" step="1">
+      <div class="hint">Design day peak demand of the development.</div>
+    </div>
+    <div class="ctrl">
+      <label>Daily load factor <span id="vLf">60 %</span></label>
+      <input type="range" id="sLf" min="35" max="90" value="60" step="1">
+      <div class="hint">Daily average ÷ peak. Mixed-use towers run higher than pure offices.</div>
+    </div>
+    <div class="ctrl">
+      <label>On-peak window <span id="vOp">8 h</span></label>
+      <input type="range" id="sOp" min="3" max="14" value="8" step="1">
+      <div class="hint">Hours the tariff or the demand charge applies.</div>
+    </div>
+    <div class="ctrl">
+      <label>Ice-making COP penalty <span id="vCp">28 %</span></label>
+      <input type="range" id="sCp" min="10" max="45" value="28" step="1">
+      <div class="hint">Efficiency lost producing ice rather than chilled water.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Chiller with TES</div><div class="v" id="rCh">24 <small>MW</small></div></div>
+    <div class="cell"><div class="k">Capacity saved</div><div class="v" id="rCs">40 <small>%</small></div></div>
+    <div class="cell"><div class="k">Storage needed</div><div class="v" id="rSt">128 <small>MWh</small></div></div>
+    <div class="cell"><div class="k">Ice volume</div><div class="v" id="rIv">1,538 <small>m³</small></div></div>
+    <div class="cell"><div class="k">Extra energy</div><div class="v" id="rEx">+9 <small>%</small></div></div>
+  </div>
+</div>
+<p class="fig-note">A 40&nbsp;MW peak at a 60&nbsp;% load factor lets the chiller plant drop to <strong>24&nbsp;MW — 40&nbsp;% smaller</strong> — with 128&nbsp;MWh of storage covering the on-peak difference. That is a smaller plant room, smaller substation, smaller towers and less makeup water, all compounding. The honest cost is on the right: making that portion of the cooling as ice consumes roughly <strong>9&nbsp;% more energy overall</strong>, because the ice-making chillers run at a worse COP. Storage is a <em>capacity and tariff</em> measure, not an efficiency measure, and any business case that claims energy savings from the storage itself is wrong.</p>
+
+<h2 id="int-econ">4 · Interactive: the tariff arbitrage</h2>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Annual saving from shifting cooling off-peak</div>
+    <div class="fsub">Saving = shifted energy × (on-peak rate − off-peak rate) × operating days, less the extra electricity from the ice-making COP penalty, plus any avoided demand charge.</div>
+  </div>
+  <div class="chart-box"><canvas id="econChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Shifted cooling per day <span id="vSh">128 MWh</span></label>
+      <input type="range" id="sSh" min="10" max="400" value="128" step="2">
+      <div class="hint">Cooling delivered from storage on a design day.</div>
+    </div>
+    <div class="ctrl">
+      <label>On-peak rate <span id="vOn">0.32</span></label>
+      <input type="range" id="sOn" min="0.05" max="0.8" value="0.32" step="0.01">
+      <div class="hint">Electricity rate during the peak window, per kWh.</div>
+    </div>
+    <div class="ctrl">
+      <label>Off-peak rate <span id="vOf">0.18</span></label>
+      <input type="range" id="sOf" min="0.02" max="0.6" value="0.18" step="0.01">
+      <div class="hint">Night rate. Where this equals the day rate, the arbitrage disappears.</div>
+    </div>
+    <div class="ctrl">
+      <label>Operating days <span id="vDy">250</span></label>
+      <input type="range" id="sDy" min="60" max="365" value="250" step="5">
+      <div class="hint">Days a year the shift is actually made.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Gross arbitrage</div><div class="v" id="rGa">0.81 <small>M/yr</small></div></div>
+    <div class="cell"><div class="k">COP penalty cost</div><div class="v" id="rPc">0.41 <small>M/yr</small></div></div>
+    <div class="cell"><div class="k">Net saving</div><div class="v" id="rNs">0.41 <small>M/yr</small></div></div>
+    <div class="cell"><div class="k">Rate ratio</div><div class="v" id="rRr">1.78<small>×</small></div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">At a 0.32/0.18 tariff split, shifting 128&nbsp;MWh of cooling a day over 250 days moves about 23&nbsp;MWh of <em>electricity</em> a day into the night, worth <strong>0.81&nbsp;M gross</strong> — less roughly <strong>0.41&nbsp;M</strong> of extra electricity from the ice-making penalty, for a net <strong>0.41&nbsp;M a year</strong> before any avoided demand charge. Note how much of the gross the penalty eats: half of it, at this tariff. Now drag the two rates together: as the ratio falls below about 1.4 the COP penalty eats most of the benefit and the scheme has to be justified on capacity alone. <strong>Check the tariff before the tanks.</strong> And check its stability — a storage scheme is a twenty-five-year asset justified by a tariff structure that a regulator can revise in a year, which is a genuine commercial risk worth stating in the design report rather than discovering later.</p>
+
+<h2 id="types">5 · Choosing the storage type</h2>
+<ul class="clean">
+  <li><strong>Stratified chilled-water tanks.</strong> Simple, no COP penalty, uses the existing chillers, and the tank can double as fire-water or resilience storage. But it is enormous, and its usable capacity depends entirely on maintaining a clean thermocline — which needs proper diffusers, low inlet velocities and a tank geometry with a decent height-to-diameter ratio. Best where land is available at grade.</li>
+  <li><strong>Ice-on-coil, internal melt.</strong> The workhorse for space-constrained sites. Glycol circulates through coils in a tank, freezing water around them, then melts it from the inside. Predictable, modular, and roughly nine times denser than water. Needs a glycol loop, a heat exchanger to the building side, and chillers selected for low-temperature duty.</li>
+  <li><strong>Ice harvesting and encapsulated ice.</strong> Alternatives with different discharge characteristics; encapsulated ice (nodules in a tank) packs well and suits retrofits into existing tanks.</li>
+  <li><strong>Phase-change materials above 0&nbsp;°C.</strong> PCMs melting at 6–10&nbsp;°C avoid the ice-making COP penalty entirely because the chillers run at normal temperatures, at the cost of lower storage density than ice and a higher material cost. Worth evaluating where the tariff split is modest and the COP penalty would otherwise kill the scheme.</li>
+</ul>
+
+<h2 id="control">6 · Control is where storage projects fail</h2>
+<p>A thermal store is only worth what its control sequence extracts. The recurring failures are all strategic rather than mechanical:</p>
+<ul class="clean">
+  <li><strong>Discharging too early.</strong> A store emptied by mid-afternoon leaves the chillers exposed at the real peak. The sequence must forecast the remaining day's load, not react to the current one.</li>
+  <li><strong>Not filling completely.</strong> Overnight charge must be verified against inventory, not against run hours. Instrument the store for <em>state of charge</em> and trend it — a store that has been running at 70&nbsp;% charge for two years is a common and invisible failure.</li>
+  <li><strong>Chiller priority confusion.</strong> Decide explicitly, in the sequence, whether chiller or storage leads at each hour and each load, and what happens on a chiller failure.</li>
+  <li><strong>Ignoring the demand charge.</strong> Where the tariff has a peak-demand component, the control objective is to cap the electrical demand, not merely to shift energy — a different and more valuable optimisation.</li>
+  <li><strong>No weather or occupancy forecast.</strong> Modern sequences use next-day forecast to size the overnight charge; charging fully every night on a mild day wastes the COP penalty for nothing.</li>
+</ul>
+
+<h2 id="install">7 · Installation &amp; execution tricks</h2>
+<ul class="clean">
+  <li><strong>Get the tank load to the structural engineer early</strong> — a full store is thousands of tonnes and its position, bearing pressure and seismic mass all affect the substructure design.</li>
+  <li><strong>Insulate and vapour-seal the tank properly.</strong> A sub-zero store in a humid Gulf basement will condense and then corrode at every thermal bridge; specify the vapour barrier as carefully as the insulation and detail the supports through it.</li>
+  <li><strong>Manage the glycol.</strong> Concentration, inhibitor level and compatibility with every seal and gasket in the loop, checked at commissioning and scheduled thereafter. A degraded inhibitor package turns a glycol loop into a corrosion cell.</li>
+  <li><strong>Design the tank for inspection and cleaning</strong> — access, drain-down and a route to replace coils.</li>
+  <li><strong>Instrument the state of charge</strong> from day one, with the sensors the control sequence actually needs, and prove the inventory calculation at commissioning by a full charge-discharge cycle against a measured load.</li>
+  <li><strong>Commission across a full cycle, not a snapshot.</strong> The acceptance test is a complete charge overnight and a complete discharge over the peak, with the load simulated or real, and the results compared against the design profile.</li>
+  <li><strong>Train the operator, and write the sequence down in plain language.</strong> Storage is the system most likely to be switched to manual after a handover disagreement and never switched back.</li>
+</ul>
+
+<h2 id="checklist">8 · The design &amp; installation checklist</h2>
+<ul class="clean">
+  <li><strong>Check the tariff split and its stability</strong> before anything else; below about 1.4 the case must rest on capacity.</li>
+  <li><strong>Size from a real daily load profile</strong>, not a peak and a guess at load factor.</li>
+  <li><strong>Choose the medium on space and COP penalty together</strong> — ice for constrained sites, water where land allows, PCM where the tariff is thin.</li>
+  <li><strong>Count the capacity savings in full</strong> — chillers, plant room, substation, towers and makeup water.</li>
+  <li><strong>State the energy penalty honestly</strong> in the business case.</li>
+  <li><strong>Issue the tank loads early</strong> and coordinate the substructure.</li>
+  <li><strong>Design the control sequence as a deliverable</strong>, with forecast-based charging and an explicit demand-cap objective.</li>
+  <li><strong>Instrument state of charge</strong> and trend it.</li>
+  <li><strong>Commission a full charge-discharge cycle</strong> against a measured load.</li>
+</ul>
+
+<div class="callout key">
+  <span class="lbl">The one-line summary</span>
+  Thermal storage in a tall building is decided by <strong>density before economics</strong>: 128&nbsp;MWh is 13,757&nbsp;m³ as chilled water and 1,538&nbsp;m³ as ice, so constrained sites store latent heat or they do not store at all — and either way it goes below grade, early, with the load issued to the structural engineer. It buys <strong>capacity</strong> — a 40&nbsp;% smaller chiller plant and everything that follows from it — and it buys <strong>tariff arbitrage</strong> &mdash; though the COP penalty eats about half the gross &mdash; but it does not buy energy: making ice costs about a quarter of your COP, so the plant uses roughly 9&nbsp;% more electricity to deliver the same cooling. Say that plainly in the business case, then win the argument on capacity and demand charge, which is where it is actually won.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>ASHRAE <em>Handbook — HVAC Systems and Equipment</em>, Thermal Storage chapter — sensible and latent storage media, sizing, stratification and system integration.</li>
+  <li>ASHRAE <em>Design Guide for Cool Thermal Storage</em> — full and partial storage strategies, control sequences and commissioning.</li>
+  <li>ANSI/ASHRAE Standard 150 — <em>Method of Testing the Performance of Cool Storage Systems</em>; and ASHRAE Guideline 4 for storage system commissioning.</li>
+  <li>ASHRAE <em>District Cooling Guide</em>, 2nd ed. — thermal storage in district and campus systems, including peak-shaving economics.</li>
+  <li>ANSI/ASHRAE/IES Standard 90.1 — energy modelling treatment of thermal storage and demand-limiting controls.</li>
+  <li>IEA Energy Conservation through Energy Storage / Annex reports on phase-change materials and cool storage applications.</li>
+  <li>Saudi Electricity Company tariff structures and the Saudi Building Code <em>SBC 501</em> — the local tariff and regulatory basis for any Gulf storage business case.</li>
+  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed. — plant location, structural interface and storage in tall buildings.</li>
+</ol>
+
+<div class="tags">#ThermalEnergyStorage #TES #IceStorage #ChilledWaterStorage #Stratification #PCM #PhaseChangeMaterial #PeakShaving #LoadShifting #DemandCharge #TariffArbitrage #TallBuildings #MegatallBuildings #Chillers #PlantCapacity #COP #Glycol #StateOfCharge #ControlSequence #ForecastControl #Commissioning #ASHRAE150 #DistrictCooling #MEP #BuildingServices #HVAC</div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 Mohamed Abokhatwa &nbsp;&middot;&nbsp; Riyadh, Saudi Arabia &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="index.html">All Articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const fmt2=v=>v.toFixed(2);
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}};
+const CP=4.187, HFUS=333;
+
+/* ---------- CHART 1 : storage volume ---------- */
+const sE=document.getElementById('sE'),sD=document.getElementById('sD'),
+      sP=document.getElementById('sP'),sHt=document.getElementById('sHt');
+const volWater=(E,dT)=>E*3600/(CP*dT);
+const volIce=(E,pk)=>E*3600/(HFUS*pk);
+let volChart=new Chart(document.getElementById('volChart'),{
+  data:{datasets:[
+    {type:'line',label:'Chilled water (sensible)',data:[],borderColor:'#c0392b',backgroundColor:'rgba(192,57,43,0.08)',borderWidth:3,pointRadius:0,fill:true,order:3},
+    {type:'line',label:'Ice (latent)',data:[],borderColor:'#1b4f72',backgroundColor:'rgba(27,79,114,0.14)',borderWidth:3,pointRadius:0,fill:true,order:2},
+    {type:'scatter',label:'Your store',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:5,max:400,title:{display:true,text:'Stored cooling capacity (MWh)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Tank volume (m³)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} m³ for ${fmt0(c.parsed.x)} MWh`}}}}
+});
+function updVol(){
+  const E=+sE.value,dT=+sD.value,pk=+sP.value/100,h=+sHt.value;
+  document.getElementById('vE').textContent=E+' MWh';
+  document.getElementById('vD').textContent=fmt1(dT)+' K';
+  document.getElementById('vP').textContent=fmt0(pk*100)+' %';
+  document.getElementById('vHt').textContent=fmt1(h)+' m';
+  const xs=[];for(let x=5;x<=400;x+=5)xs.push(x);
+  volChart.data.datasets[0].data=xs.map(x=>({x:x,y:+volWater(x,dT).toFixed(0)}));
+  volChart.data.datasets[1].data=xs.map(x=>({x:x,y:+volIce(x,pk).toFixed(0)}));
+  const Vw=volWater(E,dT), Vi=volIce(E,pk);
+  volChart.data.datasets[2].data=[{x:E,y:+Vw.toFixed(0)}];
+  volChart.update('none');
+  document.getElementById('rVw').innerHTML=fmt0(Vw)+' <small>m³</small>';
+  document.getElementById('rVi').innerHTML=fmt0(Vi)+' <small>m³</small>';
+  document.getElementById('rRt').innerHTML=fmt1(Vw/Vi)+'<small>×</small>';
+  document.getElementById('rFp').innerHTML=fmt0(Vi/h)+' <small>m²</small>';
+  document.getElementById('rFw').innerHTML=fmt0(Vw/h)+' <small>m²</small>';
+}
+[sE,sD,sP,sHt].forEach(s=>s.addEventListener('input',updVol));updVol();
+
+/* ---------- CHART 2 : peak shaving ---------- */
+const sL=document.getElementById('sL'),sLf=document.getElementById('sLf'),
+      sOp=document.getElementById('sOp'),sCp=document.getElementById('sCp');
+let peakChart=new Chart(document.getElementById('peakChart'),{
+  data:{datasets:[
+    {type:'line',label:'Chiller capacity with TES (MW)',data:[],borderColor:'#1b4f72',backgroundColor:'rgba(27,79,114,0.10)',borderWidth:3,pointRadius:0,fill:true,yAxisID:'y',order:3},
+    {type:'line',label:'Storage required (MWh)',data:[],borderColor:'#c0392b',borderWidth:2.5,borderDash:[6,4],pointRadius:0,yAxisID:'y1',order:2},
+    {type:'scatter',label:'Your plant',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,yAxisID:'y',order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:35,max:90,title:{display:true,text:'Daily load factor (%)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',position:'left',min:0,title:{display:true,text:'Chiller capacity (MW)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y1:{type:'linear',position:'right',min:0,title:{display:true,text:'Storage (MWh)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{drawOnChartArea:false},ticks:{font:{family:'DM Sans',size:11}}}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}}}}
+});
+function updPeak(){
+  const L=+sL.value,lf=+sLf.value/100,op=+sOp.value,cp=+sCp.value/100;
+  document.getElementById('vL').textContent=L+' MW';
+  document.getElementById('vLf').textContent=fmt0(lf*100)+' %';
+  document.getElementById('vOp').textContent=op+' h';
+  document.getElementById('vCp').textContent=fmt0(cp*100)+' %';
+  const xs=[];for(let x=35;x<=90;x+=1)xs.push(x);
+  peakChart.data.datasets[0].data=xs.map(x=>({x:x,y:+(L*x/100).toFixed(2)}));
+  peakChart.data.datasets[1].data=xs.map(x=>({x:x,y:+(L*(1-x/100)*op).toFixed(1)}));
+  const ch=L*lf, st=L*(1-lf)*op;
+  peakChart.data.datasets[2].data=[{x:lf*100,y:+ch.toFixed(2)}];
+  peakChart.update('none');
+  // extra energy: the stored share of the day's cooling is produced at a worse COP
+  const extra=100*((1-lf)*op/(lf*24))*(1/(1-cp)-1);
+  document.getElementById('rCh').innerHTML=fmt0(ch)+' <small>MW</small>';
+  document.getElementById('rCs').innerHTML=fmt0(100*(1-lf))+' <small>%</small>';
+  document.getElementById('rSt').innerHTML=fmt0(st)+' <small>MWh</small>';
+  document.getElementById('rIv').innerHTML=fmt0(volIce(st,0.9))+' <small>m³</small>';
+  document.getElementById('rEx').innerHTML='+'+fmt0(extra)+' <small>%</small>';
+}
+[sL,sLf,sOp,sCp].forEach(s=>s.addEventListener('input',updPeak));updPeak();
+
+/* ---------- CHART 3 : economics ---------- */
+const sSh=document.getElementById('sSh'),sOn=document.getElementById('sOn'),
+      sOf=document.getElementById('sOf'),sDy=document.getElementById('sDy');
+const COP_PEN=0.28, COP_BASE=5.5;
+let econChart=new Chart(document.getElementById('econChart'),{
+  data:{datasets:[
+    {type:'line',label:'Net annual saving',data:[],borderColor:'#1b4f72',backgroundColor:'rgba(27,79,114,0.10)',borderWidth:3,pointRadius:0,fill:true,order:3},
+    {type:'line',label:'Gross arbitrage',data:[],borderColor:'#c0392b',borderWidth:2.2,borderDash:[6,4],pointRadius:0,order:2},
+    {type:'scatter',label:'Your scheme',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:1,max:4,title:{display:true,text:'On-peak ÷ off-peak rate ratio',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',title:{display:true,text:'Annual saving (millions)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${fmt2(c.parsed.y)} M at ratio ${fmt2(c.parsed.x)}`}}}}
+});
+function updEcon(){
+  const sh=+sSh.value,on=+sOn.value,off=+sOf.value,dy=+sDy.value;
+  document.getElementById('vSh').textContent=sh+' MWh';
+  document.getElementById('vOn').textContent=fmt2(on);
+  document.getElementById('vOf').textContent=fmt2(off);
+  document.getElementById('vDy').textContent=dy;
+  // electricity to make the shifted cooling, day vs ice COP
+  const eDay=sh/COP_BASE, eIce=sh/(COP_BASE*(1-COP_PEN));
+  const xs=[];for(let r=1;r<=4;r+=0.05)xs.push(+r.toFixed(2));
+  econChart.data.datasets[0].data=xs.map(r=>({x:r,y:+((eDay*(off*r)-eIce*off)*1000*dy/1e6).toFixed(3)}));
+  econChart.data.datasets[1].data=xs.map(r=>({x:r,y:+((eDay*(off*r)-eDay*off)*1000*dy/1e6).toFixed(3)}));
+  const ratio=on/off;
+  const g=(eDay*on-eDay*off)*1000*dy/1e6, pen=(eIce-eDay)*off*1000*dy/1e6, n=g-pen;
+  econChart.data.datasets[2].data=[{x:ratio,y:+n.toFixed(3)}];
+  econChart.update('none');
+  document.getElementById('rGa').innerHTML=fmt2(g)+' <small>M/yr</small>';
+  document.getElementById('rPc').innerHTML=fmt2(pen)+' <small>M/yr</small>';
+  document.getElementById('rNs').innerHTML=fmt2(n)+' <small>M/yr</small>';
+  document.getElementById('rRr').innerHTML=fmt2(ratio)+'<small>×</small>';
+  const v=document.getElementById('rVd');
+  if(n<=0)          v.innerHTML='<span class="badge bad">tariff will not pay for it</span>';
+  else if(ratio<1.4)v.innerHTML='<span class="badge warn">justify on capacity</span>';
+  else              v.innerHTML='<span class="badge good">arbitrage works</span>';
+}
+[sSh,sOn,sOf,sDy].forEach(s=>s.addEventListener('input',updEcon));updEcon();
+
+window.addEventListener('load',function(){try{volChart.resize();peakChart.resize();econChart.resize();}catch(e){}});
+
+</script>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<!-- End WhatsApp Button -->
+
+<script src="article-features.js"></script>
+<script src="theme.js"></script>
+</body>
+</html>

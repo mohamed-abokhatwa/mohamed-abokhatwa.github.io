@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /legacy/
 Allow: /
 
 Sitemap: https://abokhatwa.com/sitemap.xml

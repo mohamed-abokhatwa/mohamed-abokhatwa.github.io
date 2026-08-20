@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta name="robots" content="noindex,nofollow">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محمد أبوخطوة — هندسة المياه</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="../favicon.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../favicon-180.png?v=2">
+
+  <style>
+    body { font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .nav-inner { direction: rtl; }
+    .lang-switch {
+      font-size: 13px; font-weight: 500; color: var(--accent);
+      text-decoration: none; border: 1px solid rgba(0,113,227,0.2);
+      padding: 4px 12px; border-radius: 20px; transition: background 0.2s;
+    }
+    .lang-switch:hover { background: rgba(0,113,227,0.06); }
+
+    /* Hero */
+    .hero {
+      padding: 160px 24px 80px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      text-align: right;
+    }
+    .hero-eyebrow {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+      color: var(--accent); margin-bottom: 24px; display: block;
+    }
+    .hero h1 {
+      font-family: 'Cairo', sans-serif;
+      font-size: clamp(44px, 7vw, 76px);
+      font-weight: 700; line-height: 1.15;
+      margin-bottom: 28px; color: var(--text-primary);
+    }
+    .hero h1 em { font-style: normal; color: var(--text-secondary); font-weight: 300; }
+    .hero-desc {
+      font-size: 19px; color: var(--text-secondary);
+      line-height: 1.85; max-width: 560px;
+      margin-bottom: 40px; margin-right: 0;
+    }
+    .hero-certs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 0; margin-top: 44px; justify-content: flex-start; }
+    .cert {
+      font-size: 12.5px; font-weight: 500; letter-spacing: 0.03em;
+      color: var(--text-tertiary); display: inline-flex; align-items: center;
+      white-space: nowrap; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .cert:not(:last-child)::after {
+      content: ""; flex: none; width: 1px; height: 12px;
+      background: currentColor; opacity: 0.22; margin: 0 16px;
+    }
+    @media (max-width: 600px) { .cert:not(:last-child)::after { margin: 0 11px; } }
+
+    /* Articles */
+    .articles-section {
+      padding: 100px 24px 28px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      text-align: right;
+    }
+    .section-eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--text-tertiary); margin-bottom: 16px; display: block;
+    }
+    .section-title {
+      font-family: 'Cairo', sans-serif;
+      font-size: clamp(32px, 4vw, 48px); font-weight: 700;
+      color: var(--text-primary); margin-bottom: 60px;
+    }
+    .articles-grid { display: grid; gap: 10px; }
+
+    /* Article Card — RTL */
+    .article-card {
+      background: var(--glass); backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur); border: 1px solid var(--glass-border);
+      border-radius: var(--radius); box-shadow: var(--shadow-glass);
+      padding: 40px; text-decoration: none;
+      display: flex; align-items: center; gap: 36px;
+      flex-direction: row-reverse;
+      transition: var(--transition);
+    }
+    .article-card:hover {
+      background: var(--glass-hover);
+      box-shadow: var(--shadow-glass-hover);
+      transform: translateY(-2px);
+    }
+    .card-body { flex: 1; min-width: 0; text-align: right; }
+    .article-card-tag {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      color: var(--text-tertiary); margin-bottom: 14px; display: block;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .article-card-title {
+      font-size: 20px; font-weight: 700; color: var(--text-primary);
+      line-height: 1.35; margin-bottom: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    }
+    .article-card-excerpt {
+      font-size: 14px; color: var(--text-secondary);
+      line-height: 1.7; max-width: 600px; margin-bottom: 18px;
+    }
+    .article-card-meta {
+      font-size: 13px; color: var(--text-tertiary);
+      display: flex; align-items: center; gap: 16px;
+      flex-direction: row-reverse; justify-content: flex-end;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .article-card-arrow {
+      margin-right: auto; margin-left: 0;
+      font-size: 18px; color: var(--text-tertiary);
+      transition: var(--transition); flex-shrink: 0;
+    }
+    .article-card:hover .article-card-arrow { color: var(--accent); transform: translateX(-4px); }
+    .card-thumb {
+      width: 160px; height: 100px; flex-shrink: 0;
+      border-radius: 10px; overflow: hidden; position: relative;
+    }
+    .card-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: grayscale(100%); opacity: 0.88;
+      transition: filter 0.45s ease, opacity 0.45s ease;
+    }
+    .card-thumb::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(0,113,227,0.18); pointer-events: none;
+      transition: opacity 0.45s ease;
+    }
+    .article-card:hover .card-thumb img { filter: grayscale(0%); opacity: 1; }
+    .article-card:hover .card-thumb::after { opacity: 0; }
+
+    /* Hidden articles */
+    .hidden-article { display: none !important; }
+    .hidden-article.visible { display: flex !important; animation: articleFadeIn 0.4s ease forwards; }
+    @keyframes articleFadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+    /* Stats */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 10px; margin-top: 80px;
+    }
+    .stat {
+      background: var(--glass); backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur); border: 1px solid var(--glass-border);
+      border-radius: var(--radius); box-shadow: var(--shadow-glass);
+      padding: 48px 40px; text-align: center; transition: var(--transition);
+    }
+    .stat:hover { background: var(--glass-hover); box-shadow: var(--shadow-glass-hover); }
+    .stat-num {
+      font-family: var(--font-display); font-size: 56px; font-weight: 700;
+      color: var(--text-primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px;
+    }
+    .stat-label { font-size: 14px; color: var(--text-tertiary); }
+
+    /* ── Filter UI (AR) ── */
+    .course-promo { display:flex; align-items:center; gap:32px; justify-content:space-between;
+      text-decoration:none; padding:34px 40px; border-radius:var(--radius);
+      background:linear-gradient(135deg,rgba(0,113,227,0.10),rgba(0,113,227,0.03));
+      border:1px solid var(--glass-border); box-shadow:var(--shadow-glass); transition:var(--transition); overflow:hidden; }
+    .course-promo:hover { box-shadow:var(--shadow-glass-hover); transform:translateY(-2px); border-color:rgba(0,113,227,0.3); }
+    .course-promo-eyebrow { display:inline-block; font-size:11px; font-weight:600; letter-spacing:.06em; color:var(--accent); margin-bottom:12px; }
+    .course-promo-text h2 { font-family:'Cairo',sans-serif; font-size:clamp(22px,3.5vw,32px); font-weight:700; color:var(--text-primary); margin-bottom:12px; line-height:1.3; }
+    .course-promo-text p { color:var(--text-secondary); font-size:16px; line-height:1.8; margin-bottom:22px; max-width:640px; }
+    .course-promo-art { flex:0 0 auto; color:var(--accent); opacity:.85; }
+    .course-promo-art svg { width:120px; height:150px; }
+    @media (max-width:720px) { .course-promo { flex-direction:column-reverse; align-items:flex-start; padding:28px 24px; gap:18px; } .course-promo-art svg { width:84px; height:104px; } }
+
+    .filter-ui { margin-bottom: 36px; }
+    .search-wrap { position: relative; margin-bottom: 16px; }
+    .search-wrap svg { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+    #article-search {
+      width: 100%; box-sizing: border-box;
+      padding: 13px 48px 13px 18px;
+      border-radius: 14px; border: 1.5px solid var(--glass-border);
+      background: var(--glass); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+      font-size: 15px; font-family: 'Cairo', sans-serif; color: var(--text-primary);
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s; direction: rtl;
+    }
+    #article-search::placeholder { color: var(--text-tertiary); }
+    #article-search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.1); background: var(--bg-3); }
+    .articles-grid.filtering .article-card        { display: flex !important; }
+    .articles-grid.filtering .article-card.f-hide { display: none  !important; }
+    #no-results { display:none; padding:60px 0; text-align:center; color:var(--text-tertiary); font-size:16px; font-family:'Cairo',sans-serif; }
+    @media(max-width:768px) {
+      .stats-row { grid-template-columns: 1fr; }
+      .card-thumb { display: none; }
+      .article-card { padding: 32px 24px; gap: 0; }
+      .hero { padding: 120px 20px 80px; }
+      .articles-section { padding: 60px 20px; }
+      .section-title { margin-bottom: 32px; }
+      .article-card-arrow { display: none; }
+      .hero-certs { justify-content: flex-start; }
+    }
+
+    /* ── تصفح حسب الموضوع ── */
+    .cat-section {
+      padding: 80px 24px 0;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      text-align: right;
+    }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 0;
+    }
+    .cat-card {
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-glass);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition);
+      text-align: right;
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+      width: 100%;
+    }
+    .cat-card:hover {
+      background: var(--glass-hover);
+      box-shadow: var(--shadow-glass-hover);
+      transform: translateY(-2px);
+    }
+    .cat-card.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent), var(--shadow-glass);
+    }
+    .cat-card.active .cat-card-icon {
+      background: var(--accent);
+      color: #fff;
+    }
+    .cat-card-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 9px; background: rgba(0,113,227,0.08);
+      color: var(--accent); margin-bottom: 0;
+    }
+    .cat-card-icon svg { width: 16px; height: 16px; }
+    .cat-card-title {
+      flex: 1;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+      font-family: 'Cairo', sans-serif;
+    }
+    .cat-card-count {
+      font-size: 12.5px;
+      color: var(--text-tertiary);
+      margin-top: 0;
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+    .cat-card-arrow {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .cat-card:hover .cat-card-arrow {
+      opacity: 1;
+      transform: translateX(-4px);
+    }
+    @media(max-width:768px) {
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .cat-section { padding: 60px 20px 0; }
+    }
+    @media(max-width:480px) {
+      .cat-grid { grid-template-columns: 1fr; }
+    }
+
+    .feature-strip{max-width:var(--max-w);margin:48px auto 0;padding:0 24px;display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .feature-card{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;border-radius:18px;
+      border:1px solid var(--border);background:var(--bg-3);text-decoration:none;transition:var(--transition);}
+    .feature-card:hover{transform:translateY(-2px);border-color:var(--accent);}
+    .feature-ic{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+      background:var(--bg-4);color:var(--accent);flex:0 0 auto;}
+    .feature-card .fk{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+    .feature-card h3{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--text-primary);
+      margin:5px 0 6px;letter-spacing:-.015em;}
+    .feature-card p{font-size:14px;line-height:1.55;color:var(--text-secondary);margin:0;}
+  </style>
+
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="محمد أبوخطوة — مدير هندسي وفني بخبرة تتجاوز 22 عاماً في البنية التحتية الكبرى للمياه وأنظمة MEP للمباني الشاهقة، ومدير ميكانيكي في برج جدة.">
+  <meta property="og:title" content="محمد أبوخطوة | هندسة المياه والبنية التحتية">
+  <meta property="og:description" content="مقالات تقنية ورؤى هندسية في هيدروليكا المياه وتحليل المطرقة المائية وتصميم خطوط الأنابيب وأنظمة MEP للمباني الشاهقة.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/index-ar.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-cover.jpg?v=3">
+  <meta property="og:image:alt" content="محمد أبوخطوة | هندسة المياه والبنية التحتية">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="محمد أبوخطوة | هندسة المياه والبنية التحتية">
+  <meta name="twitter:description" content="مقالات تقنية ورؤى هندسية في هيدروليكا المياه وتحليل المطرقة المائية وتصميم خطوط الأنابيب وأنظمة MEP للمباني الشاهقة.">
+  <meta name="twitter:image" content="https://abokhatwa.com/og-cover.jpg?v=3">
+  <link rel="canonical" href="https://abokhatwa.com/index-ar.html">
+  <link rel="alternate" hreflang="ar" href="https://abokhatwa.com/index-ar.html">
+  <link rel="alternate" hreflang="en" href="https://abokhatwa.com/">
+  <link rel="alternate" hreflang="x-default" href="https://abokhatwa.com/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://abokhatwa.com/#person",
+        "name": "محمد أبوخطوة",
+        "alternateName": "Mohamed Abokhatwa",
+        "url": "https://abokhatwa.com/index-ar.html",
+        "image": "https://abokhatwa.com/profile.jpg",
+        "jobTitle": "مدير هندسة المياه",
+        "description": "مدير هندسي وفني بخبرة تتجاوز 22 عاماً في مشاريع نقل ومعالجة المياه والتحليل الهيدروليكي وأنظمة MEP للمباني الشاهقة، ومدير ميكانيكي في برج جدة.",
+        "email": "mailto:mohamed@abokhatwa.com",
+        "telephone": "+966541706700",
+        "address": { "@type": "PostalAddress", "addressLocality": "Riyadh", "addressCountry": "SA" },
+        "sameAs": ["https://www.linkedin.com/in/abokhatwa"],
+        "knowsAbout": ["البنية التحتية للمياه", "التحليل الهيدروليكي", "تحليل الموجة الضاغطة", "تصميم خطوط الأنابيب", "هندسة المضخات", "تحلية المياه"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://abokhatwa.com/#website-ar",
+        "url": "https://abokhatwa.com/index-ar.html",
+        "name": "محمد أبوخطوة — هندسة المياه",
+        "inLanguage": "ar",
+        "publisher": { "@id": "https://abokhatwa.com/#person" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<div id="legacy-bar" style="position:sticky;top:0;z-index:99999;background:#1d1d1f;color:#f5f5f7;font:500 13px/1.4 -apple-system,BlinkMacSystemFont,Inter,Helvetica,Arial,sans-serif;padding:9px 16px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center;"><span>You are viewing the previous design of abokhatwa.com, archived 21 August 2026.</span><a href="https://abokhatwa.com/" style="color:#6fb3d6;text-decoration:underline;">Go to the current site</a></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index-ar.html" class="nav-logo" style="font-family:'Cairo',sans-serif;">محمد أبوخطوة</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index-ar.html" class="active">المقالات</a></li>
+      <li><a href="calculators.html">الحاسبات</a></li>
+      <li><a href="one-tower.html">البرج الواحد</a></li>
+      <li><a href="mep-course/">الدورة</a></li>
+      <li><a href="services-ar.html">الخدمات</a></li>
+      <li><a href="about-ar.html">نبذة</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index.html" class="lang-switch">English</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-eyebrow">مياه &middot; بنية تحتية &middot; MEP</span>
+  <h1>رؤى تقنية<br><em>من الميدان</em></h1>
+  <p class="hero-desc">أكثر من 22 عامًا في تصميم وإدارة مشاريع البنية التحتية الكبرى بالمملكة العربية السعودية — هندسة عملية لأنظمة المياه وأنظمة المباني (MEP)، عبر مقالات معمّقة وحاسبات ودورة متكاملة.</p>
+</div>
+
+<!-- MEP Course promo banner -->
+<div style="max-width:var(--max-w);margin:0 auto;padding:0 24px 8px;">
+  <a href="mep-course/" class="course-promo">
+    <div class="course-promo-text">
+      <span class="course-promo-eyebrow">جديد · دورة تعليمية ذاتية · بالإنجليزية</span>
+      <h2>هندسة MEP للمباني الشاهقة (Megatall)</h2>
+      <p>من المبادئ الأولى إلى التصميم الفعلي — أنظمة التكييف والسباكة والحريق والكهرباء والتيار الخفيف/BMS والنقل الرأسي للأبراج فائقة الارتفاع. رسوم بيانية تفاعلية، ومخططات أصلية، وأمثلة رقمية، وكل قيمة مرتبطة بكود أو معيار.</p>
+      <span class="btn btn-primary">استكشف الوحدات السبع ←</span>
+    </div>
+    <div class="course-promo-art" aria-hidden="true">
+      <svg viewBox="0 0 64 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 78V18l12-10 12 10v60"/><path d="M8 78V40l12-8M44 32l12 8v38"/>
+        <path d="M26 26h0M32 26h0M38 26h0M26 36h0M32 36h0M38 36h0M26 46h0M32 46h0M38 46h0M26 56h0M32 56h0M38 56h0"/>
+        <path d="M4 78h56"/>
+      </svg>
+    </div>
+  </a>
+</div>
+
+<!-- ARTICLES -->
+<div class="cat-section">
+  <span class="section-eyebrow" style="text-align:right;display:block;">تصفح حسب الموضوع</span>
+  <div class="cat-grid">
+    <button type="button" class="cat-card" data-cat="surge" onclick="topicFilter('surge',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
+      <div class="cat-card-title">التدفق العابر والمطرقة المائية</div>
+      <div class="cat-card-count">١٢ مقالة</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="pipeline" onclick="topicFilter('pipeline',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h12a3 3 0 0 1 3 3v0a3 3 0 0 0 3 3"/><path d="M3 9V6m0 3v3"/><path d="M15 9V7a2 2 0 0 1 2-2h2"/></svg></span>
+      <div class="cat-card-title">تصميم خطوط الأنابيب</div>
+      <div class="cat-card-count">٩ مقالات</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="pumps" onclick="topicFilter('pumps',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20a8 8 0 1 1 16 0"/><path d="M12 20V12l4-3"/><circle cx="12" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+      <div class="cat-card-title">هندسة المضخات</div>
+      <div class="cat-card-count">١٠ مقالات</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="hydraulic" onclick="topicFilter('hydraulic',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span>
+      <div class="cat-card-title">التصميم الهيدروليكي</div>
+      <div class="cat-card-count">٥ مقالات</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="desalination" onclick="topicFilter('desalination',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c2 0 2-1.5 4-1.5S8 8 10 8s2-1.5 4-1.5S16 8 18 8s2-1.5 4-1.5"/><path d="M2 14c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M2 20c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/></svg></span>
+      <div class="cat-card-title">تحلية المياه و SWRO</div>
+      <div class="cat-card-count">١٠ مقالات</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="leadership" onclick="topicFilter('leadership',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="3.5"/><path d="M21 20v-2a4 4 0 0 0-3-3.85"/><path d="M16 3.6a4 4 0 0 1 0 6.8"/></svg></span>
+      <div class="cat-card-title">القيادة والاستدامة</div>
+      <div class="cat-card-count">٥ مقالات</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="hvac" onclick="topicFilter('hvac',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/><path d="M12 5.5 9.5 3M12 5.5 14.5 3M12 18.5 9.5 21M12 18.5 14.5 21M5.5 12 3 9.5M5.5 12 3 14.5M18.5 12 21 9.5M18.5 12 21 14.5"/></svg></span>
+      <div class="cat-card-title">التكييف والتبريد</div>
+      <div class="cat-card-count">١٢ مقالة</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="plumbing" onclick="topicFilter('plumbing',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v7a4 4 0 0 0 4 4v0a4 4 0 0 0 4-4V2"/><path d="M12 13v9"/><path d="M9 22h6"/><path d="M6 6h4M14 6h4"/></svg></span>
+      <div class="cat-card-title">السباكة والصرف</div>
+      <div class="cat-card-count">٧ مقالات</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="fire" onclick="topicFilter('fire',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
+      <div class="cat-card-title">مكافحة الحريق</div>
+      <div class="cat-card-count">٢ مقالتان</div>
+    </button>
+    <button type="button" class="cat-card" data-cat="tallmep" onclick="topicFilter('tallmep',this)">
+      <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M3 21h18"/><path d="M7 8h10M7 12h10M7 16h10"/><path d="M12 4V2"/></svg></span>
+      <div class="cat-card-title">أنظمة المباني الشاهقة</div>
+      <div class="cat-card-count">٧ مقالات</div>
+    </button>
+  </div>
+</div>
+
+
+<div class="feature-strip">
+  <a class="feature-card" href="one-tower.html">
+    <span class="feature-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M3 21h18"/><path d="M7 9h10M7 13h10M7 17h10"/></svg></span>
+    <span>
+      <span class="fk">تفاعلي</span>
+      <h3>البرج الواحد</h3>
+      <p>كل النماذج على هذا الموقع مرتبطة ببرج واحد. غيّر الارتفاع وشاهد مناطق الضغط والأدوار الميكانيكية ومحطة التبريد وميزان المياه تتحرك معاً.</p>
+    </span>
+  </a>
+  <a class="feature-card" href="megatall-handbook.html">
+    <span class="feature-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+    <span>
+      <span class="fk">الطبعة المجمّعة</span>
+      <h3>دليل الأنظمة الميكانيكية للمباني الشاهقة</h3>
+      <p>تسعة وعشرون فصلاً عن أنظمة المباني الشاهقة في مجلد واحد قابل للطباعة &mdash; ثماني ساعات قراءة و٨٦ نموذجاً محسوباً، بالترتيب الذي يجب أن تُقرأ به.</p>
+    </span>
+  </a>
+</div>
+
+<div class="articles-section">
+  <span class="section-eyebrow">المقالات المنشورة</span>
+  <h2 class="section-title">رؤى هندسية</h2>
+
+  <!-- Filter UI -->
+  <div class="filter-ui">
+    <div class="search-wrap">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aeaeb2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="article-search" aria-label="البحث في المقالات" placeholder="البحث في المقالات…" autocomplete="off" oninput="filterArticles()">
+    </div>
+  </div>
+  <div id="no-results">لا توجد مقالات — جرّب كلمة أخرى أو فئة مختلفة.</div>
+
+  <div class="articles-grid" id="articlesGrid">
+
+    <a href="six-kilowatt-litre-water-energy-tall-buildings.html" class="article-card" data-cat="desalination" data-search="ترابط الماء والطاقة التحلية التناضح العكسي استهلاك الطاقة النوعي مبادل الضغط استرجاع الطاقة نسبة الاسترداد ضغط التغذية النقل الضخ الرياض جدة الخليج المباني الشاهقة المياه الصالحة للشرب رفع المياه طاقة الضخ تعويض أبراج التبريد التبخر التصريف دورات التركيز الطاقة الكامنة معامل الأداء استرجاع المكثفات إعادة استخدام المياه الرمادية المبردات الجافة الهجينة ترشيد المياه الاستدامة أساس التصميم">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination &amp; Water-Energy &middot; Tall Buildings</span>
+        <div class="article-card-title">اللتر بستة كيلوواط: التكلفة الحقيقية للمياه حتى تصل إلى قمة برج خليجي</div>
+        <p class="article-card-excerpt">تتوقف هندسة التحلية عند سور المحطة وتبدأ خدمات المباني عند حدود الموقع، فلا أحد يجمع السلسلة كاملة. اللتر الواصل إلى صنبور في الطابق الأخير يكلف نحو <strong>٦ ك.و.س/م³</strong> على الساحل و<strong>١٠</strong> في الداخل، حيث يتجاوز النقل التحلية. ثم يبخّر البرج ٢٤٠٠ م³ يومياً من أبراج التبريد، بطاقة كامنة تعادل نحو <strong>عُشر استهلاك محطة التبريد نفسها</strong>. مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٨ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/six-kilowatt-litre-water-energy-tall-buildings.webp" width="320" height="200" alt="The Six-Kilowatt Litre: What Water Really Costs by the Time It Reaches the Top of a Gulf Tower" loading="lazy"></div>
+    </a>
+
+    <a href="pools-wellness-mep-tall-buildings.html" class="article-card" data-cat="plumbing" data-search="swimming pool spa wellness rooftop infinity edge evaporation latent load pool cover turnover filtration backwash balance tank disinfection UV ozone Legionella HSG282 PWTAG structural load sloshing waterproofing المسابح حمامات السباحة الجاكوزي مرافق الاستجمام المباني الشاهقة المباني فائقة الارتفاع مسبح السطح الحافة اللانهائية التبخر معادلة أشري ضغط البخار سرعة الهواء الرياح الطبقة الحدية الحمل الكامن مياه التعويض غطاء المسبح مصد الرياح الحماية درجة حرارة الماء فترة الدوران معدل التدوير سرعة الترشيح المرشح الرملي مساحة المرشح تدفق الغسيل العكسي التخلص من مياه الغسيل خزان الموازنة الإزاحة الطفرة حمل المستحمين المكشطة التصريف المحيطي التعقيم الكلور البروم المتبقي الأشعة فوق البنفسجية الأوزون الكلورامين الجرعات التلقائية الأس الهيدروجيني التعشيق الليجيونيلا مضخة حرارية لإزالة الرطوبة استرجاع الحرارة الحمل الإنشائي الترنح الكتلة الديناميكية مخمد الترنح المضبوط العزل المائي اختبار الملء كشف التسرب عداد مياه التعويض تخزين الكيماويات الوصول للمعدات التشغيل والاختبار MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Pools &middot; Wellness &middot; Rooftop</span>
+        <div class="article-card-title">المسابح ومرافق الاستجمام في المباني فائقة الارتفاع: التبخر على الأسطح ومعدل الدوران والحمل الإنشائي</div>
+        <p class="article-card-excerpt">كل برج فائق الارتفاع فيه مسبح، وغالبًا على السطح — وهذا يحوّل خدمة عادية إلى واحد من أصعب الأحمال في المبنى، لأن التبخر يعتمد على <strong>حركة الهواء</strong>، وعلى ارتفاع ٣٠٠ متر يوجد الكثير منها. المساحة نفسها البالغة ٤٠٠ م٢ تفقد <strong>٣٨٤ كجم في الساعة</strong> عند التعرض: حمل كامن قدره <strong>٢٦٢ كيلوواط</strong> و٩ أمتار مكعبة يوميًا من مياه التعويض. احمِ السطح وينخفض إلى ١٠١ كيلوواط — العمارة تتفوق على المعدات. مع معدل الدوران والغسيل العكسي وخزان الموازنة ومخاطر الجاكوزي والكتلة البالغة ٩٠٠ طن على السطح — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٤ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/pools-wellness-mep-tall-buildings.webp" width="320" height="200" alt="Pools &amp; Wellness MEP in Megatall Buildings: Rooftop Evaporation, Turnover &amp; the Load on the Roof" loading="lazy"></div>
+    </a>
+
+    <a href="refuse-chutes-waste-tall-buildings.html" class="article-card" data-cat="plumbing" data-search="refuse chute waste handling terminal velocity impact energy compactor store sizing stack effect odour control negative pressure hopper door fire rated NFPA 82 BS 5906 sprinkler structure borne noise vacuum waste collection مزلق النفايات إدارة المخلفات المباني الشاهقة المباني فائقة الارتفاع السرعة النهائية مقاومة الهواء طاقة الارتطام غرفة التفريغ ممتص الصدمات جهاز التبطيء الكابسة معدل توليد النفايات الكثافة الظاهرية السائبة المضغوطة تحجيم غرفة التخزين فترة الجمع غرفة النفايات وصول المركبات تأثير المدخنة في المزلق التحكم في الروائح الضغط السالب الشفط العلوي المستمر هواء التعويض باب الإلقاء ذاتي الإغلاق محكم الإغلاق التعشيق المنور المقاوم للحريق الرشاش داخل المزلق الوصلة المنصهرة تعشيق إنذار الحريق الضوضاء المنتقلة عبر الهيكل التركيب المرن العزل الصوتي معيار غرف النوم مسارات إعادة التدوير المزالق المتعددة المحوّل الجمع بالتفريغ الهوائي تخطيط النواة الغسيل والصرف التشغيل والاختبار MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Refuse Chutes &middot; Waste &middot; Megatall</span>
+        <div class="article-card-title">مزالق النفايات وإدارة المخلفات في المباني فائقة الارتفاع: طاقة الارتطام والتحكم في الروائح والضوضاء</div>
+        <p class="article-card-excerpt">مزلق النفايات هو النظام الوحيد في المبنى الشاهق المصمَّم عمدًا لإسقاط أجسام مئات الأمتار في سقوط حر. كيس بوزن خمسة كيلوغرامات يبلغ <strong>١٠٣ كم/س</strong> ويصل إلى ٩٠٪ من السرعة النهائية خلال أول سبعين مترًا — فمزلق بطول ٦٠٠ متر ليس أسوأ من مزلق في مبنى متوسط، لكنه يوصل <strong>٢٠٠٠ جول لكل كيس</strong> إلى تفصيلة قاعدة يجب تصميمها لذلك. مع المزلق كمدخنة بضغط ٢٠٠ باسكال تدفع الروائح خارج الفتحات العلوية، وتعشيق الحريق، وضوضاء كيس بسرعة ١٠٠ كم/س بجوار غرفة نوم — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٤ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/refuse-chutes-waste-tall-buildings.webp" width="320" height="200" alt="Refuse Chutes &amp; Waste Handling in Megatall Buildings: Impact Energy, Odour Control &amp; Noise" loading="lazy"></div>
+    </a>
+
+    <a href="bms-controls-architecture-tall-buildings.html" class="article-card" data-cat="tallmep" data-search="BMS building automation controls BACnet MS/TP poll cycle IP backbone zone controller life safety interface trending metering sub-metering naming convention alarm philosophy OT security IEC 62443 Guideline 36 نظام إدارة المباني أتمتة المباني بنية التحكم المباني الشاهقة المباني فائقة الارتفاع عدد النقاط الأجهزة الميدانية بروتوكول باكنت الشبكة التسلسلية حد الأجهزة لكل قطاع سرعة النقل دورة الاستطلاع تمرير الرمز زمن الاستجابة الشبكة الرأسية متحكم المنطقة تسلسل الشبكة التقسيم الميكانيكي واجهة سلامة الأرواح إنذار الحريق مصفوفة السبب والنتيجة التوصيل السلكي المباشر التحكم في الدخان تشغيل المخمدات استدعاء المصاعد تبديل المولدات مصفوفة الواجهات التتبع فترة أخذ العينات مدة الاحتفاظ التسجيل عند التغير حجم البيانات التخزين تسلسل العدادات العدادات الفرعية عداد الطاقة الحرارية فوترة المستأجرين اصطلاح التسمية فلسفة الإنذارات طوفان الإنذارات البروتوكول المفتوح قاعدة البيانات المملوكة أمن الشبكات التشغيلية تسلسل التشغيل الاختبار الوظيفي التسليم MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; BMS &middot; Controls &middot; Metering</span>
+        <div class="article-card-title">أنظمة إدارة المباني والتحكم في المباني فائقة الارتفاع: عدد النقاط والشبكات الميدانية والتتبع</div>
+        <p class="article-card-excerpt">البرج فائق الارتفاع يحتوي على نحو <strong>٣٠٠٠٠ نقطة تحكم</strong>، والشبكات الميدانية التي تحملها لا تتوسّع بسلاسة. خمسمئة نقطة على خط BACnet MS/TP واحد تعني <strong>دورة استطلاع ٣٫١ ثانية</strong>، وإذا فرض جهاز قديم واحد سرعة ٩٦٠٠ تصبح خمسًا وعشرين ثانية. مبنى من ١٥٠ طابقًا يحتاج نحو <strong>تسعين قطاعًا ميدانيًا</strong>، ولهذا يجب أن تكون البنية شبكة IP رأسية مع متحكمات لكل منطقة تطابق التقسيم الميكانيكي — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٤ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/bms-controls-architecture-tall-buildings.webp" width="320" height="200" alt="BMS &amp; Controls Architecture for Megatall Buildings: Point Count, Field Networks &amp; Trending" loading="lazy"></div>
+    </a>
+
+    <a href="greywater-reuse-tall-buildings.html" class="article-card hidden-article" data-cat="plumbing" data-search="greywater water reuse recycling water balance MBR membrane bioreactor dual pipework cross connection air gap backflow potable top-up cooling tower makeup condensate BS 8525 NSF 350 Estidama Mostadam المياه الرمادية إعادة استخدام المياه إعادة التدوير المباني الشاهقة المباني فائقة الارتفاع الميزان المائي مطابقة المصدر والمصرف الطلب الداخلي نصيب الفرد الأدشاش المغاسل الغسيل صناديق الطرد الري تعويض أبراج التبريد استرجاع المياه المكثفة إعادة استخدام المياه الجوفية نزح المياه معيار المعالجة المفاعل الحيوي الغشائي العكارة الأكسجين الحيوي المطلوب التعقيم الكلور المتبقي الرذاذ الليجيونيلا المغذيات الفوسفور الغشاء الحيوي خزان الموازنة خزان المياه المعالجة زمن المكوث الهيدروليكي مساحة المحطة التحكم في الروائح الشبكة المزدوجة الماسورة البنفسجية التوصيل المتقاطع الترميز اللوني التغذية التكميلية بالمياه الصالحة الفجوة الهوائية منع الارتداد التجاوز التلقائي مراقبة الجودة العدادات نسبة إعادة الاستخدام فترة الاسترداد تكلفة التشغيل التعرفة الدعم التشغيل والاختبار MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Water Reuse &middot; Greywater &middot; Megatall</span>
+        <div class="article-card-title">إعادة استخدام المياه الرمادية في المباني فائقة الارتفاع: مطابقة المصدر بالمصرف والمعالجة والشبكة المزدوجة</div>
+        <p class="article-card-excerpt">غالبًا ما تُقدَّم إعادة استخدام المياه كبادرة استدامة وتُصمَّم لاحقًا، ولهذا ينتهي كثير من الأنظمة إمّا جائعًا أو فائضًا. وهي في الحقيقة <strong>مسألة مطابقة</strong>: المياه الرمادية تبلغ نحو <em>ضعف</em> ما يمكن أن تستوعبه صناديق الطرد، فالنظام المخصص للطرد وحده يهدر نصف مصدره — بينما أبراج التبريد المجاورة تشرب <strong>١٨٠٠ متر مكعب يوميًا</strong> لا تغطي منها المياه الرمادية سوى ١٣٪. مع معايير المعالجة حسب الاستخدام، وتحجيم المحطة والتخزين، والاقتصاديات الصادقة، والشبكة المزدوجة التي تفشل فيها هذه الأنظمة فعلًا — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٤ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/greywater-reuse-tall-buildings.webp" width="320" height="200" alt="Greywater &amp; Water Reuse in Megatall Buildings: Matching Source to Sink, Treatment &amp; Dual Pipework" loading="lazy"></div>
+    </a>
+
+    <a href="cooling-load-modelling-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="cooling load energy modelling facade ratio floor plate envelope driven internally driven SHGC solar gain shading diversity factor simultaneous load mixed use plant sizing stack effect infiltration ASHRAE 140 calibration حساب أحمال التبريد نمذجة الطاقة محاكاة المباني المباني الشاهقة المباني فائقة الارتفاع نسبة الواجهة مسطح الطابق البرج النحيل البرج الواسع محكوم بالغلاف محكوم بالأحمال الداخلية معامل انتقال الحرارة معامل الكسب الشمسي التظليل المظلة الحضرية الكسب الشمسي مع الارتفاع التوجيه تقسيم المناطق المحيط والنواة التدفئة والتبريد المتزامنان معامل التزامن الحمل الموصول الحمل المتزامن الاستخدام المختلط المكاتب الفنادق السكني جداول الإشغال تحجيم المحطة الاحتياطية التشغيل الجزئي تأثير المدخنة تسرب الهواء المحاكاة المقترنة المعايرة تحليل الحساسية أحمال المستأجرين المستقبلية MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Cooling Load &middot; Modelling &middot; Diversity</span>
+        <div class="article-card-title">حساب أحمال التبريد والنمذجة للمباني فائقة الارتفاع: نسبة الواجهة والإشعاع مع الارتفاع والتزامن</div>
+        <p class="article-card-excerpt">برجان بالارتفاع نفسه قد يختلفان تمامًا في أحمال التبريد والمعدات والاقتصاديات — لأن أحدهما بمسطح طابق ٣٠ مترًا والآخر ٦٠ مترًا. البرج النحيل يحمل ضعف مساحة الواجهة لكل متر مربع من الأرضية ويكون <strong>محكومًا بالغلاف بنسبة ٦٠٪</strong>، بينما الواسع محكوم بالأحمال الداخلية عند ٤٣٪. مع ما يتغير فعلًا مع الارتفاع (القمة ترى <strong>٢٫٥ ضعف</strong> الإشعاع الشمسي مقارنة بالقاعدة للزجاج نفسه)، والتزامن الذي يحوّل حملًا موصولًا قدره ٥٠ ميغاواط إلى محطة ٣٠ ميغاواط — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٥ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/cooling-load-modelling-tall-buildings.webp" width="320" height="200" alt="Cooling Load &amp; Energy Modelling for Megatall Buildings: Façade Ratio, Solar by Height &amp; Diversity" loading="lazy"></div>
+    </a>
+
+    <a href="fuel-oil-systems-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="fuel oil diesel storage standby generators fire pumps NFPA 110 NFPA 20 day tank transfer pump fuel riser double containment leak detection fuel polishing diesel bug load bank testing وقود الديزل خزانات الوقود المولدات الاحتياطية الطاقة الطارئة مضخات الحريق المباني الشاهقة المباني فائقة الارتفاع الخزان الرئيسي خزان اليوم الكمية المسموحة حد الكود مضخة النقل التشغيل والاحتياطي الطاقة الأساسية التبديل التلقائي منع الفيض الفائض بالجاذبية خط العودة الماسورة الصاعدة للوقود الضغط الاستاتيكي الخزانات الوسيطة الاحتواء المزدوج الماسورة مزدوجة الجدار كشف التسرب العزل عن بعد صمام الإغلاق الحوض المانع للتسرب نقطة التعبئة الصهريج عدة الانسكاب تنقية الوقود تصريف الماء مجفف التنفيس التلوث الميكروبي حشرة الديزل وقود حيوي الأكسدة اختبار بنك الأحمال التشغيل والاختبار غرفة قيادة الحريق MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; Fuel Oil &middot; Standby Power &middot; Fire Pumps</span>
+        <div class="article-card-title">أنظمة الوقود للمولدات ومضخات الحريق في المباني فائقة الارتفاع: التخزين والمواسير الصاعدة وجودة الوقود</div>
+        <p class="article-card-excerpt">المولدات الاحتياطية ومضخات الحريق الديزل لا تهم إلا في اليوم الذي يفشل فيه كل شيء آخر — وكلاهما يعمل بوقود يجب تخزينه بكميات كبيرة ونقله رأسيًا عبر طوابق مأهولة وإبقاؤه جاهزًا لسنوات دون أن يتلف. مجموعة ٥ ميغاواط باستقلالية ٢٤ ساعة تحتاج <strong>٢٦ م٣ — أي ٢٢ طنًا</strong> من الديزل، وإذا وُضعت المولدات على طابق ميكانيكي بارتفاع ٣٠٠ متر فإن الماسورة الصاعدة تحمل <strong>٢٥ بارًا من سائل قابل للاشتعال</strong> عبر الفراغات المأهولة — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٤ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/fuel-oil-systems-tall-buildings.webp" width="320" height="200" alt="Fuel Oil Systems for Generators &amp; Fire Pumps in Megatall Buildings: Storage, Risers &amp; Fuel Quality" loading="lazy"></div>
+    </a>
+
+    <a href="atrium-smoke-control-tall-buildings.html" class="article-card hidden-article" data-cat="fire" data-search="atrium smoke control NFPA 92 smoke filling clear layer plume entrainment exhaust make-up air plugholing hot smoke test BS 7346-4 EN 12101 CFD التحكم في الدخان الفناء الداخلي الأتريوم المباني الشاهقة المباني فائقة الارتفاع القاعدة معادلة امتلاء الدخان الطبقة الصافية هبوط الطبقة حريق التصميم معدل إطلاق الحرارة المتحكم بالرشاشات عمود الدخان المتماثل سحب الهواء التدفق الكتلي ارتفاع اللهب النسبة الحملية درجة حرارة الطبقة حجم الشفط خزان الدخان حواجز التوجيه عمق الخزان حد سرعة هواء التعويض المساحة الحرة السحب الفارغ نقاط الشفط فقدان الطبقية التطبق المسبق الإشعاع الشمسي السقف الزجاجي تأثير المدخنة التهوية الطبيعية بالطفو الشفط الميكانيكي خفض الضغط تصنيف درجة الحرارة والزمن الطاقة الأساسية الشيش المحرك إثبات الوضع اختبار الدخان الساخن التصميم القائم على الأداء التشغيل والاختبار MEP خدمات المباني هندسة الحريق">
+      <div class="card-body">
+        <span class="article-card-tag">Fire Protection &middot; Smoke Control &middot; Atria &middot; Tall Buildings</span>
+        <div class="article-card-title">التحكم في الدخان بالأفنية الداخلية في المباني الشاهقة: زمن الامتلاء وسحب الهواء وهواء التعويض</div>
+        <p class="article-card-excerpt">كل مشروع فائق الارتفاع فيه فناء داخلي، وكل فناء هو حيّز لم تُكتب له أكواد الحريق أصلًا — فغرضه كله ألا يكون مقسّمًا. حريق بقدرة ٥ ميغاواط يُنزل الطبقة الصافية في فناء بارتفاع ٢٠ مترًا إلى مستوى الرأس في أقل من ثماني دقائق، وتثبيتها عند ٦ أمتار يحتاج <strong>٣٣ م٣/ث</strong> من الشفط. والشفط هو النصف السهل: فالهواء نفسه يجب أن يعود بسرعة أقل من متر في الثانية، أي <strong>٣٢ م٢</strong> من الفتحات الحرة — وهو قرار معماري لا تصلحه أي مروحة لاحقًا — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٥ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/atrium-smoke-control-tall-buildings.webp" width="320" height="200" alt="Atrium Smoke Control in Tall Buildings: Filling Time, Plume Entrainment &amp; the Make-Up Air Problem" loading="lazy"></div>
+    </a>
+
+    <a href="water-treatment-building-systems.html" class="article-card hidden-article" data-cat="hvac" data-search="water treatment HVAC scale corrosion biofouling fouling factor condenser approach chiller penalty side stream filtration coupon pitting MIC closed system make-up metering pre-commission cleaning BSRIA BG29 passivation cycles of concentration blowdown biocide معالجة المياه أنظمة التكييف المياه المبردة مياه المكثف الترسبات التآكل الاتساخ الحيوي الأغشية الحيوية الليجيونيلا معامل الاتساخ المقاومة الحرارية فرق الاقتراب عقوبة قدرة المبرد الفيض الحراري كربونات الكالسيوم ترسبات السيليكا الترشيح الجانبي المرشح الرملي الفاصل الطرد المركزي حجم الاحتجاز زمن الدوران كنس حوض البرج معدل التآكل الملي في السنة كوبونات المراقبة معامل التنقر التآكل الميكروبي التآكل تحت الرواسب النظام المغلق الأكسجين عداد مياه التعويض كشف التسرب التنظيف قبل التشغيل التنظيف الكيميائي التخميل الصدأ الأبيض التآكل الجلفاني المعادن المختلفة استنفاد المثبط وعاء الجرعات نقطة أخذ العينات دورات التركيز التصريف التحكم في التوصيلية المبيدات المؤكسدة وغير المؤكسدة معالجة مياه التعويض التليين التناضح العكسي فرق ضغط المصفاة تتبع فرق الاقتراب MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Water Treatment &middot; Fouling &middot; Corrosion</span>
+        <div class="article-card-title">معالجة المياه لأنظمة التكييف في المباني: ما يكلفه الاتساخ فعلًا والترشيح وعمر التآكل</div>
+        <p class="article-card-excerpt">معالجة المياه هي آخر بند في المناقصة، وأول ما يُحذف عند خفض التكاليف، وهي النظام الوحيد الذي يؤدي إهماله إلى تدهور كل الأنظمة الأخرى في آنٍ واحد. نصف ملليمتر من الترسبات — ما قد تصفه بأنه «طبقة رقيقة» — يرفع فرق الاقتراب في المكثف ٥ درجات وقدرة المبرد <strong>١٢٫٥٪</strong>، باستمرار وبلا أن يلاحظه أحد. وفي الوقت نفسه، معامل تنقر مقداره أربعة يحوّل احتياطي تآكل يكفي ٥٩ عامًا إلى <strong>١٥ عامًا</strong>. مع الترشيح الجانبي والتحكم في الأكسجين وكيمياء أبراج التبريد — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٥ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/water-treatment-building-systems.webp" width="320" height="200" alt="Water Treatment for Building HVAC Systems: What Fouling Really Costs, Filtration &amp; Corrosion Life" loading="lazy"></div>
+    </a>
+
+    <a href="basement-dewatering-drainage-tall-buildings.html" class="article-card hidden-article" data-cat="plumbing" data-search="basement dewatering groundwater control deep basement permeability seepage uplift tanked drained BS 8102 sump submersible pump duty standby sewer surcharge groundwater reuse CIRIA نزح المياه الجوفية التحكم في المياه الجوفية القبو العميق المباني الشاهقة المباني فائقة الارتفاع النفاذية قانون دارسي الترشح نصف قطر التأثير اختبار الضخ هبوط المنشآت المجاورة القبو المحكم القبو المصرَّف العزل المائي طبقة الصرف تحت البلاطة الضغط الهيدروستاتيكي قوة الطفو خوازيق الشد المراسي سماكة اللبشة تصميم بئر التجميع الحجم الفعال زمن الدورة عدد مرات التشغيل المضخة الغاطسة قضبان التوجيه التشغيل والاحتياطي الطاقة الأساسية مستويات الإنذار تدوير التشغيل الحيز المحصور مياه المنحدر تصريف مياه الإطفاء الرشاشات فاصل الزيوت مصيدة الطمي فصل الصرف الصحي ارتداد المجاري صمام منع الفيضان إعادة استخدام المياه الجوفية تعويض أبراج التبريد تصاريح السحب MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Dewatering &middot; Basement &middot; Megatall</span>
+        <div class="article-card-title">نزح المياه الجوفية وصرف الأقبية العميقة في المباني فائقة الارتفاع: التدفق والطفو والمضخات الحرجة</div>
+        <p class="article-card-excerpt">كل برج فائق الارتفاع يقوم على قبو عميق تحت منسوب المياه الجوفية، وهذا يخلق مشكلتين لا تتشابهان إطلاقًا. <strong>التدفق</strong> تحدده الأرض وحدها تقريبًا — الحفر نفسه بعمق ٢٠ مترًا يستقبل ٣ لتر/ث في الطمي و<strong>٣٢٦ لتر/ث</strong> في الرمل والحصى. و<strong>الضغط</strong> يحدده منسوب المياه: عشرون مترًا فوق البلاطة تعني <strong>٩٠٠٠ طن</strong> من قوة الطفو على لبشة مساحتها ١٠٠٠ م². واختيار القبو المصرَّف لتخفيفها يجعل مضخات النزح عناصر إنشائية تحمي الغرفة التي تضم كل معدات المبنى — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٥ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/basement-dewatering-drainage-tall-buildings.webp" width="320" height="200" alt="Deep Basement Dewatering &amp; Drainage for Megatall Buildings: Inflow, Uplift &amp; Safety-Critical Pumps" loading="lazy"></div>
+    </a>
+
+    <a href="kitchen-exhaust-grease-risers-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="kitchen exhaust grease duct riser NFPA 96 transport velocity DCKV turndown make-up air kitchen pressure fire rated shaft hood suppression cleaning access شفط المطابخ مجرى الشحوم الماسورة الصاعدة المباني الشاهقة متعدد الاستخدامات المطبخ التجاري مظلة الشفط المظلة الجدارية المظلة الجزيرة الالتقاط والاحتواء معدل الشفط الخدمة الخفيفة المتوسطة الثقيلة سرعة النقل السرعة الدنيا التحكم في تهوية المطبخ حسب الطلب التخفيض قدرة المروحة قانون التكعيب هواء التعويض الهواء المكيف ضغط المطبخ الضغط السالب انتقال الروائح اللحام المستمر محكم ضد السوائل أبواب الوصول جدول التنظيف المنور المقاوم للحريق لفائف العزل الخلوص عن المواد القابلة للاشتعال إطفاء المظلة الكيماوي الرطب عدم استخدام مخمدات الحريق التصريف من السطح التشتت فصل فتحات السحب مرشحات الشحوم الأشعة فوق البنفسجية الأوزون التشغيل والاختبار اختبار الدخان MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Kitchen Ventilation &middot; Grease Risers &middot; Fire</span>
+        <div class="article-card-title">شفط المطابخ ومواسير الشحوم الصاعدة في المباني الشاهقة: سرعة النقل والتخفيض وهواء التعويض</div>
+        <p class="article-card-excerpt">البرج متعدد الاستخدامات يضع مطابخ في القاعدة وقرب القمة، وكل واحد منها يحتاج مجرى هوائيًا متصلًا حتى السطح — مبطنًا برواسب قابلة للاشتعال، يمر عبر طوابق مأهولة، وهو في آنٍ واحد نظام تهوية وخطر حريق وحيز مقاوم للحريق. ويحكمه قانون لا يخضع له أي مجرى آخر: سرعة <strong>دنيا</strong>. صمّم عند ١٠ م/ث ويصل التحكم حسب الطلب إلى ٢٥٪ من التدفق و١٢٪ من قدرة المروحة، ضمن الحد الآمن تمامًا. مع هواء التعويض وعلاقة الضغط التي تحدد ما إذا كانت المظلات ستلتقط الأبخرة أصلًا — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٤ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/kitchen-exhaust-grease-risers-tall-buildings.webp" width="320" height="200" alt="Kitchen Exhaust &amp; Grease Risers in Tall Buildings: Transport Velocity, Turndown &amp; Make-Up Air" loading="lazy"></div>
+    </a>
+
+    <a href="mep-commissioning-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="commissioning MEP tall buildings phased handover zone commissioning staggered balancing man-days PICV witness testing seasonal commissioning integrated systems test cause and effect NFPA 3 NFPA 4 BSRIA CIBSE soft landings الاختبار والتشغيل التكليف الأنظمة الميكانيكية المباني الشاهقة المباني فائقة الارتفاع التسليم المرحلي اختبار المناطق البرنامج المتداخل خط الإنتاج قابلية الاختبار العزل عدادات المناطق الموازنة أيام العمل الوحدات الطرفية صناديق الحجم المتغير وحدات الملف والمروحة الصمام المستقل عن الضغط المتحكمات الشبكية اختبار الشهود العينة إعادة الاختبار الاختبار الموسمي الاختبار المؤجل ضمان الأداء تصحيح اختبار السعة المنحنيات المعتمدة البصيلة الرطبة الاختبار المتكامل للأنظمة مصفوفة السبب والنتيجة إنذار الحريق التحكم في الدخان استدعاء المصاعد تبديل المولدات سيناريوهات الفشل التمرين جهة التكليف المستقلة الهبوط السلس ما بعد الإشغال التتبع نظام إدارة المباني الانتقال من المؤقت إلى الدائم MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; Commissioning &middot; IST &middot; Handover</span>
+        <div class="article-card-title">اختبار وتشغيل الأنظمة الميكانيكية في المباني فائقة الارتفاع: التسليم المرحلي والاختبار المتكامل</div>
+        <p class="article-card-excerpt">لا يمكن اختبار وتشغيل برج فائق الارتفاع بالطريقة المعتادة، لأن الطريقة المعتادة تفترض اكتمال المبنى قبل البدء. ست مناطق بالتتابع تستغرق <strong>٤٨ أسبوعًا</strong>، وبالتداخل كخط إنتاج تستغرق <strong>٢٣</strong> — لكن فقط إذا جعل التصميم كل منطقة قابلة للعزل. وثلاثة آلاف وحدة طرفية تعني أكثر من <strong>٤٠٠ يوم عمل</strong> لا تُدرج في المناقصة عادةً، والصمامات المستقلة عن الضغط تلغي معظمها. مع الاختبارات الموسمية المكتوبة في العقد، وتصحيح اختبارات السعة إلى ظروف التصميم، ولماذا تساوي المنطقة الأولى كنموذج أولي ٢٥ ضعف كلفتها — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٥ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/mep-commissioning-tall-buildings.webp" width="320" height="200" alt="Commissioning MEP in Megatall Buildings: Phased Handover, the Integrated Systems Test &amp; Seasonal Returns" loading="lazy"></div>
+    </a>
+
+    <a href="thermal-energy-storage-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="thermal energy storage ice storage chilled water stratified tank PCM peak shaving load shifting partial storage COP penalty tariff arbitrage demand charge glycol state of charge ASHRAE 150 التخزين الحراري تخزين البرودة تخزين الثلج تخزين الماء المبرد الخزان الطبقي الحد الحراري الموزع مواد التغير الطوري الثلج المغلف الثلج على الملفات الذوبان الداخلي حصاد الثلج المباني الشاهقة المباني فائقة الارتفاع تقليص الذروة إزاحة الحمل التخزين الكامل التخزين الجزئي معامل الحمل تقليل سعة المبردات غرفة المعدات محطة التحويل رسوم الطلب فرق التعرفة تعرفة الذروة خارج الذروة نسبة الأسعار عقوبة معامل الأداء الجليكول المبردات منخفضة الحرارة حالة الشحن تسلسل التحكم الشحن حسب التنبؤ تحديد الطلب التشغيل والاختبار دورة الشحن والتفريغ الحمل الإنشائي العزل الحاجز البخاري التكثيف MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Thermal Storage &middot; Ice Storage &middot; Peak Shaving</span>
+        <div class="article-card-title">التخزين الحراري للمباني فائقة الارتفاع: الثلج مقابل الماء وتقليص الذروة والتعرفة التي تدفع الثمن</div>
+        <p class="article-card-excerpt">التخزين الحراري هو الوسيلة الوحيدة لشراء التبريد في وقتٍ واستخدامه في وقتٍ آخر — لكن في الأبراج يحسم قيدٌ فيزيائي التصميم قبل مناقشة الاقتصاديات. تخزين ١٢٨ ميغاواط ساعة كماء مبرد يحتاج <strong>١٣٧٥٧ م٣</strong> أي قرابة أربعة عشر ألف طن، وكثلج يحتاج <strong>١٥٣٨ م٣</strong>. التخزين الجزئي يخفض سعة المبردات ٤٠٪، وفرق التعرفة يوفر أكثر من مليون سنويًا — وصناعة الثلج تكلّف نحو ربع معامل الأداء، فتستهلك المحطة ١١٪ طاقة أكثر. التخزين يشتري السعة لا الكفاءة — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٥ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/thermal-energy-storage-tall-buildings.webp" width="320" height="200" alt="Thermal Energy Storage for Megatall Buildings: Ice vs Water, Peak Shaving &amp; the Tariff That Pays for It" loading="lazy"></div>
+    </a>
+
+    <a href="car-park-ventilation-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="car park ventilation basement jet fan impulse CO dilution demand controlled ventilation smoke extract fire mode make-up air EV fire BS 7346-7 NFPA 88A تهوية مواقف السيارات القبو الجراج قاعدة البرج المباني الشاهقة تخفيف أول أكسيد الكربون ثاني أكسيد النيتروجين حدود التعرض تغييرات الهواء في الساعة التهوية حسب الطلب حساسات أول أكسيد الكربون المروحة النفاثة تهوية الدفع المجاري الهوائية الارتفاع الصافي المحاكاة العددية لديناميكا الموائع عطل مروحة شفط الدخان وضع الحريق مروحة مقاومة للحرارة تقسيم المخمدات إثبات الوضع هواء التعويض المساحة الحرة قوة فتح الباب الضغط السالب المنحدر تأثير المدخنة الرشاشات تطبق الدخان السيارات الكهربائية حريق بطارية الليثيوم أحمال الشواحن التشغيل والاختبار تسلسل الحريق MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Car Park Ventilation &middot; Jet Fans &middot; Fire Mode</span>
+        <div class="article-card-title">تهوية مواقف السيارات في قواعد الأبراج: تخفيف أول أكسيد الكربون والمراوح النفاثة ووضع الحريق</div>
+        <p class="article-card-excerpt">موقف السيارات هو أقل الأماكن بريقًا وأكثرها عرضةً للمبالغة في التهوية. قاعدة عشر تغييرات هواء في الساعة تفرض <strong>٤١٫٧ م٣/ث</strong> بينما يحتاج تخفيف أول أكسيد الكربون فعليًا إلى <strong>١١٫٦</strong> — والفارق البالغ ثلاثة أضعاف ونصف لا يشتري سوى مروحة أكبر وفاتورة دائمة. التحكم حسب الطلب، والمراوح النفاثة مقابل المجاري الهوائية وما تعيده من ٣٠٠ إلى ٥٠٠ ملم من الارتفاع الصافي، ووضع الحريق ومسار هواء التعويض الذي ينساه الجميع، وما تغيّره السيارات الكهربائية — مع رسمين تفاعليين.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٤ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/car-park-ventilation-tall-buildings.webp" width="320" height="200" alt="Car Park Ventilation in Tall-Building Podiums: CO Dilution, Jet Fans, Fire Mode &amp; the EV Question" loading="lazy"></div>
+    </a>
+
+    <a href="district-cooling-ets-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="district cooling energy transfer station ETS delta-T capacity charge plate heat exchanger approach PICV BTU meter EN 1434 matched sensor pair uncertainty commissioning IDEA التبريد المركزي محطة نقل الطاقة المباني الشاهقة المباني فائقة الارتفاع فرق درجات الحرارة درجة حرارة العودة رسوم السعة رسوم الاستهلاك التعرفة العقد الغرامة التدفق المتعاقد عليه المبادل الحراري الصفائحي فرق الاقتراب الاتساخ حزمة الصفائح الحشية الصمام المستقل عن الضغط سلطة الصمام صمام ثنائي المسار ثلاثي المسار مسار التجاوز صمام الفصل عداد الطاقة الحرارية زوج الحساسات المتطابق دقة عداد التدفق الأطوال المستقيمة العداد الكهرومغناطيسي بالموجات فوق الصوتية عدم اليقين في القياس ضغط الشبكة العابر المطرقة المائية المصفاة الترشيح الجانبي التشغيل والاختبار التتبع الإنذار MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; District Cooling &middot; ETS &middot; Megatall</span>
+        <div class="article-card-title">التبريد المركزي ومحطات نقل الطاقة للمباني فائقة الارتفاع: فرق الحرارة والاقتراب والعدادات</div>
+        <p class="article-card-excerpt">ربط البرج بشبكة تبريد مركزي لا يبسّط التصميم — بل يستبدل محطةً تتحكم بها بعقدٍ لا يمكنك إعادة التفاوض عليه، ويتحوّل فرق الحرارة من مؤشر كفاءة إلى فاتورة. سلّم ٤ كلفن حيث وعدت بثمانية، <strong>وتتضاعف رسوم السعة</strong> مقابل التبريد نفسه. وفرق اقتراب المبادل الذي تدفع ثمنه مرتين (توفير ١٫٥ كلفن في الصفائح يعود ١٥٪ زيادة في مساحة الملفات بكل غرفة)، والصمامات المستقلة عن الضغط، ولماذا تهيمن حساسات الحرارة — لا عداد التدفق — على ما تدفعه عند فروق الحرارة المنخفضة — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٦ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/district-cooling-ets-tall-buildings.webp" width="320" height="200" alt="District Cooling &amp; Energy Transfer Stations for Megatall Buildings: Delta-T, Approach &amp; Metering" loading="lazy"></div>
+    </a>
+
+    <a href="building-movement-mep-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="building movement thermal expansion column shortening creep shrinkage differential shortening risers anchors guides expansion loop bellows pressure thrust EJMA ASME B31.1 حركة المبنى التمدد الحراري تقاصر الأعمدة الزحف الانكماش التقاصر التفاضلي المباني الشاهقة المباني فائقة الارتفاع المواسير الصاعدة دعامات المواسير المثبتات الثابتة الموجهات حلقة التمدد الكابولي الموجه المفصل المموج المعوض المحوري المفصل المربوط المتوازن ضغطيًا دفع الضغط معدل الزنبرك حمل المثبت الواجهة الإنشائية معامل التمدد الفولاذ الكربوني المقاوم للصدأ النحاس البولي بروبيلين البلاستيك التفريعات ذراع التأرجح اختراق البلاطة الجلبة مانع الحريق المفصل الحركي واجهة القاعدة والبرج التقييد الزلزالي الشد البارد درجة حرارة التركيب مؤشر الحركة المسح المرجعي التشغيل والاختبار MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; Building Movement &middot; Riser Support &middot; Anchors</span>
+        <div class="article-card-title">حركة المبنى وأنظمة الميكانيكا في المباني فائقة الارتفاع: التمدد الحراري وتقاصر الأعمدة وأحمال المثبتات</div>
+        <p class="article-card-excerpt">المبنى فائق الارتفاع ليس جسمًا ساكنًا. فهو يقصر بنحو <strong>٧٠٠ ملم</strong> على مدى عمره مع زحف الخرسانة وجفافها، ويصل نحو <strong>٢٨٠ ملم من ذلك بعد تثبيت المواسير الصاعدة</strong> — أي ضعفَي ونصف حركتها الحرارية، ويُجمع معها. كما تتقاصر النواة والمحيط بمقادير مختلفة، فتقص بهدوء كل خط أفقي بينهما. ولماذا تتحرك المواسير البلاستيكية عشرة أضعاف الفولاذ، وكيف تُحسب حلقة التمدد، ودفع الضغط في المفصل المموج الذي يضع <strong>ثمانية أطنان</strong> على كتيفة صُمّمت لوزن الماسورة — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٦ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/building-movement-mep-tall-buildings.webp" width="320" height="200" alt="Building Movement &amp; MEP in Megatall Buildings: Thermal Expansion, Column Shortening &amp; Anchor Loads" loading="lazy"></div>
+    </a>
+
+    <a href="domestic-hot-water-legionella-tall-buildings.html" class="article-card hidden-article" data-cat="plumbing" data-search="domestic hot water Legionella thermal disinfection D-value recirculation thermostatic balancing valve dead leg TMV storage turnover cold water ACOP L8 HSG274 ASHRAE 188 CIBSE TM13 المياه الساخنة تسخين مياه الاستخدام الليجيونيلا داء الفيالقة المباني الشاهقة المباني فائقة الارتفاع السباكة نظام درجات الحرارة التخزين عند ٦٠ العودة عند ٥٥ التعقيم الحراري قيمة الاختزال العشري المدى اللوغاريتمي نطاق النمو خطر الحروق صمام الخلط الحراري صمام الأمان عند نقطة الاستخدام دائرة التدوير الفقد الحراري الفقد الدائم تدفق العودة صمام الموازنة الحراري الفرع الميت الركود المخارج قليلة الاستخدام الغسيل التلقائي السخان التخزيني السخان اللحظي معدل الاسترداد معدل الدوران وزن الخزان المياه الباردة تحت ٢٠ تخطيط المناور سماكة العزل جيب مقياس الحرارة التشغيل والاختبار على الحرارة الكلورة التعقيم خطة سلامة المياه MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Hot Water &middot; Legionella &middot; Megatall</span>
+        <div class="article-card-title">المياه الساخنة ومكافحة الليجيونيلا في المباني فائقة الارتفاع: نظام الحرارة والتدوير والتخزين</div>
+        <p class="article-card-excerpt">المياه الساخنة هي الخدمة الوحيدة في المبنى التي قد تؤذي الناس أثناء التشغيل العادي لا عند العطل — والتصميم تعارضٌ حقيقي، لأن الحرارة الكافية للأمان هي نفسها الكافية للحرق. عند ٥٥ درجة يحتاج القتل بمقدار أربع مراتب لوغاريتمية إلى ساعة، وعند ٦٠ درجة إلى ثماني دقائق، وعند ٤٦ درجة لا يحدث أبدًا. لماذا يكون الحل مكانيًا لا حراريًا، ولماذا يكون تدفق العودة البالغ ربع لتر في الثانية هو سبب فشل الفروع البعيدة، والفروع الميتة، والتخزين مقابل معدل الدوران، وإبقاء المياه الباردة باردة داخل منور دافئ — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٦ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/domestic-hot-water-legionella-tall-buildings.webp" width="320" height="200" alt="Domestic Hot Water &amp; Legionella Control in Megatall Buildings: Temperature Regime, Recirculation &amp; Storage" loading="lazy"></div>
+    </a>
+
+    <a href="vibration-noise-control-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="vibration isolation noise control acoustics MEP tall buildings transmissibility static deflection natural frequency resonance spring isolator inertia base flanking path resilient hanger plant room absorption transmission loss NR rating VFD CIBSE B4 عزل الاهتزاز التحكم في الضوضاء الصوتيات خدمات المباني المباني الشاهقة المباني فائقة الارتفاع الطوابق الميكانيكية قابلية النقل الانحراف الاستاتيكي التردد الطبيعي نسبة التردد الرنين التضخيم عازل زنبركي حشوة نيوبرين قاعدة القصور الذاتي قاعدة خرسانية مصد الاهتزاز التقييد الزلزالي المسار الجانبي الوصلة المرنة المعلاق المرن تثبيت المواسير جسر الجراوت مانع الحريق جسر صوتي امتصاص غرفة المعدات المجال المنعكس ثابت الغرفة قدرة الصوت ضغط الصوت عزل النفاذ الجدار المزدوج تصنيف الضوضاء الضوضاء المتولدة سرعة الهواء كاتم الصوت تردد مرور الريش الضوضاء النغمية المشغل متغير السرعة التشغيل والاختبار MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; Vibration &middot; Acoustics &middot; Mechanical Floors</span>
+        <div class="article-card-title">التحكم في الاهتزاز والضوضاء لأنظمة الميكانيكا في المباني فائقة الارتفاع: الانحراف الاستاتيكي والمسارات الجانبية</div>
+        <p class="article-card-excerpt">كل طابق ميكانيكي يقع مباشرةً فوق غرفة نوم أحدهم. عزل الاهتزاز تحكمه نسبة واحدة، وتحت الجذر التربيعي للاثنين يقوم العازل <em>بالتضخيم</em> بدل العزل — فحشوة ٦ مم تحت ماكينة بسرعة ٦٠٠ لفة تعطي عزلًا بنسبة ٢٩٪ فقط، وتحت أي سرعة أبطأ تزيد المشكلة سوءًا. لماذا تُحدَّد المواصفة بالانحراف الاستاتيكي لا بنوع العازل، ولماذا يجب الفحص عند أدنى سرعة للمشغل، والمسارات الجانبية التي تتسرّب رغم العوازل المثالية، والامتصاص داخل غرفة المعدات مقابل عزل الجدار، والسرعة المتغيرة كمكسب مجاني بمقدار ٨ ديسيبل — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٦ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/vibration-noise-control-tall-buildings.webp" width="320" height="200" alt="Vibration &amp; Noise Control for MEP in Megatall Buildings: Static Deflection, Flanking Paths &amp; Plant-Room Acoustics" loading="lazy"></div>
+    </a>
+
+    <a href="vertical-transportation-mep-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="vertical transportation lifts elevators MEP machine room heat regenerative drive piston effect blockage ratio hoistway pressurisation NFPA 92 EN 12101-6 pit drainage shunt trip CIBSE Guide D EN 81-20 المصاعد النقل الرأسي واجهات الأنظمة الميكانيكية المباني الشاهقة المباني فائقة الارتفاع غرفة الماكينة الكسب الحراري المصاعد بدون غرفة ماكينة خزانة المشغل فواقد المحرك دورة التشغيل المشغل المسترجع للطاقة التوافقيات الكهربائية الطاقة الأساسية التبريد الاحتياطي المياه المبردة حد درجة الحرارة المحيطة خفض القدرة تأثير المكبس نسبة الانسداد سرعة الكابينة سرعة الحلقة أبعاد البئر التهوية بين الآبار الغطاء الانسيابي فرق الضغط على باب الطابق تأثير المدخنة تضغيط بئر المصعد تضغيط الردهة الأبواب المفتوحة الأبواب المغلقة نسبة التخفيض مخمد التنفيس الحقن متعدد المستويات مصعد رجال الإطفاء مصعد إخلاء الشاغلين صرف حفرة المصعد فاصل الزيت الرشاش قطع التغذية استدعاء المرحلة الأولى واجهة إنذار الحريق التشغيل والاختبار MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; Lifts &middot; MEP Interfaces &middot; Megatall</span>
+        <div class="article-card-title">المصاعد وأنظمة الميكانيكا في المباني فائقة الارتفاع: حرارة غرفة الماكينة وتأثير المكبس وتضغيط البئر</div>
+        <p class="article-card-excerpt">المصاعد حزمة عمل تخصّ غيرك، لكن أربعًا من نتائجها تقع مباشرة على مهندس الأنظمة. مجموعة من ثمانية مصاعد تطرح <strong>١٠٨ كيلوواط</strong> في غرفة لا تُكيَّف عادةً في التصميم المبدئي؛ وبئر المصعد هو المدخنة الرئيسية للمبنى؛ وكابينة بسرعة ١٠ م/ث ونسبة انسداد ٦٠٪ تولّد <strong>١٦٠ باسكال</strong> من ضغط المكبس فوق تأثير المدخنة، وعلاجه بأبعاد البئر أرخص بكثير من أي معدات؛ ولنظام التضغيط نسبة تخفيض <strong>٣٫٦:١</strong> بين حالتَي الأبواب المفتوحة والمغلقة — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٦ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/vertical-transportation-mep-tall-buildings.webp" width="320" height="200" alt="Lifts &amp; MEP in Megatall Buildings: Machine-Room Heat, Piston Effect &amp; Hoistway Pressurisation" loading="lazy"></div>
+    </a>
+
+    <a href="refrigerant-systems-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="refrigerant VRF DX flash gas sub-cooling liquid line static head oil return suction riser ASHRAE 15 ASHRAE 34 RCL A2L R410A R32 machinery room leak detection emergency ventilation nitrogen brazing evacuation وسيط التبريد التبريد المباشر التدفق المتغير لوسيط التبريد المباني الشاهقة المباني فائقة الارتفاع الغاز الوميضي التبريد الفائق خط السائل الضغط الاستاتيكي الرفع الرأسي ميل منحنى التشبع حد الارتفاع وحدة التكثيف فوق المبخر عودة الزيت ماسورة السحب سرعة الغاز الحمل الأدنى الماسورة المزدوجة مصيدة الزيت تحجيم المواسير عدم المبالغة في القطر حد تركيز وسيط التبريد أصغر حيز مأهول مجموعة الأمان القابلية للاشتعال الحد الأدنى للاشتعال إمكانية الاحترار العالمي المنخفضة غرفة معدات التبريد كشف التسرب التهوية الطارئة التحكم في التطهير اللحام تحت النيتروجين التفريغ اختبار الارتفاع الشحن بالوزن سجل فحص التسرب التشغيل والاختبار MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Refrigerant &middot; VRF &middot; ASHRAE 15</span>
+        <div class="article-card-title">أنظمة التبريد المباشر والـVRF في المباني فائقة الارتفاع: الغاز الوميضي وعودة الزيت وحد التركيز</div>
+        <p class="article-card-excerpt">وسيط التبريد هو المائع الوحيد في المبنى الذي يكون غازًا وسائلًا في آنٍ واحد، وهذا ما يجعل الأبراج صعبة. رفع السائل ١٠٠ متر يكلّف ٩٫٣ بار ونحو ١٥ درجة من التبريد الفائق التي لا تملكها — وهو السبب الحقيقي لحدود الارتفاع في كتالوجات الـVRF — إلا إذا وضعت وحدات التكثيف فوق وحدات التبخير وتركت السائل يهبط. تحجيم مواسير السحب على الحمل الأدنى لتعود الزيوت، وحد تركيز وسيط التبريد وفق ASHRAE 15 الذي تحدده أصغر غرفة تخدمها الدائرة، وأثر التحوّل إلى وسائط A2L على الشحنة المسموحة، وتهوية غرف المعدات — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٦ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/refrigerant-systems-tall-buildings.webp" width="320" height="200" alt="Refrigerant Systems &amp; VRF in Megatall Buildings: Flash Gas, Oil Return &amp; the Concentration Limit" loading="lazy"></div>
+    </a>
+
+    <a href="cooling-towers-heat-rejection-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="cooling towers heat rejection condenser water open circuit chiller location approach wet bulb condenser water reset evaporation blowdown cycles of concentration makeup drift plume recirculation Legionella ASHRAE 188 CTI أبراج التبريد طرد الحرارة مياه المكثف المباني الشاهقة المباني فائقة الارتفاع الدائرة المفتوحة الدائرة المغلقة الرفع الاستاتيكي المبادل الحراري الصفائحي موقع المبردات الطابق الميكانيكي المبرد المغلق فرق الاقتراب المدى الحراري البصيلة الرطبة درجة التصميم إعادة ضبط حرارة المكثف كفاءة المبرد قدرة مروحة البرج التحسين التبخر التصريف دورات التركيز مياه التعويض ميزان المياه الترشيح الجانبي مياه الصرف المعالجة ندرة المياه مانع الرذاذ تخفيف العمود المتصاعد إعادة السحب الرياح على الارتفاع الوزن التشغيلي معادلة الأحواض الارتداد المائي الحيز الحر صافي ضغط الشفط الموجب التخميل الصدأ الأبيض الليجيونيلا التشغيل والاختبار MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Cooling Towers &middot; Heat Rejection &middot; Megatall</span>
+        <div class="article-card-title">أبراج التبريد وطرد الحرارة في المباني فائقة الارتفاع: الدائرة المفتوحة ودرجة البصيلة الرطبة وميزان المياه</div>
+        <p class="article-card-excerpt">هناك خط واحد في مخطط المياه المبردة يتصرّف تصرّفًا مختلفًا تمامًا عن بقية الخطوط: دائرة مياه المكثف <em>مفتوحة</em>، فلا يوجد عمود عائد يدفع للخلف، والمضخة ترفع كامل الارتفاع إلى الأبد. ضع المبردات في القبو والأبراج على سطح مبنى بارتفاع ٣٠٠ متر وستحتاج ٨١٧ كيلوواط للضخ. تحسين فرق الاقتراب ودرجة البصيلة الرطبة مقابل قدرة المبرد والمروحة معًا، ولماذا يكون الحل الأمثل أبرد ممّا تنصّ عليه المواصفات، وميزان المياه الذي يجعل محطة ٥٠ ميغاواط تستهلك ٢٤٠٠ متر مكعب يوميًا، والعمود المتصاعد وإعادة السحب على الارتفاعات، ومكافحة الليجيونيلا — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٨ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/cooling-towers-heat-rejection-tall-buildings.webp" width="320" height="200" alt="Cooling Towers &amp; Heat Rejection in Megatall Buildings: The Open Circuit, Wet-Bulb Approach &amp; the Water Balance" loading="lazy"></div>
+    </a>
+
+    <a href="outdoor-air-ventilation-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="outdoor air ventilation fresh air tall buildings megatall wind pressure boundary layer pressure coefficient intake louvre plenum damper exhaust separation dispersion energy recovery enthalpy wheel ERV DOAS filtration ISO 16890 fan energy ASHRAE 62.1 الهواء الخارجي التهوية الهواء النقي المباني الشاهقة المباني فائقة الارتفاع جودة الهواء الداخلي ضغط الرياح الطبقة الحدية معامل الضغط الجهة المواجهة للريح الجهة الخلفية فتحة السحب الشيش المساحة الحرة سرعة الوجه غرفة التجميع دائرة القصر المخمدات المحركة انعكاس التدفق فتحة الطرد مسافة الفصل تشتت العادم إعادة السحب عمود برج التبريد عادم المولدات استرجاع الطاقة عجلة الإنثالبي كفاءة الاسترجاع الحمل الكامن الخواص السيكرومترية نسبة الرطوبة إزالة الرطوبة نظام الهواء الخارجي المخصص التهوية حسب الطلب ثاني أكسيد الكربون الفلترة عمق الفلتر فقد الضغط طاقة المروحة فئة التسرب التشغيل والاختبار الرمال الأملاح التآكل MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling &middot; Ventilation &middot; Outdoor Air &middot; Megatall</span>
+        <div class="article-card-title">الهواء الخارجي والتهوية في المباني فائقة الارتفاع: ضغط الرياح ومواقع السحب واسترجاع الطاقة والفلترة</div>
+        <p class="article-card-excerpt">الهواء النقي هو الشيء الوحيد الذي لا يستطيع المبنى تصنيعه — بل يجب التقاطه من غلافٍ جويٍّ يتصرّف على ارتفاع ٦٠٠ متر تصرّفًا مختلفًا تمامًا. لماذا تتحوّل رياح عادية بسرعة ١٠ م/ث عند مستوى الشارع إلى ٦٠٠ باسكال عبر المبنى فتُحدث دائرة قِصر في أي غرفة سحب مشتركة، وكيف تُوضع فتحات السحب والطرد، وكم تساوي عجلة استرجاع الطاقة الكلية في جدة مقابل الرياض (الفارق ثلاثة أضعاف)، وطاقة المراوح السنوية المختبئة في فقد ضغط الفلاتر، ومبرّر فصل التهوية عن التبريد — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٧ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/outdoor-air-ventilation-tall-buildings.webp" width="320" height="200" alt="Outdoor Air &amp; Ventilation in Megatall Buildings: Wind Pressure, Intake Strategy, Energy Recovery &amp; Filtration" loading="lazy"></div>
+    </a>
+
+    <a href="mechanical-floors-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="mechanical floors plant rooms tall buildings megatall vertical zoning pressure break zone height core planning riser shaft duct sizing DOAS floor by floor AHU refuge floor outrigger sky lobby maintenance rigging BSRIA الطوابق الميكانيكية غرف المعدات المباني الشاهقة المباني فائقة الارتفاع التقسيم الرأسي فاصل الضغط ارتفاع المنطقة تخطيط النواة المنور الرأسي مساحة المناور المساحة القابلة للتأجير إجمالي المساحة تحجيم المجاري الهوائية النظام الهوائي المركزي وحدات المناولة بكل طابق هواء خارجي مخصص سرعة الهواء القيد الحاكم نافذة الضغط للأدوات الصحية صمام تخفيض الضغط درجة تحمل المياه المبردة تصنيف عمود الحريق طابق الملجأ الجائز الهيكلي بهو السماء تقسيم المصاعد تخطيط غرف المعدات مسافات الصيانة مسار سحب الأنابيب الرفع والتركيب عارضة الرفع فتحة الإدخال الحواجز المانعة للتسرب الصرف كشف التسرب تهوية غرف المعدات العزل الصوتي التنسيق MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Tall-Building Systems &middot; Mechanical Floors &middot; Vertical Zoning &middot; Core Planning</span>
+        <div class="article-card-title">الطوابق الميكانيكية في المباني فائقة الارتفاع: التباعد وارتفاعات المناطق واقتصاديات المناور والتخطيط</div>
+        <p class="article-card-excerpt">ثلاثة استشاريين سيحددون مواقع الطوابق الميكانيكية، وليس بينهم مهندس الأنظمة — رغم أن تباعدها هو ما يحدد ارتفاع المنطقة الرأسية الذي يجب أن يعمل داخله كل نظام ضغط في البرج. اقتصاديات المساحة بين طوابق المعدات والمناور الرأسية، ولماذا يتوقف التوزيع الهوائي المركزي عن الجدوى عند نحو أربعين طابقًا، وجدول ارتفاعات المناطق الذي يحكم المبنى (مياه الاستخدام تحكمه عند ٣٦ مترًا حتى تُعالج بصمامات تخفيض الضغط)، ومواءمة المناسيب مع الجوائز الهيكلية وطوابق الملجأ، والتخطيط للرفع والصيانة — مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٧ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/mechanical-floors-tall-buildings.webp" width="320" height="200" alt="Mechanical Floors in Megatall Buildings: Spacing, Zone Heights, Riser Economics &amp; Layout" loading="lazy"></div>
+    </a>
+
+    <a href="domestic-water-tall-buildings.html" class="article-card hidden-article" data-cat="plumbing" data-search="domestic water potable supply tall buildings megatall plumbing Hunter fixture units binomial IAPMO water demand calculator pressure zoning PRV break tank booster pump gravity roof tank specific energy storage turnover backflow air gap RPZ water hammer المياه الصالحة للشرب إمداد المياه المباني الشاهقة المباني فائقة الارتفاع السباكة تقدير الطلب منحنى هنتر وحدات التجهيزات الصحية الاحتمال الثنائي حاسبة الطلب على المياه الطلب المتزامن معامل التزامن تقسيم الضغط الرأسي نافذة الضغط الضغط الأدنى الضغط الأقصى صمام تخفيض الضغط صمامات الأدوار درجة تحمل الماسورة خزان الفصل مضخة النقل مضخة التعزيز الضغط الهوائي متغير السرعة التغذية بالجاذبية خزان السطح الضخ المتتالي الطاقة النوعية دوران التخزين جودة المياه الكلور المتبقي الركود الخزان المقسم منع الارتداد العكسي التوصيل المتقاطع الفجوة الهوائية كاسر التفريغ المطرقة المائية جوكوفسكي ممتص الصدمات التعقيم عدادات المناطق التشغيل والاختبار MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage &middot; Domestic Water &middot; Pressure Zoning &middot; Megatall</span>
+        <div class="article-card-title">إمداد المياه في المباني فائقة الارتفاع: الطلب وتقسيم الضغط وصمامات تخفيض الضغط وثمن الارتفاع</div>
+        <p class="article-card-excerpt">مياه الحريق تصل إلى الطابق الأخير مرة واحدة، أما مياه الاستخدام فيجب أن تصل كلما فُتح صنبور. نافذة الضغط المقبولة عند نقطة الاستخدام لا تتجاوز ٣٫٥ بار — أي ما يعادل ٣٦ مترًا من ارتفاع المبنى — فيحتاج برج ٦٠٠ متر إلى سبعة عشر منطقة ضغط ما لم تُقسّم المواسير الصاعدة حسب درجة تحمّلها وتُضبط الضغوط عند الأدوار. ولماذا يبالغ منحنى هَنتر لعام ١٩٤٠ في تقدير الطلب ثلاثة أضعاف، والتغذية بالجاذبية مقابل الضخ لكل منطقة وثمن الارتفاع بالكيلوواط ساعة لكل متر مكعب، ودوران التخزين وجودة المياه، والارتداد العكسي والمطرقة المائية — مع ثلاثة رسوم تفاعلية وحِيَل التنفيذ.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٨ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/domestic-water-tall-buildings.webp" width="320" height="200" alt="Domestic Water Supply in Megatall Buildings: Demand, Pressure Zoning, PRVs &amp; the Energy of Height" loading="lazy"></div>
+    </a>
+
+    <a href="chilled-water-pumps-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="chilled water pumps CHW pump selection sizing tall buildings megatall closed loop static friction head pressure zoning PN16 PN25 PN40 plate heat exchanger cascade approach parallel primary riser chiller penalty delta-T VPF primary secondary BEP POR NPSH expansion vessel PICV VFD DP reset affinity laws commissioning ASHRAE مضخات المياه المبردة الماء المثلج اختيار المضخات تحجيم المضخات المباني الشاهقة المباني فائقة الارتفاع الدائرة المغلقة الضغط الاستاتيكي ضغط العمود المائي فقد الاحتكاك الضاغط الكلي تقسيم الضغط الرأسي المناطق الضغطية درجة تحمل الضغط المبادل الحراري الصفائحي التتالي فرق الاقتراب التغذية المتوازية العمود الرئيسي عالي الضغط درجة حرارة الإمداد عقوبة كفاءة المبرد فرق درجات الحرارة التدفق الابتدائي المتغير الابتدائي الثانوي صمام الفصل نقطة أعلى كفاءة منطقة التشغيل المفضلة صافي ضغط الشفط الموجب خزان التمدد نقطة عدم تغير الضغط ضغط الملء فصل الهواء صمام تحكم مستقل عن الضغط سلطة الصمام المشغل متغير السرعة إعادة ضبط فرق الضغط قوانين التقارب قاعدة القصور الذاتي محاذاة الليزر إجهاد المواسير المصفاة التشغيل والاختبار MEP خدمات المباني التكييف والتبريد">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling · Chilled Water · Pump Selection · Megatall</span>
+        <div class="article-card-title">مضخات المياه المبردة في المباني فائقة الارتفاع: الضغط الاستاتيكي مقابل الاحتكاك وتقسيم الضغط والمبادلات المتتالية والتحكم عند الأحمال الجزئية</div>
+        <p class="article-card-excerpt">المضخة تحتاج ٣٩ مترًا من الضاغط، بينما يجب أن تتحمل المواسير عند القاعدة ٦٠٠ متر — وعكس هاتين الحقيقتين هو أغلى خطأ في تصميم المياه المبردة للأبراج. لماذا تُلغي الدائرة المغلقة العمود الاستاتيكي، وكيف تبني الضاغط بصدق دون هوامش زائدة، وتقسيم الضغط الرأسي والمبادلات المتتالية التي قد تهبط بدرجة حرارة المحطة تحت الحد الآمن، وأنظمة الضخ، والاختيار عند نقطة أعلى كفاءة، وخزان التمدد على جانب الشفط، وكيف يغيّر موضع حساس فرق الضغط قدرة الضخ أربعة أضعاف — مع ثلاثة رسوم تفاعلية وحِيَل التنفيذ.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>٢٠ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/chilled-water-pumps-tall-buildings.webp" width="320" height="200" alt="Chilled-Water Pumps in Megatall Buildings" loading="lazy"></div>
+    </a>
+
+    <a href="stack-effect-tall-buildings.html" class="article-card hidden-article" data-cat="hvac" data-search="stack effect chimney effect tall buildings megatall supertall high-rise neutral plane NPL reverse stack door force 133 N shaft compartmentation sky lobby elevator hoistway vestibule revolving door airtightness infiltration ASHRAE NFPA 92 EN 12101-6 stair pressurization smoke control تأثير المدخنة تأثير المداخن الأثر المدخني المباني الشاهقة المباني فائقة الارتفاع فيزياء المباني المستوى المتعادل المستوى المحايد فرق الضغط تدرج الضغط فرق درجات الحرارة التأثير العكسي المدخني الصيفي حركة الدخان قوة فتح الباب مغلاق الباب أبواب الهروب تقسيم المناور المناور الرأسية بهو السماء الطابق الميكانيكي المصاعد بئر المصعد باب الطابق فتحة تهوية بئر المصعد تأثير المكبس غرفة معادلة الضغط الباب الدوار رصيف التحميل مزلق النفايات إحكام الغلاف الهوائي حاجز الهواء تسرب الهواء الترشيح التسرب الهوائي تضغيط السلالم التحكم في الدخان الاختبار والتشغيل أختام السيفونات التكثيف استهلاك الطاقة MEP خدمات المباني التكييف والتهوية">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Building Physics · Stack Effect · Megatall Buildings</span>
+        <div class="article-card-title">تأثير المدخنة في المباني فائقة الارتفاع: المستوى المتعادل وقوى الأبواب وتقسيم المناور وثمن الطاقة</div>
+        <p class="article-card-excerpt">في مبناك مدخنةٌ لم يرسمها أحد ولم يحسب مقاسها أحد. كم يبلغ ضغط المدخنة فعلًا (٢٧٠ باسكال على ارتفاع ٦٠٠ متر)، وأين يقع المستوى المتعادل وكيف تُزيحه عن قصد، ولماذا يحتاج باب السلم إلى ٣٤٧ نيوتن ليُفتح، ولماذا يحكم أبراجَ الخليج التأثيرُ المدخني العكسي الصيفي لا الشتوي، وكيف يعالجه تقسيم المناور عند أبهاء السماء وغرف معادلة الضغط، وثمن ذلك بالميغاواط من تسرب الهواء — مع ثلاثة رسوم تفاعلية وحِيَل التنفيذ.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٩ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/stack-effect-tall-buildings.webp" width="320" height="200" alt="Stack Effect in Megatall Buildings" loading="lazy"></div>
+    </a>
+
+    <a href="firefighting-tall-buildings.html" class="article-card hidden-article" data-cat="fire" data-search="firefighting fire protection tall buildings megatall supertall high-rise standpipe NFPA 14 sprinkler NFPA 13 fire pump NFPA 20 pressure zoning stack effect smoke control stair pressurization PRV refuge floor evacuation مكافحة الحريق الحماية من الحريق المباني الشاهقة المباني فائقة الارتفاع الأعمدة الرأسية للحريق العمود الرطب خرطوم الحريق الرشاشات مضخات الحريق تقسيم الضغط الرأسي الضغط الاستاتيكي المناطق الضغطية خزان التحويل الضخ المتتالي التغذية بالجاذبية صمام تخفيض الضغط الضغط المتبقي تأثير المدخنة المستوى المتعادل التحكم في الدخان تضغيط السلالم قوة فتح الباب طابق الملجأ مصعد الحريق الإخلاء التدريجي الدفاع في المكان غرفة قيادة الحريق سلامة الأرواح NFPA IBC SBC 801 CTBUH MEP خدمات المباني هندسة الحريق">
+      <div class="card-body">
+        <span class="article-card-tag">Fire Protection &middot; Megatall Buildings &middot; Standpipes &middot; Smoke Control</span>
+        <div class="article-card-title">مكافحة الحريق في المباني فائقة الارتفاع: المناطق الضغطية والأعمدة الرأسية وتأثير المدخنة والتحكم في الدخان</div>
+        <p class="article-card-excerpt">سلّم الإطفاء يصل إلى الطابق العاشر، وفوقه ثمانون طابقًا أخرى — فالمبنى يطفئ حريقه بنفسه. لماذا يفرض الضغط الاستاتيكي تقسيم الأعمدة الرأسية إلى مناطق ضغطية، وكيف يُضخّ الماء ويُخزَّن على ارتفاع البرج، وضغوط NFPA 14 المتبقية الحاكمة، وتأثير المدخنة ومشكلة قوة فتح الباب التي تهزم التحكم في الدخان، وتضغيط السلالم، وتحجيم مضخات الحريق، وطوابق الملجأ والإخلاء التدريجي — مع ثلاثة رسوم تفاعلية وحِيَل التنفيذ.</p>
+        <div class="article-card-meta">
+          <span>يوليو 2026</span><span>١٨ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/firefighting-tall-buildings.webp" width="320" height="200" alt="Firefighting in Megatall Buildings" loading="lazy"></div>
+    </a>
+
+    <a href="drainage-stormwater-tall-buildings.html" class="article-card hidden-article" data-cat="plumbing" data-search="sanitary drainage stormwater tall buildings soil stack vent trap seal siphonic Wyly-Eaton EN 12056 PAPA AAV Sovent الصرف الصحي مياه الأمطار المباني الشاهقة ماسورة الصرف الرأسية العمود الصاعد التهوية عمود التهوية مانع التسريب ختم السيفون أختام السيفونات ضغط الهواء السحب الضغط العكسي السرعة النهائية الجريان الحلقي سعة الماسورة وحدات التصريف الصرف السيفوني الصرف بالجاذبية شدة المطر انحراف الماسورة كوع القاعدة صمام تنفيس الطلمبات القبو خزان التجميع صمام عدم الرجوع الفواصل الشحمية أطواق الحريق الصوت السباكة الصحة العامة MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">Plumbing &amp; Drainage · Tall Buildings · Stacks · Stormwater</span>
+        <div class="article-card-title">الصرف الصحي ومياه الأمطار في المباني الشاهقة: المواسير الرأسية والتهوية وأختام السيفونات والصرف السيفوني</div>
+        <p class="article-card-excerpt">الماء يصعد بضغطٍ تتحكّم فيه، والصرف ينزل بجاذبيةٍ لا تتحكّم فيها — والحاكم الحقيقي للتصميم هو الهواء. كيف تعمل ماسورة الصرف الرأسية فعلًا (السرعة النهائية، الجريان الحلقي، سحب الهواء)، والتحجيم بمعادلة Wyly-Eaton، ونظام ضغط الهواء ومانع التسريب (±375 باسكال)، والتهوية وانحرافات الماسورة وكوع القاعدة، والصرف بالجاذبية مقابل السيفوني — مع ثلاثة رسوم تفاعلية وحِيَل التنفيذ.</p>
+        <div class="article-card-meta">
+          <span>يوليو 2026</span><span>١٧ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/drainage-stormwater-tall-buildings.webp" width="320" height="200" alt="Drainage & Stormwater in Tall Buildings" loading="lazy"></div>
+    </a>
+
+    <a href="chiller-plant-design.html" class="article-card hidden-article" data-cat="hvac" data-search="chiller plant design HVAC cooling chilled water VPF primary secondary low delta-T ASHRAE cooling tower VFD تصميم محطة التبريد الشيلر التكييف والتبريد الماء المثلج تكوينات المحطة التدفق الابتدائي الثانوي التدفق الابتدائي المتغير على التوالي مبرد هوائي مائي طرد مركزي لولبي حلزوني الامتصاص برج التبريد ماء المكثف التدريج التحميل الجزئي kW/ton التحجيم الزائد N+1 متلازمة دلتا-T المنخفضة صمام الفصل decoupler المضخات متغيرة السرعة قوانين التقارب التشغيل والاختبار والموازنة غرفة المبردات وسيط التبريد التبريد المركزي MEP خدمات المباني">
+      <div class="card-body">
+        <span class="article-card-tag">HVAC &amp; Cooling · Chiller Plant · Design · Installation</span>
+        <div class="article-card-title">تصميم محطة التبريد (الشيلر): التكوينات ومشكلات التصميم ومشكلات التركيب والتنفيذ</div>
+        <p class="article-card-excerpt">محطة التبريد هي أكبر مستهلك للطاقة في معظم المباني، وحيث يتّسع الفارق بين التصميم على الورق والمحطة التي تعمل فعلًا. تكوينات المحطة (التدفّق الابتدائي الثابت، الابتدائي–الثانوي، التدفّق الابتدائي المتغيّر VPF، والمبرّدات على التوالي)، ومشكلات التصميم — التحجيم والتدريج وكفاءة التحميل الجزئي ومتلازمة دلتا-T المنخفضة — ومشكلات التركيب والتنفيذ التي تُفسد المحطات الحقيقية، في ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>١٦ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/chiller-plant-design.webp" width="320" height="200" alt="Chiller Plant Design: Configurations, Design Pitfalls & Installation Problems" loading="lazy"></div>
+    </a>
+
+    <a href="nrw-monitoring-netbase-wms.html" class="article-card hidden-article" data-cat="pipeline" data-search="non-revenue water NRW monitoring control NETBASE WMS smart water SCADA telemetry loggers AMI GIS EPANET WaterGEMS Ovarro المياه غير محققة الإيراد مراقبة والتحكم النظام الذكي للمياه إدارة شبكات المياه نظام إدارة المياه التدفق الليلي الأدنى صافي التدفق الليلي معامل الليل والنهار اكتشاف الكسور الإنذارات أجهزة التسجيل القياس الذكي العدادات الذكية تحسين موارد المياه التحقق من البيانات أولويات الفرق إدارة الضغط النمذجة الهيدروليكية تصميم خطوط الأنابيب">
+      <div class="card-body">
+        <span class="article-card-tag">Non-Revenue Water · Smart Water · WMS · NETBASE</span>
+        <div class="article-card-title">مراقبة المياه غير محقّقة الإيراد والتحكّم فيها باستخدام NETBASE WMS</div>
+        <p class="article-card-excerpt">موازنة المياه التي تُجرى مرة في السنة هي تشريحٌ بعد فوات الأوان؛ أمّا التحكّم الحقيقي في الفاقد فيعني قياس الخسارة كل ليلة، في كل منطقة، تلقائيًا. كيف يُدير نظام إدارة المياه (WMS) مثل NETBASE سلسلة البيانات الذكية — من أجهزة التسجيل وSCADA إلى محرّك التدفّق الليلي وإنذارات الكسور وزمن الاكتشاف وترتيب أولويات الفرق — مع ثلاثة رسوم تفاعلية وتفاصيل العمل داخل البرنامج.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>١٦ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/nrw-monitoring-netbase-wms.webp" width="320" height="200" alt="Monitoring & Controlling Non-Revenue Water with NETBASE WMS" loading="lazy"></div>
+    </a>
+
+    <a href="non-revenue-water-leakage.html" class="article-card hidden-article" data-cat="pipeline" data-search="non-revenue water NRW water balance ILI UARL CARL economic level of leakage المياه غير محققة الإيراد الفاقد من المياه فاقد المياه موازنة المياه IWA AWWA M36 الفاقد الحقيقي الفيزيائي الفاقد الظاهري التجاري الاستهلاك المصرّح غير المفوتر المياه محققة الإيراد التحكم في التسرّب مؤشر التسرّب البنيوي مؤشر تسرب البنية التحتية الفاقد السنوي الحقيقي غير القابل للتجنب المستوى الاقتصادي للتسرّب ELL التحكم النشط في التسرّب ALC التدفق الليلي الأدنى DMA إدارة الضغط أخطاء العدادات الفوترة السرقة الركائز الأربع تصميم خطوط الأنابيب">
+      <div class="card-body">
+        <span class="article-card-tag">Non-Revenue Water · Water Balance · ILI · Economic Level of Leakage</span>
+        <div class="article-card-title">المياه غير محقّقة الإيراد: موازنة المياه ومؤشّر ILI والمستوى الاقتصادي للتسرّب</div>
+        <p class="article-card-excerpt">كل مرفق يُنتج من المياه أكثر ممّا يبيع. لماذا «نسبة الفاقد» الواحدة مؤشّر مضلِّل، وكيف تفصل موازنة المياه (IWA) مشكلة الميدان (الفاقد الحقيقي الفيزيائي) عن مشكلة المكتب (الفاقد الظاهري التجاري)، وكيف يقيس مؤشّر التسرّب البنيوي ILI الفاقد بأمانة، وأين يقع المستوى الاقتصادي للتسرّب — في ثلاثة رسوم تفاعلية وأمثلة بالأرقام.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>١٤ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/non-revenue-water-leakage.webp" width="320" height="200" alt="Non-Revenue Water: The Water Balance, the ILI & the Economic Level of Leakage" loading="lazy"></div>
+    </a>
+
+    <a href="pressure-management-dma.html" class="article-card hidden-article" data-cat="pipeline" data-search="pressure management district metered area DMA إدارة الضغط مناطق القياس المنفصلة المياه غير محققة الإيراد الفاقد التسرّب FAVAD N1 التدفّق الليلي الأدنى MNF صمام تخفيض الضغط PRV ثابت معدّل بالتدفّق متوسط ضغط المنطقة النقطة الحرجة الكسور AWWA M36 IWA تصميم خطوط الأنابيب">
+      <div class="card-body">
+        <span class="article-card-tag">Distribution Design · Pressure Management · DMA · Non-Revenue Water</span>
+        <div class="article-card-title">إدارة الضغط ومناطق القياس المنفصلة (DMA)</div>
+        <p class="article-card-excerpt">الضغط هو المتغيّر الحاكم للتسرّب: قانون FAVAD/N₁ الذي يجعل خفض الضغط يقلّل الفاقد بأكثر من التناسب، وتقسيم الشبكة إلى DMA لقياس الفاقد من التدفّق الليلي الأدنى، وصمامات تخفيض الضغط الثابتة مقابل المعدّلة بالتدفّق — هندسة المياه غير محقّقة الإيراد، في ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>١٣ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/pressure-management-dma.webp" width="320" height="200" alt="Pressure Management & District Metered Areas (DMA)" loading="lazy"></div>
+    </a>
+
+    <a href="distribution-network-looped-branched.html" class="article-card hidden-article" data-cat="pipeline" data-search="distribution network looped branched dead-end شبكة التوزيع حلقات أطراف ميتة حلقية متفرّعة شجرية شبكية تصميم توزيع المياه ازدواجية موثوقية n-1 كسر أنبوب صمام عزل ضغط فقد الضاغط Hazen-Williams انقسام التدفق Hardy Cross EPANET عمر الماء الكلور المتبقي ركود تدفق الحريق looping AWWA تصميم خطوط الأنابيب">
+      <div class="card-body">
+        <span class="article-card-tag">Distribution Design · Looped vs Branched · Network Hydraulics · Water Quality</span>
+        <div class="article-card-title">تصميم شبكة التوزيع: الحلقات مقابل الأطراف الميتة</div>
+        <p class="article-card-excerpt">شكل الشبكة يحسم ضغطها وموثوقيتها وجودة مياهها وتكلفتها قبل تحجيم أي أنبوب: لماذا تقسم الشبكة الحلقية التدفّق فتخفض فقد الضاغط إلى الربع، ولماذا يعزل كسرٌ واحد الشبكة الشجرية دون الشبكية، ولماذا تركد الأطراف الميتة — مع ثلاثة رسوم تصميمية تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>١٣ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/distribution-network-looped-branched.webp" width="320" height="200" alt="Distribution Network Design: Looped vs Branched" loading="lazy"></div>
+    </a>
+
+    <a href="potable-pump-station-anatomy.html" class="article-card hidden-article" data-cat="pumps" data-search="potable water pumping station محطة ضخ مياه شرب تشريح تصميم وحدات تشغيل احتياطي السعة المؤكدة N+1 الازدواجية عدد المضخات حجم الوحدة نسبة التحكم turndown التدرج staging VFD السرعة المتغيرة الضخ متغير السرعة منحنى الطلب اليومي تعزيز تحويل رفع عالٍ NPSH صافي ضغط السحب الموجب الغمر التكهف رفع السحب السحب المغمور حفرة جافة حفرة رطبة مشعب صمام عدم رجوع صمام عزل عداد تدفق عابر SCADA تحكم اختبار السعة المؤكدة Hydraulic Institute Sanks">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering · Pumping Stations · Firm Capacity · Potable Water</span>
+        <div class="article-card-title">تشريح محطة ضخ مياه شرب كبيرة</div>
+        <p class="article-card-excerpt">المحطة نظام لا مجرد مضخة: وحدات تشغيل + احتياطي تُحجَّم بقاعدة السعة المؤكَّدة وقاعدة N+1، والتدرّج عبر منحنى الطلب اليومي، وحُجّة المُحرِّك متغيّر السرعة على الوحدة القائدة، وفيزياء NPSH على جانب السحب التي تحدّد أين تجلس المضخات — مع ثلاثة رسوم تصميمية تفاعلية ومحطة محسوبة لمدينة قوامها ٥٠٬٠٠٠ نسمة.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>14 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/potable-pump-station-anatomy.webp" width="320" height="200" alt="Anatomy of a Large Potable-Water Pumping Station" loading="lazy"></div>
+    </a>
+
+    <a href="strategic-water-storage-sizing.html" class="article-card hidden-article" data-cat="hydraulic" data-search="strategic water storage التخزين الاستراتيجي خزانات المياه تحديد السعة الخزان موازنة تشغيلي منحنى الكتلة Rippl منحنى الطلب اليومي اليوم الأقصى معامل ساعة الذروة تخزين الحريق تدفق الحريق تخزين الطوارئ انقطاع المصدر الازدواجية عمر المياه زمن المكوث الكلور المتبقي تحلل المطهر التوزيع AWWA حماية من الحريق">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Design · Water Storage · Reservoir Sizing</span>
+        <div class="article-card-title">خزانات المياه الاستراتيجية — لماذا نخزّن، وكم نخزّن</div>
+        <p class="article-card-excerpt">كل خزان يحمل ثلاثة أحجام في آنٍ واحد — التخزين الموازِن (التشغيلي) وتخزين الحريق وتخزين الطوارئ — كلٌّ يُحدَّد بسؤال مختلف. طريقة منحنى الكتلة لذروة اليوم، وحجم الحريق الذي يحدّده الكود لا عدد السكان، ومقايضة الازدواجية خلف تخزين الطوارئ، والثمن الذي تدفعه من عمر المياه عند التضخيم الزائد — مع ثلاثة رسوم تصميمية تفاعلية ومثال محسوب لمدينة قوامها ٥٠٬٠٠٠ نسمة.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>12 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/strategic-water-storage-sizing.webp" width="320" height="200" alt="Strategic Water Storage Reservoir Sizing" loading="lazy"></div>
+    </a>
+
+    <a href="wastewater-pump-station-design.html" class="article-card hidden-article" data-cat="pumps" data-search="wastewater pump station تصميم محطات رفع الصرف الصحي مضخات غاطسة دفّاعة non-clog vortex chopper ممر المواد الصلبة المناديل خط طرد سرعة الجرف بيارة الحجم الفعال زمن الدورة بدايات التشغيل تنظيف ذاتي عفونة H2S">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering · Wastewater · Wet Well · Force Main</span>
+        <div class="article-card-title">تصميم محطات رفع مياه الصرف — الدفّاعات والبيارات وخطوط الطرد</div>
+        <p class="article-card-excerpt">الانسداد — وليس الكفاءة — هو نمط الفشل الأول. اختيار الدفّاعة بين non-clog وvortex وchopper مع الثمن الطاقي لمقاومة الانسداد، سرعة الجرف في خط الطرد، قانون الحجم الفعّال V = T·Q/4 وزمن الدورة، وهندسة التنظيف الذاتي وفق ANSI/HI 9.8 — مع ثلاثة رسوم تصميمية تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>12 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/wastewater-pump-station-design.webp" width="320" height="200" alt="Wastewater Pump Station Design" loading="lazy"></div>
+    </a>
+
+    <a href="pump-life-cycle-cost.html" class="article-card hidden-article" data-cat="pumps" data-search="life cycle cost LCC تكلفة دورة الحياة كفاءة الطاقة الطاقة النوعية kWh/m3 مؤشر الكفاءة الأدنى MEI محرك IE3 IE4 القيمة الحالية استرداد علاوة الكفاءة مناقصة استدامة انبعاثات">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering · Life-Cycle Cost · Energy</span>
+        <div class="article-card-title">تكلفة دورة الحياة وكفاءة الطاقة — أين تذهب الأموال فعلًا</div>
+        <p class="article-card-excerpt">سعر شراء المضخة مع التشغيل المستمر يمثل نحو ٦٪ فقط من تكلفتها على مدى ٢٠ سنة — بينما الطاقة نحو ٨٤٪. منهجية Europump/HI لتكلفة دورة الحياة، مقارنة الطاقة النوعية (kWh/m³)، حدود MEI وفئات IE، وعلاوة الكفاءة التي تسترد ثمنها في أقل من سنتين — مع ثلاثة مستكشفات تكلفة تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>11 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/pump-life-cycle-cost.webp" width="320" height="200" alt="Pump Life-Cycle Cost and Energy Efficiency" loading="lazy"></div>
+    </a>
+
+    <a href="reading-pump-curves.html" class="article-card hidden-article" data-cat="pumps" data-search="reading manufacturer pump curves قراءة منحنيات المضخات ورقة بيانات الكفاءة القدرة NPSHr قص الدفّاعة قوانين التشابه سرعة VFD تصحيح اللزوجة ISO 9906 تفاوت قبول BEP اختيار المحرك">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering · Curve Reading · Pump Selection</span>
+        <div class="article-card-title">القراءة الصحيحة لمنحنيات المضخات من الشركة المصنّعة</div>
+        <p class="article-card-excerpt">منحنيات السعة والكفاءة والقدرة وNPSHr تعيش على ورقة واحدة — وكل قيمة يجب أن تُقرأ عند التدفق نفسه وعلى قطر الدفّاعة الصحيح. درجات التفاوت في ISO 9906، تصحيحات السرعة والقص واللزوجة، والقراءات الخاطئة الشائعة التي تسبب أعطالًا ميدانية — مع ثلاثة رسوم تفاعلية وأمثلة رقمية.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>13 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/reading-pump-curves.webp" width="320" height="200" alt="Reading Manufacturer Pump Curves Properly" loading="lazy"></div>
+    </a>
+
+    <a href="parallel-series-pump-operation.html" class="article-card hidden-article" data-cat="pumps" data-search="parallel series pump operation التشغيل على التوازي والتوالي تدريج المضخات احتياطي مساعد N+1 المنحنى المجمّع تناقص العائد تقاسم الحمل معزّز متعدد المراحل VFD محطة ضخ">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Hydraulics · Parallel &amp; Series · Pump Staging</span>
+        <div class="article-card-title">التشغيل على التوازي والتوالي وتدريج المضخات</div>
+        <p class="article-card-excerpt">لماذا لا تعطي مضختان ضعف التدفق أبدًا تقريبًا، ولماذا قد لا تعطي مضخة واحدة أي تدفق إطلاقًا، وكيف يحسم منحنى النظام التهيئة المطلوبة. المنحنيات المجمّعة، تناقص العائد، أعطال تقاسم الحمل، وتدريج التشغيل/الاحتياطي/المساعد — مع رسمين تفاعليين.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>11 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/parallel-series-pump-operation.webp" width="320" height="200" alt="Parallel and Series Pump Operation and Staging" loading="lazy"></div>
+    </a>
+
+    <a href="system-head-curve-operating-point.html" class="article-card hidden-article" data-cat="pumps" data-search="system head curve operating point منحنى النظام نقطة التشغيل المضخة الطردية BEP اختيار المضخة التضخيم الزائد قوانين التشابه خنق تقليم الدفّاعة VFD تفاعلي">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Hydraulics · System Curve · Centrifugal Pumps</span>
+        <div class="article-card-title">منحنى النظام ونقطة تشغيل المضخة</div>
+        <p class="article-card-excerpt">لماذا لا تعمل المضخة عند النقطة التي يقولها الكتالوج؟ الضغط الثابت مقابل ضغط الاحتكاك، نقطة التشغيل عند التقاطع، حدود BEP/POR/AOR، وفخّ التضخيم الزائد المكلف — مع رسمين تفاعليين لمطابقة المنحنيات ومثال تطبيقي على محطة ضخ.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>10 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/system-head-curve-operating-point.webp" width="320" height="200" alt="The System Head Curve and the Operating Point" loading="lazy"></div>
+    </a>
+
+    <a href="surge-scenarios-pump-stations.html" class="article-card hidden-article" data-cat="surge" data-search="surge scenarios pumping stations سيناريوهات الموجة العابرة محطات الضخ فصل التيار صدمة صمام عدم الرجوع إغلاق صمام غلاف التصميم انفصال العمود المائي joukowsky">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Transients · Surge Analysis · Pump Stations</span>
+        <div class="article-card-title">سيناريوهات المطرقة المائية في محطات الضخ — وأيُّها يحكم التصميم</div>
+        <p class="article-card-excerpt">فصل التيار، بدء التشغيل، صدمة صمام عدم الرجوع، الإغلاق الطارئ — أي حدث يحدد ضغط التصميم فعليًا؟ تحليل سيناريو بسيناريو لغلاف المطرقة المائية، مع ثلاثة رسوم تفاعلية ومثال تطبيقي.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>11 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/surge-scenarios-pump-stations.webp" width="320" height="200" alt="Surge Scenarios in Pumping Stations" loading="lazy"></div>
+    </a>
+
+    <a href="hammer-transient-simulation-workflow.html" class="article-card hidden-article" data-cat="surge" data-search="hammer transient simulation محاكاة عابرة إيقاف مضخة سرعة الموجة غلاف عابر انفصال عمود مائي bentley">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis · Bentley HAMMER · Pump Shutdown</span>
+        <div class="article-card-title">نمذجة المطرقة المائية في Bentley HAMMER: دليل عملي خطوة بخطوة</div>
+        <p class="article-card-excerpt">من نموذج مائي قائم إلى دراسة موجات ضغط كاملة — إعداد إيقاف المضخة، سلوك المضخة أثناء تباطؤها ودورانها العكسي، سرعة الموجة، خيارات الحساب، تهيئة EPS، وقراءة الغلاف العابر حيث تظهر صدمة انفصال العمود المائي.</p>
+        <div class="article-card-meta">
+          <span>يونيو 2026</span><span>9 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/hammer-transient-simulation-workflow.webp" width="320" height="200" alt="Computing a Transient Simulation in Bentley HAMMER" loading="lazy"></div>
+    </a>
+
+    <a href="hammer-transient-tips.html" class="article-card hidden-article" data-cat="surge" data-search="hammer transient نتائج عابرة صمام هواء bentley محاكاة">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis · Bentley HAMMER · Air Valves</span>
+        <div class="article-card-title">نصائح لاستخدام HAMMER لفهم نتائج تحليل المطرقة المائية</div>
+        <p class="article-card-excerpt">لماذا تسوء النتائج بعد إضافة صمامات الهواء؟ لماذا تظهر موجة ضغط كبيرة بدون جيب هواء مرئي؟ إجابات على الأسئلة الخمسة الأكثر شيوعاً بعد أول محاكاة — مع شرح إعداد الرسوم المتحركة للمقطع الطولي وبيانات العقدة الموسعة.</p>
+        <div class="article-card-meta">
+          <span>مايو 2026</span><span>12 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/hammer-transient-tips.webp" width="320" height="200" alt="HAMMER Transient Tips" loading="lazy"></div>
+    </a>
+
+    <a href="water-hammer-control-valve.html" class="article-card hidden-article" data-cat="surge" data-search="water hammer control valve مطرقة مائية صمام تحكم transient">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis · Water Hammer · Bentley HAMMER</span>
+        <div class="article-card-title">تأثير زمن إغلاق صمام التحكم على شدة المطرقة المائية</div>
+        <p class="article-card-excerpt">الإطار الرياضي الكامل الذي يحكم علاقة ضغط الموجة بزمن الإغلاق — من معادلة جوكوفسكي إلى الوقت الحرج Tc، مع ثلاثة حاسبات تفاعلية ونموذج عددي من 8 سيناريوهات.</p>
+        <div class="article-card-meta">
+          <span>مايو 2026</span><span>15 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/water_hammer_control_valve_v2.webp" width="320" height="200" alt="Water Hammer Control Valve" loading="lazy"></div>
+    </a>
+
+    <a href="combination-air-valves.html" class="article-card hidden-article" data-cat="pipeline" data-search="combination air valves صمامات هواء خط نقل">
+      <div class="card-body">
+        <span class="article-card-tag">Transmission Pipeline Design · Air Management</span>
+        <div class="article-card-title">معايير تصميم صمامات الهواء المركبة في خطوط النقل الطويلة</div>
+        <p class="article-card-excerpt">منهجية منظمة لاختيار وتحديد أحجام ومواقع صمامات الهواء المركبة في خطوط النقل الطويلة — مع مثال تطبيقي على خط DN 800 مم.</p>
+        <div class="article-card-meta">
+          <span>مايو 2026</span><span>12 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/combination_air_valves_design_criteria.webp" width="320" height="200" alt="Combination Air Valves" loading="lazy"></div>
+    </a>
+
+    <a href="surge-vessel.html" class="article-card hidden-article" data-cat="surge" data-search="surge vessel خزان حماية هيدروهوائي">
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis · Hydraulic Design</span>
+        <div class="article-card-title">تحديد حجم خزان الحماية الهيدروهوائي في خطوط نقل المياه</div>
+        <p class="article-card-excerpt">نهج المهندس التصميمي لتحديد حجم خزان الحماية — من مدخلات النموذج إلى مخرجات محاكاة HAMMER، مع أمثلة عددية وتحليل حساسية.</p>
+        <div class="article-card-meta">
+          <span>مايو 2026</span><span>10 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/surge-vessel.webp" width="320" height="200" alt="Surge Vessel" loading="lazy"></div>
+    </a>
+
+    <a href="hydraulic-mistakes.html" class="article-card hidden-article" data-cat="hydraulic" data-search="hydraulic modeling أخطاء نمذجة هيدروليكية">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Modeling · Pipeline Design</span>
+        <div class="article-card-title">الأخطاء الشائعة في النمذجة الهيدروليكية لشبكات نقل المياه</div>
+        <p class="article-card-excerpt">ست أخطاء متكررة وحرجة في النمذجة الهيدروليكية — من تجاهل تحليل المطرقة المائية إلى تحديد الحماية بدون محاكاة. منظور عملي من مشاريع تجاوزت 700 كم.</p>
+        <div class="article-card-meta">
+          <span>مايو 2026</span><span>8 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/hydraulic_modeling_mistakes.webp" width="320" height="200" alt="Hydraulic Mistakes" loading="lazy"></div>
+    </a>
+
+    <a href="pre-charge-pressure.html" class="article-card hidden-article" data-cat="surge" data-search="pre-charge pressure ضغط الشحن المسبق surge vessel">
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis · Surge Vessel Design</span>
+        <div class="article-card-title">ضغط الشحن المسبق لخزان الحماية — كيف يغير رقم واحد كل شيء</div>
+        <p class="article-card-excerpt">المعامل الأكثر حساسية في تصميم خزان الحماية — وأكثرها خطأً. تحليل عددي يُظهر كيف أن خطأ 11% في P₀ يتطلب خزاناً أكبر بنسبة 46%.</p>
+        <div class="article-card-meta">
+          <span>مايو 2026</span><span>9 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/IMG_4656.webp" width="320" height="200" alt="Pre-Charge Pressure" loading="lazy"></div>
+    </a>
+
+    <a href="above-ground-pipeline-design.html" class="article-card hidden-article" data-cat="pipeline" data-search="above ground pipeline تصميم أنابيب هيكلي ASME">
+      <div class="card-body">
+        <span class="article-card-tag">Structural Design · Pipeline Engineering · ASME</span>
+        <div class="article-card-title">دليل هندسي: التصميم الإنشائي لخطوط المياه فوق الأرض</div>
+        <p class="article-card-excerpt">خطوط الأنابيب فوق الأرض عبارة عن عوارض إنشائية — منهجية منظمة لحساب الامتداد الأقصى المسموح به وإدارة التمدد الحراري وتصميم الحمولات الريحية.</p>
+        <div class="article-card-meta">
+          <span>أبريل 2026</span><span>12 دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/above-ground-pipeline-design.webp" width="320" height="200" alt="Above Ground Pipeline Design" loading="lazy"></div>
+    </a>
+
+    <!-- Hidden Articles 7-27 -->
+    <a href="control-valve-transients-hammer.html" class="article-card hidden-article" data-cat="surge" data-search="control valve transients HAMMER FCV PRV صمام تحكم">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis · Bentley HAMMER · Valve Control</span>
+        <div class="article-card-title">إتقان تحليل المطرقة المائية لصمامات التحكم في HAMMER: FCV مقابل PRV</div>
+                <p class="article-card-excerpt">دليل عملي للتمييز بين FCV وPRV في محاكاة HAMMER — متى تستخدم كل منهما وكيف تتحكم في الضغطات العابرة لحماية الشبكة.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>10 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/control-valve-transients-hammer.webp" width="320" height="200" alt="Control Valve Transients" loading="lazy"></div>
+    </a>
+
+    <a href="boundary-conditions-reservoir-tank.html" class="article-card hidden-article" data-cat="surge" data-search="boundary conditions reservoir tank HAMMER حدود نموذج">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis · Bentley HAMMER · Modelling</span>
+        <div class="article-card-title">الشروط الحدية في HAMMER: الفرق بين Reservoir و Tank</div>
+                <p class="article-card-excerpt">الفرق الجوهري بين Reservoir وTank في HAMMER وتأثير كل منهما على نتائج محاكاة المطرقة المائية — خطأ شائع يُفسد التحليل بالكامل.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>8 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/boundary-conditions-reservoir-tank.webp" width="320" height="200" alt="Boundary Conditions" loading="lazy"></div>
+    </a>
+
+    <a href="carbon-steel-pipeline-cml.html" class="article-card hidden-article" data-cat="pipeline" data-search="carbon steel pipeline CML أنابيب صلب طلاء إسمنتي">
+      <div class="card-body">
+        <span class="article-card-tag">Structural Design · Pipeline Engineering · AWWA M11</span>
+        <div class="article-card-title">مرجع التصميم الإنشائي: خطوط الأنابيب الفولاذية بالبطانة الأسمنتية (CML)</div>
+                <p class="article-card-excerpt">مرجع تصميمي شامل لخطوط الأنابيب الفولاذية مع البطانة الأسمنتية — سُمك الجدار ودرجات الفولاذ وحسابات الضغط وفق AWWA M11.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>11 دقيقة</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/carbon-steel-pipeline-cml.webp" width="320" height="200" alt="Carbon Steel Pipeline" loading="lazy"></div>
+    </a>
+
+    <a href="npsh-water-infrastructure.html" class="article-card hidden-article" data-cat="pumps" data-search="NPSH pump ارتفاع صافي مضخة cavitation">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Design · Hydraulic Engineering · NPSH</span>
+        <div class="article-card-title">دليل تقني: إتقان حساب NPSH في منظومات المياه</div>
+                <p class="article-card-excerpt">حساب NPSH المتاح والمطلوب في منظومات ضخ المياه — الأخطاء الشائعة في التصميم وكيف يؤدي تجاهله إلى تآكل المضخات وانهيار الكفاءة.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>9 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/npsh-water-infrastructure.webp" width="320" height="200" alt="NPSH" loading="lazy"></div>
+    </a>
+
+    <a href="transient-analysis-scada.html" class="article-card hidden-article" data-cat="surge" data-search="transient SCADA digital twin تحليل عابر رقمي">
+      <div class="card-body">
+        <span class="article-card-tag">SCADA · Digital Twin · Surge Analysis</span>
+        <div class="article-card-title">ما وراء التصميم الثابت: دمج تحليل المطرقة المائية مع SCADA في الشبكات الذكية</div>
+                <p class="article-card-excerpt">كيف يُحسّن دمج نتائج تحليل المطرقة المائية مع أنظمة SCADA قرارات التشغيل ويحوّل الشبكة من نظام تقليدي إلى منظومة ذكية استباقية.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>8 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/transient-analysis-scada.webp" width="320" height="200" alt="SCADA" loading="lazy"></div>
+    </a>
+
+    <a href="cavitation-prvs-fcvs.html" class="article-card hidden-article" data-cat="hydraulic" data-search="cavitation PRV FCV تكهف صمام">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Design · Cavitation · Valve Engineering</span>
+        <div class="article-card-title">دليل تقني: إدارة ظاهرة التكهف في صمامات PRV و FCV</div>
+                <p class="article-card-excerpt">التكهف في صمامات PRV وFCV — كيف يحدث وكيف تكشفه في محاكاة HAMMER، وأساليب التصميم التي تحدّ منه قبل أن يُلحق الضرر.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>10 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/cavitation-prvs-fcvs.webp" width="320" height="200" alt="Cavitation" loading="lazy"></div>
+    </a>
+
+    <a href="wet-well-vortex-design.html" class="article-card hidden-article" data-cat="pumps" data-search="wet well vortex محطة ضخ دوامة">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Station Design · Wet Well · ANSI/HI 9.8</span>
+        <div class="article-card-title">القاتل الصامت: تشكّل الدوامات والاضطراب الهيدروليكي في تصميم بئر السحب</div>
+                <p class="article-card-excerpt">الدوامات في بئر السحب تُسبب اهتزازات وتآكلاً وانخفاضاً في الكفاءة — معايير ANSI/HI 9.8 وكيف تصمم بئراً هيدروليكياً آمناً.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>9 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/wet-well-vortex-design.webp" width="320" height="200" alt="Wet Well Vortex" loading="lazy"></div>
+    </a>
+
+    <a href="vfd-myth-hydraulic-design.html" class="article-card hidden-article" data-cat="pumps" data-search="VFD variable frequency drive تردد متغير مضخة">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering · Energy Efficiency · VFD</span>
+        <div class="article-card-title">أسطورة VFD: لماذا لا تُصلح محركات التردد المتغير ضعف التصميم الهيدروليكي؟</div>
+                <p class="article-card-excerpt">VFD ليست حلاً سحرياً — حالات يكون فيها محرك التردد المتغير مضيعة للمال وكيف تُقيّم جدواه قبل الإدراج في التصميم.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>7 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/vfd-myth-hydraulic-design.webp" width="320" height="200" alt="VFD Myth" loading="lazy"></div>
+    </a>
+
+    <a href="air-valves-pipeline-safety.html" class="article-card hidden-article" data-cat="pipeline" data-search="air valves pipeline safety صمامات هواء أمان">
+      <div class="card-body">
+        <span class="article-card-tag">Pipeline Safety · Air Valve Design · AWWA M51</span>
+        <div class="article-card-title">صمامات الهواء: مجرد ملحقات أم درع الحماية الأول لخط الأنابيب؟</div>
+                <p class="article-card-excerpt">تحليل شامل لدور صمامات الهواء في حماية الشبكة — الفرق بين صمامات الإدخال والإخراج ومتى يصبح غيابها خطراً هيدروليكياً حقيقياً.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>8 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/air-valves-pipeline-safety.webp" width="320" height="200" alt="Air Valves" loading="lazy"></div>
+    </a>
+
+    <a href="air-admission-networks.html" class="article-card hidden-article" data-cat="surge" data-search="air admission surge networks هواء خطوط نقل">
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis · Air Management · Pipeline Design</span>
+        <div class="article-card-title">إدخال الهواء الاستراتيجي في شبكات نقل المياه: رؤية مزدوجة</div>
+                <p class="article-card-excerpt">استراتيجية إدخال الهواء في شبكات نقل المياه من منظورين: حماية الخط من الانهيار، وتسريع استعادة التشغيل بعد التوقف.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>9 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/air-admission-networks.webp" width="320" height="200" alt="Air Admission" loading="lazy"></div>
+    </a>
+
+    <a href="top-hill-challenge.html" class="article-card hidden-article" data-cat="pipeline" data-search="top hill challenge قمة أنبوب HGL">
+      <div class="card-body">
+        <span class="article-card-tag">Pipeline Design · Surge Analysis · HGL Management</span>
+        <div class="article-card-title">إدارة تحدي النقطة الحرجة في خطوط نقل المياه</div>
+                <p class="article-card-excerpt">النقاط الحرجة المرتفعة هي أكثر مواطن خطر الضغط السالب في خطوط النقل — كيف تُدار بالتصميم الهيدروليكي وليس فقط بوسائل الحماية.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>8 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/top-hill-challenge.webp" width="320" height="200" alt="Top Hill Challenge" loading="lazy"></div>
+    </a>
+
+    <a href="check-valve-hammer.html" class="article-card hidden-article" data-cat="surge" data-search="check valve hammer صمام عدم رجوع">
+      <div class="card-body">
+        <span class="article-card-tag">Transient Analysis · Check Valve · Procurement</span>
+        <div class="article-card-title">من النمذجة إلى الشراء: دليل تحليل صمامات عدم الرجوع في HAMMER</div>
+                <p class="article-card-excerpt">دليل متكامل لتحليل صمامات عدم الرجوع في HAMMER — من اختيار النموذج الصحيح إلى ترجمة النتائج إلى مواصفات شراء دقيقة وقابلة للتطبيق.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>9 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/check-valve-hammer.webp" width="320" height="200" alt="Check Valve" loading="lazy"></div>
+    </a>
+
+    <a href="prv-altitude-valve-fcv.html" class="article-card hidden-article" data-cat="hydraulic" data-search="PRV altitude valve FCV صمام ضغط مستوى تدفق">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Control · Valve Selection · Water Transmission</span>
+        <div class="article-card-title">فهم صمامات PRV وصمامات المنسوب و FCV في منظومات نقل المياه</div>
+                <p class="article-card-excerpt">الفروق التشغيلية بين ثلاثة صمامات حيوية في شبكات المياه — متى تختار PRV ومتى يكون صمام المنسوب أو FCV هو الخيار الأنسب.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>8 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/prv-altitude-valve-fcv.webp" width="320" height="200" alt="PRV Altitude Valve FCV" loading="lazy"></div>
+    </a>
+
+    <a href="sustainable-pump-selection.html" class="article-card hidden-article" data-cat="pumps" data-search="sustainable pump selection اختيار مضخة مستدامة">
+      <div class="card-body">
+        <span class="article-card-tag">Pump Engineering · Energy Efficiency · Sustainability</span>
+        <div class="article-card-title">اختيار المضخة المستدام: ما وراء نقطة التشغيل</div>
+                <p class="article-card-excerpt">اختيار المضخة لا ينتهي عند نقطة التشغيل — تحليل منحنى الكفاءة على مدى عمر المشروع وأثره الحقيقي على استهلاك الطاقة والتكاليف.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>7 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/sustainable-pump-selection.webp" width="320" height="200" alt="Sustainable Pump Selection" loading="lazy"></div>
+    </a>
+
+    <a href="steady-state-analysis.html" class="article-card hidden-article" data-cat="hydraulic" data-search="steady state analysis تحليل حالة مستقرة">
+      <div class="card-body">
+        <span class="article-card-tag">Hydraulic Modeling · Steady-State · Pipeline Design</span>
+        <div class="article-card-title">التحليل الهيدروليكي للحالة المستقرة: الأساس قبل تحليل المطرقة المائية</div>
+                <p class="article-card-excerpt">التحليل الهيدروليكي للحالة المستقرة هو الأساس الذي يقوم عليه كل تحليل عابر — متطلبات الإدخال الصحيح وأثر الأخطاء على دقة النتائج.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>8 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/steady-state-analysis.webp" width="320" height="200" alt="Steady State Analysis" loading="lazy"></div>
+    </a>
+
+    <a href="surge-analysis-risk.html" class="article-card hidden-article" data-cat="surge" data-search="surge analysis risk تحليل مطرقة مائية مخاطر">
+      <div class="card-body">
+        <span class="article-card-tag">Surge Analysis · Risk Management · Pipeline Design</span>
+        <div class="article-card-title">تحليل المطرقة المائية كأداة لإدارة المخاطر الهندسية</div>
+                <p class="article-card-excerpt">كيف تتحول نتائج تحليل المطرقة المائية إلى مصفوفة مخاطر قابلة للتقييم — ربط السيناريوهات الحرجة باحتمالات الفشل وتكاليفه.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>7 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/surge-analysis-risk.webp" width="320" height="200" alt="Surge Analysis Risk" loading="lazy"></div>
+    </a>
+
+    <a href="design-vs-reality.html" class="article-card hidden-article" data-cat="leadership" data-search="design reality gap فجوة التصميم والواقع قيادة">
+      <div class="card-body">
+        <span class="article-card-tag">Engineering Practice · Field Experience · Design</span>
+        <div class="article-card-title">التصميم مقابل الواقع: ما يعلمك إياه الميدان ولا يعلمك أي برنامج</div>
+                <p class="article-card-excerpt">فجوة حقيقية بين ما يُصمَّم على الورق وما يحدث في الميدان — دروس مباشرة من مشاريع فعلية تجاوزت 700 كم من خطوط النقل.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>6 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/design-vs-reality.webp" width="320" height="200" alt="Design vs Reality" loading="lazy"></div>
+    </a>
+
+    <a href="engineering-decisions.html" class="article-card hidden-article" data-cat="leadership" data-search="engineering decisions قرارات هندسية قيادة">
+      <div class="card-body">
+        <span class="article-card-tag">Engineering Leadership · Decision Making · Infrastructure</span>
+        <div class="article-card-title">القرارات الهندسية في ظل عدم اليقين: إطار عمل لمشاريع البنية التحتية</div>
+                <p class="article-card-excerpt">إطار منهجي لاتخاذ القرارات الهندسية عند غياب البيانات الكاملة — أدوات تقييم عدم اليقين في مشاريع البنية التحتية الكبرى.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>7 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/engineering-decisions.webp" width="320" height="200" alt="Engineering Decisions" loading="lazy"></div>
+    </a>
+
+    <a href="envision-sustainability.html" class="article-card hidden-article" data-cat="leadership" data-search="envision sustainability استدامة بنية تحتية">
+      <div class="card-body">
+        <span class="article-card-tag">Sustainability · Envision · Infrastructure Design</span>
+        <div class="article-card-title">نظام تقييم Envision: دمج الاستدامة في تصميم البنية التحتية</div>
+                <p class="article-card-excerpt">نظام Envision لتقييم الاستدامة في مشاريع البنية التحتية — كيف يختلف عن LEED ومتى يُضاف إلى خطة المشروع من البداية.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>6 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/envision-sustainability.webp" width="320" height="200" alt="Envision Sustainability" loading="lazy"></div>
+    </a>
+
+    <a href="infrastructure-at-scale.html" class="article-card hidden-article" data-cat="leadership" data-search="infrastructure scale بنية تحتية إدارة مشاريع">
+      <div class="card-body">
+        <span class="article-card-tag">Infrastructure · Large Scale · Project Management</span>
+        <div class="article-card-title">البنية التحتية على نطاق واسع: دروس من إدارة مشاريع أنابيب تجاوزت 400 كم</div>
+                <p class="article-card-excerpt">دروس عملية من إدارة مشاريع أنابيب تجاوزت 400 كم — تحديات التنسيق والجودة والتسليم في المشاريع الضخمة متعددة المراحل.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>6 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/infrastructure-at-scale.webp" width="320" height="200" alt="Infrastructure at Scale" loading="lazy"></div>
+    </a>
+
+    <a href="sustainability-in-design.html" class="article-card hidden-article" data-cat="leadership" data-search="sustainability design استدامة تصميم">
+      <div class="card-body">
+        <span class="article-card-tag">Sustainability · Design Coordination · Infrastructure</span>
+        <div class="article-card-title">من الاستراتيجية إلى المواصفات: دمج الاستدامة في التصميم الهندسي</div>
+                <p class="article-card-excerpt">كيف تُترجم أهداف الاستدامة إلى مواصفات تقنية قابلة للتطبيق — من التخطيط الاستراتيجي إلى وثائق العطاء والمراجعة الهندسية.</p>
+        <div class="article-card-meta"><span>أبريل 2026</span><span>4 دقائق</span><span class="article-card-arrow">&#8592;</span></div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/sustainability-in-design.webp" width="320" height="200" alt="Sustainability in Design" loading="lazy"></div>
+    </a>
+
+    <a href="daf-swro-pretreatment.html" class="article-card hidden-article" data-cat="desalination" data-search="DAF SWRO pretreatment تحلية معالجة مسبقة">
+      <div class="card-body">
+        <span class="article-card-tag">تحلية المياه · SWRO · DAF · معالجة أولية</span>
+        <div class="article-card-title">التصميم التقني لوحدات DAF في محطات تحلية المياه الكبرى</div>
+        <p class="article-card-excerpt">دليل تقني لتصميم وحدات DAF في محطات SWRO الكبرى — معدلات التحميل السطحي وأوقات الاحتجاز ونسبة الهواء إلى المواد الصلبة لمحطة بطاقة 300,000 م³/يوم.</p>
+        <div class="article-card-meta">
+          <span>أبريل 2026</span><span>10 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/daf-swro-pretreatment.webp" width="320" height="200" alt="Daf Swro Pretreatment" loading="lazy"></div>
+    </a>
+
+    <a href="mega-swro-engineering.html" class="article-card hidden-article" data-cat="desalination" data-search="mega SWRO تحلية كبرى">
+      <div class="card-body">
+        <span class="article-card-tag">تحلية المياه · SWRO · مشاريع عملاقة · كفاءة الطاقة</span>
+        <div class="article-card-title">هندسة الحجم: لماذا التصميم التقليدي لا يكفي لمحطات SWRO العملاقة</div>
+        <p class="article-card-excerpt">استراتيجيات تحسين متقدمة لمحطات SWRO التي تتجاوز 500,000 م³/يوم — تغذية المنفذ المركزي وتحسين PX والفولاذ المزدوج الفائق عند ضغوط تتجاوز 70 بار.</p>
+        <div class="article-card-meta">
+          <span>أبريل 2026</span><span>8 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/mega-swro-engineering.webp" width="320" height="200" alt="Mega Swro Engineering" loading="lazy"></div>
+    </a>
+
+    <a href="swro-pretreatment-dilemma.html" class="article-card hidden-article" data-cat="desalination" data-search="SWRO pretreatment UF تحلية غشاء">
+      <div class="card-body">
+        <span class="article-card-tag">تحلية المياه · SWRO · UF · معالجة أولية</span>
+        <div class="article-card-title">مرجع تصميمي: المعضلة الاستراتيجية في المعالجة الأولية لـ SWRO — Lamella+PSF مقابل UF والأغشية الخزفية</div>
+        <p class="article-card-excerpt">تحليل مقارن بين نظم المعالجة التقليدية بالترسيب والترشيح الرملي ونظيراتها الغشائية — الأداء وبصمة المساحة والتكاليف على مدار عمر المحطة.</p>
+        <div class="article-card-meta">
+          <span>أبريل 2026</span><span>9 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/swro-pretreatment-dilemma.webp" width="320" height="200" alt="Swro Pretreatment Dilemma" loading="lazy"></div>
+    </a>
+
+    <a href="ro-overdesign-paradox.html" class="article-card hidden-article" data-cat="desalination" data-search="RO overdesign تحلية تصميم مفرط">
+      <div class="card-body">
+        <span class="article-card-tag">تحلية المياه · RO · فلسفة التصميم · تحسين</span>
+        <div class="article-card-title">مفارقة الإفراط في التصميم: هل تضر هوامش الأمان محطة RO؟</div>
+        <p class="article-card-excerpt">لماذا يعود الإفراط في هوامش الأمان بالضرر على محطات RO — اختلال توزيع التدفق وانحراف المضخات عن نقطة الكفاءة المثلى والحجة لصالح التصميم الدقيق.</p>
+        <div class="article-card-meta">
+          <span>أبريل 2026</span><span>7 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/ro-overdesign-paradox.webp" width="320" height="200" alt="Ro Overdesign Paradox" loading="lazy"></div>
+    </a>
+
+    <a href="chlorine-swro-disinfection.html" class="article-card hidden-article" data-cat="desalination" data-search="chlorine SWRO كلور تحلية تعقيم">
+      <div class="card-body">
+        <span class="article-card-tag">تحلية المياه · SWRO · تعقيم · معالجة المياه</span>
+        <div class="article-card-title">رحلة الكلور: علم التعقيم في محطات SWRO</div>
+        <p class="article-card-excerpt">كيف يعمل الكلور كسيف ذي حدين في محطات SWRO — من التوليد الكهروكيميائي عند 0.5–1.0 ملغم/لتر إلى إزالة الكلور الحيوية قبل أغشية البوليأميد.</p>
+        <div class="article-card-meta">
+          <span>أبريل 2026</span><span>3 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/chlorine-swro-disinfection.webp" width="320" height="200" alt="Chlorine Swro Disinfection" loading="lazy"></div>
+    </a>
+
+    <a href="offshore-intake-design.html" class="article-card hidden-article" data-cat="desalination" data-search="offshore intake تحلية مأخذ بحري">
+      <div class="card-body">
+        <span class="article-card-tag">تحلية المياه · سحب بحري · هيدروليكا · تصميم</span>
+        <div class="article-card-title">تصميم نقاط السحب البحري البعيدة: ستة مبادئ هندسية أساسية</div>
+        <p class="article-card-excerpt">تصميم نقاط السحب البحري لعمر يتجاوز 30 عاماً — السرعة والعمق وإدارة التلوث البيولوجي والحماية من عواصف 100 سنة.</p>
+        <div class="article-card-meta">
+          <span>أبريل 2026</span><span>3 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/offshore-intake-design.webp" width="320" height="200" alt="Offshore Intake Design" loading="lazy"></div>
+    </a>
+
+    <a href="ph-management-swro.html" class="article-card hidden-article" data-cat="desalination" data-search="pH SWRO حموضة تحلية">
+      <div class="card-body">
+        <span class="article-card-tag">تحلية المياه · SWRO · pH · استدامة</span>
+        <div class="article-card-title">إدارة pH: المفتاح الخفي لاستدامة محطات SWRO</div>
+        <p class="article-card-excerpt">التحكم الاستراتيجي في pH عبر جميع مراحل SWRO — الحموضة لمنع ترسب CaCO₃ ورفع pH لرفض البورون وإعادة التمعدن لحماية شبكة التوزيع.</p>
+        <div class="article-card-meta">
+          <span>أبريل 2026</span><span>3 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/ph-management-swro.webp" width="320" height="200" alt="Ph Management Swro" loading="lazy"></div>
+    </a>
+
+    <a href="onshore-intake-design.html" class="article-card hidden-article" data-cat="desalination" data-search="onshore intake تحلية مأخذ ساحلي">
+      <div class="card-body">
+        <span class="article-card-tag">تحلية المياه · سحب ساحلي · هيدروليكا · تصميم</span>
+        <div class="article-card-title">تصميم نقاط السحب الساحلية: من النظرية الهيدروليكية إلى التطبيق الميداني</div>
+        <p class="article-card-excerpt">التصميم العملي لنقاط السحب الساحلية — سرعات غرفة الاستقبال وفق HI 9.8 وقاعدة 2.5D لحوض السحب وزمن الاحتجاز الهيدروليكي للوقاية من الدوامات.</p>
+        <div class="article-card-meta">
+          <span>أبريل 2026</span><span>3 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/onshore-intake-design.webp" width="320" height="200" alt="Onshore Intake Design" loading="lazy"></div>
+    </a>
+
+    <a href="px-energy-recovery.html" class="article-card hidden-article" data-cat="desalination" data-search="PX energy recovery استرداد طاقة تحلية">
+      <div class="card-body">
+        <span class="article-card-tag">تحلية المياه · استعادة الطاقة · PX · استدامة</span>
+        <div class="article-card-title">تقنية PX: كيف غيّرت استعادة الطاقة اقتصاديات التحلية</div>
+        <p class="article-card-excerpt">كيف تحقق أجهزة PX الإيزوبارية خفضاً بنسبة 60% في استهلاك الطاقة، محوّلةً التحلية من عملية مكثفة للطاقة إلى حل اقتصادي ومستدام بيئياً.</p>
+        <div class="article-card-meta">
+          <span>أبريل 2026</span><span>3 دقائق</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="../thumbs/px-energy-recovery.webp" width="320" height="200" alt="Px Energy Recovery" loading="lazy"></div>
+    </a>
+  </div>
+
+  <!-- Show More Button -->
+  <div id="show-more-wrap" style="text-align:center; padding:2.5rem 0 1rem;">
+    <button id="show-more-btn" onclick="revealArticles()" style="display:inline-flex; align-items:center; gap:10px; padding:12px 28px; background:var(--glass); -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur); color:var(--accent); border:1px solid var(--glass-border); border-radius:980px; font-size:15px; font-weight:500; cursor:pointer; font-family:'Cairo',sans-serif; box-shadow:var(--shadow-glass); transition:transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-glass-hover)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-glass)'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      عرض ٤٢ مقالة إضافية
+    </button>
+    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">يُعرض ٣ من أصل ٤٥ مقالة</div>
+  </div>
+
+</div>
+
+<!-- Lead Magnet Banner -->
+<section id="lead-magnet-section" style="padding:80px 24px; direction:rtl;">
+  <div class="lead-card">
+    <div class="lead-text">
+      <div class="lead-eyebrow">دليل هندسي مجاني</div>
+      <h2 class="lead-title">10 أخطاء شائعة في تصميم خطوط الضغط</h2>
+      <p class="lead-desc">11 صفحة PDF مع مخططات ومعادلات وحلول احترافية — مجاناً تماماً.</p>
+      <ul class="lead-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>تحليل الضغط العابر</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>إدارة جيوب الهواء</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>تحديد حجم خزان الحماية</li>
+      </ul>
+    </div>
+    <a href="pipeline-checklist.html" class="btn btn-primary lead-btn">
+      تحميل مجاني
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </div>
+</section>
+<style>
+  #lead-magnet-section .lead-card {
+    max-width: var(--max-w); margin: 0 auto;
+    background: var(--glass);
+    backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--glass-border); border-radius: var(--radius);
+    box-shadow: var(--shadow-glass);
+    padding: 48px 52px; display: flex; align-items: center;
+    gap: 48px; flex-wrap: wrap; justify-content: space-between; text-align: right;
+  }
+  #lead-magnet-section .lead-text { flex: 1; min-width: 280px; }
+  #lead-magnet-section .lead-eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+    color: var(--accent); margin-bottom: 12px;
+  }
+  #lead-magnet-section .lead-title {
+    font-family: 'Cairo', sans-serif; font-size: 28px; font-weight: 700;
+    color: var(--text-primary); line-height: 1.35; margin-bottom: 10px;
+  }
+  #lead-magnet-section .lead-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 22px; }
+  #lead-magnet-section .lead-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 28px; padding: 0; }
+  #lead-magnet-section .lead-list li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary); }
+  #lead-magnet-section .lead-list svg { width: 16px; height: 16px; color: var(--accent); flex-shrink: 0; }
+  #lead-magnet-section .lead-btn { flex-shrink: 0; padding: 14px 26px; font-size: 15px; font-family: 'Cairo', sans-serif; }
+  @media (max-width: 768px) {
+    #lead-magnet-section .lead-card { padding: 36px 28px; gap: 28px; }
+    #lead-magnet-section .lead-title { font-size: 23px; }
+    #lead-magnet-section .lead-btn { width: 100%; justify-content: center; }
+  }
+</style>
+
+<script>
+function revealArticles() {
+  var hidden = document.querySelectorAll('.hidden-article');
+  var wrap = document.getElementById('show-more-wrap');
+  hidden.forEach(function(el, i) {
+    setTimeout(function() { el.classList.add('visible'); }, i * 40);
+  });
+  wrap.style.transition = 'opacity 0.3s ease';
+  wrap.style.opacity = '0';
+  setTimeout(function(){ wrap.style.display = 'none'; }, 300);
+  if (window.gtag) gtag('event', 'show_more_articles_ar', { event_category: 'engagement' });
+}
+
+/* ── Search & Filter (AR) ── */
+var _currentCat = 'all';
+
+/* بطاقات المواضيع هي الفلتر: ضغطة للفلترة، ضغطة تانية للإلغاء */
+function topicFilter(cat, el) {
+  var wasActive = el.classList.contains('active');
+  document.querySelectorAll('.cat-card').forEach(function(c){ c.classList.remove('active'); });
+  if (wasActive) {
+    _currentCat = 'all';
+  } else {
+    _currentCat = cat;
+    el.classList.add('active');
+    var sec = document.querySelector('.articles-section');
+    if (sec) window.scrollTo({ top: sec.offsetTop - 60, behavior: 'smooth' });
+  }
+  filterArticles();
+  if (window.gtag && !wasActive) gtag('event', 'topic_filter', { event_category: 'engagement', event_label: cat });
+}
+
+function filterArticles() {
+  var query  = (document.getElementById('article-search').value || '').trim().toLowerCase();
+  var grid   = document.getElementById('articlesGrid');
+  var wrap   = document.getElementById('show-more-wrap');
+  var noRes  = document.getElementById('no-results');
+  var cards  = document.querySelectorAll('#articlesGrid .article-card');
+  var active = _currentCat !== 'all' || query.length > 0;
+
+  if (active) {
+    grid.classList.add('filtering');
+    if (wrap) wrap.style.display = 'none';
+    var visible = 0;
+    cards.forEach(function(card) {
+      var cat    = (card.getAttribute('data-cat') || '').toLowerCase();
+      var search = (card.getAttribute('data-search') || '') + ' ' + (card.textContent || '');
+      search = search.toLowerCase();
+      var catOk  = _currentCat === 'all' || cat === _currentCat;
+      var srchOk = !query || search.indexOf(query) !== -1;
+      if (catOk && srchOk) { card.classList.remove('f-hide'); visible++; }
+      else { card.classList.add('f-hide'); }
+    });
+    noRes.style.display = visible === 0 ? 'block' : 'none';
+  } else {
+    grid.classList.remove('filtering');
+    cards.forEach(function(card) { card.classList.remove('f-hide'); });
+    noRes.style.display = 'none';
+    var anyVisible = document.querySelectorAll('.hidden-article.visible').length;
+    if (wrap && anyVisible === 0) wrap.style.display = '';
+  }
+}
+
+function mcSubmitAr(e) {
+  var email = document.getElementById('mc-email-ar').value.trim();
+  var msg = document.getElementById('mc-msg-ar');
+  var input = document.getElementById('mc-email-ar');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.')
+    && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'يرجى إدخال بريد إلكتروني صحيح (مثال: name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'جارٍ الاشتراك…';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form-ar').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '700';
+    msg.textContent = 'شكراً! تحقق من بريدك لتأكيد الاشتراك.';
+  }, 900);
+  return true;
+}
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <p style="direction:rtl;">© 2026 محمد أبوخطوة &nbsp;&middot;&nbsp; الرياض، المملكة العربية السعودية &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="about-ar.html">نبذة</a></p>
+  </div>
+</footer>
+
+<!-- Newsletter Section -->
+<iframe name="mc_hidden_ar" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section id="newsletter-section" style="padding:96px 24px; text-align:center; border-top:1px solid var(--border); direction:rtl;">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:'Cairo',sans-serif; font-size:clamp(28px,4vw,40px); font-weight:700; margin-bottom:14px; color:var(--text-primary);">رؤى هندسية</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.8;">مقالات متخصصة في هندسة المياه والبنية التحتية وأنظمة MEP — مباشرة إلى بريدك.</p>
+    <form id="mc-newsletter-form-ar" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden_ar" onsubmit="return mcSubmitAr(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email-ar" aria-label="البريد الإلكتروني" placeholder="بريدك الإلكتروني" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:'Cairo',sans-serif; direction:rtl; text-align:right; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px; font-family:'Cairo',sans-serif;">اشترك</button>
+    </form>
+    <div id="mc-msg-ar" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">بدون رسائل مزعجة. إلغاء الاشتراك في أي وقت.</div>
+  </div>
+</section>
+<style>#mc-email-ar:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }</style>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">احجز استشارة</span>
+</div>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">واتساب</span>
+</a>
+
+<style>
+.fab-glass, .fab-consult {
+  position:fixed; bottom:2rem; z-index:9999;
+  display:flex; align-items:center; gap:.6rem;
+  background:rgba(255,255,255,0.15); backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px); color:#1d1d1f; padding:.85rem 1.6rem;
+  border-radius:50px; font-weight:600; font-size:.9rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.3);
+  box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
+  text-decoration:none; 
+  transition:transform .2s, box-shadow .2s; font-family:'Cairo',sans-serif;
+}
+.fab-glass:hover,.fab-consult:hover { transform:translateY(-5px); box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4); }
+.fab-wa { right:2rem; }
+.fab-consult { left:2rem; }
+@media(max-width:600px){
+  .fab-glass-text,.fab-text{display:none;}
+  .fab-glass,.fab-consult{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;}
+}
+
+/* ─── Dark mode: Lead Magnet ─── */
+[data-theme="dark"] #lead-magnet-section {
+  background: linear-gradient(135deg, rgba(41,97,255,0.12) 0%, rgba(41,151,255,0.08) 100%) !important;
+  border-top-color: rgba(41,151,255,0.15) !important;
+  border-bottom-color: rgba(41,151,255,0.15) !important;
+}
+[data-theme="dark"] #lead-magnet-section h2 { color: #f5f5f7 !important; }
+[data-theme="dark"] #lead-magnet-section p  { color: #8e8e93 !important; }
+[data-theme="dark"] #lead-magnet-section div[style*="color:#4b5563"] { color: #8e8e93 !important; }
+[data-theme="dark"] #lead-magnet-section div[style*="color:#0071e3"] { color: #2997ff !important; }
+
+/* ─── Dark mode: Newsletter ─── */
+[data-theme="dark"] #newsletter-section {
+  background: rgba(41,151,255,0.04) !important;
+  border-top-color: rgba(41,151,255,0.12) !important;
+}
+[data-theme="dark"] #newsletter-section h2 { color: #f5f5f7 !important; }
+[data-theme="dark"] #newsletter-section p  { color: #8e8e93 !important; }
+[data-theme="dark"] #newsletter-section #mc-email-ar {
+  background: #2c2c2e !important;
+  border-color: rgba(41,151,255,0.25) !important;
+  color: #f5f5f7 !important;
+}
+[data-theme="dark"] #newsletter-section #mc-email-ar::placeholder { color: #636366 !important; }
+[data-theme="dark"] #newsletter-section #mc-msg-ar { color: #636366 !important; }
+</style>
+<!-- حساب عدد المقالات لكل تصنيف تلقائيًا (يبقي أرقام "تصفّح حسب الموضوع" محدّثة دائمًا) -->
+<script>
+(function(){
+  function toAr(n){ return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];}); }
+  function unit(n){ if(n===1) return 'مقالة'; if(n===2) return 'مقالتان'; if(n>=3&&n<=10) return 'مقالات'; return 'مقالة'; }
+  function syncTopicCounts(){
+    var grid=document.getElementById('articlesGrid'); if(!grid) return;
+    document.querySelectorAll('.cat-card[data-cat]').forEach(function(card){
+      var cat=card.getAttribute('data-cat');
+      var n=grid.querySelectorAll('.article-card[data-cat="'+cat+'"]').length;
+      var el=card.querySelector('.cat-card-count');
+      if(el) el.textContent = toAr(n) + ' ' + unit(n);
+    });
+  }
+  function syncShowMore(){
+    var grid=document.getElementById('articlesGrid'); if(!grid) return;
+    var total=grid.querySelectorAll('.article-card').length;
+    var hidden=grid.querySelectorAll('.article-card.hidden-article').length;
+    var btn=document.getElementById('show-more-btn');
+    if(btn){
+      var svg=btn.querySelector('svg'); btn.textContent='';
+      if(svg) btn.appendChild(svg);
+      btn.appendChild(document.createTextNode(' عرض ' + toAr(hidden) + ' ' + unit(hidden) + ' إضافية'));
+    }
+    var cnt=document.getElementById('show-more-count');
+    if(cnt) cnt.textContent = 'يُعرض ' + toAr(total-hidden) + ' من أصل ' + toAr(total) + ' ' + unit(total);
+    var wrap=document.getElementById('show-more-wrap');
+    if(wrap && hidden===0) wrap.style.display='none';
+  }
+  function run(){ syncTopicCounts(); syncShowMore(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run);
+  else run();
+})();
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

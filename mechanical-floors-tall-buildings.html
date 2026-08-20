@@ -102,6 +102,10 @@
     .breadcrumb a:hover{color:var(--text-primary);}
     .breadcrumb-sep{opacity:.4;}
     .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:#1b4f72;text-decoration:none;border:1px solid #cdd6df;border-radius:980px;padding:4px 11px;background:#fff;transition:.18s;}
+    .calc-link:hover{border-color:#1b4f72;background:#f2f6fa;}
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -139,6 +143,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="/">Articles</a></li>
       <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
       <li><a href="mep-course/">Course</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
@@ -248,6 +253,7 @@
   <div class="fig-head">
     <div class="ftitle">Vertical duct riser area vs floors served by one plant</div>
     <div class="fsub">Q = n·A·q. Riser area = 1.8·Q/v, the 1.8 counting supply plus a return duct at 80&nbsp;% of the supply area. The blue line is the same building served by floor-by-floor air handling, where only outdoor air rides the riser — taken as 10&nbsp;% of the supply volume at two-thirds the duct velocity, since outdoor-air risers are run slower for acoustic reasons.</div>
+    <a class="calc-link" href="calculators.html#calc-duct"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h6"/></svg>Open Duct sizing by velocity as a calculator</a>
   </div>
   <div class="chart-box"><canvas id="ductChart"></canvas></div>
   <div class="controls">
@@ -289,6 +295,7 @@
   <div class="fig-head">
     <div class="ftitle">Maximum vertical zone height by system</div>
     <div class="fsub">Zone height = allowable pressure / 0.0981 bar·m⁻¹. Domestic water is shown two ways: zoned on the fixture comfort window alone, and zoned on riser pipe class with floor PRVs doing the fine control. The three pipe-class bars are the raw rating over the gradient; netting off the residual each system must still hold at the top of its zone shortens them by roughly 10&nbsp;% — the domestic riser, for example, falls from 163&nbsp;m to 148&nbsp;m once a 1.5&nbsp;bar top residual is allowed for.</div>
+    <a class="calc-link" href="calculators.html#calc-pn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h6"/></svg>Open Pressure class check as a calculator</a>
   </div>
   <div class="chart-box"><canvas id="govChart"></canvas></div>
   <div class="controls">

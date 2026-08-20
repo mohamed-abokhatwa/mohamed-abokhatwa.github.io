@@ -102,19 +102,23 @@
     .breadcrumb a:hover{color:var(--text-primary);}
     .breadcrumb-sep{opacity:.4;}
     .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:#1b4f72;text-decoration:none;border:1px solid #cdd6df;border-radius:980px;padding:4px 11px;background:#fff;transition:.18s;}
+    .calc-link:hover{border-color:#1b4f72;background:#f2f6fa;}
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   <meta name="description" content="Greywater and water reuse in megatall buildings: why reuse is a matching problem rather than a treatment problem, the water balance between greywater available and the demands that can absorb it, cooling tower makeup as the sink that changes the arithmetic, treatment standards by end use, plant and storage sizing, honest economics including operating cost, and dual pipework designed against cross-connection — with three interactive charts.">
   <meta property="og:title" content="Greywater &amp; Water Reuse in Megatall Buildings: Matching Source to Sink, Treatment &amp; Dual Pipework | Mohamed Abokhatwa">
-  <meta property="og:description" content="Greywater is about twice the volume WC flushing can absorb, so a flush-only scheme discards half its source — while a 50 MW cooling plant next door drinks 1,800 m3 a day the same greywater covers only 13 percent of.">
+  <meta property="og:description" content="Greywater is about twice the volume WC flushing can absorb, so a flush-only scheme discards half its source — while a 50 MW cooling plant next door drinks 2,400 m3 a day the same greywater covers only 10 percent of.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/greywater-reuse-tall-buildings.html">
   <meta property="og:image" content="https://abokhatwa.com/og-greywater-reuse-tall-buildings.jpg">
   <meta property="og:image:alt" content="Technical cutaway of a megatall tower water reuse system showing separate greywater drainage stacks from the bathrooms, a basement membrane bioreactor treatment plant with balance and treated water tanks, and a purple non-potable riser feeding WC flushing and cooling tower makeup">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Greywater &amp; Water Reuse in Megatall Buildings: Matching Source to Sink, Treatment &amp; Dual Pipework | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="Greywater is about twice the volume WC flushing can absorb, so a flush-only scheme discards half its source — while a 50 MW cooling plant next door drinks 1,800 m3 a day the same greywater covers only 13 percent of.">
+  <meta name="twitter:description" content="Greywater is about twice the volume WC flushing can absorb, so a flush-only scheme discards half its source — while a 50 MW cooling plant next door drinks 2,400 m3 a day the same greywater covers only 10 percent of.">
   <link rel="canonical" href="https://abokhatwa.com/greywater-reuse-tall-buildings.html">
 
   <script type="application/ld+json">
@@ -139,6 +143,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="/">Articles</a></li>
       <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
       <li><a href="mep-course/">Course</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
@@ -248,6 +253,7 @@
   <div class="fig-head">
     <div class="ftitle">Treatment plant and storage sizing</div>
     <div class="fsub">Bioreactor volume from flow and hydraulic retention time; balance storage sized to bridge the mismatch between the collection profile and the reuse profile; treated storage sized on the reuse buffer.</div>
+    <a class="calc-link" href="calculators.html#calc-hrt"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h6"/></svg>Open Hydraulic retention time as a calculator</a>
   </div>
   <div class="chart-box"><canvas id="plantChart"></canvas></div>
   <div class="controls">

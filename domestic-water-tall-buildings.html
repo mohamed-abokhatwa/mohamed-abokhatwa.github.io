@@ -102,6 +102,10 @@
     .breadcrumb a:hover{color:var(--text-primary);}
     .breadcrumb-sep{opacity:.4;}
     .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:#1b4f72;text-decoration:none;border:1px solid #cdd6df;border-radius:980px;padding:4px 11px;background:#fff;transition:.18s;}
+    .calc-link:hover{border-color:#1b4f72;background:#f2f6fa;}
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -139,6 +143,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="/">Articles</a></li>
       <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
       <li><a href="mep-course/">Course</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
@@ -209,6 +214,7 @@
   <div class="fig-head">
     <div class="ftitle">Peak domestic demand — Hunter fixture units vs binomial probability</div>
     <div class="fsub">Hunter fitted to the published flush-tank curve as Q(gpm) = 1.968·WSFU^0.6746 (reproduces 44 gpm at 100 WSFU and 208 gpm at 1000). Binomial: Q = n·p·q&#102; + 1.96·q&#102;·√(n·p·(1−p)).</div>
+    <a class="calc-link" href="calculators.html#calc-hu"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h6"/></svg>Open Hunter fixture-unit demand as a calculator</a>
   </div>
   <div class="chart-box"><canvas id="demandChart"></canvas></div>
   <div class="controls">
@@ -270,6 +276,7 @@
   <div class="fig-head">
     <div class="ftitle">Domestic riser pressure profile — comfort zoning vs riser zoning with floor PRVs</div>
     <div class="fsub">Static pressure p = 0.0981·h below each zone's supply point. Zone height = (p&#109;&#97;&#120; − p&#109;&#105;&#110;)/0.0981 for comfort zoning, and (PN &minus; p&#109;&#105;&#110;)/0.0981 for riser zoning, so the pipe reaches exactly its rating at the foot of the zone. Dashed lines are the fixture pressure limits.</div>
+    <a class="calc-link" href="calculators.html#calc-pn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h6"/></svg>Open Pressure class check as a calculator</a>
   </div>
   <div class="chart-box"><canvas id="zoneChart"></canvas></div>
   <div class="controls">
@@ -319,6 +326,7 @@
   <div class="fig-head">
     <div class="ftitle">Specific pumping energy — roof-tank gravity vs zone-boosted</div>
     <div class="fsub">E (kWh/m³) = H/(367·η). Roof-tank lifts every litre the full height; zone-boosted lifts to a mean height of H/2 for demand spread uniformly up the tower. Both include a friction and residual allowance.</div>
+    <a class="calc-link" href="calculators.html#calc-pe"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h2M16 10h.01M8 14h2M12 14h2M16 14h.01M8 18h6"/></svg>Open Pump energy & specific energy as a calculator</a>
   </div>
   <div class="chart-box"><canvas id="energyChart"></canvas></div>
   <div class="controls">

@@ -36,7 +36,7 @@ def build_html(s):
         T('HEAD_TOP')
         + f"  <title>{s['title']} — Mohamed Abokhatwa</title>\n"
         + '    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">\n'
-        + '  <link rel="stylesheet" href="style.css?v=2">\n'
+        + '  <link rel="stylesheet" href="style.css?v=3">\n'
         + '  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">\n'
         + '  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">\n'
         + '  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">\n'
@@ -151,7 +151,9 @@ def wire_site(s):
     # 3 · sitemap
     p = 'sitemap.xml'; t = io.open(p, encoding='utf-8').read()
     if slug not in t:
-        k = t.index('<url>')
+        anchor = 'ARTICLES \u2014 TALL & MEGATALL BUILDING MEP\n  \u2550'
+        j = t.find(anchor)
+        k = t.index('<url>', j) if j != -1 else t.index('<url>')
         entry = ('<url>\n    <loc>https://abokhatwa.com/%s.html</loc>\n'
                  '    <lastmod>%s</lastmod>\n    <changefreq>monthly</changefreq>\n'
                  '    <priority>0.85</priority>\n  </url>\n  ' % (slug, s['date_iso']))

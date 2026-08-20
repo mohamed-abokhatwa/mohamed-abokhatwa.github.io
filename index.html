@@ -356,6 +356,18 @@
     @media(max-width:480px) {
       .cat-grid { grid-template-columns: 1fr; }
     }
+
+    .feature-strip{max-width:var(--max-w);margin:0 auto 6px;padding:0 24px;display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .feature-card{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;border-radius:18px;
+      border:1px solid var(--border);background:var(--bg-3);text-decoration:none;transition:var(--transition);}
+    .feature-card:hover{transform:translateY(-2px);border-color:var(--accent);}
+    .feature-ic{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+      background:var(--bg-4);color:var(--accent);flex:0 0 auto;}
+    .feature-card .fk{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+    .feature-card h3{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--text-primary);
+      margin:5px 0 6px;letter-spacing:-.015em;}
+    .feature-card p{font-size:14px;line-height:1.55;color:var(--text-secondary);margin:0;}
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -471,6 +483,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="/" class="active">Articles</a></li>
       <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
       <li><a href="mep-course/">Course</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
@@ -546,7 +559,7 @@
     <button type="button" class="cat-card" data-cat="desalination" onclick="topicFilter('desalination',this)">
       <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c2 0 2-1.5 4-1.5S8 8 10 8s2-1.5 4-1.5S16 8 18 8s2-1.5 4-1.5"/><path d="M2 14c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M2 20c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/></svg></span>
       <div class="cat-card-title">Desalination &amp; SWRO</div>
-      <div class="cat-card-count">9 articles</div>
+      <div class="cat-card-count">10 articles</div>
     </button>
     <button type="button" class="cat-card" data-cat="leadership" onclick="topicFilter('leadership',this)">
       <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="3.5"/><path d="M21 20v-2a4 4 0 0 0-3-3.85"/><path d="M16 3.6a4 4 0 0 1 0 6.8"/></svg></span>
@@ -576,6 +589,26 @@
   </div>
 </div>
 
+
+<div class="feature-strip">
+  <a class="feature-card" href="one-tower.html">
+    <span class="feature-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M3 21h18"/><path d="M7 9h10M7 13h10M7 17h10"/></svg></span>
+    <span>
+      <span class="fk">Interactive</span>
+      <h3>One Tower</h3>
+      <p>Every model on this site, coupled to one building. Change the height and watch the pressure zones, mechanical floors, cooling plant and water balance move together.</p>
+    </span>
+  </a>
+  <a class="feature-card" href="megatall-handbook.html">
+    <span class="feature-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+    <span>
+      <span class="fk">Collected edition</span>
+      <h3>The Megatall MEP Handbook</h3>
+      <p>Twenty-nine chapters on tall-building services as one printable volume &mdash; eight hours of reading, 86 worked models, in the order it should be read.</p>
+    </span>
+  </a>
+</div>
+
 <div class="articles-section">
   <span class="section-eyebrow">Published articles</span>
   <h2 class="section-title">Technical Writing</h2>
@@ -592,6 +625,22 @@
   <div id="no-results">No articles found — try a different search or category.</div>
 
   <div class="articles-grid" id="articlesGrid">
+
+    <a href="six-kilowatt-litre-water-energy-tall-buildings.html" class="article-card" data-cat="desalination" data-search="water energy nexus desalination SWRO specific energy consumption pressure exchanger energy recovery device PX ERD kWh per m3 recovery ratio feed pressure transmission pumping head Riyadh Jeddah Gulf tall buildings megatall domestic water lift pumping energy cooling tower makeup evaporation blowdown cycles of concentration embodied energy chiller COP condensate recovery greywater reuse dry cooler hybrid cooler water conservation sustainability design basis MEP building services">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination &amp; Water-Energy &middot; Tall Buildings</span>
+        <div class="article-card-title">The Six-Kilowatt Litre: What Water Really Costs by the Time It Reaches the Top of a Gulf Tower</div>
+        <p class="article-card-excerpt">Desalination stops at the plant fence and building services start at the site boundary, so nobody adds up the whole chain. A litre reaching a top-floor tap costs about <strong>6 kWh/m³</strong> on the coast and <strong>10 inland</strong>, where transmission — not desalination — is the largest term. The tower then evaporates 2,400 m³ a day off its cooling towers, carrying embodied energy equal to roughly <strong>a tenth of the chiller plant&rsquo;s own consumption</strong> and appearing on no energy model. With three interactive charts and the levers ranked by what they actually return.</p>
+        <div class="article-card-meta">
+          <span>August 2026</span>
+          <span>18 min read</span>
+          <span class="article-card-arrow">&#8594;</span>
+        </div>
+      </div>
+      <div class="card-thumb">
+        <img src="thumbs/six-kilowatt-litre-water-energy-tall-buildings.webp" width="320" height="200" alt="The Six-Kilowatt Litre: What Water Really Costs by the Time It Reaches the Top of a Gulf Tower" loading="lazy">
+      </div>
+    </a>
 
     <a href="pools-wellness-mep-tall-buildings.html" class="article-card" data-cat="plumbing" data-search="swimming pool wellness spa MEP tall buildings megatall rooftop infinity edge evaporation ASHRAE correlation vapour pressure air velocity wind boundary layer latent load makeup water pool cover windbreak shelter water temperature turnover period circulation flow filtration velocity sand filter filter area backwash flow disposal balance tank displacement surge bather load skimmer deck level overflow disinfection chlorine bromine residual UV ozone chloramines combined chlorine automatic dosing pH interlock spa Legionella HSG282 PWTAG heat pump dehumidifier heat recovery structural load sloshing dynamic mass tuned sloshing damper waterproofing tanking test fill leak detection makeup metering chemical storage plant access commissioning MEP building services">
       <div class="card-body">
@@ -641,7 +690,7 @@
       </div>
     </a>
 
-    <a href="greywater-reuse-tall-buildings.html" class="article-card" data-cat="plumbing" data-search="greywater water reuse recycling tall buildings megatall water balance source sink matching indoor demand per capita showers basins laundry WC flushing irrigation cooling tower makeup condensate recovery groundwater reuse dewatering treatment standard membrane bioreactor MBR turbidity BOD disinfection residual chlorine aerosol Legionella nutrients phosphorus biofilm balance tank treated storage hydraulic retention time plant footprint odour control dual pipework purple pipe cross connection colour coding marking potable top-up air gap type AA AB backflow prevention automatic bypass out of spec quality monitoring metering reuse fraction payback operating cost tariff subsidy Estidama Mostadam LEED BS 8525 NSF 350 WHO commissioning MEP building services">
+    <a href="greywater-reuse-tall-buildings.html" class="article-card hidden-article" data-cat="plumbing" data-search="greywater water reuse recycling tall buildings megatall water balance source sink matching indoor demand per capita showers basins laundry WC flushing irrigation cooling tower makeup condensate recovery groundwater reuse dewatering treatment standard membrane bioreactor MBR turbidity BOD disinfection residual chlorine aerosol Legionella nutrients phosphorus biofilm balance tank treated storage hydraulic retention time plant footprint odour control dual pipework purple pipe cross connection colour coding marking potable top-up air gap type AA AB backflow prevention automatic bypass out of spec quality monitoring metering reuse fraction payback operating cost tariff subsidy Estidama Mostadam LEED BS 8525 NSF 350 WHO commissioning MEP building services">
       <div class="card-body">
         <span class="article-card-tag">Plumbing &amp; Drainage &middot; Water Reuse &middot; Greywater &middot; Megatall</span>
         <div class="article-card-title">Greywater &amp; Water Reuse in Megatall Buildings: Matching Source to Sink, Treatment &amp; Dual Pipework</div>

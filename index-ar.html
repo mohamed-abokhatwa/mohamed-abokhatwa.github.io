@@ -296,6 +296,18 @@
     @media(max-width:480px) {
       .cat-grid { grid-template-columns: 1fr; }
     }
+
+    .feature-strip{max-width:var(--max-w);margin:0 auto 6px;padding:0 24px;display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+    .feature-card{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;border-radius:18px;
+      border:1px solid var(--border);background:var(--bg-3);text-decoration:none;transition:var(--transition);}
+    .feature-card:hover{transform:translateY(-2px);border-color:var(--accent);}
+    .feature-ic{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+      background:var(--bg-4);color:var(--accent);flex:0 0 auto;}
+    .feature-card .fk{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+    .feature-card h3{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--text-primary);
+      margin:5px 0 6px;letter-spacing:-.015em;}
+    .feature-card p{font-size:14px;line-height:1.55;color:var(--text-secondary);margin:0;}
   </style>
 
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
@@ -356,6 +368,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="index-ar.html" class="active">المقالات</a></li>
       <li><a href="calculators.html">الحاسبات</a></li>
+      <li><a href="one-tower.html">البرج الواحد</a></li>
       <li><a href="mep-course/">الدورة</a></li>
       <li><a href="services-ar.html">الخدمات</a></li>
       <li><a href="about-ar.html">نبذة</a></li>
@@ -432,7 +445,7 @@
     <button type="button" class="cat-card" data-cat="desalination" onclick="topicFilter('desalination',this)">
       <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c2 0 2-1.5 4-1.5S8 8 10 8s2-1.5 4-1.5S16 8 18 8s2-1.5 4-1.5"/><path d="M2 14c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M2 20c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5"/></svg></span>
       <div class="cat-card-title">تحلية المياه و SWRO</div>
-      <div class="cat-card-count">٩ مقالات</div>
+      <div class="cat-card-count">١٠ مقالات</div>
     </button>
     <button type="button" class="cat-card" data-cat="leadership" onclick="topicFilter('leadership',this)">
       <span class="cat-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="3.5"/><path d="M21 20v-2a4 4 0 0 0-3-3.85"/><path d="M16 3.6a4 4 0 0 1 0 6.8"/></svg></span>
@@ -462,6 +475,26 @@
   </div>
 </div>
 
+
+<div class="feature-strip">
+  <a class="feature-card" href="one-tower.html">
+    <span class="feature-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M3 21h18"/><path d="M7 9h10M7 13h10M7 17h10"/></svg></span>
+    <span>
+      <span class="fk">تفاعلي</span>
+      <h3>البرج الواحد</h3>
+      <p>كل النماذج على هذا الموقع مرتبطة ببرج واحد. غيّر الارتفاع وشاهد مناطق الضغط والأدوار الميكانيكية ومحطة التبريد وميزان المياه تتحرك معاً.</p>
+    </span>
+  </a>
+  <a class="feature-card" href="megatall-handbook.html">
+    <span class="feature-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+    <span>
+      <span class="fk">الطبعة المجمّعة</span>
+      <h3>دليل الأنظمة الميكانيكية للمباني الشاهقة</h3>
+      <p>تسعة وعشرون فصلاً عن أنظمة المباني الشاهقة في مجلد واحد قابل للطباعة &mdash; ثماني ساعات قراءة و٨٦ نموذجاً محسوباً، بالترتيب الذي يجب أن تُقرأ به.</p>
+    </span>
+  </a>
+</div>
+
 <div class="articles-section">
   <span class="section-eyebrow">المقالات المنشورة</span>
   <h2 class="section-title">رؤى هندسية</h2>
@@ -476,6 +509,19 @@
   <div id="no-results">لا توجد مقالات — جرّب كلمة أخرى أو فئة مختلفة.</div>
 
   <div class="articles-grid" id="articlesGrid">
+
+    <a href="six-kilowatt-litre-water-energy-tall-buildings.html" class="article-card" data-cat="desalination" data-search="ترابط الماء والطاقة التحلية التناضح العكسي استهلاك الطاقة النوعي مبادل الضغط استرجاع الطاقة نسبة الاسترداد ضغط التغذية النقل الضخ الرياض جدة الخليج المباني الشاهقة المياه الصالحة للشرب رفع المياه طاقة الضخ تعويض أبراج التبريد التبخر التصريف دورات التركيز الطاقة الكامنة معامل الأداء استرجاع المكثفات إعادة استخدام المياه الرمادية المبردات الجافة الهجينة ترشيد المياه الاستدامة أساس التصميم">
+      <div class="card-body">
+        <span class="article-card-tag">Desalination &amp; Water-Energy &middot; Tall Buildings</span>
+        <div class="article-card-title">اللتر بستة كيلوواط: التكلفة الحقيقية للمياه حتى تصل إلى قمة برج خليجي</div>
+        <p class="article-card-excerpt">تتوقف هندسة التحلية عند سور المحطة وتبدأ خدمات المباني عند حدود الموقع، فلا أحد يجمع السلسلة كاملة. اللتر الواصل إلى صنبور في الطابق الأخير يكلف نحو <strong>٦ ك.و.س/م³</strong> على الساحل و<strong>١٠</strong> في الداخل، حيث يتجاوز النقل التحلية. ثم يبخّر البرج ٢٤٠٠ م³ يومياً من أبراج التبريد، بطاقة كامنة تعادل نحو <strong>عُشر استهلاك محطة التبريد نفسها</strong>. مع ثلاثة رسوم تفاعلية.</p>
+        <div class="article-card-meta">
+          <span>أغسطس 2026</span><span>١٨ دقيقة</span>
+          <span class="article-card-arrow">&#8592;</span>
+        </div>
+      </div>
+      <div class="card-thumb"><img src="thumbs/six-kilowatt-litre-water-energy-tall-buildings.webp" width="320" height="200" alt="The Six-Kilowatt Litre: What Water Really Costs by the Time It Reaches the Top of a Gulf Tower" loading="lazy"></div>
+    </a>
 
     <a href="pools-wellness-mep-tall-buildings.html" class="article-card" data-cat="plumbing" data-search="swimming pool spa wellness rooftop infinity edge evaporation latent load pool cover turnover filtration backwash balance tank disinfection UV ozone Legionella HSG282 PWTAG structural load sloshing waterproofing المسابح حمامات السباحة الجاكوزي مرافق الاستجمام المباني الشاهقة المباني فائقة الارتفاع مسبح السطح الحافة اللانهائية التبخر معادلة أشري ضغط البخار سرعة الهواء الرياح الطبقة الحدية الحمل الكامن مياه التعويض غطاء المسبح مصد الرياح الحماية درجة حرارة الماء فترة الدوران معدل التدوير سرعة الترشيح المرشح الرملي مساحة المرشح تدفق الغسيل العكسي التخلص من مياه الغسيل خزان الموازنة الإزاحة الطفرة حمل المستحمين المكشطة التصريف المحيطي التعقيم الكلور البروم المتبقي الأشعة فوق البنفسجية الأوزون الكلورامين الجرعات التلقائية الأس الهيدروجيني التعشيق الليجيونيلا مضخة حرارية لإزالة الرطوبة استرجاع الحرارة الحمل الإنشائي الترنح الكتلة الديناميكية مخمد الترنح المضبوط العزل المائي اختبار الملء كشف التسرب عداد مياه التعويض تخزين الكيماويات الوصول للمعدات التشغيل والاختبار MEP خدمات المباني">
       <div class="card-body">
@@ -516,7 +562,7 @@
       <div class="card-thumb"><img src="thumbs/bms-controls-architecture-tall-buildings.webp" width="320" height="200" alt="BMS &amp; Controls Architecture for Megatall Buildings: Point Count, Field Networks &amp; Trending" loading="lazy"></div>
     </a>
 
-    <a href="greywater-reuse-tall-buildings.html" class="article-card" data-cat="plumbing" data-search="greywater water reuse recycling water balance MBR membrane bioreactor dual pipework cross connection air gap backflow potable top-up cooling tower makeup condensate BS 8525 NSF 350 Estidama Mostadam المياه الرمادية إعادة استخدام المياه إعادة التدوير المباني الشاهقة المباني فائقة الارتفاع الميزان المائي مطابقة المصدر والمصرف الطلب الداخلي نصيب الفرد الأدشاش المغاسل الغسيل صناديق الطرد الري تعويض أبراج التبريد استرجاع المياه المكثفة إعادة استخدام المياه الجوفية نزح المياه معيار المعالجة المفاعل الحيوي الغشائي العكارة الأكسجين الحيوي المطلوب التعقيم الكلور المتبقي الرذاذ الليجيونيلا المغذيات الفوسفور الغشاء الحيوي خزان الموازنة خزان المياه المعالجة زمن المكوث الهيدروليكي مساحة المحطة التحكم في الروائح الشبكة المزدوجة الماسورة البنفسجية التوصيل المتقاطع الترميز اللوني التغذية التكميلية بالمياه الصالحة الفجوة الهوائية منع الارتداد التجاوز التلقائي مراقبة الجودة العدادات نسبة إعادة الاستخدام فترة الاسترداد تكلفة التشغيل التعرفة الدعم التشغيل والاختبار MEP خدمات المباني">
+    <a href="greywater-reuse-tall-buildings.html" class="article-card hidden-article" data-cat="plumbing" data-search="greywater water reuse recycling water balance MBR membrane bioreactor dual pipework cross connection air gap backflow potable top-up cooling tower makeup condensate BS 8525 NSF 350 Estidama Mostadam المياه الرمادية إعادة استخدام المياه إعادة التدوير المباني الشاهقة المباني فائقة الارتفاع الميزان المائي مطابقة المصدر والمصرف الطلب الداخلي نصيب الفرد الأدشاش المغاسل الغسيل صناديق الطرد الري تعويض أبراج التبريد استرجاع المياه المكثفة إعادة استخدام المياه الجوفية نزح المياه معيار المعالجة المفاعل الحيوي الغشائي العكارة الأكسجين الحيوي المطلوب التعقيم الكلور المتبقي الرذاذ الليجيونيلا المغذيات الفوسفور الغشاء الحيوي خزان الموازنة خزان المياه المعالجة زمن المكوث الهيدروليكي مساحة المحطة التحكم في الروائح الشبكة المزدوجة الماسورة البنفسجية التوصيل المتقاطع الترميز اللوني التغذية التكميلية بالمياه الصالحة الفجوة الهوائية منع الارتداد التجاوز التلقائي مراقبة الجودة العدادات نسبة إعادة الاستخدام فترة الاسترداد تكلفة التشغيل التعرفة الدعم التشغيل والاختبار MEP خدمات المباني">
       <div class="card-body">
         <span class="article-card-tag">Plumbing &amp; Drainage &middot; Water Reuse &middot; Greywater &middot; Megatall</span>
         <div class="article-card-title">إعادة استخدام المياه الرمادية في المباني فائقة الارتفاع: مطابقة المصدر بالمصرف والمعالجة والشبكة المزدوجة</div>

@@ -25,7 +25,7 @@
   <meta property="og:image:alt" content="Hydraulic Engineering Calculators">
   <link rel="canonical" href="https://abokhatwa.com/calculators.html">
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -82,7 +82,7 @@
     .calc-hero-stat strong { color: var(--text-primary); font-size: 1.5rem; font-weight: 700; display: block; }
 
     /* ═══ Page wrapper ═══ */
-    .calc-page { background: #f2f2f7; padding-bottom: 80px; }
+    .calc-page { background: var(--bg-2); padding-bottom: 80px; }
 
     /* ═══ Category header ═══ */
     .calc-category {
@@ -98,7 +98,7 @@
     .calc-category h3 {
       font-size: 13px; font-weight: 700;
       text-transform: uppercase; letter-spacing: 1px;
-      color: #6e6e73; margin: 0;
+      color: var(--text-secondary); margin: 0;
     }
     .calc-category-line {
       flex: 1; height: 1px;
@@ -116,7 +116,7 @@
 
     /* ═══ Card ═══ */
     .calc-card {
-      background: #fff;
+      background: var(--sheet);
       border: 1px solid rgba(0,0,0,0.07);
       border-radius: 20px;
       padding: 28px 28px 24px;
@@ -132,15 +132,15 @@
       font-size: 19px; flex-shrink: 0;
     }
     .card-icon svg { width: 55%; height: 55%; }
-    .card-icon.blue  { background: linear-gradient(135deg,#dbeafe,#bfdbfe); color:#0071e3; }
-    .card-icon.indigo{ background: linear-gradient(135deg,#e0e7ff,#c7d2fe); color:#4f46e5; }
-    .card-icon.green { background: linear-gradient(135deg,#dcfce7,#bbf7d0); color:#15803d; }
-    .card-icon.orange{ background: linear-gradient(135deg,#ffedd5,#fed7aa); color:#c2630c; }
-    .card-icon.purple{ background: linear-gradient(135deg,#f3e8ff,#e9d5ff); color:#9333ea; }
-    .card-icon.teal  { background: linear-gradient(135deg,#ccfbf1,#99f6e4); color:#0d9488; }
+    .card-icon.blue  { background: linear-gradient(135deg,var(--air-w),var(--air-w)); color:var(--accent); }
+    .card-icon.indigo{ background: linear-gradient(135deg,var(--air-w),var(--air-w)); color:var(--s4); }
+    .card-icon.green { background: linear-gradient(135deg,var(--success-w),var(--success-w)); color:var(--success); }
+    .card-icon.orange{ background: linear-gradient(135deg,var(--warning-w),var(--warning-w)); color:var(--warning); }
+    .card-icon.purple{ background: linear-gradient(135deg,var(--water-w),var(--water-w)); color:var(--s4); }
+    .card-icon.teal  { background: linear-gradient(135deg,var(--success-w),var(--success-w)); color:var(--water); }
 
-    .card-header-text h2 { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; margin: 0 0 3px; }
-    .card-header-text p  { font-size: 12px; color: #8e8e93; margin: 0; }
+    .card-header-text h2 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 0 0 3px; }
+    .card-header-text p  { font-size: 12px; color: var(--text-tertiary); margin: 0; }
 
     /* ═══ Inputs ═══ */
     .input-grid {
@@ -155,52 +155,52 @@
     .field label {
       font-size: 10.5px; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.6px;
-      color: #8e8e93;
+      color: var(--text-tertiary);
     }
     .field-wrap {
       display: flex; align-items: center;
-      border: 1.5px solid #e5e5ea;
+      border: 1.5px solid var(--border);
       border-radius: 10px;
-      background: #fafafa;
+      background: var(--bg-2);
       transition: border-color 0.18s, background 0.18s;
       overflow: hidden; min-width: 0;
     }
-    .field-wrap:focus-within { border-color: #0071e3; background: #fff; }
+    .field-wrap:focus-within { border-color: var(--accent); background: var(--sheet); }
     .field-wrap input, .field-wrap select {
       flex: 1; min-width: 0; border: none; outline: none;
       background: transparent;
       padding: 9px 12px; font-size: 14px;
-      font-family: inherit; color: #1d1d1f;
+      font-family: inherit; color: var(--text-primary);
     }
     .field-wrap select { cursor: pointer; width: 0; }
     .unit {
       padding: 0 12px 0 0;
       font-size: 11.5px; font-weight: 600;
-      color: #aeaeb2; white-space: nowrap; flex-shrink: 0;
+      color: var(--text-tertiary); white-space: nowrap; flex-shrink: 0;
     }
 
     /* ═══ Result box ═══ */
     .result-box {
       border-radius: 14px; padding: 18px 20px;
-      background: linear-gradient(135deg,#f0f7ff,#e8f0fd);
+      background: linear-gradient(135deg,var(--bg-2),var(--air-w));
       border: 1px solid rgba(0,113,227,0.12);
     }
     .result-label {
       font-size: 10px; font-weight: 700;
       text-transform: uppercase; letter-spacing: 1.2px;
-      color: #0071e3; margin-bottom: 10px;
+      color: var(--accent); margin-bottom: 10px;
     }
     .result-row { display: flex; gap: 28px; flex-wrap: wrap; align-items: baseline; }
     .result-primary {
       font-size: 2.2rem; font-weight: 900;
-      color: #1d1d1f; line-height: 1;
+      color: var(--text-primary); line-height: 1;
     }
     .result-primary .result-unit {
-      font-size: 1rem; font-weight: 500; color: #6e6e73; margin-left: 5px;
+      font-size: 1rem; font-weight: 500; color: var(--text-secondary); margin-left: 5px;
     }
     .result-secondaries { display: flex; flex-direction: column; gap: 3px; }
-    .result-secondaries span { font-size: 13px; color: #4a4a52; }
-    .result-note { margin-top: 10px; font-size: 12px; color: #8e8e93; line-height: 1.5; }
+    .result-secondaries span { font-size: 13px; color: var(--text-secondary); }
+    .result-note { margin-top: 10px; font-size: 12px; color: var(--text-tertiary); line-height: 1.5; }
 
     /* Status pill */
     .pill {
@@ -208,11 +208,11 @@
       border-radius: 20px; font-size: 11.5px; font-weight: 700;
       margin-top: 8px;
     }
-    .pill-ok     { background: #dcfce7; color: #166534; }
-    .pill-warn   { background: #fef9c3; color: #854d0e; }
-    .pill-warning{ background: #fef9c3; color: #854d0e; }
-    .pill-danger { background: #fee2e2; color: #991b1b; }
-    .pill-info   { background: #dbeafe; color: #1e40af; }
+    .pill-ok     { background: var(--success-w); color: var(--success); }
+    .pill-warn   { background: var(--warning-w); color: var(--warning); }
+    .pill-warning{ background: var(--warning-w); color: var(--warning); }
+    .pill-danger { background: var(--danger-w); color: var(--danger); }
+    .pill-info   { background: var(--air-w); color: var(--air); }
 
     /* ── Per-calc action row (Copy / Print) ── */
     .calc-actions { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
@@ -220,20 +220,20 @@
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 12.5px; font-weight: 500; padding: 7px 13px;
       border-radius: 980px; border: 1px solid var(--border, rgba(0,0,0,0.1));
-      background: transparent; color: var(--text-secondary, #6e6e73);
+      background: transparent; color: var(--text-secondary, var(--text-secondary));
       cursor: pointer; font-family: inherit;
       transition: background .15s, color .15s, border-color .15s;
     }
-    .calc-act:hover { background: var(--bg-4, #ededf0); color: var(--text-primary, #1d1d1f); }
+    .calc-act:hover { background: var(--bg-4, var(--bg-4)); color: var(--text-primary, var(--text-primary)); }
     .calc-act svg { width: 14px; height: 14px; flex-shrink: 0; }
-    .calc-act.done { color: #34c759; border-color: #34c759; }
+    .calc-act.done { color: var(--success); border-color: var(--success); }
     [data-theme="dark"] .calc-act { border-color: rgba(255,255,255,0.14); }
     [data-theme="dark"] .calc-act:hover { background: rgba(255,255,255,0.06); }
 
     /* ── Reference / standards line ── */
-    .calc-ref { margin-top: 14px; font-size: 11.5px; color: var(--text-tertiary, #86868b); line-height: 1.6; }
-    .calc-ref strong { color: var(--text-secondary, #6e6e73); font-weight: 600; }
-    .calc-ref a { color: #0071e3; text-decoration: none; }
+    .calc-ref { margin-top: 14px; font-size: 11.5px; color: var(--text-tertiary, var(--text-tertiary)); line-height: 1.6; }
+    .calc-ref strong { color: var(--text-secondary, var(--text-secondary)); font-weight: 600; }
+    .calc-ref a { color: var(--accent); text-decoration: none; }
     .calc-ref a:hover { text-decoration: underline; }
 
     /* ── Print / Save-PDF ── */
@@ -253,7 +253,7 @@
     /* Formula toggle */
     .formula-toggle {
       margin-top: 14px; cursor: pointer;
-      font-size: 12px; color: #0071e3; font-weight: 600;
+      font-size: 12px; color: var(--accent); font-weight: 600;
       display: flex; align-items: center; gap: 4px;
       user-select: none; border: none; background: none;
       padding: 0; font-family: inherit;
@@ -262,24 +262,24 @@
     .formula-toggle.open svg { transform: rotate(90deg); }
     .formula-box {
       display: none; margin-top: 10px;
-      background: #f5f5f7; border-radius: 10px;
+      background: var(--bg-2); border-radius: 10px;
       padding: 12px 14px; font-size: 12px;
-      color: #4a4a52; line-height: 1.9;
+      color: var(--text-secondary); line-height: 1.9;
       font-family: 'SF Mono', 'Fira Code', monospace;
     }
     .formula-box.open { display: block; }
     .diagram-toggle {
       margin-top: 10px; cursor: pointer;
-      font-size: 12px; color: #6e6e73; font-weight: 600;
+      font-size: 12px; color: var(--text-secondary); font-weight: 600;
       display: flex; align-items: center; gap: 6px;
       user-select: none; border: none; background: none;
       padding: 0; font-family: inherit;
     }
     .diagram-toggle svg { width: 14px; height: 14px; flex-shrink: 0; }
-    .diagram-toggle:hover { color: #0071e3; }
+    .diagram-toggle:hover { color: var(--accent); }
     .diagram-box {
       display: none; margin-top: 12px;
-      background: #f0f4ff;
+      background: var(--air-w);
       border: 1px solid rgba(0,113,227,0.15);
       border-radius: 14px; padding: 16px;
       overflow: hidden;
@@ -291,21 +291,21 @@
     .fitting-table { width: 100%; border-collapse: collapse; margin: 14px 0; }
     .fitting-table th {
       font-size: 10px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.6px; color: #8e8e93;
+      letter-spacing: 0.6px; color: var(--text-tertiary);
       padding: 4px 8px; text-align: left;
-      border-bottom: 1px solid #e5e5ea;
+      border-bottom: 1px solid var(--border);
     }
-    .fitting-table td { padding: 5px 8px; font-size: 13px; color: #1d1d1f; }
+    .fitting-table td { padding: 5px 8px; font-size: 13px; color: var(--text-primary); }
     .fitting-table td:last-child { width: 60px; }
     .fitting-table input[type=number] {
       width: 55px; padding: 4px 6px;
-      border: 1.5px solid #e5e5ea; border-radius: 7px;
+      border: 1.5px solid var(--border); border-radius: 7px;
       font-size: 13px; font-family: inherit;
       text-align: center; outline: none;
-      background: #fafafa;
+      background: var(--bg-2);
     }
-    .fitting-table input[type=number]:focus { border-color: #0071e3; background: var(--bg-3); }
-    .fitting-table .k-val { color: #8e8e93; font-size: 12px; }
+    .fitting-table input[type=number]:focus { border-color: var(--accent); background: var(--bg-3); }
+    .fitting-table .k-val { color: var(--text-tertiary); font-size: 12px; }
 
     @media (max-width: 640px) {
       .calc-grid { grid-template-columns: 1fr; }
@@ -317,47 +317,47 @@
     }
 
     /* ═══ DARK MODE OVERRIDES ═══ */
-    [data-theme="dark"] .calc-page { background: #1c1c1e; }
+    [data-theme="dark"] .calc-page { background: var(--bg-2); }
 
     /* Cards */
     [data-theme="dark"] .calc-card {
-      background: #2c2c2e;
+      background: var(--bg-4);
       border-color: rgba(255,255,255,0.08);
       box-shadow: 0 1px 8px rgba(0,0,0,0.3), 0 4px 24px rgba(0,0,0,0.2);
     }
-    [data-theme="dark"] .card-header-text h2 { color: #f5f5f7; }
-    [data-theme="dark"] .card-header-text p  { color: #636366; }
+    [data-theme="dark"] .card-header-text h2 { color: var(--bg-2); }
+    [data-theme="dark"] .card-header-text p  { color: var(--text-tertiary); }
 
     /* Category headers */
-    [data-theme="dark"] .calc-category h3 { color: #636366; }
+    [data-theme="dark"] .calc-category h3 { color: var(--text-tertiary); }
     [data-theme="dark"] .calc-category-line { background: rgba(255,255,255,0.08); }
 
     /* Card icons */
-    [data-theme="dark"] .card-icon.blue   { background: linear-gradient(135deg,rgba(41,97,255,0.25),rgba(41,97,255,0.15)); color:#5fa8ff; }
-    [data-theme="dark"] .card-icon.indigo { background: linear-gradient(135deg,rgba(99,91,255,0.25),rgba(99,91,255,0.15)); color:#9d97ff; }
-    [data-theme="dark"] .card-icon.green  { background: linear-gradient(135deg,rgba(52,199,89,0.25),rgba(52,199,89,0.15)); color:#4ade80; }
-    [data-theme="dark"] .card-icon.orange { background: linear-gradient(135deg,rgba(255,149,0,0.25),rgba(255,149,0,0.15)); color:#fb923c; }
-    [data-theme="dark"] .card-icon.purple { background: linear-gradient(135deg,rgba(175,82,222,0.25),rgba(175,82,222,0.15)); color:#c084fc; }
-    [data-theme="dark"] .card-icon.teal   { background: linear-gradient(135deg,rgba(90,200,250,0.25),rgba(90,200,250,0.15)); color:#2dd4bf; }
+    [data-theme="dark"] .card-icon.blue   { background: linear-gradient(135deg,rgba(41,97,255,0.25),rgba(41,97,255,0.15)); color:var(--accent); }
+    [data-theme="dark"] .card-icon.indigo { background: linear-gradient(135deg,rgba(99,91,255,0.25),rgba(99,91,255,0.15)); color:var(--s4); }
+    [data-theme="dark"] .card-icon.green  { background: linear-gradient(135deg,rgba(52,199,89,0.25),rgba(52,199,89,0.15)); color:var(--success); }
+    [data-theme="dark"] .card-icon.orange { background: linear-gradient(135deg,rgba(255,149,0,0.25),rgba(255,149,0,0.15)); color:var(--warning); }
+    [data-theme="dark"] .card-icon.purple { background: linear-gradient(135deg,rgba(175,82,222,0.25),rgba(175,82,222,0.15)); color:var(--s4); }
+    [data-theme="dark"] .card-icon.teal   { background: linear-gradient(135deg,rgba(90,200,250,0.25),rgba(90,200,250,0.15)); color:var(--water); }
 
     /* Input fields */
-    [data-theme="dark"] .field label { color: #636366; }
+    [data-theme="dark"] .field label { color: var(--text-tertiary); }
     [data-theme="dark"] .field-wrap {
       border-color: rgba(255,255,255,0.1);
-      background: #1c1c1e;
+      background: var(--bg-2);
     }
     [data-theme="dark"] .field-wrap:focus-within {
-      border-color: #2997ff;
-      background: #2c2c2e;
+      border-color: var(--accent);
+      background: var(--bg-4);
     }
     [data-theme="dark"] .field-wrap input,
-    [data-theme="dark"] .field-wrap select { color: #f5f5f7; }
-    [data-theme="dark"] .unit { color: #636366; }
+    [data-theme="dark"] .field-wrap select { color: var(--bg-2); }
+    [data-theme="dark"] .unit { color: var(--text-tertiary); }
 
     /* Read-only velocity display fields */
-    [data-theme="dark"] .field-wrap[style*="background:#f0f0f5"],
-    [data-theme="dark"] .field-wrap[style*="background: #f0f0f5"] {
-      background: #3a3a3c !important;
+    [data-theme="dark"] .field-wrap[style*="background:var(--bg-2)"],
+    [data-theme="dark"] .field-wrap[style*="background: var(--bg-2)"] {
+      background: var(--border-light) !important;
       border-color: rgba(255,255,255,0.1) !important;
     }
 
@@ -366,32 +366,32 @@
       background: linear-gradient(135deg, rgba(41,151,255,0.12), rgba(41,97,255,0.08));
       border-color: rgba(41,151,255,0.2);
     }
-    [data-theme="dark"] .result-label { color: #2997ff; }
-    [data-theme="dark"] .result-primary { color: #f5f5f7; }
-    [data-theme="dark"] .result-primary .result-unit { color: #8e8e93; }
-    [data-theme="dark"] .result-secondaries span { color: #8e8e93; }
-    [data-theme="dark"] .result-note { color: #636366; }
+    [data-theme="dark"] .result-label { color: var(--accent); }
+    [data-theme="dark"] .result-primary { color: var(--bg-2); }
+    [data-theme="dark"] .result-primary .result-unit { color: var(--text-tertiary); }
+    [data-theme="dark"] .result-secondaries span { color: var(--text-tertiary); }
+    [data-theme="dark"] .result-note { color: var(--text-tertiary); }
 
     /* Result sub-grids (inline styled) */
-    [data-theme="dark"] [style*="background:#f8f8fc"],
-    [data-theme="dark"] [style*="background: #f8f8fc"] {
-      background: #3a3a3c !important;
+    [data-theme="dark"] [style*="background:var(--bg-2)"],
+    [data-theme="dark"] [style*="background: var(--bg-2)"] {
+      background: var(--border-light) !important;
       border-color: rgba(255,255,255,0.08) !important;
     }
 
     /* Status pills */
-    [data-theme="dark"] .pill-ok     { background: rgba(52,199,89,0.18);  color: #34c759; }
-    [data-theme="dark"] .pill-warn   { background: rgba(255,214,10,0.18); color: #ffd60a; }
-    [data-theme="dark"] .pill-danger { background: rgba(255,69,58,0.18);  color: #ff453a; }
-    [data-theme="dark"] .pill-info   { background: rgba(41,151,255,0.18); color: #2997ff; }
+    [data-theme="dark"] .pill-ok     { background: rgba(52,199,89,0.18);  color: var(--success); }
+    [data-theme="dark"] .pill-warn   { background: rgba(255,214,10,0.18); color: var(--warning); }
+    [data-theme="dark"] .pill-danger { background: rgba(255,69,58,0.18);  color: var(--danger); }
+    [data-theme="dark"] .pill-info   { background: rgba(41,151,255,0.18); color: var(--accent); }
 
     /* Formula + diagram */
-    [data-theme="dark"] .formula-toggle { color: #2997ff; }
-    [data-theme="dark"] .diagram-toggle { color: #8e8e93; }
-    [data-theme="dark"] .diagram-toggle:hover { color: #2997ff; }
+    [data-theme="dark"] .formula-toggle { color: var(--accent); }
+    [data-theme="dark"] .diagram-toggle { color: var(--text-tertiary); }
+    [data-theme="dark"] .diagram-toggle:hover { color: var(--accent); }
     [data-theme="dark"] .formula-box {
-      background: #1c1c1e;
-      color: #a5b4fc;
+      background: var(--bg-2);
+      color: var(--s4);
       border: 1px solid rgba(41,151,255,0.15);
     }
     [data-theme="dark"] .diagram-box {
@@ -399,65 +399,65 @@
       border-color: rgba(41,151,255,0.15);
     }
     /* ── Diagram legibility in dark mode (lift neutral grays) ── */
-    [data-theme="dark"] .diagram-box text[fill="#6b7280"],
-    [data-theme="dark"] .diagram-box text[fill="#636366"],
-    [data-theme="dark"] .diagram-box text[fill="#8e8e93"],
-    [data-theme="dark"] .diagram-box text[fill="#4a4a52"] { fill: #c7c7cc !important; }
-    [data-theme="dark"] .diagram-box text[fill="#9ca3af"] { fill: #aeaeb2 !important; }
-    [data-theme="dark"] .diagram-box line[stroke="#9ca3af"],
-    [data-theme="dark"] .diagram-box line[stroke="#6b7280"],
-    [data-theme="dark"] .diagram-box line[stroke="#d1d5db"] { stroke: #8e8e93 !important; }
-    [data-theme="dark"] .diagram-box polygon[fill="#9ca3af"],
-    [data-theme="dark"] .diagram-box polygon[fill="#6b7280"] { fill: #8e8e93 !important; }
+    [data-theme="dark"] .diagram-box text[fill="var(--text-secondary)"],
+    [data-theme="dark"] .diagram-box text[fill="var(--text-tertiary)"],
+    [data-theme="dark"] .diagram-box text[fill="var(--text-tertiary)"],
+    [data-theme="dark"] .diagram-box text[fill="var(--text-secondary)"] { fill: var(--border) !important; }
+    [data-theme="dark"] .diagram-box text[fill="var(--text-tertiary)"] { fill: var(--text-tertiary) !important; }
+    [data-theme="dark"] .diagram-box line[stroke="var(--text-tertiary)"],
+    [data-theme="dark"] .diagram-box line[stroke="var(--text-secondary)"],
+    [data-theme="dark"] .diagram-box line[stroke="var(--border)"] { stroke: var(--text-tertiary) !important; }
+    [data-theme="dark"] .diagram-box polygon[fill="var(--text-tertiary)"],
+    [data-theme="dark"] .diagram-box polygon[fill="var(--text-secondary)"] { fill: var(--text-tertiary) !important; }
     /* Dark titles / dark-blue labels that vanish on dark bg */
-    [data-theme="dark"] .diagram-box text[fill="#1d1d1f"],
-    [data-theme="dark"] .diagram-box text[fill="#1c1c1e"] { fill: #f5f5f7 !important; }
-    [data-theme="dark"] .diagram-box text[fill="#1e40af"] { fill: #6ea8ff !important; }
-    [data-theme="dark"] .diagram-box text[fill="#a16207"] { fill: #d99a3a !important; }
-    [data-theme="dark"] .diagram-box line[stroke="#a16207"],
-    [data-theme="dark"] .diagram-box rect[stroke="#a16207"] { stroke: #d99a3a !important; }
-    [data-theme="dark"] .diagram-box line[stroke="#e5e5ea"] { stroke: rgba(255,255,255,0.12) !important; }
+    [data-theme="dark"] .diagram-box text[fill="var(--text-primary)"],
+    [data-theme="dark"] .diagram-box text[fill="var(--bg-2)"] { fill: var(--bg-2) !important; }
+    [data-theme="dark"] .diagram-box text[fill="var(--air)"] { fill: var(--accent) !important; }
+    [data-theme="dark"] .diagram-box text[fill="var(--warning)"] { fill: var(--warning) !important; }
+    [data-theme="dark"] .diagram-box line[stroke="var(--warning)"],
+    [data-theme="dark"] .diagram-box rect[stroke="var(--warning)"] { stroke: var(--warning) !important; }
+    [data-theme="dark"] .diagram-box line[stroke="var(--border)"] { stroke: rgba(255,255,255,0.12) !important; }
     /* Reusable label classes for new diagrams (theme-adaptive) */
-    .diagram-box .dgl  { fill: #6b7280; }
-    .diagram-box .dgl2 { fill: #9ca3af; }
-    .diagram-box .dg-dim { stroke: #9ca3af; }
-    [data-theme="dark"] .diagram-box .dgl  { fill: #c7c7cc; }
-    [data-theme="dark"] .diagram-box .dgl2 { fill: #aeaeb2; }
-    [data-theme="dark"] .diagram-box .dg-dim { stroke: #8e8e93; }
+    .diagram-box .dgl  { fill: var(--text-secondary); }
+    .diagram-box .dgl2 { fill: var(--text-tertiary); }
+    .diagram-box .dg-dim { stroke: var(--text-tertiary); }
+    [data-theme="dark"] .diagram-box .dgl  { fill: var(--border); }
+    [data-theme="dark"] .diagram-box .dgl2 { fill: var(--text-tertiary); }
+    [data-theme="dark"] .diagram-box .dg-dim { stroke: var(--text-tertiary); }
 
     /* Minor losses table */
     [data-theme="dark"] .fitting-table th {
-      color: #636366;
+      color: var(--text-tertiary);
       border-bottom-color: rgba(255,255,255,0.08);
     }
-    [data-theme="dark"] .fitting-table td { color: #e5e5ea; }
-    [data-theme="dark"] .fitting-table .k-val { color: #636366; }
+    [data-theme="dark"] .fitting-table td { color: var(--border); }
+    [data-theme="dark"] .fitting-table .k-val { color: var(--text-tertiary); }
     [data-theme="dark"] .fitting-table input[type=number] {
       border-color: rgba(255,255,255,0.1);
-      background: #2c2c2e;
-      color: #f5f5f7;
+      background: var(--bg-4);
+      color: var(--bg-2);
     }
     [data-theme="dark"] .fitting-table input[type=number]:focus {
-      border-color: #2997ff;
-      background: #3a3a3c;
+      border-color: var(--accent);
+      background: var(--border-light);
     }
 
     /* Inline color overrides for hardcoded text */
-    [data-theme="dark"] [style*="color:#1d1d1f"] { color: #f5f5f7 !important; }
-    [data-theme="dark"] [style*="color:#4b5563"] { color: #8e8e93 !important; }
-    [data-theme="dark"] [style*="color:#6e6e73"] { color: #636366 !important; }
-    [data-theme="dark"] [style*="color:#8e8e93"] { color: #48484a !important; }
-    [data-theme="dark"] [style*="border-color:#e5e5ea"] { border-color: rgba(255,255,255,0.08) !important; }
-    [data-theme="dark"] [style*="border:1px solid #e5e5ea"] { border-color: rgba(255,255,255,0.08) !important; }
+    [data-theme="dark"] [style*="color:var(--text-primary)"] { color: var(--bg-2) !important; }
+    [data-theme="dark"] [style*="color:var(--text-secondary)"] { color: var(--text-tertiary) !important; }
+    [data-theme="dark"] [style*="color:var(--text-secondary)"] { color: var(--text-tertiary) !important; }
+    [data-theme="dark"] [style*="color:var(--text-tertiary)"] { color: var(--border-light) !important; }
+    [data-theme="dark"] [style*="border-color:var(--border)"] { border-color: rgba(255,255,255,0.08) !important; }
+    [data-theme="dark"] [style*="border:1px solid var(--border)"] { border-color: rgba(255,255,255,0.08) !important; }
 
     /* Footer disclaimer */
-    [data-theme="dark"] .calc-page > footer p[style*="color:#aeaeb2"] { color: #48484a !important; }
-    [data-theme="dark"] [style*="border-top:1px solid #e5e5ea"] { border-top-color: rgba(255,255,255,0.08) !important; }
+    [data-theme="dark"] .calc-page > footer p[style*="color:var(--text-tertiary)"] { color: var(--border-light) !important; }
+    [data-theme="dark"] [style*="border-top:1px solid var(--border)"] { border-top-color: rgba(255,255,255,0.08) !important; }
 
-    .art-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(0,0,0,0.07);font-size:12.5px;font-weight:600;color:#0071e3;text-decoration:none;}
+    .art-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(0,0,0,0.07);font-size:12.5px;font-weight:600;color:var(--accent);text-decoration:none;}
     .art-link:hover{text-decoration:underline;}
-    .art-link span{color:#6e6e73;font-weight:400;}
-    .calc-card:target{box-shadow:0 0 0 2px #0071e3, 0 4px 24px rgba(0,0,0,0.1);}
+    .art-link span{color:var(--text-secondary);font-weight:400;}
+    .calc-card:target{box-shadow:0 0 0 2px var(--accent), 0 4px 24px rgba(0,0,0,0.1);}
   </style>
 
   <script type="application/ld+json">
@@ -540,9 +540,9 @@
     </div>
     <style>
       .unit-switch{display:flex;flex-direction:column;align-items:center;gap:6px;}
-      .unit-toggle{display:inline-flex;border:1px solid var(--border,#d2d2d7);border-radius:980px;overflow:hidden;background:var(--bg-3,#f5f5f7);}
-      .unit-toggle button{border:0;background:transparent;padding:5px 16px;font-size:14px;font-weight:800;cursor:pointer;color:var(--text-tertiary,#8e8e93);font-family:inherit;transition:background .15s,color .15s;}
-      .unit-toggle button.active{background:var(--accent,#0071e3);color:#fff;}
+      .unit-toggle{display:inline-flex;border:1px solid var(--border,var(--border));border-radius:980px;overflow:hidden;background:var(--bg-3,var(--bg-2));}
+      .unit-toggle button{border:0;background:transparent;padding:5px 16px;font-size:14px;font-weight:800;cursor:pointer;color:var(--text-tertiary,var(--text-tertiary));font-family:inherit;transition:background .15s,color .15s;}
+      .unit-toggle button.active{background:var(--accent,var(--accent));color:var(--on-accent);}
     </style>
   </div>
 </div>
@@ -606,7 +606,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="pp-r-motor">—<span class="result-unit">kW</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Motor input power</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Motor input power</div>
         </div>
         <div class="result-secondaries">
           <span id="pp-r-hyd">Hydraulic power: — kW</span>
@@ -748,7 +748,7 @@
         </div>
       </div>
     </div>
-    <div style="font-size:11px;color:#8e8e93;margin:-8px 0 14px;padding-left:2px;">
+    <div style="font-size:11px;color:var(--text-tertiary);margin:-8px 0 14px;padding-left:2px;">
       Z_s: + if fluid surface is above pump (flooded suction), − for suction lift
     </div>
 
@@ -841,7 +841,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="sys-r-Q">—<span class="result-unit">m³/h</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Operating flow Q*</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Operating flow Q*</div>
         </div>
         <div class="result-secondaries">
           <span id="sys-r-H">Operating head H*: — m</span>
@@ -926,7 +926,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="pe-r-cost">—<span class="result-unit">SAR/yr</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Annual energy cost</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Annual energy cost</div>
         </div>
         <div class="result-secondaries">
           <span id="pe-r-pin">Input power: — kW</span>
@@ -1013,7 +1013,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="aff-r-Q2">—<span class="result-unit">m³/h</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">New flow rate Q₂</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">New flow rate Q₂</div>
         </div>
         <div class="result-secondaries">
           <span id="aff-r-H2">Head: — m</span>
@@ -1099,7 +1099,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="ns-r-Nq">—<span class="result-unit">Nq</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Metric specific speed</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Metric specific speed</div>
         </div>
         <div class="result-secondaries">
           <span id="ns-r-type">Pump type: —</span>
@@ -1221,7 +1221,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="hw-r-hf">—<span class="result-unit">m</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Head loss</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Head loss</div>
         </div>
         <div class="result-secondaries">
           <span id="hw-r-dp">Pressure loss: — bar</span>
@@ -1326,7 +1326,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="re-r-v">—<span class="result-unit">m/s</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Pipe velocity</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Pipe velocity</div>
         </div>
         <div class="result-secondaries">
           <span id="re-r-re">Re: —</span>
@@ -1415,8 +1415,8 @@
       </div>
       <div class="field">
         <label>Velocity Head V²/2g</label>
-        <div class="field-wrap" style="background:#f0f0f5;border-color:#e5e5ea;">
-          <span id="ml-vh" style="flex:1;padding:9px 12px;font-size:14px;color:#6e6e73;">—</span>
+        <div class="field-wrap" style="background:var(--bg-2);border-color:var(--border);">
+          <span id="ml-vh" style="flex:1;padding:9px 12px;font-size:14px;color:var(--text-secondary);">—</span>
           <span class="unit">m</span>
         </div>
       </div>
@@ -1457,7 +1457,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="ml-r-h">—<span class="result-unit">m</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Total head loss</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Total head loss</div>
         </div>
         <div class="result-secondaries">
           <span id="ml-r-k">ΣK = —</span>
@@ -1534,7 +1534,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="uc-r-bar">—<span class="result-unit">bar</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Pressure</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Pressure</div>
         </div>
         <div class="result-secondaries">
           <span id="uc-r-m">Head: — m water</span>
@@ -1626,7 +1626,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="dw-r-hf">—<span class="result-unit">m</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Head loss hf</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Head loss hf</div>
         </div>
         <div class="result-secondaries">
           <span id="dw-r-dP">Pressure drop: — bar</span>
@@ -1739,7 +1739,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="th-r-F">—<span class="result-unit">kN</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Net thrust force</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Net thrust force</div>
         </div>
         <div class="result-secondaries">
           <span id="th-r-area">Block bearing area: — m²</span>
@@ -1815,7 +1815,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="cw-r-f">—<span class="result-unit"></span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Darcy f (Colebrook)</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Darcy f (Colebrook)</div>
         </div>
         <div class="result-secondaries">
           <span id="cw-r-rel">Relative roughness ε/D: —</span>
@@ -1924,7 +1924,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="bl-r-bar">—<span class="result-unit">bar</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Allowable pressure (with DF &amp; SF)</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Allowable pressure (with DF &amp; SF)</div>
         </div>
         <div class="result-secondaries">
           <span id="bl-r-mpa">Allowable: — MPa</span>
@@ -2023,7 +2023,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="df-r-pct">—<span class="result-unit">%</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Δy / D</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Δy / D</div>
         </div>
         <div class="result-secondaries">
           <span id="df-r-wc">Soil prism pressure: — kPa</span>
@@ -2096,7 +2096,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="fl-r-fos">—<span class="result-unit"></span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Safety factor vs uplift</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Safety factor vs uplift</div>
         </div>
         <div class="result-secondaries">
           <span id="fl-r-up">Buoyant uplift: — kN/m</span>
@@ -2178,7 +2178,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="te-r-dl">—<span class="result-unit">mm</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Free expansion ΔL</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Free expansion ΔL</div>
         </div>
         <div class="result-secondaries">
           <span id="te-r-strain">Thermal strain: — mm/m</span>
@@ -2287,13 +2287,13 @@
       </div>
       <div class="field">
         <label>Flow Velocity ΔV (calculated)</label>
-        <div class="field-wrap" style="background:#f0f0f5;border-color:#e5e5ea;">
-          <span id="wh-v-display" style="flex:1;padding:9px 12px;font-size:14px;color:#6e6e73;">—</span>
+        <div class="field-wrap" style="background:var(--bg-2);border-color:var(--border);">
+          <span id="wh-v-display" style="flex:1;padding:9px 12px;font-size:14px;color:var(--text-secondary);">—</span>
           <span class="unit">m/s</span>
         </div>
       </div>
     </div>
-    <div style="font-size:11px;color:#8e8e93;margin:-8px 0 14px;padding-left:2px;">
+    <div style="font-size:11px;color:var(--text-tertiary);margin:-8px 0 14px;padding-left:2px;">
       ΔV = pipe velocity assuming full, instant flow stoppage (worst case)
     </div>
 
@@ -2302,7 +2302,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="wh-r-bar">21.4<span class="result-unit">bar</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Surge pressure rise</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Surge pressure rise</div>
         </div>
         <div class="result-secondaries">
           <span id="wh-r-total">Total: 27.4 bar</span>
@@ -2527,21 +2527,21 @@
     </div>
 
     <!-- Calculated intermediate values -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;background:#f8f8fc;border:1px solid #e5e5ea;border-radius:12px;padding:14px 16px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
       <div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#8e8e93;margin-bottom:4px;">Pipe Velocity</div>
-        <div id="sv-calc-v" style="font-size:1.1rem;font-weight:700;color:#1d1d1f;">—</div>
-        <div style="font-size:11px;color:#aeaeb2;">m/s</div>
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-tertiary);margin-bottom:4px;">Pipe Velocity</div>
+        <div id="sv-calc-v" style="font-size:1.1rem;font-weight:700;color:var(--text-primary);">—</div>
+        <div style="font-size:11px;color:var(--text-tertiary);">m/s</div>
       </div>
       <div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#8e8e93;margin-bottom:4px;">Critical Time Tc</div>
-        <div id="sv-calc-tc" style="font-size:1.1rem;font-weight:700;color:#1d1d1f;">—</div>
-        <div style="font-size:11px;color:#aeaeb2;">s = 2L/a</div>
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-tertiary);margin-bottom:4px;">Critical Time Tc</div>
+        <div id="sv-calc-tc" style="font-size:1.1rem;font-weight:700;color:var(--text-primary);">—</div>
+        <div style="font-size:11px;color:var(--text-tertiary);">s = 2L/a</div>
       </div>
       <div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#8e8e93;margin-bottom:4px;">Surge Volume ΔV</div>
-        <div id="sv-calc-vw" style="font-size:1.1rem;font-weight:700;color:#1d1d1f;">—</div>
-        <div style="font-size:11px;color:#aeaeb2;">m³ ≈ Q × Tc / 2</div>
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-tertiary);margin-bottom:4px;">Surge Volume ΔV</div>
+        <div id="sv-calc-vw" style="font-size:1.1rem;font-weight:700;color:var(--text-primary);">—</div>
+        <div style="font-size:11px;color:var(--text-tertiary);">m³ ≈ Q × Tc / 2</div>
       </div>
     </div>
 
@@ -2550,7 +2550,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="sv-r-vol">—<span class="result-unit">m³</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Total vessel volume</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Total vessel volume</div>
         </div>
         <div class="result-secondaries">
           <span id="sv-r-p0">Pre-charge P₀: — bar_g</span>
@@ -2641,7 +2641,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="pc-r-tc">—<span class="result-unit">s</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Critical time T_c = 2L/a</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Critical time T_c = 2L/a</div>
         </div>
         <div class="result-secondaries">
           <span id="pc-r-phase">Wave travel L/a: — s</span>
@@ -2706,7 +2706,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="mi-r-dh">—<span class="result-unit">m</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Governing surge ΔH</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Governing surge ΔH</div>
         </div>
         <div class="result-secondaries">
           <span id="mi-r-jou">Joukowsky (max): — m</span>
@@ -2773,7 +2773,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="av-r-do">—<span class="result-unit">mm</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Min. orifice diameter</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Min. orifice diameter</div>
         </div>
         <div class="result-secondaries">
           <span id="av-r-qw">Water rate: — m³/h</span>
@@ -2850,7 +2850,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="pn-r-tot">—<span class="result-unit">bar</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Total (working + surge)</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Total (working + surge)</div>
         </div>
         <div class="result-secondaries">
           <span id="pn-r-all">Allowable: — bar</span>
@@ -2950,7 +2950,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="mgp-r-Q">—<span class="result-unit">L/s</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;" id="mgp-r-Qm3">—</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;" id="mgp-r-Qm3">—</div>
         </div>
         <div class="result-secondaries">
           <span id="mgp-r-V">V: — m/s</span>
@@ -3057,7 +3057,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="moc-r-Q">—<span class="result-unit">m³/s</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;" id="moc-r-Qm3">—</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;" id="moc-r-Qm3">—</div>
         </div>
         <div class="result-secondaries">
           <span id="moc-r-V">V: — m/s</span>
@@ -3129,7 +3129,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="cr-r-fr">—<span class="result-unit"></span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Froude number Fr</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Froude number Fr</div>
         </div>
         <div class="result-secondaries">
           <span id="cr-r-reg">Regime: —</span>
@@ -3210,7 +3210,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="dm-r-md">—<span class="result-unit">m³/d</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Max-day demand (incl. NRW)</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Max-day demand (incl. NRW)</div>
         </div>
         <div class="result-secondaries">
           <span id="dm-r-avg">Average day: — m³/d</span>
@@ -3279,7 +3279,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="bs-r-tot">—<span class="result-unit">m³</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Total reservoir volume</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Total reservoir volume</div>
         </div>
         <div class="result-secondaries">
           <span id="bs-r-bal">Balancing: — m³</span>
@@ -3367,7 +3367,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="tnk-r-V">—<span class="result-unit">m³</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Total volume</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Total volume</div>
         </div>
         <div class="result-secondaries">
           <span id="tnk-r-op">Operational: — m³</span>
@@ -3477,7 +3477,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="cl-r-rate">—<span class="result-unit">kg/h</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Cl₂ dose rate</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Cl₂ dose rate</div>
         </div>
         <div class="result-secondaries">
           <span id="cl-r-res">Residual: — mg/L</span>
@@ -3546,7 +3546,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="hrt-r-t">—<span class="result-unit">h</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Actual HRT = V / Q</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Actual HRT = V / Q</div>
         </div>
         <div class="result-secondaries">
           <span id="hrt-r-min">In minutes: — min</span>
@@ -3587,7 +3587,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="cla-r-sor">—<span class="result-unit">m/d</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Surface overflow rate</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Surface overflow rate</div>
         </div>
         <div class="result-secondaries">
           <span id="cla-r-area">Surface area: — m²</span>
@@ -3658,7 +3658,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="co-r-kg">—<span class="result-unit">kg/day</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Neat chemical (100%)</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Neat chemical (100%)</div>
         </div>
         <div class="result-secondaries">
           <span id="co-r-ty">Annual: — t/yr</span>
@@ -3703,7 +3703,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="wf-r-q">—<span class="result-unit">L/s</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;">Discharge Q</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Discharge Q</div>
         </div>
         <div class="result-secondaries">
           <span id="wf-r-m3h">— m³/h</span>
@@ -3839,7 +3839,7 @@
       <div class="result-row">
         <div>
           <div class="result-primary" id="epd-r-D">—<span class="result-unit">mm</span></div>
-          <div style="font-size:12px;color:#8e8e93;margin-top:3px;" id="epd-r-DN">Nearest standard DN: —</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;" id="epd-r-DN">Nearest standard DN: —</div>
         </div>
         <div class="result-secondaries">
           <span id="epd-r-V">Velocity at D_econ: — m/s</span>
@@ -3903,7 +3903,7 @@
 
 <!-- Disclaimer -->
 <div style="max-width:1180px;margin:40px auto 0;padding:0 24px;">
-  <p style="font-size:12px;color:#aeaeb2;line-height:1.7;border-top:1px solid #e5e5ea;padding-top:20px;">
+  <p style="font-size:12px;color:var(--text-tertiary);line-height:1.7;border-top:1px solid var(--border);padding-top:20px;">
     <strong>Engineering Disclaimer:</strong> These calculators are provided for indicative purposes only, based on standard hydraulic engineering formulas. Results must be verified against project-specific conditions, applicable codes (EN, AWWA, ASME, ISO), and reviewed by a qualified engineer before use in design. Mohamed Abokhatwa accepts no liability for decisions based solely on these tools.
   </p>
 </div>
@@ -3925,7 +3925,7 @@
     <div class="result-box">
       <div class="result-label">Chilled-Water Flow</div>
       <div class="result-row">
-        <div><div class="result-primary" id="cwf-r-flow">—<span class="result-unit">L/s</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Design flow</div></div>
+        <div><div class="result-primary" id="cwf-r-flow">—<span class="result-unit">L/s</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Design flow</div></div>
         <div class="result-secondaries">
           <span id="cwf-r-m3h">= — m³/h</span>
           <span id="cwf-r-load">Cooling load: — kW</span>
@@ -3948,7 +3948,7 @@
     <div class="result-box">
       <div class="result-label">Cooling Load</div>
       <div class="result-row">
-        <div><div class="result-primary" id="clr-r-tr">—<span class="result-unit">TR</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Total cooling</div></div>
+        <div><div class="result-primary" id="clr-r-tr">—<span class="result-unit">TR</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Total cooling</div></div>
         <div class="result-secondaries">
           <span id="clr-r-kw">= — kW</span>
           <span id="clr-r-area">Floor area: — m²</span>
@@ -3972,7 +3972,7 @@
     <div class="result-box">
       <div class="result-label">Fan Shaft Power</div>
       <div class="result-row">
-        <div><div class="result-primary" id="fan-r-kw">—<span class="result-unit">kW</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">At the fan shaft</div></div>
+        <div><div class="result-primary" id="fan-r-kw">—<span class="result-unit">kW</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">At the fan shaft</div></div>
         <div class="result-secondaries">
           <span id="fan-r-air">Airflow: — m³/h</span>
           <span id="fan-r-dp">Static pressure: — Pa</span>
@@ -3995,7 +3995,7 @@
     <div class="result-box">
       <div class="result-label">Round Duct Diameter</div>
       <div class="result-row">
-        <div><div class="result-primary" id="duct-r-d">—<span class="result-unit">mm</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Equivalent round</div></div>
+        <div><div class="result-primary" id="duct-r-d">—<span class="result-unit">mm</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Equivalent round</div></div>
         <div class="result-secondaries">
           <span id="duct-r-area">Cross-section: — m²</span>
           <span id="duct-r-air">Airflow: — m³/h</span>
@@ -4028,7 +4028,7 @@
     <div class="result-box">
       <div class="result-label">Voltage Drop</div>
       <div class="result-row">
-        <div><div class="result-primary" id="vd-r-pct">—<span class="result-unit">%</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Of nominal voltage</div></div>
+        <div><div class="result-primary" id="vd-r-pct">—<span class="result-unit">%</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Of nominal voltage</div></div>
         <div class="result-secondaries">
           <span id="vd-r-v">Voltage drop: — V</span>
           <span id="vd-r-r">Cable R: — Ω/km</span>
@@ -4053,7 +4053,7 @@
     <div class="result-box">
       <div class="result-label">Full-Load Current</div>
       <div class="result-row">
-        <div><div class="result-primary" id="flc-r-i">—<span class="result-unit">A</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Line current</div></div>
+        <div><div class="result-primary" id="flc-r-i">—<span class="result-unit">A</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Line current</div></div>
         <div class="result-secondaries">
           <span id="flc-r-kva">Apparent power: — kVA</span>
           <span id="flc-r-p">Motor rating: — kW</span>
@@ -4078,7 +4078,7 @@
     <div class="result-box">
       <div class="result-label">Required Rating</div>
       <div class="result-row">
-        <div><div class="result-primary" id="gen-r-kva">—<span class="result-unit">kVA</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">With spare margin</div></div>
+        <div><div class="result-primary" id="gen-r-kva">—<span class="result-unit">kVA</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">With spare margin</div></div>
         <div class="result-secondaries">
           <span id="gen-r-dem">Demand load: — kW</span>
           <span id="gen-r-base">Base: — kVA</span>
@@ -4110,7 +4110,7 @@
     <div class="result-box">
       <div class="result-label">Total Demand</div>
       <div class="result-row">
-        <div><div class="result-primary" id="spr-r-total">—<span class="result-unit">L/s</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Sprinklers + hose</div></div>
+        <div><div class="result-primary" id="spr-r-total">—<span class="result-unit">L/s</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Sprinklers + hose</div></div>
         <div class="result-secondaries">
           <span id="spr-r-spr">Sprinkler flow: — L/s</span>
           <span id="spr-r-lmin">= — L/min</span>
@@ -4134,7 +4134,7 @@
     <div class="result-box">
       <div class="result-label">Fire-Water Storage</div>
       <div class="result-row">
-        <div><div class="result-primary" id="fp-r-stor">—<span class="result-unit">m³</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">For the duration</div></div>
+        <div><div class="result-primary" id="fp-r-stor">—<span class="result-unit">m³</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">For the duration</div></div>
         <div class="result-secondaries">
           <span id="fp-r-q150">150% flow: — L/s</span>
           <span id="fp-r-churn">Churn head (140%): — m</span>
@@ -4168,7 +4168,7 @@
     <div class="result-box">
       <div class="result-label">Design Flow</div>
       <div class="result-row">
-        <div><div class="result-primary" id="hu-r-q">—<span class="result-unit">L/s</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Probable demand</div></div>
+        <div><div class="result-primary" id="hu-r-q">—<span class="result-unit">L/s</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Probable demand</div></div>
         <div class="result-secondaries">
           <span id="hu-r-m3h">= — m³/h</span>
           <span id="hu-r-lu">Fixture units: — LU</span>
@@ -4193,7 +4193,7 @@
     <div class="result-box">
       <div class="result-label">Storage Volume</div>
       <div class="result-row">
-        <div><div class="result-primary" id="hws-r-vol">—<span class="result-unit">m³</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Usable hot store</div></div>
+        <div><div class="result-primary" id="hws-r-vol">—<span class="result-unit">m³</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Usable hot store</div></div>
         <div class="result-secondaries">
           <span id="hws-r-daily">Daily demand: — L</span>
           <span id="hws-r-kw">Heater (2 h recovery): — kW</span>
@@ -4226,7 +4226,7 @@
     <div class="result-box">
       <div class="result-label">5-min Handling Capacity</div>
       <div class="result-row">
-        <div><div class="result-primary" id="lt-r-hc">—<span class="result-unit">%</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">Of population</div></div>
+        <div><div class="result-primary" id="lt-r-hc">—<span class="result-unit">%</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">Of population</div></div>
         <div class="result-secondaries">
           <span id="lt-r-int">Interval: — s</span>
           <span id="lt-r-cars">Cars: —</span>
@@ -4251,7 +4251,7 @@
     <div class="result-box">
       <div class="result-label">Battery Capacity</div>
       <div class="result-row">
-        <div><div class="result-primary" id="fab-r-ah">—<span class="result-unit">Ah</span></div><div style="font-size:12px;color:#8e8e93;margin-top:3px;">With 25% margin</div></div>
+        <div><div class="result-primary" id="fab-r-ah">—<span class="result-unit">Ah</span></div><div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;">With 25% margin</div></div>
         <div class="result-secondaries">
           <span id="fab-r-st">Standby: — Ah</span>
           <span id="fab-r-al">Alarm: — Ah</span>
@@ -4343,7 +4343,7 @@ function mcSubmit(e) {
   border:1px solid rgba(255,255,255,0.2);
   border-radius:50px; padding:.75rem 1.2rem;
   cursor:pointer; text-decoration:none;
-  color:#1d1d1f; font-size:.85rem; font-weight:600;
+  color:var(--text-primary); font-size:.85rem; font-weight:600;
   box-shadow:0 4px 24px rgba(0,0,0,0.12);
   transition:transform .2s, box-shadow .2s;
   
@@ -5693,7 +5693,7 @@ window.addEventListener('DOMContentLoaded', function() {
   .calc-chips { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
   .calc-chip { font-size: 12px; font-weight: 500; padding: 6px 13px; border-radius: 980px; border: 1px solid var(--border); background: transparent; color: var(--text-secondary); cursor: pointer; font-family: inherit; white-space: nowrap; transition: background .15s, color .15s, border-color .15s; }
   .calc-chip:hover { background: var(--bg-4); color: var(--text-primary); }
-  .calc-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .calc-chip.active { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
   .calc-noresults { display: none; text-align: center; padding: 50px 20px; color: var(--text-tertiary); font-size: 15px; }
   @media (max-width: 600px) {
     .calc-toolbar { top: 52px; }
@@ -5940,6 +5940,6 @@ window.addEventListener('DOMContentLoaded', function() {
 })();
 </script>
 
-<script src="theme.js"></script>
+<script src="theme.js?v=4"></script>
 </body>
 </html>

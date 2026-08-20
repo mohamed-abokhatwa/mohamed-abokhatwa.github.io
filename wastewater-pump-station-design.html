@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wastewater Pump Station Design — Mohamed Abokhatwa</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -56,7 +56,7 @@
     .callout strong{color:var(--text-primary);}
     .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
     .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
-    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+    .callout.green{border-left-color:var(--success);} .callout.green .lbl{color:var(--success);}
 
     /* tables */
     .tbl-wrap{overflow-x:auto;margin:24px 0;}
@@ -69,27 +69,27 @@
     ul.clean li{margin-bottom:9px;}
 
     /* interactive figure — a self-contained light instrument panel, legible in both themes */
-    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass);}
     .fig-head{padding:18px 22px 6px;}
-    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
-    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:var(--air);}
+    .fig-head .fsub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5;}
     .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
     @media(max-width:640px){.chart-box{height:340px;}}
-    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
-    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
-    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
-    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
-    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
-    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
-    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid var(--border);background:var(--bg-2);}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+    .ctrl label span{color:var(--air);font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:var(--air);}
+    .ctrl .hint{font-size:11.5px;color:var(--text-secondary);margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid var(--border);}
+    .readout .cell{padding:14px 16px;border-right:1px solid var(--border);}
     .readout .cell:last-child{border-right:none;}
-    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
-    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
-    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary);}
+    .readout .v{font-size:22px;font-weight:700;color:var(--air);font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:var(--text-secondary);}
     .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
-    .badge.good{background:#d5f5e3;color:#1e8449;}
-    .badge.warn{background:#fdebd0;color:#b9770e;}
-    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .badge.good{background:var(--success-w);color:var(--success);}
+    .badge.warn{background:var(--warning-w);color:var(--warning);}
+    .badge.bad{background:var(--danger-w);color:var(--danger);}
     .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
 
     /* references */
@@ -504,7 +504,7 @@ function mcSubmit(e) {
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
-  color:#1d1d1f; padding:.85rem 1.6rem;
+  color:var(--text-primary); padding:.85rem 1.6rem;
   border-radius:50px; font-weight:600;
   font-size:.9rem; cursor:pointer;
   border:1px solid rgba(255,255,255,0.3);
@@ -530,6 +530,7 @@ function mcSubmit(e) {
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="chart-theme.js?v=4"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
 <script>
 const baseLine={borderWidth:2.5,pointRadius:0,tension:0,fill:false};
@@ -555,14 +556,14 @@ let impChart=new Chart(document.getElementById('impChart'),{
     responsive:true, maintainAspectRatio:false,
     interaction:{mode:'nearest',intersect:false},
     scales:{
-      x:{type:'linear',min:0,max:170,title:{display:true,text:'Effective free solids passage  (mm)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
-      y:{min:30,max:90,title:{display:true,text:'Typical pump efficiency  (%)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+      x:{type:'linear',min:0,max:170,title:{display:true,text:'Effective free solids passage  (mm)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}},
+      y:{min:30,max:90,title:{display:true,text:'Typical pump efficiency  (%)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}}
     },
     plugins:{
-      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.x} mm passage, η ${c.parsed.y.toFixed(0)}%`}},
       annotation:{annotations:{
-        floor:{type:'line',xMin:75,xMax:75,borderColor:'rgba(192,57,43,0.5)',borderWidth:1.5,borderDash:[5,4],label:{display:true,content:'75 mm sphere — raw sewage minimum',position:'end',color:'#c0392b',font:{family:'DM Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.88)',rotation:-90}}
+        floor:{type:'line',xMin:75,xMax:75,borderColor:'rgba(192,57,43,0.5)',borderWidth:1.5,borderDash:[5,4],label:{display:true,content:'75 mm sphere — raw sewage minimum',position:'end',color:'#c0392b',font:{family:'IBM Plex Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.88)',rotation:-90}}
       }}
     }
   }
@@ -605,16 +606,16 @@ let fmChart=new Chart(document.getElementById('fmChart'),{
     responsive:true, maintainAspectRatio:false,
     interaction:{mode:'nearest',intersect:false},
     scales:{
-      x:{type:'linear',min:0,max:150,title:{display:true,text:'Pumped flow  Q  (L/s)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
-      y:{min:0,suggestedMax:3.5,title:{display:true,text:'Velocity  v  (m/s)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+      x:{type:'linear',min:0,max:150,title:{display:true,text:'Pumped flow  Q  (L/s)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}},
+      y:{min:0,suggestedMax:3.5,title:{display:true,text:'Velocity  v  (m/s)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}}
     },
     plugins:{
-      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${Math.round(c.parsed.x)} L/s, ${c.parsed.y.toFixed(2)} m/s`}},
       annotation:{annotations:{
-        dep:{type:'box',yMin:0,yMax:0.6,backgroundColor:'rgba(192,57,43,0.07)',borderWidth:0,label:{display:true,content:'deposition < 0.6',position:{x:'end',y:'center'},color:'#c0392b',font:{family:'DM Sans',size:10,weight:'600'}}},
-        marg:{type:'box',yMin:0.6,yMax:0.9,backgroundColor:'rgba(185,119,14,0.07)',borderWidth:0,label:{display:true,content:'marginal 0.6–0.9',position:{x:'end',y:'center'},color:'#b9770e',font:{family:'DM Sans',size:10,weight:'600'}}},
-        ok:{type:'box',yMin:0.9,yMax:2.4,backgroundColor:'rgba(30,132,73,0.06)',borderWidth:0,label:{display:true,content:'self-cleansing 0.9–2.4',position:{x:'end',y:'center'},color:'#1e8449',font:{family:'DM Sans',size:10,weight:'600'}}}
+        dep:{type:'box',yMin:0,yMax:0.6,backgroundColor:'rgba(192,57,43,0.07)',borderWidth:0,label:{display:true,content:'deposition < 0.6',position:{x:'end',y:'center'},color:'#c0392b',font:{family:'IBM Plex Sans',size:10,weight:'600'}}},
+        marg:{type:'box',yMin:0.6,yMax:0.9,backgroundColor:'rgba(185,119,14,0.07)',borderWidth:0,label:{display:true,content:'marginal 0.6–0.9',position:{x:'end',y:'center'},color:'#b9770e',font:{family:'IBM Plex Sans',size:10,weight:'600'}}},
+        ok:{type:'box',yMin:0.9,yMax:2.4,backgroundColor:'rgba(30,132,73,0.06)',borderWidth:0,label:{display:true,content:'self-cleansing 0.9–2.4',position:{x:'end',y:'center'},color:'#1e8449',font:{family:'IBM Plex Sans',size:10,weight:'600'}}}
       }}
     }
   }
@@ -660,14 +661,14 @@ let wwChart=new Chart(document.getElementById('wwChart'),{
     responsive:true, maintainAspectRatio:false,
     interaction:{mode:'nearest',intersect:false},
     scales:{
-      x:{type:'linear',min:0,max:210,title:{display:true,text:'Inflow  q  (L/s)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
-      y:{min:0,max:18,title:{display:true,text:'Cycle time  (minutes)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+      x:{type:'linear',min:0,max:210,title:{display:true,text:'Inflow  q  (L/s)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}},
+      y:{min:0,max:18,title:{display:true,text:'Cycle time  (minutes)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}}
     },
     plugins:{
-      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       tooltip:{callbacks:{label:c=>`${c.dataset.label}: inflow ${c.parsed.x.toFixed(0)} L/s, ${c.parsed.y.toFixed(1)} min`}},
       annotation:{annotations:{
-        tc:{type:'line',yMin:6,yMax:6,borderColor:'rgba(192,57,43,0.65)',borderWidth:2,borderDash:[6,4],label:{display:true,content:'motor minimum cycle (3600/Z)',position:'end',color:'#c0392b',font:{family:'DM Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.88)'}}
+        tc:{type:'line',yMin:6,yMax:6,borderColor:'rgba(192,57,43,0.65)',borderWidth:2,borderDash:[6,4],label:{display:true,content:'motor minimum cycle (3600/Z)',position:'end',color:'#c0392b',font:{family:'IBM Plex Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.88)'}}
       }}
     }
   }
@@ -710,7 +711,7 @@ updateWW();
 /* ---------- chart resize safety net (fixes 0-width on initial mobile-width load) ---------- */
 window.addEventListener('load',function(){ try{impChart.resize();fmChart.resize();wwChart.resize();}catch(e){} });
 </script>
-<script src="article-features.js"></script>
-<script src="theme.js"></script>
+<script src="article-features.js?v=4"></script>
+<script src="theme.js?v=4"></script>
 </body>
 </html>

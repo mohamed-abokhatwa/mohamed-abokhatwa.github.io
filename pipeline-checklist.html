@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free PDF: 10 Common Mistakes in Pressure Pipeline Design — Mohamed Abokhatwa</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -56,7 +56,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #0071e3;
+      color: var(--accent);
       background: rgba(0,113,227,0.08);
       border: 1px solid rgba(0,113,227,0.15);
       padding: 6px 14px;
@@ -98,11 +98,11 @@
       position: relative;
     }
     .lm-book {
-      background: #fff;
+      background: var(--sheet);
       border-radius: 12px;
       box-shadow:
-        0 2px 0 #0060c0,
-        4px 0 0 #e8f0fe,
+        0 2px 0 var(--accent),
+        4px 0 0 var(--air-w),
         0 24px 80px rgba(0,0,0,0.18),
         0 8px 24px rgba(0,0,0,0.10);
       padding: 36px 32px 32px;
@@ -114,7 +114,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 5px;
-      background: #0071e3;
+      background: var(--accent);
     }
     .lm-book-badge {
       display: inline-block;
@@ -122,7 +122,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #0071e3;
+      color: var(--accent);
       background: rgba(0,113,227,0.08);
       border: 1px solid rgba(0,113,227,0.15);
       padding: 4px 10px;
@@ -132,14 +132,14 @@
     .lm-book-title {
       font-size: 18px;
       font-weight: 700;
-      color: #1d1d1f;
+      color: var(--text-primary);
       line-height: 1.3;
       margin-bottom: 6px;
       letter-spacing: -0.02em;
     }
     .lm-book-sub {
       font-size: 12px;
-      color: #6e6e73;
+      color: var(--text-secondary);
       margin-bottom: 24px;
     }
     .lm-pipeline-svg {
@@ -148,7 +148,7 @@
       margin-bottom: 20px;
       border-radius: 8px;
       overflow: hidden;
-      background: #f0f4ff;
+      background: var(--air-w);
     }
     .lm-book-toc {
       list-style: none;
@@ -159,17 +159,17 @@
       align-items: center;
       gap: 8px;
       font-size: 11.5px;
-      color: #374151;
+      color: var(--text-secondary);
       padding: 5px 0;
-      border-bottom: 1px solid #f3f4f6;
+      border-bottom: 1px solid var(--bg-2);
       line-height: 1.4;
     }
     .lm-book-toc li:last-child { border-bottom: none; }
     .lm-book-toc li span.num {
       font-size: 10px;
       font-weight: 700;
-      color: #0071e3;
-      background: #eff6ff;
+      color: var(--accent);
+      background: var(--air-w);
       border-radius: 4px;
       padding: 2px 5px;
       flex-shrink: 0;
@@ -179,20 +179,20 @@
     .lm-book-footer {
       margin-top: 18px;
       padding-top: 14px;
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .lm-book-author { font-size: 11px; font-weight: 600; color: #374151; }
-    .lm-book-author span { color: #0071e3; }
-    .lm-book-pages { font-size: 10px; color: #9ca3af; }
+    .lm-book-author { font-size: 11px; font-weight: 600; color: var(--text-secondary); }
+    .lm-book-author span { color: var(--accent); }
+    .lm-book-pages { font-size: 10px; color: var(--text-tertiary); }
     .lm-free-badge {
       display: none;
       position: absolute;
       top: 16px; right: -16px;
-      background: #16a34a;
-      color: #fff;
+      background: var(--success);
+      color: var(--on-accent);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.05em;
@@ -216,7 +216,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #0071e3;
+      color: var(--accent);
       margin-bottom: 10px;
     }
     .lm-inside h2 {
@@ -252,7 +252,7 @@
       height: 32px;
       border-radius: 8px;
       background: rgba(0,113,227,0.08);
-      color: #0071e3;
+      color: var(--accent);
       font-size: 13px;
       font-weight: 700;
       display: flex;
@@ -261,12 +261,12 @@
       flex-shrink: 0;
     }
     .mistake-card.critical .mistake-num {
-      background: #fee2e2;
-      color: #dc2626;
+      background: var(--danger-w);
+      color: var(--danger);
     }
     .mistake-card.high .mistake-num {
-      background: #fef3c7;
-      color: #d97706;
+      background: var(--warning-w);
+      color: var(--warning);
     }
     .mistake-card-body h3 {
       font-size: 14px;
@@ -291,8 +291,8 @@
       border-radius: 10px;
       margin-top: 5px;
     }
-    .sev-critical { background: #fee2e2; color: #dc2626; }
-    .sev-high     { background: #fef3c7; color: #d97706; }
+    .sev-critical { background: var(--danger-w); color: var(--danger); }
+    .sev-high     { background: var(--warning-w); color: var(--warning); }
 
     /* ── Email Gate ── */
     .lm-gate {
@@ -315,7 +315,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 4px;
-      background: #0071e3;
+      background: var(--accent);
     }
     .lm-gate-icon svg { width: 30px; height: 30px; color: var(--accent); }
     .lm-gate-icon {
@@ -366,13 +366,13 @@
       transition: border-color 0.2s;
     }
     .lm-gate-form input[type="email"]:focus {
-      border-color: #0071e3;
+      border-color: var(--accent);
       background: var(--bg-3);
     }
     .lm-gate-form button {
       padding: 0.9rem 2rem;
-      background: #0071e3;
-      color: #fff;
+      background: var(--accent);
+      color: var(--on-accent);
       border: none;
       border-radius: 980px;
       font-size: 0.95rem;
@@ -383,17 +383,17 @@
       white-space: nowrap;
     }
     .lm-gate-form button:hover {
-      background: #0077ed;
+      background: var(--accent);
     }
     .lm-gate-privacy {
       font-size: 12px;
-      color: #9ca3af;
+      color: var(--text-tertiary);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
     }
-    .lm-gate-privacy svg { width:12px; height:12px; fill:#9ca3af; flex-shrink:0; }
+    .lm-gate-privacy svg { width:12px; height:12px; fill:var(--text-tertiary); flex-shrink:0; }
 
     /* ── Download Revealed ── */
     #lm-download-section {
@@ -404,18 +404,18 @@
     #lm-download-section .success-icon {
       font-size: 48px;
       margin-bottom: 16px;
-      color: #1a7a38;
+      color: var(--success);
     }
     #lm-download-section .success-icon svg { width: 52px; height: 52px; }
     #lm-download-section h3 {
       font-size: 22px;
       font-weight: 700;
-      color: #1d1d1f;
+      color: var(--text-primary);
       margin-bottom: 8px;
     }
     #lm-download-section p {
       font-size: 14px;
-      color: #6e6e73;
+      color: var(--text-secondary);
       margin-bottom: 28px;
       line-height: 1.6;
     }
@@ -424,8 +424,8 @@
       align-items: center;
       gap: 10px;
       padding: 1rem 2.2rem;
-      background: #16a34a;
-      color: #fff;
+      background: var(--success);
+      color: var(--on-accent);
       border-radius: 980px;
       font-size: 1rem;
       font-weight: 700;
@@ -436,7 +436,7 @@
       font-family: inherit;
     }
     .lm-download-btn:hover {
-      background: #15893f;
+      background: var(--success);
     }
     .lm-download-btn svg { width:20px; height:20px; fill:#fff; }
 
@@ -458,7 +458,7 @@
       font-size: 14px;
       color: var(--text-secondary);
     }
-    .lm-trust-item svg { width:18px; height:18px; fill: #0071e3; flex-shrink:0; }
+    .lm-trust-item svg { width:18px; height:18px; fill: var(--accent); flex-shrink:0; }
     .lm-divider {
       width: 1px;
       height: 32px;
@@ -765,8 +765,8 @@
         <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
         Download PDF — Free
       </a>
-      <div style="margin-top:20px; font-size:13px; color:#9ca3af;">
-        Having trouble? <a href="pipeline-checklist.pdf" target="_blank" style="color:#0071e3;">Open in browser</a>
+      <div style="margin-top:20px; font-size:13px; color:var(--text-tertiary);">
+        Having trouble? <a href="pipeline-checklist.pdf" target="_blank" style="color:var(--accent);">Open in browser</a>
       </div>
     </div>
 
@@ -842,7 +842,7 @@ function lmSubmit(e) {
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
-  color:#1d1d1f; padding:.85rem 1.6rem;
+  color:var(--text-primary); padding:.85rem 1.6rem;
   border-radius:50px; font-weight:600;
   font-size:.9rem; cursor:pointer;
   border:1px solid rgba(255,255,255,0.3);
@@ -866,6 +866,6 @@ function lmSubmit(e) {
   }
 }
 </style>
-<script src="theme.js"></script>
+<script src="theme.js?v=4"></script>
 </body>
 </html>

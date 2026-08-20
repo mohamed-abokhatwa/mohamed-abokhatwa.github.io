@@ -57,7 +57,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="assets/course.css?v=2">
+<link rel="stylesheet" href="assets/course.css?v=4">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
@@ -238,7 +238,7 @@ function mcSubmit(e) {
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
-  color:#1d1d1f; padding:.85rem 1.6rem;
+  color:var(--text-primary); padding:.85rem 1.6rem;
   border-radius:50px; font-weight:600;
   font-size:.9rem; cursor:pointer;
   border:1px solid rgba(255,255,255,0.3);
@@ -251,7 +251,7 @@ function mcSubmit(e) {
   box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
 }
 [data-theme="dark"] .fab-glass, [data-theme="dark"] .fab-consult {
-  background:rgba(40,40,44,0.55); color:#f5f5f7; border-color:rgba(255,255,255,0.14);
+  background:rgba(40,40,44,0.55); color:var(--bg-2); border-color:rgba(255,255,255,0.14);
 }
 .fab-wa { left:2rem; }
 .fab-consult { right:2rem; }
@@ -267,6 +267,6 @@ function mcSubmit(e) {
 </style>
 
 <script src="assets/course.js"></script>
-<script src="../theme.js"></script>
+<script src="../theme.js?v=4"></script>
 </body>
 </html>

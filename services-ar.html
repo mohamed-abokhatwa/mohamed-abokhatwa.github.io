@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>الخدمات الاستشارية — محمد أبوخطوة</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -204,14 +204,14 @@
     .form-submit { display: flex; align-items: center; gap: 16px; flex-direction: row-reverse; }
     .btn-primary {
       padding: 14px 32px;
-      background: #0071e3;
-      color: #fff; border: none; border-radius: 980px;
+      background: var(--accent);
+      color: var(--on-accent); border: none; border-radius: 980px;
       font-size: 15px; font-weight: 700; cursor: pointer;
       font-family: 'Cairo', sans-serif;
       transition: background 0.2s;
     }
     .btn-primary:hover {
-      background: #0077ed;
+      background: var(--accent);
     }
     .form-note { font-size: 13px; color: var(--text-tertiary); }
 
@@ -425,7 +425,7 @@
           <span class="form-note" id="formNote">سنرد خلال 48 ساعة.</span>
         </div>
         <div id="formSuccess" style="display:none;margin-top:24px;padding:20px 24px;background:rgba(26,122,56,0.08);border:1px solid rgba(26,122,56,0.2);border-radius:12px;text-align:right;">
-          <div style="font-size:15px;font-weight:700;color:#1a7a38;margin-bottom:4px;">✓ تم إرسال استفسارك</div>
+          <div style="font-size:15px;font-weight:700;color:var(--success);margin-bottom:4px;">✓ تم إرسال استفسارك</div>
           <div style="font-size:14px;color:var(--text-secondary);">شكراً — سأعود إليك خلال 48 ساعة.</div>
         </div>
       </form>
@@ -517,7 +517,7 @@ function mcSubmitAr(e){
   position:fixed; bottom:2rem; z-index:9999;
   display:flex; align-items:center; gap:.6rem;
   background:rgba(255,255,255,0.15); backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px); color:#1d1d1f; padding:.85rem 1.6rem;
+  -webkit-backdrop-filter:blur(12px); color:var(--text-primary); padding:.85rem 1.6rem;
   border-radius:50px; font-weight:600; font-size:.9rem; cursor:pointer;
   border:1px solid rgba(255,255,255,0.3);
   box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
@@ -532,6 +532,6 @@ function mcSubmitAr(e){
   .fab-glass,.fab-consult{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;}
 }
 </style>
-<script src="theme.js"></script>
+<script src="theme.js?v=4"></script>
 </body>
 </html>

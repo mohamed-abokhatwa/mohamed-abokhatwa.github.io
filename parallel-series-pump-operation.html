@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parallel &amp; Series Pump Operation and Staging — Mohamed Abokhatwa</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -56,7 +56,7 @@
     .callout strong{color:var(--text-primary);}
     .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
     .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
-    .callout.series{border-left-color:#8e5bd0;} .callout.series .lbl{color:#8e5bd0;}
+    .callout.series{border-left-color:var(--s4);} .callout.series .lbl{color:var(--s4);}
 
     /* tables */
     .tbl-wrap{overflow-x:auto;margin:24px 0;}
@@ -69,27 +69,27 @@
     ul.clean li{margin-bottom:9px;}
 
     /* interactive figure — a self-contained light instrument panel, legible in both themes */
-    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass);}
     .fig-head{padding:18px 22px 6px;}
-    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
-    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:var(--air);}
+    .fig-head .fsub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5;}
     .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
     @media(max-width:640px){.chart-box{height:340px;}}
-    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
-    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
-    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
-    .ctrl input[type=range]{width:100%;accent-color:#1b4f72;}
-    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
-    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
-    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid var(--border);background:var(--bg-2);}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+    .ctrl label span{color:var(--air);font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:var(--air);}
+    .ctrl .hint{font-size:11.5px;color:var(--text-secondary);margin-top:4px;line-height:1.45;}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid var(--border);}
+    .readout .cell{padding:14px 16px;border-right:1px solid var(--border);}
     .readout .cell:last-child{border-right:none;}
-    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
-    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
-    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary);}
+    .readout .v{font-size:22px;font-weight:700;color:var(--air);font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:var(--text-secondary);}
     .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
-    .badge.good{background:#d5f5e3;color:#1e8449;}
-    .badge.warn{background:#fdebd0;color:#b9770e;}
-    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .badge.good{background:var(--success-w);color:var(--success);}
+    .badge.warn{background:var(--warning-w);color:var(--warning);}
+    .badge.bad{background:var(--danger-w);color:var(--danger);}
     .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
 
     /* references */
@@ -498,7 +498,7 @@ function mcSubmit(e) {
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
-  color:#1d1d1f; padding:.85rem 1.6rem;
+  color:var(--text-primary); padding:.85rem 1.6rem;
   border-radius:50px; font-weight:600;
   font-size:.9rem; cursor:pointer;
   border:1px solid rgba(255,255,255,0.3);
@@ -524,6 +524,7 @@ function mcSubmit(e) {
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="chart-theme.js?v=4"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
 <script>
 /* ---------- shared pump model (flow m^3/h, head m) ---------- */
@@ -568,14 +569,14 @@ let parChart=new Chart(document.getElementById('parChart'),{
     responsive:true, maintainAspectRatio:false,
     interaction:{mode:'nearest',intersect:false},
     scales:{
-      x:{type:'linear',min:0,max:PAR_XMAX,title:{display:true,text:'Flow  Q  (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
-      y:{min:0,max:70,title:{display:true,text:'Head  H  (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+      x:{type:'linear',min:0,max:PAR_XMAX,title:{display:true,text:'Flow  Q  (m³/h)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}},
+      y:{min:0,max:70,title:{display:true,text:'Head  H  (m)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}}
     },
     plugins:{
-      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.x?Math.round(c.parsed.x)+' m³/h, ':''}${c.parsed.y.toFixed(1)} m`}},
       annotation:{annotations:{
-        por:{type:'box',xMin:0.7*Qbep,xMax:1.2*Qbep,yMin:0,yMax:70,backgroundColor:'rgba(30,132,73,0.05)',borderColor:'rgba(30,132,73,0.22)',borderWidth:1,label:{display:true,content:'per-pump POR',position:{x:'center',y:'start'},color:'#1e8449',font:{family:'DM Sans',size:10,weight:'600'}}}
+        por:{type:'box',xMin:0.7*Qbep,xMax:1.2*Qbep,yMin:0,yMax:70,backgroundColor:'rgba(30,132,73,0.05)',borderColor:'rgba(30,132,73,0.22)',borderWidth:1,label:{display:true,content:'per-pump POR',position:{x:'center',y:'start'},color:'#1e8449',font:{family:'IBM Plex Sans',size:10,weight:'600'}}}
       }}
     }
   }
@@ -639,14 +640,14 @@ let serChart=new Chart(document.getElementById('serChart'),{
     responsive:true, maintainAspectRatio:false,
     interaction:{mode:'nearest',intersect:false},
     scales:{
-      x:{type:'linear',min:0,max:SER_XMAX,title:{display:true,text:'Flow  Q  (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}},
-      y:{min:0,max:190,title:{display:true,text:'Head  H  (m)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}}
+      x:{type:'linear',min:0,max:SER_XMAX,title:{display:true,text:'Flow  Q  (m³/h)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}},
+      y:{min:0,max:190,title:{display:true,text:'Head  H  (m)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}}
     },
     plugins:{
-      legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+      legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.x?Math.round(c.parsed.x)+' m³/h, ':''}${c.parsed.y.toFixed(1)} m`}},
       annotation:{annotations:{
-        shut:{type:'line',yMin:H0p,yMax:H0p,xMin:0,xMax:SER_XMAX,borderColor:'rgba(27,79,114,0.4)',borderWidth:1.5,borderDash:[3,3],label:{display:true,content:'single-pump shut-off (60 m)',position:'start',color:'#1b4f72',font:{family:'DM Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.85)'}},
+        shut:{type:'line',yMin:H0p,yMax:H0p,xMin:0,xMax:SER_XMAX,borderColor:'rgba(27,79,114,0.4)',borderWidth:1.5,borderDash:[3,3],label:{display:true,content:'single-pump shut-off (60 m)',position:'start',color:'#1b4f72',font:{family:'IBM Plex Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.85)'}},
         stat:{type:'line',yMin:95,yMax:95,xMin:0,xMax:SER_XMAX,borderColor:'rgba(192,57,43,0.0)',borderWidth:0}
       }}
     }
@@ -664,7 +665,7 @@ function updateSer(){
   for(let n=1;n<=3;n++){ const s=solveSer(n,Hs,Ks); if(s){ pts.push({x:s.q,y:s.h}); r[n-1]=s; } }
   serChart.data.datasets[4].data=pts;
   // move static reference annotation
-  serChart.options.plugins.annotation.annotations.stat={type:'line',yMin:Hs,yMax:Hs,xMin:0,xMax:SER_XMAX,borderColor:'rgba(192,57,43,0.35)',borderWidth:1.2,borderDash:[2,3],label:{display:true,content:'static '+Hs+' m',position:'end',color:'#c0392b',font:{family:'DM Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.85)'}};
+  serChart.options.plugins.annotation.annotations.stat={type:'line',yMin:Hs,yMax:Hs,xMin:0,xMax:SER_XMAX,borderColor:'rgba(192,57,43,0.35)',borderWidth:1.2,borderDash:[2,3],label:{display:true,content:'static '+Hs+' m',position:'end',color:'#c0392b',font:{family:'IBM Plex Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.85)'}};
   serChart.update('none');
 
   const fmt=s=> s? Math.round(s.q)+' <small>m³/h</small>' : '—';
@@ -680,7 +681,7 @@ updateSer();
 /* ---------- chart resize safety net (fixes 0-width on initial mobile-width load) ---------- */
 window.addEventListener('load',function(){ try{parChart.resize();serChart.resize();}catch(e){} });
 </script>
-<script src="article-features.js"></script>
-<script src="theme.js"></script>
+<script src="article-features.js?v=4"></script>
+<script src="theme.js?v=4"></script>
 </body>
 </html>

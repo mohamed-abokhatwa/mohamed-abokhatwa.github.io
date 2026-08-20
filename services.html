@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hydraulic Analysis Services — Mohamed Abokhatwa</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -322,7 +322,7 @@
     }
     .btn-primary {
       background: var(--accent);
-      color: #fff;
+      color: var(--on-accent);
       border: none;
       border-radius: 980px;
       padding: 14px 32px;
@@ -334,7 +334,7 @@
       letter-spacing: 0.01em;
     }
     .btn-primary:hover {
-      background: #0077ed;
+      background: var(--accent);
     }
     .form-note {
       font-size: 13px;
@@ -542,7 +542,7 @@
           <span class="form-note" id="formNote">We'll respond within 48 hours.</span>
         </div>
         <div id="formSuccess" style="display:none;margin-top:24px;padding:20px 24px;background:rgba(26,122,56,0.08);border:1px solid rgba(26,122,56,0.2);border-radius:12px;">
-          <div style="font-size:15px;font-weight:600;color:#1a7a38;margin-bottom:4px;">&#10003; Inquiry sent successfully</div>
+          <div style="font-size:15px;font-weight:600;color:var(--success);margin-bottom:4px;">&#10003; Inquiry sent successfully</div>
           <div style="font-size:14px;color:var(--text-secondary);">Thank you — I'll get back to you within 48 hours.</div>
         </div>
       </form>
@@ -670,7 +670,7 @@ function mcSubmit(e) {
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
-  color:#1d1d1f; padding:.85rem 1.6rem;
+  color:var(--text-primary); padding:.85rem 1.6rem;
   border-radius:50px; font-weight:600;
   font-size:.9rem; cursor:pointer;
   border:1px solid rgba(255,255,255,0.3);
@@ -697,6 +697,6 @@ function mcSubmit(e) {
 <style>
 #mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
 </style>
-<script src="theme.js"></script>
+<script src="theme.js?v=4"></script>
 </body>
 </html>

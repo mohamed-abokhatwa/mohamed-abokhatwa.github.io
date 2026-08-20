@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stack Effect in Megatall Buildings: The Neutral Plane, Door Forces, Shaft Compartmentation &amp; the Energy Penalty — Mohamed Abokhatwa</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -54,7 +54,7 @@
     .callout strong{color:var(--text-primary);}
     .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
     .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
-    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+    .callout.green{border-left-color:var(--success);} .callout.green .lbl{color:var(--success);}
 
     .tbl-wrap{overflow-x:auto;margin:24px 0;}
     .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
@@ -69,28 +69,28 @@
     .schematic svg{width:100%;height:auto;display:block;}
     .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
 
-    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass);}
     .fig-head{padding:18px 22px 6px;}
-    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
-    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:var(--air);}
+    .fig-head .fsub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5;}
     .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
     @media(max-width:640px){.chart-box{height:340px;}}
-    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
-    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
-    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
-    .ctrl input[type=range]{width:100%;accent-color:#c0392b;}
-    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
-    .ctrl select{width:100%;padding:7px 9px;border:1px solid #cdd6df;border-radius:8px;font-size:13px;font-family:inherit;background:#fff;color:#1a1d21;}
-    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
-    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid var(--border);background:var(--bg-2);}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+    .ctrl label span{color:var(--air);font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:var(--danger);}
+    .ctrl .hint{font-size:11.5px;color:var(--text-secondary);margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--sheet);color:var(--text-primary);}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid var(--border);}
+    .readout .cell{padding:14px 16px;border-right:1px solid var(--border);}
     .readout .cell:last-child{border-right:none;}
-    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
-    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
-    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary);}
+    .readout .v{font-size:22px;font-weight:700;color:var(--air);font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:var(--text-secondary);}
     .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
-    .badge.good{background:#d5f5e3;color:#1e8449;}
-    .badge.warn{background:#fdebd0;color:#b9770e;}
-    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .badge.good{background:var(--success-w);color:var(--success);}
+    .badge.warn{background:var(--warning-w);color:var(--warning);}
+    .badge.bad{background:var(--danger-w);color:var(--danger);}
     .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
 
     .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
@@ -266,18 +266,18 @@
     .se-out{stroke:var(--text-tertiary);stroke-width:1.4;fill:none;}
     .se-flr{stroke:var(--text-tertiary);stroke-width:.5;fill:none;opacity:.55;}
     .se-shaft{stroke:var(--text-secondary);stroke-width:1.2;fill:rgba(27,79,114,0.07);}
-    .se-npl{stroke:#b9770e;stroke-width:1.3;stroke-dasharray:6 4;fill:none;}
-    .se-brk{stroke:#1e8449;stroke-width:2;fill:none;}
+    .se-npl{stroke:var(--warning);stroke-width:1.3;stroke-dasharray:6 4;fill:none;}
+    .se-brk{stroke:var(--success);stroke-width:2;fill:none;}
     .se-neg{fill:rgba(27,79,114,0.30);}
     .se-pos{fill:rgba(192,57,43,0.30);}
-    .se-axis{stroke:#9aa7b2;stroke-width:1;}
-    .se-in{stroke:#1b4f72;stroke-width:1.8;fill:none;}
-    .se-ex{stroke:#c0392b;stroke-width:1.8;fill:none;}
+    .se-axis{stroke:var(--text-tertiary);stroke-width:1;}
+    .se-in{stroke:var(--air);stroke-width:1.8;fill:none;}
+    .se-ex{stroke:var(--danger);stroke-width:1.8;fill:none;}
     .se-lbl{fill:var(--text-secondary);font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;}
     .se-tl{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:12.5px;font-weight:700;}
     .se-pn{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:11.5px;font-weight:600;}
-    .se-ok{fill:#1e8449;font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
-    .se-wr{fill:#b9770e;font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
+    .se-ok{fill:var(--success);font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
+    .se-wr{fill:var(--warning);font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
   </style>
   <text x="10" y="20" class="se-tl">Break the column, not the physics — one 600 m chimney vs three 200 m chimneys</text>
 
@@ -645,13 +645,14 @@ function mcSubmit(e) {
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="chart-theme.js?v=4"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
 <script>
 /* ---------- shared helpers ---------- */
 const fmt0=v=>Math.round(v).toLocaleString('en-US');
 const fmt1=v=>v.toFixed(1);
 const fmt2=v=>v.toFixed(2);
-const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}};
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}};
 const KST=3460;                    // Pa·K/m — stack-effect constant
 const K0=273.15;                   // °C → K
 const FLIM=133;                    // N — code door-opening force limit
@@ -676,9 +677,9 @@ let nplChart=new Chart(document.getElementById('nplChart'),{
     {type:'scatter', label:'Neutral plane', data:[], backgroundColor:'#b9770e', borderColor:'#fff', borderWidth:2, pointRadius:7, order:1}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
-    scales:{x:{type:'linear',title:{display:true,text:'Δp inside vs outside (Pa)   —   air pushed in ← · → air pushed out',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
-            y:{type:'linear',min:0,title:{display:true,text:'Height above grade (m)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
-    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+    scales:{x:{type:'linear',title:{display:true,text:'Δp inside vs outside (Pa)   —   air pushed in ← · → air pushed out',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Height above grade (m)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.x)} Pa at ${fmt0(c.parsed.y)} m`}},
       annotation:{annotations:{
         zero:{type:'line',scaleID:'x',value:0,borderColor:'#9aa7b2',borderWidth:1,borderDash:[4,4]}
@@ -733,12 +734,12 @@ let doorChart=new Chart(document.getElementById('doorChart'),{
     {type:'line', label:'Compartmented shaft', data:[], borderColor:'#1b4f72', borderWidth:3, pointRadius:0, order:2}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
-    scales:{x:{type:'linear',min:0,title:{display:true,text:'Force to open the door at the handle (N)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
-            y:{type:'linear',min:0,title:{display:true,text:'Height above grade (m)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
-    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+    scales:{x:{type:'linear',min:0,title:{display:true,text:'Force to open the door at the handle (N)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Height above grade (m)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.x)} N at ${fmt0(c.parsed.y)} m`}},
       annotation:{annotations:{
-        lim:{type:'line',scaleID:'x',value:FLIM,borderColor:'#b9770e',borderWidth:1.6,borderDash:[5,4],label:{display:true,content:'133 N limit',position:'end',font:{size:10,family:'DM Sans'},color:'#b9770e',backgroundColor:'rgba(255,255,255,0.85)'}}
+        lim:{type:'line',scaleID:'x',value:FLIM,borderColor:'#b9770e',borderWidth:1.6,borderDash:[5,4],label:{display:true,content:'133 N limit',position:'end',font:{size:10,family:'IBM Plex Sans'},color:'#b9770e',backgroundColor:'rgba(255,255,255,0.85)'}}
       }}}}
 });
 function updateDoor(){
@@ -804,9 +805,9 @@ let energyChart=new Chart(document.getElementById('energyChart'),{
     {type:'scatter', label:'Your tower', data:[], backgroundColor:'#b9770e', borderColor:'#fff', borderWidth:2, pointRadius:7, order:1}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
-    scales:{x:{type:'linear',min:100,max:1000,title:{display:true,text:'Tower height (m)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
-            y:{type:'linear',min:0,title:{display:true,text:'Stack-driven infiltration load (kW)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
-    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+    scales:{x:{type:'linear',min:100,max:1000,title:{display:true,text:'Tower height (m)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Stack-driven infiltration load (kW)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} kW at ${fmt0(c.parsed.x)} m`}}}}
 });
 function updateEnergy(){
@@ -840,7 +841,7 @@ window.addEventListener('load',function(){ try{nplChart.resize();doorChart.resiz
 
 <!-- End WhatsApp Button -->
 
-<script src="article-features.js"></script>
-<script src="theme.js"></script>
+<script src="article-features.js?v=4"></script>
+<script src="theme.js?v=4"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Megatall MEP Handbook &mdash; Mohamed Abokhatwa</title>
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -55,7 +55,7 @@
     .hb-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:980px;
       font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--border-light);
       color:var(--text-primary);background:var(--bg-3);cursor:pointer;font-family:inherit;transition:.18s;}
-    .hb-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+    .hb-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
     .hb-btn:hover{transform:translateY(-1px);}
     .hb-note{max-width:820px;margin:0 auto;padding:0 24px 20px;font-size:15px;line-height:1.75;
       color:var(--text-tertiary);}
@@ -107,7 +107,7 @@
 
     @media print{
       @page{margin:19mm 16mm;}
-      body{background:#fff !important;color:#111 !important;font-size:10.6pt;}
+      body{background:var(--sheet) !important;color:#111 !important;font-size:10.6pt;}
       .nav,footer,.fab-consult,.fab-glass,.hb-actions,#read-progress-bar,
       .hb-note,section[style*="padding:96px"]{display:none !important;}
       .hb-cover{padding:0 0 24pt;page-break-after:always;}
@@ -117,7 +117,7 @@
       .hb-ch h3,.hb-part h2{page-break-after:avoid;}
       .article-body h2,.hb-body h2{page-break-after:avoid;font-size:14pt;}
       .hb-fig,.callout,table,.eq{page-break-inside:avoid;}
-      .hb-fig{background:#f6f6f4 !important;border-color:#ccc !important;}
+      .hb-fig{background:var(--bg-2) !important;border-color:#ccc !important;}
       a{color:#111 !important;text-decoration:none;}
       .hb-toc-item{border-color:#ddd !important;}
       .hb-meta{border-color:#bbb !important;}
@@ -278,18 +278,18 @@
     .se-out{stroke:var(--text-tertiary);stroke-width:1.4;fill:none;}
     .se-flr{stroke:var(--text-tertiary);stroke-width:.5;fill:none;opacity:.55;}
     .se-shaft{stroke:var(--text-secondary);stroke-width:1.2;fill:rgba(27,79,114,0.07);}
-    .se-npl{stroke:#b9770e;stroke-width:1.3;stroke-dasharray:6 4;fill:none;}
-    .se-brk{stroke:#1e8449;stroke-width:2;fill:none;}
+    .se-npl{stroke:var(--warning);stroke-width:1.3;stroke-dasharray:6 4;fill:none;}
+    .se-brk{stroke:var(--success);stroke-width:2;fill:none;}
     .se-neg{fill:rgba(27,79,114,0.30);}
     .se-pos{fill:rgba(192,57,43,0.30);}
-    .se-axis{stroke:#9aa7b2;stroke-width:1;}
-    .se-in{stroke:#1b4f72;stroke-width:1.8;fill:none;}
-    .se-ex{stroke:#c0392b;stroke-width:1.8;fill:none;}
+    .se-axis{stroke:var(--text-tertiary);stroke-width:1;}
+    .se-in{stroke:var(--air);stroke-width:1.8;fill:none;}
+    .se-ex{stroke:var(--danger);stroke-width:1.8;fill:none;}
     .se-lbl{fill:var(--text-secondary);font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;}
     .se-tl{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:12.5px;font-weight:700;}
     .se-pn{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:11.5px;font-weight:600;}
-    .se-ok{fill:#1e8449;font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
-    .se-wr{fill:#b9770e;font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
+    .se-ok{fill:var(--success);font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
+    .se-wr{fill:var(--warning);font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
   </style>
   <text x="10" y="20" class="se-tl">Break the column, not the physics — one 600 m chimney vs three 200 m chimneys</text>
 
@@ -1252,10 +1252,10 @@
     .dr-soil{stroke:var(--accent);stroke-width:5;fill:none;stroke-linecap:round;}
     .dr-vent{stroke:var(--text-tertiary);stroke-width:2.4;fill:none;stroke-dasharray:2 5;}
     .dr-br{stroke:var(--accent);stroke-width:2.6;fill:none;}
-    .dr-drain{stroke:#c0392b;stroke-width:5;fill:none;stroke-linecap:round;opacity:.85;}
+    .dr-drain{stroke:var(--danger);stroke-width:5;fill:none;stroke-linecap:round;opacity:.85;}
     .dr-lbl{fill:var(--text-secondary);font-family:-apple-system,'Inter',sans-serif;font-size:11px;}
     .dr-tl{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:12.5px;font-weight:700;}
-    .dr-neg{fill:#c0392b;} .dr-pos{fill:#1e8449;}
+    .dr-neg{fill:var(--danger);} .dr-pos{fill:var(--success);}
   </style>
   <text x="12" y="20" class="dr-tl">One-pipe stack with a parallel vent — the tall-building standard</text>
 
@@ -1776,9 +1776,9 @@
 <svg viewBox="0 0 720 300" role="img" aria-label="A water-cooled central chiller plant: cooling towers, condenser pumps, chillers, primary pumps, a decoupler line and secondary pumps feeding the building loop">
   <style>
     .cp-pipe{stroke:var(--accent);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-    .cp-warm{stroke:#c0392b;stroke-width:2.4;fill:none;stroke-linecap:round;opacity:.8;}
+    .cp-warm{stroke:var(--danger);stroke-width:2.4;fill:none;stroke-linecap:round;opacity:.8;}
     .cp-box{fill:var(--bg-4);stroke:var(--text-tertiary);stroke-width:1.4;}
-    .cp-ch{fill:#1b4f72;opacity:.9;}
+    .cp-ch{fill:var(--air);opacity:.9;}
     .cp-lbl{fill:var(--text-secondary);font-family:-apple-system,'Inter',sans-serif;font-size:11px;}
     .cp-tl{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:12.5px;font-weight:700;}
     .cp-p{fill:var(--bg-3);stroke:var(--accent);stroke-width:1.6;}
@@ -2073,17 +2073,17 @@
   <style>
     .cw-out{stroke:var(--text-tertiary);stroke-width:1.4;fill:none;}
     .cw-brk{stroke:var(--text-tertiary);stroke-width:1;fill:none;opacity:.7;}
-    .cw-sup{stroke:#1b4f72;stroke-width:2.6;fill:none;stroke-linecap:round;}
-    .cw-ret{stroke:#c0392b;stroke-width:2.6;fill:none;stroke-linecap:round;}
-    .cw-hp{stroke:#6c3483;stroke-width:3.6;fill:none;stroke-linecap:round;}
-    .cw-hx{fill:rgba(30,132,73,0.18);stroke:#1e8449;stroke-width:1.6;}
-    .cw-pmp{fill:#c0392b;}
-    .cw-plant{fill:rgba(27,79,114,0.14);stroke:#1b4f72;stroke-width:1.4;}
+    .cw-sup{stroke:var(--air);stroke-width:2.6;fill:none;stroke-linecap:round;}
+    .cw-ret{stroke:var(--danger);stroke-width:2.6;fill:none;stroke-linecap:round;}
+    .cw-hp{stroke:var(--s4);stroke-width:3.6;fill:none;stroke-linecap:round;}
+    .cw-hx{fill:rgba(30,132,73,0.18);stroke:var(--success);stroke-width:1.6;}
+    .cw-pmp{fill:var(--danger);}
+    .cw-plant{fill:rgba(27,79,114,0.14);stroke:var(--air);stroke-width:1.4;}
     .cw-lbl{fill:var(--text-secondary);font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;}
     .cw-tl{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:12.5px;font-weight:700;}
     .cw-pn{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:11.5px;font-weight:600;}
-    .cw-bad{fill:#c0392b;font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
-    .cw-ok{fill:#1e8449;font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
+    .cw-bad{fill:var(--danger);font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
+    .cw-ok{fill:var(--success);font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
   </style>
   <text x="10" y="20" class="cw-tl">Where the zone breaks sit decides what temperature the plant must make</text>
 
@@ -3408,15 +3408,15 @@
 <svg viewBox="0 0 720 430" role="img" aria-label="A megatall tower divided into four vertical fire zones, each with a transfer tank and fire-pump set feeding its own standpipe segment, an express riser bypassing to the upper zones, a pressurised escape stair, refuge floors at zone breaks, and a fire command centre at grade discharging to the town main">
   <style>
     .fb-core{stroke:var(--text-tertiary);stroke-width:1.4;fill:none;}
-    .fb-riser{stroke:#c0392b;stroke-width:4.5;fill:none;stroke-linecap:round;}
-    .fb-express{stroke:#c0392b;stroke-width:2.2;fill:none;stroke-dasharray:2 5;}
+    .fb-riser{stroke:var(--danger);stroke-width:4.5;fill:none;stroke-linecap:round;}
+    .fb-express{stroke:var(--danger);stroke-width:2.2;fill:none;stroke-dasharray:2 5;}
     .fb-stair{stroke:var(--accent);stroke-width:2.6;fill:none;}
     .fb-tank{fill:rgba(27,79,114,0.14);stroke:var(--accent);stroke-width:1.6;}
-    .fb-pump{fill:#c0392b;}
+    .fb-pump{fill:var(--danger);}
     .fb-zone{fill:var(--text-tertiary);opacity:.06;}
     .fb-lbl{fill:var(--text-secondary);font-family:-apple-system,'Inter',sans-serif;font-size:11px;}
     .fb-tl{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:12.5px;font-weight:700;}
-    .fb-ref{fill:#1e8449;font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
+    .fb-ref{fill:var(--success);font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
   </style>
   <text x="12" y="20" class="fb-tl">Megatall fire strategy — four pressure zones, each with its own tank &amp; pumps</text>
 
@@ -4502,7 +4502,7 @@ function mcSubmit(e) {
 
 <!-- End WhatsApp Button -->
 
-<script src="article-features.js"></script>
-<script src="theme.js"></script>
+<script src="article-features.js?v=4"></script>
+<script src="theme.js?v=4"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fuel Oil Systems for Generators &amp; Fire Pumps in Megatall Buildings: Storage, Risers &amp; Fuel Quality — Mohamed Abokhatwa</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -54,7 +54,7 @@
     .callout strong{color:var(--text-primary);}
     .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
     .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
-    .callout.green{border-left-color:#1e8449;} .callout.green .lbl{color:#1e8449;}
+    .callout.green{border-left-color:var(--success);} .callout.green .lbl{color:var(--success);}
 
     .tbl-wrap{overflow-x:auto;margin:24px 0;}
     .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
@@ -69,28 +69,28 @@
     .schematic svg{width:100%;height:auto;display:block;}
     .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
 
-    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow-glass);}
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass);}
     .fig-head{padding:18px 22px 6px;}
-    .fig-head .ftitle{font-weight:700;font-size:15px;color:#1b4f72;}
-    .fig-head .fsub{font-size:12.5px;color:#5b6b7b;margin-top:3px;line-height:1.5;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:var(--air);}
+    .fig-head .fsub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5;}
     .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
     @media(max-width:640px){.chart-box{height:340px;}}
-    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid #e5e9ed;background:#f7f9fb;}
-    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1a1d21;margin-bottom:6px;}
-    .ctrl label span{color:#1b4f72;font-variant-numeric:tabular-nums;}
-    .ctrl input[type=range]{width:100%;accent-color:#c0392b;}
-    .ctrl .hint{font-size:11.5px;color:#5b6b7b;margin-top:4px;line-height:1.45;}
-    .ctrl select{width:100%;padding:7px 9px;border:1px solid #cdd6df;border-radius:8px;font-size:13px;font-family:inherit;background:#fff;color:#1a1d21;}
-    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid #e5e9ed;}
-    .readout .cell{padding:14px 16px;border-right:1px solid #e5e9ed;}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid var(--border);background:var(--bg-2);}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+    .ctrl label span{color:var(--air);font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:var(--danger);}
+    .ctrl .hint{font-size:11.5px;color:var(--text-secondary);margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--sheet);color:var(--text-primary);}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid var(--border);}
+    .readout .cell{padding:14px 16px;border-right:1px solid var(--border);}
     .readout .cell:last-child{border-right:none;}
-    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7b;}
-    .readout .v{font-size:22px;font-weight:700;color:#1b4f72;font-variant-numeric:tabular-nums;margin-top:2px;}
-    .readout .v small{font-size:13px;font-weight:500;color:#5b6b7b;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary);}
+    .readout .v{font-size:22px;font-weight:700;color:var(--air);font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:var(--text-secondary);}
     .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
-    .badge.good{background:#d5f5e3;color:#1e8449;}
-    .badge.warn{background:#fdebd0;color:#b9770e;}
-    .badge.bad{background:#fadbd8;color:#c0392b;}
+    .badge.good{background:var(--success-w);color:var(--success);}
+    .badge.warn{background:var(--warning-w);color:var(--warning);}
+    .badge.bad{background:var(--danger-w);color:var(--danger);}
     .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
 
     .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
@@ -104,8 +104,8 @@
     .breadcrumb-current{color:var(--text-secondary);}
 
     .fig-head{position:relative;}
-    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:#1b4f72;text-decoration:none;border:1px solid #cdd6df;border-radius:980px;padding:4px 11px;background:#fff;transition:.18s;}
-    .calc-link:hover{border-color:#1b4f72;background:#f2f6fa;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:var(--air);text-decoration:none;border:1px solid var(--border);border-radius:980px;padding:4px 11px;background:var(--sheet);transition:.18s;}
+    .calc-link:hover{border-color:var(--air);background:var(--bg-2);}
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -442,13 +442,14 @@ function mcSubmit(e) {
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="chart-theme.js?v=4"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
 <script>
 
 const fmt0=v=>Math.round(v).toLocaleString('en-US');
 const fmt1=v=>v.toFixed(1);
 const fmt2=v=>v.toFixed(2);
-const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'DM Sans',size:11}}};
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}};
 const RHO_D=840, G9=9.81;
 
 /* ---------- CHART 1 : bulk storage ---------- */
@@ -461,10 +462,10 @@ let storChart=new Chart(document.getElementById('storChart'),{
     {type:'scatter',label:'Your design',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,yAxisID:'y',order:1}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
-    scales:{x:{type:'linear',min:4,max:96,title:{display:true,text:'Required autonomy (hours)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
-            y:{type:'linear',position:'left',min:0,title:{display:true,text:'Storage volume (m³)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
-            y1:{type:'linear',position:'right',min:0,title:{display:true,text:'Fuel mass (tonnes)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{drawOnChartArea:false},ticks:{font:{family:'DM Sans',size:11}}}},
-    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}}}}
+    scales:{x:{type:'linear',min:4,max:96,title:{display:true,text:'Required autonomy (hours)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',position:'left',min:0,title:{display:true,text:'Storage volume (m³)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX},
+            y1:{type:'linear',position:'right',min:0,title:{display:true,text:'Fuel mass (tonnes)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},grid:{drawOnChartArea:false},ticks:{font:{family:'IBM Plex Sans',size:11}}}},
+    plugins:{legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}}}}
 });
 function updStor(){
   const P=+sP.value,L=+sL.value/100,C=+sC.value,H=+sH.value;
@@ -497,12 +498,12 @@ let riserChart=new Chart(document.getElementById('riserChart'),{
     {type:'scatter',label:'Your generator floor',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,yAxisID:'y',order:1}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
-    scales:{x:{type:'linear',min:10,max:700,title:{display:true,text:'Generator floor above the bulk tank (m)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
-            y:{type:'linear',min:0,title:{display:true,text:'Static pressure in the fuel riser (bar)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
-    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+    scales:{x:{type:'linear',min:10,max:700,title:{display:true,text:'Generator floor above the bulk tank (m)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Static pressure in the fuel riser (bar)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       annotation:{annotations:{
-        pn16:{type:'line',scaleID:'y',yScaleID:'y',value:16,borderColor:'#1e8449',borderWidth:1.4,borderDash:[5,4],label:{display:true,content:'PN16',position:'start',font:{size:10,family:'DM Sans'},color:'#1e8449',backgroundColor:'rgba(255,255,255,0.85)'}},
-        pn40:{type:'line',scaleID:'y',yScaleID:'y',value:40,borderColor:'#b9770e',borderWidth:1.4,borderDash:[5,4],label:{display:true,content:'PN40',position:'start',font:{size:10,family:'DM Sans'},color:'#b9770e',backgroundColor:'rgba(255,255,255,0.85)'}}
+        pn16:{type:'line',scaleID:'y',yScaleID:'y',value:16,borderColor:'#1e8449',borderWidth:1.4,borderDash:[5,4],label:{display:true,content:'PN16',position:'start',font:{size:10,family:'IBM Plex Sans'},color:'#1e8449',backgroundColor:'rgba(255,255,255,0.85)'}},
+        pn40:{type:'line',scaleID:'y',yScaleID:'y',value:40,borderColor:'#b9770e',borderWidth:1.4,borderDash:[5,4],label:{display:true,content:'PN40',position:'start',font:{size:10,family:'IBM Plex Sans'},color:'#b9770e',backgroundColor:'rgba(255,255,255,0.85)'}}
       }}}}
 });
 function updRiser(){
@@ -540,9 +541,9 @@ let fpChart=new Chart(document.getElementById('fpChart'),{
     {type:'scatter',label:'Your driver',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
-    scales:{x:{type:'linear',min:50,max:800,title:{display:true,text:'Engine rated power (hp)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
-            y:{type:'linear',min:0,title:{display:true,text:'Fuel tank capacity (L)',font:{family:'DM Sans',size:12,weight:'600'}},...AX}},
-    plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}},
+    scales:{x:{type:'linear',min:50,max:800,title:{display:true,text:'Engine rated power (hp)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Fuel tank capacity (L)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX}},
+    plugins:{legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.y)} L at ${fmt0(c.parsed.x)} hp`}}}}
 });
 function updFp(){
@@ -581,7 +582,7 @@ window.addEventListener('load',function(){try{storChart.resize();riserChart.resi
 
 <!-- End WhatsApp Button -->
 
-<script src="article-features.js"></script>
-<script src="theme.js"></script>
+<script src="article-features.js?v=4"></script>
+<script src="theme.js?v=4"></script>
 </body>
 </html>

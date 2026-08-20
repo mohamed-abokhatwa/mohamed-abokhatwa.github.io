@@ -34,16 +34,16 @@
 {"@type":"ListItem","position":3,"name":"Module 2 — Plumbing & Public Health","item":"https://abokhatwa.com/mep-course/module-2-plumbing.html"}]},
 {"@type":"LearningResource","name":"Module 2 — Plumbing & Public Health","description":"Plumbing and public health for tall buildings from source to tap — storage, transfer pumps, pressure zoning, boosters, pipe sizing, hot water and Legionella, drainage and vent stacks, storm and reuse.","url":"https://abokhatwa.com/mep-course/module-2-plumbing.html","learningResourceType":"Course module","educationalLevel":"Professional","inLanguage":"en","isPartOf":{"@type":"Course","name":"MEP Engineering for Megatall Buildings","url":"https://abokhatwa.com/mep-course/"},"author":{"@type":"Person","name":"Mohamed Abokhatwa"}}]}
 </script>
-<link rel="stylesheet" href="assets/course.css?v=2">
+<link rel="stylesheet" href="assets/course.css?v=4">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <style>
   .box.sw{background:#f3eefb;border-color:#7a4fb5}.box.sw .t{color:#5e3a99}
-  .compo{background:#fff;border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:12px;padding:6px 22px 18px;box-shadow:var(--shadow);margin:26px 0}
-  .compo .tag{display:inline-block;background:var(--navy);color:#fff;font-size:12px;font-weight:700;letter-spacing:.5px;padding:3px 12px 3px 22px;border-radius:0 0 8px 8px;margin-left:-22px}
+  .compo{background:var(--sheet);border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:12px;padding:6px 22px 18px;box-shadow:var(--shadow);margin:26px 0}
+  .compo .tag{display:inline-block;background:var(--navy);color:var(--on-accent);font-size:12px;font-weight:700;letter-spacing:.5px;padding:3px 12px 3px 22px;border-radius:0 0 8px 8px;margin-left:-22px}
   .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 22px;font-size:13px}
   .flow .n{background:var(--sky);color:var(--navy);border-radius:8px;padding:6px 10px;font-weight:600}
-  .flow .n.cur{background:var(--blue);color:#fff}.flow .ar{color:var(--blue2);font-weight:700}
+  .flow .n.cur{background:var(--blue);color:var(--on-accent)}.flow .ar{color:var(--blue2);font-weight:700}
   .param{font-size:14.5px}.param th{background:#eef6fb;color:var(--navy)}
 </style>
 </head>
@@ -522,7 +522,7 @@ function mcSubmit(e) {
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
-  color:#1d1d1f; padding:.85rem 1.6rem;
+  color:var(--text-primary); padding:.85rem 1.6rem;
   border-radius:50px; font-weight:600;
   font-size:.9rem; cursor:pointer;
   border:1px solid rgba(255,255,255,0.3);
@@ -535,7 +535,7 @@ function mcSubmit(e) {
   box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
 }
 [data-theme="dark"] .fab-glass, [data-theme="dark"] .fab-consult {
-  background:rgba(40,40,44,0.55); color:#f5f5f7; border-color:rgba(255,255,255,0.14);
+  background:rgba(40,40,44,0.55); color:var(--bg-2); border-color:rgba(255,255,255,0.14);
 }
 .fab-wa { left:2rem; }
 .fab-consult { right:2rem; }
@@ -552,11 +552,12 @@ function mcSubmit(e) {
 
 <script src="assets/course.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="../chart-theme.js?v=4"></script>
 <script>
-const AX={family:'DM Sans',size:12,weight:'600'}, TK={family:'DM Sans',size:11};
+const AX={family:'IBM Plex Sans',size:12,weight:'600'}, TK={family:'IBM Plex Sans',size:11};
 const fmt0=v=>Math.round(v).toLocaleString('en-US'), fmt1=v=>v.toFixed(1);
 function axis(t,zero){return {title:{display:true,text:t,font:AX,color:'#1b4f72'},grid:{color:'#eef2f5'},ticks:{font:TK,color:'#5b6b7b'},beginAtZero:!!zero};}
-const LEG={labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8,color:'#5b6b7b'}};
+const LEG={labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8,color:'#5b6b7b'}};
 
 function demand(lu){ return 0.6*Math.pow(lu,0.55); } // L/s (illustrative Hunter-type)
 const LUS=[]; for(let x=0;x<=3000;x+=100) LUS.push(x);
@@ -587,6 +588,6 @@ function updHunter(){
 }
 [sLU,sDN].forEach(s=>s.addEventListener('input',updHunter)); updHunter();
 </script>
-<script src="../theme.js"></script>
+<script src="../theme.js?v=4"></script>
 </body>
 </html>

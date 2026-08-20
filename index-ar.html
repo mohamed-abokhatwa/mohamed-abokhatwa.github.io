@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>محمد أبوخطوة — هندسة المياه</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -252,7 +252,7 @@
     }
     .cat-card.active .cat-card-icon {
       background: var(--accent);
-      color: #fff;
+      color: var(--on-accent);
     }
     .cat-card-icon {
       width: 32px; height: 32px; flex-shrink: 0;
@@ -1666,7 +1666,7 @@ function mcSubmitAr(e) {
   position:fixed; bottom:2rem; z-index:9999;
   display:flex; align-items:center; gap:.6rem;
   background:rgba(255,255,255,0.15); backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px); color:#1d1d1f; padding:.85rem 1.6rem;
+  -webkit-backdrop-filter:blur(12px); color:var(--text-primary); padding:.85rem 1.6rem;
   border-radius:50px; font-weight:600; font-size:.9rem; cursor:pointer;
   border:1px solid rgba(255,255,255,0.3);
   box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
@@ -1687,25 +1687,25 @@ function mcSubmitAr(e) {
   border-top-color: rgba(41,151,255,0.15) !important;
   border-bottom-color: rgba(41,151,255,0.15) !important;
 }
-[data-theme="dark"] #lead-magnet-section h2 { color: #f5f5f7 !important; }
-[data-theme="dark"] #lead-magnet-section p  { color: #8e8e93 !important; }
-[data-theme="dark"] #lead-magnet-section div[style*="color:#4b5563"] { color: #8e8e93 !important; }
-[data-theme="dark"] #lead-magnet-section div[style*="color:#0071e3"] { color: #2997ff !important; }
+[data-theme="dark"] #lead-magnet-section h2 { color: var(--bg-2) !important; }
+[data-theme="dark"] #lead-magnet-section p  { color: var(--text-tertiary) !important; }
+[data-theme="dark"] #lead-magnet-section div[style*="color:var(--text-secondary)"] { color: var(--text-tertiary) !important; }
+[data-theme="dark"] #lead-magnet-section div[style*="color:var(--accent)"] { color: var(--accent) !important; }
 
 /* ─── Dark mode: Newsletter ─── */
 [data-theme="dark"] #newsletter-section {
   background: rgba(41,151,255,0.04) !important;
   border-top-color: rgba(41,151,255,0.12) !important;
 }
-[data-theme="dark"] #newsletter-section h2 { color: #f5f5f7 !important; }
-[data-theme="dark"] #newsletter-section p  { color: #8e8e93 !important; }
+[data-theme="dark"] #newsletter-section h2 { color: var(--bg-2) !important; }
+[data-theme="dark"] #newsletter-section p  { color: var(--text-tertiary) !important; }
 [data-theme="dark"] #newsletter-section #mc-email-ar {
-  background: #2c2c2e !important;
+  background: var(--bg-4) !important;
   border-color: rgba(41,151,255,0.25) !important;
-  color: #f5f5f7 !important;
+  color: var(--bg-2) !important;
 }
-[data-theme="dark"] #newsletter-section #mc-email-ar::placeholder { color: #636366 !important; }
-[data-theme="dark"] #newsletter-section #mc-msg-ar { color: #636366 !important; }
+[data-theme="dark"] #newsletter-section #mc-email-ar::placeholder { color: var(--text-tertiary) !important; }
+[data-theme="dark"] #newsletter-section #mc-msg-ar { color: var(--text-tertiary) !important; }
 </style>
 <!-- حساب عدد المقالات لكل تصنيف تلقائيًا (يبقي أرقام "تصفّح حسب الموضوع" محدّثة دائمًا) -->
 <script>
@@ -1741,6 +1741,6 @@ function mcSubmitAr(e) {
   else run();
 })();
 </script>
-<script src="theme.js"></script>
+<script src="theme.js?v=4"></script>
 </body>
 </html>

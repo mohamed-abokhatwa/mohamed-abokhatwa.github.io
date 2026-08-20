@@ -72,10 +72,10 @@
   /* ink */
   --text-primary:   #0c1513;
   --text-secondary: #4e5c58;
-  --text-tertiary:  #7c8a86;
+  --text-tertiary:  #5f6d69;
   --ink:            #0c1513;
   --ink-2:          #4e5c58;
-  --ink-3:          #7c8a86;
+  --ink-3:          #5f6d69;
 
   /* rules */
   --border:         #d2dad7;
@@ -96,10 +96,10 @@
   --accent-light:   #0a6b5e;
   --accent-2:       #a85307;
   --on-accent:      #ffffff;
-  --success:        #2d7d3f;
+  --success:        #276e37;
   --danger:         #b33a2b;
   --warning:        #8a6408;
-  --success-w:      rgba(45,125,63,0.10);
+  --success-w:      rgba(39,110,55,0.10);
   --danger-w:       rgba(179,58,43,0.10);
   --warning-w:      rgba(138,100,8,0.10);
 
@@ -140,10 +140,10 @@
 
   --text-primary:   #e7eeeb;
   --text-secondary: #93a49f;
-  --text-tertiary:  #6a7a76;
+  --text-tertiary:  #7e8d89;
   --ink:            #e7eeeb;
   --ink-2:          #93a49f;
-  --ink-3:          #6a7a76;
+  --ink-3:          #7e8d89;
 
   --border:         #1e2b28;
   --border-light:   #2b3b37;
@@ -185,8 +185,8 @@
   :root:not([data-theme="light"]):not([data-theme="dark"]) {
     --bg:#070c0b; --bg-2:#0c1312; --bg-3:#101817; --bg-4:#172120;
     --sheet:#101817; --sheet-2:#0c1312; --ground:#070c0b;
-    --text-primary:#e7eeeb; --text-secondary:#93a49f; --text-tertiary:#6a7a76;
-    --ink:#e7eeeb; --ink-2:#93a49f; --ink-3:#6a7a76;
+    --text-primary:#e7eeeb; --text-secondary:#93a49f; --text-tertiary:#7e8d89;
+    --ink:#e7eeeb; --ink-2:#93a49f; --ink-3:#7e8d89;
     --border:#1e2b28; --border-light:#2b3b37; --rule:#1e2b28; --rule-2:#17211f;
     --water:#33c4ac; --air:#79b6d8; --fire:#e4903f;
     --accent:#33c4ac; --accent-light:#33c4ac; --accent-2:#e4903f; --on-accent:#05100e;
@@ -722,8 +722,13 @@ footer a:hover { color: var(--text-primary); }
   transform: translateY(-3px);
   border-color: var(--text-primary) !important;
 }
-.fab-wa      { left: 1.75rem; }
-.fab-consult { right: 1.75rem; }
+/* one edge only, and clear the other: the Arabic pages pin the opposite
+   side in their own <style>, which otherwise stretches the button full width */
+/* Clear BOTH physical edges first: the Arabic pages pin the opposite side in
+   their own <style>, and a logical inset alone does not cancel a physical one,
+   so the button ends up with left and right both set and spans the viewport. */
+.fab-wa      { left: auto !important; right: auto !important; inset-inline-start: 1.75rem !important; }
+.fab-consult { left: auto !important; right: auto !important; inset-inline-end: 1.75rem !important; }
 .fab-consult { background: var(--text-primary) !important; color: var(--bg) !important; border-color: var(--text-primary) !important; }
 @media (max-width: 600px) {
   .fab-glass-text, .fab-text { display: none; }

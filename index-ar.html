@@ -12,8 +12,8 @@
   <meta charset="UTF-8">
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>محمد أبوخطوة — هندسة المياه</title>
@@ -26,288 +26,247 @@
   <style>
     body { font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif; }
     .nav-inner { direction: rtl; }
-    .lang-switch {
-      font-size: 13px; font-weight: 500; color: var(--accent);
-      text-decoration: none; border: 1px solid rgba(0,113,227,0.2);
-      padding: 4px 12px; border-radius: 20px; transition: background 0.2s;
-    }
-    .lang-switch:hover { background: rgba(0,113,227,0.06); }
+    .lang-switch { font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--accent);
+      text-decoration: none; border: 1px solid var(--border); padding: 4px 10px; border-radius: 2px; }
+    .lang-switch:hover { background: var(--water-w); border-color: var(--accent); }
+    /* Arabic keeps Cairo for prose; the display and data faces stay latin */
+    .hero h1, .section-title, .dock .txt h3, .cat-card-title, .article-card-title,
+    .feature-card h3, .course-promo-text h2, .cl-head .e, .hero-meta b, .stat-num {
+      font-family: 'Cairo', var(--font-display); font-weight: 700; letter-spacing: 0; }
+    .hero h1 { line-height: 1.18; }
+    .section-title { line-height: 1.3; }
+    /* ═══ ELEVATION 828 — the homepage is a section through a tower ═══ */
+    body.el { --rail-w: 132px; --pad: 288px; }
 
-    /* Hero */
-    .hero {
-      padding: 160px 24px 80px;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      text-align: right;
+    /* the survey rail */
+    .el-rail {
+      position: fixed; top: 0; bottom: 0; inset-inline-start: 0; width: var(--rail-w); z-index: 50;
+      border-inline-end: 1px solid var(--border); background: var(--bg-2);
     }
-    .hero-eyebrow {
-      font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
-      color: var(--accent); margin-bottom: 24px; display: block;
+    .el-rail canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .el-datum {
+      position: fixed; left: 0; right: 0; height: 0; z-index: 51; pointer-events: none;
+      border-top: 1px dashed var(--fire); opacity: .5;
     }
+    .el-datum::after {
+      content: ''; position: absolute; inset-inline-start: calc(var(--rail-w) - 9px); top: -4px;
+      width: 0; height: 0; border: 4px solid transparent; border-inline-start-color: var(--fire); opacity: .95;
+    }
+
+    /* the instrument */
+    .el-cluster {
+      position: fixed; z-index: 55; inset-inline-start: calc(var(--rail-w) + 20px);
+      display: flex; flex-direction: column; gap: 1px; width: 214px;
+      background: var(--border); border: 1px solid var(--border); border-radius: 3px;
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+    .cl-head { background: var(--sheet); padding: 9px 12px 8px; display: flex; align-items: baseline; justify-content: space-between; }
+    .cl-head .e { font-family: var(--font-display); font-weight: 800; font-size: 29px; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+    .cl-head .u { font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); }
+    .cl-row { background: var(--sheet); padding: 7px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .cl-row .k { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--text-tertiary); line-height: 1.3; }
+    .cl-row .v { font-family: var(--font-mono); font-size: 13.5px; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .cl-row .v small { font-size: 9.5px; font-weight: 400; color: var(--text-tertiary); margin-left: 2px; }
+    .v-fire { color: var(--fire); } .v-water { color: var(--water); } .v-air { color: var(--air); }
+    .cl-bar { height: 3px; background: var(--rule-2); position: relative; }
+    .cl-bar i { position: absolute; inset: 0 auto 0 0; background: var(--fire); width: 0; }
+    .cl-bar i.w { background: var(--water); }
+    .cl-foot { background: var(--sheet); padding: 7px 12px 9px; display: flex; gap: 6px; align-items: center; }
+    .cl-foot .lbl { font-size: 9px; }
+    .el-seg { display: flex; border: 1px solid var(--border); border-radius: 2px; overflow: hidden; margin-left: auto; }
+    .el-seg button { background: var(--sheet); border: 0; border-left: 1px solid var(--border); cursor: pointer; font-family: var(--font-mono); font-size: 10px; padding: 3px 7px; color: var(--text-tertiary); }
+    .el-seg button:first-child { border-left: 0; }
+    .el-seg button[aria-pressed="true"] { background: var(--text-primary); color: var(--bg); }
+
+    /* the descending column */
+    .el-page { position: relative; z-index: 2; margin-inline-start: var(--rail-w);
+      padding-inline-start: var(--pad); padding-inline-end: 40px; padding-block: 0; }
+    .el-wrap { max-width: 760px; }
+    .el-wrap-wide { max-width: 1080px; }
+    .el-sect { position: relative; padding: 88px 0; }
+    .sect-tag { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
+    .sect-tag .el { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .06em; color: var(--fire); font-variant-numeric: tabular-nums; }
+    .sect-tag .ln { flex: 1; height: 1px; background: var(--border); max-width: 60px; }
+    .sect-tag .nm { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-tertiary); }
+
+    /* hero */
+    .hero { padding: 132px 0 66px; max-width: 760px; margin: 0; text-align: left; }
     .hero h1 {
-      font-family: 'Cairo', sans-serif;
-      font-size: clamp(44px, 7vw, 76px);
-      font-weight: 700; line-height: 1.15;
-      margin-bottom: 28px; color: var(--text-primary);
+      font-family: var(--font-display); font-weight: 800; letter-spacing: -.042em;
+      line-height: .94; font-size: clamp(44px, 6.6vw, 84px); margin: 0 0 24px;
     }
-    .hero h1 em { font-style: normal; color: var(--text-secondary); font-weight: 300; }
-    .hero-desc {
-      font-size: 19px; color: var(--text-secondary);
-      line-height: 1.85; max-width: 560px;
-      margin-bottom: 40px; margin-right: 0;
-    }
-    .hero-certs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 0; margin-top: 44px; justify-content: flex-start; }
-    .cert {
-      font-size: 12.5px; font-weight: 500; letter-spacing: 0.03em;
-      color: var(--text-tertiary); display: inline-flex; align-items: center;
-      white-space: nowrap; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    .cert:not(:last-child)::after {
-      content: ""; flex: none; width: 1px; height: 12px;
-      background: currentColor; opacity: 0.22; margin: 0 16px;
-    }
-    @media (max-width: 600px) { .cert:not(:last-child)::after { margin: 0 11px; } }
+    .hero h1 em { font-style: normal; color: var(--water); }
+    .hero-eyebrow { display: block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 20px; }
+    .hero-desc { font-size: 19px; line-height: 1.58; color: var(--text-secondary); max-width: 56ch; margin: 0 0 16px; }
+    .hero-note { font-family: var(--font-mono); font-size: 12px; line-height: 1.65; color: var(--text-tertiary); max-width: 62ch; margin: 0; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0; margin-top: 34px; border-top: 1px solid var(--border); }
+    .hero-meta div { flex: 1 1 128px; padding-block: 14px; padding-inline: 0 18px; border-inline-end: 1px solid var(--rule-2); }
+    .hero-meta div:last-child { border-inline-end: 0; }
+    .hero-meta b { display: block; font-family: var(--font-display); font-weight: 700; font-size: 25px; letter-spacing: -.03em; line-height: 1.1; }
+    .hero-meta span { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--text-tertiary); }
+    .hero-certs { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; }
+    .cert { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-tertiary); }
 
-    /* Articles */
-    .articles-section {
-      padding: 100px 24px 28px;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      text-align: right;
+    /* docked article cards */
+    .el-band { padding: 6px 0; }
+    .band-tag { display: flex; align-items: center; gap: 10px; margin: 26px 0 12px; }
+    .band-tag .nm { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-tertiary); }
+    .band-tag .ln { flex: 1; height: 1px; background: var(--rule-2); }
+    .dock { position: relative; margin: 0 0 14px; max-width: 760px; }
+    .dock > a {
+      display: grid; grid-template-columns: 76px 1fr;
+      text-decoration: none; background: var(--sheet); border: 1px solid var(--border);
+      border-radius: 3px; overflow: hidden; transition: border-color .18s, transform .18s, box-shadow .18s;
     }
-    .section-eyebrow {
-      font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
-      color: var(--text-tertiary); margin-bottom: 16px; display: block;
+    .dock > a:hover { border-color: var(--text-tertiary); transform: translateX(4px); box-shadow: var(--shadow); }
+    [dir="rtl"] .dock > a:hover { transform: translateX(-4px); }
+    .dock .lev { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 2px; padding: 16px 12px; border-inline-end: 1px solid var(--rule-2); background: var(--bg-2); }
+    .dock .lev b { font-family: var(--font-mono); font-size: 15px; font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1; transition: font-size .2s; }
+    .dock .lev span { font-family: var(--font-mono); font-size: 9px; color: var(--text-tertiary); letter-spacing: .08em; }
+    .dock .txt { padding: 15px 18px 16px; }
+    .dock .ch { font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 5px; display: block; }
+    .dock .txt h3 { font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: -.02em; margin: 0 0 5px; line-height: 1.25; color: var(--text-primary); }
+    .dock .txt p { font-size: 14px; line-height: 1.55; margin: 0; color: var(--text-secondary); max-width: 58ch; }
+    .dock[data-ch="water"] .lev b, .dock[data-ch="water"] .ch { color: var(--water); }
+    .dock[data-ch="air"]   .lev b, .dock[data-ch="air"]   .ch { color: var(--air); }
+    .dock[data-ch="fire"]  .lev b, .dock[data-ch="fire"]  .ch { color: var(--fire); }
+    .dock[data-ch="water"] .lev { background: var(--water-w); }
+    .dock[data-ch="air"]   .lev { background: var(--air-w); }
+    .dock[data-ch="fire"]  .lev { background: var(--fire-w); }
+    .dock::before {
+      content: ''; position: absolute; inset-inline-end: 100%; top: 34px; height: 1px;
+      width: calc(var(--pad) - 2px);
+      background: linear-gradient(90deg, transparent, var(--text-tertiary) 30%, var(--text-tertiary));
+      opacity: 0; transition: opacity .22s;
     }
-    .section-title {
-      font-family: 'Cairo', sans-serif;
-      font-size: clamp(32px, 4vw, 48px); font-weight: 700;
-      color: var(--text-primary); margin-bottom: 60px;
+    .dock::after {
+      content: ''; position: absolute; inset-inline-end: calc(100% - 4px); top: 31px;
+      width: 7px; height: 7px; border-radius: 50%; background: var(--text-tertiary);
+      opacity: 0; transition: opacity .22s;
     }
-    .articles-grid { display: grid; gap: 10px; }
+    .dock[data-ch="water"]::before { background: linear-gradient(90deg, transparent, var(--water) 30%, var(--water)); }
+    .dock[data-ch="air"]::before   { background: linear-gradient(90deg, transparent, var(--air) 30%, var(--air)); }
+    .dock[data-ch="fire"]::before  { background: linear-gradient(90deg, transparent, var(--fire) 30%, var(--fire)); }
+    .dock[data-ch="water"]::after { background: var(--water); }
+    .dock[data-ch="air"]::after   { background: var(--air); }
+    .dock[data-ch="fire"]::after  { background: var(--fire); }
+    .dock:hover::before { opacity: .45; }
+    .dock.at::before, .dock.at::after { opacity: .92; }
+    .dock.at > a { border-color: var(--text-tertiary); box-shadow: var(--shadow); }
+    .dock.at .lev b { font-size: 19px; }
 
-    /* Article Card — RTL */
-    .article-card {
-      background: var(--glass); backdrop-filter: var(--blur);
-      -webkit-backdrop-filter: var(--blur); border: 1px solid var(--glass-border);
-      border-radius: var(--radius); box-shadow: var(--shadow-glass);
-      padding: 40px; text-decoration: none;
-      display: flex; align-items: center; gap: 36px;
-      flex-direction: row-reverse;
-      transition: var(--transition);
-    }
-    .article-card:hover {
-      background: var(--glass-hover);
-      box-shadow: var(--shadow-glass-hover);
-      transform: translateY(-2px);
-    }
-    .card-body { flex: 1; min-width: 0; text-align: right; }
-    .article-card-tag {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
-      color: var(--text-tertiary); margin-bottom: 14px; display: block;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    .article-card-title {
-      font-size: 20px; font-weight: 700; color: var(--text-primary);
-      line-height: 1.35; margin-bottom: 10px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    }
-    .article-card-excerpt {
-      font-size: 14px; color: var(--text-secondary);
-      line-height: 1.7; max-width: 600px; margin-bottom: 18px;
-    }
-    .article-card-meta {
-      font-size: 13px; color: var(--text-tertiary);
-      display: flex; align-items: center; gap: 16px;
-      flex-direction: row-reverse; justify-content: flex-end;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    .article-card-arrow {
-      margin-right: auto; margin-left: 0;
-      font-size: 18px; color: var(--text-tertiary);
-      transition: var(--transition); flex-shrink: 0;
-    }
-    .article-card:hover .article-card-arrow { color: var(--accent); transform: translateX(-4px); }
-    .card-thumb {
-      width: 160px; height: 100px; flex-shrink: 0;
-      border-radius: 10px; overflow: hidden; position: relative;
-    }
-    .card-thumb img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      filter: grayscale(100%); opacity: 0.88;
-      transition: filter 0.45s ease, opacity 0.45s ease;
-    }
-    .card-thumb::after {
-      content: ''; position: absolute; inset: 0;
-      background: rgba(0,113,227,0.18); pointer-events: none;
-      transition: opacity 0.45s ease;
-    }
-    .article-card:hover .card-thumb img { filter: grayscale(0%); opacity: 1; }
-    .article-card:hover .card-thumb::after { opacity: 0; }
+    /* the coupled calculator */
+    .el-calc { border: 1px solid var(--border); border-radius: 3px; background: var(--sheet); box-shadow: var(--shadow); display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+    .calc-in { padding: 24px 26px; border-inline-end: 1px solid var(--rule-2); }
+    .calc-out { padding: 24px 26px; background: var(--bg-2); }
+    .ctl { margin-bottom: 20px; }
+    .ctl:last-child { margin-bottom: 0; }
+    .ctl-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 7px; }
+    .ctl-head .v { font-family: var(--font-mono); font-size: 14px; font-weight: 500; font-variant-numeric: tabular-nums; }
+    .el-calc input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 22px; background: transparent; cursor: pointer; margin: 0; }
+    .el-calc input[type=range]::-webkit-slider-runnable-track { height: 2px; background: var(--border); }
+    .el-calc input[type=range]::-moz-range-track { height: 2px; background: var(--border); }
+    .el-calc input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 13px; height: 13px; border-radius: 50%; background: var(--text-primary); margin-top: -5.5px; border: 0; }
+    .el-calc input[type=range]::-moz-range-thumb { width: 13px; height: 13px; border-radius: 50%; background: var(--text-primary); border: 0; }
+    .out { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 9px 0; border-bottom: 1px dotted var(--border); }
+    .out:last-of-type { border-bottom: 0; }
+    .out .k { font-family: var(--font-mono); font-size: 10px; letter-spacing: .09em; text-transform: uppercase; color: var(--text-tertiary); }
+    .out .v { font-family: var(--font-mono); font-size: 17px; font-weight: 500; font-variant-numeric: tabular-nums; }
+    .out .v small { font-size: 10px; font-weight: 400; color: var(--text-tertiary); margin-left: 3px; }
+    .zbar { display: flex; flex-direction: column-reverse; gap: 2px; margin-top: 16px; }
+    .zbar div { display: flex; align-items: center; justify-content: space-between; padding: 4px 8px; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); background: var(--water-w); border-inline-start: 2px solid var(--water); }
+    .zbar div.g { background: var(--fire-w); border-inline-start-color: var(--fire); color: var(--fire); }
+    .zbar .el-z-gap { background: none; border-inline-start-color: transparent; justify-content: center; }
+    .calc-foot { grid-column: 1/-1; border-top: 1px solid var(--rule-2); padding: 12px 26px; background: var(--sheet); }
+    .calc-note { font-family: var(--font-mono); font-size: 11.5px; line-height: 1.65; color: var(--text-tertiary); margin: 0; }
 
-    /* Hidden articles */
-    .hidden-article { display: none !important; }
-    .hidden-article.visible { display: flex !important; animation: articleFadeIn 0.4s ease forwards; }
-    @keyframes articleFadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    /* grade */
+    .el-grade { border-top: 2px solid var(--text-primary); }
+    .el-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
 
-    /* Stats */
-    .stats-row {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 10px; margin-top: 80px;
-    }
-    .stat {
-      background: var(--glass); backdrop-filter: var(--blur);
-      -webkit-backdrop-filter: var(--blur); border: 1px solid var(--glass-border);
-      border-radius: var(--radius); box-shadow: var(--shadow-glass);
-      padding: 48px 40px; text-align: center; transition: var(--transition);
-    }
-    .stat:hover { background: var(--glass-hover); box-shadow: var(--shadow-glass-hover); }
-    .stat-num {
-      font-family: var(--font-display); font-size: 56px; font-weight: 700;
-      color: var(--text-primary); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px;
-    }
-    .stat-label { font-size: 14px; color: var(--text-tertiary); }
+    /* section labels used by the archive */
+    .section-eyebrow { display: block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 10px; }
+    .section-title { font-family: var(--font-display); font-size: clamp(30px, 4vw, 44px); font-weight: 700; letter-spacing: -.032em; margin: 0 0 30px; line-height: 1.06; }
 
-    /* ── Filter UI (AR) ── */
-    .course-promo { display:flex; align-items:center; gap:32px; justify-content:space-between;
-      text-decoration:none; padding:34px 40px; border-radius:var(--radius);
-      background:linear-gradient(135deg,rgba(0,113,227,0.10),rgba(0,113,227,0.03));
-      border:1px solid var(--glass-border); box-shadow:var(--shadow-glass); transition:var(--transition); overflow:hidden; }
-    .course-promo:hover { box-shadow:var(--shadow-glass-hover); transform:translateY(-2px); border-color:rgba(0,113,227,0.3); }
-    .course-promo-eyebrow { display:inline-block; font-size:11px; font-weight:600; letter-spacing:.06em; color:var(--accent); margin-bottom:12px; }
-    .course-promo-text h2 { font-family:'Cairo',sans-serif; font-size:clamp(22px,3.5vw,32px); font-weight:700; color:var(--text-primary); margin-bottom:12px; line-height:1.3; }
-    .course-promo-text p { color:var(--text-secondary); font-size:16px; line-height:1.8; margin-bottom:22px; max-width:640px; }
-    .course-promo-art { flex:0 0 auto; color:var(--accent); opacity:.85; }
-    .course-promo-art svg { width:120px; height:150px; }
-    @media (max-width:720px) { .course-promo { flex-direction:column-reverse; align-items:flex-start; padding:28px 24px; gap:18px; } .course-promo-art svg { width:84px; height:104px; } }
+    /* browse by topic */
+    .cat-section { margin: 34px 0 26px; }
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .cat-card { position: relative; background: var(--sheet); border: 0; padding: 16px 16px 14px; text-align: left; cursor: pointer; font-family: inherit; transition: background .16s; display: block; width: 100%; }
+    .cat-card:hover { background: var(--bg-2); }
+    .cat-card.active { background: var(--water-w); }
+    .cat-card.active .cat-card-icon { color: var(--water); }
+    .cat-card-icon { display: block; width: 20px; height: 20px; color: var(--text-tertiary); margin-bottom: 10px; }
+    .cat-card-icon svg { width: 20px; height: 20px; display: block; }
+    .cat-card-title { font-family: var(--font-display); font-size: 14.5px; font-weight: 600; letter-spacing: -.01em; color: var(--text-primary); margin-bottom: 2px; }
+    .cat-card-count { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); }
+    .cat-card-arrow { display: none; }
 
-    .filter-ui { margin-bottom: 36px; }
-    .search-wrap { position: relative; margin-bottom: 16px; }
-    .search-wrap svg { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); pointer-events: none; }
-    #article-search {
-      width: 100%; box-sizing: border-box;
-      padding: 13px 48px 13px 18px;
-      border-radius: 14px; border: 1.5px solid var(--glass-border);
-      background: var(--glass); backdrop-filter: var(--blur); -webkit-backdrop-filter: var(--blur);
-      font-size: 15px; font-family: 'Cairo', sans-serif; color: var(--text-primary);
-      outline: none; transition: border-color 0.2s, box-shadow 0.2s; direction: rtl;
-    }
-    #article-search::placeholder { color: var(--text-tertiary); }
-    #article-search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.1); background: var(--bg-3); }
-    .articles-grid.filtering .article-card        { display: flex !important; }
-    .articles-grid.filtering .article-card.f-hide { display: none  !important; }
-    #no-results { display:none; padding:60px 0; text-align:center; color:var(--text-tertiary); font-size:16px; font-family:'Cairo',sans-serif; }
-    @media(max-width:768px) {
-      .stats-row { grid-template-columns: 1fr; }
-      .card-thumb { display: none; }
-      .article-card { padding: 32px 24px; gap: 0; }
-      .hero { padding: 120px 20px 80px; }
-      .articles-section { padding: 60px 20px; }
-      .section-title { margin-bottom: 32px; }
-      .article-card-arrow { display: none; }
-      .hero-certs { justify-content: flex-start; }
-    }
+    /* the archive grid */
+    .articles-section { padding: 0; }
+    .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-top: 20px; }
+    .article-card { display: flex; flex-direction: column-reverse; background: var(--sheet); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; text-decoration: none; transition: border-color .18s, transform .18s, box-shadow .18s; }
+    .article-card:hover { border-color: var(--text-tertiary); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .card-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--bg-4); border-bottom: 1px solid var(--border); }
+    .card-body { flex: 1 1 auto; }
+    .card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; filter: saturate(.85); }
+    .article-card:hover .card-thumb img { transform: scale(1.03); filter: saturate(1); }
+    .card-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.22)); opacity: .8; }
+    .card-body { padding: 15px 17px 17px; display: flex; flex-direction: column; flex: 1; }
+    .article-card-tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--fire); margin-bottom: 6px; }
+    .article-card-title { font-family: var(--font-display); font-size: 16.5px; font-weight: 600; letter-spacing: -.018em; line-height: 1.28; color: var(--text-primary); margin-bottom: 7px; }
+    .article-card-excerpt { font-size: 13.5px; line-height: 1.5; color: var(--text-secondary); margin-bottom: 12px; flex: 1; }
+    .article-card-meta { font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; color: var(--text-tertiary); display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .article-card-arrow { color: var(--text-tertiary); transition: transform .18s, color .18s; }
+    .article-card:hover .article-card-arrow { transform: translateX(3px); color: var(--fire); }
 
-    /* ── تصفح حسب الموضوع ── */
-    .cat-section {
-      padding: 80px 24px 0;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      text-align: right;
-    }
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 0;
-    }
-    .cat-card {
-      background: var(--glass);
-      backdrop-filter: var(--blur);
-      -webkit-backdrop-filter: var(--blur);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-glass);
-      padding: 12px 16px;
-      text-decoration: none;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 12px;
-      transition: var(--transition);
-      text-align: right;
-      cursor: pointer;
-      font: inherit;
-      color: inherit;
-      width: 100%;
-    }
-    .cat-card:hover {
-      background: var(--glass-hover);
-      box-shadow: var(--shadow-glass-hover);
-      transform: translateY(-2px);
-    }
-    .cat-card.active {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px var(--accent), var(--shadow-glass);
-    }
-    .cat-card.active .cat-card-icon {
-      background: var(--accent);
-      color: var(--on-accent);
-    }
-    .cat-card-icon {
-      width: 32px; height: 32px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 9px; background: rgba(0,113,227,0.08);
-      color: var(--accent); margin-bottom: 0;
-    }
-    .cat-card-icon svg { width: 16px; height: 16px; }
-    .cat-card-title {
-      flex: 1;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-primary);
-      line-height: 1.4;
-      font-family: 'Cairo', sans-serif;
-    }
-    .cat-card-count {
-      font-size: 12.5px;
-      color: var(--text-tertiary);
-      margin-top: 0;
-      white-space: nowrap;
-      flex-shrink: 0;
-      font-family: 'Cairo', sans-serif;
-    }
-    .cat-card-arrow {
-      font-size: 13px;
-      color: var(--accent);
-      font-weight: 500;
-      opacity: 0;
-      transition: opacity 0.2s, transform 0.2s;
-      display: inline-block;
-    }
-    .cat-card:hover .cat-card-arrow {
-      opacity: 1;
-      transform: translateX(-4px);
-    }
-    @media(max-width:768px) {
-      .cat-grid { grid-template-columns: repeat(2, 1fr); }
-      .cat-section { padding: 60px 20px 0; }
-    }
-    @media(max-width:480px) {
-      .cat-grid { grid-template-columns: 1fr; }
-    }
+    /* the two set pieces */
+    .feature-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin: 16px 0 0; }
+    .feature-card { display: flex; gap: 15px; align-items: flex-start; padding: 20px 22px; border-radius: 3px; border: 1px solid var(--border); background: var(--sheet); text-decoration: none; transition: border-color .18s, transform .18s; }
+    .feature-card:hover { transform: translateY(-2px); border-color: var(--text-tertiary); }
+    .feature-ic { color: var(--fire); flex-shrink: 0; margin-top: 2px; }
+    .feature-card .fk { font-family: var(--font-mono); font-size: 9px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--fire); }
+    .feature-card h3 { font-family: var(--font-display); font-size: 19px; font-weight: 600; color: var(--text-primary); margin: 4px 0 6px; letter-spacing: -.02em; }
+    .feature-card p { font-size: 13.5px; line-height: 1.55; color: var(--text-secondary); margin: 0; }
 
-    .feature-strip{max-width:var(--max-w);margin:48px auto 0;padding:0 24px;display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
-    .feature-card{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;border-radius:18px;
-      border:1px solid var(--border);background:var(--bg-3);text-decoration:none;transition:var(--transition);}
-    .feature-card:hover{transform:translateY(-2px);border-color:var(--accent);}
-    .feature-ic{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;
-      background:var(--bg-4);color:var(--accent);flex:0 0 auto;}
-    .feature-card .fk{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
-    .feature-card h3{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--text-primary);
-      margin:5px 0 6px;letter-spacing:-.015em;}
-    .feature-card p{font-size:14px;line-height:1.55;color:var(--text-secondary);margin:0;}
+    .stats-row { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--border); margin-top: 30px; }
+    .stat { flex: 1 1 130px; padding-block: 14px; padding-inline: 0 18px; border-inline-end: 1px solid var(--rule-2); }
+    .stat:last-child { border-inline-end: 0; }
+    .stat-num { font-family: var(--font-display); font-weight: 700; font-size: 25px; letter-spacing: -.03em; display: block; }
+    .stat-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--text-tertiary); }
+
+    /* ── responsive ────────────────────────────────────────── */
+    @media (max-width: 1180px) { body.el { --pad: 248px; } .el-cluster { width: 196px; } }
+    @media (max-width: 1000px) {
+      body.el { --rail-w: 64px; --pad: 248px; }
+      .dock::before, .dock::after { display: none; }
+      .el-calc { grid-template-columns: 1fr; }
+      .calc-in { border-right: 0; border-bottom: 1px solid var(--rule-2); }
+      .el-cluster { inset-inline-start: auto; inset-inline-end: 16px; width: 186px; }
+    }
+    @media (max-width: 760px) {
+      body.el { --rail-w: 0px; --pad: 20px; padding-bottom: 62px; }
+      .el-rail, .el-datum { display: none; }
+      .el-page { margin-inline-start: 0; padding: 0 20px; }
+      .el-sect { padding: 60px 0; }
+      .hero { padding-top: 92px; }
+      .dock > a { grid-template-columns: 62px 1fr; }
+      .cat-grid { grid-template-columns: 1fr 1fr; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .el-cluster {
+        position: fixed; top: auto; bottom: 0; left: 0; right: 0; width: auto; z-index: 70;
+        flex-direction: row; align-items: stretch; gap: 1px;
+        border-radius: 0; border-left: 0; border-right: 0; border-bottom: 0;
+        box-shadow: 0 -6px 22px rgba(0,0,0,.16);
+      }
+      .cl-head { flex: 0 0 auto; align-items: baseline; gap: 5px; padding: 9px 13px; }
+      .cl-head .e { font-size: 22px; }
+      .cl-row { flex: 1 1 0; flex-direction: column; align-items: flex-start; justify-content: center; gap: 1px; padding: 8px 11px; }
+      .cl-row .k br { display: none; }
+      .cl-row .v { font-size: 13px; }
+      .cl-bar, .cl-foot, .el-cluster .cl-row:nth-child(n+6) { display: none; }
+      .fab-glass, .fab-consult { bottom: 5rem; }
+    }
+    @media (max-width: 430px) { .cat-grid { grid-template-columns: 1fr; } }
   </style>
 
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
@@ -360,7 +319,7 @@
   }
   </script>
 </head>
-<body>
+<body class="el">
 
 <nav class="nav">
   <div class="nav-inner">
@@ -393,15 +352,45 @@
 </script>
 
 <!-- HERO -->
-<div class="hero">
-  <span class="hero-eyebrow">مياه &middot; بنية تحتية &middot; MEP</span>
-  <h1>رؤى تقنية<br><em>من الميدان</em></h1>
-  <p class="hero-desc">أكثر من 22 عامًا في تصميم وإدارة مشاريع البنية التحتية الكبرى بالمملكة العربية السعودية — هندسة عملية لأنظمة المياه وأنظمة المباني (MEP)، عبر مقالات معمّقة وحاسبات ودورة متكاملة.</p>
-</div>
+<div class="el-rail" aria-hidden="true"><canvas id="railcv"></canvas></div>
+<div class="el-datum" aria-hidden="true"></div>
 
-<!-- MEP Course promo banner -->
-<div style="max-width:var(--max-w);margin:0 auto;padding:0 24px 8px;">
-  <a href="mep-course/" class="course-promo">
+<aside class="el-cluster" aria-label="القراءات عند المنسوب الحالي">
+  <div class="cl-head"><span class="e" id="r-elev">828</span><span class="u">م</span></div>
+  <div class="cl-row"><span class="k">الضغط الاستاتيكي <br>دون قطع</span><span class="v v-fire" id="r-static">81.2<small>بار</small></span></div>
+  <div class="cl-bar"><i id="b-static"></i></div>
+  <div class="cl-row"><span class="k">الضغط داخل <br>النطاق&nbsp;<span id="r-zn">7</span></span><span class="v v-water" id="r-zone">9.2<small>بار</small></span></div>
+  <div class="cl-bar"><i class="w" id="b-zone"></i></div>
+  <div class="cl-row"><span class="k">ضغط المدخنة <br>حتى الأرض</span><span class="v v-air" id="r-stack">&uarr; 593<small>Pa</small></span></div>
+  <div class="cl-row"><span class="k">سرعة الرياح <br>أرض مكشوفة</span><span class="v" id="r-wind">14.8<small>م/ث</small></span></div>
+  <div class="cl-foot">
+    <span class="lbl">الخارج</span>
+    <span class="el-seg" role="group" aria-label="درجة حرارة الهواء الخارجي">
+      <button type="button" data-to="5" aria-pressed="true">5&deg;</button>
+      <button type="button" data-to="18" aria-pressed="false">18&deg;</button>
+      <button type="button" data-to="45" aria-pressed="false">45&deg;</button>
+    </span>
+  </div>
+</aside>
+
+<main class="el-page">
+
+<section class="hero" data-elev="828">
+  <span class="hero-eyebrow fade-up">مياه &middot; بنية تحتية &middot; MEP</span>
+  <h1 class="fade-up-2">الماء لا يريد<br>أن <em>يصعد</em>.</h1>
+  <p class="hero-desc fade-up-3">ولا الهواء. أمّا الحريق فيصعد من تلقاء نفسه &mdash; وتلك هي المشكلة الأخرى.
+    اثنان وعشرون عامًا من تصميم أنظمة المياه وأنظمة المباني في المملكة العربية السعودية، مكتوبة حول الأمر
+    الوحيد المشترك بين كل خدمات المباني الشاهقة: <strong>الارتفاع هو حالة التحميل</strong>.</p>
+  <p class="hero-note fade-up-3">هذه الصفحة مقطع رأسي لا مجرّد تمرير. الشريط الجانبي مقياس مساحي، والخط المتقطّع
+    هو المنسوب المرجعي، وتقرأ الأجهزة القيم مباشرةً أثناء النزول. وكل ما يلي مُصنَّف عند المنسوب الذي يشغله فعلًا.</p>
+  <div class="hero-meta fade-up-4">
+    <div><b>٧٩</b><span>مقالة</span></div>
+    <div><b>٤٩</b><span>حاسبة</span></div>
+    <div><b>٢٩</b><span>فصلًا في الدليل</span></div>
+    <div><b>٢٢</b><span>عامًا في الميدان</span></div>
+  </div>
+  <div style="margin-top:34px;">
+<a href="mep-course/" class="course-promo">
     <div class="course-promo-text">
       <span class="course-promo-eyebrow">جديد · دورة تعليمية ذاتية · بالإنجليزية</span>
       <h2>هندسة MEP للمباني الشاهقة (Megatall)</h2>
@@ -416,9 +405,180 @@
       </svg>
     </div>
   </a>
-</div>
+  </div>
+</section>
 
-<!-- ARTICLES -->
+<div class="el-band"><div class="el-wrap">
+  <div class="band-tag"><span class="nm">نزولًا &middot; دور السطح</span><span class="ln"></span></div>
+  <div class="dock" data-elev="820" data-ch="water">
+    <a href="pools-wellness-mep-tall-buildings.html">
+      <span class="lev"><b>820</b><span>م</span></span>
+      <span class="txt"><span class="ch">مياه</span>
+        <h3>المسابح ومرافق الاستجمام على قمة البرج</h3>
+        <p>التبخر على السطح، ومعدل الدوران، والحمل الميت الذي يضعه مسبح ممتلئ على أعلى دور إنشائي.</p></span></a>
+  </div>
+  <div class="dock" data-elev="760" data-ch="air">
+    <a href="outdoor-air-ventilation-tall-buildings.html">
+      <span class="lev"><b>760</b><span>م</span></span>
+      <span class="txt"><span class="ch">هواء</span>
+        <h3>مآخذ الهواء الخارجي في مجال الرياح</h3>
+        <p>ضغط الرياح على الواجهة، واستراتيجية السحب مع الارتفاع، واسترجاع الطاقة، وكلفة الفلترة هنا في الأعلى.</p></span></a>
+  </div>
+</div></div>
+
+<section class="el-sect" data-elev="733"><div class="el-wrap">
+  <div class="sect-tag"><span class="el">+733.80</span><span class="ln"></span><span class="nm">النطاق&nbsp;٧ &middot; ميكانيكي علوي</span></div>
+  <h2 class="section-title">رقم واحد يحدّد المبنى كله.</h2>
+  <p>كل عمود رأسي في البرج هو عمود من مادة ثقيلة. وبمعدل <strong>0.0981&nbsp;بار لكل متر</strong> يبلغ عمود ماء غير
+    مقطوع <strong>81&nbsp;بار</strong> عند قاعدة برج ارتفاعه 828&nbsp;مترًا &mdash; أي نحو خمسة أضعاف ما تتحمله المحابس
+    والوصلات وأدوات الاستخدام العادية. لذلك يُقطع العمود. وموضع القطع هو ما يحدّد عدد الطوابق الميكانيكية، والمساحة
+    المؤجَّرة التي تُضحّي بها للخدمات، وعدد المضخات، وفلسفة الاحتياطي، وفاتورة الطاقة لستين عامًا قادمة.</p>
+  <p>والقطع ليس تفضيلًا، بل هو أدنى ثلاثة حدود: ما يتحمّله عمود مياه الاستخدام، وما يتحمّله عمود الحريق، وما تتحمّله
+    دائرة المياه المبردة. <strong>الأصغر هو الحاكم</strong>، وهو في معظم الأبراج عمود الحريق. وبهذا يرسم مهندس الحريق
+    نواة المبنى من حيث لا ينتبه أحد.</p>
+</div></section>
+
+<div class="el-band"><div class="el-wrap">
+  <div class="dock" data-elev="640" data-ch="air">
+    <a href="cooling-towers-heat-rejection-tall-buildings.html">
+      <span class="lev"><b>640</b><span>م</span></span>
+      <span class="txt"><span class="ch">هواء &middot; مياه</span>
+        <h3>طرد الحرارة والدائرة المفتوحة</h3>
+        <p>درجة البصيلة الرطبة، وميزان المياه، ولماذا تكون رتبة ضغط دائرة المكثف &mdash; لا مضختها &mdash; هي القيد الحقيقي.</p></span></a>
+  </div>
+</div></div>
+
+<section class="el-sect" data-elev="611"><div class="el-wrap">
+  <div class="sect-tag"><span class="el">+611.50</span><span class="ln"></span><span class="nm">النطاق&nbsp;٦ &middot; نقطة القطع</span></div>
+  <h2 class="section-title">اضبط البرج، فيتبعه الرسم.</h2>
+  <p style="margin-bottom:26px;">غيّر هذه المدخلات الأربعة ليُعاد رسم المقطع على الشريط: تنتقل نقاط قطع النطاقات
+    ورموز صمامات تخفيض الضغط والأدوار الميكانيكية إلى حيث تضعها أرقامك.</p>
+
+  <div class="el-calc">
+    <div class="calc-in">
+      <div class="ctl">
+        <div class="ctl-head"><span class="lbl">ارتفاع البرج</span><span class="v"><span id="v-h">828</span>&nbsp;م</span></div>
+        <input type="range" id="s-h" min="120" max="1000" step="2" value="828" aria-label="ارتفاع البرج بالمتر">
+      </div>
+      <div class="ctl">
+        <div class="ctl-head"><span class="lbl">رتبة ضغط عمود المياه</span><span class="v">PN<span id="v-pn">16</span></span></div>
+        <input type="range" id="s-pn" min="10" max="40" step="1" value="16" aria-label="رتبة ضغط عمود مياه الاستخدام">
+      </div>
+      <div class="ctl">
+        <div class="ctl-head"><span class="lbl">الضغط المتبقي عند أعلى نقطة</span><span class="v"><span id="v-pm">1.5</span>&nbsp;بار</span></div>
+        <input type="range" id="s-pm" min="0.8" max="3.5" step="0.1" value="1.5" aria-label="الضغط المتبقي عند أعلى أداة">
+      </div>
+      <div class="ctl">
+        <div class="ctl-head"><span class="lbl">رتبة ضغط عمود الحريق</span><span class="v">PN<span id="v-pf">12</span></span></div>
+        <input type="range" id="s-pf" min="10" max="25" step="1" value="12" aria-label="رتبة ضغط عمود الحريق">
+      </div>
+    </div>
+    <div class="calc-out">
+      <div class="out"><span class="k">الضغط الاستاتيكي عند القاعدة</span><span class="v" id="o-base">81.2<small>بار</small></span></div>
+      <div class="out"><span class="k">ارتفاع نطاق المياه</span><span class="v" id="o-zd">148<small>م</small></span></div>
+      <div class="out"><span class="k">ارتفاع نطاق الحريق</span><span class="v" id="o-zf">122<small>م</small></span></div>
+      <div class="out"><span class="k">النطاق الحاكم</span><span class="v" id="o-zg">122<small>م</small></span></div>
+      <div class="out"><span class="k">عدد النطاقات</span><span class="v" id="o-nz">7</span></div>
+      <div class="out"><span class="k">طاقة الرفع عند كفاءة 70&nbsp;%</span><span class="v" id="o-e">3.22<small>kWh/m&sup3;</small></span></div>
+      <div class="zbar" id="zbar"></div>
+    </div>
+    <div class="calc-foot"><p class="calc-note" id="calc-note">&nbsp;</p></div>
+  </div>
+</div></section>
+
+<div class="el-band"><div class="el-wrap">
+  <div class="band-tag"><span class="nm">نزولًا &middot; الثلث الأوسط</span><span class="ln"></span></div>
+  <div class="dock" data-elev="500" data-ch="water">
+    <a href="chilled-water-pumps-tall-buildings.html">
+      <span class="lev"><b>500</b><span>م</span></span>
+      <span class="txt"><span class="ch">مياه</span>
+        <h3>المياه المبردة: الاستاتيكي مقابل الاحتكاك</h3>
+        <p>الضغط الاستاتيكي يُلغى في الدائرة المغلقة والاحتكاك لا يُلغى. المبادلات المتتالية وتقسيم النطاقات والتحكم عند الأحمال الجزئية.</p></span></a>
+  </div>
+  <div class="dock" data-elev="414" data-ch="air">
+    <a href="stack-effect-tall-buildings.html">
+      <span class="lev"><b>414</b><span>م</span></span>
+      <span class="txt"><span class="ch">هواء &middot; المستوى المتعادل</span>
+        <h3>تأثير المدخنة والمستوى المتعادل</h3>
+        <p>مُصنَّف عند منتصف الارتفاع لأن المستوى المتعادل يقع هناك. قوى الأبواب، وتقسيم المناور، وثمن الطاقة.</p></span></a>
+  </div>
+  <div class="dock" data-elev="245" data-ch="water">
+    <a href="domestic-water-tall-buildings.html">
+      <span class="lev"><b>245</b><span>م</span></span>
+      <span class="txt"><span class="ch">مياه</span>
+        <h3>إمداد المياه وتقسيم الضغط وصمامات التخفيض</h3>
+        <p>تقدير الطلب، وتقسيم الضغط، وخزانات الكسر، وكيلوواط الساعات المختبئة في كل متر من الرفع.</p></span></a>
+  </div>
+  <div class="dock" data-elev="122" data-ch="fire">
+    <a href="firefighting-tall-buildings.html">
+      <span class="lev"><b>122</b><span>م</span></span>
+      <span class="txt"><span class="ch">حريق</span>
+        <h3>العمود الرأسي الذي يرسم النواة</h3>
+        <p>نقاط قطع النطاقات، والمضخات على التوالي، وأثر المدخنة على تضغيط السلالم، والتحكم في الدخان عند كل منسوب.</p></span></a>
+  </div>
+  <div class="dock" data-elev="52" data-ch="fire">
+    <a href="atrium-smoke-control-tall-buildings.html">
+      <span class="lev"><b>52</b><span>م</span></span>
+      <span class="txt"><span class="ch">حريق &middot; هواء</span>
+        <h3>التحكم في الدخان بالأفنية الداخلية</h3>
+        <p>زمن الامتلاء، وسحب الهواء إلى العمود، ومشكلة هواء التعويض التي لا يخصّص لها أحد مساحة.</p></span></a>
+  </div>
+</div></div>
+
+<section class="el-sect el-grade" data-elev="0" data-anchor-off="0"><div class="el-wrap">
+  <div class="sect-tag"><span class="el">&plusmn;0.00</span><span class="ln"></span><span class="nm">منسوب الأرض</span></div>
+  <h2 class="section-title">عند منسوب الأرض يتوقف عن كونه مقطعًا<br>ويبدأ كونه مشروعًا.</h2>
+  <p>أنا <strong>محمد أبوخطوة</strong> &mdash; اثنان وعشرون عامًا في تصميم وإدارة مشاريع المياه وخدمات المباني الكبرى
+    في المملكة العربية السعودية: خطوط النقل ومحطات الضخ، والتحلية والتناضح العكسي، ثم أنظمة MEP داخل الأبراج.
+    والمقالات هنا هي دفتر العمل: كل رسم بياني نموذج حيّ يمكنك تشغيله، وكل رقم في النص مُراجَع مقابل النموذج الذي أنتجه.</p>
+  <p>إن كان لديك برج أو منظومة ضخ أو مشكلة مطرقة مائية لا تتصرّف كما يجب، فمراجعة مدتها تسعون دقيقة تكشفها عادةً
+    أسرع من دورة رسومات أخرى.</p>
+  <div class="el-ctas">
+    <a class="btn btn-primary" href="services-ar.html">احجز استشارة</a>
+    <a class="btn btn-ghost" href="about-ar.html">عن المكتب</a>
+  </div>
+<div class="feature-strip">
+  <a class="feature-card" href="one-tower.html">
+    <span class="feature-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M3 21h18"/><path d="M7 9h10M7 13h10M7 17h10"/></svg></span>
+    <span>
+      <span class="fk">تفاعلي</span>
+      <h3>البرج الواحد</h3>
+      <p>كل النماذج على هذا الموقع مرتبطة ببرج واحد. غيّر الارتفاع وشاهد مناطق الضغط والأدوار الميكانيكية ومحطة التبريد وميزان المياه تتحرك معاً.</p>
+    </span>
+  </a>
+  <a class="feature-card" href="megatall-handbook.html">
+    <span class="feature-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+    <span>
+      <span class="fk">الطبعة المجمّعة</span>
+      <h3>دليل الأنظمة الميكانيكية للمباني الشاهقة</h3>
+      <p>تسعة وعشرون فصلاً عن أنظمة المباني الشاهقة في مجلد واحد قابل للطباعة &mdash; ثماني ساعات قراءة و٨٦ نموذجاً محسوباً، بالترتيب الذي يجب أن تُقرأ به.</p>
+    </span>
+  </a>
+</div>
+</div></section>
+
+<div class="el-band"><div class="el-wrap">
+  <div class="band-tag"><span class="nm">تحت منسوب الأرض</span><span class="ln"></span></div>
+  <div class="dock" data-elev="-12" data-ch="air">
+    <a href="car-park-ventilation-tall-buildings.html">
+      <span class="lev"><b>&minus;12</b><span>م</span></span>
+      <span class="txt"><span class="ch">هواء</span>
+        <h3>تهوية مواقف السيارات في القاعدة</h3>
+        <p>تخفيف أول أكسيد الكربون، والمراوح النفاثة، ووضع الحريق، وسؤال السيارات الكهربائية الذي يغيّر حمل الحريق تحت البرج.</p></span></a>
+  </div>
+  <div class="dock" data-elev="-28" data-ch="water">
+    <a href="basement-dewatering-drainage-tall-buildings.html">
+      <span class="lev"><b>&minus;28</b><span>م</span></span>
+      <span class="txt"><span class="ch">مياه</span>
+        <h3>نزح المياه الجوفية للأقبية العميقة</h3>
+        <p>تقدير التدفق، والطفو على اللبشة، ومضخات حرجة فعلًا لأن لا شيء يصرف بالجاذبية.</p></span></a>
+  </div>
+</div></div>
+
+<section class="el-sect" data-elev="-30"><div class="el-wrap-wide">
+  <div class="sect-tag"><span class="el">&minus;30.00</span><span class="nm">قبو 6 &middot; غرفة المعدات والأرشيف</span><span class="ln"></span></div>
+  <h2 class="section-title">كل ما تبقّى في الأسفل.</h2>
+  <p style="margin-bottom:8px;">غرفة معدات الموقع: تسع وسبعون مقالة، مُصنَّفة بالموضوع لا بالارتفاع.</p>
 <div class="cat-section">
   <span class="section-eyebrow" style="text-align:right;display:block;">تصفح حسب الموضوع</span>
   <div class="cat-grid">
@@ -473,26 +633,6 @@
       <div class="cat-card-count">٧ مقالات</div>
     </button>
   </div>
-</div>
-
-
-<div class="feature-strip">
-  <a class="feature-card" href="one-tower.html">
-    <span class="feature-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M3 21h18"/><path d="M7 9h10M7 13h10M7 17h10"/></svg></span>
-    <span>
-      <span class="fk">تفاعلي</span>
-      <h3>البرج الواحد</h3>
-      <p>كل النماذج على هذا الموقع مرتبطة ببرج واحد. غيّر الارتفاع وشاهد مناطق الضغط والأدوار الميكانيكية ومحطة التبريد وميزان المياه تتحرك معاً.</p>
-    </span>
-  </a>
-  <a class="feature-card" href="megatall-handbook.html">
-    <span class="feature-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
-    <span>
-      <span class="fk">الطبعة المجمّعة</span>
-      <h3>دليل الأنظمة الميكانيكية للمباني الشاهقة</h3>
-      <p>تسعة وعشرون فصلاً عن أنظمة المباني الشاهقة في مجلد واحد قابل للطباعة &mdash; ثماني ساعات قراءة و٨٦ نموذجاً محسوباً، بالترتيب الذي يجب أن تُقرأ به.</p>
-    </span>
-  </a>
 </div>
 
 <div class="articles-section">
@@ -1487,6 +1627,9 @@
 
 </div>
 
+</div></section>
+</main>
+
 <!-- Lead Magnet Banner -->
 <section id="lead-magnet-section" style="padding:80px 24px; direction:rtl;">
   <div class="lead-card">
@@ -1647,7 +1790,7 @@ function mcSubmitAr(e) {
     <div id="mc-msg-ar" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">بدون رسائل مزعجة. إلغاء الاشتراك في أي وقت.</div>
   </div>
 </section>
-<style>#mc-email-ar:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }</style>
+<style>#mc-email-ar:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }</style>
 
 <!-- Floating Consultation Button -->
 <div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
@@ -1665,7 +1808,7 @@ function mcSubmitAr(e) {
 .fab-glass, .fab-consult {
   position:fixed; bottom:2rem; z-index:9999;
   display:flex; align-items:center; gap:.6rem;
-  background:rgba(255,255,255,0.15); backdrop-filter:blur(12px);
+  background:var(--sheet-2); backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px); color:var(--text-primary); padding:.85rem 1.6rem;
   border-radius:50px; font-weight:600; font-size:.9rem; cursor:pointer;
   border:1px solid rgba(255,255,255,0.3);
@@ -1683,29 +1826,24 @@ function mcSubmitAr(e) {
 
 /* ─── Dark mode: Lead Magnet ─── */
 [data-theme="dark"] #lead-magnet-section {
-  background: linear-gradient(135deg, rgba(41,97,255,0.12) 0%, rgba(41,151,255,0.08) 100%) !important;
-  border-top-color: rgba(41,151,255,0.15) !important;
-  border-bottom-color: rgba(41,151,255,0.15) !important;
-}
-[data-theme="dark"] #lead-magnet-section h2 { color: var(--bg-2) !important; }
-[data-theme="dark"] #lead-magnet-section p  { color: var(--text-tertiary) !important; }
-[data-theme="dark"] #lead-magnet-section div[style*="color:var(--text-secondary)"] { color: var(--text-tertiary) !important; }
-[data-theme="dark"] #lead-magnet-section div[style*="color:var(--accent)"] { color: var(--accent) !important; }
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 12%, transparent) 0%, color-mix(in srgb, var(--accent) 8%, transparent) 100%) !important;
+  border-top-color: color-mix(in srgb, var(--accent) 15%, transparent) !important;
+  border-bottom-color: color-mix(in srgb, var(--accent) 15%, transparent) !important;}
+[data-theme="dark"] #lead-magnet-section h2 { color: var(--text-primary) !important;}
+[data-theme="dark"] #lead-magnet-section p  { color: var(--text-tertiary) !important;}
 
 /* ─── Dark mode: Newsletter ─── */
 [data-theme="dark"] #newsletter-section {
-  background: rgba(41,151,255,0.04) !important;
-  border-top-color: rgba(41,151,255,0.12) !important;
-}
-[data-theme="dark"] #newsletter-section h2 { color: var(--bg-2) !important; }
-[data-theme="dark"] #newsletter-section p  { color: var(--text-tertiary) !important; }
+  background: color-mix(in srgb, var(--accent) 4%, transparent) !important;
+  border-top-color: color-mix(in srgb, var(--accent) 12%, transparent) !important;}
+[data-theme="dark"] #newsletter-section h2 { color: var(--text-primary) !important;}
+[data-theme="dark"] #newsletter-section p  { color: var(--text-tertiary) !important;}
 [data-theme="dark"] #newsletter-section #mc-email-ar {
   background: var(--bg-4) !important;
-  border-color: rgba(41,151,255,0.25) !important;
-  color: var(--bg-2) !important;
-}
-[data-theme="dark"] #newsletter-section #mc-email-ar::placeholder { color: var(--text-tertiary) !important; }
-[data-theme="dark"] #newsletter-section #mc-msg-ar { color: var(--text-tertiary) !important; }
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent) !important;
+  color: var(--text-primary) !important;}
+[data-theme="dark"] #newsletter-section #mc-email-ar::placeholder { color: var(--text-tertiary) !important;}
+[data-theme="dark"] #newsletter-section #mc-msg-ar { color: var(--text-tertiary) !important;}
 </style>
 <!-- حساب عدد المقالات لكل تصنيف تلقائيًا (يبقي أرقام "تصفّح حسب الموضوع" محدّثة دائمًا) -->
 <script>
@@ -1741,6 +1879,7 @@ function mcSubmitAr(e) {
   else run();
 })();
 </script>
+<script src="elevation.js?v=4"></script>
 <script src="theme.js?v=4"></script>
 </body>
 </html>

@@ -12,8 +12,8 @@
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 3 — Fire Protection | MEP for Tall Buildings</title>
 <meta name="description" content="Fire protection for tall buildings — fire-water storage, NFPA 20 pumps, riser zoning and PRVs, standpipes, sprinkler density and area, special hazards, and Civil Defense commissioning.">
@@ -413,7 +413,7 @@ function mcSubmit(e) {
 .fab-glass, .fab-consult {
   position:fixed; bottom:2rem; z-index:9999;
   display:flex; align-items:center; gap:.6rem;
-  background:rgba(255,255,255,0.15);
+  background:var(--sheet-2);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
   color:var(--text-primary); padding:.85rem 1.6rem;
@@ -429,8 +429,7 @@ function mcSubmit(e) {
   box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);
 }
 [data-theme="dark"] .fab-glass, [data-theme="dark"] .fab-consult {
-  background:rgba(40,40,44,0.55); color:var(--bg-2); border-color:rgba(255,255,255,0.14);
-}
+  background:rgba(40,40,44,0.55); color: var(--text-primary); border-color:rgba(255,255,255,0.14);}
 .fab-wa { left:2rem; }
 .fab-consult { right:2rem; }
 @media(max-width:600px){
@@ -441,7 +440,7 @@ function mcSubmit(e) {
     justify-content:center;
   }
 }
-#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }
 </style>
 
 <script src="assets/course.js"></script>

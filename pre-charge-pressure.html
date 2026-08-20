@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="The Pre-Charge Pressure of the Surge Vessel | Mohamed Abokhatwa">
@@ -65,9 +65,9 @@
       box-shadow:var(--shadow-glass);
       padding:24px;
     }
-    .scenario-card.danger{border-color:rgba(196,43,43,.25);background:rgba(196,43,43,.05);}
-    .scenario-card.success{border-color:rgba(26,122,56,.25);background:rgba(26,122,56,.05);}
-    .scenario-card.warning{border-color:rgba(138,87,0,.25);background:rgba(138,87,0,.05);}
+    .scenario-card.danger{border-color:color-mix(in srgb, var(--danger) 25%, transparent);background:color-mix(in srgb, var(--danger) 5%, transparent);}
+    .scenario-card.success{border-color:color-mix(in srgb, var(--success) 25%, transparent);background:color-mix(in srgb, var(--success) 5%, transparent);}
+    .scenario-card.warning{border-color:color-mix(in srgb, var(--warning) 25%, transparent);background:color-mix(in srgb, var(--warning) 5%, transparent);}
     .scenario-label{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;}
     .scenario-label.danger{color:var(--danger);}
     .scenario-label.success{color:var(--success);}
@@ -521,7 +521,7 @@ function mcSubmit(e) {
 .fab-glass, .fab-consult {
   position:fixed; bottom:2rem; z-index:9999;
   display:flex; align-items:center; gap:.6rem;
-  background:rgba(255,255,255,0.15);
+  background:var(--sheet-2);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
   color:var(--text-primary); padding:.85rem 1.6rem;
@@ -549,7 +549,7 @@ function mcSubmit(e) {
 }
 </style>
 <style>
-#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }
 </style>
 <script src="article-features.js?v=4"></script>
 <script src="theme.js?v=4"></script>

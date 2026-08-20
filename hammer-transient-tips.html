@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="Tips for Using HAMMER to Understand Interesting Transient Results | Mohamed Abokhatwa">
@@ -62,7 +62,7 @@
     /* ── Callout boxes ── */
     .box{border-radius:10px;padding:16px 20px;margin:1.8rem 0;font-size:15px;line-height:1.65;}
     .box-title{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;display:block;}
-    .tip{background:rgba(0,113,227,.06);border-left:4px solid var(--accent);}
+    .tip{background:color-mix(in srgb, var(--accent) 6%, transparent);border-left:4px solid var(--accent);}
     .tip .box-title{color:var(--accent);}
     .warn{background:rgba(232,184,75,.1);border-left:4px solid var(--warning);}
     .warn .box-title{color:var(--warning);}
@@ -86,7 +86,7 @@
     .ctrl-label{font-size:12px;font-weight:600;color:var(--text-tertiary);margin-right:4px;}
     .ctrl-btn{font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;border:1.5px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;transition:.15s;font-family:inherit;}
     .ctrl-btn.on{background:var(--accent);color:var(--on-accent);}
-    .ctrl-btn:hover:not(.on){background:rgba(0,113,227,.08);}
+    .ctrl-btn:hover:not(.on){background:color-mix(in srgb, var(--accent) 8%, transparent);}
     .chart-canvas-wrap{position:relative;height:260px;}
     .chart-legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--text-tertiary);}
     .leg{display:flex;align-items:center;gap:6px;}
@@ -440,7 +440,7 @@
   <span class="fab-text">Book a Consultation</span>
 </div>
 <style>
-.fab-glass,.fab-consult{position:fixed;bottom:2rem;z-index:9999;display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--text-primary);padding:.85rem 1.6rem;border-radius:50px;font-weight:600;font-size:.9rem;cursor:pointer;border:1px solid rgba(255,255,255,0.3);box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.fab-glass,.fab-consult{position:fixed;bottom:2rem;z-index:9999;display:flex;align-items:center;gap:.6rem;background:var(--sheet-2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--text-primary);padding:.85rem 1.6rem;border-radius:50px;font-weight:600;font-size:.9rem;cursor:pointer;border:1px solid rgba(255,255,255,0.3);box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);text-decoration:none;transition:transform .2s,box-shadow .2s;}
 .fab-glass:hover,.fab-consult:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4);}
 .fab-wa{left:2rem;}.fab-consult{right:2rem;}
 @media(max-width:600px){.fab-glass-text,.fab-text{display:none;}.fab-glass,.fab-consult{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;}}
@@ -467,7 +467,7 @@
   </div>
 </section>
 <style>
-#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }
 </style>
 <script>
 function mcSubmit(e) {

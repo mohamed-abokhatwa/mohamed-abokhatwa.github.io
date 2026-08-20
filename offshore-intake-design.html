@@ -12,8 +12,8 @@
   <meta charset="UTF-8">
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="Offshore Seawater Intake Design: Six Core Engineering Principles | Mohamed Abokhatwa">
@@ -168,7 +168,7 @@ document.getElementById('navToggle').addEventListener('click', function() {
   </div>
 </section>
 <style>
-#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }
 </style>
 <script>
 function mcSubmit(e) {
@@ -211,7 +211,7 @@ function mcSubmit(e) {
 .fab-glass, .fab-consult {
   position:fixed; bottom:2rem; z-index:9999;
   display:flex; align-items:center; gap:.6rem;
-  background:rgba(255,255,255,0.15); backdrop-filter:blur(12px);
+  background:var(--sheet-2); backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px); color:var(--text-primary); padding:.85rem 1.6rem;
   border-radius:50px; font-weight:600; font-size:.9rem; cursor:pointer;
   border:1px solid rgba(255,255,255,0.3);

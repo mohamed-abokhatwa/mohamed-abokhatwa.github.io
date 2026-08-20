@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="Control Valve Closure Time & Water Hammer | Mohamed Abokhatwa">
@@ -75,7 +75,7 @@
       color:var(--text-tertiary);letter-spacing:.04em;
       border-bottom:1px solid rgba(0,0,0,0.07);
       display:flex;align-items:center;gap:8px;
-      background:rgba(255,255,255,0.5);
+      background:var(--sheet-2);
     }
     .panel-header::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;}
     .panel-body{padding:22px 24px;}
@@ -90,7 +90,7 @@
 
     /* ── Result cards ── */
     .results-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;}
-    .res-card{background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);border-radius:var(--radius-sm);padding:12px;text-align:center;}
+    .res-card{background:var(--sheet);border:1px solid var(--glass-border);border-radius:var(--radius-sm);padding:12px;text-align:center;}
     .res-label{font-size:11px;color:var(--text-tertiary);margin-bottom:4px;}
     .res-val{font-size:18px;font-weight:600;line-height:1.2;}
     .res-unit{font-size:11px;color:var(--text-tertiary);}
@@ -100,8 +100,8 @@
     .res-neutral{color:var(--accent);}
 
     .regime-banner{border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:600;text-align:center;margin-bottom:16px;}
-    .regime-rapid{background:rgba(196,43,43,0.06);border:1px solid rgba(196,43,43,0.18);color:var(--danger);}
-    .regime-slow{background:rgba(26,122,56,0.06);border:1px solid rgba(26,122,56,0.2);color:var(--success);}
+    .regime-rapid{background:color-mix(in srgb, var(--danger) 6%, transparent);border:1px solid color-mix(in srgb, var(--danger) 18%, transparent);color:var(--danger);}
+    .regime-slow{background:color-mix(in srgb, var(--success) 6%, transparent);border:1px solid color-mix(in srgb, var(--success) 20%, transparent);color:var(--success);}
 
     /* ── Diagram SVG wrapper ── */
     .diagram-wrap{
@@ -117,7 +117,7 @@
 
     /* ── Scenario table ── */
     .scenario-table{width:100%;border-collapse:collapse;font-size:14px;margin:1.5rem 0;}
-    .scenario-table thead tr{background:rgba(0,113,227,0.07);}
+    .scenario-table thead tr{background:color-mix(in srgb, var(--accent) 7%, transparent);}
     .scenario-table th{padding:11px 12px;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text-tertiary);border-bottom:1px solid var(--border);}
     .scenario-table td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,0.05);color:var(--text-secondary);font-size:13.5px;text-align:center;}
     .scenario-table td:first-child{text-align:left;font-weight:500;color:var(--text-primary);}
@@ -133,7 +133,7 @@
     .wf-desc{font-size:14.5px;color:var(--text-secondary);line-height:1.7;}
     .wf-code{
       font-family:'Courier New',monospace;font-size:12px;
-      background:rgba(0,113,227,0.06);border:1px solid rgba(0,113,227,0.15);
+      background:color-mix(in srgb, var(--accent) 6%, transparent);border:1px solid color-mix(in srgb, var(--accent) 15%, transparent);
       border-radius:8px;padding:8px 12px;margin-top:8px;
       color:var(--accent);display:block;line-height:1.6;
     }
@@ -149,24 +149,24 @@
     .checklist{list-style:none;padding:0;margin:1rem 0;}
     .checklist li{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.05);font-size:15px;color:var(--text-secondary);line-height:1.7;}
     .checklist li:last-child{border-bottom:none;}
-    .check-icon{width:22px;height:22px;border-radius:50%;background:rgba(0,113,227,0.08);border:1px solid rgba(0,113,227,0.2);color:var(--accent);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+    .check-icon{width:22px;height:22px;border-radius:50%;background:color-mix(in srgb, var(--accent) 8%, transparent);border:1px solid color-mix(in srgb, var(--accent) 20%, transparent);color:var(--accent);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
 
     /* ── Condition cards ── */
     .cond-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:1.5rem 0;}
     .cond-card{border-radius:var(--radius-sm);padding:18px 20px;}
-    .cond-danger{background:rgba(196,43,43,0.05);border:1px solid rgba(196,43,43,0.18);}
-    .cond-safe{background:rgba(26,122,56,0.05);border:1px solid rgba(26,122,56,0.2);}
+    .cond-danger{background:color-mix(in srgb, var(--danger) 5%, transparent);border:1px solid color-mix(in srgb, var(--danger) 18%, transparent);}
+    .cond-safe{background:color-mix(in srgb, var(--success) 5%, transparent);border:1px solid color-mix(in srgb, var(--success) 20%, transparent);}
     .cond-card h4{font-size:14px;font-weight:600;margin-bottom:8px;}
     .cond-danger h4{color:var(--danger);}
     .cond-safe h4{color:var(--success);}
     .cond-badge{font-family:'Courier New',monospace;font-size:13px;padding:3px 10px;border-radius:6px;display:inline-block;margin-bottom:8px;}
-    .cond-danger .cond-badge{background:rgba(196,43,43,0.1);color:var(--danger);}
-    .cond-safe .cond-badge{background:rgba(26,122,56,0.1);color:var(--success);}
+    .cond-danger .cond-badge{background:color-mix(in srgb, var(--danger) 10%, transparent);color:var(--danger);}
+    .cond-safe .cond-badge{background:color-mix(in srgb, var(--success) 10%, transparent);color:var(--success);}
     .cond-card p{font-size:14px;color:var(--text-secondary);margin:0;line-height:1.6;}
 
     /* ── Material table ── */
     .material-table{width:100%;border-collapse:collapse;font-size:14px;margin:1.5rem 0;}
-    .material-table thead tr{background:rgba(0,113,227,0.07);}
+    .material-table thead tr{background:color-mix(in srgb, var(--accent) 7%, transparent);}
     .material-table th{padding:10px 14px;font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text-tertiary);border-bottom:1px solid var(--border);}
     .material-table td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,0.05);color:var(--text-secondary);font-size:14px;text-align:center;}
     .material-table td:first-child{text-align:left;font-weight:500;color:var(--text-primary);}
@@ -174,10 +174,10 @@
 
     /* ── Inline badge ── */
     .ibadge{display:inline-block;padding:2px 9px;border-radius:980px;font-size:12px;font-weight:500;}
-    .ibadge-r{background:rgba(196,43,43,0.1);color:var(--danger);}
-    .ibadge-w{background:rgba(138,87,0,0.1);color:var(--warning);}
-    .ibadge-b{background:rgba(0,113,227,0.1);color:var(--accent);}
-    .ibadge-g{background:rgba(26,122,56,0.1);color:var(--success);}
+    .ibadge-r{background:color-mix(in srgb, var(--danger) 10%, transparent);color:var(--danger);}
+    .ibadge-w{background:color-mix(in srgb, var(--warning) 10%, transparent);color:var(--warning);}
+    .ibadge-b{background:color-mix(in srgb, var(--accent) 10%, transparent);color:var(--accent);}
+    .ibadge-g{background:color-mix(in srgb, var(--success) 10%, transparent);color:var(--success);}
 
     .chart-box{position:relative;height:260px;margin-top:4px;}
 
@@ -710,7 +710,12 @@ While the analytical formulas provide invaluable first-pass design estimates, fi
 
 <script>
 // ── Palette aligned with website ─────────────────────────────────────────────
-const C = { accent:'#0071e3', danger:'#c42b2b', warn:'#8a5700', success:'#1a7a38', text:'#86868b', grid:'rgba(0,0,0,0.07)' };
+const C = {};
+  function __syncC(){ var cs=getComputedStyle(document.documentElement), v=function(n){return cs.getPropertyValue(n).trim();};
+    C.accent=v('--accent'); C.danger=v('--danger'); C.warn=v('--warning');
+    C.success=v('--success'); C.text=v('--text-secondary'); C.grid=v('--border'); }
+  __syncC();
+  new MutationObserver(__syncC).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 
 // ── State ─────────────────────────────────────────────────────────────────────
 const st = { L:2000, a:1000, v:1.5, p0:8, tv:4, pn:16 };
@@ -935,7 +940,7 @@ function mcSubmit(e) {
 .fab-glass, .fab-consult {
   position:fixed; bottom:2rem; z-index:9999;
   display:flex; align-items:center; gap:.6rem;
-  background:rgba(255,255,255,0.15);
+  background:var(--sheet-2);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
   color:var(--text-primary); padding:.85rem 1.6rem;
@@ -963,7 +968,7 @@ function mcSubmit(e) {
 }
 </style>
 <style>
-#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }
 </style>
 <script src="article-features.js?v=4"></script>
 <script src="theme.js?v=4"></script>

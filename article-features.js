@@ -657,7 +657,7 @@
       '  gap:6px;',
       '  padding:9px 20px;',
       '  background:var(--accent,#0071e3);',
-      '  color:#fff !important;',
+      '  color:var(--on-accent,#fff) !important;',
       '  border-radius:980px;',
       '  font-size:13px;',
       '  font-weight:600;',
@@ -701,6 +701,39 @@
       '  .pdf-btn,.share-btn-li{ padding:8px 16px; font-size:12px; }',
       '  .inline-cta{ flex-direction:column; gap:10px; padding:16px; }',
       '}',
+
+      /* ── Section rail (desktop) ── */
+      '.ar-rail{',
+      '  position:fixed; top:54px; bottom:0; inset-inline-start:0; width:206px;',
+      '  padding:26px 14px 26px 22px; z-index:60; display:none;',
+      '  border-inline-end:1px solid var(--border); background:var(--bg-2);',
+      '  overflow:hidden; font-family:var(--font-mono);',
+      '}',
+      '@media(min-width:1240px){ .ar-rail{ display:block; } }',
+      '.ar-head{ display:flex; align-items:baseline; gap:3px; margin-bottom:16px; }',
+      '.ar-head b{ font-family:var(--font-display); font-weight:800; font-size:26px;',
+      '  letter-spacing:-.03em; color:var(--text-primary); font-variant-numeric:tabular-nums; }',
+      '.ar-head span{ font-size:11px; color:var(--text-tertiary); }',
+      '.ar-scale{ position:absolute; inset-inline-start:22px; top:78px; bottom:26px; width:2px;',
+      '  background:var(--border); }',
+      '.ar-fill{ position:absolute; inset-inline-start:0; top:0; width:2px; height:0;',
+      '  background:var(--fire); }',
+      '.ar-datum{ position:absolute; inset-inline-start:-4px; top:0; width:10px; height:1px;',
+      '  background:var(--fire); box-shadow:0 0 0 2px var(--bg-2); }',
+      '.ar-list{ position:absolute; inset-inline-start:22px; top:78px; bottom:26px;',
+      '  inset-inline-end:14px; list-style:none; margin:0; padding:0; }',
+      '.ar-list li{ position:absolute; inset-inline-start:14px; transform:translateY(-50%);',
+      '  max-width:150px; }',
+      '.ar-list a{ display:flex; gap:7px; align-items:baseline; text-decoration:none;',
+      '  color:var(--text-tertiary); transition:color .18s; }',
+      '.ar-list a:hover{ color:var(--text-primary); }',
+      '.ar-n{ font-size:9px; letter-spacing:.1em; flex-shrink:0; }',
+      '.ar-t{ font-size:10.5px; line-height:1.35; letter-spacing:.01em;',
+      '  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }',
+      '.ar-list li.on a{ color:var(--fire); }',
+      '.ar-list li.on .ar-t{ -webkit-line-clamp:3; }',
+      '@media(min-width:1240px){ html.has-ar-rail #read-progress-bar{ display:none; } }',
+      '@media(min-width:1240px){ html.has-ar-rail #article-toc-mobile{ display:none; } }',
       '@media(min-width:769px) and (max-width:1024px){',
       '  .related-grid{ grid-template-columns:repeat(2,1fr); }',
       '}'
@@ -826,6 +859,81 @@
     });
   }
 
+
+  /* ─────────────────────────────────────────────────────────────
+     11b. SECTION RAIL  —  the article as a measured drawing.
+     The homepage rail is a section through a tower; here the same
+     survey language is applied to the document itself: a scale down
+     the gutter, one tick per section at its true position, a datum
+     that tracks the reader, and depth read as percent of the piece.
+     Desktop only, and only where the article has enough structure.
+     ───────────────────────────────────────────────────────────── */
+  function initSectionRail() {
+    var body = document.querySelector('.article-body');
+    if (!body) return;
+    var heads = [].slice.call(body.querySelectorAll('h2'));
+    if (heads.length < 3) return;
+    if (window.matchMedia('(max-width:1239px)').matches) return;
+
+    heads.forEach(function (h, i) { if (!h.id) h.id = 'section-' + (i + 1); });
+
+    var rail = document.createElement('nav');
+    rail.className = 'ar-rail';
+    rail.setAttribute('aria-label', 'Article sections');
+    rail.innerHTML =
+      '<div class="ar-head"><b id="ar-pct">0</b><span>%</span></div>' +
+      '<div class="ar-scale"><div class="ar-fill" id="ar-fill"></div>' +
+      '<div class="ar-datum" id="ar-datum"></div></div>' +
+      '<ol class="ar-list" id="ar-list"></ol>';
+    document.body.appendChild(rail);
+
+    var list = rail.querySelector('#ar-list');
+    var fill = rail.querySelector('#ar-fill');
+    var datum = rail.querySelector('#ar-datum');
+    var pctEl = rail.querySelector('#ar-pct');
+
+    var items = heads.map(function (h, i) {
+      var li = document.createElement('li');
+      var n = ('0' + (i + 1)).slice(-2);
+      li.innerHTML = '<a href="#' + h.id + '"><span class="ar-n">' + n + '</span>' +
+                     '<span class="ar-t">' + h.textContent.trim() + '</span></a>';
+      list.appendChild(li);
+      return { h: h, li: li };
+    });
+
+    function span() {
+      return Math.max(1, (document.body.scrollHeight || 1) - window.innerHeight);
+    }
+    function place() {
+      var total = document.body.scrollHeight || 1;
+      items.forEach(function (it) {
+        var top = it.h.getBoundingClientRect().top + window.pageYOffset;
+        it.li.style.top = (Math.min(0.985, top / total) * 100) + '%';
+      });
+    }
+    var raf = 0;
+    function paint() {
+      raf = 0;
+      var pct = Math.max(0, Math.min(100, (window.pageYOffset / span()) * 100));
+      fill.style.height = pct + '%';
+      datum.style.top = pct + '%';
+      pctEl.textContent = pct.toFixed(0);
+      var y = window.pageYOffset + window.innerHeight * 0.28, active = -1;
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].h.getBoundingClientRect().top + window.pageYOffset <= y) active = i;
+      }
+      items.forEach(function (it, i) { it.li.classList.toggle('on', i === active); });
+    }
+    function tick() { if (!raf) raf = requestAnimationFrame(paint); }
+
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', function () { place(); tick(); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { place(); tick(); });
+    window.addEventListener('load', function () { place(); tick(); });
+    place(); tick();
+    document.documentElement.classList.add('has-ar-rail');
+  }
+
   /* ─────────────────────────────────────────────────────────────
      13.  INIT
      ───────────────────────────────────────────────────────────── */
@@ -840,6 +948,7 @@
     renderRelated();
     initBackToTop();
     initFabTracking();
+    initSectionRail();
   }
 
   if (document.readyState === 'loading') {

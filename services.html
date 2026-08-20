@@ -12,8 +12,8 @@
   <meta charset="UTF-8">
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hydraulic Analysis Services — Mohamed Abokhatwa</title>
@@ -86,8 +86,8 @@
       width: 48px;
       height: 48px;
       border-radius: 12px;
-      background: rgba(0, 113, 227, 0.08);
-      border: 1px solid rgba(0, 113, 227, 0.18);
+      background: color-mix(in srgb, var(--accent) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -196,7 +196,7 @@
       font-family: var(--font-display);
       font-size: 40px;
       font-weight: 400;
-      color: rgba(0, 113, 227, 0.2);
+      font-family:var(--font-mono);color:var(--fire);
       letter-spacing: -0.03em;
       line-height: 1;
       margin-bottom: 16px;
@@ -255,8 +255,8 @@
       width: 36px;
       height: 36px;
       border-radius: 8px;
-      background: rgba(0, 113, 227, 0.08);
-      border: 1px solid rgba(0, 113, 227, 0.15);
+      background: color-mix(in srgb, var(--accent) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -309,7 +309,7 @@
     }
     input:focus, select:focus, textarea:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(0,113,227,0.12);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
     }
     textarea { resize: vertical; min-height: 120px; }
     select { cursor: pointer; }
@@ -541,7 +541,7 @@
           <button type="submit" class="btn-primary" id="submitBtn">Send Inquiry</button>
           <span class="form-note" id="formNote">We'll respond within 48 hours.</span>
         </div>
-        <div id="formSuccess" style="display:none;margin-top:24px;padding:20px 24px;background:rgba(26,122,56,0.08);border:1px solid rgba(26,122,56,0.2);border-radius:12px;">
+        <div id="formSuccess" style="display:none;margin-top:24px;padding:20px 24px;background:color-mix(in srgb, var(--success) 8%, transparent);border:1px solid color-mix(in srgb, var(--success) 20%, transparent);border-radius:12px;">
           <div style="font-size:15px;font-weight:600;color:var(--success);margin-bottom:4px;">&#10003; Inquiry sent successfully</div>
           <div style="font-size:14px;color:var(--text-secondary);">Thank you — I'll get back to you within 48 hours.</div>
         </div>
@@ -667,7 +667,7 @@ function mcSubmit(e) {
 .fab-glass, .fab-consult {
   position:fixed; bottom:2rem; z-index:9999;
   display:flex; align-items:center; gap:.6rem;
-  background:rgba(255,255,255,0.15);
+  background:var(--sheet-2);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
   color:var(--text-primary); padding:.85rem 1.6rem;
@@ -695,7 +695,7 @@ function mcSubmit(e) {
 }
 </style>
 <style>
-#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }
+#mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }
 </style>
 <script src="theme.js?v=4"></script>
 </body>

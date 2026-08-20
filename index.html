@@ -12,8 +12,8 @@
   <meta charset="UTF-8">
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mohamed Abokhatwa — Water Engineering</title>
@@ -28,8 +28,8 @@
 
     /* the survey rail */
     .el-rail {
-      position: fixed; top: 0; left: 0; bottom: 0; width: var(--rail-w); z-index: 50;
-      border-right: 1px solid var(--border); background: var(--bg-2);
+      position: fixed; top: 0; bottom: 0; inset-inline-start: 0; width: var(--rail-w); z-index: 50;
+      border-inline-end: 1px solid var(--border); background: var(--bg-2);
     }
     .el-rail canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
     .el-datum {
@@ -37,13 +37,13 @@
       border-top: 1px dashed var(--fire); opacity: .5;
     }
     .el-datum::after {
-      content: ''; position: absolute; left: calc(var(--rail-w) - 5px); top: -4px;
-      width: 0; height: 0; border: 4px solid transparent; border-left-color: var(--fire); opacity: .95;
+      content: ''; position: absolute; inset-inline-start: calc(var(--rail-w) - 9px); top: -4px;
+      width: 0; height: 0; border: 4px solid transparent; border-inline-start-color: var(--fire); opacity: .95;
     }
 
     /* the instrument */
     .el-cluster {
-      position: fixed; z-index: 55; left: calc(var(--rail-w) + 20px);
+      position: fixed; z-index: 55; inset-inline-start: calc(var(--rail-w) + 20px);
       display: flex; flex-direction: column; gap: 1px; width: 214px;
       background: var(--border); border: 1px solid var(--border); border-radius: 3px;
       overflow: hidden; box-shadow: var(--shadow);
@@ -67,7 +67,8 @@
     .el-seg button[aria-pressed="true"] { background: var(--text-primary); color: var(--bg); }
 
     /* the descending column */
-    .el-page { position: relative; z-index: 2; margin-left: var(--rail-w); padding: 0 40px 0 var(--pad); }
+    .el-page { position: relative; z-index: 2; margin-inline-start: var(--rail-w);
+      padding-inline-start: var(--pad); padding-inline-end: 40px; padding-block: 0; }
     .el-wrap { max-width: 760px; }
     .el-wrap-wide { max-width: 1080px; }
     .el-sect { position: relative; padding: 88px 0; }
@@ -87,8 +88,8 @@
     .hero-desc { font-size: 19px; line-height: 1.58; color: var(--text-secondary); max-width: 56ch; margin: 0 0 16px; }
     .hero-note { font-family: var(--font-mono); font-size: 12px; line-height: 1.65; color: var(--text-tertiary); max-width: 62ch; margin: 0; }
     .hero-meta { display: flex; flex-wrap: wrap; gap: 0; margin-top: 34px; border-top: 1px solid var(--border); }
-    .hero-meta div { flex: 1 1 128px; padding: 14px 18px 14px 0; border-right: 1px solid var(--rule-2); }
-    .hero-meta div:last-child { border-right: 0; }
+    .hero-meta div { flex: 1 1 128px; padding-block: 14px; padding-inline: 0 18px; border-inline-end: 1px solid var(--rule-2); }
+    .hero-meta div:last-child { border-inline-end: 0; }
     .hero-meta b { display: block; font-family: var(--font-display); font-weight: 700; font-size: 25px; letter-spacing: -.03em; line-height: 1.1; }
     .hero-meta span { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--text-tertiary); }
     .hero-certs { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; }
@@ -106,7 +107,8 @@
       border-radius: 3px; overflow: hidden; transition: border-color .18s, transform .18s, box-shadow .18s;
     }
     .dock > a:hover { border-color: var(--text-tertiary); transform: translateX(4px); box-shadow: var(--shadow); }
-    .dock .lev { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 2px; padding: 16px 12px; border-right: 1px solid var(--rule-2); background: var(--bg-2); }
+    [dir="rtl"] .dock > a:hover { transform: translateX(-4px); }
+    .dock .lev { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 2px; padding: 16px 12px; border-inline-end: 1px solid var(--rule-2); background: var(--bg-2); }
     .dock .lev b { font-family: var(--font-mono); font-size: 15px; font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1; transition: font-size .2s; }
     .dock .lev span { font-family: var(--font-mono); font-size: 9px; color: var(--text-tertiary); letter-spacing: .08em; }
     .dock .txt { padding: 15px 18px 16px; }
@@ -120,13 +122,13 @@
     .dock[data-ch="air"]   .lev { background: var(--air-w); }
     .dock[data-ch="fire"]  .lev { background: var(--fire-w); }
     .dock::before {
-      content: ''; position: absolute; right: 100%; top: 34px; height: 1px;
+      content: ''; position: absolute; inset-inline-end: 100%; top: 34px; height: 1px;
       width: calc(var(--pad) - 2px);
       background: linear-gradient(90deg, transparent, var(--text-tertiary) 30%, var(--text-tertiary));
       opacity: 0; transition: opacity .22s;
     }
     .dock::after {
-      content: ''; position: absolute; right: calc(100% - 4px); top: 31px;
+      content: ''; position: absolute; inset-inline-end: calc(100% - 4px); top: 31px;
       width: 7px; height: 7px; border-radius: 50%; background: var(--text-tertiary);
       opacity: 0; transition: opacity .22s;
     }
@@ -143,7 +145,7 @@
 
     /* the coupled calculator */
     .el-calc { border: 1px solid var(--border); border-radius: 3px; background: var(--sheet); box-shadow: var(--shadow); display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
-    .calc-in { padding: 24px 26px; border-right: 1px solid var(--rule-2); }
+    .calc-in { padding: 24px 26px; border-inline-end: 1px solid var(--rule-2); }
     .calc-out { padding: 24px 26px; background: var(--bg-2); }
     .ctl { margin-bottom: 20px; }
     .ctl:last-child { margin-bottom: 0; }
@@ -160,9 +162,9 @@
     .out .v { font-family: var(--font-mono); font-size: 17px; font-weight: 500; font-variant-numeric: tabular-nums; }
     .out .v small { font-size: 10px; font-weight: 400; color: var(--text-tertiary); margin-left: 3px; }
     .zbar { display: flex; flex-direction: column-reverse; gap: 2px; margin-top: 16px; }
-    .zbar div { display: flex; align-items: center; justify-content: space-between; padding: 4px 8px; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); background: var(--water-w); border-left: 2px solid var(--water); }
-    .zbar div.g { background: var(--fire-w); border-left-color: var(--fire); color: var(--fire); }
-    .zbar .el-z-gap { background: none; border-left-color: transparent; justify-content: center; }
+    .zbar div { display: flex; align-items: center; justify-content: space-between; padding: 4px 8px; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); background: var(--water-w); border-inline-start: 2px solid var(--water); }
+    .zbar div.g { background: var(--fire-w); border-inline-start-color: var(--fire); color: var(--fire); }
+    .zbar .el-z-gap { background: none; border-inline-start-color: transparent; justify-content: center; }
     .calc-foot { grid-column: 1/-1; border-top: 1px solid var(--rule-2); padding: 12px 26px; background: var(--sheet); }
     .calc-note { font-family: var(--font-mono); font-size: 11.5px; line-height: 1.65; color: var(--text-tertiary); margin: 0; }
 
@@ -215,8 +217,8 @@
     .feature-card p { font-size: 13.5px; line-height: 1.55; color: var(--text-secondary); margin: 0; }
 
     .stats-row { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--border); margin-top: 30px; }
-    .stat { flex: 1 1 130px; padding: 14px 18px 14px 0; border-right: 1px solid var(--rule-2); }
-    .stat:last-child { border-right: 0; }
+    .stat { flex: 1 1 130px; padding-block: 14px; padding-inline: 0 18px; border-inline-end: 1px solid var(--rule-2); }
+    .stat:last-child { border-inline-end: 0; }
     .stat-num { font-family: var(--font-display); font-weight: 700; font-size: 25px; letter-spacing: -.03em; display: block; }
     .stat-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--text-tertiary); }
 
@@ -227,12 +229,12 @@
       .dock::before, .dock::after { display: none; }
       .el-calc { grid-template-columns: 1fr; }
       .calc-in { border-right: 0; border-bottom: 1px solid var(--rule-2); }
-      .el-cluster { left: auto; right: 16px; width: 186px; }
+      .el-cluster { inset-inline-start: auto; inset-inline-end: 16px; width: 186px; }
     }
     @media (max-width: 760px) {
       body.el { --rail-w: 0px; --pad: 20px; padding-bottom: 62px; }
       .el-rail, .el-datum { display: none; }
-      .el-page { margin-left: 0; padding: 0 20px; }
+      .el-page { margin-inline-start: 0; padding: 0 20px; }
       .el-sect { padding: 60px 0; }
       .hero { padding-top: 92px; }
       .dock > a { grid-template-columns: 62px 1fr; }
@@ -350,7 +352,7 @@
     #article-search::placeholder { color: var(--text-tertiary); }
     #article-search:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(0,113,227,0.1);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 10%, transparent);
       background: var(--bg-3);
     }
     /* When filtering is active: override hidden-article so all can be shown/hidden by JS */
@@ -2157,7 +2159,7 @@ function mcSubmit(e) {
 .fab-glass, .fab-consult {
   position:fixed; bottom:2rem; z-index:9999;
   display:flex; align-items:center; gap:.6rem;
-  background:rgba(255,255,255,0.15);
+  background:var(--sheet-2);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
   color:var(--text-primary); padding:.85rem 1.6rem;
@@ -2186,7 +2188,7 @@ function mcSubmit(e) {
 <style>
 #mc-email:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0,113,227,0.12);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
 }
 </style>
 <!-- Auto-count articles per topic (keeps "Browse by topic" counts always current) -->

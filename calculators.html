@@ -12,8 +12,8 @@
   <meta charset="UTF-8">
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Engineering Calculators — Water, Infrastructure & MEP | Mohamed Abokhatwa</title>
@@ -44,15 +44,15 @@
       position: absolute;
       width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,113,227,0.07) 0%, transparent 70%);
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 7%, transparent) 0%, transparent 70%);
       top: -260px; left: 50%; transform: translateX(-50%);
       pointer-events: none;
     }
     .calc-hero-tag svg { width: 13px; height: 13px; }
     .calc-hero-tag {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,113,227,0.08);
-      border: 1px solid rgba(0,113,227,0.18);
+      background: color-mix(in srgb, var(--accent) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
       color: var(--accent);
       font-size: 11px; font-weight: 700;
       letter-spacing: 1.5px; text-transform: uppercase;
@@ -183,7 +183,7 @@
     .result-box {
       border-radius: 14px; padding: 18px 20px;
       background: linear-gradient(135deg,var(--bg-2),var(--air-w));
-      border: 1px solid rgba(0,113,227,0.12);
+      border: 1px solid color-mix(in srgb, var(--accent) 12%, transparent);
     }
     .result-label {
       font-size: 10px; font-weight: 700;
@@ -227,8 +227,8 @@
     .calc-act:hover { background: var(--bg-4, var(--bg-4)); color: var(--text-primary, var(--text-primary)); }
     .calc-act svg { width: 14px; height: 14px; flex-shrink: 0; }
     .calc-act.done { color: var(--success); border-color: var(--success); }
-    [data-theme="dark"] .calc-act { border-color: rgba(255,255,255,0.14); }
-    [data-theme="dark"] .calc-act:hover { background: rgba(255,255,255,0.06); }
+    [data-theme="dark"] .calc-act { border-color: rgba(255,255,255,0.14);}
+    [data-theme="dark"] .calc-act:hover { background: var(--sheet-2);}
 
     /* ── Reference / standards line ── */
     .calc-ref { margin-top: 14px; font-size: 11.5px; color: var(--text-tertiary, var(--text-tertiary)); line-height: 1.6; }
@@ -280,7 +280,7 @@
     .diagram-box {
       display: none; margin-top: 12px;
       background: var(--air-w);
-      border: 1px solid rgba(0,113,227,0.15);
+      border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
       border-radius: 14px; padding: 16px;
       overflow: hidden;
     }
@@ -317,142 +317,107 @@
     }
 
     /* ═══ DARK MODE OVERRIDES ═══ */
-    [data-theme="dark"] .calc-page { background: var(--bg-2); }
+    [data-theme="dark"] .calc-page { background: var(--bg-2);}
 
     /* Cards */
     [data-theme="dark"] .calc-card {
       background: var(--bg-4);
       border-color: rgba(255,255,255,0.08);
-      box-shadow: 0 1px 8px rgba(0,0,0,0.3), 0 4px 24px rgba(0,0,0,0.2);
-    }
-    [data-theme="dark"] .card-header-text h2 { color: var(--bg-2); }
-    [data-theme="dark"] .card-header-text p  { color: var(--text-tertiary); }
+      box-shadow: 0 1px 8px rgba(0,0,0,0.3), 0 4px 24px rgba(0,0,0,0.2);}
+    [data-theme="dark"] .card-header-text h2 { color: var(--text-primary);}
+    [data-theme="dark"] .card-header-text p  { color: var(--text-tertiary);}
 
     /* Category headers */
-    [data-theme="dark"] .calc-category h3 { color: var(--text-tertiary); }
-    [data-theme="dark"] .calc-category-line { background: rgba(255,255,255,0.08); }
+    [data-theme="dark"] .calc-category h3 { color: var(--text-tertiary);}
+    [data-theme="dark"] .calc-category-line { background: var(--sheet-2);}
 
     /* Card icons */
-    [data-theme="dark"] .card-icon.blue   { background: linear-gradient(135deg,rgba(41,97,255,0.25),rgba(41,97,255,0.15)); color:var(--accent); }
-    [data-theme="dark"] .card-icon.indigo { background: linear-gradient(135deg,rgba(99,91,255,0.25),rgba(99,91,255,0.15)); color:var(--s4); }
-    [data-theme="dark"] .card-icon.green  { background: linear-gradient(135deg,rgba(52,199,89,0.25),rgba(52,199,89,0.15)); color:var(--success); }
-    [data-theme="dark"] .card-icon.orange { background: linear-gradient(135deg,rgba(255,149,0,0.25),rgba(255,149,0,0.15)); color:var(--warning); }
-    [data-theme="dark"] .card-icon.purple { background: linear-gradient(135deg,rgba(175,82,222,0.25),rgba(175,82,222,0.15)); color:var(--s4); }
-    [data-theme="dark"] .card-icon.teal   { background: linear-gradient(135deg,rgba(90,200,250,0.25),rgba(90,200,250,0.15)); color:var(--water); }
+    [data-theme="dark"] .card-icon.blue   { background: linear-gradient(135deg,color-mix(in srgb, var(--accent) 25%, transparent),color-mix(in srgb, var(--accent) 15%, transparent)); color:var(--accent);}
+    [data-theme="dark"] .card-icon.indigo { background: linear-gradient(135deg,color-mix(in srgb, var(--s4) 25%, transparent),color-mix(in srgb, var(--s4) 15%, transparent)); color:var(--s4);}
+    [data-theme="dark"] .card-icon.green  { background: linear-gradient(135deg,color-mix(in srgb, var(--success) 25%, transparent),color-mix(in srgb, var(--success) 15%, transparent)); color:var(--success);}
+    [data-theme="dark"] .card-icon.orange { background: linear-gradient(135deg,color-mix(in srgb, var(--warning) 25%, transparent),color-mix(in srgb, var(--warning) 15%, transparent)); color:var(--warning);}
+    [data-theme="dark"] .card-icon.purple { background: linear-gradient(135deg,color-mix(in srgb, var(--s4) 25%, transparent),color-mix(in srgb, var(--s4) 15%, transparent)); color:var(--s4);}
+    [data-theme="dark"] .card-icon.teal   { background: linear-gradient(135deg,color-mix(in srgb, var(--air) 25%, transparent),color-mix(in srgb, var(--air) 15%, transparent)); color:var(--water);}
 
     /* Input fields */
-    [data-theme="dark"] .field label { color: var(--text-tertiary); }
+    [data-theme="dark"] .field label { color: var(--text-tertiary);}
     [data-theme="dark"] .field-wrap {
       border-color: rgba(255,255,255,0.1);
-      background: var(--bg-2);
-    }
+      background: var(--bg-2);}
     [data-theme="dark"] .field-wrap:focus-within {
       border-color: var(--accent);
-      background: var(--bg-4);
-    }
+      background: var(--bg-4);}
     [data-theme="dark"] .field-wrap input,
-    [data-theme="dark"] .field-wrap select { color: var(--bg-2); }
-    [data-theme="dark"] .unit { color: var(--text-tertiary); }
-
-    /* Read-only velocity display fields */
-    [data-theme="dark"] .field-wrap[style*="background:var(--bg-2)"],
-    [data-theme="dark"] .field-wrap[style*="background: var(--bg-2)"] {
-      background: var(--border-light) !important;
-      border-color: rgba(255,255,255,0.1) !important;
-    }
+    [data-theme="dark"] .field-wrap select { color: var(--text-primary);}
+    [data-theme="dark"] .unit { color: var(--text-tertiary);}
 
     /* Result box */
     [data-theme="dark"] .result-box {
-      background: linear-gradient(135deg, rgba(41,151,255,0.12), rgba(41,97,255,0.08));
-      border-color: rgba(41,151,255,0.2);
-    }
-    [data-theme="dark"] .result-label { color: var(--accent); }
-    [data-theme="dark"] .result-primary { color: var(--bg-2); }
-    [data-theme="dark"] .result-primary .result-unit { color: var(--text-tertiary); }
-    [data-theme="dark"] .result-secondaries span { color: var(--text-tertiary); }
-    [data-theme="dark"] .result-note { color: var(--text-tertiary); }
-
-    /* Result sub-grids (inline styled) */
-    [data-theme="dark"] [style*="background:var(--bg-2)"],
-    [data-theme="dark"] [style*="background: var(--bg-2)"] {
-      background: var(--border-light) !important;
-      border-color: rgba(255,255,255,0.08) !important;
-    }
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 12%, transparent), color-mix(in srgb, var(--accent) 8%, transparent));
+      border-color: color-mix(in srgb, var(--accent) 20%, transparent);}
+    [data-theme="dark"] .result-label { color: var(--accent);}
+    [data-theme="dark"] .result-primary { color: var(--text-primary);}
+    [data-theme="dark"] .result-primary .result-unit { color: var(--text-tertiary);}
+    [data-theme="dark"] .result-secondaries span { color: var(--text-tertiary);}
+    [data-theme="dark"] .result-note { color: var(--text-tertiary);}
 
     /* Status pills */
-    [data-theme="dark"] .pill-ok     { background: rgba(52,199,89,0.18);  color: var(--success); }
-    [data-theme="dark"] .pill-warn   { background: rgba(255,214,10,0.18); color: var(--warning); }
-    [data-theme="dark"] .pill-danger { background: rgba(255,69,58,0.18);  color: var(--danger); }
-    [data-theme="dark"] .pill-info   { background: rgba(41,151,255,0.18); color: var(--accent); }
+    [data-theme="dark"] .pill-ok     { background: color-mix(in srgb, var(--success) 18%, transparent);  color: var(--success);}
+    [data-theme="dark"] .pill-warn   { background: color-mix(in srgb, var(--warning) 18%, transparent); color: var(--warning);}
+    [data-theme="dark"] .pill-danger { background: color-mix(in srgb, var(--danger) 18%, transparent);  color: var(--danger);}
+    [data-theme="dark"] .pill-info   { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent);}
 
     /* Formula + diagram */
-    [data-theme="dark"] .formula-toggle { color: var(--accent); }
-    [data-theme="dark"] .diagram-toggle { color: var(--text-tertiary); }
-    [data-theme="dark"] .diagram-toggle:hover { color: var(--accent); }
+    [data-theme="dark"] .formula-toggle { color: var(--accent);}
+    [data-theme="dark"] .diagram-toggle { color: var(--text-tertiary);}
+    [data-theme="dark"] .diagram-toggle:hover { color: var(--accent);}
     [data-theme="dark"] .formula-box {
       background: var(--bg-2);
       color: var(--s4);
-      border: 1px solid rgba(41,151,255,0.15);
-    }
+      border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);}
     [data-theme="dark"] .diagram-box {
-      background: rgba(41,151,255,0.06);
-      border-color: rgba(41,151,255,0.15);
-    }
+      background: color-mix(in srgb, var(--accent) 6%, transparent);
+      border-color: color-mix(in srgb, var(--accent) 15%, transparent);}
     /* ── Diagram legibility in dark mode (lift neutral grays) ── */
     [data-theme="dark"] .diagram-box text[fill="var(--text-secondary)"],
     [data-theme="dark"] .diagram-box text[fill="var(--text-tertiary)"],
     [data-theme="dark"] .diagram-box text[fill="var(--text-tertiary)"],
-    [data-theme="dark"] .diagram-box text[fill="var(--text-secondary)"] { fill: var(--border) !important; }
-    [data-theme="dark"] .diagram-box text[fill="var(--text-tertiary)"] { fill: var(--text-tertiary) !important; }
+    [data-theme="dark"] .diagram-box text[fill="var(--text-secondary)"] { fill: var(--border) !important;}
+    [data-theme="dark"] .diagram-box text[fill="var(--text-tertiary)"] { fill: var(--text-tertiary) !important;}
     [data-theme="dark"] .diagram-box line[stroke="var(--text-tertiary)"],
     [data-theme="dark"] .diagram-box line[stroke="var(--text-secondary)"],
-    [data-theme="dark"] .diagram-box line[stroke="var(--border)"] { stroke: var(--text-tertiary) !important; }
+    [data-theme="dark"] .diagram-box line[stroke="var(--border)"] { stroke: var(--text-tertiary) !important;}
     [data-theme="dark"] .diagram-box polygon[fill="var(--text-tertiary)"],
-    [data-theme="dark"] .diagram-box polygon[fill="var(--text-secondary)"] { fill: var(--text-tertiary) !important; }
+    [data-theme="dark"] .diagram-box polygon[fill="var(--text-secondary)"] { fill: var(--text-tertiary) !important;}
     /* Dark titles / dark-blue labels that vanish on dark bg */
     [data-theme="dark"] .diagram-box text[fill="var(--text-primary)"],
-    [data-theme="dark"] .diagram-box text[fill="var(--bg-2)"] { fill: var(--bg-2) !important; }
-    [data-theme="dark"] .diagram-box text[fill="var(--air)"] { fill: var(--accent) !important; }
-    [data-theme="dark"] .diagram-box text[fill="var(--warning)"] { fill: var(--warning) !important; }
+    [data-theme="dark"] .diagram-box text[fill="var(--bg-2)"] { fill: var(--bg-2) !important;}
+    [data-theme="dark"] .diagram-box text[fill="var(--air)"] { fill: var(--accent) !important;}
+    [data-theme="dark"] .diagram-box text[fill="var(--warning)"] { fill: var(--warning) !important;}
     [data-theme="dark"] .diagram-box line[stroke="var(--warning)"],
-    [data-theme="dark"] .diagram-box rect[stroke="var(--warning)"] { stroke: var(--warning) !important; }
-    [data-theme="dark"] .diagram-box line[stroke="var(--border)"] { stroke: rgba(255,255,255,0.12) !important; }
+    [data-theme="dark"] .diagram-box rect[stroke="var(--warning)"] { stroke: var(--warning) !important;}
+    [data-theme="dark"] .diagram-box line[stroke="var(--border)"] { stroke: rgba(255,255,255,0.12) !important;}
     /* Reusable label classes for new diagrams (theme-adaptive) */
     .diagram-box .dgl  { fill: var(--text-secondary); }
     .diagram-box .dgl2 { fill: var(--text-tertiary); }
     .diagram-box .dg-dim { stroke: var(--text-tertiary); }
-    [data-theme="dark"] .diagram-box .dgl  { fill: var(--border); }
-    [data-theme="dark"] .diagram-box .dgl2 { fill: var(--text-tertiary); }
-    [data-theme="dark"] .diagram-box .dg-dim { stroke: var(--text-tertiary); }
+    [data-theme="dark"] .diagram-box .dgl  { fill: var(--border);}
+    [data-theme="dark"] .diagram-box .dgl2 { fill: var(--text-tertiary);}
+    [data-theme="dark"] .diagram-box .dg-dim { stroke: var(--text-tertiary);}
 
     /* Minor losses table */
     [data-theme="dark"] .fitting-table th {
       color: var(--text-tertiary);
-      border-bottom-color: rgba(255,255,255,0.08);
-    }
-    [data-theme="dark"] .fitting-table td { color: var(--border); }
-    [data-theme="dark"] .fitting-table .k-val { color: var(--text-tertiary); }
+      border-bottom-color: rgba(255,255,255,0.08);}
+    [data-theme="dark"] .fitting-table td { color: var(--text-secondary);}
+    [data-theme="dark"] .fitting-table .k-val { color: var(--text-tertiary);}
     [data-theme="dark"] .fitting-table input[type=number] {
       border-color: rgba(255,255,255,0.1);
       background: var(--bg-4);
-      color: var(--bg-2);
-    }
+      color: var(--text-primary);}
     [data-theme="dark"] .fitting-table input[type=number]:focus {
       border-color: var(--accent);
-      background: var(--border-light);
-    }
-
-    /* Inline color overrides for hardcoded text */
-    [data-theme="dark"] [style*="color:var(--text-primary)"] { color: var(--bg-2) !important; }
-    [data-theme="dark"] [style*="color:var(--text-secondary)"] { color: var(--text-tertiary) !important; }
-    [data-theme="dark"] [style*="color:var(--text-secondary)"] { color: var(--text-tertiary) !important; }
-    [data-theme="dark"] [style*="color:var(--text-tertiary)"] { color: var(--border-light) !important; }
-    [data-theme="dark"] [style*="border-color:var(--border)"] { border-color: rgba(255,255,255,0.08) !important; }
-    [data-theme="dark"] [style*="border:1px solid var(--border)"] { border-color: rgba(255,255,255,0.08) !important; }
-
-    /* Footer disclaimer */
-    [data-theme="dark"] .calc-page > footer p[style*="color:var(--text-tertiary)"] { color: var(--border-light) !important; }
-    [data-theme="dark"] [style*="border-top:1px solid var(--border)"] { border-top-color: rgba(255,255,255,0.08) !important; }
+      background: var(--border-light);}
 
     .art-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(0,0,0,0.07);font-size:12.5px;font-weight:600;color:var(--accent);text-decoration:none;}
     .art-link:hover{text-decoration:underline;}
@@ -1415,7 +1380,7 @@
       </div>
       <div class="field">
         <label>Velocity Head V²/2g</label>
-        <div class="field-wrap" style="background:var(--bg-2);border-color:var(--border);">
+        <div class="field-wrap" style="background:var(--bg-2);border-color: var(--text-secondary);">
           <span id="ml-vh" style="flex:1;padding:9px 12px;font-size:14px;color:var(--text-secondary);">—</span>
           <span class="unit">m</span>
         </div>
@@ -2287,7 +2252,7 @@
       </div>
       <div class="field">
         <label>Flow Velocity ΔV (calculated)</label>
-        <div class="field-wrap" style="background:var(--bg-2);border-color:var(--border);">
+        <div class="field-wrap" style="background:var(--bg-2);border-color: var(--text-secondary);">
           <span id="wh-v-display" style="flex:1;padding:9px 12px;font-size:14px;color:var(--text-secondary);">—</span>
           <span class="unit">m/s</span>
         </div>
@@ -4338,7 +4303,7 @@ function mcSubmit(e) {
 .fab-glass, .fab-consult {
   position:fixed; bottom:2rem; z-index:9999;
   display:flex; align-items:center; gap:.6rem;
-  background:rgba(255,255,255,0.15);
+  background:var(--sheet-2);
   backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
   border:1px solid rgba(255,255,255,0.2);
   border-radius:50px; padding:.75rem 1.2rem;

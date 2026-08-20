@@ -91,7 +91,9 @@
     var eAt = function (y) { return eD + (yD - y) * sc; };
     var eTop = eAt(0), eBot = eAt(h);
     var narrow = w < 96;
-    var bx0 = narrow ? 20 : 54, bx1 = w - 5;
+    var rtl = (document.documentElement.getAttribute('dir') === 'rtl');
+    var gut = narrow ? 20 : 54;
+    var bx0 = rtl ? 5 : gut, bx1 = rtl ? w - gut : w - 5;
     var cx = (bx0 + bx1) / 2, half = (bx1 - bx0) / 2;
     var clampX = function (x) { return Math.max(1, Math.min(w - 1, x)); };
     var e, yy, hf;
@@ -218,10 +220,13 @@
       var major = (Math.round(t2) % 50 === 0);
       ctx.strokeStyle = rgba(pal.ink, major ? 0.5 : 0.22);
       ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(6, ty2); ctx.lineTo(major ? 20 : 13, ty2); ctx.stroke();
+      var tx0 = rtl ? w - 6 : 6, tx1 = rtl ? w - (major ? 20 : 13) : (major ? 20 : 13);
+      ctx.beginPath(); ctx.moveTo(tx0, ty2); ctx.lineTo(tx1, ty2); ctx.stroke();
       if (major && !narrow) {
         ctx.fillStyle = rgba(pal.ink3, 0.95);
-        ctx.fillText((t2 > 0 ? '+' : '') + t2, 24, ty2);
+        ctx.textAlign = rtl ? 'right' : 'left';
+        ctx.fillText((t2 > 0 ? '+' : '') + t2, rtl ? w - 24 : 24, ty2);
+        ctx.textAlign = 'left';
       }
     }
 
@@ -289,19 +294,31 @@
     }).join('');
 
     var head = Math.abs(S.zd - S.zf), note;
+    var ar = (document.documentElement.getAttribute('lang') || '').indexOf('ar') === 0;
     if (S.zf < S.zd - 0.5) {
-      note = 'Governed by the fire standpipe at PN' + S.PF + '. The domestic riser carries ' +
-             head.toFixed(0) + ' m of unused headroom — raising its class buys nothing until the ' +
-             'standpipe class rises with it. ' + S.nz + ' zones, so ' + (S.nz - 1) +
-             ' intermediate mechanical levels plus roof plant.';
+      note = ar
+        ? 'الحاكم هو عمود الحريق عند PN' + S.PF + '، ولدى عمود المياه ' + head.toFixed(0) +
+          ' مترًا من الطاقة غير المستغلة — رفع رتبته لا يفيد قبل رفع رتبة عمود الحريق معه. ' +
+          S.nz + ' نطاقات، أي ' + (S.nz - 1) + ' طوابق ميكانيكية وسيطة إضافة إلى دور السطح.'
+        : 'Governed by the fire standpipe at PN' + S.PF + '. The domestic riser carries ' +
+          head.toFixed(0) + ' m of unused headroom — raising its class buys nothing until the ' +
+          'standpipe class rises with it. ' + S.nz + ' zones, so ' + (S.nz - 1) +
+          ' intermediate mechanical levels plus roof plant.';
     } else if (S.zd < S.zf - 0.5) {
-      note = 'Governed by the domestic riser at PN' + S.PN + ' with ' + S.PM.toFixed(1) +
-             ' bar residual. The standpipe has ' + head.toFixed(0) +
-             ' m of headroom. Break tanks and PRVs land every ' + S.zg.toFixed(0) +
-             ' m — ' + S.nz + ' zones in all.';
+      note = ar
+        ? 'الحاكم هو عمود المياه عند PN' + S.PN + ' بضغط متبقٍّ ' + S.PM.toFixed(1) +
+          ' بار، ولعمود الحريق ' + head.toFixed(0) + ' متر من الطاقة. تقع الخزانات وصمامات تخفيض الضغط كل ' +
+          S.zg.toFixed(0) + ' متر — ' + S.nz + ' نطاقات إجمالًا.'
+        : 'Governed by the domestic riser at PN' + S.PN + ' with ' + S.PM.toFixed(1) +
+          ' bar residual. The standpipe has ' + head.toFixed(0) +
+          ' m of headroom. Break tanks and PRVs land every ' + S.zg.toFixed(0) +
+          ' m — ' + S.nz + ' zones in all.';
     } else {
-      note = 'Both risers break at the same level, which is the efficient answer: one mechanical ' +
-             'floor serves both. ' + S.nz + ' zones at ' + S.zg.toFixed(0) + ' m.';
+      note = ar
+        ? 'ينكسر العمودان عند المنسوب نفسه، وهذا هو الحل الأكفأ: دور ميكانيكي واحد يخدمهما. ' +
+          S.nz + ' نطاقات عند ' + S.zg.toFixed(0) + ' متر.'
+        : 'Both risers break at the same level, which is the efficient answer: one mechanical ' +
+          'floor serves both. ' + S.nz + ' zones at ' + S.zg.toFixed(0) + ' m.';
     }
     setT('calc-note', note);
     wake();

@@ -12,8 +12,8 @@
   <meta charset="UTF-8">
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>الخدمات الاستشارية — محمد أبوخطوة</title>
@@ -28,10 +28,10 @@
     .nav-inner { direction: rtl; }
     .lang-switch {
       font-size: 13px; font-weight: 500; color: var(--accent);
-      text-decoration: none; border: 1px solid rgba(0,113,227,0.2);
+      text-decoration: none; border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
       padding: 4px 12px; border-radius: 20px; transition: background 0.2s;
     }
-    .lang-switch:hover { background: rgba(0,113,227,0.06); }
+    .lang-switch:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
 
     .page-hero {
       padding: 160px 24px 100px;
@@ -424,7 +424,7 @@
           <button type="submit" class="btn-primary" id="submitBtn">إرسال الاستفسار</button>
           <span class="form-note" id="formNote">سنرد خلال 48 ساعة.</span>
         </div>
-        <div id="formSuccess" style="display:none;margin-top:24px;padding:20px 24px;background:rgba(26,122,56,0.08);border:1px solid rgba(26,122,56,0.2);border-radius:12px;text-align:right;">
+        <div id="formSuccess" style="display:none;margin-top:24px;padding:20px 24px;background:color-mix(in srgb, var(--success) 8%, transparent);border:1px solid color-mix(in srgb, var(--success) 20%, transparent);border-radius:12px;text-align:right;">
           <div style="font-size:15px;font-weight:700;color:var(--success);margin-bottom:4px;">✓ تم إرسال استفسارك</div>
           <div style="font-size:14px;color:var(--text-secondary);">شكراً — سأعود إليك خلال 48 ساعة.</div>
         </div>
@@ -485,7 +485,7 @@
     <div id="mc-msg-ar" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">بدون رسائل مزعجة. إلغاء الاشتراك في أي وقت.</div>
   </div>
 </section>
-<style>#mc-email-ar:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,113,227,0.12); }</style>
+<style>#mc-email-ar:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }</style>
 <script>
 function mcSubmitAr(e){
   var email=document.getElementById('mc-email-ar').value.trim();
@@ -516,7 +516,7 @@ function mcSubmitAr(e){
 .fab-glass, .fab-consult {
   position:fixed; bottom:2rem; z-index:9999;
   display:flex; align-items:center; gap:.6rem;
-  background:rgba(255,255,255,0.15); backdrop-filter:blur(12px);
+  background:var(--sheet-2); backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px); color:var(--text-primary); padding:.85rem 1.6rem;
   border-radius:50px; font-weight:600; font-size:.9rem; cursor:pointer;
   border:1px solid rgba(255,255,255,0.3);

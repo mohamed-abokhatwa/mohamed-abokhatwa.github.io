@@ -12,8 +12,8 @@
   --glass:#ffffff; --glass-border:#d2dad7; --glass-hover:#f6f8f7;
   --shadow-glass:0 1px 1px rgba(12,21,19,.03),0 10px 30px -12px rgba(12,21,19,.14);
   --shadow-glass-hover:0 1px 2px rgba(12,21,19,.05),0 16px 40px -14px rgba(12,21,19,.20);
-  --text-primary:#0c1513; --text-secondary:#4e5c58; --text-tertiary:#5f6d69;
-  --accent:#085f53; --success:#276e37; --danger:#a13326; --warning:#7a5806;
+  --text-primary:#0c1513; --text-secondary:#495652; --text-tertiary:#566360;
+  --accent:#085f53; --success:#236331; --danger:#a13326; --warning:#7a5806;
   --fire:#964904; --air:#2a5975; --water:#085f53; --on-accent:#ffffff;
   --font-display:'Archivo','IBM Plex Sans',system-ui,-apple-system,'Helvetica Neue',sans-serif;
   --font-body:'IBM Plex Sans',system-ui,-apple-system,'Helvetica Neue',sans-serif;

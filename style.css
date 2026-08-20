@@ -71,11 +71,11 @@
 
   /* ink */
   --text-primary:   #0c1513;
-  --text-secondary: #4e5c58;
-  --text-tertiary:  #5f6d69;
+  --text-secondary: #495652;
+  --text-tertiary:  #566360;
   --ink:            #0c1513;
-  --ink-2:          #4e5c58;
-  --ink-3:          #5f6d69;
+  --ink-2:          #495652;
+  --ink-3:          #566360;
 
   /* rules */
   --border:         #d2dad7;
@@ -96,7 +96,7 @@
   --accent-light:   #085f53;
   --accent-2:       #964904;
   --on-accent:      #ffffff;
-  --success:        #276e37;
+  --success:        #236331;
   --danger:         #a13326;
   --warning:        #7a5806;
   --success-w:      rgba(39,110,55,0.10);

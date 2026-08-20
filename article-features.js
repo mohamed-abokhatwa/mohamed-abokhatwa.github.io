@@ -722,7 +722,7 @@
       '  background:var(--fire); box-shadow:0 0 0 2px var(--bg-2); }',
       '.ar-list{ position:absolute; inset-inline-start:22px; top:78px; bottom:26px;',
       '  inset-inline-end:14px; list-style:none; margin:0; padding:0; }',
-      '.ar-list li{ position:absolute; inset-inline-start:14px; transform:translateY(-50%);',
+      '.ar-list li{ position:absolute; inset-inline-start:14px;',
       '  max-width:150px; }',
       '.ar-list a{ display:flex; gap:7px; align-items:baseline; text-decoration:none;',
       '  color:var(--text-tertiary); transition:color .18s; }',
@@ -731,7 +731,7 @@
       '.ar-t{ font-size:10.5px; line-height:1.35; letter-spacing:.01em;',
       '  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }',
       '.ar-list li.on a{ color:var(--fire); }',
-      '.ar-list li.on .ar-t{ -webkit-line-clamp:3; }',
+      '.ar-list li.on .ar-n{ color:var(--fire); }',
       '@media(min-width:1240px){ html.has-ar-rail #read-progress-bar{ display:none; } }',
       '@media(min-width:1240px){ html.has-ar-rail #article-toc-mobile{ display:none; } }',
       '@media(min-width:769px) and (max-width:1024px){',
@@ -906,11 +906,31 @@
     }
     function place() {
       var total = document.body.scrollHeight || 1;
-      items.forEach(function (it) {
+      var h = rail.clientHeight - 104;            /* the scale's own height */
+      if (h < 60) h = 60;
+      /* measure first: labels are one or two lines depending on the title */
+      var hs = items.map(function (it) { return Math.max(16, it.li.offsetHeight); });
+      var pos = items.map(function (it) {
         var top = it.h.getBoundingClientRect().top + window.pageYOffset;
-        it.li.style.top = (Math.min(0.985, top / total) * 100) + '%';
+        return Math.min(0.985, top / total) * h;
       });
+      var GAP = 5;                                 /* clear air between labels */
+      for (var i = 1; i < pos.length; i++) {
+        var floorPos = pos[i - 1] + hs[i - 1] + GAP;
+        if (pos[i] < floorPos) pos[i] = floorPos;
+      }
+      var over = (pos[pos.length - 1] + hs[hs.length - 1]) - h;
+      if (over > 0) {                              /* ran off the bottom: settle upward */
+        for (var j = pos.length - 1; j >= 0 && over > 0; j--) {
+          var room = j > 0 ? (pos[j] - (pos[j - 1] + hs[j - 1] + GAP)) : pos[j];
+          var take = Math.min(over, Math.max(0, room));
+          pos[j] -= take;
+          over -= take;
+        }
+      }
+      items.forEach(function (it, i) { it.li.style.top = Math.max(0, pos[i]) + 'px'; });
     }
+
     var raf = 0;
     function paint() {
       raf = 0;

@@ -663,6 +663,18 @@ footer a:hover { color: var(--text-primary); }
   * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
 
+/* ─── MATHJAX ─────────────────────────────────────────────
+   A long display equation is wider than a phone. Let it scroll
+   inside its own box rather than pushing the page sideways. */
+mjx-container[jax="SVG"] { max-width: 100%; }
+mjx-container[jax="SVG"][display="true"] {
+  overflow-x: auto; overflow-y: hidden; max-width: 100%;
+  padding-block: 2px;
+}
+mjx-container[jax="SVG"] > svg { max-width: none; }
+.article-body table, .hb-body table { display: block; max-width: 100%; overflow-x: auto; }
+.article-body pre, .hb-body pre { max-width: 100%; overflow-x: auto; }
+
 /* ═══ PRINT / PDF ══════════════════════════════════════════ */
 @media print {
   .nav, footer, .fab-consult, .fab-glass, .related-articles-section,

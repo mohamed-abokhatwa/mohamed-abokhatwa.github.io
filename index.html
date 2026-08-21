@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mohamed Abokhatwa — Water Engineering</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -312,9 +312,9 @@
     /* ── Filter UI ── */
     .course-promo { display:flex; align-items:center; gap:32px; justify-content:space-between;
       text-decoration:none; padding:28px 32px; border-radius:3px;
-      background:var(--sheet); border:1px solid var(--border); border-left:3px solid var(--fire);
+      background:var(--sheet); border:1px solid var(--border); border-inline-start:3px solid var(--fire);
       box-shadow:none; transition:border-color .18s, transform .18s, box-shadow .18s; overflow:hidden; }
-    .course-promo:hover { box-shadow:var(--shadow); transform:translateY(-2px); border-color:var(--text-tertiary); border-left-color:var(--fire); }
+    .course-promo:hover { box-shadow:var(--shadow); transform:translateY(-2px); border-color:var(--text-tertiary); border-inline-start-color:var(--fire); }
     .course-promo-eyebrow { display:inline-block; font-family:var(--font-mono); font-size:9.5px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--fire); margin-bottom:12px; }
     .course-promo-text h2 { font-family:var(--font-display); font-size:clamp(24px,3.5vw,34px); font-weight:700; letter-spacing:-.03em; color:var(--text-primary); margin-bottom:12px; line-height:1.12; }
     .course-promo-text p { color:var(--text-secondary); font-size:15px; line-height:1.6; margin-bottom:20px; max-width:640px; }
@@ -329,7 +329,7 @@
     }
     .search-wrap svg {
       position: absolute;
-      left: 16px;
+      inset-inline-start: 16px;
       top: 50%;
       transform: translateY(-50%);
       pointer-events: none;
@@ -337,10 +337,11 @@
     #article-search {
       width: 100%;
       box-sizing: border-box;
-      padding: 13px 18px 13px 48px;
-      border-radius: 14px;
-      border: 1.5px solid var(--glass-border);
-      background: var(--glass);
+      padding-block: 12px;
+      padding-inline: 46px 16px;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      background: var(--sheet);
       backdrop-filter: var(--blur);
       -webkit-backdrop-filter: var(--blur);
       font-size: 15px;
@@ -745,7 +746,7 @@
       </div>
     </a>
 
-    <a href="bms-controls-architecture-tall-buildings.html" class="article-card" data-cat="tallmep" data-search="BMS building management system building automation controls architecture tall buildings megatall point count field devices BACnet MS/TP RS-485 segment limit 32 devices 127 addresses baud rate 9600 76800 poll cycle token passing response time IP backbone zone controller network hierarchy mechanical zoning life safety interface fire alarm cause and effect hardwired listed network smoke control damper actuation lift recall generator changeover interface matrix trending sample interval retention change of value data volume storage metering hierarchy sub-metering thermal energy meter EN 1434 tenant billing naming convention alarm philosophy alarm flood open protocol owned database OT security VLAN IEC 62443 sequence of operation Guideline 36 functional testing commissioning handover MEP building services">
+    <a href="bms-controls-architecture-tall-buildings.html" class="article-card hidden-article" data-cat="tallmep" data-search="BMS building management system building automation controls architecture tall buildings megatall point count field devices BACnet MS/TP RS-485 segment limit 32 devices 127 addresses baud rate 9600 76800 poll cycle token passing response time IP backbone zone controller network hierarchy mechanical zoning life safety interface fire alarm cause and effect hardwired listed network smoke control damper actuation lift recall generator changeover interface matrix trending sample interval retention change of value data volume storage metering hierarchy sub-metering thermal energy meter EN 1434 tenant billing naming convention alarm philosophy alarm flood open protocol owned database OT security VLAN IEC 62443 sequence of operation Guideline 36 functional testing commissioning handover MEP building services">
       <div class="card-body">
         <span class="article-card-tag">Tall-Building Systems &middot; BMS &middot; Controls &middot; Metering</span>
         <div class="article-card-title">BMS &amp; Controls Architecture for Megatall Buildings: Point Count, Field Networks &amp; Trending</div>
@@ -1937,11 +1938,10 @@
 
   <!-- Show More Button -->
   <div id="show-more-wrap" style="text-align:center; padding:2.5rem 0 1rem;">
-    <button id="show-more-btn" onclick="revealArticles()" style="display:inline-flex; align-items:center; gap:10px; padding:12px 28px; background:var(--glass); -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur); color:var(--accent); border:1px solid var(--glass-border); border-radius:980px; font-size:15px; font-weight:500; cursor:pointer; font-family:inherit; box-shadow:var(--shadow-glass); transition:transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-glass-hover)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-glass)'">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-      Show 42 More Articles
+    <button id="show-more-btn" onclick="revealArticles()" class="btn btn-ghost" style="cursor:pointer;">
+      Show 76 More Articles
     </button>
-    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">3 of 45 articles shown</div>
+    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">3 of 79 articles shown</div>
   </div>
 
 </div>
@@ -2033,7 +2033,7 @@
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
     <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
       <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
     </form>
@@ -2163,7 +2163,7 @@ function mcSubmit(e) {
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
   color:var(--text-primary); padding:.85rem 1.6rem;
-  border-radius:50px; font-weight:600;
+  border-radius:3px; font-weight:600;
   font-size:.9rem; cursor:pointer;
   border:1px solid rgba(0,0,0,0.06);
   box-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 28px rgba(0,0,0,.12);
@@ -2223,7 +2223,7 @@ function mcSubmit(e) {
   else run();
 })();
 </script>
-<script src="elevation.js?v=6"></script>
-<script src="theme.js?v=6"></script>
+<script src="elevation.js?v=7"></script>
+<script src="theme.js?v=7"></script>
 </body>
 </html>

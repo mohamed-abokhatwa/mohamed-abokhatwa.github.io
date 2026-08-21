@@ -33,7 +33,7 @@
   <title>Control Valve Closure Time &amp; Water Hammer — Mohamed Abokhatwa</title>
   <meta name="description" content="How control valve closure time directly drives water hammer pressure surges — engineering analysis, Joukowsky equation, and closure time optimization for…">
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -99,7 +99,7 @@
     .res-safe{color:var(--success);}
     .res-neutral{color:var(--accent);}
 
-    .regime-banner{border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:600;text-align:center;margin-bottom:16px;}
+    .regime-banner{border-radius:3px;padding:10px 16px;font-size:13.5px;font-weight:600;text-align:center;margin-bottom:16px;}
     .regime-rapid{background:color-mix(in srgb, var(--danger) 6%, transparent);border:1px solid color-mix(in srgb, var(--danger) 18%, transparent);color:var(--danger);}
     .regime-slow{background:color-mix(in srgb, var(--success) 6%, transparent);border:1px solid color-mix(in srgb, var(--success) 20%, transparent);color:var(--success);}
 
@@ -134,7 +134,7 @@
     .wf-code{
       font-family:var(--font-mono);font-size:12px;
       background:color-mix(in srgb, var(--accent) 6%, transparent);border:1px solid color-mix(in srgb, var(--accent) 15%, transparent);
-      border-radius:8px;padding:8px 12px;margin-top:8px;
+      border-radius:3px;padding:8px 12px;margin-top:8px;
       color:var(--accent);display:block;line-height:1.6;
     }
 
@@ -159,7 +159,7 @@
     .cond-card h4{font-size:14px;font-weight:600;margin-bottom:8px;}
     .cond-danger h4{color:var(--danger);}
     .cond-safe h4{color:var(--success);}
-    .cond-badge{font-family:var(--font-mono);font-size:13px;padding:3px 10px;border-radius:6px;display:inline-block;margin-bottom:8px;}
+    .cond-badge{font-family:var(--font-mono);font-size:13px;padding:3px 10px;border-radius:3px;display:inline-block;margin-bottom:8px;}
     .cond-danger .cond-badge{background:color-mix(in srgb, var(--danger) 10%, transparent);color:var(--danger);}
     .cond-safe .cond-badge{background:color-mix(in srgb, var(--success) 10%, transparent);color:var(--success);}
     .cond-card p{font-size:14px;color:var(--text-secondary);margin:0;line-height:1.6;}
@@ -173,7 +173,7 @@
     .material-table tbody tr:last-child td{border-bottom:none;}
 
     /* ── Inline badge ── */
-    .ibadge{display:inline-block;padding:2px 9px;border-radius:980px;font-size:12px;font-weight:500;}
+    .ibadge{display:inline-block;padding:2px 9px;border-radius:3px;font-size:12px;font-weight:500;}
     .ibadge-r{background:color-mix(in srgb, var(--danger) 10%, transparent);color:var(--danger);}
     .ibadge-w{background:color-mix(in srgb, var(--warning) 10%, transparent);color:var(--warning);}
     .ibadge-b{background:color-mix(in srgb, var(--accent) 10%, transparent);color:var(--accent);}
@@ -888,7 +888,7 @@ update();
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
     <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
       <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
     </form>
@@ -948,7 +948,7 @@ function mcSubmit(e) {
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
   color:var(--text-primary); padding:.85rem 1.6rem;
-  border-radius:50px; font-weight:600;
+  border-radius:3px; font-weight:600;
   font-size:.9rem; cursor:pointer;
   border:1px solid rgba(255,255,255,0.3);
   box-shadow:0 8px 32px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.4);
@@ -974,7 +974,7 @@ function mcSubmit(e) {
 <style>
 #mc-email:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }
 </style>
-<script src="article-features.js?v=6"></script>
-<script src="theme.js?v=6"></script>
+<script src="article-features.js?v=7"></script>
+<script src="theme.js?v=7"></script>
 </body>
 </html>

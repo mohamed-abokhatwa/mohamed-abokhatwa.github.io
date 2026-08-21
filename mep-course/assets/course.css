@@ -15,6 +15,7 @@
   --text-primary:#0c1513; --text-secondary:#495652; --text-tertiary:#566360;
   --accent:#085f53; --success:#236331; --danger:#a13326; --warning:#7a5806;
   --fire:#964904; --air:#2a5975; --water:#085f53; --on-accent:#ffffff;
+  --sheet:#ffffff; --sheet-2:#f6f8f7; --s4:#6b4f7c;
   --font-display:'Archivo','IBM Plex Sans',system-ui,-apple-system,'Helvetica Neue',sans-serif;
   --font-body:'IBM Plex Sans',system-ui,-apple-system,'Helvetica Neue',sans-serif;
   --font-mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -50,6 +51,7 @@
   --text-primary:#e7eeeb; --text-secondary:#93a49f; --text-tertiary:#7e8d89;
   --accent:#33c4ac; --success:#46c07e; --danger:#f0705f; --warning:#d8ae42;
   --fire:#e4903f; --air:#79b6d8; --water:#33c4ac; --on-accent:#05100e;
+  --sheet:#101817; --sheet-2:#0c1312; --s4:#b79ad0;
   --sky:color-mix(in srgb, var(--accent) 16%, transparent);
   --sw-bg:color-mix(in srgb, var(--s4,#b79ad0) 16%, transparent); --sw-text:#b79ad0; --sw-border:#b79ad0;}
 
@@ -80,9 +82,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
 .nav-links a{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;transition:color .18s,border-color .18s;border-bottom:1px solid transparent;padding-bottom:2px}
 .nav-links a:hover{color:var(--text-primary);border-bottom-color:var(--fire)}
 .nav-links a.active{color:var(--text-primary);border-bottom-color:var(--fire)}
-.lang-switch{font-size:13px;font-weight:500;color:var(--accent);text-decoration:none;
-  border:1px solid color-mix(in srgb, var(--accent) 20%, transparent);padding:4px 12px;border-radius:3px;transition:background 0.2s}
-.lang-switch:hover{background:color-mix(in srgb, var(--accent) 6%, transparent)}
+
 .nav-links.open .lang-switch{border:none;border-radius:0;padding:14px 0}
 
 .theme-toggle{width:34px;height:34px;border-radius:50%;border:1px solid var(--border-light);background:transparent;
@@ -189,7 +189,7 @@ a.ref{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--ac
 
 /* inline formula chip used in prose (theme-aware) */
 .formula{font-family:'SF Mono',Consolas,monospace;background:var(--sky);color:var(--accent);
-  padding:4px 9px;border-radius:6px;display:inline-block;font-size:15px;line-height:1.6}
+  padding:4px 9px;border-radius:3px;display:inline-block;font-size:15px;line-height:1.6}
 
 /* worked example (intentional dark card, works in both themes) */
 /* the worked example is always a dark plate, so the inks are rebound inside
@@ -202,8 +202,8 @@ a.ref{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--ac
 .example h4{color:#7fd1ff;margin:0 0 10px;font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 .example .step{margin:10px 0;padding-inline-start:14px;border-inline-start:2px solid #3d6d8c}
 .example .formula{font-family:'SF Mono',Consolas,monospace;background:#0a2030;padding:8px 12px;
-  border-radius:7px;display:inline-block;margin:4px 0;color:#bfe3ff;font-size:15px}
-.example .result{background:#15482f;border:1px solid #2f8f57;border-radius:8px;padding:10px 14px;
+  border-radius:3px;display:inline-block;margin:4px 0;color:#bfe3ff;font-size:15px}
+.example .result{background:#15482f;border:1px solid #2f8f57;border-radius:3px;padding:10px 14px;
   margin-top:12px;font-weight:600;color:#c7f3d6}
 .example .given{color:#ffd98a}
 
@@ -247,7 +247,7 @@ table.t tr:nth-child(even) td{background:var(--bg-2)}
 .figure .cap{font-size:13px;color:var(--text-tertiary);margin-top:10px;text-align:center}
 
 /* pills / tags */
-.pill{display:inline-block;background:var(--sky);color:var(--accent);border-radius:999px;
+.pill{display:inline-block;background:var(--sky);color:var(--accent);border-radius:3px;
   padding:2px 10px;font-size:12.5px;font-weight:600;margin:2px 4px 2px 0}
 .pill.code{background:var(--bg-4);color:var(--text-secondary)}
 
@@ -258,7 +258,7 @@ table.t tr:nth-child(even) td{background:var(--bg-2)}
 .modcard .num{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:.6px;text-transform:uppercase}
 .modcard h3{margin:6px 0 8px;color:var(--text-primary);font-weight:600}
 .modcard p{margin:0;color:var(--text-secondary);font-size:15px}
-.modcard .status{display:inline-block;margin-top:14px;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+.modcard .status{display:inline-block;margin-top:14px;font-size:12px;font-weight:700;padding:3px 9px;border-radius:3px}
 .status.ready{background:color-mix(in srgb, var(--success) 12%, transparent);color:var(--success)}
 .status.soon{background:var(--bg-4);color:var(--text-tertiary)}
 
@@ -273,7 +273,7 @@ footer a:hover{color:var(--text-primary)}
 
 /* buttons (match site) */
 .btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:15px;font-weight:500;
-  padding:12px 22px;border-radius:980px;border:none;cursor:pointer;text-decoration:none;transition:var(--transition);letter-spacing:-0.01em}
+  padding:12px 22px;border-radius:3px;border:none;cursor:pointer;text-decoration:none;transition:var(--transition);letter-spacing:-0.01em}
 .btn-primary{background:var(--accent);color:var(--on-accent)}
 .btn-primary:hover{opacity:.85}
 
@@ -307,3 +307,36 @@ sup.fn{color:var(--accent);font-weight:700;font-size:12px}
   pointer-events:none;transition:opacity .25s ease, transform .25s ease, box-shadow .2s ease}
 #back-to-top:hover{box-shadow:0 8px 28px rgba(0,0,0,0.18);transform:translateX(-50%) translateY(-2px) !important}
 :root[data-theme="dark"] #back-to-top{box-shadow:0 4px 20px rgba(0,0,0,0.4);}
+
+
+/* ═══ Floating buttons and language pill — identical to the rest of the site
+   (the course pages do not load style.css, so the rules live here too) ═══ */
+.fab-glass, .fab-consult{
+  position:fixed; bottom:1.75rem; z-index:9999;
+  display:flex; align-items:center; gap:.55rem;
+  background:var(--sheet); color:var(--text-primary);
+  padding:.8rem 1.35rem; border-radius:2px;
+  font-family:var(--font-mono); font-weight:500; font-size:11.5px;
+  letter-spacing:.1em; text-transform:uppercase;
+  cursor:pointer; border:1px solid var(--border);
+  box-shadow:var(--shadow-glass); text-decoration:none;
+  backdrop-filter:none; -webkit-backdrop-filter:none;
+  transition:transform .18s, border-color .18s;
+}
+.fab-glass:hover, .fab-consult:hover{ transform:translateY(-3px); border-color:var(--text-primary); }
+.fab-glass svg, .fab-consult svg{ color:var(--fire); flex-shrink:0; }
+.fab-wa{ left:auto; right:auto; inset-inline-start:1.75rem; }
+.fab-consult{ left:auto; right:auto; inset-inline-end:1.75rem; }
+@media(max-width:600px){
+  .fab-glass-text, .fab-text{ display:none; }
+  .fab-glass, .fab-consult{ width:50px; height:50px; padding:0; justify-content:center; }
+}
+/* .nav-links a sets a transparent bottom border for the hover underline,
+   which outspecifies .lang-switch and leaves its box open at the foot */
+.lang-switch, .nav-links a.lang-switch, .nav-links li a.lang-switch{
+  font-family:var(--font-mono); font-size:11px; font-weight:500; color:var(--accent);
+  text-decoration:none; border:1px solid var(--border);
+  padding:4px 10px; border-radius:2px; text-transform:none; letter-spacing:.04em;
+  transition:background .2s, border-color .2s;
+}
+.lang-switch:hover, .nav-links a.lang-switch:hover{ background:color-mix(in srgb, var(--accent) 10%, transparent); border-color:var(--accent); }

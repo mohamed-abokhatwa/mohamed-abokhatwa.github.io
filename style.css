@@ -289,14 +289,21 @@ body::before {
 .nav-links a:hover { color: var(--text-primary); border-bottom-color: var(--fire); }
 .nav-links a.active { color: var(--text-primary); border-bottom-color: var(--fire); }
 
-.lang-switch {
+/* .nav-links a sets a transparent bottom border for the hover underline,
+   which outspecifies .lang-switch and leaves its box open at the foot */
+.lang-switch, .nav-links a.lang-switch, .nav-links li a.lang-switch {
   font-family: var(--font-mono);
   font-size: 11px; font-weight: 500; color: var(--accent);
-  text-decoration: none; border: 1px solid var(--border);
-  padding: 4px 10px; border-radius: 2px; transition: background .2s, border-color .2s;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 2px;
+  transition: background .2s, border-color .2s;
   text-transform: none; letter-spacing: 0.04em;
 }
-.lang-switch:hover { background: var(--water-w); border-color: var(--accent); }
+.lang-switch:hover, .nav-links a.lang-switch:hover {
+  background: var(--water-w); border-color: var(--accent);
+}
 .nav-links.open .lang-switch { border: none; border-radius: 0; padding: 14px 0; }
 
 /* ─── TYPOGRAPHY ──────────────────────────────────────── */
@@ -703,7 +710,7 @@ footer a:hover { color: var(--text-primary); }
    ═════════════════════════════════════════════════════════ */
 .fab-glass, .fab-consult {
   position: fixed !important; bottom: 1.75rem; z-index: 9999;
-  display: flex; align-items: center; gap: .55rem;
+  display: flex !important; align-items: center; gap: .55rem;
   background: var(--sheet) !important;
   backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
   color: var(--text-primary) !important;
@@ -711,7 +718,7 @@ footer a:hover { color: var(--text-primary); }
   border-radius: 2px !important;
   font-family: var(--font-mono) !important;
   font-weight: 500 !important; font-size: 11.5px !important;
-  letter-spacing: .1em; text-transform: uppercase;
+  letter-spacing: .1em !important; text-transform: uppercase !important;
   cursor: pointer;
   border: 1px solid var(--border) !important;
   box-shadow: var(--shadow) !important;
@@ -722,6 +729,7 @@ footer a:hover { color: var(--text-primary); }
   transform: translateY(-3px);
   border-color: var(--text-primary) !important;
 }
+.fab-glass svg, .fab-consult svg { color: var(--fire); flex-shrink: 0; }
 /* one edge only, and clear the other: the Arabic pages pin the opposite
    side in their own <style>, which otherwise stretches the button full width */
 /* Clear BOTH physical edges first: the Arabic pages pin the opposite side in
@@ -729,7 +737,6 @@ footer a:hover { color: var(--text-primary); }
    so the button ends up with left and right both set and spans the viewport. */
 .fab-wa      { left: auto !important; right: auto !important; inset-inline-start: 1.75rem !important; }
 .fab-consult { left: auto !important; right: auto !important; inset-inline-end: 1.75rem !important; }
-.fab-consult { background: var(--text-primary) !important; color: var(--bg) !important; border-color: var(--text-primary) !important; }
 @media (max-width: 600px) {
   .fab-glass-text, .fab-text { display: none; }
   .fab-glass, .fab-consult {

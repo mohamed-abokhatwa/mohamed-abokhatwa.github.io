@@ -25,7 +25,7 @@
   <meta property="og:image:alt" content="Hydraulic Engineering Calculators">
   <link rel="canonical" href="https://abokhatwa.com/calculators.html">
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -56,7 +56,7 @@
       color: var(--accent);
       font-size: 11px; font-weight: 700;
       letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 6px 18px; border-radius: 20px;
+      padding: 6px 18px; border-radius:3px;
       margin-bottom: 24px;
     }
     .calc-hero h1 {
@@ -91,7 +91,7 @@
       display: flex; align-items: center; gap: 14px;
     }
     .calc-category-icon {
-      width: 36px; height: 36px; border-radius: 10px;
+      width: 36px; height: 36px; border-radius:3px;
       display: flex; align-items: center; justify-content: center;
       font-size: 18px; flex-shrink: 0;
     }
@@ -118,7 +118,7 @@
     .calc-card {
       background: var(--sheet);
       border: 1px solid rgba(0,0,0,0.07);
-      border-radius: 20px;
+      border-radius:3px;
       padding: 28px 28px 24px;
       box-shadow: 0 1px 8px rgba(0,0,0,0.05), 0 4px 24px rgba(0,0,0,0.04);
       transition: box-shadow 0.25s, transform 0.25s;
@@ -127,7 +127,7 @@
 
     .card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 6px; }
     .card-icon {
-      width: 42px; height: 42px; border-radius: 12px;
+      width: 42px; height: 42px; border-radius:3px;
       display: flex; align-items: center; justify-content: center;
       font-size: 19px; flex-shrink: 0;
     }
@@ -160,7 +160,7 @@
     .field-wrap {
       display: flex; align-items: center;
       border: 1.5px solid var(--border);
-      border-radius: 10px;
+      border-radius:3px;
       background: var(--bg-2);
       transition: border-color 0.18s, background 0.18s;
       overflow: hidden; min-width: 0;
@@ -181,7 +181,7 @@
 
     /* ═══ Result box ═══ */
     .result-box {
-      border-radius: 14px; padding: 18px 20px;
+      border-radius:3px; padding: 18px 20px;
       background: linear-gradient(135deg,var(--bg-2),var(--air-w));
       border: 1px solid color-mix(in srgb, var(--accent) 12%, transparent);
     }
@@ -205,7 +205,7 @@
     /* Status pill */
     .pill {
       display: inline-block; padding: 3px 12px;
-      border-radius: 20px; font-size: 11.5px; font-weight: 700;
+      border-radius:3px; font-size: 11.5px; font-weight: 700;
       margin-top: 8px;
     }
     .pill-ok     { background: var(--success-w); color: var(--success); }
@@ -219,7 +219,7 @@
     .calc-act {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 12.5px; font-weight: 500; padding: 7px 13px;
-      border-radius: 980px; border: 1px solid var(--border, rgba(0,0,0,0.1));
+      border-radius:3px; border: 1px solid var(--border, rgba(0,0,0,0.1));
       background: transparent; color: var(--text-secondary, var(--text-secondary));
       cursor: pointer; font-family: inherit;
       transition: background .15s, color .15s, border-color .15s;
@@ -262,7 +262,7 @@
     .formula-toggle.open svg { transform: rotate(90deg); }
     .formula-box {
       display: none; margin-top: 10px;
-      background: var(--bg-2); border-radius: 10px;
+      background: var(--bg-2); border-radius:3px;
       padding: 12px 14px; font-size: 12px;
       color: var(--text-secondary); line-height: 1.9;
       font-family: 'SF Mono', 'Fira Code', monospace;
@@ -281,7 +281,7 @@
       display: none; margin-top: 12px;
       background: var(--air-w);
       border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
-      border-radius: 14px; padding: 16px;
+      border-radius:3px; padding: 16px;
       overflow: hidden;
     }
     .diagram-box.open { display: block; }
@@ -299,7 +299,7 @@
     .fitting-table td:last-child { width: 60px; }
     .fitting-table input[type=number] {
       width: 55px; padding: 4px 6px;
-      border: 1.5px solid var(--border); border-radius: 7px;
+      border: 1.5px solid var(--border); border-radius:3px;
       font-size: 13px; font-family: inherit;
       text-align: center; outline: none;
       background: var(--bg-2);
@@ -505,7 +505,7 @@
     </div>
     <style>
       .unit-switch{display:flex;flex-direction:column;align-items:center;gap:6px;}
-      .unit-toggle{display:inline-flex;border:1px solid var(--border,var(--border));border-radius:980px;overflow:hidden;background:var(--bg-3,var(--bg-2));}
+      .unit-toggle{display:inline-flex;border:1px solid var(--border,var(--border));border-radius:3px;overflow:hidden;background:var(--bg-3,var(--bg-2));}
       .unit-toggle button{border:0;background:transparent;padding:5px 16px;font-size:14px;font-weight:800;cursor:pointer;color:var(--text-tertiary,var(--text-tertiary));font-family:inherit;transition:background .15s,color .15s;}
       .unit-toggle button.active{background:var(--accent,var(--accent));color:var(--on-accent);}
     </style>
@@ -2492,7 +2492,7 @@
     </div>
 
     <!-- Calculated intermediate values -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:3px;padding:14px 16px;">
       <div>
         <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-tertiary);margin-bottom:4px;">Pipe Velocity</div>
         <div id="sv-calc-v" style="font-size:1.1rem;font-weight:700;color:var(--text-primary);">—</div>
@@ -4245,7 +4245,7 @@
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
     <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
       <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
     </form>
@@ -4306,7 +4306,7 @@ function mcSubmit(e) {
   background:var(--sheet-2);
   backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
   border:1px solid rgba(255,255,255,0.2);
-  border-radius:50px; padding:.75rem 1.2rem;
+  border-radius:3px; padding:.75rem 1.2rem;
   cursor:pointer; text-decoration:none;
   color:var(--text-primary); font-size:.85rem; font-weight:600;
   box-shadow:0 4px 24px rgba(0,0,0,0.12);
@@ -5653,10 +5653,10 @@ window.addEventListener('DOMContentLoaded', function() {
   .calc-toolbar-inner { max-width: var(--max-w); margin: 0 auto; padding: 11px 24px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
   .calc-search { position: relative; flex: 1 1 240px; min-width: 180px; max-width: 360px; }
   .calc-search svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--text-tertiary); pointer-events: none; }
-  .calc-search input { width: 100%; box-sizing: border-box; padding: 9px 16px 9px 38px; border-radius: 980px; border: 1px solid var(--border); background: var(--bg-3); color: var(--text-primary); font-size: 14px; font-family: inherit; outline: none; }
+  .calc-search input { width: 100%; box-sizing: border-box; padding: 9px 16px 9px 38px; border-radius:3px; border: 1px solid var(--border); background: var(--bg-3); color: var(--text-primary); font-size: 14px; font-family: inherit; outline: none; }
   .calc-search input:focus { border-color: var(--accent); }
   .calc-chips { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
-  .calc-chip { font-size: 12px; font-weight: 500; padding: 6px 13px; border-radius: 980px; border: 1px solid var(--border); background: transparent; color: var(--text-secondary); cursor: pointer; font-family: inherit; white-space: nowrap; transition: background .15s, color .15s, border-color .15s; }
+  .calc-chip { font-size: 12px; font-weight: 500; padding: 6px 13px; border-radius:3px; border: 1px solid var(--border); background: transparent; color: var(--text-secondary); cursor: pointer; font-family: inherit; white-space: nowrap; transition: background .15s, color .15s, border-color .15s; }
   .calc-chip:hover { background: var(--bg-4); color: var(--text-primary); }
   .calc-chip.active { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
   .calc-noresults { display: none; text-align: center; padding: 50px 20px; color: var(--text-tertiary); font-size: 15px; }
@@ -5905,6 +5905,6 @@ window.addEventListener('DOMContentLoaded', function() {
 })();
 </script>
 
-<script src="theme.js?v=6"></script>
+<script src="theme.js?v=7"></script>
 </body>
 </html>

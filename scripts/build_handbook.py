@@ -113,10 +113,10 @@ HB_CSS = """
       font-variant-numeric:tabular-nums;color:var(--text-primary);}
     .hb-meta .v small{font-size:12.5px;font-weight:400;color:var(--text-tertiary);display:block;}
     .hb-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;}
-    .hb-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:980px;
+    .hb-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:3px;
       font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--border-light);
       color:var(--text-primary);background:var(--bg-3);cursor:pointer;font-family:inherit;transition:.18s;}
-    .hb-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+    .hb-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
     .hb-btn:hover{transform:translateY(-1px);}
     .hb-note{max-width:820px;margin:0 auto;padding:0 24px 20px;font-size:15px;line-height:1.75;
       color:var(--text-tertiary);}
@@ -155,7 +155,7 @@ HB_CSS = """
       margin-bottom:1.5rem !important;}
 
     .hb-fig{margin:26px 0;border:1px solid var(--border);border-left:3px solid var(--accent);
-      border-radius:10px;padding:16px 20px 18px;background:var(--bg-3);}
+      border-radius:3px;padding:16px 20px 18px;background:var(--bg-3);}
     .hb-fig-label{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);}
     .hb-fig-title{font-size:16px;font-weight:600;color:var(--text-primary);margin-top:6px;line-height:1.35;}
     .hb-fig-model{font-size:13.5px;color:var(--text-tertiary);line-height:1.6;margin-top:7px;}
@@ -168,7 +168,7 @@ HB_CSS = """
 
     @media print{
       @page{margin:19mm 16mm;}
-      body{background:#fff !important;color:#111 !important;font-size:10.6pt;}
+      body{background:var(--sheet) !important;color:#111 !important;font-size:10.6pt;}
       .nav,footer,.fab-consult,.fab-glass,.hb-actions,#read-progress-bar,
       .hb-note,section[style*="padding:96px"]{display:none !important;}
       .hb-cover{padding:0 0 24pt;page-break-after:always;}
@@ -198,7 +198,7 @@ def build():
 
     out = [T('HEAD_TOP'),
       "  <title>The Megatall MEP Handbook &mdash; Mohamed Abokhatwa</title>\n",
-      '  <link rel="stylesheet" href="style.css?v=3">\n',
+      '  <link rel="stylesheet" href="style.css?v=7">\n',
       '  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">\n',
       '  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">\n',
       '  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">\n',

@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>District Cooling &amp; Energy Transfer Stations for Megatall Buildings: Delta-T, Approach &amp; Metering — Mohamed Abokhatwa</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -47,9 +47,9 @@
     .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
     sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
 
-    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:3px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
 
-    .callout{border-radius:14px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout{border-radius:3px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
     .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
     .callout strong{color:var(--text-primary);}
     .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
@@ -57,7 +57,7 @@
     .callout.green{border-left-color:var(--success);} .callout.green .lbl{color:var(--success);}
 
     .tbl-wrap{overflow-x:auto;margin:24px 0;}
-    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:3px;overflow:hidden;border:1px solid var(--border);}
     .article-body caption{caption-side:top;text-align:left;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
     .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:left;padding:11px 14px;font-weight:600;font-size:13px;}
     .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
@@ -65,11 +65,11 @@
 
     ul.clean li{margin-bottom:9px;}
 
-    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:16px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:3px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
     .schematic svg{width:100%;height:auto;display:block;}
     .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
 
-    .fig{margin:30px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass);}
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:3px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass);}
     .fig-head{padding:18px 22px 6px;}
     .fig-head .ftitle{font-weight:700;font-size:15px;color:var(--air);}
     .fig-head .fsub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5;}
@@ -80,14 +80,14 @@
     .ctrl label span{color:var(--air);font-variant-numeric:tabular-nums;}
     .ctrl input[type=range]{width:100%;accent-color:var(--danger);}
     .ctrl .hint{font-size:11.5px;color:var(--text-secondary);margin-top:4px;line-height:1.45;}
-    .ctrl select{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:var(--sheet);color:var(--text-primary);}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:3px;font-size:13px;font-family:inherit;background:var(--sheet);color:var(--text-primary);}
     .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid var(--border);}
     .readout .cell{padding:14px 16px;border-right:1px solid var(--border);}
     .readout .cell:last-child{border-right:none;}
     .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary);}
     .readout .v{font-size:22px;font-weight:700;color:var(--air);font-variant-numeric:tabular-nums;margin-top:2px;}
     .readout .v small{font-size:13px;font-weight:500;color:var(--text-secondary);}
-    .badge{display:inline-block;padding:3px 10px;border-radius:30px;font-size:12px;font-weight:600;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:3px;font-size:12px;font-weight:600;}
     .badge.good{background:var(--success-w);color:var(--success);}
     .badge.warn{background:var(--warning-w);color:var(--warning);}
     .badge.bad{background:var(--danger-w);color:var(--danger);}
@@ -104,7 +104,7 @@
     .breadcrumb-current{color:var(--text-secondary);}
 
     .fig-head{position:relative;}
-    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:var(--air);text-decoration:none;border:1px solid var(--border);border-radius:980px;padding:4px 11px;background:var(--sheet);transition:.18s;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:var(--air);text-decoration:none;border:1px solid var(--border);border-radius:3px;padding:4px 11px;background:var(--sheet);transition:.18s;}
     .calc-link:hover{border-color:var(--air);background:var(--bg-2);}
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
@@ -405,7 +405,7 @@
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
     <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:980px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
       <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
     </form>
@@ -440,7 +440,7 @@ function mcSubmit(e) {
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-  <script src="chart-theme.js?v=6"></script>
+  <script src="chart-theme.js?v=7"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
 <script>
 
@@ -589,7 +589,7 @@ window.addEventListener('load',function(){try{dtChart.resize();apChart.resize();
 
 <!-- End WhatsApp Button -->
 
-<script src="article-features.js?v=6"></script>
-<script src="theme.js?v=6"></script>
+<script src="article-features.js?v=7"></script>
+<script src="theme.js?v=7"></script>
 </body>
 </html>

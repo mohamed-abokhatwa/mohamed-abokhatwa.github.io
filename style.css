@@ -276,10 +276,10 @@ body::before {
 }
 
 .nav-links a {
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0;
   color: var(--text-secondary);
   text-decoration: none;
   transition: color .18s, border-color .18s;
@@ -292,14 +292,14 @@ body::before {
 /* .nav-links a sets a transparent bottom border for the hover underline,
    which outspecifies .lang-switch and leaves its box open at the foot */
 .lang-switch, .nav-links a.lang-switch, .nav-links li a.lang-switch {
-  font-family: var(--font-mono);
-  font-size: 11px; font-weight: 500; color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 12.5px; font-weight: 500; color: var(--accent);
   text-decoration: none;
   border: 1px solid var(--border);
   padding: 4px 10px;
   border-radius: 2px;
   transition: background .2s, border-color .2s;
-  text-transform: none; letter-spacing: 0.04em;
+  text-transform: none; letter-spacing: 0;
 }
 .lang-switch:hover, .nav-links a.lang-switch:hover {
   background: var(--water-w); border-color: var(--accent);
@@ -364,25 +364,24 @@ a { color: var(--accent); }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 12px;
+  font-family: var(--font-body);
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 13px 22px;
-  border-radius: 2px;
+  letter-spacing: -0.01em;
+  padding: 12px 22px;
+  border-radius: 3px;
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
   transition: opacity .18s, background .18s, border-color .18s, color .18s;
 }
-.btn-primary { background: var(--text-primary); color: var(--bg); }
+.btn-primary { background: var(--accent); color: var(--on-accent); }
 .btn-primary:hover { opacity: .85; }
 .btn-ghost {
   background: transparent;
   color: var(--text-primary);
   border-color: var(--border);
-  padding: 13px 22px;
+  padding: 12px 22px;
 }
 .btn-ghost:hover { border-color: var(--text-primary); background: transparent; }
 .btn-ghost::after { content: ' →'; }
@@ -522,14 +521,75 @@ tr:last-child td { border-bottom: none; }
 /* ─── FOOTER ──────────────────────────────────────────── */
 footer {
   border-top: 1px solid var(--border);
-  padding: 44px 24px;
-  text-align: center;
+  padding: 40px 24px 46px;
+  text-align: start;
   background: var(--bg-2);
 }
 .footer-inner { max-width: var(--max-w); margin: 0 auto; }
-footer p { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); }
-footer a { color: var(--text-tertiary); text-decoration: none; transition: color .18s; }
-footer a:hover { color: var(--text-primary); }
+footer p { font-family: var(--font-body); font-size: 13px; color: var(--text-secondary);
+           max-width: none; margin: 0; }
+footer a { color: var(--text-secondary); text-decoration: none; transition: color .18s; }
+footer a:hover { color: var(--accent); }
+
+/* The title block: the panel every drawing carries in its corner. */
+.tblock {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.3fr 1fr .85fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.tblock > div { background: var(--bg-2); padding: 13px 16px; min-width: 0; }
+.tb-l {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 7px;
+}
+.tb-id b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.2;
+  color: var(--text-primary);
+}
+.tb-id .tb-s {
+  display: block; margin-top: 4px;
+  font-size: 12px; line-height: 1.45; color: var(--text-tertiary);
+}
+.tblock .tb-v, .tblock a {
+  font-family: var(--font-body); font-size: 13px; line-height: 1.5;
+  color: var(--text-secondary); overflow-wrap: anywhere;
+}
+.tblock a {
+  text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-color: var(--rule); text-decoration-thickness: 1px;
+}
+.tblock a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+.tb-num { font-variant-numeric: tabular-nums; unicode-bidi: isolate; }
+
+.tb-rev {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px;
+  margin: 12px 2px 0;
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 980px) { .tblock { grid-template-columns: 1fr 1fr 1fr; } .tb-id { grid-column: 1 / -1; } }
+@media (max-width: 620px) { .tblock { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .tblock { grid-template-columns: 1fr; } }
+
+/* IBM Plex Mono carries no Arabic glyphs, so Arabic must never inherit it —
+   without this the nav and the title block drop to a system monospace face. */
+html[lang="ar"] .nav-links a, html[lang="ar"] .lang-switch,
+html[lang="ar"] .tb-l, html[lang="ar"] .tb-rev, html[lang="ar"] .btn,
+[dir="rtl"] .tb-l, [dir="rtl"] .tb-rev {
+  font-family: 'Cairo', var(--font-body);
+  letter-spacing: normal;
+}
 
 /* ─── ANIMATIONS ──────────────────────────────────────── */
 @keyframes fadeUp {
@@ -757,3 +817,6 @@ mjx-container[jax="SVG"] > svg { max-width: none; }
     justify-content: center;
   }
 }
+
+.tb-stack { display: flex; flex-direction: column; align-items: start; gap: 5px; }
+.tb-stack .tb-l { margin-bottom: 2px; }

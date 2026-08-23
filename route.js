@@ -3,6 +3,7 @@
 (function(){
 'use strict';
 if(!document.querySelector('.rt-sheet')) return;
+document.documentElement.classList.add('rt-live');
 
 'use strict';
 var $=function(i){return document.getElementById(i);};
@@ -347,8 +348,25 @@ function pAt(y){
 
 var docks=[].slice.call(document.querySelectorAll('.rt-dock'));
 var lastH=0,lastV=0;
+
+/* The sheet is the route. Once the reader reaches the archive the journey is
+   over, so the band and the instrument retire rather than sitting on top of
+   the archive, the newsletter and the footer for the rest of the page. */
+var sheetEl=document.querySelector('.rt-sheet'),
+    clusterEl=document.querySelector('.rt-cluster'),
+    archiveEl=document.querySelector('.rt-sect-archive'),
+    wasOff=null;
+function retire(){
+  if(!sheetEl||!archiveEl) return;
+  var off=archiveEl.getBoundingClientRect().top < vpH()-sheetEl.offsetHeight-40;
+  if(off===wasOff) return;
+  wasOff=off;
+  sheetEl.classList.toggle('rt-off',off);
+  if(clusterEl) clusterEl.classList.toggle('rt-off',off);
+}
+
 function render(){
-  readout(); draw();
+  readout(); draw(); retire();
   var dY=Math.round(vpH()*0.34);
   for(var i=0;i<docks.length;i++){
     var r=docks[i].getBoundingClientRect();

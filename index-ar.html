@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>محمد أبوخطوة — هندسة المياه</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=13">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -59,6 +59,11 @@
   border-top:1px solid var(--rule); background:var(--sheet-2);
 }
 .rt-sheet canvas{position:absolute; inset:0; width:100%; height:100%; display:block;}
+.rt-sheet,.rt-cluster{transition:opacity .38s ease, transform .38s ease;}
+.rt-sheet{pointer-events:none;}
+.rt-sheet.rt-off,.rt-cluster.rt-off{opacity:0; pointer-events:none; transform:translateY(16px);}
+@media (prefers-reduced-motion:reduce){ .rt-sheet,.rt-cluster{transition:none;} }
+
 
 /* -- instrument ---------------------------------------------- */
 .rt-cluster{
@@ -82,6 +87,10 @@
 .rt-cl-cell .rt-v small{font-size:9.5px; font-weight:400; color:var(--text-tertiary); margin-left:2px;}
 .rt-v-water{color:var(--water);} .rt-v-fire{color:var(--fire);} .rt-v-danger{color:var(--danger);} .rt-v-air{color:var(--air);}
 
+/* Clearance for the fixed drawing band. With JS the band retires at the archive,
+   so the page only needs a comfortable tail; without JS it never retires. */
+body{padding-bottom:calc(var(--rt-rail-h) + 130px);}
+html.rt-live body{padding-bottom:72px;}
 .rt-page{position:relative; z-index:2; padding-inline-start:456px; padding-inline-end:40px;}
 .rt-wrap{max-width:700px;}
 .rt-wrap-wide{max-width:1020px;}
@@ -164,7 +173,7 @@ p strong{color:var(--text-primary); font-weight:600;}
 @media (max-width:1040px){
   :root{--rt-rail-h:232px;}
   .rt-cluster{inset-inline:20px; width:auto; bottom:calc(var(--rt-rail-h) + 12px);}
-  .rt-page,footer{padding:0 24px;}
+  .rt-page{padding:0 24px;}
   body{padding-bottom:calc(var(--rt-rail-h) + 130px);}
   .rt-two,.rt-ledger{grid-template-columns:1fr;}
 }
@@ -1828,14 +1837,6 @@ function mcSubmitAr(e) {
 }
 </script>
 
-<footer>
-  <div class="footer-inner">
-    <p style="direction:rtl;">© 2026 محمد أبوخطوة &nbsp;&middot;&nbsp; الرياض، المملكة العربية السعودية &nbsp;&middot;&nbsp; <a href="mailto:mohamed@abokhatwa.com">mohamed@abokhatwa.com</a> &nbsp;&middot;&nbsp; <a href="tel:+966541706700">+966 54 170 6700</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a> &nbsp;&middot;&nbsp; <a href="about-ar.html">نبذة</a></p>
-  </div>
-</footer>
-
-<!-- Newsletter Section -->
-<iframe name="mc_hidden_ar" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
 <section id="newsletter-section" style="padding:96px 24px; text-align:center; border-top:1px solid var(--border); direction:rtl;">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:'Cairo',sans-serif; font-size:clamp(28px,4vw,40px); font-weight:700; margin-bottom:14px; color:var(--text-primary);">رؤى هندسية</h2>
@@ -1848,6 +1849,30 @@ function mcSubmitAr(e) {
     <div id="mc-msg-ar" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">بدون رسائل مزعجة. إلغاء الاشتراك في أي وقت.</div>
   </div>
 </section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="tblock">
+      <div class="tb-id">
+        <span class="tb-l">المهندس</span>
+        <b>محمد أبوخطوة</b>
+        <span class="tb-s">نقل المياه وأنظمة MEP للمباني الشاهقة</span>
+      </div>
+      <div><span class="tb-l">المقر</span><span class="tb-v">الرياض، المملكة العربية السعودية</span></div>
+      <div><span class="tb-l">البريد</span><a href="mailto:mohamed@abokhatwa.com" dir="ltr">mohamed@abokhatwa.com</a></div>
+      <div><span class="tb-l">الهاتف</span><a class="tb-num" href="tel:+966541706700" dir="ltr">+966 54 170 6700</a></div>
+      <div class="tb-stack"><span class="tb-l">روابط</span>
+        <a href="https://www.linkedin.com/in/abokhatwa" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="about-ar.html">نبذة</a>
+      </div>
+    </div>
+    <p class="tb-rev"><span>&copy; 2026 محمد أبوخطوة</span><span>abokhatwa.com</span></p>
+  </div>
+</footer>
+
+<!-- Newsletter Section -->
+<iframe name="mc_hidden_ar" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+
 <style>#mc-email-ar:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }</style>
 
 <!-- Floating Consultation Button -->
@@ -1919,7 +1944,7 @@ function mcSubmitAr(e) {
   else run();
 })();
 </script>
-<script src="route.js?v=12"></script>
-<script src="theme.js?v=11"></script>
+<script src="route.js?v=15"></script>
+<script src="theme.js?v=13"></script>
 </body>
 </html>

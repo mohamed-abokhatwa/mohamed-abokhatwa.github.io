@@ -1,0 +1,861 @@
+<title>Chainage 42</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+
+<style>
+/* ==============================================================
+   CHAINAGE 42 - the water half of abokhatwa.com
+   The tower page reads down an elevation. This one reads along a
+   longitudinal profile: the drawing every transmission main lives on.
+   Same tokens, same instrument, axis rotated ninety degrees.
+   ============================================================== */
+:root{
+  --bg:#edf0ef; --sheet:#ffffff; --sheet-2:#f6f8f7; --bg-4:#e3e8e6;
+  --ink:#0c1513; --ink-2:#495652; --ink-3:#566360;
+  --rule:#d2dad7; --rule-2:#e5eae8;
+  --water:#085f53; --air:#2a5975; --fire:#964904; --danger:#a13326;
+  --water-w:rgba(8,95,83,.10); --air-w:rgba(42,89,117,.10); --fire-w:rgba(150,73,4,.10);
+  --danger-w:rgba(161,51,38,.10);
+  --grid:rgba(12,21,19,.055);
+  --shadow:0 1px 1px rgba(12,21,19,.03), 0 10px 30px -12px rgba(12,21,19,.14);
+  --rail-h:224px;
+  --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans:'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --disp:'Archivo','IBM Plex Sans', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#070c0b; --sheet:#101817; --sheet-2:#0c1312; --bg-4:#172120;
+    --ink:#e7eeeb; --ink-2:#93a49f; --ink-3:#7e8d89;
+    --rule:#1e2b28; --rule-2:#17211f;
+    --water:#33c4ac; --air:#79b6d8; --fire:#e4903f; --danger:#f0705f;
+    --water-w:rgba(51,196,172,.12); --air-w:rgba(121,182,216,.12); --fire-w:rgba(228,144,63,.12);
+    --danger-w:rgba(240,112,95,.12);
+    --grid:rgba(231,238,235,.06);
+    --shadow:0 1px 1px rgba(0,0,0,.3), 0 12px 34px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#070c0b; --sheet:#101817; --sheet-2:#0c1312; --bg-4:#172120;
+  --ink:#e7eeeb; --ink-2:#93a49f; --ink-3:#7e8d89;
+  --rule:#1e2b28; --rule-2:#17211f;
+  --water:#33c4ac; --air:#79b6d8; --fire:#e4903f; --danger:#f0705f;
+  --water-w:rgba(51,196,172,.12); --air-w:rgba(121,182,216,.12); --fire-w:rgba(228,144,63,.12);
+  --danger-w:rgba(240,112,95,.12);
+  --grid:rgba(231,238,235,.06);
+  --shadow:0 1px 1px rgba(0,0,0,.3), 0 12px 34px -14px rgba(0,0,0,.7);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--sans); font-size:16.5px; line-height:1.62;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  padding-bottom:var(--rail-h);
+}
+body::before{
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:linear-gradient(var(--grid) 1px, transparent 1px),
+                   linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse 120% 80% at 50% 0%, #000 25%, transparent 100%);
+  mask-image:radial-gradient(ellipse 120% 80% at 50% 0%, #000 25%, transparent 100%);
+}
+a{color:inherit;}
+:focus-visible{outline:2px solid var(--fire); outline-offset:3px; border-radius:2px;}
+.lbl{font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.14em;
+     text-transform:uppercase; color:var(--ink-3);}
+
+/* -- NAV ----------------------------------------------------- */
+.nav{
+  position:fixed; top:0; left:0; right:0; height:54px; z-index:60;
+  display:flex; align-items:center; justify-content:space-between; padding:0 26px;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-mark{display:flex; align-items:baseline; gap:9px; text-decoration:none;}
+.nav-mark b{font-family:var(--disp); font-weight:800; font-size:15px; letter-spacing:-.02em;}
+.nav-mark span{font-family:var(--mono); font-size:10px; letter-spacing:.16em; color:var(--ink-3); text-transform:uppercase;}
+.nav-links{display:flex; align-items:center; gap:24px;}
+.nav-links a{font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--ink-2); text-decoration:none; padding-bottom:2px; border-bottom:1px solid transparent;}
+.nav-links a:hover,.nav-links a.on{color:var(--ink); border-bottom-color:var(--fire);}
+.tog{background:none; border:1px solid var(--rule); color:var(--ink-2); cursor:pointer;
+  font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  padding:5px 10px; border-radius:2px;}
+.tog:hover{color:var(--ink); border-color:var(--ink-3);}
+
+/* -- THE RAIL: a longitudinal profile, whole, along the foot -- */
+.ln-rail{
+  position:fixed; left:0; right:0; bottom:0; height:var(--rail-h); z-index:50;
+  border-top:1px solid var(--rule); background:var(--sheet-2);
+}
+.ln-rail canvas{position:absolute; inset:0; width:100%; height:100%; display:block;}
+
+/* -- INSTRUMENT ---------------------------------------------- */
+.ln-cluster{
+  position:fixed; z-index:55; left:26px; bottom:calc(var(--rail-h) + 18px);
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; width:414px;
+  background:var(--rule); border:1px solid var(--rule); border-radius:3px;
+  overflow:hidden; box-shadow:var(--shadow);
+}
+.cl-head{grid-column:1/-1; background:var(--sheet); padding:9px 13px 8px;
+  display:flex; align-items:baseline; justify-content:space-between;}
+.cl-head .e{font-family:var(--disp); font-weight:800; font-size:29px; letter-spacing:-.03em;
+  line-height:1; font-variant-numeric:tabular-nums;}
+.cl-head .u{font-family:var(--mono); font-size:11px; color:var(--ink-3);}
+.cl-head .st{font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase;
+  padding:3px 7px; border-radius:2px; background:var(--water-w); color:var(--water);}
+.cl-head .st.warn{background:var(--fire-w); color:var(--fire);}
+.cl-head .st.bad{background:var(--danger-w); color:var(--danger);}
+.cl-cell{background:var(--sheet); padding:8px 13px 9px;}
+.cl-cell .k{display:block; font-family:var(--mono); font-size:9px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); margin-bottom:2px;}
+.cl-cell .v{font-family:var(--mono); font-size:14px; font-weight:500; font-variant-numeric:tabular-nums;}
+.cl-cell .v small{font-size:9.5px; font-weight:400; color:var(--ink-3); margin-left:2px;}
+.v-water{color:var(--water);} .v-fire{color:var(--fire);} .v-danger{color:var(--danger);} .v-air{color:var(--air);}
+
+/* -- PAGE ---------------------------------------------------- */
+.page{position:relative; z-index:2; padding:0 40px 0 470px;}
+.wrap{max-width:720px;}
+.wrap-wide{max-width:1040px;}
+section{position:relative; padding:88px 0;}
+.sect-tag{display:flex; align-items:center; gap:12px; margin-bottom:24px;}
+.sect-tag .ch{font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.06em;
+  color:var(--fire); font-variant-numeric:tabular-nums;}
+.sect-tag .ln{flex:1; height:1px; background:var(--rule); max-width:56px;}
+.sect-tag .nm{font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3);}
+
+h1{font-family:var(--disp); font-weight:800; letter-spacing:-.042em; line-height:.96;
+   font-size:clamp(42px,6.2vw,76px); margin:0 0 24px; text-wrap:balance;}
+h1 em{font-style:normal; color:var(--water);}
+h2{font-family:var(--disp); font-weight:700; letter-spacing:-.032em; line-height:1.07;
+   font-size:clamp(28px,3.6vw,42px); margin:0 0 18px; text-wrap:balance;}
+h3{font-family:var(--disp); font-weight:600; letter-spacing:-.02em; font-size:19px; margin:0 0 5px; line-height:1.25;}
+p{margin:0 0 18px; max-width:64ch; color:var(--ink-2);}
+p strong{color:var(--ink); font-weight:600;}
+.deck{font-size:19px; line-height:1.58; max-width:56ch;}
+.note{font-family:var(--mono); font-size:12px; line-height:1.65; color:var(--ink-3); max-width:62ch;}
+
+.hero{padding:130px 0 62px;}
+.hero-meta{display:flex; flex-wrap:wrap; margin-top:34px; border-top:1px solid var(--rule);}
+.hero-meta div{flex:1 1 118px; padding:14px 18px 14px 0; border-right:1px solid var(--rule-2);}
+.hero-meta div:last-child{border-right:0;}
+.hero-meta b{display:block; font-family:var(--disp); font-weight:700; font-size:25px; letter-spacing:-.03em; line-height:1.1;}
+.hero-meta span{font-family:var(--mono); font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3);}
+.reveal{opacity:0; transform:translateY(14px); animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;}
+@keyframes rise{to{opacity:1; transform:none;}}
+
+/* -- DOCKED CARDS -------------------------------------------- */
+.band{padding:6px 0;}
+.band-tag{display:flex; align-items:center; gap:10px; margin:24px 0 12px;}
+.band-tag .nm{font-family:var(--mono); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3);}
+.band-tag .ln{flex:1; height:1px; background:var(--rule-2);}
+.dock{position:relative; margin:0 0 14px; max-width:720px;}
+.dock > a{display:grid; grid-template-columns:84px 1fr; text-decoration:none;
+  background:var(--sheet); border:1px solid var(--rule); border-radius:3px; overflow:hidden;
+  transition:border-color .18s, transform .18s, box-shadow .18s;}
+.dock > a:hover{border-color:var(--ink-3); transform:translateX(4px); box-shadow:var(--shadow);}
+.dock .km{display:flex; flex-direction:column; align-items:flex-end; justify-content:center; gap:2px;
+  padding:16px 12px; border-right:1px solid var(--rule-2); background:var(--bg-4);}
+.dock .km b{font-family:var(--mono); font-size:15px; font-weight:500; font-variant-numeric:tabular-nums; line-height:1; transition:font-size .2s;}
+.dock .km span{font-family:var(--mono); font-size:9px; color:var(--ink-2); letter-spacing:.08em;}
+.dock .txt{padding:15px 18px 16px;}
+.dock .ch{font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:5px; display:block;}
+.dock .txt p{font-size:14px; line-height:1.55; margin:0; color:var(--ink-2); max-width:58ch;}
+.dock[data-c="water"] .km b,.dock[data-c="water"] .ch{color:var(--water);}
+.dock[data-c="surge"] .km b,.dock[data-c="surge"] .ch{color:var(--danger);}
+.dock[data-c="air"]   .km b,.dock[data-c="air"]   .ch{color:var(--air);}
+.dock[data-c="water"] .km{background:var(--water-w);}
+.dock[data-c="surge"] .km{background:var(--danger-w);}
+.dock[data-c="air"]   .km{background:var(--air-w);}
+.dock.at > a{border-color:var(--ink-3); box-shadow:var(--shadow);}
+.dock.at .km b{font-size:19px;}
+
+/* -- CALCULATOR ---------------------------------------------- */
+.calc{border:1px solid var(--rule); border-radius:3px; background:var(--sheet);
+  box-shadow:var(--shadow); display:grid; grid-template-columns:1fr 1fr; overflow:hidden;}
+.calc-in{padding:22px 24px; border-right:1px solid var(--rule-2);}
+.calc-out{padding:22px 24px; background:var(--sheet-2);}
+.ctl{margin-bottom:18px;} .ctl:last-child{margin-bottom:0;}
+.ctl-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;}
+.ctl-head .v{font-family:var(--mono); font-size:14px; font-weight:500; font-variant-numeric:tabular-nums;}
+input[type=range]{-webkit-appearance:none; appearance:none; width:100%; height:22px; background:transparent; cursor:pointer; margin:0;}
+input[type=range]::-webkit-slider-runnable-track{height:2px; background:var(--rule);}
+input[type=range]::-moz-range-track{height:2px; background:var(--rule);}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; width:13px; height:13px; border-radius:50%; background:var(--ink); margin-top:-5.5px; border:0;}
+input[type=range]::-moz-range-thumb{width:13px; height:13px; border-radius:50%; background:var(--ink); border:0;}
+.out{display:flex; align-items:baseline; justify-content:space-between; gap:10px; padding:8px 0; border-bottom:1px dotted var(--rule);}
+.out:last-of-type{border-bottom:0;}
+.out .k{font-family:var(--mono); font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3);}
+.out .v{font-family:var(--mono); font-size:17px; font-weight:500; font-variant-numeric:tabular-nums;}
+.out .v small{font-size:10px; font-weight:400; color:var(--ink-3); margin-left:3px;}
+.verdict{grid-column:1/-1; border-top:1px solid var(--rule-2); padding:12px 24px; background:var(--sheet);}
+.verdict p{font-family:var(--mono); font-size:11.5px; line-height:1.65; color:var(--ink-3); margin:0; max-width:none;}
+.verdict b{color:var(--danger);}
+.verdict.ok b{color:var(--water);}
+
+/* -- SET PIECES ---------------------------------------------- */
+.slab{background:var(--sheet); border:1px solid var(--rule); border-radius:3px; padding:22px 24px;
+  text-decoration:none; display:block; transition:border-color .18s, transform .18s;}
+.slab:hover{border-color:var(--ink-3); transform:translateY(-2px);}
+.slab .k{font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--fire);}
+.slab p{font-size:14px; margin:6px 0 0;}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px;}
+.axes{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule);
+  border:1px solid var(--rule); border-radius:3px; overflow:hidden; margin-top:18px;}
+.axes > div{background:var(--sheet); padding:20px 22px;}
+.axes h3{margin-bottom:6px;}
+.axes p{font-size:14px; margin:0; color:var(--ink-2);}
+.axes .k{font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); display:block; margin-bottom:8px;}
+.cta{display:inline-flex; align-items:center; gap:9px; background:var(--ink); color:var(--bg);
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase;
+  padding:13px 22px; text-decoration:none; border-radius:2px; border:1px solid var(--ink);}
+.cta:hover{opacity:.85;}
+.cta.ghost{background:transparent; color:var(--ink); border-color:var(--rule);}
+.cta.ghost:hover{border-color:var(--ink);}
+.ctas{display:flex; gap:10px; flex-wrap:wrap; margin-top:24px;}
+
+footer{padding:32px 40px 40px 470px; border-top:1px solid var(--rule); position:relative; z-index:2;
+  display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap;}
+footer p{font-family:var(--mono); font-size:11px; color:var(--ink-3); margin:0; max-width:none;}
+
+/* -- RESPONSIVE ---------------------------------------------- */
+@media (max-width:1240px){
+  .ln-cluster{width:352px;} .page,footer{padding-left:404px;}
+}
+@media (max-width:1040px){
+  :root{--rail-h:196px;}
+  .ln-cluster{left:20px; right:20px; width:auto; bottom:calc(var(--rail-h) + 12px);}
+  .page,footer{padding:0 24px;}
+  .page{padding-top:0;}
+  .calc{grid-template-columns:1fr;}
+  .calc-in{border-right:0; border-bottom:1px solid var(--rule-2);}
+  body{padding-bottom:calc(var(--rail-h) + 132px);}
+  .two,.axes{grid-template-columns:1fr;}
+}
+@media (max-width:640px){
+  :root{--rail-h:168px;}
+  body{font-size:16px; padding-bottom:calc(var(--rail-h) + 60px);}
+  .nav{padding:0 14px;}
+  .nav-mark span{display:none;}
+  .nav-links{gap:16px;}
+  .nav-links a{display:none;}
+  .nav-links a:first-child{display:block; font-size:10.5px;}
+  section{padding:56px 0;}
+  .hero{padding-top:88px;}
+  .dock > a{grid-template-columns:70px 1fr;}
+  /* the instrument becomes one strip on the rail, so it stops eating the page */
+  .ln-cluster{
+    left:0; right:0; bottom:var(--rail-h); width:auto;
+    grid-template-columns:auto 1fr 1fr; gap:1px;
+    border-radius:0; border-left:0; border-right:0; border-bottom:0;
+  }
+  .cl-head{grid-column:auto; padding:7px 11px; gap:6px;}
+  .cl-head .e{font-size:20px;}
+  .cl-head .st{font-size:8.5px; padding:2px 5px;}
+  .cl-cell{padding:6px 10px 7px;}
+  .cl-cell .k{font-size:8.5px;}
+  .cl-cell .v{font-size:12.5px;}
+  .ln-cluster .cl-cell:nth-child(n+4){display:none;}
+  .ln-cluster .cl-cell:nth-child(5),
+  .ln-cluster .cl-cell:nth-child(8){display:block;}
+}
+@media (max-width:400px){
+  .ln-cluster .cl-cell:nth-child(5){display:none;}
+  .ln-cluster{grid-template-columns:auto 1fr;}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{animation:none; opacity:1; transform:none;}
+  *{transition-duration:.01ms !important;}
+}
+</style>
+
+<nav class="nav">
+  <a class="nav-mark" href="https://abokhatwa.com/"><b>ABOKHATWA</b><span>Water &amp; MEP</span></a>
+  <div class="nav-links">
+    <a href="https://abokhatwa.com/#articles">Articles</a>
+    <a href="https://abokhatwa.com/calculators.html">Calculators</a>
+    <a href="https://abokhatwa.com/one-tower.html">One&nbsp;Tower</a>
+    <a href="#" class="on">The&nbsp;Line</a>
+    <button class="tog" id="tog" aria-label="Switch colour theme">Night</button>
+  </div>
+</nav>
+
+<div class="ln-rail" aria-hidden="true"><canvas id="prof"></canvas></div>
+
+<aside class="ln-cluster" aria-label="Conditions at the current chainage">
+  <div class="cl-head">
+    <span><span class="e" id="r-ch">0.0</span><span class="u">&nbsp;km</span></span>
+    <span class="st" id="r-state">Ok</span>
+  </div>
+  <div class="cl-cell"><span class="k">Ground</span><span class="v" id="r-gl">4<small>m</small></span></div>
+  <div class="cl-cell"><span class="k">Pipe crown</span><span class="v" id="r-pl">3<small>m</small></span></div>
+  <div class="cl-cell"><span class="k">Velocity</span><span class="v" id="r-v">1.06<small>m/s</small></span></div>
+  <div class="cl-cell"><span class="k">Hydraulic grade</span><span class="v v-water" id="r-hgl">227<small>m</small></span></div>
+  <div class="cl-cell"><span class="k">Pressure head</span><span class="v v-water" id="r-head">225<small>m</small></span></div>
+  <div class="cl-cell"><span class="k">= gauge</span><span class="v" id="r-bar">22.1<small>bar</small></span></div>
+  <div class="cl-cell"><span class="k">Min on trip</span><span class="v v-danger" id="r-min">119<small>m</small></span></div>
+  <div class="cl-cell"><span class="k">Max on trip</span><span class="v v-air" id="r-max">336<small>m</small></span></div>
+  <div class="cl-cell"><span class="k">Margin to pipe</span><span class="v" id="r-marg">+117<small>m</small></span></div>
+</aside>
+
+<main class="page">
+
+<section class="hero" data-ch="0"><div class="wrap">
+  <div class="sect-tag reveal" style="animation-delay:.05s">
+    <span class="ch">CH 0+000</span><span class="ln"></span><span class="nm">Shoreline &middot; intake</span>
+  </div>
+  <h1 class="reveal" style="animation-delay:.12s">The wave gets there<br>before the <em>water stops</em>.</h1>
+  <p class="deck reveal" style="animation-delay:.22s">
+    A tower is a section. A transmission main is a profile &mdash; forty-two kilometres of it, drawn on
+    one sheet, and every decision on the scheme is an argument about the gap between two lines on that
+    sheet: where the pipe runs, and where the water thinks it should be.
+  </p>
+  <p class="note reveal" style="animation-delay:.3s">
+    The drawing along the foot of this page is that sheet. The dashed line is your chainage; the
+    instrument reads the real conditions there. Scroll to travel the line from the sea to the reservoir.
+  </p>
+  <div class="hero-meta reveal" style="animation-delay:.38s">
+    <div><b>42</b><span>km of main</span></div>
+    <div><b>188</b><span>m static lift</span></div>
+    <div><b>3.1</b><span>MW at the pumps</span></div>
+    <div><b>41</b><span>water articles</span></div>
+  </div>
+</div></section>
+
+<div class="band"><div class="wrap">
+  <div class="band-tag"><span class="nm">Travelling &middot; the coastal end</span><span class="ln"></span></div>
+
+  <div class="dock" data-ch="0.1" data-c="water">
+    <a href="https://abokhatwa.com/offshore-intake-design.html">
+      <span class="km"><b>0.1</b><span>km</span></span>
+      <span class="txt"><span class="ch">Water &middot; intake</span>
+        <h3>Offshore intakes and what the sea does to them</h3>
+        <p>Intake velocity, screening, biofouling, and the storm case that sizes the structure rather than the flow.</p></span></a>
+  </div>
+
+  <div class="dock" data-ch="0.5" data-c="water">
+    <a href="https://abokhatwa.com/mega-swro-engineering.html">
+      <span class="km"><b>0.5</b><span>km</span></span>
+      <span class="txt"><span class="ch">Water &middot; desalination</span>
+        <h3>Mega-SWRO: the plant behind the pipe</h3>
+        <p>Trains, recovery, energy recovery devices, and why specific energy is decided long before the membranes are chosen.</p></span></a>
+  </div>
+
+  <div class="dock" data-ch="0.9" data-c="water">
+    <a href="https://abokhatwa.com/potable-pump-station-anatomy.html">
+      <span class="km"><b>0.9</b><span>km</span></span>
+      <span class="txt"><span class="ch">Pumps &middot; station</span>
+        <h3>The anatomy of a potable pump station</h3>
+        <p>Firm capacity, duty split, suction arrangement, and the switchgear that decides how the station fails.</p></span></a>
+  </div>
+</div></div>
+
+<section data-ch="1.4"><div class="wrap">
+  <div class="sect-tag"><span class="ch">CH 1+400</span><span class="ln"></span><span class="nm">Just past the station</span></div>
+  <h2>A pump trip is not a slow event.</h2>
+  <p>
+    When the power goes, the pumps stop in about a second. The water does not. Forty-two kilometres of
+    column keeps moving away from the station, and the pressure behind it collapses at
+    <strong>&Delta;h = a&middot;v/g</strong> &mdash; here, a wave speed of 1,000&nbsp;m/s against 1.06&nbsp;m/s of
+    velocity, so <strong>108&nbsp;metres of head, gone</strong>, travelling out along the line at the speed of sound in water.
+  </p>
+  <p>
+    It reaches the far end in 42 seconds and comes back. Everything that matters happens inside the
+    <strong>84-second</strong> round trip, which is why the steady-state calculation that sized the pump has
+    almost nothing to say about what the pipe has to survive.
+  </p>
+</div></section>
+
+<div class="band"><div class="wrap">
+  <div class="dock" data-ch="1.6" data-c="surge">
+    <a href="https://abokhatwa.com/surge-vessel.html">
+      <span class="km"><b>1.6</b><span>km</span></span>
+      <span class="txt"><span class="ch">Surge &middot; protection</span>
+        <h3>The surge vessel, and how big it actually has to be</h3>
+        <p>Gas volume, compressor duty, the throttled bypass, and the sizing that a first-cut energy balance only starts.</p></span></a>
+  </div>
+  <div class="dock" data-ch="3.2" data-c="surge">
+    <a href="https://abokhatwa.com/water-hammer-control-valve.html">
+      <span class="km"><b>3.2</b><span>km</span></span>
+      <span class="txt"><span class="ch">Surge &middot; valves</span>
+        <h3>Water hammer from the valve, not the pump</h3>
+        <p>Closure laws, the last ten per cent of travel, and why a slow valve can still slam the line.</p></span></a>
+  </div>
+</div></div>
+
+<section data-ch="8"><div class="wrap">
+  <div class="sect-tag"><span class="ch">CH 8+000</span><span class="ln"></span><span class="nm">Set the transient</span></div>
+  <h2>Drive the trip. Watch the envelope.</h2>
+  <p style="margin-bottom:24px;">Four inputs, and the profile below redraws: the steady grade, the
+    down-surge and up-surge envelopes, and the stretch where the line goes sub-atmospheric or tears apart.</p>
+
+  <div class="calc">
+    <div class="calc-in">
+      <div class="ctl">
+        <div class="ctl-head"><span class="lbl">Flow</span><span class="v"><span id="v-q">1.20</span>&nbsp;m&sup3;/s</span></div>
+        <input type="range" id="s-q" min="0.4" max="2.0" step="0.05" value="1.2" aria-label="Flow in cubic metres per second">
+      </div>
+      <div class="ctl">
+        <div class="ctl-head"><span class="lbl">Wave speed</span><span class="v"><span id="v-a">1000</span>&nbsp;m/s</span></div>
+        <input type="range" id="s-a" min="300" max="1300" step="10" value="1000" aria-label="Pressure wave speed">
+      </div>
+      <div class="ctl">
+        <div class="ctl-head"><span class="lbl">Effective stopping time</span><span class="v"><span id="v-t">10</span>&nbsp;s</span></div>
+        <input type="range" id="s-t" min="1" max="360" step="1" value="10" aria-label="Effective stopping time">
+      </div>
+      <div class="ctl">
+        <div class="ctl-head"><span class="lbl">Air vessel gas volume</span><span class="v"><span id="v-vv">0</span>&nbsp;m&sup3;</span></div>
+        <input type="range" id="s-v" min="0" max="200" step="5" value="0" aria-label="Air vessel gas volume">
+      </div>
+    </div>
+    <div class="calc-out">
+      <div class="out"><span class="k">Velocity</span><span class="v" id="o-v">1.06<small>m/s</small></span></div>
+      <div class="out"><span class="k">Friction over 42&nbsp;km</span><span class="v" id="o-hf">31<small>m</small></span></div>
+      <div class="out"><span class="k">Critical time 2L/a</span><span class="v" id="o-tc">84<small>s</small></span></div>
+      <div class="out"><span class="k">Down-surge at the pump</span><span class="v v-danger" id="o-dh">108<small>m</small></span></div>
+      <div class="out"><span class="k">Worst head on the line</span><span class="v" id="o-worst">&minus;26<small>m</small></span></div>
+      <div class="out"><span class="k">Peak head at the station</span><span class="v v-air" id="o-peak">33.1<small>bar</small></span></div>
+    </div>
+    <div class="verdict" id="verdict"><p>&nbsp;</p></div>
+  </div>
+</div></section>
+
+<div class="band"><div class="wrap">
+  <div class="band-tag"><span class="nm">Travelling &middot; the long climb</span><span class="ln"></span></div>
+  <div class="dock" data-ch="9.4" data-c="air">
+    <a href="https://abokhatwa.com/combination-air-valves.html">
+      <span class="km"><b>9.4</b><span>km</span></span>
+      <span class="txt"><span class="ch">Air &middot; high points</span>
+        <h3>Combination air valves, sized for the right job</h3>
+        <p>Large orifice for filling and draining, small orifice for the pocket that collects at every summit, and the surge check that decides the size.</p></span></a>
+  </div>
+  <div class="dock" data-ch="16" data-c="water">
+    <a href="https://abokhatwa.com/above-ground-pipeline-design.html">
+      <span class="km"><b>16</b><span>km</span></span>
+      <span class="txt"><span class="ch">Pipeline &middot; structure</span>
+        <h3>Where the main comes out of the ground</h3>
+        <p>Spans, saddles, thermal movement, thrust and the wind case &mdash; the pipe stops being hydraulics and becomes a structure.</p></span></a>
+  </div>
+  <div class="dock" data-ch="22" data-c="water">
+    <a href="https://abokhatwa.com/carbon-steel-pipeline-cml.html">
+      <span class="km"><b>22</b><span>km</span></span>
+      <span class="txt"><span class="ch">Pipeline &middot; material</span>
+        <h3>Carbon steel and cement mortar lining</h3>
+        <p>Wall thickness against the transient, lining behaviour, cathodic protection, and the sixty-year view.</p></span></a>
+  </div>
+</div></div>
+
+<section data-ch="28"><div class="wrap">
+  <div class="sect-tag"><span class="ch">CH 28+000</span><span class="ln"></span><span class="nm">Summit &middot; +198.0</span></div>
+  <h2>Everything fails at the top of the hill.</h2>
+  <p>
+    At the summit the pipe rises to within <strong>10 metres</strong> of the hydraulic grade. In steady
+    running that is fine &mdash; one bar, a thin but perfectly legal margin. It is also the only place on
+    forty-two kilometres where the line has nothing left to give.
+  </p>
+  <p>
+    Trip the pumps unprotected and the grade here drops <strong>36&nbsp;m</strong>, which puts the water
+    <strong>26&nbsp;m below the crown of the pipe</strong>. That is not low pressure. That is a vapour cavity
+    forming, growing while the column runs on, and then closing again when the column comes back &mdash;
+    and the rejoining columns hit each other far harder than the original wave ever did.
+  </p>
+  <p>
+    The instinct is to stop the pumps more slowly. Work it out and the instinct dies: you would need
+    <strong>303 seconds</strong> of deceleration against a critical time of 84. No flywheel does that.
+    The summit has to be protected by putting the water back &mdash; a vessel at the station, or air valves
+    that let the cavity fill and then have to get the air out again without slamming.
+  </p>
+</div></section>
+
+<div class="band"><div class="wrap">
+  <div class="dock" data-ch="28.2" data-c="surge">
+    <a href="https://abokhatwa.com/top-hill-challenge.html">
+      <span class="km"><b>28</b><span>km</span></span>
+      <span class="txt"><span class="ch">Surge &middot; the summit</span>
+        <h3>The top-hill problem</h3>
+        <p>Why the highest point on the profile decides the protection scheme, and how to test whether your margin is real.</p></span></a>
+  </div>
+  <div class="dock" data-ch="33" data-c="water">
+    <a href="https://abokhatwa.com/prv-altitude-valve-fcv.html">
+      <span class="km"><b>33</b><span>km</span></span>
+      <span class="txt"><span class="ch">Water &middot; control</span>
+        <h3>PRVs, altitude valves and flow control</h3>
+        <p>Breaking the grade on the descent, holding the reservoir level, and the cavitation limit that rules the selection.</p></span></a>
+  </div>
+  <div class="dock" data-ch="38" data-c="water">
+    <a href="https://abokhatwa.com/strategic-water-storage-sizing.html">
+      <span class="km"><b>38</b><span>km</span></span>
+      <span class="txt"><span class="ch">Water &middot; storage</span>
+        <h3>Sizing strategic storage</h3>
+        <p>Days of cover against the real failure modes, turnover and water quality, and what the reservoir is actually insuring against.</p></span></a>
+  </div>
+</div></div>
+
+<section data-ch="42"><div class="wrap">
+  <div class="sect-tag"><span class="ch">CH 42+000</span><span class="ln"></span><span class="nm">Reservoir &middot; TWL +196.0</span></div>
+  <h2>And then it becomes somebody's tap.</h2>
+  <p>
+    Past the reservoir the single line becomes a network, and the discipline changes again: no longer
+    one profile but thousands of loops, where the question is not how much pressure you can deliver but
+    how little you can get away with &mdash; because every extra metre of head is leakage you are paying to pump.
+  </p>
+  <div class="two">
+    <a class="slab" href="https://abokhatwa.com/pressure-management-dma.html">
+      <span class="k">Networks</span><h3>Pressure management and DMAs</h3>
+      <p>Zoning the network, setting the controlling point, and the leakage that pressure alone can buy back.</p></a>
+    <a class="slab" href="https://abokhatwa.com/non-revenue-water-leakage.html">
+      <span class="k">Networks</span><h3>Non-revenue water</h3>
+      <p>The water balance, the infrastructure leakage index, and the economic level of leakage that stops the argument.</p></a>
+  </div>
+</div></section>
+
+<section data-ch="42.4"><div class="wrap-wide">
+  <div class="sect-tag"><span class="ch">&plusmn;0.00</span><span class="ln"></span><span class="nm">Where the two halves meet</span></div>
+  <h2>One site, two axes.</h2>
+  <p style="max-width:70ch;">
+    Twenty-two years of this work runs along two axes that cross at ground level. Everything above grade
+    is a section, and height is the load case. Everything from grade outwards is a profile, and distance
+    is. The site should be able to say both.
+  </p>
+  <div class="axes">
+    <div>
+      <span class="k">Vertical &middot; 828 m up</span>
+      <h3>The tower</h3>
+      <p>Static head, stack effect, pressure zoning, mechanical floors. Thirty-eight articles on what
+         height does to water, air and fire inside a building.</p>
+      <div class="ctas"><a class="cta ghost" href="https://abokhatwa.com/">Open the section</a></div>
+    </div>
+    <div>
+      <span class="k">Horizontal &middot; 42 km out</span>
+      <h3>The line</h3>
+      <p>Transients, profiles, pump stations, desalination, networks and leakage. Forty-one articles on
+         what distance does to the same three things outside it.</p>
+      <div class="ctas"><a class="cta" href="#">You are here</a></div>
+    </div>
+  </div>
+  <p class="note" style="margin-top:22px;">
+    Proposal: the homepage keeps the tower for its opening act, then pivots at grade into this profile
+    rather than dropping straight to the archive. Same rail, same instrument, same docking behaviour &mdash;
+    rotated ninety degrees, because that is what the subject does at ground level.
+  </p>
+</div></section>
+
+</main>
+
+<footer>
+  <p>Chainage&nbsp;42 &mdash; proposal for the water half of abokhatwa.com</p>
+  <p>Hazen-Williams C=130 &middot; Joukowsky &Delta;h = a&middot;v/g &middot; Michaud for slow stopping &middot; vessel by energy balance</p>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var $ = function(i){ return document.getElementById(i); };
+var G = 9.81, L_KM = 42, COVER = 1.5, TWL = 196, D = 1.2, C_HW = 130, ETA = 0.82;
+var A = Math.PI*D*D/4;
+var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* control points of the ground profile, smoothed between */
+var CP = [[0,4],[2,16],[6,44],[11,70],[17,116],[22,160],[28,198],[33,172],[37,182],[42,185]];
+function ground(x){
+  if (x <= CP[0][0]) return CP[0][1];
+  for (var i=0;i<CP.length-1;i++){
+    var a=CP[i], b=CP[i+1];
+    if (x >= a[0] && x <= b[0]){
+      var t=(x-a[0])/(b[0]-a[0]);
+      t = t*t*(3-2*t);                       /* smoothstep, so it reads as terrain */
+      return a[1] + (b[1]-a[1])*t;
+    }
+  }
+  return CP[CP.length-1][1];
+}
+function pipe(x){ return ground(x) - COVER; }
+
+var S = { Q:1.2, a:1000, T:10, V:0, ch:0, tgt:0, run:false, idle:0, anchors:[], datumFrac:0.42 };
+
+function vel(Q){ return Q/A; }
+function hfTotal(Q){ return 10.67*(L_KM*1000)*Math.pow(Q,1.852)/(Math.pow(C_HW,1.852)*Math.pow(D,4.87)); }
+function hgl(x,Q){ return TWL + hfTotal(Q)*(1 - x/L_KM); }
+function tCrit(a){ return 2*(L_KM*1000)/a; }
+function surgeHead(){
+  var v = vel(S.Q);
+  var dh = S.a*v/G;                                   /* Joukowsky */
+  if (S.T > tCrit(S.a)) dh = Math.min(dh, 2*(L_KM*1000)*v/(G*S.T));   /* Michaud */
+  if (S.V > 0) dh = Math.min(dh, A*(L_KM*1000)*v*v/(2*G*S.V));        /* vessel, energy balance */
+  return dh;
+}
+function envMin(x){ return hgl(x,S.Q) - surgeHead()*(1 - x/L_KM); }
+function envMax(x){ return hgl(x,S.Q) + surgeHead()*(1 - x/L_KM); }
+function stateAt(x){
+  var mn = envMin(x), p = pipe(x);
+  if (mn < p - 10.2) return 2;      /* column separation */
+  if (mn < p) return 1;             /* sub-atmospheric */
+  return 0;
+}
+
+/* -- palette, re-read on theme change ------------------------- */
+var pal = {};
+function readPal(){
+  var c = getComputedStyle(document.documentElement);
+  var g = function(n){ return c.getPropertyValue(n).trim(); };
+  pal = { ink:g('--ink'), ink3:g('--ink-3'), rule:g('--rule'), water:g('--water'),
+          air:g('--air'), fire:g('--fire'), danger:g('--danger'), sheet:g('--sheet') };
+}
+function rgba(hex,al){
+  hex=(hex||'#000').replace('#','');
+  if(hex.length===3) hex=hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+  var n=parseInt(hex,16);
+  return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+al+')';
+}
+
+/* -- the profile ---------------------------------------------- */
+var cv = $('prof'), ctx = cv.getContext('2d');
+function draw(){
+  var w = cv.clientWidth, h = cv.clientHeight;
+  if (w < 20 || h < 20) return;
+  var dpr = Math.min(window.devicePixelRatio||1, 2);
+  if (cv.width !== Math.round(w*dpr)){ cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr); }
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,w,h);
+
+  var padL = 46, padR = 14, padT = 16, padB = 26;
+  var x0 = padL, x1 = w - padR, y0 = padT, y1 = h - padB;
+  var top = Math.max(hgl(0,S.Q), envMax(0)) + 12;
+  var bot = -8;
+  var X = function(km){ return x0 + (km/L_KM)*(x1-x0); };
+  var Y = function(m){ return y1 - ((m-bot)/(top-bot))*(y1-y0); };
+  var N = 260, i, km;
+
+  /* level grid */
+  ctx.font = '500 9px "IBM Plex Mono", monospace';
+  ctx.textBaseline = 'middle'; ctx.textAlign = 'right';
+  for (var lv=0; lv<=Math.ceil(top/50)*50; lv+=50){
+    var ly = Y(lv); if (ly < y0-2 || ly > y1+2) continue;
+    ctx.strokeStyle = rgba(pal.ink,0.10); ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(x0, Math.round(ly)+0.5); ctx.lineTo(x1, Math.round(ly)+0.5); ctx.stroke();
+    ctx.fillStyle = rgba(pal.ink3,0.95); ctx.fillText(lv, x0-7, ly);
+  }
+  /* chainage ticks */
+  ctx.textAlign = 'center';
+  for (km=0; km<=L_KM; km+=5){
+    var tx = X(km);
+    ctx.strokeStyle = rgba(pal.ink,0.22);
+    ctx.beginPath(); ctx.moveTo(Math.round(tx)+0.5, y1); ctx.lineTo(Math.round(tx)+0.5, y1+5); ctx.stroke();
+    ctx.fillStyle = rgba(pal.ink3,0.95); ctx.fillText(km, tx, y1+14);
+  }
+  ctx.textAlign = 'left';
+
+  /* ground: fill to the foot, hatched like a section */
+  ctx.beginPath(); ctx.moveTo(X(0), Y(ground(0)));
+  for (i=1;i<=N;i++){ km=L_KM*i/N; ctx.lineTo(X(km), Y(ground(km))); }
+  ctx.lineTo(x1, y1); ctx.lineTo(x0, y1); ctx.closePath();
+  ctx.save(); ctx.clip();
+  ctx.fillStyle = rgba(pal.ink,0.075); ctx.fillRect(x0,y0,x1-x0,y1-y0);
+  ctx.strokeStyle = rgba(pal.ink,0.115); ctx.lineWidth=1;
+  for (var gx=x0-h; gx<x1+h; gx+=9){ ctx.beginPath(); ctx.moveTo(gx,y1); ctx.lineTo(gx+h,y0); ctx.stroke(); }
+  ctx.restore();
+  ctx.beginPath(); ctx.moveTo(X(0), Y(ground(0)));
+  for (i=1;i<=N;i++){ km=L_KM*i/N; ctx.lineTo(X(km), Y(ground(km))); }
+  ctx.strokeStyle = rgba(pal.ink,0.7); ctx.lineWidth=1.3; ctx.stroke();
+
+  /* where the line goes sub-atmospheric, flag the reach */
+  var runStart = null;
+  for (i=0;i<=N;i++){
+    km = L_KM*i/N;
+    var bad = stateAt(km) > 0;
+    if (bad && runStart===null) runStart = km;
+    if ((!bad || i===N) && runStart!==null){
+      var xa=X(runStart), xb=X(km);
+      ctx.fillStyle = rgba(pal.danger,0.13);
+      ctx.fillRect(xa, y0, Math.max(2,xb-xa), y1-y0);
+      runStart = null;
+    }
+  }
+
+  /* transient envelopes */
+  function poly(fn, colour, dash){
+    ctx.beginPath();
+    for (var k=0;k<=N;k++){ var q=L_KM*k/N; var yy=Y(fn(q)); if(k===0)ctx.moveTo(X(q),yy); else ctx.lineTo(X(q),yy); }
+    ctx.setLineDash(dash||[]); ctx.strokeStyle=colour; ctx.lineWidth=1.2; ctx.stroke(); ctx.setLineDash([]);
+  }
+  poly(function(q){ return envMax(q); }, rgba(pal.air,0.75), [4,3]);
+  poly(function(q){ return envMin(q); }, rgba(pal.danger,0.85), [4,3]);
+
+  /* the pipe, and the steady hydraulic grade */
+  poly(function(q){ return pipe(q); }, rgba(pal.ink,0.55), [6,3]);
+  ctx.beginPath();
+  for (i=0;i<=N;i++){ km=L_KM*i/N; var hy=Y(hgl(km,S.Q)); if(i===0)ctx.moveTo(X(km),hy); else ctx.lineTo(X(km),hy); }
+  ctx.strokeStyle = pal.water; ctx.lineWidth = 1.8; ctx.stroke();
+
+  /* reservoir */
+  var rx = X(L_KM);
+  ctx.strokeStyle = rgba(pal.water,0.8); ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(rx-16, Y(TWL)); ctx.lineTo(rx, Y(TWL)); ctx.stroke();
+  ctx.fillStyle = rgba(pal.water,0.18);
+  ctx.fillRect(rx-16, Y(TWL), 16, Math.max(2, Y(pipe(L_KM))-Y(TWL)));
+
+  /* the datum: a vertical line at the chainage you are reading */
+  var dx = X(Math.max(0,Math.min(L_KM,S.ch)));
+  ctx.strokeStyle = rgba(pal.fire,0.9); ctx.lineWidth=1.2; ctx.setLineDash([3,3]);
+  ctx.beginPath(); ctx.moveTo(Math.round(dx)+0.5, y0-6); ctx.lineTo(Math.round(dx)+0.5, y1); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = pal.fire;
+  ctx.beginPath(); ctx.moveTo(dx-4, y0-6); ctx.lineTo(dx+4, y0-6); ctx.lineTo(dx, y0); ctx.closePath(); ctx.fill();
+  /* and a bead on the grade there */
+  ctx.beginPath(); ctx.arc(dx, Y(hgl(S.ch,S.Q)), 3.2, 0, 6.2832); ctx.fillStyle = pal.water; ctx.fill();
+}
+
+/* -- mapping: scroll position -> chainage --------------------- */
+function vpH(){ return window.innerHeight || document.documentElement.clientHeight || 800; }
+function computeAnchors(){
+  S.anchors = [].slice.call(document.querySelectorAll('[data-ch]')).map(function(el){
+    var off = el.classList.contains('dock') ? 34 : 110;
+    return { y: el.getBoundingClientRect().top + window.pageYOffset + off, c: parseFloat(el.dataset.ch) };
+  }).sort(function(a,b){ return a.y-b.y; });
+  if (S.anchors.length) S.anchors[0].y = Math.round(vpH()*0.34);
+}
+function chainageAt(y){
+  var a = S.anchors, i = 0;
+  if (!a.length) return 0;
+  while (i < a.length-2 && y >= a[i+1].y) i++;
+  var p=a[i], q=a[i+1]||a[i], dy=Math.max(1,q.y-p.y);
+  return p.c + (y-p.y)*((q.c-p.c)/dy);
+}
+
+/* -- readouts ------------------------------------------------- */
+function set(id,html){ var e=$(id); if(e) e.innerHTML=html; }
+function txt(id,s){ var e=$(id); if(e) e.textContent=s; }
+function fmt(n,d){ return (Math.round(n*Math.pow(10,d))/Math.pow(10,d)).toFixed(d); }
+
+function readout(){
+  var x = Math.max(0, Math.min(L_KM, S.ch));
+  var g = ground(x), p = pipe(x), h = hgl(x,S.Q), head = h-p;
+  var mn = envMin(x), mx = envMax(x), st = stateAt(x);
+  txt('r-ch', fmt(x,1));
+  set('r-gl', Math.round(g)+'<small>m</small>');
+  set('r-pl', Math.round(p)+'<small>m</small>');
+  set('r-v', fmt(vel(S.Q),2)+'<small>m/s</small>');
+  set('r-hgl', Math.round(h)+'<small>m</small>');
+  set('r-head', Math.round(head)+'<small>m</small>');
+  set('r-bar', fmt(head*0.0981,1)+'<small>bar</small>');
+  set('r-min', Math.round(mn)+'<small>m</small>');
+  set('r-max', Math.round(mx)+'<small>m</small>');
+  var marg = mn - p;
+  set('r-marg', (marg>=0?'+':'\u2212')+Math.round(Math.abs(marg))+'<small>m</small>');
+  var el=$('r-marg'); if(el) el.className = 'v ' + (marg>=0?'v-water':'v-danger');
+  var badge=$('r-state');
+  if (badge){
+    badge.className = 'st' + (st===2?' bad':(st===1?' warn':''));
+    badge.textContent = st===2 ? 'Column separation' : (st===1 ? 'Sub-atmospheric' : 'Ok');
+  }
+}
+
+function worstOnLine(){
+  var worst = 1e9, at = 0;
+  for (var i=0;i<=210;i++){
+    var km = L_KM*i/210, m = envMin(km) - pipe(km);
+    if (m < worst){ worst = m; at = km; }
+  }
+  return { m: worst, km: at };
+}
+
+function calc(){
+  S.Q = +$('s-q').value; S.a = +$('s-a').value; S.T = +$('s-t').value; S.V = +$('s-v').value;
+  txt('v-q', fmt(S.Q,2)); txt('v-a', S.a); txt('v-t', S.T); txt('v-vv', S.V);
+  var v = vel(S.Q), dh = surgeHead(), tc = tCrit(S.a), w = worstOnLine();
+  set('o-v', fmt(v,2)+'<small>m/s</small>');
+  set('o-hf', Math.round(hfTotal(S.Q))+'<small>m</small>');
+  set('o-tc', Math.round(tc)+'<small>s</small>');
+  set('o-dh', Math.round(dh)+'<small>m</small>');
+  set('o-worst', (w.m>=0?'+':'\u2212')+Math.round(Math.abs(w.m))+'<small>m</small>');
+  set('o-peak', fmt((envMax(0)-pipe(0))*0.0981,1)+'<small>bar</small>');
+
+  var need = [], vd = $('verdict');
+  /* what would it take to clear the worst point? */
+  var xw = w.km, taper = 1 - xw/L_KM, note;
+  if (w.m >= 0){
+    note = 'The line stays above atmospheric everywhere. Lowest margin is <b>' +
+           Math.round(w.m) + '&thinsp;m at ' + fmt(xw,1) + '&thinsp;km</b>. Peak head at the station is ' +
+           fmt((envMax(0)-pipe(0))*0.0981,1) + '&thinsp;bar, which is what the pressure class has to answer.';
+    vd.className = 'verdict ok';
+  } else {
+    var allowPos = (hgl(xw,S.Q) - pipe(xw)) / Math.max(taper,0.001);
+    var allowVap = (hgl(xw,S.Q) - (pipe(xw)-10.2)) / Math.max(taper,0.001);
+    var vPos = A*(L_KM*1000)*v*v/(2*G*allowPos);
+    var tPos = 2*(L_KM*1000)*v/(G*allowPos);
+    note = (w.m < -10.2 ? '<b>Column separation</b> at ' : '<b>Sub-atmospheric</b> at ') +
+           fmt(xw,1) + '&thinsp;km, ' + Math.round(-w.m) + '&thinsp;m below the crown. ' +
+           'To hold the line positive there the down-surge must stay under ' + Math.round(allowPos) +
+           '&thinsp;m &mdash; an air vessel of about <b>' + Math.round(vPos) + '&thinsp;m&sup3;</b>, or a stopping time of ' +
+           Math.round(tPos) + '&thinsp;s against a critical time of ' + Math.round(tc) + '&thinsp;s. ' +
+           (tPos > tc*2 ? 'Deceleration alone cannot get there; it has to be the vessel.' : '');
+    vd.className = 'verdict';
+  }
+  vd.firstChild ? (vd.firstChild.innerHTML = note) : (vd.innerHTML = '<p>'+note+'</p>');
+  wake();
+}
+
+/* -- frame ---------------------------------------------------- */
+var docks = [].slice.call(document.querySelectorAll('.dock'));
+var lastH = 0, lastV = 0;
+function render(){
+  readout(); draw();
+  var dY = Math.round(vpH()*0.34);
+  for (var i=0;i<docks.length;i++){
+    var r = docks[i].getBoundingClientRect();
+    var on = Math.abs((r.top+34) - dY) < 64;
+    if (on !== docks[i].classList.contains('at')) docks[i].classList.toggle('at', on);
+  }
+}
+function retarget(){
+  var dh = document.body.scrollHeight, vh = vpH();
+  if (dh !== lastH || vh !== lastV){ lastH=dh; lastV=vh; layout(true); }
+  S.tgt = chainageAt(window.pageYOffset + Math.round(vh*0.34));
+}
+function frame(){
+  S.ch += (S.tgt - S.ch)*0.16;
+  render();
+  if (Math.abs(S.tgt-S.ch) > 0.004 || S.idle-- > 0) requestAnimationFrame(frame);
+  else S.run = false;
+}
+function wake(){
+  retarget();
+  if (RM || document.hidden){ S.ch = S.tgt; render(); return; }
+  S.idle = 20;
+  if (!S.run){ S.run = true; requestAnimationFrame(frame); }
+}
+function layout(quiet){
+  computeAnchors();
+  lastH = document.body.scrollHeight; lastV = vpH();
+  if (!quiet) wake();
+}
+
+/* -- theme ---------------------------------------------------- */
+var mq = window.matchMedia('(prefers-color-scheme: dark)');
+function isDark(){ var t=document.documentElement.getAttribute('data-theme'); return t ? t==='dark' : mq.matches; }
+function syncTog(){ $('tog').textContent = isDark() ? 'Day' : 'Night'; readPal(); wake(); }
+$('tog').addEventListener('click', function(){
+  document.documentElement.setAttribute('data-theme', isDark() ? 'light' : 'dark'); syncTog();
+});
+mq.addEventListener ? mq.addEventListener('change', syncTog) : mq.addListener(syncTog);
+
+['s-q','s-a','s-t','s-v'].forEach(function(id){ $(id).addEventListener('input', calc); });
+window.addEventListener('scroll', wake, {passive:true});
+window.addEventListener('resize', function(){ layout(); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ layout(); });
+window.addEventListener('load', function(){ layout(); });
+
+readPal(); layout(); calc();
+window.theLine = { S:S, layout:layout, render:render, calc:calc, chainageAt:chainageAt,
+                   hgl:hgl, pipe:pipe, ground:ground, envMin:envMin, envMax:envMax,
+                   surgeHead:surgeHead, worstOnLine:worstOnLine, vel:vel, hfTotal:hfTotal,
+                   set:function(c){ S.tgt=c; S.ch=c; render(); } };
+})();
+</script>

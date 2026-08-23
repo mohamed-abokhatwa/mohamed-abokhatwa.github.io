@@ -105,82 +105,116 @@ function draw(){
   var inA = S.p < 1;
 
   /* ---------- left view: the main in profile ---------- */
-  var ax0=42, ax1=split-16;
-  /* Scale to the WHOLE route, not to chainage 0. With a sawtooth grade the
-     later reaches sit far higher than the first, and scaling off x=0 drew
-     more than half the section off the top of the panel — which is why the
-     grade line and both surge envelopes simply stopped part-way across. */
-  var atop=0, abot=1e9;
-  for(var sc=0; sc<=120; sc++){
-    var sk=L_KM*sc/120;
+  /* One reach at a time. Seven pumped reaches drawn on one axis read as
+     stairs; drawn one at a time this is what it actually is — a single main
+     running from one station to the next, the grade falling on friction and
+     the two surge envelopes closing on the far end. The window pans as the
+     reader travels the route. */
+  var ax0=42, ax1=split-16, pTop=padT+22;
+  var curKm=pToCh(Math.min(1,S.p));
+  var rNow=reachAt(Math.min(L_KM-0.001,curKm));
+  if(S.wx0==null){ S.wx0=rNow.x0; S.wx1=rNow.x1; }
+  /* pan across a station the reader actually walks over; jump straight there
+     if they have skipped reaches via a link, rather than sliding 600 km */
+  if(Math.abs(rNow.x0-S.wx0) > (rNow.x1-rNow.x0)*1.5){ S.wx0=rNow.x0; S.wx1=rNow.x1; }
+  else { S.wx0+=(rNow.x0-S.wx0)*0.22; S.wx1+=(rNow.x1-S.wx1)*0.22; }
+  if(Math.abs(rNow.x0-S.wx0)<0.4){S.wx0=rNow.x0;S.wx1=rNow.x1;}
+  S.panning=Math.abs(rNow.x0-S.wx0)>0.4;
+  var wx0=S.wx0, wSpan=Math.max(1,S.wx1-S.wx0);
+
+  var atop=-1e9, abot=1e9, sc, sk;
+  for(sc=0; sc<=140; sc++){
+    sk=wx0+wSpan*sc/140;
     atop=Math.max(atop, envMax(sk), hgl(sk), ground(sk));
     abot=Math.min(abot, envMin(sk), pipe(sk));
   }
-  atop+=(atop-abot)*0.06; abot-=(atop-abot)*0.05;
-  var AX=function(km){ return ax0+(km/L_KM)*(ax1-ax0); };
-  var AY=function(m){ return gy-((m-abot)/(atop-abot))*(gy-padT); };
+  var aPad=(atop-abot)*0.10; atop+=aPad; abot-=aPad*0.6;
+
+  var AX=function(km){ return ax0+((km-wx0)/wSpan)*(ax1-ax0); };
+  var AY=function(m){ return gy-((m-abot)/(atop-abot))*(gy-pTop); };
   var N=560,i,km;
 
   ctx.globalAlpha = inA ? 1 : 0.55;
   ctx.lineJoin='round'; ctx.lineCap='round';
   ctx.font='500 9px "IBM Plex Mono", monospace'; ctx.textBaseline='middle';
+
+  /* level grid, on a round step for whatever range this reach spans */
+  var rawStep=(atop-abot)/4, mag=Math.pow(10,Math.floor(Math.log(rawStep)/Math.LN10));
+  var lstep=(rawStep/mag<1.5?1:rawStep/mag<3.5?2:rawStep/mag<7.5?5:10)*mag;
   ctx.textAlign='right';
-  for(var lv=0; lv<=Math.ceil(atop/200)*200; lv+=200){
-    var ly=AY(lv); if(ly<padT-2||ly>gy+2) continue;
+  for(var lv=Math.ceil(abot/lstep)*lstep; lv<=atop; lv+=lstep){
+    var ly=AY(lv); if(ly<pTop-2||ly>gy+2) continue;
     ctx.strokeStyle=rgba(pal.ink,0.09); ctx.lineWidth=1;
     ctx.beginPath(); ctx.moveTo(ax0,Math.round(ly)+0.5); ctx.lineTo(ax1,Math.round(ly)+0.5); ctx.stroke();
-    ctx.fillStyle=rgba(pal.ink3,0.95); ctx.fillText(lv,ax0-6,ly);
+    ctx.fillStyle=rgba(pal.ink3,0.95); ctx.fillText(Math.round(lv),ax0-6,ly);
   }
+  /* chainage, in real route kilometres */
   ctx.textAlign='center';
-  for(km=0;km<=L_KM;km+=100){
-    ctx.fillStyle=rgba(pal.ink3,0.95); ctx.fillText(km,AX(km),gy+13);
+  for(var tk=0; tk<=5; tk++){
+    var lk=wx0+wSpan*tk/5;
+    ctx.fillStyle=rgba(pal.ink3,0.95); ctx.fillText(Math.round(lk),AX(lk),gy+13);
   }
-  /* every station, because the sawtooth is the story of a long carrier */
-  ctx.textAlign='center';
-  for(var si=0;si<STATIONS.length;si++){
-    var sx=AX(STATIONS[si]);
-    ctx.strokeStyle=rgba(pal.fire,0.45); ctx.lineWidth=1;
-    ctx.setLineDash([2,3]);
-    ctx.beginPath(); ctx.moveTo(Math.round(sx)+0.5,padT+2); ctx.lineTo(Math.round(sx)+0.5,gy); ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle=rgba(pal.fire,0.9);
-    ctx.fillRect(sx-2.5,AY(hgl(STATIONS[si]))-2.5,5,5);
-    ctx.fillStyle=rgba(pal.ink3,0.9);
-    ctx.fillText('S'+(si+1), sx, padT+7);
-  }
-  /* ground */
-  ctx.beginPath(); ctx.moveTo(AX(0),AY(ground(0)));
-  for(i=1;i<=N;i++){km=L_KM*i/N; ctx.lineTo(AX(km),AY(ground(km)));}
+
+  /* ground, with the section hatched below it */
+  ctx.beginPath(); ctx.moveTo(AX(wx0),AY(ground(wx0)));
+  for(i=1;i<=N;i++){km=wx0+wSpan*i/N; ctx.lineTo(AX(km),AY(ground(km)));}
   ctx.lineTo(ax1,gy); ctx.lineTo(ax0,gy); ctx.closePath();
   ctx.save(); ctx.clip();
-  ctx.fillStyle=rgba(pal.ink,0.075); ctx.fillRect(ax0,padT,ax1-ax0,gy-padT);
+  ctx.fillStyle=rgba(pal.ink,0.075); ctx.fillRect(ax0,pTop,ax1-ax0,gy-pTop);
   ctx.strokeStyle=rgba(pal.ink,0.11); ctx.lineWidth=1;
-  for(var gx=ax0-h;gx<ax1+h;gx+=9){ctx.beginPath();ctx.moveTo(gx,gy);ctx.lineTo(gx+h,padT);ctx.stroke();}
+  for(var gx=ax0-h;gx<ax1+h;gx+=9){ctx.beginPath();ctx.moveTo(gx,gy);ctx.lineTo(gx+h,pTop);ctx.stroke();}
   ctx.restore();
-  ctx.beginPath(); ctx.moveTo(AX(0),AY(ground(0)));
-  for(i=1;i<=N;i++){km=L_KM*i/N; ctx.lineTo(AX(km),AY(ground(km)));}
+  ctx.beginPath(); ctx.moveTo(AX(wx0),AY(ground(wx0)));
+  for(i=1;i<=N;i++){km=wx0+wSpan*i/N; ctx.lineTo(AX(km),AY(ground(km)));}
   ctx.strokeStyle=rgba(pal.ink,0.7); ctx.lineWidth=1.3; ctx.stroke();
-  /* separation reach */
+
+  /* wherever the downsurge drops below the crown, the column separates */
   var run=null;
   for(i=0;i<=N;i++){
-    km=L_KM*i/N; var bad=envMin(km)<pipe(km);
+    km=wx0+wSpan*i/N; var bad=envMin(km)<pipe(km);
     if(bad&&run===null) run=km;
     if((!bad||i===N)&&run!==null){
-      ctx.fillStyle=rgba(pal.danger,0.07);
-      ctx.fillRect(AX(run),padT,Math.max(2,AX(km)-AX(run)),gy-padT); run=null;
+      ctx.fillStyle=rgba(pal.danger,0.09);
+      ctx.fillRect(AX(run),pTop,Math.max(2,AX(km)-AX(run)),gy-pTop); run=null;
     }
   }
-  function polyA(fn,col,dash){
+
+  function polyA(fn,col,dash,wdt){
     ctx.beginPath();
-    for(var k=0;k<=N;k++){var q=L_KM*k/N; var yy=AY(fn(q)); if(k===0)ctx.moveTo(AX(q),yy); else ctx.lineTo(AX(q),yy);}
-    ctx.setLineDash(dash||[]); ctx.strokeStyle=col; ctx.lineWidth=1.15; ctx.stroke(); ctx.setLineDash([]);
+    for(var k=0;k<=N;k++){var q=wx0+wSpan*k/N; var yy=AY(fn(q)); if(k===0)ctx.moveTo(AX(q),yy); else ctx.lineTo(AX(q),yy);}
+    ctx.setLineDash(dash||[]); ctx.strokeStyle=col; ctx.lineWidth=wdt||1.15; ctx.stroke(); ctx.setLineDash([]);
   }
   polyA(envMax,rgba(pal.air,0.7),[4,3]);
   polyA(envMin,rgba(pal.danger,0.8),[4,3]);
   polyA(pipe,rgba(pal.ink,0.5),[6,3]);
-  ctx.beginPath();
-  for(i=0;i<=N;i++){km=L_KM*i/N; var hy=AY(hgl(km)); if(i===0)ctx.moveTo(AX(km),hy); else ctx.lineTo(AX(km),hy);}
-  ctx.strokeStyle=pal.water; ctx.lineWidth=1.8; ctx.stroke();
+  polyA(hgl,pal.water,null,1.8);
+
+  /* the station this reach is pumped from, and the one it delivers to */
+  var rIdx=REACH.indexOf(rNow);
+  ctx.font='500 8.5px "IBM Plex Mono", monospace';
+  ctx.fillStyle=rgba(pal.fire,0.95);
+  ctx.fillRect(AX(rNow.x0)-2.5,AY(hgl(rNow.x0))-2.5,5,5);
+  ctx.textAlign='left';
+  ctx.fillText('S'+(rIdx+1), AX(rNow.x0)+7, AY(hgl(rNow.x0))-9);
+  ctx.textAlign='right';
+  ctx.fillStyle=rgba(pal.ink3,0.9);
+  ctx.fillText(rIdx===REACH.length-1?'RESERVOIR':'S'+(rIdx+2), ax1-2, AY(hgl(rNow.x1))-9);
+
+  /* locator: the whole 700 km, with the reach on screen picked out */
+  var ly0=padT+3, lyH=11;
+  var gMin=1e9,gMax=-1e9,lg;
+  for(lg=0;lg<=60;lg++){var gk=L_KM*lg/60; gMin=Math.min(gMin,ground(gk)); gMax=Math.max(gMax,ground(gk));}
+  var LX=function(km){ return ax0+(km/L_KM)*(ax1-ax0); };
+  var LY=function(m){ return ly0+lyH-((m-gMin)/Math.max(1,gMax-gMin))*lyH; };
+  ctx.fillStyle=rgba(pal.water,0.10);
+  ctx.fillRect(LX(rNow.x0),ly0-1,Math.max(2,LX(rNow.x1)-LX(rNow.x0)),lyH+2);
+  ctx.beginPath(); ctx.moveTo(LX(0),LY(ground(0)));
+  for(lg=1;lg<=120;lg++){var gk2=L_KM*lg/120; ctx.lineTo(LX(gk2),LY(ground(gk2)));}
+  ctx.strokeStyle=rgba(pal.ink,0.32); ctx.lineWidth=1; ctx.stroke();
+  for(var st=0; st<STATIONS.length; st++){
+    ctx.fillStyle=rgba(pal.ink,st===rIdx?0.75:0.28);
+    ctx.fillRect(LX(STATIONS[st])-1,ly0+lyH-1,2,3);
+  }
   ctx.globalAlpha=1;
 
   /* ---------- divider + the site ---------- */
@@ -317,7 +351,7 @@ function draw(){
   /* view labels */
   ctx.font='500 9px "IBM Plex Mono", monospace'; ctx.textAlign='left';
   ctx.fillStyle=rgba(pal.ink3,0.9);
-  ctx.fillText('THE MAIN  -  CHAINAGE km', ax0, padT-4);
+  ctx.fillText('THE MAIN  -  REACH '+(rIdx+1)+' OF '+REACH.length+'  -  CH '+Math.round(rNow.x0)+'-'+Math.round(rNow.x1)+' km', ax0, padT-4);
   ctx.fillText('THE TOWER  -  ELEVATION m', bx0, padT-4);
 }
 
@@ -436,7 +470,7 @@ function retarget(){
 function frame(){
   S.p+=(S.tgt-S.p)*0.16;
   render();
-  if(Math.abs(S.tgt-S.p)>0.0002||S.idle-->0) requestAnimationFrame(frame);
+  if(Math.abs(S.tgt-S.p)>0.0002||S.panning||S.idle-->0) requestAnimationFrame(frame);
   else S.run=false;
 }
 function wake(){

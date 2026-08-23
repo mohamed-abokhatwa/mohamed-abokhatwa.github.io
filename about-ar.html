@@ -94,6 +94,9 @@
     .about-hero-photo img {
       width: 100%;
       height: auto;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
       border-radius:3px;
       border: 1px solid var(--glass-border);
       box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.08);
@@ -265,7 +268,7 @@
     @media(max-width:768px) {
       .about-hero { flex-direction: column-reverse; gap: 40px; padding: 120px 20px 60px; }
       .about-hero-photo { width: 160px; align-self: center; }
-      .about-hero-photo img { border-radius: 50%; aspect-ratio: 1; object-fit: cover; }
+      .about-hero-photo img { border-radius: 50%; aspect-ratio: 1; }
       .two-col { grid-template-columns: 1fr; gap: 32px; }
       .col-label { position: static; }
       .certs-grid, .skills-grid { grid-template-columns: 1fr; }
@@ -326,7 +329,7 @@
     <p class="lead fade-up-3">مدير هندسي وفني بخبرة تتجاوز 22 عاماً في البنية التحتية الكبرى للمياه وأنظمة MEP للمباني — من شبكات نقل تتجاوز 700 كم ومحطات معالجة بطاقة 600,000 م³/يوم، إلى الأنظمة الميكانيكية لبرج جدة.</p>
   </div>
   <div class="about-hero-photo fade-up-2">
-    <img fetchpriority="high" width="1011" height="952" src="profile.jpg?v=3" alt="محمد أبوخطوة">
+    <img fetchpriority="high" width="1011" height="952" src="profile.jpg" alt="محمد أبوخطوة">
   </div>
 </div>
 

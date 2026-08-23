@@ -265,33 +265,21 @@ table.t tr:nth-child(even) td{background:var(--bg-2)}
 .status.soon{background:var(--bg-4);color:var(--text-tertiary)}
 
 /* footer (site-styled) */
-footer{border-top:1px solid var(--border);padding:40px 24px 46px;text-align:start;background:var(--bg-2)}
+footer{border-top:1px solid var(--border);padding:36px 24px 40px;text-align:center;background:var(--bg-2)}
 .footer-inner{max-width:var(--maxw);margin:0 auto}
 footer p{font-family:var(--font-body);font-size:13px;color:var(--text-secondary);max-width:none;margin:0}
 footer a{color:var(--text-secondary);text-decoration:none;transition:var(--transition)}
 footer a:hover{color:var(--accent)}
 
-/* The title block: the panel every drawing carries in its corner. */
-.tblock{display:grid;grid-template-columns:1.6fr 1fr 1.3fr 1fr .85fr;gap:1px;
-  background:var(--border);border:1px solid var(--border);border-radius:3px;overflow:hidden}
-.tblock > div{background:var(--bg-2);padding:13px 16px;min-width:0}
-.tb-l{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--text-tertiary);margin-bottom:7px}
-.tb-id b{display:block;font-family:var(--font-display);font-size:15px;font-weight:700;
-  letter-spacing:-.015em;line-height:1.2;color:var(--text-primary)}
-.tb-id .tb-s{display:block;margin-top:4px;font-size:12px;line-height:1.45;color:var(--text-tertiary)}
-.tblock .tb-v,.tblock a{font-family:var(--font-body);font-size:13px;line-height:1.5;
-  color:var(--text-secondary);overflow-wrap:anywhere}
-.tblock a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule);
-  text-decoration-thickness:1px}
-.tblock a:hover{color:var(--accent);text-decoration-color:var(--accent)}
-.tb-num{font-variant-numeric:tabular-nums;unicode-bidi:isolate}
-.tb-rev{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;margin:12px 2px 0;
-  font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--text-tertiary)}
-@media(max-width:980px){.tblock{grid-template-columns:1fr 1fr 1fr}.tb-id{grid-column:1/-1}}
-@media(max-width:620px){.tblock{grid-template-columns:1fr 1fr}}
-@media(max-width:420px){.tblock{grid-template-columns:1fr}}
+/* One line, the way it was — but in the body face. */
+.f-line{font-family:var(--font-body);font-size:13.5px;line-height:2.15;color:var(--text-secondary)}
+.f-line .nm{color:var(--text-primary);font-weight:600}
+.f-line .sep{font-style:normal;color:var(--text-tertiary);opacity:.45;margin:0 11px}
+.f-line a{color:var(--text-secondary);text-decoration:none;border-bottom:1px solid transparent;
+  padding-bottom:1px;transition:color .18s,border-color .18s}
+.f-line a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.f-line [dir="ltr"]{unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+@media(max-width:620px){.f-line .sep{margin:0 7px}.f-line{font-size:12.5px}}
 
 /* buttons (match site) */
 .btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:15px;font-weight:500;
@@ -420,5 +408,3 @@ sup.fn{color:var(--accent);font-weight:700;font-size:12px}
 .tower .t-zn{text-anchor:end;}
 .tower .t-core{stroke-width:1.1;opacity:1;}
 
-.tb-stack{display:flex;flex-direction:column;align-items:start;gap:5px}
-.tb-stack .tb-l{margin-bottom:2px}

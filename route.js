@@ -67,11 +67,9 @@ function stackPa(e){ return 3460*(1/(5+273.15)-1/(TI+273.15))*Math.max(0,e); }
 function windMs(e){ return 8*Math.pow(Math.max(e,10)/10,0.14); }
 function liftKWh(h){ return h/(367*ETA_T); }
 function halfFrac(e){
-  if(e<=0) return 1.14;
-  if(e>H_TOWER) return 0;
-  var r=e/H_TOWER, f=1-0.50*Math.pow(r,1.4);
-  if(r>0.88) f=Math.max(0.05,f*(1-(r-0.88)/0.12*0.82));
-  return Math.max(0.05,f);
+  if(e<=0) return 1;
+  if(e>=H_TOWER) return 0.64;
+  return 1-0.36*(e/H_TOWER);
 }
 
 /* -- one journey position: p in [0,1] along, [1,2] up -------- */
@@ -183,65 +181,109 @@ function draw(){
 
   /* ---------- right view: the tower in elevation ---------- */
   var bx0=split+16, bx1=w-14;
-  var bcx=(bx0+bx1)/2;
-  /* a tower has to read as a tower: cap its half-width so the elevation
-     stays slender whatever the panel is doing */
-  var bhalf=Math.min((bx1-bx0)/2, 44);
-  var BY=function(m){ return gy-(m/(H_TOWER*1.05))*(gy-padT); };
+  var railX=bx0+22;                      /* elevation ticks live here */
+  var labX =bx1-56;                      /* zone callouts start here  */
+  var bcx  =(railX+14+labX)/2;
+  var bhalf=Math.max(16,Math.min((labX-(railX+14))/2-6, 46));
+  var BY=function(m){ return gy-(m/H_TOWER)*(gy-padT-15); };
+  var HF=function(e){ return halfFrac(Math.max(0,Math.min(H_TOWER,e)))*bhalf; };
+  var roofY=BY(H_TOWER);
+
   ctx.globalAlpha = inA ? 0.55 : 1;
-  ctx.textAlign='left';
-  for(var el=0; el<=800; el+=200){
-    var ey=BY(el); if(ey<padT-2) continue;
-    ctx.strokeStyle=rgba(pal.ink,0.09);
-    ctx.beginPath(); ctx.moveTo(bx0,Math.round(ey)+0.5); ctx.lineTo(bx1,Math.round(ey)+0.5); ctx.stroke();
-    ctx.fillStyle=rgba(pal.ink3,0.95); ctx.fillText(el, bx1+2>w-4 ? bx0-2 : bx1-22, ey);
-  }
-  /* silhouette */
-  ctx.beginPath();
-  var started=false, e2, hf2;
-  for(var yy2=padT-4; yy2<=gy; yy2+=3){
-    e2=(gy-yy2)/(gy-padT)*(H_TOWER*1.05);
-    if(e2>H_TOWER) continue;
-    hf2=halfFrac(e2)*bhalf;
-    if(!started){ctx.moveTo(bcx-hf2,yy2);started=true;} else ctx.lineTo(bcx-hf2,yy2);
-  }
-  for(var yy3=gy; yy3>=padT-4; yy3-=3){
-    e2=(gy-yy3)/(gy-padT)*(H_TOWER*1.05);
-    if(e2>H_TOWER) continue;
-    hf2=halfFrac(e2)*bhalf;
-    ctx.lineTo(bcx+hf2,yy3);
-  }
-  if(started){
-    ctx.closePath();
-    ctx.fillStyle=rgba(pal.ink,0.075); ctx.fill();
-    ctx.strokeStyle=rgba(pal.ink,0.6); ctx.lineWidth=1.2; ctx.stroke();
-  }
-  /* mechanical bands at every zone break */
-  ctx.font='500 8.5px "IBM Plex Mono", monospace'; ctx.textAlign='left'; ctx.textBaseline='middle';
-  for(var z=1; z*ZG<H_TOWER; z++){
-    var be=z*ZG, byT=BY(be+9), byB=BY(be-9), hb=halfFrac(be)*bhalf;
-    ctx.fillStyle=rgba(pal.ink,0.16);
-    ctx.fillRect(bcx-hb,byT,2*hb,Math.max(1.5,byB-byT));
-    ctx.strokeStyle=rgba(pal.ink,0.16); ctx.lineWidth=1;
-    ctx.beginPath(); ctx.moveTo(bcx+hb+3,Math.round(BY(be))+0.5); ctx.lineTo(bcx+hb+22,Math.round(BY(be))+0.5); ctx.stroke();
-    ctx.fillStyle=rgba(pal.ink3,0.9);
-    ctx.fillText('Z'+(z+1)+'  '+Math.round(be)+' m', bcx+hb+26, BY(be));
-  }
   ctx.textBaseline='middle';
-  /* the two risers */
-  [[-1,pal.water],[1,pal.fire]].forEach(function(pr){
-    ctx.strokeStyle=rgba(pr[1],0.9); ctx.lineWidth=1.4;
-    ctx.beginPath(); var open=false;
-    for(var ry=gy; ry>=padT-4; ry-=3){
-      var re=(gy-ry)/(gy-padT)*(H_TOWER*1.05);
-      if(re>H_TOWER*0.9){open=false;continue;}
-      var ox=Math.min(bhalf*0.3, halfFrac(re)*bhalf*0.55);
-      if(ox<2){open=false;continue;}
-      var rx=bcx+pr[0]*ox;
-      if(!open){ctx.moveTo(rx,ry);open=true;} else ctx.lineTo(rx,ry);
-    }
+
+  /* alternating zone tint, so the seven zones read at a glance */
+  for(var zt=0; zt<NZ; zt+=2){
+    var t0=Math.min(H_TOWER,zt*ZG), t1=Math.min(H_TOWER,(zt+1)*ZG);
+    if(t1<=t0) break;
+    ctx.fillStyle=rgba(pal.ink,0.05);
+    ctx.beginPath();
+    ctx.moveTo(bcx-HF(t0),BY(t0)); ctx.lineTo(bcx-HF(t1),BY(t1));
+    ctx.lineTo(bcx+HF(t1),BY(t1)); ctx.lineTo(bcx+HF(t0),BY(t0));
+    ctx.closePath(); ctx.fill();
+  }
+
+  /* the podium the tower stands on */
+  ctx.fillStyle=rgba(pal.ink,0.10); ctx.strokeStyle=rgba(pal.ink,0.45); ctx.lineWidth=1;
+  ctx.beginPath(); ctx.rect(bcx-bhalf*1.7,gy-7,bhalf*3.4,7); ctx.fill(); ctx.stroke();
+
+  /* shaft */
+  ctx.beginPath();
+  ctx.moveTo(bcx-HF(0),BY(0));
+  ctx.lineTo(bcx-HF(H_TOWER),roofY);
+  ctx.lineTo(bcx+HF(H_TOWER),roofY);
+  ctx.lineTo(bcx+HF(0),BY(0));
+  ctx.closePath();
+  ctx.fillStyle=rgba(pal.ink,0.055); ctx.fill();
+  ctx.strokeStyle=rgba(pal.ink,0.72); ctx.lineWidth=1.3; ctx.stroke();
+
+  /* floor plates */
+  ctx.strokeStyle=rgba(pal.ink,0.15); ctx.lineWidth=0.6;
+  ctx.beginPath();
+  for(var fe=16; fe<H_TOWER-8; fe+=16){
+    var fy=Math.round(BY(fe))+0.5, fh=HF(fe)-1.4;
+    ctx.moveTo(bcx-fh,fy); ctx.lineTo(bcx+fh,fy);
+  }
+  ctx.stroke();
+
+  /* the lift core, tapering with the shaft */
+  ctx.strokeStyle=rgba(pal.ink,0.30); ctx.lineWidth=0.9;
+  ctx.beginPath();
+  ctx.moveTo(bcx-bhalf*0.17,BY(0));   ctx.lineTo(bcx-bhalf*0.13,roofY);
+  ctx.moveTo(bcx+bhalf*0.17,BY(0));   ctx.lineTo(bcx+bhalf*0.13,roofY);
+  ctx.stroke();
+
+  /* the three risers: water, fire, air */
+  [[-0.56,pal.water],[-0.34,pal.fire],[0.52,pal.air]].forEach(function(pr){
+    ctx.strokeStyle=rgba(pr[1],0.92); ctx.lineWidth=1.4;
+    ctx.beginPath();
+    ctx.moveTo(bcx+pr[0]*HF(0),BY(6));
+    ctx.lineTo(bcx+pr[0]*HF(H_TOWER),roofY+4);
     ctx.stroke();
   });
+
+  /* a plant floor breaks every zone, with a break tank on the water riser */
+  ctx.font='500 8.5px "IBM Plex Mono", monospace'; ctx.textAlign='left';
+  for(var z=1; z*ZG<H_TOWER; z++){
+    var be=z*ZG, byc=BY(be), hb=HF(be);
+    ctx.fillStyle=rgba(pal.ink,0.20);
+    ctx.fillRect(bcx-hb,byc-2.5,2*hb,5);
+    ctx.strokeStyle=rgba(pal.ink,0.55); ctx.lineWidth=0.8;
+    ctx.strokeRect(bcx-hb,byc-2.5,2*hb,5);
+    /* break tank */
+    ctx.fillStyle=rgba(pal.sheet,1); ctx.strokeStyle=rgba(pal.water,0.9); ctx.lineWidth=1;
+    ctx.beginPath(); ctx.rect(bcx-0.56*hb-3,byc-8,6,4); ctx.fill(); ctx.stroke();
+    /* callout */
+    ctx.strokeStyle=rgba(pal.ink,0.18); ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(bcx+hb+3,Math.round(byc)+0.5); ctx.lineTo(labX-4,Math.round(byc)+0.5); ctx.stroke();
+    ctx.fillStyle=rgba(pal.ink3,0.92);
+    ctx.fillText('Z'+(z+1)+' · '+Math.round(be), labX, byc);
+  }
+
+  /* roof plant */
+  ctx.fillStyle=rgba(pal.ink,0.75);
+  ctx.fillRect(bcx-HF(H_TOWER)-3,roofY-2.5,2*HF(H_TOWER)+6,2.5);
+  ctx.fillStyle=rgba(pal.ink,0.10); ctx.strokeStyle=rgba(pal.ink,0.6); ctx.lineWidth=0.9;
+  ctx.beginPath(); ctx.rect(bcx-bhalf*0.5,roofY-11,bhalf*0.52,8.5); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.rect(bcx+bhalf*0.04,roofY-13,bhalf*0.42,10.5); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle=rgba(pal.air,0.8); ctx.lineWidth=0.9;
+  for(var fanI=0; fanI<3; fanI++){
+    ctx.beginPath(); ctx.arc(bcx-bhalf*0.44+fanI*bhalf*0.16, roofY-6.8, 1.7, 0, 6.2832); ctx.stroke();
+  }
+  ctx.strokeStyle=rgba(pal.ink3,0.8); ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(bcx+bhalf*0.25,roofY-13); ctx.lineTo(bcx+bhalf*0.25,roofY-22); ctx.stroke();
+
+  /* elevation rail */
+  ctx.strokeStyle=rgba(pal.ink,0.14); ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(Math.round(railX)+0.5,roofY-24); ctx.lineTo(Math.round(railX)+0.5,gy); ctx.stroke();
+  ctx.textAlign='right'; ctx.font='500 9px "IBM Plex Mono", monospace';
+  [0,200,400,600,828].forEach(function(el){
+    var ey=BY(el);
+    ctx.strokeStyle=rgba(pal.ink,0.35); ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(railX-5,Math.round(ey)+0.5); ctx.lineTo(railX,Math.round(ey)+0.5); ctx.stroke();
+    ctx.fillStyle=rgba(pal.ink3,0.95); ctx.fillText(el,railX-8,ey);
+  });
+  ctx.textAlign='left';
   ctx.globalAlpha=1;
 
   /* ---------- the marker ---------- */
@@ -363,6 +405,7 @@ function retire(){
   wasOff=off;
   sheetEl.classList.toggle('rt-off',off);
   if(clusterEl) clusterEl.classList.toggle('rt-off',off);
+  document.documentElement.classList.toggle('rt-band',!off);
 }
 
 function render(){

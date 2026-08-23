@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>الخدمات الاستشارية — محمد أبوخطوة</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
@@ -170,7 +170,6 @@
     }
     .contact-detail {
       display: flex; align-items: center; gap: 10px;
-      flex-direction: row-reverse; justify-content: flex-end;
       font-size: 14px; color: var(--text-secondary);
       text-decoration: none; margin-bottom: 14px;
       transition: color 0.2s;
@@ -201,7 +200,7 @@
       border-color: var(--accent);
     }
     .form-group textarea { min-height: 120px; resize: vertical; }
-    .form-submit { display: flex; align-items: center; gap: 16px; flex-direction: row-reverse; }
+    .form-submit { display: flex; align-items: center; gap: 16px; }
     .btn-primary {
       padding: 14px 32px;
       background: var(--accent);
@@ -480,21 +479,7 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="tblock">
-      <div class="tb-id">
-        <span class="tb-l">المهندس</span>
-        <b>محمد أبوخطوة</b>
-        <span class="tb-s">نقل المياه وأنظمة MEP للمباني الشاهقة</span>
-      </div>
-      <div><span class="tb-l">المقر</span><span class="tb-v">الرياض، المملكة العربية السعودية</span></div>
-      <div><span class="tb-l">البريد</span><a href="mailto:mohamed@abokhatwa.com" dir="ltr">mohamed@abokhatwa.com</a></div>
-      <div><span class="tb-l">الهاتف</span><a class="tb-num" href="tel:+966541706700" dir="ltr">+966 54 170 6700</a></div>
-      <div class="tb-stack"><span class="tb-l">روابط</span>
-        <a href="https://www.linkedin.com/in/abokhatwa" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="about-ar.html">نبذة</a>
-      </div>
-    </div>
-    <p class="tb-rev"><span>&copy; 2026 محمد أبوخطوة</span><span>abokhatwa.com</span></p>
+    <p class="f-line"><span class="nm">&copy; 2026 محمد أبوخطوة</span> <i class="sep">&middot;</i> <span>الرياض، المملكة العربية السعودية</span> <i class="sep">&middot;</i> <a href="mailto:mohamed@abokhatwa.com" dir="ltr">mohamed@abokhatwa.com</a> <i class="sep">&middot;</i> <a href="tel:+966541706700" dir="ltr">+966 54 170 6700</a> <i class="sep">&middot;</i> <a href="https://www.linkedin.com/in/abokhatwa" target="_blank" rel="noopener">LinkedIn</a> <i class="sep">&middot;</i> <a href="about-ar.html">نبذة</a></p>
   </div>
 </footer>
 

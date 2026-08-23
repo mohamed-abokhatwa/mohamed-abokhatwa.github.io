@@ -68,9 +68,6 @@
     .about-hero-photo img {
       width: 100%;
       height: auto;
-      aspect-ratio: 1;
-      object-fit: cover;
-      object-position: center;
       border-radius:3px;
       border: 1px solid var(--glass-border);
       box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.08);
@@ -237,7 +234,7 @@
     @media(max-width:768px) {
       .about-hero { flex-direction: column-reverse; gap: 40px; padding: 120px 20px 60px; }
       .about-hero-photo { width: 160px; align-self: center; }
-      .about-hero-photo img { border-radius: 50%; aspect-ratio: 1; }
+      .about-hero-photo img { border-radius: 50%; aspect-ratio: 1; object-fit: cover; }
       .two-col { grid-template-columns: 1fr; gap: 32px; }
       .col-label { position: static; }
       .certs-grid, .skills-grid { grid-template-columns: 1fr; }
@@ -349,7 +346,7 @@
     <p class="lead fade-up-3">Strategic Technical and Engineering Manager with 22+ years across large-scale water infrastructure and building MEP — from 700+ km transmission networks and 600,000 m&sup3;/day treatment plants to the mechanical systems of Jeddah Tower.</p>
   </div>
   <div class="about-hero-photo fade-up-2">
-    <img fetchpriority="high" width="1000" height="1000" src="profile.jpg?v=2" alt="Mohamed Abokhatwa">
+    <img fetchpriority="high" width="1011" height="952" src="profile.jpg?v=3" alt="Mohamed Abokhatwa">
   </div>
 </div>
 

@@ -106,12 +106,23 @@ function draw(){
 
   /* ---------- left view: the main in profile ---------- */
   var ax0=42, ax1=split-16;
-  var atop=Math.max(hgl(0),envMax(0))+14, abot=-6;
+  /* Scale to the WHOLE route, not to chainage 0. With a sawtooth grade the
+     later reaches sit far higher than the first, and scaling off x=0 drew
+     more than half the section off the top of the panel — which is why the
+     grade line and both surge envelopes simply stopped part-way across. */
+  var atop=0, abot=1e9;
+  for(var sc=0; sc<=120; sc++){
+    var sk=L_KM*sc/120;
+    atop=Math.max(atop, envMax(sk), hgl(sk), ground(sk));
+    abot=Math.min(abot, envMin(sk), pipe(sk));
+  }
+  atop+=(atop-abot)*0.06; abot-=(atop-abot)*0.05;
   var AX=function(km){ return ax0+(km/L_KM)*(ax1-ax0); };
   var AY=function(m){ return gy-((m-abot)/(atop-abot))*(gy-padT); };
-  var N=200,i,km;
+  var N=560,i,km;
 
   ctx.globalAlpha = inA ? 1 : 0.55;
+  ctx.lineJoin='round'; ctx.lineCap='round';
   ctx.font='500 9px "IBM Plex Mono", monospace'; ctx.textBaseline='middle';
   ctx.textAlign='right';
   for(var lv=0; lv<=Math.ceil(atop/200)*200; lv+=200){
@@ -155,7 +166,7 @@ function draw(){
     km=L_KM*i/N; var bad=envMin(km)<pipe(km);
     if(bad&&run===null) run=km;
     if((!bad||i===N)&&run!==null){
-      ctx.fillStyle=rgba(pal.danger,0.12);
+      ctx.fillStyle=rgba(pal.danger,0.07);
       ctx.fillRect(AX(run),padT,Math.max(2,AX(km)-AX(run)),gy-padT); run=null;
     }
   }

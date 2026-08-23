@@ -6,14 +6,15 @@ if(!document.querySelector('.rt-sheet')) return;
 
 'use strict';
 var $=function(i){return document.getElementById(i);};
-var G=9.81, L_KM=42, COVER=1.5, TWL=196, D=1.2, C_HW=130, ETA_M=0.82;
-var A=Math.PI*D*D/4, Q=1.2;
+var G=9.81, L_KM=700, COVER=1.5, D=2.0, C_HW=130, ETA_M=0.82, SUCT=25;
+var A=Math.PI*D*D/4, Q=4.0;
 var BAR=0.0981, TI=22, ETA_T=0.70, H_TOWER=828, PN=16, PMIN=1.5, PF=12;
 var A_WAVE=1000;
 var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* -- phase 1: the main --------------------------------------- */
-var CP=[[0,4],[2,16],[6,44],[11,70],[17,116],[22,160],[28,198],[33,172],[37,182],[42,185]];
+/* ── phase 1: a 700 km carrier, coast to inland plateau ──────── */
+var CP=[[0,5],[40,70],[95,150],[150,120],[210,260],[275,330],[340,300],
+        [405,430],[470,520],[530,480],[590,600],[645,640],[700,640]];
 function ground(x){
   if(x<=CP[0][0]) return CP[0][1];
   for(var i=0;i<CP.length-1;i++){
@@ -23,13 +24,40 @@ function ground(x){
   return CP[CP.length-1][1];
 }
 function pipe(x){ return ground(x)-COVER; }
+var TWL=ground(L_KM)+15;
 var VEL=Q/A;
 var HF=10.67*(L_KM*1000)*Math.pow(Q,1.852)/(Math.pow(C_HW,1.852)*Math.pow(D,4.87));
-function hgl(x){ return TWL+HF*(1-x/L_KM); }
+var HF_KM=HF/L_KM;
+
+/* one station cannot push 700 km, so the grade is a sawtooth: each reach
+   is worked backwards from the next station's suction, or from the TWL */
+var STATIONS=[0,100,200,300,400,500,600];
+var REACH=[];
+(function(){
+  var edges=STATIONS.concat([L_KM]);
+  for(var i=0;i<STATIONS.length;i++){
+    var x0=edges[i], x1=edges[i+1];
+    var end=(i===STATIONS.length-1)?TWL:(ground(x1)+SUCT);
+    REACH.push({x0:x0,x1:x1,s:end+HF_KM*(x1-x0),e:end});
+  }
+})();
+var TOT_HEAD=(function(){
+  var prev=ground(0)+5, t=0;
+  for(var i=0;i<REACH.length;i++){ t+=REACH[i].s-prev; prev=REACH[i].e; }
+  return t;
+})();
+function reachAt(x){
+  for(var i=0;i<REACH.length;i++) if(x>=REACH[i].x0&&x<=REACH[i].x1) return REACH[i];
+  return REACH[REACH.length-1];
+}
+function hgl(x){
+  var r=reachAt(x);
+  return r.s+(r.e-r.s)*(x-r.x0)/Math.max(1e-9,(r.x1-r.x0));
+}
 var DH0=A_WAVE*VEL/G;
-function envMin(x){ return hgl(x)-DH0*(1-x/L_KM); }
-function envMax(x){ return hgl(x)+DH0*(1-x/L_KM); }
-var E_MAIN=(hgl(0)-ground(0))/(367*ETA_M);
+function envMin(x){ var r=reachAt(x); return hgl(x)-DH0*(1-(x-r.x0)/Math.max(1e-9,(r.x1-r.x0))); }
+function envMax(x){ var r=reachAt(x); return hgl(x)+DH0*(1-(x-r.x0)/Math.max(1e-9,(r.x1-r.x0))); }
+var E_MAIN=TOT_HEAD/(367*ETA_M);
 
 /* -- phase 2: the tower -------------------------------------- */
 var ZD=(PN-PMIN)/BAR, ZF=PF/BAR, ZG=Math.min(ZD,ZF), NZ=Math.ceil(H_TOWER/ZG);
@@ -87,15 +115,28 @@ function draw(){
   ctx.globalAlpha = inA ? 1 : 0.55;
   ctx.font='500 9px "IBM Plex Mono", monospace'; ctx.textBaseline='middle';
   ctx.textAlign='right';
-  for(var lv=0; lv<=Math.ceil(atop/100)*100; lv+=100){
+  for(var lv=0; lv<=Math.ceil(atop/200)*200; lv+=200){
     var ly=AY(lv); if(ly<padT-2||ly>gy+2) continue;
     ctx.strokeStyle=rgba(pal.ink,0.09); ctx.lineWidth=1;
     ctx.beginPath(); ctx.moveTo(ax0,Math.round(ly)+0.5); ctx.lineTo(ax1,Math.round(ly)+0.5); ctx.stroke();
     ctx.fillStyle=rgba(pal.ink3,0.95); ctx.fillText(lv,ax0-6,ly);
   }
   ctx.textAlign='center';
-  for(km=0;km<=L_KM;km+=10){
+  for(km=0;km<=L_KM;km+=100){
     ctx.fillStyle=rgba(pal.ink3,0.95); ctx.fillText(km,AX(km),gy+13);
+  }
+  /* every station, because the sawtooth is the story of a long carrier */
+  ctx.textAlign='center';
+  for(var si=0;si<STATIONS.length;si++){
+    var sx=AX(STATIONS[si]);
+    ctx.strokeStyle=rgba(pal.fire,0.45); ctx.lineWidth=1;
+    ctx.setLineDash([2,3]);
+    ctx.beginPath(); ctx.moveTo(Math.round(sx)+0.5,padT+2); ctx.lineTo(Math.round(sx)+0.5,gy); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle=rgba(pal.fire,0.9);
+    ctx.fillRect(sx-2.5,AY(hgl(STATIONS[si]))-2.5,5,5);
+    ctx.fillStyle=rgba(pal.ink3,0.9);
+    ctx.fillText('S'+(si+1), sx, padT+7);
   }
   /* ground */
   ctx.beginPath(); ctx.moveTo(AX(0),AY(ground(0)));

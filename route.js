@@ -100,7 +100,16 @@ function draw(){
   ctx.setTransform(dpr,0,0,dpr,0,0);
   ctx.clearRect(0,0,w,h);
 
-  var padT=14, padB=24, split=Math.round(w*0.70);
+  var padT=14, padB=24;
+  /* Cap the drawing. Edge to edge on a wide laptop the section stretches past
+     six to one and the curves flatten into horizontal lines; a drawing sheet
+     has a margin, so give it one and centre it in the band. */
+  var CW=Math.min(w-24, 1320), cx0=Math.round((w-CW)/2), cx1=cx0+CW;
+  var split=cx0+Math.round(CW*0.70);
+  if(S.gutter!==cx0){
+    S.gutter=cx0;
+    document.documentElement.style.setProperty('--rt-gutter', cx0+'px');
+  }
   var gy = h-padB;                         /* the shared grade line */
   var inA = S.p < 1;
 
@@ -110,7 +119,7 @@ function draw(){
      running from one station to the next, the grade falling on friction and
      the two surge envelopes closing on the far end. The window pans as the
      reader travels the route. */
-  var ax0=42, ax1=split-16, pTop=padT+22;
+  var ax0=cx0+42, ax1=split-16, pTop=padT+22;
   var curKm=pToCh(Math.min(1,S.p));
   var rNow=reachAt(Math.min(L_KM-0.001,curKm));
   if(S.wx0==null){ S.wx0=rNow.x0; S.wx1=rNow.x1; }
@@ -222,10 +231,10 @@ function draw(){
   ctx.beginPath(); ctx.moveTo(split-4,padT-6); ctx.lineTo(split-4,gy+8); ctx.stroke();
   /* the shared grade line runs across both views */
   ctx.strokeStyle=rgba(pal.ink,0.85); ctx.lineWidth=1.6;
-  ctx.beginPath(); ctx.moveTo(ax0,Math.round(gy)+0.5); ctx.lineTo(w-10,Math.round(gy)+0.5); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(ax0,Math.round(gy)+0.5); ctx.lineTo(cx1-10,Math.round(gy)+0.5); ctx.stroke();
 
   /* ---------- right view: the tower in elevation ---------- */
-  var bx0=split+16, bx1=w-14;
+  var bx0=split+16, bx1=cx1-14;
   var railX=bx0+22;                      /* elevation ticks live here */
   var labX =bx1-56;                      /* zone callouts start here  */
   var bcx  =(railX+14+labX)/2;

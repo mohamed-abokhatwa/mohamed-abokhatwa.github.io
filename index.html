@@ -56,9 +56,10 @@
     width:48px; height:48px; padding:0 !important; justify-content:center;
   }
   html.rt-band .fab-glass-text, html.rt-band .fab-text{display:none;}
+  html.rt-band .fab-consult{inset-inline-end:max(1.75rem, var(--rt-gutter, 1.75rem)) !important;}
   html.rt-band .fab-wa{
     inset-inline-start:auto !important;
-    inset-inline-end:calc(1.75rem + 60px) !important;
+    inset-inline-end:calc(max(1.75rem, var(--rt-gutter, 1.75rem)) + 60px) !important;
   }
 }
 
@@ -67,7 +68,10 @@
 
 /* -- instrument ---------------------------------------------- */
 .rt-cluster{
-  position:fixed; z-index:55; inset-inline-start:26px; bottom:calc(var(--rt-rail-h) + 18px);
+  position:fixed; z-index:55; bottom:calc(var(--rt-rail-h) + 18px);
+  /* --rt-gutter is the drawing's own margin, set by route.js, so the
+     instrument sits against the sheet rather than the screen edge. */
+  inset-inline-start:max(26px, var(--rt-gutter, 26px));
   display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; width:400px;
   background:var(--rule); border:1px solid var(--rule); border-radius:3px;
   overflow:hidden; box-shadow:var(--shadow);
@@ -91,7 +95,9 @@
    so the page only needs a comfortable tail; without JS it never retires. */
 body{padding-bottom:calc(var(--rt-rail-h) + 130px);}
 html.rt-live body{padding-bottom:72px;}
-.rt-page{position:relative; z-index:2; padding-inline-start:456px; padding-inline-end:40px;}
+.rt-page{position:relative; z-index:2; padding-inline-end:40px;
+  /* clear the instrument, which now sits at the drawing's own margin */
+  padding-inline-start:calc(max(26px, var(--rt-gutter, 26px)) + 430px);}
 .rt-wrap{max-width:700px;}
 .rt-wrap-wide{max-width:1020px;}
 section{position:relative; padding:86px 0;}
@@ -169,7 +175,8 @@ p strong{color:var(--text-primary); font-weight:600;}
 .rt-cta:hover{opacity:.85;}
 .rt-cta.ghost{background:transparent; color:var(--text-primary); border-color:var(--rule);}
 .rt-ctas{display:flex; gap:10px; flex-wrap:wrap; margin-top:24px;}
-@media (max-width:1240px){ .rt-cluster{width:344px;} .rt-page{padding-inline-start:394px;} }
+@media (max-width:1240px){ .rt-cluster{width:344px;}
+  .rt-page{padding-inline-start:calc(max(26px, var(--rt-gutter, 26px)) + 368px);} }
 @media (max-width:1040px){
   :root{--rt-rail-h:232px;}
   .rt-cluster{inset-inline:20px; width:auto; bottom:calc(var(--rt-rail-h) + 12px);}
@@ -2281,7 +2288,7 @@ function mcSubmit(e) {
   else run();
 })();
 </script>
-<script src="route.js?v=23"></script>
+<script src="route.js?v=25"></script>
 <script src="theme.js?v=13"></script>
 </body>
 </html>

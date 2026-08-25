@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mohamed Abokhatwa — Water Engineering</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="stylesheet" href="style.css?v=18">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=3">
@@ -97,8 +97,13 @@
    so the page only needs a comfortable tail; without JS it never retires. */
 body{padding-bottom:calc(var(--rt-rail-h) + 130px);}
 html.rt-live body{padding-bottom:72px;}
+:root{--rt-lane:430px;}
 .rt-page{position:relative; z-index:2; max-width:var(--rt-comp); margin-inline:auto;
-  padding-inline-start:430px; padding-inline-end:24px;}
+  padding-inline-start:var(--rt-lane); padding-inline-end:24px;}
+/* The archive sits past the end of the route, where the instrument has already
+   retired — so it should not keep standing in the lane reserved for it. */
+.rt-sect-archive{margin-inline-start:calc(-1 * var(--rt-lane));}
+.rt-sect-archive > .rt-wrap-wide{margin-inline:auto;}
 .rt-wrap{max-width:700px;}
 .rt-wrap-wide{max-width:1020px;}
 section{position:relative; padding:86px 0;}
@@ -176,9 +181,9 @@ p strong{color:var(--text-primary); font-weight:600;}
 .rt-cta:hover{opacity:.85;}
 .rt-cta.ghost{background:transparent; color:var(--text-primary); border-color:var(--rule);}
 .rt-ctas{display:flex; gap:10px; flex-wrap:wrap; margin-top:24px;}
-@media (max-width:1240px){ .rt-cluster{width:344px;} .rt-page{padding-inline-start:394px;} }
+@media (max-width:1240px){ :root{--rt-lane:394px;} .rt-cluster{width:344px;} }
 @media (max-width:1040px){
-  :root{--rt-rail-h:232px;}
+  :root{--rt-rail-h:232px; --rt-lane:0px;}
   .rt-cluster{inset-inline:20px; width:auto; bottom:calc(var(--rt-rail-h) + 12px);}
   .rt-page{padding:0 24px;}
   body{padding-bottom:calc(var(--rt-rail-h) + 130px);}
@@ -207,8 +212,12 @@ p strong{color:var(--text-primary); font-weight:600;}
 
     /* browse by topic */
     .cat-section { margin: 34px 0 26px; }
-    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
-    .cat-card { position: relative; background: var(--sheet); border: 0; padding: 16px 16px 14px; text-align:start; cursor: pointer; font-family: inherit; transition: background .16s; display: block; width: 100%; }
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1px;
+      /* No fill behind the grid: with ten cards the last row is rarely full, and a
+         painted background turned every unused cell into a solid block. Each card
+         carries its own rule instead, so empty cells simply are not there. */
+      background: transparent; border: 0; border-radius: 0; }
+    .cat-card { position: relative; background: var(--sheet); border: 1px solid var(--border); border-radius: 3px; padding: 16px 16px 14px; text-align:start; cursor: pointer; font-family: inherit; transition: background .16s; display: block; width: 100%; }
     .cat-card:hover { background: var(--bg-2); }
     .cat-card.active { background: var(--water-w); }
     .cat-card.active .cat-card-icon { color: var(--water); }

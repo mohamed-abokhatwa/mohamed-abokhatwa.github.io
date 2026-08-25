@@ -19,9 +19,9 @@
   <title>محمد أبوخطوة — هندسة المياه</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
-  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=3">
 
   <style>
     body { font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif; }
@@ -54,6 +54,10 @@
 
 
 /* -- the sheet: two views, one grade line -------------------- */
+/* The page is one composition: a 430px lane for the instrument plus the
+   1020px content column. Centre that, so on a wide screen the whole
+   thing sits in the middle instead of drifting right. */
+:root{--rt-comp:1474px; --rt-pad:max(26px, calc((100vw - var(--rt-comp)) / 2));}
 .rt-sheet{
   position:fixed; left:0; right:0; bottom:0; height:var(--rt-rail-h); z-index:50;
   border-top:1px solid var(--rule); background:var(--sheet-2);
@@ -75,10 +79,10 @@
     width:48px; height:48px; padding:0 !important; justify-content:center;
   }
   html.rt-band .fab-glass-text, html.rt-band .fab-text{display:none;}
-  html.rt-band .fab-consult{inset-inline-end:max(1.75rem, var(--rt-gutter, 1.75rem)) !important;}
+  html.rt-band .fab-consult{inset-inline-end:var(--rt-pad) !important;}
   html.rt-band .fab-wa{
     inset-inline-start:auto !important;
-    inset-inline-end:calc(max(1.75rem, var(--rt-gutter, 1.75rem)) + 60px) !important;
+    inset-inline-end:calc(var(--rt-pad) + 60px) !important;
   }
 }
 
@@ -88,9 +92,7 @@
 /* -- instrument ---------------------------------------------- */
 .rt-cluster{
   position:fixed; z-index:55; bottom:calc(var(--rt-rail-h) + 18px);
-  /* --rt-gutter is the drawing's own margin, set by route.js, so the
-     instrument sits against the sheet rather than the screen edge. */
-  inset-inline-start:max(26px, var(--rt-gutter, 26px));
+  inset-inline-start:var(--rt-pad);
   display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; width:400px;
   background:var(--rule); border:1px solid var(--rule); border-radius:3px;
   overflow:hidden; box-shadow:var(--shadow);
@@ -114,9 +116,8 @@
    so the page only needs a comfortable tail; without JS it never retires. */
 body{padding-bottom:calc(var(--rt-rail-h) + 130px);}
 html.rt-live body{padding-bottom:72px;}
-.rt-page{position:relative; z-index:2; padding-inline-end:40px;
-  /* clear the instrument, which now sits at the drawing's own margin */
-  padding-inline-start:calc(max(26px, var(--rt-gutter, 26px)) + 430px);}
+.rt-page{position:relative; z-index:2; max-width:var(--rt-comp); margin-inline:auto;
+  padding-inline-start:430px; padding-inline-end:24px;}
 .rt-wrap{max-width:700px;}
 .rt-wrap-wide{max-width:1020px;}
 section{position:relative; padding:86px 0;}
@@ -194,8 +195,7 @@ p strong{color:var(--text-primary); font-weight:600;}
 .rt-cta:hover{opacity:.85;}
 .rt-cta.ghost{background:transparent; color:var(--text-primary); border-color:var(--rule);}
 .rt-ctas{display:flex; gap:10px; flex-wrap:wrap; margin-top:24px;}
-@media (max-width:1240px){ .rt-cluster{width:344px;}
-  .rt-page{padding-inline-start:calc(max(26px, var(--rt-gutter, 26px)) + 368px);} }
+@media (max-width:1240px){ .rt-cluster{width:344px;} .rt-page{padding-inline-start:394px;} }
 @media (max-width:1040px){
   :root{--rt-rail-h:232px;}
   .rt-cluster{inset-inline:20px; width:auto; bottom:calc(var(--rt-rail-h) + 12px);}
@@ -1956,7 +1956,7 @@ function mcSubmitAr(e) {
   else run();
 })();
 </script>
-<script src="route.js?v=25"></script>
+<script src="route.js?v=26"></script>
 <script src="theme.js?v=13"></script>
 </body>
 </html>

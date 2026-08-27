@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mohamed Abokhatwa — Water Engineering</title>
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
-  <link rel="stylesheet" href="style.css?v=18">
+  <link rel="stylesheet" href="style.css?v=19">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=3">
@@ -348,6 +348,22 @@ p strong{color:var(--text-primary); font-weight:600;}
     .hidden-article.visible { display: flex !important; animation: articleFadeIn 0.4s ease forwards; }
     @keyframes articleFadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
 
+    /* ── EngSpace ─────────────────────────────────────── */
+    .app-panel { background:var(--sheet); border:1px solid var(--border);
+      border-inline-start:3px solid var(--accent); border-radius:3px; padding:28px 30px; margin-top:6px; }
+    .app-lede { font-size:16.5px; line-height:1.65; color:var(--text-secondary); max-width:74ch; margin:0 0 14px; }
+    .app-note { font-family:var(--font-mono); font-size:12px; line-height:1.7;
+      color:var(--text-tertiary); max-width:70ch; margin:0; }
+    .app-stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px;
+      background:var(--rule); border:1px solid var(--rule); border-radius:3px; margin:22px 0 22px; }
+    .app-stats > div { background:var(--sheet); padding:14px 16px; min-width:0; }
+    .app-stats b { display:block; font-family:var(--font-display); font-size:21px; font-weight:700;
+      letter-spacing:-.03em; line-height:1.1; color:var(--text-primary); }
+    .app-stats span { display:block; margin-top:5px; font-family:var(--font-mono); font-size:9px;
+      letter-spacing:.12em; text-transform:uppercase; color:var(--text-tertiary); line-height:1.5; }
+    .app-cta { display:flex; gap:12px; flex-wrap:wrap; }
+    @media (max-width:720px){ .app-stats{grid-template-columns:1fr 1fr;} .app-panel{padding:24px 22px;} }
+
     /* ── Filter UI ── */
     .course-promo { display:flex; align-items:center; gap:32px; justify-content:space-between;
       text-decoration:none; padding:28px 32px; border-radius:3px;
@@ -414,6 +430,7 @@ p strong{color:var(--text-primary); font-weight:600;}
       <li><a href="mep-course/">Course</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
+      <li><a href="https://engspace.app" target="_blank" rel="noopener">EngSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -674,6 +691,29 @@ p strong{color:var(--text-primary); font-weight:600;}
   </p>
 </div></section>
 
+
+<section data-at="el:830"><div class="rt-wrap-wide">
+  <div class="rt-tag"><span class="rt-p">SOFTWARE</span><span class="rt-ln"></span><span class="rt-nm">EngSpace &middot; the workspace</span></div>
+  <h2>The check that runs before<br>anything leaves the office.</h2>
+  <div class="app-panel">
+    <p class="app-lede">EngSpace reads your contract, specifications, drawings and years of correspondence, then
+      checks what you are about to issue against them &mdash; and keeps the record that protects you when the answer
+      is slow. Registers, drawing studios, sign-off chains and a claims ledger around one project record, on
+      hardware you own.</p>
+    <p class="app-note">I wrote it inside the delivery of a live mega-project, and it has been used every working
+      day since. The figures below are measurements from that project, not marketing.</p>
+    <div class="app-stats">
+      <div><b>7,577+</b><span>Documents indexed, one live project</span></div>
+      <div><b>EN + AR</b><span>Scanned letters, stamped drawings</span></div>
+      <div><b>100&nbsp;%</b><span>On hardware you own</span></div>
+      <div><b>$39</b><span>A month, one engineer</span></div>
+    </div>
+    <div class="app-cta">
+      <a class="btn btn-primary" href="https://engspace.app" target="_blank" rel="noopener">Open engspace.app &rarr;</a>
+      <a class="btn btn-ghost" href="https://engspace.app/pricing.html" target="_blank" rel="noopener">See pricing</a>
+    </div>
+  </div>
+</div></section>
 
 <section class="rt-sect-archive" data-at="el:832"><div class="rt-wrap-wide">
   <div class="rt-tag"><span class="rt-p">THE ARCHIVE</span><span class="rt-ln"></span><span class="rt-nm">Everything, by subject</span></div>

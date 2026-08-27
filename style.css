@@ -385,6 +385,8 @@ a { color: var(--accent); }
 }
 .btn-ghost:hover { border-color: var(--text-primary); background: transparent; }
 .btn-ghost::after { content: ' →'; }
+/* the arrow has to follow the reading direction, not the glyph in the source */
+html[lang="ar"] .btn-ghost::after, [dir="rtl"] .btn-ghost::after { content: ' ←'; }
 
 /* ─── TABLES ──────────────────────────────────────────── */
 table {

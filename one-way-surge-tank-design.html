@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One-Way Surge Tanks at the Knee: Cutting the Surge Vessel by Nearly Two-Thirds — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=3">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:3px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:3px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:var(--success);} .callout.green .lbl{color:var(--success);}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:start;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:start;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:end;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:3px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:3px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:var(--air);}
+    .fig-head .fsub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid var(--border);background:var(--bg-2);}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+    .ctrl label span{color:var(--air);font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:var(--danger);}
+    .ctrl .hint{font-size:11.5px;color:var(--text-secondary);margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:3px;font-size:13px;font-family:inherit;background:var(--sheet);color:var(--text-primary);}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid var(--border);}
+    .readout .cell{padding:14px 16px;border-right:1px solid var(--border);}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary);}
+    .readout .v{font-size:22px;font-weight:700;color:var(--air);font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:var(--text-secondary);}
+    .badge{display:inline-block;padding:3px 10px;border-radius:3px;font-size:12px;font-weight:600;}
+    .badge.good{background:var(--success-w);color:var(--success);}
+    .badge.warn{background:var(--warning-w);color:var(--warning);}
+    .badge.bad{background:var(--danger-w);color:var(--danger);}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:var(--air);text-decoration:none;border:1px solid var(--border);border-radius:3px;padding:4px 11px;background:var(--sheet);transition:.18s;}
+    .calc-link:hover{border-color:var(--air);background:var(--bg-2);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="How a one-way surge tank at the knee of a rising pumping main shrinks the surge vessel at the pump: the physics, a worked 12 km DN800 example with four protection options, sizing tank and vessel together, the drain limit on tank level, tank details and the Bentley HAMMER set-up, with three interactive charts.">
+  <meta property="og:title" content="One-Way Surge Tanks at the Knee: Cutting the Surge Vessel by Nearly Two-Thirds | Mohamed Abokhatwa">
+  <meta property="og:description" content="On a 12 km DN800 main that climbs 30 m to a knee, a surge vessel alone needs a 104.5 m³ shell. An 8 m one-way tank at the knee moves the critical point onto the plateau and cuts the shell to 37.8 m³, 64 % smaller.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/one-way-surge-tank-design.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-one-way-surge-tank-design.jpg">
+  <meta property="og:image:alt" content="Technical illustration on a dark navy background: a cutaway feed tank, partly filled by a refill line at the top, joined through a check valve to a pipeline climbing towards a crest, with a cyan HGL, labels for feed tank, check valve, refill line and crest, and an inset chart of the downsurge envelope along the pipeline">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="One-Way Surge Tanks at the Knee: Cutting the Surge Vessel by Nearly Two-Thirds | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="On a 12 km DN800 main that climbs 30 m to a knee, a surge vessel alone needs a 104.5 m³ shell. An 8 m one-way tank at the knee moves the critical point onto the plateau and cuts the shell to 37.8 m³, 64 % smaller.">
+  <link rel="canonical" href="https://abokhatwa.com/one-way-surge-tank-design.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "One-Way Surge Tanks at the Knee: Cutting the Surge Vessel by Nearly Two-Thirds",
+  "description": "Design of one-way surge tanks at the knee of a pumping main: tank and vessel sized together, the drain limit on tank level, tank volume, connection, refill and vent, and the Bentley HAMMER set-up.",
+  "image": "https://abokhatwa.com/og-one-way-surge-tank-design.jpg",
+  "datePublished": "2026-09-16",
+  "dateModified": "2026-09-16",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/one-way-surge-tank-design.html" }
+}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Surge &amp; Transient Analysis</span></div>
+  <span class="tag">Surge Analysis &middot; One-Way Surge Tank &middot; Pipeline Profile</span>
+  <h1>One-Way Surge Tanks at the Knee: Cutting the Surge Vessel by Nearly Two-Thirds</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>September 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>33 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="one-way-surge-tank-design.webp" alt="Technical illustration on a dark navy background: a cutaway feed tank, partly filled by a refill line at the top, joined through a check valve to a pipeline climbing towards a crest, with a cyan HGL, labels for feed tank, check valve, refill line and crest, and an inset chart of the downsurge envelope along the pipeline">
+</div>
+
+<div class="article-body">
+
+<p class="lead">On a main that climbs out of the pump station and then runs level, the point that governs the surge protection after a power cut is not the pump but the knee, where the climb turns flat. On our 12&nbsp;km DN800 example, a surge vessel that holds the knee at +3.0&nbsp;m on its own needs <strong>43.1&nbsp;m&sup3; of gas in a 104.5&nbsp;m&sup3; shell</strong>. Put a low one-way tank at the knee, its water 8&nbsp;m above the pipe behind a check valve, and the vessel falls to <strong>15.9&nbsp;m&sup3; of gas in a 37.8&nbsp;m&sup3; shell &mdash; 64&nbsp;% smaller</strong> &mdash; for 20.7&nbsp;m&sup3; of water that the tank gives up. This article designs that pair, and shows the two ways it goes wrong: a tank set too high, and a tank asked to work alone.</p>
+
+<h2 id="knee-weak-point">1 &middot; Why the knee is the weak point</h2>
+<p>When every pump trips at once, the flow at the station stops and a low-pressure wave leaves along the main. Its size is the Joukowsky head [1]:</p>
+<div class="eq">\[ \Delta H = \frac{a\,\Delta V}{g} = \frac{1050 \times 1.393}{9.81} = 149.1\ \text{m} \]</div>
+<p>That is more than the 94.8&nbsp;m (85.0 + 9.8) the pump end has above vapour, so without protection the wave is cut off at vapour and the column separates. What a point on the pipe can tolerate, though, is a drop in <em>pressure</em>, and pressure is the HGL minus the pipe's own elevation:</p>
+<div class="eq">\[ p(x,t) = H(x,t) - z(x) \;\geq\; +3.0\ \text{m} \]</div>
+<p>Our profile climbs 30&nbsp;m in its first 300&nbsp;m and then runs level for 11.7&nbsp;km, so the steady pressure falls from 85.0&nbsp;m at the pump to 54.0&nbsp;m at the knee although the HGL has dropped only 1.0&nbsp;m. The knee has 51.0&nbsp;m to lose before it reaches the criterion; the pump end has 82.0&nbsp;m.</p>
+<p>That matters most for a vessel at the pump. It fights the wave for the first seconds; after that the column slows as one mass, the HGL between the pump and the knee lies almost level, and the pressure at the knee is roughly the vessel's head minus 30&nbsp;m:</p>
+<div class="eq">\[ p_{knee} \approx H_{pump} - z_{knee} \quad\Rightarrow\quad H_{pump,\,min} \approx z_{knee} + 3.0 = 33.0\ \text{m} \]</div>
+<p>So the vessel must still hold about 33&nbsp;m when its gas is at its largest. In the vessel-alone run the knee touches +3.0&nbsp;m nearly two minutes after the trip, and the pump end bottoms out at +32.7&nbsp;m a few seconds later. The polytropic gas law sets the bill [2, 3]:</p>
+<div class="eq">\[ P_0 V_0^{\,n} = P_{min} V_{max}^{\,n} \quad\Rightarrow\quad V_0 = \frac{\Delta V_w}{\left(P_0/P_{min}\right)^{1/n} - 1} \]</div>
+<p>with \(P_0\) = 85.0 + 10.33 = 95.3&nbsp;m absolute, \(P_{min}\) = 32.7 + 10.33 = 43.0&nbsp;m absolute, \(n\) = 1.2 and \(\Delta V_w\) the water pushed into the line. While its pressure falls to less than half, the gas grows only \((95.3/43.0)^{1/1.2}\) = 1.94 times, and by then the vessel has delivered 40.5&nbsp;m&sup3;, so it needs 40.5 / 0.94 = <strong>43.1&nbsp;m&sup3; of gas</strong>. On the flat reference main, the site's reference vessel &mdash; 3.5&nbsp;m&sup3; of gas, same differential connection &mdash; holds +4.3&nbsp;m with margin to spare: a 30&nbsp;m climb in the first 300&nbsp;m has multiplied the gas more than twelve times.</p>
+
+<h2 id="how-it-works">2 &middot; How a one-way surge tank works</h2>
+<p>A one-way surge tank &mdash; the literature also calls it a feed tank or a discharge tank [4, 5] &mdash; is an unpressurised tank beside the main, connected through a check valve that opens only towards the pipe. Its surface stands \(h_T\) above the pipe. While the main's pressure there exceeds \(h_T\) the valve stays shut and the tank does nothing; once the downsurge pulls it below, the valve opens and the tank feeds the line at its own head:</p>
+<div class="eq">\[ H_{knee} = z_{knee} + h_T, \qquad q_T = Q_{down} - Q_{up} \;\geq\; 0, \qquad V_{draw} = \int q_T\,dt \]</div>
+<p>The knee is held at the tank level for as long as water remains. When the main recovers the valve closes, and a small refill line tops the tank up. In a method-of-characteristics model it is an interior boundary with the head fixed while the tank feeds [1, 2].</p>
+<h3>Not a standpipe, and not an air valve</h3>
+<p>An open surge tank is connected freely, so its surface must stand at the steady HGL &mdash; here a column 54.0&nbsp;m above the pipe, before any upsurge. The one-way tank sits far below the HGL and needs no pressure rating, but it acts at its own node: it cannot stop the first downsurge reaching the pump end, and alone it leaves the pump end at vapour, although once open its head raises the later minima on the pump side (section 8). An air valve at the knee is still worth fitting for filling, draining and venting [6], but it admits air only once the pressure falls below atmospheric, so it cannot hold +3.0&nbsp;m (see <a href="air-admission-networks.html">air admission in networks</a>).</p>
+<h3>The rule that limits the tank level</h3>
+<p>At rest the main settles at the level of the delivery reservoir. A tank surface above that opens its check valve and drains through the pipeline after every stop, so the level must stay below the lowest downstream HGL at rest:</p>
+<div class="eq">\[ h_T \;\lt\; H_{rest} - z_{knee} = 44.8 - 30.0 = 14.8\ \text{m} \]</div>
+<p>Exceed it and a rigid-column estimate with the friction below the knee gives the drain rate:</p>
+<div class="eq">\[ Q_{drain} = \sqrt{\frac{z_{knee} + h_T - H_{rest}}{r}}, \qquad r = \frac{84.0 - 44.8}{0.70^2} = 80\ \text{s}^2/\text{m}^5 \]</div>
+<p>A 16&nbsp;m tank would drain at \(\sqrt{1.2/80}\) = 0.12&nbsp;m&sup3;/s, indefinitely; the method-of-characteristics run gives 0.13&nbsp;m&sup3;/s, within 3&nbsp;% of the estimate.</p>
+
+<h2 id="example">3 &middot; The example profile and the modelling basis</h2>
+<p>The main is the series reference with one change of profile: 12&nbsp;km of DN800 ductile iron K9 [7] carrying 0.70&nbsp;m&sup3;/s (2,520&nbsp;m&sup3;/h, 1.39&nbsp;m/s), wave speed 1,050&nbsp;m/s, HGL 85.0&nbsp;m at the pump and 44.8&nbsp;m at the delivery reservoir, PN16, checked against 136&nbsp;m allowable (the series criterion; design pressures and the surge allowance are defined in EN 805 [8]). The ground rises 30&nbsp;m over the first 300&nbsp;m and stays level at +30&nbsp;m to the end. The load case is a power failure that trips every pump at once, the usual governing event [9] (the alternatives are compared in <a href="surge-scenarios-pump-stations.html">surge scenarios in pump stations</a>).</p>
+<div class="tbl-wrap"><table>
+<caption>Steady state along the knee profile at 0.70 m&sup3;/s</caption>
+<thead><tr><th>Point</th><th class="num">Pipe elevation (m)</th><th class="num">HGL (m)</th><th class="num">Pressure (m)</th><th class="num">Margin to +3.0 m (m)</th></tr></thead>
+<tbody>
+<tr><td>Pump, 0 m</td><td class="num">0.0</td><td class="num">85.0</td><td class="num">85.0</td><td class="num">82.0</td></tr>
+<tr><td>Knee, 300 m</td><td class="num">30.0</td><td class="num">84.0</td><td class="num">54.0</td><td class="num">51.0</td></tr>
+<tr><td>Plateau, 600 m</td><td class="num">30.0</td><td class="num">83.0</td><td class="num">53.0</td><td class="num">50.0</td></tr>
+<tr><td>Plateau, 4,400 m</td><td class="num">30.0</td><td class="num">70.3</td><td class="num">40.3</td><td class="num">37.3</td></tr>
+<tr><td>Delivery reservoir, 12,000 m</td><td class="num">30.0</td><td class="num">44.8</td><td class="num">14.8</td><td class="num">11.8</td></tr>
+</tbody></table></div>
+<p>The transient numbers come from a method-of-characteristics model with a vapour cavity model, cross-checked with a gas cavity model and an independent second code [1, 10]: 120 reaches of 100&nbsp;m, 150&nbsp;s runs, pumps stopping instantly behind their check valves (the conservative case; see <a href="pump-inertia-flywheel-surge.html">the flywheel article</a>). The vessel has a DN400 differential connection, loss coefficient 2 out and 10 in (see <a href="surge-vessel-differential-orifice.html">the differential orifice</a>), \(n\) = 1.2, and a shell of largest gas volume / 0.8. The tank is idealised: loss-free connection, constant level, 800&nbsp;m&sup3; available. Each vessel is the smallest steady gas volume, found by bisection, that keeps the whole line at +3.0&nbsp;m.</p>
+<div class="callout warn">
+  <span class="lbl">Where the model is uncertain, and what that means for design</span>
+  Where the pressure reaches vapour the column separates, and the spike when the cavity collapses depends on how the cavity is represented. In this series the gas cavity model [10] puts those peaks between 18&nbsp;% lower and 10&nbsp;% higher than the vapour cavity model, so collapse-governed maxima are quoted as a range across both. Do not design on a collapse peak: protect the downsurge so that no cavity forms. None of these figures is HAMMER output, and a project analysis must be run in HAMMER, or an equivalent code, on the surveyed profile.
+</div>
+
+<h2 id="four-options">4 &middot; Worked example: four options on one profile</h2>
+<div class="tbl-wrap"><table>
+<caption>All pumps trip; minimum criterion +3.0 m; PN16 allowable 136 m</caption>
+<thead><tr><th>Option</th><th class="num">Line min (m)</th><th>Where</th><th class="num">Knee min (m)</th><th class="num">Pump-end min (m)</th><th class="num">Line max (m)</th><th class="num">Tank draw (m&sup3;)</th><th class="num">Gas at max (m&sup3;)</th></tr></thead>
+<tbody>
+<tr><td>No protection</td><td class="num">&minus;9.8</td><td>from the pump</td><td class="num">&minus;9.8</td><td class="num">&minus;9.8</td><td class="num">about 140</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>
+<tr><td>One-way tank only, 8 m</td><td class="num">&minus;9.8</td><td>from the pump</td><td class="num">+8.0</td><td class="num">&minus;9.8</td><td class="num">160&ndash;170</td><td class="num">27.5</td><td class="num">&ndash;</td></tr>
+<tr><td>Vessel alone, 43.1 m&sup3; gas</td><td class="num">+3.0</td><td>300 m, the knee</td><td class="num">+3.0</td><td class="num">+32.7</td><td class="num">85.0</td><td class="num">&ndash;</td><td class="num">83.6</td></tr>
+<tr><td>Tank 8 m + vessel 15.9 m&sup3; gas</td><td class="num">+3.0</td><td>4,400 m, the plateau</td><td class="num">+8.0</td><td class="num">+33.8</td><td class="num">85.0</td><td class="num">20.7</td><td class="num">30.2</td></tr>
+</tbody></table></div>
+<p><strong>No protection.</strong> The line goes to vapour from the pump outwards, and the collapse peak at the pump end is about 140&nbsp;m (139&nbsp;m with the vapour cavity model, 141&nbsp;m with the gas cavity model) &mdash; above 136&nbsp;m either way.</p>
+<p><strong>Vessel alone.</strong> 43.1&nbsp;m&sup3; of gas expands to 83.6&nbsp;m&sup3;, so the shell is 83.6 / 0.8 = <strong>104.5&nbsp;m&sup3;</strong>. The minimum lands on the knee and nothing rises above the steady 85.0&nbsp;m. It works; it is simply very large.</p>
+<p><strong>Tank and vessel.</strong> With the knee held at +8.0&nbsp;m the vessel needs only 15.9&nbsp;m&sup3; of gas, and its pump-end minimum of +33.8&nbsp;m gives the expansion directly:</p>
+<div class="eq">\[ V_{max} = 15.9 \left(\frac{95.3}{33.8 + 10.33}\right)^{1/1.2} = 30.2\ \text{m}^3, \qquad \text{shell} = \frac{30.2}{0.8} = 37.8\ \text{m}^3 \]</div>
+<p>That is 1 &minus; 37.8 / 104.5 = <strong>64&nbsp;% less shell</strong>. The water accounting shows why. Alone, the vessel pushes 40.5&nbsp;m&sup3; into the line. In the pair it pushes 14.3&nbsp;m&sup3; (30.2 &minus; 15.9) and the tank supplies 20.7&nbsp;m&sup3; &mdash; 35.0&nbsp;m&sup3; in all, most of it from an open tank 8&nbsp;m above the pipe instead of from compressed gas.</p>
+<p><strong>Tank alone.</strong> The knee is held at +8.0&nbsp;m, but the pump end, 300&nbsp;m down the slope behind a closed check valve, still reaches vapour and its collapse peak rises from about 140&nbsp;m to <strong>160&ndash;170&nbsp;m</strong>; the far plateau, beyond 7.4&nbsp;km, separates too. On this profile a one-way tank is never a stand-alone solution.</p>
+<div class="callout key">
+  <span class="lbl">What the tank buys</span>
+  The tank does not replace the vessel. It takes the knee off the vessel's hands, and the vessel's critical point moves out onto the plateau.
+</div>
+
+<h2 id="int-profile">5 &middot; Interactive: the profile and the envelopes</h2>
+<p>The red minimum HGL must stay above the green line (ground + 3.0&nbsp;m) everywhere; where it lies on the grey dotted line the pipe is at vapour.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Minimum and maximum HGL along the knee profile after a total pump trip</div>
+    <div class="fsub">Envelopes from the method-of-characteristics runs described in section 3 (pressure envelopes plus pipe elevation). The maximum line is the vapour cavity model's envelope; where the column separates, the short amber bar at the pump end and the readout give the collapse peak as a range across both cavity models. Readouts cover the whole 12 km whatever the window.</div>
+  </div>
+  <div class="chart-box"><canvas id="profChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Protection option</label>
+      <select id="sScn1">
+        <option value="0">No protection</option>
+        <option value="1">One-way tank only, 8 m</option>
+        <option value="2">Vessel alone, 43.1 m³ gas</option>
+        <option value="3" selected>Tank 8 m + vessel 15.9 m³ gas</option>
+      </select>
+      <div class="hint">Each vessel is the smallest that keeps the whole line at +3.0 m in its own case.</div>
+    </div>
+    <div class="ctrl">
+      <label>Show the first <span id="vKm">6 km</span></label>
+      <input type="range" id="sKm" min="1" max="12" value="6" step="1">
+      <div class="hint">The knee is at 0.3 km; the plateau critical point with the tank is at 4.4 km.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Line minimum</div><div class="v" id="rMin1">+3.0 <small>m at 4,400 m</small></div></div>
+    <div class="cell"><div class="k">Knee, 300 m</div><div class="v" id="rKnee1">+8.0 <small>m</small></div></div>
+    <div class="cell"><div class="k">Pump end</div><div class="v" id="rPump1">+33.8 <small>m</small></div></div>
+    <div class="cell"><div class="k">Line maximum</div><div class="v" id="rMax1">85.0 <small>m</small></div></div>
+    <div class="cell"><div class="k">Tank draw</div><div class="v" id="rTank1">20.7 <small>m&sup3;</small></div></div>
+    <div class="cell"><div class="k">Vessel gas max</div><div class="v" id="rGas1">30.2 <small>m&sup3;</small></div></div>
+    <div class="cell"><div class="k">Criterion</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rOk1"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">At the default &mdash; the 8&nbsp;m tank with 15.9&nbsp;m&sup3; of vessel gas &mdash; the minimum HGL touches ground + 3.0&nbsp;m at <strong>4,400&nbsp;m</strong> on the plateau, the knee is held at +8.0&nbsp;m, the pump end at +33.8&nbsp;m, and nothing rises above 85.0&nbsp;m. Switch to the vessel alone and the critical point jumps back to the knee. Switch to the tank alone and open the window to 12&nbsp;km: the knee stands at +8.0&nbsp;m, but the red line sits on the vapour line over the first 200&nbsp;m and again beyond 7.4&nbsp;km, and the amber bar at the pump end spans 160&ndash;170&nbsp;m, through the PN16 line.</p>
+
+<h2 id="critical-point">6 &middot; Reading it: the tank moves the critical point</h2>
+<p>With the tank in place the knee cannot fall below the tank level, so the vessel's critical point moves out along the plateau to about 4.4&nbsp;km, where the tank has no say. The minimum at 4,400&nbsp;m arrives at 18.7&nbsp;s, just as the reflection from the delivery reservoir reaches it (12,000&nbsp;m out and 7,600&nbsp;m back at 1,050&nbsp;m/s). The 8&nbsp;m tank does not open until about 20&nbsp;s, and anything it sends needs another 3.9&nbsp;s to cover the 4.1&nbsp;km. At every tank level tested the plateau minimum has come and gone before the tank's influence arrives, which is why <strong>the required steady gas is the same 15.9&nbsp;m&sup3; for every tank level from 4 to 14&nbsp;m</strong>. The vessel is now sized for the first wave on the plateau, a far smaller job than holding the knee through the slow swing that follows.</p>
+<p>The second lesson is at the pump end: without the vessel, the 300&nbsp;m between the closed pump check valve and the tank becomes a short dead end in which the column still separates, which is why the tank alone makes the collapse there worse (section 4).</p>
+<p>The third is that the two devices change each other's duty, so they must be modelled together [9]. The tank moves the vessel's critical point and trims its expansion; the vessel delays the moment the tank opens from under a second to about 20&nbsp;s and cuts its draw from 27.5 to 20.7&nbsp;m&sup3;. Size either one alone and you size it for the wrong event.</p>
+
+<h2 id="int-knee">7 &middot; Interactive: at the knee, second by second</h2>
+<p>The envelopes say how low each point went; the time histories say when, and what the tank was doing.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Pressure head at the knee, on the plateau and at the pump, with the cumulative tank draw</div>
+    <div class="fsub">Time histories from the same runs, at the knee (300 m), on the plateau 300 m past the knee (600 m) and at the pump. Tank draw on the right axis. Minima in the readouts are the envelope values at those points; times are read from the plotted series. The series are sampled about every 0.6 s and miss the short collapse spikes, so for the two options that separate the axis is clipped at 100 m and the pump-end peak comes from figure 1, as a range across both cavity models.</div>
+  </div>
+  <div class="chart-box"><canvas id="kneeChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Protection option</label>
+      <select id="sScn2">
+        <option value="0">No protection</option>
+        <option value="1">One-way tank only, 8 m</option>
+        <option value="2">Vessel alone, 43.1 m³ gas</option>
+        <option value="3" selected>Tank 8 m + vessel 15.9 m³ gas</option>
+      </select>
+      <div class="hint">Violet dashed line: tank level at the knee (8 m). Shaded violet curve: cumulative draw, right axis.</div>
+    </div>
+    <div class="ctrl">
+      <label>Time window <span id="vWin">150 s</span></label>
+      <input type="range" id="sWin" min="10" max="150" value="150" step="5">
+      <div class="hint">Close it to 30 s to see the first wave; open it to watch the slow swing.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Knee minimum</div><div class="v" id="rKnee2">+8.0 <small>m</small></div></div>
+    <div class="cell"><div class="k">600 m minimum</div><div class="v" id="rLimb2">+7.2 <small>m</small></div></div>
+    <div class="cell"><div class="k">Pump-end minimum</div><div class="v" id="rPump2">+33.8 <small>m</small></div></div>
+    <div class="cell"><div class="k">Pump-end peak</div><div class="v" id="rPeak2">85.0 <small>m, no upsurge</small></div></div>
+    <div class="cell"><div class="k">Tank opens</div><div class="v" id="rOpen2">20 <small>s</small></div></div>
+    <div class="cell"><div class="k">Tank draw</div><div class="v" id="rDraw2">20.7 <small>m&sup3;</small></div></div>
+    <div class="cell"><div class="k">Draw finished by</div><div class="v" id="rDone2">119 <small>s</small></div></div>
+  </div>
+</div>
+<p class="fig-note">At the default the knee sinks from its steady 54.0&nbsp;m, reaches the tank level at about <strong>20&nbsp;s</strong> and stays at +8.0&nbsp;m while the tank feeds; 600&nbsp;m follows it down to +7.2&nbsp;m, and the pump end bottoms at +33.8&nbsp;m as the vessel's gas reaches its largest. The draw climbs to 20.7&nbsp;m&sup3; and is finished by about <strong>119&nbsp;s</strong>. Switch to the vessel alone: nothing stops the knee, which sinks slowly to +3.0&nbsp;m while the pump end falls to +32.7&nbsp;m &mdash; the slow swing the big vessel exists to carry. Switch to the tank alone: it opens within the first second and holds the knee, but the pump end sits at vapour and the tank gives 27.5&nbsp;m&sup3;.</p>
+
+<h2 id="sizing">8 &middot; Sizing the tank and the vessel together</h2>
+<p>Repeating the vessel bisection at different tank levels gives the trade-off. The draw is given at 150&nbsp;s and in full, from the same solver run continued to 600&nbsp;s.</p>
+<div class="tbl-wrap"><table>
+<caption>Vessel sized for +3.0 m along the whole line, with a one-way tank at the knee</caption>
+<thead><tr><th>Tank level above pipe</th><th class="num">Vessel gas (m&sup3;)</th><th class="num">Gas at max (m&sup3;)</th><th class="num">Shell (m&sup3;)</th><th class="num">Draw in 150 s (m&sup3;)</th><th class="num">Complete draw (m&sup3;)</th><th>Critical point</th></tr></thead>
+<tbody>
+<tr><td>No tank</td><td class="num">43.1</td><td class="num">83.6</td><td class="num">104.5</td><td class="num">&ndash;</td><td class="num">&ndash;</td><td>knee, 300 m</td></tr>
+<tr><td>4 m</td><td class="num">15.9</td><td class="num">32.3</td><td class="num">40.3</td><td class="num">14.0</td><td class="num">14.0</td><td>4,400 m</td></tr>
+<tr><td>8 m</td><td class="num">15.9</td><td class="num">30.2</td><td class="num">37.8</td><td class="num">20.7</td><td class="num">20.7</td><td>4,400 m</td></tr>
+<tr><td>12 m</td><td class="num">15.9</td><td class="num">28.3</td><td class="num">35.4</td><td class="num">30.7</td><td class="num">33.5</td><td>4,400 m</td></tr>
+<tr><td>14 m</td><td class="num">15.9</td><td class="num">27.5</td><td class="num">34.4</td><td class="num">35.7</td><td class="num">51.7</td><td>4,500 m</td></tr>
+<tr><td>16 m</td><td class="num" colspan="6">not valid: above the 14.8 m limit, drains at 0.12&ndash;0.13 m&sup3;/s indefinitely</td></tr>
+</tbody></table></div>
+<p><strong>First, the steady gas does not change</strong> from 4 to 14&nbsp;m, for the reason given in section 6. <strong>Second, a higher tank trims the vessel only a little</strong>: the shell falls from 40.3 to 34.4&nbsp;m&sup3; because, with the knee held higher, the pump end falls less (its minimum rises from +30.5 to +39.1&nbsp;m) and the gas expands less (32.3 to 27.5&nbsp;m&sup3;). <strong>Third, a higher tank gives away much more water</strong>: 14.0 to 35.7&nbsp;m&sup3; in 150&nbsp;s, and the 12&nbsp;m and 14&nbsp;m tanks are still feeding when the run ends. Run on, their draws end at 33.5 and 51.7&nbsp;m&sup3;: a tank 0.8&nbsp;m below the drain limit keeps feeding for several minutes while the line settles towards a rest pressure just above it.</p>
+<p>The design consequence is to <strong>keep the tank low</strong>, but high enough above +3.0&nbsp;m to leave room for its connection loss and its own surface falling as it feeds. On this profile 8&nbsp;m does that: 5.0&nbsp;m above the criterion, 6.8&nbsp;m below the drain limit, and a draw complete in about two minutes. That is engineering judgement, not an optimum. Apply the drain limit at the lowest operating level of the delivery reservoir, the lowest rest HGL the tank will see.</p>
+<p>The tank is then sized on the complete draw, with a safety factor on the usable volume, a dead depth of water above the outlet so that the end of the draw does not pull a vortex, and a freeboard above top water level. With the top water level at \(h_T\), the outlet must still sit above the pipe:</p>
+<div class="eq">\[ V_{usable} = SF \times V_{draw}, \qquad h_{water} = \frac{V_{usable}}{\pi D^2/4} + h_{dead}, \qquad H_{tank} = h_{water} + f_b \]</div>
+<div class="eq">\[ z_{outlet} = h_T - h_{water} \;>\; 0, \qquad \Delta h_{surface} = \frac{V_{draw}}{\pi D^2/4} \]</div>
+
+<h2 id="int-sizing">9 &middot; Interactive: sizing the pair</h2>
+<p>Choose a tank level to see what it does to the vessel, then size the tank from the equation above.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Vessel gas, vessel shell and tank draw against tank level &mdash; and the tank that follows</div>
+    <div class="fsub">Bars from the bisection sizing runs: vessel gas for a +3.0 m minimum along the whole line, shell = gas at maximum expansion / 0.8, tank draw complete (same solver run continued to 600 s). Water depth runs from the outlet, taken at the floor, to top water level; tank height adds the freeboard. Badges are engineering judgement.</div>
+  </div>
+  <div class="chart-box"><canvas id="sizeChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Tank level above the pipe</label>
+      <select id="sLvl">
+        <option value="none">No tank (vessel alone)</option>
+        <option value="4">4 m</option>
+        <option value="8" selected>8 m</option>
+        <option value="12">12 m</option>
+        <option value="14">14 m</option>
+        <option value="16">16 m &mdash; above the 14.8 m limit</option>
+      </select>
+      <div class="hint">The water surface at rest, measured above the pipe at the knee.</div>
+    </div>
+    <div class="ctrl">
+      <label>Safety factor on the draw <span id="vSF">2.0</span></label>
+      <input type="range" id="sSF" min="1" max="3" value="2" step="0.1">
+      <div class="hint">Judgement: the modelled tank is idealised, so allow for what it leaves out.</div>
+    </div>
+    <div class="ctrl">
+      <label>Dead water above the outlet <span id="vDead">1.0 m</span></label>
+      <input type="range" id="sDead" min="0.3" max="2" value="1" step="0.1">
+      <div class="hint">Depth that must remain at the end of the draw; check it against the outlet size.</div>
+    </div>
+    <div class="ctrl">
+      <label>Tank diameter <span id="vDia">5.0 m</span></label>
+      <input type="range" id="sDia" min="2" max="12" value="5" step="0.5">
+      <div class="hint">A wider tank falls less as it feeds and needs less depth.</div>
+    </div>
+    <div class="ctrl">
+      <label>Freeboard above top water level <span id="vFb">0.5 m</span></label>
+      <input type="range" id="sFb" min="0.3" max="1.5" value="0.5" step="0.1">
+      <div class="hint">Judgement: room for the overflow and the refill inlet above top water level.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Vessel shell</div><div class="v" id="rShell3">37.8 <small>m&sup3;</small></div></div>
+    <div class="cell"><div class="k">Complete draw</div><div class="v" id="rDraw3">20.7 <small>m&sup3;</small></div></div>
+    <div class="cell"><div class="k">Usable volume</div><div class="v" id="rUse3">41.4 <small>m&sup3;</small></div></div>
+    <div class="cell"><div class="k">Water depth</div><div class="v" id="rDepth3">3.11 <small>m</small></div></div>
+    <div class="cell"><div class="k">Tank height</div><div class="v" id="rH3">3.61 <small>m</small></div></div>
+    <div class="cell"><div class="k">Tank volume, floor to roof</div><div class="v" id="rVol3">70.9 <small>m&sup3;</small></div></div>
+    <div class="cell"><div class="k">Outlet above pipe</div><div class="v" id="rOut3">4.89 <small>m</small></div></div>
+    <div class="cell"><div class="k">Surface fall in the trip</div><div class="v" id="rFall3">1.05 <small>m</small></div></div>
+    <div class="cell"><div class="k">Check</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rOk3"></span></div></div>
+  </div>
+</div>
+<p class="fig-note">At the default 8&nbsp;m tank the vessel shell is <strong>37.8&nbsp;m&sup3;</strong>. With a safety factor of 2.0 on the 20.7&nbsp;m&sup3; draw, 1.0&nbsp;m of dead water, a 5.0&nbsp;m diameter and 0.5&nbsp;m of freeboard, the tank holds 41.4&nbsp;m&sup3; usable in 3.11&nbsp;m of water, stands 3.61&nbsp;m tall (70.9&nbsp;m&sup3;), and its surface falls 1.05&nbsp;m in the trip, so the knee still sees nearly 7&nbsp;m. The outlet sits 4.89&nbsp;m above the pipe: a short elevated tank, or one on higher ground beside the knee. Step through the levels: the steady gas bar does not move, the shell creeps down, the draw grows fast. At 4&nbsp;m the surface ends the trip barely above the criterion; at 14&nbsp;m a 3.0&nbsp;m diameter tank needs more water depth than the level allows, and its outlet drops below the pipe; at 16&nbsp;m the tank simply drains.</p>
+
+<h2 id="details">10 &middot; Tank details: connection, refill, vent, water quality and interlocks</h2>
+<h3>The connection and its check valve</h3>
+<p>The modelled connection is loss-free; the real one is not. In the paired run the draw peaks at <strong>0.61&nbsp;m&sup3;/s</strong>, and each unit of loss coefficient costs \(v^2/2g\) of the tank's head at that flow: 0.24&nbsp;m in a DN600 connection (2.16&nbsp;m/s), 0.49&nbsp;m in a DN500 (3.11&nbsp;m/s). Take fitting coefficients from a handbook [11] and the valve's from its maker, keep the total small against the margin, and model it. The check valve must open fully on a small differential, close without slamming as the draw stops and the knee climbs back above tank level (in the paired run to no more than about 22&nbsp;m in the ten minutes after the trip), and seal tight against the 54.0&nbsp;m of the running main when the pumps restart [4] (see <a href="check-valve-hammer.html">check valves and water hammer</a>).</p>
+<h3>Refill, overflow and vent</h3>
+<p>Refill from the main through a small line with a float or altitude valve; refill time is \(t = V_{draw}/q\), so at 2&nbsp;L/s the 20.7&nbsp;m&sup3; draw is replaced in 2.9&nbsp;h, and the tank must be full before the pumps may restart. The overflow must pass the refill line's full-open flow at the highest main pressure (54.0&nbsp;m at the knee while pumping), not just the 2&nbsp;L/s design refill, in case the float valve fails open. The vent must pass the peak draw: the tank breathes in 0.61&nbsp;m&sup3;/s of air, and a throttled vent pulls the air space below atmospheric, lowering the effective tank level by the same amount.</p>
+<h3>Water quality</h3>
+<p>Between trips the tank holds stagnant drinking water. Design the turnover in &mdash; a small continuous flow through the tank, or a scheduled drain and refill &mdash; with a sampling point for chlorine residual, a cover, screened openings, a lockable hatch, and linings, coatings and valves certified for drinking-water contact [12].</p>
+<h3>When the tank is out of service</h3>
+<p>The pair is one system. With the tank isolated, the paired vessel in its 37.8&nbsp;m&sup3; shell <strong>empties about 51&nbsp;s after the trip</strong>; the line then separates from the pump end, the first 4.7&nbsp;km reach vapour, and every point but the delivery end falls below +3.0&nbsp;m. An emptied air-over-water vessel would also pass gas into the main, which the model does not represent. A closed isolating valve or an empty tank must therefore stop the pumps from running: in our practice a low-level switch and a limit switch on the isolating valve, interlocked with the pump starters and alarmed on SCADA (see <a href="transient-analysis-scada.html">transient analysis and SCADA</a>).</p>
+
+<h2 id="hammer">11 &middot; Setting it up in Bentley HAMMER</h2>
+<p>The general workflow is in <a href="hammer-transient-simulation-workflow.html">the HAMMER transient workflow</a> and <a href="hammer-transient-tips.html">HAMMER transient tips</a>. Field names differ slightly between HAMMER versions, so follow the intent of each step [13].</p>
+<ol>
+  <li><strong>Draw the real profile:</strong> Pump with its suction Reservoir, Pipes and Junctions, and a Reservoir at the delivery end at its lowest operating level (see <a href="boundary-conditions-reservoir-tank.html">reservoir and tank boundary conditions</a>). Put a node exactly at the knee (the Surge Tank in step 3). Set the Pipe wave speed field, or use the Wave Speed Calculator (see <a href="wave-speed-surge-analysis.html">wave speed</a>).</li>
+  <li><strong>Pump:</strong> pump trip (shut down) at the start of the run, inertia of pump and motor, and the check valve on the pump with its closure time. A very small inertia approximates the instant stop used here.</li>
+  <li><strong>Surge Tank at the knee:</strong> place a Surge Tank, set as a one-way surge tank with a check valve, as the knee node itself. Enter the tank level (8&nbsp;m above the pipe, an elevation of 38.0&nbsp;m on this profile) and the real tank area, so the surface falls as it feeds, and represent the connection loss as far as your version allows.</li>
+  <li><strong>Hydropneumatic Tank at the pump:</strong> initial gas volume 15.9&nbsp;m&sup3;, gas law exponent 1.2, tank volume 37.8&nbsp;m&sup3;, elevation with the initial water level at the pipe at the pump (0.0&nbsp;m here, as the 95.3&nbsp;m absolute gas pressure assumes), inlet orifice diameter 400&nbsp;mm, minor loss coefficient 2 and ratio of losses 5. Bladder option off for an air-over-water vessel (see <a href="surge-vessel-type-selection.html">vessel type selection</a>).</li>
+  <li><strong>Steady state:</strong> the Surge Tank must show no flow both while pumping (54.0&nbsp;m in the main against an 8&nbsp;m level) and at rest, with the pumps off and the delivery reservoir at its lowest level.</li>
+  <li><strong>Transient run options:</strong> run duration at least 150&nbsp;s, longer if the tank is still feeding at the end; the computed time step and wave speed adjustment tolerance; vapour pressure and column separation on; your friction method.</li>
+  <li><strong>One scenario per option:</strong> no protection, tank only, vessel alone, the pair at each tank level, and the pair with the tank isolated.</li>
+  <li><strong>Read the results</strong> in the Transient Results Viewer: a profile (path) from pump to delivery reservoir with the maximum and minimum head envelopes against pipe elevation + 3.0&nbsp;m and + 136&nbsp;m; time histories at the knee, the first plateau node and the pump; the Surge Tank's flow and the Hydropneumatic Tank's gas volume.</li>
+  <li><strong>Check:</strong> envelopes within +3.0&nbsp;m and 136&nbsp;m everywhere; largest gas volume no more than 0.8 &times; tank volume; the Surge Tank never empties and has stopped feeding before the run ends.</li>
+  <li><strong>Iterate:</strong> reduce the initial gas volume until the minimum envelope just meets +3.0&nbsp;m, reset the tank volume to the largest gas volume / 0.8, rerun, and move to the next tank level.</li>
+</ol>
+<p>Where the unprotected or tank-only runs separate, report their maxima as ranges and never let a design depend on them (see <a href="surge-analysis-risk.html">surge analysis and risk</a>).</p>
+
+<h2 id="checklist">12 &middot; Design checklist</h2>
+<ul class="clean">
+  <li><strong>Plot pressure, not only HGL,</strong> and read the steady margin to +3.0&nbsp;m wherever a climb turns flat.</li>
+  <li><strong>Size the vessel alone first.</strong> If its critical point is a knee, test a one-way tank there before accepting a large vessel.</li>
+  <li><strong>Respect the drain limit:</strong> tank level below the lowest rest HGL at the knee, taken at the lowest delivery reservoir level.</li>
+  <li><strong>Keep the tank low, with margin</strong> for the connection loss and the surface fall; a higher tank trims the vessel slightly and costs much more water.</li>
+  <li><strong>Model tank and vessel together</strong>, resize the vessel with the tank in place, and find the new critical point.</li>
+  <li><strong>Never rely on the tank alone</strong> where the pump end can separate.</li>
+  <li><strong>Size the tank on the complete draw</strong>, with a safety factor and dead water above the outlet.</li>
+  <li><strong>Size connection, check valve and vent for the peak draw</strong>, and put the losses into the model.</li>
+  <li><strong>Size the overflow for a float valve failed open</strong> at the highest main pressure, and refill before the pumps may restart.</li>
+  <li><strong>Design the water quality in:</strong> turnover, sampling, screened openings, certified materials.</li>
+  <li><strong>Interlock the out-of-service case</strong> and model it as a scenario: the paired vessel alone may empty.</li>
+  <li><strong>Run the project analysis in HAMMER on the surveyed profile</strong> and quote collapse-governed peaks as ranges.</li>
+</ul>
+
+<div class="callout green">
+  <span class="lbl">Surge protection design series</span>
+  <ol>
+    <li><a href="wave-speed-surge-analysis.html">Wave speed: the number that sets the surge</a></li>
+    <li><a href="surge-vessel-differential-orifice.html">The differential orifice: empty freely, refill slowly</a></li>
+    <li><a href="surge-vessel-type-selection.html">Bladder, diaphragm or air-over-water vessel</a></li>
+    <li><strong>One-way surge tanks at the knee</strong></li>
+    <li><a href="surge-relief-valve-sizing.html">Surge relief valves: what a valve at the pump can protect</a></li>
+    <li><a href="pump-inertia-flywheel-surge.html">Pump inertia and the flywheel</a></li>
+    <li><a href="choosing-surge-protection.html">Choosing surge protection on one pipeline</a></li>
+  </ol>
+  The sizing method itself is in <a href="surge-vessel.html">Sizing the Hydropneumatic Surge Vessel</a>.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993 — Joukowsky head, method of characteristics, interior boundary conditions and the discrete vapour cavity model.</li>
+  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014 — boundary conditions for surge tanks and air chambers, and polytropic gas behaviour.</li>
+  <li>Stephenson, D. &ldquo;Simple guide for design of air vessels for water hammer protection of pumping lines.&rdquo; <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8), 2002 — air vessel gas volumes, expansion and the water a vessel must supply.</li>
+  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004 — surge-control devices including feed tanks, and the dynamic behaviour of check valves.</li>
+  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989 — water hammer protection of pumping lines, including discharge tanks.</li>
+  <li>AWWA M51 <em>Air Valves: Air-Release, Air/Vacuum, and Combination</em> — the role and limits of air valves at high points and changes of grade.</li>
+  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em> — the DN800 K9 pipe of the reference main.</li>
+  <li>EN 805 <em>Water supply — Requirements for systems and components outside buildings</em> — design pressures, maximum design pressure and surge allowance.</li>
+  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005 — power failure as the governing event, selection of protection devices and analysing them as one system.</li>
+  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006 — vapour and gas cavity models and why collapse pressures differ between them.</li>
+  <li>Idelchik, I.E. <em>Handbook of Hydraulic Resistance</em>, 3rd ed. Begell House, 1996 — loss coefficients for the tank outlet, tee and bends of the tank connection.</li>
+  <li>NSF/ANSI/CAN 61 <em>Drinking Water System Components — Health Effects</em> — certification of linings, coatings and valves in contact with drinking water.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help — Surge Tank, Hydropneumatic Tank, pump trip, transient run options and the Transient Results Viewer.</li>
+</ol>
+
+<div class="tags">#SurgeAnalysis #WaterHammer #HydraulicTransients #OneWaySurgeTank #FeedTank #SurgeTank #SurgeVessel #HydropneumaticTank #AirVessel #PumpTrip #PowerFailure #ColumnSeparation #Downsurge #PipelineProfile #TransmissionMains #DuctileIron #MethodOfCharacteristics #BentleyHAMMER #OpenFlowsHAMMER #CheckValve #SurgeProtection #PumpStationDesign #PipelineDesign #TransientModelling #HydraulicDesign #WaterSupply #WaterEngineering</div>
+
+</div>
+
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="f-line"><span class="nm">&copy; 2026 Mohamed Abokhatwa</span> <i class="sep">&middot;</i> <span>Riyadh, Saudi Arabia</span> <i class="sep">&middot;</i> <a href="mailto:mohamed@abokhatwa.com" dir="ltr">mohamed@abokhatwa.com</a> <i class="sep">&middot;</i> <a href="tel:+966541706700" dir="ltr">+966 54 170 6700</a> <i class="sep">&middot;</i> <a href="https://www.linkedin.com/in/abokhatwa" target="_blank" rel="noopener">LinkedIn</a> <i class="sep">&middot;</i> <a href="/">All articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="chart-theme.js?v=13"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+
+const D={"knee_x":300,"knee_z":30.0,"delivery_hgl":44.8,"max_valid_level":14.8,"x":[0,100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200,2300,2400,2500,2600,2700,2800,2900,3000,3100,3200,3300,3400,3500,3600,3700,3800,3900,4000,4100,4200,4300,4400,4500,4600,4700,4800,4900,5000,5100,5200,5300,5400,5500,5600,5700,5800,5900,6000,6100,6200,6300,6400,6500,6600,6700,6800,6900,7000,7100,7200,7300,7400,7500,7600,7700,7800,7900,8000,8100,8200,8300,8400,8500,8600,8700,8800,8900,9000,9100,9200,9300,9400,9500,9600,9700,9800,9900,10000,10100,10200,10300,10400,10500,10600,10700,10800,10900,11000,11100,11200,11300,11400,11500,11600,11700,11800,11900,12000],"z":[0.0,10.0,20.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0,30.0],"hgl":[85.0,84.7,84.3,84.0,83.7,83.3,83.0,82.7,82.3,82.0,81.7,81.3,81.0,80.6,80.3,80.0,79.6,79.3,79.0,78.6,78.3,78.0,77.6,77.3,77.0,76.6,76.3,76.0,75.6,75.3,75.0,74.6,74.3,73.9,73.6,73.3,72.9,72.6,72.3,71.9,71.6,71.3,70.9,70.6,70.3,69.9,69.6,69.3,68.9,68.6,68.2,67.9,67.6,67.2,66.9,66.6,66.2,65.9,65.6,65.2,64.9,64.6,64.2,63.9,63.6,63.2,62.9,62.6,62.2,61.9,61.5,61.2,60.9,60.5,60.2,59.9,59.5,59.2,58.9,58.5,58.2,57.9,57.5,57.2,56.9,56.5,56.2,55.9,55.5,55.2,54.8,54.5,54.2,53.8,53.5,53.2,52.8,52.5,52.2,51.8,51.5,51.2,50.8,50.5,50.2,49.8,49.5,49.2,48.8,48.5,48.1,47.8,47.5,47.1,46.8,46.5,46.1,45.8,45.5,45.1,44.8],"sizing":[{"tank_level":null,"gas":43.08,"gas_max":83.6,"total":104.5,"drew":null,"at_min":300,"line_min":3.0,"knee_min":3.0,"pump_min":32.72},{"tank_level":4.0,"gas":15.91,"gas_max":32.3,"total":40.3,"drew":14.0,"at_min":4400,"line_min":3.0,"knee_min":4.0,"pump_min":30.46},{"tank_level":8.0,"gas":15.91,"gas_max":30.2,"total":37.8,"drew":20.7,"at_min":4400,"line_min":3.0,"knee_min":8.0,"pump_min":33.79},{"tank_level":12.0,"gas":15.91,"gas_max":28.3,"total":35.4,"drew":30.7,"at_min":4400,"line_min":3.0,"knee_min":12.0,"pump_min":37.33},{"tank_level":14.0,"gas":15.91,"gas_max":27.5,"total":34.4,"drew":35.7,"at_min":4500,"line_min":3.0,"knee_min":14.0,"pump_min":39.09}],"none":{"label":"No protection","Hmin":[-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,14.8],"Hmax":[139.3,129.2,119.0,108.8,108.6,108.4,108.2,108.0,107.8,107.7,107.5,107.3,107.1,106.9,106.7,106.5,106.3,106.2,106.0,105.8,105.5,105.3,105.1,104.9,104.7,104.5,104.3,104.2,104.1,104.0,103.9,103.8,103.7,103.7,103.6,103.5,103.4,103.3,103.2,103.2,103.1,103.0,102.9,102.9,102.8,102.7,102.6,102.5,102.4,102.3,102.3,102.2,102.0,102.0,101.9,101.8,101.7,101.7,101.6,101.5,101.4,101.3,101.2,101.1,101.0,100.8,100.7,100.6,100.5,100.4,100.2,100.1,100.0,99.9,99.8,99.6,99.5,99.3,99.2,99.0,98.9,98.8,98.6,98.4,98.3,98.1,98.0,97.8,97.7,97.5,97.2,97.3,97.2,97.0,96.8,96.5,96.7,96.5,96.0,95.8,95.7,95.5,95.3,95.1,94.9,94.7,94.5,94.3,94.1,93.9,93.7,93.5,93.3,93.1,92.9,92.7,92.5,58.4,58.6,54.7,14.8],"line_min":-9.8,"knee_min":-9.8,"pump_min":-9.8,"line_max":139.35,"line_max_dgcm":141.06,"at_min":0,"used":null,"gas_max":null,"t":[0.095,0.667,1.238,1.81,2.381,2.952,3.524,4.095,4.667,5.238,5.81,6.381,6.952,7.524,8.095,8.667,9.238,9.81,10.476,11.048,11.619,12.19,12.762,13.333,13.905,14.476,15.048,15.619,16.19,16.762,17.333,17.905,18.476,19.048,19.619,20.286,20.857,21.429,22.0,22.571,23.143,23.714,24.286,24.857,25.429,26.0,26.571,27.143,27.714,28.286,28.857,29.429,30.095,30.667,31.238,31.81,32.381,32.952,33.524,34.095,34.667,35.238,35.81,36.381,36.952,37.524,38.095,38.667,39.238,39.81,40.476,41.048,41.619,42.19,42.762,43.333,43.905,44.476,45.048,45.619,46.19,46.762,47.333,47.905,48.476,49.048,49.619,50.286,50.857,51.429,52.0,52.571,53.143,53.714,54.286,54.857,55.429,56.0,56.571,57.143,57.714,58.286,58.857,59.429,60.095,60.667,61.238,61.81,62.381,62.952,63.524,64.095,64.667,65.238,65.81,66.381,66.952,67.524,68.095,68.667,69.238,69.81,70.476,71.048,71.619,72.19,72.762,73.333,73.905,74.476,75.048,75.619,76.19,76.762,77.333,77.905,78.476,79.048,79.619,80.286,80.857,81.429,82.0,82.571,83.143,83.714,84.286,84.857,85.429,86.0,86.571,87.143,87.714,88.286,88.857,89.429,90.095,90.667,91.238,91.81,92.381,92.952,93.524,94.095,94.667,95.238,95.81,96.381,96.952,97.524,98.095,98.667,99.238,99.81,100.476,101.048,101.619,102.19,102.762,103.333,103.905,104.476,105.048,105.619,106.19,106.762,107.333,107.905,108.476,109.048,109.619,110.286,110.857,111.429,112.0,112.571,113.143,113.714,114.286,114.857,115.429,116.0,116.571,117.143,117.714,118.286,118.857,119.429,120.095,120.667,121.238,121.81,122.381,122.952,123.524,124.095,124.667,125.238,125.81,126.381,126.952,127.524,128.095,128.667,129.238,129.81,130.476,131.048,131.619,132.19,132.762,133.333,133.905,134.476,135.048,135.619,136.19,136.762,137.333,137.905,138.476,139.048,139.619,140.286,140.857,141.429,142.0,142.571,143.143,143.714,144.286,144.857,145.429,146.0,146.571,147.143,147.714,148.286,148.857,149.429],"knee":[54.0,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,35.2,76.8,78.0,79.2,80.4,81.5,82.5,83.7,85.0,85.8,86.8,87.7,88.6,89.5,90.3,91.0,91.8,92.5,93.2,93.8,94.3,94.8,95.3,95.9,96.4,96.8,97.3,97.8,98.3,98.9,99.8,101.1,102.3,103.5,104.7,105.8,106.9,108.0,70.0,-3.1,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8],"limb":[53.0,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,14.8,-9.0,-9.8,-9.8,-7.9,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.5,-8.9,-9.8,-8.3,-9.8,-9.8,-9.8,-9.8,-9.0,-9.0,-9.0,-9.0,-9.0,-9.8,-9.2,-8.6,-9.2,-9.8,-9.8,-9.8,-9.8,-7.5,-8.6,-8.4,-9.8,-9.8,-9.1,-9.0,-9.8,-8.5,-9.1,-9.1,-9.1,-9.1,-9.2,-9.0,-9.2,-9.3,-9.3,-9.3,-9.4,-9.4,-9.4,-9.5,-9.5,-9.5,-9.5,-9.4,-9.4,-9.4,-9.5,-9.5,-9.0,-8.9,-8.9,-8.9,-8.9,-9.0,-9.0,-9.0,-8.8,-8.9,-8.9,-9.0,-9.0,-9.3,-8.6,-9.5,-8.8,-9.3,-9.1,-9.1,-9.2,-9.2,-9.2,-9.3,-9.2,-9.3,-9.2,-9.4,-9.4,-9.3,-9.4,-9.4,-9.4,-9.4,-9.4,-9.4,-9.4,-9.4,-9.4,-8.9,-8.9,-9.0,-9.0,-9.0,-9.0,-9.0,-9.0,-9.0,40.7,76.6,77.9,79.1,80.3,81.4,83.0,84.4,85.0,86.0,86.8,87.7,88.7,89.5,90.3,91.0,91.8,92.5,93.2,93.8,94.2,94.7,95.2,95.9,96.4,96.9,97.4,97.9,98.4,99.1,100.0,101.0,102.2,103.4,104.6,105.7,106.8,108.0,70.2,35.2,-3.4,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,5.3,5.4,-9.5],"pump":[-9.8,-9.8,55.9,95.3,44.5,-9.8,-9.8,65.9,-9.8,-9.8,44.4,5.3,46.1,-3.9,6.1,34.3,16.1,24.3,15.8,24.6,15.8,24.6,15.8,24.6,15.8,24.6,15.8,24.6,15.8,24.6,15.8,24.6,15.8,24.6,15.8,14.3,26.1,14.3,26.1,14.3,26.1,14.3,26.1,14.3,26.1,14.3,26.1,14.4,26.0,14.4,26.0,14.4,35.5,4.9,35.5,5.0,35.4,5.0,35.4,5.0,35.4,5.0,35.4,5.0,35.4,5.0,35.4,5.0,35.4,5.1,34.6,5.8,34.6,5.8,34.6,5.8,34.6,5.8,34.6,5.8,34.5,5.9,34.5,5.9,34.5,5.9,34.5,15.7,24.7,15.7,24.7,15.7,24.7,15.7,24.7,15.7,24.7,15.7,24.7,15.7,24.7,15.7,24.7,15.7,24.2,16.2,24.2,16.2,24.2,16.2,24.2,16.2,24.2,16.2,24.2,16.2,24.2,16.2,24.2,16.2,24.2,16.2,24.5,15.9,24.5,15.9,24.5,15.9,24.5,15.9,24.4,15.9,24.4,15.9,24.4,15.9,24.4,16.0,24.4,25.9,14.6,25.8,14.6,25.8,14.6,25.8,14.6,25.8,14.6,25.8,14.6,25.8,14.6,25.8,14.6,25.8,5.7,34.7,5.7,34.7,5.7,34.7,5.7,34.7,5.7,34.7,5.7,34.7,105.3,106.7,107.9,109.1,110.3,111.4,113.5,114.2,115.2,115.8,116.8,117.8,118.7,119.5,120.3,121.1,121.8,122.6,123.2,123.8,124.2,124.7,125.2,125.9,126.4,126.9,127.4,127.9,128.4,128.9,129.8,131.0,132.3,133.5,134.6,135.8,136.8,137.9,139.1,62.6,11.9,51.5,-7.7,28.5,11.9,28.5,11.9,28.5,11.9,28.5,11.9,28.5,11.9,28.4,11.9,28.4,12.0,28.4,8.7,31.7,8.7,31.6,8.8,31.6,8.8,31.6,8.8,31.6,8.8,31.6,8.8,31.6,8.8,31.6,8.8,31.3,9.1,31.3,9.1,31.3,9.1,31.3,9.1,31.3,9.1,31.3,9.1,31.2,9.2,31.2,9.2,31.2],"feed":null},"tank":{"label":"One-way tank only (8 m)","Hmin":[-9.8,-9.8,-9.8,8.0,4.5,4.8,5.0,4.6,5.3,5.5,5.8,5.9,5.7,5.4,5.2,4.9,4.7,4.4,4.2,3.9,3.7,3.4,3.1,2.9,2.6,2.4,2.1,1.9,1.6,1.4,1.1,0.9,0.6,0.4,0.1,-0.1,-0.4,-0.7,-0.9,-1.1,-1.4,-1.6,-1.9,-2.2,-2.4,-2.7,-2.9,-3.2,-3.4,-3.7,-3.9,-4.2,-4.4,-4.7,-4.9,-5.2,-5.4,-5.7,-5.9,-6.2,-6.4,-6.7,-6.9,-7.2,-7.4,-7.7,-7.9,-8.2,-8.4,-8.7,-8.9,-9.2,-9.4,-9.7,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,14.8],"Hmax":[161.9,136.5,114.1,54.0,53.7,53.3,53.0,52.7,52.3,52.0,51.6,51.3,51.0,50.6,50.3,50.0,49.6,49.3,49.0,48.6,48.3,48.0,47.6,47.3,47.0,46.6,46.3,46.0,45.6,45.3,45.0,44.6,44.3,43.9,43.6,43.3,42.9,42.6,42.3,41.9,41.6,41.3,40.9,40.6,40.3,39.9,39.6,39.2,38.9,38.6,38.2,37.9,37.6,37.2,36.9,36.6,36.2,35.9,35.6,35.2,34.9,34.6,34.2,33.9,33.6,33.2,32.9,32.5,32.2,31.9,31.6,31.2,30.9,30.6,30.2,29.9,29.5,29.2,28.9,28.5,28.2,27.9,27.5,27.2,26.9,26.5,26.2,25.9,25.5,25.2,24.9,24.5,24.2,23.8,23.5,23.2,22.8,22.5,22.2,21.8,21.5,21.3,21.2,21.2,21.1,21.0,21.2,21.0,21.0,21.5,21.4,21.5,21.1,20.7,20.8,21.1,22.3,22.2,22.3,18.9,14.8],"line_min":-9.8,"knee_min":8.0,"pump_min":-9.8,"line_max":161.9,"line_max_dgcm":169.68,"at_min":0,"used":27.5,"gas_max":null,"t":[0.095,0.667,1.238,1.81,2.381,2.952,3.524,4.095,4.667,5.238,5.81,6.381,6.952,7.524,8.095,8.667,9.238,9.81,10.476,11.048,11.619,12.19,12.762,13.333,13.905,14.476,15.048,15.619,16.19,16.762,17.333,17.905,18.476,19.048,19.619,20.286,20.857,21.429,22.0,22.571,23.143,23.714,24.286,24.857,25.429,26.0,26.571,27.143,27.714,28.286,28.857,29.429,30.095,30.667,31.238,31.81,32.381,32.952,33.524,34.095,34.667,35.238,35.81,36.381,36.952,37.524,38.095,38.667,39.238,39.81,40.476,41.048,41.619,42.19,42.762,43.333,43.905,44.476,45.048,45.619,46.19,46.762,47.333,47.905,48.476,49.048,49.619,50.286,50.857,51.429,52.0,52.571,53.143,53.714,54.286,54.857,55.429,56.0,56.571,57.143,57.714,58.286,58.857,59.429,60.095,60.667,61.238,61.81,62.381,62.952,63.524,64.095,64.667,65.238,65.81,66.381,66.952,67.524,68.095,68.667,69.238,69.81,70.476,71.048,71.619,72.19,72.762,73.333,73.905,74.476,75.048,75.619,76.19,76.762,77.333,77.905,78.476,79.048,79.619,80.286,80.857,81.429,82.0,82.571,83.143,83.714,84.286,84.857,85.429,86.0,86.571,87.143,87.714,88.286,88.857,89.429,90.095,90.667,91.238,91.81,92.381,92.952,93.524,94.095,94.667,95.238,95.81,96.381,96.952,97.524,98.095,98.667,99.238,99.81,100.476,101.048,101.619,102.19,102.762,103.333,103.905,104.476,105.048,105.619,106.19,106.762,107.333,107.905,108.476,109.048,109.619,110.286,110.857,111.429,112.0,112.571,113.143,113.714,114.286,114.857,115.429,116.0,116.571,117.143,117.714,118.286,118.857,119.429,120.095,120.667,121.238,121.81,122.381,122.952,123.524,124.095,124.667,125.238,125.81,126.381,126.952,127.524,128.095,128.667,129.238,129.81,130.476,131.048,131.619,132.19,132.762,133.333,133.905,134.476,135.048,135.619,136.19,136.762,137.333,137.905,138.476,139.048,139.619,140.286,140.857,141.429,142.0,142.571,143.143,143.714,144.286,144.857,145.429,146.0,146.571,147.143,147.714,148.286,148.857,149.429],"knee":[54.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,9.3,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,9.2,8.0,9.1,8.0,8.9,8.0,8.9,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,11.3,10.1,11.2,12.3,13.4,13.2,14.1,15.5,16.4,17.0,16.1,15.5,14.9,14.3,13.7,13.1,12.6,12.0,11.4,10.9,10.3,9.7,9.2,8.6,8.2,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,12.4,16.6,17.4,19.1,19.1,18.0,16.9,17.3,16.3,14.9,13.5,13.8,14.4,14.9,15.5,16.1,16.6,17.2,17.8,18.3,18.9,19.5,20.0,20.6,21.1,21.2,21.0],"limb":[53.0,7.3,7.3,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.2,7.5,7.7,7.7,7.7,7.3,7.5,7.7,7.7,7.7,7.5,7.4,7.5,7.5,7.5,7.5,24.4,8.8,8.8,8.8,8.8,6.7,10.6,8.5,8.7,7.0,7.5,7.5,7.5,7.5,7.5,7.5,7.5,7.5,7.5,7.5,7.5,7.5,7.5,7.5,7.7,7.7,7.7,8.1,7.6,7.7,7.7,7.7,8.2,7.5,7.6,7.9,7.8,7.8,7.8,20.4,8.7,8.7,8.7,8.6,8.5,5.6,11.4,7.8,7.6,7.6,7.6,7.6,7.6,7.6,7.6,7.6,7.6,7.6,7.6,7.6,7.6,7.6,7.7,7.8,7.8,8.2,7.6,7.8,7.9,7.9,7.9,7.8,7.6,7.9,7.7,7.8,7.8,18.5,8.6,8.6,8.6,9.5,8.6,9.6,8.6,9.5,7.4,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.9,7.9,7.9,7.8,7.7,7.9,7.8,7.8,7.8,8.1,7.8,7.8,7.8,7.8,7.8,17.8,8.6,8.6,8.6,8.6,8.5,8.4,8.6,8.5,8.2,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.8,7.8,7.8,7.8,8.1,7.8,7.8,7.8,7.8,8.2,7.7,7.8,8.0,8.0,8.0,8.0,16.0,7.6,11.6,9.6,11.0,11.8,13.2,12.9,15.2,14.7,15.8,15.5,15.0,14.4,13.7,13.1,12.5,11.9,11.4,10.8,10.2,9.7,9.1,8.6,8.2,7.8,8.2,7.7,7.8,8.0,8.0,8.0,7.8,7.8,7.8,7.8,7.8,7.8,13.7,12.7,17.7,18.9,18.6,19.3,17.5,17.1,16.0,15.1,14.0,12.9,13.8,14.4,15.0,15.6,16.1,16.7,17.3,17.8,18.4,18.9,19.5,20.1,20.6,21.0,21.3,21.3],"pump":[-9.8,-9.8,86.3,-9.8,-9.8,96.1,-9.8,-9.8,75.8,8.1,67.9,0.1,75.8,8.0,68.0,8.1,67.9,8.1,66.5,9.5,66.4,9.6,66.4,9.7,66.3,9.7,66.2,9.8,66.2,9.8,66.1,9.9,66.0,10.0,66.0,45.3,30.7,45.3,30.7,45.3,30.7,45.3,30.7,45.3,30.7,45.2,30.8,45.2,30.8,45.2,30.8,45.2,44.6,31.4,44.6,31.4,44.6,31.4,44.6,31.4,44.5,31.5,44.5,31.5,44.5,31.5,44.5,31.5,44.5,31.5,2.9,73.1,3.0,73.0,3.0,72.9,3.1,72.8,3.2,72.8,3.3,72.7,3.4,72.6,3.5,72.5,3.5,68.8,7.3,68.7,7.3,68.6,7.4,68.6,7.5,68.5,7.5,68.4,7.6,68.4,7.7,68.3,7.7,68.2,11.1,64.9,11.2,64.8,11.2,64.7,11.3,64.7,11.4,64.6,11.4,64.6,11.5,64.5,11.5,64.4,13.5,62.5,15.9,60.1,17.9,58.0,18.0,58.0,18.0,58.0,18.0,58.0,18.1,57.9,18.1,57.9,18.1,57.9,18.1,31.4,44.6,31.4,44.6,31.4,44.6,31.4,44.6,31.4,44.6,31.4,44.6,31.4,44.5,31.4,44.5,31.5,32.0,44.0,32.0,44.0,32.0,44.0,32.1,43.9,34.2,41.8,34.2,41.8,34.2,41.8,34.2,41.8,34.2,41.8,42.7,33.3,42.7,33.3,42.7,33.3,42.7,33.3,42.7,33.3,42.7,33.3,42.7,33.3,42.7,33.3,42.7,33.5,42.5,33.5,42.5,37.9,38.1,39.9,41.0,42.1,42.5,44.3,43.2,46.2,46.1,45.5,45.0,44.4,43.6,43.1,42.5,41.9,41.4,40.8,40.2,39.7,39.1,38.5,38.1,37.9,38.1,37.9,38.1,37.9,38.1,37.9,38.0,38.0,38.0,38.0,38.0,38.0,38.0,46.2,47.4,49.3,50.4,47.9,48.2,47.1,46.0,44.9,44.1,43.3,43.9,44.4,45.0,45.6,46.1,46.7,47.3,47.8,48.4,49.0,49.5,50.1,50.6,51.2,51.3,51.4],"feed":[0.0,0.15,0.59,0.83,1.0,1.45,1.6,1.91,2.21,2.44,2.8,3.01,3.36,3.59,3.94,4.18,4.53,4.77,5.16,5.43,5.76,6.03,6.36,6.64,6.97,7.25,7.57,7.85,8.18,8.45,8.78,9.05,9.38,9.65,9.97,10.31,10.59,10.9,11.18,11.48,11.68,11.89,12.08,12.27,12.45,12.63,12.81,12.98,13.14,13.32,13.48,13.66,13.85,14.06,14.21,14.42,14.57,14.78,14.94,15.16,15.31,15.53,15.69,15.92,16.08,16.31,16.47,16.69,16.85,17.08,17.26,17.51,17.65,17.9,18.04,18.29,18.43,18.68,18.8,18.98,19.05,19.22,19.28,19.44,19.5,19.66,19.71,19.87,19.93,20.08,20.14,20.3,20.36,20.52,20.59,20.75,20.82,20.98,21.06,21.22,21.3,21.47,21.55,21.72,21.82,22.0,22.08,22.26,22.33,22.51,22.59,22.77,22.85,23.03,23.11,23.3,23.38,23.52,23.55,23.66,23.69,23.79,23.83,23.91,23.95,24.02,24.06,24.13,24.17,24.24,24.29,24.37,24.41,24.5,24.55,24.63,24.68,24.77,24.83,24.92,25.0,25.08,25.16,25.23,25.31,25.39,25.47,25.55,25.63,25.72,25.8,25.88,25.96,26.05,26.13,26.22,26.27,26.29,26.33,26.35,26.38,26.39,26.42,26.43,26.45,26.46,26.48,26.49,26.52,26.53,26.56,26.58,26.61,26.63,26.67,26.69,26.74,26.76,26.8,26.83,26.88,26.91,26.95,26.98,27.03,27.06,27.11,27.14,27.19,27.23,27.28,27.32,27.37,27.41,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.45,27.46,27.46,27.46,27.46,27.47,27.47,27.48,27.48,27.49,27.5,27.5,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51,27.51]},"vessel":{"label":"Vessel alone, 43.1 m3 gas","Hmin":[32.7,22.8,12.9,3.0,3.1,3.1,3.2,3.3,3.3,3.4,3.5,3.5,3.6,3.7,3.8,3.8,3.9,4.0,4.1,4.1,4.2,4.3,4.3,4.4,4.5,4.6,4.7,4.7,4.8,4.9,5.0,5.0,5.1,5.2,5.3,5.4,5.5,5.5,5.6,5.7,5.8,5.9,6.0,6.0,6.1,6.2,6.3,6.4,6.5,6.6,6.7,6.7,6.8,6.9,7.0,7.1,7.2,7.3,7.4,7.5,7.6,7.7,7.7,7.8,7.9,8.0,8.1,8.2,8.3,8.4,8.5,8.6,8.7,8.8,8.9,9.0,9.1,9.2,9.3,9.4,9.5,9.6,9.7,9.8,9.9,10.0,10.1,10.2,10.3,10.4,10.6,10.7,10.8,10.9,11.0,11.1,11.2,11.4,11.5,11.6,11.7,11.8,11.9,12.1,12.2,12.3,12.4,12.6,12.7,12.8,12.9,13.0,13.2,13.1,13.0,12.9,12.8,12.8,12.7,12.6,14.8],"Hmax":[85.0,74.7,64.3,54.0,53.7,53.3,53.0,52.7,52.3,52.0,51.6,51.3,51.0,50.6,50.3,50.0,49.6,49.3,49.0,48.6,48.3,48.0,47.6,47.3,47.0,46.6,46.3,46.0,45.6,45.3,45.0,44.6,44.3,43.9,43.6,43.3,42.9,42.6,42.3,41.9,41.6,41.3,40.9,40.6,40.3,39.9,39.6,39.2,38.9,38.6,38.2,37.9,37.6,37.2,36.9,36.6,36.2,35.9,35.6,35.2,34.9,34.6,34.2,33.9,33.6,33.2,32.9,32.5,32.2,31.9,31.6,31.2,30.9,30.6,30.2,29.9,29.5,29.2,28.9,28.5,28.2,27.9,27.5,27.2,26.9,26.5,26.2,25.9,25.5,25.2,24.9,24.5,24.2,23.8,23.5,23.2,22.8,22.5,22.2,21.8,21.5,21.2,20.8,20.5,20.2,19.8,19.5,19.1,18.8,18.5,18.1,17.8,17.5,17.1,16.8,16.5,16.1,15.8,15.5,15.1,14.8],"line_min":2.99,"knee_min":2.99,"pump_min":32.72,"line_max":85.0,"line_max_dgcm":null,"at_min":300,"used":null,"gas_max":83.6,"t":[0.095,0.667,1.238,1.81,2.381,2.952,3.524,4.095,4.667,5.238,5.81,6.381,6.952,7.524,8.095,8.667,9.238,9.81,10.476,11.048,11.619,12.19,12.762,13.333,13.905,14.476,15.048,15.619,16.19,16.762,17.333,17.905,18.476,19.048,19.619,20.286,20.857,21.429,22.0,22.571,23.143,23.714,24.286,24.857,25.429,26.0,26.571,27.143,27.714,28.286,28.857,29.429,30.095,30.667,31.238,31.81,32.381,32.952,33.524,34.095,34.667,35.238,35.81,36.381,36.952,37.524,38.095,38.667,39.238,39.81,40.476,41.048,41.619,42.19,42.762,43.333,43.905,44.476,45.048,45.619,46.19,46.762,47.333,47.905,48.476,49.048,49.619,50.286,50.857,51.429,52.0,52.571,53.143,53.714,54.286,54.857,55.429,56.0,56.571,57.143,57.714,58.286,58.857,59.429,60.095,60.667,61.238,61.81,62.381,62.952,63.524,64.095,64.667,65.238,65.81,66.381,66.952,67.524,68.095,68.667,69.238,69.81,70.476,71.048,71.619,72.19,72.762,73.333,73.905,74.476,75.048,75.619,76.19,76.762,77.333,77.905,78.476,79.048,79.619,80.286,80.857,81.429,82.0,82.571,83.143,83.714,84.286,84.857,85.429,86.0,86.571,87.143,87.714,88.286,88.857,89.429,90.095,90.667,91.238,91.81,92.381,92.952,93.524,94.095,94.667,95.238,95.81,96.381,96.952,97.524,98.095,98.667,99.238,99.81,100.476,101.048,101.619,102.19,102.762,103.333,103.905,104.476,105.048,105.619,106.19,106.762,107.333,107.905,108.476,109.048,109.619,110.286,110.857,111.429,112.0,112.571,113.143,113.714,114.286,114.857,115.429,116.0,116.571,117.143,117.714,118.286,118.857,119.429,120.095,120.667,121.238,121.81,122.381,122.952,123.524,124.095,124.667,125.238,125.81,126.381,126.952,127.524,128.095,128.667,129.238,129.81,130.476,131.048,131.619,132.19,132.762,133.333,133.905,134.476,135.048,135.619,136.19,136.762,137.333,137.905,138.476,139.048,139.619,140.286,140.857,141.429,142.0,142.571,143.143,143.714,144.286,144.857,145.429,146.0,146.571,147.143,147.714,148.286,148.857,149.429],"knee":[54.0,50.4,49.4,48.5,47.6,46.7,45.8,44.9,44.1,43.3,42.5,41.7,40.9,40.2,39.4,38.7,38.0,37.3,36.5,35.9,35.2,34.5,33.9,33.3,32.7,32.1,31.5,30.9,30.4,29.8,29.2,28.7,28.2,27.6,27.1,26.5,26.0,25.6,25.1,24.6,26.5,24.4,24.0,23.6,23.2,22.9,22.5,22.1,21.8,21.4,21.1,20.7,20.3,20.0,19.7,19.4,19.0,18.7,18.4,18.1,17.8,17.5,17.2,17.0,16.7,16.4,16.1,15.9,15.6,15.4,15.1,14.8,14.6,14.3,14.1,13.8,13.6,13.4,13.1,14.2,13.1,12.9,12.7,12.5,12.3,12.2,12.0,11.8,11.6,11.4,11.2,11.1,10.9,10.7,10.6,10.4,10.2,10.1,9.9,9.8,9.6,9.5,9.3,9.2,9.0,8.9,8.7,8.6,8.5,8.3,8.2,8.1,8.0,7.8,7.7,7.6,7.4,7.3,7.2,8.1,7.3,7.2,7.0,6.9,6.8,6.7,6.6,6.5,6.5,6.4,6.3,6.2,6.1,6.0,5.9,5.8,5.8,5.7,5.6,5.5,5.4,5.3,5.3,5.2,5.1,5.0,5.0,4.9,4.8,4.8,4.7,4.6,4.6,4.5,4.4,4.4,4.3,4.2,4.9,4.3,4.3,4.2,4.2,4.1,4.1,4.0,4.0,4.0,3.9,3.9,3.8,3.8,3.7,3.7,3.6,3.6,3.6,3.5,3.5,3.5,3.4,3.4,3.4,3.4,3.3,3.3,3.3,3.2,3.2,3.2,3.2,3.1,3.1,3.1,3.1,3.0,3.0,3.0,3.7,3.2,3.1,3.1,3.1,3.1,3.1,3.1,3.1,3.1,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.1,3.1,3.1,3.1,3.1,3.1,3.1,3.2,3.2,3.2,3.2,3.2,3.2,3.3,3.3,3.3,3.4,3.4,4.1,3.6,3.7,3.7,3.8,3.8,3.9,3.9,3.9,4.0,4.0,4.1,4.1,4.2,4.2,4.3,4.3,4.4,4.4,4.5,4.5,4.6],"limb":[53.0,49.9,48.9,48.0,47.1,46.2,45.3,44.4,43.6,42.8,41.9,41.1,40.4,39.6,38.9,38.2,37.5,36.8,36.0,35.3,34.6,34.0,33.4,32.7,32.1,31.5,30.9,30.3,29.8,29.2,28.7,28.1,27.6,27.1,26.5,25.9,25.4,24.9,24.5,26.1,26.2,24.4,24.0,23.6,23.2,22.8,22.4,22.1,21.7,21.3,21.0,20.6,20.2,19.9,19.6,19.2,18.9,18.6,18.3,18.0,17.7,17.4,17.1,16.8,16.6,16.3,16.0,15.7,15.5,15.2,14.9,14.7,14.4,14.2,13.9,13.7,13.4,13.2,13.0,14.2,14.3,13.1,12.9,12.7,12.5,12.3,12.1,11.9,11.7,11.6,11.4,11.2,11.0,10.8,10.7,10.5,10.3,10.2,10.0,9.9,9.7,9.6,9.4,9.3,9.1,9.0,8.8,8.7,8.5,8.4,8.3,8.1,8.0,7.9,7.7,7.6,7.5,7.4,8.1,8.2,7.6,7.5,7.3,7.2,7.1,7.0,6.9,6.8,6.7,6.6,6.5,6.4,6.3,6.2,6.2,6.1,6.0,5.9,5.8,5.7,5.6,5.5,5.5,5.4,5.3,5.2,5.2,5.1,5.0,4.9,4.9,4.8,4.7,4.7,4.6,4.5,4.5,4.4,5.1,5.3,4.7,4.6,4.5,4.5,4.4,4.4,4.3,4.3,4.2,4.2,4.1,4.1,4.0,4.0,3.9,3.9,3.9,3.8,3.8,3.7,3.7,3.7,3.6,3.6,3.6,3.5,3.5,3.5,3.4,3.4,3.4,3.4,3.3,3.3,3.3,3.2,3.2,3.2,4.0,4.2,3.5,3.5,3.5,3.5,3.5,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.3,3.3,3.3,3.3,3.3,3.3,3.3,3.3,3.3,3.3,3.3,3.3,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.5,3.5,3.5,3.5,3.5,3.5,4.2,4.4,4.0,4.0,4.1,4.1,4.1,4.2,4.2,4.2,4.3,4.3,4.4,4.4,4.5,4.5,4.5,4.6,4.6,4.7,4.7,4.8,4.8],"pump":[81.9,80.9,79.9,79.0,78.1,77.2,76.3,75.5,74.6,73.8,73.0,72.2,71.5,70.7,70.0,69.3,68.6,67.9,67.1,66.4,65.8,65.1,64.5,63.9,63.3,62.7,62.1,61.5,61.0,60.4,59.8,59.3,58.8,58.2,57.7,57.1,56.6,56.2,55.7,55.2,54.9,54.5,54.1,53.7,53.3,52.9,52.5,52.2,51.8,51.5,51.1,50.8,50.4,50.1,49.8,49.4,49.1,48.8,48.5,48.2,47.9,47.7,47.4,47.1,46.8,46.5,46.3,46.0,45.8,45.5,45.2,45.0,44.7,44.5,44.2,44.0,43.8,43.5,43.3,43.1,42.9,42.7,42.5,42.4,42.2,42.0,41.8,41.6,41.4,41.2,41.1,40.9,40.8,40.6,40.4,40.3,40.1,40.0,39.8,39.7,39.5,39.4,39.2,39.1,38.9,38.8,38.7,38.5,38.4,38.3,38.1,38.0,37.9,37.8,37.6,37.5,37.4,37.3,37.2,37.1,37.0,36.9,36.8,36.6,36.6,36.5,36.4,36.3,36.2,36.1,36.0,35.9,35.9,35.8,35.7,35.6,35.5,35.4,35.4,35.3,35.2,35.1,35.1,35.0,34.9,34.9,34.8,34.7,34.6,34.6,34.5,34.5,34.4,34.3,34.3,34.2,34.1,34.1,34.0,34.0,33.9,33.9,33.9,33.8,33.8,33.7,33.7,33.6,33.6,33.5,33.5,33.5,33.4,33.4,33.4,33.3,33.3,33.3,33.2,33.2,33.2,33.1,33.1,33.1,33.1,33.0,33.0,33.0,33.0,33.0,32.9,32.9,32.9,32.9,32.9,32.8,32.8,32.8,32.8,32.8,32.8,32.8,32.8,32.8,32.7,32.7,32.7,32.7,32.7,32.7,32.7,32.7,32.7,32.7,32.7,32.7,32.8,32.8,32.8,32.8,32.8,32.8,32.8,32.8,32.9,32.9,32.9,32.9,33.0,33.0,33.0,33.0,33.0,33.1,33.1,33.1,33.1,33.2,33.2,33.3,33.3,33.4,33.4,33.5,33.5,33.6,33.6,33.7,33.7,33.8,33.8,33.9,34.0,34.0,34.1,34.1,34.2,34.2,34.3,34.4],"feed":null},"tank_vessel":{"label":"Tank 8 m + vessel 15.9 m3 gas","Hmin":[33.8,25.2,16.6,8.0,7.7,7.5,7.2,7.0,6.7,6.5,6.2,6.0,5.7,5.4,5.2,4.9,4.7,4.4,4.2,3.9,3.6,3.5,3.4,3.4,3.4,3.3,3.3,3.3,3.2,3.2,3.2,3.2,3.1,3.1,3.1,3.1,3.1,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.1,3.1,3.1,3.1,3.1,3.2,3.2,3.2,3.2,3.3,3.3,3.4,3.4,3.5,3.5,3.5,3.6,3.6,3.7,3.8,3.8,3.9,4.0,4.0,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5.0,5.1,5.2,5.4,5.5,5.6,5.8,5.9,6.1,6.2,6.4,6.5,6.7,6.9,7.1,7.3,7.5,7.7,7.9,8.1,8.3,8.5,8.8,9.0,9.3,9.5,9.8,10.1,10.4,10.7,11.0,11.3,11.6,11.9,12.3,14.8],"Hmax":[85.0,74.7,64.3,54.0,53.7,53.3,53.0,52.7,52.3,52.0,51.6,51.3,51.0,50.6,50.3,50.0,49.6,49.3,49.0,48.6,48.3,48.0,47.6,47.3,47.0,46.6,46.3,46.0,45.6,45.3,45.0,44.6,44.3,43.9,43.6,43.3,42.9,42.6,42.3,41.9,41.6,41.3,40.9,40.6,40.3,39.9,39.6,39.2,38.9,38.6,38.2,37.9,37.6,37.2,36.9,36.6,36.2,35.9,35.6,35.2,34.9,34.6,34.2,33.9,33.6,33.2,32.9,32.5,32.2,31.9,31.6,31.2,30.9,30.6,30.2,29.9,29.5,29.2,28.9,28.5,28.2,27.9,27.5,27.2,26.9,26.5,26.2,25.9,25.5,25.2,24.9,24.5,24.2,23.8,23.5,23.2,22.8,22.5,22.2,21.8,21.5,21.2,20.8,20.5,20.2,19.8,19.5,19.1,18.8,18.5,18.1,17.8,17.5,17.1,16.8,16.5,16.1,15.8,15.5,15.1,14.8],"line_min":3.0,"knee_min":8.0,"pump_min":33.79,"line_max":85.0,"line_max_dgcm":null,"at_min":4400,"used":20.7,"gas_max":30.2,"t":[0.095,0.667,1.238,1.81,2.381,2.952,3.524,4.095,4.667,5.238,5.81,6.381,6.952,7.524,8.095,8.667,9.238,9.81,10.476,11.048,11.619,12.19,12.762,13.333,13.905,14.476,15.048,15.619,16.19,16.762,17.333,17.905,18.476,19.048,19.619,20.286,20.857,21.429,22.0,22.571,23.143,23.714,24.286,24.857,25.429,26.0,26.571,27.143,27.714,28.286,28.857,29.429,30.095,30.667,31.238,31.81,32.381,32.952,33.524,34.095,34.667,35.238,35.81,36.381,36.952,37.524,38.095,38.667,39.238,39.81,40.476,41.048,41.619,42.19,42.762,43.333,43.905,44.476,45.048,45.619,46.19,46.762,47.333,47.905,48.476,49.048,49.619,50.286,50.857,51.429,52.0,52.571,53.143,53.714,54.286,54.857,55.429,56.0,56.571,57.143,57.714,58.286,58.857,59.429,60.095,60.667,61.238,61.81,62.381,62.952,63.524,64.095,64.667,65.238,65.81,66.381,66.952,67.524,68.095,68.667,69.238,69.81,70.476,71.048,71.619,72.19,72.762,73.333,73.905,74.476,75.048,75.619,76.19,76.762,77.333,77.905,78.476,79.048,79.619,80.286,80.857,81.429,82.0,82.571,83.143,83.714,84.286,84.857,85.429,86.0,86.571,87.143,87.714,88.286,88.857,89.429,90.095,90.667,91.238,91.81,92.381,92.952,93.524,94.095,94.667,95.238,95.81,96.381,96.952,97.524,98.095,98.667,99.238,99.81,100.476,101.048,101.619,102.19,102.762,103.333,103.905,104.476,105.048,105.619,106.19,106.762,107.333,107.905,108.476,109.048,109.619,110.286,110.857,111.429,112.0,112.571,113.143,113.714,114.286,114.857,115.429,116.0,116.571,117.143,117.714,118.286,118.857,119.429,120.095,120.667,121.238,121.81,122.381,122.952,123.524,124.095,124.667,125.238,125.81,126.381,126.952,127.524,128.095,128.667,129.238,129.81,130.476,131.048,131.619,132.19,132.762,133.333,133.905,134.476,135.048,135.619,136.19,136.762,137.333,137.905,138.476,139.048,139.619,140.286,140.857,141.429,142.0,142.571,143.143,143.714,144.286,144.857,145.429,146.0,146.571,147.143,147.714,148.286,148.857,149.429],"knee":[54.0,49.4,47.0,44.6,42.4,40.4,38.4,36.6,34.8,33.2,31.6,30.1,28.6,27.3,25.9,24.7,23.5,22.3,21.0,19.9,18.9,17.9,17.0,16.0,15.1,14.3,13.4,12.6,11.8,11.0,10.3,9.6,8.9,8.2,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,8.8,8.8,8.8,8.8,8.7,8.7,8.7,8.7,8.6,8.6,8.6,8.6,8.6,8.6,8.6,8.6,8.6,8.6,8.6,8.6,8.3,8.2,8.2,8.2,8.2,8.2,9.8,9.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0,9.1,9.1,8.8,8.7,9.2,9.3,9.3,9.3,9.4,9.4,9.5,9.5,9.6,9.6,9.7,9.8,9.8],"limb":[53.0,49.8,47.2,44.8,42.6,40.5,38.5,36.6,34.8,33.1,31.5,29.9,28.5,27.1,25.8,24.5,23.2,22.1,20.8,19.7,18.6,17.6,16.6,15.7,14.8,13.9,13.1,12.2,11.4,10.7,9.9,9.2,8.4,7.8,7.2,7.2,7.2,7.2,7.2,9.8,8.8,8.8,8.7,8.7,8.6,8.6,8.5,8.5,8.4,8.4,8.4,8.3,8.3,8.3,8.2,8.2,8.2,8.2,8.2,8.2,8.1,8.1,8.1,8.1,8.1,8.1,8.0,8.0,8.0,8.0,8.0,8.0,7.6,7.5,7.5,7.5,7.5,7.5,9.8,8.7,8.6,8.6,8.5,8.5,8.4,8.4,8.4,8.4,8.3,8.3,8.3,8.3,8.2,8.2,8.2,8.2,8.2,8.2,8.2,8.1,8.1,8.1,8.1,8.1,8.1,8.1,8.1,8.1,8.0,8.0,8.0,7.6,7.6,7.6,7.6,7.6,8.8,8.6,8.6,8.5,8.5,8.5,8.4,8.4,8.4,8.3,8.3,8.3,8.3,8.3,8.2,8.2,8.2,8.2,8.2,8.2,8.2,8.2,8.1,8.1,8.1,8.1,8.1,8.1,8.1,8.1,8.1,8.1,8.0,7.9,7.7,7.7,7.7,7.7,7.7,9.1,8.5,8.5,8.5,8.4,8.4,8.4,8.4,8.3,8.3,8.3,8.3,8.3,8.2,8.2,8.2,8.2,8.2,8.2,8.2,8.2,8.1,8.1,8.1,8.1,8.1,8.1,8.1,8.1,8.1,8.1,8.1,8.1,7.8,7.7,7.7,7.7,7.7,7.7,9.4,8.5,8.5,8.4,8.4,8.4,8.4,8.3,8.3,8.3,8.3,8.3,8.3,8.6,9.1,9.0,9.0,8.9,8.9,8.8,8.8,8.8,8.8,8.7,8.7,8.7,8.7,8.7,8.7,8.6,8.6,8.6,8.5,8.2,8.0,8.0,8.0,8.0,9.1,9.9,9.5,9.5,9.4,9.4,9.3,9.3,9.3,9.3,9.3,9.3,9.3,8.6,8.6,9.4,9.5,9.5,9.5,9.6,9.6,9.6,9.7,9.7,9.7,9.8,9.8,9.9],"pump":[81.7,79.1,76.7,74.4,72.3,70.3,68.4,66.6,64.9,63.2,61.7,60.2,58.8,57.4,56.1,54.9,53.7,52.6,51.3,50.2,49.2,48.2,47.3,46.4,45.5,44.6,43.8,43.0,42.2,41.4,40.7,40.0,39.3,38.6,38.0,37.3,36.7,36.3,35.9,35.5,35.2,34.9,34.7,34.5,34.3,34.2,34.0,34.0,33.9,33.8,33.8,33.8,33.9,34.1,34.4,34.8,35.3,35.7,36.2,36.6,37.0,37.4,37.7,38.0,38.2,38.4,38.6,38.8,38.9,39.0,39.1,39.2,39.3,39.3,39.4,39.4,39.5,39.5,39.5,39.6,39.6,39.6,39.6,39.6,39.6,39.6,39.6,39.5,39.5,39.4,39.2,39.1,39.0,38.9,38.7,38.5,38.4,38.2,38.1,37.9,37.8,37.6,37.5,37.3,37.2,37.1,37.0,36.9,36.8,36.8,36.7,36.7,36.6,36.6,36.6,36.6,36.7,36.8,36.9,37.0,37.1,37.2,37.4,37.5,37.6,37.8,37.9,38.0,38.1,38.2,38.3,38.4,38.5,38.6,38.6,38.7,38.7,38.8,38.8,38.9,38.9,38.9,38.9,38.9,38.9,38.9,38.9,38.9,38.8,38.8,38.7,38.6,38.6,38.5,38.4,38.3,38.2,38.1,38.0,37.9,37.8,37.7,37.7,37.6,37.5,37.4,37.4,37.3,37.3,37.2,37.2,37.2,37.2,37.2,37.2,37.2,37.2,37.2,37.3,37.4,37.4,37.5,37.6,37.7,37.7,37.8,37.9,38.0,38.1,38.1,38.2,38.3,38.3,38.4,38.4,38.5,38.5,38.6,38.6,38.6,38.6,38.6,38.6,38.6,38.6,38.6,38.6,38.6,38.6,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.5,38.6,38.6,38.6,38.7,38.7,38.7,38.8,38.9,38.9,38.9,39.0,39.0,39.1,39.2,39.2,39.3,39.3,39.4,39.5,39.5,39.6,39.7,39.7],"feed":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.01,0.02,0.05,0.09,0.14,0.2,0.26,0.34,0.43,0.53,0.65,0.78,0.94,1.1,1.29,1.5,1.72,2.0,2.27,2.55,2.85,3.16,3.48,3.82,4.16,4.5,4.85,5.19,5.54,5.88,6.22,6.55,6.88,7.21,7.52,7.88,8.18,8.48,8.76,9.04,9.32,9.58,9.84,10.1,10.33,10.55,10.76,10.96,11.14,11.31,11.47,11.62,11.77,11.9,12.01,12.11,12.21,12.29,12.37,12.45,12.51,12.58,12.64,12.7,12.75,12.81,12.86,12.92,12.98,13.05,13.12,13.19,13.27,13.35,13.43,13.53,13.62,13.73,13.85,13.97,14.11,14.25,14.4,14.54,14.69,14.85,15.0,15.18,15.34,15.5,15.65,15.81,15.96,16.11,16.26,16.41,16.55,16.69,16.82,16.95,17.08,17.2,17.31,17.42,17.55,17.64,17.74,17.82,17.9,17.98,18.05,18.12,18.18,18.23,18.28,18.33,18.37,18.41,18.45,18.49,18.53,18.57,18.59,18.62,18.64,18.65,18.67,18.69,18.7,18.72,18.74,18.76,18.78,18.8,18.83,18.86,18.89,18.92,18.96,19.01,19.05,19.1,19.15,19.21,19.27,19.33,19.39,19.46,19.53,19.6,19.67,19.74,19.81,19.88,19.95,20.02,20.1,20.18,20.25,20.31,20.38,20.43,20.48,20.52,20.56,20.6,20.62,20.65,20.66,20.68,20.68,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69,20.69]}};
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const fmt2=v=>v.toFixed(2);
+const sg1=v=>{const r=Math.round(v*10)/10;return (r<0?'&minus;':'+')+Math.abs(r).toFixed(1);};
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}};
+const TTL=t=>({display:true,text:t,font:{family:'IBM Plex Sans',size:12,weight:'600'}});
+const LEG={labels:{font:{family:'IBM Plex Sans',size:11},usePointStyle:true,boxWidth:8}};
+const ALBL=(txt,pos,col)=>({display:true,content:txt,position:pos,backgroundColor:'rgba(0,0,0,0)',color:col||'#1b4f72',font:{family:'IBM Plex Sans',size:10}});
+const badge=(c,t)=>'<span class="badge '+c+'">'+t+'</span>';
+const SC=[D.none,D.tank,D.vessel,D.tank_vessel];
+const HAS_TANK=[false,true,false,true], TANK_LEVEL=8, KN=3, LIMB=6;
+const X=D.x.map(v=>v/1000);
+/* collapse-governed peaks: a range across the vapour (DVCM) and gas (DGCM) cavity models */
+function peak(s){
+  if(s.line_max_dgcm==null){
+    return fmt1(s.line_max)+' <small>m'+(s.line_max<=D.hgl[0]+0.05?', no upsurge':'')+'</small>';
+  }
+  const lo=Math.min(s.line_max,s.line_max_dgcm), hi=Math.max(s.line_max,s.line_max_dgcm);
+  if(hi-lo<5) return 'about '+fmt0(Math.round((lo+hi)/10)*5)+' <small>m</small>';
+  return fmt0(Math.floor(lo/5)*5)+'&ndash;'+fmt0(Math.ceil(hi/5)*5)+' <small>m</small>';
+}
+
+/* ---------- CHART 1 : profile and envelopes ---------- */
+const sScn1=document.getElementById('sScn1'), sKm=document.getElementById('sKm');
+const CAV=SC.map(s=>s.line_max_dgcm!=null);        // options whose column separates
+const LEGF={labels:{...LEG.labels,filter:(it,d)=>d.datasets[it.datasetIndex].data.length>0}};
+let c1=new Chart(document.getElementById('profChart'),{
+  type:'line',
+  data:{datasets:[
+    {label:'Ground (pipe)',data:[],borderColor:'#7f8c8d',backgroundColor:'rgba(127,140,141,0.14)',borderWidth:2,pointRadius:0,fill:'start',order:7},
+    {label:'Steady HGL',data:[],borderColor:'#1b4f72',borderDash:[6,4],borderWidth:2,pointRadius:0,order:5},
+    {label:'Maximum HGL (vapour cavity)',data:[],borderColor:'#b9770e',borderWidth:2.4,pointRadius:0,order:3},
+    {label:'Minimum HGL',data:[],borderColor:'#c0392b',borderWidth:2.8,pointRadius:0,order:2},
+    {label:'Ground + 3.0 m',data:[],borderColor:'#1e8449',borderDash:[4,3],borderWidth:1.6,pointRadius:0,order:4},
+    {label:'Vapour (ground − 9.8 m)',data:[],borderColor:'#7f8c8d',borderDash:[2,3],borderWidth:1.2,pointRadius:0,order:6},
+    {label:'PN16 (ground + 136 m)',data:[],borderColor:'#c0392b',borderDash:[8,4],borderWidth:1.2,pointRadius:0,order:8},
+    {type:'scatter',label:'Tank water surface',data:[],backgroundColor:'#6b4f9e',borderColor:'#fff',borderWidth:2,pointRadius:7,pointStyle:'rectRot',order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'nearest',intersect:false},
+    scales:{x:{type:'linear',min:0,max:6,title:TTL('Chainage (km)'),...AX},
+            y:{type:'linear',title:TTL('Elevation and head (m)'),...AX}},
+    plugins:{legend:LEGF,
+      tooltip:{callbacks:{label:c=>{
+        const i=c.dataIndex;
+        if(c.datasetIndex===2&&CAV[+sScn1.value]&&c.parsed.y>D.hgl[i]+0.05)
+          return `Maximum HGL: about ${fmt0(Math.round(c.parsed.y/5)*5)} m (collapse peak, model-dependent; see readout)`;
+        return `${c.dataset.label}: ${fmt1(c.parsed.y)} m at ${fmt2(c.parsed.x)} km`;
+      }}},
+      annotation:{annotations:{
+        knee:{type:'line',xMin:0.3,xMax:0.3,borderColor:'#6b4f9e',borderWidth:1,borderDash:[3,3],label:ALBL('knee','start','#6b4f9e')},
+        rng:{type:'box',xMin:0,xMax:0.1,yMin:0,yMax:0,display:false,backgroundColor:'#b9770e',borderWidth:0}
+      }}}}
+});
+function updProf(){
+  const k=+sScn1.value, s=SC[k], km=+sKm.value;
+  document.getElementById('vKm').textContent=km+' km';
+  const idx=D.x.map((_,i)=>i).filter(i=>X[i]<=km+1e-9);
+  const mk=f=>idx.map(i=>({x:X[i],y:+f(i).toFixed(2)}));
+  const hi=Math.max(s.line_max,s.line_max_dgcm==null?0:s.line_max_dgcm);
+  c1.data.datasets[0].data=mk(i=>D.z[i]);
+  c1.data.datasets[1].data=mk(i=>D.hgl[i]);
+  c1.data.datasets[2].data=mk(i=>D.z[i]+s.Hmax[i]);
+  c1.data.datasets[3].data=mk(i=>D.z[i]+s.Hmin[i]);
+  c1.data.datasets[4].data=mk(i=>D.z[i]+3.0);
+  c1.data.datasets[5].data=mk(i=>D.z[i]-9.8);
+  c1.data.datasets[6].data=hi>136?mk(i=>D.z[i]+136):[];
+  c1.data.datasets[7].data=HAS_TANK[k]?[{x:D.knee_x/1000,y:D.knee_z+TANK_LEVEL}]:[];
+  const rng=c1.options.plugins.annotation.annotations.rng;   // collapse peak at the pump end, both cavity models
+  rng.display=CAV[k];
+  if(CAV[k]){rng.xMin=0;rng.xMax=km*0.015;rng.yMin=D.z[0]+Math.min(s.line_max,s.line_max_dgcm);rng.yMax=D.z[0]+hi;}
+  c1.options.scales.x.max=km;
+  c1.update('none');
+  document.getElementById('rMin1').innerHTML=sg1(s.line_min)+' <small>m '+(s.at_min===0?'from the pump':'at '+fmt0(s.at_min)+' m')+'</small>';
+  document.getElementById('rKnee1').innerHTML=sg1(s.knee_min)+' <small>m</small>';
+  document.getElementById('rPump1').innerHTML=sg1(s.pump_min)+' <small>m</small>';
+  document.getElementById('rMax1').innerHTML=peak(s);
+  document.getElementById('rTank1').innerHTML=s.used==null?'&ndash;':fmt1(s.used)+' <small>m³</small>';
+  document.getElementById('rGas1').innerHTML=s.gas_max==null?'&ndash;':fmt1(s.gas_max)+' <small>m³</small>';
+  let b;
+  if(s.line_min<=-9.79) b=badge('bad','vapour: column separation');
+  else if(s.line_min>=2.95&&hi<=136) b=badge('good','meets +3.0 m and PN16');
+  else b=badge('warn','below +3.0 m');
+  document.getElementById('rOk1').innerHTML=b;
+}
+[sScn1,sKm].forEach(el=>el.addEventListener('input',updProf));updProf();
+
+/* ---------- CHART 2 : at the knee, second by second ---------- */
+const sScn2=document.getElementById('sScn2'), sWin=document.getElementById('sWin');
+let c2=new Chart(document.getElementById('kneeChart'),{
+  type:'line',
+  data:{datasets:[
+    {label:'Knee (300 m)',data:[],borderColor:'#1b4f72',borderWidth:2.6,pointRadius:0,yAxisID:'y',order:1},
+    {label:'Plateau (600 m)',data:[],borderColor:'#b9770e',borderWidth:2,pointRadius:0,yAxisID:'y',order:2},
+    {label:'Pump end',data:[],borderColor:'#7f8c8d',borderWidth:2,pointRadius:0,yAxisID:'y',order:3},
+    {label:'Tank draw (right axis)',data:[],borderColor:'#6b4f9e',backgroundColor:'rgba(107,79,158,0.12)',borderWidth:2,pointRadius:0,fill:'origin',yAxisID:'y1',order:4}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'nearest',intersect:false},
+    scales:{x:{type:'linear',min:0,max:150,title:TTL('Time after the trip (s)'),...AX},
+            y:{type:'linear',position:'left',title:TTL('Pressure head (m)'),...AX},
+            y1:{type:'linear',position:'right',min:0,title:TTL('Tank draw (m³)'),grid:{drawOnChartArea:false},ticks:{font:{family:'IBM Plex Sans',size:11}}}},
+    plugins:{legend:LEG,
+      tooltip:{callbacks:{label:c=>{
+        if(c.dataset.yAxisID==='y1') return `Tank draw: ${fmt1(c.parsed.y)} m³`;
+        return CAV[+sScn2.value]?`${c.dataset.label}: ${fmt0(c.parsed.y)} m (sampled)`:`${c.dataset.label}: ${fmt1(c.parsed.y)} m`;
+      }}},
+      annotation:{annotations:{
+        crit:{type:'line',yScaleID:'y',yMin:3,yMax:3,borderColor:'#1e8449',borderWidth:1.5,borderDash:[5,4],label:{...ALBL('+3.0 m criterion','start','#1e8449'),yAdjust:9}},
+        vap:{type:'line',yScaleID:'y',yMin:-9.8,yMax:-9.8,borderColor:'#7f8c8d',borderWidth:1,borderDash:[2,3],label:ALBL('vapour −9.8 m','end','#7f8c8d')},
+        lvl:{type:'line',yScaleID:'y',yMin:8,yMax:8,display:true,borderColor:'#6b4f9e',borderWidth:1.2,borderDash:[6,3],label:{...ALBL('tank level 8 m','start','#6b4f9e'),yAdjust:-9}}
+      }}}}
+});
+function updKnee(){
+  const k=+sScn2.value, s=SC[k], w=+sWin.value;
+  document.getElementById('vWin').textContent=w+' s';
+  const idx=s.t.map((_,i)=>i).filter(i=>s.t[i]<=w+1e-9);
+  const ser=a=>idx.map(i=>({x:s.t[i],y:a[i]}));
+  c2.data.datasets[0].data=ser(s.knee);
+  c2.data.datasets[1].data=ser(s.limb);
+  c2.data.datasets[2].data=ser(s.pump);
+  c2.data.datasets[3].data=s.feed?ser(s.feed):[];
+  c2.options.scales.x.max=w;
+  c2.options.scales.y.max=CAV[k]?100:undefined;     // sampled series miss collapse spikes: clip and point to the range
+  c2.options.scales.y.title.text=CAV[k]?'Pressure head (m), clipped at 100 m':'Pressure head (m)';
+  c2.options.scales.y1.display=HAS_TANK[k];
+  c2.options.plugins.annotation.annotations.lvl.display=HAS_TANK[k];
+  c2.update('none');
+  document.getElementById('rKnee2').innerHTML=sg1(s.Hmin[KN])+' <small>m</small>';
+  document.getElementById('rLimb2').innerHTML=sg1(s.Hmin[LIMB])+' <small>m</small>';
+  document.getElementById('rPump2').innerHTML=sg1(s.Hmin[0])+' <small>m</small>';
+  document.getElementById('rPeak2').innerHTML=peak(s);
+  if(s.feed){
+    const f=s.feed, last=f[f.length-1];
+    const i0=f.findIndex(v=>v>0), i1=f.findIndex(v=>v>=last-0.005);
+    const t0=i0<0?null:s.t[i0];
+    document.getElementById('rOpen2').innerHTML=t0==null?'&ndash;':(t0<1?'&lt; 1 <small>s</small>':fmt0(t0)+' <small>s</small>');
+    document.getElementById('rDraw2').innerHTML=fmt1(last)+' <small>m³</small>';
+    document.getElementById('rDone2').innerHTML=i1<0?'&ndash;':fmt0(s.t[i1])+' <small>s</small>';
+  }else{
+    ['rOpen2','rDraw2','rDone2'].forEach(id=>{document.getElementById(id).innerHTML='&ndash;';});
+  }
+}
+[sScn2,sWin].forEach(el=>el.addEventListener('input',updKnee));updKnee();
+
+/* ---------- CHART 3 : sizing the pair ---------- */
+const sLvl=document.getElementById('sLvl'), sSF=document.getElementById('sSF'),
+      sDead=document.getElementById('sDead'), sDia=document.getElementById('sDia'), sFb=document.getElementById('sFb');
+const SZ=D.sizing;                               // none, 4, 8, 12, 14 m
+const FINAL=[null,14.0,20.7,33.5,51.7];          // complete draw, m3: same solver run continued to 600 s
+const LVL_IDX={'none':0,'4':1,'8':2,'12':3,'14':4};
+const R_DRAIN=(D.hgl[KN]-D.delivery_hgl)/(0.70*0.70);   // s2/m5, friction below the knee
+let SEL=2;
+let c3=new Chart(document.getElementById('sizeChart'),{
+  type:'bar',
+  data:{labels:['No tank','Tank 4 m','Tank 8 m','Tank 12 m','Tank 14 m'],
+    datasets:[
+      {label:'Vessel gas, steady',data:SZ.map(r=>r.gas),backgroundColor:'#1b4f72',borderWidth:0},
+      {label:'Vessel gas at maximum',data:SZ.map(r=>r.gas_max),backgroundColor:'#b9770e',borderWidth:0},
+      {label:'Vessel shell',data:SZ.map(r=>r.total),backgroundColor:'#7f8c8d',borderWidth:0},
+      {label:'Tank draw, complete',data:FINAL.map(v=>v==null?0:v),backgroundColor:'#6b4f9e',borderWidth:0}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{...AX,ticks:{font:ctx=>({family:'IBM Plex Sans',size:11,weight:(ctx.index===SEL?'700':'400')})}},
+            y:{type:'linear',min:0,title:TTL('Volume (m³)'),...AX}},
+    plugins:{legend:LEG,
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt1(c.parsed.y)} m³`}},
+      annotation:{annotations:{
+        sel:{type:'box',xMin:1.5,xMax:2.5,backgroundColor:'#a9cce3',borderWidth:0,drawTime:'beforeDatasetsDraw'}
+      }}}}
+});
+function updSize(){
+  const v=sLvl.value, sf=+sSF.value, hd=+sDead.value, Dm=+sDia.value, fb=+sFb.value;
+  document.getElementById('vSF').textContent=fmt1(sf);
+  document.getElementById('vDead').textContent=fmt1(hd)+' m';
+  document.getElementById('vDia').textContent=fmt1(Dm)+' m';
+  document.getElementById('vFb').textContent=fmt1(fb)+' m';
+  const sel=(v in LVL_IDX)?LVL_IDX[v]:-1;
+  SEL=sel;
+  const box=c3.options.plugins.annotation.annotations.sel;   // selected tank level: shaded band + bold label
+  box.display=sel>=0; box.xMin=sel-0.5; box.xMax=sel+0.5;
+  c3.update('none');
+  const out=(id,h)=>{document.getElementById(id).innerHTML=h;};
+  const TANK=['rUse3','rDepth3','rH3','rVol3','rOut3','rFall3'];
+  if(sel<0){                                    // above the drain limit
+    const lvl=+v, q=Math.sqrt(Math.max(0,D.knee_z+lvl-D.delivery_hgl)/R_DRAIN);
+    out('rShell3','&ndash;'); out('rDraw3','&ndash;');
+    TANK.forEach(id=>out(id,'&ndash;'));
+    out('rOk3',badge('bad','above '+fmt1(D.max_valid_level)+' m: drains at about '+fmt2(q)+' m³/s'));
+    return;
+  }
+  const r=SZ[sel], alone=SZ[0].total;
+  out('rShell3',fmt1(r.total)+' <small>m³'+(sel>0?', &minus;'+fmt0(100*(1-r.total/alone))+' %':'')+'</small>');
+  if(sel===0){
+    ['rDraw3',...TANK].forEach(id=>out(id,'&ndash;'));
+    out('rOk3',badge('warn','no tank: the vessel holds the knee'));
+    return;
+  }
+  const lvl=+v, dr=FINAL[sel], A=Math.PI*Dm*Dm/4;
+  const use=dr*sf, depth=use/A+hd, ht=depth+fb, vol=A*ht, fall=dr/A, endL=lvl-fall, zo=lvl-depth;
+  out('rDraw3',fmt1(dr)+' <small>m³</small>');
+  out('rUse3',fmt1(use)+' <small>m³</small>');
+  out('rDepth3',fmt2(depth)+' <small>m</small>');
+  out('rH3',fmt2(ht)+' <small>m</small>');
+  out('rVol3',fmt1(vol)+' <small>m³</small>');
+  out('rOut3',(zo<0?'&minus;':'')+fmt2(Math.abs(zo))+' <small>m</small>');
+  out('rFall3',fmt2(fall)+' <small>m</small>');
+  let b;
+  if(lvl>=D.max_valid_level) b=badge('bad','above the drain limit');
+  else if(endL<3.0) b=badge('bad','surface falls below +3.0 m');
+  else if(zo<=0) b=badge('warn','outlet below the pipe: widen the tank');
+  else if(lvl>=12) b=badge('warn','near the drain limit: long draw');
+  else if(endL-3.0<2.0) b=badge('warn','thin margin above +3.0 m');
+  else b=badge('good','shut at rest, margin kept');
+  out('rOk3',b);
+}
+[sLvl,sSF,sDead,sDia,sFb].forEach(el=>el.addEventListener('input',updSize));updSize();
+
+window.addEventListener('load',function(){try{c1.resize();c2.resize();c3.resize();}catch(e){}});
+
+</script>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<!-- End WhatsApp Button -->
+
+<script src="article-features.js?v=14"></script>
+<script src="theme.js?v=13"></script>
+</body>
+</html>

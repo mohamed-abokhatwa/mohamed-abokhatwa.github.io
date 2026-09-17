@@ -29,17 +29,19 @@ def build_html(s):
     charts = s.get('charts', '')
     chart_libs = ''
     if charts:
+        charts = charts.replace("'DM Sans'", "'IBM Plex Sans'")   # the site face; older specs still ask for DM Sans
         chart_libs = ('<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>\n'
+                      '  <script src="chart-theme.js?v=13"></script>\n'
                       '<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/'
                       'chartjs-plugin-annotation.min.js"></script>\n<script>\n' + charts + '\n</script>\n\n')
     return (
         T('HEAD_TOP')
         + f"  <title>{s['title']} — Mohamed Abokhatwa</title>\n"
         + '    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">\n'
-        + '  <link rel="stylesheet" href="style.css?v=7">\n'
-        + '  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">\n'
-        + '  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">\n'
-        + '  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">\n'
+        + '  <link rel="stylesheet" href="style.css?v=17">\n'
+        + '  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">\n'
+        + '  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">\n'
+        + '  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=3">\n'
         + '  <script>\n    MathJax = { tex: { inlineMath: [[\'\\\\(\', \'\\\\)\']], displayMath: [[\'\\\\[\', \'\\\\]\']] }, svg: { fontCache: \'global\' } };\n  </script>\n'
         + '  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>\n'
         + T('STYLE') + T('CALENDLY')

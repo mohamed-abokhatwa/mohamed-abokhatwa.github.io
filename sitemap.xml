@@ -162,6 +162,48 @@
   ═══════════════════════════════════════ -->
 
   <url>
+    <loc>https://abokhatwa.com/wave-speed-surge-analysis.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/surge-vessel-differential-orifice.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/surge-vessel-type-selection.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/one-way-surge-tank-design.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/surge-relief-valve-sizing.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/pump-inertia-flywheel-surge.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/choosing-surge-protection.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://abokhatwa.com/six-kilowatt-litre-water-energy-tall-buildings.html</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
@@ -324,13 +366,13 @@
   </url>
   <url>
     <loc>https://abokhatwa.com/surge-vessel.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://abokhatwa.com/pre-charge-pressure.html</loc>
-    <lastmod>2026-06-02</lastmod>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -670,7 +712,7 @@
   <!-- ═══════════════════════════════════════
        CATEGORY PAGES
   ═══════════════════════════════════════ -->
-  <url><loc>https://abokhatwa.com/surge-transients.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://abokhatwa.com/surge-transients.html</loc><lastmod>2026-09-17</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://abokhatwa.com/pipeline-design.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://abokhatwa.com/pump-engineering.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://abokhatwa.com/hydraulic-design.html</loc><lastmod>2026-06-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>

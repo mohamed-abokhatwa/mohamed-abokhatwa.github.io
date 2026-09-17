@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wave Speed in Surge Analysis: The Number That Sets the Surge but Barely Moves the Surge Vessel — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=3">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:3px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:3px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:var(--success);} .callout.green .lbl{color:var(--success);}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:start;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:start;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:end;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:3px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:3px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:var(--air);}
+    .fig-head .fsub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid var(--border);background:var(--bg-2);}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+    .ctrl label span{color:var(--air);font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:var(--danger);}
+    .ctrl .hint{font-size:11.5px;color:var(--text-secondary);margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:3px;font-size:13px;font-family:inherit;background:var(--sheet);color:var(--text-primary);}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid var(--border);}
+    .readout .cell{padding:14px 16px;border-right:1px solid var(--border);}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary);}
+    .readout .v{font-size:22px;font-weight:700;color:var(--air);font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:var(--text-secondary);}
+    .badge{display:inline-block;padding:3px 10px;border-radius:3px;font-size:12px;font-weight:600;}
+    .badge.good{background:var(--success-w);color:var(--success);}
+    .badge.warn{background:var(--warning-w);color:var(--warning);}
+    .badge.bad{background:var(--danger-w);color:var(--danger);}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:var(--air);text-decoration:none;border:1px solid var(--border);border-radius:3px;padding:4px 11px;background:var(--sheet);transition:.18s;}
+    .calc-link:hover{border-color:var(--air);background:var(--bg-2);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="How wave speed sets the Joukowsky head, the 2L/a timing, column separation and peak pressure on a 12 km DN800 pumping main, and why the surge vessel barely changes on ductile iron or steel: Korteweg by material and restraint, free air, cavity-model ranges, a Bentley HAMMER procedure and four interactive charts.">
+  <meta property="og:title" content="Wave Speed in Surge Analysis: The Number That Sets the Surge but Barely Moves the Surge Vessel | Mohamed Abokhatwa">
+  <meta property="og:description" content="On a 12 km DN800 ductile iron main, wave speed moves the Joukowsky head from 99.4 to 184.5 m and the unprotected peak from 140–150 to 190–210 m, yet the surge vessel gas stays at 3.08–3.19 m³ from 700 to 1,300 m/s.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/wave-speed-surge-analysis.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-wave-speed-surge-analysis.jpg">
+  <meta property="og:image:alt" content="Illustration of a sectioned transmission pipeline on a dark blue background: glowing pressure wave fronts travel through the water past a cluster of air bubbles at a joint, with steel, ductile iron, GRP and HDPE wall sections above and an inset graph of wave speed falling as entrained air rises">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wave Speed in Surge Analysis: The Number That Sets the Surge but Barely Moves the Surge Vessel | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="On a 12 km DN800 ductile iron main, wave speed moves the Joukowsky head from 99.4 to 184.5 m and the unprotected peak from 140–150 to 190–210 m, yet the surge vessel gas stays at 3.08–3.19 m³ from 700 to 1,300 m/s.">
+  <link rel="canonical" href="https://abokhatwa.com/wave-speed-surge-analysis.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Wave Speed in Surge Analysis: The Number That Sets the Surge but Barely Moves the Surge Vessel",
+  "description": "A design guide to wave speed in surge analysis: Korteweg by pipe material and restraint, free air, pump-trip results at five wave speeds, why vessel size barely changes on stiff pipe, and a HAMMER procedure.",
+  "image": "https://abokhatwa.com/og-wave-speed-surge-analysis.jpg",
+  "datePublished": "2026-09-16",
+  "dateModified": "2026-09-16",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/wave-speed-surge-analysis.html" }
+}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Surge &amp; Transient Analysis</span></div>
+  <span class="tag">Surge Analysis &middot; Wave Speed &middot; Pipe Materials</span>
+  <h1>Wave Speed in Surge Analysis: The Number That Sets the Surge but Barely Moves the Surge Vessel</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>September 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>37 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="wave-speed-surge-analysis.webp" alt="Illustration of a sectioned transmission pipeline on a dark blue background: glowing pressure wave fronts travel through the water past a cluster of air bubbles at a joint, with steel, ductile iron, GRP and HDPE wall sections above and an inset graph of wave speed falling as entrained air rises">
+</div>
+
+<div class="article-body">
+
+<p class="lead">Every surge model of a pumping main starts with one number typed into every pipe: the wave speed. It sets the Joukowsky head, the 2L/a clock and whether the water column separates. On a 12&nbsp;km DN800 ductile iron main, taking it from 1,050 down to 700&nbsp;m/s cuts the Joukowsky head from <strong>149.1 to 99.4&nbsp;m</strong> and the unprotected peak from 165&ndash;190&nbsp;m to 140&ndash;150&nbsp;m. Yet the air-over-water vessel that holds the line above +3.0&nbsp;m only moves from <strong>3.08 to 3.19&nbsp;m&sup3; of gas</strong>. This article explains why, where that stops being true, and how to choose and test the number.</p>
+
+<h2 id="first-input">1 &middot; Why wave speed is the first input</h2>
+<p>When pumps with little inertia trip, the flow at the pump stops almost at once. The pressure change that follows travels along the main at the wave speed \(a\), and both its size and its timing follow directly from that speed [1, 2, 5, 8]:</p>
+<div class="eq">\[ \Delta H = \frac{a\,\Delta V}{g}, \qquad T_r = \frac{2L}{a} \]</div>
+<p>The Joukowsky head \(\Delta H\) applies when the velocity changes faster than a wave can reach the far end and come back. That round trip, \(2L/a\), is the clock that every valve closure, pump rundown and relief-valve opening is judged against [3].</p>
+<p>The reference main for this series is 12&nbsp;km of DN800 ductile iron K9 carrying 0.70&nbsp;m&sup3;/s (2,520&nbsp;m&sup3;/h) at 1.39&nbsp;m/s, with the HGL at 85.0&nbsp;m at the pump and 44.8&nbsp;m at the delivery reservoir. It is PN16 with 136&nbsp;m allowable, and the design minimum is +3.0&nbsp;m. With a = 1,050&nbsp;m/s:</p>
+<ul class="clean">
+  <li><strong>The Joukowsky head is 149.1&nbsp;m</strong> (1,050 &times; 1.393 / 9.81, with the unrounded velocity). The pump end has only 85.0 + 9.8 = <strong>94.8&nbsp;m</strong> of head above vapour, so an instant stop takes it straight to vapour.</li>
+  <li><strong>2L/a is 22.9&nbsp;s</strong>: the time before anything at the reservoir end can affect the pump.</li>
+  <li><strong>The peak is 165&ndash;190&nbsp;m.</strong> Once the column has separated, the peak comes from the cavity closing, not from Joukowsky, and it is above PN16 in either cavity model.</li>
+</ul>
+<div class="callout key">
+  <span class="lbl">The design point</span>
+  Get the wave speed right for peaks, pipe class, timing and column separation. Do not expect a more refined value to shrink the vessel on steel or ductile iron: from 700 to 1,300&nbsp;m/s the gas needed stays at <strong>3.08&ndash;3.19&nbsp;m&sup3;</strong>. Only flexible pipe changes it: 1.99&nbsp;m&sup3; at 450&nbsp;m/s, and no vessel at 300&nbsp;m/s. Never carry a wave speed from one material to another. Collapse peaks depend on how the cavity is modelled [7], so in our practice they are quoted as a range.
+</div>
+
+<h2 id="korteweg">2 &middot; What sets it: the water, the wall and the restraint</h2>
+<p>Wave speed is a balance between how much the water compresses and how much the pipe wall stretches. For a thin-walled elastic pipe, the Korteweg formula with the Wylie &amp; Streeter restraint factor is [1, 2]:</p>
+<div class="eq">\[ a=\sqrt{\dfrac{K/\rho}{1+\dfrac{K\,D}{E\,e}\,c_1}} \]</div>
+<p>Here \(K\) = 2.19&nbsp;GPa is the bulk modulus of water, \(\rho\) = 998&nbsp;kg/m&sup3;, \(D\) the diameter (the nominal diameter here, which for PE is the outside diameter, so D/e is the SDR), \(e\) the wall thickness and \(E\) the Young&rsquo;s modulus of the wall. The restraint factor \(c_1\) depends on how the pipe is held along its length and on its Poisson&rsquo;s ratio \(\mu\):</p>
+<ul class="clean">
+  <li><strong>Anchored at the upstream end only:</strong> \(1-\mu/2\).</li>
+  <li><strong>Anchored throughout against axial movement:</strong> \(1-\mu^2\).</li>
+  <li><strong>Expansion joints throughout:</strong> 1.</li>
+</ul>
+<p>On its own, \(\sqrt{K/\rho}\) = 1,481&nbsp;m/s is the speed of sound in water, which no pipe can exceed. The wall term \(KD/(Ee)\) compares how much the pipe stretches with how much the water compresses. It is 0.88 for DN800 ductile iron, where the two share the job, and 33.8 for PE100 SDR17 of the same size, where the wall does nearly all of it.</p>
+<h3>Worked example: the DN800 K9 pipe</h3>
+<p>ISO 2531 gives the nominal wall of a K-class ductile iron pipe as \(e = k\,(0.5 + 0.001\,DN)\)&nbsp;mm, with \(k\) the class number [14]. DN800 K9 therefore has e = 9 &times; 1.3 = <strong>11.7&nbsp;mm</strong> (D/e = 68.4). With E = 170&nbsp;GPa and &mu; = 0.28:</p>
+<div class="tbl-wrap"><table><caption>Korteweg wave speed, DN800 K9 ductile iron (D = 800 mm, e = 11.7 mm)</caption><thead><tr><th>Restraint condition</th><th class="num">c&#8321;</th><th class="num">a (m/s)</th><th class="num">Above 1,050 m/s by</th></tr></thead><tbody>
+<tr><td>Anchored at the upstream end only</td><td class="num">0.860</td><td class="num">1,117</td><td class="num">6.4 %</td></tr>
+<tr><td>Anchored throughout</td><td class="num">0.922</td><td class="num">1,101</td><td class="num">4.8 %</td></tr>
+<tr><td>Expansion joints throughout</td><td class="num">1.000</td><td class="num">1,080</td><td class="num">2.9 %</td></tr>
+</tbody></table></div>
+<p>The series uses <strong>a = 1,050&nbsp;m/s</strong>, 3&ndash;6&nbsp;% below these values. That choice is design judgement, not a formula result: an allowance for traces of air and for the joints, which the thin-wall formula does not see. Also in our judgement, socket-and-spigot ductile iron is closest to the expansion-joint case, and buried welded steel to anchored throughout.</p>
+
+<h2 id="int-calculator">3 &middot; Interactive: wave speed calculator</h2>
+<p>Choose a pipe, then change its geometry, modulus and restraint. The curves show Korteweg wave speed against D/e for the current material under all three restraint conditions. The marker is your pipe.</p>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Korteweg wave speed by material, geometry and restraint</div>
+    <div class="fsub">Thin-wall Korteweg formula, K = 2.19 GPa, &rho; = 998 kg/m&sup3;. Joukowsky head at the reference 1.39 m/s; 2L/a on the reference 12 km. Presets reproduce the materials table.</div>
+  </div>
+  <div class="chart-box"><canvas id="waveChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Pipe</label>
+      <select id="sPre">
+        <option value="0" selected>Ductile iron DN800 K9</option>
+        <option value="1">Steel DN800, e = 10 mm</option>
+        <option value="2">Steel DN2000, e = 20 mm</option>
+        <option value="3">GRP DN800, e = 16 mm</option>
+        <option value="4">HDPE PE100 DN800 SDR17</option>
+        <option value="5">PVC DN300, e = 11.7 mm</option>
+        <option value="6">Custom (use the sliders)</option>
+      </select>
+      <div class="hint">Sets D, e, E and &mu;. Moving a slider makes it a custom pipe.</div>
+    </div>
+    <div class="ctrl">
+      <label>Restraint</label>
+      <select id="sRes">
+        <option value="0">Anchored at the upstream end only</option>
+        <option value="1">Anchored throughout</option>
+        <option value="2" selected>Expansion joints throughout</option>
+      </select>
+      <div class="hint">In our judgement: socket joints are closest to expansion joints; welded and buried, to anchored throughout.</div>
+    </div>
+    <div class="ctrl">
+      <label>Diameter D <span id="vDia">800 mm</span></label>
+      <input type="range" id="sDia" min="100" max="2500" value="800" step="10">
+      <div class="hint">Nominal diameter.</div>
+    </div>
+    <div class="ctrl">
+      <label>Wall thickness e <span id="vWall">11.7 mm</span></label>
+      <input type="range" id="sWall" min="2" max="80" value="11.7" step="0.1">
+      <div class="hint">K-class wall for ductile iron; D/SDR for plastics.</div>
+    </div>
+    <div class="ctrl">
+      <label>Young&rsquo;s modulus E <span id="vMod">170 GPa</span></label>
+      <input type="range" id="sMod" min="-0.3" max="2.35" value="2.2304489" step="any">
+      <div class="hint">Log scale, 0.5&ndash;220 GPa. Short-term value for plastics; hoop value for GRP.</div>
+    </div>
+    <div class="ctrl">
+      <label>Poisson&rsquo;s ratio &mu; <span id="vPoi">0.28</span></label>
+      <input type="range" id="sPoi" min="0.2" max="0.5" value="0.28" step="0.01">
+      <div class="hint">About 0.3 for metals; up to 0.45 for PE.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Wave speed</div><div class="v" id="rWa">1,080 <small>m/s</small></div></div>
+    <div class="cell"><div class="k">Joukowsky, 1.39 m/s</div><div class="v" id="rWj">153.3 <small>m</small></div></div>
+    <div class="cell"><div class="k">2L/a on 12 km</div><div class="v" id="rWt">22.2 <small>s</small></div></div>
+    <div class="cell"><div class="k">Wall term KD/Ee</div><div class="v" id="rWw">0.88</div></div>
+    <div class="cell"><div class="k">Difference from 1,050 m/s</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rWd"><span class="badge good">+2.9 %</span></span></div></div>
+  </div>
+</div>
+<p class="fig-note">The default, DN800 K9 with expansion joints, gives <strong>1,080&nbsp;m/s</strong>, a Joukowsky head of 153.3&nbsp;m and 2L/a of 22.2&nbsp;s, which is 2.9&nbsp;% above the design value. Steel DN800 gives 1,094&nbsp;m/s: the higher modulus is mostly cancelled by the thinner wall. HDPE PE100 SDR17 gives <strong>251&nbsp;m/s</strong>, a Joukowsky head of 35.6&nbsp;m and a 95.6&nbsp;s round trip. For the metals, a 10&nbsp;% error in E moves a by about 2.5&nbsp;%. For PE and GRP the same error moves it by about 5&nbsp;%, because a then varies almost as \(\sqrt{E}\), and in our experience a plastic&rsquo;s modulus is seldom known that closely.</p>
+
+<h2 id="materials">4 &middot; Materials, and where the numbers come from</h2>
+<div class="tbl-wrap"><table><caption>Korteweg wave speed by material and restraint</caption><thead><tr><th>Pipe</th><th class="num">E (GPa)</th><th class="num">&mu;</th><th class="num">D (mm)</th><th class="num">e (mm)</th><th class="num">Anchored upstream (m/s)</th><th class="num">Anchored throughout (m/s)</th><th class="num">Expansion joints (m/s)</th></tr></thead><tbody>
+<tr><td>Ductile iron DN800 K9</td><td class="num">170</td><td class="num">0.28</td><td class="num">800</td><td class="num">11.7</td><td class="num">1,117</td><td class="num">1,101</td><td class="num">1,080</td></tr>
+<tr><td>Steel DN800</td><td class="num">210</td><td class="num">0.30</td><td class="num">800</td><td class="num">10</td><td class="num">1,133</td><td class="num">1,117</td><td class="num">1,094</td></tr>
+<tr><td>Steel DN2000</td><td class="num">210</td><td class="num">0.30</td><td class="num">2,000</td><td class="num">20</td><td class="num">1,079</td><td class="num">1,061</td><td class="num">1,036</td></tr>
+<tr><td>GRP DN800</td><td class="num">11</td><td class="num">0.25</td><td class="num">800</td><td class="num">16</td><td class="num">475</td><td class="num">461</td><td class="num">448</td></tr>
+<tr><td>HDPE PE100 DN800 SDR17</td><td class="num">1.1</td><td class="num">0.45</td><td class="num">800</td><td class="num">47.1</td><td class="num">284</td><td class="num">280</td><td class="num">251</td></tr>
+<tr><td>PVC DN300</td><td class="num">3.0</td><td class="num">0.40</td><td class="num">300</td><td class="num">11.7</td><td class="num">371</td><td class="num">362</td><td class="num">334</td></tr>
+</tbody></table></div>
+<ul class="clean">
+  <li><strong>Ductile iron.</strong> The wall comes from the ISO 2531 K-class rule [14], and the modulus is well known. The cement-mortar lining adds some stiffness the formula ignores. In our judgement it is not worth taking credit for.</li>
+  <li><strong>Steel.</strong> D/e is what matters. DN2000 with a 20&nbsp;mm wall gives 1,061&nbsp;m/s anchored throughout, against 1,117&nbsp;m/s for DN800 with a 10&nbsp;mm wall. AWWA M11 covers surge in steel pipe design [11].</li>
+  <li><strong>GRP.</strong> The hoop modulus depends on the laminate, so the 11&nbsp;GPa here is only an illustration. Use the manufacturer&rsquo;s value for the actual pipe [12].</li>
+  <li><strong>PE and PVC.</strong> Use the short-term modulus, because a surge lasts seconds. The modulus falls as temperature rises, so the same line has a lower wave speed in summer. SDR17 pipe (D/e = 17) is thicker than the thin-wall formula strictly covers; restraint factors for thick-walled pipe are in [1, 2]. The diameter convention matters too: with the bore (705.8&nbsp;mm) instead of the outside diameter, the same pipe gives 267 rather than 251&nbsp;m/s with expansion joints, so state which you used. Wall thicknesses follow ISO 4427-2 and ISO 1452-2 [14], and AWWA M55 covers surge in PE pipe [13].</li>
+  <li><strong>Mixed or encased lines.</strong> A concrete surround, a sleeve, or a PE section inside a ductile iron main changes the wave speed locally. Model each section as its own pipe. An averaged value hides the reflections at each change.</li>
+</ul>
+
+<h2 id="air">5 &middot; Air: the largest uncertainty</h2>
+<p>The Korteweg formula assumes water with no free gas in it. Real mains carry some: air released from solution as the pressure falls, air drawn in at the pump suction, and air let in by air valves during the downsurge [15]. The simplified isothermal form given by Wylie &amp; Streeter [1] uses \(a_0\) for the wave speed without air, \(\alpha\) for the volume fraction of free gas at the local absolute pressure \(p\), and \(n\) for the gas exponent:</p>
+<div class="eq">\[ a=\Big[\rho\Big(\frac{1}{\rho\, a_0^2}+\frac{\alpha}{n\,p}\Big)\Big]^{-1/2} \]</div>
+<p>The gas term is divided by the pressure, so free air has its biggest effect at low pressure, which is exactly where the downsurge happens [2, 6]. A fixed quantity of gas also expands as the pressure falls (isothermally, \(\alpha\,p\) stays constant), so the effect at low pressure is stronger still. The table holds \(\alpha\) at the stated pressure:</p>
+<div class="tbl-wrap"><table><caption>Wave speed with free air, a&#8320; = 1,050 m/s, isothermal (n = 1), &alpha; at the stated pressure, m/s</caption><thead><tr><th>Free air by volume</th><th class="num">2 bar abs</th><th class="num">5 bar abs</th><th class="num">10 bar abs</th></tr></thead><tbody>
+<tr><td>0.1 %</td><td class="num">412</td><td class="num">587</td><td class="num">725</td></tr>
+<tr><td>0.5 %</td><td class="num">197</td><td class="num">303</td><td class="num">412</td></tr>
+<tr><td>1 %</td><td class="num">140</td><td class="num">219</td><td class="num">303</td></tr>
+<tr><td>2 %</td><td class="num">100</td><td class="num">157</td><td class="num">219</td></tr>
+</tbody></table></div>
+<p>One-tenth of one per cent of free air at 2&nbsp;bar abs takes away <strong>61&nbsp;% of the wave speed</strong>. Compressed to 10&nbsp;bar abs, the same gas is only 0.02&nbsp;% of the volume and the wave speed recovers to about 950&nbsp;m/s, which is why the high-pressure part of a transient travels close to the pipe&rsquo;s own wave speed. Carried the other way, 0.1&nbsp;% at the steady 9.35&nbsp;bar abs at the pump becomes about 0.7&nbsp;% at the +3.0&nbsp;m limit, where the wave speed is about 134&nbsp;m/s. The low-pressure phase, which is the one a surge vessel exists to control, may travel far more slowly, and it is the part of the model we know least about [3]. How air valves let air into a line is covered in <a href="air-admission-networks.html">air admission in networks</a>.</p>
+
+<h2 id="int-air">6 &middot; Interactive: free air and pressure</h2>
+<p>Set the free-air fraction, the wave speed without air and the gas exponent. The red curve is your case. The faint curves show 0.1, 0.5, 1 and 2&nbsp;% air at the same a&#8320; and n.</p>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Wave speed of water with free air against absolute pressure</div>
+    <div class="fsub">Simplified Wylie &amp; Streeter form, &rho; = 998 kg/m&sup3;, log pressure scale. Each curve holds &alpha;, the free-gas fraction at the local pressure, constant. Vertical lines: steady HGL at the pump (95.3 m abs, 9.35 bar abs) and the +3.0 m design minimum (13.33 m abs, 1.31 bar abs).</div>
+  </div>
+  <div class="chart-box"><canvas id="airChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Free air by volume <span id="vAl">0.10 %</span></label>
+      <input type="range" id="sAl" min="0" max="3" value="0.1" step="0.01">
+      <div class="hint">Undissolved gas as a fraction of volume at each pressure.</div>
+    </div>
+    <div class="ctrl">
+      <label>Wave speed without air a&#8320; <span id="vA0">1,050 m/s</span></label>
+      <input type="range" id="sA0" min="300" max="1400" value="1050" step="10">
+      <div class="hint">About 1,050 for ductile iron; about 335&ndash;475 for PVC and GRP. PE (about 250&ndash;285) lies just below the range.</div>
+    </div>
+    <div class="ctrl">
+      <label>Gas exponent n <span id="vN">1.00</span></label>
+      <input type="range" id="sN" min="1" max="1.4" value="1" step="0.05">
+      <div class="hint">1.0 isothermal; 1.4 adiabatic.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">At 2 bar abs</div><div class="v" id="rA2">412 <small>m/s</small></div></div>
+    <div class="cell"><div class="k">At 5 bar abs</div><div class="v" id="rA5">587 <small>m/s</small></div></div>
+    <div class="cell"><div class="k">At 10 bar abs</div><div class="v" id="rA10">725 <small>m/s</small></div></div>
+    <div class="cell"><div class="k">At the +3.0 m limit, same &alpha;</div><div class="v" id="rAlim">342 <small>m/s</small></div></div>
+    <div class="cell"><div class="k">At the limit, gas taken from 9.35 bar abs</div><div class="v" id="rAfix">134 <small>m/s</small></div></div>
+    <div class="cell"><div class="k">Lost at 2 bar abs</div><div class="v" id="rAloss">61 <small>%</small></div></div>
+  </div>
+</div>
+<p class="fig-note">With 0.1&nbsp;% free air and a&#8320; = 1,050&nbsp;m/s, the curve gives 412, 587 and 725&nbsp;m/s at 2, 5 and 10&nbsp;bar abs, and <strong>342&nbsp;m/s</strong> at the +3.0&nbsp;m limit with the same &alpha;. The next readout follows a fixed quantity of gas instead: 0.1&nbsp;% at the steady 9.35&nbsp;bar abs leaves only <strong>134&nbsp;m/s</strong> at the limit. Raising n to 1.2 only lifts the 2&nbsp;bar value to 444&nbsp;m/s; cutting the air to 0.01&nbsp;% brings it back to 843&nbsp;m/s.</p>
+
+<h2 id="surge-sensitivity">7 &middot; What wave speed does to the surge on a 12 km main</h2>
+<p>To isolate its effect, we ran the reference main at five wave speeds (1,300, 1,050, 700, 450 and 300&nbsp;m/s) and changed nothing else: same bore, friction and HGL, all pumps stopping instantly with the check valve closing at once, and no protection. The low values are a sensitivity test on this main, not a model of a plastic line, which would have its own bore, friction and rating. The vessel columns give the smallest air-over-water vessel at the pump, with a free DN400 connection (K 0.5), that keeps the whole line at or above +3.0&nbsp;m. The shell is the gas at maximum expansion divided by 0.8, a 20&nbsp;% water reserve.</p>
+<div class="tbl-wrap"><table><caption>Pump trip on the 12 km DN800 main at five wave speeds</caption><thead><tr><th class="num">a (m/s)</th><th class="num">Joukowsky (m)</th><th class="num">2L/a (s)</th><th>Unprotected minimum</th><th>Unprotected peak, both cavity models</th><th class="num">Gas at steady HGL (m&sup3;)</th><th class="num">Gas at maximum expansion (m&sup3;)</th><th class="num">Shell (m&sup3;)</th></tr></thead><tbody>
+<tr><td class="num">1,300</td><td class="num">184.5</td><td class="num">18.5</td><td>&minus;9.8 m (vapour)</td><td>190&ndash;210 m</td><td class="num">3.11</td><td class="num">16.00</td><td class="num">20.0</td></tr>
+<tr><td class="num">1,050</td><td class="num">149.1</td><td class="num">22.9</td><td>&minus;9.8 m (vapour)</td><td>165&ndash;190 m</td><td class="num">3.08</td><td class="num">15.30</td><td class="num">19.1</td></tr>
+<tr><td class="num">700</td><td class="num">99.4</td><td class="num">34.3</td><td>&minus;9.8 m (vapour)</td><td>140&ndash;150 m</td><td class="num">3.19</td><td class="num">15.32</td><td class="num">19.1</td></tr>
+<tr><td class="num">450</td><td class="num">63.9</td><td class="num">53.3</td><td>&minus;9.8 m (vapour)</td><td>85&ndash;90 m</td><td class="num">1.99</td><td class="num">10.15</td><td class="num">12.7</td></tr>
+<tr><td class="num">300</td><td class="num">42.6</td><td class="num">80.0</td><td>+5.0 m (no separation)</td><td>85 m (steady; no upsurge)</td><td class="num">not needed</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>
+</tbody></table></div>
+<p>The runs use a method-of-characteristics model with a vapour cavity model (120 reaches, 150&nbsp;s), cross-checked with a gas cavity model and an independent second code [1, 4, 7]. They are not Bentley HAMMER results; a project analysis must be run in HAMMER, or an equivalent, on the real profile. What they show reliably is the trend.</p>
+<h3>Joukowsky is not the peak once the column separates</h3>
+<p>At 1,050&nbsp;m/s the Joukowsky head is 149.1&nbsp;m but the peak is <strong>165&ndash;190&nbsp;m</strong>. The pump end drops to vapour and a cavity opens, which in the model stays open for about 47&nbsp;s, roughly two round trips. When returning water closes it, the collapse spike adds to the returning wave. Peaks fall with wave speed, as the table shows, but none can be read from Joukowsky.</p>
+<h3>Why the peak is a range</h3>
+<p>The collapse spike depends on how the cavity is represented. Against the vapour cavity model, the gas cavity model [7] puts these peaks between 13&nbsp;% lower and 10&nbsp;% higher, and the collapse peaks across this series between 18&nbsp;% lower and 10&nbsp;% higher, so neither is simply conservative. The design answer is not to pick a model but to stop relying on the collapse peak: protect the downsurge so the column does not separate [10].</p>
+<h3>450 m/s: separation below the Joukowsky threshold</h3>
+<p>The Joukowsky head is 63.9&nbsp;m, well under the 94.8&nbsp;m available, yet the line reaches vapour. The trip drops the pump head to 21.1&nbsp;m, and the head then keeps falling as the line drains toward the reservoir, reaching vapour after about 42&nbsp;s, before the reflection returns at 53.3&nbsp;s. The collapse adds little: 85&ndash;90&nbsp;m against a steady 85.0&nbsp;m.</p>
+<h3>300 m/s: no separation</h3>
+<p>The first drop takes the pump end to 42.4&nbsp;m, as Joukowsky predicts, and the head then drains to <strong>+5.0&nbsp;m</strong> just before the reflection arrives at 80.0&nbsp;s. There is no separation and no upsurge, and +3.0&nbsp;m is met without protection. Joukowsky&rsquo;s separation test happens to give the right answer here, but its minimum is 37&nbsp;m too high: the drain-down takes the pump end to +5.0&nbsp;m, only 2&nbsp;m above the criterion. Only the model shows that.</p>
+<div class="callout warn">
+  <span class="lbl">Do not design to a collapse peak</span>
+  At 1,050&nbsp;m/s the two cavity models are 25&nbsp;m apart. Check the pipe class against the whole range, and keep the minimum envelope at or above the +3.0&nbsp;m design minimum, well clear of vapour. See <a href="surge-analysis-risk.html">surge analysis and risk</a>.
+</div>
+
+<h2 id="int-surge">8 &middot; Interactive: the surge at five wave speeds</h2>
+<p>Choose a wave speed and a location. The dark trace is the unprotected pressure head from the vapour cavity model. The faint dashed trace is the 1,050&nbsp;m/s case at the same point. The peak readout covers both cavity models.</p>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Unprotected pump trip on the 12 km DN800 main: pressure head against time</div>
+    <div class="fsub">Method of characteristics with a vapour cavity model; instant stop of all pumps; only the wave speed changes. Gas and shell: smallest free-connection vessel holding the line at or above +3.0 m.</div>
+  </div>
+  <div class="chart-box"><canvas id="surgeChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Wave speed</label>
+      <select id="sCase">
+        <option value="0">1,300 m/s: high sensitivity value</option>
+        <option value="1" selected>1,050 m/s: reference design value</option>
+        <option value="2">700 m/s: low sensitivity value</option>
+        <option value="3">450 m/s: GRP-like flexibility</option>
+        <option value="4">300 m/s: PE-like flexibility</option>
+      </select>
+      <div class="hint">Bore, friction and HGL stay those of the DN800 main.</div>
+    </div>
+    <div class="ctrl">
+      <label>Location</label>
+      <select id="sLoc">
+        <option value="pump" selected>At the pump</option>
+        <option value="mid">Mid-line, 6 km</option>
+      </select>
+      <div class="hint">Steady head 85.0 m at the pump, 64.9 m at 6 km. The readouts are for the whole line.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Joukowsky a&middot;v/g</div><div class="v" id="rSj">149.1 <small>m</small></div></div>
+    <div class="cell"><div class="k">2L/a</div><div class="v" id="rSt">22.9 <small>s</small></div></div>
+    <div class="cell"><div class="k">Line minimum</div><div class="v" id="rSm">&minus;9.8 <small>m</small> <span class="badge bad">vapour</span></div></div>
+    <div class="cell"><div class="k">Line peak, both models</div><div class="v" id="rSp">165&ndash;190 <small>m</small> <span class="badge bad">above PN16</span></div></div>
+    <div class="cell"><div class="k">Gas: steady &rarr; max</div><div class="v" id="rSg">3.08 &rarr; 15.30 <small>m&sup3;</small></div></div>
+    <div class="cell"><div class="k">Vessel shell</div><div class="v" id="rSv">19.1 <small>m&sup3;</small></div></div>
+  </div>
+</div>
+<p class="fig-note">Step from 1,050 down to 700&nbsp;m/s: the spikes and the peak readout shrink, while the gas readout barely moves. At 450 and 300&nbsp;m/s the spikes go and the vessel shrinks or disappears. On the 6&nbsp;km trace the peak is 150&ndash;160&nbsp;m, against 165&ndash;190&nbsp;m for the whole line. The 300&nbsp;m/s run covers under two round trips; run on to 320&nbsp;s, the pump head peaks at 70.6&nbsp;m and never exceeds the steady 85.0&nbsp;m.</p>
+
+<h2 id="vessel">9 &middot; Why the vessel barely moves, and when it does</h2>
+<h3>Worked example: the vessel at 1,050 m/s</h3>
+<p>The sizing criterion is the smallest gas volume, in a vessel at the pump with a free DN400 connection, that keeps the whole line at or above +3.0&nbsp;m. The gas starts at 85.0 + 10.33 = 95.3&nbsp;m abs (9.35&nbsp;bar abs) and expands with n = 1.2:</p>
+<div class="eq">\[ p\,V^{\,n} = \text{const} \quad\Rightarrow\quad p = 95.3\left(\frac{3.08}{15.30}\right)^{1.2} = 13.9\ \text{m abs} \]</div>
+<p>The model gives <strong>3.08&nbsp;m&sup3;</strong> of gas at the steady HGL, expanding to <strong>15.30&nbsp;m&sup3;</strong> at 13.9&nbsp;m abs (about +3.6&nbsp;m gauge). The gas does not fall to +3.0&nbsp;m itself: the governing minimum is along the line, 4.6&nbsp;km from the pump in this run, not at the vessel. The vessel has delivered 12.2&nbsp;m&sup3; of water, and the shell is 15.30 / 0.8 = <strong>19.1&nbsp;m&sup3;</strong>. The method is in <a href="surge-vessel.html">Sizing the Hydropneumatic Surge Vessel</a> and Stephenson&rsquo;s simple guide [9]. The site&rsquo;s reference vessel (20&nbsp;m&sup3; shell, 3.5&nbsp;m&sup3; gas, differential DN400 connection with K 2 out and K 10 in) holds +4.3&nbsp;m minimum and 119.2&nbsp;m maximum; <a href="surge-vessel-differential-orifice.html">article 2</a> explains the orifice.</p>
+<h3>The column&rsquo;s momentum does not depend on wave speed</h3>
+<p>Across the stiff range the water delivered hardly changes: 12.9&nbsp;m&sup3; at 1,300&nbsp;m/s, 12.2 at 1,050 and 12.1 at 700, then 8.2 at 450. The vessel is feeding a slowing column, 6,032&nbsp;m&sup3; of water at 1.39&nbsp;m/s, whose momentum is</p>
+<div class="eq">\[ M = \rho\,L\,A\,v = \rho\,L\,Q = 998 \times 12{,}000 \times 0.70 = 8.38\ \text{MN}\,\text{s} \]</div>
+<p>The wave speed is not in it. What a changes on a stiff pipe is the pressure history along the line: the Joukowsky head, the timing and the collapse peaks in the table above.</p>
+<h3>What does change: the water stored in the line</h3>
+<p>Wave speed does set how much water the line stores per metre of head, in the stretch of the wall and the compression of the water:</p>
+<div class="eq">\[ C = \frac{g\,A\,L}{a^{2}} \]</div>
+<p>C is 0.054&nbsp;m&sup3; per metre at 1,050&nbsp;m/s and 0.658&nbsp;m&sup3;/m at 300&nbsp;m/s, <strong>12.25 times more</strong>. A flexible pipe gives water back from its own wall as the pressure falls, feeding the column from inside the line. At 700&nbsp;m/s storage is 2.25 times the 1,050&nbsp;m/s value and the vessel does not move. At 450&nbsp;m/s it is 5.44 times, and the gas drops 35&nbsp;% to 1.99&nbsp;m&sup3;. At 300&nbsp;m/s the line needs no vessel. Treat this qualitatively: the head does not fall evenly along the line, so C times the head drop is not the water delivered.</p>
+<ul class="clean">
+  <li><strong>Steel and ductile iron:</strong> refine the wave speed for pressures, pipe class and timing, not for vessel volume. Here the gas varies by less than 4&nbsp;% from 700 to 1,300&nbsp;m/s, and 700&nbsp;m/s needs the most.</li>
+  <li><strong>A plastic wave speed on a steel or ductile iron main is the dangerous mistake.</strong> At 450&nbsp;m/s this main&rsquo;s vessel comes out 35&nbsp;% too small and the peak 85&ndash;90&nbsp;m instead of 165&ndash;190&nbsp;m.</li>
+  <li><strong>A steel wave speed on a plastic line is also wrong.</strong> It overstates the Joukowsky head and the peaks, but it shortens 2L/a, so a closure that is rapid on the real pipe looks slow. In our judgement, from the trend of these runs, it also overstates the vessel. Size a plastic line with its own wave speed and its own model.</li>
+</ul>
+
+<h2 id="int-storage">10 &middot; Interactive: vessel volume against line storage</h2>
+<p>Move the wave speed and choose which vessel quantity to plot. The blue points are the five model runs; the thin dashed segment down to zero at 300&nbsp;m/s only joins two runs and is not a computed size. The dashed amber curve is \(gAL/a^2\), calculated at any wave speed.</p>
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Vessel volume and line storage against wave speed</div>
+    <div class="fsub">Vessel points from the method-of-characteristics runs in section 7 (zero at 300 m/s, where none is needed). Storage C = gAL/a&sup2; for the whole 12 km line, A = 0.5027 m&sup2;.</div>
+  </div>
+  <div class="chart-box"><canvas id="vesChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Wave speed <span id="vAv">1,050 m/s</span></label>
+      <input type="range" id="sAv" min="250" max="1400" value="1050" step="10">
+      <div class="hint">Storage and timing are calculated at any value; vessel data exist at five wave speeds.</div>
+    </div>
+    <div class="ctrl">
+      <label>Vessel quantity</label>
+      <select id="sQty">
+        <option value="0" selected>Gas at the steady HGL</option>
+        <option value="1">Gas at maximum expansion</option>
+        <option value="2">Shell volume (20 % water reserve)</option>
+      </select>
+      <div class="hint">All three stay flat across the stiff-pipe range.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Joukowsky a&middot;v/g</div><div class="v" id="rVj">149.1 <small>m</small></div></div>
+    <div class="cell"><div class="k">2L/a</div><div class="v" id="rVt">22.9 <small>s</small></div></div>
+    <div class="cell"><div class="k">Line storage C</div><div class="v" id="rVc">0.054 <small>m&sup3;/m</small></div></div>
+    <div class="cell"><div class="k">Storage vs 1,050 m/s</div><div class="v" id="rVr">1.00 <small>&times;</small></div></div>
+    <div class="cell"><div class="k">Nearest computed vessel</div><div class="v" style="font-size:15px;margin-top:6px;" id="rVn">1,050 m/s: 3.08 m&sup3;</div></div>
+  </div>
+</div>
+<p class="fig-note">Compare the two curves. Storage grows as 1/a&sup2;, but across the steel and ductile iron range it stays small and the vessel line stays flat; the vessel only falls once storage has grown several times over, at 450&nbsp;m/s and below. Switch to shell volume and the shape is the same.</p>
+
+<h2 id="bracketing">11 &middot; Design practice: choosing the wave speed and testing both sides</h2>
+<p>The wave speed in a design basis should be traceable back to its source. In our practice that means three steps:</p>
+<ul class="clean">
+  <li><strong>Calculate.</strong> Apply Korteweg with the actual wall class or SDR, the right modulus (short-term at the operating temperature for plastics, hoop modulus for GRP), and the restraint that matches how the pipe is jointed and laid.</li>
+  <li><strong>Reduce, and label it as judgement.</strong> Take a modest allowance for air and joints. For this main that gives 1,050&nbsp;m/s.</li>
+  <li><strong>Test both sides.</strong> In our judgement, run a deliberately high and a deliberately low value as uniform sensitivity cases. For this main we used 1,300&nbsp;m/s, about 16&nbsp;% above the highest Korteweg value for DN800 K9 (1,117&nbsp;m/s), and 700&nbsp;m/s, two-thirds of the design value. One wave speed per pipe cannot reproduce the local slowdown that free air causes at low pressure (section 5), so the low run is a sensitivity test, not a model of the air. Do not go lower to size a vessel down: on this stiff main 450&nbsp;m/s cuts the computed gas to 1.99&nbsp;m&sup3;, 35&nbsp;% short of what 1,050&nbsp;m/s needs. For plastics, vary the modulus with temperature.</li>
+</ul>
+<div class="tbl-wrap"><table><caption>Which end of the range governs each check, on the reference main</caption><thead><tr><th>Check</th><th>End that governs</th><th>On this main</th></tr></thead><tbody>
+<tr><td>Peak pressure and pipe class</td><td>High a</td><td>190&ndash;210 m at 1,300 m/s; 165&ndash;190 m at 1,050 m/s</td></tr>
+<tr><td>Joukowsky head for a fast stop or valve slam</td><td>High a</td><td>184.5 m at 1,300 m/s; 149.1 m at 1,050 m/s</td></tr>
+<tr><td>Maximum with a free-connection vessel in place</td><td>High a</td><td>140.9 m at 1,300 m/s; 130.9 m at 1,050 m/s (each with the gas sized for that wave speed)</td></tr>
+<tr><td>Vessel gas for the downsurge</td><td>Not consistent; check both</td><td>3.19 m&sup3; at 700, 3.11 at 1,300, 3.08 at 1,050 m/s</td></tr>
+<tr><td>Whether a closure counts as rapid (shorter than 2L/a)</td><td>Low a (longer 2L/a)</td><td>34.3 s at 700 m/s; 22.9 s at 1,050 m/s</td></tr>
+<tr><td>Whether an unprotected line separates</td><td>Not settled by Joukowsky</td><td>Vapour at every wave speed down to 450 m/s</td></tr>
+</tbody></table></div>
+<p>The value that is conservative for peak pressure is not the one that is conservative for the downsurge, so no single &ldquo;safe&rdquo; wave speed exists. EN 805 includes surge in the maximum design pressure [16]: check the pipe class against the high-wave-speed envelope, collapse peaks as a range, and timing decisions at both ends; see <a href="check-valve-hammer.html">check valve slam</a>, <a href="water-hammer-control-valve.html">control valve closure</a> and <a href="surge-scenarios-pump-stations.html">surge scenarios in pumping stations</a>.</p>
+
+<h2 id="hammer">12 &middot; Setting it up in Bentley HAMMER</h2>
+<p>The order we work in on a pumping main [17]: set the wave speed deliberately, check what the program actually used, and run the high and low cases beside the design case.</p>
+<ol>
+  <li><strong>Split the line wherever the wave speed changes.</strong> Model from the Pump, with its Check Valve, to the delivery Reservoir, starting a new Pipe at every change of material, diameter, wall class or restraint.</li>
+  <li><strong>Use the Wave Speed Calculator on each Pipe.</strong> Enter the pipe material, wall thickness (11.7&nbsp;mm for DN800 K9), Young&rsquo;s modulus, Poisson&rsquo;s ratio and the support/restraint condition, and check the result against a hand Korteweg value (1,080&ndash;1,117&nbsp;m/s for DN800 K9).</li>
+  <li><strong>Enter the design value in the wave speed field</strong> (1,050&nbsp;m/s here), record why, and use it on every Pipe of the same construction.</li>
+  <li><strong>Define the load case.</strong> On each Pump set a pump trip (shut down) at time zero, with pump and motor inertia, speed, the 4-quadrant characteristic curves and the check valve closure time or delay. No protection in the first run. The runs in this article stop the pumps instantly, which is the severe bound; with the real inertia HAMMER will show a milder first drop, so do not expect to reproduce the section 7 table.</li>
+  <li><strong>Set the transient run options.</strong> Run duration of several round trips (150&nbsp;s is about 6.6 times 2L/a here). The time step is computed from the shortest pipe and the wave speeds. Set the wave speed adjustment tolerance, turn on vapour pressure / column separation, and choose the friction method.</li>
+  <li><strong>Check the adjusted wave speeds</strong> against those you entered, on every Pipe. Short station pipes are where large adjustments usually appear, or they force a very small time step. In our judgement, do not coarsen the time step or loosen the wave speed adjustment tolerance so far that the main line&rsquo;s wave speed drifts by more than a few per cent.</li>
+  <li><strong>Read the envelopes.</strong> In the Transient Results Viewer, plot the profile (path) with maximum and minimum head envelopes, add time histories at the pump discharge and mid-line, and use the animation to see where cavities form and collapse. Check the minimum against +3.0&nbsp;m and vapour, the maximum against 136&nbsp;m. This reference main is flat; on a real profile, subtract the pipe elevation from the head (or plot pressure) before making those comparisons.</li>
+  <li><strong>Run the low and high wave speeds</strong> (700 and 1,300&nbsp;m/s here), compare envelopes with the design run, and record which run governs each check.</li>
+  <li><strong>Be wary of collapse-governed maxima.</strong> Where the minimum sits at vapour, the maximum also depends on the column separation settings. Do not let the pipe class rest on it.</li>
+  <li><strong>Size the protection, then rerun the range.</strong> Add a Hydropneumatic Tank at the pump (initial gas volume, gas law exponent 1.2, inlet orifice diameter, minor loss coefficient, ratio of losses, tank volume). Size it at the design wave speed, then rerun at 700 and 1,300&nbsp;m/s and confirm at each that the minimum envelope stays at or above +3.0&nbsp;m, the maximum at or below 136&nbsp;m, and the gas at maximum expansion leaves the intended water reserve; size to the governing run. Here the free-connection vessel sized at 1,050&nbsp;m/s (3.08&nbsp;m&sup3;) lets the line fall to +2.6&nbsp;m at 700&nbsp;m/s and +2.9&nbsp;m at 1,300&nbsp;m/s, so 700&nbsp;m/s sets the gas (3.19&nbsp;m&sup3;), and at 1,300&nbsp;m/s a free connection lets the maximum reach 140.9&nbsp;m even with 3.11&nbsp;m&sup3;. The site&rsquo;s reference vessel, with its differential connection, stays within both limits at all three wave speeds (minimum +3.9 to +4.3&nbsp;m, maximum 98.5 to 128.6&nbsp;m).</li>
+</ol>
+<p>Field names differ slightly between HAMMER versions; follow the intent of each step. The wider sequence is in <a href="hammer-transient-simulation-workflow.html">the HAMMER transient workflow</a> and <a href="hammer-transient-tips.html">HAMMER transient tips</a>.</p>
+
+<h2 id="checklist">13 &middot; Design checklist</h2>
+<ul class="clean">
+  <li><strong>Calculate a for every material</strong> with Korteweg: actual wall class or SDR, the right modulus, a stated restraint condition.</li>
+  <li><strong>Record the design value</strong> in the design basis, with the allowance below Korteweg labelled as judgement.</li>
+  <li><strong>Compare Joukowsky with the head above vapour.</strong> For a fast (low-inertia) stop, larger means expect separation; smaller proves nothing (this main separates at 450&nbsp;m/s, and drains to +5.0&nbsp;m at 300&nbsp;m/s).</li>
+  <li><strong>Run a high and a low wave speed</strong> and record which governs the peak and which the vessel.</li>
+  <li><strong>Check the pipe class against the high-a envelope</strong>, with collapse-governed peaks as a range across both cavity models.</li>
+  <li><strong>Expect no vessel saving</strong> from refining a on steel or ductile iron, and recheck the vessel at both ends of the range: minimum, maximum and water reserve.</li>
+  <li><strong>Give every plastic line or section its own wave speed</strong>, and never put a plastic value on a steel or ductile iron main.</li>
+  <li><strong>Check timing against 2L/a at both ends:</strong> check valve closure, valve stroke, relief valve opening.</li>
+  <li><strong>Keep the line out of the low pressures</strong> where air valves open and gas comes out of solution; that is where a is least certain.</li>
+  <li><strong>In HAMMER, confirm the adjusted wave speeds</strong> and run for several round trips.</li>
+</ul>
+
+<div class="callout green">
+  <span class="lbl">Surge protection design series</span>
+  <ol>
+    <li><strong>Wave speed: the number that sets the surge</strong></li>
+    <li><a href="surge-vessel-differential-orifice.html">The differential orifice: empty freely, refill slowly</a></li>
+    <li><a href="surge-vessel-type-selection.html">Bladder, diaphragm or air-over-water vessel</a></li>
+    <li><a href="one-way-surge-tank-design.html">One-way surge tanks at the knee</a></li>
+    <li><a href="surge-relief-valve-sizing.html">Surge relief valves: what a valve at the pump can protect</a></li>
+    <li><a href="pump-inertia-flywheel-surge.html">Pump inertia and the flywheel</a></li>
+    <li><a href="choosing-surge-protection.html">Choosing surge protection on one pipeline</a></li>
+  </ol>
+  The sizing method itself is in <a href="surge-vessel.html">Sizing the Hydropneumatic Surge Vessel</a>.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993 — Korteweg wave speed with restraint factors, wave speed with free gas, method of characteristics, vapour cavity model.</li>
+  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014 — wave speed in thin- and thick-walled pipe, free gas, Joukowsky head.</li>
+  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004 — pump trip transients, round-trip time, uncertainty of wave speed with entrained air.</li>
+  <li>Larock, B.E., Jeppson, R.W. &amp; Watters, G.Z. <em>Hydraulics of Pipeline Systems</em>. CRC Press, 2000 — method-of-characteristics implementation and pump boundaries.</li>
+  <li>Parmakian, J. <em>Waterhammer Analysis</em>. Dover, 1963 — the Joukowsky relation and pump-trip waterhammer.</li>
+  <li>Swaffield, J.A. &amp; Boldy, A.P. <em>Pressure Surge in Pipe and Duct Systems</em>. Avebury Technical, 1993 — surge propagation and the effect of free air on wave speed.</li>
+  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006 — vapour and gas cavity models and the sensitivity of collapse pressures.</li>
+  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989 — water hammer in pumping main design.</li>
+  <li>Stephenson, D. &ldquo;Simple guide for design of air vessels for water hammer protection of pumping lines.&rdquo; <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8), 2002 — air vessel sizing.</li>
+  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005 — transient analysis and protection practice.</li>
+  <li>AWWA M11 <em>Steel Pipe — A Guide for Design and Installation</em> — surge in steel pipe design.</li>
+  <li>AWWA M45 <em>Fiberglass Pipe Design</em> — surge in GRP pipe design.</li>
+  <li>AWWA M55 <em>PE Pipe — Design and Installation</em> — surge in polyethylene pipe design.</li>
+  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em>; ISO 4427-2 <em>Polyethylene (PE) pipes for water supply</em>; ISO 1452-2 <em>PVC-U pipes for water supply</em> — K-class and SDR wall thicknesses.</li>
+  <li>AWWA M51 <em>Air Valves: Air-Release, Air/Vacuum, and Combination</em> — air admission during transients.</li>
+  <li>EN 805 <em>Water supply — Requirements for systems and components outside buildings</em> — maximum design pressure including surge.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help — Wave Speed Calculator, wave speed adjustment, column separation, Hydropneumatic Tank, Transient Results Viewer.</li>
+</ol>
+
+<div class="tags">#WaveSpeed #SurgeAnalysis #WaterHammer #HydraulicTransients #Joukowsky #Korteweg #PumpTrip #ColumnSeparation #VapourCavity #MethodOfCharacteristics #SurgeVessel #AirVessel #HydropneumaticTank #DuctileIron #SteelPipe #GRP #HDPE #PVC #EntrainedAir #FreeAir #TransmissionMains #PumpingMains #PipeClass #SensitivityAnalysis #BentleyHAMMER #OpenFlowsHAMMER #EN805 #WaterInfrastructure #PipelineDesign</div>
+
+</div>
+
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="f-line"><span class="nm">&copy; 2026 Mohamed Abokhatwa</span> <i class="sep">&middot;</i> <span>Riyadh, Saudi Arabia</span> <i class="sep">&middot;</i> <a href="mailto:mohamed@abokhatwa.com" dir="ltr">mohamed@abokhatwa.com</a> <i class="sep">&middot;</i> <a href="tel:+966541706700" dir="ltr">+966 54 170 6700</a> <i class="sep">&middot;</i> <a href="https://www.linkedin.com/in/abokhatwa" target="_blank" rel="noopener">LinkedIn</a> <i class="sep">&middot;</i> <a href="/">All articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="chart-theme.js?v=13"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const fmt2=v=>v.toFixed(2);
+const fmt3=v=>v.toFixed(3);
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}};
+const TT={font:{family:'IBM Plex Sans',size:12,weight:'600'}};
+const LBL={size:10,family:'IBM Plex Sans'};
+const LEG={labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}};
+const D={"ws":[{"a":1300,"jouk":184.5,"crit":18.5,"unprot_min":-9.8,"unprot_max":192.47,"unprot_max_dgcm":211.7,"vapour":true,"vessel_needed":true,"gas":3.11,"gas_max":16.0,"vessel_total":20.0,"t":[0.077,0.615,1.231,1.769,2.385,2.923,3.538,4.077,4.692,5.231,5.846,6.385,7.0,7.538,8.154,8.692,9.308,9.846,10.462,11.0,11.615,12.154,12.769,13.308,13.923,14.462,15.077,15.615,16.231,16.769,17.385,17.923,18.538,19.077,19.692,20.231,20.846,21.385,22.0,22.538,23.154,23.692,24.308,24.846,25.462,26.0,26.615,27.154,27.769,28.308,28.923,29.462,30.077,30.615,31.231,31.769,32.385,32.923,33.538,34.077,34.692,35.231,35.846,36.385,37.0,37.538,38.154,38.692,39.308,39.846,40.462,41.0,41.615,42.154,42.769,43.308,43.923,44.462,45.077,45.615,46.231,46.769,47.385,47.923,48.538,49.077,49.692,50.231,50.846,51.385,52.0,52.538,53.154,53.692,54.308,54.846,55.462,56.0,56.615,57.154,57.769,58.308,58.923,59.462,60.077,60.615,61.231,61.769,62.385,62.923,63.538,64.077,64.692,65.231,65.846,66.385,67.0,67.538,68.154,68.692,69.308,69.846,70.462,71.0,71.615,72.154,72.769,73.308,73.923,74.462,75.077,75.615,76.231,76.769,77.385,77.923,78.538,79.077,79.692,80.231,80.846,81.385,82.0,82.538,83.154,83.692,84.308,84.846,85.462,86.0,86.615,87.154,87.769,88.308,88.923,89.462,90.077,90.615,91.231,91.769,92.385,92.923,93.538,94.077,94.692,95.231,95.846,96.385,97.0,97.538,98.154,98.692,99.308,99.846,100.462,101.0,101.615,102.154,102.769,103.308,103.923,104.462,105.077,105.615,106.231,106.769,107.385,107.923,108.538,109.077,109.692,110.231,110.846,111.385,112.0,112.538,113.154,113.692,114.308,114.846,115.462,116.0,116.615,117.154,117.769,118.308,118.923,119.462,120.077,120.615,121.231,121.769,122.385,122.923,123.538,124.077,124.692,125.231,125.846,126.385,127.0,127.538,128.154,128.692,129.308,129.846,130.462,131.0,131.615,132.154,132.769,133.308,133.923,134.462,135.077,135.615,136.231,136.769,137.385,137.923,138.538,139.077,139.692,140.231,140.846,141.385,142.0,142.538,143.154,143.692,144.308,144.846,145.462,146.0,146.615,147.154,147.769,148.308,148.923,149.462],"pump":[-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,106.7,107.8,109.1,110.3,111.8,113.1,114.5,115.6,116.9,118.2,168.8,170.3,172.0,173.5,174.7,176.1,177.2,178.5,179.6,180.5,163.8,162.8,183.0,183.4,184.1,184.4,185.8,187.0,188.3,189.4,190.6,191.8,-9.2,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,53.1,124.1,125.5,126.9,127.9,129.2,130.6,131.7,132.6,134.0,135.4,136.8,137.7,139.1,140.5,141.9,142.8,85.5,86.2,87.0,87.4,88.3,89.0,89.9,90.3,147.3,147.9,148.7,93.1,149.4,94.3,94.8,37.2,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,40.1,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,7.5,-9.8,57.1,59.0,60.5,61.6,62.9,64.1,65.3,66.3,67.6,68.7,69.9,70.9,72.1,73.2,74.4,75.3,76.2,77.6,78.8,79.5,80.6,104.9,105.4,106.3],"mid":[64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,29.8,30.1,30.4,30.8,31.1,31.3,31.6,31.9,32.2,-0.6,32.9,0.4,33.7,1.4,34.3,2.3,35.1,3.2,35.6,3.9,4.2,3.9,3.6,3.3,3.0,35.1,2.4,34.1,1.5,33.1,0.9,32.2,0.2,31.3,-0.3,30.5,30.2,30.5,30.8,31.0,31.3,31.4,31.5,31.6,31.7,31.8,31.9,31.9,2.9,2.7,2.5,2.3,2.4,2.3,2.3,2.2,2.2,2.4,13.0,14.2,3.3,3.7,4.1,4.6,30.0,30.2,30.4,30.5,30.5,30.6,142.2,143.5,144.7,145.7,138.0,138.2,149.0,149.8,150.8,151.6,177.3,178.7,180.2,181.4,182.7,183.9,81.3,81.4,81.3,81.2,72.3,71.3,80.5,80.2,79.8,79.4,57.4,57.3,57.1,57.0,57.1,57.0,-9.8,-9.8,-9.8,-9.8,-5.3,-5.1,-9.8,-9.8,-5.1,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,33.2,33.3,33.0,33.0,32.7,32.4,-5.7,-5.6,-5.6,-5.7,-5.6,-5.6,-5.4,-5.4,-5.4,-5.4,-5.3,-5.3,-5.1,-5.0,-4.8,-4.4,63.7,64.0,64.3,64.6,64.8,65.1,65.1,65.4,35.4,35.8,36.1,66.4,37.0,67.1,67.5,98.5,104.6,105.7,106.8,107.5,108.6,109.7,110.6,111.3,140.7,141.7,142.8,115.2,144.3,117.2,118.2,89.5,27.7,27.4,27.1,26.9,26.7,26.4,26.4,26.1,53.2,52.8,52.6,25.3,51.8,24.6,24.2,-4.2,16.2,15.6,14.7,14.2,13.2,12.6,11.7,11.2,-9.8,-9.8,-9.8,8.4,-9.8,6.9,6.2,32.9,34.8,35.0,35.1,35.4,35.4,23.1,23.6,23.6,-1.0,24.0,0.0,24.2,24.4,24.7,0.1,41.5,66.7,68.3,69.7,70.5,71.8,84.6,85.4,86.4,110.6,88.3,111.9,90.3,91.2,92.0,116.2,78.0]},{"a":1050,"jouk":149.1,"crit":22.9,"unprot_min":-9.8,"unprot_max":189.92,"unprot_max_dgcm":164.55,"vapour":true,"vessel_needed":true,"gas":3.08,"gas_max":15.3,"vessel_total":19.1,"t":[0.095,0.667,1.238,1.81,2.381,2.952,3.524,4.095,4.667,5.238,5.81,6.381,6.952,7.524,8.095,8.667,9.238,9.81,10.476,11.048,11.619,12.19,12.762,13.333,13.905,14.476,15.048,15.619,16.19,16.762,17.333,17.905,18.476,19.048,19.619,20.286,20.857,21.429,22.0,22.571,23.143,23.714,24.286,24.857,25.429,26.0,26.571,27.143,27.714,28.286,28.857,29.429,30.095,30.667,31.238,31.81,32.381,32.952,33.524,34.095,34.667,35.238,35.81,36.381,36.952,37.524,38.095,38.667,39.238,39.81,40.476,41.048,41.619,42.19,42.762,43.333,43.905,44.476,45.048,45.619,46.19,46.762,47.333,47.905,48.476,49.048,49.619,50.286,50.857,51.429,52.0,52.571,53.143,53.714,54.286,54.857,55.429,56.0,56.571,57.143,57.714,58.286,58.857,59.429,60.095,60.667,61.238,61.81,62.381,62.952,63.524,64.095,64.667,65.238,65.81,66.381,66.952,67.524,68.095,68.667,69.238,69.81,70.476,71.048,71.619,72.19,72.762,73.333,73.905,74.476,75.048,75.619,76.19,76.762,77.333,77.905,78.476,79.048,79.619,80.286,80.857,81.429,82.0,82.571,83.143,83.714,84.286,84.857,85.429,86.0,86.571,87.143,87.714,88.286,88.857,89.429,90.095,90.667,91.238,91.81,92.381,92.952,93.524,94.095,94.667,95.238,95.81,96.381,96.952,97.524,98.095,98.667,99.238,99.81,100.476,101.048,101.619,102.19,102.762,103.333,103.905,104.476,105.048,105.619,106.19,106.762,107.333,107.905,108.476,109.048,109.619,110.286,110.857,111.429,112.0,112.571,113.143,113.714,114.286,114.857,115.429,116.0,116.571,117.143,117.714,118.286,118.857,119.429,120.095,120.667,121.238,121.81,122.381,122.952,123.524,124.095,124.667,125.238,125.81,126.381,126.952,127.524,128.095,128.667,129.238,129.81,130.476,131.048,131.619,132.19,132.762,133.333,133.905,134.476,135.048,135.619,136.19,136.762,137.333,137.905,138.476,139.048,139.619,140.286,140.857,141.429,142.0,142.571,143.143,143.714,144.286,144.857,145.429,146.0,146.571,147.143,147.714,148.286,148.857,149.429],"pump":[-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,97.8,100.7,103.6,109.2,110.5,111.9,113.1,114.3,115.4,116.5,117.6,118.7,119.8,120.8,121.8,122.8,123.8,124.8,125.7,126.7,127.6,128.5,129.4,130.3,131.2,132.0,132.9,133.7,134.5,135.3,136.1,137.1,138.0,139.0,139.9,141.0,141.9,188.0,189.2,1.0,-2.9,-5.5,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,129.8,130.7,67.6,68.4,69.4,70.2,71.1,72.0,72.7,73.4,74.1,74.8,75.7,76.4,77.2,77.9,78.6,79.4,80.1,80.9,81.6,82.4,83.2,84.0,84.8,85.6,86.1,86.7,130.4,87.9,88.5,89.1,89.7,90.3,90.9,91.5,92.3,93.2,94.2,95.2,-9.8,-9.8,23.5,22.8,21.9,21.1,20.3,19.6,18.8,18.1,17.5,16.8,16.1,15.5,14.8,14.1,13.4,12.8,12.1,11.3,10.6,9.9,9.2,8.5,7.5,6.7,6.1,5.4,4.8,-9.8,-9.8,3.5,2.9,2.3,1.8,1.2,0.5,-0.3,-1.2,-2.2,73.9,64.2,65.0,65.8,66.5,67.3,68.0,68.9,69.5,70.1,70.7,71.4,72.0,72.6,73.3,73.9,74.5,75.1],"mid":[64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,30.9,31.1,31.4,31.7,31.9,32.3,32.5,32.7,32.9,33.1,33.3,33.5,33.7,33.9,34.1,34.4,34.7,34.9,35.2,35.4,35.7,35.9,3.5,3.5,3.3,3.1,2.9,2.7,2.5,2.3,2.1,2.0,1.8,1.7,32.8,32.4,32.0,31.7,31.3,31.0,0.2,-0.0,-0.2,30.0,30.1,30.3,30.5,30.7,30.9,31.0,31.1,31.3,31.4,31.6,31.5,31.5,31.5,31.5,31.5,31.4,5.2,111.7,113.5,115.4,118.8,119.9,121.0,122.0,123.0,124.0,125.0,125.9,126.9,127.8,129.0,130.0,131.0,132.0,132.9,156.8,157.8,61.6,60.8,59.9,57.2,57.1,56.9,56.8,56.6,56.5,56.4,56.3,56.2,56.1,56.1,56.1,56.1,56.1,56.2,77.2,77.3,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,17.9,69.5,36.3,36.3,36.4,36.3,36.4,36.5,36.7,36.7,36.8,36.8,36.9,36.9,36.9,36.8,36.9,36.9,36.8,36.6,105.3,106.1,75.5,76.3,77.2,78.0,78.7,79.5,101.9,80.6,81.2,81.9,82.5,83.2,83.9,84.5,85.2,86.1,86.9,88.0,52.6,52.7,52.7,52.7,52.7,52.6,52.5,52.5,52.4,52.3,52.3,52.2,52.2,52.1,52.1,52.1,51.9,52.0,52.1,52.3,11.7,-9.8,16.4,15.6,14.8,14.1,13.4,12.6,11.9,11.4,-7.5,10.3,9.5,8.9,8.0,7.4,6.7,6.0,5.2,4.5,42.8,37.5,37.5,37.6,37.6,37.6,37.6,37.7,37.8,37.8,37.9,38.0,38.1,38.0,37.9,38.0,38.0,37.9,37.7,37.6,55.0,71.0,71.7,72.4,73.1,73.9,74.5,75.2]},{"a":700,"jouk":99.4,"crit":34.3,"unprot_min":-9.8,"unprot_max":139.53,"unprot_max_dgcm":148.12,"vapour":true,"vessel_needed":true,"gas":3.19,"gas_max":15.32,"vessel_total":19.1,"t":[0.143,0.714,1.286,1.857,2.429,3.0,3.571,4.143,4.714,5.286,5.857,6.429,7.0,7.571,8.143,8.714,9.286,9.857,10.429,11.0,11.571,12.143,12.714,13.286,13.857,14.429,15.143,15.714,16.286,16.857,17.429,18.0,18.571,19.143,19.714,20.286,20.857,21.429,22.0,22.571,23.143,23.714,24.286,24.857,25.429,26.0,26.571,27.143,27.714,28.286,28.857,29.429,30.143,30.714,31.286,31.857,32.429,33.0,33.571,34.143,34.714,35.286,35.857,36.429,37.0,37.571,38.143,38.714,39.286,39.857,40.429,41.0,41.571,42.143,42.714,43.286,43.857,44.429,45.143,45.714,46.286,46.857,47.429,48.0,48.571,49.143,49.714,50.286,50.857,51.429,52.0,52.571,53.143,53.714,54.286,54.857,55.429,56.0,56.571,57.143,57.714,58.286,58.857,59.429,60.143,60.714,61.286,61.857,62.429,63.0,63.571,64.143,64.714,65.286,65.857,66.429,67.0,67.571,68.143,68.714,69.286,69.857,70.429,71.0,71.571,72.143,72.714,73.286,73.857,74.429,75.143,75.714,76.286,76.857,77.429,78.0,78.571,79.143,79.714,80.286,80.857,81.429,82.0,82.571,83.143,83.714,84.286,84.857,85.429,86.0,86.571,87.143,87.714,88.286,88.857,89.429,90.143,90.714,91.286,91.857,92.429,93.0,93.571,94.143,94.714,95.286,95.857,96.429,97.0,97.571,98.143,98.714,99.286,99.857,100.429,101.0,101.571,102.143,102.714,103.286,103.857,104.429,105.143,105.714,106.286,106.857,107.429,108.0,108.571,109.143,109.714,110.286,110.857,111.429,112.0,112.571,113.143,113.714,114.286,114.857,115.429,116.0,116.571,117.143,117.714,118.286,118.857,119.429,120.143,120.714,121.286,121.857,122.429,123.0,123.571,124.143,124.714,125.286,125.857,126.429,127.0,127.571,128.143,128.714,129.286,129.857,130.429,131.0,131.571,132.143,132.714,133.286,133.857,134.429,135.143,135.714,136.286,136.857,137.429,138.0,138.571,139.143,139.714,140.286,140.857,141.429,142.0,142.571,143.143,143.714,144.286,144.857,145.429,146.0,146.571,147.143,147.714,148.286,148.857,149.429],"pump":[-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,56.5,57.3,58.0,58.7,59.4,60.1,60.8,61.4,62.1,62.7,63.4,64.0,64.6,65.2,65.8,66.4,67.0,67.6,68.2,68.7,69.3,69.9,70.4,71.0,71.5,72.0,72.6,73.1,73.7,74.2,74.7,75.2,75.8,76.3,76.8,77.3,77.8,78.3,79.1,79.6,80.1,80.6,81.1,81.7,82.2,82.7,83.2,83.7,84.2,84.6,135.8,85.4,85.8,136.3,86.6,87.0,137.2,137.8,138.4,139.0,34.4,33.7,33.1,32.5,31.9,31.3,30.7,30.1,29.6,29.0,28.5,27.9,27.4,26.8,26.3,25.8,25.3,24.8,24.3,23.8,23.3,22.8,22.3,21.8,21.4,20.9,20.4,19.9,19.5,19.0,18.3,17.9,17.4,17.0,16.5,16.1,15.6,15.2,14.7,14.3,13.8,13.4,12.9,12.5,12.1,11.6,11.2,10.7,-9.8,10.0,9.7,9.4,9.1,8.9,8.6,8.3,-9.8,-9.8,-9.8,-9.8,54.7,55.3,55.8,56.4,56.9,57.4,58.0,58.5,59.0,59.5,60.0,60.5,60.9,61.4,61.9,62.3,62.8,63.2,63.7,64.1,64.6,65.0,65.5,65.9,66.4,66.8,67.2,67.6,68.0,68.4,68.8,69.2,69.7,70.0,70.5,70.8,71.2,71.6,72.0,72.4,72.8,73.1,73.4,73.7,73.9,74.1,74.3,74.5,74.9,75.2,75.4,75.7,75.9,76.1,76.3,76.5,77.0,77.4,77.8,36.1,35.5,35.0,34.5,34.0,33.6,33.1,32.6,32.1,31.7,31.2,30.8,30.4,29.9,29.5],"mid":[64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,33.4,33.5,33.7,33.8,33.9,34.0,34.1,34.3,34.4,34.5,34.5,34.6,34.7,34.7,34.8,34.8,34.9,34.9,35.0,35.0,35.0,35.0,35.0,35.1,35.1,2.9,35.1,35.2,3.6,35.3,35.3,4.3,4.5,4.4,4.3,4.2,65.7,66.3,66.9,67.5,68.1,68.7,69.3,69.9,70.5,71.1,71.7,72.2,72.8,73.3,73.9,74.5,75.0,75.6,76.1,76.7,77.1,103.7,78.1,104.7,79.3,79.7,105.9,106.5,107.1,107.7,53.9,53.8,53.7,53.6,53.6,53.5,53.4,53.4,53.3,53.3,53.3,53.2,53.2,53.2,53.1,53.1,53.1,53.1,53.1,76.9,53.0,52.9,76.3,52.9,52.8,75.7,75.8,75.8,75.9,75.9,26.4,25.9,25.3,24.8,24.3,23.8,23.2,22.7,22.2,21.7,21.2,20.7,20.2,19.8,19.3,18.5,18.1,17.6,-3.3,16.7,16.3,-4.2,15.4,15.0,-5.2,-5.5,-6.0,-6.5,-7.0,36.8,36.9,37.0,37.0,37.1,37.2,37.2,37.3,37.3,37.4,37.4,37.4,37.5,37.6,37.7,37.9,37.9,38.0,38.1,38.2,38.3,38.5,38.6,38.7,38.7,38.8,38.9,38.9,38.9,38.9,1.7,61.8,62.3,62.8,63.2,63.7,64.2,64.6,65.1,65.6,66.0,66.5,66.9,67.2,67.6,67.9,68.3,68.6,68.9,69.3,69.6,70.0,70.3,70.6,71.0,71.3,71.6,72.0,72.5,72.9,105.1,51.9,51.8,51.8,51.7,51.6,51.6,51.5,51.5,51.5,51.4,51.4,51.3,51.2,51.1,51.0,50.9,50.8,50.7,50.6,50.5,50.5,50.4,50.3,50.2,50.1,50.0,50.0,50.0,50.1]},{"a":450,"jouk":63.9,"crit":53.3,"unprot_min":-9.8,"unprot_max":85.0,"unprot_max_dgcm":88.6,"vapour":true,"vessel_needed":true,"gas":1.99,"gas_max":10.15,"vessel_total":12.7,"t":[0.222,0.667,1.333,1.778,2.444,2.889,3.556,4.222,4.667,5.333,5.778,6.444,7.111,7.556,8.222,8.667,9.333,10.0,10.444,11.111,11.556,12.222,12.889,13.333,14.0,14.444,15.111,15.778,16.222,16.889,17.333,18.0,18.667,19.111,19.778,20.222,20.889,21.556,22.0,22.667,23.111,23.778,24.444,24.889,25.556,26.0,26.667,27.333,27.778,28.444,28.889,29.556,30.222,30.667,31.333,31.778,32.444,32.889,33.556,34.222,34.667,35.333,35.778,36.444,37.111,37.556,38.222,38.667,39.333,40.0,40.444,41.111,41.556,42.222,42.889,43.333,44.0,44.444,45.111,45.778,46.222,46.889,47.333,48.0,48.667,49.111,49.778,50.222,50.889,51.556,52.0,52.667,53.111,53.778,54.444,54.889,55.556,56.0,56.667,57.333,57.778,58.444,58.889,59.556,60.222,60.667,61.333,61.778,62.444,62.889,63.556,64.222,64.667,65.333,65.778,66.444,67.111,67.556,68.222,68.667,69.333,70.0,70.444,71.111,71.556,72.222,72.889,73.333,74.0,74.444,75.111,75.778,76.222,76.889,77.333,78.0,78.667,79.111,79.778,80.222,80.889,81.556,82.0,82.667,83.111,83.778,84.444,84.889,85.556,86.0,86.667,87.333,87.778,88.444,88.889,89.556,90.222,90.667,91.333,91.778,92.444,92.889,93.556,94.222,94.667,95.333,95.778,96.444,97.111,97.556,98.222,98.667,99.333,100.0,100.444,101.111,101.556,102.222,102.889,103.333,104.0,104.444,105.111,105.778,106.222,106.889,107.333,108.0,108.667,109.111,109.778,110.222,110.889,111.556,112.0,112.667,113.111,113.778,114.444,114.889,115.556,116.0,116.667,117.333,117.778,118.444,118.889,119.556,120.222,120.667,121.333,121.778,122.444,122.889,123.556,124.222,124.667,125.333,125.778,126.444,127.111,127.556,128.222,128.667,129.333,130.0,130.444,131.111,131.556,132.222,132.889,133.333,134.0,134.444,135.111,135.778,136.222,136.889,137.333,138.0,138.667,139.111,139.778,140.222,140.889,141.556,142.0,142.667,143.111,143.778,144.444,144.889,145.556,146.0,146.667,147.333,147.778,148.444,148.889,149.556],"pump":[21.1,20.8,20.4,20.1,19.4,19.1,18.8,18.1,17.8,17.4,17.1,16.4,16.1,15.8,15.1,14.8,14.4,13.8,13.4,13.1,12.8,12.1,11.8,11.4,10.8,10.4,10.1,9.4,9.1,8.8,8.4,7.8,7.4,7.1,6.5,6.1,5.8,5.1,4.8,4.5,4.1,3.5,3.1,2.8,2.2,1.8,1.5,0.9,0.5,0.2,-0.1,-0.8,-1.1,-1.4,-2.1,-2.4,-2.7,-3.0,-3.7,-4.0,-4.3,-5.0,-5.3,-5.6,-6.3,-6.6,-6.9,-7.2,-7.8,-8.2,-8.5,-9.1,-9.4,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,60.0,60.5,60.7,61.0,61.2,61.7,62.0,62.2,62.7,63.0,63.2,63.7,64.0,64.2,64.5,65.0,65.2,65.5,66.0,66.2,66.5,66.7,67.2,67.5,67.7,68.2,68.5,68.7,69.2,69.5,69.7,70.0,70.5,70.8,71.0,71.5,71.8,72.0,72.5,72.8,73.0,73.3,73.8,74.0,74.3,74.8,75.0,75.3,75.8,76.0,76.3,76.5,77.0,77.3,77.4,77.7,77.9,78.0,78.3,78.5,78.6,78.7,79.0,79.2,79.3,79.6,79.7,79.9,80.0,80.3,80.5,80.6,80.8,81.0,81.1,81.4,81.6,81.7,81.8,82.1,82.2,82.4,82.7,82.8,83.0,83.2,83.3,83.5,83.6,83.9,84.1,84.2,33.6,33.4,33.2,32.9,32.7,32.5,32.3,31.9,31.7,31.5,31.1,30.9,30.7,30.3,30.1,29.9,29.7,29.3,29.1,28.9,28.5,28.3,28.1,27.7,27.5,27.3,27.1,26.7,26.5,26.3,25.9,25.7,25.5,25.3,24.9,24.7,24.5,24.1,23.9,23.6,23.2,23.0,22.8,22.6,22.2,22.0,21.8,21.4,21.2,21.0,20.6,20.4,20.2,20.0,19.7,19.6,19.5,19.2,19.1,19.0,18.7,18.6,18.5,18.4,18.1,18.0,17.9,17.6,17.5,17.4,17.2,17.1,16.9,16.8,16.6],"mid":[64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,10.7,10.3,10.0,9.3,9.0,8.7,8.3,7.7,7.4,7.0,6.4,6.0,5.7,5.1,4.7,4.4,4.1,3.4,3.1,2.8,2.1,1.8,1.5,0.8,0.5,0.2,-0.1,-0.8,-1.1,-1.4,-2.1,-2.4,-2.7,-3.1,-3.7,-4.0,-4.3,-5.0,-5.3,-5.6,-6.3,-6.6,-6.9,-7.2,-7.8,-8.2,33.4,33.3,33.3,33.3,33.2,33.2,33.2,33.2,33.3,33.3,33.4,33.5,33.5,33.6,33.7,33.8,33.8,33.9,34.0,34.1,34.1,34.2,34.3,34.4,34.5,34.5,34.6,34.6,34.7,34.8,34.9,35.0,35.0,35.1,35.2,35.3,35.3,35.4,35.5,35.5,35.6,35.7,35.7,35.8,35.8,35.9,67.6,67.9,68.4,68.6,68.9,69.4,69.6,69.8,70.0,70.4,70.6,70.8,71.2,71.4,71.6,72.0,72.2,72.4,72.6,73.0,73.2,73.4,73.8,74.0,74.2,74.5,74.7,74.9,75.1,75.5,75.7,75.9,76.3,76.5,76.7,77.1,77.3,77.5,77.7,78.1,78.2,78.5,78.8,79.0,79.2,79.4,52.9,53.0,53.0,53.0,53.0,53.0,53.1,53.1,53.0,53.0,53.0,52.9,52.9,52.8,52.8,52.7,52.7,52.6,52.6,52.5,52.5,52.4,52.4,52.3,52.3,52.2,52.2,52.1,52.1,52.0,52.0,51.9,51.9,51.8,51.8,51.7,51.7,51.6,51.6,51.5,51.5,51.4,51.4,51.3,51.3,51.2,27.6,27.4,27.2,27.0,26.6,26.4,26.2,25.8,25.6,25.5,25.3,25.0,24.8,24.7,24.4,24.2,24.0,23.7,23.6,23.4,23.2,22.9,22.8,22.6,22.3,22.1,22.0,21.6,21.5,21.3,21.2,20.9,20.7,20.5,20.2,20.0,19.9,19.6,19.4,19.3,19.1,18.8,18.6,18.4,18.1,18.0,17.8,38.5,38.5,38.4,38.4,38.4]},{"a":300,"jouk":42.6,"crit":80.0,"unprot_min":5.02,"unprot_max":85.0,"unprot_max_dgcm":85.0,"vapour":false,"vessel_needed":false,"gas":0.0,"gas_max":0.0,"vessel_total":0.0,"t":[0.333,0.667,1.333,2.0,2.333,3.0,3.667,4.333,4.667,5.333,6.0,6.667,7.0,7.667,8.333,8.667,9.333,10.0,10.667,11.0,11.667,12.333,13.0,13.333,14.0,14.667,15.333,15.667,16.333,17.0,17.333,18.0,18.667,19.333,19.667,20.333,21.0,21.667,22.0,22.667,23.333,23.667,24.333,25.0,25.667,26.0,26.667,27.333,28.0,28.333,29.0,29.667,30.333,30.667,31.333,32.0,32.333,33.0,33.667,34.333,34.667,35.333,36.0,36.667,37.0,37.667,38.333,38.667,39.333,40.0,40.667,41.0,41.667,42.333,43.0,43.333,44.0,44.667,45.333,45.667,46.333,47.0,47.333,48.0,48.667,49.333,49.667,50.333,51.0,51.667,52.0,52.667,53.333,53.667,54.333,55.0,55.667,56.0,56.667,57.333,58.0,58.333,59.0,59.667,60.333,60.667,61.333,62.0,62.333,63.0,63.667,64.333,64.667,65.333,66.0,66.667,67.0,67.667,68.333,68.667,69.333,70.0,70.667,71.0,71.667,72.333,73.0,73.333,74.0,74.667,75.333,75.667,76.333,77.0,77.333,78.0,78.667,79.333,79.667,80.333,81.0,81.667,82.0,82.667,83.333,83.667,84.333,85.0,85.667,86.0,86.667,87.333,88.0,88.333,89.0,89.667,90.333,90.667,91.333,92.0,92.333,93.0,93.667,94.333,94.667,95.333,96.0,96.667,97.0,97.667,98.333,98.667,99.333,100.0,100.667,101.0,101.667,102.333,103.0,103.333,104.0,104.667,105.333,105.667,106.333,107.0,107.333,108.0,108.667,109.333,109.667,110.333,111.0,111.667,112.0,112.667,113.333,113.667,114.333,115.0,115.667,116.0,116.667,117.333,118.0,118.333,119.0,119.667,120.333,120.667,121.333,122.0,122.333,123.0,123.667,124.333,124.667,125.333,126.0,126.667,127.0,127.667,128.333,128.667,129.333,130.0,130.667,131.0,131.667,132.333,133.0,133.333,134.0,134.667,135.333,135.667,136.333,137.0,137.333,138.0,138.667,139.333,139.667,140.333,141.0,141.667,142.0,142.667,143.333,143.667,144.333,145.0,145.667,146.0,146.667,147.333,148.0,148.333,149.0,149.667],"pump":[42.4,42.4,42.1,41.7,41.4,41.1,40.7,40.4,40.4,40.1,39.7,39.4,39.1,38.7,38.4,38.4,38.1,37.7,37.4,37.1,36.7,36.4,36.1,36.1,35.7,35.4,35.1,34.7,34.4,34.1,34.1,33.7,33.4,33.1,32.7,32.4,32.1,31.8,31.8,31.4,31.1,30.8,30.4,30.1,29.8,29.8,29.4,29.1,28.8,28.5,28.1,27.8,27.5,27.5,27.2,26.9,26.5,26.2,25.9,25.6,25.6,25.2,24.9,24.6,24.3,23.9,23.6,23.6,23.3,23.0,22.7,22.4,22.0,21.7,21.4,21.4,21.1,20.8,20.5,20.1,19.8,19.5,19.5,19.2,18.9,18.6,18.3,18.0,17.7,17.4,17.4,17.1,16.8,16.4,16.1,15.8,15.5,15.5,15.2,14.9,14.6,14.3,14.0,13.7,13.4,13.4,13.1,12.8,12.5,12.2,11.9,11.6,11.6,11.3,11.0,10.8,10.5,10.2,9.9,9.9,9.6,9.3,9.0,8.7,8.4,8.1,7.8,7.8,7.6,7.3,7.0,6.7,6.4,6.1,6.1,5.9,5.6,5.3,5.0,45.7,45.9,46.1,46.1,46.3,46.5,46.7,46.9,47.1,47.4,47.4,47.6,47.8,48.0,48.2,48.4,48.6,48.9,48.9,49.1,49.3,49.5,49.7,50.0,50.2,50.2,50.4,50.6,50.8,51.0,51.3,51.5,51.5,51.7,51.9,52.1,52.4,52.6,52.8,53.0,53.0,53.2,53.5,53.7,53.9,54.1,54.3,54.3,54.6,54.8,55.0,55.2,55.4,55.6,55.9,55.9,56.1,56.3,56.5,56.7,57.0,57.2,57.2,57.4,57.6,57.8,58.0,58.3,58.5,58.7,58.7,58.9,59.1,59.3,59.5,59.8,60.0,60.0,60.2,60.4,60.6,60.8,61.0,61.3,61.3,61.5,61.7,61.9,62.1,62.3,62.5,62.7,62.7,62.9,63.1,63.3,63.5,63.8,64.0,64.0,64.2,64.4,64.6,64.8,65.0,65.2,65.4,65.4,65.6,65.8,66.0,66.2,66.4,66.6,66.6,66.8,67.0,67.2,67.4,67.6,67.8],"mid":[64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,64.9,32.2,31.9,31.5,31.5,31.2,30.9,30.6,30.2,29.9,29.6,29.6,29.3,28.9,28.6,28.3,28.0,27.7,27.3,27.3,27.0,26.7,26.4,26.1,25.7,25.4,25.4,25.1,24.8,24.5,24.1,23.8,23.5,23.5,23.2,22.9,22.6,22.3,21.9,21.6,21.3,21.3,21.0,20.7,20.4,20.1,19.8,19.5,19.5,19.2,18.9,18.5,18.2,17.9,17.6,17.3,17.3,17.0,16.7,16.4,16.1,15.8,15.5,15.5,15.2,14.9,14.6,14.3,14.0,13.7,35.6,35.6,35.6,35.6,35.6,35.5,35.5,35.5,35.5,35.5,35.4,35.4,35.4,35.3,35.3,35.3,35.3,35.3,35.2,35.2,35.2,35.2,35.1,35.1,35.1,35.1,35.1,35.1,35.0,35.0,35.0,35.0,35.0,35.0,35.0,34.9,34.9,34.9,34.9,34.9,34.9,34.9,34.8,34.8,34.8,34.8,34.8,34.8,34.8,34.8,34.8,34.7,34.7,34.7,34.7,34.7,34.7,34.7,34.7,34.7,34.7,34.6,34.6,34.6,34.6,34.6,34.6,34.6,34.6,34.6,52.3,52.6,52.8,53.0,53.2,53.2,53.4,53.6,53.8,54.0,54.3,54.5,54.5,54.7,54.9,55.1,55.3,55.5,55.8,56.0,56.0,56.2,56.4,56.6,56.8,57.0,57.2,57.2,57.4,57.7,57.9,58.1,58.3,58.5,58.7,58.7,58.9,59.1,59.3,59.5,59.8,60.0,60.0,60.2,60.4,60.6,60.8,61.0,61.2,61.2,61.4,61.6,61.8,62.0,62.2,62.5,62.6,62.6,62.9,63.1,63.3,63.5,63.7,63.9,63.9,64.1,64.3,64.5,64.7,50.9,51.0,51.0,51.0,51.0,51.0,51.0,51.0,51.0,51.1,51.1,51.1,51.1,51.1,51.1,51.1,51.1]}]};
+const G=9.81, KW=2.19e9, RHO=998, LEN=12000, AREF=Math.PI*0.8*0.8/4, V0=0.70/AREF;
+const jouk=a=>a*V0/G, trip=a=>2*LEN/a;
+const kortDe=(De,Epa,c1)=>Math.sqrt((KW/RHO)/(1+KW*De/Epa*c1));
+const c1Of=(r,mu)=>r===0?1-mu/2:(r===1?1-mu*mu:1);
+/* label chips take the figure ground (--sheet) at every update, so they follow a theme flip */
+const SHEET=()=>{try{return getComputedStyle(document.documentElement).getPropertyValue('--sheet').trim()||'#ffffff';}catch(e){return '#ffffff';}};
+const LBLBG={id:'lblbg',beforeUpdate(ch){try{const an=ch.options.plugins.annotation.annotations,bg=SHEET();
+  Object.keys(an).forEach(k=>{if(an[k]&&an[k].label)an[k].label.backgroundColor=bg;});}catch(e){}}};
+const note=(txt,col,pos)=>({display:true,content:txt,position:pos||'start',font:LBL,color:col,backgroundColor:'transparent'});
+
+/* ---------- CHART 1 : Korteweg wave speed calculator ---------- */
+const PRE=[{E:170,mu:0.28,D:800,e:11.7},{E:210,mu:0.30,D:800,e:10},{E:210,mu:0.30,D:2000,e:20},
+           {E:11,mu:0.25,D:800,e:16},{E:1.1,mu:0.45,D:800,e:47.1},{E:3.0,mu:0.40,D:300,e:11.7}];
+const sPre=document.getElementById('sPre'),sRes=document.getElementById('sRes'),sDia=document.getElementById('sDia'),
+      sWall=document.getElementById('sWall'),sMod=document.getElementById('sMod'),sPoi=document.getElementById('sPoi');
+let waveChart=new Chart(document.getElementById('waveChart'),{
+  plugins:[LBLBG],
+  data:{datasets:[
+    {type:'line',label:'Anchored upstream',data:[],borderColor:'#1e8449',borderWidth:1.5,pointRadius:0,order:4},
+    {type:'line',label:'Anchored throughout',data:[],borderColor:'#6b4f9e',borderWidth:1.5,pointRadius:0,order:3},
+    {type:'line',label:'Expansion joints',data:[],borderColor:'#1b4f72',borderWidth:1.5,pointRadius:0,order:2},
+    {type:'scatter',label:'Your pipe',data:[],backgroundColor:'#c0392b',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'logarithmic',min:10,max:200,title:{display:true,text:'Diameter / wall thickness, D/e',...TT},...AX},
+            y:{type:'linear',min:0,max:1600,title:{display:true,text:'Wave speed a (m/s)',...TT},...AX}},
+    plugins:{legend:{...LEG,reverse:true},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt0(c.parsed.y)} m/s at D/e = ${fmt1(c.parsed.x)}`}},
+      annotation:{annotations:{
+        des:{type:'line',scaleID:'y',value:1050,borderColor:'#b9770e',borderWidth:1.6,borderDash:[5,4],label:note('reference design value 1,050 m/s','#b9770e','start')},
+        wat:{type:'line',scaleID:'y',value:Math.sqrt(KW/RHO),borderColor:'#7f8c8d',borderWidth:1.2,borderDash:[3,3],label:note('water alone, 1,481 m/s','#7f8c8d','end')}
+      }}}}
+});
+function updWave(){
+  const Dmm=+sDia.value, emm=+sWall.value, mu=+sPoi.value, r=+sRes.value;
+  const E=+Math.pow(10,+sMod.value).toPrecision(3);
+  document.getElementById('vDia').textContent=fmt0(Dmm)+' mm';
+  document.getElementById('vWall').textContent=fmt1(emm)+' mm';
+  document.getElementById('vMod').textContent=(E>=10?fmt0(E):fmt1(E))+' GPa';
+  document.getElementById('vPoi').textContent=fmt2(mu);
+  const De=Dmm/emm, Epa=E*1e9;
+  const xmin=Math.min(10,De/1.3), xmax=Math.max(200,De*1.3);
+  const xs=[];for(let i=0;i<=80;i++)xs.push(xmin*Math.pow(xmax/xmin,i/80));
+  for(let k=0;k<3;k++){
+    waveChart.data.datasets[k].data=xs.map(x=>({x:+x.toFixed(3),y:+kortDe(x,Epa,c1Of(k,mu)).toFixed(1)}));
+    waveChart.data.datasets[k].borderWidth=(k===r)?3.5:1.5;
+  }
+  const a=kortDe(De,Epa,c1Of(r,mu));
+  waveChart.data.datasets[3].data=[{x:+De.toFixed(3),y:+a.toFixed(1)}];
+  waveChart.options.scales.x.min=xmin; waveChart.options.scales.x.max=xmax;
+  waveChart.update('none');
+  document.getElementById('rWa').innerHTML=fmt0(a)+' <small>m/s</small>';
+  document.getElementById('rWj').innerHTML=fmt1(jouk(a))+' <small>m</small>';
+  document.getElementById('rWt').innerHTML=fmt1(trip(a))+' <small>s</small>';
+  document.getElementById('rWw').innerHTML=fmt2(KW*De/Epa);
+  const pct=100*(a-1050)/1050, ap=Math.abs(pct);
+  const cls=ap<=10?'badge good':(ap<=25?'badge warn':'badge bad');
+  const txt=(pct>=0?'+':'−')+fmt1(ap)+' %'+(ap>25?' — a different pipe':'');
+  document.getElementById('rWd').innerHTML='<span class="'+cls+'">'+txt+'</span>';
+}
+sPre.addEventListener('input',function(){
+  const k=+sPre.value;
+  if(k<PRE.length){const p=PRE[k];sDia.value=p.D;sWall.value=p.e;sMod.value=Math.log10(p.E);sPoi.value=p.mu;}
+  updWave();
+});
+[sDia,sWall,sMod,sPoi].forEach(s=>s.addEventListener('input',function(){sPre.value='6';updWave();}));
+sRes.addEventListener('input',updWave);
+updWave();
+
+/* ---------- CHART 2 : free air ---------- */
+const sAl=document.getElementById('sAl'),sA0=document.getElementById('sA0'),sN=document.getElementById('sN');
+const aAir=(al,pPa,a0,n)=>al<=0?a0:1/Math.sqrt(RHO*(1/(RHO*a0*a0)+al/(n*pPa)));
+const P_SS=9.35, P_LIM=13.33*0.0981;     // bar abs: steady HGL at the pump, +3.0 m design minimum
+const REFAL=[0.001,0.005,0.01,0.02];
+let airChart=new Chart(document.getElementById('airChart'),{
+  plugins:[LBLBG],
+  data:{datasets:[
+    {type:'line',label:'0.1 %',data:[],borderColor:'#5eaadd',borderWidth:1.2,borderDash:[4,3],pointRadius:0,order:6},
+    {type:'line',label:'0.5 %',data:[],borderColor:'#6b4f9e',borderWidth:1.2,borderDash:[4,3],pointRadius:0,order:5},
+    {type:'line',label:'1 %',data:[],borderColor:'#1e8449',borderWidth:1.2,borderDash:[4,3],pointRadius:0,order:4},
+    {type:'line',label:'2 %',data:[],borderColor:'#7f8c8d',borderWidth:1.2,borderDash:[4,3],pointRadius:0,order:3},
+    {type:'line',label:'Your air content',data:[],borderColor:'#c0392b',borderWidth:3,pointRadius:0,order:2},
+    {type:'scatter',label:'2, 5 and 10 bar abs',data:[],backgroundColor:'#c0392b',borderColor:'#fff',borderWidth:2,pointRadius:6,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'logarithmic',min:1,max:20,title:{display:true,text:'Absolute pressure (bar abs)',...TT},...AX},
+            y:{type:'linear',min:0,max:1500,title:{display:true,text:'Wave speed a (m/s)',...TT},...AX}},
+    plugins:{legend:{...LEG,reverse:true},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt0(c.parsed.y)} m/s at ${fmt2(c.parsed.x)} bar abs`}},
+      annotation:{annotations:{
+        lim:{type:'line',scaleID:'x',value:P_LIM,borderColor:'#b9770e',borderWidth:1.6,borderDash:[5,4],label:note('+3.0 m limit','#b9770e','start')},
+        ss:{type:'line',scaleID:'x',value:P_SS,borderColor:'#b9770e',borderWidth:1.6,borderDash:[5,4],label:note('steady HGL at pump','#b9770e','start')}
+      }}}}
+});
+function updAir(){
+  const al=+sAl.value/100, a0=+sA0.value, n=+sN.value;
+  document.getElementById('vAl').textContent=fmt2(al*100)+' %';
+  document.getElementById('vA0').textContent=fmt0(a0)+' m/s';
+  document.getElementById('vN').textContent=fmt2(n);
+  const ps=[];for(let i=0;i<=80;i++)ps.push(Math.pow(20,i/80));
+  REFAL.forEach((r,k)=>{airChart.data.datasets[k].data=ps.map(p=>({x:+p.toFixed(4),y:+aAir(r,p*1e5,a0,n).toFixed(1)}));});
+  airChart.data.datasets[4].data=ps.map(p=>({x:+p.toFixed(4),y:+aAir(al,p*1e5,a0,n).toFixed(1)}));
+  airChart.data.datasets[5].data=[2,5,10].map(p=>({x:p,y:+aAir(al,p*1e5,a0,n).toFixed(1)}));
+  airChart.update('none');
+  const a2=aAir(al,2e5,a0,n);
+  document.getElementById('rA2').innerHTML=fmt0(a2)+' <small>m/s</small>';
+  document.getElementById('rA5').innerHTML=fmt0(aAir(al,5e5,a0,n))+' <small>m/s</small>';
+  document.getElementById('rA10').innerHTML=fmt0(aAir(al,10e5,a0,n))+' <small>m/s</small>';
+  document.getElementById('rAlim').innerHTML=fmt0(aAir(al,P_LIM*1e5,a0,n))+' <small>m/s</small>';
+  const alFix=al*Math.pow(P_SS/P_LIM,1/n);                // same gas carried from 9.35 bar abs down to the limit (p V^n const)
+  document.getElementById('rAfix').innerHTML=fmt0(aAir(alFix,P_LIM*1e5,a0,n))+' <small>m/s</small>';
+  document.getElementById('rAloss').innerHTML=fmt0(100*(1-a2/a0))+' <small>%</small>';
+}
+[sAl,sA0,sN].forEach(s=>s.addEventListener('input',updAir));updAir();
+
+/* ---------- CHART 3 : the surge at five wave speeds (MOC) ---------- */
+const sCase=document.getElementById('sCase'),sLoc=document.getElementById('sLoc');
+const CS=D.ws, REF=CS[1];
+const r5=v=>5*Math.round(v/5);
+let surgeChart=new Chart(document.getElementById('surgeChart'),{
+  plugins:[LBLBG],
+  data:{datasets:[
+    {type:'line',label:'a = 1,050 m/s (reference)',data:[],borderColor:'#7f8c8d',borderWidth:1.4,borderDash:[5,4],pointRadius:0,order:2},
+    {type:'line',label:'Selected case, vapour cavity model',data:[],borderColor:'#1b4f72',borderWidth:2.2,pointRadius:0,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:0,max:150,title:{display:true,text:'Time after the trip (s)',...TT},...AX},
+            y:{type:'linear',min:-20,max:220,title:{display:true,text:'Pressure head (m)',...TT},...AX}},
+    plugins:{legend:{...LEG,labels:{...LEG.labels,filter:(it,d)=>(d.datasets[it.datasetIndex].data||[]).length>0}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt1(c.parsed.y)} m at ${fmt1(c.parsed.x)} s`}},
+      annotation:{annotations:{
+        pn:{type:'line',scaleID:'y',value:136,borderColor:'#c0392b',borderWidth:1.6,borderDash:[5,4],label:note('PN16 allowable 136 m','#c0392b','end')},
+        mn:{type:'line',scaleID:'y',value:3,borderColor:'#1e8449',borderWidth:1.6,borderDash:[5,4],label:note('+3.0 m design minimum','#1e8449','end')},
+        vp:{type:'line',scaleID:'y',value:-9.8,borderColor:'#6b4f9e',borderWidth:1.6,borderDash:[5,4],label:note('vapour −9.8 m','#6b4f9e','start')},
+        tr:{type:'line',scaleID:'x',value:trip(1050),borderColor:'#b9770e',borderWidth:1.2,borderDash:[3,3],label:note('2L/a','#b9770e','start')}
+      }}}}
+});
+function peakRange(c){
+  const lo=Math.min(c.unprot_max,c.unprot_max_dgcm), hi=Math.max(c.unprot_max,c.unprot_max_dgcm);
+  const a=r5(lo), b=r5(hi);
+  if(!c.vapour) return fmt0(a)+' <small>m</small> <span class="badge good">steady, no upsurge</span>';
+  const txt=(a===b?fmt0(a):fmt0(a)+'–'+fmt0(b))+' <small>m</small> ';
+  if(lo>136) return txt+'<span class="badge bad">above PN16</span>';
+  if(hi>136) return txt+'<span class="badge warn">depends on the model</span>';
+  return txt+'<span class="badge good">below PN16</span>';
+}
+function updSurge(){
+  const c=CS[+sCase.value]||REF, loc=(sLoc.value==='mid')?'mid':'pump';
+  const H0=(loc==='mid')?64.9:85.0;                       // steady head before the trip
+  const pts=cs=>[{x:0,y:H0}].concat(cs.t.map((t,i)=>({x:t,y:cs[loc][i]})));
+  surgeChart.data.datasets[1].data=pts(c);
+  surgeChart.data.datasets[1].label='a = '+fmt0(c.a)+' m/s, vapour cavity model';
+  surgeChart.data.datasets[0].data=(c.a===1050)?[]:pts(REF);
+  const an=surgeChart.options.plugins.annotation.annotations.tr;
+  an.value=trip(c.a); an.label.content='2L/a = '+fmt1(trip(c.a))+' s';
+  surgeChart.update('none');
+  document.getElementById('rSj').innerHTML=fmt1(jouk(c.a))+' <small>m</small>';
+  document.getElementById('rSt').innerHTML=fmt1(trip(c.a))+' <small>s</small>';
+  document.getElementById('rSm').innerHTML=c.vapour
+    ? '−9.8 <small>m</small> <span class="badge bad">vapour</span>'
+    : (c.unprot_min>=0?'+':'−')+fmt1(Math.abs(c.unprot_min))+' <small>m</small> <span class="badge '+(c.unprot_min>=3?'good">meets +3.0 m':'warn">below +3.0 m')+'</span>';
+  document.getElementById('rSp').innerHTML=peakRange(c);
+  document.getElementById('rSg').innerHTML=c.vessel_needed
+    ? fmt2(c.gas)+' → '+fmt2(c.gas_max)+' <small>m³</small>'
+    : '<span class="badge good">not needed</span>';
+  document.getElementById('rSv').innerHTML=c.vessel_needed?fmt1(c.vessel_total)+' <small>m³</small>':'– <small>m³</small>';
+}
+[sCase,sLoc].forEach(s=>s.addEventListener('input',updSurge));updSurge();
+
+/* ---------- CHART 4 : vessel volume against line storage ---------- */
+const sAv=document.getElementById('sAv'),sQty=document.getElementById('sQty');
+const QK=['gas','gas_max','vessel_total'], QN=['Gas at steady HGL','Gas at maximum expansion','Vessel shell'], QMAX=[4,18,22];
+const A_ROUND=0.5027;                                   // m², the bore area as quoted in the text
+const storage=a=>G*A_ROUND*LEN/(a*a);
+const SORTED=CS.slice().sort((p,q)=>p.a-q.a);
+let vesChart=new Chart(document.getElementById('vesChart'),{
+  plugins:[LBLBG],
+  data:{datasets:[
+    {type:'line',label:'Gas at steady HGL (MOC runs)',data:[],borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2.5,pointRadius:5,yAxisID:'y',order:2,
+     segment:{borderDash:ctx=>(ctx&&ctx.p0&&ctx.p0.parsed&&ctx.p0.parsed.x<400)?[4,4]:undefined,
+              borderWidth:ctx=>(ctx&&ctx.p0&&ctx.p0.parsed&&ctx.p0.parsed.x<400)?1.2:undefined}},
+    {type:'line',label:'Line storage gAL/a²',data:[],borderColor:'#b9770e',borderWidth:2.2,borderDash:[6,4],pointRadius:0,yAxisID:'y1',order:3},
+    {type:'scatter',label:'Selected wave speed',data:[],backgroundColor:'#c0392b',borderColor:'#fff',borderWidth:2,pointRadius:7,yAxisID:'y1',order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{x:{type:'linear',min:250,max:1400,title:{display:true,text:'Wave speed a (m/s)',...TT},...AX},
+            y:{type:'linear',position:'left',min:0,max:4,title:{display:true,text:'Vessel volume (m³)',...TT},...AX},
+            y1:{type:'linear',position:'right',min:0,max:1,title:{display:true,text:'Line storage (m³ per m of head)',...TT},grid:{drawOnChartArea:false},ticks:{font:{family:'IBM Plex Sans',size:11}}}},
+    plugins:{legend:LEG,
+      tooltip:{callbacks:{label:c=>c.dataset.yAxisID==='y1'?`${fmt3(c.parsed.y)} m³/m at ${fmt0(c.parsed.x)} m/s`:`${fmt2(c.parsed.y)} m³ at ${fmt0(c.parsed.x)} m/s`}},
+      annotation:{annotations:{
+        av:{type:'line',scaleID:'x',value:1050,borderColor:'#c0392b',borderWidth:1.2,borderDash:[3,3]}
+      }}}}
+});
+function updVes(){
+  const a=+sAv.value, q=+sQty.value||0;
+  document.getElementById('vAv').textContent=fmt0(a)+' m/s';
+  vesChart.data.datasets[0].data=SORTED.map(c=>({x:c.a,y:c[QK[q]]}));
+  vesChart.data.datasets[0].label=QN[q]+' (MOC runs)';
+  vesChart.options.scales.y.max=QMAX[q];
+  const xs=[];for(let x=250;x<=1400;x+=10)xs.push(x);
+  vesChart.data.datasets[1].data=xs.map(x=>({x:x,y:+storage(x).toFixed(4)}));
+  vesChart.data.datasets[2].data=[{x:a,y:+storage(a).toFixed(4)}];
+  vesChart.options.plugins.annotation.annotations.av.value=a;
+  vesChart.update('none');
+  document.getElementById('rVj').innerHTML=fmt1(jouk(a))+' <small>m</small>';
+  document.getElementById('rVt').innerHTML=fmt1(trip(a))+' <small>s</small>';
+  document.getElementById('rVc').innerHTML=fmt3(storage(a))+' <small>m³/m</small>';
+  document.getElementById('rVr').innerHTML=fmt2(storage(a)/storage(1050))+' <small>×</small>';
+  let near=SORTED[0];SORTED.forEach(c=>{if(Math.abs(c.a-a)<Math.abs(near.a-a))near=c;});
+  const val=near.vessel_needed?((q===2?fmt1(near[QK[q]]):fmt2(near[QK[q]]))+' m³'):'not needed';
+  document.getElementById('rVn').innerHTML=fmt0(near.a)+' m/s: '+val;
+}
+[sAv,sQty].forEach(s=>s.addEventListener('input',updVes));updVes();
+
+window.addEventListener('load',function(){try{waveChart.resize();airChart.resize();surgeChart.resize();vesChart.resize();}catch(e){}});
+
+</script>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<!-- End WhatsApp Button -->
+
+<script src="article-features.js?v=14"></script>
+<script src="theme.js?v=13"></script>
+</body>
+</html>

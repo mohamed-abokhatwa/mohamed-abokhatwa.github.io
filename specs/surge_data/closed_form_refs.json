@@ -1,0 +1,155 @@
+{
+ "wave_speed_korteweg": {
+  "Ductile iron DN800 K9": {
+   "E_GPa": 170.0,
+   "mu": 0.28,
+   "D_mm": 800.0,
+   "e_mm": 11.7,
+   "anchored upstream": 1117,
+   "anchored throughout": 1101,
+   "expansion joints": 1080
+  },
+  "Steel DN800 e=10 mm": {
+   "E_GPa": 210.0,
+   "mu": 0.3,
+   "D_mm": 800.0,
+   "e_mm": 10.0,
+   "anchored upstream": 1133,
+   "anchored throughout": 1117,
+   "expansion joints": 1094
+  },
+  "Steel DN2000 e=20 mm": {
+   "E_GPa": 210.0,
+   "mu": 0.3,
+   "D_mm": 2000.0,
+   "e_mm": 20.0,
+   "anchored upstream": 1079,
+   "anchored throughout": 1061,
+   "expansion joints": 1036
+  },
+  "GRP DN800 e=16 mm": {
+   "E_GPa": 11.0,
+   "mu": 0.25,
+   "D_mm": 800.0,
+   "e_mm": 16.0,
+   "anchored upstream": 475,
+   "anchored throughout": 461,
+   "expansion joints": 448
+  },
+  "HDPE PE100 DN800 SDR17": {
+   "E_GPa": 1.1,
+   "mu": 0.45,
+   "D_mm": 800.0,
+   "e_mm": 47.1,
+   "anchored upstream": 284,
+   "anchored throughout": 280,
+   "expansion joints": 251
+  },
+  "PVC DN300 e=11.7 mm": {
+   "E_GPa": 3.0,
+   "mu": 0.4,
+   "D_mm": 300.0,
+   "e_mm": 11.7,
+   "anchored upstream": 371,
+   "anchored throughout": 362,
+   "expansion joints": 334
+  }
+ },
+ "wave_speed_air_1050_isothermal": {
+  "0.1% @ 2 bar abs": 412,
+  "0.1% @ 5 bar abs": 587,
+  "0.1% @ 10 bar abs": 725,
+  "0.5% @ 2 bar abs": 197,
+  "0.5% @ 5 bar abs": 303,
+  "0.5% @ 10 bar abs": 412,
+  "1% @ 2 bar abs": 140,
+  "1% @ 5 bar abs": 219,
+  "1% @ 10 bar abs": 303,
+  "2% @ 2 bar abs": 100,
+  "2% @ 5 bar abs": 157,
+  "2% @ 10 bar abs": 219
+ },
+ "orifice_K_pipe_velocity": {
+  "beta=0.3": 309.93,
+  "beta=0.4": 86.49,
+  "beta=0.5": 29.69,
+  "beta=0.6": 11.22,
+  "beta=0.7": 4.29,
+  "beta=0.8": 1.5
+ },
+ "vessel_peak_flow_m3s": {
+  "outflow": 0.691,
+  "inflow": 0.433,
+  "DN400_velocity_out": 5.5
+ },
+ "bladder_total_volume": {
+  "precharge 0.60 x Pmin": {
+   "P_pre_m_abs": 8.0,
+   "total_m3": 36.7,
+   "gas_at_min_m3": 15.9,
+   "water_left_at_min_m3": 20.8,
+   "ok": true
+  },
+  "precharge 0.80 x Pmin": {
+   "P_pre_m_abs": 10.66,
+   "total_m3": 27.5,
+   "gas_at_min_m3": 15.9,
+   "water_left_at_min_m3": 11.7,
+   "ok": true
+  },
+  "precharge 0.90 x Pmin": {
+   "P_pre_m_abs": 12.0,
+   "total_m3": 24.5,
+   "gas_at_min_m3": 15.9,
+   "water_left_at_min_m3": 8.6,
+   "ok": true
+  },
+  "precharge 0.95 x Pmin": {
+   "P_pre_m_abs": 12.66,
+   "total_m3": 23.2,
+   "gas_at_min_m3": 15.9,
+   "water_left_at_min_m3": 7.3,
+   "ok": true
+  }
+ },
+ "air_over_water_total": 19.1,
+ "basis": {
+  "gas_ss": 3.08,
+  "gas_at_min_moc": 15.3,
+  "P_ss_m_abs": 95.33,
+  "P_min_m_abs": 13.33,
+  "n": 1.2
+ },
+ "compressor_FAD_recharge_1h_Nm3_per_min": 0.474,
+ "compressor_FAD_recharge_2h_Nm3_per_min": 0.237,
+ "compressor_FAD_recharge_4h_Nm3_per_min": 0.118,
+ "srv_DN150_capacity_at_95m_m3s": 0.458,
+ "srv_DN200_capacity_at_95m_m3s": 0.814,
+ "srv_DN250_capacity_at_95m_m3s": 1.272,
+ "srv_DN300_capacity_at_95m_m3s": 1.831,
+ "srv_required_Kv_m3h": 491,
+ "srv_required_Cv_US": 567,
+ "motor": {
+  "w0_rad_s": 155.0,
+  "T_rated_Nm": 4420
+ },
+ "accel_time_I25_at_50pct_rated_torque_s": 1.8,
+ "accel_time_I100_at_50pct_rated_torque_s": 7.0,
+ "accel_time_I400_at_50pct_rated_torque_s": 28.1,
+ "accel_time_I800_at_50pct_rated_torque_s": 56.1,
+ "steel_disc_r0.6_t0.1": {
+  "mass_kg": 888,
+  "I_kgm2": 160,
+  "GD2": 639
+ },
+ "steel_disc_r0.8_t0.12": {
+  "mass_kg": 1894,
+  "I_kgm2": 606,
+  "GD2": 2424
+ },
+ "steel_disc_r1.0_t0.15": {
+  "mass_kg": 3699,
+  "I_kgm2": 1850,
+  "GD2": 7398
+ }
+}

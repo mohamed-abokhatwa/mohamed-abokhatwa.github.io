@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pump Inertia and the Flywheel: When Spinning Mass Can Replace a Surge Vessel — Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=3">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:3px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:3px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:var(--success);} .callout.green .lbl{color:var(--success);}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:start;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:start;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:end;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:3px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:3px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:var(--air);}
+    .fig-head .fsub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid var(--border);background:var(--bg-2);}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+    .ctrl label span{color:var(--air);font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:var(--danger);}
+    .ctrl .hint{font-size:11.5px;color:var(--text-secondary);margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:3px;font-size:13px;font-family:inherit;background:var(--sheet);color:var(--text-primary);}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid var(--border);}
+    .readout .cell{padding:14px 16px;border-right:1px solid var(--border);}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary);}
+    .readout .v{font-size:22px;font-weight:700;color:var(--air);font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:var(--text-secondary);}
+    .badge{display:inline-block;padding:3px 10px;border-radius:3px;font-size:12px;font-weight:600;}
+    .badge.good{background:var(--success-w);color:var(--success);}
+    .badge.warn{background:var(--warning-w);color:var(--warning);}
+    .badge.bad{background:var(--danger-w);color:var(--danger);}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:var(--air);text-decoration:none;border:1px solid var(--border);border-radius:3px;padding:4px 11px;background:var(--sheet);transition:.18s;}
+    .calc-link:hover{border-color:var(--air);background:var(--bg-2);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="How added pump inertia protects a pumping main after a power failure: the rundown equation, stored energy, time constant and GD2, six inertias modelled on a 12 km DN800 main, flywheel disc sizing, the motor start penalty and a Bentley HAMMER procedure, with three interactive charts.">
+  <meta property="og:title" content="Pump Inertia and the Flywheel: When Spinning Mass Can Replace a Surge Vessel | Mohamed Abokhatwa">
+  <meta property="og:description" content="On a 12 km DN800 main the bare motor and pump (25 kg·m²) let the line reach vapour; 400 kg·m² in total keeps it at or above +9.3 m with no upsurge above 85 m. The price: a 28.1 s motor start with half of rated torque available for acceleration.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/pump-inertia-flywheel-surge.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-pump-inertia-flywheel-surge.jpg">
+  <meta property="og:image:alt" content="Cutaway of a centrifugal pump with a large steel flywheel between pump and motor, labelled GD², coupling and non-return valve, and an inset graph of pump speed against time with and without a flywheel">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pump Inertia and the Flywheel: When Spinning Mass Can Replace a Surge Vessel | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="On a 12 km DN800 main the bare motor and pump (25 kg·m²) let the line reach vapour; 400 kg·m² in total keeps it at or above +9.3 m with no upsurge above 85 m. The price: a 28.1 s motor start with half of rated torque available for acceleration.">
+  <link rel="canonical" href="https://abokhatwa.com/pump-inertia-flywheel-surge.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Pump Inertia and the Flywheel: When Spinning Mass Can Replace a Surge Vessel",
+  "description": "Design guide to pump inertia and flywheels for surge protection: rundown physics, six modelled inertias on a 12 km main, flywheel disc sizing, motor start time and the Bentley HAMMER set-up.",
+  "image": "https://abokhatwa.com/og-pump-inertia-flywheel-surge.jpg",
+  "datePublished": "2026-09-16",
+  "dateModified": "2026-09-16",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/pump-inertia-flywheel-surge.html" }
+}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Surge &amp; Transient Analysis</span></div>
+  <span class="tag">Surge Analysis &middot; Pump Inertia &middot; Flywheel</span>
+  <h1>Pump Inertia and the Flywheel: When Spinning Mass Can Replace a Surge Vessel</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>September 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>33 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="pump-inertia-flywheel-surge.webp" alt="Cutaway of a centrifugal pump with a large steel flywheel between pump and motor, labelled GD², coupling and non-return valve, and an inset graph of pump speed against time with and without a flywheel">
+</div>
+
+<div class="article-body">
+
+<p class="lead">When the power fails, a pump does not stop at once. It coasts down on the energy in its rotating parts, and while it coasts it keeps the column moving. Make that rundown long enough and the downsurge never reaches vapour. On our 12&nbsp;km reference main the motor and pump alone, at about 25&nbsp;kg&middot;m&sup2;, protect nothing. Sixteen times that, <strong>400&nbsp;kg&middot;m&sup2; in total</strong>, keeps every point on the line at or above <strong>+9.3&nbsp;m</strong> (+7.3&nbsp;m under the least favourable torque law tried), with no upsurge above the steady 85&nbsp;m. The price comes at every start: with half of rated torque available for acceleration, the set takes <strong>28.1&nbsp;s</strong> to reach speed instead of 1.8.</p>
+
+<h2 id="rotating-energy">1 &middot; Rotating energy as surge protection</h2>
+<p>The load case that usually sizes the protection is a power failure that trips every pump at once (see <a href="surge-scenarios-pump-stations.html">Surge Scenarios in Pumping Stations</a>). The reference main for this series is a 12&nbsp;km, DN800 ductile iron K9 line [1] on a flat profile. It carries 2,520&nbsp;m&sup3;/h (1.39&nbsp;m/s) from an HGL of 85.0&nbsp;m at the pump to 44.8&nbsp;m at the reservoir, with a wave speed of 1,050&nbsp;m/s. The pipe is PN16 (136&nbsp;m allowable) [2], and the design minimum for this series is +3.0&nbsp;m. Unprotected, with the pump modelled as stopping at once, the downsurge reaches vapour (&minus;9.8&nbsp;m) along the line, and the peak when the cavities collapse is <strong>165&ndash;190&nbsp;m</strong>. That is above PN16 whichever cavity model you believe.</p>
+<p>A <a href="surge-vessel.html">hydropneumatic vessel</a>, a <a href="one-way-surge-tank-design.html">one-way surge tank</a> or <a href="air-admission-networks.html">air valves</a> put water or air back into the line. A flywheel goes after the cause instead: the column is being stopped too quickly. Until the first reflection returns from the reservoir, each cubic metre per second the pump stops delivering drops the head at the pump by</p>
+<div class="eq">\[ \Delta H \;=\; \frac{a}{gA}\,\Delta Q \;=\; \frac{1050}{9.81 \times 0.5027}\,\Delta Q \;=\; 212.9\ \text{m per m}^3\text{/s} \]</div>
+<p>So losing all 0.70&nbsp;m&sup3;/s within 2L/a&nbsp;=&nbsp;22.9&nbsp;s would call for a 149.1&nbsp;m drop, from a head of 85&nbsp;m that can fall only 94.8&nbsp;m before it reaches vapour [3]. A pump with enough rotating mass is still delivering when the reflections come back, and the head never reaches vapour. Nothing is added to the line, there is no gas to maintain and nothing to switch on: the protection acts on every trip [4].</p>
+<div class="callout key">
+  <span class="lbl">What a flywheel does, and what it does not</span>
+  It slows the <strong>rate at which the flow falls</strong>, which tackles the downsurge at its source. It does nothing for an upsurge caused elsewhere, it cannot help a high point that separates for its own reasons, and it makes every normal start slower and harder on the motor. In our practice, that last point decides more flywheel designs than the hydraulics does.
+</div>
+
+<h2 id="rundown-equation">2 &middot; The rundown equation: stored energy, &tau; and GD&sup2;</h2>
+<p>Once the motor loses its supply, the only thing driving the pump is the kinetic energy of everything on the shaft: impeller, rotor, coupling and flywheel [3][5]:</p>
+<div class="eq">\[ I\,\frac{d\omega}{dt} \;=\; -\,T, \qquad T \;=\; \frac{\rho g\,Q\,H_p}{\eta\,\omega} \;+\; T_{loss} \]</div>
+<p>Here \(I\) is the total inertia on the shaft (kg&middot;m&sup2;), \(\omega\) the speed, \(Q\) and \(H_p\) the flow and head the pump is still producing, \(\eta\) its efficiency and \(T_{loss}\) the windage and friction torque. Pump head falls with the square of speed. On the model pump the zero-flow head is \(100\,w^2\) metres above a 5&nbsp;m suction, where \(w\) is the speed ratio. So once the speed has dropped by about 11&nbsp;% (\(5 + 100\,w^2 = 85\) at \(w\) = 0.89), the pump cannot hold 85&nbsp;m even at zero flow. <strong>A flywheel does not keep the pressure up. It keeps the flow going while the pressure falls.</strong></p>
+<div class="eq">\[ E_k \;=\; \tfrac12\,I\,\omega_0^2, \qquad \tau \;=\; \frac{E_k}{P_0}, \qquad GD^2 \;=\; 4I \]</div>
+<p>\(E_k\) is the energy stored at running speed \(\omega_0\), and \(\tau\) is how long that energy could supply the rated power \(P_0\). At a constant rated torque \(T_0 = P_0/\omega_0\), the set would stop in \(I\omega_0/T_0 = 2\tau\). In reality the torque falls with speed and the rundown tails off more slowly, but \(\tau\) still puts sets of any speed and power on one scale [6]. Parmakian's classical charts for power failure at a pump rest on the same idea, a parameter that sets the rotor's stored energy against the pipeline's wave travel time [7].</p>
+<p>Many data sheets give GD&sup2;, which in kg&middot;m&sup2; is numerically \(4I\). US data sheets give WR&sup2; in lb&middot;ft&sup2;, which is \(I\) itself; multiply by 0.0421 to get kg&middot;m&sup2;. A mix-up here is a factor of four in the input that matters most.</p>
+
+<h2 id="six-inertias">3 &middot; The model, and six inertias on the reference main</h2>
+<p>The numbers come from a method-of-characteristics model with a vapour cavity model, cross-checked with a gas cavity model and an independent second code [3][8]. The pump is a screening model. None of this is Bentley HAMMER output: a project has to be run in HAMMER, or an equivalent program, on the real profile with the real pump data.</p>
+<ul class="clean">
+  <li><strong>Duty.</strong> 0.70&nbsp;m&sup3;/s at 80&nbsp;m pump head on a 5&nbsp;m suction, 1,480&nbsp;rpm (\(\omega_0\) = 155.0&nbsp;rad/s), efficiency 0.80. That gives 685&nbsp;kW of shaft power and a rated torque of 4,420&nbsp;N&middot;m.</li>
+  <li><strong>Pump.</strong> A simplified homologous rundown [9], \(H = 100\,w^2 - 40.8\,Q^2\), with the hydraulic torque above plus windage (2&nbsp;% of rated at full speed) and an ideal non-return valve. After the valve closes we <em>assume</em> a churning torque of 45&nbsp;% of rated at full speed, scaled with \(w^2\). Speed is integrated with the trapezoidal rule.</li>
+  <li><strong>Line and set.</strong> 120 reaches, 150&nbsp;s runs. The bare-set inertia of 25&nbsp;kg&middot;m&sup2; is an <em>assumption</em> for a 685&nbsp;kW four-pole set; take project values from the data sheets.</li>
+</ul>
+<p>HAMMER describes the pump by four-quadrant characteristics [5][10], which set the torque during the rundown. The simple torque law used here is the main uncertainty, and section 5 puts a number on it. There is also a quirk: once its head rise has fallen to zero, the slowing model pump still passes water from its 5&nbsp;m suction but takes no hydraulic torque. The bare set's speed therefore levels off at about 0.2 instead of reaching zero, and as \(I\) falls towards zero the model does not become exactly an instantaneous stop. Read that part of the speed trace as a feature of the torque law, not a prediction.</p>
+
+<div class="tbl-wrap"><table>
+  <caption>What each inertia stores: 685&nbsp;kW at 1,480&nbsp;rpm, 2L/a = 22.9&nbsp;s, start time with 50&nbsp;% of rated torque available for acceleration (section 8)</caption>
+  <thead><tr><th class="num">Total I <span style="text-transform:none">(kg&middot;m&sup2;)</span></th><th class="num">GD&sup2; <span style="text-transform:none">(kg&middot;m&sup2;)</span></th><th class="num"><span style="text-transform:none">E<sub>k</sub></span> (MJ)</th><th class="num"><span style="text-transform:none">&tau; (s)</span></th><th class="num"><span style="text-transform:none">&tau; / (2L/a)</span></th><th class="num">Start time <span style="text-transform:none">(s)</span></th></tr></thead>
+  <tbody>
+    <tr><td class="num">25 (bare set)</td><td class="num">100</td><td class="num">0.30</td><td class="num">0.44</td><td class="num">0.02</td><td class="num">1.8</td></tr>
+    <tr><td class="num">100</td><td class="num">400</td><td class="num">1.20</td><td class="num">1.75</td><td class="num">0.08</td><td class="num">7.0</td></tr>
+    <tr><td class="num">200</td><td class="num">800</td><td class="num">2.40</td><td class="num">3.51</td><td class="num">0.15</td><td class="num">14.0</td></tr>
+    <tr><td class="num"><strong>400</strong></td><td class="num">1,600</td><td class="num">4.80</td><td class="num">7.01</td><td class="num">0.31</td><td class="num">28.1</td></tr>
+    <tr><td class="num">800</td><td class="num">3,200</td><td class="num">9.61</td><td class="num">14.03</td><td class="num">0.61</td><td class="num">56.1</td></tr>
+    <tr><td class="num">1,600</td><td class="num">6,400</td><td class="num">19.22</td><td class="num">28.05</td><td class="num">1.23</td><td class="num">112.2</td></tr>
+  </tbody>
+</table></div>
+
+<div class="tbl-wrap"><table>
+  <caption>What each inertia does to the line: all pumps trip, no other protection, pressure heads above the pipe</caption>
+  <thead><tr><th class="num">Total I <span style="text-transform:none">(kg&middot;m&sup2;)</span></th><th class="num">Lowest head on the line <span style="text-transform:none">(m)</span></th><th>Where</th><th class="num">Lowest head at the pump <span style="text-transform:none">(m)</span></th><th class="num">Highest head on the line <span style="text-transform:none">(m)</span></th><th class="num">Speed ratio at <span style="text-transform:none">5 / 10 / 22.9&nbsp;s</span></th></tr></thead>
+  <tbody>
+    <tr><td class="num">25</td><td class="num">&minus;9.8 (vapour)</td><td>7.4&ndash;11.3&nbsp;km</td><td class="num">+2.5</td><td class="num">not quoted (cavitating)</td><td class="num">0.22 / 0.22 / 0.20</td></tr>
+    <tr><td class="num">100</td><td class="num">&minus;8.7</td><td>7.8&nbsp;km</td><td class="num">&minus;1.3</td><td class="num">88.2 (indicative)</td><td class="num">0.40 / 0.27 / 0.25</td></tr>
+    <tr><td class="num">200</td><td class="num">&minus;1.5</td><td>5.6&nbsp;km</td><td class="num">+5.1</td><td class="num">85.0</td><td class="num">0.58 / 0.40 / 0.28</td></tr>
+    <tr><td class="num"><strong>400</strong></td><td class="num"><strong>+9.3</strong></td><td>3.0&nbsp;km</td><td class="num">+10.8</td><td class="num">85.0</td><td class="num">0.73 / 0.57 / 0.37</td></tr>
+    <tr><td class="num">800</td><td class="num">+17.8</td><td>at the pump</td><td class="num">+17.8</td><td class="num">85.0</td><td class="num">0.85 / 0.73 / 0.54</td></tr>
+    <tr><td class="num">1,600</td><td class="num">+26.0</td><td>at the pump</td><td class="num">+26.0</td><td class="num">85.0</td><td class="num">0.92 / 0.85 / 0.70</td></tr>
+  </tbody>
+</table></div>
+
+<div class="callout warn">
+  <span class="lbl">Why one maximum is not quoted</span>
+  With 25&nbsp;kg&middot;m&sup2; cavities form and collapse between 7.4 and 11.3&nbsp;km. The vapour cavity run shows nothing above the steady 85&nbsp;m, but collapse peaks depend on how the cavity is represented [8] (across this series the gas cavity model puts them between 18&nbsp;% lower and 10&nbsp;% higher than the vapour cavity model), and this case was not rerun with the gas cavity model, so no maximum is quoted. The 165&ndash;190&nbsp;m of section 1 does not apply either: it belongs to the pump stopping at once. The design answer is to keep the line out of vapour rather than argue about the peak. Every case from 200&nbsp;kg&middot;m&sup2; up stays clear of vapour under every torque law tried, so those results are quoted to 0.1&nbsp;m.
+</div>
+<p>At 100&nbsp;kg&middot;m&sup2; the line stays only 1.1&nbsp;m clear of vapour, with a small upsurge to 88.2&nbsp;m at the pump. Under the least favourable torque law tried (section 5) it reaches vapour, so treat both figures as indicative. With a short rundown the lowest point is well down the line; with a long one it moves back to the pump.</p>
+
+<h2 id="int-rundown">4 &middot; Interactive: the rundown</h2>
+<p>Pick an inertia and watch the pump slow down and the head at the pump respond. The grey traces are the bare motor and pump.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Pump speed and pump-end pressure head after a power failure</div>
+    <div class="fsub">Method-of-characteristics model with a vapour cavity model, 12&nbsp;km DN800, a = 1,050&nbsp;m/s, 685&nbsp;kW at 1,480&nbsp;rpm, simplified homologous rundown with an ideal non-return valve. Traces are thinned to 260 points for the page; the readouts come from the full run.</div>
+  </div>
+  <div class="chart-box"><canvas id="runChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Total inertia on the shaft</label>
+      <select id="sCase1">
+        <option value="0">25 kg&middot;m&sup2; (motor and pump only)</option>
+        <option value="1">100 kg&middot;m&sup2;</option>
+        <option value="2">200 kg&middot;m&sup2;</option>
+        <option value="3" selected>400 kg&middot;m&sup2; (design)</option>
+        <option value="4">800 kg&middot;m&sup2;</option>
+        <option value="5">1,600 kg&middot;m&sup2;</option>
+      </select>
+      <div class="hint">Motor rotor, impeller, coupling and flywheel together.</div>
+    </div>
+    <div class="ctrl">
+      <label>Time window <span id="vWin">60 s</span></label>
+      <input type="range" id="sWin" min="10" max="150" value="60" step="5">
+      <div class="hint">The vertical line is 2L/a = 22.9&nbsp;s, when the first reflection returns from the reservoir.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Inertia I</div><div class="v" id="rI">400 <small>kg&middot;m&sup2;</small></div></div>
+    <div class="cell"><div class="k">GD&sup2;</div><div class="v" id="rGD">1,600 <small>kg&middot;m&sup2;</small></div></div>
+    <div class="cell"><div class="k">Stored energy</div><div class="v" id="rEk">4.80 <small>MJ</small></div></div>
+    <div class="cell"><div class="k"><span style="text-transform:none">&tau;</span> = E/P</div><div class="v" id="rTau">7.01 <small>s</small></div></div>
+    <div class="cell"><div class="k">Lowest head on line</div><div class="v" id="rLmin">+9.3 <small>m, at 3.0 km</small></div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;" id="rVer"><span class="badge good">meets +3.0 m</span></div></div>
+    <div class="cell"><div class="k">Highest head on line</div><div class="v" id="rLmax">85.0 <small>m</small></div></div>
+  </div>
+</div>
+<p class="fig-note">At 400&nbsp;kg&middot;m&sup2; the speed ratio is 0.73 at 5&nbsp;s, 0.57 at 10&nbsp;s and 0.37 at 2L/a. The pump-end head bottoms out at +10.8&nbsp;m just as the first reflection returns, the line never drops below +9.3&nbsp;m, and nothing rises above 85&nbsp;m. Switch to 25&nbsp;kg&middot;m&sup2;: the speed is down to 0.22 within 5&nbsp;s (where this model holds it; see section 3) and the pump-end head is below 10&nbsp;m within two seconds. The pump end holds at a few metres only because the slowing pump still passes water from its suction; meanwhile the far end of the line goes to vapour. Now try 200&nbsp;kg&middot;m&sup2;. The pump-end trace never falls below +5&nbsp;m, yet the line fails at 5.6&nbsp;km. <strong>Judge the design on the minimum envelope along the whole line, not on the history at the pump.</strong></p>
+
+<h2 id="worked-example">5 &middot; Worked example: how much inertia the 12&nbsp;km main needs</h2>
+<p>This is the sequence we follow on a project, run here on the reference main.</p>
+<h3>Step 1: the duty and the set</h3>
+<div class="eq">\[ P_0 = \frac{\rho g Q H}{\eta} = \frac{998 \times 9.81 \times 0.70 \times 80}{0.80} = 685\ \text{kW}, \qquad \omega_0 = \frac{2\pi \times 1480}{60} = 155.0\ \text{rad/s}, \qquad T_0 = \frac{P_0}{\omega_0} = 4{,}420\ \text{N m} \]</div>
+<h3>Step 2: test the bare set</h3>
+<p>With 25&nbsp;kg&middot;m&sup2;, \(E_k\) = &frac12; &times; 25 &times; 155.0&sup2; = 0.30&nbsp;MJ and \(\tau\) = 0.44&nbsp;s, a ratio of 0.02 to 2L/a. The speed is down to 0.22 within five seconds, and the line reaches vapour over about 4&nbsp;km, from 7.4 to 11.3&nbsp;km. <strong>The motor and pump alone protect nothing.</strong></p>
+<h3>Step 3: double the inertia until the whole line passes</h3>
+<p>The response is far from linear. At 100&nbsp;kg&middot;m&sup2; the lowest head is &minus;8.7&nbsp;m at 7.8&nbsp;km. At 200 the pump reads +5.1&nbsp;m, but the line reaches &minus;1.5&nbsp;m at 5.6&nbsp;km, with about 7&nbsp;km of it below +3.0&nbsp;m. At 400 the whole line holds at <strong>+9.3&nbsp;m</strong> or better, with the lowest point at 3.0&nbsp;km, and nothing rises above 85&nbsp;m. That is <strong>16 times</strong> the bare set. The true threshold lies somewhere between 200 and 400; we design at the tested value that passes with margin.</p>
+<h3>Step 4: check that the answer survives the torque law</h3>
+<p>The weakest assumption is the torque law, so the audit reran the same line with other plausible torque characteristics. The tables above use the law that gives the highest minima of those tried. The minima moved by 2&ndash;3&nbsp;m: about &minus;4 to &minus;1.5&nbsp;m at 200&nbsp;kg&middot;m&sup2; (failing under every law tried), +7.3 to +9.3&nbsp;m at 400 (passing under every law tried) and +24 to +26&nbsp;m at 1,600. <strong>The conclusion is robust; the decimals are not.</strong> At worst, 400&nbsp;kg&middot;m&sup2; still clears +3.0&nbsp;m by more than 4&nbsp;m.</p>
+<h3>Step 5: check the pressure side, and compare</h3>
+<p>The maximum is 85.0&nbsp;m: no upsurge at all, and far inside 136&nbsp;m. The reference vessel used across this site (20&nbsp;m&sup3; shell, 3.5&nbsp;m&sup3; gas, DN400 differential connection) gives +4.3&nbsp;m and 119.2&nbsp;m on the same line with the pump stopped at once, so the comparison is not strictly like for like; even at +7.3&nbsp;m the flywheel keeps more margin on the downsurge. Cost, space and operation are compared in <a href="choosing-surge-protection.html">Choosing surge protection on one pipeline</a>.</p>
+<h3>Step 6: turn the inertia into steel</h3>
+<p>The flywheel must add 375&nbsp;kg&middot;m&sup2;, which stores 4.50&nbsp;MJ. For a solid steel disc \(I = \tfrac12\rho\pi t\,r^4\), so at \(t\) = 120&nbsp;mm:</p>
+<div class="eq">\[ r = \left(\frac{2I}{\rho\pi t}\right)^{1/4} = \left(\frac{2 \times 375}{7850\,\pi \times 0.12}\right)^{1/4} = 0.7095\ \text{m} \;\rightarrow\; 0.71\ \text{m} \]</div>
+<p>At 0.71&nbsp;m the disc is 1.42&nbsp;m across and weighs 1,492&nbsp;kg. It adds 376&nbsp;kg&middot;m&sup2;, for a total of 401&nbsp;kg&middot;m&sup2;, and its rim runs at 110.0&nbsp;m/s.</p>
+<h3>Step 7: price the start</h3>
+<p>With 50&nbsp;% of rated torque available for acceleration (section 8), the start time rises from 1.8&nbsp;s to <strong>28.1&nbsp;s</strong>. That figure goes to the motor manufacturer before anything else is fixed.</p>
+<h3>&tau; against 2L/a: a screening indicator, not a rule</h3>
+<p>Protection arrived at &tau; &asymp; 7&nbsp;s, about a third of 2L/a (0.31); at 0.15 it failed. Do not turn that into a rule. The ratio a line needs depends on its profile, friction, pump curve, torque characteristic and criterion, and a knee can separate whatever the ratio. Use it only to decide whether a flywheel is worth modelling at all [6][7].</p>
+
+<h2 id="int-inertia">6 &middot; Interactive: inertia against minimum pressure</h2>
+<p>These are the six runs: minima on the line and at the pump against total inertia, with &tau; on the right-hand axis, and below them the minimum envelope along the main for the selected case. Set your own criterion.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">How much inertia is enough on the 12&nbsp;km main</div>
+    <div class="fsub">Six model runs, 685&nbsp;kW at 1,480&nbsp;rpm, all pumps tripping. Upper: line and pump-end minima against total inertia (log scale). Lower: minimum pressure head along the line for the selected inertia, with the steady HGL; the thin grey lines are the other five inertias. Length below the criterion is counted on the 100&nbsp;m computational grid.</div>
+  </div>
+  <div class="chart-box"><canvas id="invChart"></canvas></div>
+  <div class="chart-box" style="height:320px;"><canvas id="envChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Selected inertia</label>
+      <select id="sCase2">
+        <option value="0">25 kg&middot;m&sup2; (motor and pump only)</option>
+        <option value="1">100 kg&middot;m&sup2;</option>
+        <option value="2">200 kg&middot;m&sup2;</option>
+        <option value="3" selected>400 kg&middot;m&sup2; (design)</option>
+        <option value="4">800 kg&middot;m&sup2;</option>
+        <option value="5">1,600 kg&middot;m&sup2;</option>
+      </select>
+      <div class="hint">Highlights the case above and draws its envelope below.</div>
+    </div>
+    <div class="ctrl">
+      <label>Design minimum pressure head <span id="vCrit">+3.0 m</span></label>
+      <input type="range" id="sCrit" min="-5" max="20" value="3" step="0.5">
+      <div class="hint">+3.0&nbsp;m is the reference criterion. Owners and pipe classes differ.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Selected I</div><div class="v" id="rSel">400 <small>kg&middot;m&sup2;</small></div></div>
+    <div class="cell"><div class="k"><span style="text-transform:none">&tau; / (2L/a)</span></div><div class="v" id="rRatio">0.31</div></div>
+    <div class="cell"><div class="k">Lowest on line</div><div class="v" id="rLmin2">+9.3 <small>m</small></div></div>
+    <div class="cell"><div class="k">Where</div><div class="v" style="font-size:15px;margin-top:6px;" id="rWhere2">at 3.0 km</div></div>
+    <div class="cell"><div class="k">Lowest at pump</div><div class="v" id="rPump2">+10.8 <small>m</small></div></div>
+    <div class="cell"><div class="k">Line below criterion</div><div class="v" id="rBelow">0.0 <small>km</small></div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;" id="rVer2"><span class="badge good">meets +3.0 m</span></div></div>
+    <div class="cell"><div class="k">Smallest tested I that passes</div><div class="v" id="rSmall">400 <small>kg&middot;m&sup2;</small></div></div>
+  </div>
+</div>
+<p class="fig-note">At +3.0&nbsp;m the smallest tested inertia that passes is <strong>400&nbsp;kg&middot;m&sup2;</strong>, with &tau;/(2L/a) = 0.31. Select 200 and the two minima split apart: +5.1&nbsp;m at the pump but &minus;1.5&nbsp;m at 5.6&nbsp;km, with about 7&nbsp;km of line below the criterion. Lower the criterion to 0&nbsp;m and 400 is still needed; at &minus;1.5&nbsp;m, 200 passes. Raise it to +10&nbsp;m and the answer doubles to 800. Treat any pass by less than 2&ndash;3&nbsp;m with suspicion, since that is the spread from the torque law alone. Up to 100&nbsp;kg&middot;m&sup2; the line is at or near vapour. From there each doubling of inertia raises the line minimum by 7&ndash;11&nbsp;m (8.2&nbsp;m from 800 to 1,600), but it also doubles the start time, so every extra metre of margin costs more seconds at every start.</p>
+
+<h2 id="flywheel-design">7 &middot; Designing the flywheel</h2>
+<p>For a solid steel disc (\(\rho\) = 7,850&nbsp;kg/m&sup3;):</p>
+<div class="eq">\[ m = \rho\pi r^2 t, \qquad I = \tfrac12 m r^2 = \tfrac12\rho\pi t\,r^4, \qquad \frac{E_k}{m} = \frac{(\omega_0 r)^2}{4} = \frac{v_{rim}^2}{4} \]</div>
+<p>Inertia goes with the fourth power of radius. Doubling the thickness doubles both inertia and mass, while adding 19&nbsp;% to the radius doubles the inertia for only 41&nbsp;% more mass. The energy per kilogram depends only on rim speed. Rim speed sets the stress in the disc, the hub and the shaft fixing, so it is what limits the diameter, and that limit comes from the manufacturer, not from a rule of thumb.</p>
+
+<div class="tbl-wrap"><table>
+  <caption>Solid steel discs on the reference set: 1,480&nbsp;rpm, 685&nbsp;kW, bare set 25&nbsp;kg&middot;m&sup2;, start with 50&nbsp;% of rated torque available for acceleration</caption>
+  <thead><tr><th>Disc <span style="text-transform:none">r &times; t</span></th><th class="num">Mass <span style="text-transform:none">(kg)</span></th><th class="num">Disc I <span style="text-transform:none">(kg&middot;m&sup2;)</span></th><th class="num">Disc GD&sup2; <span style="text-transform:none">(kg&middot;m&sup2;)</span></th><th class="num">Rim speed <span style="text-transform:none">(m/s)</span></th><th class="num">Total I <span style="text-transform:none">(kg&middot;m&sup2;)</span></th><th class="num"><span style="text-transform:none">&tau; (s)</span></th><th class="num">Start <span style="text-transform:none">(s)</span></th></tr></thead>
+  <tbody>
+    <tr><td>0.60&nbsp;m &times; 100&nbsp;mm</td><td class="num">888</td><td class="num">160</td><td class="num">639</td><td class="num">93.0</td><td class="num">185</td><td class="num">3.24</td><td class="num">13.0</td></tr>
+    <tr><td><strong>0.71&nbsp;m &times; 120&nbsp;mm</strong> (design)</td><td class="num">1,492</td><td class="num">376</td><td class="num">1,504</td><td class="num">110.0</td><td class="num">401</td><td class="num">7.03</td><td class="num">28.1</td></tr>
+    <tr><td>0.80&nbsp;m &times; 120&nbsp;mm</td><td class="num">1,894</td><td class="num">606</td><td class="num">2,424</td><td class="num">124.0</td><td class="num">631</td><td class="num">11.06</td><td class="num">44.3</td></tr>
+    <tr><td>1.00&nbsp;m &times; 150&nbsp;mm</td><td class="num">3,699</td><td class="num">1,850</td><td class="num">7,398</td><td class="num">155.0</td><td class="num">1,875</td><td class="num">32.87</td><td class="num">131.5</td></tr>
+  </tbody>
+</table></div>
+
+<p>In our practice, these items decide whether the flywheel gets built:</p>
+<ul class="clean">
+  <li><strong>Where it goes.</strong> On a horizontal set the disc sits between motor and pump, or on a second shaft extension at the motor's non-drive end, which needs a motor built for it. Either choice sets the baseplate length.</li>
+  <li><strong>Bearings and shaft.</strong> Heavy discs often get pedestal bearings of their own. The added mass lowers the critical speed of the shaft line, and the set supplier has to check it.</li>
+  <li><strong>Coupling.</strong> It carries flywheel torque into the pump on every trip and out of the motor on every start.</li>
+  <li><strong>Guarding and balancing.</strong> The disc needs a fixed guard, dynamic balancing and a positive fixing to the shaft.</li>
+  <li><strong>Vertical sets.</strong> The disc hangs on the thrust bearing. On vertical turbine and submersible pumps a flywheel is rarely practical.</li>
+  <li><strong>Space and lifting.</strong> A 1.42&nbsp;m, 1.5&nbsp;tonne disc changes the crane capacity, the withdrawal space and the spacing between sets.</li>
+</ul>
+
+<h2 id="motor-start">8 &middot; The motor start penalty</h2>
+<p>Whatever the flywheel gives back on a trip, the motor must put in on every start:</p>
+<div class="eq">\[ t_{acc} \;=\; \frac{I\,\omega_0}{f\,T_0} \;=\; \frac{2\tau}{f} \]</div>
+<p>Here \(f\) is the average fraction of rated torque left over to accelerate the rotor: motor torque minus the pump's load torque. Taking \(f\) = 0.5 is our screening <em>assumption</em>, not a motor constant. At \(f\) = 0.5 the start takes 4&tau;: <strong>1.8&nbsp;s</strong> for the bare set, 7.0&nbsp;s at 100&nbsp;kg&middot;m&sup2;, <strong>28.1&nbsp;s</strong> at 400 and 56.1&nbsp;s at 800.</p>
+<ul class="clean">
+  <li><strong>Rotor heating.</strong> The heat the rotor absorbs during a start grows with the energy being stored. The motor manufacturer must confirm the starting class, the permitted starts per hour and the minimum time between starts for the actual load inertia.</li>
+  <li><strong>Direct-on-line starting.</strong> The starting current and the voltage dip last for the whole run-up. Stall and overcurrent protection must allow it, and any standby generator must carry it.</li>
+  <li><strong>Soft starters.</strong> They cut torque along with voltage, which lowers \(f\). With a large flywheel a soft starter may not bring the set up to speed within the motor's thermal limits.</li>
+  <li><strong>Variable-speed drives.</strong> A drive gives near-rated torque without inrush, so \(f\) can be higher. But the drive must be rated for the duty, a controlled stop has to dissipate the stored energy or let it coast out, and a power failure trips the set exactly as before.</li>
+</ul>
+
+<h2 id="int-calculator">9 &middot; Interactive: flywheel and motor calculator</h2>
+<p>Size a disc for your own set. The chart plots &tau; and start time against total inertia, with your set marked on both lines.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Flywheel disc, stored energy and motor start time</div>
+    <div class="fsub">Solid steel disc, \(\rho\) = 7,850&nbsp;kg/m&sup3;: \(m = \rho\pi r^2 t\), \(I = \tfrac12 m r^2\). \(E_k = \tfrac12 I\omega_0^2\), \(\tau = E_k/P\), start time \(= I\omega_0/(f\,T_0)\) with \(T_0 = P/\omega_0\). The green line is the &tau; at which the reference main was protected (7.0&nbsp;s at 1,480&nbsp;rpm and 685&nbsp;kW), shown as a screening marker for that main only.</div>
+  </div>
+  <div class="chart-box"><canvas id="flyChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Disc radius <span id="vR">0.80 m</span></label>
+      <input type="range" id="sR" min="0.3" max="1.2" value="0.8" step="0.01">
+      <div class="hint">Inertia goes with r&#8308;, rim speed with r.</div>
+    </div>
+    <div class="ctrl">
+      <label>Disc thickness <span id="vTk">120 mm</span></label>
+      <input type="range" id="sTk" min="0.05" max="0.30" value="0.12" step="0.01">
+      <div class="hint">Inertia and mass both in proportion.</div>
+    </div>
+    <div class="ctrl">
+      <label>Motor + pump inertia <span id="vIm">25 kg&middot;m&sup2;</span></label>
+      <input type="range" id="sIm" min="5" max="100" value="25" step="1">
+      <div class="hint">From the data sheets: GD&sup2; &divide; 4, or WR&sup2; (lb&middot;ft&sup2;) &times; 0.0421.</div>
+    </div>
+    <div class="ctrl">
+      <label>Shaft power <span id="vPw">685 kW</span></label>
+      <input type="range" id="sPw" min="100" max="2000" value="685" step="5">
+      <div class="hint">Sets both &tau; and the rated torque.</div>
+    </div>
+    <div class="ctrl">
+      <label>Motor speed <span id="vN">1,480 rpm</span></label>
+      <select id="sN">
+        <option value="740">740 rpm (8-pole, 50 Hz)</option>
+        <option value="990">990 rpm (6-pole, 50 Hz)</option>
+        <option value="1480" selected>1,480 rpm (4-pole, 50 Hz)</option>
+        <option value="2960">2,960 rpm (2-pole, 50 Hz)</option>
+      </select>
+      <div class="hint">Stored energy goes with speed squared.</div>
+    </div>
+    <div class="ctrl">
+      <label>Torque available to accelerate <span id="vTq">50 %</span></label>
+      <input type="range" id="sTq" min="20" max="100" value="50" step="5">
+      <div class="hint">Average motor torque minus pump load torque, as % of rated. 50&nbsp;% is our screening assumption.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Disc mass</div><div class="v" id="rDm">1,894 <small>kg</small></div></div>
+    <div class="cell"><div class="k">Disc I</div><div class="v" id="rDI">606 <small>kg&middot;m&sup2;</small></div></div>
+    <div class="cell"><div class="k">Total I</div><div class="v" id="rTI">631 <small>kg&middot;m&sup2;</small></div></div>
+    <div class="cell"><div class="k">Total GD&sup2;</div><div class="v" id="rGD3">2,524 <small>kg&middot;m&sup2;</small></div></div>
+    <div class="cell"><div class="k">Stored energy</div><div class="v" id="rEk3">7.58 <small>MJ</small></div></div>
+    <div class="cell"><div class="k"><span style="text-transform:none">&tau;</span> = E/P</div><div class="v" id="rTau3">11.06 <small>s</small></div></div>
+    <div class="cell"><div class="k">Start time</div><div class="v" id="rAcc">44.3 <small>s</small></div></div>
+    <div class="cell"><div class="k">Rim speed</div><div class="v" id="rRim">124.0 <small>m/s</small></div></div>
+  </div>
+</div>
+<p class="fig-note">The default disc, 0.8&nbsp;m &times; 120&nbsp;mm, weighs <strong>1,894&nbsp;kg</strong> and adds <strong>606&nbsp;kg&middot;m&sup2;</strong>. That makes 631&nbsp;kg&middot;m&sup2; in total, 7.58&nbsp;MJ stored, &tau; = 11.06&nbsp;s, a 44.3&nbsp;s start and a rim speed of 124.0&nbsp;m/s, which is more than the main needs. Drag the radius to 0.71&nbsp;m: the disc drops to 1,492&nbsp;kg and 376&nbsp;kg&middot;m&sup2;, the total is the design 401&nbsp;kg&middot;m&sup2;, and the start takes 28.1&nbsp;s. Raise the torque available to accelerate to 100&nbsp;% and the start halves to 14.1&nbsp;s. Switch to 2,960&nbsp;rpm and the same disc stores four times the energy, but its rim speed doubles to 248.0&nbsp;m/s, well beyond the discs of section 7; get the permissible rim speed from the manufacturer.</p>
+
+<h2 id="wrong-answer">10 &middot; When a flywheel is the wrong answer</h2>
+<p>Flywheels belong on short and medium-length mains, where a modest addition of inertia buys a rundown long enough to matter over the wave period [5][6][11]. Outside that range the answer is usually something else.</p>
+<ul class="clean">
+  <li><strong>Long lines.</strong> The rundown a line needs grows with its wave period. Since the start time is \(2\tau/f\), a line that needs &tau; to be a sizeable fraction of 2L/a needs a start time of the same order as 2L/a. On long mains that inertia soon exceeds what a motor can accelerate within its thermal limits, or what the shaft and bearings can carry [6][11]. In our practice a <a href="surge-vessel.html">vessel</a> usually scales better.</li>
+  <li><strong>Frequent starts.</strong> Every start pays the thermal price of section 8, and stations that cycle on level control use up their permitted starts.</li>
+  <li><strong>Variable-speed stations.</strong> A large flywheel works against controlled ramping and adds drive duty. The drive itself does nothing for a power-failure trip, so the surge case is the same as for a fixed-speed set.</li>
+  <li><strong>Knees and high points.</strong> A flywheel acts at the pump, and a knee can still separate. See <a href="one-way-surge-tank-design.html">One-way surge tanks at the knee</a>.</li>
+  <li><strong>Upsurge problems.</strong> It does not help with a <a href="water-hammer-control-valve.html">valve closure</a> elsewhere on the system. It delays the flow reversal at the pump's <a href="check-valve-hammer.html">non-return valve</a>, but that valve must still close without slamming.</li>
+  <li><strong>Vertical and submersible sets.</strong> There is rarely anywhere to put the disc.</li>
+</ul>
+<p>A <a href="surge-relief-valve-sizing.html">surge relief valve</a> covers only the pressure side. The full comparison is in <a href="choosing-surge-protection.html">Choosing surge protection on one pipeline</a>.</p>
+
+<h2 id="hammer-setup">11 &middot; Setting it up in Bentley HAMMER</h2>
+<p>This is how we check a flywheel in HAMMER [10]; the general <a href="hammer-transient-simulation-workflow.html">transient workflow</a> and <a href="hammer-transient-tips.html">common pitfalls</a> are covered separately. Field names differ slightly between HAMMER versions.</p>
+<ol>
+  <li><strong>Build the line and check the steady state.</strong> Model a <strong>Reservoir</strong> for the wet well, the <strong>Pump</strong>, <strong>Pipes</strong> with <strong>Junctions</strong> along the route, and a delivery <strong>Reservoir</strong> (see <a href="boundary-conditions-reservoir-tank.html">boundary conditions</a>). Set wave speeds with the <strong>Wave Speed Calculator</strong> (see <a href="wave-speed-surge-analysis.html">Wave speed</a>), and confirm the steady HGL (85.0&nbsp;m and 44.8&nbsp;m here) first.</li>
+  <li><strong>Define the pump.</strong> Enter the duty, pump curve, efficiency and <strong>speed</strong> (1,480&nbsp;rpm). Select the <strong>4-quadrant characteristic curves</strong> from the specific speed closest to the real impeller, or ask the manufacturer for the complete characteristics; the rundown torque is where the answer is sensitive.</li>
+  <li><strong>Enter the inertia (pump and motor)</strong> as the total on the shaft: rotor, impeller, coupling and flywheel. Check whether each value is \(I\), GD&sup2; or WR&sup2;, and whether the pump value includes the water in the impeller. Before data sheets exist, estimate the inertia from published correlations with power and speed [6], and record the estimate as an assumption.</li>
+  <li><strong>Set the pump trip (shut down)</strong> at the start of the run, with every pump in the station tripping together.</li>
+  <li><strong>Model the check valve on the pump</strong>, first as ideal and then with its real <strong>closure time/delay</strong>. A valve that closes slowly passes reverse flow before it seats and can then slam; check the reverse velocity at closure with the real closure time, even though the flywheel delays the reversal.</li>
+  <li><strong>Set up each inertia as its own alternative and scenario</strong> (the six inertias of the tables, 25 to 1,600&nbsp;kg&middot;m&sup2;), changing nothing else, so the envelopes can be compared and the threshold bracketed.</li>
+  <li><strong>Set the transient run options.</strong> Make the <strong>run duration</strong> several times 2L/a (150&nbsp;s here). Accept the <strong>time step</strong> computed from the shortest pipe and the wave speeds, and check that the <strong>wave speed adjustment tolerance</strong> has not moved any wave speed materially. Turn on <strong>vapour pressure / column separation</strong>, and keep the <strong>friction method</strong> the same in every run.</li>
+  <li><strong>Read the time histories</strong> in the <strong>Transient Results Viewer</strong>: head and pump speed at the pump. A set that stops in about a second when you expected a slow rundown usually has its inertia in the wrong unit.</li>
+  <li><strong>Read the profile, not the pump.</strong> Plot the <strong>profile (path)</strong> with <strong>maximum and minimum head envelopes</strong>. Check the lowest head and its chainage against +3.0&nbsp;m and the maximum against 136&nbsp;m, and use the <strong>animation</strong> to see where the minimum forms.</li>
+  <li><strong>Test the sensitivity.</strong> Rerun the chosen inertia with neighbouring specific-speed characteristics, the lowest credible inertia and the wave speed range. If the minimum moves by more than your margin, the design is not yet robust.</li>
+  <li><strong>Close the loop on site.</strong> In our practice a recorded trip after commissioning is the best check of the modelled inertia; see <a href="transient-analysis-scada.html">SCADA records in transient analysis</a>.</li>
+</ol>
+
+<h2 id="checklist">12 &middot; Design checklist</h2>
+<ul class="clean">
+  <li><strong>Model the unprotected case first</strong> with data-sheet inertia, and confirm that the downsurge is the problem.</li>
+  <li><strong>Get the inertia unit right</strong> (\(I\), GD&sup2; or WR&sup2;) for the motor, the pump and the coupling.</li>
+  <li><strong>Screen with E<sub>k</sub>, &tau; and &tau;/(2L/a)</strong>, and never treat the ratio as a rule.</li>
+  <li><strong>Double the inertia step by step</strong> and judge each case on the minimum envelope along the whole line.</li>
+  <li><strong>Bracket the torque-law uncertainty</strong>, and keep a margin larger than the spread (2&ndash;3&nbsp;m here).</li>
+  <li><strong>Make sure the chosen design never reaches vapour</strong>, so that no result rests on a collapse peak.</li>
+  <li><strong>Confirm the maximum</strong> against the allowable pressure, and check non-return valve closure with its real characteristic.</li>
+  <li><strong>Size the disc</strong> from \(I = \tfrac12\rho\pi t r^4\), and get the permissible rim speed, balancing and shaft fixing from the manufacturer.</li>
+  <li><strong>Send the total load inertia and starting method to the motor manufacturer</strong>, and get back the start time, the thermal check and the permitted starts per hour.</li>
+  <li><strong>Check the electrical side</strong>: protection settings, voltage dip and any standby generator.</li>
+  <li><strong>Resolve the layout</strong>: bearings, coupling, guard, baseplate, crane and withdrawal space.</li>
+  <li><strong>Weigh the alternatives</strong> on the same line, including how often the station starts and the <a href="surge-analysis-risk.html">consequence of a protection failure</a>.</li>
+  <li><strong>Run the final design in HAMMER</strong> on the surveyed profile, and verify it with a recorded trip.</li>
+</ul>
+
+<div class="callout green">
+  <span class="lbl">Surge protection design series</span>
+  <ol>
+    <li><a href="wave-speed-surge-analysis.html">Wave speed: the number that sets the surge</a></li>
+    <li><a href="surge-vessel-differential-orifice.html">The differential orifice: empty freely, refill slowly</a></li>
+    <li><a href="surge-vessel-type-selection.html">Bladder, diaphragm or air-over-water vessel</a></li>
+    <li><a href="one-way-surge-tank-design.html">One-way surge tanks at the knee</a></li>
+    <li><a href="surge-relief-valve-sizing.html">Surge relief valves: what a valve at the pump can protect</a></li>
+    <li><strong>Pump inertia and the flywheel</strong></li>
+    <li><a href="choosing-surge-protection.html">Choosing surge protection on one pipeline</a></li>
+  </ol>
+  The sizing method itself is in <a href="surge-vessel.html">Sizing the Hydropneumatic Surge Vessel</a>.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em> &mdash; the DN800 K9 ductile iron pipe of the reference main.</li>
+  <li>EN 805 <em>Water supply &mdash; Requirements for systems and components outside buildings</em> &mdash; design and allowable pressures, and the surge allowance the maximum is checked against.</li>
+  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993 &mdash; the Joukowsky relation, the method of characteristics, pump boundary conditions with rotor inertia, and the discrete vapour cavity model.</li>
+  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005 &mdash; overview of transient control strategies, including added pump inertia.</li>
+  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014 &mdash; pump rundown equations, complete (four-quadrant) pump characteristics, and flywheels as a control measure.</li>
+  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004 &mdash; pump trip and rundown, estimating pump and motor inertia, and where flywheels are and are not practical.</li>
+  <li>Parmakian, J. <em>Waterhammer Analysis</em>. Dover, 1963 &mdash; classical charts for power failure at a pump, built on pipeline and pump inertia parameters.</li>
+  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006 &mdash; column separation, vapour and gas cavity models, and why collapse peaks are model-sensitive.</li>
+  <li>Larock, B.E., Jeppson, R.W. &amp; Watters, G.Z. <em>Hydraulics of Pipeline Systems</em>. CRC Press, 2000 &mdash; homologous pump relations and transient pump boundary conditions.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help &mdash; pump inertia, pump trip, 4-quadrant characteristic curves, check valve closure, transient run options and results viewing.</li>
+  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989 &mdash; water hammer protection of pumping lines, and the practical limits of flywheels on long mains.</li>
+</ol>
+
+<div class="tags">#SurgeAnalysis #WaterHammer #HydraulicTransients #PumpTrip #PowerFailure #PumpInertia #Flywheel #GD2 #MomentOfInertia #PumpRundown #ColumnSeparation #VapourCavity #MethodOfCharacteristics #BentleyHAMMER #OpenFlowsHAMMER #SurgeProtection #TransmissionMain #DuctileIron #PumpStation #PumpStationDesign #MotorStarting #VariableSpeedDrive #SoftStarter #FourQuadrantCharacteristics #CheckValve #TransientAnalysis #PipelineDesign #HydraulicDesign #WaterInfrastructure #WaterEngineering</div>
+
+</div>
+
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="f-line"><span class="nm">&copy; 2026 Mohamed Abokhatwa</span> <i class="sep">&middot;</i> <span>Riyadh, Saudi Arabia</span> <i class="sep">&middot;</i> <a href="mailto:mohamed@abokhatwa.com" dir="ltr">mohamed@abokhatwa.com</a> <i class="sep">&middot;</i> <a href="tel:+966541706700" dir="ltr">+966 54 170 6700</a> <i class="sep">&middot;</i> <a href="https://www.linkedin.com/in/abokhatwa" target="_blank" rel="noopener">LinkedIn</a> <i class="sep">&middot;</i> <a href="/">All articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="chart-theme.js?v=13"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+
+const D={"t":[0.095,0.667,1.238,1.81,2.381,2.952,3.524,4.095,4.667,5.238,5.81,6.381,6.952,7.524,8.095,8.667,9.238,9.81,10.476,11.048,11.619,12.19,12.762,13.333,13.905,14.476,15.048,15.619,16.19,16.762,17.333,17.905,18.476,19.048,19.619,20.286,20.857,21.429,22.0,22.571,23.143,23.714,24.286,24.857,25.429,26.0,26.571,27.143,27.714,28.286,28.857,29.429,30.095,30.667,31.238,31.81,32.381,32.952,33.524,34.095,34.667,35.238,35.81,36.381,36.952,37.524,38.095,38.667,39.238,39.81,40.476,41.048,41.619,42.19,42.762,43.333,43.905,44.476,45.048,45.619,46.19,46.762,47.333,47.905,48.476,49.048,49.619,50.286,50.857,51.429,52.0,52.571,53.143,53.714,54.286,54.857,55.429,56.0,56.571,57.143,57.714,58.286,58.857,59.429,60.095,60.667,61.238,61.81,62.381,62.952,63.524,64.095,64.667,65.238,65.81,66.381,66.952,67.524,68.095,68.667,69.238,69.81,70.476,71.048,71.619,72.19,72.762,73.333,73.905,74.476,75.048,75.619,76.19,76.762,77.333,77.905,78.476,79.048,79.619,80.286,80.857,81.429,82.0,82.571,83.143,83.714,84.286,84.857,85.429,86.0,86.571,87.143,87.714,88.286,88.857,89.429,90.095,90.667,91.238,91.81,92.381,92.952,93.524,94.095,94.667,95.238,95.81,96.381,96.952,97.524,98.095,98.667,99.238,99.81,100.476,101.048,101.619,102.19,102.762,103.333,103.905,104.476,105.048,105.619,106.19,106.762,107.333,107.905,108.476,109.048,109.619,110.286,110.857,111.429,112.0,112.571,113.143,113.714,114.286,114.857,115.429,116.0,116.571,117.143,117.714,118.286,118.857,119.429,120.095,120.667,121.238,121.81,122.381,122.952,123.524,124.095,124.667,125.238,125.81,126.381,126.952,127.524,128.095,128.667,129.238,129.81,130.476,131.048,131.619,132.19,132.762,133.333,133.905,134.476,135.048,135.619,136.19,136.762,137.333,137.905,138.476,139.048,139.619,140.286,140.857,141.429,142.0,142.571,143.143,143.714,144.286,144.857,145.429,146.0,146.571,147.143,147.714,148.286,148.857,149.429],"x":[0,100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200,2300,2400,2500,2600,2700,2800,2900,3000,3100,3200,3300,3400,3500,3600,3700,3800,3900,4000,4100,4200,4300,4400,4500,4600,4700,4800,4900,5000,5100,5200,5300,5400,5500,5600,5700,5800,5900,6000,6100,6200,6300,6400,6500,6600,6700,6800,6900,7000,7100,7200,7300,7400,7500,7600,7700,7800,7900,8000,8100,8200,8300,8400,8500,8600,8700,8800,8900,9000,9100,9200,9300,9400,9500,9600,9700,9800,9900,10000,10100,10200,10300,10400,10500,10600,10700,10800,10900,11000,11100,11200,11300,11400,11500,11600,11700,11800,11900,12000],"cases":[{"I":25,"line_min":-9.8,"at_min":7400,"pump_min":2.53,"line_max":85.0,"w5":0.223,"w10":0.217,"w229":0.204,"w":[0.901,0.562,0.402,0.315,0.267,0.242,0.23,0.225,0.223,0.223,0.222,0.221,0.221,0.22,0.219,0.219,0.218,0.217,0.217,0.216,0.215,0.215,0.214,0.214,0.213,0.212,0.212,0.211,0.211,0.21,0.21,0.209,0.208,0.208,0.207,0.207,0.206,0.206,0.205,0.204,0.199,0.179,0.172,0.164,0.156,0.149,0.142,0.136,0.131,0.126,0.121,0.117,0.112,0.108,0.105,0.102,0.099,0.096,0.093,0.09,0.088,0.086,0.083,0.081,0.079,0.077,0.076,0.074,0.072,0.071,0.069,0.068,0.066,0.065,0.064,0.062,0.061,0.06,0.059,0.058,0.057,0.056,0.055,0.054,0.053,0.052,0.052,0.051,0.05,0.049,0.048,0.048,0.047,0.046,0.046,0.045,0.044,0.044,0.043,0.043,0.042,0.042,0.041,0.041,0.04,0.04,0.039,0.039,0.038,0.038,0.037,0.037,0.036,0.036,0.036,0.035,0.035,0.035,0.034,0.034,0.033,0.033,0.033,0.032,0.032,0.032,0.032,0.031,0.031,0.031,0.03,0.03,0.03,0.029,0.029,0.029,0.029,0.028,0.028,0.028,0.028,0.027,0.027,0.027,0.027,0.026,0.026,0.026,0.026,0.026,0.025,0.025,0.025,0.025,0.025,0.025,0.024,0.024,0.024,0.024,0.024,0.024,0.023,0.023,0.023,0.023,0.023,0.022,0.022,0.022,0.022,0.022,0.022,0.022,0.021,0.021,0.021,0.021,0.021,0.021,0.021,0.021,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.019,0.019,0.019,0.019,0.019,0.019,0.019,0.019,0.019,0.018,0.018,0.018,0.018,0.018,0.018,0.018,0.018,0.018,0.018,0.018,0.017,0.017,0.017,0.017,0.017,0.017,0.017,0.017,0.017,0.017,0.017,0.016,0.016,0.016,0.016,0.016,0.016,0.016,0.016,0.016,0.016,0.016,0.016,0.015,0.015,0.015,0.015,0.015,0.015,0.015,0.015,0.015,0.015,0.015,0.015,0.015,0.015,0.015,0.014,0.014,0.014,0.014,0.014,0.014,0.014,0.014,0.014,0.014,0.014,0.014,0.014],"H":[68.3,28.5,15.3,9.8,7.2,6.0,5.4,5.1,5.0,4.9,4.8,4.6,4.5,4.4,4.3,4.2,4.1,4.0,3.9,3.8,3.6,3.5,3.4,3.3,3.2,3.1,3.0,2.9,2.8,2.7,2.6,2.7,2.7,2.8,2.8,2.6,2.6,2.6,2.6,2.5,6.9,8.1,9.6,10.9,12.5,13.9,15.2,16.6,17.7,19.2,20.2,21.1,18.0,17.4,16.7,16.0,15.3,14.7,14.0,13.3,12.7,12.0,11.3,10.7,10.0,9.3,8.6,8.0,7.3,6.6,6.4,6.3,6.1,5.8,5.5,5.2,4.9,4.6,6.2,6.1,50.8,76.2,77.8,76.2,74.8,73.7,72.3,71.0,69.7,68.6,67.7,69.6,70.3,70.9,71.5,72.2,72.8,73.4,74.1,74.7,75.3,76.0,76.6,77.2,78.0,78.6,79.2,79.8,80.5,81.0,81.1,81.2,81.4,81.0,81.1,81.0,81.2,81.3,83.0,83.2,28.6,13.1,14.4,15.6,16.8,18.2,19.2,20.5,21.4,22.7,23.6,21.1,20.5,19.9,19.3,18.7,18.1,17.5,16.9,16.2,15.6,15.0,14.4,13.8,13.2,12.6,12.0,11.4,10.8,10.5,10.6,10.6,10.5,9.9,9.6,9.3,9.0,8.7,8.5,43.8,70.5,74.5,73.2,72.2,70.9,69.6,68.7,67.5,66.6,65.5,64.5,67.5,68.0,68.6,69.3,69.8,70.4,71.0,71.6,72.1,72.7,73.3,73.8,74.4,75.0,75.5,76.1,76.7,77.2,77.3,77.4,77.7,77.9,77.3,77.5,77.5,77.5,77.7,77.7,34.6,16.0,17.0,18.2,19.1,20.4,21.4,22.5,23.5,24.6,37.0,23.5,22.9,22.4,21.9,21.3,20.8,20.2,19.7,19.1,18.6,18.1,17.5,17.0,16.4,15.9,15.4,14.8,14.2,13.8,13.8,13.6,13.9,13.8,13.1,12.8,12.6,12.4,12.1,29.4,62.3,72.1,70.9,69.9,68.5,67.5,66.4,65.6,64.5,63.7,63.0,65.3,65.8,66.3,66.8,67.4,67.9,68.4,68.9,69.4,70.0],"Hmin":[2.5,1.4,1.4,1.4,1.2,1.1,1.1,1.0,0.9,0.9,0.8,0.7,0.5,0.3,0.2,-0.0,-0.2,-0.4,-0.6,-0.7,-0.9,-1.1,-1.2,-1.4,-1.6,-1.8,-1.9,-2.1,-2.3,-2.5,-2.7,-2.8,-3.0,-3.2,-3.4,-3.5,-3.7,-3.9,-4.0,-4.2,-4.4,-4.6,-4.8,-4.9,-5.1,-5.3,-5.4,-5.6,-5.8,-6.0,-6.1,-6.3,-6.5,-6.7,-6.8,-7.0,-7.2,-7.3,-7.5,-7.7,-7.9,-8.0,-8.2,-8.4,-8.6,-8.7,-8.9,-9.1,-9.2,-9.4,-9.5,-9.6,-9.7,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-8.9,-6.1,-2.1,3.5,11.7,23.8,44.8]},{"I":100,"line_min":-8.72,"at_min":7800,"pump_min":-1.33,"line_max":88.16,"w5":0.4,"w10":0.269,"w229":0.248,"w":[0.973,0.838,0.735,0.653,0.588,0.533,0.487,0.448,0.415,0.387,0.362,0.342,0.324,0.309,0.297,0.286,0.278,0.271,0.264,0.26,0.257,0.255,0.253,0.252,0.252,0.252,0.251,0.251,0.251,0.251,0.25,0.25,0.25,0.25,0.25,0.249,0.249,0.249,0.249,0.249,0.248,0.241,0.231,0.223,0.216,0.21,0.207,0.204,0.203,0.202,0.201,0.198,0.194,0.191,0.189,0.186,0.183,0.181,0.178,0.176,0.173,0.171,0.169,0.167,0.165,0.163,0.161,0.159,0.157,0.155,0.153,0.151,0.149,0.148,0.146,0.144,0.143,0.141,0.14,0.138,0.137,0.135,0.134,0.133,0.131,0.13,0.129,0.127,0.126,0.125,0.124,0.122,0.121,0.12,0.119,0.118,0.117,0.116,0.115,0.114,0.113,0.112,0.111,0.11,0.109,0.108,0.107,0.106,0.105,0.105,0.104,0.103,0.102,0.101,0.101,0.1,0.099,0.098,0.098,0.097,0.096,0.096,0.095,0.094,0.093,0.093,0.092,0.091,0.091,0.09,0.089,0.089,0.088,0.088,0.087,0.086,0.086,0.085,0.085,0.084,0.084,0.083,0.083,0.082,0.082,0.081,0.081,0.08,0.08,0.079,0.079,0.078,0.078,0.077,0.077,0.076,0.076,0.075,0.075,0.074,0.074,0.074,0.073,0.073,0.072,0.072,0.072,0.071,0.071,0.07,0.07,0.07,0.069,0.069,0.069,0.068,0.068,0.068,0.067,0.067,0.067,0.066,0.066,0.066,0.065,0.065,0.065,0.064,0.064,0.064,0.063,0.063,0.063,0.062,0.062,0.062,0.061,0.061,0.061,0.061,0.06,0.06,0.06,0.059,0.059,0.059,0.059,0.058,0.058,0.058,0.058,0.057,0.057,0.057,0.057,0.056,0.056,0.056,0.056,0.055,0.055,0.055,0.055,0.054,0.054,0.054,0.054,0.053,0.053,0.053,0.053,0.053,0.052,0.052,0.052,0.052,0.052,0.051,0.051,0.051,0.051,0.051,0.05,0.05,0.05,0.05,0.05,0.049,0.049,0.049,0.049,0.049,0.049,0.048,0.048,0.048,0.048,0.048,0.048,0.047],"H":[80.7,61.0,47.6,38.1,31.1,25.8,21.7,18.4,15.9,13.8,12.1,10.8,9.7,8.8,8.0,7.4,6.9,6.5,6.1,5.8,5.6,5.4,5.2,5.1,5.0,4.9,4.8,4.7,4.6,4.5,4.5,4.4,4.3,4.2,4.1,4.0,3.9,3.8,3.8,3.7,5.6,7.8,8.7,9.1,9.2,9.2,9.2,9.2,9.1,9.1,10.0,11.2,12.2,12.8,13.1,13.2,13.1,12.9,12.6,12.1,11.7,11.1,10.5,9.9,9.2,8.5,7.8,7.1,6.4,5.8,4.9,4.3,3.6,2.9,2.2,1.5,0.8,0.1,-0.5,-1.2,14.8,30.6,42.9,52.5,59.9,65.7,70.2,74.1,76.6,78.2,76.9,75.9,75.2,74.8,74.6,74.6,74.7,74.9,75.3,75.7,76.2,76.7,77.3,77.9,78.7,79.3,79.9,80.6,81.2,81.9,82.5,83.2,83.8,84.4,85.1,85.7,86.4,87.0,87.6,84.9,67.7,54.0,41.8,33.8,27.6,22.8,19.1,16.3,14.1,13.7,14.9,15.7,16.2,16.5,16.7,16.6,16.5,16.2,15.9,15.4,14.9,14.4,13.8,13.2,12.6,12.0,11.4,10.8,10.2,9.6,9.0,8.4,7.8,7.2,6.6,6.0,5.3,4.7,4.1,15.4,29.9,41.4,50.4,57.3,62.7,66.9,70.1,72.5,74.4,73.8,72.8,72.2,71.7,71.5,71.4,71.5,71.7,72.0,72.4,72.8,73.3,73.8,74.3,74.9,75.5,76.0,76.6,77.2,77.8,78.3,78.9,79.6,80.1,80.7,81.3,81.8,82.4,82.9,83.5,67.8,55.0,44.9,37.1,31.0,26.4,22.7,19.9,17.8,16.7,17.7,18.5,19.0,19.3,19.5,19.5,19.4,19.1,18.8,18.5,18.1,17.6,17.1,16.6,16.0,15.5,14.9,14.3,13.8,13.2,12.7,12.1,11.6,11.1,10.5,10.0,9.5,9.0,8.4,13.3,27.3,38.5,47.4,54.2,60.3,64.2,67.2,69.5,71.3,71.2,70.3,69.6,69.2,69.0,68.9,68.9,69.1,69.3,69.6,70.0,70.4],"Hmin":[-1.3,-1.2,-1.1,-1.0,-0.9,-0.8,-0.7,-0.5,-0.4,-0.3,-0.2,-0.1,0.0,0.1,0.3,0.4,0.5,0.5,0.3,0.1,-0.1,-0.3,-0.5,-0.7,-0.8,-1.0,-1.2,-1.4,-1.6,-1.8,-1.9,-2.1,-2.3,-2.5,-2.7,-2.9,-3.0,-3.2,-3.4,-3.6,-3.8,-4.0,-4.2,-4.3,-4.5,-4.7,-4.9,-5.1,-5.2,-5.4,-5.6,-5.8,-5.9,-6.1,-6.3,-6.4,-6.6,-6.8,-6.9,-7.1,-7.2,-7.3,-7.5,-7.6,-7.7,-7.9,-8.0,-8.1,-8.2,-8.3,-8.4,-8.4,-8.5,-8.6,-8.6,-8.7,-8.7,-8.7,-8.7,-8.7,-8.7,-8.7,-8.6,-8.5,-8.4,-8.3,-8.2,-8.1,-7.9,-7.7,-7.5,-7.2,-6.9,-6.6,-6.2,-5.8,-5.3,-4.8,-4.3,-3.7,-3.0,-2.2,-1.4,-0.5,0.5,1.6,2.8,4.1,5.6,7.2,9.1,11.1,13.3,15.8,18.6,21.7,25.2,29.2,33.7,38.8,44.8]},{"I":200,"line_min":-1.47,"at_min":5600,"pump_min":5.14,"line_max":85.0,"w5":0.577,"w10":0.398,"w229":0.276,"w":[0.986,0.912,0.847,0.791,0.742,0.698,0.659,0.624,0.592,0.563,0.536,0.512,0.49,0.469,0.45,0.433,0.417,0.402,0.387,0.374,0.363,0.353,0.343,0.335,0.327,0.32,0.313,0.308,0.302,0.298,0.294,0.29,0.287,0.285,0.282,0.28,0.279,0.278,0.277,0.276,0.275,0.271,0.266,0.26,0.254,0.248,0.243,0.239,0.235,0.231,0.228,0.226,0.223,0.221,0.219,0.217,0.216,0.215,0.214,0.213,0.212,0.211,0.211,0.21,0.209,0.209,0.208,0.207,0.207,0.206,0.205,0.204,0.203,0.202,0.201,0.2,0.199,0.198,0.197,0.195,0.194,0.193,0.192,0.19,0.189,0.188,0.186,0.185,0.183,0.182,0.181,0.18,0.178,0.177,0.176,0.175,0.174,0.173,0.171,0.17,0.169,0.168,0.167,0.166,0.165,0.164,0.163,0.162,0.161,0.16,0.159,0.158,0.157,0.156,0.155,0.154,0.153,0.152,0.151,0.15,0.15,0.149,0.148,0.147,0.146,0.145,0.144,0.144,0.143,0.142,0.141,0.141,0.14,0.139,0.138,0.138,0.137,0.136,0.136,0.135,0.134,0.133,0.133,0.132,0.131,0.131,0.13,0.129,0.129,0.128,0.128,0.127,0.126,0.126,0.125,0.124,0.124,0.123,0.123,0.122,0.121,0.121,0.12,0.12,0.119,0.119,0.118,0.118,0.117,0.117,0.116,0.116,0.115,0.115,0.114,0.114,0.113,0.113,0.112,0.112,0.111,0.111,0.11,0.11,0.109,0.109,0.108,0.108,0.107,0.107,0.106,0.106,0.106,0.105,0.105,0.104,0.104,0.103,0.103,0.103,0.102,0.102,0.102,0.101,0.101,0.1,0.1,0.1,0.099,0.099,0.098,0.098,0.098,0.097,0.097,0.097,0.096,0.096,0.096,0.095,0.095,0.094,0.094,0.094,0.093,0.093,0.093,0.092,0.092,0.092,0.091,0.091,0.091,0.09,0.09,0.09,0.089,0.089,0.089,0.089,0.088,0.088,0.088,0.087,0.087,0.087,0.086,0.086,0.086,0.086,0.085,0.085,0.085,0.085,0.084,0.084,0.084,0.084,0.083,0.083],"H":[82.8,71.5,62.3,54.8,48.5,43.1,38.6,34.7,31.3,28.4,25.8,23.6,21.5,19.8,18.2,16.8,15.5,14.4,13.2,12.3,11.5,10.8,10.2,9.6,9.0,8.6,8.1,7.7,7.4,7.1,6.8,6.5,6.3,6.1,5.9,5.7,5.5,5.4,5.3,5.2,6.2,7.6,8.6,9.1,9.5,9.7,9.8,9.9,9.9,9.9,9.9,9.8,9.8,9.7,9.7,9.7,9.6,9.6,9.6,9.5,9.5,9.4,9.4,9.4,9.4,9.3,9.3,9.3,9.2,9.2,9.2,9.1,9.1,9.1,9.0,8.9,8.9,8.8,8.8,8.7,8.8,15.8,23.7,30.8,37.0,42.4,47.2,52.0,55.5,58.6,61.3,63.7,65.7,67.4,68.9,70.1,71.2,72.1,72.8,73.3,73.8,74.1,74.4,74.5,74.6,74.5,74.4,74.3,74.1,73.8,73.6,73.2,72.9,72.5,72.1,71.7,71.2,70.7,70.2,71.4,78.0,69.9,61.5,55.2,49.6,44.7,40.5,36.7,33.5,30.6,28.2,26.1,24.2,22.7,21.4,20.2,19.3,18.5,17.9,17.3,16.9,16.6,16.5,16.4,16.3,16.4,16.5,16.6,16.9,17.1,17.4,17.7,18.0,18.4,18.8,19.2,19.7,20.2,20.7,15.0,16.9,24.3,30.9,36.7,41.8,46.3,50.2,53.6,56.6,59.2,61.4,63.4,65.0,66.5,67.8,68.8,69.7,70.3,70.9,71.3,71.6,71.8,72.0,72.1,72.1,72.0,71.9,71.7,71.5,71.3,71.0,70.6,70.3,69.9,69.5,69.1,68.7,68.3,67.8,75.9,69.1,62.3,56.2,50.9,46.2,42.1,38.5,35.3,32.2,29.9,27.9,26.1,24.7,23.4,22.3,21.4,20.7,20.1,19.6,19.2,19.0,18.8,18.7,18.6,18.6,18.7,18.9,19.1,19.3,19.5,19.8,20.1,20.4,20.8,21.2,21.6,22.0,22.4,20.0,16.8,23.7,30.0,35.6,41.3,45.5,49.2,52.5,55.3,57.7,59.9,61.7,63.3,64.6,65.7,66.7,67.5,68.2,68.7,69.1,69.5],"Hmin":[5.1,5.0,4.8,4.6,4.4,4.2,4.1,3.9,3.7,3.5,3.4,3.2,3.0,2.9,2.7,2.5,2.4,2.2,2.1,1.9,1.8,1.6,1.5,1.3,1.2,1.1,0.9,0.8,0.7,0.5,0.4,0.3,0.2,0.1,-0.1,-0.2,-0.3,-0.4,-0.5,-0.6,-0.7,-0.8,-0.8,-0.9,-1.0,-1.1,-1.1,-1.2,-1.2,-1.3,-1.3,-1.4,-1.4,-1.4,-1.4,-1.5,-1.5,-1.5,-1.5,-1.4,-1.4,-1.4,-1.4,-1.3,-1.2,-1.2,-1.1,-1.0,-0.9,-0.8,-0.7,-0.6,-0.4,-0.3,-0.1,0.1,0.2,0.5,0.7,0.9,1.2,1.4,1.7,2.0,2.4,2.7,3.1,3.5,3.9,4.4,4.8,5.3,5.9,6.4,7.0,7.7,8.3,9.0,9.8,10.6,11.4,12.3,13.2,14.2,15.3,16.4,17.6,18.8,20.1,21.6,23.1,24.6,26.3,28.1,30.1,32.1,34.3,36.7,39.2,41.9,44.8]},{"I":400,"line_min":9.34,"at_min":3000,"pump_min":10.77,"line_max":85.0,"w5":0.734,"w10":0.574,"w229":0.369,"w":[0.993,0.954,0.917,0.884,0.852,0.823,0.796,0.77,0.746,0.723,0.702,0.681,0.662,0.643,0.626,0.609,0.594,0.579,0.562,0.548,0.535,0.523,0.511,0.499,0.488,0.478,0.468,0.459,0.45,0.441,0.432,0.424,0.417,0.409,0.403,0.395,0.389,0.383,0.377,0.372,0.366,0.361,0.356,0.35,0.345,0.34,0.335,0.33,0.325,0.321,0.316,0.312,0.308,0.305,0.301,0.298,0.295,0.292,0.289,0.287,0.284,0.282,0.28,0.278,0.276,0.274,0.272,0.27,0.268,0.267,0.265,0.263,0.262,0.26,0.258,0.257,0.255,0.254,0.253,0.251,0.25,0.249,0.248,0.248,0.247,0.246,0.245,0.243,0.242,0.241,0.24,0.239,0.238,0.237,0.236,0.234,0.234,0.232,0.231,0.23,0.229,0.228,0.227,0.226,0.225,0.224,0.223,0.222,0.221,0.221,0.22,0.219,0.218,0.217,0.216,0.215,0.214,0.213,0.212,0.212,0.211,0.21,0.209,0.208,0.207,0.206,0.206,0.205,0.204,0.203,0.202,0.202,0.201,0.2,0.199,0.199,0.198,0.197,0.196,0.196,0.195,0.194,0.193,0.193,0.192,0.191,0.191,0.19,0.189,0.188,0.188,0.187,0.186,0.186,0.185,0.184,0.184,0.183,0.182,0.182,0.181,0.18,0.18,0.179,0.179,0.178,0.177,0.177,0.176,0.176,0.175,0.174,0.174,0.173,0.173,0.172,0.172,0.171,0.17,0.17,0.169,0.169,0.168,0.168,0.167,0.167,0.166,0.166,0.165,0.165,0.164,0.163,0.163,0.162,0.162,0.161,0.161,0.16,0.16,0.159,0.159,0.158,0.158,0.158,0.157,0.157,0.156,0.156,0.155,0.155,0.154,0.154,0.153,0.153,0.152,0.152,0.151,0.151,0.151,0.15,0.15,0.149,0.149,0.148,0.148,0.148,0.147,0.147,0.146,0.146,0.145,0.145,0.145,0.144,0.144,0.143,0.143,0.143,0.142,0.142,0.141,0.141,0.141,0.14,0.14,0.14,0.139,0.139,0.139,0.138,0.138,0.137,0.137,0.137,0.136,0.136,0.136,0.135,0.135,0.135],"H":[83.9,77.8,72.4,67.4,63.0,58.9,55.2,51.9,48.8,45.9,43.3,40.9,38.6,36.5,34.6,32.8,31.1,29.5,27.8,26.4,25.2,24.0,22.8,21.8,20.8,19.8,18.9,18.1,17.3,16.6,15.9,15.2,14.6,14.0,13.4,12.8,12.3,11.8,11.4,11.0,11.1,11.7,12.2,12.5,12.8,12.9,13.1,13.1,13.2,13.2,13.2,13.1,13.1,13.0,13.0,12.9,12.8,12.7,12.7,12.6,12.5,12.4,12.3,12.3,12.2,12.1,12.0,11.9,11.9,11.8,11.7,11.6,11.6,11.5,11.4,11.3,11.3,11.2,11.1,11.1,11.1,11.1,11.2,11.2,15.0,18.7,22.1,25.9,28.9,31.7,34.3,36.8,39.0,41.1,43.1,44.9,46.6,48.1,49.5,50.9,52.1,53.2,54.2,55.1,56.1,56.8,57.5,58.1,58.6,59.1,59.5,59.9,60.2,60.5,60.7,60.9,61.0,61.1,61.2,62.0,66.4,70.7,75.3,75.4,71.8,68.4,65.2,62.2,59.4,56.7,54.2,51.9,49.7,47.7,45.9,44.2,42.6,41.1,39.7,38.3,37.2,36.1,35.2,34.3,33.6,32.9,32.2,31.6,31.1,30.7,30.3,30.0,29.7,29.4,29.2,29.1,28.9,28.9,28.8,25.9,21.8,17.8,14.1,16.4,19.7,22.9,25.9,28.8,31.5,34.0,36.4,38.6,40.6,42.5,44.6,46.2,47.7,49.1,50.4,51.5,52.6,53.6,54.5,55.3,56.0,56.7,57.2,57.8,58.3,58.7,59.0,59.4,59.7,59.9,60.0,60.2,60.3,60.4,60.4,64.5,68.5,72.2,74.5,71.2,68.1,65.1,62.2,59.5,56.5,54.1,51.9,49.8,47.9,46.1,44.5,42.9,41.5,40.2,39.0,37.9,36.9,36.0,35.1,34.3,33.6,33.0,32.4,31.9,31.5,31.1,30.8,30.5,30.2,30.0,29.9,29.8,29.7,29.6,28.2,24.3,20.6,17.2,17.1,20.7,23.6,26.5,29.2,31.7,34.1,36.4,38.5,40.5,42.4,44.1,45.6,47.1,48.5,49.7,50.9,51.9],"Hmin":[10.8,10.7,10.6,10.5,10.4,10.4,10.3,10.2,10.1,10.1,10.0,9.9,9.9,9.8,9.8,9.7,9.7,9.6,9.6,9.6,9.5,9.5,9.5,9.4,9.4,9.4,9.4,9.4,9.3,9.3,9.3,9.3,9.3,9.3,9.4,9.4,9.4,9.4,9.5,9.5,9.5,9.6,9.6,9.7,9.7,9.8,9.8,9.9,10.0,10.1,10.2,10.3,10.4,10.5,10.6,10.7,10.8,10.9,11.1,11.2,11.4,11.5,11.7,11.9,12.0,12.2,12.4,12.6,12.8,13.1,13.3,13.5,13.8,14.0,14.3,14.6,14.8,15.1,15.4,15.8,16.1,16.4,16.8,17.1,17.5,17.9,18.3,18.8,19.2,19.6,20.1,20.6,21.1,21.6,22.1,22.7,23.2,23.8,24.4,25.1,25.7,26.4,27.1,27.8,28.6,29.3,30.1,31.0,31.8,32.7,33.6,34.6,35.5,36.6,37.6,38.7,39.8,41.0,42.2,43.5,44.8]},{"I":800,"line_min":17.83,"at_min":0,"pump_min":17.83,"line_max":85.0,"w5":0.847,"w10":0.732,"w229":0.538,"w":[0.997,0.976,0.957,0.938,0.92,0.903,0.886,0.87,0.855,0.84,0.825,0.811,0.798,0.785,0.772,0.759,0.747,0.736,0.723,0.712,0.701,0.69,0.68,0.67,0.661,0.651,0.642,0.633,0.625,0.616,0.608,0.6,0.592,0.585,0.577,0.569,0.561,0.554,0.548,0.541,0.535,0.528,0.522,0.516,0.51,0.505,0.499,0.494,0.489,0.484,0.479,0.474,0.469,0.464,0.46,0.456,0.452,0.448,0.444,0.44,0.437,0.433,0.43,0.426,0.423,0.42,0.417,0.413,0.411,0.408,0.404,0.402,0.399,0.396,0.394,0.391,0.389,0.386,0.384,0.381,0.379,0.377,0.375,0.373,0.371,0.37,0.368,0.366,0.365,0.364,0.363,0.362,0.361,0.361,0.36,0.359,0.359,0.359,0.358,0.358,0.358,0.357,0.356,0.355,0.353,0.352,0.351,0.35,0.348,0.347,0.346,0.345,0.344,0.343,0.342,0.341,0.339,0.338,0.337,0.336,0.335,0.334,0.333,0.332,0.331,0.33,0.329,0.328,0.327,0.326,0.325,0.324,0.323,0.322,0.321,0.32,0.319,0.318,0.317,0.316,0.315,0.314,0.313,0.312,0.311,0.31,0.309,0.308,0.307,0.306,0.305,0.304,0.304,0.303,0.302,0.301,0.3,0.299,0.298,0.297,0.297,0.296,0.295,0.294,0.293,0.292,0.292,0.291,0.29,0.289,0.288,0.288,0.287,0.286,0.285,0.284,0.283,0.283,0.282,0.281,0.281,0.28,0.279,0.278,0.278,0.277,0.276,0.275,0.275,0.274,0.273,0.272,0.272,0.271,0.27,0.27,0.269,0.268,0.268,0.267,0.266,0.265,0.265,0.264,0.263,0.263,0.262,0.261,0.261,0.26,0.259,0.259,0.258,0.258,0.257,0.256,0.256,0.255,0.254,0.254,0.253,0.253,0.252,0.251,0.251,0.25,0.249,0.249,0.248,0.248,0.247,0.246,0.246,0.245,0.245,0.244,0.243,0.243,0.242,0.242,0.241,0.241,0.24,0.239,0.239,0.238,0.238,0.237,0.237,0.236,0.236,0.235,0.235,0.234,0.234,0.233,0.233,0.232,0.232,0.231],"H":[84.5,81.3,78.3,75.5,72.8,70.2,67.8,65.4,63.2,61.1,59.1,57.2,55.3,53.5,51.9,50.2,48.7,47.2,45.5,44.1,42.8,41.5,40.3,39.1,38.0,36.9,35.8,34.8,33.8,32.9,31.9,31.1,30.2,29.4,28.6,27.6,26.9,26.2,25.5,24.8,24.4,24.4,24.3,24.2,24.1,24.0,23.8,23.7,23.5,23.3,23.2,23.0,22.8,22.6,22.4,22.2,22.1,21.9,21.7,21.5,21.3,21.1,21.0,20.8,20.6,20.4,20.3,20.1,19.9,19.8,19.6,19.4,19.3,19.1,18.9,18.8,18.6,18.5,18.3,18.2,18.2,18.2,18.1,18.1,18.1,18.1,18.1,18.0,18.0,18.0,18.0,17.9,17.9,17.9,17.9,17.9,17.9,17.9,17.8,17.8,17.8,19.0,20.1,21.3,22.5,23.5,24.5,25.4,26.3,27.2,28.0,28.8,29.5,30.2,30.9,31.6,32.2,32.8,33.3,34.2,36.5,38.7,41.3,43.4,45.5,47.6,49.5,51.5,53.3,55.1,56.9,58.6,60.2,61.8,63.3,64.8,66.2,67.5,68.8,70.3,70.3,69.2,68.1,67.1,66.1,65.1,64.2,63.3,62.5,61.6,60.9,60.1,59.4,58.7,58.1,57.5,56.8,56.2,55.7,54.0,51.8,49.6,47.5,45.5,43.4,41.5,39.5,37.7,35.9,34.2,32.5,30.9,29.3,27.8,26.1,24.7,23.4,22.1,20.9,19.8,20.4,21.5,22.5,23.5,24.4,25.4,26.2,27.1,27.9,28.7,29.4,30.2,30.9,31.6,32.2,32.8,33.3,33.9,34.4,36.5,38.7,40.8,42.8,44.8,46.8,48.7,50.5,52.3,54.3,56.0,57.6,59.1,60.6,62.0,63.4,64.7,66.0,67.2,68.3,69.1,68.1,67.1,66.1,65.2,64.3,63.4,62.4,61.6,60.9,60.1,59.4,58.7,58.1,57.5,56.9,56.3,55.8,55.3,54.3,52.2,50.1,48.0,46.1,43.8,41.9,40.1,38.3,36.6,35.0,33.4,31.8,30.4,28.9,27.6,26.3,25.0,23.8,22.7,21.6,21.5],"Hmin":[17.8,18.0,18.2,18.4,18.5,18.6,18.7,18.8,18.9,18.9,19.0,19.1,19.2,19.3,19.4,19.6,19.6,19.8,19.9,20.0,20.1,20.2,20.3,20.4,20.6,20.7,20.8,20.9,21.1,21.2,21.3,21.5,21.6,21.8,21.9,22.0,22.2,22.3,22.5,22.6,22.8,23.0,23.1,23.3,23.4,23.6,23.8,24.0,24.1,24.3,24.5,24.7,24.9,25.1,25.2,25.4,25.6,25.8,26.0,26.2,26.4,26.7,26.9,27.1,27.3,27.5,27.8,28.0,28.2,28.4,28.7,28.9,29.2,29.4,29.7,29.9,30.2,30.4,30.6,30.8,31.1,31.3,31.5,31.7,32.0,32.2,32.5,32.7,33.0,33.2,33.5,33.8,34.1,34.4,34.7,35.0,35.3,35.6,35.9,36.2,36.5,36.9,37.2,37.6,38.0,38.3,38.7,39.1,39.5,39.9,40.3,40.7,41.1,41.5,42.0,42.4,42.9,43.4,43.8,44.3,44.8]},{"I":1600,"line_min":26.03,"at_min":0,"pump_min":26.03,"line_max":85.0,"w5":0.917,"w10":0.846,"w229":0.703,"w":[0.998,0.988,0.978,0.968,0.959,0.949,0.94,0.931,0.922,0.913,0.904,0.896,0.888,0.88,0.872,0.864,0.856,0.848,0.84,0.832,0.825,0.818,0.811,0.804,0.797,0.791,0.784,0.778,0.771,0.765,0.759,0.753,0.747,0.741,0.735,0.728,0.723,0.717,0.711,0.706,0.701,0.695,0.69,0.685,0.68,0.675,0.67,0.666,0.661,0.657,0.652,0.648,0.643,0.638,0.634,0.63,0.626,0.622,0.618,0.615,0.611,0.607,0.603,0.6,0.596,0.593,0.589,0.586,0.583,0.579,0.576,0.572,0.569,0.566,0.563,0.56,0.557,0.554,0.551,0.549,0.546,0.543,0.54,0.538,0.535,0.533,0.53,0.527,0.525,0.523,0.52,0.518,0.516,0.514,0.512,0.51,0.508,0.506,0.504,0.502,0.501,0.499,0.497,0.495,0.494,0.492,0.49,0.489,0.487,0.486,0.485,0.483,0.482,0.481,0.479,0.478,0.477,0.476,0.474,0.473,0.472,0.471,0.47,0.469,0.468,0.467,0.467,0.466,0.465,0.464,0.464,0.463,0.462,0.462,0.461,0.461,0.461,0.46,0.46,0.46,0.459,0.459,0.459,0.459,0.459,0.459,0.458,0.457,0.456,0.455,0.454,0.453,0.452,0.451,0.45,0.449,0.448,0.447,0.446,0.445,0.444,0.443,0.442,0.441,0.441,0.44,0.439,0.438,0.437,0.436,0.435,0.434,0.433,0.432,0.431,0.43,0.429,0.429,0.428,0.427,0.426,0.425,0.424,0.423,0.422,0.422,0.421,0.42,0.419,0.418,0.417,0.416,0.416,0.415,0.414,0.413,0.412,0.411,0.411,0.41,0.409,0.408,0.407,0.407,0.406,0.405,0.404,0.404,0.403,0.402,0.401,0.4,0.4,0.399,0.398,0.397,0.397,0.396,0.395,0.394,0.394,0.393,0.392,0.391,0.391,0.39,0.389,0.388,0.388,0.387,0.386,0.386,0.385,0.384,0.383,0.383,0.382,0.381,0.381,0.38,0.379,0.379,0.378,0.377,0.376,0.376,0.375,0.374,0.374,0.373,0.372,0.372,0.371,0.37,0.37,0.369,0.368,0.368,0.367,0.366],"H":[84.7,83.1,81.5,80.0,78.5,77.1,75.7,74.3,72.9,71.6,70.3,69.1,67.8,66.6,65.5,64.3,63.2,62.1,60.9,59.8,58.8,57.8,56.8,55.8,54.9,54.0,53.1,52.2,51.3,50.5,49.6,48.8,48.0,47.2,46.5,45.6,44.9,44.1,43.4,42.7,42.2,41.9,41.5,41.2,40.9,40.5,40.2,39.9,39.5,39.2,38.9,38.6,38.2,37.9,37.6,37.3,37.0,36.7,36.4,36.1,35.8,35.5,35.2,35.0,34.7,34.4,34.1,33.9,33.6,33.4,33.1,32.8,32.6,32.3,32.1,31.8,31.6,31.3,31.1,30.9,30.7,30.6,30.5,30.4,30.2,30.1,30.0,29.8,29.7,29.6,29.5,29.4,29.3,29.1,29.0,28.9,28.8,28.7,28.6,28.5,28.4,28.3,28.2,28.1,28.0,27.9,27.8,27.7,27.6,27.5,27.4,27.4,27.3,27.2,27.1,27.0,26.9,26.9,26.8,26.7,26.7,26.6,26.6,26.5,26.5,26.5,26.4,26.4,26.4,26.3,26.3,26.3,26.2,26.2,26.2,26.2,26.1,26.1,26.1,26.1,26.1,26.1,26.1,26.1,26.0,26.0,26.5,27.3,28.1,28.9,29.7,30.4,31.2,31.9,32.6,33.4,34.1,34.8,35.5,36.5,37.7,38.9,40.0,41.1,42.3,43.4,44.5,45.6,46.7,47.8,48.9,49.9,50.9,52.0,53.1,54.1,55.1,56.0,57.0,57.9,58.8,59.7,60.6,61.4,62.2,63.1,62.4,61.6,60.9,60.1,59.4,58.5,57.8,57.1,56.4,55.7,55.0,54.4,53.7,52.6,51.4,50.3,49.1,48.0,46.9,45.8,44.7,43.6,42.4,41.3,40.3,39.3,38.3,37.3,36.3,35.4,34.4,33.5,32.6,31.7,30.8,29.9,29.1,28.3,27.5,27.1,27.9,28.7,29.4,30.2,30.9,31.6,32.3,33.0,33.7,34.3,35.0,35.6,36.4,37.6,38.7,39.8,40.9,42.2,43.3,44.4,45.4,46.5,47.5,48.5,49.6,50.5,51.5,52.5,53.5,54.4,55.3,56.2,57.1,58.0],"Hmin":[26.0,26.2,26.3,26.4,26.6,26.7,26.9,27.0,27.1,27.2,27.4,27.5,27.6,27.8,27.9,28.0,28.1,28.3,28.4,28.5,28.6,28.8,28.9,29.0,29.1,29.3,29.4,29.5,29.6,29.7,29.9,30.0,30.1,30.2,30.3,30.4,30.5,30.6,30.8,30.9,31.0,31.1,31.3,31.4,31.6,31.7,31.8,32.0,32.1,32.3,32.4,32.6,32.7,32.9,33.0,33.2,33.4,33.5,33.7,33.8,34.0,34.1,34.3,34.5,34.6,34.8,34.9,35.1,35.3,35.4,35.6,35.8,35.9,36.1,36.3,36.4,36.6,36.8,37.0,37.1,37.3,37.5,37.6,37.8,38.0,38.2,38.4,38.5,38.7,38.9,39.1,39.3,39.5,39.6,39.8,40.0,40.2,40.4,40.6,40.7,40.9,41.1,41.3,41.5,41.7,41.9,42.1,42.3,42.5,42.6,42.8,43.0,43.2,43.4,43.6,43.8,44.0,44.2,44.4,44.6,44.8]}]};
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1);
+const fmt2=v=>v.toFixed(2);
+const FF="'IBM Plex Sans', system-ui, sans-serif";
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:FF,size:11}}};
+const TTL={family:FF,size:12,weight:'600'};
+const LBL={size:10,family:FF};
+const LEGF={family:FF,size:11.5};
+const L2A=2*12000/1050, VAP=-9.8, PMIN=3.0;
+const W0=1480*2*Math.PI/60, P0=685e3;
+const C=D.cases, T=D.t, X=D.x;
+const sgn1=v=>(v<-0.04?'&minus;':'+')+fmt1(Math.abs(v));
+const sgnT=v=>(v<-0.04?'−':'+')+fmt1(Math.abs(v));
+const Ek=(I,w0)=>0.5*I*w0*w0;
+const isVap=c=>c.line_min<=VAP+0.05;
+function whereTxt(c){
+  if(isVap(c)){
+    const xs=X.filter((x,i)=>c.Hmin[i]<=VAP+0.05);
+    const x1=xs.length?xs[xs.length-1]:c.at_min;
+    return fmt1(c.at_min/1000)+'&ndash;'+fmt1(x1/1000)+' km';
+  }
+  return c.at_min===0?'at the pump':'at '+fmt1(c.at_min/1000)+' km';
+}
+function verdict(v,crit){
+  if(v<=VAP+0.05) return '<span class="badge bad">vapour: column separation</span>';
+  if(v<crit) return '<span class="badge warn">below '+sgn1(crit)+' m</span>';
+  return '<span class="badge good">meets '+sgn1(crit)+' m</span>';
+}
+
+/* ---------- CHART 1 : the rundown ---------- */
+const sCase1=document.getElementById('sCase1'), sWin=document.getElementById('sWin');
+const xy=a=>T.map((t,k)=>({x:t,y:a[k]}));
+const runChart=new Chart(document.getElementById('runChart'),{
+  data:{datasets:[
+    {type:'line',label:'Head at pump (m)',data:[],borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2.4,pointRadius:0,yAxisID:'y',order:1},
+    {type:'line',label:'Speed ratio (right)',data:[],borderColor:'#b9770e',backgroundColor:'#b9770e',borderWidth:2.2,pointRadius:0,yAxisID:'y1',order:2},
+    {type:'line',label:'Head, bare set',data:[],borderColor:'#7f8c8d',backgroundColor:'#7f8c8d',borderWidth:1.4,borderDash:[5,4],pointRadius:0,yAxisID:'y',order:3},
+    {type:'line',label:'Speed, bare set',data:[],borderColor:'#7f8c8d',backgroundColor:'#7f8c8d',borderWidth:1.4,borderDash:[2,3],pointRadius:0,yAxisID:'y1',order:4}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,
+    interaction:{mode:'nearest',axis:'x',intersect:false},
+    scales:{x:{type:'linear',min:0,max:60,title:{display:true,text:'Time after the trip (s)',font:TTL},...AX},
+            y:{type:'linear',min:-20,max:100,position:'left',title:{display:true,text:'Pressure head at the pump (m)',font:TTL},grid:{color:'#eef2f5'},ticks:{font:{family:FF,size:11},stepSize:20}},
+            y1:{type:'linear',min:0,max:1,position:'right',title:{display:true,text:'Speed ratio n/n₀',font:TTL},grid:{drawOnChartArea:false},ticks:{font:{family:FF,size:11},stepSize:0.2}}},
+    plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:6,filter:(it,d)=>d.datasets[it.datasetIndex].data.length>0}},
+      tooltip:{callbacks:{label:c=>c.dataset.yAxisID==='y1'?`${c.dataset.label}: ${fmt2(c.parsed.y)}`:`${c.dataset.label}: ${fmt1(c.parsed.y)} m`}},
+      annotation:{annotations:{
+        pmin:{type:'line',yScaleID:'y',yMin:PMIN,yMax:PMIN,borderColor:'#1e8449',borderWidth:1.5,borderDash:[6,4],
+              label:{display:true,content:'+3.0 m design minimum',position:'start',font:LBL,color:'#fff',backgroundColor:'rgba(30,132,73,0.85)'}},
+        vap:{type:'line',yScaleID:'y',yMin:VAP,yMax:VAP,borderColor:'#c0392b',borderWidth:1.5,borderDash:[6,4],
+              label:{display:true,content:'vapour −9.8 m',position:'end',font:LBL,color:'#fff',backgroundColor:'rgba(192,57,43,0.85)'}},
+        tla:{type:'line',xScaleID:'x',xMin:L2A,xMax:L2A,borderColor:'#6b4f9e',borderWidth:1.5,borderDash:[4,4],
+              label:{display:true,content:'2L/a = 22.9 s',position:'end',font:LBL,color:'#fff',backgroundColor:'rgba(107,79,158,0.85)'}}
+      }}}}
+});
+function updRun(){
+  const i=+sCase1.value, c=C[i], win=+sWin.value;
+  document.getElementById('vWin').textContent=win+' s';
+  runChart.data.datasets[0].data=xy(c.H);
+  runChart.data.datasets[1].data=xy(c.w);
+  runChart.data.datasets[2].data=i===0?[]:xy(C[0].H);
+  runChart.data.datasets[3].data=i===0?[]:xy(C[0].w);
+  runChart.options.scales.x.max=win;
+  runChart.update('none');
+  const e=Ek(c.I,W0), tau=e/P0;
+  document.getElementById('rI').innerHTML=fmt0(c.I)+' <small>kg·m²</small>';
+  document.getElementById('rGD').innerHTML=fmt0(4*c.I)+' <small>kg·m²</small>';
+  document.getElementById('rEk').innerHTML=fmt2(e/1e6)+' <small>MJ</small>';
+  document.getElementById('rTau').innerHTML=fmt2(tau)+' <small>s</small>';
+  document.getElementById('rLmin').innerHTML=sgn1(c.line_min)+' <small>m, '+whereTxt(c)+'</small>';
+  document.getElementById('rVer').innerHTML=verdict(c.line_min,PMIN);
+  document.getElementById('rLmax').innerHTML=isVap(c)?'<small>not quoted (cavitating)</small>':fmt1(c.line_max)+' <small>m</small>'+(c.I===100?' <small>(indicative)</small>':'');
+}
+[sCase1,sWin].forEach(s=>s.addEventListener('input',updRun));updRun();
+
+/* ---------- CHART 2 : inertia against minimum pressure ---------- */
+const sCase2=document.getElementById('sCase2'), sCrit=document.getElementById('sCrit');
+const critAnn=()=>({type:'line',yScaleID:'y',yMin:PMIN,yMax:PMIN,borderColor:'#1e8449',borderWidth:1.5,borderDash:[6,4],
+  label:{display:true,content:'design minimum +3.0 m',position:'end',font:LBL,color:'#fff',backgroundColor:'rgba(30,132,73,0.85)'}});
+const vapAnn=()=>({type:'line',yScaleID:'y',yMin:VAP,yMax:VAP,borderColor:'#c0392b',borderWidth:1.5,borderDash:[6,4],
+  label:{display:true,content:'vapour −9.8 m',position:'end',font:LBL,color:'#fff',backgroundColor:'rgba(192,57,43,0.85)'}});
+const invChart=new Chart(document.getElementById('invChart'),{
+  data:{datasets:[
+    {type:'line',label:'Lowest head on the line (m)',data:C.map(c=>({x:c.I,y:c.line_min})),borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2.4,pointRadius:4,yAxisID:'y',order:2},
+    {type:'line',label:'Lowest head at the pump (m)',data:C.map(c=>({x:c.I,y:c.pump_min})),borderColor:'#7f8c8d',backgroundColor:'#7f8c8d',borderWidth:1.8,borderDash:[6,4],pointRadius:3,yAxisID:'y',order:3},
+    {type:'line',label:'τ = E/P (s, right axis)',data:C.map(c=>({x:c.I,y:+(Ek(c.I,W0)/P0).toFixed(3)})),borderColor:'#b9770e',backgroundColor:'#b9770e',borderWidth:1.8,borderDash:[2,3],pointRadius:3,yAxisID:'y1',order:4},
+    {type:'scatter',label:'Selected',data:[],backgroundColor:'#6b4f9e',borderColor:'#fff',borderWidth:2,pointRadius:8,yAxisID:'y',order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,
+    scales:{x:{type:'logarithmic',min:15,max:2500,title:{display:true,text:'Total inertia on the shaft, I (kg·m², log scale)',font:TTL},
+               grid:{color:'#eef2f5'},ticks:{font:{family:FF,size:11},callback:v=>fmt0(v)},
+               afterBuildTicks:ax=>{ax.ticks=[25,50,100,200,400,800,1600].map(v=>({value:v}));}},
+            y:{type:'linear',min:-15,max:30,position:'left',title:{display:true,text:'Lowest pressure head (m)',font:TTL},...AX},
+            y1:{type:'linear',min:0,max:30,position:'right',title:{display:true,text:'τ (s)',font:TTL},grid:{drawOnChartArea:false},ticks:{font:{family:FF,size:11}}}},
+    plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>c.dataset.yAxisID==='y1'?`τ ${fmt2(c.parsed.y)} s at I = ${fmt0(c.parsed.x)} kg·m²`:`${c.dataset.label.replace(' (m)','')}: ${fmt1(c.parsed.y)} m at I = ${fmt0(c.parsed.x)} kg·m²`}},
+      annotation:{annotations:{crit:critAnn(),vap:vapAnn()}}}}
+});
+const envSets=[
+  {type:'line',label:'Steady HGL (m)',data:[{x:0,y:85},{x:12,y:44.8}],borderColor:'#6b4f9e',backgroundColor:'#6b4f9e',borderWidth:1.4,borderDash:[5,4],pointRadius:0,order:3},
+  {type:'line',label:'Minimum head, selected inertia (m)',data:[],borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2.6,pointRadius:0,order:1}
+];
+for(let k=0;k<C.length-1;k++) envSets.push({type:'line',label:'Other inertias',data:[],borderColor:'#7f8c8d',backgroundColor:'#7f8c8d',borderWidth:1,pointRadius:0,order:2});
+const envChart=new Chart(document.getElementById('envChart'),{
+  data:{datasets:envSets},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,
+    interaction:{mode:'nearest',axis:'x',intersect:false},
+    scales:{x:{type:'linear',min:0,max:12,title:{display:true,text:'Chainage from the pump station (km)',font:TTL},...AX},
+            y:{type:'linear',min:-20,max:90,title:{display:true,text:'Minimum pressure head (m)',font:TTL},...AX}},
+    plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:8,filter:it=>it.datasetIndex<=2}},
+      tooltip:{filter:it=>it.datasetIndex<=1,callbacks:{label:c=>`${c.dataset.label}: ${fmt1(c.parsed.y)} m at ${fmt1(c.parsed.x)} km`}},
+      annotation:{annotations:{crit:critAnn(),vap:vapAnn()}}}}
+});
+function updInv(){
+  const i=+sCase2.value, c=C[i], crit=+sCrit.value;
+  document.getElementById('vCrit').textContent=sgnT(crit)+' m';
+  [invChart,envChart].forEach(ch=>{
+    const a=ch.options.plugins.annotation.annotations.crit;
+    a.yMin=crit; a.yMax=crit; a.label.content='design minimum '+sgnT(crit)+' m';
+  });
+  invChart.data.datasets[3].data=[{x:c.I,y:c.line_min}];
+  invChart.update('none');
+  envChart.data.datasets[1].data=X.map((x,k)=>({x:x/1000,y:c.Hmin[k]}));
+  let k=2;
+  C.forEach((o,j)=>{if(j!==i){envChart.data.datasets[k].data=X.map((x,n)=>({x:x/1000,y:o.Hmin[n]}));k++;}});
+  envChart.update('none');
+  const tau=Ek(c.I,W0)/P0;
+  const below=c.Hmin.filter(h=>h<crit).length*0.1;
+  const ok=C.filter(o=>!isVap(o)&&o.line_min>=crit);
+  document.getElementById('rSel').innerHTML=fmt0(c.I)+' <small>kg·m²</small>';
+  document.getElementById('rRatio').innerHTML=fmt2(tau/L2A);
+  document.getElementById('rLmin2').innerHTML=sgn1(c.line_min)+' <small>m</small>';
+  document.getElementById('rWhere2').innerHTML=whereTxt(c);
+  document.getElementById('rPump2').innerHTML=sgn1(c.pump_min)+' <small>m</small>';
+  document.getElementById('rBelow').innerHTML=fmt1(below)+' <small>km</small>';
+  document.getElementById('rVer2').innerHTML=verdict(c.line_min,crit);
+  document.getElementById('rSmall').innerHTML=ok.length?fmt0(ok[0].I)+' <small>kg·m²</small>':'<small>none of the six</small>';
+}
+[sCase2,sCrit].forEach(s=>s.addEventListener('input',updInv));updInv();
+
+/* ---------- CHART 3 : flywheel and motor calculator ---------- */
+const sR=document.getElementById('sR'), sTk=document.getElementById('sTk'), sIm=document.getElementById('sIm'),
+      sPw=document.getElementById('sPw'), sN=document.getElementById('sN'), sTq=document.getElementById('sTq');
+const RHO_S=7850, TAU_REF=Ek(400,W0)/P0;
+const flyChart=new Chart(document.getElementById('flyChart'),{
+  data:{datasets:[
+    {type:'line',label:'Start time at the chosen torque (s)',data:[],borderColor:'#c0392b',backgroundColor:'#c0392b',borderWidth:2.4,pointRadius:0,order:3},
+    {type:'line',label:'τ = E/P (s)',data:[],borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2.4,pointRadius:0,order:4},
+    {type:'scatter',label:'Your set, start time',data:[],backgroundColor:'#c0392b',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1},
+    {type:'scatter',label:'Your set, τ',data:[],backgroundColor:'#1b4f72',borderColor:'#fff',borderWidth:2,pointRadius:7,order:2}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,
+    interaction:{mode:'nearest',axis:'x',intersect:false},
+    scales:{x:{type:'linear',min:0,max:2000,title:{display:true,text:'Total inertia on the shaft, I (kg·m²)',font:TTL},...AX},
+            y:{type:'linear',min:0,title:{display:true,text:'Time (s)',font:TTL},...AX}},
+    plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt1(c.parsed.y)} s at I = ${fmt0(c.parsed.x)} kg·m²`}},
+      annotation:{annotations:{
+        tref:{type:'line',yMin:TAU_REF,yMax:TAU_REF,borderColor:'#1e8449',borderWidth:1.5,borderDash:[6,4],
+              label:{display:true,content:'τ 7.0 s: reference main protected (screening)',position:'end',font:LBL,color:'#fff',backgroundColor:'rgba(30,132,73,0.85)'}}
+      }}}}
+});
+function updFly(){
+  const r=+sR.value, t=+sTk.value, Im=+sIm.value, P=+sPw.value*1000, N=+sN.value, f=+sTq.value/100;
+  document.getElementById('vR').textContent=fmt2(r)+' m';
+  document.getElementById('vTk').textContent=fmt0(t*1000)+' mm';
+  document.getElementById('vIm').textContent=fmt0(Im)+' kg·m²';
+  document.getElementById('vPw').textContent=fmt0(P/1000)+' kW';
+  document.getElementById('vN').textContent=fmt0(N)+' rpm';
+  document.getElementById('vTq').textContent=fmt0(f*100)+' %';
+  const w0=N*2*Math.PI/60, m=RHO_S*Math.PI*r*r*t, Id=0.5*m*r*r, It=Id+Im;
+  const e=Ek(It,w0), tau=e/P, T0=P/w0, tacc=It*w0/(f*T0), rim=w0*r;
+  const xmax=Math.max(2000,Math.ceil(It*1.25/500)*500);
+  const xs=[];for(let k=0;k<=40;k++)xs.push(xmax*k/40);
+  flyChart.data.datasets[0].data=xs.map(x=>({x:x,y:+(x*w0/(f*T0)).toFixed(2)}));
+  flyChart.data.datasets[1].data=xs.map(x=>({x:x,y:+(Ek(x,w0)/P).toFixed(3)}));
+  flyChart.data.datasets[2].data=[{x:+It.toFixed(1),y:+tacc.toFixed(2)}];
+  flyChart.data.datasets[3].data=[{x:+It.toFixed(1),y:+tau.toFixed(3)}];
+  flyChart.options.scales.x.max=xmax;
+  flyChart.update('none');
+  document.getElementById('rDm').innerHTML=fmt0(m)+' <small>kg</small>';
+  document.getElementById('rDI').innerHTML=fmt0(Id)+' <small>kg·m²</small>';
+  document.getElementById('rTI').innerHTML=fmt0(It)+' <small>kg·m²</small>';
+  document.getElementById('rGD3').innerHTML=fmt0(4*It)+' <small>kg·m²</small>';
+  document.getElementById('rEk3').innerHTML=fmt2(e/1e6)+' <small>MJ</small>';
+  document.getElementById('rTau3').innerHTML=fmt2(tau)+' <small>s</small>';
+  document.getElementById('rAcc').innerHTML=fmt1(tacc)+' <small>s</small>';
+  document.getElementById('rRim').innerHTML=fmt1(rim)+' <small>m/s</small>';
+}
+[sR,sTk,sIm,sPw,sN,sTq].forEach(s=>s.addEventListener('input',updFly));updFly();
+
+window.addEventListener('load',function(){try{runChart.resize();invChart.resize();envChart.resize();flyChart.resize();}catch(e){}});
+
+</script>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<!-- End WhatsApp Button -->
+
+<script src="article-features.js?v=14"></script>
+<script src="theme.js?v=13"></script>
+</body>
+</html>

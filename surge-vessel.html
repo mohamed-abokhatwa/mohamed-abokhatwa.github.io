@@ -18,7 +18,7 @@
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="Sizing the Hydropneumatic Surge Vessel | Mohamed Abokhatwa">
-  <meta property="og:description" content="A step-by-step engineering guide to sizing hydropneumatic surge vessels for water transmission pipelines — volume calculations, pressure limits, and placement criteria.">
+  <meta property="og:description" content="A worked design of a hydropneumatic surge vessel for a 12 km DN800 main: absolute gas pressure, a first estimate, transient iteration with column separation and the HAMMER set-up. Result: a 20 m³ vessel with 3.5 m³ of air.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://abokhatwa.com/surge-vessel.html">
   <link rel="canonical" href="https://abokhatwa.com/surge-vessel.html">
@@ -28,16 +28,17 @@
   <meta property="og:image:alt" content="Hydropneumatic surge vessel sizing for pipeline protection">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sizing the Hydropneumatic Surge Vessel | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="A step-by-step engineering guide to sizing hydropneumatic surge vessels for water transmission pipelines — volume calculations, pressure limits, and placement criteria.">
+  <meta name="twitter:description" content="A worked design of a hydropneumatic surge vessel for a 12 km DN800 main: absolute gas pressure, a first estimate, transient iteration with column separation and the HAMMER set-up. Result: a 20 m³ vessel with 3.5 m³ of air.">
   <meta name="twitter:image" content="https://abokhatwa.com/og-surge-vessel.jpg">
   <title>Sizing the Hydropneumatic Surge Vessel — Mohamed Abokhatwa</title>
-  <meta name="description" content="A step-by-step engineering guide to sizing hydropneumatic surge vessels for water transmission pipelines — volume calculations, pressure limits, and…">
+  <meta name="description" content="Sizing an air-over-water surge vessel for a 12 km DN800 main: absolute gas pressure, a rigid-column estimate, a transient check and the HAMMER set-up.">
     <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=3">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script src="chart-theme.js?v=13"></script>
   <style>
     .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;border-bottom:1px solid var(--border);}
     .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
@@ -57,6 +58,15 @@
     .article-body em{color:var(--accent);font-style:italic;}
     .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
     .refs li{font-size:14px;color:var(--text-tertiary);line-height:1.8;margin-bottom:4px;}
+    .article-body .callout .lbl{display:block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:8px;}
+    .article-body .callout.green{border-left-color:var(--success);}
+    .article-body .callout.correction-note{border-left-color:var(--warning);}
+    .article-body .callout ol{margin-bottom:.8rem;}
+    .article-body .callout li{font-size:15px;line-height:1.72;margin-bottom:2px;}
+    .sv-ctl{font-size:14px;line-height:1.7;color:var(--text-secondary);margin:0 0 12px;}
+    .sv-ctl select{font:inherit;font-size:13px;padding:5px 8px;border:1px solid var(--border-light);border-radius:3px;background:var(--sheet);color:var(--text-primary);max-width:100%;}
+    .sv-read{display:block;margin-top:6px;font-family:var(--font-mono);font-size:12.5px;line-height:1.8;color:var(--text-tertiary);}
+    .sv-read .badge{font-size:10.5px;padding:1px 7px;}
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -66,10 +76,10 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Sizing the Hydropneumatic Surge Vessel | Mohamed Abokhatwa",
-  "description": "A step-by-step engineering guide to sizing hydropneumatic surge vessels for water transmission pipelines — volume calculations, pressure limits, and placement criteria.",
+  "description": "Step-by-step sizing of a hydropneumatic surge vessel for a water transmission main: absolute gas pressure, rigid-column estimate, transient iteration with column separation, connection sizing and the HAMMER set-up.",
   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrcxvLSmsv5g8tPL57WIum7RP6/hf_20260517_194531_a798e431-c75a-4a41-b7b3-146f9a1a846d.png",
   "datePublished": "2026-05-01",
-  "dateModified": "2026-05-25",
+  "dateModified": "2026-09-17",
   "author": {
     "@type": "Person",
     "name": "Mohamed Abokhatwa",
@@ -136,193 +146,318 @@
     <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
     <span style="color:var(--border-light)">|</span>
     <span>May 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Updated September 2026</span>
   </div>
 </div>
 
 <div class="hero-img-wrap">
-  <img fetchpriority="high" width="1600" height="904" src="surge-vessel.webp" alt="Hydropneumatic Surge Vessel">
+  <img fetchpriority="high" width="1600" height="904" src="surge-vessel.webp" alt="Cutaway of a vertical air-over-water surge vessel on a flanged transmission pipe beside a gate valve, with pressure gauges, a level instrument and blueprint insets of the vessel and a damped pressure&ndash;time trace">
 </div>
 
 <div class="article-body">
 
 <h2>Introduction</h2>
-<p>The hydropneumatic surge vessel is one of the most effective devices for mitigating water hammer in water transmission pipelines. It acts as a local pressure reservoir — supplying water when pressure drops after a pump trip, and absorbing excess water when pressure rises.</p>
-<p>Despite its critical role, surge vessel sizing is frequently oversimplified. In this article, I present a structured design workflow — from defining system inputs to interpreting <strong>Bentley HAMMER</strong> simulation outputs — using a real-scale DN 800 mm pipeline example.</p>
+<p>The hydropneumatic surge vessel is one of the most effective devices for protecting a water transmission main against water hammer. It acts as a local pressure reservoir at the pump station: when the pumps trip it feeds water into the main to hold the pressure up, and when the water column swings back it takes that water in again against a cushion of compressed gas.</p>
+<div class="callout correction-note"><strong>Updated September 2026.</strong> An earlier version of this article gave the steady gas pressure as 1.84 bar abs; 85.0 m of head plus atmospheric pressure is 9.35 bar abs. Rechecked at the correct pressure with a transient model that includes column separation, the 8.0 m&sup3; vessel with 4.0 m&sup3; of gas specified earlier empties during a pump trip, so the sizing, the tables, the figures and the specification have been recalculated. The results tables are now from that model, and the steps to reproduce them in Bentley HAMMER are included.</div>
+<p>Sizing is where it goes wrong, usually quietly. The gas law has to be worked in absolute pressure; the vessel has to be checked with a transient model that can show the line separating; and the pipe between vessel and main is part of the design, not a fitting. Below I walk through the whole workflow on a 12 km DN800 ductile iron main, from the unprotected baseline to the set-up in Bentley HAMMER. The answer on this line is a <strong>20 m&sup3; vessel carrying 3.5 m&sup3; of air</strong> behind a differential DN400 connection, which holds the whole line at or above <strong>+4.3 m</strong> and limits the maximum to <strong>119.2 m</strong> against a 136 m allowable.</p>
 
 <hr class="article-divider">
 <h2>1. How the Surge Vessel Works</h2>
-<p>The surge vessel is a closed pressure vessel, partially filled with water and partially with compressed gas (nitrogen), connected directly to the pipeline near the pump station discharge. When a pump trip occurs:</p>
+<p>The surge vessel is a closed pressure vessel, partly filled with water and partly with compressed gas, connected to the main on the pump station discharge header. In the air-over-water vessel sized here the gas is compressed air in direct contact with the water, topped up by a compressor and held at a set water level by level control [1]. When the pumps trip:</p>
 <ul>
-  <li><strong>Phase 1 — Down-surge:</strong> Pressure drops. The vessel expels water into the pipeline to prevent column separation and sub-atmospheric pressures.</li>
-  <li><strong>Phase 2 — Up-surge:</strong> The returning pressure wave compresses the gas cushion, absorbing the excess pressure rise and preventing over-pressurisation.</li>
+  <li><strong>Phase 1 &mdash; Downsurge:</strong> the pumps stop delivering and their check valves close, but the column in the main keeps moving. The pressure at the header falls, the gas expands, and the vessel pushes water into the main, holding the pressure up while the column decelerates.</li>
+  <li><strong>Phase 2 &mdash; Return swing:</strong> the column stops and flows back towards the station. The returning water refills the vessel and compresses the gas; the pressure peak arrives when the reverse flow is brought to rest against the gas cushion.</li>
 </ul>
-<div class="callout">The vessel does not eliminate the transient — it <em>modulates</em> it. The gas cushion acts as a spring: larger and softer means gentler modulation. But an oversized vessel adds unnecessary cost, while an undersized one fails to protect the system.</div>
+<div class="callout">The vessel does not remove the transient &mdash; it <em>converts</em> it. A sharp water hammer event becomes a slow oscillation of the whole water column against a gas spring, and a model has to run long enough to see that oscillation come back to the vessel (section 6).</div>
 
 <hr class="article-divider">
-<h2>2. The Governing Equation — Polytropic Gas Law</h2>
+<h2>2. The Governing Equations</h2>
+<p>Two relations carry the design. The first is the polytropic gas law. It must be written in <strong>absolute</strong> pressure &mdash; heads measured from vacuum, not from atmosphere:</p>
 <div class="formula-box">
-  <div class="formula-main">P&#8320; &middot; V&#8320;&#8319; = P&#8321; &middot; V&#8321;&#8319; = P&#8322; &middot; V&#8322;&#8319; = constant</div>
-  <div class="formula-sub">P&#8320;,V&#8320; = initial steady-state &nbsp;|&nbsp; P&#8321;,V&#8321; = minimum pressure (down-surge) &nbsp;|&nbsp; P&#8322;,V&#8322; = maximum pressure (up-surge) &nbsp;|&nbsp; n = 1.2 (standard for water transmission)</div>
+  <div class="formula-main">H<sub>abs</sub> &middot; V<sup>n</sup> = H&#8320;<sub>,abs</sub> &middot; V&#8320;<sup>n</sup> = constant</div>
+  <div class="formula-sub">H<sub>abs</sub> = gauge pressure head at the vessel + 10.33 m &nbsp;|&nbsp; V = gas volume (m&sup3;) &nbsp;|&nbsp; n = 1.2, between isothermal (1.0) and adiabatic (1.4) behaviour of the gas</div>
 </div>
 <div class="formula-box">
-  <div class="formula-main">Water expelled = V&#8321; &minus; V&#8320; &nbsp;&nbsp;|&nbsp;&nbsp; Water absorbed = V&#8320; &minus; V&#8322;</div>
-  <div class="formula-sub">These define the minimum required vessel working volume for down-surge and up-surge protection.</div>
+  <div class="formula-main">Water delivered = V<sub>max</sub> &minus; V&#8320; = V&#8320; &middot; [ (H&#8320;<sub>,abs</sub> / H<sub>min,abs</sub>)<sup>1/n</sup> &minus; 1 ]</div>
+  <div class="formula-sub">For a given volume of water the vessel must deliver, this gives the gas volume needed at steady state before the pressure at the vessel falls to H<sub>min</sub>.</div>
 </div>
+<p>The second relation describes the water column the vessel is feeding. Treat the main as a rigid column &mdash; incompressible water in a rigid pipe &mdash; and the flow Q leaving a vessel at the pump obeys:</p>
+<div class="formula-box">
+  <div class="formula-main">(L / gA) &middot; dQ/dt = H<sub>v</sub> &minus; H<sub>res</sub> &minus; R&middot;Q|Q| &nbsp;&nbsp;|&nbsp;&nbsp; dV/dt = Q</div>
+  <div class="formula-sub">L = 12,000 m &nbsp;|&nbsp; A = 0.503 m&sup2; &nbsp;|&nbsp; H<sub>v</sub> = gauge head at the vessel, from the gas law &nbsp;|&nbsp; H<sub>res</sub> = 44.8 m at the delivery reservoir &nbsp;|&nbsp; R = 40.2 / 0.70&sup2; = 82.0 s&sup2;/m&#8309; (steady friction)</div>
+</div>
+<p>Together these form a mass-oscillation model: it follows the column slowing, stopping and reversing against the gas spring, and gives a quick first estimate of the gas volume. It cannot see pressure waves along the line, the pressure away from the vessel, or the line separating at vapour pressure &mdash; the things that decide whether a vessel works &mdash; so the estimate is a starting point and nothing more [2][3].</p>
 
 <hr class="article-divider">
 <h2>3. System Description</h2>
 <div class="sim-box">
-  <div class="sim-header"><span class="sim-dot"></span>Bentley HAMMER — System Input Summary</div>
+  <div class="sim-header"><span class="sim-dot"></span>Reference system &mdash; design input</div>
   <table>
     <tr><th>Parameter</th><th>Value</th><th>Notes</th></tr>
-    <tr><td>Pipeline length</td><td>12,000 m</td><td>Single main pipeline</td></tr>
-    <tr><td>Pipe diameter</td><td>DN 800 mm</td><td>Ductile Iron, Class K9</td></tr>
-    <tr><td>Design flow rate</td><td>2,520 m&sup3;/h</td><td>Peak daily demand</td></tr>
-    <tr><td>Design velocity</td><td>1.4 m/s</td><td>Within recommended range</td></tr>
-    <tr><td>Wave speed</td><td>1,050 m/s</td><td>DI pipe, per Chaudhry (2014)</td></tr>
-    <tr><td>Static head at pump discharge</td><td>85.0 m</td><td>From steady-state model</td></tr>
-    <tr><td>Pipe class rating</td><td>PN 16 — 160 m head</td><td>Max allowable: 136 m (15% margin)</td></tr>
-    <tr><td>Minimum allowable pressure</td><td>+3.0 m gauge</td><td>Above vapour pressure</td></tr>
-    <tr><td>Polytropic exponent (n)</td><td>1.2</td><td>Standard for water transmission</td></tr>
+    <tr><td>Pipeline length</td><td>12,000 m</td><td>Single main, flat profile at datum elevation</td></tr>
+    <tr><td>Pipe diameter</td><td>DN 800 mm</td><td>Ductile iron, class K9 [4]</td></tr>
+    <tr><td>Design flow rate</td><td>2,520 m&sup3;/h (0.70 m&sup3;/s)</td><td>All duty pumps running</td></tr>
+    <tr><td>Design velocity</td><td>1.39 m/s</td><td>Q / A</td></tr>
+    <tr><td>Wave speed</td><td>1,050 m/s</td><td>Design value adopted for the example (section 9)</td></tr>
+    <tr><td>HGL at pump discharge</td><td>85.0 m</td><td>Steady state; 44.8 m at the delivery reservoir</td></tr>
+    <tr><td>Pipe class rating</td><td>PN 16 (16 bar, about 163 m)</td><td>Allowable 136 m, project criterion</td></tr>
+    <tr><td>Minimum allowable pressure</td><td>+3.0 m gauge</td><td>Anywhere on the line; vapour limit &minus;9.8 m</td></tr>
+    <tr><td>Gas law exponent (n)</td><td>1.2</td><td>Design value for air in contact with water (judgement); 1.0 and 1.4 checked in section 8</td></tr>
+    <tr><td>Wave return time 2L/a</td><td>22.9 s</td><td>24,000 / 1,050</td></tr>
+    <tr><td>Joukowsky head a&middot;v/g</td><td>149.1 m</td><td>Full flow stopped instantly</td></tr>
+    <tr><td>Load case</td><td>Pump trip</td><td>All pumps at once (power failure)</td></tr>
   </table>
 </div>
+<p>Because the profile is flat at datum elevation, head and pressure head are the same number throughout this example; on a real profile, subtract the pipe elevation from the head before comparing it with either limit. Both limits are criteria for this example, not rules. On a project they come from the pipe standard, the owner's requirements and the design pressure terms of EN 805, which treats surge as part of the maximum design pressure [5]; AWWA M11 discusses the same combination of working and surge pressure for large mains [6].</p>
+<div class="callout"><strong>How the numbers were produced.</strong> Every transient result below comes from a method-of-characteristics model [2] with a vapour cavity model, cross-checked with a gas cavity model [7] and an independent second code: 120 reaches, 150 s runs, n = 1.2, separate outflow and inflow losses on the vessel connection, and an instantaneous pump stop behind ideal check valves. That load case is conservative for the downsurge and the vessel's gas demand, but it leaves out check valve slam, and real pump inertia softens the first downsurge (see <a href="pump-inertia-flywheel-surge.html">pump inertia and the flywheel</a>). These are not Bentley HAMMER output: they are a reproducible example, and a project needs its own analysis in HAMMER, or an equivalent program, on the real profile (section 9).</div>
 
 <hr class="article-divider">
-<h2>4. Baseline Simulation — No Protection</h2>
-<p>Before sizing any protection device, the first step is always to run the <strong>unprotected scenario</strong> — to establish baseline transient severity and justify the protection investment to the client.</p>
+<h2>4. Baseline Simulation &mdash; No Protection</h2>
+<p>Before sizing any protection device, run the <strong>unprotected case</strong>: it shows how severe the transient is and where on the profile the problem sits.</p>
 <div class="sim-box">
-  <div class="sim-header"><span class="sim-dot"></span>Bentley HAMMER — Unprotected Scenario Results</div>
+  <div class="sim-header"><span class="sim-dot"></span>Transient model &mdash; unprotected pump trip</div>
   <table>
-    <tr><th>Location</th><th>Steady-State (m)</th><th>Max Transient (m)</th><th>Min Transient (m)</th><th>Status</th></tr>
-    <tr class="row-danger"><td>0 m — Pump discharge</td><td>85.0</td><td>217.5</td><td>&minus;8.2</td><td><span class="badge badge-danger">FAIL</span></td></tr>
-    <tr class="row-danger"><td>6,000 m — Midpoint</td><td>64.9</td><td>154.8</td><td>&minus;24.1</td><td><span class="badge badge-danger">FAIL</span></td></tr>
-    <tr class="row-warn"><td>12,000 m — Delivery</td><td>44.8</td><td>96.7</td><td>+2.1</td><td><span class="badge badge-warning">MARGINAL</span></td></tr>
+    <tr><th>Location</th><th>Steady-state (m)</th><th>Max transient (m)</th><th>Min transient (m)</th><th>Status</th></tr>
+    <tr class="row-danger"><td>0 m &mdash; Pump discharge</td><td>85.0</td><td>165&ndash;190</td><td>&minus;9.8 (vapour)</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+    <tr class="row-danger"><td>6,000 m &mdash; Midpoint</td><td>64.9</td><td>150&ndash;160</td><td>&minus;9.8 (vapour)</td><td><span class="badge badge-danger">FAIL</span></td></tr>
   </table>
 </div>
-<div class="danger-box">Without protection, maximum transient pressure reaches <strong>217.5 m</strong> — exceeding the PN 16 limit of 136 m by 60%. Minimum pressures drop to <strong>&minus;24.1 m</strong> at midpoint — column separation certain across the full pipeline length.</div>
-<div class="chart-wrap"><canvas id="baselineChart"></canvas><p class="chart-note">Figure 1 — Pressure envelope: unprotected scenario</p></div>
+<div class="danger-box">Without protection the pressure at the pump falls to vapour as soon as the pumps stop, and the minimum envelope sits at vapour along practically the whole 12 km: <strong>the column separates</strong>. When the vapour cavities collapse, the pressure at the pump reaches <strong>165 to 190 m</strong>, above the 136 m allowable and at or above the PN 16 rating (about 163 m) in both cavity models, and the maximum exceeds 136 m over at least 11 km of the line.</div>
+<h3>Why the maximum is given as a range</h3>
+<p>Once a line separates, the spike when the column rejoins depends on how the cavity is represented: a pocket of vapour at a computing node, or a small distributed gas content [7]. In the runs for this article and the surge protection series, the gas cavity representation puts collapse-driven peaks between 18 % lower and 10 % higher than the vapour cavity one, so the table gives the span between them. Do not design a line to survive a collapse peak, and do not read a single collapse peak from any program as a precise number. Protect the downsurge so the line never separates; then the results are firm again, and every protected result below is quoted to 0.1 m.</p>
+<div class="chart-wrap"><canvas id="baselineChart"></canvas><p class="chart-note">Figure 1 &mdash; Unprotected pump trip: pressure-head envelopes along the main (method-of-characteristics model; flat profile at datum, so head and pressure head coincide). The shaded band spans the maximum from the vapour cavity and gas cavity models; the minimum is at vapour almost everywhere. Tooltips round collapse-governed values to 5 m.</p></div>
 
 <hr class="article-divider">
-<h2>5. Surge Vessel Sizing — Step-by-Step</h2>
+<h2>5. Surge Vessel Sizing &mdash; Step-by-Step</h2>
 
-<h3><span class="step-num">1</span>Steady-state conditions</h3>
-<p>P&#8320; = 85.0 m + 10.3 m atmospheric = <strong>1.84 bar abs</strong> at the vessel tap point — not at the pump discharge head.</p>
+<h3><span class="step-num">1</span>Steady gas pressure</h3>
+<p>The gas in an air-over-water vessel sits at the line pressure at the vessel. With the vessel on the pump discharge header, and the pipe and the vessel water surface taken at datum so that the 85.0 m HGL is also the pressure head:</p>
+<div class="formula-box">
+  <div class="formula-main">P&#8320; = (85.0 + 10.33) / 10.20 = <strong>9.35 bar abs</strong></div>
+  <div class="formula-sub">95.33 m absolute head &nbsp;|&nbsp; 8.33 bar gauge &nbsp;|&nbsp; 10.20 m of water per bar</div>
+</div>
+<p>For this type of vessel the gas pressure is not a setting: the compressor supplies air, the level control holds the water level, and the pressure follows the line. The designer chooses the <strong>gas volume</strong>, held in service by the level set point. Pre-charge belongs to bladder and diaphragm vessels, where the gas is sealed in before the vessel sees the line &mdash; see <a href="pre-charge-pressure.html">the pre-charge pressure of the surge vessel</a> and <a href="surge-vessel-type-selection.html">bladder, diaphragm or air-over-water vessel</a>.</p>
 
 <h3><span class="step-num">2</span>Allowable pressure limits</h3>
-<p><strong>P_max = 136 m</strong> (PN 16 minus 15% margin) &nbsp;|&nbsp; <strong>P_min = +3.0 m gauge</strong> (confirmed with client)</p>
+<p><strong>H<sub>max</sub> = 136 m</strong> (project allowable on a PN 16 main) &nbsp;|&nbsp; <strong>H<sub>min</sub> = +3.0 m gauge</strong>. Both are pressure heads, and both apply everywhere on the line, not only at the vessel &mdash; as the iteration shows, the minimum usually occurs kilometres away from it.</p>
 
-<h3><span class="step-num">3</span>Analytical starting point</h3>
+<h3><span class="step-num">3</span>First estimate: the rigid column</h3>
+<p>Integrate the rigid-column pair from section 2, with friction, and search for the smallest steady gas volume that keeps the vessel above +3.0 m. The integration gives the water the vessel has to deliver, 13.42 m&sup3;; the expansion ratio in absolute terms then fixes the gas:</p>
 <div class="formula-box">
-  <div class="formula-main">V&#8321; = 3.0 &times; (1.84 / 1.30)^(1/1.2) = <strong>4.01 m&sup3;</strong></div>
-  <div class="formula-sub">Water expelled = 1.01 m&sup3; &nbsp;|&nbsp; Initial vessel estimate: <strong>6.0 m&sup3;</strong></div>
+  <div class="formula-main">(95.33 / 13.33)<sup>1/1.2</sup> = 5.152 &nbsp;&nbsp;&rarr;&nbsp;&nbsp; V&#8320; = 13.42 / (5.152 &minus; 1) = <strong>3.23 m&sup3;</strong>, expanding to 16.65 m&sup3;</div>
+  <div class="formula-sub">Expansion ratio V<sub>max</sub> / V&#8320; = 5.152 &nbsp;|&nbsp; Shell = 16.65 / 0.8 = <strong>20.8 m&sup3;</strong> with a 20 % water reserve at maximum expansion</div>
 </div>
+<p>A spreadsheet does this in minutes and tells you whether you are looking for 2 m&sup3; or 20 m&sup3;; published simplified guides for air vessels on pumping lines serve the same purpose [8]. Neither can tell you where on the line the minimum falls, or whether the line separates.</p>
 
-<h3><span class="step-num">4</span>Simulation iteration</h3>
+<h3><span class="step-num">4</span>Transient iteration</h3>
+<p>Now the transient model. First, with a nearly loss-free DN400 connection (K 0.5) and no limit on the shell, sweep the gas volume to see what the line itself asks for:</p>
 <div class="sim-box">
-  <div class="sim-header"><span class="sim-dot"></span>Bentley HAMMER — Surge Vessel Iteration Summary</div>
+  <div class="sim-header"><span class="sim-dot"></span>Transient model &mdash; gas volume sweep, free DN400 connection</div>
   <table>
-    <tr><th>Run</th><th>Vessel (m&sup3;)</th><th>Max Head at Pump (m)</th><th>Min Head at Midpoint (m)</th><th>Result</th></tr>
-    <tr class="row-danger"><td>Run 1</td><td>4.0</td><td>168.4</td><td>&minus;6.3</td><td><span class="badge badge-danger">FAIL</span></td></tr>
-    <tr class="row-danger"><td>Run 2</td><td>6.0</td><td>141.2</td><td>+0.8</td><td><span class="badge badge-danger">FAIL</span></td></tr>
-    <tr class="row-success"><td>Run 3</td><td>8.0</td><td>128.6</td><td>+4.2</td><td><span class="badge badge-success">PASS &#10003;</span></td></tr>
+    <tr><th>Gas at steady state (m&sup3;)</th><th>Shell for 20 % reserve (m&sup3;)</th><th>Line minimum (m)</th><th>Minimum at (km)</th><th>Line maximum (m)</th><th>Result</th></tr>
+    <tr class="row-danger"><td>1.5</td><td>14.4</td><td>&minus;6.8</td><td>6.0</td><td>143.7</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+    <tr class="row-danger"><td>2.0</td><td>15.8</td><td>&minus;3.2</td><td>5.4</td><td>131.8</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+    <tr class="row-danger"><td>2.5</td><td>17.2</td><td>&minus;0.1</td><td>5.0</td><td>131.2</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+    <tr class="row-warn"><td>3.08</td><td>19.1</td><td>+3.0</td><td>4.6</td><td>130.9</td><td><span class="badge badge-warning">LIMIT</span></td></tr>
+    <tr class="row-success"><td>3.5</td><td>20.4</td><td>+4.5</td><td>1.4</td><td>127.5</td><td><span class="badge badge-success">PASS</span></td></tr>
+    <tr class="row-success"><td>4.0</td><td>21.9</td><td>+5.8</td><td>0.7</td><td>121.4</td><td><span class="badge badge-success">PASS</span></td></tr>
   </table>
 </div>
-<div class="callout">The analytical estimate of <strong>6.0 m&sup3;</strong> proved insufficient. Simulation confirmed the actual required volume: <strong>8.0 m&sup3;</strong> — a 33% increase. This is why simulation validation is mandatory.</div>
+<p>The line needs <strong>3.08 m&sup3; of gas</strong> at the steady HGL, expanding to 15.30 m&sup3;: a 19.1 m&sup3; shell with a 20 % water reserve. With too little gas the minimum sits 5 to 6 km out, in the middle of the line; only with generous gas does it move back towards the station. Read the minimum from the whole profile, never from the vessel node alone.</p>
+<p>The shell is then fixed at a round 20 m&sup3; and the connection made differential &mdash; outflow K 2, inflow K 10 on DN400, for reasons given in section 7 &mdash; and the gas volume is iterated again:</p>
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Transient model &mdash; 20 m&sup3; shell, differential DN400 connection</div>
+  <table>
+    <tr><th>Run</th><th>Gas (m&sup3;)</th><th>Line minimum (m)</th><th>Line maximum (m)</th><th>Largest gas volume (m&sup3;)</th><th>Result</th></tr>
+    <tr class="row-danger"><td>Run 1</td><td>2.0</td><td>&minus;3.8</td><td>126.4</td><td>12.53</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+    <tr class="row-danger"><td>Run 2</td><td>2.5</td><td>&minus;0.7</td><td>124.3</td><td>13.65</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+    <tr class="row-danger"><td>Run 3</td><td>3.0</td><td>+1.9</td><td>123.5</td><td>14.91</td><td><span class="badge badge-danger">FAIL</span></td></tr>
+    <tr class="row-success"><td>Run 4 (selected)</td><td>3.5</td><td>+4.3</td><td>119.2</td><td>16.17</td><td><span class="badge badge-success">PASS &#10003;</span></td></tr>
+    <tr><td>Run 4, free connection</td><td>3.5</td><td>+4.5</td><td>127.5</td><td>16.36</td><td><span class="badge badge-info">PASS</span></td></tr>
+  </table>
+</div>
+<p>I selected <strong>Run 4: 3.5 m&sup3; of gas in a 20 m&sup3; shell</strong>. It clears +3.0 m by 1.3 m (Run 3 misses by 1.1 m) and stays about 17 m under the allowable. The set point has little room either way. Below about 3.22 m&sup3; of gas the line falls under +3.0 m. More gas improves the pressures but uses up the water reserve, until at about 5.2 m&sup3; the gas fills the whole 20 m&sup3; at maximum expansion. Holding the 20 % reserve of section 7.4 caps the gas at about 3.43 m&sup3; (a 15 % reserve, at about 3.85 m&sup3;), so 3.5 m&sup3; already sits just past the 20 % line, and the level-control band has to be specified in tenths of a cubic metre.</p>
+<div class="callout"><strong>Estimate and model agree here &mdash; partly by coincidence.</strong> The gas volumes agree within 5 % (3.23 m&sup3; from the rigid column, 3.08 m&sup3; from the model with the free connection), but the rigid column draws about 10 % more water (13.42 against 12.22 m&sup3;). It also holds +3.0 m at the vessel, while the model reaches +3.0 m 4.6 km out with +3.6 m at the vessel. On a line with high points, or once any part of it separates, the rigid column has nothing to say: the transient model decides.</div>
 
 <hr class="article-divider">
-<h2>6. Final Results — 8.0 m&sup3; Vessel</h2>
+<h2>6. Final Results &mdash; 20 m&sup3; Vessel with 3.5 m&sup3; of Gas</h2>
 <div class="sim-box">
-  <div class="sim-header"><span class="sim-dot"></span>Bentley HAMMER — Protected Scenario (Vessel = 8.0 m&sup3;)</div>
+  <div class="sim-header"><span class="sim-dot"></span>Transient model &mdash; protected pump trip (20 m&sup3; shell, 3.5 m&sup3; gas)</div>
   <table>
-    <tr><th>Location</th><th>Steady-State (m)</th><th>Max Transient (m)</th><th>Min Transient (m)</th><th>Status</th></tr>
-    <tr class="row-success"><td>0 m — Pump discharge</td><td>85.0</td><td>128.6</td><td>+18.4</td><td><span class="badge badge-success">OK &#10003;</span></td></tr>
-    <tr class="row-success"><td>6,000 m — Midpoint</td><td>64.9</td><td>108.2</td><td>+4.2</td><td><span class="badge badge-success">OK &#10003;</span></td></tr>
-    <tr class="row-success"><td>12,000 m — Delivery</td><td>44.8</td><td>74.1</td><td>+8.2</td><td><span class="badge badge-success">OK &#10003;</span></td></tr>
+    <tr><th>Location</th><th>Steady-state (m)</th><th>Max transient (m)</th><th>Min transient (m)</th><th>Status</th></tr>
+    <tr class="row-success"><td>0 m &mdash; Pump discharge</td><td>85.0</td><td>119.2</td><td>+4.9</td><td><span class="badge badge-success">OK &#10003;</span></td></tr>
+    <tr class="row-success"><td>4,300 m &mdash; Line minimum</td><td>70.6</td><td>98.9</td><td>+4.3</td><td><span class="badge badge-success">OK &#10003;</span></td></tr>
+    <tr class="row-success"><td>6,000 m &mdash; Midpoint</td><td>64.9</td><td>87.1</td><td>+4.9</td><td><span class="badge badge-success">OK &#10003;</span></td></tr>
   </table>
 </div>
-<div class="chart-wrap"><canvas id="comparisonChart"></canvas><p class="chart-note">Figure 2 — Pressure envelope: unprotected vs. protected with 8.0 m&sup3; vessel</p></div>
-<div class="chart-wrap"><canvas id="timeChart"></canvas><p class="chart-note">Figure 3 — Pressure vs. time at pump discharge</p></div>
+<p>During the trip the gas volume ranges from <strong>2.71 m&sup3;</strong> at the peak to <strong>16.17 m&sup3;</strong> at maximum expansion, leaving <strong>3.83 m&sup3; of water (19 % of the shell)</strong> in the vessel at its lowest. No column separation occurs anywhere on the line, so these results are firm to 0.1 m.</p>
+<div class="formula-box">
+  <div class="formula-main">95.33 &times; (3.5 / 16.17)<sup>1.2</sup> &minus; 10.33 = +4.9 m &nbsp;&nbsp;|&nbsp;&nbsp; 95.33 &times; (3.5 / 2.71)<sup>1.2</sup> &minus; 10.33 = 119.3 m</div>
+  <div class="formula-sub">Gas-law check against the model: +4.9 m minimum and 119.2 m maximum at the vessel. If a model fails a check like this, suspect the vessel data before trusting the envelope.</div>
+</div>
+<div class="chart-wrap">
+  <div class="sv-ctl"><label for="cmpSel">Vertical range </label><select id="cmpSel"><option value="full">Full: &minus;20 to 200 m</option><option value="min">Minimum detail: &minus;12 to 20 m</option></select></div>
+  <canvas id="comparisonChart"></canvas>
+  <p class="chart-note">Figure 2 &mdash; Pressure-head envelopes along the main, unprotected (vapour cavity model) and with the 20 m&sup3; vessel, 3.5 m&sup3; of gas and a differential DN400 connection (method-of-characteristics model). Switch to the minimum detail to read the protected minimum against +3.0 m.</p>
+</div>
+<p>Figure 3 shows why run duration matters. With the vessel in place the pressure at the pump stays below its steady value for the first 90 s, and the 119.2 m peak arrives about 100 s after the trip, on the return swing; a run stopped at 60 s would never see it. Switch to the smaller gas volumes to see the downsurge deepen and the peak come earlier and higher; the readout gives the line minimum and where it falls.</p>
+<div class="chart-wrap">
+  <div class="sv-ctl"><label for="timeSel">Protected trace </label><select id="timeSel"><option value="3.5">Run 4 &mdash; 3.5 m&sup3; gas (selected design)</option><option value="3.0">Run 3 &mdash; 3.0 m&sup3; gas</option><option value="2.5">Run 2 &mdash; 2.5 m&sup3; gas</option><option value="2.0">Run 1 &mdash; 2.0 m&sup3; gas</option></select> <span id="timeRead" class="sv-read">Line minimum +4.3 m at 4.3 km &middot; at the pump +4.9 m &middot; maximum 119.2 m &middot; largest gas volume 16.17 m&sup3; &middot; <span class="badge badge-success">PASS</span></span></div>
+  <canvas id="timeChart"></canvas>
+  <p class="chart-note">Figure 3 &mdash; Pressure head at the pump discharge after the trip, unprotected and with the vessel (method-of-characteristics model, 150 s run); gas volume on the right axis for the selected design. The unprotected trace is from the vapour cavity model: its spikes are collapse peaks and indicative only, 165 to 190 m at the pump across the two cavity models.</p>
+</div>
 
 <hr class="article-divider">
 <h2>7. Critical Design Parameters Often Overlooked</h2>
 
-<h3>7.1 Pre-charge pressure</h3>
-<p>Must match the steady-state HGL at the vessel connection — not the pump head. On long pipelines, these can differ by 10–30 m.</p>
-<div class="warning-box">Setting P&#8320; based on pump discharge head instead of the actual HGL at the vessel tap point is one of the most consequential mistakes in surge vessel design.</div>
+<h3>7.1 Gas pressure and absolute units</h3>
+<p>The gas law works only in absolute pressure. Take the water the line needs from the vessel in the free-connection sizing &mdash; 15.30 &minus; 3.08 = 12.22 m&sup3; &mdash; and back-calculate the steady gas volume with the second equation of section 2, once properly and once with gauge heads:</p>
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Closed-form check &mdash; gas needed to deliver 12.22 m&sup3; of water</div>
+  <table>
+    <tr><th>Heads used</th><th>Expansion ratio (H&#8320; / H<sub>min</sub>)<sup>1/n</sup></th><th>Gas at steady state (m&sup3;)</th></tr>
+    <tr class="row-success"><td>Absolute: 95.33 / 13.33 m</td><td>5.152</td><td>2.94</td></tr>
+    <tr class="row-danger"><td>Gauge: 85.0 / 3.0 m</td><td>16.23</td><td>0.80 &mdash; 3.7 times too small</td></tr>
+  </table>
+</div>
+<p>With gauge heads the expansion ratio comes out more than three times too large, each cubic metre of gas appears to deliver far more water than it can, and the vessel comes out 3.7 times too small. The absolute closed form gives 2.94 m&sup3; against the model's 3.08 m&sup3; because the model reaches +3.0 m out on the line; at the vessel it bottoms out at about +3.6 m.</p>
+<div class="warning-box">Use the pressure head at the vessel &mdash; the HGL minus the elevation of the vessel water surface &mdash; plus 10.33 m for absolute head, and check the unit of every pressure field you enter or read: gauge or absolute, metres or bar. A vessel sized on gauge heads looks perfectly reasonable on paper.</div>
 
 <h3>7.2 Connection pipe diameter</h3>
-<div class="formula-box">
-  <div class="formula-main">D_connection &ge; 0.3 &times; D_main</div>
-  <div class="formula-sub">For DN 800 mm → minimum connection pipe: DN 250 mm</div>
+<p>The connection has to pass the vessel's outflow at the moment the downsurge needs it. Keeping the same fittings (K 2 out, K 10 in) and the same 3.5 m&sup3; of gas, only the bore changes:</p>
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Transient model &mdash; connection size, 20 m&sup3; shell, 3.5 m&sup3; gas</div>
+  <table>
+    <tr><th>Connection</th><th>Line minimum (m)</th><th>Line maximum (m)</th><th>Largest gas volume (m&sup3;)</th><th>Result</th></tr>
+    <tr class="row-success"><td>DN400</td><td>+4.3</td><td>119.2</td><td>16.17</td><td><span class="badge badge-success">PASS</span></td></tr>
+    <tr class="row-danger"><td>DN300</td><td>+2.5</td><td>104.6</td><td>15.69</td><td><span class="badge badge-danger">FAIL (minimum)</span></td></tr>
+    <tr class="row-danger"><td>DN250</td><td>&minus;0.3</td><td>89.7</td><td>14.99</td><td><span class="badge badge-danger">FAIL (minimum)</span></td></tr>
+  </table>
 </div>
+<p>At a given flow the head loss through the same fittings scales with (400/D)<sup>4</sup>: 3.2 times at DN300, 6.6 times at DN250. Less water leaves, the downsurge goes deeper and the minimum fails, while the maximum <em>improves</em> because the same loss brakes the return swing. That is the trap: judged on the maximum alone, DN250 looks like the better design. Rules of thumb that set the connection as a fixed fraction of the main &mdash; DN250 on this DN800 line &mdash; do not survive the check. Size the connection from the transient model, on the minimum first.</p>
 
-<h3>7.3 Asymmetric throttle orifice</h3>
-<p><strong>Larger orifice for outflow</strong> (fast delivery during down-surge) and <strong>smaller orifice for inflow</strong> (controlled return during up-surge to prevent slam).</p>
+<h3>7.3 Differential orifice</h3>
+<p>The connection can do both jobs if its loss differs with direction: free outflow, so the vessel supports the downsurge, and throttled inflow, so the return swing is braked. On this vessel a DN400 connection with K &asymp; 2 out and K &asymp; 10 in lowers the maximum from <strong>127.5 m</strong> with a free connection to <strong>119.2 m</strong>, while the minimum barely moves (+4.5 m to +4.3 m). The same restriction both ways lowers the maximum further, to 103.1 m with K 25, but it throttles the outflow too and sends the line to &minus;4.5 m. In practice the throttle is an orifice plate that the outflow bypasses; by the Idelchik formula for a thin sharp-edged orifice [9], a plate adding K 8 to the K 2 fittings on DN400 has a bore of about 254 mm. See <a href="surge-vessel-differential-orifice.html">the differential orifice: empty freely, refill slowly</a>.</p>
 
 <h3>7.4 Minimum water reserve</h3>
-<p>Minimum reserve = <strong>10–15% of total vessel volume</strong>. Low-level alarm and automatic refill valve are mandatory.</p>
+<p>At maximum expansion the vessel must still hold water, or air goes into the main &mdash; and air in a pressurised transmission main is a problem of its own, whatever the air valves on the line are sized for [10]. In my practice I size to leave about 20 % of the shell as water at maximum expansion; that is engineering judgement, not a code requirement. This design leaves 3.83 m&sup3;, 19 % of the shell, at n = 1.2. I accept that because the load case is an instantaneous pump stop, which in my judgement draws harder on the vessel than a real pump run-down. It is not a comfortable margin: at n = 1.0 the same set point leaves only 2.25 m&sup3; (11 %), as section 8 shows.</p>
+<p>The reserve also caps the gas set point. In the same 20 m&sup3; shell, 4.5 m&sup3; of gas leaves only 1.52 m&sup3; of water at maximum expansion, and with 6.0 m&sup3; the vessel empties during the trip and the line falls to vapour. Set the low-level alarm and trip so that the vessel is never left in service with less water than the design trip draws; see <a href="air-admission-networks.html">air admission in transmission networks</a> for what air does once it is in the line.</p>
 
 <h3>7.5 Vessel location</h3>
-<p>Most effective within <strong>50–100 m</strong> of the pump station discharge.</p>
+<p>The vessel works on the flow leaving the pumps, so it belongs on the discharge header, downstream of the pump check valves and as close to the pumps as the layout allows &mdash; in my practice inside or immediately beside the station. On this flat line the steady pressure head, and with it the gas pressure, changes little over a short distance (84.8 m at 50 m down the line, 83.3 m at 500 m), but any length of main between the pumps and the vessel changes the answer. Model the vessel where it will actually be connected, at its real elevation.</p>
 
 <hr class="article-divider">
 <h2>8. Sensitivity Analysis</h2>
-<table>
-  <tr><th>Parameter Change</th><th>Effect on Required Volume</th><th>Sensitivity</th></tr>
-  <tr><td>P&#8320; increases by 10%</td><td>+18–25% larger vessel</td><td><span class="badge badge-danger">High</span></td></tr>
-  <tr><td>P_min tightened (3 m to 1 m gauge)</td><td>+20–30% larger vessel</td><td><span class="badge badge-danger">High</span></td></tr>
-  <tr><td>Pipeline length doubled (12 to 24 km)</td><td>+40–60% larger vessel</td><td><span class="badge badge-danger">High</span></td></tr>
-  <tr><td>DI replaced with HDPE</td><td>~35% smaller vessel</td><td><span class="badge badge-warning">Medium</span></td></tr>
-  <tr><td>Connection pipe reduced (DN 250 to DN 150)</td><td>Under-performs — increase 15–20%</td><td><span class="badge badge-warning">Medium</span></td></tr>
-  <tr><td>Polytropic exponent: n=1.0 vs n=1.4</td><td>&plusmn;8–12% variation</td><td><span class="badge badge-info">Low</span></td></tr>
-</table>
+<p>How far does the vessel move when the inputs move? Each case repeats the free-connection sizing of step 4 &mdash; the gas needed for +3.0 m anywhere on the line, and the shell with a 20 % water reserve &mdash; changing one input at a time. The base case is 3.08 m&sup3; of gas in a 19.1 m&sup3; shell.</p>
+<div class="sim-box">
+  <div class="sim-header"><span class="sim-dot"></span>Transient model &mdash; required vessel, one change at a time</div>
+  <table>
+    <tr><th>Change from the base case</th><th>Gas (m&sup3;)</th><th>Shell (m&sup3;)</th><th>Change in shell</th><th>Sensitivity</th></tr>
+    <tr><td>Base case</td><td>3.08</td><td>19.1</td><td>&mdash;</td><td>&mdash;</td></tr>
+    <tr><td>Minimum criterion +5.0 m (tighter)</td><td>3.68</td><td>21.0</td><td>+10 %</td><td><span class="badge badge-warning">Medium</span></td></tr>
+    <tr><td>Minimum criterion +1.0 m (looser)</td><td>2.70</td><td>17.8</td><td>&minus;7 %</td><td><span class="badge badge-warning">Medium</span></td></tr>
+    <tr><td>Line doubled to 24 km (same flow and end heads)</td><td>6.16</td><td>38.2</td><td>+100 %</td><td><span class="badge badge-danger">High</span></td></tr>
+    <tr><td>Wave speed 700 m/s</td><td>3.19</td><td>19.1</td><td>0 %</td><td><span class="badge badge-info">Low</span></td></tr>
+    <tr><td>Wave speed 450 m/s (GRP-type pipe)</td><td>1.99</td><td>12.7</td><td>&minus;34 %</td><td><span class="badge badge-danger">High</span></td></tr>
+    <tr><td>Wave speed 300 m/s (PE-type pipe)</td><td>none</td><td>none</td><td>No vessel for this criterion</td><td><span class="badge badge-danger">High</span></td></tr>
+    <tr><td>Gas law exponent n = 1.0</td><td>2.22</td><td>18.1</td><td>&minus;5 %</td><td><span class="badge badge-warning">Medium</span></td></tr>
+    <tr><td>Gas law exponent n = 1.4</td><td>4.06</td><td>20.5</td><td>+7 %</td><td><span class="badge badge-warning">Medium</span></td></tr>
+    <tr><td>DN250 connection, same loss coefficient (K 0.5)</td><td>3.33</td><td>19.5</td><td>+2 %</td><td><span class="badge badge-info">Low</span></td></tr>
+    <tr><td>Differential DN400 connection, 1:5</td><td>3.22</td><td>19.3</td><td>+1 %</td><td><span class="badge badge-info">Low</span></td></tr>
+  </table>
+</div>
+<ul>
+  <li><strong>Length dominates.</strong> A column twice as long, at the same flow and end heads, doubles the shell; the minimum criterion moves it by only &minus;7 % to +10 % between +1.0 m and +5.0 m.</li>
+  <li><strong>Wave speed matters only when it changes the downsurge.</strong> At 700 m/s the vessel barely changes (3.19 m&sup3; of gas, the same 19.1 m&sup3; shell): it works against the mass oscillation, not the water hammer wave. At 450 m/s the vessel is a third smaller; at 300 m/s the unprotected line stays at +5.0 m or above and no vessel is needed for the minimum criterion, though the upsurge must still be checked. See <a href="wave-speed-surge-analysis.html">wave speed: the number that sets the surge</a>.</li>
+  <li><strong>The gas law exponent is where this design is thinnest.</strong> The required shell moves by only &minus;5 % to +7 % between n = 1.0 and 1.4, but checked at the two ends, the 20 m&sup3; vessel with 3.5 m&sup3; of gas gives a line minimum of only <strong>+0.3 m at n = 1.4</strong>, below the +3.0 m criterion; at n = 1.0 its gas expands to 17.75 m&sup3; and leaves <strong>2.25 m&sup3; of water (11 %)</strong>. The design therefore relies on n = 1.2 as the design exponent, which is engineering judgement, not a property of the air. If the owner wants both ends covered, the set point has to rise to about 4.2 m&sup3; of gas for +3.0 m at n = 1.4; at n = 1.0 that gas expands to about 19.3 m&sup3;, so a 20 % reserve would take a shell of about 24 m&sup3;.</li>
+</ul>
 
 <hr class="article-divider">
-<h2>9. Final Vessel Specification</h2>
+<h2>9. Setting It Up in Bentley HAMMER</h2>
+<p>The figures above come from an independent transient model, not from HAMMER; this is how to reproduce the design in Bentley HAMMER [11]. Field names differ slightly between HAMMER versions; the intent of each step does not. For the wider workflow see <a href="hammer-transient-simulation-workflow.html">computing a transient simulation in HAMMER</a> and <a href="hammer-transient-tips.html">tips for interesting transient results</a>.</p>
+<ol>
+  <li><strong>Build and check the steady state.</strong> Pump, Pipe and Reservoir on the real profile. To reproduce this example, enter the adopted 1,050 m/s in each Pipe's wave speed field. On a project, use the Wave Speed Calculator (pipe material, wall thickness, Young's modulus, Poisson's ratio, restraint condition); for DN800 K9 it gives about 1,080 to 1,117 m/s depending on restraint. Confirm 85.0 m at the discharge and 44.8 m at the delivery reservoir before any transient run.</li>
+  <li><strong>Define the pump trip.</strong> Trip all pumps at time zero, with the check valve on each pump. The numbers here use an instantaneous stop; repeat with the real pump and motor inertia and check valve closure.</li>
+  <li><strong>Set the transient run options.</strong> Run duration of at least 150 s on this line &mdash; the peak at the vessel arrives about 100 s after the trip &mdash; and longer on a longer line; the computed time step; a small wave speed adjustment tolerance; vapour pressure and column separation on; one friction method throughout.</li>
+  <li><strong>Run the unprotected case</strong> and read the envelopes. If the line reaches vapour, read its maximum as a range (section 4).</li>
+  <li><strong>Add a Hydropneumatic Tank</strong> at the discharge node, downstream of the pump check valves, at its true elevation. Leave the bladder option (&ldquo;has bladder&rdquo;) off for an air-over-water vessel; the preset gas pressure belongs with that option.</li>
+  <li><strong>Enter the vessel.</strong> Tank volume 20 m&sup3;, initial gas volume 3.5 m&sup3; at the steady HGL, gas law exponent 1.2, then repeat the run at 1.0 and 1.4 (section 8). When iterating from scratch, start the initial gas volume at the rigid-column estimate.</li>
+  <li><strong>Describe the connection.</strong> Inlet orifice diameter 400 mm (the bore the coefficients refer to), minor loss coefficient 2 for the outflow, ratio of losses 5 so that the inflow carries K 10. Run ratio 1 and ratio 5 once each: the ratio should lower the maximum and leave the minimum alone; if the minimum moves, it is acting the wrong way round.</li>
+  <li><strong>Read the envelopes.</strong> In the Transient Results Viewer, plot the profile (path) with the maximum and minimum head envelopes and the pipe elevation. The limits apply to pressure head, so check head minus elevation against 136 m and +3.0 m, and look for vapour wherever the minimum head drops to about 9.8 m below the pipe; only on a flat line at datum, like this example, can the head envelopes be read against the limits directly. Find where the minimum falls &mdash; here 4.3 km out, not at the vessel.</li>
+  <li><strong>Read the time histories</strong> at the tank: head, gas volume and flow. Repeat the gas-law check of section 6 on the peak and on the trough.</li>
+  <li><strong>Iterate and check.</strong> Iterate the gas volume, and the ratio of losses if the maximum is the problem, until both limits are met with margin; run a gas volume either side of the set point, because the level control will not hold it exactly; and confirm the largest gas volume stays below the tank volume with the water reserve intact &mdash; 16.17 of 20 m&sup3; here. If a trial shows vapour anywhere, fix the downsurge rather than argue about the peak.</li>
+</ol>
+
+<hr class="article-divider">
+<h2>10. Final Vessel Specification</h2>
 <div class="sim-box">
-  <div class="sim-header"><span class="sim-dot"></span>Surge Vessel — Final Design Specification</div>
+  <div class="sim-header"><span class="sim-dot"></span>Surge vessel &mdash; final design specification</div>
   <table>
     <tr><th>Parameter</th><th>Value</th></tr>
-    <tr><td>Total vessel volume</td><td><strong>8.0 m&sup3;</strong></td></tr>
-    <tr><td>Initial gas volume (V&#8320;)</td><td>4.0 m&sup3; (50% gas ratio)</td></tr>
-    <tr><td>Pre-charge pressure (P&#8320;)</td><td>1.84 bar abs</td></tr>
-    <tr><td>Maximum operating pressure</td><td>16 bar (vessel shell rated PN 25)</td></tr>
-    <tr><td>Gas type</td><td>Nitrogen (N&#8322;) — inert, no oxidation risk</td></tr>
-    <tr><td>Connection pipe diameter</td><td>DN 250 mm (&ge; 0.3 &times; DN 800)</td></tr>
-    <tr><td>Connection pipe length</td><td>Max 5 m</td></tr>
-    <tr><td>Throttle orifice — outflow</td><td>DN 200 mm (unrestricted)</td></tr>
-    <tr><td>Throttle orifice — inflow</td><td>DN 100 mm (controlled)</td></tr>
-    <tr><td>Minimum water reserve</td><td>0.8 m&sup3; (10% of vessel)</td></tr>
-    <tr><td>Low-level alarm setpoint</td><td>15% of vessel volume</td></tr>
-    <tr><td>Vessel location</td><td>Within 30 m of pump discharge header</td></tr>
+    <tr><td>Vessel type</td><td>Air-over-water (compressed air in contact with water)</td></tr>
+    <tr><td>Total vessel volume</td><td><strong>20 m&sup3;</strong></td></tr>
+    <tr><td>Initial gas volume (V&#8320;)</td><td><strong>3.5 m&sup3;</strong> (17.5 % of the shell) at the steady HGL; narrow level-control band &mdash; below about 3.22 m&sup3; the line minimum falls under +3.0 m, and more gas uses up the water reserve</td></tr>
+    <tr><td>Gas pressure at steady state</td><td>9.35 bar abs (8.33 bar g) &mdash; follows the line; not a setting</td></tr>
+    <tr><td>Gas law exponent (design)</td><td>n = 1.2, engineering judgement; at n = 1.4 the line minimum falls to +0.3 m (section 8)</td></tr>
+    <tr><td>Gas volume in the design trip</td><td>2.71 m&sup3; to 16.17 m&sup3;</td></tr>
+    <tr><td>Water remaining at maximum expansion</td><td>3.83 m&sup3; (19 % of the shell) at n = 1.2; 2.25 m&sup3; (11 %) at n = 1.0</td></tr>
+    <tr><td>Maximum transient pressure at the vessel</td><td>119.2 m (11.7 bar g)</td></tr>
+    <tr><td>Line envelope, design trip</td><td>Minimum +4.3 m at 4.3 km; maximum 119.2 m at the vessel</td></tr>
+    <tr><td>Gas supply</td><td>Compressed air, with compressor and automatic level control; nitrogen only if the owner specifies it (engineering judgement)</td></tr>
+    <tr><td>Connection</td><td>DN400, differential: outflow K &asymp; 2, inflow K &asymp; 10 (orifice plate bypassed on outflow, bore &asymp; 254 mm by the Idelchik formula)</td></tr>
+    <tr><td>Level instrumentation</td><td>Low-level alarm and trip set so that the design water reserve is never drawn on in service</td></tr>
+    <tr><td>Vessel design pressure</td><td>Set under the applicable pressure vessel code above the maximum transient at the vessel [12]</td></tr>
+    <tr><td>Location</td><td>Pump station discharge header, downstream of the pump check valves, close to the pumps</td></tr>
   </table>
 </div>
 
 <hr class="article-divider">
-<h2>10. Conclusion</h2>
-<p>Surge vessel sizing is an iterative design process. The analytical method provided <strong>6.0 m&sup3;</strong> as a starting point — simulation confirmed <strong>8.0 m&sup3;</strong>. Key lessons:</p>
+<h2>11. Conclusion and Design Checklist</h2>
+<p>On this 12 km DN800 main the unprotected line separates along practically its whole length, with collapse peaks of 165 to 190 m. The design that meets both limits at the design exponent n = 1.2 is a <strong>20 m&sup3; vessel with 3.5 m&sup3; of air</strong> behind a differential DN400 connection, holding the line between <strong>+4.3 m</strong> and <strong>119.2 m</strong>. Its margins on the gas law exponent and on the water reserve are thin, and the owner should know that before the vessel is ordered. On your own project:</p>
 <ul>
-  <li>Always run the unprotected baseline first to quantify the risk</li>
-  <li>Pre-charge pressure must reflect the actual HGL at the tap point</li>
-  <li>Connection pipe diameter directly affects vessel response speed</li>
-  <li>The pressure-time trace at pump discharge is the single most important output for client reporting</li>
+  <li>Run the unprotected pump trip first, with column separation on, and read its maximum as a range if the line separates.</li>
+  <li>Work the gas law in absolute pressure at the vessel &mdash; 9.35 bar abs here &mdash; and, for an air-over-water vessel, choose the gas volume: the pressure follows the line.</li>
+  <li>Start from a rigid-column estimate; decide with a transient model over the whole profile, comparing head minus pipe elevation with the limits.</li>
+  <li>Size the connection on the minimum first; throttle the inflow, never the outflow.</li>
+  <li>Check the design at n = 1.0 and 1.4 as well as 1.2, and at gas volumes either side of the set point.</li>
+  <li>Run long enough to see the return swing, and confirm the vessel never empties and keeps its water reserve.</li>
 </ul>
+
+<div class="callout green">
+  <span class="lbl">Surge protection design series</span>
+  <ol>
+    <li><a href="wave-speed-surge-analysis.html">Wave speed: the number that sets the surge</a></li>
+    <li><a href="surge-vessel-differential-orifice.html">The differential orifice: empty freely, refill slowly</a></li>
+    <li><a href="surge-vessel-type-selection.html">Bladder, diaphragm or air-over-water vessel</a></li>
+    <li><a href="one-way-surge-tank-design.html">One-way surge tanks at the knee</a></li>
+    <li><a href="surge-relief-valve-sizing.html">Surge relief valves: what a valve at the pump can protect</a></li>
+    <li><a href="pump-inertia-flywheel-surge.html">Pump inertia and the flywheel</a></li>
+    <li><a href="choosing-surge-protection.html">Choosing surge protection on one pipeline</a></li>
+  </ol>
+  Bladder pre-charge, and the gas setting of an air-over-water vessel, are in <a href="pre-charge-pressure.html">The Pre-Charge Pressure of the Surge Vessel</a>.
+</div>
 
 <hr class="article-divider">
 <div class="refs">
   <h2>References</h2>
   <ol>
-    <li>Chaudhry, M.H. (2014). <em>Applied Hydraulic Transients</em>, 3rd ed. Springer.</li>
-    <li>Wylie, E.B. and Streeter, V.L. (1993). <em>Fluid Transients in Systems</em>. Prentice Hall.</li>
-    <li>Thorley, A.R.D. (2004). <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing.</li>
-    <li>Bentley Systems (2023). <em>Bentley HAMMER V8i — User Guide</em>. Bentley Systems Inc.</li>
-    <li>AWWA M11 (2017). <em>Steel Pipe — A Guide for Design and Installation</em>.</li>
-    <li>AWWA M51 (2017). <em>Air-Release, Air/Vacuum, and Combination Air Valves</em>.</li>
-    <li>BS EN 805 (2000). <em>Water supply — Requirements for systems outside buildings</em>.</li>
+    <li>Thorley, A.R.D. (2004). <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing &mdash; surge protection devices and air vessels on pumping systems.</li>
+    <li>Wylie, E.B. and Streeter, V.L. (1993). <em>Fluid Transients in Systems</em>. Prentice Hall &mdash; method of characteristics, air chambers, rigid-column analysis and column separation.</li>
+    <li>Chaudhry, M.H. (2014). <em>Applied Hydraulic Transients</em>, 3rd ed. Springer &mdash; air chambers, mass oscillation and transient analysis of pumping mains.</li>
+    <li>ISO 2531. <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em> &mdash; pipe classes, including K9.</li>
+    <li>EN 805. <em>Water supply &mdash; Requirements for systems and components outside buildings</em> &mdash; design pressure terms, including the allowance for surge.</li>
+    <li>AWWA M11. <em>Steel Pipe &mdash; A Guide for Design and Installation</em> &mdash; working and surge pressure in the design of large transmission mains.</li>
+    <li>Bergant, A., Simpson, A.R. and Tijsseling, A.S. (2006). &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2) &mdash; vapour and gas cavity models, and why collapse peaks depend on the model.</li>
+    <li>Stephenson, D. (2002). &ldquo;Simple guide for design of air vessels for water hammer protection of pumping lines.&rdquo; <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8) &mdash; simplified first sizing of air vessels.</li>
+    <li>Idelchik, I.E. (1996). <em>Handbook of Hydraulic Resistance</em>, 3rd ed. Begell House &mdash; loss coefficient of a thin sharp-edged orifice.</li>
+    <li>AWWA M51. <em>Air Valves: Air-Release, Air/Vacuum, and Combination</em> &mdash; air valve types, sizing and location on pipelines.</li>
+    <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help &mdash; the Hydropneumatic Tank element, transient run options and the Transient Results Viewer.</li>
+    <li>EN 13445 <em>Unfired pressure vessels</em>; ASME <em>Boiler and Pressure Vessel Code</em>, Section VIII, Division 1; Pressure Equipment Directive 2014/68/EU &mdash; design pressure of the vessel itself.</li>
   </ol>
 </div>
 
-<div class="tags">#SurgeAnalysis #WaterHammer #HydropneumaticVessel #BentleyHAMMER #PipelineDesign #WaterTransmission #WaterEngineering #SaudiArabia</div>
+<div class="tags">#SurgeAnalysis #WaterHammer #HydropneumaticVessel #SurgeVessel #AirVessel #PumpTrip #ColumnSeparation #MethodOfCharacteristics #HydraulicTransients #SurgeProtection #BentleyHAMMER #OpenFlowsHAMMER #PipelineDesign #WaterTransmission #DuctileIron #PumpStations #WaterEngineering #SaudiArabia</div>
 
 
 </div>
@@ -349,32 +484,70 @@
 </footer>
 
 <script>
-const g='rgba(0,0,0,0.08)', t='#86868b';
-const lc='#6e6e73';
-const opts=(yt)=>({responsive:true,plugins:{legend:{position:'bottom',labels:{color:lc,font:{size:11},boxWidth:12,padding:16}}},scales:{x:{ticks:{color:t,font:{size:11}},grid:{color:g}},y:{ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:yt,color:t,font:{size:11}}}}});
-const labels=['0 m','2 km','4 km','6 km','8 km','10 km','12 km'];
-new Chart(document.getElementById('baselineChart'),{type:'line',data:{labels,datasets:[
-  {label:'Steady-state HGL',data:[85,78.3,71.6,64.9,58.2,51.5,44.8],borderColor:'#86868b',borderWidth:1.5,borderDash:[6,3],pointRadius:3,fill:false,tension:.3},
-  {label:'Max transient',data:[217.5,198.4,176.2,154.8,132.6,118.3,96.7],borderColor:'#c42b2b',borderWidth:2,pointRadius:3,fill:false,tension:.3},
-  {label:'Min transient',data:[-8.2,-12.6,-18.4,-24.1,-19.8,-11.2,2.1],borderColor:'#8a5700',borderWidth:2,pointRadius:3,fill:false,tension:.3},
-  {label:'Max allowable (136 m)',data:[136,136,136,136,136,136,136],borderColor:'#c42b2b',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false},
-  {label:'Min allowable (+3 m)',data:[3,3,3,3,3,3,3],borderColor:'#1a7a38',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
-]},options:opts('Head (m)')});
-new Chart(document.getElementById('comparisonChart'),{type:'line',data:{labels,datasets:[
-  {label:'Max — unprotected',data:[217.5,198.4,176.2,154.8,132.6,118.3,96.7],borderColor:'#c42b2b',borderWidth:1.5,borderDash:[5,3],pointRadius:3,fill:false,tension:.3},
-  {label:'Min — unprotected',data:[-8.2,-12.6,-18.4,-24.1,-19.8,-11.2,2.1],borderColor:'#8a5700',borderWidth:1.5,borderDash:[5,3],pointRadius:3,fill:false,tension:.3},
-  {label:'Max — 8.0 m³ vessel',data:[128.6,122.1,115.4,108.2,98.7,86.3,74.1],borderColor:'#0071e3',borderWidth:2,pointRadius:3,fill:false,tension:.3},
-  {label:'Min — 8.0 m³ vessel',data:[18.4,12.8,8.6,4.2,5.1,6.8,8.2],borderColor:'#1a7a38',borderWidth:2,pointRadius:3,fill:false,tension:.3},
-  {label:'Max allowable (136 m)',data:[136,136,136,136,136,136,136],borderColor:'#c42b2b',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false},
-  {label:'Min allowable (+3 m)',data:[3,3,3,3,3,3,3],borderColor:'#1a7a38',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
-]},options:opts('Head (m)')});
-const times=['0s','0.5s','1s','1.5s','1.8s','2s','2.5s','3s','4s','5s','6s','8s','10s','12s','15s','18s','20s'];
-new Chart(document.getElementById('timeChart'),{type:'line',data:{labels:times,datasets:[
-  {label:'Unprotected',data:[85,84,62,18,-6,-8,15,42,68,55,72,80,83,85,85,85,85],borderColor:'#c42b2b',borderWidth:2,pointRadius:2,fill:false,tension:.4},
-  {label:'Protected (8.0 m³)',data:[85,84,78,70,68,72,82,95,110,118,122,128,126,122,120,118,117],borderColor:'#0071e3',borderWidth:2,pointRadius:2,fill:false,tension:.4},
-  {label:'Max allowable (136 m)',data:[136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136,136],borderColor:'#c42b2b',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false},
-  {label:'Min allowable (+3 m)',data:[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],borderColor:'#1a7a38',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}
-]},options:opts('Head at pump discharge (m)')});
+const g='rgba(128,128,128,0.2)', t='#86868b', lc='#6e6e73';
+/* method-of-characteristics model results (specs/surge_data: moc.py, vessel_articles.json, datasets.json);
+   flat profile at datum, so head = pressure head. Protected series keep their peak samples. */
+const D={"dx":0.1,"u_max":[189.9,189.7,189.5,189.3,189.2,189.0,166.2,166.1,165.9,165.8,165.6,165.5,165.3,165.2,165.0,164.9,164.7,164.6,164.4,164.2,164.0,163.9,163.7,163.6,163.4,163.3,163.1,163.0,162.9,162.8,162.6,162.5,162.4,162.2,162.1,162.0,161.9,161.7,161.6,161.5,161.3,161.2,161.1,160.9,160.8,160.7,160.5,160.4,160.2,160.1,160.0,159.8,159.7,159.6,159.4,159.3,159.1,159.0,158.8,158.7,158.6,158.4,158.2,158.1,158.0,157.8,157.7,157.5,157.4,157.2,157.1,156.9,156.7,156.6,156.4,156.3,156.1,156.0,155.8,155.6,155.5,155.3,155.2,155.0,154.8,154.7,154.5,154.3,154.2,154.0,153.8,153.6,153.5,153.3,153.1,152.9,152.8,152.6,152.4,152.2,152.0,151.8,151.7,151.5,151.3,151.1,150.9,150.7,150.5,150.3,150.1,148.1,147.6,147.1,146.7,146.2,145.8,145.3,144.9,144.4,44.8],"u_max_g":[164.6,163.7,163.3,162.6,161.9,161.3,160.9,161.7,161.0,160.5,159.9,160.7,159.9,159.6,160.5,158.3,159.1,158.8,159.2,160.0,158.0,158.7,158.5,158.9,159.7,157.7,158.4,158.0,158.5,158.5,157.4,158.2,157.3,158.0,157.2,156.1,157.0,156.2,154.2,154.0,154.5,154.7,154.2,153.8,153.5,153.3,153.0,152.8,153.2,153.1,152.8,152.6,152.5,152.5,152.1,151.8,151.5,151.3,151.1,151.3,151.0,150.7,150.4,150.2,150.0,149.8,149.6,149.4,149.2,149.0,148.8,148.6,148.5,148.3,148.3,148.4,148.9,148.6,148.3,147.6,146.9,147.0,146.9,146.8,146.4,146.7,146.9,147.0,147.3,147.8,147.4,147.0,146.4,146.1,145.5,145.1,144.7,144.1,143.5,143.0,142.4,141.9,141.4,140.7,140.0,139.3,138.8,138.2,137.4,136.0,136.1,130.1,130.3,121.5,122.3,122.8,122.2,121.5,122.3,118.2,44.8],"u_min":[-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,44.8],"f_max":[119.15,118.84,118.52,118.19,117.86,117.51,117.17,116.81,116.45,116.08,115.7,115.31,114.92,114.52,114.11,113.7,113.28,112.85,112.41,111.96,111.51,111.05,110.58,110.1,109.62,109.13,108.63,108.12,107.6,107.08,106.55,106.01,105.46,104.91,104.35,103.78,103.2,102.61,102.02,101.41,100.8,100.19,99.56,98.93,98.29,97.64,96.98,96.32,95.65,94.97,94.29,93.59,92.89,92.19,91.48,90.76,90.03,89.3,88.56,87.81,87.06,86.3,85.54,84.77,84.25,83.8,83.34,82.86,82.38,81.88,81.37,80.85,80.31,79.77,79.21,78.64,78.05,77.46,76.86,76.24,75.61,74.97,74.32,73.65,72.98,72.29,71.6,70.89,70.18,69.45,68.71,67.97,67.22,66.46,65.7,64.93,64.16,63.38,62.66,61.94,61.21,60.47,59.71,58.94,58.17,57.38,56.59,55.78,54.97,54.15,53.32,52.49,51.65,50.8,49.95,49.1,48.24,47.39,46.52,45.66,44.8],"f_min":[4.85,4.84,4.82,4.8,4.79,4.78,4.77,4.76,4.75,4.74,4.73,4.73,4.72,4.72,4.72,4.72,4.73,4.73,4.74,4.74,4.75,4.76,4.78,4.79,4.81,4.79,4.74,4.7,4.66,4.62,4.58,4.54,4.51,4.48,4.45,4.43,4.41,4.39,4.37,4.36,4.35,4.34,4.33,4.33,4.33,4.34,4.34,4.36,4.37,4.39,4.41,4.44,4.47,4.51,4.54,4.59,4.64,4.69,4.75,4.81,4.88,4.95,5.03,5.12,5.21,5.3,5.41,5.52,5.63,5.76,5.89,6.03,6.17,6.33,6.49,6.66,6.85,7.04,7.24,7.45,7.68,7.91,8.16,8.42,8.69,8.98,9.28,9.6,9.94,10.29,10.66,11.05,11.46,11.89,12.35,12.83,13.33,13.87,14.43,15.03,15.66,16.32,17.03,17.77,18.57,19.41,20.31,21.27,22.29,23.38,24.55,25.81,27.16,28.62,30.2,31.91,33.78,35.82,38.06,40.53,44.8],"ut":[0.1,0.8,1.5,2.3,3.0,3.8,4.6,5.3,6.1,6.8,7.5,8.3,9.0,9.8,10.6,11.3,12.1,12.8,13.5,14.3,15.0,15.8,16.6,17.3,18.1,18.8,19.5,20.3,21.0,21.8,22.6,23.3,24.1,24.8,25.5,26.3,27.0,27.8,28.6,29.3,30.1,30.8,31.5,32.3,33.0,33.8,34.6,35.3,36.1,36.8,37.5,38.3,39.0,39.8,40.6,41.3,42.1,42.8,43.5,44.3,45.0,45.8,46.6,47.2,47.3,48.0,48.1,48.7,48.8,49.4,49.5,50.2,50.3,51.0,51.0,51.7,51.8,52.5,52.6,53.2,53.3,54.0,54.1,54.7,54.8,55.4,55.5,56.2,56.3,57.0,57.0,57.7,57.8,58.5,58.6,59.2,59.3,60.0,60.1,60.7,60.8,61.4,61.5,62.2,62.3,63.0,63.0,63.7,63.8,64.5,64.6,65.2,65.3,66.0,66.1,66.7,66.8,67.4,67.5,68.2,68.3,69.0,69.6,69.7,69.8,70.5,70.6,71.2,71.3,71.5,72.1,72.8,73.5,74.3,75.0,75.8,76.6,77.3,78.1,78.8,79.5,80.3,81.0,81.8,82.6,83.3,84.1,84.8,85.5,86.3,87.0,87.8,88.6,89.3,90.1,90.8,91.5,92.3,93.0,93.6,93.8,94.1,94.6,95.2,95.3,96.0,96.1,96.7,96.8,97.4,97.5,98.2,98.3,99.0,99.0,99.7,99.8,100.5,100.6,101.2,101.3,102.0,102.1,102.7,102.8,103.4,103.5,104.2,104.3,105.0,105.0,105.7,105.8,106.5,106.6,107.2,107.3,108.0,108.3,108.7,108.8,109.3,109.5,109.6,110.4,110.5,111.1,111.6,111.9,112.4,112.9,113.1,113.6,113.9,114.2,114.7,114.8,115.4,115.5,116.2,116.3,116.4,117.0,117.4,117.8,118.5,118.6,119.2,119.3,120.0,120.1,120.6,120.8,121.4,121.5,122.2,122.3,123.0,123.0,123.7,123.8,124.5,124.6,125.2,125.3,125.9,126.1,126.7,126.8,127.4,127.5,128.2,128.3,129.0,129.0,129.7,129.8,130.5,130.6,131.2,131.3,132.0,132.3,132.6,132.9,133.3,133.6,133.9,134.4,135.0,135.1,135.6,135.9,136.4,136.7,137.1,137.3,138.0,138.1,138.7,139.1,139.4,139.7,140.0,140.3,141.0,141.0,141.7,141.8,142.5,142.6,143.2,143.3,144.0,144.1,144.7,144.8,145.4,145.5,146.2,146.3,147.0,147.0,147.7,147.8,148.5,148.6,149.2,149.4,150.0],"uh":[-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,98.4,97.8,102.3,101.6,108.4,108.6,110.1,110.3,111.7,111.9,113.3,113.5,114.8,115.0,116.3,116.5,117.8,118.0,119.2,119.4,120.5,120.6,121.8,121.9,123.2,123.3,124.5,124.5,125.7,125.8,127.0,127.0,128.2,128.3,129.4,129.4,130.3,130.6,131.5,131.7,132.6,132.8,133.7,133.9,134.8,135.0,135.8,136.1,137.1,137.1,138.4,138.5,139.5,139.7,140.8,141.0,142.1,142.3,188.7,189.9,0.4,1.0,-2.9,-2.3,-6.3,-5.7,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,129.9,30.7,130.7,67.5,68.4,68.7,69.6,69.8,70.7,70.8,71.8,72.0,72.9,72.9,73.8,73.8,74.8,74.8,75.7,75.7,76.7,76.7,77.7,77.7,78.4,78.6,79.4,79.6,80.4,80.6,81.4,81.6,82.4,82.7,83.5,83.7,84.5,84.8,85.6,85.8,86.4,86.5,130.4,87.0,130.4,87.9,130.7,88.5,89.2,89.3,90.0,90.2,90.9,91.0,91.9,91.8,92.8,92.7,94.2,94.0,95.4,95.4,-9.8,-9.8,24.1,23.6,22.4,22.5,21.3,21.4,20.2,20.3,19.5,19.3,18.6,18.4,17.7,17.5,16.8,16.6,15.9,15.7,15.0,14.8,14.1,13.9,13.2,13.0,12.3,12.3,11.3,11.3,10.4,10.4,9.4,9.4,8.4,8.5,7.5,7.5,6.4,6.6,5.7,5.9,5.1,5.2,-9.8,4.5,-9.8,3.8,3.0,3.1,2.3,2.1,1.5,1.3,0.6,0.5,-0.5,-0.6,-1.5,-2.4,73.3,32.6,74.3,64.2,65.3,65.3,66.3,66.3,67.4,67.3,68.4,68.3,69.2,69.3,69.9,70.1,70.7,70.9,71.6,71.8,72.4,72.6,73.3,73.5,74.1,74.3,75.0,75.1,75.6],"t":[0.1,0.67,1.24,1.81,2.38,2.95,3.52,4.09,4.67,5.24,5.81,6.38,6.95,7.52,8.1,8.67,9.24,9.81,10.48,11.05,11.62,12.19,12.76,13.33,13.9,14.48,15.05,15.62,16.19,16.76,17.33,17.91,18.48,19.05,19.62,20.29,20.86,21.43,22.0,22.57,22.86,23.14,23.71,24.29,24.86,25.43,26.0,26.57,27.14,27.71,28.29,28.86,29.43,30.09,30.67,31.24,31.81,32.38,32.95,33.52,33.81,34.09,34.67,35.24,35.81,36.38,36.95,37.52,38.09,38.67,39.24,39.81,40.48,41.05,41.62,42.19,42.76,43.33,43.91,44.48,45.05,45.62,45.71,45.91,46.19,46.76,47.33,47.91,48.48,49.05,49.62,50.29,50.86,51.43,52.0,52.57,53.14,53.71,54.29,54.86,55.43,56.0,56.57,57.14,57.71,58.29,58.86,59.43,60.09,60.67,61.24,61.81,62.38,62.95,63.52,64.09,64.67,65.24,65.81,66.38,66.95,67.52,68.09,68.67,69.24,69.81,70.48,71.05,71.62,72.19,72.76,73.33,73.91,74.48,75.05,75.62,76.19,76.76,77.33,77.91,78.48,79.05,79.62,80.29,80.86,81.43,82.0,82.57,83.14,83.71,84.19,84.29,84.86,85.43,86.0,86.57,87.14,87.71,88.29,88.86,89.43,90.09,90.67,91.24,91.81,92.38,92.95,93.52,94.09,94.67,95.24,95.81,96.29,96.38,96.95,97.52,98.09,98.38,98.67,99.24,99.81,100.48,101.05,101.24,101.62,102.19,102.76,103.33,103.91,104.48,105.05,105.62,106.19,106.76,107.33,107.91,108.48,109.05,109.62,110.29,110.86,111.43,112.0,112.57,113.14,113.71,114.29,114.86,115.43,116.0,116.57,117.14,117.71,118.29,118.86,119.43,120.09,120.67,121.24,121.81,122.38,122.95,123.52,124.09,124.67,125.24,125.81,126.38,126.95,127.52,128.09,128.67,129.24,129.81,130.48,131.05,131.62,132.19,132.76,133.33,133.91,134.48,135.05,135.62,136.19,136.76,137.33,137.91,138.48,139.05,139.62,140.29,140.86,141.43,142.0,142.57,143.14,143.71,144.29,144.86,145.43,146.0,146.57,147.14,147.71,148.29,148.86,149.43,150.0],"vg":[3.53,3.91,4.26,4.59,4.91,5.22,5.51,5.8,6.08,6.36,6.63,6.9,7.16,7.42,7.68,7.94,8.19,8.44,8.73,8.98,9.23,9.47,9.72,9.96,10.21,10.45,10.69,10.94,11.18,11.42,11.66,11.9,12.15,12.39,12.63,12.92,13.16,13.4,13.65,13.89,14.01,14.13,14.33,14.51,14.66,14.79,14.91,15.02,15.11,15.19,15.27,15.34,15.4,15.47,15.52,15.57,15.61,15.65,15.69,15.72,15.74,15.76,15.79,15.81,15.84,15.86,15.89,15.91,15.93,15.95,15.97,15.99,16.01,16.03,16.05,16.06,16.08,16.1,16.11,16.13,16.15,16.17,16.17,16.17,16.17,16.14,16.09,16.02,15.94,15.85,15.74,15.6,15.48,15.35,15.21,15.07,14.93,14.78,14.63,14.48,14.33,14.17,14.02,13.86,13.7,13.54,13.38,13.22,13.03,12.87,12.71,12.55,12.4,12.24,12.08,11.93,11.77,11.62,11.46,11.31,11.16,11.01,10.86,10.72,10.55,10.37,10.13,9.92,9.71,9.48,9.26,9.03,8.8,8.57,8.34,8.11,7.88,7.66,7.43,7.21,6.99,6.78,6.57,6.33,6.12,5.93,5.74,5.55,5.37,5.2,5.06,5.03,4.87,4.72,4.57,4.43,4.3,4.18,4.06,3.96,3.86,3.75,3.67,3.59,3.52,3.44,3.35,3.27,3.19,3.11,3.04,2.98,2.93,2.92,2.87,2.83,2.8,2.78,2.77,2.75,2.73,2.72,2.71,2.71,2.71,2.72,2.73,2.74,2.76,2.79,2.81,2.84,2.88,2.92,2.97,3.02,3.07,3.13,3.19,3.28,3.35,3.43,3.52,3.61,3.7,3.8,3.91,4.0,4.1,4.19,4.29,4.39,4.5,4.61,4.73,4.86,5.01,5.15,5.29,5.44,5.59,5.74,5.89,6.04,6.2,6.35,6.5,6.65,6.8,6.94,7.08,7.22,7.36,7.49,7.64,7.77,7.89,8.01,8.13,8.24,8.35,8.46,8.56,8.65,8.75,8.84,8.93,9.0,9.07,9.13,9.19,9.26,9.32,9.38,9.43,9.49,9.55,9.61,9.67,9.72,9.78,9.83,9.88,9.92,9.96,10.0,10.03,10.06,10.08],"runs":{"3.5":{"min":4.33,"at":4.3,"pmin":4.85,"max":119.15,"vg":16.17,"h":[80.96,70.62,62.72,56.42,51.27,46.94,43.24,40.04,37.23,34.74,32.51,30.5,28.68,27.02,25.49,24.09,22.79,21.58,20.28,19.24,18.26,17.34,16.48,15.66,14.89,14.16,13.46,12.8,12.17,11.57,11.0,10.45,9.92,9.42,8.94,8.4,7.95,7.52,7.11,6.72,6.52,6.59,6.54,6.46,6.36,6.27,6.17,6.08,5.99,5.91,5.84,5.77,5.7,5.64,5.58,5.53,5.48,5.44,5.4,5.36,5.34,5.33,5.29,5.26,5.23,5.21,5.18,5.16,5.13,5.11,5.09,5.06,5.04,5.02,5.0,4.98,4.96,4.94,4.92,4.9,4.88,4.86,4.85,4.86,4.88,5.05,5.31,5.61,5.93,6.26,6.58,6.96,7.28,7.58,7.89,8.18,8.48,8.76,9.05,9.33,9.61,9.89,10.16,10.44,10.71,10.99,11.27,11.55,11.88,12.17,12.46,12.75,13.05,13.35,13.65,13.96,14.28,14.6,14.93,15.26,15.6,15.94,16.29,16.93,18.12,19.24,20.47,21.48,22.47,23.45,24.43,25.42,26.42,27.45,28.51,29.61,30.76,31.95,33.19,34.49,35.85,37.28,38.79,40.63,42.3,44.04,45.87,47.78,49.77,51.85,53.63,54.0,56.22,58.51,60.86,63.25,65.68,68.13,70.58,73.02,75.42,78.15,80.41,82.57,85.01,87.8,90.76,93.81,96.89,99.92,102.86,105.65,107.83,108.25,110.62,112.73,114.56,115.36,116.08,117.3,118.2,118.87,119.13,119.15,119.1,118.79,118.22,117.4,116.35,115.07,113.6,111.93,110.08,108.06,105.89,103.58,101.14,98.59,95.94,92.75,89.96,87.13,84.27,81.42,78.58,75.77,73.01,70.6,68.41,66.3,64.23,62.14,60.04,57.93,55.81,53.71,51.29,49.26,47.3,45.41,43.6,41.87,40.23,38.68,37.23,35.85,34.57,33.36,32.23,31.17,30.18,29.25,28.38,27.57,26.68,25.97,25.31,24.68,24.1,23.54,23.03,22.54,22.08,21.65,21.24,20.86,20.53,20.26,20.01,19.77,19.54,19.28,19.05,18.83,18.6,18.39,18.17,17.97,17.77,17.58,17.4,17.23,17.08,16.94,16.81,16.7,16.6,16.52,16.45]},"3.0":{"min":1.93,"at":4.6,"pmin":3.58,"max":123.53,"vg":14.91,"h":[80.79,69.05,60.38,53.66,48.26,43.8,40.03,36.8,33.99,31.51,29.31,27.34,25.56,23.94,22.47,21.11,19.86,18.7,17.45,16.45,15.53,14.65,13.83,13.06,12.33,11.64,10.99,10.36,9.77,9.21,8.67,8.16,7.67,7.2,6.75,6.25,5.83,5.44,5.06,4.69,4.51,4.61,4.61,4.57,4.5,4.43,4.36,4.29,4.22,4.16,4.11,4.06,4.01,3.96,3.93,3.89,3.87,3.84,3.82,3.79,3.78,3.78,3.76,3.74,3.73,3.72,3.71,3.7,3.69,3.68,3.67,3.66,3.65,3.65,3.64,3.63,3.63,3.62,3.61,3.6,3.59,3.58,3.58,3.6,3.68,3.97,4.34,4.74,5.14,5.54,5.93,6.37,6.73,7.08,7.42,7.75,8.08,8.4,8.72,9.03,9.34,9.65,9.97,10.28,10.59,10.91,11.23,11.55,11.94,12.27,12.62,12.97,13.32,13.69,14.06,14.44,14.83,15.23,15.64,16.06,16.49,16.93,17.39,18.15,19.61,20.96,22.46,23.71,24.95,26.19,27.47,28.78,30.14,31.56,33.06,34.64,36.31,38.08,39.96,41.96,44.08,46.33,48.72,51.68,54.36,57.18,60.12,63.18,66.33,69.56,72.28,72.82,76.1,79.35,82.53,85.61,88.55,91.3,93.85,96.16,98.23,100.32,101.83,103.09,104.53,106.63,109.02,111.48,113.89,116.15,118.17,119.9,121.11,121.32,122.39,123.11,123.48,123.53,123.5,123.17,122.52,121.35,120.03,119.52,118.41,116.52,114.37,111.98,109.35,106.5,103.47,100.26,96.91,93.44,89.89,86.28,82.66,79.06,75.51,71.46,68.12,64.9,61.83,58.91,56.16,53.58,51.16,49.14,47.32,45.61,43.95,42.33,40.73,39.17,37.65,36.17,34.52,33.17,31.88,30.66,29.51,28.42,27.41,26.45,25.56,24.72,23.94,23.2,22.52,21.88,21.28,20.71,20.19,19.7,19.16,18.73,18.33,17.95,17.6,17.27,16.97,16.69,16.43,16.19,15.98,15.79,15.63,15.52,15.44,15.36,15.29,15.21,15.15,15.08,15.01,14.94,14.88,14.83,14.78,14.74,14.71,14.69,14.68,14.68,14.71,14.74,14.8,14.87,14.97]},"2.5":{"min":-0.74,"at":5.0,"pmin":2.1,"max":124.29,"vg":13.65,"h":[80.56,66.96,57.4,50.22,44.58,40.01,36.2,32.98,30.19,27.77,25.62,23.71,22.0,20.45,19.04,17.75,16.56,15.47,14.29,13.36,12.49,11.68,10.91,10.19,9.52,8.88,8.27,7.7,7.15,6.64,6.14,5.67,5.22,4.79,4.38,3.93,3.55,3.19,2.84,2.51,2.35,2.49,2.55,2.55,2.51,2.46,2.41,2.37,2.32,2.28,2.25,2.22,2.19,2.17,2.15,2.14,2.12,2.12,2.11,2.11,2.1,2.1,2.1,2.11,2.11,2.11,2.12,2.13,2.13,2.14,2.15,2.15,2.16,2.17,2.18,2.18,2.19,2.19,2.2,2.2,2.21,2.21,2.21,2.27,2.43,2.88,3.4,3.91,4.41,4.89,5.35,5.85,6.26,6.65,7.04,7.41,7.77,8.13,8.48,8.84,9.19,9.54,9.9,10.26,10.63,11.01,11.39,11.78,12.25,12.66,13.09,13.53,13.98,14.45,14.93,15.43,15.95,16.49,17.04,17.62,18.21,18.83,19.47,20.45,22.31,24.05,26.02,27.7,29.42,31.22,33.1,35.11,37.25,39.56,42.05,44.73,47.64,50.77,54.15,57.77,61.62,65.7,69.98,75.14,79.66,84.17,88.6,92.86,96.86,100.52,103.29,103.8,106.66,109.09,111.09,112.68,113.9,114.78,115.35,115.67,115.75,115.6,115.29,114.83,114.78,115.97,117.67,119.46,121.13,122.53,123.55,124.14,124.29,124.28,123.94,123.12,121.83,121.02,120.09,117.91,115.3,111.76,108.32,107.1,104.55,100.49,96.18,91.69,87.08,82.42,77.78,73.23,68.84,64.64,60.67,56.97,53.53,50.37,47.47,44.4,42.02,39.85,37.88,36.08,34.43,32.93,31.56,30.48,29.49,28.55,27.62,26.7,25.78,24.87,23.98,23.12,22.16,21.37,20.62,19.92,19.25,18.63,18.04,17.49,16.98,16.5,16.05,15.63,15.23,14.87,14.52,14.2,13.91,13.64,13.35,13.13,12.94,12.77,12.62,12.49,12.39,12.31,12.25,12.2,12.18,12.18,12.22,12.36,12.49,12.61,12.72,12.83,12.92,13.01,13.11,13.2,13.31,13.42,13.54,13.68,13.83,14.0,14.19,14.39,14.62,14.86,15.12,15.4,15.7]},"2.0":{"min":-3.8,"at":5.4,"pmin":0.02,"max":126.43,"vg":12.53,"h":[80.22,64.07,53.44,45.79,39.96,35.33,31.54,28.37,25.67,23.34,21.29,19.48,17.87,16.42,15.1,13.91,12.81,11.8,10.73,9.87,9.08,8.34,7.65,7.0,6.39,5.82,5.27,4.76,4.27,3.81,3.37,2.95,2.55,2.17,1.81,1.41,1.08,0.76,0.45,0.16,0.02,0.21,0.35,0.38,0.37,0.35,0.32,0.29,0.27,0.25,0.24,0.23,0.22,0.22,0.22,0.23,0.24,0.26,0.27,0.29,0.3,0.31,0.34,0.36,0.38,0.41,0.43,0.45,0.47,0.5,0.52,0.54,0.57,0.59,0.61,0.62,0.64,0.66,0.68,0.69,0.71,0.72,0.72,0.86,1.14,1.82,2.51,3.17,3.78,4.34,4.87,5.44,5.9,6.34,6.76,7.18,7.58,7.99,8.39,8.79,9.2,9.62,10.05,10.49,10.94,11.41,11.89,12.4,13.02,13.57,14.15,14.76,15.4,16.07,16.78,17.52,18.3,19.12,19.99,20.9,21.85,22.85,23.91,25.35,27.95,30.5,33.54,36.31,39.3,42.56,46.16,50.14,54.54,59.39,64.69,70.43,76.54,82.9,89.35,95.69,101.69,107.16,111.96,116.59,119.73,122.14,123.92,125.15,125.92,126.32,126.43,126.43,126.28,125.93,125.41,124.75,123.96,123.06,122.05,120.95,119.75,118.24,116.85,115.38,114.56,115.46,116.88,118.17,119.0,119.16,118.55,117.12,115.3,114.87,111.81,108.01,103.52,101.05,98.45,92.9,87.02,79.97,73.96,71.99,68.13,62.62,57.52,52.87,48.68,44.95,41.63,38.69,36.08,33.77,31.71,29.88,28.23,26.75,25.41,24.01,22.93,21.94,21.04,20.21,19.46,18.76,18.12,17.66,17.22,16.78,16.31,15.83,15.34,14.85,14.36,13.89,13.36,12.94,12.53,12.15,11.79,11.45,11.13,10.84,10.57,10.32,10.1,9.91,9.74,9.6,9.49,9.4,9.33,9.29,9.27,9.29,9.33,9.4,9.51,9.64,9.79,9.97,10.17,10.4,10.64,10.91,11.33,11.83,12.18,12.46,12.72,13.01,13.27,13.54,13.83,14.13,14.46,14.81,15.18,15.57,15.98,16.42,16.89,17.39,17.93,18.53,19.18,19.9,20.69]}}};
+const f1=v=>{const sg=v<0?-1:1;return (sg*Math.round(Math.abs(v)*10+1e-6)/10).toFixed(1);};
+const lab=c=>{const y=c.parsed.y,ds=c.dataset;
+  if(ds.yAxisID==='y1') return ds.label+': '+y.toFixed(2)+' m³';
+  if(ds.cp&&y>85) return ds.label+': about '+Math.round(y/5)*5+' m (collapse-governed, model-dependent)';
+  return ds.label+': '+f1(y)+' m';};
+const opts=(xt,yt,xmax)=>({responsive:true,animation:false,aspectRatio:(window.innerWidth&&window.innerWidth<600)?1.1:2,interaction:{mode:'nearest',axis:'x',intersect:false},
+  plugins:{legend:{position:'bottom',labels:{color:lc,font:{size:11},boxWidth:12,padding:16,filter:(it,d)=>!d.datasets[it.datasetIndex].hidden}},
+    tooltip:{callbacks:{title:c=>c.length?c[0].parsed.x.toFixed(1)+(xmax===12?' km':' s'):'',label:lab}}},
+  scales:{x:{type:'linear',min:0,max:xmax,ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:xt,color:t,font:{size:11}}},
+    y:{min:-20,max:200,ticks:{color:t,font:{size:11}},grid:{color:g},title:{display:true,text:yt,color:t,font:{size:11}}}}});
+const env=a=>a.map((y,i)=>({x:+(i*D.dx).toFixed(1),y}));
+const ser=(ts,ys)=>ys.map((y,i)=>({x:ts[i],y}));
+const flat=(y,x1)=>[{x:0,y},{x:x1,y}];
+const hgl=D.u_max.map((_,i)=>({x:+(i*D.dx).toFixed(1),y:+(85-40.2*i*D.dx/12).toFixed(2)}));
+const ln=(label,data,color,extra)=>Object.assign({label,data,borderColor:color,backgroundColor:color,borderWidth:2,pointRadius:0,fill:false,tension:0},extra||{});
+const lim=x1=>[ln('Allowable 136 m',flat(136,x1),'#7f8c8d',{borderWidth:1.5,borderDash:[10,4]}),ln('Minimum +3.0 m',flat(3,x1),'#7f8c8d',{borderWidth:1.5,borderDash:[2,3]})];
+const c1=new Chart(document.getElementById('baselineChart'),{type:'line',data:{datasets:[
+  ln('Steady state',hgl,'#5eaadd',{borderWidth:1.5,borderDash:[6,3]}),
+  ln('Max — vapour cavity model',env(D.u_max),'#c42b2b',{cp:true}),
+  ln('Max — gas cavity model',env(D.u_max_g),'#c42b2b',{borderWidth:1,borderDash:[3,3],fill:'-1',backgroundColor:'rgba(196,43,43,0.12)',cp:true}),
+  ln('Min transient',env(D.u_min),'#8a5700'),
+  ...lim(12)
+]},options:opts('Chainage (km)','Pressure head (m)',12)});
+const c2=new Chart(document.getElementById('comparisonChart'),{type:'line',data:{datasets:[
+  ln('Steady state',hgl,'#5eaadd',{borderWidth:1.5,borderDash:[6,3]}),
+  ln('Max — unprotected',env(D.u_max),'#c42b2b',{borderWidth:1.5,borderDash:[5,3],cp:true}),
+  ln('Min — unprotected',env(D.u_min),'#8a5700',{borderWidth:1.5,borderDash:[5,3]}),
+  ln('Max — 20 m³ vessel',env(D.f_max),'#0071e3'),
+  ln('Min — 20 m³ vessel',env(D.f_min),'#6b4f9e'),
+  ...lim(12)
+]},options:opts('Chainage (km)','Pressure head (m)',12)});
+const cs=document.getElementById('cmpSel');
+function upd2(){const z=cs.value==='min';c2.options.scales.y.min=z?-12:-20;c2.options.scales.y.max=z?20:200;c2.update('none');}
+cs.addEventListener('input',upd2);cs.addEventListener('change',upd2);upd2();
+const o3=opts('Time after pump trip (s)','Pressure head at pump discharge (m)',150);
+o3.scales.y1={position:'right',min:0,max:20,grid:{drawOnChartArea:false},ticks:{color:t,font:{size:11}},title:{display:true,text:'Gas volume (m³), top = shell',color:t,font:{size:11}}};
+const c3=new Chart(document.getElementById('timeChart'),{type:'line',data:{datasets:[
+  ln('Unprotected (vapour cavity model)',ser(D.ut,D.uh),'#c42b2b',{borderWidth:1.2,cp:true}),
+  ln('With vessel, 3.5 m³ gas',ser(D.t,D.runs['3.5'].h),'#0071e3'),
+  ln('Gas volume, 3.5 m³ design',ser(D.t,D.vg),'#8a5700',{borderWidth:1.5,borderDash:[2,2],yAxisID:'y1'}),
+  ...lim(150)
+]},options:o3});
+const sel=document.getElementById('timeSel'), rd=document.getElementById('timeRead');
+const sg=v=>(v>=0?'+':'&minus;')+f1(Math.abs(v));
+function upd(){
+  const k=D.runs[sel.value]?sel.value:'3.5', r=D.runs[k], vis=k==='3.5';
+  c3.data.datasets[1].data=ser(D.t,r.h);
+  c3.data.datasets[1].label='With vessel, '+k+' m³ gas';
+  c3.data.datasets[2].hidden=!vis;
+  if(c3.setDatasetVisibility) c3.setDatasetVisibility(2,vis);
+  c3.options.scales.y1.display=vis;
+  rd.innerHTML='Line minimum '+sg(r.min)+' m at '+r.at.toFixed(1)+' km &middot; at the pump '+sg(r.pmin)+' m &middot; maximum '+f1(r.max)+' m &middot; largest gas volume '+r.vg.toFixed(2)+' m&sup3; &middot; '+(r.min>=3?'<span class="badge badge-success">PASS</span>':'<span class="badge badge-danger">FAIL</span>');
+  c3.update('none');
+}
+sel.addEventListener('input',upd);sel.addEventListener('change',upd);upd();
+/* keep axis text on the theme after a light/dark flip (scale options are rebuilt on every update) */
+const reTheme=()=>{const v=getComputedStyle(document.documentElement).getPropertyValue('--text-tertiary').trim();if(!v)return;
+  [c1,c2,c3].forEach(c=>{Object.values(c.options.scales).forEach(sc=>{if(sc&&sc.ticks)sc.ticks.color=v;if(sc&&sc.title)sc.title.color=v;});c.update('none');});};
+if(window.MutationObserver) new MutationObserver(reTheme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+window.addEventListener('load',function(){try{c1.resize();c2.resize();c3.resize();}catch(e){}});
 </script>
 
 

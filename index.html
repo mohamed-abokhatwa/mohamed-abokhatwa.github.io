@@ -487,7 +487,7 @@ p strong{color:var(--text-primary); font-weight:600;}
   <div class="rt-hero-meta rt-reveal" style="animation-delay:.38s">
     <div><b>700</b><span>km of main</span></div>
     <div><b>828</b><span>m of tower</span></div>
-    <div><b>79</b><span>articles</span></div>
+    <div><b>86</b><span>articles</span></div>
     <div><b>22</b><span>years</span></div>
   </div>
 </div>  <div style="margin-top:32px;">
@@ -717,7 +717,7 @@ p strong{color:var(--text-primary); font-weight:600;}
 
 <section class="rt-sect-archive" data-at="el:832"><div class="rt-wrap-wide">
   <div class="rt-tag"><span class="rt-p">THE ARCHIVE</span><span class="rt-ln"></span><span class="rt-nm">Everything, by subject</span></div>
-  <h2 class="section-title">Seventy-nine articles, filed by subject.</h2>
+  <h2 class="section-title">Eighty-six articles, filed by subject.</h2>
   <p style="margin-bottom:8px;">The route above is the argument. This is the library behind it.</p>
 <div class="cat-section">
   <span class="section-eyebrow">Browse by topic</span>
@@ -858,7 +858,7 @@ p strong{color:var(--text-primary); font-weight:600;}
       </div>
     </a>
 
-    <a href="one-way-surge-tank-design.html" class="article-card" data-cat="surge" data-search="one-way surge tank feed tank discharge tank knee rising main pipeline profile high point surge vessel hydropneumatic tank air vessel air chamber size reduction gas volume shell volume pump trip power failure downsurge column separation vapour cavity collapse DVCM DGCM method of characteristics minimum pressure criterion critical point plateau tank level drain limit delivery reservoir rest HGL tank draw volume check valve refill line float valve altitude valve vent overflow water quality turnover interlock Bentley HAMMER OpenFlows Surge Tank Hydropneumatic Tank transient envelopes DN800 ductile iron PN16 surge protection design">
+    <a href="one-way-surge-tank-design.html" class="article-card hidden-article" data-cat="surge" data-search="one-way surge tank feed tank discharge tank knee rising main pipeline profile high point surge vessel hydropneumatic tank air vessel air chamber size reduction gas volume shell volume pump trip power failure downsurge column separation vapour cavity collapse DVCM DGCM method of characteristics minimum pressure criterion critical point plateau tank level drain limit delivery reservoir rest HGL tank draw volume check valve refill line float valve altitude valve vent overflow water quality turnover interlock Bentley HAMMER OpenFlows Surge Tank Hydropneumatic Tank transient envelopes DN800 ductile iron PN16 surge protection design">
       <div class="card-body">
         <span class="article-card-tag">Surge &amp; Transient Analysis &middot; One-Way Surge Tanks</span>
         <div class="article-card-title">One-Way Surge Tanks at the Knee: Cutting the Surge Vessel by Nearly Two-Thirds</div>
@@ -2163,9 +2163,9 @@ p strong{color:var(--text-primary); font-weight:600;}
   <!-- Show More Button -->
   <div id="show-more-wrap" style="text-align:center; padding:2.5rem 0 1rem;">
     <button id="show-more-btn" onclick="revealArticles()" class="btn btn-ghost" style="cursor:pointer;">
-      Show 76 More Articles
+      Show 83 More Articles
     </button>
-    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">3 of 79 articles shown</div>
+    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">3 of 86 articles shown</div>
   </div>
 
 </div>
@@ -2293,7 +2293,9 @@ function topicFilter(cat, el) {
     _currentCat = cat;
     el.classList.add('active');
     var sec = document.querySelector('.articles-section');
-    if (sec) window.scrollTo({ top: sec.offsetTop - 60, behavior: 'smooth' });
+    // offsetTop is relative to the archive section (position:relative), which sent the page near the top;
+    // measure against the document instead, clearing the fixed nav
+    if (sec) window.scrollTo({ top: sec.getBoundingClientRect().top + window.pageYOffset - 70, behavior: 'smooth' });
   }
   filterArticles();
   if (window.gtag && !wasActive) gtag('event', 'topic_filter', { event_category: 'engagement', event_label: cat });

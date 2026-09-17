@@ -502,7 +502,7 @@ p strong{color:var(--text-primary); font-weight:600;}
   <div class="rt-hero-meta fade-up-4">
     <div><b>٧٠٠</b><span>كم خط نقل</span></div>
     <div><b>٨٢٨</b><span>م ارتفاع البرج</span></div>
-    <div><b>٧٩</b><span>مقالة</span></div>
+    <div><b>٨٦</b><span>مقالة</span></div>
     <div><b>٢٢</b><span>عامًا</span></div>
   </div>
   <div style="margin-top:32px;">
@@ -701,7 +701,7 @@ p strong{color:var(--text-primary); font-weight:600;}
 
 <section class="rt-sect-archive" data-at="el:832"><div class="rt-wrap-wide">
   <div class="rt-tag"><span class="rt-p">الأرشيف</span><span class="rt-ln"></span><span class="rt-nm">كل شيء، بالموضوع</span></div>
-  <h2 class="section-title">تسع وسبعون مقالة، مُصنَّفة بالموضوع.</h2>
+  <h2 class="section-title">ست وثمانون مقالة، مُصنَّفة بالموضوع.</h2>
   <p style="margin-bottom:8px;">المسار في الأعلى هو الحجّة. وهذه هي المكتبة التي تقف خلفه.</p>
 <div class="cat-section">
   <span class="section-eyebrow" style="text-align:end;display:block;">تصفح حسب الموضوع</span>
@@ -831,7 +831,7 @@ p strong{color:var(--text-primary); font-weight:600;}
       <div class="card-thumb"><img src="thumbs/surge-vessel-type-selection.webp" width="320" height="200" alt="Bladder, Diaphragm or Air-over-Water: Choosing the Surge Vessel Type" loading="lazy"></div>
     </a>
 
-    <a href="one-way-surge-tank-design.html" class="article-card" data-cat="surge" data-search="خزان أحادي الاتجاه خزان تغذية أحادي الاتجاه نقطة تغير الميل خط ضخ صاعد مقطع طولي خزان الحماية من الطرق المائي خزان الحماية الهيدروهوائي خزان الضغط الهوائي خزان الموازنة حجم الغاز توقف المضخات انقطاع الكهرباء الانخفاض المفاجئ للضغط انفصال العمود المائي التكهف طريقة الخطوط المميزة الحد الأدنى للضغط منسوب الخزان حد التصريف خزان الاستلام صمام عدم الرجوع خط إعادة التعبئة صمام عوامة فتحة التهوية الفائض جودة المياه برنامج HAMMER المطرقة المائية الطرق المائي تحليل المطرقة المائية حديد الدكتايل">
+    <a href="one-way-surge-tank-design.html" class="article-card hidden-article" data-cat="surge" data-search="خزان أحادي الاتجاه خزان تغذية أحادي الاتجاه نقطة تغير الميل خط ضخ صاعد مقطع طولي خزان الحماية من الطرق المائي خزان الحماية الهيدروهوائي خزان الضغط الهوائي خزان الموازنة حجم الغاز توقف المضخات انقطاع الكهرباء الانخفاض المفاجئ للضغط انفصال العمود المائي التكهف طريقة الخطوط المميزة الحد الأدنى للضغط منسوب الخزان حد التصريف خزان الاستلام صمام عدم الرجوع خط إعادة التعبئة صمام عوامة فتحة التهوية الفائض جودة المياه برنامج HAMMER المطرقة المائية الطرق المائي تحليل المطرقة المائية حديد الدكتايل">
       <div class="card-body">
         <span class="article-card-tag">Surge &amp; Transient Analysis &middot; One-Way Surge Tanks</span>
         <div class="article-card-title">خزانات التغذية أحادية الاتجاه عند نقطة تغيّر الميل: تقليص خزان الحماية من الطرق المائي بنحو الثلثين</div>
@@ -1852,9 +1852,9 @@ p strong{color:var(--text-primary); font-weight:600;}
   <!-- Show More Button -->
   <div id="show-more-wrap" style="text-align:center; padding:2.5rem 0 1rem;">
     <button id="show-more-btn" onclick="revealArticles()" class="btn btn-ghost" style="cursor:pointer; font-family:'Cairo',var(--font-mono); letter-spacing:0; text-transform:none; font-size:13px;">
-      عرض ٧٦ مقالة إضافية
+      عرض ٨٣ مقالة إضافية
     </button>
-    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">يُعرض ٣ من أصل ٧٩ مقالة</div>
+    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">يُعرض ٣ من أصل ٨٦ مقالة</div>
   </div>
 
 </div>
@@ -1938,7 +1938,9 @@ function topicFilter(cat, el) {
     _currentCat = cat;
     el.classList.add('active');
     var sec = document.querySelector('.articles-section');
-    if (sec) window.scrollTo({ top: sec.offsetTop - 60, behavior: 'smooth' });
+    // offsetTop is relative to the archive section (position:relative), which sent the page near the top;
+    // measure against the document instead, clearing the fixed nav
+    if (sec) window.scrollTo({ top: sec.getBoundingClientRect().top + window.pageYOffset - 70, behavior: 'smooth' });
   }
   filterArticles();
   if (window.gtag && !wasActive) gtag('event', 'topic_filter', { event_category: 'engagement', event_label: cat });

@@ -97,7 +97,7 @@ def wire_site(s):
         t = t.replace(anchor, anchor + entry, 1)
         io.open(p, 'w', encoding='utf-8').write(t)
 
-    # 2 · EN + AR index: card at top of grid, chip +1, keep exactly 4 cards visible
+    # 2 · EN + AR index: card at top of grid, chip +1, keep exactly 3 cards visible
     for idx, lang in (('index.html', 'en'), ('index-ar.html', 'ar')):
         t = io.open(idx, encoding='utf-8').read()
         if f'href="{slug}.html"' in t:
@@ -143,10 +143,10 @@ def wire_site(s):
 
         gm = re.search(r'(<div class="articles-grid" id="articlesGrid">\s*\n\n?)', t)
         t = t[:gm.end(1)] + card + t[gm.end(1):]
-        # demote the card that was 4th so exactly 4 stay visible
+        # demote the card that was 3rd so exactly 3 stay visible
         vis = [m2 for m2 in re.finditer(r'<a href="([^"]+)" class="article-card" data-cat=', t)]
-        if len(vis) > 4:
-            m2 = vis[4]
+        if len(vis) > 3:
+            m2 = vis[3]
             t = t[:m2.start()] + m2.group(0).replace('class="article-card"', 'class="article-card hidden-article"') + t[m2.end():]
         io.open(idx, 'w', encoding='utf-8').write(t)
 

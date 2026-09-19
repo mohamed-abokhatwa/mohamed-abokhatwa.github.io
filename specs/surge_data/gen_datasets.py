@@ -13,11 +13,31 @@ from moc import *
 import dgcm as DG, indep_moc as IM
 
 ALPHA0 = 1e-7
+def dec_group(t, series, n=260):
+    """Reduce a set of series that share one time axis to about n samples WITHOUT losing their
+    extremes: every bucket keeps its first index plus the argmin and argmax of each series, so a
+    plotted trace reaches the same peak as the full-resolution envelope and all series stay aligned."""
+    m = len(t)
+    if m <= n: return t, list(series)
+    nb = max(1, n//(1 + len(series))); step = m/nb; idx = set()
+    for b in range(nb):
+        i0 = int(b*step); i1 = min(m, int((b+1)*step))
+        if i1 <= i0: continue
+        idx.add(i0)
+        for y in series:
+            seg = y[i0:i1]
+            idx.add(i0 + min(range(len(seg)), key=lambda k: seg[k]))
+            idx.add(i0 + max(range(len(seg)), key=lambda k: seg[k]))
+    idx.add(m-1)
+    ii = sorted(idx)
+    return [t[i] for i in ii], [[y[i] for i in ii] for y in series]
 def dec(arr, n=260):
+    """Single series with no partner axis (kept for compatibility): plain stride reduction."""
     if len(arr) <= n: return arr
     step = len(arr)/n
     return [arr[int(i*step)] for i in range(n)]
 def r1(a): return [round(v, 1) for v in a]
+def r2l(a): return [round(v, 2) for v in a]   # envelopes: stored at the precision the lengths above a limit are measured at
 def r2(v): return round(v, 2)
 A400 = math.pi*0.4**2/4
 def Rk(K, dn=0.4): return K/(2*g*(math.pi*dn*dn/4)**2)
@@ -46,14 +66,14 @@ for a in (1300, 1050, 700, 450, 300):
     d = dg(dict(a=float(a)), IM.StoppedPumpBC())
     needed = min(r['Hmin']) < 3.0
     if needed:
-        gas, v, rv = required_gas(dict(a=a)); gas_max = r2(v['Vg_max'])
+        gas, v, rv = required_gas(dict(a=a)); gas_max = r2(v['Vg_max']); shell = round(v['Vg_max']/0.8, 1)
     else:
-        gas, gas_max = 0.0, 0.0                     # the unprotected minimum already meets +3.0 m
+        gas, gas_max, shell = 0.0, 0.0, 0.0         # the unprotected minimum already meets +3.0 m
     ws['cases'].append(dict(a=a, jouk=round(a*0.70/(math.pi*0.4**2)/g, 1), crit=round(2*12000/a, 1),
         unprot_min=min(r['Hmin']), unprot_max=max(r['Hmax']), unprot_max_dgcm=r2(d['lmax']),
         vapour=(min(r['Hmin']) <= -9.79), vessel_needed=needed,
-        gas=r2(gas), gas_max=gas_max, vessel_total=round(gas_max/0.8, 1),
-        t=dec(r['t']), pump=r1(dec(r['hist'][0])), mid=r1(dec(r['hist'][60]))))
+        gas=r2(gas), gas_max=gas_max, vessel_total=shell,   # shell from the unrounded gas volume
+        **dict(zip(('t', 'pump', 'mid'), (lambda td, ys: (td, r1(ys[0]), r1(ys[1])))(*dec_group(r['t'], [r['hist'][0], r['hist'][60]]))))))
 D['wavespeed'] = ws
 
 # ---------- 2 · differential orifice ----------
@@ -70,7 +90,7 @@ for lab, Ko, Ki in (("Free both ways", 0.5, 0.5), ("Symmetric orifice", 25, 25),
     ori['cases'].append(dict(label=lab, K_out=Ko, K_in=Ki, ratio=round(Ki/Ko, 1),
         min=min(r['Hmin']), at_min=r['i_min']*100, max=max(r['Hmax']), gas_min=r2(ves['Vg_min']), gas_max=r2(ves['Vg_max']),
         emptied=ves['emptied'], refill_s=refill, q_out_peak=round(max(q), 3), q_in_peak=round(-min(q), 3),
-        t=dec(t, 300), H=r1(dec(r['hist'][0], 300)), Vg=[round(v, 2) for v in dec(Vg, 300)]))
+        **dict(zip(('t', 'H', 'Vg'), (lambda td, ys: (td, r1(ys[0]), [round(v, 2) for v in ys[1]]))(*dec_group(t, [r['hist'][0], Vg], 300))))))
 D['orifice'] = ori
 
 # ---------- 4 · one-way tank (knee 300 m / +30 m onto a level plateau) ----------
@@ -101,12 +121,14 @@ cases = [('none', 'No protection', {}),
 for key, lab, kw in cases:
     r = run(Line(prof=prof), T=150, record=(0, KN, 6), stride=1, **kw)
     ves = kw.get('vessel'); fd = kw.get('feed')
-    entry = dict(label=lab, Hmin=r1(r['Hmin']), Hmax=r1(r['Hmax']), line_min=min(r['Hmin']),
+    entry = dict(label=lab, Hmin=r2l(r['Hmin']), Hmax=r2l(r['Hmax']), line_min=min(r['Hmin']),
                  knee_min=r['Hmin'][KN], pump_min=r['Hmin'][0], line_max=max(r['Hmax']), at_min=r['i_min']*100, at_max=r['i_max']*100,
                  used=(round(fd['vol_used'], 1) if fd else None),
                  gas_max=(round(ves['Vg_max'], 1) if ves else None), emptied=(ves['emptied'] if ves else None),
-                 t=dec(r['t']), knee=r1(dec(r['hist'][KN])), limb=r1(dec(r['hist'][6])), pump=r1(dec(r['hist'][0])),
-                 feed=([round(v, 2) for v in dec(r['extra']['feed'])] if fd else None))
+                 **(lambda td, ys: dict(t=td, knee=r1(ys[0]), limb=r1(ys[1]), pump=r1(ys[2]),
+                    feed=([round(v, 3) for v in ys[3]] if fd else None)))(*dec_group(r['t'],
+                    [r['hist'][KN], r['hist'][6], r['hist'][0], (r['extra']['feed'] if fd else r['hist'][0])])),
+                 t_open=(round(next((r['t'][i] for i, v in enumerate(r['extra']['feed']) if v > 0.0), None), 2) if fd else None))
     if key in ('none', 'tank'):
         d = dg(dict(profile='knee'), IM.StoppedPumpBC(), tank=(IM.Tank(level=8.0) if key == 'tank' else None))
         entry['line_max_dgcm'] = r2(d['lmax'])
@@ -123,7 +145,8 @@ for Hset in (None, 120.0, 110.0, 95.0):
         q_peak=(round(srv['q_peak'], 3) if srv else 0.0),
         pump_max_dgcm=r2(d['n0max']), line_max_dgcm=r2(d['lmax']), at_max_dgcm=d['at'],
         len_above_136=sum(100 for h in r['Hmax'] if h > 136.0), len_above_136_dgcm=sum(100 for h in d['pmax'] if h > 136.0),
-        t=dec(r['t']), H=r1(dec(r['hist'][0])), Hmax=r1(r['Hmax']), Hmin=r1(r['Hmin']), Hmax_dgcm=r1(d['pmax'])))
+        **(lambda td, ys: dict(t=td, H=r1(ys[0])))(*dec_group(r['t'], [r['hist'][0]])),
+        Hmax=r2l(r['Hmax']), Hmin=r2l(r['Hmin']), Hmax_dgcm=r2l(d['pmax'])))
 sv['x'] = [round(i*100) for i in range(121)]
 sv['sizes'] = []
 for dn in (100, 150, 200, 250, 300):
@@ -146,8 +169,23 @@ for I in (25, 100, 200, 400, 800, 1600):
     fw['cases'].append(dict(I=I, GD2=4*I, Ek_MJ=round(Ek/1e6, 2), tau_s=round(Ek/685e3, 2),
         line_min=min(r['Hmin']), at_min=r['i_min']*100, pump_min=r['Hmin'][0], line_max=max(r['Hmax']),
         w5=w_at(5.0), w10=w_at(10.0), w229=w_at(22.9),
-        t=dec(r['t']), w=[round(v, 3) for v in dec(ws_)], H=r1(dec(r['hist'][0])), Hmin=r1(r['Hmin'])))
+        **(lambda td, ys: dict(t=td, w=[round(v, 3) for v in ys[0]], H=r1(ys[1])))(*dec_group(r['t'], [ws_, r['hist'][0]])),
+        Hmin=r2l(r['Hmin'])))
 fw['x'] = [round(i*100) for i in range(121)]
+# torque-law sensitivity: the same rundowns under three characteristics — constant efficiency on the head
+# produced (the series default), never below the shut-off demand, and a generic radial curve
+fw['torque_laws'] = dict(duty='constant efficiency on the head produced',
+                         shutoff='torque never below the shut-off head demand',
+                         radial='generic radial characteristic, beta/alpha^2 = 0.45 + 0.75x - 0.2x^2')
+fw['torque_sensitivity'] = []
+for I in (25, 100, 200, 400, 800, 1600):
+    row = dict(I=I)
+    for law in ('duty', 'shutoff', 'radial'):
+        pump = dict(I=I, P0=685e3, w0=w0, Hsh=100.0, k=(100-80)/0.49, Hsuc=5.0, eta=0.80, torque_law=law, Q_duty=0.70)
+        row[law] = min(run(Line(), T=150, pump=pump)['Hmin'])
+    row['line_min_low'] = round(min(row[l] for l in ('duty', 'shutoff', 'radial')), 2)
+    row['line_min_high'] = round(max(row[l] for l in ('duty', 'shutoff', 'radial')), 2)
+    fw['torque_sensitivity'].append(row)
 D['flywheel'] = fw
 
 # ---------- 7 · comparison on the reference system ----------

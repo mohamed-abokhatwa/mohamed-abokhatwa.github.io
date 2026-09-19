@@ -56,7 +56,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Head in the main at the vessel connection, and gas volume, after all pumps trip</div>
-    <div class="fsub">Method-of-characteristics results on the reference system (12 km DN800, a = 1,050 m/s), vessel 20 m&sup3; with 3.5 m&sup3; of gas, DN400 connection, n = 1.2. Solid lines: the selected connection; dashed: the comparison. The gas axis tops out at the 20 m&sup3; shell. Line minimum and maximum are the envelope over all 12 km; the loss is K<sub>in</sub>&middot;(Q/A)&sup2;/2g across the whole connection at the peak return flow.</div>
+    <div class="fsub">Method-of-characteristics results on the reference system (12 km DN800, a = 1,050 m/s), vessel 20 m&sup3; with 3.5 m&sup3; of gas, DN400 connection, n = 1.2. Solid lines: the selected connection; dashed: the comparison. The gas axis tops out at the 20 m&sup3; shell. Line minimum and maximum are the envelope over all 12 km; the loss is K<sub>in</sub>&middot;(Q/A)&sup2;/2g across the whole connection at the peak return flow. Every readout covers the whole 150 s run whatever the time window is set to. The traces are the solution reduced to about 200 samples, keeping the highest and lowest point of each interval and rounded to 0.1 m and 0.01 m&sup3;, so the drawn curve reaches the same peaks as the readouts beside it.</div>
   </div>
   <div class="chart-box"><canvas id="trialChart"></canvas></div>
   <div class="controls">
@@ -73,7 +73,7 @@ BODY = r"""
     <div class="ctrl">
       <label>Time window <span id="vWin">150 s</span></label>
       <input type="range" id="sWin" min="30" max="150" value="150" step="5">
-      <div class="hint">Shorten it to see the first seconds, when only the outflow loss acts.</div>
+      <div class="hint">Shorten it to see the first seconds, when only the outflow loss acts. It changes the chart only; the readouts keep their whole-run values.</div>
     </div>
   </div>
   <div class="readout">
@@ -107,7 +107,7 @@ BODY = r"""
 <p>At 1:40 the upsurge has almost gone, 85.6&nbsp;m against a steady 85.0&nbsp;m. But the gas returns within 10&nbsp;% at 102&nbsp;s instead of 88&ndash;91&nbsp;s, and the loss across the connection at peak return flow is 22.9&nbsp;m. The practical limits are the jet velocity (14.2&nbsp;m/s through the plate sized in section&nbsp;8), cavitation and noise at the plate, erosion, and slower recovery before a second event such as a restart attempt.</p>
 <div class="callout warn">
   <span class="lbl">There is no standard ratio</span>
-  The ratio is a design choice for one line, vessel and load case, not a constant to copy. On this system 1:5 is the reference design because it puts the maximum 16.8&nbsp;m under the allowable for 5.2&nbsp;m lost across the connection at peak return flow; 1:10 buys another 6.9&nbsp;m of margin for 9.3&nbsp;m. A steeper profile, a smaller gas volume or a different trip sequence moves every one of these numbers, so run the sweep on your own model.
+  The ratio is a design choice for one line, vessel and load case, not a constant to copy. On this system 1:5 is the reference design because it puts the maximum about 17&nbsp;m under the allowable for 5.2&nbsp;m lost across the connection at peak return flow; 1:10 buys another 6.9&nbsp;m of margin for 9.3&nbsp;m. A steeper profile, a smaller gas volume or a different trip sequence moves every one of these numbers, so run the sweep on your own model.
 </div>
 
 <h2 id="int-ratio">7 &middot; Interactive: minimum and maximum across the connections</h2>
@@ -116,7 +116,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Line envelope for each connection against your limits</div>
-    <div class="fsub">Same runs as the chart above. Blue bars meet both limits; red bars fail at least one. The extra series uses the right-hand axis: time until the gas is back within 10 % of its steady volume, the gas volume range, or the loss across the connection at peak return flow, K<sub>in</sub>&middot;(Q/A)&sup2;/2g in the DN400 bore.</div>
+    <div class="fsub">Same runs as the chart above. Blue bars meet both limits; red bars fail at least one. The extra series uses the right-hand axis: time until the gas is back within 10 % of its steady volume, the gas volume range, or the loss across the connection at peak return flow, K<sub>in</sub>&middot;(Q/A)&sup2;/2g in the DN400 bore. The two failure counts are taken independently, so a connection that breaks both limits is counted under each.</div>
   </div>
   <div class="chart-box"><canvas id="envChart"></canvas></div>
   <div class="controls">
@@ -139,7 +139,7 @@ BODY = r"""
   <div class="readout">
     <div class="cell"><div class="k">Connections passing</div><div class="v" id="rPass">5 <small>of 6</small></div></div>
     <div class="cell"><div class="k">Lowest maximum meeting both limits</div><div class="v" id="rBest">85.6 <small>m, Over-throttled 1:40</small></div></div>
-    <div class="cell"><div class="k">Failing on minimum / maximum</div><div class="v" id="rFail">1 / 0</div></div>
+    <div class="cell"><div class="k">Failing on minimum / on maximum</div><div class="v" id="rFail">1 / 0</div></div>
     <div class="cell"><div class="k">Extra series range</div><div class="v" id="rExtra">85&ndash;102 <small>s</small></div></div>
   </div>
 </div>
@@ -172,7 +172,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Orifice loss coefficient against bore ratio, with your connection</div>
-    <div class="fsub">Idelchik's thin sharp-edged orifice in a pipe, referred to the connection velocity. Inflow path = fittings + plate. Outflow path = fittings only (plate bypassed), the same plate both ways, or fittings + a fixed restriction. Losses are K&middot;(Q/A)&sup2;/2g at the flows you set. The ratio badge refers to the range modelled here, not a general rule; &Delta;h out is flagged above the 3.0 m of the K 2 outflow path modelled, because it sets the minimum.</div>
+    <div class="fsub">Idelchik's thin sharp-edged orifice in a pipe, referred to the connection velocity. Inflow path = fittings + plate. Outflow path = fittings only (plate bypassed), the same plate both ways, or fittings + a fixed restriction. Losses are K&middot;(Q/A)&sup2;/2g at the flows you set. The ratio badge refers to the range modelled here, not a general rule; &Delta;h out is flagged above the 3.0 m of the K 2 outflow path modelled, because it sets the minimum. Bore velocity is given for each direction that passes a plate.</div>
   </div>
   <div class="chart-box"><canvas id="orfChart"></canvas></div>
   <div class="controls">
@@ -213,11 +213,11 @@ BODY = r"""
     <div class="cell"><div class="k">Ratio K in / K out</div><div class="v" id="rRat">5.0 <span class="badge good">inside the 1:2.5&ndash;1:10 modelled</span></div></div>
     <div class="cell"><div class="k">&Delta;h out at peak</div><div class="v" id="rDho">3.0 <small>m</small></div></div>
     <div class="cell"><div class="k">&Delta;h in at peak</div><div class="v" id="rDhi">5.2 <small>m</small></div></div>
-    <div class="cell"><div class="k">Bore velocity</div><div class="v" id="rBore">7.9 <small>m/s in a 254 mm bore</small></div></div>
+    <div class="cell"><div class="k">Bore velocity</div><div class="v" id="rBore">7.9 <small>m/s in the 254 mm inflow bore</small></div></div>
     <div class="cell"><div class="k">K out / K in referred to the bore</div><div class="v" id="rRef">0.33 / 1.63</div></div>
   </div>
 </div>
-<p class="fig-note">At the default (DN400, fittings K&nbsp;2, a &beta;&nbsp;0.635 plate in a straight spool bypassed on outflow, the reference peak flows) the calculator gives K<sub>out</sub>&nbsp;2.0, K<sub>in</sub>&nbsp;10.0 and a ratio of 5.0: the 1:5 connection, losing 3.0&nbsp;m at 0.681&nbsp;m&sup3;/s out and 5.2&nbsp;m at 0.403&nbsp;m&sup3;/s back, through a 254&nbsp;mm bore at 7.9&nbsp;m/s. Switch the outflow to the same plate both ways and the ratio collapses to 1.0, with 15.0&nbsp;m lost on outflow at the same flow. Bypass the plate again and change to DN300: the ratio does not move, but the losses become 9.5&nbsp;m out, which is flagged, and 16.6&nbsp;m in, with 14.1&nbsp;m/s through the bore. Back at DN400, set &beta; to 0.409 and the peak inflow to 0.298&nbsp;m&sup3;/s to reproduce the over-throttled row of the table.</p>
+<p class="fig-note">At the default (DN400, fittings K&nbsp;2, a &beta;&nbsp;0.635 plate in a straight spool bypassed on outflow, the reference peak flows) the calculator gives K<sub>out</sub>&nbsp;2.0, K<sub>in</sub>&nbsp;10.0 and a ratio of 5.0: the 1:5 connection, losing 3.0&nbsp;m at 0.681&nbsp;m&sup3;/s out and 5.2&nbsp;m at 0.403&nbsp;m&sup3;/s back, through a 254&nbsp;mm bore at 7.9&nbsp;m/s. Switch the outflow to the same plate both ways and the ratio collapses to 1.0, with 15.0&nbsp;m lost on outflow at the same flow and the same 254&nbsp;mm bore passing 13.4&nbsp;m/s on the way out. Bypass the plate again and change to DN300: the ratio does not move, but the losses become 9.5&nbsp;m out, which is flagged, and 16.6&nbsp;m in, with 14.1&nbsp;m/s through the bore. Back at DN400, set &beta; to 0.409 and the peak inflow to 0.298&nbsp;m&sup3;/s to reproduce the over-throttled row of the table.</p>
 
 <h2 id="arrangements">10 &middot; Physical arrangements and details</h2>
 <h3>Three ways to build a differential connection</h3>
@@ -405,7 +405,8 @@ function updEnv(){
   document.getElementById('rPass').innerHTML=nP+' <small>of '+C.length+'</small>';
   let best=null; C.forEach((c,i)=>{if(pass[i]&&(best===null||c.max<best.max))best=c;});
   document.getElementById('rBest').innerHTML=best?fmt1(best.max)+' <small>m, '+best.label+'</small>':badge('bad','none passes');
-  const fMin=okMin.filter(v=>!v).length, fMax=C.filter((c,i)=>okMin[i]&&!okMax[i]).length;
+  // counted independently: a connection that breaks both limits is counted under each
+  const fMin=okMin.filter(v=>!v).length, fMax=okMax.filter(v=>!v).length;
   document.getElementById('rFail').innerHTML=fMin+' / '+fMax;
   let rng='&ndash;';
   if(ex==='gas'){rng=fmt2(Math.min(...C.map(c=>c.gas_min)))+'&ndash;'+fmt2(Math.max(...C.map(c=>c.gas_max)))+' <small>m³</small>';}
@@ -448,7 +449,9 @@ function updOrf(){
   else if(mode==='sym'){Kout=Kin;bo=bi;}
   else{bo=+mode;Kout=fit+KOR(bo);}
   const ratio=Kout>0?Kin/Kout:Infinity;
-  const dho=lossK(Kout,qo,A), dhi=lossK(Kin,qi,A), vb=qi/(Math.PI*d*d/4), b4=Math.pow(bi,4);
+  const dho=lossK(Kout,qo,A), dhi=lossK(Kin,qi,A), b4=Math.pow(bi,4);
+  const Ab=x=>Math.PI*x*x/4, vbi=qi/Ab(d);              // jet velocity through the inflow plate bore
+  const dOut=(bo!==null)?bo*Dm:null;                    // the bore the outflow passes, when it passes a plate
   document.getElementById('vDN').textContent='DN'+sDN.value;
   document.getElementById('vFit').textContent=fmt1(fit);
   document.getElementById('vBin').textContent=fmt3(bi)+' · '+fmt0(d*1000)+' mm';
@@ -458,8 +461,10 @@ function updOrf(){
   ds[1].data=BET.map(b=>({x:b,y:+(fit+KOR(b)).toFixed(3)}));
   ds[3].data=[{x:bi,y:+Kin.toFixed(3)}];
   ds[4].data=(bo!==null)?[{x:bo,y:+Kout.toFixed(3)}]:[];
+  const fK=(Math.min(Kout,Kin)>=1)?fmt1:fmt2;           // one precision for both K readouts
   const ko=orfChart.options.plugins.annotation.annotations.ko;
-  ko.value=Math.max(Kout,0.1); ko.label.content='K out '+fmtK(Kout);
+  ko.display=Kout>0; ko.label.display=Kout>0;           // a zero K has no place on the logarithmic axis
+  ko.value=Math.max(Kout,0.1); ko.label.content='K out '+fK(Kout);
   orfChart.update('none');
   const outHigh=dho>3.05;                               // the K 2 outflow path modelled loses 3.0 m at 0.681 m3/s
   let rb;
@@ -468,13 +473,16 @@ function updOrf(){
   else if(ratio<2.45) rb=badge('warn','weaker than the 1:2.5 modelled');
   else if(ratio<=10.5) rb=outHigh?badge('warn','ratio modelled, outflow loss is not'):badge('good','inside the 1:2.5–1:10 modelled');
   else if(ratio<39.5) rb=badge('warn','beyond 1:10: check recovery and plate');
-  else rb=badge('warn','as steep as the over-throttled 1:40');
-  document.getElementById('rKo').innerHTML=fmtK(Kout);
-  document.getElementById('rKi').innerHTML=fmtK(Kin);
+  else if(ratio<60) rb=badge('warn','at or beyond the over-throttled 1:40');
+  else rb=badge('warn','far beyond anything modelled here');
+  document.getElementById('rKo').innerHTML=fK(Kout);
+  document.getElementById('rKi').innerHTML=fK(Kin);
   document.getElementById('rRat').innerHTML=(isFinite(ratio)?fmt1(ratio):'∞')+' '+rb;
   document.getElementById('rDho').innerHTML=fmt1(dho)+' <small>m</small>'+(outHigh?' '+badge('warn','above the 3.0 m modelled: check the minimum'):'');
   document.getElementById('rDhi').innerHTML=fmt1(dhi)+' <small>m</small>';
-  document.getElementById('rBore').innerHTML=fmt1(vb)+' <small>m/s in a '+fmt0(d*1000)+' mm bore</small>';
+  document.getElementById('rBore').innerHTML=(dOut===null)
+    ? fmt1(vbi)+' <small>m/s in the '+fmt0(d*1000)+' mm inflow bore</small>'
+    : fmt1(qo/Ab(dOut))+' / '+fmt1(vbi)+' <small>m/s out / in, '+(dOut===d?fmt0(d*1000)+' mm bore':fmt0(dOut*1000)+' / '+fmt0(d*1000)+' mm bores')+'</small>';
   document.getElementById('rRef').innerHTML=fmt2(Kout*b4)+' / '+fmt2(Kin*b4);
 }
 [sDN,sFit,sBin,sOut,sQo,sQi].forEach(s=>s.addEventListener('input',updOrf));updOrf();

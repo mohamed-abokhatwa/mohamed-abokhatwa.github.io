@@ -27,7 +27,7 @@ BODY = r"""
   <li><strong>Pump.</strong> A simplified homologous rundown [9], \(H = 100\,w^2 - 40.8\,Q^2\), with the hydraulic torque above plus windage (2&nbsp;% of rated at full speed) and an ideal non-return valve. After the valve closes we <em>assume</em> a churning torque of 45&nbsp;% of rated at full speed, scaled with \(w^2\). Speed is integrated with the trapezoidal rule.</li>
   <li><strong>Line and set.</strong> 120 reaches, 150&nbsp;s runs. The bare-set inertia of 25&nbsp;kg&middot;m&sup2; is an <em>assumption</em> for a 685&nbsp;kW four-pole set; take project values from the data sheets.</li>
 </ul>
-<p>HAMMER describes the pump by four-quadrant characteristics [5][10], which set the torque during the rundown. The simple torque law used here is the main uncertainty, and section 5 puts a number on it. There is also a quirk: once its head rise has fallen to zero, the slowing model pump still passes water from its 5&nbsp;m suction but takes no hydraulic torque. The bare set's speed therefore levels off at about 0.2 instead of reaching zero, and as \(I\) falls towards zero the model does not become exactly an instantaneous stop. Read that part of the speed trace as a feature of the torque law, not a prediction.</p>
+<p>HAMMER describes the pump by four-quadrant characteristics [5][10], which set the torque during the rundown. The simple torque law used here is the main uncertainty, and section 5 puts a number on it. There is also a quirk: once its head rise has fallen to zero, the slowing model pump still passes water from its 5&nbsp;m suction but takes no hydraulic torque. The bare set's speed therefore hangs at about 0.2 instead of dropping away, but only until the first reflection returns and the non-return valve closes; after that the <em>assumed</em> churning torque takes it slowly down towards zero (0.04 at 60&nbsp;s, 0.01 at 150&nbsp;s). As \(I\) falls towards zero the model does not become exactly an instantaneous stop either. Read that part of the speed trace as a feature of the torque law, not a prediction.</p>
 
 <div class="tbl-wrap"><table>
   <caption>What each inertia stores: 685&nbsp;kW at 1,480&nbsp;rpm, 2L/a = 22.9&nbsp;s, start time with 50&nbsp;% of rated torque available for acceleration (section 8)</caption>
@@ -46,7 +46,7 @@ BODY = r"""
   <caption>What each inertia does to the line: all pumps trip, no other protection, pressure heads above the pipe</caption>
   <thead><tr><th class="num">Total I <span style="text-transform:none">(kg&middot;m&sup2;)</span></th><th class="num">Lowest head on the line <span style="text-transform:none">(m)</span></th><th>Where</th><th class="num">Lowest head at the pump <span style="text-transform:none">(m)</span></th><th class="num">Highest head on the line <span style="text-transform:none">(m)</span></th><th class="num">Speed ratio at <span style="text-transform:none">5 / 10 / 22.9&nbsp;s</span></th></tr></thead>
   <tbody>
-    <tr><td class="num">25</td><td class="num">&minus;9.8 (vapour)</td><td>7.4&ndash;11.3&nbsp;km</td><td class="num">+2.5</td><td class="num">not quoted (cavitating)</td><td class="num">0.22 / 0.22 / 0.20</td></tr>
+    <tr><td class="num">25</td><td class="num">&minus;9.8 (vapour)</td><td>7.3&ndash;11.3&nbsp;km</td><td class="num">+2.5</td><td class="num">not quoted (cavitating)</td><td class="num">0.22 / 0.22 / 0.20</td></tr>
     <tr><td class="num">100</td><td class="num">&minus;8.7</td><td>7.8&nbsp;km</td><td class="num">&minus;1.3</td><td class="num">88.2 (indicative)</td><td class="num">0.40 / 0.27 / 0.25</td></tr>
     <tr><td class="num">200</td><td class="num">&minus;1.5</td><td>5.6&nbsp;km</td><td class="num">+5.1</td><td class="num">85.0</td><td class="num">0.58 / 0.40 / 0.28</td></tr>
     <tr><td class="num"><strong>400</strong></td><td class="num"><strong>+9.3</strong></td><td>3.0&nbsp;km</td><td class="num">+10.8</td><td class="num">85.0</td><td class="num">0.73 / 0.57 / 0.37</td></tr>
@@ -57,7 +57,7 @@ BODY = r"""
 
 <div class="callout warn">
   <span class="lbl">Why one maximum is not quoted</span>
-  With 25&nbsp;kg&middot;m&sup2; cavities form and collapse between 7.4 and 11.3&nbsp;km. The vapour cavity run shows nothing above the steady 85&nbsp;m, but collapse peaks depend on how the cavity is represented [8] (across this series the gas cavity model puts them between 18&nbsp;% lower and 10&nbsp;% higher than the vapour cavity model), and this case was not rerun with the gas cavity model, so no maximum is quoted. The 165&ndash;190&nbsp;m of section 1 does not apply either: it belongs to the pump stopping at once. The design answer is to keep the line out of vapour rather than argue about the peak. Every case from 200&nbsp;kg&middot;m&sup2; up stays clear of vapour under every torque law tried, so those results are quoted to 0.1&nbsp;m.
+  With 25&nbsp;kg&middot;m&sup2; cavities form and collapse between 7.3 and 11.3&nbsp;km. The vapour cavity run shows nothing above the steady 85&nbsp;m, but collapse peaks depend on how the cavity is represented [8] (across this series the gas cavity model puts them between 18&nbsp;% lower and 10&nbsp;% higher than the vapour cavity model), and this case was not rerun with the gas cavity model, so no maximum is quoted. The 165&ndash;190&nbsp;m of section 1 does not apply either: it belongs to the pump stopping at once. The design answer is to keep the line out of vapour rather than argue about the peak. Every case from 200&nbsp;kg&middot;m&sup2; up stays clear of vapour under every torque law tried, so those results are quoted to 0.1&nbsp;m.
 </div>
 <p>At 100&nbsp;kg&middot;m&sup2; the line stays only 1.1&nbsp;m clear of vapour, with a small upsurge to 88.2&nbsp;m at the pump. Under the least favourable torque law tried (section 5) it reaches vapour, so treat both figures as indicative. With a short rundown the lowest point is well down the line; with a long one it moves back to the pump.</p>
 
@@ -84,8 +84,8 @@ BODY = r"""
       <div class="hint">Motor rotor, impeller, coupling and flywheel together.</div>
     </div>
     <div class="ctrl">
-      <label>Time window <span id="vWin">60 s</span></label>
-      <input type="range" id="sWin" min="10" max="150" value="60" step="5">
+      <label>Time window <span id="vWin">90 s</span></label>
+      <input type="range" id="sWin" min="10" max="150" value="90" step="5">
       <div class="hint">The vertical line is 2L/a = 22.9&nbsp;s, when the first reflection returns from the reservoir.</div>
     </div>
   </div>
@@ -99,18 +99,18 @@ BODY = r"""
     <div class="cell"><div class="k">Highest head on line</div><div class="v" id="rLmax">85.0 <small>m</small></div></div>
   </div>
 </div>
-<p class="fig-note">At 400&nbsp;kg&middot;m&sup2; the speed ratio is 0.73 at 5&nbsp;s, 0.57 at 10&nbsp;s and 0.37 at 2L/a. The pump-end head bottoms out at +10.8&nbsp;m just as the first reflection returns, the line never drops below +9.3&nbsp;m, and nothing rises above 85&nbsp;m. Switch to 25&nbsp;kg&middot;m&sup2;: the speed is down to 0.22 within 5&nbsp;s (where this model holds it; see section 3) and the pump-end head is below 10&nbsp;m within two seconds. The pump end holds at a few metres only because the slowing pump still passes water from its suction; meanwhile the far end of the line goes to vapour. Now try 200&nbsp;kg&middot;m&sup2;. The pump-end trace never falls below +5&nbsp;m, yet the line fails at 5.6&nbsp;km. <strong>Judge the design on the minimum envelope along the whole line, not on the history at the pump.</strong></p>
+<p class="fig-note">At 400&nbsp;kg&middot;m&sup2; the speed ratio is 0.73 at 5&nbsp;s, 0.57 at 10&nbsp;s and 0.37 at 2L/a. The pump-end head bottoms out at +10.8&nbsp;m just as the first reflection returns, the line never drops below +9.3&nbsp;m, and nothing rises above 85&nbsp;m. Switch to 25&nbsp;kg&middot;m&sup2;: the speed is down to 0.22 within 5&nbsp;s (where this model holds it until the first reflection returns; see section 3) and the pump-end head is below 10&nbsp;m within two seconds. The pump end holds at a few metres only because the slowing pump still passes water from its suction; meanwhile the far end of the line goes to vapour. Now try 200&nbsp;kg&middot;m&sup2;. The pump-end trace never falls below +5&nbsp;m, yet the line fails at 5.6&nbsp;km. With 800 and 1,600&nbsp;kg&middot;m&sup2; the pump-end minimum does not arrive until well after the first reflection cycle, which is why the window opens at 90&nbsp;s. <strong>Judge the design on the minimum envelope along the whole line, not on the history at the pump.</strong></p>
 
 <h2 id="worked-example">5 &middot; Worked example: how much inertia the 12&nbsp;km main needs</h2>
 <p>This is the sequence we follow on a project, run here on the reference main.</p>
 <h3>Step 1: the duty and the set</h3>
 <div class="eq">\[ P_0 = \frac{\rho g Q H}{\eta} = \frac{998 \times 9.81 \times 0.70 \times 80}{0.80} = 685\ \text{kW}, \qquad \omega_0 = \frac{2\pi \times 1480}{60} = 155.0\ \text{rad/s}, \qquad T_0 = \frac{P_0}{\omega_0} = 4{,}420\ \text{N m} \]</div>
 <h3>Step 2: test the bare set</h3>
-<p>With 25&nbsp;kg&middot;m&sup2;, \(E_k\) = &frac12; &times; 25 &times; 155.0&sup2; = 0.30&nbsp;MJ and \(\tau\) = 0.44&nbsp;s, a ratio of 0.02 to 2L/a. The speed is down to 0.22 within five seconds, and the line reaches vapour over about 4&nbsp;km, from 7.4 to 11.3&nbsp;km. <strong>The motor and pump alone protect nothing.</strong></p>
+<p>With 25&nbsp;kg&middot;m&sup2;, \(E_k\) = &frac12; &times; 25 &times; 155.0&sup2; = 0.30&nbsp;MJ and \(\tau\) = 0.44&nbsp;s, a ratio of 0.02 to 2L/a. The speed is down to 0.22 within five seconds, and the line reaches vapour over about 4&nbsp;km, from 7.3 to 11.3&nbsp;km. <strong>The motor and pump alone protect nothing.</strong></p>
 <h3>Step 3: double the inertia until the whole line passes</h3>
 <p>The response is far from linear. At 100&nbsp;kg&middot;m&sup2; the lowest head is &minus;8.7&nbsp;m at 7.8&nbsp;km. At 200 the pump reads +5.1&nbsp;m, but the line reaches &minus;1.5&nbsp;m at 5.6&nbsp;km, with about 7&nbsp;km of it below +3.0&nbsp;m. At 400 the whole line holds at <strong>+9.3&nbsp;m</strong> or better, with the lowest point at 3.0&nbsp;km, and nothing rises above 85&nbsp;m. That is <strong>16 times</strong> the bare set. The true threshold lies somewhere between 200 and 400; we design at the tested value that passes with margin.</p>
 <h3>Step 4: check that the answer survives the torque law</h3>
-<p>The weakest assumption is the torque law, so the audit reran the same line with other plausible torque characteristics. The tables above use the law that gives the highest minima of those tried. The minima moved by 2&ndash;3&nbsp;m: about &minus;4 to &minus;1.5&nbsp;m at 200&nbsp;kg&middot;m&sup2; (failing under every law tried), +7.3 to +9.3&nbsp;m at 400 (passing under every law tried) and +24 to +26&nbsp;m at 1,600. <strong>The conclusion is robust; the decimals are not.</strong> At worst, 400&nbsp;kg&middot;m&sup2; still clears +3.0&nbsp;m by more than 4&nbsp;m.</p>
+<p>The weakest assumption is the torque law, so the same rundowns were rerun under two other plausible characteristics: one that never lets the torque fall below what the shut-off head demands, and a generic radial curve (\(\beta/\alpha^2 = 0.45 + 0.75x - 0.2x^2\)). All three are in the published dataset. The tables above use the law of section 3, which is the upper end of each range rather than a bound on what another law could give. The minima moved by 2&ndash;3&nbsp;m: &minus;4.0 to &minus;1.5&nbsp;m at 200&nbsp;kg&middot;m&sup2; (failing under every law tried), +7.3 to +9.3&nbsp;m at 400 (passing under every law tried) and +23.7 to +26.0&nbsp;m at 1,600. <strong>The conclusion is robust; the decimals are not.</strong> At worst, 400&nbsp;kg&middot;m&sup2; still clears +3.0&nbsp;m by more than 4&nbsp;m.</p>
 <h3>Step 5: check the pressure side, and compare</h3>
 <p>The maximum is 85.0&nbsp;m: no upsurge at all, and far inside 136&nbsp;m. The reference vessel used across this site (20&nbsp;m&sup3; shell, 3.5&nbsp;m&sup3; gas, DN400 differential connection) gives +4.3&nbsp;m and 119.2&nbsp;m on the same line with the pump stopped at once, so the comparison is not strictly like for like; even at +7.3&nbsp;m the flywheel keeps more margin on the downsurge. Cost, space and operation are compared in <a href="choosing-surge-protection.html">Choosing surge protection on one pipeline</a>.</p>
 <h3>Step 6: turn the inertia into steel</h3>
@@ -258,7 +258,7 @@ BODY = r"""
     <div class="cell"><div class="k">Rim speed</div><div class="v" id="rRim">124.0 <small>m/s</small></div></div>
   </div>
 </div>
-<p class="fig-note">The default disc, 0.8&nbsp;m &times; 120&nbsp;mm, weighs <strong>1,894&nbsp;kg</strong> and adds <strong>606&nbsp;kg&middot;m&sup2;</strong>. That makes 631&nbsp;kg&middot;m&sup2; in total, 7.58&nbsp;MJ stored, &tau; = 11.06&nbsp;s, a 44.3&nbsp;s start and a rim speed of 124.0&nbsp;m/s, which is more than the main needs. Drag the radius to 0.71&nbsp;m: the disc drops to 1,492&nbsp;kg and 376&nbsp;kg&middot;m&sup2;, the total is the design 401&nbsp;kg&middot;m&sup2;, and the start takes 28.1&nbsp;s. Raise the torque available to accelerate to 100&nbsp;% and the start halves to 14.1&nbsp;s. Switch to 2,960&nbsp;rpm and the same disc stores four times the energy, but its rim speed doubles to 248.0&nbsp;m/s, well beyond the discs of section 7; get the permissible rim speed from the manufacturer.</p>
+<p class="fig-note">The default disc, 0.8&nbsp;m &times; 120&nbsp;mm, weighs <strong>1,894&nbsp;kg</strong> and adds <strong>606&nbsp;kg&middot;m&sup2;</strong>. That makes 631&nbsp;kg&middot;m&sup2; in total, 7.58&nbsp;MJ stored, &tau; = 11.06&nbsp;s, a 44.3&nbsp;s start and a rim speed of 124.0&nbsp;m/s, which is more than the main needs. Drag the radius to 0.71&nbsp;m: the disc drops to 1,492&nbsp;kg and 376&nbsp;kg&middot;m&sup2;, the total is the design 401&nbsp;kg&middot;m&sup2;, and the start takes 28.1&nbsp;s. Raise the torque available to accelerate to 100&nbsp;% and the start halves to 14.1&nbsp;s. Switch to 2,960&nbsp;rpm and the same disc stores four times the energy, but its rim speed doubles to 220.1&nbsp;m/s, well beyond the 155.0&nbsp;m/s of the largest disc in section 7; get the permissible rim speed from the manufacturer.</p>
 
 <h2 id="wrong-answer">10 &middot; When a flywheel is the wrong answer</h2>
 <p>Flywheels belong on short and medium-length mains, where a modest addition of inertia buys a rundown long enough to matter over the wave period [5][6][11]. Outside that range the answer is usually something else.</p>
@@ -333,15 +333,15 @@ const LEGF={family:FF,size:11.5};
 const L2A=2*12000/1050, VAP=-9.8, PMIN=3.0;
 const W0=1480*2*Math.PI/60, P0=685e3;
 const C=D.cases, T=D.t, X=D.x;
-const sgn1=v=>(v<-0.04?'&minus;':'+')+fmt1(Math.abs(v));
-const sgnT=v=>(v<-0.04?'−':'+')+fmt1(Math.abs(v));
+const sgn1=v=>(Math.abs(v)<=0.04?'':(v<0?'&minus;':'+'))+fmt1(Math.abs(v));
+const sgnT=v=>(Math.abs(v)<=0.04?'':(v<0?'−':'+'))+fmt1(Math.abs(v));
 const Ek=(I,w0)=>0.5*I*w0*w0;
 const isVap=c=>c.line_min<=VAP+0.05;
 function whereTxt(c){
   if(isVap(c)){
     const xs=X.filter((x,i)=>c.Hmin[i]<=VAP+0.05);
-    const x1=xs.length?xs[xs.length-1]:c.at_min;
-    return fmt1(c.at_min/1000)+'&ndash;'+fmt1(x1/1000)+' km';
+    const x0=xs.length?xs[0]:c.at_min, x1=xs.length?xs[xs.length-1]:c.at_min;
+    return fmt1(x0/1000)+'&ndash;'+fmt1(x1/1000)+' km';
   }
   return c.at_min===0?'at the pump':'at '+fmt1(c.at_min/1000)+' km';
 }
@@ -363,7 +363,7 @@ const runChart=new Chart(document.getElementById('runChart'),{
   ]},
   options:{responsive:true,maintainAspectRatio:false,animation:false,
     interaction:{mode:'nearest',axis:'x',intersect:false},
-    scales:{x:{type:'linear',min:0,max:60,title:{display:true,text:'Time after the trip (s)',font:TTL},...AX},
+    scales:{x:{type:'linear',min:0,max:90,title:{display:true,text:'Time after the trip (s)',font:TTL},...AX},
             y:{type:'linear',min:-20,max:100,position:'left',title:{display:true,text:'Pressure head at the pump (m)',font:TTL},grid:{color:'#eef2f5'},ticks:{font:{family:FF,size:11},stepSize:20}},
             y1:{type:'linear',min:0,max:1,position:'right',title:{display:true,text:'Speed ratio n/n₀',font:TTL},grid:{drawOnChartArea:false},ticks:{font:{family:FF,size:11},stepSize:0.2}}},
     plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:6,filter:(it,d)=>d.datasets[it.datasetIndex].data.length>0}},

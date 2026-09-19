@@ -194,7 +194,7 @@
 
 <h2 id="same-duty">1 &middot; Same duty, three machines</h2>
 <p>When the pumps trip, a vessel's compressed gas pushes water into the line until the column turns, then takes the returning water back. The duty is a statement about gas, not steel: how much gas sits in the vessel at the steady hydraulic grade line, and how far it may expand before the pressure reaches the design minimum [1]. That is the same whichever vessel carries it. What changes is the shell, what keeps the gas there between trips, and what fails.</p>
-<p>The reference system is a 12&nbsp;km DN800 ductile iron K9 main [2]: 2,520&nbsp;m&sup3;/h (1.39&nbsp;m/s), wave speed 1,050&nbsp;m/s, 85.0&nbsp;m at the pump, 44.8&nbsp;m at the delivery reservoir, PN16 with 136&nbsp;m allowable, and a +3.0&nbsp;m minimum anywhere. With all pumps tripped and no protection, the line reaches vapour and the collapse peak is 165&ndash;190&nbsp;m. A vessel at the pump with a free DN400 connection (K&nbsp;0.5) holds +3.0&nbsp;m with <strong>3.08&nbsp;m&sup3; of gas at 95.3&nbsp;m abs</strong> (9.35&nbsp;bar abs), expanding to <strong>15.30&nbsp;m&sup3;</strong>. With a 20&nbsp;% water reserve at maximum expansion, the air-over-water shell is 15.30/0.8 = 19.1&nbsp;m&sup3;. The sizing method is in <a href="surge-vessel.html">Sizing the Hydropneumatic Surge Vessel</a>; this article starts where it ends.</p>
+<p>The reference system is a 12&nbsp;km DN800 ductile iron K9 main [2]: 2,520&nbsp;m&sup3;/h (1.39&nbsp;m/s), wave speed 1,050&nbsp;m/s, 85.0&nbsp;m at the pump, 44.8&nbsp;m at the delivery reservoir, PN16 with 136&nbsp;m allowable, and a +3.0&nbsp;m minimum anywhere. With all pumps tripped and no protection, the line reaches vapour and the collapse peak is 165&ndash;190&nbsp;m. A vessel at the pump with a free DN400 connection (K&nbsp;0.5) holds +3.0&nbsp;m with <strong>3.08&nbsp;m&sup3; of gas at 95.33&nbsp;m abs</strong> (9.35&nbsp;bar abs), expanding to <strong>15.30&nbsp;m&sup3;</strong>. With a 20&nbsp;% water reserve at maximum expansion, the air-over-water shell is 15.30/0.8 = 19.1&nbsp;m&sup3;. The sizing method is in <a href="surge-vessel.html">Sizing the Hydropneumatic Surge Vessel</a>; this article starts where it ends.</p>
 <div class="callout key">
   <span class="lbl">Where the numbers come from</span>
   A method-of-characteristics model with a vapour cavity model, cross-checked with a gas cavity model and an independent second code. These are not HAMMER results; a project analysis must be run in HAMMER, or an equivalent, on the real profile. Collapse peaks are ranges because the spike when a cavity closes depends on how the cavity is represented [3]; on this series' cases the gas cavity model puts collapse peaks between 18&nbsp;% lower and 10&nbsp;% higher than the vapour cavity model. Never design on a collapse peak: protect the downsurge so no cavity forms. Vessel duties and protected minima involve no cavitation and are quoted to 0.1&nbsp;m or 0.01&nbsp;m&sup3;.
@@ -231,12 +231,12 @@
 <p>Now the gauge column. Every pre-charge that meets the rule and can be set by ordinary charging lies between atmospheric (f = 0.775, the 28.4&nbsp;m&sup3; free-air shell) and 0.29&nbsp;bar&nbsp;g. The 0.60 row would need a vacuum, so with at least a 5&nbsp;% margin the practical shells run from 23.2 to 28.4&nbsp;m&sup3;, on a pre-charge that has to be exactly right. A transient study of one bladder shell at different pre-charges is in <a href="pre-charge-pressure.html">Pre-Charge Pressure</a>.</p>
 
 <h2 id="int-shell">4 &middot; Interactive: shell volume by vessel type</h2>
-<p>Each bar shows what fills the shell at the lowest pressure: expanded gas, and the water still inside. The gas at the minimum is the closed form, so at the reference duty the air-over-water shell reads 19.8&nbsp;m&sup3; rather than the transient model's 19.1&nbsp;m&sup3;, which is drawn dashed while the duty controls sit at the reference values.</p>
+<p>Each bar shows what fills the shell at the lowest pressure: expanded gas, and the water still inside. The gas at the minimum is the closed form, so at the reference duty the air-over-water shell reads 19.8&nbsp;m&sup3; rather than the transient model's 19.1&nbsp;m&sup3;, which is drawn dashed while the gas, HGL, minimum and exponent sit at the reference values. The transient model's own output is the 15.30&nbsp;m&sup3; of gas at maximum expansion, so that dashed line follows the reserve slider too: it is 15.30/(1&nbsp;&minus;&nbsp;reserve).</p>
 
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Shell volume for the same gas duty: air-over-water vs bladder or diaphragm</div>
-    <div class="fsub">Gas at the minimum from polytropic expansion. Bladder shell from isothermal charging to the steady HGL. Air-over-water shell = gas at the minimum / (1 &minus; reserve). Pressures absolute, atmosphere 10.33 m. Dashed line: transient-model air-over-water shell, shown only at the reference duty.</div>
+    <div class="fsub">Gas at the minimum from polytropic expansion. Bladder shell from isothermal charging to the steady HGL. Air-over-water shell = gas at the minimum / (1 &minus; reserve). Pressures absolute, atmosphere 10.33 m. Dashed line: the transient model's 15.30 m&sup3; of gas at maximum expansion divided by (1 &minus; reserve), so it moves with the reserve slider; shown only at the reference duty.</div>
   </div>
   <div class="chart-box"><canvas id="shellChart"></canvas></div>
   <div class="controls">
@@ -325,7 +325,7 @@
   <li><strong>A vent path</strong> to release air when the water level falls too low, and a strategy for gas dissolving into the water.</li>
   <li><strong>Power</strong> for compressor and instruments &mdash; remembering that a power failure is exactly the trip the vessel must ride through on the gas already inside it.</li>
 </ul>
-<p>The level set points are not a controls detail; they are the surge protection. On the site's reference vessel &mdash; 20&nbsp;m&sup3; shell, 3.5&nbsp;m&sup3; of gas, DN400 differential connection (K<sub>out</sub>&nbsp;2 / K<sub>in</sub>&nbsp;10), line minimum +4.3&nbsp;m and maximum 119.2&nbsp;m &mdash; the transient model holds +3.0&nbsp;m for any gas setting from <strong>3.22&nbsp;m&sup3;</strong> up, only 0.28&nbsp;m&sup3; below the design setting. Above the design setting, the limit is the water reserve. The design setting expands to 16.17&nbsp;m&sup3; and leaves 3.83&nbsp;m&sup3; of water, 19&nbsp;% of the shell; keeping 15&nbsp;% caps the gas at 3.85&nbsp;m&sup3;, 10&nbsp;% at 4.28&nbsp;m&sup3;, and at 5.21&nbsp;m&sup3; no water is left. A full 20&nbsp;% would need 3.43&nbsp;m&sup3;, just under the design setting. So the band is a few tenths of a cubic metre either side: choose the reserve to protect, then set the compressor-start level and the low-gas and high-gas alarms with the transmitter accuracy and the strapping table in front of you. How the connection shapes that envelope is in <a href="surge-vessel-differential-orifice.html">the differential orifice article</a>.</p>
+<p>The level set points are not a controls detail; they are the surge protection. On the site's reference vessel &mdash; 20&nbsp;m&sup3; shell, 3.5&nbsp;m&sup3; of gas, DN400 differential connection (K<sub>out</sub>&nbsp;2 / K<sub>in</sub>&nbsp;10), line minimum +4.3&nbsp;m and maximum 119.2&nbsp;m &mdash; the transient model holds +3.0&nbsp;m for any gas setting from <strong>3.22&nbsp;m&sup3;</strong> up to <strong>5.21&nbsp;m&sup3;</strong>, the lower end only 0.28&nbsp;m&sup3; below the design setting. Past 5.21&nbsp;m&sup3; the gas fills the shell, the vessel empties and the minimum falls below the criterion, so the window is closed at both ends. Between the design setting and that ceiling, the limit is the water reserve. The design setting expands to 16.17&nbsp;m&sup3; and leaves 3.83&nbsp;m&sup3; of water, 19&nbsp;% of the shell; keeping 15&nbsp;% caps the gas at 3.85&nbsp;m&sup3;, 10&nbsp;% at 4.28&nbsp;m&sup3;, and at 5.21&nbsp;m&sup3; no water is left. A full 20&nbsp;% would need 3.43&nbsp;m&sup3;, just under the design setting. So the band is a few tenths of a cubic metre either side: choose the reserve to protect, then set the compressor-start level and the low-gas and high-gas alarms with the transmitter accuracy and the strapping table in front of you. How the connection shapes that envelope is in <a href="surge-vessel-differential-orifice.html">the differential orifice article</a>.</p>
 <p>A drained vessel is the easier case. Drain a 19.1&nbsp;m&sup3; shell with its vent open and it fills with atmospheric air that, closed and brought to the steady HGL, occupies 2.07&nbsp;m&sup3; &mdash; two-thirds of the duty. The compressor supplies only the remaining 1.01&nbsp;m&sup3; (9.3&nbsp;m&sup3; of free air).</p>
 
 <h2 id="int-compressor">7 &middot; Interactive: keeping the air in</h2>
@@ -375,7 +375,7 @@
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Head at the pump after a trip, for different gas settings in the 20 m&sup3; vessel</div>
-    <div class="fsub">Transient model, reference system, all pumps trip at t = 0. Grey dashed: the 3.5 m&sup3; design setting, shown when another setting is selected. Line minimum and maximum are for the whole line over 150 s. Where the vessel empties, vapour forms at the pump end and the maximum is given across both cavity models. Amber where the setting holds +3.0 m but leaves less water at maximum expansion than the design setting.</div>
+    <div class="fsub">Transient model, reference system, all pumps trip at t = 0. Grey dashed: the 3.5 m&sup3; design setting, shown when another setting is selected. Line minimum and maximum are for the whole line over 150 s. Where the vessel empties, vapour forms at the pump end and the maximum is given across both cavity models. Amber where the setting misses +3.0 m, or holds it with less water at maximum expansion than the design setting.</div>
   </div>
   <div class="chart-box"><canvas id="driftChart"></canvas></div>
   <div class="controls">
@@ -395,13 +395,13 @@
   </div>
   <div class="readout">
     <div class="cell"><div class="k">Gas setting</div><div class="v" id="rGset">3.50 <small>m&sup3; &middot; 17.5 % of shell</small></div></div>
-    <div class="cell"><div class="k">Line minimum</div><div class="v" id="rLmin4">+4.3 <small>m</small></div></div>
-    <div class="cell"><div class="k">Line maximum</div><div class="v" id="rLmax4">119.2 <small>m</small></div></div>
+    <div class="cell"><div class="k">Line minimum, whole line</div><div class="v" id="rLmin4">+4.3 <small>m</small></div></div>
+    <div class="cell"><div class="k">Line maximum, whole line</div><div class="v" id="rLmax4">119.2 <small>m</small></div></div>
     <div class="cell"><div class="k">Gas at maximum expansion</div><div class="v" id="rGexp4">16.17 <small>of 20 m&sup3;, 3.83 m&sup3; water left</small></div></div>
     <div class="cell"><div class="k">Status</div><div class="v" style="font-size:15px;margin-top:6px;" id="rStat4"><span class="badge good">holds +3.0 m</span></div></div>
   </div>
 </div>
-<p class="fig-note">At the design setting the line minimum is <strong>+4.3&nbsp;m</strong> and the gas expands to 16.17&nbsp;m&sup3;, leaving 3.83&nbsp;m&sup3; of water. Select 2.00&nbsp;m&sup3;, a compressor that has fallen behind dissolution, and the minimum drops to <strong>&minus;3.8&nbsp;m</strong>: below the criterion, still clear of vapour. Select 4.50&nbsp;m&sup3; and the minimum improves to +7.2&nbsp;m, but only 1.52&nbsp;m&sup3; of water is left at maximum expansion. Select 6.00&nbsp;m&sup3;, a transmitter reading high, and the vessel empties: vapour forms at the pump end and a real vessel would pass air into the main (see <a href="air-admission-networks.html">air admission</a>). The later maximum of about 96&nbsp;m comes from the returning column compressing the gas, about a minute after the cavity has closed, which is why both cavity models agree. The failures sit either side of the design setting, so an air-over-water vessel needs both a low-gas and a high-gas alarm, and both drift cases belong in the HAMMER study.</p>
+<p class="fig-note">At the design setting the line minimum is <strong>+4.3&nbsp;m</strong> and the gas expands to 16.17&nbsp;m&sup3;, leaving 3.83&nbsp;m&sup3; of water. Select 2.00&nbsp;m&sup3;, a compressor that has fallen behind dissolution, and the line minimum drops to <strong>&minus;3.8&nbsp;m</strong>: below the criterion, still clear of vapour. Select 4.50&nbsp;m&sup3; and the line minimum improves to +7.2&nbsp;m, but only 1.52&nbsp;m&sup3; of water is left at maximum expansion. Select 6.00&nbsp;m&sup3;, a transmitter reading high, and the vessel empties: vapour forms at the pump end and a real vessel would pass air into the main (see <a href="air-admission-networks.html">air admission</a>). The later maximum of about 96&nbsp;m comes from the returning column compressing the gas, about a minute after the cavity has closed, which is why both cavity models agree. The failures sit either side of the design setting, so an air-over-water vessel needs both a low-gas and a high-gas alarm, and both drift cases belong in the HAMMER study.</p>
 
 <h2 id="bladder-details">9 &middot; Bladder and diaphragm details</h2>
 <h3>Checking the pre-charge</h3>
@@ -626,8 +626,8 @@ const LEG={labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,bo
 const LEGF={labels:{...LEG.labels,filter:(it,d)=>d.datasets[it.datasetIndex].data.length>0}};
 const ALBL=(txt,pos,bg)=>({display:true,content:txt,position:pos,backgroundColor:bg,color:'#fff',font:{family:'IBM Plex Sans',size:10}});
 const HBAR=10.33, M_PER_BAR=10.20;
-const sgn1=v=>(v>=0?'+':'&minus;')+fmt1(Math.abs(v));
-const sgn2=v=>(v>=0?'+':'&minus;')+fmt2(Math.abs(v));
+const sgn1=v=>{const s=+fmt1(v);return (s>0?'+':(s<0?'&minus;':''))+fmt1(Math.abs(v));};
+const sgn2=v=>{const s=+fmt2(v);return (s>0?'+':(s<0?'&minus;':''))+fmt2(Math.abs(v));};
 
 /* ---------- CHART 1 : shell volume by vessel type ---------- */
 const sV0=document.getElementById('sV0'),sHgl=document.getElementById('sHgl'),sMin=document.getElementById('sMin'),
@@ -673,9 +673,11 @@ function updShell(){
   document.getElementById('rGmin').innerHTML=fmt1(d.Vmin)+' <small>m³</small>';
   document.getElementById('rAow').innerHTML=fmt1(d.aow)+' <small>m³</small>';
   document.getElementById('rBl').innerHTML=fmt1(d.bl)+' <small>m³</small>';
-  document.getElementById('rPen').innerHTML=d.pen>=0
-    ? '<span class="badge warn">+'+fmt0(d.pen)+' %</span>'
-    : '<span class="badge good">&minus;'+fmt0(-d.pen)+' %</span>';
+  const pen0=Math.round(d.pen);
+  document.getElementById('rPen').innerHTML=pen0>0
+    ? '<span class="badge warn">+'+fmt0(pen0)+' %</span>'
+    : (pen0<0 ? '<span class="badge good">&minus;'+fmt0(-pen0)+' %</span>'
+      : '<span class="badge good">no penalty</span>');
   const g=d.Ppre-HBAR;
   document.getElementById('rPre').innerHTML=fmt2(d.Ppre)+' <small>m abs ('+sgn2(g)+' m g'+(g<0?', below atmospheric':'')+')</small>';
 }

@@ -46,10 +46,11 @@ for t_h in (1,2,4):
     out[f'compressor_FAD_recharge_{t_h}h_Nm3_per_min']=round(gas_ss*P_ss/10.33/(t_h*60),3)
 # ---- A5: relief valve capacity checks
 Qrel=[c for c in _DS['srv']['cases'] if c['set']==95.0][0]['q_peak']   # peak relief flow, DN250 set 95 m
-for dn in (150,200,250,300):
+ACC=4.0                                           # accumulation: the valve reaches full lift at Hset + 4 m
+for dn in (100,150,200,250,300):
     A_=math.pi*(dn/1000)**2/4
-    cap=0.6*A_*math.sqrt(2*g*95.0)
-    out[f'srv_DN{dn}_capacity_at_95m_m3s']=round(cap,3)
+    cap=0.6*A_*math.sqrt(2*g*(95.0+ACC))          # capacity at full lift, i.e. at the relieving head 99 m
+    out[f'srv_DN{dn}_capacity_at_full_lift_set95_m3s']=round(cap,3)
 Kv=Qrel*3600/math.sqrt(95.0*0.0981)
 out['srv_required_Kv_m3h']=round(Kv); out['srv_required_Cv_US']=round(Kv*1.156)
 # ---- A6: flywheel screening

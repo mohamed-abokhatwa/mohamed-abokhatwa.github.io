@@ -14,11 +14,11 @@ BODY = r"""
   <li><strong>0&ndash;25&nbsp;s.</strong> A large cavity opens at the pump and small ones along the line; the small ones close as the reflection returns from the <a href="boundary-conditions-reservoir-tank.html">delivery reservoir</a>.</li>
   <li><strong>47&nbsp;s.</strong> The column, running back at about 0.50&nbsp;m&sup3;/s, closes the pump cavity against the shut check valve: \(B \times 0.50\) lifts the pump end from &minus;9.8&nbsp;m to about 97&nbsp;m in one step.</li>
   <li><strong>47&ndash;58&nbsp;s.</strong> That front runs down the line and stops about 0.47&nbsp;m&sup3;/s of the flow coming back out of the reservoir, adding about 100&nbsp;m to the 44.8&nbsp;m already there. <strong>The far-end peak is generated 11&ndash;12&nbsp;km from the pump.</strong></li>
-  <li><strong>47&ndash;68&nbsp;s.</strong> Later waves keep arriving at the pump, and its head climbs steadily to about 142&nbsp;m &mdash; the climb that opens a 110&nbsp;m valve at about 50&nbsp;s and a 120&nbsp;m valve at about 55&nbsp;s.</li>
+  <li><strong>47&ndash;68&nbsp;s.</strong> Later waves keep arriving at the pump, and its head climbs steadily to about 142&nbsp;m &mdash; the climb that opens a 110&nbsp;m valve at about 49&nbsp;s and a 120&nbsp;m valve at about 54&nbsp;s.</li>
   <li><strong>69&nbsp;s.</strong> Reflections reach the closed check valve, which doubles them [5]: the unprotected pump-end peak of 165&ndash;190&nbsp;m.</li>
 </ul>
 <h3>Why collapse peaks are quoted as ranges</h3>
-<p>The results come from a method-of-characteristics model with a vapour cavity model, cross-checked with a gas cavity model and an independent second code (120 reaches, 150&nbsp;s runs). They are not HAMMER output; a project analysis must be run in HAMMER, or an equivalent package, on the real profile. Maxima that follow a collapse are quoted as a range across the two models, because the spike depends on how the cavity is represented: one closes a concentrated cavity in an instant, the other cushions the closure with a trace of free gas [1, 6]. Here the gas cavity model gives line maxima 10&ndash;13&nbsp;% lower, an undersized valve&rsquo;s pump-end peak about a fifth lower, and peak relief flows a third or more lower. A finer grid does not close the gap: at 95&nbsp;m the line maximum moves by less than 1&nbsp;m between 60 and 240 reaches, against about 17&nbsp;m between the two models.</p>
+<p>The results come from a method-of-characteristics model with a vapour cavity model, cross-checked with a gas cavity model and an independent second code (120 reaches, 150&nbsp;s runs). They are not HAMMER output; a project analysis must be run in HAMMER, or an equivalent package, on the real profile. Maxima that follow a collapse are quoted as a range across the two models, because the spike depends on how the cavity is represented: one closes a concentrated cavity in an instant, the other cushions the closure with a trace of free gas [1, 6]. Here the gas cavity model gives line maxima 10&ndash;13&nbsp;% lower, an undersized valve&rsquo;s pump-end peak about a fifth lower, and peak relief flows 33&ndash;44&nbsp;% lower at the three settings modelled &mdash; though only about a tenth lower for that undersized valve. A finer grid does not close the gap: at 95&nbsp;m the line maximum moves by less than 1&nbsp;m between 60 and 240 reaches, against about 17&nbsp;m between the two models.</p>
 
 <h2 id="model">3 &middot; Worked example: one valve, four settings</h2>
 <p>The valve is a spring-loaded relief valve on the pump discharge header, downstream of the check valves, discharging to atmosphere. It opens in proportion to the head above its set point and reaches full lift at an overpressure of 4&nbsp;m. The discharge law, the usual form of a valve boundary in a characteristics model [7], is</p>
@@ -29,7 +29,7 @@ BODY = r"""
   <caption>DN250 relief valve at the pump, all pumps tripped. Results without collapse to 0.1&nbsp;m; collapse-driven maxima as a range across the vapour and gas cavity models.</caption>
   <thead><tr><th>Set head</th><th class="num">Pump-end max, vapour / gas model (m)</th><th class="num">Line max (m)</th><th class="num">Length above 136&nbsp;m, vapour / gas (km)</th><th class="num">Line min (m)</th><th class="num">Peak relief flow, vapour / gas (m&sup3;/s)</th></tr></thead>
   <tbody>
-    <tr><td>No valve</td><td class="num">165&ndash;190</td><td class="num">165&ndash;190</td><td class="num">12.0 / 11.0</td><td class="num">&minus;9.8</td><td class="num">&ndash;</td></tr>
+    <tr><td>No valve</td><td class="num">165&ndash;190 (collapse range)</td><td class="num">165&ndash;190</td><td class="num">12.0 / 11.0</td><td class="num">&minus;9.8</td><td class="num">&ndash;</td></tr>
     <tr><td>120&nbsp;m</td><td class="num">120.9 / 120.5</td><td class="num">140&ndash;155</td><td class="num">11.9 / 3.9</td><td class="num">&minus;9.8</td><td class="num">0.319 / 0.179</td></tr>
     <tr><td>110&nbsp;m</td><td class="num">111.0 / 110.6</td><td class="num">133&ndash;151</td><td class="num">10.0 / 0</td><td class="num">&minus;9.8</td><td class="num">0.359 / 0.220</td></tr>
     <tr><td>95&nbsp;m (best case)</td><td class="num">96.3 / 95.9</td><td class="num">127&ndash;143</td><td class="num">1.6 / 0</td><td class="num">&minus;9.8</td><td class="num">0.416 / 0.280</td></tr>
@@ -125,14 +125,14 @@ BODY = r"""
   <caption>Valve size sweep at a 95&nbsp;m set head, C<sub>d</sub> 0.6, full lift at 99&nbsp;m; capacity against a required 416&nbsp;L/s. Collapse-driven maxima as a range across the two cavity models.</caption>
   <thead><tr><th>Valve</th><th class="num">Capacity at full lift (L/s)</th><th class="num">Capacity &divide; required</th><th class="num">Peak relief flow, vapour / gas (L/s)</th><th class="num">Pump-end max, vapour / gas (m)</th><th class="num">Line max (m)</th></tr></thead>
   <tbody>
-    <tr><td>DN100</td><td class="num">208</td><td class="num">0.50</td><td class="num">242 / 219</td><td class="num">110&ndash;134</td><td class="num">127&ndash;143</td></tr>
+    <tr><td>DN100</td><td class="num">208</td><td class="num">0.50</td><td class="num">242 / 219</td><td class="num">110&ndash;135 (collapse range)</td><td class="num">127&ndash;143</td></tr>
     <tr><td>DN150</td><td class="num">467</td><td class="num">1.12</td><td class="num">407 / 274</td><td class="num">98.5 / 97.4</td><td class="num">127&ndash;143</td></tr>
     <tr><td>DN200</td><td class="num">831</td><td class="num">2.00</td><td class="num">413 / 278</td><td class="num">97.0 / 96.4</td><td class="num">127&ndash;143</td></tr>
     <tr><td>DN250</td><td class="num">1,298</td><td class="num">3.12</td><td class="num">416 / 280</td><td class="num">96.3 / 95.9</td><td class="num">127&ndash;143</td></tr>
     <tr><td>DN300</td><td class="num">1,869</td><td class="num">4.49</td><td class="num">418 / 281</td><td class="num">95.9 / 95.6</td><td class="num">127&ndash;143</td></tr>
   </tbody>
 </table></div>
-<p>DN100 is undersized: its capacity at full lift is half the requirement, and it passes 242&nbsp;L/s only because the pump end climbs to 110&ndash;134&nbsp;m, a collapse-driven range again because the valve has lost control. From DN150 up the pump end is controlled, and each size step buys less than 1.5&nbsp;m. DN150 works near full lift, with no margin for a lower installed discharge coefficient or a slower valve, so in our judgement DN200 or DN250 is the choice. The last column never moves: <strong>the line maximum is indifferent to the size of the valve</strong>.</p>
+<p>DN100 is undersized: its capacity at full lift is half the requirement, and it passes 242&nbsp;L/s only because the pump end climbs to 110&ndash;135&nbsp;m, a collapse-driven range again because the valve has lost control. From DN150 up the pump end is controlled, and each size step buys less than 1.5&nbsp;m. DN150 works near full lift, with no margin for a lower installed discharge coefficient or a slower valve, so in our judgement DN200 or DN250 is the choice. The last column never moves: <strong>the line maximum is indifferent to the size of the valve</strong>.</p>
 <h3>The discharge side</h3>
 <p>At 0.416&nbsp;m&sup3;/s a DN250 outlet runs at 8.5&nbsp;m/s, and the model discharges 3.3&ndash;4.4&nbsp;m&sup3; per trip at 95&nbsp;m (vapour and gas cavity models) &mdash; one event, not a sump volume. The discharge pipe must not throttle the valve, the sump or return must take the peak flow and repeated trips without backing up, and a valve venting at over 9&nbsp;bar needs a splash guard and safe access [3, 9].</p>
 
@@ -160,7 +160,7 @@ BODY = r"""
     <div class="ctrl">
       <label>Set head <span id="vHs">95 m</span></label>
       <input type="range" id="sHs" min="80" max="140" value="95" step="1">
-      <div class="hint">Steady head at the pump 85.0 m. The transient sweep stays at 95 m.</div>
+      <div class="hint">Steady head at the pump 85.0 m, pumps&rsquo; shut-off head 105 m; set point plus the 4 m overpressure must stay under the 136 m allowable. The transient sweep stays at 95 m.</div>
     </div>
     <div class="ctrl">
       <label>Discharge coefficient <span id="vCd">0.60</span></label>
@@ -178,7 +178,7 @@ BODY = r"""
     <div class="cell"><div class="k">K<sub>v</sub> required</div><div class="v" id="rKv">491 <small>m&sup3;/h</small></div></div>
     <div class="cell"><div class="k">C<sub>v</sub> required</div><div class="v" id="rCv">567 <small>US</small></div></div>
     <div class="cell"><div class="k">Capacity &divide; required</div><div class="v" id="rRat">3.12 <small>&times;</small></div><div id="bRat" style="margin-top:6px;"><span class="badge good">adequate</span></div></div>
-    <div class="cell"><div class="k">Head at the valve</div><div class="v" id="rHv">96.3 <small>m, lift 32 %</small></div></div>
+    <div class="cell"><div class="k">Head at the valve</div><div class="v" id="rHv">96.3 <small>m, lift 32 %</small></div><div id="bHv" style="margin-top:6px;"><span class="badge warn">below the pumps&rsquo; 105 m shut-off head</span></div></div>
     <div class="cell"><div class="k">First estimate of flow</div><div class="v" id="rEst">0.33&ndash;0.45 <small>m&sup3;/s</small></div></div>
   </div>
 </div>
@@ -269,16 +269,16 @@ const fmt3=v=>v.toFixed(3);
 const AX={grid:{color:'#eef2f5'},ticks:{font:{family:'IBM Plex Sans',size:11}}};
 const TT={font:{family:'IBM Plex Sans',size:12,weight:'600'}};
 const LEG={labels:{font:{family:'IBM Plex Sans',size:11},usePointStyle:true,boxWidth:8}};
-const G=9.81, LIM=136, PMIN=3.0, HV=-9.8, HSS=85.0;
+const G=9.81, LIM=136, PMIN=3.0, HV=-9.8, HSS=85.0, HSHUT=105.0;
 const B=1050/(G*Math.PI*0.8*0.8/4);            /* pipe impedance a/(gA), s/m2 */
 const ACC=D.acc;                                  /* overpressure to full lift, m */
 const pts=(xs,ys)=>xs.map((x,i)=>({x:x,y:ys[i]}));
 const neg=v=>(v<0?'&minus;':'')+fmt1(Math.abs(v));
 const lbl=(txt,pos,col)=>({display:true,content:txt,position:pos,color:col,backgroundColor:'rgba(255,255,255,0.85)',font:{size:10,family:'IBM Plex Sans'}});
 const hline=(y,col,dash,txt,pos)=>({type:'line',yMin:y,yMax:y,borderColor:col,borderWidth:1.5,borderDash:dash,label:lbl(txt,pos,col)});
-/* collapse-driven maxima: a range across the two cavity models, whole metres near the 136 m limit, else to 5 m */
+/* collapse-driven maxima: a range across the two cavity models, rounded to 5 m, but to whole metres when the 136 m limit falls inside the range */
 function rng(a,b){const lo=Math.min(a,b),hi=Math.max(a,b);
-  if(lo<=LIM+5&&hi>=LIM-5)return Math.round(lo)+'&ndash;'+Math.round(hi);
+  if(lo<=LIM&&hi>=LIM)return Math.round(lo)+'&ndash;'+Math.round(hi);
   return (5*Math.round(lo/5))+'&ndash;'+(5*Math.round(hi/5));}
 function verdict(a,b){const lo=Math.min(a,b),hi=Math.max(a,b);
   if(hi<=LIM)return '<span class="badge good">below 136 m in both models</span>';
@@ -296,14 +296,14 @@ const s1=document.getElementById('s1');
 let c1=new Chart(document.getElementById('pumpChart'),{
   type:'line',
   data:{datasets:[
-    {label:'No valve',data:pts(D.t,D.cases[0].H),borderColor:'rgba(127,140,141,0.55)',borderWidth:1.3,pointRadius:0,tension:0},
+    {label:'No valve',data:[],borderColor:'rgba(127,140,141,0.55)',borderWidth:1.3,pointRadius:0,tension:0},
     {label:'Relief valve set 95 m',data:[],borderColor:'#1b4f72',borderWidth:2.4,pointRadius:0,tension:0}
   ]},
   options:{responsive:true,maintainAspectRatio:false,animation:false,
     interaction:{mode:'nearest',axis:'x',intersect:false},
     scales:{x:{type:'linear',min:0,max:150,title:{display:true,text:'Time after the trip (s)',...TT},...AX},
             y:{type:'linear',min:-25,max:200,title:{display:true,text:'Pressure head at the pump (m)',...TT},...AX,ticks:{stepSize:25,font:{family:'IBM Plex Sans',size:11}}}},
-    plugins:{legend:LEG,
+    plugins:{legend:{labels:{...LEG.labels,filter:(it,d)=>!(it.datasetIndex===0&&!d.datasets[0].data.length)}},
       tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt1(c.parsed.y)} m at ${fmt1(c.parsed.x)} s`}},
       annotation:{annotations:{
         pn:hline(LIM,'#c0392b',[6,4],'PN16 allowable 136 m','start'),
@@ -315,8 +315,9 @@ let c1=new Chart(document.getElementById('pumpChart'),{
 function upd1(){
   const c=D.cases[+s1.value];
   document.getElementById('v1').textContent=c.set?('set '+c.set+' m'):'no valve';
+  c1.data.datasets[0].data=c.set?pts(D.t,D.cases[0].H):[];
   c1.data.datasets[1].data=pts(D.t,c.H);
-  c1.data.datasets[1].label=c.set?('Relief valve set '+c.set+' m'):'No valve (selected)';
+  c1.data.datasets[1].label=c.set?('Relief valve set '+c.set+' m'):'No valve';
   const an=c1.options.plugins.annotation.annotations;
   an.set.display=!!c.set;
   if(c.set){an.set.yMin=c.set;an.set.yMax=c.set;an.set.label.content='set '+c.set+' m';}
@@ -330,9 +331,8 @@ function upd1(){
   document.getElementById('rM1').innerHTML=neg(mn)+' <small>m</small>';
   document.getElementById('bM1').innerHTML=minBadge(mn);
   document.getElementById('rQ1').innerHTML=c.set?(fmt3(c.q)+' <small>m³/s (gas model '+fmt3(c.qg)+')</small>'):'&ndash; <small>no valve</small>';
-  let open='&ndash; <small>no valve</small>';
-  if(c.set){const i=c.H.findIndex(h=>h>=c.set); open=(i>=0?fmt0(D.t[i])+' <small>s</small>':'&ndash; <small>stays shut</small>');}
-  document.getElementById('rO1').innerHTML=open;
+  document.getElementById('rO1').innerHTML=!c.set?'&ndash; <small>no valve</small>'
+    :(c.topen>0?fmt0(c.topen)+' <small>s</small>':'&ndash; <small>stays shut</small>');
 }
 s1.addEventListener('input',upd1);upd1();
 
@@ -445,6 +445,12 @@ function upd3(){
   const h=headAtValve(dn,Hs,Cd,Q);
   document.getElementById('rHv').innerHTML=h===null?'full lift <small>cannot pass it</small>'
     :(fmt1(h)+' <small>m, lift '+fmt0(100*(h-Hs)/ACC)+' %</small>');
+  let hb;
+  if(Hs+ACC>LIM)hb='<span class="badge bad">set + overpressure above the 136 m allowable</span>';
+  else if(Hs<HSS)hb='<span class="badge bad">below the 85.0 m steady head: opens in service</span>';
+  else if(Hs<HSHUT)hb='<span class="badge warn">below the pumps&rsquo; 105 m shut-off head</span>';
+  else hb='<span class="badge good">clears the shut-off head and the allowable</span>';
+  document.getElementById('bHv').innerHTML=hb;
   const lo=Math.max(0,(HU_G-Hs)/B), hi=Math.max(0,(HU_V-Hs)/B);
   document.getElementById('rEst').innerHTML=fmt2(lo)+'&ndash;'+fmt2(hi)+' <small>m³/s</small>';
 }
@@ -495,6 +501,12 @@ _ENV2 = {
     '95': ([96.3,117.42,117.64,117.86,118.07,118.29,118.5,118.65,118.87,119.02,119.23,119.38,119.6,119.75,119.97,120.12,120.33,120.49,120.71,120.86,121.08,121.24,121.45,121.61,121.79,121.94,122.1,122.25,122.41,122.56,122.72,122.87,123.03,123.19,123.35,123.5,123.66,123.82,123.98,124.14,124.3,124.46,124.62,124.78,124.94,125.11,125.27,125.43,125.6,125.76,125.93,126.09,126.26,126.43,126.59,126.76,126.93,127.1,127.27,127.44,127.61,127.78,127.96,128.13,128.3,128.48,128.65,128.83,129.01,129.19,129.36,129.54,129.72,129.91,130.09,130.27,130.46,130.64,130.83,131.01,131.2,131.39,131.58,131.77,131.96,132.15,132.34,132.54,132.73,132.93,133.13,133.33,133.52,133.73,133.93,134.13,134.33,134.54,134.74,134.95,135.16,135.37,135.58,135.79,136.01,136.22,138.44,138.93,139.41,139.89,140.36,140.83,141.29,141.75,142.21,142.43,142.65,142.87,143.08,143.3,44.8],
            [95.88,102.56,103.45,104.03,104.55,105.23,105.96,106.73,107.18,107.76,108.29,108.81,109.4,110.05,110.49,110.89,111.45,111.84,112.4,112.8,113.24,113.5,113.94,112.14,112.42,111.6,111.77,111.96,112.17,112.41,113.07,113.77,114.13,114.46,114.82,115.13,114.48,114.51,114.51,114.68,114.84,115.02,115.22,115.42,115.61,115.81,116.01,116.21,116.42,116.66,116.94,117.27,117.55,117.39,117.6,117.84,118.12,118.4,118.81,118.83,118.92,119.19,119.49,119.56,119.22,119.42,119.65,119.91,120.46,120.57,121.15,120.91,120.39,120.62,120.81,121.02,121.26,121.54,121.78,122.63,124.33,124.32,125.01,125.01,122.1,121.89,122.3,122.58,122.92,123.13,123.27,123.37,123.48,123.66,123.9,124.15,124.51,124.57,124.68,124.85,125.12,125.46,125.72,125.82,125.82,125.71,124.65,125.12,125.55,126.05,126.23,126.73,124.55,120.98,121.3,121.73,122.24,118.65,117.7,118.21,44.8]),
 }
+# First instant the valve passes flow, s, from moc.py rerun unchanged at stride=1 (dt = 12000/120/1050 = 0.095238 s):
+# the first step whose head at node 0 reaches the set point, which is also the first step with srv q_peak > 0.
+# datasets.json stores the history decimated 6:1, so reading the opening off DATA.t/case.H is up to 0.6 s late
+# (it gives 47.3 / 49.6 / 54.9 s); the guard below keeps these values tied to that series.
+_TOPEN = {'none': 0.0, '120': 54.476, '110': 49.429, '95': 46.857}
+
 # Peak relief flow in the gas cavity model (dgcm.py ReliefBC.qr_peak), m3/s: by setting (DN250) and by size (set 95 m).
 _QDG = {'none': 0.0000, '120': 0.1788, '110': 0.2203, '95': 0.2802}
 _QDG_SIZE = {100: 0.2187, 150: 0.2740, 200: 0.2782, 250: 0.2802, 300: 0.2813}
@@ -507,12 +519,15 @@ for _k, _c in zip(_KEYS, _S['cases']):
     if len(_g) != len(_c['Hmax_dgcm']) or any(abs(a - b) > 0.06 for a, b in zip(_g, _c['Hmax_dgcm'])): _bad.append(_k + ' gas')
     if sum(100 for h in _v if h > 136.0) != _c['len_above_136'] or sum(100 for h in _g if h > 136.0) != _c['len_above_136_dgcm']:
         _bad.append(_k + ' length above 136 m')
+    if _c['set']:
+        _td = next((_t for _t, _h in zip(_c['t'], _c['H']) if _h >= _c['set']), None)
+        if _td is None or not (_TOPEN[_k] <= _td < _TOPEN[_k] + 0.8): _bad.append(_k + ' opening time')
 if _bad:
-    raise ValueError('s05_relief_valve: embedded 0.01 m envelopes no longer match datasets.json srv (%s); rerun the srv block of gen_datasets.py' % ', '.join(_bad))
+    raise ValueError('s05_relief_valve: embedded solver values no longer match datasets.json srv (%s); rerun the srv block of gen_datasets.py' % ', '.join(_bad))
 
 DATA = dict(
     t=_S['cases'][0]['t'], x=_S['x'], acc=_S['accumulation_m'],
-    cases=[dict(set=_c['set'], pmax=_c['pump_max'], pmaxg=_c['pump_max_dgcm'], q=_c['q_peak'], qg=_QDG[_k],
+    cases=[dict(set=_c['set'], pmax=_c['pump_max'], pmaxg=_c['pump_max_dgcm'], q=_c['q_peak'], qg=_QDG[_k], topen=_TOPEN[_k],
                 H=_c['H'], Hmin=_c['Hmin'], Hv=_ENV2[_k][0], Hg=_ENV2[_k][1])
            for _k, _c in zip(_KEYS, _S['cases'])],
     sizes=[dict(dn=_s['dn'], pmax=_s['pump_max'], pmaxg=_s['pump_max_dgcm'], lmax=_s['line_max'], lmaxg=_s['line_max_dgcm'],

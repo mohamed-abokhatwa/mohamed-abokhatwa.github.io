@@ -25,7 +25,7 @@ BODY = r"""
 <div class="eq">\[ h_T \;\lt\; H_{rest} - z_{knee} = 44.8 - 30.0 = 14.8\ \text{m} \]</div>
 <p>Exceed it and a rigid-column estimate with the friction below the knee gives the drain rate:</p>
 <div class="eq">\[ Q_{drain} = \sqrt{\frac{z_{knee} + h_T - H_{rest}}{r}}, \qquad r = \frac{84.0 - 44.8}{0.70^2} = 80\ \text{s}^2/\text{m}^5 \]</div>
-<p>A 16&nbsp;m tank would drain at \(\sqrt{1.2/80}\) = 0.12&nbsp;m&sup3;/s, indefinitely; the method-of-characteristics run gives 0.13&nbsp;m&sup3;/s, within 3&nbsp;% of the estimate.</p>
+<p>A 16&nbsp;m tank would drain at \(\sqrt{1.2/80}\) = 0.12&nbsp;m&sup3;/s, indefinitely. The method-of-characteristics run drains faster while the line is still emptying and settles to 0.122&nbsp;m&sup3;/s after about ten minutes. That is a check on the arithmetic and not an independent one: the transient model carries the same lumped quadratic friction, so it must converge on the closed form.</p>
 
 <h2 id="example">3 &middot; The example profile and the modelling basis</h2>
 <p>The main is the series reference with one change of profile: 12&nbsp;km of DN800 ductile iron K9 [7] carrying 0.70&nbsp;m&sup3;/s (2,520&nbsp;m&sup3;/h, 1.39&nbsp;m/s), wave speed 1,050&nbsp;m/s, HGL 85.0&nbsp;m at the pump and 44.8&nbsp;m at the delivery reservoir, PN16, checked against 136&nbsp;m allowable (the series criterion; design pressures and the surge allowance are defined in EN 805 [8]). The ground rises 30&nbsp;m over the first 300&nbsp;m and stays level at +30&nbsp;m to the end. The load case is a power failure that trips every pump at once, the usual governing event [9] (the alternatives are compared in <a href="surge-scenarios-pump-stations.html">surge scenarios in pump stations</a>).</p>
@@ -39,7 +39,7 @@ BODY = r"""
 <tr><td>Plateau, 4,400 m</td><td class="num">30.0</td><td class="num">70.3</td><td class="num">40.3</td><td class="num">37.3</td></tr>
 <tr><td>Delivery reservoir, 12,000 m</td><td class="num">30.0</td><td class="num">44.8</td><td class="num">14.8</td><td class="num">11.8</td></tr>
 </tbody></table></div>
-<p>The transient numbers come from a method-of-characteristics model with a vapour cavity model, cross-checked with a gas cavity model and an independent second code [1, 10]: 120 reaches of 100&nbsp;m, 150&nbsp;s runs, pumps stopping instantly behind their check valves (the conservative case; see <a href="pump-inertia-flywheel-surge.html">the flywheel article</a>). The vessel has a DN400 differential connection, loss coefficient 2 out and 10 in (see <a href="surge-vessel-differential-orifice.html">the differential orifice</a>), \(n\) = 1.2, and a shell of largest gas volume / 0.8. The tank is idealised: loss-free connection, constant level, 800&nbsp;m&sup3; available. Each vessel is the smallest steady gas volume, found by bisection, that keeps the whole line at +3.0&nbsp;m.</p>
+<p>The transient numbers come from a method-of-characteristics model with a vapour cavity model, cross-checked with a gas cavity model and an independent second code [1, 10]: 120 reaches of 100&nbsp;m, 150&nbsp;s runs, pumps stopping instantly behind their check valves (the conservative case; see <a href="pump-inertia-flywheel-surge.html">the flywheel article</a>). The vessel has a DN400 differential connection, loss coefficient 2 out and 10 in (see <a href="surge-vessel-differential-orifice.html">the differential orifice</a>), \(n\) = 1.2, and a shell cap set well above the expansion in the model, so that it never binds; the design shell quoted throughout is the largest gas volume / 0.8. The tank is idealised: loss-free connection, constant level, 800&nbsp;m&sup3; available. Each vessel is the smallest steady gas volume, found by bisection, that keeps the whole line at +3.0&nbsp;m.</p>
 <div class="callout warn">
   <span class="lbl">Where the model is uncertain, and what that means for design</span>
   Where the pressure reaches vapour the column separates, and the spike when the cavity collapses depends on how the cavity is represented. In this series the gas cavity model [10] puts those peaks between 18&nbsp;% lower and 10&nbsp;% higher than the vapour cavity model, so collapse-governed maxima are quoted as a range across both. Do not design on a collapse peak: protect the downsurge so that no cavity forms. None of these figures is HAMMER output, and a project analysis must be run in HAMMER, or an equivalent code, on the surveyed profile.
@@ -96,7 +96,7 @@ BODY = r"""
     <div class="cell"><div class="k">Line minimum</div><div class="v" id="rMin1">+3.0 <small>m at 4,400 m</small></div></div>
     <div class="cell"><div class="k">Knee, 300 m</div><div class="v" id="rKnee1">+8.0 <small>m</small></div></div>
     <div class="cell"><div class="k">Pump end</div><div class="v" id="rPump1">+33.8 <small>m</small></div></div>
-    <div class="cell"><div class="k">Line maximum</div><div class="v" id="rMax1">85.0 <small>m</small></div></div>
+    <div class="cell"><div class="k">Line maximum</div><div class="v" id="rMax1">85.0 <small>m, no upsurge</small></div></div>
     <div class="cell"><div class="k">Tank draw</div><div class="v" id="rTank1">20.7 <small>m&sup3;</small></div></div>
     <div class="cell"><div class="k">Vessel gas max</div><div class="v" id="rGas1">30.2 <small>m&sup3;</small></div></div>
     <div class="cell"><div class="k">Criterion</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rOk1"></span></div></div>
@@ -105,9 +105,9 @@ BODY = r"""
 <p class="fig-note">At the default &mdash; the 8&nbsp;m tank with 15.9&nbsp;m&sup3; of vessel gas &mdash; the minimum HGL touches ground + 3.0&nbsp;m at <strong>4,400&nbsp;m</strong> on the plateau, the knee is held at +8.0&nbsp;m, the pump end at +33.8&nbsp;m, and nothing rises above 85.0&nbsp;m. Switch to the vessel alone and the critical point jumps back to the knee. Switch to the tank alone and open the window to 12&nbsp;km: the knee stands at +8.0&nbsp;m, but the red line sits on the vapour line over the first 200&nbsp;m and again beyond 7.4&nbsp;km, and the amber bar at the pump end spans 160&ndash;170&nbsp;m, through the PN16 line.</p>
 
 <h2 id="critical-point">6 &middot; Reading it: the tank moves the critical point</h2>
-<p>With the tank in place the knee cannot fall below the tank level, so the vessel's critical point moves out along the plateau to about 4.4&nbsp;km, where the tank has no say. The minimum at 4,400&nbsp;m arrives at 18.7&nbsp;s, just as the reflection from the delivery reservoir reaches it (12,000&nbsp;m out and 7,600&nbsp;m back at 1,050&nbsp;m/s). The 8&nbsp;m tank does not open until about 20&nbsp;s, and anything it sends needs another 3.9&nbsp;s to cover the 4.1&nbsp;km. At every tank level tested the plateau minimum has come and gone before the tank's influence arrives, which is why <strong>the required steady gas is the same 15.9&nbsp;m&sup3; for every tank level from 4 to 14&nbsp;m</strong>. The vessel is now sized for the first wave on the plateau, a far smaller job than holding the knee through the slow swing that follows.</p>
+<p>With the tank in place the knee cannot fall below the tank level, so the vessel's critical point moves out along the plateau to about 4.4&nbsp;km, where the tank has no say. The minimum at 4,400&nbsp;m arrives at 18.7&nbsp;s, just as the reflection from the delivery reservoir reaches it (12,000&nbsp;m out and 7,600&nbsp;m back at 1,050&nbsp;m/s). The 8&nbsp;m tank does not open until 19.3&nbsp;s, and anything it sends needs another 3.9&nbsp;s to cover the 4.1&nbsp;km. Up to 12&nbsp;m the plateau minimum has come and gone before the tank's influence arrives; at 14&nbsp;m the tank opens early enough to just catch the 4,400&nbsp;m node, which is lifted to +3.1&nbsp;m, so the critical point steps out to 4,500&nbsp;m. Either way <strong>the required steady gas is the same 15.9&nbsp;m&sup3; for every tank level from 4 to 14&nbsp;m</strong>. The vessel is now sized for the first wave on the plateau, a far smaller job than holding the knee through the slow swing that follows.</p>
 <p>The second lesson is at the pump end: without the vessel, the 300&nbsp;m between the closed pump check valve and the tank becomes a short dead end in which the column still separates, which is why the tank alone makes the collapse there worse (section 4).</p>
-<p>The third is that the two devices change each other's duty, so they must be modelled together [9]. The tank moves the vessel's critical point and trims its expansion; the vessel delays the moment the tank opens from under a second to about 20&nbsp;s and cuts its draw from 27.5 to 20.7&nbsp;m&sup3;. Size either one alone and you size it for the wrong event.</p>
+<p>The third is that the two devices change each other's duty, so they must be modelled together [9]. The tank moves the vessel's critical point and trims its expansion; the vessel delays the moment the tank opens from 0.4&nbsp;s to 19.3&nbsp;s and cuts its draw from 27.5 to 20.7&nbsp;m&sup3;. Size either one alone and you size it for the wrong event.</p>
 
 <h2 id="int-knee">7 &middot; Interactive: at the knee, second by second</h2>
 <p>The envelopes say how low each point went; the time histories say when, and what the tank was doing.</p>
@@ -115,7 +115,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Pressure head at the knee, on the plateau and at the pump, with the cumulative tank draw</div>
-    <div class="fsub">Time histories from the same runs, at the knee (300 m), on the plateau 300 m past the knee (600 m) and at the pump. Tank draw on the right axis. Minima in the readouts are the envelope values at those points; times are read from the plotted series. The series are sampled about every 0.6 s and miss the short collapse spikes, so for the two options that separate the axis is clipped at 100 m and the pump-end peak comes from figure 1, as a range across both cavity models.</div>
+    <div class="fsub">Time histories from the same runs, at the knee (300 m), on the plateau 300 m past the knee (600 m) and at the pump. Tank draw on the right axis. Minima in the readouts are the envelope values at those points, and the readouts cover the whole 150 s run whatever the window; the tank's opening time comes from the full-resolution run. The series keep the highest and lowest point of each sampling interval, so the collapse spikes are drawn; the axis is clipped at 110 m to keep the slow minima readable, and the pump-end peak beside the chart is quoted from figure 1 as a range across both cavity models. In the unprotected case only the pump trace is clipped: the knee and 600 m traces peak just below, at 108 m.</div>
   </div>
   <div class="chart-box"><canvas id="kneeChart"></canvas></div>
   <div class="controls">
@@ -140,12 +140,12 @@ BODY = r"""
     <div class="cell"><div class="k">600 m minimum</div><div class="v" id="rLimb2">+7.2 <small>m</small></div></div>
     <div class="cell"><div class="k">Pump-end minimum</div><div class="v" id="rPump2">+33.8 <small>m</small></div></div>
     <div class="cell"><div class="k">Pump-end peak</div><div class="v" id="rPeak2">85.0 <small>m, no upsurge</small></div></div>
-    <div class="cell"><div class="k">Tank opens</div><div class="v" id="rOpen2">20 <small>s</small></div></div>
+    <div class="cell"><div class="k">Tank opens</div><div class="v" id="rOpen2">19.3 <small>s</small></div></div>
     <div class="cell"><div class="k">Tank draw</div><div class="v" id="rDraw2">20.7 <small>m&sup3;</small></div></div>
     <div class="cell"><div class="k">Draw finished by</div><div class="v" id="rDone2">119 <small>s</small></div></div>
   </div>
 </div>
-<p class="fig-note">At the default the knee sinks from its steady 54.0&nbsp;m, reaches the tank level at about <strong>20&nbsp;s</strong> and stays at +8.0&nbsp;m while the tank feeds; 600&nbsp;m follows it down to +7.2&nbsp;m, and the pump end bottoms at +33.8&nbsp;m as the vessel's gas reaches its largest. The draw climbs to 20.7&nbsp;m&sup3; and is finished by about <strong>119&nbsp;s</strong>. Switch to the vessel alone: nothing stops the knee, which sinks slowly to +3.0&nbsp;m while the pump end falls to +32.7&nbsp;m &mdash; the slow swing the big vessel exists to carry. Switch to the tank alone: it opens within the first second and holds the knee, but the pump end sits at vapour and the tank gives 27.5&nbsp;m&sup3;.</p>
+<p class="fig-note">At the default the knee sinks from its steady 54.0&nbsp;m, reaches the tank level at about <strong>20&nbsp;s</strong> and stays at +8.0&nbsp;m while the tank feeds; 600&nbsp;m follows it down to +7.2&nbsp;m, and the pump end bottoms at +33.8&nbsp;m as the vessel's gas reaches its largest. The draw climbs to 20.7&nbsp;m&sup3; and is finished by about <strong>118&nbsp;s</strong>. Switch to the vessel alone: nothing stops the knee, which sinks slowly to +3.0&nbsp;m while the pump end falls to +32.7&nbsp;m &mdash; the slow swing the big vessel exists to carry. Switch to the tank alone: it opens within the first second and holds the knee, but the pump end sits at vapour and the tank gives 27.5&nbsp;m&sup3;.</p>
 
 <h2 id="sizing">8 &middot; Sizing the tank and the vessel together</h2>
 <p>Repeating the vessel bisection at different tank levels gives the trade-off. The draw is given at 150&nbsp;s and in full, from the same solver run continued to 600&nbsp;s.</p>
@@ -158,7 +158,7 @@ BODY = r"""
 <tr><td>8 m</td><td class="num">15.9</td><td class="num">30.2</td><td class="num">37.8</td><td class="num">20.7</td><td class="num">20.7</td><td>4,400 m</td></tr>
 <tr><td>12 m</td><td class="num">15.9</td><td class="num">28.3</td><td class="num">35.4</td><td class="num">30.7</td><td class="num">33.5</td><td>4,400 m</td></tr>
 <tr><td>14 m</td><td class="num">15.9</td><td class="num">27.5</td><td class="num">34.4</td><td class="num">35.7</td><td class="num">51.7</td><td>4,500 m</td></tr>
-<tr><td>16 m</td><td class="num" colspan="6">not valid: above the 14.8 m limit, drains at 0.12&ndash;0.13 m&sup3;/s indefinitely</td></tr>
+<tr><td>16 m</td><td class="num" colspan="6">not valid: above the 14.8 m limit, drains at about 0.12 m&sup3;/s indefinitely</td></tr>
 </tbody></table></div>
 <p><strong>First, the steady gas does not change</strong> from 4 to 14&nbsp;m, for the reason given in section 6. <strong>Second, a higher tank trims the vessel only a little</strong>: the shell falls from 40.3 to 34.4&nbsp;m&sup3; because, with the knee held higher, the pump end falls less (its minimum rises from +30.5 to +39.1&nbsp;m) and the gas expands less (32.3 to 27.5&nbsp;m&sup3;). <strong>Third, a higher tank gives away much more water</strong>: 14.0 to 35.7&nbsp;m&sup3; in 150&nbsp;s, and the 12&nbsp;m and 14&nbsp;m tanks are still feeding when the run ends. Run on, their draws end at 33.5 and 51.7&nbsp;m&sup3;: a tank 0.8&nbsp;m below the drain limit keeps feeding for several minutes while the line settles towards a rest pressure just above it.</p>
 <p>The design consequence is to <strong>keep the tank low</strong>, but high enough above +3.0&nbsp;m to leave room for its connection loss and its own surface falling as it feeds. On this profile 8&nbsp;m does that: 5.0&nbsp;m above the criterion, 6.8&nbsp;m below the drain limit, and a draw complete in about two minutes. That is engineering judgement, not an optimum. Apply the drain limit at the lowest operating level of the delivery reservoir, the lowest rest HGL the tank will see.</p>
@@ -210,7 +210,7 @@ BODY = r"""
     </div>
   </div>
   <div class="readout">
-    <div class="cell"><div class="k">Vessel shell</div><div class="v" id="rShell3">37.8 <small>m&sup3;</small></div></div>
+    <div class="cell"><div class="k">Vessel shell</div><div class="v" id="rShell3">37.8 <small>m&sup3;, &minus;64 %</small></div></div>
     <div class="cell"><div class="k">Complete draw</div><div class="v" id="rDraw3">20.7 <small>m&sup3;</small></div></div>
     <div class="cell"><div class="k">Usable volume</div><div class="v" id="rUse3">41.4 <small>m&sup3;</small></div></div>
     <div class="cell"><div class="k">Water depth</div><div class="v" id="rDepth3">3.11 <small>m</small></div></div>
@@ -294,14 +294,18 @@ const badge=(c,t)=>'<span class="badge '+c+'">'+t+'</span>';
 const SC=[D.none,D.tank,D.vessel,D.tank_vessel];
 const HAS_TANK=[false,true,false,true], TANK_LEVEL=8, KN=3, LIMB=6;
 const X=D.x.map(v=>v/1000);
-/* collapse-governed peaks: a range across the vapour (DVCM) and gas (DGCM) cavity models */
+const ALLOW=136.0, r5=v=>5*Math.round(v/5);
+/* collapse-governed peaks: the range across the vapour (DVCM) and gas (DGCM) cavity models,
+   rounded to 5 m, or to whole metres where the 136 m allowable falls inside the range */
 function peak(s){
+  const j=Math.max(0,D.x.indexOf(s.at_max));      // compare like with like: steady PRESSURE at the node that peaks
   if(s.line_max_dgcm==null){
-    return fmt1(s.line_max)+' <small>m'+(s.line_max<=D.hgl[0]+0.05?', no upsurge':'')+'</small>';
+    return fmt1(s.line_max)+' <small>m'+(s.line_max<=D.hgl[j]-D.z[j]+0.05?', no upsurge':'')+'</small>';
   }
   const lo=Math.min(s.line_max,s.line_max_dgcm), hi=Math.max(s.line_max,s.line_max_dgcm);
-  if(hi-lo<5) return 'about '+fmt0(Math.round((lo+hi)/10)*5)+' <small>m</small>';
-  return fmt0(Math.floor(lo/5)*5)+'&ndash;'+fmt0(Math.ceil(hi/5)*5)+' <small>m</small>';
+  const str=lo<ALLOW&&hi>ALLOW;                   // whole metres, so the allowable's place in the range stays visible
+  const a=str?Math.round(lo):r5(lo), b=str?Math.round(hi):r5(hi);
+  return (a===b?'about '+fmt0(a):fmt0(a)+'&ndash;'+fmt0(b))+' <small>m</small>';
 }
 
 /* ---------- CHART 1 : profile and envelopes ---------- */
@@ -347,7 +351,7 @@ function updProf(){
   c1.data.datasets[3].data=mk(i=>D.z[i]+s.Hmin[i]);
   c1.data.datasets[4].data=mk(i=>D.z[i]+3.0);
   c1.data.datasets[5].data=mk(i=>D.z[i]-9.8);
-  c1.data.datasets[6].data=hi>136?mk(i=>D.z[i]+136):[];
+  c1.data.datasets[6].data=hi>ALLOW?mk(i=>D.z[i]+ALLOW):[];
   c1.data.datasets[7].data=HAS_TANK[k]?[{x:D.knee_x/1000,y:D.knee_z+TANK_LEVEL}]:[];
   const rng=c1.options.plugins.annotation.annotations.rng;   // collapse peak at the pump end, both cavity models
   rng.display=CAV[k];
@@ -362,14 +366,16 @@ function updProf(){
   document.getElementById('rGas1').innerHTML=s.gas_max==null?'&ndash;':fmt1(s.gas_max)+' <small>m³</small>';
   let b;
   if(s.line_min<=-9.79) b=badge('bad','vapour: column separation');
-  else if(s.line_min>=2.95&&hi<=136) b=badge('good','meets +3.0 m and PN16');
-  else b=badge('warn','below +3.0 m');
+  else if(s.line_min<2.95) b=badge('warn','below +3.0 m');
+  else if(hi>ALLOW) b=badge('warn','above the 136 m allowable');
+  else b=badge('good','meets +3.0 m and PN16');
   document.getElementById('rOk1').innerHTML=b;
 }
 [sScn1,sKm].forEach(el=>el.addEventListener('input',updProf));updProf();
 
 /* ---------- CHART 2 : at the knee, second by second ---------- */
 const sScn2=document.getElementById('sScn2'), sWin=document.getElementById('sWin');
+const YCLIP=110;                                   // a sampled trace above this is cut; the collapse peaks come from figure 1
 let c2=new Chart(document.getElementById('kneeChart'),{
   type:'line',
   data:{datasets:[
@@ -382,7 +388,7 @@ let c2=new Chart(document.getElementById('kneeChart'),{
     scales:{x:{type:'linear',min:0,max:150,title:TTL('Time after the trip (s)'),...AX},
             y:{type:'linear',position:'left',title:TTL('Pressure head (m)'),...AX},
             y1:{type:'linear',position:'right',min:0,title:TTL('Tank draw (m³)'),grid:{drawOnChartArea:false},ticks:{font:{family:'IBM Plex Sans',size:11}}}},
-    plugins:{legend:LEG,
+    plugins:{legend:LEGF,
       tooltip:{callbacks:{label:c=>{
         if(c.dataset.yAxisID==='y1') return `Tank draw: ${fmt1(c.parsed.y)} m³`;
         return CAV[+sScn2.value]?`${c.dataset.label}: ${fmt0(c.parsed.y)} m (sampled)`:`${c.dataset.label}: ${fmt1(c.parsed.y)} m`;
@@ -403,8 +409,9 @@ function updKnee(){
   c2.data.datasets[2].data=ser(s.pump);
   c2.data.datasets[3].data=s.feed?ser(s.feed):[];
   c2.options.scales.x.max=w;
-  c2.options.scales.y.max=CAV[k]?100:undefined;     // sampled series miss collapse spikes: clip and point to the range
-  c2.options.scales.y.title.text=CAV[k]?'Pressure head (m), clipped at 100 m':'Pressure head (m)';
+  const clip=Math.max(...idx.map(i=>Math.max(s.knee[i],s.limb[i],s.pump[i])))>YCLIP;   // clip only what really runs off the top
+  c2.options.scales.y.max=clip?YCLIP:undefined;
+  c2.options.scales.y.title.text=clip?'Pressure head (m), clipped at '+YCLIP+' m':'Pressure head (m)';
   c2.options.scales.y1.display=HAS_TANK[k];
   c2.options.plugins.annotation.annotations.lvl.display=HAS_TANK[k];
   c2.update('none');
@@ -414,9 +421,11 @@ function updKnee(){
   document.getElementById('rPeak2').innerHTML=peak(s);
   if(s.feed){
     const f=s.feed, last=f[f.length-1];
-    const i0=f.findIndex(v=>v>0), i1=f.findIndex(v=>v>=last-0.005);
-    const t0=i0<0?null:s.t[i0];
-    document.getElementById('rOpen2').innerHTML=t0==null?'&ndash;':(t0<1?'&lt; 1 <small>s</small>':fmt0(t0)+' <small>s</small>');
+    const i1=f.findIndex(v=>v>=last-0.005);
+    /* the first-supply time comes from the full-resolution run (t_open), not from the sampled series */
+    const i0=f.findIndex(v=>v>0);
+    const t0=(s.t_open!=null)?s.t_open:(i0<0?null:s.t[i0]);
+    document.getElementById('rOpen2').innerHTML=t0==null?'&ndash;':(t0<1?fmt1(t0)+' <small>s</small>':fmt1(t0)+' <small>s</small>');
     document.getElementById('rDraw2').innerHTML=fmt1(last)+' <small>m³</small>';
     document.getElementById('rDone2').innerHTML=i1<0?'&ndash;':fmt0(s.t[i1])+' <small>s</small>';
   }else{
@@ -528,7 +537,7 @@ import json, os
 _D = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'surge_data', 'datasets.json')))
 _F = _D['feedtank']
 _KEEP = ('label', 'Hmin', 'Hmax', 'line_min', 'knee_min', 'pump_min', 'line_max', 'line_max_dgcm',
-         'at_min', 'used', 'gas_max', 't', 'knee', 'limb', 'pump', 'feed')
+         'at_min', 'at_max', 'used', 'gas_max', 't', 'knee', 'limb', 'pump', 'feed', 't_open')
 DATA = {k: _F[k] for k in ('knee_x', 'knee_z', 'delivery_hgl', 'max_valid_level', 'x', 'z', 'hgl', 'sizing')}
 for _k in ('none', 'tank', 'vessel', 'tank_vessel'):
     DATA[_k] = {f: _F[_k].get(f) for f in _KEEP}

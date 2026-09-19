@@ -191,7 +191,19 @@ def run(line, T=90.0, vessel=None, pump=None, srv=None, feed=None, record=(0,), 
             if qp <= 0.0: pump['closed'] = True
             hp_rise = max(0.0, H0*w*w - k*qp*qp)
             omega = w*w0
-            torque = 998*g*qp*hp_rise/max(pump['eta'],0.3)/max(omega,1e-3) if qp > 0 else 0.0
+            law = pump.get('torque_law', 'duty')
+            if qp <= 0.0:
+                torque = 0.0
+            elif law == 'duty':          # constant efficiency on the head actually produced (the series default)
+                torque = 998*g*qp*hp_rise/max(pump['eta'],0.3)/max(omega,1e-3)
+            elif law == 'shutoff':       # never less than the shut-off head would demand
+                torque = 998*g*qp*max(hp_rise/max(pump['eta'],0.3), H0*w*w)/max(omega,1e-3)
+            elif law == 'radial':        # generic radial characteristic, beta/alpha^2 = 0.45 + 0.75x - 0.2x^2
+                T_R = pump['P0']/w0
+                al = max(w, 1e-6); x = (qp/pump.get('Q_duty', 0.70))/al
+                torque = T_R*al*al*(0.45 + 0.75*x - 0.2*x*x)
+            else:
+                raise ValueError('unknown torque_law ' + str(law))
             torque += pump.get('T_loss',0.02)*P0/w0 * w*w
             if qp <= 0.0:
                 torque += pump.get('T_shut',0.45)*P0/w0 * w*w
@@ -217,7 +229,7 @@ def run(line, T=90.0, vessel=None, pump=None, srv=None, feed=None, record=(0,), 
             for k in record: hist[k].append(round(H[k]-z[k],2))
             if vessel: extra['Vg'].append(round(Vg,3)); extra['Qv'].append(Qv)   # vessel outflow (+) / inflow (-), m3/s, unrounded
             if pump: extra['w'].append(round(w,4))
-            if feed: extra['feed'].append(round(feed['vol_used'],2))
+            if feed: extra['feed'].append(round(feed['vol_used'],4))   # fine enough to time the first supply
     x = [round(i*L.dx,1) for i in range(N+1)]
     return dict(t=t_hist, hist=hist, x=x,
                 Hmax=[round(Hmax[i]-z[i],2) for i in range(N+1)],

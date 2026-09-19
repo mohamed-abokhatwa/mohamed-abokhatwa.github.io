@@ -77,7 +77,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Head envelopes along the line, or head at the pump against time</div>
-    <div class="fsub">Pressure head above the pipe. Envelope: maximum and minimum at each of 121 nodes over 150 s; for cavitating options the maximum is drawn for both cavity models with the band between them shaded. Time: pump-end history from the vapour cavity model, with the unprotected (instant stop) history dashed grey.</div>
+    <div class="fsub">Pressure head above the pipe. Envelope: maximum and minimum at each of 121 nodes over 150 s; for cavitating options the maximum is drawn for both cavity models with the band between them shaded. Time: pump-end history from the vapour cavity model, sampled from t = 0.1 s, with the unprotected (instant stop) history dashed grey. The pump-end maximum beside the chart is read from the envelope, which also counts the steady head at t = 0.</div>
   </div>
   <div class="chart-box"><canvas id="envChart"></canvas></div>
   <div class="controls">
@@ -104,7 +104,7 @@ BODY = r"""
     <div class="cell"><div class="k">Line minimum</div><div class="v" style="font-size:16px;margin-top:6px;" id="rEMin">&minus;9.8 m</div></div>
     <div class="cell"><div class="k">Line maximum</div><div class="v" style="font-size:16px;margin-top:6px;" id="rEMax">127&ndash;143 m</div></div>
     <div class="cell"><div class="k">Length above 136 m</div><div class="v" style="font-size:16px;margin-top:6px;" id="rELen">1.6 / 0 km</div></div>
-    <div class="cell"><div class="k">Pump-end maximum</div><div class="v" style="font-size:16px;margin-top:6px;" id="rEPump">about 96 m</div></div>
+    <div class="cell"><div class="k">Pump-end maximum (envelope)</div><div class="v" style="font-size:16px;margin-top:6px;" id="rEPump">about 96 m</div></div>
   </div>
 </div>
 <p class="fig-note">The default is the relief valve. Its maximum envelope <strong>rises away from the pump and peaks 11&ndash;12&nbsp;km out</strong>, while the minimum lies on vapour for the whole 12.0&nbsp;km. The vessel's minimum dips to +4.3&nbsp;m at 4.3&nbsp;km, the flywheel's to +9.3&nbsp;m at 3.0&nbsp;km. In the time view the vessel's pump-end head bottoms out at +4.9&nbsp;m about 43&nbsp;s after the trip, while the relief valve's sits at vapour for more than 45&nbsp;s, until the columns rejoin and the valve takes the head to its set point.</p>
@@ -127,9 +127,9 @@ BODY = r"""
 <div class="eq">\[ \begin{aligned} v_0 &= \frac{0.70}{\pi \times 0.8^2/4} = 1.393\ \text{m/s} \\ \Delta H &= \frac{1050 \times 1.393}{9.81} = 149.1\ \text{m} \\ T_r &= \frac{24\,000}{1050} = 22.9\ \text{s} \\ 2\rho^* &= \frac{149.1}{85.0+10.33} = 1.56 \end{aligned} \]</div>
 <p>The fourth is a column-separation screen. On a flat line the first downsurge of an abrupt stop reaches vapour at the pump if</p>
 <div class="eq">\[ \begin{aligned} \frac{a\,v_0}{g} &> h_0 + 9.8 \\ 149.1 &> 85.0 + 9.8 = 94.8\ \text{m} \quad\text{yes} \end{aligned} \]</div>
-<p>which agrees with the instant-stop model. The screen assumes the pump stops much faster than 2L/a, and it only works one way: a <em>yes</em> is reliable for an abrupt stop, a <em>no</em> proves nothing. Pump inertia softens the first wave and moves separation out along the line &mdash; with the set's own 25&nbsp;kg&middot;m&sup2; the rundown model keeps the pump end at +2.5&nbsp;m while vapour forms 7.4&nbsp;km out &mdash; so for a real set a <em>yes</em> means model it, not proof of separation at the pump. At 450&nbsp;m/s the Joukowsky head is 63.9&nbsp;m and the screen says no, yet the head at the pump drops to 21.1&nbsp;m, keeps sinking as the wave travels out and the friction gradient that held the line up unwinds, and reaches vapour about 42&nbsp;s after the trip. Only at 300&nbsp;m/s does the unprotected line stay above vapour, at +5.0&nbsp;m. The fifth number screens a flywheel against the pipe period [3][5]:</p>
+<p>with \(h_0\) the steady head above the pipe at the pump, the steady grade line less the pipe level at the discharge. That agrees with the instant-stop model. The screen assumes the pump stops much faster than 2L/a, and it only works one way: a <em>yes</em> is reliable for an abrupt stop, a <em>no</em> proves nothing. Pump inertia softens the first wave and moves separation out along the line &mdash; with the set's own 25&nbsp;kg&middot;m&sup2; the rundown model keeps the pump end at +2.5&nbsp;m while vapour forms 7.4&nbsp;km out &mdash; so for a real set a <em>yes</em> means model it, not proof of separation at the pump. At 450&nbsp;m/s the Joukowsky head is 63.9&nbsp;m and the screen says no, yet the head at the pump drops to 21.1&nbsp;m, keeps sinking as the wave travels out and the friction gradient that held the line up unwinds, and reaches vapour about 42&nbsp;s after the trip. Only at 300&nbsp;m/s does the unprotected line stay above vapour, at +5.0&nbsp;m. The fifth number screens a flywheel against the pipe period [3][5]:</p>
 <div class="eq">\[ \begin{aligned} \tau &= \frac{\tfrac12\,I\,\omega_0^{\,2}}{P} \\ I = 25:\quad \tau &= 0.44\ \text{s} = 0.019\,T_r \\ I = 400:\quad \tau &= 7.01\ \text{s} = 0.31\,T_r \end{aligned} \]</div>
-<p>On this line \(\tau/T_r = 0.15\) (200&nbsp;kg&middot;m&sup2;) still failed the +3.0&nbsp;m criterion and 0.31 (400&nbsp;kg&middot;m&sup2;) passed with margin &mdash; an observation on one line, not a rule. It says nothing about the start, which grows with inertia as \(t_{start} = I\,\omega_0/T_{acc}\): 1.8&nbsp;s for the bare set and 28.1&nbsp;s with the flywheel, at half rated torque.</p>
+<p>Here \(I\) is the total rotating inertia of pump, motor and any flywheel in kg&middot;m&sup2;, \(\omega_0\) the rated speed in rad/s (1,480&nbsp;rpm = 155.0&nbsp;rad/s) and \(P\) the shaft power in W. On this line \(\tau/T_r = 0.15\) (200&nbsp;kg&middot;m&sup2;) still failed the +3.0&nbsp;m criterion and 0.31 (400&nbsp;kg&middot;m&sup2;) passed with margin &mdash; an observation on one line, not a rule. It says nothing about the start, which grows with inertia as \(t_{start} = I\,\omega_0/T_{acc}\), with \(T_{acc}\) the average torque left over to accelerate the rotor: 1.8&nbsp;s for the bare set and 28.1&nbsp;s with the flywheel, at half the rated 4,420&nbsp;N&middot;m.</p>
 
 <h2 id="int-screening">8 &middot; Interactive: screening explorer</h2>
 <p>Enter your own line. The chart plots the Joukowsky head across the range of wave speeds against the head available above vapour and above +3.0&nbsp;m; the marker is your line.</p>
@@ -137,7 +137,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Joukowsky downsurge against the head available at the pump</div>
-    <div class="fsub">Closed form: v = Q/(&pi;D&sup2;/4), &Delta;H = av/g, 2L/a, 2&rho;* = av/(gH&#8320;*) with H&#8320;* = h + 10.33 m, &tau; = &frac12;I&omega;&#8320;&sup2;/P. The separation screen assumes an abrupt stop and is one-directional: a pass is not proof. It turns amber once &tau; exceeds 5&nbsp;% of 2L/a, our screening choice.</div>
+    <div class="fsub">Closed form: v = Q/(&pi;D&sup2;/4), &Delta;H = av/g, 2L/a, 2&rho;* = av/(gH&#8320;*) with H&#8320;* = h + 10.33 m, &tau; = &frac12;I&omega;&#8320;&sup2;/P. The separation screen assumes an abrupt stop on a flat line and is one-directional: a pass is not proof. It turns amber when the first wave would go below +3.0&nbsp;m without reaching vapour, or when &tau; exceeds 5&nbsp;% of 2L/a &mdash; our screening choice &mdash; so the rundown may prevent separation.</div>
   </div>
   <div class="chart-box"><canvas id="scrChart"></canvas></div>
   <div class="controls">
@@ -200,7 +200,7 @@ BODY = r"""
     <div class="cell"><div class="k">&tau; / (2L/a)</div><div class="v" id="rRat">0.019</div></div>
   </div>
 </div>
-<p class="fig-note">The defaults reproduce the reference line: <strong>1.39&nbsp;m/s, 149.1&nbsp;m, 22.9&nbsp;s, 2&rho;* = 1.56</strong>, and a red screen, because 149.1&nbsp;m exceeds the 94.8&nbsp;m above vapour. The Joukowsky line crosses the vapour line at \(a = g(h_0+9.8)/v_0\), about 670&nbsp;m/s here: a ductile iron or steel main of this size is at risk of separating on its first wave if the pump stops abruptly, and a PE main may not be &mdash; which is not the same as safe. Set the inertia to 400&nbsp;kg&middot;m&sup2; and &tau; becomes 7.01&nbsp;s, 0.31 of the period, and the screen turns amber: the rundown may prevent separation, so model it (on the reference line even 100&nbsp;kg&middot;m&sup2;, 0.08 of the period, kept the rundown model just off vapour). Stretch the line to 60&nbsp;km and the 400&nbsp;kg&middot;m&sup2; flywheel is 0.061 of a 114&nbsp;s period &mdash; the length argument against flywheels in one number.</p>
+<p class="fig-note">The defaults reproduce the reference line: <strong>1.39&nbsp;m/s, 149.1&nbsp;m, 22.9&nbsp;s, 2&rho;* = 1.56</strong>, and a red screen, because 149.1&nbsp;m exceeds the 94.8&nbsp;m above vapour. The Joukowsky line crosses the vapour line at \(a = g(h_0+9.8)/v_0\), about 670&nbsp;m/s here: a ductile iron or steel main of this size is at risk of separating on its first wave if the pump stops abruptly, and a PE main may not be &mdash; which is not the same as safe. Set the inertia to 400&nbsp;kg&middot;m&sup2; and &tau; becomes 7.01&nbsp;s, 0.31 of the period, and the screen turns amber: the rundown may prevent separation, so model it (on the reference line even 100&nbsp;kg&middot;m&sup2;, 0.077 of the period, kept the rundown model just off vapour). Stretch the line to 60&nbsp;km and the 400&nbsp;kg&middot;m&sup2; flywheel is 0.061 of a 114&nbsp;s period &mdash; the length argument against flywheels in one number.</p>
 
 <h2 id="site-factors">9 &middot; Site and operation factors</h2>
 <p>Options that both pass are separated by what the model does not see. These are engineering judgement, not rules.</p>
@@ -350,8 +350,9 @@ const r5=v=>5*Math.round(v/5);
 /* a collapse-governed maximum is quoted as the range across the two cavity models */
 function peak(a,b){
   const lo=Math.min(a,b),hi=Math.max(a,b);
-  if(hi-lo<2) return 'about '+Math.round(hi);
+  /* a range with the allowable inside it is always shown as a range, whole metres, however narrow */
   if(lo<ALLOW&&hi>ALLOW) return Math.round(lo)+'–'+Math.round(hi);
+  if(hi-lo<2) return 'about '+Math.round(hi);
   return r5(lo)+'–'+r5(hi);
 }
 const hLine=(y,col,txt,pos)=>({type:'line',yMin:y,yMax:y,borderColor:col,borderWidth:1.5,borderDash:[6,4],
@@ -367,7 +368,7 @@ const optChart=new Chart(document.getElementById('optChart'),{
   type:'bar',
   data:{labels:O.map(o=>o.short),
     datasets:[
-      {label:'Lowest minimum to highest maximum',data:O.map(o=>[o.min,lowMax(o)]),backgroundColor:OPTCOL.map(c=>rgba(c,0.8)),borderColor:OPTCOL.slice(),borderWidth:1.5,grouped:false,barPercentage:0.5,categoryPercentage:0.9},
+      {label:'Lowest minimum to maximum, lower cavity model where they differ',data:O.map(o=>[o.min,lowMax(o)]),backgroundColor:OPTCOL.map(c=>rgba(c,0.8)),borderColor:OPTCOL.slice(),borderWidth:1.5,grouped:false,barPercentage:0.5,categoryPercentage:0.9},
       {label:'Collapse peak: range across the two cavity models',data:O.map(o=>o.maxg===null?null:[Math.min(o.max,o.maxg),Math.max(o.max,o.maxg)]),backgroundColor:OPTCOL.map(c=>rgba(c,0.4)),borderColor:OPTCOL.slice(),borderWidth:1.5,grouped:false,barPercentage:0.5,categoryPercentage:0.9}
     ]},
   options:{responsive:true,maintainAspectRatio:false,
@@ -405,6 +406,7 @@ function updOpt(){
   else if(!minOk&&maxState===2) ver=badge('bad','fails both limits');
   else if(!minOk&&maxState===1) ver=badge('bad','fails the minimum; maximum uncertain');
   else if(!minOk) ver=badge('bad','fails the minimum');
+  else if(maxState===1) ver=badge('warn','meets the minimum; maximum depends on the cavity model');
   else ver=badge('bad','fails the maximum');
   document.getElementById('rOVer').innerHTML=ver;
   document.getElementById('rOProt').textContent=PROT[i];
@@ -471,6 +473,8 @@ function updEnv(){
 /* ---------- CHART 3 : screening explorer ---------- */
 const sL=document.getElementById('sL'),sDN=document.getElementById('sDN'),sQ=document.getElementById('sQ'),sA=document.getElementById('sA'),
       sH=document.getElementById('sH'),sI=document.getElementById('sI'),sP=document.getElementById('sP'),sN=document.getElementById('sN');
+/* the wave-speed range the curve is drawn across; the y axis is scaled from it, not from the marker */
+const AMIN=250, AMAX=1400;
 const scrChart=new Chart(document.getElementById('scrChart'),{
   data:{datasets:[
     {type:'line',label:'Joukowsky head av/g',data:[],borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2.6,pointRadius:0,order:3},
@@ -479,7 +483,7 @@ const scrChart=new Chart(document.getElementById('scrChart'),{
     {type:'scatter',label:'This line',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,order:1}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
-    scales:{x:{type:'linear',min:250,max:1400,title:TTL('Wave speed a (m/s)'),...AX},
+    scales:{x:{type:'linear',min:AMIN,max:AMAX,title:TTL('Wave speed a (m/s)'),...AX},
             y:{type:'linear',min:0,title:TTL('Head (m)'),...AX,ticks:{...AX.ticks}}},
     plugins:{legend:{...LEG,labels:{...LEG.labels,sort:(p,q)=>p.datasetIndex-q.datasetIndex}},
       tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt1(c.parsed.y)} m at ${fmt0(c.parsed.x)} m/s`}}}}
@@ -496,13 +500,14 @@ function updScr(){
   document.getElementById('vN').textContent=fmt0(rpm)+' rpm';
   const Dm=dn/1000, A=Math.PI*Dm*Dm/4, v=Q/A, J=a*v/G, Tr=2*L/a, rho=J/(h+PATM);
   const w0=rpm*2*Math.PI/60, tau=0.5*I*w0*w0/P, ratio=tau/Tr;
-  const xs=[];for(let x=250;x<=1400;x+=25)xs.push(x);
+  const xs=[];for(let x=AMIN;x<=AMAX;x+=25)xs.push(x);
   scrChart.data.datasets[0].data=xs.map(x=>({x:x,y:+(x*v/G).toFixed(2)}));
-  scrChart.data.datasets[1].data=[{x:250,y:h+9.8},{x:1400,y:h+9.8}];
-  scrChart.data.datasets[2].data=[{x:250,y:h-3.0},{x:1400,y:h-3.0}];
+  scrChart.data.datasets[1].data=[{x:AMIN,y:h+9.8},{x:AMAX,y:h+9.8}];
+  scrChart.data.datasets[2].data=[{x:AMIN,y:h-3.0},{x:AMAX,y:h-3.0}];
   scrChart.data.datasets[3].data=[{x:a,y:+J.toFixed(2)}];
-  /* y axis: keep this line's marker and both limits in view, on a round tick step */
-  const top=Math.max(h+9.8,J)*1.3, steps=[10,20,25,50,100,200,250,500,1000,2000,2500,5000];
+  /* y axis: keep the whole Joukowsky curve, both limits and this line's marker in view, on a round tick step.
+     The curve runs to the top of the wave-speed range, so it — not the marker — sets the scale. */
+  const top=Math.max(h+9.8,J,AMAX*v/G)*1.05, steps=[10,20,25,50,100,200,250,500,1000,2000,2500,5000];
   const step=steps.find(s=>top/s<=8)||10000;
   scrChart.options.scales.y.max=Math.ceil(top/step)*step; scrChart.options.scales.y.ticks.stepSize=step;
   scrChart.update('none');

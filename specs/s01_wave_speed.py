@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">Every surge model of a pumping main starts with one number typed into every pipe: the wave speed. It sets the Joukowsky head, the 2L/a clock and whether the water column separates. On a 12&nbsp;km DN800 ductile iron main, taking it from 1,050 down to 700&nbsp;m/s cuts the Joukowsky head from <strong>149.1 to 99.4&nbsp;m</strong> and the unprotected peak from 165&ndash;190&nbsp;m to 140&ndash;150&nbsp;m. Yet the air-over-water vessel that holds the line above +3.0&nbsp;m only moves from <strong>3.08 to 3.19&nbsp;m&sup3; of gas</strong>. This article explains why, where that stops being true, and how to choose and test the number.</p>
+<p class="lead">Every surge model of a pumping main starts with one number typed into every pipe: the wave speed. It sets the Joukowsky head, the 2L/a clock and whether the water column separates. On a 12&nbsp;km DN800 ductile iron main, taking it from 1,050 down to 700&nbsp;m/s cuts the Joukowsky head from <strong>149.1 to 99.4&nbsp;m</strong> and the unprotected peak from 165&ndash;190&nbsp;m to 140&ndash;150&nbsp;m. Yet the air-over-water vessel that holds the line at the +3.0&nbsp;m design minimum only moves from <strong>3.08 to 3.19&nbsp;m&sup3; of gas</strong>. This article explains why, where that stops being true, and how to choose and test the number.</p>
 
 <h2 id="first-input">1 &middot; Why wave speed is the first input</h2>
 <p>When pumps with little inertia trip, the flow at the pump stops almost at once. The pressure change that follows travels along the main at the wave speed \(a\), and both its size and its timing follow directly from that speed [1, 2, 5, 8]:</p>
@@ -34,7 +34,7 @@ BODY = r"""
 <tr><td>Anchored throughout</td><td class="num">0.922</td><td class="num">1,101</td><td class="num">4.8 %</td></tr>
 <tr><td>Expansion joints throughout</td><td class="num">1.000</td><td class="num">1,080</td><td class="num">2.9 %</td></tr>
 </tbody></table></div>
-<p>The series uses <strong>a = 1,050&nbsp;m/s</strong>, 3&ndash;6&nbsp;% below these values. That choice is design judgement, not a formula result: an allowance for traces of air and for the joints, which the thin-wall formula does not see. Also in our judgement, socket-and-spigot ductile iron is closest to the expansion-joint case, and buried welded steel to anchored throughout.</p>
+<p>The series uses <strong>a = 1,050&nbsp;m/s</strong>, 2.8&ndash;6.0&nbsp;% below these values; the table&rsquo;s last column states the same gap the other way round, as a percentage of 1,050&nbsp;m/s. That choice is design judgement, not a formula result: an allowance for traces of air and for the joints, which the thin-wall formula does not see. Also in our judgement, socket-and-spigot ductile iron is closest to the expansion-joint case, and buried welded steel to anchored throughout.</p>
 
 <h2 id="int-calculator">3 &middot; Interactive: wave speed calculator</h2>
 <p>Choose a pipe, then change its geometry, modulus and restraint. The curves show Korteweg wave speed against D/e for the current material under all three restraint conditions. The marker is your pipe.</p>
@@ -79,13 +79,13 @@ BODY = r"""
     </div>
     <div class="ctrl">
       <label>Young&rsquo;s modulus E <span id="vMod">170 GPa</span></label>
-      <input type="range" id="sMod" min="-0.3" max="2.35" value="2.2304489" step="any">
+      <input type="range" id="sMod" min="-0.3" max="2.3424227" value="2.2304489" step="any">
       <div class="hint">Log scale, 0.5&ndash;220 GPa. Short-term value for plastics; hoop value for GRP.</div>
     </div>
     <div class="ctrl">
       <label>Poisson&rsquo;s ratio &mu; <span id="vPoi">0.28</span></label>
       <input type="range" id="sPoi" min="0.2" max="0.5" value="0.28" step="0.01">
-      <div class="hint">About 0.3 for metals; up to 0.45 for PE.</div>
+      <div class="hint">About 0.3 for metals; up to 0.45 for PE. It only moves a under the two anchored conditions: with expansion joints throughout c&#8321; = 1 and &mu; drops out.</div>
     </div>
   </div>
   <div class="readout">
@@ -116,9 +116,9 @@ BODY = r"""
 </ul>
 
 <h2 id="air">5 &middot; Air: the largest uncertainty</h2>
-<p>The Korteweg formula assumes water with no free gas in it. Real mains carry some: air released from solution as the pressure falls, air drawn in at the pump suction, and air let in by air valves during the downsurge [15]. The simplified isothermal form given by Wylie &amp; Streeter [1] uses \(a_0\) for the wave speed without air, \(\alpha\) for the volume fraction of free gas at the local absolute pressure \(p\), and \(n\) for the gas exponent:</p>
+<p>The Korteweg formula assumes water with no free gas in it. Real mains carry some: air released from solution as the pressure falls, air drawn in at the pump suction, and air let in by air valves during the downsurge [15]. The simplified form given by Wylie &amp; Streeter [1] uses \(a_0\) for the wave speed without air, \(\alpha\) for the volume fraction of free gas at the local absolute pressure \(p\), and \(n\) for the gas exponent:</p>
 <div class="eq">\[ a=\Big[\rho\Big(\frac{1}{\rho\, a_0^2}+\frac{\alpha}{n\,p}\Big)\Big]^{-1/2} \]</div>
-<p>The gas term is divided by the pressure, so free air has its biggest effect at low pressure, which is exactly where the downsurge happens [2, 6]. A fixed quantity of gas also expands as the pressure falls (isothermally, \(\alpha\,p\) stays constant), so the effect at low pressure is stronger still. The table holds \(\alpha\) at the stated pressure:</p>
+<p>The gas term is divided by the pressure, so free air has its biggest effect at low pressure, which is exactly where the downsurge happens [2, 6]. A fixed quantity of gas also expands as the pressure falls (isothermally, \(\alpha\,p\) stays constant), so the effect at low pressure is stronger still. The form is written for a small gas fraction: it drops the \((1-\alpha)\) factors of the full mixture expression, which costs at most about 2.5&nbsp;% while \(\alpha\) stays at or below 3&nbsp;%, the top of the slider in the next figure, and more once the free gas reaches tens of per cent. The table holds \(\alpha\) at the stated pressure:</p>
 <div class="tbl-wrap"><table><caption>Wave speed with free air, a&#8320; = 1,050 m/s, isothermal (n = 1), &alpha; at the stated pressure, m/s</caption><thead><tr><th>Free air by volume</th><th class="num">2 bar abs</th><th class="num">5 bar abs</th><th class="num">10 bar abs</th></tr></thead><tbody>
 <tr><td>0.1 %</td><td class="num">412</td><td class="num">587</td><td class="num">725</td></tr>
 <tr><td>0.5 %</td><td class="num">197</td><td class="num">303</td><td class="num">412</td></tr>
@@ -143,8 +143,8 @@ BODY = r"""
     </div>
     <div class="ctrl">
       <label>Wave speed without air a&#8320; <span id="vA0">1,050 m/s</span></label>
-      <input type="range" id="sA0" min="300" max="1400" value="1050" step="10">
-      <div class="hint">About 1,050 for ductile iron; about 335&ndash;475 for PVC and GRP. PE (about 250&ndash;285) lies just below the range.</div>
+      <input type="range" id="sA0" min="250" max="1400" value="1050" step="10">
+      <div class="hint">About 1,050 for ductile iron; about 335&ndash;475 for PVC and GRP; about 250&ndash;285 for PE.</div>
     </div>
     <div class="ctrl">
       <label>Gas exponent n <span id="vN">1.00</span></label>
@@ -164,7 +164,7 @@ BODY = r"""
 <p class="fig-note">With 0.1&nbsp;% free air and a&#8320; = 1,050&nbsp;m/s, the curve gives 412, 587 and 725&nbsp;m/s at 2, 5 and 10&nbsp;bar abs, and <strong>342&nbsp;m/s</strong> at the +3.0&nbsp;m limit with the same &alpha;. The next readout follows a fixed quantity of gas instead: 0.1&nbsp;% at the steady 9.35&nbsp;bar abs leaves only <strong>134&nbsp;m/s</strong> at the limit. Raising n to 1.2 only lifts the 2&nbsp;bar value to 444&nbsp;m/s; cutting the air to 0.01&nbsp;% brings it back to 843&nbsp;m/s.</p>
 
 <h2 id="surge-sensitivity">7 &middot; What wave speed does to the surge on a 12 km main</h2>
-<p>To isolate its effect, we ran the reference main at five wave speeds (1,300, 1,050, 700, 450 and 300&nbsp;m/s) and changed nothing else: same bore, friction and HGL, all pumps stopping instantly with the check valve closing at once, and no protection. The low values are a sensitivity test on this main, not a model of a plastic line, which would have its own bore, friction and rating. The vessel columns give the smallest air-over-water vessel at the pump, with a free DN400 connection (K 0.5), that keeps the whole line at or above +3.0&nbsp;m. The shell is the gas at maximum expansion divided by 0.8, a 20&nbsp;% water reserve.</p>
+<p>To isolate its effect, we ran the reference main at five wave speeds (1,300, 1,050, 700, 450 and 300&nbsp;m/s) and changed nothing else: same bore, friction and HGL, all pumps stopping instantly with the check valve closing at once, and no protection. The low values are a sensitivity test on this main, not a model of a plastic line, which would have its own bore, friction and rating. The vessel columns give the smallest air-over-water vessel at the pump, with a free DN400 connection (K 0.5), that holds the whole line at the +3.0&nbsp;m design minimum; the gas volumes are that answer to the nearest 0.01&nbsp;m&sup3;, so rerunning with the rounded figure can leave the line 0.01&nbsp;m below the criterion. The shell is the gas at maximum expansion divided by 0.8, a 20&nbsp;% water reserve, taken before those volumes are rounded.</p>
 <div class="tbl-wrap"><table><caption>Pump trip on the 12 km DN800 main at five wave speeds</caption><thead><tr><th class="num">a (m/s)</th><th class="num">Joukowsky (m)</th><th class="num">2L/a (s)</th><th>Unprotected minimum</th><th>Unprotected peak, both cavity models</th><th class="num">Gas at steady HGL (m&sup3;)</th><th class="num">Gas at maximum expansion (m&sup3;)</th><th class="num">Shell (m&sup3;)</th></tr></thead><tbody>
 <tr><td class="num">1,300</td><td class="num">184.5</td><td class="num">18.5</td><td>&minus;9.8 m (vapour)</td><td>190&ndash;210 m</td><td class="num">3.11</td><td class="num">16.00</td><td class="num">20.0</td></tr>
 <tr><td class="num">1,050</td><td class="num">149.1</td><td class="num">22.9</td><td>&minus;9.8 m (vapour)</td><td>165&ndash;190 m</td><td class="num">3.08</td><td class="num">15.30</td><td class="num">19.1</td></tr>
@@ -191,7 +191,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Unprotected pump trip on the 12 km DN800 main: pressure head against time</div>
-    <div class="fsub">Method of characteristics with a vapour cavity model; instant stop of all pumps; only the wave speed changes. Gas and shell: smallest free-connection vessel holding the line at or above +3.0 m.</div>
+    <div class="fsub">Method of characteristics with a vapour cavity model; instant stop of all pumps; only the wave speed changes. Gas and shell: smallest free-connection vessel holding the line at the +3.0 m design minimum.</div>
   </div>
   <div class="chart-box"><canvas id="surgeChart"></canvas></div>
   <div class="controls">
@@ -228,7 +228,7 @@ BODY = r"""
 
 <h2 id="vessel">9 &middot; Why the vessel barely moves, and when it does</h2>
 <h3>Worked example: the vessel at 1,050 m/s</h3>
-<p>The sizing criterion is the smallest gas volume, in a vessel at the pump with a free DN400 connection, that keeps the whole line at or above +3.0&nbsp;m. The gas starts at 85.0 + 10.33 = 95.3&nbsp;m abs (9.35&nbsp;bar abs) and expands with n = 1.2:</p>
+<p>The sizing criterion is the smallest gas volume, in a vessel at the pump with a free DN400 connection, that holds the whole line at the +3.0&nbsp;m design minimum. The gas starts at 85.0 + 10.33 = 95.3&nbsp;m abs (9.35&nbsp;bar abs) and expands with n = 1.2:</p>
 <div class="eq">\[ p\,V^{\,n} = \text{const} \quad\Rightarrow\quad p = 95.3\left(\frac{3.08}{15.30}\right)^{1.2} = 13.9\ \text{m abs} \]</div>
 <p>The model gives <strong>3.08&nbsp;m&sup3;</strong> of gas at the steady HGL, expanding to <strong>15.30&nbsp;m&sup3;</strong> at 13.9&nbsp;m abs (about +3.6&nbsp;m gauge). The gas does not fall to +3.0&nbsp;m itself: the governing minimum is along the line, 4.6&nbsp;km from the pump in this run, not at the vessel. The vessel has delivered 12.2&nbsp;m&sup3; of water, and the shell is 15.30 / 0.8 = <strong>19.1&nbsp;m&sup3;</strong>. The method is in <a href="surge-vessel.html">Sizing the Hydropneumatic Surge Vessel</a> and Stephenson&rsquo;s simple guide [9]. The site&rsquo;s reference vessel (20&nbsp;m&sup3; shell, 3.5&nbsp;m&sup3; gas, differential DN400 connection with K 2 out and K 10 in) holds +4.3&nbsp;m minimum and 119.2&nbsp;m maximum; <a href="surge-vessel-differential-orifice.html">article 2</a> explains the orifice.</p>
 <h3>The column&rsquo;s momentum does not depend on wave speed</h3>
@@ -274,7 +274,7 @@ BODY = r"""
     <div class="cell"><div class="k">2L/a</div><div class="v" id="rVt">22.9 <small>s</small></div></div>
     <div class="cell"><div class="k">Line storage C</div><div class="v" id="rVc">0.054 <small>m&sup3;/m</small></div></div>
     <div class="cell"><div class="k">Storage vs 1,050 m/s</div><div class="v" id="rVr">1.00 <small>&times;</small></div></div>
-    <div class="cell"><div class="k">Nearest computed vessel</div><div class="v" style="font-size:15px;margin-top:6px;" id="rVn">1,050 m/s: 3.08 m&sup3;</div></div>
+    <div class="cell"><div class="k" id="kVn">Nearest run: gas at steady HGL</div><div class="v" style="font-size:15px;margin-top:6px;" id="rVn">1,050 m/s: 3.08 m&sup3;</div></div>
   </div>
 </div>
 <p class="fig-note">Compare the two curves. Storage grows as 1/a&sup2;, but across the steel and ductile iron range it stays small and the vessel line stays flat; the vessel only falls once storage has grown several times over, at 450&nbsp;m/s and below. Switch to shell volume and the shape is the same.</p>
@@ -416,7 +416,9 @@ sPre.addEventListener('input',function(){
   if(k<PRE.length){const p=PRE[k];sDia.value=p.D;sWall.value=p.e;sMod.value=Math.log10(p.E);sPoi.value=p.mu;}
   updWave();
 });
-[sDia,sWall,sMod,sPoi].forEach(s=>s.addEventListener('input',function(){sPre.value='6';updWave();}));
+const eqv=(a,b,tol)=>Math.abs(a-b)<=(tol||1e-9)*Math.max(1,Math.abs(b));
+const atPre=k=>{const p=PRE[k];return !!p&&eqv(+sDia.value,p.D)&&eqv(+sWall.value,p.e)&&eqv(+Math.pow(10,+sMod.value).toPrecision(3),p.E,1e-6)&&eqv(+sPoi.value,p.mu);};
+[sDia,sWall,sMod,sPoi].forEach(s=>s.addEventListener('input',function(){if(!atPre(+sPre.value))sPre.value='6';updWave();}));
 sRes.addEventListener('input',updWave);
 updWave();
 
@@ -562,6 +564,7 @@ function updVes(){
   document.getElementById('rVr').innerHTML=fmt2(storage(a)/storage(1050))+' <small>×</small>';
   let near=SORTED[0];SORTED.forEach(c=>{if(Math.abs(c.a-a)<Math.abs(near.a-a))near=c;});
   const val=near.vessel_needed?((q===2?fmt1(near[QK[q]]):fmt2(near[QK[q]]))+' m³'):'not needed';
+  document.getElementById('kVn').textContent='Nearest run: '+QN[q].charAt(0).toLowerCase()+QN[q].slice(1);
   document.getElementById('rVn').innerHTML=fmt0(near.a)+' m/s: '+val;
 }
 [sAv,sQty].forEach(s=>s.addEventListener('input',updVes));updVes();

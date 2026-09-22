@@ -25,6 +25,28 @@ def ar_count(n):
     if n <= 10: return f"{d} مقالات"
     return f"{d} مقالة"
 
+_U = ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen',
+      'fourteen','fifteen','sixteen','seventeen','eighteen','nineteen']
+_T = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety']
+def _words(n):
+    if n < 20: return _U[n]
+    if n < 100: return _T[n // 10] + ('-' + _U[n % 10] if n % 10 else '')
+    if n < 1000: return _U[n // 100] + ' hundred' + (' and ' + _words(n % 100) if n % 100 else '')
+    return str(n)
+
+def refresh_counts(text):
+    """Rewrite every [data-count] element in an index page from the article cards it contains, so the
+    static HTML carries the same numbers the page script computes (hero stat, archive heading, the two
+    route slabs, the show-more line). Formats: num, words, Words, ar (Arabic-Indic digits)."""
+    cats = re.findall(r'class="article-card[^"]*" data-cat="([a-z]+)"', text)
+    def one(m):
+        want, fmt = m.group(2).split(), m.group(3)
+        n = len(cats) if want == ['all'] else sum(1 for c in cats if c in want)
+        v = (_words(n) if fmt == 'words' else _words(n).capitalize() if fmt == 'Words'
+             else str(n).translate(AR_DIGITS) if fmt == 'ar' else str(n))
+        return m.group(1) + v + m.group(4)
+    return re.sub(r'(<[a-z]+ data-count data-cats="([^"]*)" data-fmt="([^"]*)">)[^<]*(</)', one, text)
+
 def build_html(s):
     charts = s.get('charts', '')
     chart_libs = ''
@@ -149,6 +171,12 @@ def wire_site(s):
             m2 = vis[3]
             t = t[:m2.start()] + m2.group(0).replace('class="article-card"', 'class="article-card hidden-article"') + t[m2.end():]
         io.open(idx, 'w', encoding='utf-8').write(t)
+
+    # 2b · static article counts in both indexes (hero stat, archive heading, route slabs, show-more line)
+    for idx in ('index.html', 'index-ar.html'):
+        t = io.open(idx, encoding='utf-8').read()
+        t2 = refresh_counts(t)
+        if t2 != t: io.open(idx, 'w', encoding='utf-8').write(t2)
 
     # 3 · sitemap
     p = 'sitemap.xml'; t = io.open(p, encoding='utf-8').read()

@@ -502,7 +502,7 @@ p strong{color:var(--text-primary); font-weight:600;}
   <div class="rt-hero-meta fade-up-4">
     <div><b>٧٠٠</b><span>كم خط نقل</span></div>
     <div><b>٨٢٨</b><span>م ارتفاع البرج</span></div>
-    <div><b>٨٦</b><span>مقالة</span></div>
+    <div><b data-count data-cats="all" data-fmt="ar">٨٦</b><span>مقالة</span></div>
     <div><b>٢٢</b><span>عامًا</span></div>
   </div>
   <div style="margin-top:32px;">
@@ -701,7 +701,7 @@ p strong{color:var(--text-primary); font-weight:600;}
 
 <section class="rt-sect-archive" data-at="el:832"><div class="rt-wrap-wide">
   <div class="rt-tag"><span class="rt-p">الأرشيف</span><span class="rt-ln"></span><span class="rt-nm">كل شيء، بالموضوع</span></div>
-  <h2 class="section-title">ست وثمانون مقالة، مُصنَّفة بالموضوع.</h2>
+  <h2 class="section-title"><span data-count data-cats="all" data-fmt="ar">٨٦</span> مقالة، مُصنَّفة بالموضوع.</h2>
   <p style="margin-bottom:8px;">المسار في الأعلى هو الحجّة. وهذه هي المكتبة التي تقف خلفه.</p>
 <div class="cat-section">
   <span class="section-eyebrow" style="text-align:end;display:block;">تصفح حسب الموضوع</span>
@@ -1854,7 +1854,7 @@ p strong{color:var(--text-primary); font-weight:600;}
     <button id="show-more-btn" onclick="revealArticles()" class="btn btn-ghost" style="cursor:pointer; font-family:'Cairo',var(--font-mono); letter-spacing:0; text-transform:none; font-size:13px;">
       عرض ٨٣ مقالة إضافية
     </button>
-    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">يُعرض ٣ من أصل ٨٦ مقالة</div>
+    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">يُعرض ٣ من أصل <span data-count data-cats="all" data-fmt="ar">٨٦</span> مقالة</div>
   </div>
 
 </div>
@@ -2092,7 +2092,26 @@ function mcSubmitAr(e) {
     var wrap=document.getElementById('show-more-wrap');
     if(wrap && hidden===0) wrap.style.display='none';
   }
-  function run(){ syncTopicCounts(); syncShowMore(); }
+  /* every [data-count] element: the number of articles in its data-cats (or "all"), as digits, words or Arabic digits */
+  function syncCounts(){
+    var grid=document.getElementById('articlesGrid'); if(!grid) return;
+    var U=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+    var T=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+    function words(n){ if(n<20) return U[n]; if(n<100) return T[Math.floor(n/10)]+(n%10?'-'+U[n%10]:''); if(n<1000){ var r=n%100; return U[Math.floor(n/100)]+' hundred'+(r?' and '+words(r):''); } return String(n); }
+    function fmt(n,f){
+      if(f==='words') return words(n);
+      if(f==='Words'){ var w=words(n); return w.charAt(0).toUpperCase()+w.slice(1); }
+      if(f==='ar') return String(n).replace(/\d/g,function(d){ return '٠١٢٣٤٥٦٧٨٩'.charAt(+d); });
+      return String(n);
+    }
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      var cats=(el.getAttribute('data-cats')||'all').split(/\s+/), n=0;
+      if(cats[0]==='all') n=grid.querySelectorAll('.article-card').length;
+      else cats.forEach(function(c){ n+=grid.querySelectorAll('.article-card[data-cat="'+c+'"]').length; });
+      el.textContent=fmt(n, el.getAttribute('data-fmt'));
+    });
+  }
+  function run(){ syncTopicCounts(); syncCounts(); syncShowMore(); }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run);
   else run();
 })();

@@ -487,7 +487,7 @@ p strong{color:var(--text-primary); font-weight:600;}
   <div class="rt-hero-meta rt-reveal" style="animation-delay:.38s">
     <div><b>700</b><span>km of main</span></div>
     <div><b>828</b><span>m of tower</span></div>
-    <div><b>86</b><span>articles</span></div>
+    <div><b data-count data-cats="all" data-fmt="num">86</b><span>articles</span></div>
     <div><b>22</b><span>years</span></div>
   </div>
 </div>  <div style="margin-top:32px;">
@@ -668,16 +668,16 @@ p strong{color:var(--text-primary); font-weight:600;}
   <div class="rt-tag"><span class="rt-p">EL +828.00</span><span class="rt-ln"></span><span class="rt-nm">The tap at the top</span></div>
   <h2>One practice, two drawings.</h2>
   <p style="max-width:70ch;">
-    Everything on this site sits somewhere on that route. Forty-one articles belong to the left-hand
-    drawing, thirty-eight to the right, and the ones that matter most sit at the join &mdash; where a
+    Everything on this site sits somewhere on that route. <span data-count data-cats="surge pipeline pumps desalination" data-fmt="Words">Forty-eight</span> articles belong to the left-hand
+    drawing, <span data-count data-cats="hvac plumbing fire tallmep hydraulic leadership" data-fmt="words">thirty-eight</span> to the right, and the ones that matter most sit at the join &mdash; where a
     transmission engineer hands a litre of water to a building engineer at one and a half bar and walks away.
   </p>
   <div class="rt-two">
     <a class="rt-slab" href="https://abokhatwa.com/#articles">
-      <span class="rt-k">41 articles</span><h3>Along the main</h3>
+      <span class="rt-k"><span data-count data-cats="surge pipeline pumps desalination" data-fmt="num">48</span> articles</span><h3>Along the main</h3>
       <p>Surge and transients, pipeline design, pump engineering, desalination, networks and leakage.</p></a>
     <a class="rt-slab" href="https://abokhatwa.com/#articles">
-      <span class="rt-k">38 articles</span><h3>Up the tower</h3>
+      <span class="rt-k"><span data-count data-cats="hvac plumbing fire tallmep hydraulic leadership" data-fmt="num">38</span> articles</span><h3>Up the tower</h3>
       <p>Pressure zoning, HVAC and cooling, plumbing and drainage, fire protection, tall-building systems.</p></a>
   </div>
   <div class="rt-ctas">
@@ -717,7 +717,7 @@ p strong{color:var(--text-primary); font-weight:600;}
 
 <section class="rt-sect-archive" data-at="el:832"><div class="rt-wrap-wide">
   <div class="rt-tag"><span class="rt-p">THE ARCHIVE</span><span class="rt-ln"></span><span class="rt-nm">Everything, by subject</span></div>
-  <h2 class="section-title">Eighty-six articles, filed by subject.</h2>
+  <h2 class="section-title"><span data-count data-cats="all" data-fmt="Words">Eighty-six</span> articles, filed by subject.</h2>
   <p style="margin-bottom:8px;">The route above is the argument. This is the library behind it.</p>
 <div class="cat-section">
   <span class="section-eyebrow">Browse by topic</span>
@@ -2165,7 +2165,7 @@ p strong{color:var(--text-primary); font-weight:600;}
     <button id="show-more-btn" onclick="revealArticles()" class="btn btn-ghost" style="cursor:pointer;">
       Show 83 More Articles
     </button>
-    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">3 of 86 articles shown</div>
+    <div id="show-more-count" style="margin-top:0.75rem; font-size:12px; color:var(--text-tertiary);">3 of <span data-count data-cats="all" data-fmt="num">86</span> articles shown</div>
   </div>
 
 </div>
@@ -2446,7 +2446,26 @@ function mcSubmit(e) {
     var wrap=document.getElementById('show-more-wrap');
     if(wrap && hidden===0) wrap.style.display='none';
   }
-  function run(){ syncTopicCounts(); syncShowMore(); }
+  /* every [data-count] element: the number of articles in its data-cats (or "all"), as digits, words or Arabic digits */
+  function syncCounts(){
+    var grid=document.getElementById('articlesGrid'); if(!grid) return;
+    var U=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+    var T=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+    function words(n){ if(n<20) return U[n]; if(n<100) return T[Math.floor(n/10)]+(n%10?'-'+U[n%10]:''); if(n<1000){ var r=n%100; return U[Math.floor(n/100)]+' hundred'+(r?' and '+words(r):''); } return String(n); }
+    function fmt(n,f){
+      if(f==='words') return words(n);
+      if(f==='Words'){ var w=words(n); return w.charAt(0).toUpperCase()+w.slice(1); }
+      if(f==='ar') return String(n).replace(/\d/g,function(d){ return '٠١٢٣٤٥٦٧٨٩'.charAt(+d); });
+      return String(n);
+    }
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      var cats=(el.getAttribute('data-cats')||'all').split(/\s+/), n=0;
+      if(cats[0]==='all') n=grid.querySelectorAll('.article-card').length;
+      else cats.forEach(function(c){ n+=grid.querySelectorAll('.article-card[data-cat="'+c+'"]').length; });
+      el.textContent=fmt(n, el.getAttribute('data-fmt'));
+    });
+  }
+  function run(){ syncTopicCounts(); syncCounts(); syncShowMore(); }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run);
   else run();
 })();

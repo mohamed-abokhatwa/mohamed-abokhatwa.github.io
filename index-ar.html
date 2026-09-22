@@ -558,7 +558,7 @@ p strong{color:var(--text-primary); font-weight:600;}
 
 <section data-at="ch:100"><div class="rt-wrap">
   <div class="rt-tag"><span class="rt-p">CH 100+000</span><span class="rt-ln"></span><span class="rt-nm">الصعود الطويل</span></div>
-  <h2 class="section-title">هنا في الخارج، المسافة هي حالة التحميل.</h2>
+  <h2 class="section-title">هنا في الخارج، المسافة هي العامل الرئيسي.</h2>
   <p>على الناقل تتحدّد كل مسألة بمقدار ما يجب أن تقطعه المياه. يأخذ الاحتكاك <strong>405 أمتار</strong>
     على مدى سبعمئة كيلومتر، ويأخذ المقطع الأرضي 645 مترًا أخرى، فلا تستطيع محطة واحدة تسليمها. يصير الخط
     الهيدروليكي سلسلة مسنَّنة من <strong>سبع محطات</strong> و<strong>50&nbsp;ميغاواط</strong>، تُحسب كل واحدة
@@ -672,9 +672,21 @@ p strong{color:var(--text-primary); font-weight:600;}
 <section data-at="el:828"><div class="rt-wrap-wide">
   <div class="rt-tag"><span class="rt-p">EL +828.00</span><span class="rt-ln"></span><span class="rt-nm">الصنبور في القمة</span></div>
   <h2 class="section-title">مكتب واحد، ورسمان.</h2>
-  <p style="max-width:70ch;">كل ما في هذا الموقع يقع في مكان ما على ذلك المسار. إحدى وأربعون مقالة تخصّ
-    الرسم الأول، وثمانٍ وثلاثون تخصّ الثاني، وأهمّها تلك التي تقع عند نقطة الالتقاء &mdash; حيث يسلّم مهندس
+  <p style="max-width:70ch;">كل ما في هذا الموقع يقع في مكان ما على ذلك المسار. <span data-count data-cats="surge pipeline pumps desalination" data-fmt="ar">٤٨</span> مقالة تخصّ
+    الرسم الأول، و<span data-count data-cats="hvac plumbing fire tallmep hydraulic leadership" data-fmt="ar">٣٨</span> تخصّ الثاني، وأهمّها تلك التي تقع عند نقطة الالتقاء &mdash; حيث يسلّم مهندس
     النقل لترًا من الماء إلى مهندس المباني بضغط بار ونصف ثم ينصرف.</p>
+  <div class="rt-two">
+    <a class="rt-slab" href="#articles" onclick="return laneFilter('surge pipeline pumps desalination', this)">
+      <span class="rt-k"><span data-count data-cats="surge pipeline pumps desalination" data-fmt="ar">٤٨</span> مقالة</span><h3>على امتداد الناقل</h3>
+      <p>المطرقة المائية والظواهر العابرة، وتصميم خطوط الأنابيب، وهندسة المضخات، والتحلية، والشبكات والتسرّب.</p></a>
+    <a class="rt-slab" href="#articles" onclick="return laneFilter('hvac plumbing fire tallmep hydraulic leadership', this)">
+      <span class="rt-k"><span data-count data-cats="hvac plumbing fire tallmep hydraulic leadership" data-fmt="ar">٣٨</span> مقالة</span><h3>صعودًا في البرج</h3>
+      <p>تقسيم مناطق الضغط، والتكييف والتبريد، والسباكة والصرف، والحماية من الحريق، وأنظمة المباني الشاهقة.</p></a>
+  </div>
+  <div class="rt-ctas">
+    <a class="rt-cta" href="https://calendly.com/mohamed-abokhatwa/30min" target="_blank" rel="noopener" onclick="return bookConsult()">احجز استشارة</a>
+    <a class="rt-cta rt-ghost" href="one-tower.html">افتح البرج الواحد</a>
+  </div>
 </div></section>
 
 <section data-at="el:830"><div class="rt-wrap-wide">
@@ -777,7 +789,7 @@ p strong{color:var(--text-primary); font-weight:600;}
   </a>
 </div>
 
-<div class="articles-section">
+<div class="articles-section" id="articles">
   <span class="section-eyebrow">المقالات المنشورة</span>
   <h2 class="section-title">رؤى هندسية</h2>
 
@@ -1929,6 +1941,28 @@ function revealArticles() {
 var _currentCat = 'all';
 
 /* بطاقات المواضيع هي الفلتر: ضغطة للفلترة، ضغطة تانية للإلغاء */
+/* Route slabs filter the grid to one side of the route: every topic card of that side is marked active,
+   so clicking any active card (or the slab again) shows everything again */
+function laneFilter(cats, el) {
+  var list = cats.split(' ');
+  var same = _currentCat === cats;
+  document.querySelectorAll('.cat-card').forEach(function(c){
+    c.classList.toggle('active', !same && list.indexOf(c.getAttribute('data-cat')) !== -1);
+  });
+  _currentCat = same ? 'all' : cats;
+  filterArticles();
+  if (!same) {
+    var sec = document.querySelector('.articles-section');
+    if (sec) window.scrollTo({ top: sec.getBoundingClientRect().top + window.pageYOffset - 70, behavior: 'smooth' });
+    if (window.gtag) gtag('event', 'lane_filter', { event_category: 'engagement', event_label: cats });
+  }
+  return false;
+}
+function bookConsult() {
+  if (window.Calendly && Calendly.initPopupWidget) { Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'}); return false; }
+  return true;   /* widget not loaded: follow the link to the booking page */
+}
+
 function topicFilter(cat, el) {
   var wasActive = el.classList.contains('active');
   document.querySelectorAll('.cat-card').forEach(function(c){ c.classList.remove('active'); });
@@ -1962,7 +1996,7 @@ function filterArticles() {
       var cat    = (card.getAttribute('data-cat') || '').toLowerCase();
       var search = (card.getAttribute('data-search') || '') + ' ' + (card.textContent || '');
       search = search.toLowerCase();
-      var catOk  = _currentCat === 'all' || cat === _currentCat;
+      var catOk  = _currentCat === 'all' || (' ' + _currentCat + ' ').indexOf(' ' + cat + ' ') !== -1;   // one topic, or a route side's list
       var srchOk = !query || search.indexOf(query) !== -1;
       if (catOk && srchOk) { card.classList.remove('f-hide'); visible++; }
       else { card.classList.add('f-hide'); }

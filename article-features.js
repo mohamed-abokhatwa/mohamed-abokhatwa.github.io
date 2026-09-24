@@ -9,6 +9,7 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'chilled-water-diversity-megatall.html', title:'Chilled-Water Diversity in Megatall Towers: Peak or Block, Per Use or Per Tower, and Which Components Get It', cat:'hvac', thumb:'chilled-water-diversity-megatall.webp', mins:30, tag:'HVAC · Chilled Water · Diversity' },
     { url:'wave-speed-surge-analysis.html', title:'Wave Speed in Surge Analysis: The Number That Sets the Surge but Barely Moves the Surge Vessel', cat:'surge', thumb:'wave-speed-surge-analysis.webp', mins:37, tag:'Surge Analysis · Wave Speed · Pipe Materials' },
     { url:'surge-vessel-differential-orifice.html', title:'The Differential Orifice: Why a Surge Vessel Should Empty Freely and Refill Slowly', cat:'surge', thumb:'surge-vessel-differential-orifice.webp', mins:36, tag:'Surge Analysis · Surge Vessel · Orifice Design' },
     { url:'surge-vessel-type-selection.html', title:'Bladder, Diaphragm or Air-over-Water: Choosing the Surge Vessel Type', cat:'surge', thumb:'surge-vessel-type-selection.webp', mins:37, tag:'Surge Analysis · Surge Vessel · Equipment Selection' },

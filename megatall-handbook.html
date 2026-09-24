@@ -2753,7 +2753,6 @@
   </div>
   <div class="hb-body article-body">
 
-
 <p class="hb-lead">Two towers of identical height and identical total area can have completely different cooling loads, different plant, different riser strategies and different economics — because one has a 30&nbsp;m floor plate and the other a 60&nbsp;m one. The slender tower carries <strong>twice as much façade per square metre of floor</strong>, which makes it an <strong>envelope-driven building</strong> where 60&nbsp;% of the load comes through the glass; the wide one is internally driven, where the people, lights and equipment dominate. Almost every subsequent decision — where the plant goes, whether perimeter systems are needed, how the zones are controlled, what the diversity is — follows from which of those two buildings you are designing, and it is decided by the architect's massing long before the first load calculation.</p>
 
 <h2>1 · Geometry is the load</h2>
@@ -2784,7 +2783,7 @@
   <li><strong>Air temperature falls slightly</strong> — roughly 0.65&nbsp;°C per 100&nbsp;m — which very marginally helps.</li>
   <li><strong>Wind increases sharply</strong>, raising the external film coefficient and therefore the conduction gain, and driving the infiltration described in <a href="stack-effect-tall-buildings.html">stack effect</a>.</li>
   <li><strong>Infiltration becomes a real load</strong> rather than a rounding error, and it is <em>not</em> uniform — it is concentrated below the neutral plane in winter and above it in a Gulf summer.</li>
-  <li><strong>Occupancy patterns differ by zone.</strong> A mixed-use tower has offices peaking at 15:00, a hotel peaking at 20:00 and residences peaking at 22:00 — which is a diversity opportunity rather than a problem, and the single strongest argument for a shared central plant.</li>
+  <li><strong>Occupancy patterns differ by zone, but the chilled-water peaks mostly do not.</strong> Offices, hotel rooms and residences keep different hours, and a hotel's busiest evening or a residence's late-night occupancy is real. On chilled water in a Gulf summer, though, all three draw their peak in the same afternoon: offices between 14:00 and 15:00, hotel rooms and residences between 16:00 and 17:00, because sun on glass, infiltration and outdoor air dominate each of them. Section&nbsp;4 shows how much diversity that leaves.</li>
 </ul>
 
 <figure class="hb-fig">
@@ -2795,23 +2794,30 @@
 </figure>
 <p class="fig-note">The same glass, the same orientation, and a <strong>2.5× difference in peak solar gain</strong> between the podium floors and the crown. Designing every floor to the same W/m² therefore over-sizes the bottom of the tower and under-sizes the top — and because plant is zoned vertically anyway, the fix is nearly free: <strong>apply different load densities to different vertical zones</strong>, and check the shading with a real solar study rather than a rule of thumb. Note also that the shading benefit at low level is a <em>borrowed</em> benefit; it disappears if the neighbouring site is redeveloped taller, which on a prime site over a sixty-year life is not a remote possibility.</p>
 
-<h2>4 · Interactive: diversity, and the plant you do not have to buy</h2>
-<p>Connected load is the sum of every zone's peak. Simultaneous load is what the plant actually sees, and it is always less — because peaks occur at different times, in different orientations, in different uses. In a mixed-use tower that gap is the strongest argument for a single shared plant.</p>
+<h2>4 · Interactive: how much diversity a mixed-use tower really has</h2>
+<div class="callout warn"><span class="lbl">Corrected September 2026</span>An earlier version of this section said a mixed-use tower could be sized at 0.5&ndash;0.6 of its connected load, and showed a 50&nbsp;MW connected load becoming a 30&nbsp;MW plant. That model applied occupancy diversity to the whole load, including the weather-driven part, which does not diversify. The section, the chart and the summary have been rebuilt on the hourly block calculation in the companion article, <a href="chilled-water-diversity-megatall.html">Chilled-Water Diversity in Megatall Towers</a>. For a Gulf mixed-use tower the figure is about <strong>0.86</strong>.</div>
+<p>Connected load is the sum of every zone's own peak. The simultaneous load, the <strong>block load</strong>, is the highest hour of their sum, and it is always less, because not everything peaks in the same hour. The block load is the number the codes size equipment on. ASHRAE 90.1 (&sect;6.4.2.1) and the Saudi Building Code (SBC&nbsp;501, &sect;312.1) require system design loads to be calculated to ANSI/ASHRAE/ACCA Standard&nbsp;183. In practice that means an hour-by-hour calculation using the load methods of the ASHRAE <em>Fundamentals</em> handbook. How far the block falls below the connected load depends on what drives the load:</p>
+<ul class="clean">
+  <li><strong>Weather-driven load</strong> means solar gain, conduction, infiltration and outdoor air at its design rate. It gets <strong>no usage diversity</strong>. The sun reaches every west-facing floor at the same moment, whether the rooms are let or not. Its only diversity is <em>time</em>: east and west façades peak hours apart.</li>
+  <li><strong>Usage-driven load</strong> means people, lighting, equipment, demand-controlled ventilation and process loads. It is statistical. Not every room is let and not every desk is busy, and the effect grows with the number of independent units. Measured office equipment runs at about 60&ndash;75&nbsp;% of its peak draw at the design hour (Wilkins &amp; Hosni, <em>ASHRAE Journal</em>, 2011). ASHRAE research project RP-1093 built a library of lighting and equipment diversity factors from metered office buildings for exactly this use.</li>
+</ul>
+<p>In a glass tower in a hot climate, more than half of the connected load is weather-driven. That is why the tower's diversity is much smaller than a rule of thumb built on occupancy alone would suggest.</p>
 
 <figure class="hb-fig">
   <div class="hb-fig-label">Interactive figure</div>
-  <div class="hb-fig-title">Simultaneous versus connected load</div>
-  <div class="hb-fig-model">Diversity modelled as d = d&#8734; + (1−d&#8734;)/√n, approaching an asymptote as the number of independently-peaking zones grows. Mixed use lowers the asymptote; single use raises it.</div>
+  <div class="hb-fig-title">Simultaneous versus connected load, split by what drives it</div>
+  <div class="hb-fig-model">Tower coincidence = w&middot;c<sub>w</sub> + (1&minus;w)&middot;[u&#8734; + (1&minus;u&#8734;)/&radic;n]. Only the usage-driven share falls as the number of independent zones grows. The weather-driven share stays at its time coincidence however many floors are added. The load axis runs to the connected load, so the right-hand scale reads the tower coincidence directly. The defaults reproduce the hour-by-hour coastal Gulf tower in the companion article.</div>
   <a class="hb-fig-live" href="cooling-load-modelling-tall-buildings.html#divChart">Run this model in the online edition</a>
   <a class="hb-fig-calc" href="calculators.html#calc-clr">Open as a calculator</a>
 </figure>
-<p class="fig-note">Sixty independently-peaking zones in a mixed-use tower give a diversity factor around <strong>0.61</strong> — so a 50&nbsp;MW connected load is a <strong>30.4&nbsp;MW</strong> plant, and even with N+1 on a six-unit set the installed capacity is <strong>29&nbsp;% below</strong> the naive sum. That is an enormous saving in chillers, plant room, electrical infrastructure, cooling towers and water. But it is only real if the peaks genuinely are independent: <strong>diversity must be demonstrated by simulation, not asserted</strong>, and it must survive the case where a single tenant changes use. Take too much and the plant is short on the first hot day the hotel and the offices peak together; take none and the client pays for a plant that will never run at more than 60&nbsp;% of its rating.</p>
+<p class="fig-note">With the defaults, the tower coincidence is about <strong>0.86</strong>, so a 50&nbsp;MW connected load is a <strong>43&nbsp;MW</strong> plant. N+1 on a six-unit set brings the installed capacity back to roughly the connected load. In a hot climate, <strong>diversity pays for the standby chiller; it does not halve the plant</strong>. A blanket 0.55 applied to this tower would leave the plant <strong>36&nbsp;% short</strong> on the design day. Lower the weather-driven share, as in a cooler climate or a building dominated by people and equipment, and the figure moves down. It moves slowly, though, because the usage-driven share also has its own floor. Take too much diversity and the plant is short on the first hot afternoon. Take none and the plant is about 16&nbsp;% larger than it needs to be.</p>
+<div class="callout key"><span class="lbl">Where the 0.86 comes from</span>No standard or handbook publishes a single diversity figure for a mixed-use tower, and one that did would be wrong for most towers. The 0.86 is the result of the calculation the codes require: an hour-by-hour block load in the manner of ANSI/ASHRAE/ACCA Standard&nbsp;183 and the ASHRAE <em>Fundamentals</em> load chapter, as required for equipment sizing by ASHRAE 90.1 &sect;6.4.2.1 and SBC&nbsp;501 &sect;312.1. It was run for an illustrative 128-floor Gulf tower with retail, offices, a hotel, residences and an observation deck. Every input is stated in the <a href="chilled-water-diversity-megatall.html">companion article</a>, and the full model is published as <a href="specs/diversity_data/model.py">source code</a> that anyone can rerun or change. The usage diversity inside it is kept within measured evidence: the office equipment diversity from ASHRAE-sponsored measurements, and the RP-1093 library of lighting and equipment diversity factors. Coastal Gulf gives <strong>0.864</strong>, and inland Gulf, drier with a wider daily swing, <strong>0.845</strong>. For your own tower, the number to use is the one your own hourly block calculation gives, written into the design basis with its assumptions.</div>
 
 <h2>5 · Modelling a tower honestly</h2>
 <ul class="clean">
   <li><strong>Zone by orientation and by height</strong>, not by floor. A 150-storey model with every floor represented is unmanageable and no more accurate; a model with representative floors per vertical zone and per orientation captures what matters.</li>
   <li><strong>Include the stack effect.</strong> Most whole-building models treat infiltration as a constant air change rate, which is exactly wrong for a tower — infiltration is concentrated at the base in winter and at the top in a Gulf summer, and it is one of the largest single loads. Use a model that couples airflow to the thermal simulation, or at least apply a height-varying infiltration profile.</li>
-  <li><strong>Model the real occupancy schedules per use</strong>, because diversity is entirely a scheduling result. A mixed-use tower modelled with one office schedule throughout will show no diversity benefit at all.</li>
+  <li><strong>Model the real occupancy schedules per use</strong>, because the usage-driven part of the diversity is a scheduling result. A mixed-use tower modelled with one office schedule throughout will get the peak hour, and therefore the block, wrong.</li>
   <li><strong>Calibrate the glazing model against the actual specification</strong>, including frames, spandrel panels and the shading that is actually built rather than the shading that is rendered.</li>
   <li><strong>Test the model's sensitivity</strong> to the three parameters that dominate: SHGC, internal gain density and infiltration. If the answer swings wildly on any of them, that is where the design effort belongs.</li>
   <li><strong>Do not confuse peak sizing with energy.</strong> Peak sizing sets the plant; annual simulation sets the running cost and the control strategy. They are different exercises with different assumptions, and using peak-day assumptions for an annual model is a common and expensive error.</li>
@@ -2819,7 +2825,7 @@
 
 <h2>6 · From model to plant — the practical steps</h2>
 <ul class="clean">
-  <li><strong>Write down the diversity you took and why.</strong> The single most useful line in a design report is an explicit statement of the assumed diversity, the basis for it, and what would invalidate it. It is also the line that protects you if the building's use changes.</li>
+  <li><strong>Write down the diversity you took and why.</strong> The single most useful line in a design report is an explicit statement of the assumed diversity, the basis for it and what would invalidate it. The basis should be an hourly block calculation, not a percentage. It is also the line that protects you if the building's use changes.</li>
   <li><strong>Give each vertical zone its own load density.</strong> Solar-driven differences of 2× between bottom and top are real and free to exploit, because the plant is zoned anyway.</li>
   <li><strong>Separate the perimeter from the core in the control strategy</strong>, even where a single system serves both — they peak at different times and in opposite directions.</li>
   <li><strong>Design for turndown, not just for peak.</strong> A plant sized on a diversified peak spends its life well below it; staging, minimum flows and low-load stability matter more than the last percent of full-load efficiency.</li>
@@ -2834,7 +2840,7 @@
   <li><strong>Zone by orientation and by height</strong>, with different load densities per vertical zone.</li>
   <li><strong>Run a real solar study</strong> including the surrounding fabric and the risk of it changing.</li>
   <li><strong>Couple infiltration to stack effect</strong> rather than assuming a uniform air change rate.</li>
-  <li><strong>Model use-specific schedules</strong> to earn the diversity, then state it explicitly.</li>
+  <li><strong>Take diversity from an hourly block calculation</strong> with use-specific schedules, applying usage diversity only to people-driven loads, and state it explicitly.</li>
   <li><strong>Test sensitivity</strong> to SHGC, internal gains and infiltration.</li>
   <li><strong>Size on the diversified simultaneous peak</strong> with a stated redundancy.</li>
   <li><strong>Design for turndown</strong> and leave capacity for future tenant loads.</li>
@@ -2843,7 +2849,7 @@
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  A tower's cooling load is decided by a dimension on the architect's plan: <strong>façade per unit floor area is 4h/s</strong>, so a 30&nbsp;m plate is 60&nbsp;% envelope-driven and a 60&nbsp;m plate is 43&nbsp;% — two different buildings needing two different HVAC templates. Height changes less than expected but changes it systematically: shading disappears, so the crown can see <strong>2.5× the solar gain</strong> of the podium for identical glass, which is free to exploit because the plant is zoned vertically anyway. And the biggest single prize is <strong>diversity</strong> — sixty independently-peaking zones in a mixed-use tower cut a 50&nbsp;MW connected load to a 30&nbsp;MW plant, 29&nbsp;% less installed even with standby — but it has to be earned with use-specific schedules in the model and then <strong>written down explicitly</strong>, because it is the assumption most likely to be quietly invalidated by a change of tenant.
+  A tower's cooling load is decided by a dimension on the architect's plan: <strong>façade per unit floor area is 4h/s</strong>, so a 30&nbsp;m plate is 60&nbsp;% envelope-driven and a 60&nbsp;m plate is 43&nbsp;% — two different buildings needing two different HVAC templates. Height changes less than expected but changes it systematically: shading disappears, so the crown can see <strong>2.5× the solar gain</strong> of the podium for identical glass, which is free to exploit because the plant is zoned vertically anyway. Diversity is real, but it is smaller than the rule of thumb. In a Gulf glass tower more than half of the connected load is driven by the weather and peaks together, so a mixed-use tower's block load is about <strong>0.86 of connected, not 0.55</strong>. It is enough to pay for the standby chiller, not to halve the plant. Take it from an hourly block calculation to Standard&nbsp;183, not from a blanket percentage, and <strong>write it down explicitly</strong>, because it is the assumption most likely to be quietly invalidated by a change of tenant.
 </div>
 
 <h2>References &amp; standards</h2>
@@ -2855,9 +2861,12 @@
   <li>ANSI/ASHRAE/IES Standard 90.1, Appendix G — whole-building performance modelling protocol; and Estidama / Mostadam / LEED energy modelling requirements.</li>
   <li>ASHRAE <em>Handbook — Fundamentals</em>, Ventilation and Infiltration chapter — stack-driven infiltration in tall buildings and its coupling to thermal load.</li>
   <li>CTBUH technical guidance on façade performance and solar exposure in tall buildings.</li>
-  <li>Saudi Building Code <em>SBC 601</em> (energy conservation) and <em>SBC 501</em> — envelope and mechanical requirements for the region.</li>
+  <li>Saudi Building Code <em>SBC 601</em> (energy conservation) and <em>SBC 501</em> — envelope and mechanical requirements for the region; SBC 501 &sect;312.1 requires system design loads to be determined to ASHRAE/ACCA Standard 183.</li>
+  <li>ANSI/ASHRAE/ACCA Standard 183, <em>Peak Cooling and Heating Load Calculations in Buildings Except Low-Rise Residential Buildings</em> — the design load procedure required for equipment sizing by ASHRAE 90.1 &sect;6.4.2.1.</li>
+  <li>Wilkins, C.K. and Hosni, M.H. &ldquo;Plug Load Design Factors.&rdquo; <em>ASHRAE Journal</em> 53(5), May 2011, pp.&nbsp;30&ndash;34 — measured diversity of office equipment (75&nbsp;% for computers, 60&nbsp;% for monitors) and design load factors.</li>
+  <li>Abushakra, B., Haberl, J.S. and Claridge, D.E. &ldquo;Overview of Existing Literature on Diversity Factors and Schedules for Energy and Cooling Load Calculations.&rdquo; <em>ASHRAE Transactions</em> 110(1), 2004 (ASHRAE RP-1093) — lighting and equipment diversity factors from metered office buildings.</li>
+  <li>Abokhatwa, M. <a href="chilled-water-diversity-megatall.html">Chilled-Water Diversity in Megatall Towers</a>, 2026, with the hourly block model published as <a href="specs/diversity_data/model.py">source code</a> — the calculation behind the 0.86 used here.</li>
 </ol>
-
 
 
 

@@ -62,7 +62,9 @@ def solar(lat_deg, day=202):
         alt = math.asin(sin_alt)
         az = math.atan2(math.sin(hs)*math.cos(dec), math.cos(hs)*math.cos(dec)*math.sin(lat) - math.sin(dec)*math.cos(lat))
         am = 1/sin_alt
-        eb = 1000*0.7**(am**0.678)                       # beam normal, simple clear-sky model
+        # beam normal: the Meinel clear-sky form with its 1353 W/m2 constant cut to 1000 for Gulf summer haze
+        # (about 690 W/m2 at noon); with the full 1353 the coastal tower coincidence is about 0.85 instead of 0.86
+        eb = 1000*0.7**(am**0.678)
         edh = 0.12*eb                                    # diffuse on the horizontal
         egh = eb*sin_alt + edh
         for k, fa in az_face.items():
@@ -139,7 +141,7 @@ def floor_zones(key, cl):
     f = FUNCS[key]; t, h = weather(cl); sun = solar(CLIMATES[cl]['lat'])
     side, depth = f['side'] if 'side' in f else math.sqrt(f['plate']), f['perim']
     fac = side*f['ftf']; glass = fac*f['wwr']; wall = fac - glass
-    per_area = side*depth
+    per_area = depth*(side - depth)            # façade strip with 45-degree corner splits, so the corners are not counted twice
     core_area = max(0.0, f['plate'] - 4*per_area)
     zones = {}
     for o in 'NESW':

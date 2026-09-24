@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">Every megatall project reaches the same argument sooner or later: <em>how much diversity do we take on the chilled water?</em> One side wants a single percentage for the tower, another wants one per use, and the pump, heat-exchanger and chiller schedules quietly end up on different bases. The argument never closes because it is about the wrong thing. Diversity is not a number you choose once; it is a result that changes at every level of the system. We built an hour-by-hour model of a mixed-use Gulf tower (offices, hotel, residences, retail, a ballroom and an observation deck) to show where it really comes from. The plant needs <strong>0.86</strong> of the sum of terminal peaks. Almost all of that saving sits <strong>inside each floor and inside each use</strong>, and a blanket 0.70 would leave the plant <strong>19&nbsp;% short</strong> on the design day.</p>
+<p class="lead">Every megatall project reaches the same argument sooner or later: <em>how much diversity do we take on the chilled water?</em> One side wants a single percentage for the tower, another wants one per use, and the pump, heat-exchanger and chiller schedules quietly end up on different bases. The argument never closes because it is about the wrong thing. Diversity is not a number you choose once; it is a result that changes at every level of the system. We built an hour-by-hour model of a mixed-use Gulf tower (offices, hotel, residences, retail, a ballroom and an observation deck) to show where it really comes from. The plant needs <strong>0.86</strong> of the sum of terminal peaks. Almost all of that saving sits <strong>inside each floor and inside each use</strong>, and a blanket 0.70 would leave the plant <strong>18&nbsp;% short</strong> on the design day.</p>
 
 <h2 id="terms">1 &middot; Two words for one idea, and two ideas under one word</h2>
 <p>Half of the disputes about diversity are about vocabulary. Electrical engineering, where the terms come from, defines the <strong>diversity factor</strong> as the sum of the individual maximum demands divided by the maximum demand of the group, a number of one or more [1]. HVAC engineers usually mean its reciprocal, the <strong>coincidence</strong> or <strong>simultaneity factor</strong>, a number of one or less:</p>
@@ -14,9 +14,10 @@ BODY = r"""
 <p>Weather-driven loads, meaning solar gain, conduction, infiltration and outdoor air at its design rate, have <strong>no usage diversity</strong>. The sun reaches every floor of the west façade at the same moment, whether the rooms behind it are let or not.</p>
 
 <h2 id="tower">2 &middot; The tower we modelled</h2>
+<div class="callout warn"><span class="lbl">Corrected 24 September 2026</span>The first version of the model counted the corners of each floor twice when it split the floor into perimeter zones. The plant block is unchanged at 21,043&nbsp;kW. The connected load is now 24,538&nbsp;kW instead of 24,346&nbsp;kW, the tower coincidence 0.858 instead of 0.864, and a blanket 0.70 is 18&nbsp;% short instead of 19&nbsp;%. The tables, charts and text below use the corrected figures.</div>
 <p>The example is a mixed-use megatall on the Gulf coast. It has a retail podium, a ballroom and dining level, forty office floors, thirty hotel floors, fifty residential floors and an observation deck, with 243,500&nbsp;m&sup2; of conditioned floor. Every floor is split into four perimeter zones and a core. For each zone the model builds a 24-hour design-day load from four sources:</p>
 <ul class="clean">
-  <li><strong>Envelope</strong>: the sun position is computed for the site latitude on 21 July, run through a simple clear-sky model onto each façade and a radiant time lag, then conduction and infiltration are added.</li>
+  <li><strong>Envelope</strong>: the sun position is computed for the site latitude on 21 July, run through a simple clear-sky model onto each façade and a radiant time lag, then conduction and infiltration are added. The clear-sky model is set for Gulf summer haze, about 690&nbsp;W/m&sup2; of direct sun at noon; under a clear textbook sky the envelope load rises and the tower coincidence comes out at about 0.85 instead of 0.86.</li>
   <li><strong>Internal</strong>: people, lights and equipment, on a schedule specific to each use.</li>
   <li><strong>Ventilation</strong>: outdoor air cooled from the outdoor to the room enthalpy.</li>
   <li><strong>Process</strong>: 900&nbsp;kW that never switches off (IT, telecom, lift machine and electrical rooms).</li>
@@ -72,14 +73,14 @@ BODY = r"""
     </div>
   </div>
   <div class="readout">
-    <div class="cell"><div class="k">Connected</div><div class="v" id="rConn">24,346 <small>kW</small></div></div>
+    <div class="cell"><div class="k">Connected</div><div class="v" id="rConn">24,538 <small>kW</small></div></div>
     <div class="cell"><div class="k">Tower block</div><div class="v" id="rBlk">21,043 <small>kW</small></div></div>
     <div class="cell"><div class="k">Block hour</div><div class="v" id="rHr">14&ndash;15 <small>h</small></div></div>
     <div class="cell"><div class="k">Coincidence</div><div class="v" id="rCf">0.86</div></div>
     <div class="cell"><div class="k">Night minimum</div><div class="v" id="rMin">0.37 <small>of peak</small></div></div>
   </div>
 </div>
-<p class="fig-note">At the defaults the coastal tower peaks at 14:00&ndash;15:00 with 21,043&nbsp;kW, against a connected load of 24,346&nbsp;kW: a coincidence factor of 0.86, or 86&nbsp;W/m&sup2; against 100 (41&nbsp;m&sup2; per ton of refrigeration). Drop the residential usage to 0.40, an extreme that treats most apartments as empty, and the block falls only from 21,043 to 20,834&nbsp;kW, 1&nbsp;%, because the residences' envelope and outdoor air do not care whether anyone is home. The night minimum of 0.37 of the peak is the turndown the plant must handle in summer, before winter lowers it further.</p>
+<p class="fig-note">At the defaults the coastal tower peaks at 14:00&ndash;15:00 with 21,043&nbsp;kW, against a connected load of 24,538&nbsp;kW: a coincidence factor of 0.86, or 86&nbsp;W/m&sup2; against 101 (41&nbsp;m&sup2; per ton of refrigeration). Drop the residential usage to 0.40, an extreme that treats most apartments as empty, and the block falls only from 21,043 to 20,834&nbsp;kW, 1&nbsp;%, because the residences' envelope and outdoor air do not care whether anyone is home. The night minimum of 0.37 of the peak is the turndown the plant must handle in summer, before winter lowers it further.</p>
 
 <h2 id="where">4 &middot; Where the diversity actually comes from</h2>
 <p>Follow the load up the system, from the terminals to the plant, and record the coincident peak at each level. Each row below is what equipment at that level has to be sized for, and each is smaller than the one above it:</p>
@@ -87,29 +88,29 @@ BODY = r"""
   <caption>Coastal climate, default assumptions. Coincidence is relative to the connected load in the first row.</caption>
   <thead><tr><th>Level</th><th class="num">Load (kW)</th><th class="num">Coincidence</th><th>What is sized on it</th></tr></thead>
   <tbody>
-    <tr><td>Every terminal and ventilation unit at its own peak (connected)</td><td class="num">24,346</td><td class="num">1.000</td><td>Fan-coil units, VAV boxes, chilled beams, fresh-air units, their control valves and branch pipes</td></tr>
-    <tr><td>Sum of floor blocks</td><td class="num">22,692</td><td class="num">0.932</td><td>Floor AHU coils, floor branch mains</td></tr>
-    <tr><td>Sum of use blocks</td><td class="num">22,060</td><td class="num">0.906</td><td>Risers serving one use</td></tr>
-    <tr><td>Sum of hydraulic-zone blocks</td><td class="num">21,446</td><td class="num">0.881</td><td>Zone pumps; heat exchangers (see section 9 for the cascade)</td></tr>
-    <tr><td>Tower block</td><td class="num">21,043</td><td class="num">0.864</td><td>Chillers, primary pumps, heat rejection, district-cooling contract</td></tr>
+    <tr><td>Every terminal and ventilation unit at its own peak (connected)</td><td class="num">24,538</td><td class="num">1.000</td><td>Fan-coil units, VAV boxes, chilled beams, fresh-air units, their control valves and branch pipes</td></tr>
+    <tr><td>Sum of floor blocks</td><td class="num">22,692</td><td class="num">0.925</td><td>Floor AHU coils, floor branch mains</td></tr>
+    <tr><td>Sum of use blocks</td><td class="num">22,060</td><td class="num">0.899</td><td>Risers serving one use</td></tr>
+    <tr><td>Sum of hydraulic-zone blocks</td><td class="num">21,446</td><td class="num">0.874</td><td>Zone pumps; heat exchangers (see section 9 for the cascade)</td></tr>
+    <tr><td>Tower block</td><td class="num">21,043</td><td class="num">0.858</td><td>Chillers, primary pumps, heat rejection, district-cooling contract</td></tr>
   </tbody>
 </table></div>
-<p>The largest single step, 6.8&nbsp;%, comes inside one floor: its four façades peak at different hours. Look at one office floor:</p>
+<p>The largest single step, 7.5&nbsp;%, comes inside one floor, mostly because its four façades peak at different hours; the rest is the small statistical allowance for the units on one floor. Look at one office floor:</p>
 <div class="tbl-wrap"><table>
   <caption>One office floor (2,200&nbsp;m&sup2;), coastal design day. Every terminal is sized at its own peak, with no factor.</caption>
   <thead><tr><th>Zone</th><th class="num">Area (m&sup2;)</th><th class="num">Own peak (kW)</th><th class="num">W/m&sup2;</th><th>Peak hour</th></tr></thead>
   <tbody>
-    <tr><td>North perimeter</td><td class="num">211</td><td class="num">23.7</td><td class="num">112</td><td>15:00&ndash;16:00</td></tr>
-    <tr><td>East perimeter</td><td class="num">211</td><td class="num">33.5</td><td class="num">159</td><td>09:00&ndash;10:00</td></tr>
-    <tr><td>South perimeter</td><td class="num">211</td><td class="num">23.4</td><td class="num">111</td><td>13:00&ndash;14:00</td></tr>
-    <tr><td>West perimeter</td><td class="num">211</td><td class="num">35.3</td><td class="num">167</td><td>16:00&ndash;17:00</td></tr>
-    <tr><td>Core</td><td class="num">1,356</td><td class="num">48.8</td><td class="num">36</td><td>Flat from 09:00</td></tr>
+    <tr><td>North perimeter</td><td class="num">191</td><td class="num">23.0</td><td class="num">120</td><td>15:00&ndash;16:00</td></tr>
+    <tr><td>East perimeter</td><td class="num">191</td><td class="num">32.8</td><td class="num">172</td><td>09:00&ndash;10:00</td></tr>
+    <tr><td>South perimeter</td><td class="num">191</td><td class="num">22.7</td><td class="num">119</td><td>13:00&ndash;14:00</td></tr>
+    <tr><td>West perimeter</td><td class="num">191</td><td class="num">34.6</td><td class="num">181</td><td>16:00&ndash;17:00</td></tr>
+    <tr><td>Core</td><td class="num">1,437</td><td class="num">51.7</td><td class="num">36</td><td>Flat from 09:00</td></tr>
     <tr><td>Floor ventilation</td><td class="num">&ndash;</td><td class="num">68.7</td><td class="num">&ndash;</td><td>13:00&ndash;14:00</td></tr>
     <tr><td><strong>Sum of peaks / floor block</strong></td><td class="num">2,200</td><td class="num"><strong>233.5 / 219.4</strong></td><td class="num">&ndash;</td><td>Block at 14:00&ndash;15:00</td></tr>
   </tbody>
 </table></div>
-<p>The east fan coils must deliver their 159&nbsp;W/m&sup2; at nine in the morning and the west ones their 167 at four in the afternoon. A single "diversity" applied to the terminals would short one of them. The floor as a whole, however, never needs more than 219.4&nbsp;kW. That 0.94 is the orientation diversity, and it is free.</p>
-<p>The next step, from floors to uses, is the statistical one: 160 office tenancies do not all run at full density on the same afternoon, and 400 apartments do not all cook at once. The steps after that, between uses and between hydraulic zones, are small: 2.5&nbsp;% and 1.7&nbsp;% of the connected load. That is the finding that surprises people. <strong>In a hot climate, mixing uses buys little chilled-water diversity</strong>, because the loads that dominate (sun on glass, outdoor air, infiltration) peak together across every use within the same afternoon hours.</p>
+<p>The east fan coils must deliver their 172&nbsp;W/m&sup2; at nine in the morning and the west ones their 181 at four in the afternoon. A single "diversity" applied to the terminals would short one of them. The floor as a whole, however, never needs more than 219.4&nbsp;kW. That 0.94 is the orientation diversity, and it is free.</p>
+<p>The next step, from floors to uses, is the statistical one: 160 office tenancies do not all run at full density on the same afternoon, and 400 apartments do not all cook at once. The steps after that, between uses and between hydraulic zones, are small: 2.5&nbsp;% and 1.6&nbsp;% of the connected load. That is the finding that surprises people. <strong>In a hot climate, mixing uses buys little chilled-water diversity</strong>, because the loads that dominate (sun on glass, outdoor air, infiltration) peak together across every use within the same afternoon hours.</p>
 <div class="callout key"><span class="lbl">Why not 0.55?</span>A figure of 0.5&ndash;0.6 for a mixed-use tower is often quoted, and an earlier version of our own <a href="cooling-load-modelling-tall-buildings.html">cooling-load article</a> used it, in a simple model where the coincidence approaches an asymptote as the number of independently-peaking zones grows. That shape is right for the <em>usage-driven</em> share of the load and wrong for the weather-driven share, which does not become independent however many floors you add. In this tower the weather-driven share is large, so the tower lands at 0.86, not 0.6. In a cooler climate, or in a building where people and equipment dominate, the true figure moves down, but it has to be shown by calculation, not assumed. The cooling-load article has since been corrected to use this split.</div>
 
 <h2 id="int-levels">5 &middot; Interactive: diversity, level by level</h2>
@@ -132,42 +133,42 @@ BODY = r"""
     </div>
   </div>
   <div class="readout">
-    <div class="cell"><div class="k" id="kL1">Within the floor</div><div class="v" id="rL1">&minus;6.8 <small>%</small></div></div>
+    <div class="cell"><div class="k" id="kL1">Within the floor</div><div class="v" id="rL1">&minus;7.5 <small>%</small></div></div>
     <div class="cell"><div class="k" id="kL2">Within each use</div><div class="v" id="rL2">&minus;2.6 <small>%</small></div></div>
-    <div class="cell"><div class="k" id="kL3">Between uses and zones</div><div class="v" id="rL3">&minus;4.2 <small>%</small></div></div>
-    <div class="cell"><div class="k" id="kL4">Tower coincidence</div><div class="v" id="rL4">0.864</div></div>
+    <div class="cell"><div class="k" id="kL3">Between uses and zones</div><div class="v" id="rL3">&minus;4.1 <small>%</small></div></div>
+    <div class="cell"><div class="k" id="kL4">Tower coincidence</div><div class="v" id="rL4">0.858</div></div>
   </div>
 </div>
-<p class="fig-note">The first three readouts are percentage points of the connected load removed at each stage, so they add up to one minus the tower coincidence. Inland the tower coincidence drops to 0.845, since the dry night air takes the ventilation load away after dark, yet the ranking holds: most of the saving is inside floors and inside uses. In the "Uses" view the retail podium contributes only 0.74 of its connected load at the tower's peak, because the crowds arrive after 18:00. The ballroom contributes all of its load, because a full event at the design hour is exactly what it is designed for.</p>
+<p class="fig-note">The first three readouts are percentage points of the connected load removed at each stage, so they add up to one minus the tower coincidence. Inland the tower coincidence drops to 0.837. Dry air shrinks the outdoor-air load, which peaks in the same hour on every floor, from about 36&nbsp;% of the peak to 20&nbsp;%, so more of the peak is sun on glass, which moves round the façades, and people, who diversify. The ranking holds: most of the saving is inside floors and inside uses. In the "Uses" view the retail podium contributes only 0.74 of its connected load at the tower's peak, because the crowds arrive after 18:00. The ballroom contributes all of its load, because a full event at the design hour is exactly what it is designed for.</p>
 
 <h2 id="percent">6 &middot; One percentage for the tower, or one per use?</h2>
 <p>Neither, as an <em>input</em>. Both are legitimate as a <em>check</em>, once the block calculation exists.</p>
-<p>A single percentage for the tower is a result: here it is 0.864, and it applies to one thing only, the plant, against the connected load. Applying it anywhere else is an error. On the terminals it undersizes every fan coil by 14&nbsp;%. On a heat exchanger it assumes diversity between zones that, in this tower, do not have any (section 9).</p>
+<p>A single percentage for the tower is a result: here it is 0.858, and it applies to one thing only, the plant, against the connected load. Applying it anywhere else is an error. On the terminals it undersizes every fan coil by 14&nbsp;%. On a heat exchanger it assumes diversity between zones that, in this tower, do not have any (section 9).</p>
 <p>Per-use percentages are also results, and they depend on the whole mix, not just on the use:</p>
 <div class="tbl-wrap"><table>
   <caption>Coastal climate, default assumptions. "At tower peak" is each use's load during the tower's peak hour (14:00&ndash;15:00).</caption>
   <thead><tr><th>Use</th><th class="num">Connected (kW)</th><th class="num">Own block (kW)</th><th>Own peak hour</th><th class="num">At tower peak (kW)</th><th class="num">Factor at tower peak</th></tr></thead>
   <tbody>
-    <tr><td>Retail podium</td><td class="num">3,542</td><td class="num">3,240</td><td>18:00&ndash;19:00</td><td class="num">2,626</td><td class="num">0.74</td></tr>
+    <tr><td>Retail podium</td><td class="num">3,546</td><td class="num">3,240</td><td>18:00&ndash;19:00</td><td class="num">2,626</td><td class="num">0.74</td></tr>
     <tr><td>Ballroom, meeting and dining</td><td class="num">1,802</td><td class="num">1,798</td><td>14:00&ndash;15:00</td><td class="num">1,798</td><td class="num">1.00</td></tr>
     <tr><td>Offices</td><td class="num">9,338</td><td class="num">8,385</td><td>14:00&ndash;15:00</td><td class="num">8,385</td><td class="num">0.90</td></tr>
-    <tr><td>Hotel guest rooms</td><td class="num">3,088</td><td class="num">2,710</td><td>16:00&ndash;17:00</td><td class="num">2,594</td><td class="num">0.84</td></tr>
-    <tr><td>Residences</td><td class="num">4,672</td><td class="num">4,038</td><td>16:00&ndash;17:00</td><td class="num">3,938</td><td class="num">0.84</td></tr>
-    <tr><td>Observation deck</td><td class="num">1,004</td><td class="num">989</td><td>16:00&ndash;17:00</td><td class="num">802</td><td class="num">0.80</td></tr>
+    <tr><td>Hotel guest rooms</td><td class="num">3,158</td><td class="num">2,710</td><td>16:00&ndash;17:00</td><td class="num">2,594</td><td class="num">0.82</td></tr>
+    <tr><td>Residences</td><td class="num">4,788</td><td class="num">4,038</td><td>16:00&ndash;17:00</td><td class="num">3,938</td><td class="num">0.82</td></tr>
+    <tr><td>Observation deck</td><td class="num">1,007</td><td class="num">989</td><td>16:00&ndash;17:00</td><td class="num">802</td><td class="num">0.80</td></tr>
     <tr><td>Process</td><td class="num">900</td><td class="num">900</td><td>Constant</td><td class="num">900</td><td class="num">1.00</td></tr>
-    <tr><td><strong>Tower</strong></td><td class="num"><strong>24,346</strong></td><td class="num">&ndash;</td><td>14:00&ndash;15:00</td><td class="num"><strong>21,043</strong></td><td class="num"><strong>0.86</strong></td></tr>
+    <tr><td><strong>Tower</strong></td><td class="num"><strong>24,538</strong></td><td class="num">&ndash;</td><td>14:00&ndash;15:00</td><td class="num"><strong>21,043</strong></td><td class="num"><strong>0.86</strong></td></tr>
   </tbody>
 </table></div>
-<p>Two things follow. First, a "residential factor of 0.84" is not a property of residences. Move the tower to a climate where the offices peak later, add a mall that peaks at noon, or let the hotel become serviced apartments, and every number in the last column changes. Borrowing these factors from another project is the usual source of error.</p>
+<p>Two things follow. First, a "residential factor of 0.82" is not a property of residences. Move the tower to a climate where the offices peak later, add a mall that peaks at noon, or let the hotel become serviced apartments, and every number in the last column changes. Borrowing these factors from another project is the usual source of error.</p>
 <p>Second, look at what the common rules of thumb do to the plant. The tower needs 21,043&nbsp;kW:</p>
 <div class="tbl-wrap"><table>
   <caption>The plant on different bases, coastal climate. Shortfall and excess are relative to the simulated block.</caption>
   <thead><tr><th>Basis</th><th class="num">Plant (kW)</th><th class="num">Against the block</th></tr></thead>
   <tbody>
-    <tr><td>Sum of every terminal peak (no diversity)</td><td class="num">24,346</td><td class="num">+16&nbsp;% oversized</td></tr>
+    <tr><td>Sum of every terminal peak (no diversity)</td><td class="num">24,538</td><td class="num">+17&nbsp;% oversized</td></tr>
     <tr><td>Simulated block</td><td class="num">21,043</td><td class="num">&ndash;</td></tr>
-    <tr><td>Blanket 0.70 &times; connected</td><td class="num">17,042</td><td class="num">19&nbsp;% short</td></tr>
-    <tr><td>Blanket 0.60 &times; connected</td><td class="num">14,608</td><td class="num">31&nbsp;% short</td></tr>
+    <tr><td>Blanket 0.70 &times; connected</td><td class="num">17,177</td><td class="num">18&nbsp;% short</td></tr>
+    <tr><td>Blanket 0.60 &times; connected</td><td class="num">14,723</td><td class="num">30&nbsp;% short</td></tr>
   </tbody>
 </table></div>
 <div class="callout warn"><span class="lbl">The asymmetry</span>An oversized plant costs money and part-load efficiency. An undersized one fails on the hottest afternoons, in front of the client. Error in both directions is common, but only one of them is discovered in operation. That is why the block has to be calculated and written down, not negotiated.</div>
@@ -214,13 +215,13 @@ BODY = r"""
   <caption>Sizing basis by component. Values are for the example tower, coastal climate.</caption>
   <thead><tr><th>Component</th><th>Sized on</th><th>Diversity</th><th>Example</th></tr></thead>
   <tbody>
-    <tr><td>Fan coil, VAV box, chilled beam, room unit</td><td>Its zone's own peak (hour and month)</td><td>None</td><td>West office perimeter 35.3&nbsp;kW at 16:00&ndash;17:00</td></tr>
+    <tr><td>Fan coil, VAV box, chilled beam, room unit</td><td>Its zone's own peak (hour and month)</td><td>None</td><td>West office perimeter 34.6&nbsp;kW at 16:00&ndash;17:00</td></tr>
     <tr><td>Control valve and branch pipe to one terminal</td><td>The terminal's design flow</td><td>None</td><td>Selected on the coil flow, not on a share of it</td></tr>
     <tr><td>Fresh-air unit / dedicated outdoor air system</td><td>Design ventilation at the peak outdoor enthalpy [10]</td><td>None, unless demand-controlled</td><td>68.7&nbsp;kW per office floor at 13:00&ndash;14:00</td></tr>
     <tr><td>Floor AHU (VAV, several zones)</td><td>Block of its zones; fan airflow on the block, boxes on zone peaks</td><td>Orientation only</td><td>219.4&nbsp;kW against 233.5 summed</td></tr>
     <tr><td>Process cooling (IT, telecom, lift rooms)</td><td>The heat load, 24/7</td><td>None; standby units carry no load</td><td>900&nbsp;kW constant</td></tr>
     <tr><td>Floor branch main</td><td>Floor block flow</td><td>Orientation</td><td>0.94 of the terminal flows on an office floor</td></tr>
-    <tr><td>Riser</td><td>Block of the floors it serves, plus a stated allowance for change of use</td><td>Statistical, growing with floors</td><td>Residential riser near 0.86 of connected</td></tr>
+    <tr><td>Riser</td><td>Block of the floors it serves, plus a stated allowance for change of use</td><td>Statistical, growing with floors</td><td>Residential riser near 0.84 of connected</td></tr>
     <tr><td>Zone (secondary) pumps</td><td>Block flow of the zone at the <em>achieved</em> &Delta;T</td><td>Only with two-way valves</td><td>Zone 1: 13,709&nbsp;kW, 0.88 of connected</td></tr>
     <tr><td>Pressure-break heat exchangers</td><td>Block of every zone above, in a cascade, at their coincident hour</td><td>Only between zones that peak at different hours</td><td>HX-A 7,737&nbsp;kW = sum of the three zones above it</td></tr>
     <tr><td>Chillers and primary pumps</td><td>Tower block + pump heat + distribution gains, then redundancy</td><td>The full tower coincidence</td><td>21,043&nbsp;kW block</td></tr>
@@ -287,7 +288,7 @@ BODY = r"""
     <div class="cell"><div class="k">HX-A duty</div><div class="v" id="rHx">7,737 <small>kW</small></div></div>
   </div>
 </div>
-<p class="fig-note">With 3&nbsp;% for pump heat and distribution gains and one 10&nbsp;% margin at the plant, the plant is 23,842&nbsp;kW, 13&nbsp;% above the block: a defensible, stated allowance. Let three designers each add their 10&nbsp;% and the same plant is 28,849&nbsp;kW, 37&nbsp;% above the block, more than the 24,346&nbsp;kW of having taken no diversity at all. Margins compound; diversity does not rescue them. Lower the achieved &Delta;T to 6&nbsp;K and the primary flow the load needs rises to 862&nbsp;L/s, above what pumps sized at the design &Delta;T deliver.</p>
+<p class="fig-note">With 3&nbsp;% for pump heat and distribution gains and one 10&nbsp;% margin at the plant, the plant is 23,842&nbsp;kW, 13&nbsp;% above the block: a defensible, stated allowance. Let three designers each add their 10&nbsp;% and the same plant is 28,849&nbsp;kW, 37&nbsp;% above the block, more than the 24,538&nbsp;kW of having taken no diversity at all. Margins compound; diversity does not rescue them. Lower the achieved &Delta;T to 6&nbsp;K and the primary flow the load needs rises to 862&nbsp;L/s, above what pumps sized at the design &Delta;T deliver.</p>
 
 <h3>The heat-exchanger cascade</h3>
 <p>Megatall chilled water is broken into pressure zones by plate heat exchangers, and in a cascade each exchanger feeds the zone above it through the next one [7]. That changes the question. HX-A does not serve "Zone 2". It serves Zones 2, 3 and 4 together, so its duty is the coincident block of all three:</p>
@@ -585,15 +586,15 @@ SPEC = dict(
     breadcrumb='HVAC &amp; Cooling',
     tag_line='HVAC &middot; Chilled Water &middot; Diversity &middot; Megatall Buildings',
     desc='How much diversity to take on chilled water in a mixed-use megatall: diversity versus coincidence factor, time versus usage diversity, an hour-by-hour Gulf tower model, what each component is sized on from fan coils to heat exchangers and chillers, and four interactive charts.',
-    og_desc='An hour-by-hour model of a mixed-use Gulf megatall: the plant needs 0.86 of the sum of terminal peaks, almost all of the diversity sits inside floors and uses, and a blanket 0.70 leaves the plant 19 % short.',
+    og_desc='An hour-by-hour model of a mixed-use Gulf megatall: the plant needs 0.86 of the sum of terminal peaks, almost all of the diversity sits inside floors and uses, and a blanket 0.70 leaves the plant 18 % short.',
     ld_desc='A design-perspective guide to chilled-water diversity in mixed-use megatall towers: definitions, block versus peak loads, statistical usage diversity, sizing basis by component, heat-exchanger cascades and design margins.',
     img_alt='Cutaway of a tapered mixed-use tower on a blueprint grid, its west half in warm afternoon sun and its east half in blue shade, with chilled-water risers through the core, heat exchangers on three mechanical floors, two chillers in the basement plant and visitors on the observation deck, and translucent load curves rising behind it',
     en_tag='HVAC &amp; Cooling &middot; Chilled Water',
     en_title='Chilled-Water Diversity in Megatall Towers: Peak or Block, Per Use or Per Tower, and Which Components Get It',
-    en_excerpt='One percentage for the tower or one per use? Neither, as an input. An hour-by-hour model of a mixed-use Gulf megatall shows the plant needs <strong>0.86</strong> of the sum of terminal peaks, that almost all of the diversity sits inside each floor and each use rather than between hotel, residences and offices, and that a blanket 0.70 leaves the plant <strong>19&nbsp;% short</strong>. Fan coils take their own peak; shared components take the block of what they serve; cascaded heat exchangers carry every zone above them, here with <strong>no diversity between zones</strong>. With four interactive charts.',
+    en_excerpt='One percentage for the tower or one per use? Neither, as an input. An hour-by-hour model of a mixed-use Gulf megatall shows the plant needs <strong>0.86</strong> of the sum of terminal peaks, that almost all of the diversity sits inside each floor and each use rather than between hotel, residences and offices, and that a blanket 0.70 leaves the plant <strong>18&nbsp;% short</strong>. Fan coils take their own peak; shared components take the block of what they serve; cascaded heat exchangers carry every zone above them, here with <strong>no diversity between zones</strong>. With four interactive charts.',
     en_search='chilled water diversity factor coincidence factor simultaneity factor block load peak load sum of peaks cooling load calculation ASHRAE 183 radiant time series hourly load profile mixed use tower megatall supertall hotel residential office retail ballroom observation deck fan coil unit FCU VAV AHU DOAS fresh air unit riser heat exchanger pressure break cascade secondary pumps primary pumps chiller plant sizing cooling tower district cooling contracted capacity thermal energy storage design margin safety factor stacked margins redundancy N+1 two-way valve three-way valve variable flow low delta T degraded delta T turndown Gulf coastal humid inland MEP HVAC design basis',
     ar_title='معامل التنوع في المياه المبرّدة للأبراج فائقة الارتفاع: الحمل الأقصى أم الحمل المتزامن، ولكل استخدام أم للبرج كله، وأي المعدات تستحقه',
-    ar_excerpt='نسبة واحدة للبرج أم نسبة لكل استخدام؟ لا هذه ولا تلك كمُدخل. نموذج ساعي لبرج خليجي متعدد الاستخدامات يبيّن أن المحطة تحتاج <strong>٠٫٨٦</strong> من مجموع أحمال الوحدات الطرفية القصوى، وأن معظم التنوع يقع داخل كل طابق وكل استخدام لا بين الفندق والسكن والمكاتب، وأن نسبة ثابتة قدرها ٠٫٧٠ تجعل المحطة ناقصة <strong>١٩٪</strong> في يوم التصميم. وحدات ملف المروحة تُصمَّم على حملها الأقصى، والمعدات المشتركة على الحمل المتزامن لما تخدمه، والمبادلات المتتالية تحمل كل المناطق فوقها <strong>دون تنوع بينها</strong>. مع أربعة رسوم تفاعلية.',
+    ar_excerpt='نسبة واحدة للبرج أم نسبة لكل استخدام؟ لا هذه ولا تلك كمُدخل. نموذج ساعي لبرج خليجي متعدد الاستخدامات يبيّن أن المحطة تحتاج <strong>٠٫٨٦</strong> من مجموع أحمال الوحدات الطرفية القصوى، وأن معظم التنوع يقع داخل كل طابق وكل استخدام لا بين الفندق والسكن والمكاتب، وأن نسبة ثابتة قدرها ٠٫٧٠ تجعل المحطة ناقصة <strong>١٨٪</strong> في يوم التصميم. وحدات ملف المروحة تُصمَّم على حملها الأقصى، والمعدات المشتركة على الحمل المتزامن لما تخدمه، والمبادلات المتتالية تحمل كل المناطق فوقها <strong>دون تنوع بينها</strong>. مع أربعة رسوم تفاعلية.',
     ar_search='معامل التنوع معامل التزامن المياه المبرّدة الحمل الأقصى الحمل المتزامن حساب أحمال التبريد الأبراج فائقة الارتفاع المباني متعددة الاستخدامات فندق سكني مكاتب تجزئة قاعة احتفالات وحدات ملف المروحة وحدات مناولة الهواء وحدات الهواء النقي الصاعد المبادل الحراري كسر الضغط المضخات الثانوية المضخات الأولية محطة التبريد أبراج التبريد تبريد المناطق القدرة التعاقدية تخزين الطاقة الحرارية هامش الأمان الاحتياطي فرق درجة الحرارة الصمامات ثنائية الاتجاه الخليج',
     body=BODY, charts=CHARTS,
 )

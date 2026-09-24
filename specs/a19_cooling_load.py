@@ -126,12 +126,12 @@ BODY = r"""
     <div class="ctrl">
       <label>Weather-driven share <span id="vWs">0.56</span></label>
       <input type="range" id="sWs" min="0.2" max="0.8" value="0.56" step="0.01">
-      <div class="hint">Envelope, solar, infiltration and design ventilation as a share of the connected load. Companion model: 0.56 for a coastal Gulf tower, 0.52 inland.</div>
+      <div class="hint">Envelope, solar, infiltration and design ventilation as a share of the connected load. Companion model: 0.56 for a coastal Gulf tower, 0.51 inland.</div>
     </div>
     <div class="ctrl">
-      <label>Time coincidence of weather load <span id="vCw">0.92</span></label>
-      <input type="range" id="sCw" min="0.8" max="1" value="0.92" step="0.01">
-      <div class="hint">East and west façades peak hours apart, and that is all the diversity these loads get. Companion model: 0.92 coastal, 0.87 inland.</div>
+      <label>Time coincidence of weather load <span id="vCw">0.91</span></label>
+      <input type="range" id="sCw" min="0.8" max="1" value="0.91" step="0.01">
+      <div class="hint">East and west façades peak hours apart, and that is all the diversity these loads get. Companion model: 0.91 coastal, 0.87 inland.</div>
     </div>
     <div class="ctrl">
       <label>Usage asymptote <span id="vDa">0.76</span></label>
@@ -150,16 +150,16 @@ BODY = r"""
     </div>
   </div>
   <div class="readout">
-    <div class="cell"><div class="k">Tower coincidence</div><div class="v" id="rDf">0.863</div></div>
-    <div class="cell"><div class="k">Simultaneous peak</div><div class="v" id="rSp">43.2 <small>MW</small></div></div>
-    <div class="cell"><div class="k">Capacity avoided</div><div class="v" id="rAv">6.8 <small>MW</small></div></div>
-    <div class="cell"><div class="k">Installed with N+1</div><div class="v" id="rIc">50.4 <small>MW</small></div></div>
-    <div class="cell"><div class="k">vs connected load</div><div class="v" id="rVn">+1 <small>%</small></div></div>
+    <div class="cell"><div class="k">Tower coincidence</div><div class="v" id="rDf">0.858</div></div>
+    <div class="cell"><div class="k">Simultaneous peak</div><div class="v" id="rSp">42.9 <small>MW</small></div></div>
+    <div class="cell"><div class="k">Capacity avoided</div><div class="v" id="rAv">7.1 <small>MW</small></div></div>
+    <div class="cell"><div class="k">Installed with N+1</div><div class="v" id="rIc">50.0 <small>MW</small></div></div>
+    <div class="cell"><div class="k">vs connected load</div><div class="v" id="rVn">0 <small>%</small></div></div>
     <div class="cell"><div class="k">A blanket 0.55 would be</div><div class="v" id="rBl">36 <small>% short</small></div></div>
   </div>
 </div>
-<p class="fig-note">With the defaults, the tower coincidence is about <strong>0.86</strong>, so a 50&nbsp;MW connected load is a <strong>43&nbsp;MW</strong> plant. N+1 on a six-unit set brings the installed capacity back to roughly the connected load. In a hot climate, <strong>diversity pays for the standby chiller; it does not halve the plant</strong>. A blanket 0.55 applied to this tower would leave the plant <strong>36&nbsp;% short</strong> on the design day. Lower the weather-driven share, as in a cooler climate or a building dominated by people and equipment, and the figure moves down. It moves slowly, though, because the usage-driven share also has its own floor. Take too much diversity and the plant is short on the first hot afternoon. Take none and the plant is about 16&nbsp;% larger than it needs to be.</p>
-<div class="callout key"><span class="lbl">Where the 0.86 comes from</span>No standard or handbook publishes a single diversity figure for a mixed-use tower, and one that did would be wrong for most towers. The 0.86 is the result of the calculation the codes require: an hour-by-hour block load in the manner of ANSI/ASHRAE/ACCA Standard&nbsp;183 and the ASHRAE <em>Fundamentals</em> load chapter, as required for equipment sizing by ASHRAE 90.1 &sect;6.4.2.1 and SBC&nbsp;501 &sect;312.1. It was run for an illustrative 128-floor Gulf tower with retail, offices, a hotel, residences and an observation deck. Every input is stated in the <a href="chilled-water-diversity-megatall.html">companion article</a>, and the full model is published as <a href="specs/diversity_data/model.py">source code</a> that anyone can rerun or change. The usage diversity inside it is kept within measured evidence: the office equipment diversity from ASHRAE-sponsored measurements, and the RP-1093 library of lighting and equipment diversity factors. Coastal Gulf gives <strong>0.864</strong>, and inland Gulf, drier with a wider daily swing, <strong>0.845</strong>. For your own tower, the number to use is the one your own hourly block calculation gives, written into the design basis with its assumptions.</div>
+<p class="fig-note">With the defaults, the tower coincidence is about <strong>0.86</strong>, so a 50&nbsp;MW connected load is a <strong>43&nbsp;MW</strong> plant. N+1 on a six-unit set brings the installed capacity back to roughly the connected load. In a hot climate, <strong>diversity pays for the standby chiller; it does not halve the plant</strong>. A blanket 0.55 applied to this tower would leave the plant <strong>36&nbsp;% short</strong> on the design day. Lower the weather-driven share, as in a cooler climate or a building dominated by people and equipment, and the figure moves down. It moves slowly, though, because the usage-driven share also has its own floor. Take too much diversity and the plant is short on the first hot afternoon. Take none and the plant is about 17&nbsp;% larger than it needs to be.</p>
+<div class="callout key"><span class="lbl">Where the 0.86 comes from</span>No standard or handbook publishes a single diversity figure for a mixed-use tower, and one that did would be wrong for most towers. The 0.86 is the result of the calculation the codes require: an hour-by-hour block load in the manner of ANSI/ASHRAE/ACCA Standard&nbsp;183 and the ASHRAE <em>Fundamentals</em> load chapter, as required for equipment sizing by ASHRAE 90.1 &sect;6.4.2.1 and SBC&nbsp;501 &sect;312.1. It was run for an illustrative 128-floor Gulf tower with retail, offices, a hotel, residences and an observation deck. Every input is stated in the <a href="chilled-water-diversity-megatall.html">companion article</a>, and the full model is published as <a href="specs/diversity_data/model.py">source code</a> that anyone can rerun or change. The usage diversity inside it is kept within measured evidence: the office equipment diversity from ASHRAE-sponsored measurements, and the RP-1093 library of lighting and equipment diversity factors. Coastal Gulf gives <strong>0.858</strong>, and inland Gulf, drier with a wider daily swing, <strong>0.837</strong>. For your own tower, the number to use is the one your own hourly block calculation gives, written into the design basis with its assumptions.</div>
 
 <h2 id="modelling">5 · Modelling a tower honestly</h2>
 <ul class="clean">

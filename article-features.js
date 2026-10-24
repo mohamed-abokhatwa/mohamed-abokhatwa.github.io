@@ -534,7 +534,7 @@
       '  width:44px;',
       '  height:44px;',
       '  border-radius:50%;',
-      '  background:var(--bg-primary,#fff);',
+      '  background:var(--bg-3,#fff);',
       '  border:1.5px solid var(--border,rgba(0,0,0,0.1));',
       '  box-shadow:0 4px 20px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.06);',
       '  color:var(--text-primary,var(--text-primary));',
@@ -551,11 +551,8 @@
       '  box-shadow:0 8px 28px rgba(0,0,0,0.18);',
       '  transform:translateX(-50%) translateY(-2px) !important;',
       '}',
-      ':root[data-theme="dark"] #back-to-top{',
-      '  background:var(--bg-primary,var(--text-primary));',
-      '  border-color:rgba(255,255,255,0.15);',
-      '  box-shadow:0 4px 20px rgba(0,0,0,0.4);',
-      '}',
+      ':root[data-theme="dark"] #back-to-top{ box-shadow:0 4px 20px rgba(0,0,0,0.4); }',
+      '@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) #back-to-top{ box-shadow:0 4px 20px rgba(0,0,0,0.4); } }',
 
       /* ── Table of Contents (collapsible, all screen sizes) ── */
       '#article-toc{ display:none; }',   /* desktop sidebar disabled */

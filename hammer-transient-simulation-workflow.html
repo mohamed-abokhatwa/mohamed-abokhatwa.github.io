@@ -16,8 +16,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Computing a Transient Simulation in Bentley HAMMER: A Step-by-Step Workflow — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Computing a Transient Simulation in Bentley HAMMER: A Step-by-Step Workflow | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -47,16 +47,16 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="A step-by-step Bentley HAMMER workflow for computing a transient simulation — pump shutdown setup, wave speed, calculation options, EPS initialization, profiles, and reading the transient envelope.">
+  <meta name="description" content="A step-by-step Bentley HAMMER workflow for computing a transient simulation: pump shutdown setup, wave speed, calculation options, EPS initialization, profiles, and reading the transient envelope.">
   <meta property="og:title" content="Computing a Transient Simulation in Bentley HAMMER | Mohamed Abokhatwa">
-  <meta property="og:description" content="A step-by-step Bentley HAMMER workflow for computing a transient simulation — pump shutdown setup, wave speed, calculation options, EPS initialization, profiles, and reading the transient envelope.">
+  <meta property="og:description" content="A step-by-step Bentley HAMMER workflow for computing a transient simulation: pump shutdown setup, wave speed, calculation options, EPS initialization, profiles, and reading the transient envelope.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/hammer-transient-simulation-workflow.html">
   <meta property="og:image" content="https://abokhatwa.com/og-hammer-transient-simulation-workflow.jpg">
   <meta property="og:image:alt" content="Computing a Transient Simulation in Bentley HAMMER">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Computing a Transient Simulation in Bentley HAMMER | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="A step-by-step Bentley HAMMER workflow for computing a transient simulation — pump shutdown setup, wave speed, calculation options, EPS initialization, profiles, and reading the transient envelope.">
+  <meta name="twitter:description" content="A step-by-step Bentley HAMMER workflow for computing a transient simulation: pump shutdown setup, wave speed, calculation options, EPS initialization, profiles, and reading the transient envelope.">
   <link rel="canonical" href="https://abokhatwa.com/hammer-transient-simulation-workflow.html">
 
   <script type="application/ld+json">
@@ -64,7 +64,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Computing a Transient Simulation in Bentley HAMMER: A Step-by-Step Workflow",
-  "description": "A step-by-step Bentley HAMMER workflow for computing a transient simulation — pump shutdown setup, wave speed, calculation options, EPS initialization, profiles, and reading the transient envelope.",
+  "description": "A step-by-step Bentley HAMMER workflow for computing a transient simulation: pump shutdown setup, wave speed, calculation options, EPS initialization, profiles, and reading the transient envelope.",
   "image": "https://abokhatwa.com/og-hammer-transient-simulation-workflow.jpg",
   "datePublished": "2026-06-03",
   "dateModified": "2026-06-03",
@@ -102,6 +102,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -145,44 +146,44 @@
 
 <div class="article-body">
 <h2>Introduction</h2>
-<p>Most engineers can build a steady-state water model. Far fewer are comfortable taking that same model and asking the harder question: <strong>what happens in the seconds after a pump trips?</strong> A steady-state or EPS run only shows you the system "before" and "after" — it never reveals the violent pressure waves that travel through the pipeline in between. That gap is exactly what <strong>Bentley HAMMER</strong> exists to fill.</p>
-<p>This article walks through the complete workflow for computing your first transient simulation, using a classic <strong>emergency pump shutdown</strong> scenario on a transmission main. We start with an existing water model and prepare it, step by step, for transient analysis — covering every input that actually matters and explaining <em>why</em> it matters, not just where to click.</p>
+<p>Most engineers can build a steady-state water model. Far fewer are comfortable taking that same model and asking the harder question: <strong>what happens in the seconds after a pump trips?</strong> A steady-state or EPS run only shows you the system "before" and "after". It never reveals the violent pressure waves that travel through the pipeline in between. That gap is exactly what <strong>Bentley HAMMER</strong> exists to fill.</p>
+<p>This article walks through the complete workflow for computing your first transient simulation, using a classic <strong>emergency pump shutdown</strong> scenario on a transmission main. We start with an existing water model and prepare it, step by step, for transient analysis, covering every input that actually matters and explaining <em>why</em> it matters, not just where to click.</p>
 
 <hr class="article-divider">
 
 <h2>Start With a Hydraulically Equivalent Model</h2>
-<p>Before touching any transient settings, decide which version of the model you will analyze. A full distribution model carries hundreds of junctions, demands, and looped mains — most of which contribute almost nothing to the transient response of the main line.</p>
+<p>Before touching any transient settings, decide which version of the model you will analyze. A full distribution model carries hundreds of junctions, demands, and looped mains, most of which contribute almost nothing to the transient response of the main line.</p>
 
 <figure class="article-figure">
   <img width="960" height="513" src="hammer-sim-full-model.jpg" alt="Full distribution network model in Bentley HAMMER with hundreds of junctions and looped mains" loading="lazy">
-  <figcaption>The full distribution model — accurate, but heavy. Every pipe needs a wave speed, and zero-flow or looped sections add transient-specific complications.</figcaption>
+  <figcaption>The full distribution model: accurate, but heavy. Every pipe needs a wave speed, and zero-flow or looped sections add transient-specific complications.</figcaption>
 </figure>
 
-<p>If you own Bentley WaterGEMS, the <strong>Skelebrator</strong> tool can collapse that full model into a <strong>hydraulically equivalent</strong> skeleton in minutes. It lumps demands onto the remaining nodes and combines pipes in series and parallel so that flows and hydraulic grades stay identical to the full model. The result is a clean transmission line from pump station to tank — the part that actually experiences the worst surges.</p>
+<p>If you own Bentley WaterGEMS, the <strong>Skelebrator</strong> tool can collapse that full model into a <strong>hydraulically equivalent</strong> skeleton in minutes. It lumps demands onto the remaining nodes and combines pipes in series and parallel so that flows and hydraulic grades stay identical to the full model. The result is a clean transmission line from pump station to tank: the part that actually experiences the worst surges.</p>
 
 <figure class="article-figure">
   <img width="960" height="513" src="hammer-sim-skeletonized.jpg" alt="Skeletonized hydraulically equivalent model showing the pump-to-tank transmission line" loading="lazy">
   <figcaption>The skeletonized model: hydraulically equivalent, but with far fewer elements to configure for transient analysis. This is the model we run.</figcaption>
 </figure>
 
-<div class="callout">A skeletonized model is not a "less accurate" model — it is <strong>hydraulically equivalent</strong>. The same pressures and flows are reproduced with a fraction of the configuration effort. We will return to <em>why</em> this matters at the end of the article.</div>
+<div class="callout">A skeletonized model is <strong>hydraulically equivalent</strong>, not a "less accurate" model. The same pressures and flows are reproduced with a fraction of the configuration effort. We will return to <em>why</em> this matters at the end of the article.</div>
 
 <hr class="article-divider">
 
-<h2>Step 1 — Configure the Pump Shutdown</h2>
+<h2>Step 1: Configure the Pump Shutdown</h2>
 <span class="step-pill">Pump element &middot; Transient section</span>
 <p>The scenario is simple: the pump is running, then loses power. In the pump's properties, open the <strong>Transient</strong> section and set the pump type to <strong>"Shut Down After Time Delay."</strong> For this example we use a <strong>400 mm</strong> discharge diameter and a <strong>time delay of 5 seconds</strong>.</p>
-<p>That delay means the simulation runs steady for five seconds, then cuts power to the pump. The pump does not stop instantly — it <em>spins down</em> on its own momentum, and that gradual loss of head is what generates the transient. To simulate the spin-down accurately, the program needs to know how the pump behaves mechanically, which brings us to the pump definition.</p>
+<p>That delay means the simulation runs steady for five seconds, then cuts power to the pump. The pump does not stop instantly. It <em>spins down</em> on its own momentum, and that gradual loss of head is what generates the transient. To simulate the spin-down accurately, the program needs to know how the pump behaves mechanically, which brings us to the pump definition.</p>
 
 <hr class="article-divider">
 
-<h2>Step 2 — Enter the Pump's Transient Properties</h2>
+<h2>Step 2: Enter the Pump's Transient Properties</h2>
 <span class="step-pill">Pump definition &middot; Transient tab</span>
 <p>Open the <strong>pump definition</strong> and switch to its <strong>Transient</strong> tab. Three inputs control the spin-down physics:</p>
 <ul>
-  <li><strong>Inertia</strong> — the rotational inertia of the pump/motor assembly. HAMMER provides a built-in calculator: enter the <strong>brake horsepower</strong> and <strong>rotational speed</strong> and it estimates inertia for you.</li>
-  <li><strong>Speed</strong> — the rated rotational speed.</li>
-  <li><strong>Specific Speed</strong> — a more advanced parameter tied to the shape of the pump's performance curve. It lets HAMMER predict how the pump behaves not just in the normal (positive head, positive flow) quadrant, but in all four quadrants — including reverse flow and reverse spin after the trip.</li>
+  <li><strong>Inertia</strong>: the rotational inertia of the pump/motor assembly. HAMMER provides a built-in calculator: enter the <strong>brake horsepower</strong> and <strong>rotational speed</strong> and it estimates inertia for you.</li>
+  <li><strong>Speed</strong>: the rated rotational speed.</li>
+  <li><strong>Specific Speed</strong>: a more advanced parameter tied to the shape of the pump's performance curve. It lets HAMMER predict how the pump behaves not just in the normal (positive head, positive flow) quadrant, but in all four quadrants, including reverse flow and reverse spin after the trip.</li>
 </ul>
 
 <figure class="article-figure">
@@ -190,64 +191,64 @@
   <figcaption>The Transient tab of the pump definition. The four-quadrant characteristic curves let HAMMER model reverse flow and reverse rotation as the pump spins down after the trip.</figcaption>
 </figure>
 
-<p>The HAMMER help file includes an equation to help you estimate which specific-speed curve set to choose. For a first pass, the default is acceptable — but on a real project, getting the four-quadrant behavior right is what separates a credible surge study from a guess.</p>
+<p>The HAMMER help file includes an equation to help you estimate which specific-speed curve set to choose. For a first pass, the default is acceptable, but on a real project, getting the four-quadrant behavior right is what separates a credible surge study from a guess.</p>
 
 <hr class="article-divider">
 
-<h2>Step 3 — Assign a Wave Speed to Every Pipe</h2>
+<h2>Step 3: Assign a Wave Speed to Every Pipe</h2>
 <span class="step-pill">Tools &middot; Wave Speed Calculator</span>
-<p>Wave speed (celerity, <em>a</em>) is the single most influential transient parameter. It controls how fast pressure waves travel and how they reflect and interact — so every pipe needs an accurate value. Wave speed depends on the pipe material, wall thickness, and how the pipe is restrained at its ends.</p>
-<p>Rather than computing it by hand, use the <strong>Wave Speed Calculator</strong> under the Tools menu. Pick your liquid from the engineering library (here, <strong>water at 20&nbsp;°C</strong>), then select the pipe material — the library already stores the <strong>Young's modulus</strong> and <strong>Poisson's ratio</strong> for materials like <strong>ductile iron</strong>. Add the wall thickness and restraint condition, then apply the result to all pipes at once.</p>
+<p>Wave speed (celerity, <em>a</em>) is the single most influential transient parameter. It controls how fast pressure waves travel and how they reflect and interact, so every pipe needs an accurate value. Wave speed depends on the pipe material, wall thickness, and how the pipe is restrained at its ends.</p>
+<p>Rather than computing it by hand, use the <strong>Wave Speed Calculator</strong> under the Tools menu. Pick your liquid from the engineering library (here, <strong>water at 20&nbsp;°C</strong>), then select the pipe material: the library already stores the <strong>Young's modulus</strong> and <strong>Poisson's ratio</strong> for materials like <strong>ductile iron</strong>. Add the wall thickness and restraint condition, then apply the result to all pipes at once.</p>
 
 <figure class="article-figure">
   <img width="960" height="513" src="hammer-sim-wave-speed.jpg" alt="Wave Speed Calculator and engineering material library in HAMMER for ductile iron pipe" loading="lazy">
   <figcaption>The Wave Speed Calculator pulls material properties (Young's modulus, Poisson's ratio) straight from the engineering library, then applies a consistent wave speed across every pipe in the model.</figcaption>
 </figure>
 
-<div class="callout">On a single-material skeleton this is one operation. On a full model with ductile iron, PVC, <em>and</em> steel pipes, you would repeat it per material group — one more reason skeletonization saves time.</div>
+<div class="callout">On a single-material skeleton this is one operation. On a full model with ductile iron, PVC, <em>and</em> steel pipes, you would repeat it per material group, one more reason skeletonization saves time.</div>
 
 <hr class="article-divider">
 
-<h2>Step 4 — Set the Transient Calculation Options</h2>
+<h2>Step 4: Set the Transient Calculation Options</h2>
 <span class="step-pill">Analysis &middot; Calculation Options</span>
 <p>HAMMER keeps a separate calculation-option set for transient-specific settings, distinct from the steady-state/EPS solver options. A few entries you will almost always configure:</p>
 <ul>
-  <li><strong>Points to report</strong> — by default HAMMER saves no element results, only profiles. Change this to <strong>Selected Points</strong> and pick your points of interest from the drawing: the <strong>pump</strong>, the <strong>high point</strong>, and the <strong>tank</strong>. These are where you will later graph pressure and flow.</li>
-  <li><strong>Report period</strong> — how often results are saved for graphs (e.g. every 10 time steps). The default is usually fine.</li>
-  <li><strong>Run duration</strong> — switch from "time steps" to <strong>time</strong> and enter a duration in seconds. We use <strong>90 seconds</strong> — long enough to capture the event <em>and</em> let the system settle so you can confirm the transient has decayed.</li>
-  <li><strong>Generate animation data</strong> — set this to <strong>True</strong>. It is off by default, but it is what lets you replay the surge visually afterward. Always enable it.</li>
+  <li><strong>Points to report</strong>: by default HAMMER saves no element results, only profiles. Change this to <strong>Selected Points</strong> and pick your points of interest from the drawing: the <strong>pump</strong>, the <strong>high point</strong>, and the <strong>tank</strong>. These are where you will later graph pressure and flow.</li>
+  <li><strong>Report period</strong>: how often results are saved for graphs (e.g. every 10 time steps). The default is usually fine.</li>
+  <li><strong>Run duration</strong>: switch from "time steps" to <strong>time</strong> and enter a duration in seconds. We use <strong>90 seconds</strong>: long enough to capture the event <em>and</em> let the system settle so you can confirm the transient has decayed.</li>
+  <li><strong>Generate animation data</strong>: set this to <strong>True</strong>. It is off by default, but it is what lets you replay the surge visually afterward. Always enable it.</li>
 </ul>
 <p>HAMMER calculates the <strong>hydraulic time step</strong> automatically, balancing accuracy against run time. You can override it with a custom value under <em>Analysis &rarr; Transient Time Step Options</em>, but the auto value is a sensible default for a first run.</p>
 
 <hr class="article-divider">
 
-<h2>Step 5 — Choose the Right EPS Starting Point</h2>
+<h2>Step 5: Choose the Right EPS Starting Point</h2>
 <span class="step-pill">Initial conditions</span>
 <p>If your initial conditions come from an Extended Period Simulation, you must tell HAMMER <em>which moment in time</em> to freeze as the steady starting state. This matters enormously: starting the transient when the pump is off would simulate nothing.</p>
 
 <figure class="article-figure">
   <img width="960" height="513" src="hammer-sim-eps-cycle.jpg" alt="EPS flow graph showing tank hydraulic grade cycling and pump flow switching on and off over 24 hours" loading="lazy">
-  <figcaption>The 24-hour EPS cycle: the tank level (upper curve) rises and falls as the pump (lower curve) switches on and off. We initialize the transient at hour 7 — when the pump is running and the tank is near full.</figcaption>
+  <figcaption>The 24-hour EPS cycle: the tank level (upper curve) rises and falls as the pump (lower curve) switches on and off. We initialize the transient at hour 7, when the pump is running and the tank is near full.</figcaption>
 </figure>
 
-<p>Graphing the pump alongside the tank shows the familiar fill-and-drain cycle. We pick a time when the pump is on — here, <strong>hour 7</strong> — and set that as the transient initialization time. The transient run then captures exactly what happens between this instant and the moment the pump trips five seconds later.</p>
+<p>Graphing the pump alongside the tank shows the familiar fill-and-drain cycle. We pick a time when the pump is on (here, <strong>hour 7</strong>) and set that as the transient initialization time. The transient run then captures exactly what happens between this instant and the moment the pump trips five seconds later.</p>
 
 <hr class="article-divider">
 
-<h2>Step 6 — Define Profiles for the Animation</h2>
+<h2>Step 6: Define Profiles for the Animation</h2>
 <span class="step-pill">View &middot; Profiles</span>
 <p>Profiles define the longitudinal slices HAMMER animates. Under <em>View &rarr; Profiles</em>, click <strong>New &rarr; Select from Drawing</strong>, then click the upstream point (the reservoir) and the downstream point (the tank). HAMMER draws the profile automatically.</p>
-<p>On this skeleton, one profile from reservoir to tank covers the whole system — name it <strong>"Full."</strong> On a longer or more interconnected model, add a few focused profiles (e.g. a <strong>"Pump Detail"</strong> view of the first few hundred metres) so fine detail isn't lost when you zoom out to the full length.</p>
+<p>On this skeleton, one profile from reservoir to tank covers the whole system: name it <strong>"Full."</strong> On a longer or more interconnected model, add a few focused profiles (e.g. a <strong>"Pump Detail"</strong> view of the first few hundred metres) so fine detail isn't lost when you zoom out to the full length.</p>
 
 <hr class="article-divider">
 
-<h2>Step 7 — Compute, Validate, Run</h2>
+<h2>Step 7: Compute, Validate, Run</h2>
 <span class="step-pill">Analysis</span>
 <p>The run sequence is three clicks:</p>
 <ol>
-  <li><strong>Compute Initial Conditions</strong> — establishes the steady starting state.</li>
-  <li><strong>Validate</strong> — checks for input errors before the heavy computation. Resolve real warnings; ignore benign ones.</li>
-  <li><strong>Compute</strong> — runs the transient simulation and returns a summary of maximum and minimum pressures.</li>
+  <li><strong>Compute Initial Conditions</strong>: establishes the steady starting state.</li>
+  <li><strong>Validate</strong>: checks for input errors before the heavy computation. Resolve real warnings; ignore benign ones.</li>
+  <li><strong>Compute</strong>: runs the transient simulation and returns a summary of maximum and minimum pressures.</li>
 </ol>
 <p>The summary table tells you the extremes, but numbers alone don't reveal <em>what is physically happening</em>. For that, you open the Transient Results Viewer.</p>
 
@@ -266,21 +267,21 @@
   <li>The <strong>red</strong> line is the maximum hydraulic grade reached anywhere along the pipe during the run.</li>
   <li>The <strong>blue</strong> line is the minimum hydraulic grade.</li>
   <li>The <strong>green</strong> line is ground elevation; the <strong>black</strong> line is the initial steady grade.</li>
-  <li>The top panel reports <strong>vapor volume</strong> — and that spike is the warning sign.</li>
+  <li>The top panel reports <strong>vapor volume</strong>, and that spike is the warning sign.</li>
 </ul>
-<p>Animate the run. Five seconds in, the pump trips and a negative wave races downstream. At the high point the pressure drops below atmospheric, then below the <strong>vapor pressure of water</strong> — and a vapor pocket forms. It grows, then begins to collapse as the reflected wave returns positive pressure.</p>
+<p>Animate the run. Five seconds in, the pump trips and a negative wave races downstream. At the high point the pressure drops below atmospheric, then below the <strong>vapor pressure of water</strong>, and a vapor pocket forms. It grows, then begins to collapse as the reflected wave returns positive pressure.</p>
 
 <hr class="article-divider">
 
 <h2>The Column-Separation Slam</h2>
-<p>What happens when that vapor pocket finally collapses is the most dangerous event in the whole simulation. The two water columns on either side of the cavity rush back together and <strong>slam</strong> — an effect hydraulically identical to instantaneous valve closure. Water is nearly incompressible, so the sudden change in momentum produces a severe pressure spike, like a head-on collision.</p>
+<p>What happens when that vapor pocket finally collapses is the most dangerous event in the whole simulation. The two water columns on either side of the cavity rush back together and <strong>slam</strong>: an effect hydraulically identical to instantaneous valve closure. Water is nearly incompressible, so the sudden change in momentum produces a severe pressure spike, like a head-on collision.</p>
 
 <figure class="article-figure">
   <img width="960" height="513" src="hammer-sim-column-separation.jpg" alt="HAMMER profile at the moment of column separation rejoining, showing a sharp pressure spike propagating along the pipeline" loading="lazy">
   <figcaption>Column separation rejoining. The slam drives the maximum pressures seen across most of the model; the rebound then reflects as a low-pressure wave, dragging minimum pressures down elsewhere.</figcaption>
 </figure>
 
-<p>This single phenomenon is what produces most of the maximum pressures in the model. As the spike rebounds, it reflects as a low-pressure wave that pulls pressures down again elsewhere. A system that behaves like this — vapor pockets forming and slamming shut — clearly <strong>needs transient protection</strong>: a surge vessel, air valves, a controlled-closure strategy, or some combination. The simulation we just ran is the "no protection" baseline against which those measures are tested.</p>
+<p>This single phenomenon is what produces most of the maximum pressures in the model. As the spike rebounds, it reflects as a low-pressure wave that pulls pressures down again elsewhere. A system that behaves like this, vapor pockets forming and slamming shut, clearly <strong>needs transient protection</strong>: a surge vessel, air valves, a controlled-closure strategy, or some combination. The simulation we just ran is the "no protection" baseline against which those measures are tested.</p>
 
 <hr class="article-divider">
 
@@ -291,15 +292,15 @@
   <li><strong>Zero-flow pipes.</strong> Closed or zero-flow pipes force HAMMER to convert head loss to a friction factor in ways that can demand extra data massaging during the transient.</li>
   <li><strong>Active PRVs.</strong> Pressure-reducing valves need transient coefficients describing whether and how fast they modulate during the event.</li>
 </ul>
-<p>And the engineering reality is that the worst transients occur on the <strong>main line</strong> between the pump station and the tank — exactly what the skeleton preserves. Out in the looped, far reaches of the network, waves dampen out through friction and reflection. If you can mitigate harmful surges in the hydraulically equivalent skeleton, the rest of the system you left out will almost certainly be fine.</p>
+<p>And the engineering reality is that the worst transients occur on the <strong>main line</strong> between the pump station and the tank, exactly what the skeleton preserves. Out in the looped, far reaches of the network, waves dampen out through friction and reflection. If you can mitigate harmful surges in the hydraulically equivalent skeleton, the rest of the system you left out will almost certainly be fine.</p>
 
 <hr class="article-divider">
 
 <h2>Key Takeaways</h2>
 <ul>
-  <li>Run transients on a <strong>hydraulically equivalent skeleton</strong> — same answer, far less setup.</li>
+  <li>Run transients on a <strong>hydraulically equivalent skeleton</strong>: same answer, far less setup.</li>
   <li>The pump's <strong>inertia and specific speed</strong> drive the spin-down; the four-quadrant curve makes reverse flow credible.</li>
-  <li><strong>Wave speed on every pipe</strong> is non-negotiable — use the calculator and the material library.</li>
+  <li><strong>Wave speed on every pipe</strong> is non-negotiable: use the calculator and the material library.</li>
   <li>Always enable <strong>Generate Animation Data</strong>, select your key points, and run long enough for the system to settle.</li>
   <li>Initialize the transient at a sensible <strong>EPS time step</strong> (pump on).</li>
   <li>Read the <strong>transient envelope</strong>: vapor pockets and the <strong>column-separation slam</strong> are the events that justify surge protection.</li>
@@ -309,10 +310,10 @@
 <div class="refs">
   <h2>References</h2>
   <ol>
-    <li>Bentley Systems. <em>Bentley HAMMER CONNECT Edition Help</em> — Computing a Transient Simulation; Wave Speed Calculator; Transient Calculation Options.</li>
+    <li>Bentley Systems. <em>Bentley HAMMER CONNECT Edition Help</em>: Computing a Transient Simulation; Wave Speed Calculator; Transient Calculation Options.</li>
     <li>Walski, T. et al. (2007). <em>Advanced Water Distribution Modeling and Management</em>. Bentley Institute Press.</li>
     <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall.</li>
-    <li>Bentley Communities — WaterGEMS Skelebrator and HAMMER transient modeling discussions.</li>
+    <li>Bentley Communities: WaterGEMS Skelebrator and HAMMER transient modeling discussions.</li>
   </ol>
 </div>
 <div class="tags">#BentleyHammer #TransientAnalysis #SurgeAnalysis #WaterHammer #HydraulicModeling #PumpTrip #ColumnSeparation #WaterEngineering</div>
@@ -323,7 +324,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>

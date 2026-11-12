@@ -15,24 +15,24 @@
   <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 4 — Electrical &amp; Standby Power | MEP for Tall Buildings</title>
-<meta name="description" content="Electrical and standby power for tall buildings from grid to socket — load estimate, HV intake, transformers, LV switchgear and fault levels, busways, cable sizing and voltage drop, generators and UPS.">
+<title>Module 4 · Electrical &amp; Standby Power | MEP for Tall Buildings</title>
+<meta name="description" content="Electrical and standby power for tall buildings from grid to socket: load estimate, HV intake, transformers, LV switchgear and fault levels, busways, cable sizing and voltage drop, generators and UPS.">
 <link rel="canonical" href="https://abokhatwa.com/mep-course/module-4-electrical.html">
-<meta property="og:title" content="Module 4 — Electrical &amp; Standby Power">
-<meta property="og:description" content="Grid to socket — load estimate, HV intake, transformers, LV switchgear and fault levels, busways, cable sizing and voltage drop, generators and UPS.">
+<meta property="og:title" content="Module 4 · Electrical &amp; Standby Power">
+<meta property="og:description" content="Grid to socket: load estimate, HV intake, transformers, LV switchgear and fault levels, busways, cable sizing and voltage drop, generators and UPS.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://abokhatwa.com/mep-course/module-4-electrical.html">
 <meta property="og:image" content="https://abokhatwa.com/mep-course/og-mep-course.jpg?v=2">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Module 4 — Electrical &amp; Standby Power">
+<meta name="twitter:title" content="Module 4 · Electrical &amp; Standby Power">
 <meta name="twitter:description" content="Load estimate, HV intake, transformers, LV switchgear and fault, busways, cable sizing and voltage drop, generators and UPS.">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"BreadcrumbList","itemListElement":[
 {"@type":"ListItem","position":1,"name":"Home","item":"https://abokhatwa.com/"},
 {"@type":"ListItem","position":2,"name":"MEP Course","item":"https://abokhatwa.com/mep-course/"},
-{"@type":"ListItem","position":3,"name":"Module 4 — Electrical & Standby Power","item":"https://abokhatwa.com/mep-course/module-4-electrical.html"}]},
-{"@type":"LearningResource","name":"Module 4 — Electrical & Standby Power","description":"Electrical and standby power for tall buildings from grid to socket — load estimate, HV intake, transformers, LV switchgear and fault levels, busways, cable sizing and voltage drop, generators and UPS.","url":"https://abokhatwa.com/mep-course/module-4-electrical.html","learningResourceType":"Course module","educationalLevel":"Professional","inLanguage":"en","isPartOf":{"@type":"Course","name":"MEP Engineering for Megatall Buildings","url":"https://abokhatwa.com/mep-course/"},"author":{"@type":"Person","name":"Mohamed Abokhatwa"}}]}
+{"@type":"ListItem","position":3,"name":"Module 4 · Electrical & Standby Power","item":"https://abokhatwa.com/mep-course/module-4-electrical.html"}]},
+{"@type":"LearningResource","name":"Module 4 · Electrical & Standby Power","description":"Electrical and standby power for tall buildings from grid to socket: load estimate, HV intake, transformers, LV switchgear and fault levels, busways, cable sizing and voltage drop, generators and UPS.","url":"https://abokhatwa.com/mep-course/module-4-electrical.html","learningResourceType":"Course module","educationalLevel":"Professional","inLanguage":"en","isPartOf":{"@type":"Course","name":"MEP Engineering for Megatall Buildings","url":"https://abokhatwa.com/mep-course/"},"author":{"@type":"Person","name":"Mohamed Abokhatwa"}}]}
 </script>
 <link rel="stylesheet" href="assets/course.css?v=17">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
@@ -60,6 +60,7 @@
       <li><a href="../services.html">Services</a></li>
       <li><a href="../about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="../index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -80,8 +81,8 @@
   <div class="course-hero-text">
     <a class="back" href="index.html">&larr; Back to course home</a>
     <span class="kicker">Module 4 · Detailed reference</span>
-    <h1>Electrical &amp; Standby Power — From the Grid to the Socket</h1>
-    <p>The power path: utility HV intake and substation, transformers, main LV switchgear, standby generators and UPS, risers and busways up the tower, distribution boards, final circuits — to the light fitting and socket. Plus earthing and lightning protection. Every component: role, design, worked numbers, software and code.</p>
+    <h1>Electrical &amp; Standby Power: From the Grid to the Socket</h1>
+    <p>The power path: utility HV intake and substation, transformers, main LV switchgear, standby generators and UPS, risers and busways up the tower, distribution boards, final circuits, to the light fitting and socket. Plus earthing and lightning protection. Every component: role, design, worked numbers, software and code.</p>
   </div>
   <div class="course-hero-art" aria-hidden="true">
     <svg viewBox="0 0 240 260">
@@ -160,28 +161,28 @@
 <tr><td>√3</td><td>= 1.732</td><td>The three-phase factor.</td></tr>
 <tr><td>P / S / pf</td><td>kW / kVA / 0–1</td><td>Real power / apparent power / power factor. S = P ÷ pf.</td></tr>
 <tr><td>V / I</td><td>volts / amps</td><td>Line voltage / current.</td></tr>
-<tr><td>%Z</td><td>e.g. 6%</td><td>Transformer impedance — limits fault current.</td></tr>
+<tr><td>%Z</td><td>e.g. 6%</td><td>Transformer impedance: limits fault current.</td></tr>
 <tr><td>E / Φ / UF / MF</td><td>lux / lumens / 0–1 / 0–1</td><td>Target light level / lamp output / utilisation &amp; maintenance factors (lumen method).</td></tr>
 </table>
 <p style="margin:8px 0 0"><strong>Key formulas:</strong> current <span class="formula">I = S ÷ (√3·V)</span> · fault <span class="formula">I<sub>fault</sub> ≈ I<sub>full-load</sub> ÷ (%Z÷100)</span> · volt-drop <span class="formula">V<sub>d</sub> = (mV/A/m × I × L) ÷ 1000</span> · luminaires <span class="formula">N = (E·A) ÷ (Φ·UF·MF)</span></p></div>
 
 <!-- 4.1 -->
 <h2 id="load">4.1 Load estimate &amp; demand</h2>
-<p><strong>Role:</strong> total the connected load, apply diversity/demand factors, and add spare capacity — this sizes the supply, transformers and generators.</p>
+<p><strong>Role:</strong> total the connected load, apply diversity/demand factors, and add spare capacity. This sizes the supply, transformers and generators.</p>
 <div class="example">
   <h4>Worked example 4.1 · Building maximum demand</h4>
   <div class="step"><span class="given">Given:</span> stack of floors 100,000 m²; load density (lighting+power+HVAC+VT) ≈ 100 W/m² connected; diversity 0.8; pf 0.9; +15% spare.</div>
   <div class="step">Connected = 100,000 × 100 = 10,000 kW; demand = 10,000 × 0.8 = 8,000 kW.</div>
   <div class="step">Apparent power: S = P ÷ pf = 8,000 ÷ 0.9 = 8,889 kVA; +15% spare ≈ <strong>10,200 kVA (~10.2 MVA)</strong>.</div>
-  <div class="result">~10 MVA design demand for this stack — sets the substation, transformer count and standby sizing. (A full tower is tens of MVA, taken at HV.)</div>
+  <div class="result">~10 MVA design demand for this stack: sets the substation, transformer count and standby sizing. (A full tower is tens of MVA, taken at HV.)</div>
 </div>
 <div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Demand/diversity: SBC 401, IEC 60364-1 / NEC Art. 220; energy: SBC 601 / ASHRAE 90.1.</div>
 
 <!-- 4.2 -->
 <div class="flow"><span class="n cur">HV INTAKE</span><span class="ar">→</span><span class="n">transformers</span><span class="ar">→</span><span class="n">LV gear</span><span class="ar">→</span><span class="n">risers</span><span class="ar">→</span><span class="n">boards</span><span class="ar">→</span><span class="n">socket</span></div>
 <h2 id="intake">4.2 HV intake &amp; substation</h2>
-<p><strong>Role:</strong> the utility (e.g. SEC) delivers at high/medium voltage (e.g. 13.8/33 kV) into the building's main substation — HV switchgear, metering, protection. Tens of MVA can only enter at HV; bringing it in at LV would need impossibly large cables.</p>
-<div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Why HV up the tower</div>Power = √3·V·I. At higher voltage the <em>current</em> for the same power is far lower → much smaller conductors and far less voltage drop. So MV is distributed <em>up</em> the tower to local transformer rooms — the central idea of tall-building electrical design (mirrors how HVAC/water are zoned).</div>
+<p><strong>Role:</strong> the utility (e.g. SEC) delivers at high/medium voltage (e.g. 13.8/33 kV) into the building's main substation: HV switchgear, metering, protection. Tens of MVA can only enter at HV; bringing it in at LV would need impossibly large cables.</p>
+<div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Why HV up the tower</div>Power = √3·V·I. At higher voltage the <em>current</em> for the same power is far lower → much smaller conductors and far less voltage drop. So MV is distributed <em>up</em> the tower to local transformer rooms: the central idea of tall-building electrical design (mirrors how HVAC/water are zoned).</div>
 <div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Utility interface: SEC distribution code; HV switchgear: IEC 62271; substation: SBC 401, IEC 61936.</div>
 
 <!-- 4.3 -->
@@ -210,16 +211,16 @@
 
 <!-- 4.5 -->
 <h2 id="risers">4.5 Risers &amp; busbar trunking (busways)</h2>
-<p><strong>Role:</strong> carry power up the tower from substations to floor boards. Large vertical feeders use <strong>busbar trunking (busway)</strong> with floor tap-offs — compact, fire-rated, and easy to tap, far better than bundles of cables in a tall riser.</p>
+<p><strong>Role:</strong> carry power up the tower from substations to floor boards. Large vertical feeders use <strong>busbar trunking (busway)</strong> with floor tap-offs: compact, fire-rated, and easy to tap, far better than bundles of cables in a tall riser.</p>
 <div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tall-building detail</div>Busways need <strong>expansion units</strong> to absorb building/thermal movement over height, fire barriers at floor crossings, and seismic support (SBC 301).</div>
 <div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Busway: IEC 61439-6; fire barriers &amp; firestop: SBC 801 / UL systems.</div>
 
 <!-- 4.6 -->
-<h2 id="cable">4.6 Cable / feeder sizing — current, volt-drop, fault</h2>
+<h2 id="cable">4.6 Cable / feeder sizing: current, volt-drop, fault</h2>
 <p><strong>Role:</strong> size every feeder for three checks: <strong>current-carrying capacity</strong> (with derating), <strong>voltage drop</strong>, and <strong>short-circuit withstand</strong>. In a tall building, voltage drop on long risers is the tough one.</p>
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Voltage drop up a riser — LV vs MV for the same power</div>
+    <div class="ftitle">Voltage drop up a riser: LV vs MV for the same power</div>
     <div class="fsub">For the same power, voltage drop scales with 1/V², so sending it at medium voltage (11 kV) instead of low voltage (400 V) cuts the drop by a factor of ~750. That is why transformers are pushed up the tower and only short LV runs serve each zone. Drag the riser height to mark the drop on each curve.</div>
   </div>
   <div class="chart-box"><canvas id="vdrop"></canvas></div>
@@ -252,8 +253,8 @@
 
 <!-- 4.8 -->
 <div class="flow"><span class="n">normal supply</span><span class="ar">+</span><span class="n cur">STANDBY: GENERATORS + UPS</span></div>
-<h2 id="standby">4.8 Standby power — generators &amp; UPS</h2>
-<p><strong>Role:</strong> keep <strong>life-safety and essential loads</strong> running when the grid fails — fire pumps, smoke-control fans, firefighting lifts, emergency lighting, fire alarm, BMS, and selected services. Diesel generators (with fuel storage) provide standby; UPS bridges the gap and protects critical/IT loads with no break.</p>
+<h2 id="standby">4.8 Standby power: generators &amp; UPS</h2>
+<p><strong>Role:</strong> keep <strong>life-safety and essential loads</strong> running when the grid fails: fire pumps, smoke-control fans, firefighting lifts, emergency lighting, fire alarm, BMS, and selected services. Diesel generators (with fuel storage) provide standby; UPS bridges the gap and protects critical/IT loads with no break.</p>
 <div class="example">
   <h4>Worked example 4.8 · Generator sizing for essential load</h4>
   <div class="step"><span class="given">Given:</span> essential load = 30% of the 8,000 kW demand = 2,400 kW; genset loaded to 0.8; pf 0.8.</div>
@@ -265,7 +266,7 @@
 
 <!-- 4.9 -->
 <div class="flow"><span class="n">boards</span><span class="ar">→</span><span class="n cur">LIGHTING (the fitting)</span></div>
-<h2 id="lighting">4.9 Lighting — the fitting in the room</h2>
+<h2 id="lighting">4.9 Lighting: the fitting in the room</h2>
 <p><strong>Role:</strong> deliver the design illuminance (lux) at the right quality (uniformity, glare UGR, colour) and low energy. Plus <strong>emergency lighting</strong> on escape routes. Designed by the lumen method, then verified by point calculation.</p>
 <div class="example">
   <h4>Worked example 4.9 · Lumen method (office)</h4>
@@ -278,7 +279,7 @@
 
 <!-- 4.10 -->
 <h2 id="earthing">4.10 Earthing &amp; lightning protection</h2>
-<p><strong>Role:</strong> a building-wide <strong>earthing/grounding</strong> system (equipotential bonding, earth electrodes, low earth resistance) for safety and equipment, plus a <strong>lightning protection system (LPS)</strong> — essential on a very tall structure that is a prime strike target.</p>
+<p><strong>Role:</strong> a building-wide <strong>earthing/grounding</strong> system (equipotential bonding, earth electrodes, low earth resistance) for safety and equipment, plus a <strong>lightning protection system (LPS)</strong>, essential on a very tall structure that is a prime strike target.</p>
 <table class="t param">
 <tr><th>System</th><th>Design point</th><th>Code</th></tr>
 <tr><td>Earthing/grounding</td><td>Low earth resistance, full equipotential bonding, dedicated clean earth for IT</td><td>IEC 60364-5-54, IEEE 142/1100</td></tr>
@@ -317,7 +318,7 @@
 <tr><td>HV / MV / LV</td><td>High / Medium / Low Voltage. Power enters at HV/MV and is stepped down to LV (400/230 V) for use.</td></tr>
 <tr><td>kW / kVA / pf</td><td>kW = real power (does work); kVA = apparent power (what the kit must be rated for); power factor (pf) = kW ÷ kVA.</td></tr>
 <tr><td>√3 (root-3)</td><td>The 1.732 factor in three-phase power: P = √3 · V · I · pf.</td></tr>
-<tr><td>Demand / diversity factor</td><td>Not all loads run at once — diversity reduces the connected total to a realistic maximum demand.</td></tr>
+<tr><td>Demand / diversity factor</td><td>Not all loads run at once: diversity reduces the connected total to a realistic maximum demand.</td></tr>
 <tr><td>Transformer</td><td>Device that changes voltage (MV→LV); rated in kVA.</td></tr>
 <tr><td>Impedance (%Z)</td><td>A transformer's internal resistance to fault current; sets how big a short-circuit can be.</td></tr>
 <tr><td>Fault level / breaking capacity (kA)</td><td>The short-circuit current that could flow; breakers must safely interrupt at least this much.</td></tr>
@@ -327,12 +328,12 @@
 <tr><td>Voltage drop</td><td>The voltage lost along a cable; kept within limits (~4%) so equipment gets enough voltage.</td></tr>
 <tr><td>Ampacity / derating</td><td>A cable's safe current; reduced ("derated") for heat, grouping and installation conditions.</td></tr>
 <tr><td>Generator (genset) / ATS</td><td>Standby engine-generator; ATS = Automatic Transfer Switch that switches loads to it on power loss.</td></tr>
-<tr><td>UPS</td><td>Uninterruptible Power Supply — battery system giving no-break power to critical loads.</td></tr>
+<tr><td>UPS</td><td>Uninterruptible Power Supply: battery system giving no-break power to critical loads.</td></tr>
 <tr><td>Essential / life-safety loads</td><td>Loads that must keep running on standby power (fire pumps, smoke fans, firefighting lifts, emergency lighting).</td></tr>
 <tr><td>Lux / lumen method</td><td>Lux = light level on a surface; the lumen method calculates how many luminaires give the target lux.</td></tr>
 <tr><td>UF / MF / UGR / LPD</td><td>Utilisation &amp; Maintenance Factors (lighting efficiency), Unified Glare Rating, Lighting Power Density (energy limit).</td></tr>
 <tr><td>Earthing / grounding &amp; bonding</td><td>Connecting metalwork to earth for safety so faults trip protection and people aren't shocked.</td></tr>
-<tr><td>LPS / SPD</td><td>Lightning Protection System / Surge Protection Device — protect the structure &amp; electronics from strikes/surges.</td></tr>
+<tr><td>LPS / SPD</td><td>Lightning Protection System / Surge Protection Device: protect the structure &amp; electronics from strikes/surges.</td></tr>
 <tr><td>NEC / IEC</td><td>The US (NFPA 70) and international (IEC 60364) electrical installation code families; SBC 401 is NEC-based.</td></tr>
 </table>
 
@@ -346,7 +347,7 @@
 <tr><td>Lightning risk &amp; LPS</td><td>Risk tools to IEC 62305 / NFPA 780</td><td>IEC 62305 / NFPA 780</td></tr>
 </table>
 <ul class="refs">
-<li>SBC 401 — Saudi Electrical Code (NEC-based); SBC 601 — Energy; SBC 801 — Fire.</li>
+<li>SBC 401: Saudi Electrical Code (NEC-based); SBC 601: Energy; SBC 801: Fire.</li>
 <li>IEC 60364 (LV installations), 60076 (transformers), 61439 (assemblies), 60947 (switchgear), 60364-5-52 (cables).</li>
 <li>NFPA 70 (NEC); NFPA 110/111 (standby/UPS); NFPA 101 (life safety); NFPA 780 / IEC 62305 (lightning).</li>
 <li>SEC distribution code; IEEE 142/1100 (earthing/power quality); EN 12464-1 (lighting); SASO efficiency.</li>
@@ -366,7 +367,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on MEP and water infrastructure — HVAC, fire, electrical, plumbing and vertical transport — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on MEP and water infrastructure: HVAC, fire, electrical, plumbing and vertical transport), delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>

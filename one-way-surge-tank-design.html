@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>One-Way Surge Tanks at the Knee: Cutting the Surge Vessel by Nearly Two-Thirds — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>One-Way Surge Tanks at the Knee: Cutting the Surge Vessel by Nearly Two-Thirds | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -148,6 +148,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -190,7 +191,7 @@
 
 <div class="article-body">
 
-<p class="lead">On a main that climbs out of the pump station and then runs level, the point that governs the surge protection after a power cut is not the pump but the knee, where the climb turns flat. On our 12&nbsp;km DN800 example, a surge vessel that holds the knee at +3.0&nbsp;m on its own needs <strong>43.1&nbsp;m&sup3; of gas in a 104.5&nbsp;m&sup3; shell</strong>. Put a low one-way tank at the knee, its water 8&nbsp;m above the pipe behind a check valve, and the vessel falls to <strong>15.9&nbsp;m&sup3; of gas in a 37.8&nbsp;m&sup3; shell &mdash; 64&nbsp;% smaller</strong> &mdash; for 20.7&nbsp;m&sup3; of water that the tank gives up. This article designs that pair, and shows the two ways it goes wrong: a tank set too high, and a tank asked to work alone.</p>
+<p class="lead">On a main that climbs out of the pump station and then runs level, the point that governs the surge protection after a power cut is not the pump but the knee, where the climb turns flat. On our 12&nbsp;km DN800 example, a surge vessel that holds the knee at +3.0&nbsp;m on its own needs <strong>43.1&nbsp;m&sup3; of gas in a 104.5&nbsp;m&sup3; shell</strong>. Put a low one-way tank at the knee, its water 8&nbsp;m above the pipe behind a check valve, and the vessel falls to <strong>15.9&nbsp;m&sup3; of gas in a 37.8&nbsp;m&sup3; shell, 64&nbsp;% smaller</strong>, for 20.7&nbsp;m&sup3; of water that the tank gives up. This article designs that pair, and shows the two ways it goes wrong: a tank set too high, and a tank asked to work alone.</p>
 
 <h2 id="knee-weak-point">1 &middot; Why the knee is the weak point</h2>
 <p>When every pump trips at once, the flow at the station stops and a low-pressure wave leaves along the main. Its size is the Joukowsky head [1]:</p>
@@ -202,14 +203,14 @@
 <div class="eq">\[ p_{knee} \approx H_{pump} - z_{knee} \quad\Rightarrow\quad H_{pump,\,min} \approx z_{knee} + 3.0 = 33.0\ \text{m} \]</div>
 <p>So the vessel must still hold about 33&nbsp;m when its gas is at its largest. In the vessel-alone run the knee touches +3.0&nbsp;m nearly two minutes after the trip, and the pump end bottoms out at +32.7&nbsp;m a few seconds later. The polytropic gas law sets the bill [2, 3]:</p>
 <div class="eq">\[ P_0 V_0^{\,n} = P_{min} V_{max}^{\,n} \quad\Rightarrow\quad V_0 = \frac{\Delta V_w}{\left(P_0/P_{min}\right)^{1/n} - 1} \]</div>
-<p>with \(P_0\) = 85.0 + 10.33 = 95.3&nbsp;m absolute, \(P_{min}\) = 32.7 + 10.33 = 43.0&nbsp;m absolute, \(n\) = 1.2 and \(\Delta V_w\) the water pushed into the line. While its pressure falls to less than half, the gas grows only \((95.3/43.0)^{1/1.2}\) = 1.94 times, and by then the vessel has delivered 40.5&nbsp;m&sup3;, so it needs 40.5 / 0.94 = <strong>43.1&nbsp;m&sup3; of gas</strong>. On the flat reference main, the site's reference vessel &mdash; 3.5&nbsp;m&sup3; of gas, same differential connection &mdash; holds +4.3&nbsp;m with margin to spare: a 30&nbsp;m climb in the first 300&nbsp;m has multiplied the gas more than twelve times.</p>
+<p>with \(P_0\) = 85.0 + 10.33 = 95.3&nbsp;m absolute, \(P_{min}\) = 32.7 + 10.33 = 43.0&nbsp;m absolute, \(n\) = 1.2 and \(\Delta V_w\) the water pushed into the line. While its pressure falls to less than half, the gas grows only \((95.3/43.0)^{1/1.2}\) = 1.94 times, and by then the vessel has delivered 40.5&nbsp;m&sup3;, so it needs 40.5 / 0.94 = <strong>43.1&nbsp;m&sup3; of gas</strong>. On the flat reference main, the site's reference vessel (3.5&nbsp;m&sup3; of gas, same differential connection) holds +4.3&nbsp;m with margin to spare: a 30&nbsp;m climb in the first 300&nbsp;m has multiplied the gas more than twelve times.</p>
 
 <h2 id="how-it-works">2 &middot; How a one-way surge tank works</h2>
-<p>A one-way surge tank &mdash; the literature also calls it a feed tank or a discharge tank [4, 5] &mdash; is an unpressurised tank beside the main, connected through a check valve that opens only towards the pipe. Its surface stands \(h_T\) above the pipe. While the main's pressure there exceeds \(h_T\) the valve stays shut and the tank does nothing; once the downsurge pulls it below, the valve opens and the tank feeds the line at its own head:</p>
+<p>A one-way surge tank (the literature also calls it a feed tank or a discharge tank [4, 5]) is an unpressurised tank beside the main, connected through a check valve that opens only towards the pipe. Its surface stands \(h_T\) above the pipe. While the main's pressure there exceeds \(h_T\) the valve stays shut and the tank does nothing; once the downsurge pulls it below, the valve opens and the tank feeds the line at its own head:</p>
 <div class="eq">\[ H_{knee} = z_{knee} + h_T, \qquad q_T = Q_{down} - Q_{up} \;\geq\; 0, \qquad V_{draw} = \int q_T\,dt \]</div>
 <p>The knee is held at the tank level for as long as water remains. When the main recovers the valve closes, and a small refill line tops the tank up. In a method-of-characteristics model it is an interior boundary with the head fixed while the tank feeds [1, 2].</p>
 <h3>Not a standpipe, and not an air valve</h3>
-<p>An open surge tank is connected freely, so its surface must stand at the steady HGL &mdash; here a column 54.0&nbsp;m above the pipe, before any upsurge. The one-way tank sits far below the HGL and needs no pressure rating, but it acts at its own node: it cannot stop the first downsurge reaching the pump end, and alone it leaves the pump end at vapour, although once open its head raises the later minima on the pump side (section 8). An air valve at the knee is still worth fitting for filling, draining and venting [6], but it admits air only once the pressure falls below atmospheric, so it cannot hold +3.0&nbsp;m (see <a href="air-admission-networks.html">air admission in networks</a>).</p>
+<p>An open surge tank is connected freely, so its surface must stand at the steady HGL. Here a column 54.0&nbsp;m above the pipe, before any upsurge. The one-way tank sits far below the HGL and needs no pressure rating, but it acts at its own node: it cannot stop the first downsurge reaching the pump end, and alone it leaves the pump end at vapour, although once open its head raises the later minima on the pump side (section 8). An air valve at the knee is still worth fitting for filling, draining and venting [6], but it admits air only once the pressure falls below atmospheric, so it cannot hold +3.0&nbsp;m (see <a href="air-admission-networks.html">air admission in networks</a>).</p>
 <h3>The rule that limits the tank level</h3>
 <p>At rest the main settles at the level of the delivery reservoir. A tank surface above that opens its check valve and drains through the pipeline after every stop, so the level must stay below the lowest downstream HGL at rest:</p>
 <div class="eq">\[ h_T \;\lt\; H_{rest} - z_{knee} = 44.8 - 30.0 = 14.8\ \text{m} \]</div>
@@ -245,11 +246,11 @@
 <tr><td>Vessel alone, 43.1 m&sup3; gas</td><td class="num">+3.0</td><td>300 m, the knee</td><td class="num">+3.0</td><td class="num">+32.7</td><td class="num">85.0</td><td class="num">&ndash;</td><td class="num">83.6</td></tr>
 <tr><td>Tank 8 m + vessel 15.9 m&sup3; gas</td><td class="num">+3.0</td><td>4,400 m, the plateau</td><td class="num">+8.0</td><td class="num">+33.8</td><td class="num">85.0</td><td class="num">20.7</td><td class="num">30.2</td></tr>
 </tbody></table></div>
-<p><strong>No protection.</strong> The line goes to vapour from the pump outwards, and the collapse peak at the pump end is about 140&nbsp;m (139&nbsp;m with the vapour cavity model, 141&nbsp;m with the gas cavity model) &mdash; above 136&nbsp;m either way.</p>
+<p><strong>No protection.</strong> The line goes to vapour from the pump outwards, and the collapse peak at the pump end is about 140&nbsp;m (139&nbsp;m with the vapour cavity model, 141&nbsp;m with the gas cavity model): above 136&nbsp;m either way.</p>
 <p><strong>Vessel alone.</strong> 43.1&nbsp;m&sup3; of gas expands to 83.6&nbsp;m&sup3;, so the shell is 83.6 / 0.8 = <strong>104.5&nbsp;m&sup3;</strong>. The minimum lands on the knee and nothing rises above the steady 85.0&nbsp;m. It works; it is simply very large.</p>
 <p><strong>Tank and vessel.</strong> With the knee held at +8.0&nbsp;m the vessel needs only 15.9&nbsp;m&sup3; of gas, and its pump-end minimum of +33.8&nbsp;m gives the expansion directly:</p>
 <div class="eq">\[ V_{max} = 15.9 \left(\frac{95.3}{33.8 + 10.33}\right)^{1/1.2} = 30.2\ \text{m}^3, \qquad \text{shell} = \frac{30.2}{0.8} = 37.8\ \text{m}^3 \]</div>
-<p>That is 1 &minus; 37.8 / 104.5 = <strong>64&nbsp;% less shell</strong>. The water accounting shows why. Alone, the vessel pushes 40.5&nbsp;m&sup3; into the line. In the pair it pushes 14.3&nbsp;m&sup3; (30.2 &minus; 15.9) and the tank supplies 20.7&nbsp;m&sup3; &mdash; 35.0&nbsp;m&sup3; in all, most of it from an open tank 8&nbsp;m above the pipe instead of from compressed gas.</p>
+<p>That is 1 &minus; 37.8 / 104.5 = <strong>64&nbsp;% less shell</strong>. The water accounting shows why. Alone, the vessel pushes 40.5&nbsp;m&sup3; into the line. In the pair it pushes 14.3&nbsp;m&sup3; (30.2 &minus; 15.9) and the tank supplies 20.7&nbsp;m&sup3;: 35.0&nbsp;m&sup3; in all, most of it from an open tank 8&nbsp;m above the pipe instead of from compressed gas.</p>
 <p><strong>Tank alone.</strong> The knee is held at +8.0&nbsp;m, but the pump end, 300&nbsp;m down the slope behind a closed check valve, still reaches vapour and its collapse peak rises from about 140&nbsp;m to <strong>160&ndash;170&nbsp;m</strong>; the far plateau, beyond 7.4&nbsp;km, separates too. On this profile a one-way tank is never a stand-alone solution.</p>
 <div class="callout key">
   <span class="lbl">What the tank buys</span>
@@ -292,7 +293,7 @@
     <div class="cell"><div class="k">Criterion</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rOk1"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At the default &mdash; the 8&nbsp;m tank with 15.9&nbsp;m&sup3; of vessel gas &mdash; the minimum HGL touches ground + 3.0&nbsp;m at <strong>4,400&nbsp;m</strong> on the plateau, the knee is held at +8.0&nbsp;m, the pump end at +33.8&nbsp;m, and nothing rises above 85.0&nbsp;m. Switch to the vessel alone and the critical point jumps back to the knee. Switch to the tank alone and open the window to 12&nbsp;km: the knee stands at +8.0&nbsp;m, but the red line sits on the vapour line over the first 200&nbsp;m and again beyond 7.4&nbsp;km, and the amber bar at the pump end spans 160&ndash;170&nbsp;m, through the PN16 line.</p>
+<p class="fig-note">At the default (the 8&nbsp;m tank with 15.9&nbsp;m&sup3; of vessel gas), the minimum HGL touches ground + 3.0&nbsp;m at <strong>4,400&nbsp;m</strong> on the plateau, the knee is held at +8.0&nbsp;m, the pump end at +33.8&nbsp;m, and nothing rises above 85.0&nbsp;m. Switch to the vessel alone and the critical point jumps back to the knee. Switch to the tank alone and open the window to 12&nbsp;km: the knee stands at +8.0&nbsp;m, but the red line sits on the vapour line over the first 200&nbsp;m and again beyond 7.4&nbsp;km, and the amber bar at the pump end spans 160&ndash;170&nbsp;m, through the PN16 line.</p>
 
 <h2 id="critical-point">6 &middot; Reading it: the tank moves the critical point</h2>
 <p>With the tank in place the knee cannot fall below the tank level, so the vessel's critical point moves out along the plateau to about 4.4&nbsp;km, where the tank has no say. The minimum at 4,400&nbsp;m arrives at 18.7&nbsp;s, just as the reflection from the delivery reservoir reaches it (12,000&nbsp;m out and 7,600&nbsp;m back at 1,050&nbsp;m/s). The 8&nbsp;m tank does not open until 19.3&nbsp;s, and anything it sends needs another 3.9&nbsp;s to cover the 4.1&nbsp;km. Up to 12&nbsp;m the plateau minimum has come and gone before the tank's influence arrives; at 14&nbsp;m the tank opens early enough to just catch the 4,400&nbsp;m node, which is lifted to +3.1&nbsp;m, so the critical point steps out to 4,500&nbsp;m. Either way <strong>the required steady gas is the same 15.9&nbsp;m&sup3; for every tank level from 4 to 14&nbsp;m</strong>. The vessel is now sized for the first wave on the plateau, a far smaller job than holding the knee through the slow swing that follows.</p>
@@ -335,7 +336,7 @@
     <div class="cell"><div class="k">Draw finished by</div><div class="v" id="rDone2">119 <small>s</small></div></div>
   </div>
 </div>
-<p class="fig-note">At the default the knee sinks from its steady 54.0&nbsp;m, reaches the tank level at about <strong>20&nbsp;s</strong> and stays at +8.0&nbsp;m while the tank feeds; 600&nbsp;m follows it down to +7.2&nbsp;m, and the pump end bottoms at +33.8&nbsp;m as the vessel's gas reaches its largest. The draw climbs to 20.7&nbsp;m&sup3; and is finished by about <strong>118&nbsp;s</strong>. Switch to the vessel alone: nothing stops the knee, which sinks slowly to +3.0&nbsp;m while the pump end falls to +32.7&nbsp;m &mdash; the slow swing the big vessel exists to carry. Switch to the tank alone: it opens within the first second and holds the knee, but the pump end sits at vapour and the tank gives 27.5&nbsp;m&sup3;.</p>
+<p class="fig-note">At the default the knee sinks from its steady 54.0&nbsp;m, reaches the tank level at about <strong>20&nbsp;s</strong> and stays at +8.0&nbsp;m while the tank feeds; 600&nbsp;m follows it down to +7.2&nbsp;m, and the pump end bottoms at +33.8&nbsp;m as the vessel's gas reaches its largest. The draw climbs to 20.7&nbsp;m&sup3; and is finished by about <strong>118&nbsp;s</strong>. Switch to the vessel alone: nothing stops the knee, which sinks slowly to +3.0&nbsp;m while the pump end falls to +32.7&nbsp;m, the slow swing the big vessel exists to carry. Switch to the tank alone: it opens within the first second and holds the knee, but the pump end sits at vapour and the tank gives 27.5&nbsp;m&sup3;.</p>
 
 <h2 id="sizing">8 &middot; Sizing the tank and the vessel together</h2>
 <p>Repeating the vessel bisection at different tank levels gives the trade-off. The draw is given at 150&nbsp;s and in full, from the same solver run continued to 600&nbsp;s.</p>
@@ -361,7 +362,7 @@
 
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Vessel gas, vessel shell and tank draw against tank level &mdash; and the tank that follows</div>
+    <div class="ftitle">Vessel gas, vessel shell and tank draw against tank level, and the tank that follows</div>
     <div class="fsub">Bars from the bisection sizing runs: vessel gas for a +3.0 m minimum along the whole line, shell = gas at maximum expansion / 0.8, tank draw complete (same solver run continued to 600 s). Water depth runs from the outlet, taken at the floor, to top water level; tank height adds the freeboard. Badges are engineering judgement.</div>
   </div>
   <div class="chart-box"><canvas id="sizeChart"></canvas></div>
@@ -374,7 +375,7 @@
         <option value="8" selected>8 m</option>
         <option value="12">12 m</option>
         <option value="14">14 m</option>
-        <option value="16">16 m &mdash; above the 14.8 m limit</option>
+        <option value="16">16 m: above the 14.8 m limit</option>
       </select>
       <div class="hint">The water surface at rest, measured above the pipe at the knee.</div>
     </div>
@@ -419,7 +420,7 @@
 <h3>Refill, overflow and vent</h3>
 <p>Refill from the main through a small line with a float or altitude valve; refill time is \(t = V_{draw}/q\), so at 2&nbsp;L/s the 20.7&nbsp;m&sup3; draw is replaced in 2.9&nbsp;h, and the tank must be full before the pumps may restart. The overflow must pass the refill line's full-open flow at the highest main pressure (54.0&nbsp;m at the knee while pumping), not just the 2&nbsp;L/s design refill, in case the float valve fails open. The vent must pass the peak draw: the tank breathes in 0.61&nbsp;m&sup3;/s of air, and a throttled vent pulls the air space below atmospheric, lowering the effective tank level by the same amount.</p>
 <h3>Water quality</h3>
-<p>Between trips the tank holds stagnant drinking water. Design the turnover in &mdash; a small continuous flow through the tank, or a scheduled drain and refill &mdash; with a sampling point for chlorine residual, a cover, screened openings, a lockable hatch, and linings, coatings and valves certified for drinking-water contact [12].</p>
+<p>Between trips the tank holds stagnant drinking water. Design the turnover in (a small continuous flow through the tank, or a scheduled drain and refill), with a sampling point for chlorine residual, a cover, screened openings, a lockable hatch, and linings, coatings and valves certified for drinking-water contact [12].</p>
 <h3>When the tank is out of service</h3>
 <p>The pair is one system. With the tank isolated, the paired vessel in its 37.8&nbsp;m&sup3; shell <strong>empties about 51&nbsp;s after the trip</strong>; the line then separates from the pump end, the first 4.7&nbsp;km reach vapour, and every point but the delivery end falls below +3.0&nbsp;m. An emptied air-over-water vessel would also pass gas into the main, which the model does not represent. A closed isolating valve or an empty tank must therefore stop the pumps from running: in our practice a low-level switch and a limit switch on the isolating valve, interlocked with the pump starters and alarmed on SCADA (see <a href="transient-analysis-scada.html">transient analysis and SCADA</a>).</p>
 
@@ -471,19 +472,19 @@
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993 — Joukowsky head, method of characteristics, interior boundary conditions and the discrete vapour cavity model.</li>
-  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014 — boundary conditions for surge tanks and air chambers, and polytropic gas behaviour.</li>
-  <li>Stephenson, D. &ldquo;Simple guide for design of air vessels for water hammer protection of pumping lines.&rdquo; <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8), 2002 — air vessel gas volumes, expansion and the water a vessel must supply.</li>
-  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004 — surge-control devices including feed tanks, and the dynamic behaviour of check valves.</li>
-  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989 — water hammer protection of pumping lines, including discharge tanks.</li>
-  <li>AWWA M51 <em>Air Valves: Air-Release, Air/Vacuum, and Combination</em> — the role and limits of air valves at high points and changes of grade.</li>
-  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em> — the DN800 K9 pipe of the reference main.</li>
-  <li>EN 805 <em>Water supply — Requirements for systems and components outside buildings</em> — design pressures, maximum design pressure and surge allowance.</li>
-  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005 — power failure as the governing event, selection of protection devices and analysing them as one system.</li>
-  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006 — vapour and gas cavity models and why collapse pressures differ between them.</li>
-  <li>Idelchik, I.E. <em>Handbook of Hydraulic Resistance</em>, 3rd ed. Begell House, 1996 — loss coefficients for the tank outlet, tee and bends of the tank connection.</li>
-  <li>NSF/ANSI/CAN 61 <em>Drinking Water System Components — Health Effects</em> — certification of linings, coatings and valves in contact with drinking water.</li>
-  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help — Surge Tank, Hydropneumatic Tank, pump trip, transient run options and the Transient Results Viewer.</li>
+  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993: Joukowsky head, method of characteristics, interior boundary conditions and the discrete vapour cavity model.</li>
+  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014: boundary conditions for surge tanks and air chambers, and polytropic gas behaviour.</li>
+  <li>Stephenson, D. &ldquo;Simple guide for design of air vessels for water hammer protection of pumping lines.&rdquo; <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8), 2002: air vessel gas volumes, expansion and the water a vessel must supply.</li>
+  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004: surge-control devices including feed tanks, and the dynamic behaviour of check valves.</li>
+  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989: water hammer protection of pumping lines, including discharge tanks.</li>
+  <li>AWWA M51 <em>Air Valves: Air-Release, Air/Vacuum, and Combination</em>, the role and limits of air valves at high points and changes of grade.</li>
+  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em>: the DN800 K9 pipe of the reference main.</li>
+  <li>EN 805 <em>Water supply, Requirements for systems and components outside buildings</em>: design pressures, maximum design pressure and surge allowance.</li>
+  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005: power failure as the governing event, selection of protection devices and analysing them as one system.</li>
+  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006: vapour and gas cavity models and why collapse pressures differ between them.</li>
+  <li>Idelchik, I.E. <em>Handbook of Hydraulic Resistance</em>, 3rd ed. Begell House, 1996: loss coefficients for the tank outlet, tee and bends of the tank connection.</li>
+  <li>NSF/ANSI/CAN 61 <em>Drinking Water System Components, Health Effects</em>: certification of linings, coatings and valves in contact with drinking water.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help: Surge Tank, Hydropneumatic Tank, pump trip, transient run options and the Transient Results Viewer.</li>
 </ol>
 
 <div class="tags">#SurgeAnalysis #WaterHammer #HydraulicTransients #OneWaySurgeTank #FeedTank #SurgeTank #SurgeVessel #HydropneumaticTank #AirVessel #PumpTrip #PowerFailure #ColumnSeparation #Downsurge #PipelineProfile #TransmissionMains #DuctileIron #MethodOfCharacteristics #BentleyHAMMER #OpenFlowsHAMMER #CheckValve #SurgeProtection #PumpStationDesign #PipelineDesign #TransientModelling #HydraulicDesign #WaterSupply #WaterEngineering</div>
@@ -495,7 +496,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>

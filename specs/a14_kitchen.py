@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">A mixed-use tower puts restaurants on the podium, a signature dining floor near the top, and staff kitchens somewhere in between — and every one of them needs a duct that runs, unbroken and uninterrupted, from the hood to the roof. That duct is lined with a combustible deposit, passes through occupied floors for hundreds of metres, and is one of the few elements in a tall building that is simultaneously a <strong>ventilation system, a fire hazard and a fire-rated compartment</strong>. It is also governed by a rule that no other duct in the building obeys: it has a <strong>minimum</strong> velocity, not just a maximum, and if the flow falls below it the grease stops travelling and starts accumulating.</p>
+<p class="lead">A mixed-use tower puts restaurants on the podium, a signature dining floor near the top, and staff kitchens somewhere in between, and every one of them needs a duct that runs, unbroken and uninterrupted, from the hood to the roof. That duct is lined with a combustible deposit, passes through occupied floors for hundreds of metres, and is one of the few elements in a tall building that is simultaneously a <strong>ventilation system, a fire hazard and a fire-rated compartment</strong>. It is also governed by a rule that no other duct in the building obeys: it has a <strong>minimum</strong> velocity, not just a maximum, and if the flow falls below it the grease stops travelling and starts accumulating.</p>
 
 <h2 id="why">1 · Why a grease riser is not a duct</h2>
 <ul class="clean">
   <li><strong>It carries fuel.</strong> Grease-laden vapour condenses on the duct wall. Over months it builds a layer that will sustain a fire the length of the riser, and a grease fire in a 300&nbsp;m vertical duct is exactly the vertical fire spread a tall building is designed to prevent.</li>
   <li><strong>It must be continuously welded and liquid-tight.</strong> No slip joints, no sealant-dependent seams, sloped back to the hood or to a drain point so condensate cannot pool in the run.</li>
   <li><strong>It must be enclosed in a fire-rated shaft</strong> for its full height with a rated wrap or construction, and it cannot share that shaft with anything else.</li>
-  <li><strong>It has a minimum transport velocity.</strong> Codes require the air to move fast enough to keep droplets entrained — around <strong>2.5&nbsp;m/s absolute minimum</strong>, with 7.5–12.5&nbsp;m/s the practical design range. This is the constraint that makes variable-flow kitchen ventilation difficult.</li>
-  <li><strong>It must be cleanable along its entire length.</strong> Access doors at every change of direction and at intervals up the riser — and in a tall building that means a cleaning route somebody has to physically reach, floor by floor, for the life of the building.</li>
+  <li><strong>It has a minimum transport velocity.</strong> Codes require the air to move fast enough to keep droplets entrained, around <strong>2.5&nbsp;m/s absolute minimum</strong>, with 7.5–12.5&nbsp;m/s the practical design range. This is the constraint that makes variable-flow kitchen ventilation difficult.</li>
+  <li><strong>It must be cleanable along its entire length.</strong> Access doors at every change of direction and at intervals up the riser, and in a tall building that means a cleaning route somebody has to physically reach, floor by floor, for the life of the building.</li>
 </ul>
 
 <h2 id="int-size">2 · Interactive: hood duty and riser size</h2>
@@ -50,10 +50,10 @@ BODY = r"""
     <div class="cell"><div class="k">Shaft needed</div><div class="v" id="rS">1.2 <small>m²</small></div></div>
   </div>
 </div>
-<p class="fig-note">A heavy-duty 8&nbsp;m canopy needs <strong>4.8&nbsp;m³/s</strong>, which at 10&nbsp;m/s is a <strong>782&nbsp;mm</strong> round equivalent — and once wrapped, enclosed and given clearance it consumes about <strong>1.2&nbsp;m² of shaft</strong> for the full 200&nbsp;m to the roof. Push the velocity up to save shaft area and the friction climbs with the square: the same riser at 14&nbsp;m/s costs roughly twice the fan pressure. Two design consequences follow. First, <strong>the shaft must be reserved from concept</strong>, because it is unbroken and cannot be re-routed later. Second, group kitchens so they can share a riser only where a fire strategy permits it — every additional independent riser is another permanent hole through the core.</p>
+<p class="fig-note">A heavy-duty 8&nbsp;m canopy needs <strong>4.8&nbsp;m³/s</strong>, which at 10&nbsp;m/s is a <strong>782&nbsp;mm</strong> round equivalent, and once wrapped, enclosed and given clearance it consumes about <strong>1.2&nbsp;m² of shaft</strong> for the full 200&nbsp;m to the roof. Push the velocity up to save shaft area and the friction climbs with the square: the same riser at 14&nbsp;m/s costs roughly twice the fan pressure. Two design consequences follow. First, <strong>the shaft must be reserved from concept</strong>, because it is unbroken and cannot be re-routed later. Second, group kitchens so they can share a riser only where a fire strategy permits it; every additional independent riser is another permanent hole through the core.</p>
 
 <h2 id="int-turndown">3 · Interactive: the turndown trap</h2>
-<p>Kitchen exhaust is the largest single air consumer in a restaurant and an obvious candidate for demand control — hoods sense cooking activity and modulate. But grease ducts have a floor below which they stop transporting, and a variable-flow system that ignores it is building a fuel load in a shaft.</p>
+<p>Kitchen exhaust is the largest single air consumer in a restaurant and an obvious candidate for demand control: hoods sense cooking activity and modulate. But grease ducts have a floor below which they stop transporting, and a variable-flow system that ignores it is building a fuel load in a shaft.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -75,7 +75,7 @@ BODY = r"""
     <div class="ctrl">
       <label>Minimum transport velocity <span id="vM">2.5 m/s</span></label>
       <input type="range" id="sM" min="1.5" max="6" value="2.5" step="0.1">
-      <div class="hint">Code floor — around 2.5 m/s (500 fpm) in most jurisdictions.</div>
+      <div class="hint">Code floor: around 2.5 m/s (500 fpm) in most jurisdictions.</div>
     </div>
     <div class="ctrl">
       <label>Fan power at design <span id="vP2">22 kW</span></label>
@@ -91,15 +91,15 @@ BODY = r"""
     <div class="cell"><div class="k">Status</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">Design at 10&nbsp;m/s and you can turn down to <strong>25&nbsp;%</strong> before the velocity reaches the 2.5&nbsp;m/s floor — and at 50&nbsp;% flow the fan is already drawing only <strong>12&nbsp;% of its design power</strong>. That is the case for demand-controlled kitchen ventilation in one line: the savings are enormous and they are available well above the safety limit. The design move that unlocks it is to <strong>choose a higher design velocity deliberately</strong>, because the turndown range you get is the ratio between design and minimum velocity. Design at 7.5&nbsp;m/s and you only reach 33&nbsp;%; design at 12.5&nbsp;m/s and you reach 20&nbsp;%. Then set the control minimum in the BMS at the velocity limit, not at the fan's minimum speed, and alarm if it is ever violated.</p>
+<p class="fig-note">Design at 10&nbsp;m/s and you can turn down to <strong>25&nbsp;%</strong> before the velocity reaches the 2.5&nbsp;m/s floor, and at 50&nbsp;% flow the fan is already drawing only <strong>12&nbsp;% of its design power</strong>. That is the case for demand-controlled kitchen ventilation in one line: the savings are enormous and they are available well above the safety limit. The design move that unlocks it is to <strong>choose a higher design velocity deliberately</strong>, because the turndown range you get is the ratio between design and minimum velocity. Design at 7.5&nbsp;m/s and you only reach 33&nbsp;%; design at 12.5&nbsp;m/s and you reach 20&nbsp;%. Then set the control minimum in the BMS at the velocity limit, not at the fan's minimum speed, and alarm if it is ever violated.</p>
 
 <h2 id="int-makeup">4 · Interactive: make-up air and what a shortfall does</h2>
-<p>Every cubic metre extracted must be replaced. If the dedicated make-up air is short, the kitchen draws the difference from wherever it can — the restaurant, the lobby, the lift shaft — and a tall building has a very large reservoir to be pulled from.</p>
+<p>Every cubic metre extracted must be replaced. If the dedicated make-up air is short, the kitchen draws the difference from wherever it can (the restaurant, the lobby, the lift shaft), and a tall building has a very large reservoir to be pulled from.</p>
 
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Make-up air shortfall and the resulting pressure</div>
-    <div class="fsub">Shortfall = exhaust − dedicated make-up. Δp estimated by inverting Q = 0.83·A·√Δp — the EN 12101-6 / NFPA 92 form, with a discharge coefficient of 0.65 folded into the constant — across the kitchen&rsquo;s leakage and door openings. The make-up air load uses the dry-air mass flow at 40 °C / 55 % RH rather than a fixed density.</div>
+    <div class="fsub">Shortfall = exhaust − dedicated make-up. Δp estimated by inverting Q = 0.83·A·√Δp (the EN 12101-6 / NFPA 92 form, with a discharge coefficient of 0.65 folded into the constant) across the kitchen&rsquo;s leakage and door openings. The make-up air load uses the dry-air mass flow at 40 °C / 55 % RH rather than a fixed density.</div>
   </div>
   <div class="chart-box"><canvas id="muChart"></canvas></div>
   <div class="controls">
@@ -132,28 +132,28 @@ BODY = r"""
     <div class="cell"><div class="k">Status</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rMv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">Providing 85&nbsp;% dedicated make-up leaves a <strong>0.72&nbsp;m³/s</strong> shortfall — deliberately, so the kitchen stays slightly negative and odours do not migrate into the restaurant. With a reasonable opening area that is only a few pascals, which is exactly right. Drop the make-up to 60&nbsp;% and the kitchen goes strongly negative, doors become hard to open, the hoods lose capture because air is arriving sideways through the doorway rather than from the make-up plenum, and in a tall building the deficit is ultimately drawn down the lift shaft. Note the last readout: conditioning <strong>4&nbsp;m³/s</strong> of humid Gulf outdoor air is over <strong>260&nbsp;kW</strong> of cooling — which is why partially untempered or evaporatively cooled make-up air, delivered locally at the hood, is worth designing properly rather than dumping the whole load on the building's chilled water.</p>
+<p class="fig-note">Providing 85&nbsp;% dedicated make-up leaves a <strong>0.72&nbsp;m³/s</strong> shortfall: deliberately, so the kitchen stays slightly negative and odours do not migrate into the restaurant. With a reasonable opening area that is only a few pascals, which is exactly right. Drop the make-up to 60&nbsp;% and the kitchen goes strongly negative, doors become hard to open, the hoods lose capture because air is arriving sideways through the doorway rather than from the make-up plenum, and in a tall building the deficit is ultimately drawn down the lift shaft. Note the last readout: conditioning <strong>4&nbsp;m³/s</strong> of humid Gulf outdoor air is over <strong>260&nbsp;kW</strong> of cooling, which is why partially untempered or evaporatively cooled make-up air, delivered locally at the hood, is worth designing properly rather than dumping the whole load on the building's chilled water.</p>
 
 <h2 id="fire">5 · Fire strategy for the riser</h2>
 <ul class="clean">
   <li><strong>The hood suppression system protects the hood and the first part of the duct</strong>, not the riser. Wet-chemical systems discharge at the plenum and the duct collar; the 200&nbsp;m above them is protected by <em>construction</em> and by cleaning, not by suppression.</li>
   <li><strong>The shaft rating is the primary protection.</strong> A continuously rated enclosure or an approved duct wrap for the full height, with the rating maintained at every penetration and every access door.</li>
-  <li><strong>The fan runs during a fire</strong> in most strategies, to keep the fire in the duct rather than let it spill into the hood — so the fan, its motor, its supports and its power supply must all survive the temperature. Check this explicitly; it is often assumed and rarely specified.</li>
+  <li><strong>The fan runs during a fire</strong> in most strategies, to keep the fire in the duct rather than let it spill into the hood, so the fan, its motor, its supports and its power supply must all survive the temperature. Check this explicitly; it is often assumed and rarely specified.</li>
   <li><strong>Do not fit fire dampers in a grease duct.</strong> They collect grease, they fail, and they defeat the extract when it is most needed. Protection is by enclosure, not by damping.</li>
-  <li><strong>Discharge at the roof, away from intakes.</strong> High-velocity vertical discharge, well clear of any fresh-air intake, the helipad and any openable window — the dispersion check described in <a href="outdoor-air-ventilation-tall-buildings.html">outdoor air and ventilation</a> applies here more than anywhere.</li>
-  <li><strong>Grease removal at the hood is what protects everything downstream.</strong> High-efficiency baffle or cartridge filters, or a UV/ozone system where the riser is long and access is hard, reduce what reaches the duct in the first place. On a 200&nbsp;m riser this is not a refinement — it is the main line of defence.</li>
+  <li><strong>Discharge at the roof, away from intakes.</strong> High-velocity vertical discharge, well clear of any fresh-air intake, the helipad and any openable window: the dispersion check described in <a href="outdoor-air-ventilation-tall-buildings.html">outdoor air and ventilation</a> applies here more than anywhere.</li>
+  <li><strong>Grease removal at the hood is what protects everything downstream.</strong> High-efficiency baffle or cartridge filters, or a UV/ozone system where the riser is long and access is hard, reduce what reaches the duct in the first place. On a 200&nbsp;m riser this is the main line of defence.</li>
 </ul>
 
 <h2 id="install">6 · Installation, cleaning &amp; execution tricks</h2>
 <ul class="clean">
-  <li><strong>Reserve the shaft at concept, and defend it.</strong> A grease riser cannot be re-routed, cannot share a shaft, and cannot be offset casually — every offset is a grease trap and an access door.</li>
+  <li><strong>Reserve the shaft at concept, and defend it.</strong> A grease riser cannot be re-routed, cannot share a shaft, and cannot be offset casually: every offset is a grease trap and an access door.</li>
   <li><strong>Design the cleaning route before the duct.</strong> Access doors at every change of direction and at regular intervals up the riser, each one reachable from a floor or a platform. If the cleaning contractor cannot reach an access door, that section will never be cleaned and will eventually be the fire.</li>
-  <li><strong>Weld it continuously and test it.</strong> Liquid-tight, continuously welded external seams, light-tested or equivalent, with the test recorded per section as it is built — you cannot inspect it afterwards.</li>
+  <li><strong>Weld it continuously and test it.</strong> Liquid-tight, continuously welded external seams, light-tested or equivalent, with the test recorded per section as it is built. You cannot inspect it afterwards.</li>
   <li><strong>Slope the duct and provide a drain point.</strong> Horizontal runs graded back to the hood or to an accessible residue trap, never to a low point buried in a ceiling.</li>
   <li><strong>Insulate and clear the rating.</strong> Maintain the specified clearance to combustibles or the approved wrap system, and coordinate that clearance in the shaft before other trades fill it.</li>
-  <li><strong>Balance the hood at the hood.</strong> Capture and containment is proved by smoke test at the hood face with the make-up running, not by measuring the duct flow — a hood can be at design flow and still fail to capture if the make-up air is arriving from the wrong direction.</li>
+  <li><strong>Balance the hood at the hood.</strong> Capture and containment is proved by smoke test at the hood face with the make-up running, not by measuring the duct flow: a hood can be at design flow and still fail to capture if the make-up air is arriving from the wrong direction.</li>
   <li><strong>Commission the demand control against velocity.</strong> Verify the minimum-flow setting corresponds to the code transport velocity, and prove the alarm.</li>
-  <li><strong>Hand over a cleaning schedule with frequencies by duty</strong> — heavy-duty solid-fuel or wok cooking needs far more frequent cleaning than a light-duty pastry kitchen, and the schedule should name intervals and access points.</li>
+  <li><strong>Hand over a cleaning schedule with frequencies by duty</strong>: heavy-duty solid-fuel or wok cooking needs far more frequent cleaning than a light-duty pastry kitchen, and the schedule should name intervals and access points.</li>
 </ul>
 
 <h2 id="checklist">7 · The design &amp; installation checklist</h2>
@@ -163,7 +163,7 @@ BODY = r"""
   <li><strong>Set the demand-control minimum at the velocity limit</strong>, not at the fan minimum, and alarm it.</li>
   <li><strong>Provide 80–90&nbsp;% dedicated tempered make-up</strong>, delivered so it does not disturb capture.</li>
   <li><strong>Check the kitchen&rsquo;s pressure relationship</strong> to adjacent spaces and to the building.</li>
-  <li><strong>Maximise grease removal at the hood</strong> — the riser can only be protected by what never enters it.</li>
+  <li><strong>Maximise grease removal at the hood</strong>: the riser can only be protected by what never enters it.</li>
   <li><strong>Rate the enclosure for the full height</strong>; no fire dampers in the duct.</li>
   <li><strong>Confirm the fan survives fire conditions</strong>, with its power supply.</li>
   <li><strong>Design and prove the cleaning access</strong>, and issue a duty-based cleaning schedule.</li>
@@ -171,19 +171,19 @@ BODY = r"""
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  A grease riser is the only duct in the building with a <strong>minimum</strong> velocity as well as a maximum, and the ratio between your design velocity and that floor is exactly the turndown you are allowed — design at 10&nbsp;m/s and demand control can take you to 25&nbsp;% flow and 12&nbsp;% fan power, which is an enormous saving available entirely within the safety limit. Everything else follows from the fact that it is a <strong>combustible-lined, unbroken, fire-rated shaft running hundreds of metres through occupied floors</strong>: reserve it at concept, remove as much grease as possible at the hood because that is the only place you can, design the cleaning access before the duct, and provide 80–90&nbsp;% tempered make-up so the hoods actually capture and the kitchen does not end up breathing through the lift shaft.
+  A grease riser is the only duct in the building with a <strong>minimum</strong> velocity as well as a maximum, and the ratio between your design velocity and that floor is exactly the turndown you are allowed: design at 10&nbsp;m/s and demand control can take you to 25&nbsp;% flow and 12&nbsp;% fan power, which is an enormous saving available entirely within the safety limit. Everything else follows from the fact that it is a <strong>combustible-lined, unbroken, fire-rated shaft running hundreds of metres through occupied floors</strong>: reserve it at concept, remove as much grease as possible at the hood because that is the only place you can, design the cleaning access before the duct, and provide 80–90&nbsp;% tempered make-up so the hoods actually capture and the kitchen does not end up breathing through the lift shaft.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>NFPA 96 — <em>Standard for Ventilation Control and Fire Protection of Commercial Cooking Operations</em>: duct construction, transport velocity, access, clearance and cleaning.</li>
-  <li>ASHRAE <em>Handbook — HVAC Applications</em>, Kitchen Ventilation chapter — hood types, exhaust rates, capture and containment, make-up air strategies.</li>
-  <li>ASHRAE Standard 154 — <em>Ventilation for Commercial Cooking Operations</em>; and ASTM F1704 for hood capture and containment testing.</li>
-  <li>DW/172 <em>Specification for Kitchen Ventilation Systems</em> (BESA) — UK practice on grease duct construction, access and cleaning.</li>
-  <li>BS EN 16282 series — equipment for commercial kitchens: ventilation components and design.</li>
-  <li>NFPA 17A — wet chemical extinguishing systems; and UL 300 for hood suppression listing.</li>
-  <li>ANSI/ASHRAE/IES Standard 90.1 — kitchen exhaust energy requirements and demand-controlled kitchen ventilation provisions.</li>
-  <li>Saudi Building Code <em>SBC 501</em> and <em>SBC 801</em> — mechanical and fire provisions for commercial cooking operations.</li>
+  <li>NFPA 96, <em>Standard for Ventilation Control and Fire Protection of Commercial Cooking Operations</em>: duct construction, transport velocity, access, clearance and cleaning.</li>
+  <li>ASHRAE <em>Handbook, HVAC Applications</em>, Kitchen Ventilation chapter: hood types, exhaust rates, capture and containment, make-up air strategies.</li>
+  <li>ASHRAE Standard 154: <em>Ventilation for Commercial Cooking Operations</em>; and ASTM F1704 for hood capture and containment testing.</li>
+  <li>DW/172 <em>Specification for Kitchen Ventilation Systems</em> (BESA): UK practice on grease duct construction, access and cleaning.</li>
+  <li>BS EN 16282 series, equipment for commercial kitchens: ventilation components and design.</li>
+  <li>NFPA 17A: wet chemical extinguishing systems; and UL 300 for hood suppression listing.</li>
+  <li>ANSI/ASHRAE/IES Standard 90.1: kitchen exhaust energy requirements and demand-controlled kitchen ventilation provisions.</li>
+  <li>Saudi Building Code <em>SBC 501</em> and <em>SBC 801</em>: mechanical and fire provisions for commercial cooking operations.</li>
 </ol>
 
 <div class="tags">#KitchenVentilation #GreaseDuct #GreaseRiser #NFPA96 #TallBuildings #MegatallBuildings #MixedUse #CommercialKitchen #Hood #CaptureAndContainment #TransportVelocity #DemandControlledKitchenVentilation #DCKV #MakeUpAir #TemperedAir #KitchenPressure #FireRatedShaft #DuctWrap #HoodSuppression #UL300 #Cleaning #AccessDoors #RoofDischarge #Dispersion #Commissioning #MEP #BuildingServices #HVAC</div>
@@ -311,9 +311,9 @@ function updMu(){
   document.getElementById('rMn').innerHTML=fmt2(Qe*mu)+' <small>m³/s</small>';
   document.getElementById('rCl').innerHTML=fmt0((Qe*mu/0.924)*(107-47.8))+' <small>kW</small>';   // 0.924 m³/kg dry air at 40 °C / 55 % RH
   const v=document.getElementById('rMv');
-  if(dp>dt)        v.innerHTML='<span class="badge bad">too negative — capture will fail</span>';
-  else if(mu>=0.98)v.innerHTML='<span class="badge warn">no negative bias — odour risk</span>';
-  else             v.innerHTML='<span class="badge good">slightly negative — correct</span>';
+  if(dp>dt)        v.innerHTML='<span class="badge bad">too negative: capture will fail</span>';
+  else if(mu>=0.98)v.innerHTML='<span class="badge warn">no negative bias: odour risk</span>';
+  else             v.innerHTML='<span class="badge good">slightly negative: correct</span>';
 }
 [sQe,sMu,sAo,sDt].forEach(s=>s.addEventListener('input',updMu));updMu();
 
@@ -328,16 +328,16 @@ SPEC = dict(
     reg_tag='HVAC · Kitchen Ventilation · Grease Risers',
     breadcrumb='HVAC &amp; Cooling',
     tag_line='HVAC &middot; Kitchen Ventilation &middot; Grease Risers &middot; Fire Strategy',
-    desc='Kitchen exhaust and grease riser design in tall buildings: why a grease duct is the only duct with a minimum velocity as well as a maximum, hood duty and riser sizing, how design velocity sets the demand-control turndown range, make-up air and the pressure relationship that decides whether hoods capture, fire strategy for an unbroken riser through occupied floors, and cleaning access — with three interactive charts and installation tricks.',
-    og_desc='A grease riser is the only duct in the building with a minimum velocity. Design at 10 m/s and demand control reaches 25 percent flow and 12 percent fan power — entirely within the safety limit.',
+    desc='Kitchen exhaust and grease riser design in tall buildings: why a grease duct is the only duct with a minimum velocity as well as a maximum, hood duty and riser sizing, how design velocity sets the demand-control turndown range, make-up air and the pressure relationship that decides whether hoods capture, fire strategy for an unbroken riser through occupied floors, and cleaning access, with three interactive charts and installation tricks.',
+    og_desc='A grease riser is the only duct in the building with a minimum velocity. Design at 10 m/s and demand control reaches 25 percent flow and 12 percent fan power: entirely within the safety limit.',
     ld_desc='A design-perspective guide to kitchen exhaust and grease risers in tall buildings: hood exhaust rates and duct sizing, transport velocity and demand-controlled turndown, make-up air and kitchen pressure relationships, fire strategy and shaft rating, grease removal at source, and cleaning access.',
     img_alt='Technical cutaway of a tall building showing a commercial kitchen with an extract hood on a podium level and a continuous grease riser running up a dedicated fire-rated shaft through the occupied floors to a discharge fan at roof level',
     en_tag='HVAC &amp; Cooling &middot; Kitchen Ventilation &middot; Grease Risers &middot; Fire',
     en_title='Kitchen Exhaust &amp; Grease Risers in Tall Buildings: Transport Velocity, Turndown &amp; Make-Up Air',
-    en_excerpt='A mixed-use tower puts kitchens on the podium and near the crown, and every one needs a duct that runs unbroken to the roof &mdash; lined with combustible deposit, passing through occupied floors, at once a ventilation system, a fire hazard and a fire-rated compartment. It is governed by a rule no other duct obeys: a <strong>minimum</strong> velocity. Design at 10&nbsp;m/s and demand control reaches 25&nbsp;% flow and 12&nbsp;% fan power, entirely within the limit. Plus make-up air and the pressure relationship that decides whether the hoods capture at all &mdash; with three interactive charts.',
+    en_excerpt='A mixed-use tower puts kitchens on the podium and near the crown, and every one needs a duct that runs unbroken to the roof, lined with combustible deposit, passing through occupied floors, at once a ventilation system, a fire hazard and a fire-rated compartment. It is governed by a rule no other duct obeys: a <strong>minimum</strong> velocity. Design at 10&nbsp;m/s and demand control reaches 25&nbsp;% flow and 12&nbsp;% fan power, entirely within the limit. Plus make-up air and the pressure relationship that decides whether the hoods capture at all, with three interactive charts.',
     en_search='kitchen exhaust grease duct grease riser tall buildings megatall mixed use commercial kitchen hood wall canopy island canopy capture and containment exhaust rate duty light medium heavy transport velocity minimum velocity 500 fpm demand controlled kitchen ventilation DCKV turndown fan power cube law make-up air tempered air untempered kitchen pressure negative odour migration NFPA 96 continuously welded liquid tight access doors cleaning schedule fire rated shaft duct wrap clearance to combustibles hood suppression wet chemical UL 300 no fire dampers roof discharge dispersion intake separation grease filters baffle cartridge UV ozone commissioning smoke test MEP building services HVAC',
     ar_title='شفط المطابخ ومواسير الشحوم الصاعدة في المباني الشاهقة: سرعة النقل والتخفيض وهواء التعويض',
-    ar_excerpt='البرج متعدد الاستخدامات يضع مطابخ في القاعدة وقرب القمة، وكل واحد منها يحتاج مجرى هوائيًا متصلًا حتى السطح — مبطنًا برواسب قابلة للاشتعال، يمر عبر طوابق مأهولة، وهو في آنٍ واحد نظام تهوية وخطر حريق وحيز مقاوم للحريق. ويحكمه قانون لا يخضع له أي مجرى آخر: سرعة <strong>دنيا</strong>. صمّم عند ١٠ م/ث ويصل التحكم حسب الطلب إلى ٢٥٪ من التدفق و١٢٪ من قدرة المروحة، ضمن الحد الآمن تمامًا. مع هواء التعويض وعلاقة الضغط التي تحدد ما إذا كانت المظلات ستلتقط الأبخرة أصلًا — مع ثلاثة رسوم تفاعلية.',
+    ar_excerpt='البرج متعدد الاستخدامات يضع مطابخ في القاعدة وقرب القمة، وكل واحد منها يحتاج مجرى هوائيًا متصلًا حتى السطح، مبطنًا برواسب قابلة للاشتعال، يمر عبر طوابق مأهولة، وهو في آنٍ واحد نظام تهوية وخطر حريق وحيز مقاوم للحريق. ويحكمه قانون لا يخضع له أي مجرى آخر: سرعة <strong>دنيا</strong>. صمّم عند ١٠ م/ث ويصل التحكم حسب الطلب إلى ٢٥٪ من التدفق و١٢٪ من قدرة المروحة، ضمن الحد الآمن تمامًا. مع هواء التعويض وعلاقة الضغط التي تحدد ما إذا كانت المظلات ستلتقط الأبخرة أصلًا، مع ثلاثة رسوم تفاعلية.',
     ar_search='kitchen exhaust grease duct riser NFPA 96 transport velocity DCKV turndown make-up air kitchen pressure fire rated shaft hood suppression cleaning access شفط المطابخ مجرى الشحوم الماسورة الصاعدة المباني الشاهقة متعدد الاستخدامات المطبخ التجاري مظلة الشفط المظلة الجدارية المظلة الجزيرة الالتقاط والاحتواء معدل الشفط الخدمة الخفيفة المتوسطة الثقيلة سرعة النقل السرعة الدنيا التحكم في تهوية المطبخ حسب الطلب التخفيض قدرة المروحة قانون التكعيب هواء التعويض الهواء المكيف ضغط المطبخ الضغط السالب انتقال الروائح اللحام المستمر محكم ضد السوائل أبواب الوصول جدول التنظيف المنور المقاوم للحريق لفائف العزل الخلوص عن المواد القابلة للاشتعال إطفاء المظلة الكيماوي الرطب عدم استخدام مخمدات الحريق التصريف من السطح التشتت فصل فتحات السحب مرشحات الشحوم الأشعة فوق البنفسجية الأوزون التشغيل والاختبار اختبار الدخان MEP خدمات المباني',
     body=BODY, charts=CHARTS,
 )

@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">Thermal storage is the only way to buy cooling at one time and use it at another, and in a Gulf tower that arbitrage is worth a great deal — a 40&nbsp;MW plant shifting its peak can cut its chiller capacity by <strong>40&nbsp;%</strong> and take a real bite out of its electricity bill. But it comes with a physical constraint that decides the entire design before economics is even discussed: storing 128&nbsp;MWh as chilled water needs <strong>13,757 cubic metres of tank — nearly fourteen thousand tonnes</strong>. That does not go in a tower. As ice it is 1,538&nbsp;m³, roughly nine times more compact, and suddenly it fits in a basement. Thermal storage in a tall building is therefore an <em>ice</em> question, or it is not a question at all.</p>
+<p class="lead">Thermal storage is the only way to buy cooling at one time and use it at another, and in a Gulf tower that arbitrage is worth a great deal: a 40&nbsp;MW plant shifting its peak can cut its chiller capacity by <strong>40&nbsp;%</strong> and take a real bite out of its electricity bill. But it comes with a physical constraint that decides the entire design before economics is even discussed: storing 128&nbsp;MWh as chilled water needs <strong>13,757 cubic metres of tank, nearly fourteen thousand tonnes</strong>. That does not go in a tower. As ice it is 1,538&nbsp;m³, roughly nine times more compact, and suddenly it fits in a basement. Thermal storage in a tall building is therefore an <em>ice</em> question, or it is not a question at all.</p>
 
 <h2 id="why">1 · Why storage and towers are an awkward fit</h2>
 <ul class="clean">
   <li><strong>Storage is heavy and towers hate weight.</strong> Water stores about 9.3&nbsp;kWh per tonne at an 8&nbsp;K ΔT. Any meaningful capacity is thousands of tonnes and belongs at or below grade, never up the building.</li>
   <li><strong>Latent storage is nine times denser.</strong> Ice stores its heat as a phase change at 333&nbsp;kJ/kg rather than as sensible heat over a few kelvin, which is why every space-constrained project ends up looking at it.</li>
-  <li><strong>The tariff is what pays for it.</strong> The economics come from the difference between on-peak and off-peak electricity and from avoided demand charges. Where that difference is small, storage is a resilience and capacity measure rather than an energy one — and should be argued as such.</li>
+  <li><strong>The tariff is what pays for it.</strong> The economics come from the difference between on-peak and off-peak electricity and from avoided demand charges. Where that difference is small, storage is a resilience and capacity measure rather than an energy one, and should be argued as such.</li>
   <li><strong>Making ice costs efficiency.</strong> A chiller producing −6&nbsp;°C brine instead of 6&nbsp;°C water loses roughly a quarter to a third of its COP. Storage does not save energy; it <em>moves</em> it, and it moves slightly more than it shifted.</li>
-  <li><strong>It buys capacity, which in a megatall is worth more than energy.</strong> A smaller chiller plant means a smaller plant room, smaller electrical infrastructure, smaller cooling towers and less water — the compounding benefit that is usually left out of the payback calculation.</li>
+  <li><strong>It buys capacity, which in a megatall is worth more than energy.</strong> A smaller chiller plant means a smaller plant room, smaller electrical infrastructure, smaller cooling towers and less water: the compounding benefit that is usually left out of the payback calculation.</li>
 </ul>
 
 <h2 id="int-vol">2 · Interactive: how much tank, and of what</h2>
@@ -28,7 +28,7 @@ BODY = r"""
     <div class="ctrl">
       <label>Chilled-water ΔT <span id="vD">8.0 K</span></label>
       <input type="range" id="sD" min="5" max="14" value="8" step="0.5">
-      <div class="hint">Usable stratified difference — not the design coil ΔT. Stratified tanks rarely beat 9–10 K in practice.</div>
+      <div class="hint">Usable stratified difference: not the design coil ΔT. Stratified tanks rarely beat 9–10 K in practice.</div>
     </div>
     <div class="ctrl">
       <label>Ice packing factor <span id="vP">90 %</span></label>
@@ -49,10 +49,10 @@ BODY = r"""
     <div class="cell"><div class="k">Water footprint</div><div class="v" id="rFw">2,293 <small>m²</small></div></div>
   </div>
 </div>
-<p class="fig-note">128&nbsp;MWh as chilled water is <strong>13,757&nbsp;m³</strong> — a 2,293&nbsp;m² tank farm six metres deep, which is most of a basement level and fourteen thousand tonnes of structural load. As ice it is <strong>1,538&nbsp;m³</strong> and about 256&nbsp;m². That ratio is why almost every tall-building thermal store is latent rather than sensible, and it is also why the decision has to be made before the basement is designed: nobody finds 2,300&nbsp;m² of tank space in a completed scheme. Note how sensitive the water case is to the ΔT slider — a stratified tank that manages only 6&nbsp;K instead of 9&nbsp;K needs 50&nbsp;% more volume for the same stored energy, and stratification quality is a real, and commonly disappointing, design risk.</p>
+<p class="fig-note">128&nbsp;MWh as chilled water is <strong>13,757&nbsp;m³</strong>: a 2,293&nbsp;m² tank farm six metres deep, which is most of a basement level and fourteen thousand tonnes of structural load. As ice it is <strong>1,538&nbsp;m³</strong> and about 256&nbsp;m². That ratio is why almost every tall-building thermal store is latent rather than sensible, and it is also why the decision has to be made before the basement is designed: nobody finds 2,300&nbsp;m² of tank space in a completed scheme. Note how sensitive the water case is to the ΔT slider: a stratified tank that manages only 6&nbsp;K instead of 9&nbsp;K needs 50&nbsp;% more volume for the same stored energy, and stratification quality is a real, and commonly disappointing, design risk.</p>
 
 <h2 id="int-peak">3 · Interactive: what peak shaving buys</h2>
-<p>With <strong>full storage</strong> the chillers do not run on-peak at all; with <strong>partial storage</strong> — almost always the right answer — the chillers run more or less continuously at a lower rating and storage covers the difference at peak.</p>
+<p>With <strong>full storage</strong> the chillers do not run on-peak at all; with <strong>partial storage</strong>, almost always the right answer, the chillers run more or less continuously at a lower rating and storage covers the difference at peak.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -90,7 +90,7 @@ BODY = r"""
     <div class="cell"><div class="k">Extra energy</div><div class="v" id="rEx">+9 <small>%</small></div></div>
   </div>
 </div>
-<p class="fig-note">A 40&nbsp;MW peak at a 60&nbsp;% load factor lets the chiller plant drop to <strong>24&nbsp;MW — 40&nbsp;% smaller</strong> — with 128&nbsp;MWh of storage covering the on-peak difference. That is a smaller plant room, smaller substation, smaller towers and less makeup water, all compounding. The honest cost is on the right: making that portion of the cooling as ice consumes roughly <strong>9&nbsp;% more energy overall</strong>, because the ice-making chillers run at a worse COP. Storage is a <em>capacity and tariff</em> measure, not an efficiency measure, and any business case that claims energy savings from the storage itself is wrong.</p>
+<p class="fig-note">A 40&nbsp;MW peak at a 60&nbsp;% load factor lets the chiller plant drop to <strong>24&nbsp;MW, 40&nbsp;% smaller</strong>, with 128&nbsp;MWh of storage covering the on-peak difference. That is a smaller plant room, smaller substation, smaller towers and less makeup water, all compounding. The honest cost is on the right: making that portion of the cooling as ice consumes roughly <strong>9&nbsp;% more energy overall</strong>, because the ice-making chillers run at a worse COP. Storage is a <em>capacity and tariff</em> measure, not an efficiency measure, and any business case that claims energy savings from the storage itself is wrong.</p>
 
 <h2 id="int-econ">4 · Interactive: the tariff arbitrage</h2>
 
@@ -130,11 +130,11 @@ BODY = r"""
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At a 0.32/0.18 tariff split, shifting 128&nbsp;MWh of cooling a day over 250 days moves about 23&nbsp;MWh of <em>electricity</em> a day into the night, worth <strong>0.81&nbsp;M gross</strong> — less roughly <strong>0.41&nbsp;M</strong> of extra electricity from the ice-making penalty, for a net <strong>0.41&nbsp;M a year</strong> before any avoided demand charge. Note how much of the gross the penalty eats: half of it, at this tariff. Now drag the two rates together: as the ratio falls below about 1.4 the COP penalty eats most of the benefit and the scheme has to be justified on capacity alone. <strong>Check the tariff before the tanks.</strong> And check its stability — a storage scheme is a twenty-five-year asset justified by a tariff structure that a regulator can revise in a year, which is a genuine commercial risk worth stating in the design report rather than discovering later.</p>
+<p class="fig-note">At a 0.32/0.18 tariff split, shifting 128&nbsp;MWh of cooling a day over 250 days moves about 23&nbsp;MWh of <em>electricity</em> a day into the night, worth <strong>0.81&nbsp;M gross</strong>, less roughly <strong>0.41&nbsp;M</strong> of extra electricity from the ice-making penalty, for a net <strong>0.41&nbsp;M a year</strong> before any avoided demand charge. Note how much of the gross the penalty eats: half of it, at this tariff. Now drag the two rates together: as the ratio falls below about 1.4 the COP penalty eats most of the benefit and the scheme has to be justified on capacity alone. <strong>Check the tariff before the tanks.</strong> And check its stability: a storage scheme is a twenty-five-year asset justified by a tariff structure that a regulator can revise in a year, which is a genuine commercial risk worth stating in the design report rather than discovering later.</p>
 
 <h2 id="types">5 · Choosing the storage type</h2>
 <ul class="clean">
-  <li><strong>Stratified chilled-water tanks.</strong> Simple, no COP penalty, uses the existing chillers, and the tank can double as fire-water or resilience storage. But it is enormous, and its usable capacity depends entirely on maintaining a clean thermocline — which needs proper diffusers, low inlet velocities and a tank geometry with a decent height-to-diameter ratio. Best where land is available at grade.</li>
+  <li><strong>Stratified chilled-water tanks.</strong> Simple, no COP penalty, uses the existing chillers, and the tank can double as fire-water or resilience storage. But it is enormous, and its usable capacity depends entirely on maintaining a clean thermocline, which needs proper diffusers, low inlet velocities and a tank geometry with a decent height-to-diameter ratio. Best where land is available at grade.</li>
   <li><strong>Ice-on-coil, internal melt.</strong> The workhorse for space-constrained sites. Glycol circulates through coils in a tank, freezing water around them, then melts it from the inside. Predictable, modular, and roughly nine times denser than water. Needs a glycol loop, a heat exchanger to the building side, and chillers selected for low-temperature duty.</li>
   <li><strong>Ice harvesting and encapsulated ice.</strong> Alternatives with different discharge characteristics; encapsulated ice (nodules in a tank) packs well and suits retrofits into existing tanks.</li>
   <li><strong>Phase-change materials above 0&nbsp;°C.</strong> PCMs melting at 6–10&nbsp;°C avoid the ice-making COP penalty entirely because the chillers run at normal temperatures, at the cost of lower storage density than ice and a higher material cost. Worth evaluating where the tariff split is modest and the COP penalty would otherwise kill the scheme.</li>
@@ -144,18 +144,18 @@ BODY = r"""
 <p>A thermal store is only worth what its control sequence extracts. The recurring failures are all strategic rather than mechanical:</p>
 <ul class="clean">
   <li><strong>Discharging too early.</strong> A store emptied by mid-afternoon leaves the chillers exposed at the real peak. The sequence must forecast the remaining day's load, not react to the current one.</li>
-  <li><strong>Not filling completely.</strong> Overnight charge must be verified against inventory, not against run hours. Instrument the store for <em>state of charge</em> and trend it — a store that has been running at 70&nbsp;% charge for two years is a common and invisible failure.</li>
+  <li><strong>Not filling completely.</strong> Overnight charge must be verified against inventory, not against run hours. Instrument the store for <em>state of charge</em> and trend it: a store that has been running at 70&nbsp;% charge for two years is a common and invisible failure.</li>
   <li><strong>Chiller priority confusion.</strong> Decide explicitly, in the sequence, whether chiller or storage leads at each hour and each load, and what happens on a chiller failure.</li>
-  <li><strong>Ignoring the demand charge.</strong> Where the tariff has a peak-demand component, the control objective is to cap the electrical demand, not merely to shift energy — a different and more valuable optimisation.</li>
+  <li><strong>Ignoring the demand charge.</strong> Where the tariff has a peak-demand component, the control objective is to cap the electrical demand, not merely to shift energy: a different and more valuable optimisation.</li>
   <li><strong>No weather or occupancy forecast.</strong> Modern sequences use next-day forecast to size the overnight charge; charging fully every night on a mild day wastes the COP penalty for nothing.</li>
 </ul>
 
 <h2 id="install">7 · Installation &amp; execution tricks</h2>
 <ul class="clean">
-  <li><strong>Get the tank load to the structural engineer early</strong> — a full store is thousands of tonnes and its position, bearing pressure and seismic mass all affect the substructure design.</li>
+  <li><strong>Get the tank load to the structural engineer early</strong>: a full store is thousands of tonnes and its position, bearing pressure and seismic mass all affect the substructure design.</li>
   <li><strong>Insulate and vapour-seal the tank properly.</strong> A sub-zero store in a humid Gulf basement will condense and then corrode at every thermal bridge; specify the vapour barrier as carefully as the insulation and detail the supports through it.</li>
   <li><strong>Manage the glycol.</strong> Concentration, inhibitor level and compatibility with every seal and gasket in the loop, checked at commissioning and scheduled thereafter. A degraded inhibitor package turns a glycol loop into a corrosion cell.</li>
-  <li><strong>Design the tank for inspection and cleaning</strong> — access, drain-down and a route to replace coils.</li>
+  <li><strong>Design the tank for inspection and cleaning</strong>: access, drain-down and a route to replace coils.</li>
   <li><strong>Instrument the state of charge</strong> from day one, with the sensors the control sequence actually needs, and prove the inventory calculation at commissioning by a full charge-discharge cycle against a measured load.</li>
   <li><strong>Commission across a full cycle, not a snapshot.</strong> The acceptance test is a complete charge overnight and a complete discharge over the peak, with the load simulated or real, and the results compared against the design profile.</li>
   <li><strong>Train the operator, and write the sequence down in plain language.</strong> Storage is the system most likely to be switched to manual after a handover disagreement and never switched back.</li>
@@ -165,8 +165,8 @@ BODY = r"""
 <ul class="clean">
   <li><strong>Check the tariff split and its stability</strong> before anything else; below about 1.4 the case must rest on capacity.</li>
   <li><strong>Size from a real daily load profile</strong>, not a peak and a guess at load factor.</li>
-  <li><strong>Choose the medium on space and COP penalty together</strong> — ice for constrained sites, water where land allows, PCM where the tariff is thin.</li>
-  <li><strong>Count the capacity savings in full</strong> — chillers, plant room, substation, towers and makeup water.</li>
+  <li><strong>Choose the medium on space and COP penalty together</strong>: ice for constrained sites, water where land allows, PCM where the tariff is thin.</li>
+  <li><strong>Count the capacity savings in full</strong>: chillers, plant room, substation, towers and makeup water.</li>
   <li><strong>State the energy penalty honestly</strong> in the business case.</li>
   <li><strong>Issue the tank loads early</strong> and coordinate the substructure.</li>
   <li><strong>Design the control sequence as a deliverable</strong>, with forecast-based charging and an explicit demand-cap objective.</li>
@@ -176,19 +176,19 @@ BODY = r"""
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  Thermal storage in a tall building is decided by <strong>density before economics</strong>: 128&nbsp;MWh is 13,757&nbsp;m³ as chilled water and 1,538&nbsp;m³ as ice, so constrained sites store latent heat or they do not store at all — and either way it goes below grade, early, with the load issued to the structural engineer. It buys <strong>capacity</strong> — a 40&nbsp;% smaller chiller plant and everything that follows from it — and it buys <strong>tariff arbitrage</strong> &mdash; though the COP penalty eats about half the gross &mdash; but it does not buy energy: making ice costs about a quarter of your COP, so the plant uses roughly 9&nbsp;% more electricity to deliver the same cooling. Say that plainly in the business case, then win the argument on capacity and demand charge, which is where it is actually won.
+  Thermal storage in a tall building is decided by <strong>density before economics</strong>: 128&nbsp;MWh is 13,757&nbsp;m³ as chilled water and 1,538&nbsp;m³ as ice, so constrained sites store latent heat or they do not store at all, and either way it goes below grade, early, with the load issued to the structural engineer. It buys <strong>capacity</strong> (a 40&nbsp;% smaller chiller plant and everything that follows from it) and it buys <strong>tariff arbitrage</strong>, though the COP penalty eats about half the gross, but it does not buy energy: making ice costs about a quarter of your COP, so the plant uses roughly 9&nbsp;% more electricity to deliver the same cooling. Say that plainly in the business case, then win the argument on capacity and demand charge, which is where it is actually won.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ASHRAE <em>Handbook — HVAC Systems and Equipment</em>, Thermal Storage chapter — sensible and latent storage media, sizing, stratification and system integration.</li>
-  <li>ASHRAE <em>Design Guide for Cool Thermal Storage</em> — full and partial storage strategies, control sequences and commissioning.</li>
-  <li>ANSI/ASHRAE Standard 150 — <em>Method of Testing the Performance of Cool Storage Systems</em>; and ASHRAE Guideline 4 for storage system commissioning.</li>
-  <li>ASHRAE <em>District Cooling Guide</em>, 2nd ed. — thermal storage in district and campus systems, including peak-shaving economics.</li>
-  <li>ANSI/ASHRAE/IES Standard 90.1 — energy modelling treatment of thermal storage and demand-limiting controls.</li>
+  <li>ASHRAE <em>Handbook, HVAC Systems and Equipment</em>, Thermal Storage chapter: sensible and latent storage media, sizing, stratification and system integration.</li>
+  <li>ASHRAE <em>Design Guide for Cool Thermal Storage</em>: full and partial storage strategies, control sequences and commissioning.</li>
+  <li>ANSI/ASHRAE Standard 150: <em>Method of Testing the Performance of Cool Storage Systems</em>; and ASHRAE Guideline 4 for storage system commissioning.</li>
+  <li>ASHRAE <em>District Cooling Guide</em>, 2nd ed.: thermal storage in district and campus systems, including peak-shaving economics.</li>
+  <li>ANSI/ASHRAE/IES Standard 90.1: energy modelling treatment of thermal storage and demand-limiting controls.</li>
   <li>IEA Energy Conservation through Energy Storage / Annex reports on phase-change materials and cool storage applications.</li>
-  <li>Saudi Electricity Company tariff structures and the Saudi Building Code <em>SBC 501</em> — the local tariff and regulatory basis for any Gulf storage business case.</li>
-  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed. — plant location, structural interface and storage in tall buildings.</li>
+  <li>Saudi Electricity Company tariff structures and the Saudi Building Code <em>SBC 501</em>: the local tariff and regulatory basis for any Gulf storage business case.</li>
+  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed.: plant location, structural interface and storage in tall buildings.</li>
 </ol>
 
 <div class="tags">#ThermalEnergyStorage #TES #IceStorage #ChilledWaterStorage #Stratification #PCM #PhaseChangeMaterial #PeakShaving #LoadShifting #DemandCharge #TariffArbitrage #TallBuildings #MegatallBuildings #Chillers #PlantCapacity #COP #Glycol #StateOfCharge #ControlSequence #ForecastControl #Commissioning #ASHRAE150 #DistrictCooling #MEP #BuildingServices #HVAC</div>
@@ -328,16 +328,16 @@ SPEC = dict(
     reg_tag='HVAC · Thermal Storage · Peak Shaving',
     breadcrumb='HVAC &amp; Cooling',
     tag_line='HVAC &middot; Thermal Energy Storage &middot; Ice Storage &middot; Peak Shaving',
-    desc='Thermal energy storage for megatall buildings: why storage density decides the design before economics does, chilled water versus ice versus phase-change materials, partial storage peak shaving and the chiller capacity it saves, the honest energy penalty from ice-making COP, tariff arbitrage and when it stops paying, and the control sequences where storage projects actually fail — with three interactive charts and installation tricks.',
-    og_desc='128 MWh is 13,757 m3 as chilled water and 1,538 m3 as ice. Storage in a tower is a density question before it is an economics question — and it buys capacity, not energy.',
+    desc='Thermal energy storage for megatall buildings: why storage density decides the design before economics does, chilled water versus ice versus phase-change materials, partial storage peak shaving and the chiller capacity it saves, the honest energy penalty from ice-making COP, tariff arbitrage and when it stops paying, and the control sequences where storage projects actually fail, with three interactive charts and installation tricks.',
+    og_desc='128 MWh is 13,757 m3 as chilled water and 1,538 m3 as ice. Storage in a tower is a density question before it is an economics question, and it buys capacity, not energy.',
     ld_desc='A design-perspective guide to thermal energy storage in megatall buildings: storage media and density, partial versus full storage, chiller capacity savings, the ice-making COP penalty, tariff arbitrage economics, control sequences and commissioning.',
     img_alt='Technical cutaway of a megatall tower basement showing large ice thermal storage tanks with internal coil bundles, connected by glycol pipework to low-temperature chillers and a plate heat exchanger serving the building chilled-water risers',
     en_tag='HVAC &amp; Cooling &middot; Thermal Storage &middot; Ice Storage &middot; Peak Shaving',
     en_title='Thermal Energy Storage for Megatall Buildings: Ice vs Water, Peak Shaving &amp; the Tariff That Pays for It',
-    en_excerpt='Thermal storage is the only way to buy cooling at one time and use it at another &mdash; but in a tower a physical constraint settles the design before economics is discussed. Storing 128&nbsp;MWh as chilled water needs <strong>13,757&nbsp;m&sup3;</strong>, nearly fourteen thousand tonnes; as ice it is <strong>1,538&nbsp;m&sup3;</strong>. Partial storage cuts chiller capacity by 40&nbsp;%, the tariff arbitrage nets about 0.4&nbsp;M a year &mdash; and making ice costs about a quarter of your COP, so the plant uses 11&nbsp;% more energy. Storage buys capacity, not efficiency &mdash; with three interactive charts.',
+    en_excerpt='Thermal storage is the only way to buy cooling at one time and use it at another, but in a tower a physical constraint settles the design before economics is discussed. Storing 128&nbsp;MWh as chilled water needs <strong>13,757&nbsp;m&sup3;</strong>, nearly fourteen thousand tonnes; as ice it is <strong>1,538&nbsp;m&sup3;</strong>. Partial storage cuts chiller capacity by 40&nbsp;%, the tariff arbitrage nets about 0.4&nbsp;M a year, and making ice costs about a quarter of your COP, so the plant uses 11&nbsp;% more energy. Storage buys capacity, not efficiency, with three interactive charts.',
     en_search='thermal energy storage TES cool storage ice storage chilled water storage stratified tank thermocline diffuser phase change material PCM encapsulated ice ice on coil internal melt ice harvesting tall buildings megatall peak shaving load shifting full storage partial storage load factor chiller capacity reduction plant room substation demand charge tariff arbitrage on-peak off-peak rate ratio COP penalty glycol low temperature chiller state of charge control sequence forecast based charging demand limiting commissioning charge discharge cycle ASHRAE 150 Guideline 4 structural load insulation vapour barrier condensation MEP building services HVAC',
     ar_title='التخزين الحراري للمباني فائقة الارتفاع: الثلج مقابل الماء وتقليص الذروة والتعرفة التي تدفع الثمن',
-    ar_excerpt='التخزين الحراري هو الوسيلة الوحيدة لشراء التبريد في وقتٍ واستخدامه في وقتٍ آخر — لكن في الأبراج يحسم قيدٌ فيزيائي التصميم قبل مناقشة الاقتصاديات. تخزين ١٢٨ ميغاواط ساعة كماء مبرد يحتاج <strong>١٣٧٥٧ م٣</strong> أي قرابة أربعة عشر ألف طن، وكثلج يحتاج <strong>١٥٣٨ م٣</strong>. التخزين الجزئي يخفض سعة المبردات ٤٠٪، وفرق التعرفة يوفر أكثر من مليون سنويًا — وصناعة الثلج تكلّف نحو ربع معامل الأداء، فتستهلك المحطة ١١٪ طاقة أكثر. التخزين يشتري السعة لا الكفاءة — مع ثلاثة رسوم تفاعلية.',
+    ar_excerpt='التخزين الحراري هو الوسيلة الوحيدة لشراء التبريد في وقتٍ واستخدامه في وقتٍ آخر، لكن في الأبراج يحسم قيدٌ فيزيائي التصميم قبل مناقشة الاقتصاديات. تخزين ١٢٨ ميغاواط ساعة كماء مبرد يحتاج <strong>١٣٧٥٧ م٣</strong> أي قرابة أربعة عشر ألف طن، وكثلج يحتاج <strong>١٥٣٨ م٣</strong>. التخزين الجزئي يخفض سعة المبردات ٤٠٪، وفرق التعرفة يوفر أكثر من مليون سنويًا، وصناعة الثلج تكلّف نحو ربع معامل الأداء، فتستهلك المحطة ١١٪ طاقة أكثر. التخزين يشتري السعة لا الكفاءة، مع ثلاثة رسوم تفاعلية.',
     ar_search='thermal energy storage ice storage chilled water stratified tank PCM peak shaving load shifting partial storage COP penalty tariff arbitrage demand charge glycol state of charge ASHRAE 150 التخزين الحراري تخزين البرودة تخزين الثلج تخزين الماء المبرد الخزان الطبقي الحد الحراري الموزع مواد التغير الطوري الثلج المغلف الثلج على الملفات الذوبان الداخلي حصاد الثلج المباني الشاهقة المباني فائقة الارتفاع تقليص الذروة إزاحة الحمل التخزين الكامل التخزين الجزئي معامل الحمل تقليل سعة المبردات غرفة المعدات محطة التحويل رسوم الطلب فرق التعرفة تعرفة الذروة خارج الذروة نسبة الأسعار عقوبة معامل الأداء الجليكول المبردات منخفضة الحرارة حالة الشحن تسلسل التحكم الشحن حسب التنبؤ تحديد الطلب التشغيل والاختبار دورة الشحن والتفريغ الحمل الإنشائي العزل الحاجز البخاري التكثيف MEP خدمات المباني',
     body=BODY, charts=CHARTS,
 )

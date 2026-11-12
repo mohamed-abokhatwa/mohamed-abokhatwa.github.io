@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">Every megatall development has an atrium — a hotel lobby, a retail galleria, a sky lounge — and every atrium is a compartment the fire code was not written for. Its whole purpose is that it is not divided, so the ordinary defence of compartmentation does not apply and the building must instead prove, by calculation, that smoke will stay above people's heads for long enough to get them out. The arithmetic is unforgiving: a 5&nbsp;MW fire in a 20&nbsp;m atrium drops the clear layer from the ceiling to <strong>5.7&nbsp;m in five minutes</strong>. Holding it there needs <strong>33&nbsp;m³/s</strong> of exhaust — and, far more awkwardly, <strong>32&nbsp;m² of make-up air opening</strong>, because the replacement air must arrive slowly enough not to blow the smoke plume sideways.</p>
+<p class="lead">Every megatall development has an atrium (a hotel lobby, a retail galleria, a sky lounge) and every atrium is a compartment the fire code was not written for. Its whole purpose is that it is not divided, so the ordinary defence of compartmentation does not apply and the building must instead prove, by calculation, that smoke will stay above people's heads for long enough to get them out. The arithmetic is unforgiving: a 5&nbsp;MW fire in a 20&nbsp;m atrium drops the clear layer from the ceiling to <strong>5.7&nbsp;m in five minutes</strong>. Holding it there needs <strong>33&nbsp;m³/s</strong> of exhaust, and, far more awkwardly, <strong>32&nbsp;m² of make-up air opening</strong>, because the replacement air must arrive slowly enough not to blow the smoke plume sideways.</p>
 
 <h2 id="why">1 · Why an atrium is a special case</h2>
 <ul class="clean">
   <li><strong>There is no compartment.</strong> The atrium deliberately connects many floors, so smoke reaches all of them. The only defences are keeping the smoke high, removing it, or keeping it out of the occupied edges.</li>
-  <li><strong>The design is performance-based.</strong> There is no table to look up. You choose a design fire, calculate the plume, calculate the filling, and demonstrate tenable conditions for the required evacuation time — and every one of those steps is an assumption an approving authority can challenge.</li>
-  <li><strong>The plume is the system.</strong> Everything follows from how much air the fire entrains on the way up, and that grows steeply with height — which means <strong>a taller atrium is harder, not easier</strong>, because the smoke arriving at the ceiling is cooler, more voluminous and less buoyant.</li>
+  <li><strong>The design is performance-based.</strong> There is no table to look up. You choose a design fire, calculate the plume, calculate the filling, and demonstrate tenable conditions for the required evacuation time, and every one of those steps is an assumption an approving authority can challenge.</li>
+  <li><strong>The plume is the system.</strong> Everything follows from how much air the fire entrains on the way up, and that grows steeply with height, which means <strong>a taller atrium is harder, not easier</strong>, because the smoke arriving at the ceiling is cooler, more voluminous and less buoyant.</li>
   <li><strong>Make-up air is the part that fails.</strong> Exhaust is easy to specify and hard to feed. Provide it through openings that are too small and the inrush tears the plume apart, mixes the layers and destroys the very stratification the system exists to create.</li>
   <li><strong>It interacts with the tower's own stack effect.</strong> A tall atrium is itself a chimney with the pressure regime described in <a href="stack-effect-tall-buildings.html">stack effect</a>, and on a cold or a Gulf-summer day that regime can be stronger than the smoke system.</li>
 </ul>
@@ -14,12 +14,12 @@ BODY = r"""
 <h2 id="int-filling">2 · Interactive: how fast the smoke layer descends</h2>
 <p>With no exhaust running, the smoke layer descends as the plume fills the volume from the top down. NFPA 92 gives a correlation for a steady fire in a uniform space<sup class="cite">[1]</sup>:</p>
 <div class="eq">\[ \frac{z}{H} \;=\; 1.11 - 0.28\,\ln\!\left(\frac{t\,\dot{Q}^{1/3} / H^{4/3}}{A/H^{2}}\right) \]</div>
-<p>with \(z\) the clear height, \(H\) the atrium height, \(A\) the plan area, \(\dot Q\) the fire heat release rate and \(t\) time. Note that \(A\) and \(H\) both help and \(\dot Q\) hurts only as the cube root — you cannot exhaust your way out of a fire that is too big, but a generous volume genuinely buys time.</p>
+<p>with \(z\) the clear height, \(H\) the atrium height, \(A\) the plan area, \(\dot Q\) the fire heat release rate and \(t\) time. Note that \(A\) and \(H\) both help and \(\dot Q\) hurts only as the cube root. You cannot exhaust your way out of a fire that is too big, but a generous volume genuinely buys time.</p>
 
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Smoke layer descent with no exhaust</div>
-    <div class="fsub">NFPA 92 filling correlation for a steady fire in a uniform-section space. Valid roughly for A/H² between 0.9 and 14 and for z/H above 0.2 — outside that range it is indicative only.</div>
+    <div class="fsub">NFPA 92 filling correlation for a steady fire in a uniform-section space. Valid roughly for A/H² between 0.9 and 14 and for z/H above 0.2: outside that range it is indicative only.</div>
   </div>
   <div class="chart-box"><canvas id="fillChart"></canvas></div>
   <div class="controls">
@@ -41,7 +41,7 @@ BODY = r"""
     <div class="ctrl">
       <label>Required clear height <span id="vZ">2.5 m</span></label>
       <input type="range" id="sZ" min="2" max="15" value="2.5" step="0.5">
-      <div class="hint">Above the highest occupied level in the atrium — often 2 m above the highest walking surface.</div>
+      <div class="hint">Above the highest occupied level in the atrium, often 2 m above the highest walking surface.</div>
     </div>
   </div>
   <div class="readout">
@@ -52,12 +52,12 @@ BODY = r"""
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 5&nbsp;MW fire in a 20&nbsp;m, 2,000&nbsp;m² atrium leaves only <strong>9 minutes</strong> before the smoke reaches head height with no exhaust running. That is the number the whole strategy is measured against: if the required safe egress time exceeds it, you need exhaust, and if it does not, natural filling may be enough. Drag the fire size and watch how weakly it matters — doubling the fire barely moves the curve, because the plume entrains as the cube root of heat release. Then drag the height: <strong>volume is what buys time</strong>, and it is an architectural gift rather than an engineering one.</p>
+<p class="fig-note">A 5&nbsp;MW fire in a 20&nbsp;m, 2,000&nbsp;m² atrium leaves only <strong>9 minutes</strong> before the smoke reaches head height with no exhaust running. That is the number the whole strategy is measured against: if the required safe egress time exceeds it, you need exhaust, and if it does not, natural filling may be enough. Drag the fire size and watch how weakly it matters: doubling the fire barely moves the curve, because the plume entrains as the cube root of heat release. Then drag the height: <strong>volume is what buys time</strong>, and it is an architectural gift rather than an engineering one.</p>
 
-<h2 id="plume">3 · The plume — the calculation everything rests on</h2>
+<h2 id="plume">3 · The plume: the calculation everything rests on</h2>
 <p>The mass of smoke arriving at the layer is almost entirely <em>entrained air</em>, not combustion products. For an axisymmetric plume above the flame tip<sup class="cite">[1][2]</sup>:</p>
 <div class="eq">\[ \dot m \;=\; 0.071\,\dot Q_c^{1/3} z^{5/3} + 0.0018\,\dot Q_c, \qquad z_l = 0.166\,\dot Q_c^{2/5} \]</div>
-<p>with \(\dot Q_c\) the convective heat release (typically 70&nbsp;% of total) and \(z\) the height from the fire to the smoke layer. The \(z^{5/3}\) is the critical term: <strong>entrainment grows faster than linearly with height</strong>. Hold the layer at 12&nbsp;m instead of 6&nbsp;m in the same atrium and the exhaust needed more than doubles — which is the counter-intuitive result that a <em>higher</em> clear layer is much more expensive than a lower one, and why designers fight for every metre of permitted smoke reservoir depth.</p>
+<p>with \(\dot Q_c\) the convective heat release (typically 70&nbsp;% of total) and \(z\) the height from the fire to the smoke layer. The \(z^{5/3}\) is the critical term: <strong>entrainment grows faster than linearly with height</strong>. Hold the layer at 12&nbsp;m instead of 6&nbsp;m in the same atrium and the exhaust needed more than doubles, which is the counter-intuitive result that a <em>higher</em> clear layer is much more expensive than a lower one, and why designers fight for every metre of permitted smoke reservoir depth.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -95,15 +95,15 @@ BODY = r"""
     <div class="cell"><div class="k">If layer at 12 m</div><div class="v" id="rV12">71 <small>m³/s</small></div></div>
   </div>
 </div>
-<p class="fig-note">A 5&nbsp;MW fire with the layer held at 6&nbsp;m needs <strong>33&nbsp;m³/s</strong> of exhaust, at a layer temperature of about 147&nbsp;°C. Raise the clear layer to 12&nbsp;m and it becomes <strong>71&nbsp;m³/s</strong> — more than double, for a layer that is only twice as high. Note also what happens to the temperature: the deeper the layer sits, the hotter and more buoyant the smoke, which makes the system easier to run. A cool, thin, high smoke layer is the hardest thing to extract and the most likely to destratify — which is why systems designed for a very high clear layer in a very tall atrium are the ones that fail in CFD.</p>
+<p class="fig-note">A 5&nbsp;MW fire with the layer held at 6&nbsp;m needs <strong>33&nbsp;m³/s</strong> of exhaust, at a layer temperature of about 147&nbsp;°C. Raise the clear layer to 12&nbsp;m and it becomes <strong>71&nbsp;m³/s</strong>, more than double, for a layer that is only twice as high. Note also what happens to the temperature: the deeper the layer sits, the hotter and more buoyant the smoke, which makes the system easier to run. A cool, thin, high smoke layer is the hardest thing to extract and the most likely to destratify, which is why systems designed for a very high clear layer in a very tall atrium are the ones that fail in CFD.</p>
 
 <h2 id="int-makeup">4 · Interactive: the make-up air problem</h2>
-<p>Whatever you exhaust must come back in, and NFPA 92 limits the velocity of that replacement air to about <strong>1.02&nbsp;m/s</strong> where it could reach the plume — because faster air deflects the plume, tears it, and mixes the smoke layer down into the clear layer.</p>
+<p>Whatever you exhaust must come back in, and NFPA 92 limits the velocity of that replacement air to about <strong>1.02&nbsp;m/s</strong> where it could reach the plume, because faster air deflects the plume, tears it, and mixes the smoke layer down into the clear layer.</p>
 
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Make-up air opening required, against what is usually provided</div>
-    <div class="fsub">Free area = exhaust volume ÷ permitted make-up velocity. The dashed line is the area actually available in the design — doors, louvres and openings that can be opened on alarm.</div>
+    <div class="fsub">Free area = exhaust volume ÷ permitted make-up velocity. The dashed line is the area actually available in the design: doors, louvres and openings that can be opened on alarm.</div>
   </div>
   <div class="chart-box"><canvas id="muChart"></canvas></div>
   <div class="controls">
@@ -136,20 +136,20 @@ BODY = r"""
     <div class="cell"><div class="k">Status</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rMs"></span></div></div>
   </div>
 </div>
-<p class="fig-note">This is where atrium smoke systems are lost. Holding a 6&nbsp;m layer needs 33&nbsp;m³/s, and at the 1.02&nbsp;m/s limit that demands <strong>32&nbsp;m² of free make-up area</strong> — the equivalent of a dozen wide doorways, all of which must be open during the fire and none of which the architect wants. Provide the 12&nbsp;m² that is typically available and the inrush runs at <strong>2.75&nbsp;m/s</strong>, well past the limit, and the CFD will show the plume being pushed off vertical and the layer mixing down. The resolutions are all architectural and all early: <strong>more openings, a dedicated mechanical make-up system with low-velocity diffusers, or a lower clear-layer requirement</strong> agreed with the fire engineer. Discover it late and the only remaining option is a bigger fan, which makes it worse.</p>
+<p class="fig-note">This is where atrium smoke systems are lost. Holding a 6&nbsp;m layer needs 33&nbsp;m³/s, and at the 1.02&nbsp;m/s limit that demands <strong>32&nbsp;m² of free make-up area</strong>: the equivalent of a dozen wide doorways, all of which must be open during the fire and none of which the architect wants. Provide the 12&nbsp;m² that is typically available and the inrush runs at <strong>2.75&nbsp;m/s</strong>, well past the limit, and the CFD will show the plume being pushed off vertical and the layer mixing down. The resolutions are all architectural and all early: <strong>more openings, a dedicated mechanical make-up system with low-velocity diffusers, or a lower clear-layer requirement</strong> agreed with the fire engineer. Discover it late and the only remaining option is a bigger fan, which makes it worse.</p>
 
 <h2 id="strategies">5 · The strategy choices</h2>
 <ul class="clean">
-  <li><strong>Natural (buoyancy-driven) ventilation.</strong> Vents at the top of the atrium, sized on the layer depth and temperature. Simple, needs no power, and fails when the smoke is cool — which is exactly what a sprinklered fire in a tall atrium produces. Check it against the coolest credible layer, not the hottest.</li>
+  <li><strong>Natural (buoyancy-driven) ventilation.</strong> Vents at the top of the atrium, sized on the layer depth and temperature. Simple, needs no power, and fails when the smoke is cool, which is exactly what a sprinklered fire in a tall atrium produces. Check it against the coolest credible layer, not the hottest.</li>
   <li><strong>Mechanical exhaust.</strong> Fans at high level, rated for the layer temperature, on essential power. Predictable and controllable but requires the make-up problem to be solved and brings a plugholing constraint at each extract point.</li>
-  <li><strong>Depressurisation of adjacent spaces</strong> rather than atrium exhaust — holding the balconies and adjoining floors at a lower pressure so smoke cannot spill into them. Sometimes far more economical in a tall thin atrium.</li>
+  <li><strong>Depressurisation of adjacent spaces</strong> rather than atrium exhaust, holding the balconies and adjoining floors at a lower pressure so smoke cannot spill into them. Sometimes far more economical in a tall thin atrium.</li>
   <li><strong>Smoke reservoirs and channelling screens.</strong> Downstands that contain the layer over the fire and stop it spreading laterally, which reduces the exhaust rate dramatically. The cheapest intervention available and the first to be deleted for aesthetic reasons.</li>
-  <li><strong>Do nothing, and prove it.</strong> Where the atrium volume is large and the occupancy escapes quickly, the filling calculation may show the layer never reaches head height within the egress time. This is a legitimate and often overlooked answer — but it must be demonstrated, and it must be robust to a larger fire.</li>
+  <li><strong>Do nothing, and prove it.</strong> Where the atrium volume is large and the occupancy escapes quickly, the filling calculation may show the layer never reaches head height within the egress time. This is a legitimate and often overlooked answer, but it must be demonstrated, and it must be robust to a larger fire.</li>
 </ul>
 
 <div class="callout warn">
-  <span class="lbl">Plugholing — the failure that looks like success</span>
-  If an individual extract point pulls too hard for the depth of smoke above it, it draws clear air up through the layer instead of smoke — <strong>plugholing</strong>. The fans then run at full duty, the instruments confirm the design flow, and the system is removing mostly clean air while the smoke layer descends anyway. The defence is to <strong>split the exhaust into more, smaller points</strong> and to check each against the layer depth and temperature. It is a calculation per extract point, not per system, and it is the single most common technical error in atrium smoke design.
+  <span class="lbl">Plugholing: the failure that looks like success</span>
+  If an individual extract point pulls too hard for the depth of smoke above it, it draws clear air up through the layer instead of smoke: <strong>plugholing</strong>. The fans then run at full duty, the instruments confirm the design flow, and the system is removing mostly clean air while the smoke layer descends anyway. The defence is to <strong>split the exhaust into more, smaller points</strong> and to check each against the layer depth and temperature. It is a calculation per extract point, not per system, and it is the single most common technical error in atrium smoke design.
 </div>
 
 <h2 id="install">6 · Design, installation &amp; commissioning</h2>
@@ -159,7 +159,7 @@ BODY = r"""
   <li><strong>Model the stack effect together with the smoke system.</strong> In a tall atrium the two are comparable in magnitude and can oppose each other; a smoke system verified with no stack pressure is verified against a condition that never occurs.</li>
   <li><strong>Watch for pre-stratification.</strong> A glazed atrium develops a hot layer under the roof on a sunny day; smoke rising into air warmer than itself stops and spreads at that level rather than reaching the roof vents. Model it, and consider extract points below the roof.</li>
   <li><strong>Rate the fans, and everything attached to them.</strong> Temperature-time class for fans, motors, bearings, flexible connections, supports and cabling, with power from an essential supply and a tested changeover.</li>
-  <li><strong>Make the make-up path automatic and proven.</strong> Motorised doors or louvres that open on alarm, with position proving to the fire system — a manual door that somebody must open is not make-up air.</li>
+  <li><strong>Make the make-up path automatic and proven.</strong> Motorised doors or louvres that open on alarm, with position proving to the fire system: a manual door that somebody must open is not make-up air.</li>
   <li><strong>Commission with hot smoke, not cold.</strong> Cold smoke tests prove damper and fan operation but tell you nothing about stratification; a hot smoke test to a recognised protocol is what demonstrates the layer actually behaves as modelled.</li>
   <li><strong>Re-verify after any fit-out change.</strong> A new mezzanine, a shopfront or a change of use alters the volume, the fuel load and the make-up path, and invalidates the model.</li>
 </ul>
@@ -167,9 +167,9 @@ BODY = r"""
 <h2 id="checklist">7 · The design &amp; installation checklist</h2>
 <ul class="clean">
   <li><strong>Agree the design fire and the required safe egress time</strong> before any calculation.</li>
-  <li><strong>Run the filling calculation first</strong> — the answer may be that no exhaust is needed.</li>
+  <li><strong>Run the filling calculation first</strong>: the answer may be that no exhaust is needed.</li>
   <li><strong>Calculate the plume at the required clear height</strong>, and challenge that height because it is expensive.</li>
-  <li><strong>Solve make-up air at concept stage</strong> — free area, velocity and how it opens.</li>
+  <li><strong>Solve make-up air at concept stage</strong>: free area, velocity and how it opens.</li>
   <li><strong>Split the exhaust</strong> and check every extract point for plugholing.</li>
   <li><strong>Use reservoirs and channelling screens</strong> to cut the exhaust rate before adding fans.</li>
   <li><strong>Check the coolest and the hottest case</strong>, and model stack effect and solar pre-stratification.</li>
@@ -179,19 +179,19 @@ BODY = r"""
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  Atrium smoke control is a <strong>performance calculation, not a code lookup</strong>: a 5&nbsp;MW fire drops the clear layer in a 20&nbsp;m atrium to head height in about nine minutes, and holding it at 6&nbsp;m costs 33&nbsp;m³/s of exhaust. The exhaust is the easy half. The hard half is that <strong>the same 33&nbsp;m³/s has to come back in below 1&nbsp;m/s</strong>, which means 32&nbsp;m² of free opening — and that is an architectural decision that must be made at concept, because no fan can fix it later. Then remember that entrainment goes as z^{5/3}, so a higher clear layer is far more expensive than a lower one, and that splitting the exhaust into more, smaller points is what stops the system quietly extracting clean air while the smoke comes down anyway.
+  Atrium smoke control is a <strong>performance calculation, not a code lookup</strong>: a 5&nbsp;MW fire drops the clear layer in a 20&nbsp;m atrium to head height in about nine minutes, and holding it at 6&nbsp;m costs 33&nbsp;m³/s of exhaust. The exhaust is the easy half. The hard half is that <strong>the same 33&nbsp;m³/s has to come back in below 1&nbsp;m/s</strong>, which means 32&nbsp;m² of free opening, and that is an architectural decision that must be made at concept, because no fan can fix it later. Then remember that entrainment goes as z^{5/3}, so a higher clear layer is far more expensive than a lower one, and that splitting the exhaust into more, smaller points is what stops the system quietly extracting clean air while the smoke comes down anyway.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>NFPA 92 — <em>Standard for Smoke Control Systems</em>: filling correlations, plume equations, make-up air velocity limits and plugholing criteria.</li>
-  <li>Klote, J.H. &amp; Milke, J.A. <em>Handbook of Smoke Control Engineering</em> (ASHRAE / SFPE / ICC) — atrium smoke management, plume models and design fires.</li>
-  <li>SFPE <em>Handbook of Fire Protection Engineering</em> — fire plumes, entrainment, heat release rates and design fire selection.</li>
-  <li>BS 7346-4 and BS 9999 — functional recommendations for smoke and heat exhaust ventilation systems, smoke reservoirs and channelling screens.</li>
-  <li>EN 12101 series — smoke and heat control systems: natural and powered exhaust ventilators, and their temperature-time classification.</li>
-  <li>Hansell, G.O. &amp; Morgan, H.P. (BRE) — design approaches for smoke control in atrium buildings.</li>
-  <li>International Building Code (IBC) and Saudi Building Code <em>SBC 801</em> — atrium provisions and smoke control requirements.</li>
-  <li>Hot smoke test protocols (for example AS 4391) — commissioning verification of smoke management performance.</li>
+  <li>NFPA 92, <em>Standard for Smoke Control Systems</em>: filling correlations, plume equations, make-up air velocity limits and plugholing criteria.</li>
+  <li>Klote, J.H. &amp; Milke, J.A. <em>Handbook of Smoke Control Engineering</em> (ASHRAE / SFPE / ICC): atrium smoke management, plume models and design fires.</li>
+  <li>SFPE <em>Handbook of Fire Protection Engineering</em>: fire plumes, entrainment, heat release rates and design fire selection.</li>
+  <li>BS 7346-4 and BS 9999: functional recommendations for smoke and heat exhaust ventilation systems, smoke reservoirs and channelling screens.</li>
+  <li>EN 12101 series, smoke and heat control systems: natural and powered exhaust ventilators, and their temperature-time classification.</li>
+  <li>Hansell, G.O. &amp; Morgan, H.P. (BRE): design approaches for smoke control in atrium buildings.</li>
+  <li>International Building Code (IBC) and Saudi Building Code <em>SBC 801</em>: atrium provisions and smoke control requirements.</li>
+  <li>Hot smoke test protocols (for example AS 4391): commissioning verification of smoke management performance.</li>
 </ol>
 
 <div class="tags">#SmokeControl #AtriumSmoke #NFPA92 #SmokeManagement #FireEngineering #TallBuildings #MegatallBuildings #Podium #DesignFire #HeatReleaseRate #SmokeFilling #PlumeEntrainment #ClearLayer #SmokeReservoir #ChannellingScreen #MakeUpAir #Plugholing #Destratification #PreStratification #StackEffect #CFD #HotSmokeTest #EssentialPower #Commissioning #BS7346 #EN12101 #MEP #BuildingServices</div>
@@ -349,16 +349,16 @@ SPEC = dict(
     reg_tag='Fire Protection · Smoke Control · Atria',
     breadcrumb='Fire Protection',
     tag_line='Fire Protection &middot; Smoke Control &middot; Atria &middot; Tall Buildings',
-    desc='Atrium smoke control design in tall buildings: the NFPA 92 filling correlation and how fast the clear layer descends, axisymmetric plume entrainment and why a higher clear layer costs far more exhaust, the make-up air velocity limit and the free area it demands, plugholing at individual extract points, natural versus mechanical strategies, stack effect and solar pre-stratification, and hot smoke commissioning — with three interactive charts.',
-    og_desc='A 5 MW fire drops a 20 m atrium clear layer to head height in about nine minutes. Holding it at 6 m needs 33 m3/s of exhaust — and 32 m2 of make-up opening, which is where these systems are actually lost.',
+    desc='Atrium smoke control design in tall buildings: the NFPA 92 filling correlation and how fast the clear layer descends, axisymmetric plume entrainment and why a higher clear layer costs far more exhaust, the make-up air velocity limit and the free area it demands, plugholing at individual extract points, natural versus mechanical strategies, stack effect and solar pre-stratification, and hot smoke commissioning, with three interactive charts.',
+    og_desc='A 5 MW fire drops a 20 m atrium clear layer to head height in about nine minutes. Holding it at 6 m needs 33 m3/s of exhaust, and 32 m2 of make-up opening, which is where these systems are actually lost.',
     ld_desc='A design-perspective guide to atrium smoke control in tall buildings: smoke filling correlations, plume entrainment and exhaust rate calculation, make-up air velocity limits and free area, plugholing, smoke reservoirs, natural versus mechanical exhaust, and commissioning by hot smoke test.',
     img_alt='Technical cutaway of a tall building atrium showing a fire at the base with a rising smoke plume entraining air, a smoke layer forming beneath the roof with extract fans drawing from it, and low-level make-up air openings admitting replacement air',
     en_tag='Fire Protection &middot; Smoke Control &middot; Atria &middot; Tall Buildings',
     en_title='Atrium Smoke Control in Tall Buildings: Filling Time, Plume Entrainment &amp; the Make-Up Air Problem',
-    en_excerpt='Every megatall development has an atrium, and every atrium is a compartment the fire code was not written for &mdash; its whole purpose is that it is <em>not</em> divided. A 5&nbsp;MW fire drops the clear layer in a 20&nbsp;m atrium to head height in about nine minutes; holding it at 6&nbsp;m needs <strong>33&nbsp;m&sup3;/s</strong> of exhaust. The exhaust is the easy half: the same air has to come back in below 1&nbsp;m/s, which means <strong>32&nbsp;m&sup2; of free opening</strong> &mdash; an architectural decision no fan can fix later. Plus plugholing, pre-stratification and hot smoke testing &mdash; with three interactive charts.',
+    en_excerpt='Every megatall development has an atrium, and every atrium is a compartment the fire code was not written for. Its whole purpose is that it is <em>not</em> divided. A 5&nbsp;MW fire drops the clear layer in a 20&nbsp;m atrium to head height in about nine minutes; holding it at 6&nbsp;m needs <strong>33&nbsp;m&sup3;/s</strong> of exhaust. The exhaust is the easy half: the same air has to come back in below 1&nbsp;m/s, which means <strong>32&nbsp;m&sup2; of free opening</strong>, an architectural decision no fan can fix later. Plus plugholing, pre-stratification and hot smoke testing, with three interactive charts.',
     en_search='atrium smoke control smoke management tall buildings megatall podium NFPA 92 smoke filling correlation clear layer descent design fire heat release rate sprinkler controlled axisymmetric plume entrainment mass flow flame height convective fraction layer temperature exhaust volume smoke reservoir channelling screen depth make-up air velocity limit 1.02 m/s free area plugholing extract points destratification pre-stratification solar glazed roof stack effect natural buoyancy ventilation mechanical exhaust depressurisation temperature time class essential power motorised louvre position proving hot smoke test AS 4391 BS 7346-4 BS 9999 EN 12101 CFD performance based design SFPE commissioning MEP building services fire engineering',
     ar_title='التحكم في الدخان بالأفنية الداخلية في المباني الشاهقة: زمن الامتلاء وسحب الهواء وهواء التعويض',
-    ar_excerpt='كل مشروع فائق الارتفاع فيه فناء داخلي، وكل فناء هو حيّز لم تُكتب له أكواد الحريق أصلًا — فغرضه كله ألا يكون مقسّمًا. حريق بقدرة ٥ ميغاواط يُنزل الطبقة الصافية في فناء بارتفاع ٢٠ مترًا إلى مستوى الرأس في أقل من ثماني دقائق، وتثبيتها عند ٦ أمتار يحتاج <strong>٣٣ م٣/ث</strong> من الشفط. والشفط هو النصف السهل: فالهواء نفسه يجب أن يعود بسرعة أقل من متر في الثانية، أي <strong>٣٢ م٢</strong> من الفتحات الحرة — وهو قرار معماري لا تصلحه أي مروحة لاحقًا — مع ثلاثة رسوم تفاعلية.',
+    ar_excerpt='كل مشروع فائق الارتفاع فيه فناء داخلي، وكل فناء هو حيّز لم تُكتب له أكواد الحريق أصلًا، فغرضه كله ألا يكون مقسّمًا. حريق بقدرة ٥ ميغاواط يُنزل الطبقة الصافية في فناء بارتفاع ٢٠ مترًا إلى مستوى الرأس في أقل من ثماني دقائق، وتثبيتها عند ٦ أمتار يحتاج <strong>٣٣ م٣/ث</strong> من الشفط. والشفط هو النصف السهل: فالهواء نفسه يجب أن يعود بسرعة أقل من متر في الثانية، أي <strong>٣٢ م٢</strong> من الفتحات الحرة، وهو قرار معماري لا تصلحه أي مروحة لاحقًا، مع ثلاثة رسوم تفاعلية.',
     ar_search='atrium smoke control NFPA 92 smoke filling clear layer plume entrainment exhaust make-up air plugholing hot smoke test BS 7346-4 EN 12101 CFD التحكم في الدخان الفناء الداخلي الأتريوم المباني الشاهقة المباني فائقة الارتفاع القاعدة معادلة امتلاء الدخان الطبقة الصافية هبوط الطبقة حريق التصميم معدل إطلاق الحرارة المتحكم بالرشاشات عمود الدخان المتماثل سحب الهواء التدفق الكتلي ارتفاع اللهب النسبة الحملية درجة حرارة الطبقة حجم الشفط خزان الدخان حواجز التوجيه عمق الخزان حد سرعة هواء التعويض المساحة الحرة السحب الفارغ نقاط الشفط فقدان الطبقية التطبق المسبق الإشعاع الشمسي السقف الزجاجي تأثير المدخنة التهوية الطبيعية بالطفو الشفط الميكانيكي خفض الضغط تصنيف درجة الحرارة والزمن الطاقة الأساسية الشيش المحرك إثبات الوضع اختبار الدخان الساخن التصميم القائم على الأداء التشغيل والاختبار MEP خدمات المباني هندسة الحريق',
     body=BODY, charts=CHARTS,
 )

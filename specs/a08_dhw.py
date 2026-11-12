@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">Domestic hot water is the only building service that can kill people through ordinary operation rather than through failure. Legionella does not need a fault, a leak or a fire — it needs lukewarm water and time, and a tall building offers both in abundance: kilometres of pipework, long branches to distant fixtures, and a system that is deliberately kept at the temperature bacteria like best somewhere between the boiler and the tap. The design problem is a genuine conflict. <strong>Hot enough to be safe is hot enough to scald</strong>, and the temperature that stops growth is the temperature that damages people. Everything else in this article follows from resolving that at the right place in the system.</p>
+<p class="lead">Domestic hot water is the only building service that can kill people through ordinary operation rather than through failure. Legionella does not need a fault, a leak or a fire. It needs lukewarm water and time, and a tall building offers both in abundance: kilometres of pipework, long branches to distant fixtures, and a system that is deliberately kept at the temperature bacteria like best somewhere between the boiler and the tap. The design problem is a genuine conflict. <strong>Hot enough to be safe is hot enough to scald</strong>, and the temperature that stops growth is the temperature that damages people. Everything else in this article follows from resolving that at the right place in the system.</p>
 
 <h2 id="conflict">1 · The central conflict</h2>
 <ul class="clean">
   <li><strong>Legionella grows between about 20 and 45&nbsp;°C</strong>, thrives around 37&nbsp;°C, and is killed progressively above 50&nbsp;°C. Below 20&nbsp;°C it is dormant.</li>
   <li><strong>Scald risk begins at about 44&nbsp;°C</strong> and becomes severe quickly: a full-thickness burn takes roughly 5 seconds at 60&nbsp;°C and about a second at 70&nbsp;°C.</li>
-  <li><strong>The resolution is spatial, not thermal.</strong> Keep the <em>system</em> hot — storage at 60&nbsp;°C, return never below 55&nbsp;°C — and drop the temperature at the last possible moment with a thermostatic mixing valve immediately before the outlet. Never solve it by storing at 45&nbsp;°C.</li>
+  <li><strong>The resolution is spatial, not thermal.</strong> Keep the <em>system</em> hot (storage at 60&nbsp;°C, return never below 55&nbsp;°C) and drop the temperature at the last possible moment with a thermostatic mixing valve immediately before the outlet. Never solve it by storing at 45&nbsp;°C.</li>
   <li><strong>The cold side matters as much.</strong> Cold water above 20&nbsp;°C is a growth medium too, and in a Gulf tower the cold riser sits in a warm shaft next to a hot one. Keeping cold water cold is a real design task, not an assumption.</li>
 </ul>
 
@@ -23,7 +23,7 @@ BODY = r"""
     <div class="ctrl">
       <label>Water temperature <span id="vT">55 °C</span></label>
       <input type="range" id="sT" min="35" max="75" value="55" step="0.5">
-      <div class="hint">The temperature actually achieved at the point in question — return leg, tank bottom, dead leg.</div>
+      <div class="hint">The temperature actually achieved at the point in question: return leg, tank bottom, dead leg.</div>
     </div>
     <div class="ctrl">
       <label>Log reduction required <span id="vL">4</span></label>
@@ -38,7 +38,7 @@ BODY = r"""
     <div class="ctrl">
       <label>Time available <span id="vTa">60 min</span></label>
       <input type="range" id="sTa" min="1" max="240" value="60" step="1">
-      <div class="hint">Contact time at that temperature — a pasteurisation cycle, or residence in storage.</div>
+      <div class="hint">Contact time at that temperature: a pasteurisation cycle, or residence in storage.</div>
     </div>
   </div>
   <div class="readout">
@@ -49,14 +49,14 @@ BODY = r"""
     <div class="cell"><div class="k">Regime</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At <strong>55&nbsp;°C</strong> a 4-log kill takes about <strong>56 minutes</strong>; at <strong>60&nbsp;°C</strong> it takes <strong>8 minutes</strong>; at 50&nbsp;°C it takes nearly seven hours; and at 46&nbsp;°C — a return leg that has sagged only a few degrees — it takes well over a day, which in a circulating system means never. That steepness is the entire reason the codes specify 60&nbsp;°C storage and a 55&nbsp;°C minimum return rather than a comfortable-sounding 50: the margin is not comfort, it is two orders of magnitude of kill rate. It is also why the number that matters is the temperature at the <em>worst</em> point in the loop, measured, not the boiler set-point.</p>
+<p class="fig-note">At <strong>55&nbsp;°C</strong> a 4-log kill takes about <strong>56 minutes</strong>; at <strong>60&nbsp;°C</strong> it takes <strong>8 minutes</strong>; at 50&nbsp;°C it takes nearly seven hours; and at 46&nbsp;°C, a return leg that has sagged only a few degrees, it takes well over a day, which in a circulating system means never. That steepness is the entire reason the codes specify 60&nbsp;°C storage and a 55&nbsp;°C minimum return rather than a comfortable-sounding 50: the margin is not comfort, it is two orders of magnitude of kill rate. It is also why the number that matters is the temperature at the <em>worst</em> point in the loop, measured, not the boiler set-point.</p>
 
-<h2 id="recirc">3 · The recirculation loop — the system's real weak point</h2>
+<h2 id="recirc">3 · The recirculation loop: the system's real weak point</h2>
 <p>A tall building cannot wait for hot water to travel 300&nbsp;m, so the hot water circulates continuously and returns to the plant. That loop is what keeps the system safe, and it fails in ways that are invisible from the plant room:</p>
 <ul class="clean">
-  <li><strong>Hydraulic imbalance.</strong> Without balancing, the short and easy branches take nearly all the return flow and the long, remote branches — precisely the ones at risk — get almost none and cool below 55&nbsp;°C. <strong>Thermostatic balancing valves</strong> on every return branch, which throttle as the branch reaches temperature and so self-balance to temperature rather than to flow, are the single most effective component in the whole system.</li>
+  <li><strong>Hydraulic imbalance.</strong> Without balancing, the short and easy branches take nearly all the return flow and the long, remote branches, precisely the ones at risk, get almost none and cool below 55&nbsp;°C. <strong>Thermostatic balancing valves</strong> on every return branch, which throttle as the branch reaches temperature and so self-balance to temperature rather than to flow, are the single most effective component in the whole system.</li>
   <li><strong>Dead legs.</strong> Every length of pipe beyond the circulating loop stagnates. Codes typically limit the dead leg to a few litres or a few metres; the practical rule is to <strong>bring the circulation as close to the outlet as the layout allows</strong> and to keep the final branch short.</li>
-  <li><strong>Undersized return.</strong> The return flow only has to carry the loop's heat loss, so it is small — often a fraction of a litre per second — but it must be calculated, not guessed, and it must be checked against the loss of a <em>well-insulated</em> pipe rather than a bare one.</li>
+  <li><strong>Undersized return.</strong> The return flow only has to carry the loop's heat loss, so it is small, often a fraction of a litre per second, but it must be calculated, not guessed, and it must be checked against the loss of a <em>well-insulated</em> pipe rather than a bare one.</li>
   <li><strong>Infrequently used outlets.</strong> A tall residential tower has apartments that stand empty for months. Automatic flushing on a timer, or a managed flushing regime, is part of the design, not the operation.</li>
 </ul>
 
@@ -96,10 +96,10 @@ BODY = r"""
     <div class="cell"><div class="k">Return temp OK?</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVr"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 1,200&nbsp;m loop of DN65 at a decent 0.6&nbsp;W/m²K loses about <strong>5.1&nbsp;kW continuously — 45&nbsp;MWh a year</strong>, and needs only <strong>0.25&nbsp;L/s</strong> of return flow to hold a 5&nbsp;K drop. Two things follow. First, the return flow is <em>tiny</em>, which is exactly why it distributes so badly without thermostatic balancing valves: at these flows a small imbalance starves a branch completely. Second, the standing loss runs 8,760 hours a year and is often larger than any efficiency measure applied to the heat source — so insulation thickness on the circulating loop is a first-order energy decision, not a detail.</p>
+<p class="fig-note">A 1,200&nbsp;m loop of DN65 at a decent 0.6&nbsp;W/m²K loses about <strong>5.1&nbsp;kW continuously: 45&nbsp;MWh a year</strong>, and needs only <strong>0.25&nbsp;L/s</strong> of return flow to hold a 5&nbsp;K drop. Two things follow. First, the return flow is <em>tiny</em>, which is exactly why it distributes so badly without thermostatic balancing valves: at these flows a small imbalance starves a branch completely. Second, the standing loss runs 8,760 hours a year and is often larger than any efficiency measure applied to the heat source, so insulation thickness on the circulating loop is a first-order energy decision, not a detail.</p>
 
 <h2 id="int-storage">4 · Interactive: storage versus instantaneous</h2>
-<p>Hot water demand is spiky — a hotel's morning peak or a residential tower's evening peak lasts under an hour. You can meet it with raw heater capacity or with stored volume, and in a tall building the trade also involves plant space, structural weight and Legionella risk.</p>
+<p>Hot water demand is spiky: a hotel's morning peak or a residential tower's evening peak lasts under an hour. You can meet it with raw heater capacity or with stored volume, and in a tall building the trade also involves plant space, structural weight and Legionella risk.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -121,7 +121,7 @@ BODY = r"""
     <div class="ctrl">
       <label>Temperature rise <span id="vDr">45 K</span></label>
       <input type="range" id="sDr" min="25" max="60" value="45" step="1">
-      <div class="hint">Cold feed to storage temperature — 15 °C to 60 °C is typical.</div>
+      <div class="hint">Cold feed to storage temperature: 15 °C to 60 °C is typical.</div>
     </div>
     <div class="ctrl">
       <label>Heater as share of peak <span id="vSh">35 %</span></label>
@@ -137,23 +137,23 @@ BODY = r"""
     <div class="cell"><div class="k">Turnover</div><div class="v" id="rTo">13 <small>min</small></div></div>
   </div>
 </div>
-<p class="fig-note">An 8&nbsp;L/s peak at a 45&nbsp;K rise is <strong>1,507&nbsp;kW</strong> if met instantaneously. Cover 35&nbsp;% of it with a <strong>528&nbsp;kW</strong> heater and ride the rest on <strong>6.2&nbsp;m³</strong> of storage — but that tank weighs 6.2&nbsp;tonnes on a mechanical floor and, crucially, it must still turn over fast enough to stay safe. The Legionella constraint pushes storage <em>down</em> while the plant-cost constraint pushes it up, and the honest answer in a tall building is usually modest storage with a generous recovery rate, kept at 60&nbsp;°C, rather than the large buffer tank that a spreadsheet optimum suggests.</p>
+<p class="fig-note">An 8&nbsp;L/s peak at a 45&nbsp;K rise is <strong>1,507&nbsp;kW</strong> if met instantaneously. Cover 35&nbsp;% of it with a <strong>528&nbsp;kW</strong> heater and ride the rest on <strong>6.2&nbsp;m³</strong> of storage, but that tank weighs 6.2&nbsp;tonnes on a mechanical floor and, crucially, it must still turn over fast enough to stay safe. The Legionella constraint pushes storage <em>down</em> while the plant-cost constraint pushes it up, and the honest answer in a tall building is usually modest storage with a generous recovery rate, kept at 60&nbsp;°C, rather than the large buffer tank that a spreadsheet optimum suggests.</p>
 
 <h2 id="tmv">5 · Mixing valves, scald protection and the cold side</h2>
 <ul class="clean">
-  <li><strong>Thermostatic mixing valves belong at the outlet, not the plant.</strong> A central blending valve serving a whole floor creates a large volume of pipework at 40&nbsp;°C — the ideal growth temperature — downstream of it. Fit the TMV as close to the fixture as practicable and keep the blended dead leg to a couple of metres.</li>
+  <li><strong>Thermostatic mixing valves belong at the outlet, not the plant.</strong> A central blending valve serving a whole floor creates a large volume of pipework at 40&nbsp;°C, the ideal growth temperature, downstream of it. Fit the TMV as close to the fixture as practicable and keep the blended dead leg to a couple of metres.</li>
   <li><strong>Specify the right TMV type</strong> and its failsafe: a valve that fails to full hot on loss of cold supply is not acceptable in a healthcare or hotel setting. Require thermal shut-off.</li>
-  <li><strong>TMVs need servicing</strong> — they scale, and a scaled TMV drifts. Locate every one so it can actually be reached, and schedule them.</li>
-  <li><strong>Keep the cold water cold.</strong> Insulate cold risers and, in a warm shaft, separate them from hot and heating pipework or provide a ventilated shaft. Where cold water cannot be held below 20&nbsp;°C — a real problem in Gulf towers with long horizontal runs and warm plant spaces — treat it as a risk requiring its own control measure, not as an unavoidable nuisance.</li>
+  <li><strong>TMVs need servicing</strong>: they scale, and a scaled TMV drifts. Locate every one so it can actually be reached, and schedule them.</li>
+  <li><strong>Keep the cold water cold.</strong> Insulate cold risers and, in a warm shaft, separate them from hot and heating pipework or provide a ventilated shaft. Where cold water cannot be held below 20&nbsp;°C (a real problem in Gulf towers with long horizontal runs and warm plant spaces) treat it as a risk requiring its own control measure, not as an unavoidable nuisance.</li>
   <li><strong>Do not run cold water through unventilated risers alongside heating flow and return.</strong> It is the commonest cause of warm cold-water in a tall building and it is a coordination decision made in the shaft layout.</li>
 </ul>
 
 <h2 id="install">6 · Installation &amp; execution tricks</h2>
 <ul class="clean">
-  <li><strong>Insulate to a stated thickness and inspect it</strong> — including at valves, flanges, supports and penetrations, which are where it is always missing and where the heat actually escapes.</li>
+  <li><strong>Insulate to a stated thickness and inspect it</strong>, including at valves, flanges, supports and penetrations, which are where it is always missing and where the heat actually escapes.</li>
   <li><strong>Fit a thermometer pocket on every return branch</strong> at the point it rejoins the main. Without them, proving 55&nbsp;°C at the remote branch is guesswork and every future audit is an argument.</li>
   <li><strong>Commission the loop to temperature, not to flow.</strong> Set thermostatic balancing valves, then verify the return temperature at every branch with the system at design and again at low draw-off, and record every reading against the branch reference.</li>
-  <li><strong>Disinfect systematically and hold the record.</strong> Chlorination or thermal disinfection following a written procedure, with samples per zone and per riser, and the results retained — partial disinfection of a zoned system is the classic reason for a second failed clearance.</li>
+  <li><strong>Disinfect systematically and hold the record.</strong> Chlorination or thermal disinfection following a written procedure, with samples per zone and per riser, and the results retained: partial disinfection of a zoned system is the classic reason for a second failed clearance.</li>
   <li><strong>Flush before commissioning, and keep flushing until handover.</strong> A system that sits full and warm from practical completion to occupation is being incubated. Put a flushing regime in the handover programme with named responsibility.</li>
   <li><strong>Support and expand the hot riser properly.</strong> Hot water pipework moves substantially more than cold; provide anchors, guides and expansion devices, and check that insulation and fire-stopping accommodate the movement rather than restrain it.</li>
   <li><strong>Label the water safety plan into the O&amp;M</strong> with the temperature regime, the flushing schedule, the TMV service interval and the named responsible person.</li>
@@ -161,11 +161,11 @@ BODY = r"""
 
 <h2 id="checklist">7 · The design &amp; installation checklist</h2>
 <ul class="clean">
-  <li><strong>Store at 60&nbsp;°C, return at 55&nbsp;°C minimum, blend at the outlet</strong> — never compromise the system temperature for scald safety.</li>
+  <li><strong>Store at 60&nbsp;°C, return at 55&nbsp;°C minimum, blend at the outlet</strong>; never compromise the system temperature for scald safety.</li>
   <li><strong>Thermostatic balancing valves on every return branch</strong>, and thermometer pockets to prove them.</li>
   <li><strong>Minimise dead legs</strong> and bring circulation close to the outlets.</li>
   <li><strong>Calculate the loop loss and return flow</strong> on real insulation values, and treat the standing loss as a design target.</li>
-  <li><strong>Choose storage for turnover as well as for peak</strong> — small and hot beats large and tepid.</li>
+  <li><strong>Choose storage for turnover as well as for peak</strong>: small and hot beats large and tepid.</li>
   <li><strong>Keep cold water below 20&nbsp;°C</strong>, with shaft layout and insulation designed for it.</li>
   <li><strong>Plan flushing for low-occupancy outlets</strong> as a designed feature.</li>
   <li><strong>Commission to temperature and record every branch</strong>; disinfect to a written procedure per zone.</li>
@@ -174,18 +174,18 @@ BODY = r"""
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  Hot water is a <strong>conflict between two temperatures</strong> — the one that kills bacteria and the one that scalds people — and it is resolved spatially, by keeping the whole system at 60&nbsp;°C and blending only at the outlet. Everything that goes wrong afterwards happens in the <strong>recirculation loop</strong>: the return flow is only a fraction of a litre per second, so without thermostatic balancing valves the long remote branches simply do not get any, sag below 55&nbsp;°C, and become the part of the system nobody measures. Put a thermometer pocket on every return branch, commission to temperature rather than flow, and remember that at 55&nbsp;°C disinfection takes an hour, at 60&nbsp;°C eight minutes, and at 46&nbsp;°C it never happens at all.
+  Hot water is a <strong>conflict between two temperatures</strong> (the one that kills bacteria and the one that scalds people), and it is resolved spatially, by keeping the whole system at 60&nbsp;°C and blending only at the outlet. Everything that goes wrong afterwards happens in the <strong>recirculation loop</strong>: the return flow is only a fraction of a litre per second, so without thermostatic balancing valves the long remote branches simply do not get any, sag below 55&nbsp;°C, and become the part of the system nobody measures. Put a thermometer pocket on every return branch, commission to temperature rather than flow, and remember that at 55&nbsp;°C disinfection takes an hour, at 60&nbsp;°C eight minutes, and at 46&nbsp;°C it never happens at all.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>HSE <em>ACOP L8 — Legionnaires' disease: The control of legionella bacteria in water systems</em> and HSG274 Part 2 (hot and cold water systems) — temperature regime, dead legs, monitoring and written schemes.</li>
-  <li>ASHRAE Standard 188 — <em>Legionellosis: Risk Management for Building Water Systems</em>; and ASHRAE Guideline 12 for implementation detail.</li>
-  <li>WHO <em>Legionella and the prevention of legionellosis</em> and <em>Water Safety in Buildings</em> — growth conditions, thermal inactivation and building water safety planning.</li>
-  <li>CIBSE <em>Guide G — Public Health and Plumbing Engineering</em> and CIBSE TM13 <em>Minimising the risk of Legionnaires' disease</em>.</li>
-  <li>BS 8558 and BS EN 806 — design, installation, testing and maintenance of water supply systems including disinfection procedures.</li>
-  <li>BS EN 1717 and the relevant TMV standards (BS EN 1111 / 1287, NSF/ANSI / ASSE 1017 and 1070) — mixing valve performance and failsafe requirements.</li>
-  <li>ASHRAE <em>Handbook — HVAC Applications</em>, Service Water Heating chapter — demand estimation, storage versus recovery sizing and recirculation design.</li>
+  <li>HSE <em>ACOP L8, Legionnaires' disease: The control of legionella bacteria in water systems</em> and HSG274 Part 2 (hot and cold water systems): temperature regime, dead legs, monitoring and written schemes.</li>
+  <li>ASHRAE Standard 188, <em>Legionellosis: Risk Management for Building Water Systems</em>; and ASHRAE Guideline 12 for implementation detail.</li>
+  <li>WHO <em>Legionella and the prevention of legionellosis</em> and <em>Water Safety in Buildings</em>: growth conditions, thermal inactivation and building water safety planning.</li>
+  <li>CIBSE <em>Guide G: Public Health and Plumbing Engineering</em> and CIBSE TM13 <em>Minimising the risk of Legionnaires' disease</em>.</li>
+  <li>BS 8558 and BS EN 806: design, installation, testing and maintenance of water supply systems including disinfection procedures.</li>
+  <li>BS EN 1717 and the relevant TMV standards (BS EN 1111 / 1287, NSF/ANSI / ASSE 1017 and 1070): mixing valve performance and failsafe requirements.</li>
+  <li>ASHRAE <em>Handbook, HVAC Applications</em>, Service Water Heating chapter: demand estimation, storage versus recovery sizing and recirculation design.</li>
   <li>Saudi Building Code <em>SBC 701</em> plumbing provisions; and ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em> for vertical zoning of service water heating.</li>
 </ol>
 
@@ -236,7 +236,7 @@ function updKill(){
   document.getElementById('rAc').innerHTML=fmt1(got)+' <small>log</small>';
   document.getElementById('rT60').innerHTML=fmt0(L*Dval(60,z))+' <small>min</small>';
   const v=document.getElementById('rVd');
-  if(T<20)       v.innerHTML='<span class="badge good">dormant — cold</span>';
+  if(T<20)       v.innerHTML='<span class="badge good">dormant, cold</span>';
   else if(T<46)  v.innerHTML='<span class="badge bad">growth range</span>';
   else if(T<55)  v.innerHTML='<span class="badge warn">slow kill only</span>';
   else           v.innerHTML='<span class="badge good">effective disinfection</span>';
@@ -278,7 +278,7 @@ function updLoop(){
   document.getElementById('rB').innerHTML=fmt1(loss(L,D,2.0,DT)/1000)+' <small>kW</small>';
   const v=document.getElementById('rVr');
   if(dt<=5)      v.innerHTML='<span class="badge good">return stays ≥ 55 °C</span>';
-  else if(dt<=7) v.innerHTML='<span class="badge warn">tight — balance carefully</span>';
+  else if(dt<=7) v.innerHTML='<span class="badge warn">tight, balance carefully</span>';
   else           v.innerHTML='<span class="badge bad">return will fall below 55 °C</span>';
 }
 [sLl,sDd,sU,sDt].forEach(s=>s.addEventListener('input',updLoop));updLoop();
@@ -316,7 +316,7 @@ function updStor(){
   document.getElementById('rHt').innerHTML=fmt0(inst*sh/100)+' <small>kW</small>';
   document.getElementById('rV').innerHTML=fmt1(V)+' <small>m³</small>';
   document.getElementById('rW').innerHTML=fmt1(V)+' <small>t</small>';
-  document.getElementById('rTo').innerHTML=(Q>0?fmt0(V*1000/Q/60):'—')+' <small>min</small>';
+  document.getElementById('rTo').innerHTML=(Q>0?fmt0(V*1000/Q/60):'–')+' <small>min</small>';
 }
 [sQp,sTp,sDr,sSh].forEach(s=>s.addEventListener('input',updStor));updStor();
 
@@ -331,16 +331,16 @@ SPEC = dict(
     reg_tag='Plumbing · Hot Water · Legionella',
     breadcrumb='Plumbing &amp; Drainage',
     tag_line='Plumbing &middot; Domestic Hot Water &middot; Legionella &middot; Megatall Buildings',
-    desc='Domestic hot water design in megatall buildings: the conflict between the temperature that kills Legionella and the temperature that scalds, thermal disinfection D-values and why 55 versus 60 degrees is a factor of seven, recirculation loop losses and why the tiny return flow makes thermostatic balancing valves essential, dead legs, storage versus instantaneous sizing against turnover, mixing valve placement and keeping cold water cold — with three interactive charts and installation tricks.',
+    desc='Domestic hot water design in megatall buildings: the conflict between the temperature that kills Legionella and the temperature that scalds, thermal disinfection D-values and why 55 versus 60 degrees is a factor of seven, recirculation loop losses and why the tiny return flow makes thermostatic balancing valves essential, dead legs, storage versus instantaneous sizing against turnover, mixing valve placement and keeping cold water cold, with three interactive charts and installation tricks.',
     og_desc='At 55 degrees a 4-log kill takes an hour; at 60 it takes eight minutes; at 46 it never happens. Why hot water is a spatial problem, and why the recirculation return flow being a fraction of a litre per second is what makes it fail.',
     ld_desc='A design-perspective guide to domestic hot water and Legionella control in megatall buildings: thermal inactivation D-values and the temperature regime, recirculation loop heat loss and return flow, thermostatic balancing valves and dead legs, storage versus instantaneous capacity and turnover, mixing valve placement and cold water temperature control.',
     img_alt='Technical cutaway of a megatall tower&rsquo;s domestic hot water system showing calorifiers and storage on a mechanical floor, a hot flow riser and a returning recirculation riser with thermostatic balancing valves on each branch, and mixing valves close to the outlets',
     en_tag='Plumbing &amp; Drainage &middot; Hot Water &middot; Legionella &middot; Megatall',
     en_title='Domestic Hot Water &amp; Legionella Control in Megatall Buildings: Temperature Regime, Recirculation &amp; Storage',
-    en_excerpt='Hot water is the only building service that can harm people through ordinary operation rather than through failure &mdash; and the design is a genuine conflict, because hot enough to be safe is hot enough to scald. At 55&nbsp;&deg;C a 4-log kill takes an hour, at 60&nbsp;&deg;C eight minutes, and at 46&nbsp;&deg;C it never happens. Why the answer is spatial rather than thermal, why a recirculation return flow of a quarter of a litre per second is what makes remote branches fail, dead legs, storage versus turnover, and keeping cold water cold in a warm shaft &mdash; with three interactive charts.',
+    en_excerpt='Hot water is the only building service that can harm people through ordinary operation rather than through failure, and the design is a genuine conflict, because hot enough to be safe is hot enough to scald. At 55&nbsp;&deg;C a 4-log kill takes an hour, at 60&nbsp;&deg;C eight minutes, and at 46&nbsp;&deg;C it never happens. Why the answer is spatial rather than thermal, why a recirculation return flow of a quarter of a litre per second is what makes remote branches fail, dead legs, storage versus turnover, and keeping cold water cold in a warm shaft, with three interactive charts.',
     en_search='domestic hot water DHW service water heating Legionella legionnaires disease tall buildings megatall plumbing temperature regime 60 degrees storage 55 degrees return thermal disinfection D-value log reduction z-value growth range 20 45 scald risk thermostatic mixing valve TMV failsafe point of use recirculation loop heat loss standing loss return flow thermostatic balancing valve dynamic balancing dead leg stagnation infrequently used outlets automatic flushing storage calorifier instantaneous heater recovery rate turnover tank weight cold water below 20 shaft layout insulation thickness thermometer pocket commissioning to temperature chlorination disinfection water safety plan ACOP L8 HSG274 ASHRAE 188 CIBSE TM13 BS 8558 MEP building services',
     ar_title='المياه الساخنة ومكافحة الليجيونيلا في المباني فائقة الارتفاع: نظام الحرارة والتدوير والتخزين',
-    ar_excerpt='المياه الساخنة هي الخدمة الوحيدة في المبنى التي قد تؤذي الناس أثناء التشغيل العادي لا عند العطل — والتصميم تعارضٌ حقيقي، لأن الحرارة الكافية للأمان هي نفسها الكافية للحرق. عند ٥٥ درجة يحتاج القتل بمقدار أربع مراتب لوغاريتمية إلى ساعة، وعند ٦٠ درجة إلى ثماني دقائق، وعند ٤٦ درجة لا يحدث أبدًا. لماذا يكون الحل مكانيًا لا حراريًا، ولماذا يكون تدفق العودة البالغ ربع لتر في الثانية هو سبب فشل الفروع البعيدة، والفروع الميتة، والتخزين مقابل معدل الدوران، وإبقاء المياه الباردة باردة داخل منور دافئ — مع ثلاثة رسوم تفاعلية.',
+    ar_excerpt='المياه الساخنة هي الخدمة الوحيدة في المبنى التي قد تؤذي الناس أثناء التشغيل العادي لا عند العطل، والتصميم تعارضٌ حقيقي، لأن الحرارة الكافية للأمان هي نفسها الكافية للحرق. عند ٥٥ درجة يحتاج القتل بمقدار أربع مراتب لوغاريتمية إلى ساعة، وعند ٦٠ درجة إلى ثماني دقائق، وعند ٤٦ درجة لا يحدث أبدًا. لماذا يكون الحل مكانيًا لا حراريًا، ولماذا يكون تدفق العودة البالغ ربع لتر في الثانية هو سبب فشل الفروع البعيدة، والفروع الميتة، والتخزين مقابل معدل الدوران، وإبقاء المياه الباردة باردة داخل منور دافئ، مع ثلاثة رسوم تفاعلية.',
     ar_search='domestic hot water Legionella thermal disinfection D-value recirculation thermostatic balancing valve dead leg TMV storage turnover cold water ACOP L8 HSG274 ASHRAE 188 CIBSE TM13 المياه الساخنة تسخين مياه الاستخدام الليجيونيلا داء الفيالقة المباني الشاهقة المباني فائقة الارتفاع السباكة نظام درجات الحرارة التخزين عند ٦٠ العودة عند ٥٥ التعقيم الحراري قيمة الاختزال العشري المدى اللوغاريتمي نطاق النمو خطر الحروق صمام الخلط الحراري صمام الأمان عند نقطة الاستخدام دائرة التدوير الفقد الحراري الفقد الدائم تدفق العودة صمام الموازنة الحراري الفرع الميت الركود المخارج قليلة الاستخدام الغسيل التلقائي السخان التخزيني السخان اللحظي معدل الاسترداد معدل الدوران وزن الخزان المياه الباردة تحت ٢٠ تخطيط المناور سماكة العزل جيب مقياس الحرارة التشغيل والاختبار على الحرارة الكلورة التعقيم خطة سلامة المياه MEP خدمات المباني',
     body=BODY, charts=CHARTS,
 )

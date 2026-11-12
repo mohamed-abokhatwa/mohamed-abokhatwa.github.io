@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Distribution Network Design: Looped vs Branched — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Distribution Network Design: Looped vs Branched | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -105,16 +105,16 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="Looped vs branched (dead-end) water distribution networks: how the topology decides pressure, reliability, water quality and cost. Why a loop splits the flow and halves the head loss, why a single break isolates a tree but not a grid, why dead-ends go stale — with three interactive design charts and a worked network.">
+  <meta name="description" content="Looped vs branched (dead-end) water distribution networks: how the topology decides pressure, reliability, water quality and cost. Why a loop splits the flow and halves the head loss, why a single break isolates a tree but not a grid, why dead-ends go stale, with three interactive design charts and a worked network.">
   <meta property="og:title" content="Distribution Network Design: Looped vs Branched | Mohamed Abokhatwa">
-  <meta property="og:description" content="The shape of the network sets its pressure, reliability and water quality before a single pipe is sized. Looped grids vs branched dead-ends — flow splitting, the n-1 rule, water age, and fire flow — in three interactive charts.">
+  <meta property="og:description" content="The shape of the network sets its pressure, reliability and water quality before a single pipe is sized. Looped grids vs branched dead-ends: flow splitting, the n-1 rule, water age, and fire flow, in three interactive charts.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/distribution-network-looped-branched.html">
   <meta property="og:image" content="https://abokhatwa.com/og-distribution-network-looped-branched.jpg">
   <meta property="og:image:alt" content="Looped grid versus branched dead-end water distribution network schematic">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Distribution Network Design: Looped vs Branched | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="Why looping a distribution network halves the head loss, survives a pipe break, and keeps chlorine alive — branched vs looped in three interactive charts.">
+  <meta name="twitter:description" content="Why looping a distribution network halves the head loss, survives a pipe break, and keeps chlorine alive: branched vs looped in three interactive charts.">
   <link rel="canonical" href="https://abokhatwa.com/distribution-network-looped-branched.html">
 
   <script type="application/ld+json">
@@ -122,7 +122,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Distribution Network Design: Looped vs Branched",
-  "description": "Looped vs branched (dead-end) water distribution networks: how topology decides pressure, reliability, water quality and cost — flow splitting and head loss, the n-1 redundancy rule, water age and chlorine decay, and fire flow.",
+  "description": "Looped vs branched (dead-end) water distribution networks: how topology decides pressure, reliability, water quality and cost; flow splitting and head loss, the n-1 redundancy rule, water age and chlorine decay, and fire flow.",
   "image": "https://abokhatwa.com/og-distribution-network-looped-branched.jpg",
   "datePublished": "2026-06-18",
   "dateModified": "2026-06-18",
@@ -161,6 +161,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -203,27 +204,27 @@
 </div>
 
 <div class="article-body">
-<p class="lead">Everything upstream of the distribution network is a single decision repeated: one transmission main, one pumping station, one reservoir. The distribution network is the first time the water has to be in many places at once — and the way you connect those places, before you size a single pipe, quietly fixes four things that are expensive to fix later: the pressure at the worst house, what happens when a backhoe finds a main, whether the chlorine is still alive at the edge of town, and how much pipe you bought to get there. That decision has a name: looped or branched.</p>
+<p class="lead">Everything upstream of the distribution network is a single decision repeated: one transmission main, one pumping station, one reservoir. The distribution network is the first time the water has to be in many places at once, and the way you connect those places, before you size a single pipe, quietly fixes four things that are expensive to fix later: the pressure at the worst house, what happens when a backhoe finds a main, whether the chlorine is still alive at the edge of town, and how much pipe you bought to get there. That decision has a name: looped or branched.</p>
 
 <h2 id="why">1 · The shape is the decision</h2>
 <p>Pipe sizing, valve selection and pump heads are all reversible on paper until late in design. Network <em>topology</em> is not. Once the corridors are committed and the pipe is in the ground, converting a branched system to a looped one means re-trenching streets that are already paved. So the looped-vs-branched choice is made first, and it sets the ceiling on everything that follows:</p>
 <ul class="clean">
-  <li><strong>Pressure</strong> — how far the head from the source actually reaches the last connection at peak demand.</li>
-  <li><strong>Reliability</strong> — how many customers lose water when one pipe is taken out by a break or a repair.</li>
-  <li><strong>Water quality</strong> — whether water moves fast enough to hold a disinfectant residual, or sits long enough to go stale.</li>
-  <li><strong>Cost</strong> — how much pipe length, and of what diameter, the layout demands.</li>
+  <li><strong>Pressure</strong>: how far the head from the source actually reaches the last connection at peak demand.</li>
+  <li><strong>Reliability</strong>: how many customers lose water when one pipe is taken out by a break or a repair.</li>
+  <li><strong>Water quality</strong>: whether water moves fast enough to hold a disinfectant residual, or sits long enough to go stale.</li>
+  <li><strong>Cost</strong>: how much pipe length, and of what diameter, the layout demands.</li>
 </ul>
 
 <div class="callout key">
   <span class="lbl">The governing idea</span>
-  A <strong>branched</strong> network gives every point a single path to the source — cheap, simple, and fragile. A <strong>looped</strong> network gives every point at least two paths — more pipe, but the redundancy splits the flow, steadies the pressure, survives a break, and keeps the water moving. Almost every quality of a distribution system traces back to how many paths the water has.
+  A <strong>branched</strong> network gives every point a single path to the source: cheap, simple, and fragile. A <strong>looped</strong> network gives every point at least two paths: more pipe, but the redundancy splits the flow, steadies the pressure, survives a break, and keeps the water moving. Almost every quality of a distribution system traces back to how many paths the water has.
 </div>
 
-<h2 id="topologies">2 · Branched vs looped — the two topologies</h2>
+<h2 id="topologies">2 · Branched vs looped: the two topologies</h2>
 <p>Strip a distribution network to its skeleton and there are only two ways to wire it:</p>
 <ul class="clean">
   <li><strong>Branched (tree / dead-end).</strong> A main splits into sub-mains, which split into smaller pipes, ending in closed <em>dead-ends</em>. Water reaches every node by exactly one route. It mirrors how a town grows outward, uses the least pipe, and is the easiest to lay and to model by hand.</li>
-  <li><strong>Looped (grid / gridiron).</strong> Pipes are closed into loops so that every node is fed from two or more directions. Flow divides between the paths according to head loss, and finds its own balance — the basis of the classic <a href="hydraulic-design.html">Hardy Cross</a> network analysis<sup class="cite">[5]</sup>.</li>
+  <li><strong>Looped (grid / gridiron).</strong> Pipes are closed into loops so that every node is fed from two or more directions. Flow divides between the paths according to head loss, and finds its own balance: the basis of the classic <a href="hydraulic-design.html">Hardy Cross</a> network analysis<sup class="cite">[5]</sup>.</li>
 </ul>
 
 <div class="schematic">
@@ -274,35 +275,35 @@
   <circle class="node" cx="478" cy="208" r="5"/><circle class="node" cx="548" cy="208" r="5"/><circle class="node" cx="618" cy="208" r="5"/>
   <text x="410" y="250" class="lbl">every node fed from two or more directions</text>
 </svg>
-  <div class="cap">Original schematic. Left: a branched tree terminating in dead-ends — one path per node. Right: a looped grid — closed circuits give every node redundant paths.</div>
+  <div class="cap">Original schematic. Left: a branched tree terminating in dead-ends, one path per node. Right: a looped grid; closed circuits give every node redundant paths.</div>
 </div>
 
 <h2 id="hydraulics">3 · The hydraulics: how each shares the flow</h2>
-<p>The difference is not stylistic — it changes the arithmetic of head loss. Friction in a water main follows the Hazen-Williams relation, where the loss climbs with very nearly the <em>square</em> of the flow it carries<sup class="cite">[9]</sup>:</p>
+<p>The difference is not stylistic: it changes the arithmetic of head loss. Friction in a water main follows the Hazen-Williams relation, where the loss climbs with very nearly the <em>square</em> of the flow it carries<sup class="cite">[9]</sup>:</p>
 
 <div class="eq">\[ h_f = \frac{10.67\,L\,Q^{1.852}}{C^{1.852}\,D^{4.87}} \]</div>
 
-<p>That exponent of 1.852 on \(Q\) is the whole story. In a <strong>branched</strong> main, one pipe carries the <em>entire</em> downstream demand to the far node. In a <strong>looped</strong> main, the same far node is reached from two directions, so each leg carries only part of the flow — and because loss scales with \(Q^{1.852}\), halving the flow in a pipe cuts its head loss to about \(0.5^{1.852}\approx 0.28\) — barely a quarter. Redundancy is not only about reliability; it buys back pressure for free.</p>
+<p>That exponent of 1.852 on \(Q\) is the whole story. In a <strong>branched</strong> main, one pipe carries the <em>entire</em> downstream demand to the far node. In a <strong>looped</strong> main, the same far node is reached from two directions, so each leg carries only part of the flow (and because loss scales with \(Q^{1.852}\), halving the flow in a pipe cuts its head loss to about \(0.5^{1.852}\approx 0.28\)), barely a quarter. Redundancy is not only about reliability; it buys back pressure for free.</p>
 
 <div class="tbl-wrap">
 <table>
-  <caption>The same far node, 2&nbsp;km from the source, DN300 ductile iron (C&nbsp;=&nbsp;130), peak demand 100&nbsp;L/s — fed as a dead-end vs. through a loop.</caption>
+  <caption>The same far node, 2&nbsp;km from the source, DN300 ductile iron (C&nbsp;=&nbsp;130), peak demand 100&nbsp;L/s: fed as a dead-end vs. through a loop.</caption>
   <thead><tr><th>Path to the far node</th><th class="num">Flow per pipe</th><th class="num">Length</th><th class="num">Head loss</th></tr></thead>
   <tbody>
-    <tr><td>Branched — one pipe carries it all</td><td class="num">100 L/s</td><td class="num">2.0 km</td><td class="num">12.84 m</td></tr>
-    <tr><td>Looped — flow splits ~50/50, two legs</td><td class="num">50 L/s each</td><td class="num">1.0 km each</td><td class="num">1.78 m</td></tr>
+    <tr><td>Branched: one pipe carries it all</td><td class="num">100 L/s</td><td class="num">2.0 km</td><td class="num">12.84 m</td></tr>
+    <tr><td>Looped: flow splits ~50/50, two legs</td><td class="num">50 L/s each</td><td class="num">1.0 km each</td><td class="num">1.78 m</td></tr>
   </tbody>
 </table>
 </div>
 
-<p>Same pipe, same node, same demand: <strong>12.8&nbsp;m of head lost as a dead-end versus 1.8&nbsp;m through a loop</strong> — roughly a seven-fold difference, all of it pressure delivered to the customer instead of burned in friction. The first interactive chart lets you push these numbers.</p>
+<p>Same pipe, same node, same demand: <strong>12.8&nbsp;m of head lost as a dead-end versus 1.8&nbsp;m through a loop</strong>, roughly a seven-fold difference, all of it pressure delivered to the customer instead of burned in friction. The first interactive chart lets you push these numbers.</p>
 
 <h2 id="int-pressure">4 · Interactive: pressure along the network</h2>
 <p>This is the pressure profile from the source to the far node, 2&nbsp;km away, for the same demand carried two ways: a branched dead-end (one pipe, full flow) and a loop (flow split between two legs). Drop the diameter or raise the demand and watch the branched line dive through the minimum-pressure floor while the looped line holds.</p>
 
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Pressure from source to far node — branched vs looped</div>
+    <div class="ftitle">Pressure from source to far node: branched vs looped</div>
     <div class="fsub">Hazen-Williams head loss (C = 130) over a 2 km corridor to the far node. Branched (amber) carries the full demand in one pipe; looped (blue) splits it between two legs. The dashed red line is the minimum acceptable pressure (≈ 14 m / 20 psi). Where the amber line crosses it, the dead-end customers are below code.</div>
   </div>
   <div class="chart-box"><canvas id="pressChart"></canvas></div>
@@ -330,11 +331,11 @@
     <div class="cell"><div class="k">Branched verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rPv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At the default 100&nbsp;L/s through DN300 both layouts hold pressure — but the looped node sits ~9&nbsp;m higher. Drag the demand toward 200&nbsp;L/s, or the diameter down to DN200, and the branched line plunges below the 14&nbsp;m floor while the loop is still comfortable. The dead-end forces you to buy a bigger pipe to do what a loop does with circulation.</p>
+<p class="fig-note">At the default 100&nbsp;L/s through DN300 both layouts hold pressure, but the looped node sits ~9&nbsp;m higher. Drag the demand toward 200&nbsp;L/s, or the diameter down to DN200, and the branched line plunges below the 14&nbsp;m floor while the loop is still comfortable. The dead-end forces you to buy a bigger pipe to do what a loop does with circulation.</p>
 
-<h2 id="reliability">5 · Reliability — one break, and who keeps water</h2>
+<h2 id="reliability">5 · Reliability: one break, and who keeps water</h2>
 <p>A distribution network is not designed for the day everything works; it is designed for the day a contractor's auger goes through a main, or a valve has to be closed for a new connection. This is the <strong>n&minus;1</strong> idea: the system should still deliver with any one element out of service<sup class="cite">[4]</sup>.</p>
-<p>Here the two topologies could not be more different. In a branched tree, every pipe is the <em>only</em> pipe feeding everything beyond it — so a single break or closed valve isolates the entire sub-tree downstream. Break the main near the source and the whole town goes dark. In a looped grid, closing one segment simply re-routes the water the other way around the loop; pressure dips, but supply continues. The second chart makes the contrast concrete.</p>
+<p>Here the two topologies could not be more different. In a branched tree, every pipe is the <em>only</em> pipe feeding everything beyond it, so a single break or closed valve isolates the entire sub-tree downstream. Break the main near the source and the whole town goes dark. In a looped grid, closing one segment simply re-routes the water the other way around the loop; pressure dips, but supply continues. The second chart makes the contrast concrete.</p>
 
 <h2 id="int-break">6 · Interactive: the impact of a single pipe break</h2>
 <p>Take a corridor of <em>n</em> nodes in series. The bars show the share of customers who lose supply when one pipe segment is taken out, depending on <em>where</em> the break is. In the branched system the loss grows the closer the break is to the source; in the looped system, a single break isolates no one.</p>
@@ -358,27 +359,27 @@
     </div>
   </div>
   <div class="readout">
-    <div class="cell"><div class="k">Branched — at chosen location</div><div class="v" id="rBcur">100 <small>%</small></div></div>
-    <div class="cell"><div class="k">Branched — worst case (break at source)</div><div class="v" id="rBworst">100 <small>%</small></div></div>
-    <div class="cell"><div class="k">Looped — any single break</div><div class="v" id="rLoop">0 <small>%</small></div></div>
+    <div class="cell"><div class="k">Branched: at chosen location</div><div class="v" id="rBcur">100 <small>%</small></div></div>
+    <div class="cell"><div class="k">Branched: worst case (break at source)</div><div class="v" id="rBworst">100 <small>%</small></div></div>
+    <div class="cell"><div class="k">Looped: any single break</div><div class="v" id="rLoop">0 <small>%</small></div></div>
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rRv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">Slide the break toward the source: in the branched layout the cut-off share climbs to 100% — one spade through the wrong pipe and the whole line is dry. The looped layout stays flat at zero for any single failure; it takes a second, simultaneous break to isolate a node. That is the entire reliability argument for looping, in one chart.</p>
+<p class="fig-note">Slide the break toward the source: in the branched layout the cut-off share climbs to 100%: one spade through the wrong pipe and the whole line is dry. The looped layout stays flat at zero for any single failure; it takes a second, simultaneous break to isolate a node. That is the entire reliability argument for looping, in one chart.</p>
 
-<h2 id="quality">7 · Water quality — why dead-ends go stale</h2>
-<p>The hidden cost of a dead-end is not hydraulic, it is chemical. Treated water leaves the plant with a disinfectant residual — typically free chlorine — that must survive all the way to the last tap. Chlorine decays with time spent in the pipe (its <em>water age</em>), following roughly first-order kinetics<sup class="cite">[7]</sup>:</p>
+<h2 id="quality">7 · Water quality: why dead-ends go stale</h2>
+<p>The hidden cost of a dead-end is not hydraulic, it is chemical. Treated water leaves the plant with a disinfectant residual, typically free chlorine, that must survive all the way to the last tap. Chlorine decays with time spent in the pipe (its <em>water age</em>), following roughly first-order kinetics<sup class="cite">[7]</sup>:</p>
 
 <div class="eq">\[ C = C_0\,e^{-k\,t} \]</div>
 
-<p>In a looped network water is always in transit — flow passing through a pipe on its way somewhere else keeps the age low and the residual high. A dead-end has no through-traffic: the only water that moves is the little drawn at the end itself, so a large-diameter stub with light demand can hold water for <em>days</em>. As the age climbs, the residual collapses, disinfection by-products (THMs) form, and taste, odour and bacterial regrowth follow. This is why the standards actively discourage dead-end mains and, where they are unavoidable, require looping, blow-off (flushing) valves, or automatic flushers<sup class="cite">[1]</sup>.</p>
+<p>In a looped network water is always in transit: flow passing through a pipe on its way somewhere else keeps the age low and the residual high. A dead-end has no through-traffic: the only water that moves is the little drawn at the end itself, so a large-diameter stub with light demand can hold water for <em>days</em>. As the age climbs, the residual collapses, disinfection by-products (THMs) form, and taste, odour and bacterial regrowth follow. This is why the standards actively discourage dead-end mains and, where they are unavoidable, require looping, blow-off (flushing) valves, or automatic flushers<sup class="cite">[1]</sup>.</p>
 
 <h2 id="int-age">8 · Interactive: water age and chlorine at the far node</h2>
 <p>The curve is the chlorine residual decaying with water age. The two markers are the same far node served two ways: as a looped segment with through-flow (low age, left) and as a dead-end fed only by its own small demand (high age, right). Lower the demand or pick a more reactive water and watch the dead-end marker fall through the 0.2&nbsp;mg/L line that most utilities hold as the minimum at the extremities.</p>
 
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Chlorine residual vs. water age — dead-end vs. looped node</div>
+    <div class="ftitle">Chlorine residual vs. water age: dead-end vs. looped node</div>
     <div class="fsub">First-order decay C = C₀·e<sup>−kt</sup> for a DN300 × 800 m branch (56.5 m³). The dead-end age is the pipe volume divided by the node's own demand; the looped age assumes through-circulation flushing it roughly 10× faster. The dashed red line is a 0.2 mg/L minimum residual.</div>
   </div>
   <div class="chart-box"><canvas id="wqChart"></canvas></div>
@@ -391,7 +392,7 @@
     <div class="ctrl">
       <label>Chlorine decay rate k <span id="vK">0.5 /day</span></label>
       <input type="range" id="sK" min="0.2" max="1.5" value="0.5" step="0.1">
-      <div class="hint">Higher for warm or organic-rich water — chlorine dies faster.</div>
+      <div class="hint">Higher for warm or organic-rich water: chlorine dies faster.</div>
     </div>
     <div class="ctrl">
       <label>Residual leaving plant C₀ <span id="vC0">1.0 mg/L</span></label>
@@ -401,59 +402,59 @@
   </div>
   <div class="readout">
     <div class="cell"><div class="k">Dead-end water age</div><div class="v" id="rAge">31 <small>h</small></div></div>
-    <div class="cell"><div class="k">Residual — dead-end</div><div class="v" id="rCd">0.5 <small>mg/L</small></div></div>
-    <div class="cell"><div class="k">Residual — looped</div><div class="v" id="rCl">0.9 <small>mg/L</small></div></div>
+    <div class="cell"><div class="k">Residual: dead-end</div><div class="v" id="rCd">0.5 <small>mg/L</small></div></div>
+    <div class="cell"><div class="k">Residual: looped</div><div class="v" id="rCl">0.9 <small>mg/L</small></div></div>
     <div class="cell"><div class="k">Dead-end verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rWv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At a healthy demand the dead-end just holds the line; throttle the demand toward 0.2&nbsp;L/s — a big main with almost nothing drawn off it — and the age runs to days and the residual falls below 0.2&nbsp;mg/L. The looped marker barely moves: circulation is the cheapest water-quality measure there is.</p>
+<p class="fig-note">At a healthy demand the dead-end just holds the line; throttle the demand toward 0.2&nbsp;L/s, a big main with almost nothing drawn off it, and the age runs to days and the residual falls below 0.2&nbsp;mg/L. The looped marker barely moves: circulation is the cheapest water-quality measure there is.</p>
 
-<h2 id="fire">9 · Fire flow — the case looping wins outright</h2>
-<p>Domestic demand is modest and steady; the fire flow is a sudden, enormous draw at one hydrant — often several times the peak-hour demand of the whole zone, for a couple of hours, while pressure everywhere must stay above ~20&nbsp;psi (14&nbsp;m)<sup class="cite">[2]</sup>. A branched main has to carry that entire fire flow down a single pipe, and the \(Q^{1.852}\) law makes the head loss explode — dead-end hydrants routinely fail their flow test. A looped main delivers the same fire flow from two or more directions at once, each leg carrying a fraction, so the network holds its pressure. For any area with fire-protection requirements, looping the supply mains is effectively mandatory; AWWA's fire-protection manual is built around it<sup class="cite">[2]</sup>.</p>
+<h2 id="fire">9 · Fire flow: the case looping wins outright</h2>
+<p>Domestic demand is modest and steady; the fire flow is a sudden, enormous draw at one hydrant, often several times the peak-hour demand of the whole zone, for a couple of hours, while pressure everywhere must stay above ~20&nbsp;psi (14&nbsp;m)<sup class="cite">[2]</sup>. A branched main has to carry that entire fire flow down a single pipe, and the \(Q^{1.852}\) law makes the head loss explode: dead-end hydrants routinely fail their flow test. A looped main delivers the same fire flow from two or more directions at once, each leg carrying a fraction, so the network holds its pressure. For any area with fire-protection requirements, looping the supply mains is effectively mandatory; AWWA's fire-protection manual is built around it<sup class="cite">[2]</sup>.</p>
 
-<h2 id="cost">10 · Cost vs. reliability — and when each one wins</h2>
-<p>None of this makes branched networks wrong. Looping costs more pipe — sometimes 20–40% more length in the supply mains — and that money has to come from somewhere. The engineering is in matching the topology to the duty:</p>
+<h2 id="cost">10 · Cost vs. reliability: and when each one wins</h2>
+<p>None of this makes branched networks wrong. Looping costs more pipe, sometimes 20–40% more length in the supply mains, and that money has to come from somewhere. The engineering is in matching the topology to the duty:</p>
 <ul class="clean">
   <li><strong>Loop the supply and arterial mains</strong> in any urban or suburban area, anywhere with fire flow, and around critical users (hospitals, industry). This is the backbone and it must be redundant.</li>
-  <li><strong>Branch the final service connections.</strong> The short pipe from a looped main to a single building is, sensibly, a dead-end — looping every house would be absurd. The art is keeping these stubs short.</li>
-  <li><strong>Accept branched layouts</strong> in genuinely low-density or rural extensions, at the growing edge of a network, and where a future loop is planned but not yet built — provided you manage the consequences.</li>
+  <li><strong>Branch the final service connections.</strong> The short pipe from a looped main to a single building is, sensibly, a dead-end; looping every house would be absurd. The art is keeping these stubs short.</li>
+  <li><strong>Accept branched layouts</strong> in genuinely low-density or rural extensions, at the growing edge of a network, and where a future loop is planned but not yet built, provided you manage the consequences.</li>
   <li><strong>Where a dead-end is unavoidable</strong>, design the cure in from day one: a flushing/blow-off valve at the end, automatic flushers where age is critical, and a diameter no larger than the demand needs so the water still turns over.</li>
 </ul>
-<p>The dominant real-world pattern is therefore a <strong>hybrid</strong>: a looped grid of supply mains carrying the reliability, water quality and fire flow, with branched service lines hanging off it. The question is rarely "looped or branched?" for the whole system — it is "what is looped, and what is allowed to dead-end?"</p>
+<p>The dominant real-world pattern is therefore a <strong>hybrid</strong>: a looped grid of supply mains carrying the reliability, water quality and fire flow, with branched service lines hanging off it. The question is rarely "looped or branched?" for the whole system. It is "what is looped, and what is allowed to dead-end?"</p>
 
 <div class="callout green">
   <span class="lbl">Design rule of thumb</span>
-  Loop everything that carries fire flow or serves more than a handful of customers; allow dead-ends only on short service stubs or low-demand fringes, and only with a flushing point. Model the looped network in <a href="hydraulic-design.html">a hydraulic solver</a> (EPANET / Hardy Cross) — looped flows cannot be found by hand the way branched ones can<sup class="cite">[8]</sup>.
+  Loop everything that carries fire flow or serves more than a handful of customers; allow dead-ends only on short service stubs or low-demand fringes, and only with a flushing point. Model the looped network in <a href="hydraulic-design.html">a hydraulic solver</a> (EPANET / Hardy Cross): looped flows cannot be found by hand the way branched ones can<sup class="cite">[8]</sup>.
 </div>
 
 <h2 id="checklist">11 · The design checklist</h2>
 <ul class="clean">
-  <li><strong>Loop the supply mains</strong> — every arterial and sub-arterial main fed from two directions; reserve dead-ends for short service stubs.</li>
-  <li><strong>Hold the minimum pressure</strong> — ≥ 20 psi (14 m) under all conditions including fire flow; ≥ 35 psi (25 m) desirable in normal operation<sup class="cite">[1]</sup>.</li>
-  <li><strong>Satisfy n&minus;1</strong> — check that closing any single segment still serves every node above the minimum pressure.</li>
-  <li><strong>Deliver the fire flow</strong> — verify required flow at each hydrant from two directions while holding residual pressure<sup class="cite">[2]</sup>.</li>
-  <li><strong>Bound the water age</strong> — keep velocities live; eliminate or flush dead-ends; avoid oversizing mains "for the future" when it lets water stagnate today.</li>
-  <li><strong>Check the velocities</strong> — roughly 0.6–2.0 m/s at peak; too low feeds stagnation, too high spikes head loss and surge.</li>
-  <li><strong>Model it</strong> — build the looped network in EPANET or an equivalent and balance the loops (Hardy Cross / gradient method) before committing pipe sizes<sup class="cite">[3]</sup>.</li>
-  <li><strong>Plan the valving</strong> — enough isolation valves that any single break can be isolated without cutting off a large block.</li>
+  <li><strong>Loop the supply mains</strong>: every arterial and sub-arterial main fed from two directions; reserve dead-ends for short service stubs.</li>
+  <li><strong>Hold the minimum pressure</strong>: ≥ 20 psi (14 m) under all conditions including fire flow; ≥ 35 psi (25 m) desirable in normal operation<sup class="cite">[1]</sup>.</li>
+  <li><strong>Satisfy n&minus;1</strong>: check that closing any single segment still serves every node above the minimum pressure.</li>
+  <li><strong>Deliver the fire flow</strong>: verify required flow at each hydrant from two directions while holding residual pressure<sup class="cite">[2]</sup>.</li>
+  <li><strong>Bound the water age</strong>: keep velocities live; eliminate or flush dead-ends; avoid oversizing mains "for the future" when it lets water stagnate today.</li>
+  <li><strong>Check the velocities</strong>: roughly 0.6–2.0 m/s at peak; too low feeds stagnation, too high spikes head loss and surge.</li>
+  <li><strong>Model it</strong>: build the looped network in EPANET or an equivalent and balance the loops (Hardy Cross / gradient method) before committing pipe sizes<sup class="cite">[3]</sup>.</li>
+  <li><strong>Plan the valving</strong>: enough isolation valves that any single break can be isolated without cutting off a large block.</li>
 </ul>
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  Branched networks are cheaper and simpler and fail in every way that matters — pressure, reliability, water quality and fire flow — the moment the system is stressed. Loop the mains, branch only the service stubs, and the same source reaches farther, survives a break, and arrives still disinfected.
+  Branched networks are cheaper and simpler and fail in every way that matters (pressure, reliability, water quality and fire flow) the moment the system is stressed. Loop the mains, branch only the service stubs, and the same source reaches farther, survives a break, and arrives still disinfected.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>Great Lakes&ndash;Upper Mississippi River Board (GLUMRB). <em>Recommended Standards for Water Works (Ten States Standards)</em> — distribution mains, minimum pressure, dead-end mains and looping requirements.</li>
-  <li>American Water Works Association. <em>Manual M31 — Distribution System Requirements for Fire Protection.</em></li>
-  <li>American Water Works Association. <em>Manual M32 — Computer Modeling of Water Distribution Systems.</em></li>
-  <li>American Water Works Association. <em>Manual G200 — Distribution Systems Operation and Management</em> (reliability and n&minus;1 practice).</li>
+  <li>Great Lakes&ndash;Upper Mississippi River Board (GLUMRB). <em>Recommended Standards for Water Works (Ten States Standards)</em>: distribution mains, minimum pressure, dead-end mains and looping requirements.</li>
+  <li>American Water Works Association. <em>Manual M31: Distribution System Requirements for Fire Protection.</em></li>
+  <li>American Water Works Association. <em>Manual M32: Computer Modeling of Water Distribution Systems.</em></li>
+  <li>American Water Works Association. <em>Manual G200: Distribution Systems Operation and Management</em> (reliability and n&minus;1 practice).</li>
   <li>Cross, H. (1936). <em>Analysis of Flow in Networks of Conduits or Conductors.</em> Univ. of Illinois Engineering Experiment Station, Bulletin 286.</li>
   <li>Walski, T.M., Chase, D.V., Savic, D.A., et al. <em>Advanced Water Distribution Modeling and Management.</em> Haestad / Bentley Institute Press.</li>
   <li>U.S. EPA. <em>Effects of Water Age on Distribution System Water Quality</em> (2002); and AWWA water-quality guidance on disinfectant residuals.</li>
-  <li>U.S. EPA. <em>EPANET 2.2 — Hydraulic and Water Quality Modeling</em>, user manual.</li>
-  <li>Williams, G.S. &amp; Hazen, A. <em>Hydraulic Tables</em> — the Hazen-Williams head-loss relation used throughout.</li>
+  <li>U.S. EPA. <em>EPANET 2.2: Hydraulic and Water Quality Modeling</em>, user manual.</li>
+  <li>Williams, G.S. &amp; Hazen, A. <em>Hydraulic Tables</em>: the Hazen-Williams head-loss relation used throughout.</li>
 </ol>
 
 <div class="tags">#DistributionNetwork #LoopedNetwork #BranchedNetwork #DeadEnds #WaterDistribution #NetworkHydraulics #HardyCross #EPANET #WaterAge #ChlorineResidual #FireFlow #Redundancy #PipelineDesign #WaterInfrastructure</div>
@@ -464,7 +465,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -630,8 +631,8 @@ const vN=document.getElementById('vN'), vBrk=document.getElementById('vBrk');
 
 let relChart=new Chart(document.getElementById('relChart'),{
   data:{labels:[],datasets:[
-    {type:'bar', label:'Branched — customers cut off', data:[], backgroundColor:[], borderColor:'#b9770e', borderWidth:1, order:2},
-    {type:'line', label:'Looped — customers cut off (always 0)', data:[], borderColor:'#1e8449', backgroundColor:'#1e8449', borderWidth:3.5, pointRadius:4, pointBackgroundColor:'#1e8449', tension:0, order:1}
+    {type:'bar', label:'Branched: customers cut off', data:[], backgroundColor:[], borderColor:'#b9770e', borderWidth:1, order:2},
+    {type:'line', label:'Looped: customers cut off (always 0)', data:[], borderColor:'#1e8449', backgroundColor:'#1e8449', borderWidth:3.5, pointRadius:4, pointBackgroundColor:'#1e8449', tension:0, order:1}
   ]},
   options:{
     responsive:true, maintainAspectRatio:false,

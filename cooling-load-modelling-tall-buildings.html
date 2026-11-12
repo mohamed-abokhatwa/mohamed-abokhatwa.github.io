@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cooling Load &amp; Energy Modelling for Megatall Buildings: Façade Ratio, Solar by Height &amp; Diversity — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Cooling Load &amp; Energy Modelling for Megatall Buildings: Façade Ratio, Solar by Height &amp; Diversity | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -109,7 +109,7 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="Cooling load and energy modelling for megatall buildings: why the floor plate dimension decides whether the tower is envelope-driven or internally driven, what actually changes with height including the loss of shading and a doubling of solar gain at the crown, how much diversity a mixed-use tower really has once weather-driven and usage-driven loads are separated, and how to model a tower honestly including stack-driven infiltration — with three interactive charts.">
+  <meta name="description" content="Cooling load and energy modelling for megatall buildings: why the floor plate dimension decides whether the tower is envelope-driven or internally driven, what actually changes with height including the loss of shading and a doubling of solar gain at the crown, how much diversity a mixed-use tower really has once weather-driven and usage-driven loads are separated, and how to model a tower honestly including stack-driven infiltration, with three interactive charts.">
   <meta property="og:title" content="Cooling Load &amp; Energy Modelling for Megatall Buildings: Façade Ratio, Solar by Height &amp; Diversity | Mohamed Abokhatwa">
   <meta property="og:description" content="A 30 m floor plate is 60 percent envelope-driven; a 60 m plate is 43 percent. Two different buildings needing two different HVAC templates, separated by nothing more than a dimension on the architect plan.">
   <meta property="og:type" content="website">
@@ -148,6 +148,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -190,7 +191,7 @@
 
 <div class="article-body">
 
-<p class="lead">Two towers of identical height and identical total area can have completely different cooling loads, different plant, different riser strategies and different economics — because one has a 30&nbsp;m floor plate and the other a 60&nbsp;m one. The slender tower carries <strong>twice as much façade per square metre of floor</strong>, which makes it an <strong>envelope-driven building</strong> where 60&nbsp;% of the load comes through the glass; the wide one is internally driven, where the people, lights and equipment dominate. Almost every subsequent decision — where the plant goes, whether perimeter systems are needed, how the zones are controlled, what the diversity is — follows from which of those two buildings you are designing, and it is decided by the architect's massing long before the first load calculation.</p>
+<p class="lead">Two towers of identical height and identical total area can have completely different cooling loads, different plant, different riser strategies and different economics, because one has a 30&nbsp;m floor plate and the other a 60&nbsp;m one. The slender tower carries <strong>twice as much façade per square metre of floor</strong>, which makes it an <strong>envelope-driven building</strong> where 60&nbsp;% of the load comes through the glass; the wide one is internally driven, where the people, lights and equipment dominate. Almost every subsequent decision (where the plant goes, whether perimeter systems are needed, how the zones are controlled, what the diversity is) follows from which of those two buildings you are designing, and it is decided by the architect's massing long before the first load calculation.</p>
 
 <h2 id="geometry">1 · Geometry is the load</h2>
 <p>For a square floor plate of side \(s\) and floor-to-floor height \(h\), the façade area per unit of floor area is simply:</p>
@@ -199,7 +200,7 @@
 <ul class="clean">
   <li><strong>Slender towers are envelope-dominated.</strong> Solar and conduction gains scale with that ratio, so they peak sharply with orientation and time of day, they vary enormously between façades, and they demand perimeter treatment and orientation-based zoning.</li>
   <li><strong>Wide-plate towers are internally dominated.</strong> Lights, equipment and people dominate, loads are steadier, deep space needs cooling all year even in winter, and simultaneous heating and cooling on the same floor becomes a real design problem.</li>
-  <li><strong>Residential and hotel towers are almost always slender</strong> — because every room needs a window — which is why they behave so differently from offices and why office rules of thumb mislead badly when applied to them.</li>
+  <li><strong>Residential and hotel towers are almost always slender</strong>, because every room needs a window, which is why they behave so differently from offices and why office rules of thumb mislead badly when applied to them.</li>
 </ul>
 
 <h2 id="int-geom">2 · Interactive: envelope versus internal load</h2>
@@ -246,10 +247,10 @@
 <h2 id="height">3 · What actually changes with height</h2>
 <p>Height itself changes less than people expect, but what it does change is systematic:</p>
 <ul class="clean">
-  <li><strong>Shading disappears.</strong> Near grade a tower is shaded by its neighbours for much of the day; above the urban canopy it is not. The upper third of a tower can receive close to <strong>twice the solar gain</strong> of the lower third on the same orientation, for identical glass — and that is a zoning decision, not a glazing one.</li>
-  <li><strong>Air temperature falls slightly</strong> — roughly 0.65&nbsp;°C per 100&nbsp;m — which very marginally helps.</li>
+  <li><strong>Shading disappears.</strong> Near grade a tower is shaded by its neighbours for much of the day; above the urban canopy it is not. The upper third of a tower can receive close to <strong>twice the solar gain</strong> of the lower third on the same orientation, for identical glass, and that is a zoning decision, not a glazing one.</li>
+  <li><strong>Air temperature falls slightly</strong>, roughly 0.65&nbsp;°C per 100&nbsp;m, which very marginally helps.</li>
   <li><strong>Wind increases sharply</strong>, raising the external film coefficient and therefore the conduction gain, and driving the infiltration described in <a href="stack-effect-tall-buildings.html">stack effect</a>.</li>
-  <li><strong>Infiltration becomes a real load</strong> rather than a rounding error, and it is <em>not</em> uniform — it is concentrated below the neutral plane in winter and above it in a Gulf summer.</li>
+  <li><strong>Infiltration becomes a real load</strong> rather than a rounding error, and it is <em>not</em> uniform. It is concentrated below the neutral plane in winter and above it in a Gulf summer.</li>
   <li><strong>Occupancy patterns differ by zone, but the chilled-water peaks mostly do not.</strong> Offices, hotel rooms and residences keep different hours, and a hotel's busiest evening or a residence's late-night occupancy is real. On chilled water in a Gulf summer, though, all three draw their peak in the same afternoon: offices between 14:00 and 15:00, hotel rooms and residences between 16:00 and 17:00, because sun on glass, infiltration and outdoor air dominate each of them. Section&nbsp;4 shows how much diversity that leaves.</li>
 </ul>
 
@@ -289,7 +290,7 @@
     <div class="cell"><div class="k">Zoning</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rZv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">The same glass, the same orientation, and a <strong>2.5× difference in peak solar gain</strong> between the podium floors and the crown. Designing every floor to the same W/m² therefore over-sizes the bottom of the tower and under-sizes the top — and because plant is zoned vertically anyway, the fix is nearly free: <strong>apply different load densities to different vertical zones</strong>, and check the shading with a real solar study rather than a rule of thumb. Note also that the shading benefit at low level is a <em>borrowed</em> benefit; it disappears if the neighbouring site is redeveloped taller, which on a prime site over a sixty-year life is not a remote possibility.</p>
+<p class="fig-note">The same glass, the same orientation, and a <strong>2.5× difference in peak solar gain</strong> between the podium floors and the crown. Designing every floor to the same W/m² therefore over-sizes the bottom of the tower and under-sizes the top, and because plant is zoned vertically anyway, the fix is nearly free: <strong>apply different load densities to different vertical zones</strong>, and check the shading with a real solar study rather than a rule of thumb. Note also that the shading benefit at low level is a <em>borrowed</em> benefit; it disappears if the neighbouring site is redeveloped taller, which on a prime site over a sixty-year life is not a remote possibility.</p>
 
 <h2 id="int-diversity">4 · Interactive: how much diversity a mixed-use tower really has</h2>
 <div class="callout warn"><span class="lbl">Corrected September 2026</span>An earlier version of this section said a mixed-use tower could be sized at 0.5&ndash;0.6 of its connected load, and showed a 50&nbsp;MW connected load becoming a 30&nbsp;MW plant. That model applied occupancy diversity to the whole load, including the weather-driven part, which does not diversify. The section, the chart and the summary have been rebuilt on the hourly block calculation in the companion article, <a href="chilled-water-diversity-megatall.html">Chilled-Water Diversity in Megatall Towers</a>. For a Gulf mixed-use tower the figure is about <strong>0.86</strong>.</div>
@@ -354,27 +355,27 @@
 <h2 id="modelling">5 · Modelling a tower honestly</h2>
 <ul class="clean">
   <li><strong>Zone by orientation and by height</strong>, not by floor. A 150-storey model with every floor represented is unmanageable and no more accurate; a model with representative floors per vertical zone and per orientation captures what matters.</li>
-  <li><strong>Include the stack effect.</strong> Most whole-building models treat infiltration as a constant air change rate, which is exactly wrong for a tower — infiltration is concentrated at the base in winter and at the top in a Gulf summer, and it is one of the largest single loads. Use a model that couples airflow to the thermal simulation, or at least apply a height-varying infiltration profile.</li>
+  <li><strong>Include the stack effect.</strong> Most whole-building models treat infiltration as a constant air change rate, which is exactly wrong for a tower: infiltration is concentrated at the base in winter and at the top in a Gulf summer, and it is one of the largest single loads. Use a model that couples airflow to the thermal simulation, or at least apply a height-varying infiltration profile.</li>
   <li><strong>Model the real occupancy schedules per use</strong>, because the usage-driven part of the diversity is a scheduling result. A mixed-use tower modelled with one office schedule throughout will get the peak hour, and therefore the block, wrong.</li>
   <li><strong>Calibrate the glazing model against the actual specification</strong>, including frames, spandrel panels and the shading that is actually built rather than the shading that is rendered.</li>
   <li><strong>Test the model's sensitivity</strong> to the three parameters that dominate: SHGC, internal gain density and infiltration. If the answer swings wildly on any of them, that is where the design effort belongs.</li>
   <li><strong>Do not confuse peak sizing with energy.</strong> Peak sizing sets the plant; annual simulation sets the running cost and the control strategy. They are different exercises with different assumptions, and using peak-day assumptions for an annual model is a common and expensive error.</li>
 </ul>
 
-<h2 id="install">6 · From model to plant — the practical steps</h2>
+<h2 id="install">6 · From model to plant: the practical steps</h2>
 <ul class="clean">
   <li><strong>Write down the diversity you took and why.</strong> The single most useful line in a design report is an explicit statement of the assumed diversity, the basis for it and what would invalidate it. The basis should be an hourly block calculation, not a percentage. It is also the line that protects you if the building's use changes.</li>
   <li><strong>Give each vertical zone its own load density.</strong> Solar-driven differences of 2× between bottom and top are real and free to exploit, because the plant is zoned anyway.</li>
-  <li><strong>Separate the perimeter from the core in the control strategy</strong>, even where a single system serves both — they peak at different times and in opposite directions.</li>
+  <li><strong>Separate the perimeter from the core in the control strategy</strong>, even where a single system serves both. They peak at different times and in opposite directions.</li>
   <li><strong>Design for turndown, not just for peak.</strong> A plant sized on a diversified peak spends its life well below it; staging, minimum flows and low-load stability matter more than the last percent of full-load efficiency.</li>
   <li><strong>Leave space for a future tenant load.</strong> A trading floor, a kitchen or a data room appearing mid-life is normal in a landmark tower; leaving riser and plant capacity for it is far cheaper than adding it later.</li>
-  <li><strong>Re-run the model at the end of design</strong> against the specification that was actually procured, not the one that was assumed at concept — the glazing and the lighting density both routinely change.</li>
+  <li><strong>Re-run the model at the end of design</strong> against the specification that was actually procured, not the one that was assumed at concept: the glazing and the lighting density both routinely change.</li>
   <li><strong>Compare against measured data at handover</strong> and keep the model. A calibrated model is the tool that answers every future question about the building, and it is almost always thrown away.</li>
 </ul>
 
 <h2 id="checklist">7 · The design &amp; modelling checklist</h2>
 <ul class="clean">
-  <li><strong>Establish the façade ratio first</strong> — it tells you whether the building is envelope- or internally-driven and which template applies.</li>
+  <li><strong>Establish the façade ratio first</strong>: it tells you whether the building is envelope- or internally-driven and which template applies.</li>
   <li><strong>Zone by orientation and by height</strong>, with different load densities per vertical zone.</li>
   <li><strong>Run a real solar study</strong> including the surrounding fabric and the risk of it changing.</li>
   <li><strong>Couple infiltration to stack effect</strong> rather than assuming a uniform air change rate.</li>
@@ -387,23 +388,23 @@
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  A tower's cooling load is decided by a dimension on the architect's plan: <strong>façade per unit floor area is 4h/s</strong>, so a 30&nbsp;m plate is 60&nbsp;% envelope-driven and a 60&nbsp;m plate is 43&nbsp;% — two different buildings needing two different HVAC templates. Height changes less than expected but changes it systematically: shading disappears, so the crown can see <strong>2.5× the solar gain</strong> of the podium for identical glass, which is free to exploit because the plant is zoned vertically anyway. Diversity is real, but it is smaller than the rule of thumb. In a Gulf glass tower more than half of the connected load is driven by the weather and peaks together, so a mixed-use tower's block load is about <strong>0.86 of connected, not 0.55</strong>. It is enough to pay for the standby chiller, not to halve the plant. Take it from an hourly block calculation to Standard&nbsp;183, not from a blanket percentage, and <strong>write it down explicitly</strong>, because it is the assumption most likely to be quietly invalidated by a change of tenant.
+  A tower's cooling load is decided by a dimension on the architect's plan: <strong>façade per unit floor area is 4h/s</strong>, so a 30&nbsp;m plate is 60&nbsp;% envelope-driven and a 60&nbsp;m plate is 43&nbsp;%, two different buildings needing two different HVAC templates. Height changes less than expected but changes it systematically: shading disappears, so the crown can see <strong>2.5× the solar gain</strong> of the podium for identical glass, which is free to exploit because the plant is zoned vertically anyway. Diversity is real, but it is smaller than the rule of thumb. In a Gulf glass tower more than half of the connected load is driven by the weather and peaks together, so a mixed-use tower's block load is about <strong>0.86 of connected, not 0.55</strong>. It is enough to pay for the standby chiller, not to halve the plant. Take it from an hourly block calculation to Standard&nbsp;183, not from a blanket percentage, and <strong>write it down explicitly</strong>, because it is the assumption most likely to be quietly invalidated by a change of tenant.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ASHRAE <em>Handbook — Fundamentals</em>: Nonresidential Cooling and Heating Load Calculations (Radiant Time Series), Fenestration, and Climatic Design Information.</li>
-  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed. — load characteristics, vertical zoning and diversity in tall buildings.</li>
-  <li>CIBSE <em>Guide A — Environmental Design</em> and CIBSE TM52 / TM54 — load calculation, design criteria and operational energy prediction.</li>
-  <li>ANSI/ASHRAE Standard 140 — <em>Method of Test for Evaluating Building Performance Simulation Software</em>; and ASHRAE Guideline 14 for model calibration against measured data.</li>
-  <li>ANSI/ASHRAE/IES Standard 90.1, Appendix G — whole-building performance modelling protocol; and Estidama / Mostadam / LEED energy modelling requirements.</li>
-  <li>ASHRAE <em>Handbook — Fundamentals</em>, Ventilation and Infiltration chapter — stack-driven infiltration in tall buildings and its coupling to thermal load.</li>
+  <li>ASHRAE <em>Handbook, Fundamentals</em>: Nonresidential Cooling and Heating Load Calculations (Radiant Time Series), Fenestration, and Climatic Design Information.</li>
+  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed.: load characteristics, vertical zoning and diversity in tall buildings.</li>
+  <li>CIBSE <em>Guide A: Environmental Design</em> and CIBSE TM52 / TM54: load calculation, design criteria and operational energy prediction.</li>
+  <li>ANSI/ASHRAE Standard 140: <em>Method of Test for Evaluating Building Performance Simulation Software</em>; and ASHRAE Guideline 14 for model calibration against measured data.</li>
+  <li>ANSI/ASHRAE/IES Standard 90.1, Appendix G: whole-building performance modelling protocol; and Estidama / Mostadam / LEED energy modelling requirements.</li>
+  <li>ASHRAE <em>Handbook, Fundamentals</em>, Ventilation and Infiltration chapter: stack-driven infiltration in tall buildings and its coupling to thermal load.</li>
   <li>CTBUH technical guidance on façade performance and solar exposure in tall buildings.</li>
-  <li>Saudi Building Code <em>SBC 601</em> (energy conservation) and <em>SBC 501</em> — envelope and mechanical requirements for the region; SBC 501 &sect;312.1 requires system design loads to be determined to ASHRAE/ACCA Standard 183.</li>
-  <li>ANSI/ASHRAE/ACCA Standard 183, <em>Peak Cooling and Heating Load Calculations in Buildings Except Low-Rise Residential Buildings</em> — the design load procedure required for equipment sizing by ASHRAE 90.1 &sect;6.4.2.1.</li>
-  <li>Wilkins, C.K. and Hosni, M.H. &ldquo;Plug Load Design Factors.&rdquo; <em>ASHRAE Journal</em> 53(5), May 2011, pp.&nbsp;30&ndash;34 — measured diversity of office equipment (75&nbsp;% for computers, 60&nbsp;% for monitors) and design load factors.</li>
-  <li>Abushakra, B., Haberl, J.S. and Claridge, D.E. &ldquo;Overview of Existing Literature on Diversity Factors and Schedules for Energy and Cooling Load Calculations.&rdquo; <em>ASHRAE Transactions</em> 110(1), 2004 (ASHRAE RP-1093) — lighting and equipment diversity factors from metered office buildings.</li>
-  <li>Abokhatwa, M. <a href="chilled-water-diversity-megatall.html">Chilled-Water Diversity in Megatall Towers</a>, 2026, with the hourly block model published as <a href="specs/diversity_data/model.py">source code</a> — the calculation behind the 0.86 used here.</li>
+  <li>Saudi Building Code <em>SBC 601</em> (energy conservation) and <em>SBC 501</em>: envelope and mechanical requirements for the region; SBC 501 &sect;312.1 requires system design loads to be determined to ASHRAE/ACCA Standard 183.</li>
+  <li>ANSI/ASHRAE/ACCA Standard 183, <em>Peak Cooling and Heating Load Calculations in Buildings Except Low-Rise Residential Buildings</em>: the design load procedure required for equipment sizing by ASHRAE 90.1 &sect;6.4.2.1.</li>
+  <li>Wilkins, C.K. and Hosni, M.H. &ldquo;Plug Load Design Factors.&rdquo; <em>ASHRAE Journal</em> 53(5), May 2011, pp.&nbsp;30&ndash;34: measured diversity of office equipment (75&nbsp;% for computers, 60&nbsp;% for monitors) and design load factors.</li>
+  <li>Abushakra, B., Haberl, J.S. and Claridge, D.E. &ldquo;Overview of Existing Literature on Diversity Factors and Schedules for Energy and Cooling Load Calculations.&rdquo; <em>ASHRAE Transactions</em> 110(1), 2004 (ASHRAE RP-1093): lighting and equipment diversity factors from metered office buildings.</li>
+  <li>Abokhatwa, M. <a href="chilled-water-diversity-megatall.html">Chilled-Water Diversity in Megatall Towers</a>, 2026, with the hourly block model published as <a href="specs/diversity_data/model.py">source code</a>: the calculation behind the 0.86 used here.</li>
 </ol>
 
 <div class="tags">#CoolingLoad #LoadCalculation #EnergyModelling #BuildingSimulation #TallBuildings #MegatallBuildings #FacadeRatio #FloorPlate #EnvelopeDriven #InternallyDriven #SHGC #Glazing #SolarGain #Shading #UrbanCanopy #Diversity #SimultaneousLoad #ConnectedLoad #MixedUse #PlantSizing #Redundancy #Turndown #Infiltration #StackEffect #ASHRAE140 #Guideline14 #Calibration #MEP #BuildingServices #HVAC</div>
@@ -415,7 +416,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -555,9 +556,9 @@ function updSol(){
   document.getElementById('rS5').innerHTML=fmt0(low)+' <small>W/m²</small>';
   document.getElementById('rRt').innerHTML=fmt1(So*f/Math.max(low,1))+'<small>×</small>';
   const v=document.getElementById('rZv'), r=So*f/Math.max(low,1);
-  if(r<1.3)      v.innerHTML='<span class="badge good">uniform — one density</span>';
+  if(r<1.3)      v.innerHTML='<span class="badge good">uniform, one density</span>';
   else if(r<2.0) v.innerHTML='<span class="badge warn">zone by height</span>';
-  else           v.innerHTML='<span class="badge bad">large variation — zone by height</span>';
+  else           v.innerHTML='<span class="badge bad">large variation: zone by height</span>';
 }
 [sNh,sW,sSo,sZ].forEach(s=>s.addEventListener('input',updSol));updSol();
 

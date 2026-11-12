@@ -30,9 +30,9 @@
   <meta name="twitter:title" content="The Pre-Charge Pressure of the Surge Vessel | Mohamed Abokhatwa">
   <meta name="twitter:description" content="At 85 m of head the gas in a surge vessel sits at 9.35 bar abs. Leave out the atmosphere and the gas charge comes out 3.7 times too small; set a bladder pre-charge too low or far too high, or an air-over-water gas volume outside its window, and the line fails.">
   <meta name="twitter:image" content="https://abokhatwa.com/og-pre-charge-pressure.jpg">
-  <title>The Pre-Charge Pressure of the Surge Vessel — Mohamed Abokhatwa</title>
+  <title>The Pre-Charge Pressure of the Surge Vessel | Mohamed Abokhatwa</title>
   <meta name="description" content="Bladder pre-charge or air-over-water gas volume: why both work only in absolute pressure, the unit traps, and transient-checked settings on a 12 km DN800 main.">
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -125,6 +125,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -150,7 +151,7 @@
   <a href="/" class="back">&#8592; All articles</a>
 <div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="surge-transients.html" class="breadcrumb-current">Surge & Transients</a></div>
   <span class="tag">Surge Analysis &middot; Surge Vessel Design</span>
-  <h1>The Pre-Charge Pressure of the Surge Vessel — How One Number Changes Everything</h1>
+  <h1>The Pre-Charge Pressure of the Surge Vessel: How One Number Changes Everything</h1>
   <div class="byline">
     <span>Mohamed Abokhatwa</span>
     <span style="color:var(--border-light)">|</span>
@@ -167,7 +168,7 @@
 <div class="article-body">
 
 <h2 id="introduction">Introduction</h2>
-<p>Of all the numbers on a surge vessel datasheet, the one that decides whether the vessel actually protects the pipeline is also the one most often set wrong. It is rarely the shell volume. On a bladder or diaphragm vessel it is the <strong>pre-charge</strong>; on an air-over-water vessel it is the <strong>gas volume</strong>, held by the water-level set point. Both numbers mean something only in absolute pressure, and on the reference main used here the gas in a vessel at the pump discharge sits at <strong>9.35&nbsp;bar abs</strong> &mdash; a pressure the line imposes, not one anyone sets.</p>
+<p>Of all the numbers on a surge vessel datasheet, the one that decides whether the vessel actually protects the pipeline is also the one most often set wrong. It is rarely the shell volume. On a bladder or diaphragm vessel it is the <strong>pre-charge</strong>; on an air-over-water vessel it is the <strong>gas volume</strong>, held by the water-level set point. Both numbers mean something only in absolute pressure, and on the reference main used here the gas in a vessel at the pump discharge sits at <strong>9.35&nbsp;bar abs</strong>: a pressure the line imposes, not one anyone sets.</p>
 
 <div class="callout correction-note"><strong>Updated September 2026.</strong> An earlier version of this article used 1.84&nbsp;bar abs as the steady gas pressure for 85.0&nbsp;m of head; the correct value is 9.35&nbsp;bar abs. The worked examples, tables and figures have been recalculated with a transient model that includes column separation, and the article now separates bladder pre-charge from the gas setting of an air-over-water vessel.</div>
 
@@ -190,18 +191,18 @@
 </div>
 
 <h3>The reference system and the model</h3>
-<p>A 12&nbsp;km DN800 ductile iron K9 transmission main [1] carries 2,520&nbsp;m&sup3;/h (1.39&nbsp;m/s) at a wave speed of 1,050&nbsp;m/s. The steady HGL is 85.0&nbsp;m at the pump and 44.8&nbsp;m at the delivery reservoir, on a flat profile. The pipe class is PN16 with 136&nbsp;m allowable [2], the design minimum is +3.0&nbsp;m anywhere on the line, and the gas law exponent is 1.2. The load case is the loss of power to all pumps at once, modelled as an instant stop of the pump flow behind an ideal check valve, with no pump inertia. Unprotected, the downsurge takes the line to vapour pressure, and the collapse of the cavities drives the maximum to 165 to 190&nbsp;m &mdash; above PN16 whichever way it is modelled.</p>
+<p>A 12&nbsp;km DN800 ductile iron K9 transmission main [1] carries 2,520&nbsp;m&sup3;/h (1.39&nbsp;m/s) at a wave speed of 1,050&nbsp;m/s. The steady HGL is 85.0&nbsp;m at the pump and 44.8&nbsp;m at the delivery reservoir, on a flat profile. The pipe class is PN16 with 136&nbsp;m allowable [2], the design minimum is +3.0&nbsp;m anywhere on the line, and the gas law exponent is 1.2. The load case is the loss of power to all pumps at once, modelled as an instant stop of the pump flow behind an ideal check valve, with no pump inertia. Unprotected, the downsurge takes the line to vapour pressure, and the collapse of the cavities drives the maximum to 165 to 190&nbsp;m: above PN16 whichever way it is modelled.</p>
 <p>Every transient figure below comes from a method-of-characteristics model with a vapour cavity model [3], [4], cross-checked with a gas cavity model and an independent second code. None of it is HAMMER output. Where the line reaches vapour, the spike that follows depends on how the cavity is represented [5], so those maxima are given across both cavity models. The lesson for design: never rely on a collapse peak; protect the downsurge. A project analysis must still be run in HAMMER, or an equivalent package, on the real profile.</p>
 
 <hr class="article-divider">
-<h2 id="what-it-is">1. What pre-charge is &mdash; and what it is not</h2>
+<h2 id="what-it-is">1. What pre-charge is, and what it is not</h2>
 <p>"Pre-charge pressure" is used loosely, on site and in specifications, for any gas pressure in any vessel. It should be kept for one thing on one type of vessel.</p>
 
 <h3>Bladder and diaphragm vessels: the pre-charge is a setting</h3>
-<p>A flexible bladder or diaphragm separates the gas from the water. Before the vessel sees any water, its gas side is charged, normally with nitrogen, to the <strong>pre-charge</strong> P<sub>pre</sub>: the gas pressure with the vessel empty of water. At that moment the gas fills the whole shell. When the line comes up to pressure, water enters and squeezes the bladder until the gas pressure equals the line pressure at the tap. The gas volume in service follows from the shell, the pre-charge and the line pressure: set the pre-charge and you have set the gas volume &mdash; until the pre-charge changes [6].</p>
+<p>A flexible bladder or diaphragm separates the gas from the water. Before the vessel sees any water, its gas side is charged, normally with nitrogen, to the <strong>pre-charge</strong> P<sub>pre</sub>: the gas pressure with the vessel empty of water. At that moment the gas fills the whole shell. When the line comes up to pressure, water enters and squeezes the bladder until the gas pressure equals the line pressure at the tap. The gas volume in service follows from the shell, the pre-charge and the line pressure: set the pre-charge and you have set the gas volume, until the pre-charge changes [6].</p>
 
 <h3>Air-over-water vessels: there is no pre-charge</h3>
-<p>An air-over-water vessel has no membrane: compressed air sits directly on the water. There is nothing to pre-charge, and the gas pressure is not a setting at all &mdash; in steady operation it equals the line pressure at the tap. What the operator sets is the <strong>gas volume</strong>, through the water level: a compressor adds air and a level control holds the surface within a band. Air dissolves under pressure, so that band is defended continuously, not set once [7].</p>
+<p>An air-over-water vessel has no membrane: compressed air sits directly on the water. There is nothing to pre-charge, and the gas pressure is not a setting at all: in steady operation it equals the line pressure at the tap. What the operator sets is the <strong>gas volume</strong>, through the water level: a compressor adds air and a level control holds the surface within a band. Air dissolves under pressure, so that band is defended continuously, not set once [7].</p>
 
 <div class="sim-box">
   <div class="sim-header"><span class="sim-dot"></span>Two vessel types, two design numbers</div>
@@ -220,10 +221,10 @@
   </div>
 </div>
 
-<p>In service both types carry the same gas pressure, 9.35&nbsp;bar abs (8.33&nbsp;bar&nbsp;g) at the pump on this main: the working pressure of an air-over-water vessel, and the pressure a bladder&rsquo;s pre-charge is squeezed up to &mdash; never the pre-charge itself.</p>
+<p>In service both types carry the same gas pressure, 9.35&nbsp;bar abs (8.33&nbsp;bar&nbsp;g) at the pump on this main: the working pressure of an air-over-water vessel, and the pressure a bladder&rsquo;s pre-charge is squeezed up to, never the pre-charge itself.</p>
 
 <hr class="article-divider">
-<h2 id="physics">2. The physics &mdash; two gas laws, one pressure basis</h2>
+<h2 id="physics">2. The physics: two gas laws, one pressure basis</h2>
 <p>The gas in a surge vessel goes through two very different processes, and each has its own law [3], [8].</p>
 <p><strong>Pre-charge and steady service are linked isothermally.</strong> The pre-charge is set with the gas at ambient temperature, and in steady service the gas has long since returned to ambient, however quickly the line first compressed it. Equal temperatures at the two states give:</p>
 <div class="formula-box">
@@ -243,7 +244,7 @@
 <p>The design minimum of +3.0&nbsp;m becomes 3.0 + 10.33 = <strong>13.33&nbsp;m abs</strong>, or 1.31&nbsp;bar abs. Between that and the steady 95.33&nbsp;m abs, a volume of gas can grow at most (95.33 / 13.33)<sup>1/1.2</sup> = <strong>5.152 times</strong> before the vessel's own pressure is down at the design minimum. That ratio carries the whole calculation, and it is right only when both pressures are absolute. (The 10.33&nbsp;m is the standard atmosphere used throughout this series; on a high site, use the local value.)</p>
 
 <hr class="article-divider">
-<h2 id="unit-traps">3. The unit traps &mdash; worked on the reference duty</h2>
+<h2 id="unit-traps">3. The unit traps: worked on the reference duty</h2>
 <p>The transient model sizes an air-over-water vessel with a free DN400 connection on this line at <strong>3.08&nbsp;m&sup3; of gas</strong> at the steady HGL, expanding to <strong>15.30&nbsp;m&sup3;</strong> in the trip: 12.22&nbsp;m&sup3; of water delivered to the line. The method is in <a href="surge-vessel.html">Sizing the Hydropneumatic Surge Vessel</a>. A closed-form hand check turns the question round [9]: what gas volume delivers 12.22&nbsp;m&sup3; of water between the steady pressure and the design minimum?</p>
 <div class="formula-box">
   <div class="formula-main">V<sub>0</sub> = &Delta;V / [ (P<sub>0</sub> / P<sub>min</sub>)<sup>1/n</sup> &minus; 1 ]</div>
@@ -294,15 +295,15 @@
     <span>Against the pump<b id="rTapDrop"><span class="badge badge-success">0.2 % below</span></b></span>
   </div>
   <div class="pc-canvas"><canvas id="hglChart"></canvas></div>
-  <p class="chart-note">Figure 1 &mdash; Steady HGL along the 12 km main (left axis; laid at datum, so HGL equals pressure head) and the steady gas pressure of a vessel tapped there (right axis, (h + 10.33) / 10.20). The badge turns amber beyond 500 m, a judgement: past that the tap is no longer at the pump and is checked by a transient run.</p>
+  <p class="chart-note">Figure 1: Steady HGL along the 12 km main (left axis; laid at datum, so HGL equals pressure head) and the steady gas pressure of a vessel tapped there (right axis, (h + 10.33) / 10.20). The badge turns amber beyond 500 m, a judgement: past that the tap is no longer at the pump and is checked by a transient run.</p>
 </div>
 
 <hr class="article-divider">
-<h2 id="bladder-example">4. Worked example A &mdash; a bladder vessel with a fixed 25&nbsp;m&sup3; shell</h2>
+<h2 id="bladder-example">4. Worked example A: a bladder vessel with a fixed 25&nbsp;m&sup3; shell</h2>
 <p>Take a bladder vessel with a 25&nbsp;m&sup3; shell at the pump, on a free DN400 connection (loss coefficient 0.5 both ways), and change only the pre-charge, written as a fraction f of the absolute design minimum: P<sub>pre</sub> = f &times; 13.33&nbsp;m abs. Isothermal charging fixes the gas in service, V<sub>0</sub> = 25 &times; P<sub>pre</sub> / 95.33. Each row is a full transient run of the pump trip at n = 1.2.</p>
 
 <div class="sim-box">
-  <div class="sim-header"><span class="sim-dot"></span>Bladder vessel, 25 m&sup3; shell, free DN400 connection &mdash; pump trip, transient model, n = 1.2</div>
+  <div class="sim-header"><span class="sim-dot"></span>Bladder vessel, 25 m&sup3; shell, free DN400 connection: pump trip, transient model, n = 1.2</div>
   <div style="overflow-x:auto">
   <table>
     <caption class="pc-vh">Bladder vessel, 25 m&sup3; shell, free DN400 connection: line envelope at eight pre-charges, n = 1.2</caption>
@@ -323,7 +324,7 @@
 
 <p><strong>Too low a pre-charge</strong> crushes the gas into too small a volume at operating pressure. At f = 0.5 there are only 1.75&nbsp;m&sup3; of gas in service: the vessel runs out of expansion, the line minimum reaches &minus;5.0&nbsp;m, and the small, stiff cushion lets the upsurge reach 137.8&nbsp;m, over the 136&nbsp;m allowable too. At f = 0.7 the minimum is still &minus;0.4&nbsp;m; only from about f = 0.9 does this shell meet +3.0&nbsp;m. Those verdicts are for n = 1.2: at n = 1.4 the same shell gives &minus;0.7&nbsp;m at f = 0.9 and only +0.9&nbsp;m at f = 1.0.</p>
 <p>Note the gauge column: f = 0.5 and 0.7 are below atmospheric pressure, so no one sets them on purpose, but the same small gas volume arrives by other routes. A vessel commissioned without its pre-charge, its bladder closed on air at atmospheric pressure, is f = 0.775: 2.71&nbsp;m&sup3; of gas and a line minimum of only +1.1&nbsp;m in the same model. A slow leak walks the vessel up the table in the same way.</p>
-<p><strong>A pre-charge above the minimum</strong> still works in a fast trip. At f = 1.5 the minimum is +8.5&nbsp;m and the maximum 105.8&nbsp;m, better than any lower pre-charge: the gas cools as it expands, to 18.8&nbsp;m abs, below the 20.0&nbsp;m abs pre-charge, without the bladder reaching the shell. In a slow pressure fall, with the gas at ambient temperature, the bladder fills the shell at 20.0&nbsp;m abs (+9.7&nbsp;m) and closes onto the outlet, and the vessel delivers nothing below that. On this line that happens only when the main is drained or held below +9.7&nbsp;m (with the pumps stopped, the main settles at the 44.8&nbsp;m reservoir level), but each time the membrane is pressed onto its outlet. That is why practice and manufacturers&rsquo; guidance keep the pre-charge below the lowest operating pressure the vessel must serve &mdash; a judgement about slow events and membrane life that a pump-trip run will not show.</p>
+<p><strong>A pre-charge above the minimum</strong> still works in a fast trip. At f = 1.5 the minimum is +8.5&nbsp;m and the maximum 105.8&nbsp;m, better than any lower pre-charge: the gas cools as it expands, to 18.8&nbsp;m abs, below the 20.0&nbsp;m abs pre-charge, without the bladder reaching the shell. In a slow pressure fall, with the gas at ambient temperature, the bladder fills the shell at 20.0&nbsp;m abs (+9.7&nbsp;m) and closes onto the outlet, and the vessel delivers nothing below that. On this line that happens only when the main is drained or held below +9.7&nbsp;m (with the pumps stopped, the main settles at the 44.8&nbsp;m reservoir level), but each time the membrane is pressed onto its outlet. That is why practice and manufacturers&rsquo; guidance keep the pre-charge below the lowest operating pressure the vessel must serve: a judgement about slow events and membrane life that a pump-trip run will not show.</p>
 <p><strong>Too high</strong>, and the vessel fails abruptly. At f = 2.0 it still passes, +11.7&nbsp;m and 96.8&nbsp;m, with only 1.27&nbsp;m&sup3; of water left at full expansion; at f = 2.5 the shell empties, the line reaches vapour and the collapse-driven maximum is 96 to 97&nbsp;m across the two cavity models (about 92&nbsp;m at f = 3.0). More gas helps right up to the moment the water runs out. Both models treat an empty shell as a dead end, which a bladder closing onto its outlet makes physical; an air-over-water vessel does not (section 5).</p>
 
 <h3 id="interactive-bladder">Interactive: one shell, eight pre-charges</h3>
@@ -331,14 +332,14 @@
   <div class="pc-ctrl">
     <label for="selF">Bladder pre-charge, fraction f of 13.33 m abs</label>
     <select id="selF">
-      <option value="0">f = 0.5 &mdash; 0.65 bar abs</option>
-      <option value="1">f = 0.7 &mdash; 0.91 bar abs</option>
-      <option value="2" selected>f = 0.9 &mdash; 1.18 bar abs</option>
-      <option value="3">f = 1.0 &mdash; 1.31 bar abs</option>
-      <option value="4">f = 1.5 &mdash; 1.96 bar abs</option>
-      <option value="5">f = 2.0 &mdash; 2.61 bar abs</option>
-      <option value="6">f = 2.5 &mdash; 3.27 bar abs</option>
-      <option value="7">f = 3.0 &mdash; 3.92 bar abs</option>
+      <option value="0">f = 0.5: 0.65 bar abs</option>
+      <option value="1">f = 0.7: 0.91 bar abs</option>
+      <option value="2" selected>f = 0.9: 1.18 bar abs</option>
+      <option value="3">f = 1.0: 1.31 bar abs</option>
+      <option value="4">f = 1.5: 1.96 bar abs</option>
+      <option value="5">f = 2.0: 2.61 bar abs</option>
+      <option value="6">f = 2.5: 3.27 bar abs</option>
+      <option value="7">f = 3.0: 3.92 bar abs</option>
     </select>
   </div>
   <div class="pc-read">
@@ -350,7 +351,7 @@
     <span>Outcome<b id="rVerdict"><span class="badge badge-success">Meets both limits</span></b></span>
   </div>
   <div class="pc-canvas"><canvas id="p0Chart"></canvas></div>
-  <p class="chart-note">Figure 2 &mdash; Lowest and highest head anywhere on the main after the trip, 25 m&sup3; bladder vessel, free DN400 connection, n = 1.2, at the eight pre-charges that were run. The runs are evenly spaced, not to scale, and deliberately not joined: nothing was run between them, and the vessel passes at f = 2.0 but empties at f = 2.5 (crosses). After emptying, the maximum follows a cavity collapse; the two cavity models agree within 1 m.</p>
+  <p class="chart-note">Figure 2: Lowest and highest head anywhere on the main after the trip, 25 m&sup3; bladder vessel, free DN400 connection, n = 1.2, at the eight pre-charges that were run. The runs are evenly spaced, not to scale, and deliberately not joined: nothing was run between them, and the vessel passes at f = 2.0 but empties at f = 2.5 (crosses). After emptying, the maximum follows a cavity collapse; the two cavity models agree within 1 m.</p>
 </div>
 
 <h3>Shell and pre-charge are one decision</h3>
@@ -389,15 +390,15 @@
     <span>Set at 20 &deg;C, read at 45 &deg;C<b id="rShHot">13.02 <small>m abs, f = 0.98</small></b></span>
   </div>
   <div class="pc-canvas"><canvas id="volChart"></canvas></div>
-  <p class="chart-note">Figure 3 &mdash; Bladder shell needed to hold the 3.08 m&sup3; of gas the transient model asks for at the steady HGL, by isothermal charging: V<sub>shell</sub> = 3.08 &times; 95.33 / (f &times; 13.33). Dashed green: the 19.1 m&sup3; air-over-water shell for the same duty. Dotted grey: atmospheric pre-charge.</p>
+  <p class="chart-note">Figure 3: Bladder shell needed to hold the 3.08 m&sup3; of gas the transient model asks for at the steady HGL, by isothermal charging: V<sub>shell</sub> = 3.08 &times; 95.33 / (f &times; 13.33). Dashed green: the 19.1 m&sup3; air-over-water shell for the same duty. Dotted grey: atmospheric pre-charge.</p>
 </div>
 
 <hr class="article-divider">
-<h2 id="air-over-water-example">5. Worked example B &mdash; an air-over-water vessel with a fixed 20&nbsp;m&sup3; shell</h2>
+<h2 id="air-over-water-example">5. Worked example B: an air-over-water vessel with a fixed 20&nbsp;m&sup3; shell</h2>
 <p>Now the reference vessel used across this site: a 20&nbsp;m&sup3; air-over-water shell at the pump with a differential DN400 connection, loss coefficient 2 out and 10 in (see <a href="surge-vessel-differential-orifice.html">the differential orifice</a>). There is no pre-charge to choose; the gas is at 9.35&nbsp;bar abs whatever you do, and the only number is how much of it there is. Seven settings, n = 1.2:</p>
 
 <div class="sim-box">
-  <div class="sim-header"><span class="sim-dot"></span>Air-over-water vessel, 20 m&sup3; shell, differential DN400 connection &mdash; pump trip, transient model, n = 1.2</div>
+  <div class="sim-header"><span class="sim-dot"></span>Air-over-water vessel, 20 m&sup3; shell, differential DN400 connection: pump trip, transient model, n = 1.2</div>
   <div style="overflow-x:auto">
   <table>
     <caption class="pc-vh">Air-over-water vessel, 20 m&sup3; shell, differential DN400 connection: line envelope at seven gas settings, n = 1.2</caption>
@@ -406,7 +407,7 @@
     <tr><td>2.00</td><td>10.0&nbsp;%</td><td>&minus;3.8</td><td>126.4</td><td>7.47</td><td><span class="badge badge-danger">Fails +3.0 m</span></td></tr>
     <tr><td>2.50</td><td>12.5&nbsp;%</td><td>&minus;0.7</td><td>124.3</td><td>6.35</td><td><span class="badge badge-danger">Fails +3.0 m</span></td></tr>
     <tr><td>3.00</td><td>15.0&nbsp;%</td><td>+1.9</td><td>123.5</td><td>5.09</td><td><span class="badge badge-danger">Fails +3.0 m</span></td></tr>
-    <tr class="row-success"><td><strong>3.50</strong></td><td><strong>17.5&nbsp;%</strong></td><td><strong>+4.3</strong></td><td><strong>119.2</strong></td><td><strong>3.83</strong></td><td><span class="badge badge-success">Meets both &mdash; reference design</span></td></tr>
+    <tr class="row-success"><td><strong>3.50</strong></td><td><strong>17.5&nbsp;%</strong></td><td><strong>+4.3</strong></td><td><strong>119.2</strong></td><td><strong>3.83</strong></td><td><span class="badge badge-success">Meets both: reference design</span></td></tr>
     <tr><td>4.50</td><td>22.5&nbsp;%</td><td>+7.2</td><td>106.8</td><td>1.52</td><td><span class="badge badge-warning">Meets both, small reserve</span></td></tr>
     <tr><td>6.00</td><td>30.0&nbsp;%</td><td>&minus;9.8 (vapour)</td><td>about 96 (both cavity models, empty shell as a dead end)</td><td>0</td><td><span class="badge badge-danger">Vessel empties</span></td></tr>
     <tr><td>8.00</td><td>40.0&nbsp;%</td><td>&minus;9.8 (vapour)</td><td>about 88 (both cavity models, empty shell as a dead end)</td><td>0</td><td><span class="badge badge-danger">Vessel empties</span></td></tr>
@@ -417,9 +418,9 @@
 
 <p>Both cavity models treat an empty shell as a dead end, so the two emptied maxima assume the outlet simply stops delivering. A real air-over-water vessel would pass air into the main, changing the pressures and leaving air pockets: those figures show that the setting fails, not what the peak would be.</p>
 <p>There is a <strong>window</strong>. Too little gas runs out of expansion before the downsurge is over: below 3.22&nbsp;m&sup3; the line falls under +3.0&nbsp;m. Too much gas runs out of water: at the upper edge the expanding gas just reaches the shell volume, and beyond it the vessel empties. At n = 1.2 this hydraulic window is <strong>3.22 to 5.21&nbsp;m&sup3;</strong>, 16 to 26&nbsp;% of the shell.</p>
-<p>The set point, its control band and both gas alarms must fit inside it, and two things leave far less room than it suggests. The first is the water reserve. Keep a fifth of the shell as water at full expansion, the reserve this series sizes shells with, and the band shrinks to <strong>3.22 to 3.43&nbsp;m&sup3;</strong>, about 1&nbsp;% of the shell. The reference 3.5&nbsp;m&sup3; sits just above it with 3.83&nbsp;m&sup3; of water (19&nbsp;%), only 0.28&nbsp;m&sup3; above the lower edge &mdash; the edge the vessel drifts towards on its own as air dissolves, so the low-gas alarm must be tight. The 4.5&nbsp;m&sup3; row looks better on both envelopes but leaves 1.52&nbsp;m&sup3; of water; on that side, overfilling with air, a failed level control and gas-law uncertainty all push towards emptying.</p>
+<p>The set point, its control band and both gas alarms must fit inside it, and two things leave far less room than it suggests. The first is the water reserve. Keep a fifth of the shell as water at full expansion, the reserve this series sizes shells with, and the band shrinks to <strong>3.22 to 3.43&nbsp;m&sup3;</strong>, about 1&nbsp;% of the shell. The reference 3.5&nbsp;m&sup3; sits just above it with 3.83&nbsp;m&sup3; of water (19&nbsp;%), only 0.28&nbsp;m&sup3; above the lower edge: the edge the vessel drifts towards on its own as air dissolves, so the low-gas alarm must be tight. The 4.5&nbsp;m&sup3; row looks better on both envelopes but leaves 1.52&nbsp;m&sup3; of water; on that side, overfilling with air, a failed level control and gas-law uncertainty all push towards emptying.</p>
 <p>The second is the gas law exponent, which moves both edges. At n = 1.4 the window is 4.16 to 5.87&nbsp;m&sup3; and the reference 3.5&nbsp;m&sup3; setting gives only +0.3&nbsp;m; at n = 1.0 it is 2.33 to 4.46&nbsp;m&sup3;, and the 4.5&nbsp;m&sup3; setting empties. Only 4.16 to 4.46&nbsp;m&sup3; passes at all three exponents, and at n = 1.0 the vessel is then within 0.7&nbsp;m&sup3; of empty. The sensitivity is part of choosing the set point, not an afterthought; where it has to pass too, a band that narrow argues, in our judgement, for a larger shell rather than a finer level control.</p>
-<p>Finally, forget the "typical" gas ratio. A rule of 40 to 50&nbsp;% gas is squarely on the failing side here &mdash; at 30&nbsp;% this vessel already empties. The gas share is an outcome of sizing one line, one vessel and one connection, not a rule to start from.</p>
+<p>Finally, forget the "typical" gas ratio. A rule of 40 to 50&nbsp;% gas is squarely on the failing side here: at 30&nbsp;% this vessel already empties. The gas share is an outcome of sizing one line, one vessel and one connection, not a rule to start from.</p>
 
 <h3 id="interactive-gas">Interactive: the gas setting in the trip</h3>
 <div class="chart-wrap">
@@ -429,7 +430,7 @@
       <option value="2">2.00 m&sup3; (10 % of the shell)</option>
       <option value="2.5">2.50 m&sup3; (12.5 %)</option>
       <option value="3">3.00 m&sup3; (15 %)</option>
-      <option value="3.5" selected>3.50 m&sup3; (17.5 %) &mdash; reference design</option>
+      <option value="3.5" selected>3.50 m&sup3; (17.5 %): reference design</option>
       <option value="4.5">4.50 m&sup3; (22.5 %)</option>
       <option value="6">6.00 m&sup3; (30 %)</option>
       <option value="8">8.00 m&sup3; (40 %)</option>
@@ -443,7 +444,7 @@
     <span>Outcome<b id="rGsVerdict"><span class="badge badge-success">Meets both limits: reference design</span></b></span>
   </div>
   <div class="pc-canvas"><canvas id="timeChart"></canvas></div>
-  <p class="chart-note">Figure 4 &mdash; Pressure head at the pump discharge after the trip, 20 m&sup3; air-over-water vessel, differential DN400 connection, n = 1.2: the selected setting (bold) against 2.00 and 6.00 m&sup3;. The readouts are the envelope over the whole line, whose minimum is often reached kilometres from the pump. Emptied settings: the maximum assumes a dead-end outlet and shows only that the setting fails. Amber verdict: meets both limits with less water in reserve than the reference design.</p>
+  <p class="chart-note">Figure 4: Pressure head at the pump discharge after the trip, 20 m&sup3; air-over-water vessel, differential DN400 connection, n = 1.2: the selected setting (bold) against 2.00 and 6.00 m&sup3;. The readouts are the envelope over the whole line, whose minimum is often reached kilometres from the pump. Emptied settings: the maximum assumes a dead-end outlet and shows only that the setting fails. Amber verdict: meets both limits with less water in reserve than the reference design.</p>
 </div>
 
 <hr class="article-divider">
@@ -467,7 +468,7 @@
 <p>In over 22 years of practice on water transmission projects, I have found that getting the vessel number right on the drawing is the easier half. Keeping it true on site is the harder half, and what undoes it differs by vessel type.</p>
 
 <h3>Bladder vessels: pre-charge, temperature and leakage</h3>
-<p>In service the bladder transmits line pressure to the gas, so a gauge on the gas valve reads line pressure, not pre-charge. The pre-charge can only be checked with the water side isolated and drained to zero pressure. Specify what that needs: an isolation valve, a drain, a way to keep the line protected or out of service, and a gauge that reads to a few hundredths of a bar &mdash; the pre-charge at f = 0.9 is only +0.16&nbsp;bar&nbsp;g. Record the gas temperature with every reading.</p>
+<p>In service the bladder transmits line pressure to the gas, so a gauge on the gas valve reads line pressure, not pre-charge. The pre-charge can only be checked with the water side isolated and drained to zero pressure. Specify what that needs: an isolation valve, a drain, a way to keep the line protected or out of service, and a gauge that reads to a few hundredths of a bar: the pre-charge at f = 0.9 is only +0.16&nbsp;bar&nbsp;g. Record the gas temperature with every reading.</p>
 <p>The pre-charge is a fixed mass of gas in a fixed volume, so its pressure follows absolute temperature. Set at 20&nbsp;&deg;C, it reads 318.15 / 293.15 = 8.5&nbsp;% higher at 45&nbsp;&deg;C: 12.00&nbsp;m abs becomes 13.02&nbsp;m abs, 0.98 of the design minimum instead of 0.90. A technician who bleeds a sun-warmed vessel back to the nameplate value has removed gas. Put the reference temperature on the nameplate and a correction in the O&amp;M manual.</p>
 <p>Gas also permeates slowly through the bladder and leaks past valves, so the pre-charge falls over time. Nothing in normal operation shows it; only periodic checks will. The membrane is a wearing part in permanent contact with drinking water and must carry the appropriate approval [11].</p>
 
@@ -477,18 +478,18 @@
 <div class="warning-box">A surge vessel whose gas cannot be verified is not protection; it is a steel tank on a tee. For a bladder vessel that means a pre-charge check procedure, the means to carry it out and a temperature correction; for an air-over-water vessel, a working compressor, level instruments and alarms set inside the window.</div>
 
 <hr class="article-divider">
-<h2 id="checklist">8. Design checklist &mdash; pre-charge and gas setting</h2>
+<h2 id="checklist">8. Design checklist: pre-charge and gas setting</h2>
 <div style="overflow-x:auto">
 <table>
-  <caption class="pc-vh">Design checklist &mdash; pre-charge and gas setting</caption>
+  <caption class="pc-vh">Design checklist: pre-charge and gas setting</caption>
   <thead><tr><th>#</th><th>Check item</th><th>Priority</th></tr></thead>
   <tbody>
   <tr><td>1</td><td>Vessel type fixed and its design number named: the pre-charge (bladder, diaphragm) or the gas volume and level set point (air-over-water)</td><td><span class="badge badge-danger">Critical</span></td></tr>
   <tr><td>2</td><td>Every gas calculation in absolute pressure, with P (bar abs) = (h + 10.33) / 10.20 written on the calculation sheet</td><td><span class="badge badge-danger">Critical</span></td></tr>
-  <tr><td>3</td><td>Steady gas pressure taken from the steady-state model as the HGL minus the elevation of the water surface in the vessel (tap elevation plus level) &mdash; not pump TDH, not design pressure</td><td><span class="badge badge-danger">Critical</span></td></tr>
+  <tr><td>3</td><td>Steady gas pressure taken from the steady-state model as the HGL minus the elevation of the water surface in the vessel (tap elevation plus level), not pump TDH, not design pressure</td><td><span class="badge badge-danger">Critical</span></td></tr>
   <tr><td>4</td><td>Bladder: shell and pre-charge chosen together with V<sub>shell</sub> = V<sub>0</sub> &times; P<sub>0</sub> / P<sub>pre</sub>; pre-charge above atmospheric and at or below the lowest pressure the vessel must serve</td><td><span class="badge badge-danger">Critical</span></td></tr>
   <tr><td>5</td><td>Air-over-water: gas window found by transient runs at n = 1.0, 1.2 and 1.4; set point, level band and both alarms inside it, with the water reserve kept</td><td><span class="badge badge-danger">Critical</span></td></tr>
-  <tr><td>6</td><td>Steady gas pressure, initial gas volume and the trip checked for every credible operating mode (number of pumps, flow), not only the design duty &mdash; a bladder's gas in service rises as the steady pressure falls</td><td><span class="badge badge-danger">Critical</span></td></tr>
+  <tr><td>6</td><td>Steady gas pressure, initial gas volume and the trip checked for every credible operating mode (number of pumps, flow), not only the design duty: a bladder's gas in service rises as the steady pressure falls</td><td><span class="badge badge-danger">Critical</span></td></tr>
   <tr><td>7</td><td>Transient runs at the edges: pre-charge as specified, after a leak, bled while hot and never charged; gas at the low and high alarms; vessel isolated</td><td><span class="badge badge-danger">Critical</span></td></tr>
   <tr><td>8</td><td>Gas volume history checked against the tank volume in every run; an emptied vessel is a failed setting, and no acceptance relies on a collapse peak</td><td><span class="badge badge-danger">Critical</span></td></tr>
   <tr><td>9</td><td>Initial gas volume reported by the model matched against the hand value</td><td><span class="badge badge-warning">Important</span></td></tr>
@@ -529,19 +530,19 @@
 <div class="refs">
   <h2>References</h2>
   <ol>
-    <li>ISO 2531. <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em> &mdash; pipe classes for the DN800 K9 reference main.</li>
-    <li>EN 805. <em>Water supply &mdash; Requirements for systems and components outside buildings</em> &mdash; design pressures and the allowance for surge.</li>
-    <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993 &mdash; method of characteristics, the air-chamber boundary with a polytropic gas law, column separation.</li>
-    <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. "Water hammer with column separation: a historical review." <em>Journal of Fluids and Structures</em>, 22(2), 2006 &mdash; discrete vapour and gas cavity models.</li>
-    <li>Simpson, A.R. &amp; Bergant, A. "Numerical comparison of pipe-column-separation models." <em>Journal of Hydraulic Engineering</em> (ASCE), 120(3), 1994 &mdash; why collapse-driven pressure peaks depend on the cavity model.</li>
-    <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004 &mdash; surge vessels in practice, bladder and air-over-water types.</li>
-    <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. "Hydraulic transient guidelines for protecting water distribution systems." <em>Journal AWWA</em>, 97(5), 2005 &mdash; protection devices and the operation and maintenance of hydropneumatic tanks.</li>
-    <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014 &mdash; air chambers, isothermal and polytropic gas behaviour.</li>
-    <li>Stephenson, D. "Simple guide for design of air vessels for water hammer protection of pumping lines." <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8), 2002 &mdash; closed-form checks of air vessel gas volume.</li>
-    <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help &mdash; the Hydropneumatic Tank element: bladder option, preset gas pressure, initial gas volume, gas law exponent and connection losses.</li>
-    <li>NSF/ANSI/CAN 61. <em>Drinking Water System Components &mdash; Health Effects</em> &mdash; approval of bladder and diaphragm materials in contact with drinking water.</li>
-    <li>AWWA M51. <em>Air Valves: Air-Release, Air/Vacuum, and Combination</em> &mdash; releasing air pockets at high points.</li>
-    <li>EN 13445 <em>Unfired pressure vessels</em>; ASME <em>Boiler and Pressure Vessel Code</em>, Section VIII, Division 1; Pressure Equipment Directive 2014/68/EU &mdash; design of the vessel shell as a pressure vessel.</li>
+    <li>ISO 2531. <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em>: pipe classes for the DN800 K9 reference main.</li>
+    <li>EN 805. <em>Water supply, Requirements for systems and components outside buildings</em>: design pressures and the allowance for surge.</li>
+    <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993: method of characteristics, the air-chamber boundary with a polytropic gas law, column separation.</li>
+    <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. "Water hammer with column separation: a historical review." <em>Journal of Fluids and Structures</em>, 22(2), 2006: discrete vapour and gas cavity models.</li>
+    <li>Simpson, A.R. &amp; Bergant, A. "Numerical comparison of pipe-column-separation models." <em>Journal of Hydraulic Engineering</em> (ASCE), 120(3), 1994: why collapse-driven pressure peaks depend on the cavity model.</li>
+    <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004: surge vessels in practice, bladder and air-over-water types.</li>
+    <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. "Hydraulic transient guidelines for protecting water distribution systems." <em>Journal AWWA</em>, 97(5), 2005: protection devices and the operation and maintenance of hydropneumatic tanks.</li>
+    <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014: air chambers, isothermal and polytropic gas behaviour.</li>
+    <li>Stephenson, D. "Simple guide for design of air vessels for water hammer protection of pumping lines." <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8), 2002: closed-form checks of air vessel gas volume.</li>
+    <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help, the Hydropneumatic Tank element: bladder option, preset gas pressure, initial gas volume, gas law exponent and connection losses.</li>
+    <li>NSF/ANSI/CAN 61. <em>Drinking Water System Components, Health Effects</em>: approval of bladder and diaphragm materials in contact with drinking water.</li>
+    <li>AWWA M51. <em>Air Valves: Air-Release, Air/Vacuum, and Combination</em>, releasing air pockets at high points.</li>
+    <li>EN 13445 <em>Unfired pressure vessels</em>; ASME <em>Boiler and Pressure Vessel Code</em>, Section VIII, Division 1; Pressure Equipment Directive 2014/68/EU: design of the vessel shell as a pressure vessel.</li>
   </ol>
 </div>
 
@@ -555,7 +556,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -697,7 +698,7 @@ function u3(){
 }
 fPre.addEventListener('input',u3); u3();
 
-// Figure 4 — pump-discharge head against time for the air-over-water gas settings
+// Figure 4: pump-discharge head against time for the air-over-water gas settings
 const AW=D.aw, T=D.t, REF=AW.find(r=>Math.abs(r.v-3.5)<1e-6);
 const find=v=>{let k=0;AW.forEach((r,i)=>{if(Math.abs(r.v-v)<1e-6)k=i;});return k;};
 const pts=h=>T.map((x,i)=>({x:x,y:h[i]}));

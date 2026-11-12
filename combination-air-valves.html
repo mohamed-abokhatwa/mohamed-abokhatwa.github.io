@@ -18,7 +18,7 @@
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="Design Criteria for Combination Air Valves | Mohamed Abokhatwa">
-  <meta property="og:description" content="Engineering design criteria for combination air valves in water transmission pipelines — sizing, placement, and surge protection principles.">
+  <meta property="og:description" content="Engineering design criteria for combination air valves in water transmission pipelines: sizing, placement, and surge protection principles.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://abokhatwa.com/combination-air-valves.html">
   <link rel="canonical" href="https://abokhatwa.com/combination-air-valves.html">
@@ -28,11 +28,11 @@
   <meta property="og:image:alt" content="Combination air valve design for water pipeline safety">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Design Criteria for Combination Air Valves | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="Engineering design criteria for combination air valves in water transmission pipelines — sizing, placement, and surge protection principles.">
+  <meta name="twitter:description" content="Engineering design criteria for combination air valves in water transmission pipelines: sizing, placement, and surge protection principles.">
   <meta name="twitter:image" content="https://abokhatwa.com/og-combination-air-valves.jpg">
-  <title>Design Criteria for Combination Air Valves — Mohamed Abokhatwa</title>
-  <meta name="description" content="Engineering design criteria for combination air valves in water transmission pipelines — sizing, placement, and surge protection principles.">
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Design Criteria for Combination Air Valves | Mohamed Abokhatwa</title>
+  <meta name="description" content="Engineering design criteria for combination air valves in water transmission pipelines: sizing, placement, and surge protection principles.">
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -129,7 +129,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Design Criteria for Combination Air Valves | Mohamed Abokhatwa",
-  "description": "Engineering design criteria for combination air valves in water transmission pipelines — sizing, placement, and surge protection principles.",
+  "description": "Engineering design criteria for combination air valves in water transmission pipelines: sizing, placement, and surge protection principles.",
   "image": "https://abokhatwa.com/combination_air_valves_design_criteria.png",
   "datePublished": "2026-05-01",
   "dateModified": "2026-05-25",
@@ -168,6 +168,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -211,10 +212,10 @@
 
 <h2>Introduction</h2>
 <p>
-Entrapped air in pressurised transmission mains is one of the most underestimated hazards in pipeline engineering. It reduces the effective hydraulic cross-section, distorts pressure gradient lines, accelerates internal corrosion by creating oxygen-rich microenvironments, and — most critically — generates violent transient pressure surges when trapped air pockets suddenly collapse or are expelled. Documented failures trace multiple main bursts directly to unmanaged air, including a 2001 incident on a Hungarian DN 800 steel main where an entrapped air pocket at a high point triggered an overpressure of <span class="chip">3.2× operating pressure</span>, rupturing the main at the flange.
+Entrapped air in pressurised transmission mains is one of the most underestimated hazards in pipeline engineering. It reduces the effective hydraulic cross-section, distorts pressure gradient lines, accelerates internal corrosion by creating oxygen-rich microenvironments, and, most critically, generates violent transient pressure surges when trapped air pockets suddenly collapse or are expelled. Documented failures trace multiple main bursts directly to unmanaged air, including a 2001 incident on a Hungarian DN 800 steel main where an entrapped air pocket at a high point triggered an overpressure of <span class="chip">3.2× operating pressure</span>, rupturing the main at the flange.
 </p>
 <p>
-Long-distance transmission mains exhibit complex longitudinal profiles with multiple high points, descending reaches, and flat plateau sections, each presenting a distinct air accumulation scenario. Addressing these systematically demands more than the rule-of-thumb approach of "fit an air valve at every high point." It requires rigorous hydraulic analysis, transient simulation, and a structured valve selection and placement methodology — aligned with <strong>AWWA M51</strong>, <strong>ISO 11388</strong>, and <strong>BS EN 1074-4</strong>.
+Long-distance transmission mains exhibit complex longitudinal profiles with multiple high points, descending reaches, and flat plateau sections, each presenting a distinct air accumulation scenario. Addressing these systematically demands more than the rule-of-thumb approach of "fit an air valve at every high point." It requires rigorous hydraulic analysis, transient simulation, and a structured valve selection and placement methodology, aligned with <strong>AWWA M51</strong>, <strong>ISO 11388</strong>, and <strong>BS EN 1074-4</strong>.
 </p>
 
 <!-- Interactive Diagram 1 -->
@@ -233,7 +234,7 @@ Long-distance transmission mains exhibit complex longitudinal profiles with mult
     </label>
   </div>
   <canvas id="profileChart" height="200"></canvas>
-  <div id="fig1caption" class="diagram-caption">Fig. 1 — Gravity-fed system: HGL drops along the pipeline; higher flow expands air accumulation zones (amber). Zones where the profile approaches or exceeds the HGL are negative-pressure risk areas requiring CAV placement.</div>
+  <div id="fig1caption" class="diagram-caption">Fig. 1: Gravity-fed system: HGL drops along the pipeline; higher flow expands air accumulation zones (amber). Zones where the profile approaches or exceeds the HGL are negative-pressure risk areas requiring CAV placement.</div>
 </div>
 
 <hr class="article-divider">
@@ -271,7 +272,7 @@ A persistent source of design errors is the conflation of the three functionally
     <tr class="row-cav">
       <td><strong>Combination (CAV)</strong></td>
       <td>CAV (LA + SA in one body)</td>
-      <td>Integrates both functions — large float for bulk air, small float for continuous venting</td>
+      <td>Integrates both functions: large float for bulk air, small float for continuous venting</td>
       <td>Two independent orifices</td>
       <td>All critical locations on transmission mains</td>
     </tr>
@@ -288,7 +289,7 @@ A persistent source of design errors is the conflation of the three functionally
 
 <h3>The Dual-Float Mechanism</h3>
 <p>
-The CAV operates on a dual-float principle: an upper large float controls the large orifice, and a lower small float controls the small orifice. The large float remains open until rising water lifts it to seat — exhausting bulk air rapidly during filling. Once pressurised, the large float seals, while the small float continues to open and close micro-incrementally, purging dissolved air continuously.
+The CAV operates on a dual-float principle: an upper large float controls the large orifice, and a lower small float controls the small orifice. The large float remains open until rising water lifts it to seat, exhausting bulk air rapidly during filling. Once pressurised, the large float seals, while the small float continues to open and close micro-incrementally, purging dissolved air continuously.
 </p>
 
 <!-- Interactive Diagram 2: Valve State -->
@@ -309,14 +310,14 @@ The CAV operates on a dual-float principle: an upper large float controls the la
 </div>
 
 <div class="callout">
-  <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">⚠ Critical Design Warning</strong>
+  <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">Critical Design Warning</strong>
   Do not specify LA-only valves believing they serve the continuous venting function. During steady-state operation, the large float seals under line pressure, leaving dissolved air with no escape route. The progressive accumulation of dissolved air at high points silently reduces hydraulic capacity by <strong>8–15%</strong> before it becomes detectable.
 </div>
 
 <hr class="article-divider">
 <h2>2. Hydraulic Sizing Calculations</h2>
 
-<h3><span class="step-num">2.1</span> Large Orifice — Bulk Air Exhaust</h3>
+<h3><span class="step-num">2.1</span> Large Orifice: Bulk Air Exhaust</h3>
 <p>
 The large orifice must exhaust the full column of trapped air during pipeline filling at the design fill rate, without generating a surge at closure. AWWA M51 §4.4 derives the governing orifice flow equation from compressible-flow orifice theory:
 </p>
@@ -335,11 +336,11 @@ The large orifice must exhaust the full column of trapped air during pipeline fi
   <div class="formula-main">d<sub>large</sub> = 0.0354 × D<sub>pipe</sub> × ( V<sub>fill</sub> / ΔP<sub>allow</sub> )^0.5</div>
   <div class="formula-sub">
     d<sub>large</sub> = Large orifice diameter (mm) &nbsp;|&nbsp; D<sub>pipe</sub> = Internal pipe diameter (mm)<br>
-    V<sub>fill</sub> = Fill velocity = Q<sub>fill</sub> / A<sub>pipe</sub> (m/s) &nbsp;|&nbsp; ΔP<sub>allow</sub> = Allowable closure ΔP (bar) — typically 0.05 bar
+    V<sub>fill</sub> = Fill velocity = Q<sub>fill</sub> / A<sub>pipe</sub> (m/s) &nbsp;|&nbsp; ΔP<sub>allow</sub> = Allowable closure ΔP (bar), typically 0.05 bar
   </div>
 </div>
 
-<h3><span class="step-num">2.2</span> Small Orifice — Dissolved Air Release</h3>
+<h3><span class="step-num">2.2</span> Small Orifice: Dissolved Air Release</h3>
 <p>
 The small orifice is sized to continuously vent air released from solution during steady-state flow, governed by Henry's Law:
 </p>
@@ -352,7 +353,7 @@ The small orifice is sized to continuously vent air released from solution durin
   </div>
 </div>
 
-<p>In practice (AWWA M51 §4.3), the small orifice is sized to pass <span class="chip">0.5%–1.0%</span> of the pipeline flow as air — translating to orifice diameters of 2–6 mm for most large transmission mains. Adjustable pin-type orifices are preferred over fixed-size orifices in high-turbidity applications.</p>
+<p>In practice (AWWA M51 §4.3), the small orifice is sized to pass <span class="chip">0.5%–1.0%</span> of the pipeline flow as air, translating to orifice diameters of 2–6 mm for most large transmission mains. Adjustable pin-type orifices are preferred over fixed-size orifices in high-turbidity applications.</p>
 
 <!-- Interactive Diagram 3: Orifice Sizing Calculator -->
 <div class="diagram-wrap">
@@ -379,20 +380,20 @@ The small orifice is sized to continuously vent air released from solution durin
   </div>
   <canvas id="sizeChart" height="220"></canvas>
   <div id="sizeResult" class="diag-note diag-note-blue" style="margin-top:12px;font-size:14px;line-height:1.8;font-weight:500;"></div>
-  <div class="diagram-caption">Fig. 2 — Computed orifice diameters and surge pressure check. Large orifice sized per AWWA M51; surge ΔH computed via Joukowsky equation.</div>
+  <div class="diagram-caption">Fig. 2: Computed orifice diameters and surge pressure check. Large orifice sized per AWWA M51; surge ΔH computed via Joukowsky equation.</div>
 </div>
 
 <hr class="article-divider">
 <h2>3. Location Criteria Along the Alignment</h2>
 
 <p>
-The placement of CAVs is the most nuanced step in transmission main design — it sits at the intersection of topographic survey analysis, steady-state hydraulic modelling, and transient simulation. No spacing rule replaces a proper analysis of the hydraulic grade line (HGL) under multiple operating scenarios.
+The placement of CAVs is the most nuanced step in transmission main design. It sits at the intersection of topographic survey analysis, steady-state hydraulic modelling, and transient simulation. No spacing rule replaces a proper analysis of the hydraulic grade line (HGL) under multiple operating scenarios.
 </p>
 
 <h3>Mandatory Placement Locations</h3>
 
 <div class="callout">
-  <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">Locations that mandate CAV installation unconditionally — AWWA M51 §5.2</strong>
+  <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">Locations that mandate CAV installation unconditionally: AWWA M51 §5.2</strong>
   <ul style="padding-left:20px;margin-top:8px">
     <li>Every hydraulic high point where the profile elevation change angle |θ| ≥ 0.2°</li>
     <li>Every upward vertical bend exceeding 5° of deflection</li>
@@ -436,8 +437,8 @@ The placement of CAVs is the most nuanced step in transmission main design — i
     </tr>
     <tr class="row-success">
       <td><strong>Distinct hydraulic high points</strong></td>
-      <td><strong>At every high point — regardless of distance</strong></td>
-      <td>Mandatory placement — spacing override</td>
+      <td><strong>At every high point: regardless of distance</strong></td>
+      <td>Mandatory placement: spacing override</td>
       <td>AWWA M51 + ISO 11388</td>
     </tr>
     <tr>
@@ -458,8 +459,8 @@ The placement of CAVs is the most nuanced step in transmission main design — i
 
 <h3>HGL Analysis Methodology</h3>
 <ol>
-  <li><strong>Plot the HGL under minimum operating flow</strong> — this is the critical condition where HGL drops closest to the profile elevation, creating the largest negative-pressure risk zones.</li>
-  <li><strong>Identify all profile crests above the minimum HGL</strong> — confirmed air accumulation zones requiring CAVs.</li>
+  <li><strong>Plot the HGL under minimum operating flow</strong>. This is the critical condition where HGL drops closest to the profile elevation, creating the largest negative-pressure risk zones.</li>
+  <li><strong>Identify all profile crests above the minimum HGL</strong>: confirmed air accumulation zones requiring CAVs.</li>
   <li><strong>Run a pump-trip transient simulation</strong> (AFT Impulse, Bentley HAMMER, or InfoWorks WS Pro) to identify sub-atmospheric pressure locations during the transient phase.</li>
   <li><strong>Run a line-draining scenario</strong> to identify all segments requiring anti-vacuum protection.</li>
   <li><strong>Classify every CAV location</strong> as: Mandatory / Probable / Precautionary.</li>
@@ -481,7 +482,7 @@ The placement of CAVs is the most nuanced step in transmission main design — i
   </div>
   <canvas id="spacingCanvas" width="860" height="210"></canvas>
   <div id="spacingNote" class="diag-note diag-note-blue" style="margin-top:10px;"></div>
-  <div class="diagram-caption">Fig. 3 — Recommended CAV spacing based on terrain slope. Green markers = mandatory; blue = spacing-based; red = anti-vacuum on steep descent.</div>
+  <div class="diagram-caption">Fig. 3: Recommended CAV spacing based on terrain slope. Green markers = mandatory; blue = spacing-based; red = anti-vacuum on steep descent.</div>
 </div>
 
 <hr class="article-divider">
@@ -493,7 +494,7 @@ CAVs have a dual relationship with water hammer: they <em>protect against</em> n
 
 <h3><span class="step-num">4.1</span> Column Separation and CAV Protection</h3>
 <p>
-When a pump trips suddenly, pressure drops below atmospheric — or even below vapour pressure — at high-point locations, creating a vapour cavity (Column Separation). When flow reverses and the cavity collapses, the kinetic energy of two converging water columns converts to a pressure spike known as a <strong>Column Separation Surge</strong>. A correctly sized anti-vacuum function prevents cavity formation by admitting atmospheric air before pressure drops below absolute zero gauge.
+When a pump trips suddenly, pressure drops below atmospheric, or even below vapour pressure, at high-point locations, creating a vapour cavity (Column Separation). When flow reverses and the cavity collapses, the kinetic energy of two converging water columns converts to a pressure spike known as a <strong>Column Separation Surge</strong>. A correctly sized anti-vacuum function prevents cavity formation by admitting atmospheric air before pressure drops below absolute zero gauge.
 </p>
 
 <div class="formula-box">
@@ -507,7 +508,7 @@ When a pump trips suddenly, pressure drops below atmospheric — or even below v
 
 <h3><span class="step-num">4.2</span> Surge from Oversized CAV Closure</h3>
 <p>
-If the large orifice is too large, air enters at high velocity during a pressure-drop event. When the water column returns and contacts the air pocket boundary, the pocket collapses explosively — an <strong>Air Pocket Collapse Surge</strong>. This can be <span class="chip chip-r">4–6× the working pressure</span> in extreme cases (Lauchlan et al., 2005).
+If the large orifice is too large, air enters at high velocity during a pressure-drop event. When the water column returns and contacts the air pocket boundary, the pocket collapses explosively: an <strong>Air Pocket Collapse Surge</strong>. This can be <span class="chip chip-r">4–6× the working pressure</span> in extreme cases (Lauchlan et al., 2005).
 </p>
 
 <div class="danger-box">
@@ -529,7 +530,7 @@ If the large orifice is too large, air enters at high velocity during a pressure
   </div>
   <canvas id="surgeChart" height="220"></canvas>
   <div id="surgeNote" class="diag-note diag-note-danger" style="margin-top:10px;"></div>
-  <div class="diagram-caption">Fig. 4 — Joukowsky surge head (m w.c.) for four pipe materials at varying velocity change. Any result exceeding 50% of working pressure requires a slow-closing CAV.</div>
+  <div class="diagram-caption">Fig. 4: Joukowsky surge head (m w.c.) for four pipe materials at varying velocity change. Any result exceeding 50% of working pressure requires a slow-closing CAV.</div>
 </div>
 
 <div class="callout">
@@ -541,11 +542,11 @@ If the large orifice is too large, air enters at high velocity during a pressure
 <h2>5. Comprehensive Worked Design Example</h2>
 
 <div class="sim-box">
-  <div class="sim-header"><span class="sim-dot"></span>Worked Example — DN 800 Ductile Iron Main, 45 km Alignment</div>
+  <div class="sim-header"><span class="sim-dot"></span>Worked Example: DN 800 Ductile Iron Main, 45 km Alignment</div>
   <div style="padding:20px 24px">
     <div class="callout" style="margin-top:0">
       <strong style="display:block;margin-bottom:8px;font-size:13px;color:var(--text-tertiary);">Design Input Data</strong>
-      Pipe: DN 800 DI — internal diameter <strong>D = 784 mm</strong> &nbsp;|&nbsp; Wave speed: <strong>a = 1,250 m/s</strong><br>
+      Pipe: DN 800 DI, internal diameter <strong>D = 784 mm</strong> &nbsp;|&nbsp; Wave speed: <strong>a = 1,250 m/s</strong><br>
       Design flow: <strong>Q = 1.85 m³/s (6,660 m³/h)</strong> &nbsp;|&nbsp; Max working pressure: <strong>P<sub>max</sub> = 16 bar (163 m w.c.)</strong><br>
       Peak elevation: <strong>287 m ASL at K34+200</strong> &nbsp;|&nbsp; Fill velocity: <strong>V<sub>fill</sub> = 3.83 m/s</strong>
     </div>
@@ -554,10 +555,10 @@ If the large orifice is too large, air enters at high velocity during a pressure
     <p>Applying the sizing formula with ΔP<sub>allow</sub> = 0.05 bar, V<sub>fill</sub> = 3.83 m/s:</p>
     <div class="formula-box">
       <div class="formula-main">d<sub>large</sub> = 0.0354 × 784 × (3.83 / 0.05)^0.5 = 27.77 × 8.745 = <strong>243 mm</strong></div>
-      <div class="formula-sub">⚠ Dangerously oversized — surge check required before accepting.</div>
+      <div class="formula-sub">Dangerously oversized: surge check required before accepting.</div>
     </div>
 
-    <h3><span class="step-num">2</span> Surge check — maximum allowable ΔV at closure</h3>
+    <h3><span class="step-num">2</span> Surge check: maximum allowable ΔV at closure</h3>
     <div class="formula-box">
       <div class="formula-main">ΔV<sub>max</sub> = (0.5 × 163 × 9.81) / 1,250 = <strong>0.639 m/s</strong></div>
       <div class="formula-sub">Limit: ΔH<sub>surge</sub> ≤ 0.5 × P<sub>max</sub> = 0.5 × 163 = 81.5 m w.c.</div>
@@ -566,14 +567,14 @@ If the large orifice is too large, air enters at high velocity during a pressure
     <h3><span class="step-num">3</span> Surge-constrained large orifice sizing</h3>
     <div class="formula-box">
       <div class="formula-main">d<sub>large</sub> = 0.0354 × 784 × (0.639 / 0.05)^0.5 = 27.77 × 3.572 = <strong>99 mm → Select DN 100 mm</strong></div>
-      <div class="formula-sub">✅ Large orifice: DN 100 mm — with slow-closing throttle, T<sub>close</sub> ≥ 3 seconds</div>
+      <div class="formula-sub">Large orifice: DN 100 mm, with slow-closing throttle, T<sub>close</sub> ≥ 3 seconds</div>
     </div>
 
     <h3><span class="step-num">4</span> Small orifice sizing via Henry's Law</h3>
     <p>Released dissolved air at 8 bar and 28°C, distributed across 8 high-point valves on the ascending reach:</p>
     <div class="formula-box">
       <div class="formula-main">d<sub>small</sub> per valve ≈ 50 / √8 ≈ <strong>18 mm → Use 5 mm adjustable pin-type (standard practice)</strong></div>
-      <div class="formula-sub">✅ Small orifice: 5 mm pin-type adjustable — field calibration at commissioning</div>
+      <div class="formula-sub">Small orifice: 5 mm pin-type adjustable, field calibration at commissioning</div>
     </div>
 
     <h3><span class="step-num">5</span> Placement plan by reach</h3>
@@ -586,7 +587,7 @@ If the large orifice is too large, air enters at high velocity during a pressure
         <tr><td>K0+000 → K15+000</td><td>Flat terrain</td><td>0.08%</td><td>500 m spacing</td><td>~30</td></tr>
         <tr><td>K15+000 → K34+200</td><td>Continuous ascending</td><td>1.2%</td><td>Every local crest</td><td>7</td></tr>
         <tr class="row-danger"><td>K34+200 → K45+000</td><td>Steep descent</td><td>2.4%</td><td>Anti-vacuum every 750 m</td><td>14</td></tr>
-        <tr><td>Post-pump stations × 2</td><td>—</td><td>—</td><td>Within 50 m of discharge</td><td>2</td></tr>
+        <tr><td>Post-pump stations × 2</td><td>–</td><td>–</td><td>Within 50 m of discharge</td><td>2</td></tr>
       </tbody>
     </table>
     </div>
@@ -599,9 +600,9 @@ If the large orifice is too large, air enters at high velocity during a pressure
 
 <!-- Interactive Diagram 6: Alignment -->
 <div class="diagram-wrap">
-  <div class="diagram-title">CAV Placement Along Alignment — Worked Example (K0 to K45)</div>
+  <div class="diagram-title">CAV Placement Along Alignment: Worked Example (K0 to K45)</div>
   <canvas id="alignChart" height="260"></canvas>
-  <div class="diagram-caption">Fig. 5 — Pipeline profile of the worked example. CAV locations by type: ● Mandatory high-point | ▲ Spacing-based | ■ Anti-vacuum (steep descent). HGL shown under minimum flow.</div>
+  <div class="diagram-caption">Fig. 5: Pipeline profile of the worked example. CAV locations by type: ● Mandatory high-point | ▲ Spacing-based | ■ Anti-vacuum (steep descent). HGL shown under minimum flow.</div>
 </div>
 
 <hr class="article-divider">
@@ -611,7 +612,7 @@ If the large orifice is too large, air enters at high velocity during a pressure
 <ul>
   <li>CAVs must be installed <strong>vertically upright</strong> within ±2° of plumb. Any greater deviation alters the float buoyancy geometry and shifts the closure pressure setpoint unpredictably.</li>
   <li>An <strong>isolation (gate) valve</strong> of the same diameter as the branch must be installed between the main and the CAV body to allow in-service maintenance without dewatering the main.</li>
-  <li>The mounting branch must be <strong>vertical</strong> — oblique branches cause air to partially bypass the valve body and accumulate downstream of the valve.</li>
+  <li>The mounting branch must be <strong>vertical</strong>: oblique branches cause air to partially bypass the valve body and accumulate downstream of the valve.</li>
   <li>Minimum branch diameter = 50% of valve body diameter or DN 50 mm, whichever is greater.</li>
   <li><strong>Anti-rotation brackets</strong> must be fitted on all CAVs DN ≥ 50 mm to prevent torque-induced body rotation under cyclic pressure pulsing.</li>
   <li>Manufacturer's minimum upstream straight pipe requirement (typically 5–10D) must be respected to avoid turbulence-induced false float actuation.</li>
@@ -619,7 +620,7 @@ If the large orifice is too large, air enters at high velocity during a pressure
 
 <h3>Access Chamber Design</h3>
 <p>
-Every CAV must be housed in a below-grade access chamber meeting the following minimum criteria: internal clear width ≥ 900 mm on the valve access side, chamber depth providing 600 mm clear space above the valve body top for removal, a removable cover with appropriate load rating, and adequate drainage to prevent chamber flooding — submerged CAVs cannot exhaust air freely.
+Every CAV must be housed in a below-grade access chamber meeting the following minimum criteria: internal clear width ≥ 900 mm on the valve access side, chamber depth providing 600 mm clear space above the valve body top for removal, a removable cover with appropriate load rating, and adequate drainage to prevent chamber flooding, submerged CAVs cannot exhaust air freely.
 </p>
 
 <div class="callout">
@@ -649,7 +650,7 @@ Every CAV must be housed in a below-grade access chamber meeting the following m
     <tr>
       <td>1</td>
       <td>Using the "1/10 pipe diameter" rule-of-thumb for orifice size</td>
-      <td>Consistently oversizes the large orifice — generates surge on closure</td>
+      <td>Consistently oversizes the large orifice: generates surge on closure</td>
       <td>Full AWWA M51 §4 calculation with surge check at every location</td>
     </tr>
     <tr>
@@ -662,18 +663,18 @@ Every CAV must be housed in a below-grade access chamber meeting the following m
       <td>3</td>
       <td>Single CAV on a crest spanning more than 200 m horizontally</td>
       <td>Air accumulates on both flanks; valve becomes saturated and ineffective</td>
-      <td>Two CAVs — one on each flank of the crest, 20–30 m from the apex</td>
+      <td>Two CAVs: one on each flank of the crest, 20–30 m from the apex</td>
     </tr>
     <tr>
       <td>4</td>
       <td>No isolation valve below the CAV</td>
       <td>In-service maintenance requires full segment dewatering</td>
-      <td>Flanged gate valve (same DN as branch) below every CAV — mandatory</td>
+      <td>Flanged gate valve (same DN as branch) below every CAV: mandatory</td>
     </tr>
     <tr class="row-danger">
       <td>5</td>
       <td>Neglecting steeply descending reaches (placing all valves at crests only)</td>
-      <td>No air admission path during pipe break or emergency drain — hydraulic collapse risk</td>
+      <td>No air admission path during pipe break or emergency drain: hydraulic collapse risk</td>
       <td>Anti-vacuum valves at top of descent + every 750 m on steep descending reaches</td>
     </tr>
     <tr>
@@ -696,16 +697,16 @@ Every CAV must be housed in a below-grade access chamber meeting the following m
 <div class="refs">
   <h2>References</h2>
   <ol>
-    <li>American Water Works Association (AWWA) Manual M51 — <em>Air Release, Air-Vacuum, and Combination Air Valves</em>. 2nd Edition. Denver, CO: AWWA, 2016.</li>
-    <li>ISO 11388:2013 — <em>Water Supply and Wastewater Discharge Pipelines: Air Valves and Air Release Valves</em>. ISO.</li>
-    <li>BS EN 1074-4:2000 — <em>Valves for Water Supply; Air Valves</em>. British Standards Institution, London.</li>
-    <li>Wylie, E.B. &amp; Streeter, V.L. — <em>Fluid Transients in Systems</em>. Prentice Hall, 1993.</li>
-    <li>WRc Technical Report TR-30 — <em>Air Valve Design and Placement for Sewers and Water Mains</em>. Water Research Centre, 2005.</li>
-    <li>Lingireddy, S. &amp; Wood, D.J. — "Systematic Approach to Design of Air Valve Systems." <em>Proceedings of the ICE — Water, Maritime and Energy</em>, vol. 148(2), 2001.</li>
-    <li>Lauchlan, C.S. et al. — <em>Air in Pipelines: A Literature Review</em>. HR Wallingford Report SR 649, 2005.</li>
-    <li>Thorley, A.R.D. — <em>Fluid Transients in Pipeline Systems</em>. 2nd Edition. Professional Engineering Publishing, London, 2004.</li>
-    <li>Hydraulic Institute — <em>Pump Application Guidelines for Pipeline Water Hammer</em>. 3rd Edition. 2019.</li>
-    <li>Val-Matic Valve &amp; Mfg. Corp. — <em>Sizing and Application Guide for Air Release and Vacuum Breaker Valves</em>. TB-1100. 2020.</li>
+    <li>American Water Works Association (AWWA) Manual M51: <em>Air Release, Air-Vacuum, and Combination Air Valves</em>. 2nd Edition. Denver, CO: AWWA, 2016.</li>
+    <li>ISO 11388:2013, <em>Water Supply and Wastewater Discharge Pipelines: Air Valves and Air Release Valves</em>. ISO.</li>
+    <li>BS EN 1074-4:2000, <em>Valves for Water Supply; Air Valves</em>. British Standards Institution, London.</li>
+    <li>Wylie, E.B. &amp; Streeter, V.L., <em>Fluid Transients in Systems</em>. Prentice Hall, 1993.</li>
+    <li>WRc Technical Report TR-30: <em>Air Valve Design and Placement for Sewers and Water Mains</em>. Water Research Centre, 2005.</li>
+    <li>Lingireddy, S. &amp; Wood, D.J., "Systematic Approach to Design of Air Valve Systems." <em>Proceedings of the ICE: Water, Maritime and Energy</em>, vol. 148(2), 2001.</li>
+    <li>Lauchlan, C.S. et al., <em>Air in Pipelines: A Literature Review</em>. HR Wallingford Report SR 649, 2005.</li>
+    <li>Thorley, A.R.D., <em>Fluid Transients in Pipeline Systems</em>. 2nd Edition. Professional Engineering Publishing, London, 2004.</li>
+    <li>Hydraulic Institute, <em>Pump Application Guidelines for Pipeline Water Hammer</em>. 3rd Edition. 2019.</li>
+    <li>Val-Matic Valve &amp; Mfg. Corp., <em>Sizing and Application Guide for Air Release and Vacuum Breaker Valves</em>. TB-1100. 2020.</li>
   </ol>
 </div>
 
@@ -718,7 +719,7 @@ Every CAV must be housed in a below-grade access chamber meeting the following m
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -782,7 +783,7 @@ function updateProfile(){
   profileChart.data.datasets[1].data=hgl;
   profileChart.data.datasets[2].data=getProfileData().map((p,i)=>p>hgl[i]-20?p:null);
   profileChart.update();
-  document.getElementById('fig1caption').textContent='Fig. 1 — '+fig1Cap[sysType];
+  document.getElementById('fig1caption').textContent='Fig. 1: '+fig1Cap[sysType];
 }
 
 // ── CANVAS 2: Valve Operating State ─────────────────────────────────────────
@@ -855,7 +856,7 @@ function drawValve(){
   const titles={filling:'Filling Phase',operating:'Steady-State Operation',negative:'Negative Pressure Event',shutdown:'Emergency Shutdown / Draining'};
   ctx.fillText(titles[state],cx,18);
 
-  const captions={filling:'Large and small orifices open — bulk air exhausts rapidly as water rises.',operating:'Large float sealed by line pressure; small float pulses to vent dissolved air continuously.',negative:'Both orifices open — atmospheric air admitted to prevent column separation.',shutdown:'Valve opens fully on pump trip — prevents hydraulic collapse on descending reaches.'};
+  const captions={filling:'Large and small orifices open: bulk air exhausts rapidly as water rises.',operating:'Large float sealed by line pressure; small float pulses to vent dissolved air continuously.',negative:'Both orifices open: atmospheric air admitted to prevent column separation.',shutdown:'Valve opens fully on pump trip: prevents hydraulic collapse on descending reaches.'};
   document.getElementById('valveCaption').textContent=captions[state];
 }
 drawValve();
@@ -897,7 +898,7 @@ function calcSize(){
     `Large orifice (unconstrained): <span style="color:${C.danger};font-weight:600">${Math.round(dLargeU)} mm</span> &nbsp;|&nbsp; `+
     `Surge-checked: <span style="color:${C.accent};font-weight:600">${Math.round(dLargeS)} mm</span> &nbsp;|&nbsp; `+
     `Small orifice: <span style="color:${C.success};font-weight:600">${dSmall.toFixed(1)} mm</span> &nbsp;|&nbsp; `+
-    `Closure surge ΔH: <span style="font-weight:600;color:${safe?C.success:C.danger}">${Math.round(surgeH)} m w.c. ${safe?'✓ Within limit':'⚠ EXCEEDS LIMIT — use slow-closing CAV'}</span>`;
+    `Closure surge ΔH: <span style="font-weight:600;color:${safe?C.success:C.danger}">${Math.round(surgeH)} m w.c. ${safe?'✓ Within limit':'EXCEEDS LIMIT: use slow-closing CAV'}</span>`;
 }
 calcSize();
 
@@ -979,10 +980,10 @@ function drawSpacing(){
   }
 
   ctx.fillStyle=C.text;ctx.font='11px DM Sans,sans-serif';ctx.textAlign='left';
-  ctx.fillText(type+' — adjusted spacing: '+spacing+' m  (base: '+base+' m, DN factor: ×'+dnF.toFixed(2)+')',30,14);
+  ctx.fillText(type+', adjusted spacing: '+spacing+' m  (base: '+base+' m, DN factor: ×'+dnF.toFixed(2)+')',30,14);
 
-  const baseNote=slope<0.1?'Flat terrain: dissolved air accumulates slowly — vent every 500 m (AWWA M51 §5.3).':slope<0.5?'Gentle gradient: air migrates to crests — 750 m base spacing.':slope<2?'Steep gradient: rapid air accumulation — 1,000 m base spacing (WRc TR-30).':'Very steep descent: anti-vacuum valves every 750 m to prevent column separation.';
-  const dnNote=dn<400?'DN < 400 mm: spacing reduced 15% — air pockets grow faster relative to pipe cross-section.':dn>800?'DN > 800 mm: spacing increased 15% — larger cross-section slows relative air accumulation.':'DN 400–800 mm: standard spacing applies — no DN correction required.';
+  const baseNote=slope<0.1?'Flat terrain: dissolved air accumulates slowly, vent every 500 m (AWWA M51 §5.3).':slope<0.5?'Gentle gradient: air migrates to crests, 750 m base spacing.':slope<2?'Steep gradient: rapid air accumulation, 1,000 m base spacing (WRc TR-30).':'Very steep descent: anti-vacuum valves every 750 m to prevent column separation.';
+  const dnNote=dn<400?'DN < 400 mm: spacing reduced 15%, air pockets grow faster relative to pipe cross-section.':dn>800?'DN > 800 mm: spacing increased 15%, larger cross-section slows relative air accumulation.':'DN 400–800 mm: standard spacing applies, no DN correction required.';
   document.getElementById('spacingNote').innerHTML='<strong>Terrain rule:</strong> '+baseNote+'<br><strong>DN adjustment:</strong> '+dnNote;
 }
 drawSpacing();
@@ -1002,13 +1003,13 @@ function updateSurge(){
   document.getElementById('wpSurgeVal').textContent=wp+' bar';
   document.getElementById('dvVal').textContent=dv.toFixed(1);
   const limit=wp*10*0.5;
-  const msgs=materials.map(m=>{const dH=(m.a*dv)/9.81;return m.name+': ΔH = '+Math.round(dH)+' m w.c. '+(dH<=limit?'✓ Safe':'⚠ EXCEEDS');});
+  const msgs=materials.map(m=>{const dH=(m.a*dv)/9.81;return m.name+': ΔH = '+Math.round(dH)+' m w.c. '+(dH<=limit?'✓ Safe':'EXCEEDS');});
   surgeChart.options.plugins.title={display:true,text:'50% working pressure limit = '+Math.round(limit)+' m w.c. (at '+wp+' bar)',font:{size:12},color:C.danger};
   surgeChart.update();
   const anyEx=materials.some(m=>(m.a*dv)/9.81>limit);
   const noteEl=document.getElementById('surgeNote');
   noteEl.className='diag-note '+(anyEx?'diag-note-danger':'diag-note-blue');
-  noteEl.innerHTML='<strong>At ΔV = '+dv.toFixed(1)+' m/s and P<sub>work</sub> = '+wp+' bar (limit = '+Math.round(limit)+' m w.c.):</strong><br>'+msgs.join(' &nbsp;|&nbsp; ')+(anyEx?'<br><strong>⚠ Slow-closing CAV required for materials exceeding the limit.</strong>':'');
+  noteEl.innerHTML='<strong>At ΔV = '+dv.toFixed(1)+' m/s and P<sub>work</sub> = '+wp+' bar (limit = '+Math.round(limit)+' m w.c.):</strong><br>'+msgs.join(' &nbsp;|&nbsp; ')+(anyEx?'<br><strong>Slow-closing CAV required for materials exceeding the limit.</strong>':'');
 }
 updateSurge();
 
@@ -1022,7 +1023,7 @@ new Chart(alignCtx,{
   data:{datasets:[
     {label:'Pipeline Profile (m ASL)',data:alignKm.map((k,i)=>({x:k,y:alignElev[i]})),borderColor:C.accent,backgroundColor:'rgba(0,113,227,0.08)',fill:true,tension:0.4,pointRadius:0,borderWidth:2},
     {label:'HGL (Min Flow)',data:alignKm.map((k,i)=>({x:k,y:hglLine[i]})),borderColor:C.text,borderDash:[7,4],fill:false,tension:0.3,pointRadius:0,borderWidth:2},
-    {label:'Mandatory CAV — High Points',data:[{x:0,y:95},{x:15,y:148},{x:21,y:172},{x:24,y:182},{x:27,y:198},{x:30,y:210},{x:33,y:228},{x:34.2,y:287}],type:'scatter',pointStyle:'circle',pointRadius:9,pointHoverRadius:11,pointBackgroundColor:C.accent,pointBorderColor:'#fff',pointBorderWidth:2,showLine:false},
+    {label:'Mandatory CAV: High Points',data:[{x:0,y:95},{x:15,y:148},{x:21,y:172},{x:24,y:182},{x:27,y:198},{x:30,y:210},{x:33,y:228},{x:34.2,y:287}],type:'scatter',pointStyle:'circle',pointRadius:9,pointHoverRadius:11,pointBackgroundColor:C.accent,pointBorderColor:'#fff',pointBorderWidth:2,showLine:false},
     {label:'Spacing-Based CAVs',data:[{x:3,y:102},{x:6,y:115},{x:9,y:128},{x:12,y:138}],type:'scatter',pointStyle:'triangle',pointRadius:8,pointHoverRadius:10,pointBackgroundColor:C.success,pointBorderColor:'#fff',pointBorderWidth:2,showLine:false},
     {label:'Anti-Vacuum Valves',data:[{x:36,y:275},{x:39,y:255},{x:42,y:228}],type:'scatter',pointStyle:'rect',pointRadius:8,pointHoverRadius:10,pointBackgroundColor:C.danger,pointBorderColor:'#fff',pointBorderWidth:2,showLine:false}
   ]},

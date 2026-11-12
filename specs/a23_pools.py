@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">Every megatall tower has a pool, and increasingly it is on the roof — an infinity edge at three hundred metres with a view. That single architectural decision transforms an ordinary building service into one of the hardest loads in the building, because evaporation depends on <strong>air movement</strong>, and at 300&nbsp;m there is a great deal of it. The same 400&nbsp;m² of water that evaporates quietly indoors loses <strong>384&nbsp;kg an hour</strong> on an exposed rooftop in Gulf conditions — a <strong>262&nbsp;kW</strong> latent load and <strong>9&nbsp;m³ a day</strong> of makeup water, permanently, on the highest and least accessible part of the building.</p>
+<p class="lead">Every megatall tower has a pool, and increasingly it is on the roof: an infinity edge at three hundred metres with a view. That single architectural decision transforms an ordinary building service into one of the hardest loads in the building, because evaporation depends on <strong>air movement</strong>, and at 300&nbsp;m there is a great deal of it. The same 400&nbsp;m² of water that evaporates quietly indoors loses <strong>384&nbsp;kg an hour</strong> on an exposed rooftop in Gulf conditions: a <strong>262&nbsp;kW</strong> latent load and <strong>9&nbsp;m³ a day</strong> of makeup water, permanently, on the highest and least accessible part of the building.</p>
 
 <h2 id="why">1 · Why a pool in a tower is different</h2>
 <ul class="clean">
@@ -19,7 +19,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Pool evaporation and latent load</div>
-    <div class="fsub">ASHRAE evaporation correlation. Latent load = ṁ·Y; makeup water is the same mass flow. Air velocity is the value at the water surface, not the free-stream wind speed — a windbreak reduces it substantially.</div>
+    <div class="fsub">ASHRAE evaporation correlation. Latent load = ṁ·Y; makeup water is the same mass flow. Air velocity is the value at the water surface, not the free-stream wind speed: a windbreak reduces it substantially.</div>
   </div>
   <div class="chart-box"><canvas id="evChart"></canvas></div>
   <div class="controls">
@@ -57,10 +57,10 @@ BODY = r"""
     <div class="cell"><div class="k">Exposure</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rEx"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 400&nbsp;m² rooftop pool in dry 40&nbsp;°C air at 3&nbsp;m/s evaporates <strong>384&nbsp;kg/h</strong> — a <strong>262&nbsp;kW</strong> load and <strong>9.2&nbsp;m³ a day</strong> of treated makeup water hauled to the top of the tower. Now drag the velocity down to 0.5&nbsp;m/s, which is what a properly designed <strong>windbreak or recessed pool surround</strong> achieves: the load falls to about <strong>104&nbsp;kW</strong>, a 60&nbsp;% reduction, for architecture rather than plant. That is the single highest-value intervention available, and it has to be argued at concept design because it is a form decision. A <strong>pool cover at night</strong> is the second: covering for eight hours cuts daily evaporation by roughly a third at no capital cost beyond the cover itself.</p>
+<p class="fig-note">A 400&nbsp;m² rooftop pool in dry 40&nbsp;°C air at 3&nbsp;m/s evaporates <strong>384&nbsp;kg/h</strong>: a <strong>262&nbsp;kW</strong> load and <strong>9.2&nbsp;m³ a day</strong> of treated makeup water hauled to the top of the tower. Now drag the velocity down to 0.5&nbsp;m/s, which is what a properly designed <strong>windbreak or recessed pool surround</strong> achieves: the load falls to about <strong>104&nbsp;kW</strong>, a 60&nbsp;% reduction, for architecture rather than plant. That is the single highest-value intervention available, and it has to be argued at concept design because it is a form decision. A <strong>pool cover at night</strong> is the second: covering for eight hours cuts daily evaporation by roughly a third at no capital cost beyond the cover itself.</p>
 
 <h2 id="int-turnover">3 · Interactive: turnover, filtration and the plant</h2>
-<p>Water quality is maintained by continuously recirculating the whole volume through filtration and disinfection. The <strong>turnover period</strong> — the time to pass a volume equal to the pool through the plant — is set by code and by bather load, and it sizes everything downstream.</p>
+<p>Water quality is maintained by continuously recirculating the whole volume through filtration and disinfection. The <strong>turnover period</strong> (the time to pass a volume equal to the pool through the plant) is set by code and by bather load, and it sizes everything downstream.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -98,25 +98,25 @@ BODY = r"""
     <div class="cell"><div class="k">Backwash flow</div><div class="v" id="rBw">288 <small>m³/h</small></div></div>
   </div>
 </div>
-<p class="fig-note">A 640&nbsp;m³ pool on a four-hour turnover needs <strong>160&nbsp;m³/h — 44&nbsp;L/s</strong> circulating continuously, through <strong>6.4&nbsp;m²</strong> of filter, for about 11&nbsp;kW of pump power running 8,760 hours a year. Two design traps sit in the readouts. The <strong>backwash flow is far larger than the circulation flow</strong> — typically 45&nbsp;m/h against 25 — so the backwash pipework, the waste drain and the balance tank must be sized for it, not for normal operation. And note the head slider: if the plant room is on a different level from the pool, the circuit becomes a tall open loop, the pump has to lift the water, and the pump power multiplies. <strong>Put the plant room on the same level as the pool</strong> if the architecture allows it.</p>
+<p class="fig-note">A 640&nbsp;m³ pool on a four-hour turnover needs <strong>160&nbsp;m³/h: 44&nbsp;L/s</strong> circulating continuously, through <strong>6.4&nbsp;m²</strong> of filter, for about 11&nbsp;kW of pump power running 8,760 hours a year. Two design traps sit in the readouts. The <strong>backwash flow is far larger than the circulation flow</strong>, typically 45&nbsp;m/h against 25, so the backwash pipework, the waste drain and the balance tank must be sized for it, not for normal operation. And note the head slider: if the plant room is on a different level from the pool, the circuit becomes a tall open loop, the pump has to lift the water, and the pump power multiplies. <strong>Put the plant room on the same level as the pool</strong> if the architecture allows it.</p>
 
 <h2 id="water">4 · Water treatment, and why the balance tank matters</h2>
 <ul class="clean">
-  <li><strong>The balance tank is the system.</strong> It absorbs displaced water when bathers enter, receives the deck-level and infinity-edge overflow, provides the pump suction and takes the makeup. Undersize it and the pump loses suction, the edge stops flowing and the surface skimming fails. Size it for the displacement of the design bather load plus the surge volume of the overflow channel plus a working depth — never as a minimum sump.</li>
+  <li><strong>The balance tank is the system.</strong> It absorbs displaced water when bathers enter, receives the deck-level and infinity-edge overflow, provides the pump suction and takes the makeup. Undersize it and the pump loses suction, the edge stops flowing and the surface skimming fails. Size it for the displacement of the design bather load plus the surge volume of the overflow channel plus a working depth, never as a minimum sump.</li>
   <li><strong>Infinity edges multiply the balance duty.</strong> A weir edge is a continuous overflow, which is excellent for surface skimming and demands a much larger catchment channel, a larger balance tank and a larger circulation rate than a skimmer pool. It is an architectural feature with a real hydraulic consequence.</li>
-  <li><strong>Disinfection is dual.</strong> A residual disinfectant (chlorine or bromine) throughout the water, plus supplementary treatment — commonly UV or ozone — to control chlorine-resistant organisms and to reduce combined chlorine. UV in particular reduces the chloramines responsible for the smell and eye irritation that people wrongly attribute to "too much chlorine".</li>
+  <li><strong>Disinfection is dual.</strong> A residual disinfectant (chlorine or bromine) throughout the water, plus supplementary treatment, commonly UV or ozone, to control chlorine-resistant organisms and to reduce combined chlorine. UV in particular reduces the chloramines responsible for the smell and eye irritation that people wrongly attribute to "too much chlorine".</li>
   <li><strong>Automate and monitor.</strong> Continuous pH and free-chlorine measurement with proportional dosing and an interlock that stops bathing on out-of-range readings. Manual dosing on a rooftop pool at 300&nbsp;m will not happen reliably.</li>
-  <li><strong>Handle the chemicals safely.</strong> Segregated, ventilated, bunded chemical storage with incompatible chemicals separated, and a delivery route that does not pass through occupied space — a real constraint when the plant is on the roof.</li>
-  <li><strong>Spas are a category of their own.</strong> High temperature, high aeration and high bather density mean turnover periods measured in minutes, aggressive disinfection demand and the highest Legionella risk in the building — treat a spa as a separate system, never as an appendage to the pool.</li>
+  <li><strong>Handle the chemicals safely.</strong> Segregated, ventilated, bunded chemical storage with incompatible chemicals separated, and a delivery route that does not pass through occupied space: a real constraint when the plant is on the roof.</li>
+  <li><strong>Spas are a category of their own.</strong> High temperature, high aeration and high bather density mean turnover periods measured in minutes, aggressive disinfection demand and the highest Legionella risk in the building: treat a spa as a separate system, never as an appendage to the pool.</li>
 </ul>
 
 <h2 id="heat">5 · Heating, and where the energy actually goes</h2>
-<p>For a heated pool, <strong>evaporation is typically 60–70&nbsp;% of the total heat loss</strong> — more than conduction, radiation and makeup heating combined. Three consequences follow, and they are all cheap:</p>
+<p>For a heated pool, <strong>evaporation is typically 60–70&nbsp;% of the total heat loss</strong>, more than conduction, radiation and makeup heating combined. Three consequences follow, and they are all cheap:</p>
 <ul class="clean">
   <li><strong>A cover is the single most effective measure.</strong> It stops evaporation almost completely while in place; even overnight-only use is a large annual saving.</li>
   <li><strong>Shelter the water surface.</strong> The velocity term in the evaporation equation is the design variable you can most easily change.</li>
   <li><strong>Do not overheat.</strong> Each degree of water temperature raises the saturation pressure and therefore the evaporation; a pool run 2&nbsp;K warmer than necessary costs far more than 2&nbsp;K of sensible heating.</li>
-  <li><strong>Recover the heat.</strong> An indoor pool hall's dehumidification plant should be a heat-pump dehumidifier returning the latent heat to the water — the load is large, constant and at a useful temperature, which is close to an ideal heat-pump duty. Backwash and drainage heat recovery are worth checking too.</li>
+  <li><strong>Recover the heat.</strong> An indoor pool hall's dehumidification plant should be a heat-pump dehumidifier returning the latent heat to the water: the load is large, constant and at a useful temperature, which is close to an ideal heat-pump duty. Backwash and drainage heat recovery are worth checking too.</li>
 </ul>
 <p>In a Gulf tower the more common case is the opposite: an outdoor pool that needs <em>cooling</em> in summer to stay comfortable, which is a genuine chilled-water load, and heating only in the short winter. Design for both and confirm which governs.</p>
 
@@ -125,7 +125,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Pool mass and sloshing allowance at the top of a tower</div>
-    <div class="fsub">Static mass from volume; dynamic allowance as a fraction of static representing the sloshing (convective) mass excited by building sway. Indicative only — a real design needs a fluid-structure assessment.</div>
+    <div class="fsub">Static mass from volume; dynamic allowance as a fraction of static representing the sloshing (convective) mass excited by building sway. Indicative only: a real design needs a fluid-structure assessment.</div>
   </div>
   <div class="chart-box"><canvas id="stChart"></canvas></div>
   <div class="controls">
@@ -158,24 +158,24 @@ BODY = r"""
     <div class="cell"><div class="k">vs office floor</div><div class="v" id="rVo">7.3<small>×</small></div></div>
   </div>
 </div>
-<p class="fig-note">A 400&nbsp;m² pool at 1.6&nbsp;m mean depth is <strong>640 tonnes of water</strong> and, with the tank and surround, close to <strong>900 tonnes</strong> at roof level — a load intensity of <strong>22&nbsp;kPa</strong>, roughly <strong>seven times</strong> a normal office floor. It also sits at the point of maximum building sway, so a share of that water is a dynamic mass moving with the structure. Two things follow that the MEP engineer must actually do: issue the <strong>full operating mass including the balance tank</strong> to the structural engineer early, and note that a pool near the top of a tower interacts with the building's dynamics — in some towers deliberately, as a tuned sloshing damper, which is only possible if the interaction is recognised at concept rather than discovered in commissioning.</p>
+<p class="fig-note">A 400&nbsp;m² pool at 1.6&nbsp;m mean depth is <strong>640 tonnes of water</strong> and, with the tank and surround, close to <strong>900 tonnes</strong> at roof level: a load intensity of <strong>22&nbsp;kPa</strong>, roughly <strong>seven times</strong> a normal office floor. It also sits at the point of maximum building sway, so a share of that water is a dynamic mass moving with the structure. Two things follow that the MEP engineer must actually do: issue the <strong>full operating mass including the balance tank</strong> to the structural engineer early, and note that a pool near the top of a tower interacts with the building's dynamics: in some towers deliberately, as a tuned sloshing damper, which is only possible if the interaction is recognised at concept rather than discovered in commissioning.</p>
 
 <h2 id="install">7 · Installation &amp; execution tricks</h2>
 <ul class="clean">
   <li><strong>Waterproof the tank as a structure, not a finish.</strong> A pool over occupied space is a tanking problem; specify the membrane, the movement joints and a leak-detection layer, and test-fill and monitor before finishes go on.</li>
   <li><strong>Test-fill and hold.</strong> A recorded 7-day static level test before tiling is the only reliable proof; a leak found afterwards means demolishing the finish.</li>
-  <li><strong>Size the balance tank properly</strong> and give it level control, overflow and an air gap on the makeup — the same air-gap rule as in <a href="greywater-reuse-tall-buildings.html">water reuse</a>.</li>
+  <li><strong>Size the balance tank properly</strong> and give it level control, overflow and an air gap on the makeup: the same air-gap rule as in <a href="greywater-reuse-tall-buildings.html">water reuse</a>.</li>
   <li><strong>Design the backwash disposal.</strong> A 288&nbsp;m³/h backwash into a drain sized for 160&nbsp;m³/h floods the plant room; check the drain, the route and any dilution or neutralisation the discharge consent requires.</li>
-  <li><strong>Plan chemical delivery to the roof</strong> — route, lift capacity, spill containment and a store that meets separation requirements. This is a logistics design task, not a note on a drawing.</li>
+  <li><strong>Plan chemical delivery to the roof</strong>: route, lift capacity, spill containment and a store that meets separation requirements. This is a logistics design task, not a note on a drawing.</li>
   <li><strong>Provide plant access and replacement routes</strong> for filter media, pumps and the dehumidifier, and remember the goods lift is the only way up.</li>
   <li><strong>Commission the water chemistry before opening</strong>, with a microbiological clearance, and set the interlocks that stop bathing on out-of-range readings.</li>
-  <li><strong>Meter the makeup water.</strong> On a rooftop pool the makeup meter is the leak detector — a step change in daily makeup is the earliest sign of a tank leak, which over occupied space is the failure that matters most.</li>
+  <li><strong>Meter the makeup water.</strong> On a rooftop pool the makeup meter is the leak detector: a step change in daily makeup is the earliest sign of a tank leak, which over occupied space is the failure that matters most.</li>
 </ul>
 
 <h2 id="checklist">8 · The design &amp; installation checklist</h2>
 <ul class="clean">
   <li><strong>Calculate evaporation at the real surface air velocity</strong>, not at an indoor default.</li>
-  <li><strong>Shelter the surface and provide a cover</strong> — the two cheapest load reductions available.</li>
+  <li><strong>Shelter the surface and provide a cover</strong>: the two cheapest load reductions available.</li>
   <li><strong>Set the turnover from the code and the bather load</strong>, and size filters, backwash and balance tank from it.</li>
   <li><strong>Put the plant room on the pool level</strong> where possible; otherwise account for the lift in the pump duty.</li>
   <li><strong>Size the balance tank for displacement plus surge</strong>, especially with an infinity edge.</li>
@@ -193,13 +193,13 @@ BODY = r"""
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ASHRAE <em>Handbook — HVAC Applications</em>, Natatoriums chapter — pool evaporation correlation, dehumidification, air distribution and heat recovery.</li>
-  <li>PWTAG <em>Swimming Pool Water: Treatment and Quality Standards for Pools and Spas</em> — turnover periods, filtration velocities, disinfection and monitoring.</li>
-  <li>BS EN 15288-1 and -2 — swimming pools: safety requirements for design and for operation; and ISO 20380 for pool water treatment plant.</li>
+  <li>ASHRAE <em>Handbook, HVAC Applications</em>, Natatoriums chapter: pool evaporation correlation, dehumidification, air distribution and heat recovery.</li>
+  <li>PWTAG <em>Swimming Pool Water: Treatment and Quality Standards for Pools and Spas</em>, turnover periods, filtration velocities, disinfection and monitoring.</li>
+  <li>BS EN 15288-1 and -2, swimming pools: safety requirements for design and for operation; and ISO 20380 for pool water treatment plant.</li>
   <li>WHO <em>Guidelines for Safe Recreational Water Environments, Volume 2: Swimming Pools and Similar Environments</em>.</li>
   <li>ANSI/APSP/ICC standards for public and residential pools and spas; and the International Swimming Pool and Spa Code.</li>
-  <li>HSE <em>HSG282</em> — control of Legionella and other infectious agents in spa pool systems.</li>
-  <li>CIBSE <em>Guide G</em> and SPATA design standards — pool hall services, balance tanks and plant sizing.</li>
+  <li>HSE <em>HSG282</em>: control of Legionella and other infectious agents in spa pool systems.</li>
+  <li>CIBSE <em>Guide G</em> and SPATA design standards: pool hall services, balance tanks and plant sizing.</li>
   <li>Saudi Building Code <em>SBC 701</em> and local health authority requirements for public pools and water features.</li>
 </ol>
 
@@ -254,7 +254,7 @@ function updEv(){
   const v=document.getElementById('rEx');
   if(V<=0.5)      v.innerHTML='<span class="badge good">sheltered</span>';
   else if(V<=1.5) v.innerHTML='<span class="badge warn">partly exposed</span>';
-  else            v.innerHTML='<span class="badge bad">exposed — shelter it</span>';
+  else            v.innerHTML='<span class="badge bad">exposed: shelter it</span>';
 }
 [sA,sTw,sTa,sRh,sV].forEach(s=>s.addEventListener('input',updEv));updEv();
 
@@ -269,7 +269,7 @@ let turnChart=new Chart(document.getElementById('turnChart'),{
     {type:'scatter',label:'Your pool',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,yAxisID:'y',order:1}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
-    scales:{x:{type:'linear',min:0.5,max:10,reverse:true,title:{display:true,text:'Turnover period (h)  —  faster to the right',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+    scales:{x:{type:'linear',min:0.5,max:10,reverse:true,title:{display:true,text:'Turnover period (h): faster to the right',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
             y:{type:'linear',position:'left',min:0,title:{display:true,text:'Circulation flow (m³/h)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
             y1:{type:'linear',position:'right',min:0,title:{display:true,text:'Pump shaft power (kW)',font:{family:'DM Sans',size:12,weight:'600'}},grid:{drawOnChartArea:false},ticks:{font:{family:'DM Sans',size:11}}}},
     plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}}}}
@@ -345,16 +345,16 @@ SPEC = dict(
     reg_tag='Plumbing · Pools · Wellness',
     breadcrumb='Plumbing &amp; Drainage',
     tag_line='Plumbing &middot; Pools &middot; Wellness &middot; Rooftop Amenities',
-    desc='Pool and wellness MEP design in megatall buildings: why evaporation scales with air velocity and a rooftop pool at 300 m loses five times what an indoor one does, shelter and covers as the highest-value interventions, turnover periods and filtration and backwash sizing, balance tanks and infinity edges, disinfection and spa risk, heating and heat recovery, and the 900-tonne operating mass at roof level — with three interactive charts.',
-    og_desc='A 400 m2 rooftop pool in exposed Gulf conditions loses 384 kg an hour — a 262 kW latent load and 9 m3 a day of makeup. Shelter it to 0.5 m/s and that falls to 104 kW, for architecture rather than plant.',
+    desc='Pool and wellness MEP design in megatall buildings: why evaporation scales with air velocity and a rooftop pool at 300 m loses five times what an indoor one does, shelter and covers as the highest-value interventions, turnover periods and filtration and backwash sizing, balance tanks and infinity edges, disinfection and spa risk, heating and heat recovery, and the 900-tonne operating mass at roof level, with three interactive charts.',
+    og_desc='A 400 m2 rooftop pool in exposed Gulf conditions loses 384 kg an hour: a 262 kW latent load and 9 m3 a day of makeup. Shelter it to 0.5 m/s and that falls to 104 kW, for architecture rather than plant.',
     ld_desc='A design-perspective guide to pools and wellness facilities in megatall buildings: evaporation and latent load, shelter and covers, turnover and filtration sizing, backwash and balance tanks, infinity edges, disinfection and spa risk, heating and heat recovery, and structural load at roof level.',
     img_alt='Technical cutaway of a rooftop infinity pool on a megatall tower showing the overflow channel and balance tank below deck, the filtration and dosing plant room alongside, and wind flowing across the exposed water surface',
     en_tag='Plumbing &amp; Drainage &middot; Pools &middot; Wellness &middot; Rooftop',
     en_title='Pools &amp; Wellness MEP in Megatall Buildings: Rooftop Evaporation, Turnover &amp; the Load on the Roof',
-    en_excerpt='Every megatall tower has a pool, and increasingly it is on the roof &mdash; which transforms an ordinary building service into one of the hardest loads in the building, because evaporation depends on <strong>air movement</strong> and at 300&nbsp;m there is a great deal of it. The same 400&nbsp;m&sup2; of water loses <strong>384&nbsp;kg an hour</strong> exposed: a <strong>262&nbsp;kW</strong> latent load and 9&nbsp;m&sup3; a day of makeup. Shelter it and that falls to 104&nbsp;kW &mdash; architecture beating plant. Plus turnover, backwash, balance tanks, spa risk and the 900-tonne mass at roof level &mdash; with three interactive charts.',
+    en_excerpt='Every megatall tower has a pool, and increasingly it is on the roof, which transforms an ordinary building service into one of the hardest loads in the building, because evaporation depends on <strong>air movement</strong> and at 300&nbsp;m there is a great deal of it. The same 400&nbsp;m&sup2; of water loses <strong>384&nbsp;kg an hour</strong> exposed: a <strong>262&nbsp;kW</strong> latent load and 9&nbsp;m&sup3; a day of makeup. Shelter it and that falls to 104&nbsp;kW: architecture beating plant. Plus turnover, backwash, balance tanks, spa risk and the 900-tonne mass at roof level, with three interactive charts.',
     en_search='swimming pool wellness spa MEP tall buildings megatall rooftop infinity edge evaporation ASHRAE correlation vapour pressure air velocity wind boundary layer latent load makeup water pool cover windbreak shelter water temperature turnover period circulation flow filtration velocity sand filter filter area backwash flow disposal balance tank displacement surge bather load skimmer deck level overflow disinfection chlorine bromine residual UV ozone chloramines combined chlorine automatic dosing pH interlock spa Legionella HSG282 PWTAG heat pump dehumidifier heat recovery structural load sloshing dynamic mass tuned sloshing damper waterproofing tanking test fill leak detection makeup metering chemical storage plant access commissioning MEP building services',
     ar_title='المسابح ومرافق الاستجمام في المباني فائقة الارتفاع: التبخر على الأسطح ومعدل الدوران والحمل الإنشائي',
-    ar_excerpt='كل برج فائق الارتفاع فيه مسبح، وغالبًا على السطح — وهذا يحوّل خدمة عادية إلى واحد من أصعب الأحمال في المبنى، لأن التبخر يعتمد على <strong>حركة الهواء</strong>، وعلى ارتفاع ٣٠٠ متر يوجد الكثير منها. المساحة نفسها البالغة ٤٠٠ م٢ تفقد <strong>٣٨٤ كجم في الساعة</strong> عند التعرض: حمل كامن قدره <strong>٢٦٢ كيلوواط</strong> و٩ أمتار مكعبة يوميًا من مياه التعويض. احمِ السطح وينخفض إلى ١٠١ كيلوواط — العمارة تتفوق على المعدات. مع معدل الدوران والغسيل العكسي وخزان الموازنة ومخاطر الجاكوزي والكتلة البالغة ٩٠٠ طن على السطح — مع ثلاثة رسوم تفاعلية.',
+    ar_excerpt='كل برج فائق الارتفاع فيه مسبح، وغالبًا على السطح، وهذا يحوّل خدمة عادية إلى واحد من أصعب الأحمال في المبنى، لأن التبخر يعتمد على <strong>حركة الهواء</strong>، وعلى ارتفاع ٣٠٠ متر يوجد الكثير منها. المساحة نفسها البالغة ٤٠٠ م٢ تفقد <strong>٣٨٤ كجم في الساعة</strong> عند التعرض: حمل كامن قدره <strong>٢٦٢ كيلوواط</strong> و٩ أمتار مكعبة يوميًا من مياه التعويض. احمِ السطح وينخفض إلى ١٠١ كيلوواط: العمارة تتفوق على المعدات. مع معدل الدوران والغسيل العكسي وخزان الموازنة ومخاطر الجاكوزي والكتلة البالغة ٩٠٠ طن على السطح، مع ثلاثة رسوم تفاعلية.',
     ar_search='swimming pool spa wellness rooftop infinity edge evaporation latent load pool cover turnover filtration backwash balance tank disinfection UV ozone Legionella HSG282 PWTAG structural load sloshing waterproofing المسابح حمامات السباحة الجاكوزي مرافق الاستجمام المباني الشاهقة المباني فائقة الارتفاع مسبح السطح الحافة اللانهائية التبخر معادلة أشري ضغط البخار سرعة الهواء الرياح الطبقة الحدية الحمل الكامن مياه التعويض غطاء المسبح مصد الرياح الحماية درجة حرارة الماء فترة الدوران معدل التدوير سرعة الترشيح المرشح الرملي مساحة المرشح تدفق الغسيل العكسي التخلص من مياه الغسيل خزان الموازنة الإزاحة الطفرة حمل المستحمين المكشطة التصريف المحيطي التعقيم الكلور البروم المتبقي الأشعة فوق البنفسجية الأوزون الكلورامين الجرعات التلقائية الأس الهيدروجيني التعشيق الليجيونيلا مضخة حرارية لإزالة الرطوبة استرجاع الحرارة الحمل الإنشائي الترنح الكتلة الديناميكية مخمد الترنح المضبوط العزل المائي اختبار الملء كشف التسرب عداد مياه التعويض تخزين الكيماويات الوصول للمعدات التشغيل والاختبار MEP خدمات المباني',
     body=BODY, charts=CHARTS,
 )

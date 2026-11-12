@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">Outdoor air is the one thing a tall building cannot manufacture. Everything else — cooling, heat, water, power — can be generated, stored or zoned. Fresh air has to be captured from a moving atmosphere, at a height where that atmosphere is doing something very different from what it does at ground level, and then dragged through a filter bank and up a shaft to a hundred floors of people. In a megatall tower the ventilation system is fighting three things at once: <strong>wind pressures that exceed the fan's own static</strong>, an outdoor state that in a coastal Gulf summer carries more than twice the enthalpy of the air being thrown away, and a filtration duty that quietly consumes more fan energy over a year than the fan was ever sized to notice.</p>
+<p class="lead">Outdoor air is the one thing a tall building cannot manufacture. Everything else (cooling, heat, water, power) can be generated, stored or zoned. Fresh air has to be captured from a moving atmosphere, at a height where that atmosphere is doing something very different from what it does at ground level, and then dragged through a filter bank and up a shaft to a hundred floors of people. In a megatall tower the ventilation system is fighting three things at once: <strong>wind pressures that exceed the fan's own static</strong>, an outdoor state that in a coastal Gulf summer carries more than twice the enthalpy of the air being thrown away, and a filtration duty that quietly consumes more fan energy over a year than the fan was ever sized to notice.</p>
 
 <h2 id="why">1 · Why outdoor air is different up there</h2>
 <ul class="clean">
-  <li><strong>The wind is a pressure source, not a breeze.</strong> Wind speed grows with height as a power law, and dynamic pressure grows with its square. At 600&nbsp;m a wind that is a mild 10&nbsp;m/s at street level produces a windward-to-leeward pressure difference across the tower of about <strong>600&nbsp;Pa</strong> — larger than the external static of many air-handling units. An intake that is not designed for it will be over-pressurised, reversed, or both, depending on the hour.</li>
+  <li><strong>The wind is a pressure source, not a breeze.</strong> Wind speed grows with height as a power law, and dynamic pressure grows with its square. At 600&nbsp;m a wind that is a mild 10&nbsp;m/s at street level produces a windward-to-leeward pressure difference across the tower of about <strong>600&nbsp;Pa</strong>: larger than the external static of many air-handling units. An intake that is not designed for it will be over-pressurised, reversed, or both, depending on the hour.</li>
   <li><strong>Intake location cannot be an afterthought.</strong> At height, the choices are few: the façade, a mechanical floor louvre, or the roof. Each has a different relationship with the wind, with the exhaust discharges, and with the plume from cooling towers and generators.</li>
-  <li><strong>The outdoor state is not the same air you left downstairs.</strong> Temperature falls roughly 6.5&nbsp;°C per kilometre, particulate loading falls markedly above the street canyon, and humidity behaves differently near a coast. On a 600&nbsp;m tower those are small but real differences, and they push in the designer's favour — a rare thing.</li>
+  <li><strong>The outdoor state is not the same air you left downstairs.</strong> Temperature falls roughly 6.5&nbsp;°C per kilometre, particulate loading falls markedly above the street canyon, and humidity behaves differently near a coast. On a 600&nbsp;m tower those are small but real differences, and they push in the designer's favour: a rare thing.</li>
   <li><strong>Stack effect is superimposed on everything.</strong> The ventilation system does not operate in a neutral building; it operates inside the pressure regime described in <a href="stack-effect-tall-buildings.html">stack effect</a>. Supply and extract balance that works in the shoulder season can invert in winter or in a Gulf summer.</li>
   <li><strong>Fresh air is the dominant latent load.</strong> In a humid coastal climate the outdoor air is where nearly all the dehumidification energy goes, which makes energy recovery not a refinement but a primary design decision.</li>
 </ul>
@@ -18,7 +18,7 @@ BODY = r"""
 
 <div class="callout warn">
   <span class="lbl">The failure that looks like a controls problem</span>
-  A tower with façade intakes on more than one orientation, all connected to a common plenum, has built a <strong>wind-driven short circuit</strong>. On a windy day the windward louvre pressurises the plenum and air pours <em>out</em> of the leeward louvre without ever passing a coil. Outdoor-air flow measurement reads correctly at the fan and the floors are still starved. The fix is architectural — separate plenums per orientation, or an intake on one orientation only, or a roof intake — and it cannot be commissioned away.
+  A tower with façade intakes on more than one orientation, all connected to a common plenum, has built a <strong>wind-driven short circuit</strong>. On a windy day the windward louvre pressurises the plenum and air pours <em>out</em> of the leeward louvre without ever passing a coil. Outdoor-air flow measurement reads correctly at the fan and the floors are still starved. The fix is architectural (separate plenums per orientation, or an intake on one orientation only, or a roof intake), and it cannot be commissioned away.
 </div>
 
 <h2 id="int-wind">3 · Interactive: wind pressure on the intake</h2>
@@ -60,7 +60,7 @@ BODY = r"""
     <div class="cell"><div class="k">vs fan static</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 10&nbsp;m/s street-level wind — an ordinary day, not a storm — becomes <strong>27.8&nbsp;m/s at 600&nbsp;m</strong> and produces <strong>+372&nbsp;Pa windward and −232&nbsp;Pa leeward</strong>, a difference of 604&nbsp;Pa across the building. Against a 400&nbsp;Pa fan that is not a correction, it is the dominant term: the same unit is wildly over-supplied on one face and cannot deliver on the other. Design intakes for the pressure they will actually see, use motorised rather than gravity dampers where reversal is credible, and give each orientation its own plenum and its own flow measurement.</p>
+<p class="fig-note">A 10&nbsp;m/s street-level wind (an ordinary day, not a storm) becomes <strong>27.8&nbsp;m/s at 600&nbsp;m</strong> and produces <strong>+372&nbsp;Pa windward and −232&nbsp;Pa leeward</strong>, a difference of 604&nbsp;Pa across the building. Against a 400&nbsp;Pa fan that is not a correction, it is the dominant term: the same unit is wildly over-supplied on one face and cannot deliver on the other. Design intakes for the pressure they will actually see, use motorised rather than gravity dampers where reversal is credible, and give each orientation its own plenum and its own flow measurement.</p>
 
 <h2 id="location">4 · Choosing the intake and discharge strategy</h2>
 <ul class="clean">
@@ -72,12 +72,12 @@ BODY = r"""
 </ul>
 
 <h2 id="int-recovery">5 · Interactive: what energy recovery is worth in your climate</h2>
-<p>Outdoor air must be dragged from its own state to the supply state, and the air being exhausted is already most of the way there. A total-enthalpy device — a wheel or a membrane exchanger — recovers both heat and moisture, and its value depends entirely on how far apart the two air streams are. In a dry inland climate that gap is modest. On a humid coast it is enormous.</p>
+<p>Outdoor air must be dragged from its own state to the supply state, and the air being exhausted is already most of the way there. A total-enthalpy device, a wheel or a membrane exchanger, recovers both heat and moisture, and its value depends entirely on how far apart the two air streams are. In a dry inland climate that gap is modest. On a humid coast it is enormous.</p>
 
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Total-enthalpy recovery from outdoor air</div>
-    <div class="fsub">h = 1.006·T + W(2501 + 1.86·T), with W from temperature and relative humidity. Load = ṁ·Δh and recovered load = ṁ·Δh·ε against exhaust air at 24 °C / 50 % RH, with the dry-air mass flow ṁ = Q/v taken from the moist-air specific volume rather than a fixed density — at 40 °C that alone is a 10 % correction.</div>
+    <div class="fsub">h = 1.006·T + W(2501 + 1.86·T), with W from temperature and relative humidity. Load = ṁ·Δh and recovered load = ṁ·Δh·ε against exhaust air at 24 °C / 50 % RH, with the dry-air mass flow ṁ = Q/v taken from the moist-air specific volume rather than a fixed density. At 40 °C that alone is a 10 % correction.</div>
   </div>
   <div class="chart-box"><canvas id="ervChart"></canvas></div>
   <div class="controls">
@@ -110,7 +110,7 @@ BODY = r"""
     <div class="cell"><div class="k">Chiller saved</div><div class="v" id="rTr">128 <small>TR</small></div></div>
   </div>
 </div>
-<p class="fig-note">The regional split is stark. At <strong>Jeddah</strong> conditions (40&nbsp;°C, 55&nbsp;%) the outdoor air carries 107&nbsp;kJ/kg against 48&nbsp;kJ/kg leaving the building — a <strong>59&nbsp;kJ/kg</strong> gap, so 10&nbsp;m³/s of fresh air is a 642&nbsp;kW load and a 70&nbsp;% wheel recovers <strong>449&nbsp;kW</strong>, about 128 tons of chiller you never have to buy or run. Drag the humidity down to 15&nbsp;% for <strong>Riyadh</strong> and the outdoor air ends up <em>drier</em> than the air leaving the building: the gap collapses to about 10&nbsp;kJ/kg, the load to 113&nbsp;kW and the recovery to 79&nbsp;kW. Same building, same wheel, under a fifth of the benefit — which is why energy recovery is close to mandatory on the coast and a genuine cost-benefit question inland. Note also what this says about leakage: in Jeddah every extra litre of uncontrolled infiltration costs nearly six times what it costs in Riyadh.</p>
+<p class="fig-note">The regional split is stark. At <strong>Jeddah</strong> conditions (40&nbsp;°C, 55&nbsp;%) the outdoor air carries 107&nbsp;kJ/kg against 48&nbsp;kJ/kg leaving the building: a <strong>59&nbsp;kJ/kg</strong> gap, so 10&nbsp;m³/s of fresh air is a 642&nbsp;kW load and a 70&nbsp;% wheel recovers <strong>449&nbsp;kW</strong>, about 128 tons of chiller you never have to buy or run. Drag the humidity down to 15&nbsp;% for <strong>Riyadh</strong> and the outdoor air ends up <em>drier</em> than the air leaving the building: the gap collapses to about 10&nbsp;kJ/kg, the load to 113&nbsp;kW and the recovery to 79&nbsp;kW. Same building, same wheel, under a fifth of the benefit, which is why energy recovery is close to mandatory on the coast and a genuine cost-benefit question inland. Note also what this says about leakage: in Jeddah every extra litre of uncontrolled infiltration costs nearly six times what it costs in Riyadh.</p>
 
 <h2 id="int-filter">6 · Interactive: the quiet cost of filtration</h2>
 <p>Filters are specified on capture efficiency and forgotten. Their pressure drop, however, runs 8,760 hours a year and rises as they load. Over a filter's life the fan spends far more energy pushing through it than the filter itself costs.</p>
@@ -118,7 +118,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Fan energy to overcome filtration</div>
-    <div class="fsub">P = Q·Δp/η&#102;&#97;&#110;. The curve is annual energy against the average pressure drop over the filter's life — roughly midway between clean and change-out.</div>
+    <div class="fsub">P = Q·Δp/η&#102;&#97;&#110;. The curve is annual energy against the average pressure drop over the filter's life, roughly midway between clean and change-out.</div>
   </div>
   <div class="chart-box"><canvas id="filtChart"></canvas></div>
   <div class="controls">
@@ -151,12 +151,12 @@ BODY = r"""
     <div class="cell"><div class="k">Across 20 AHUs</div><div class="v" id="rF20">92 <small>MWh</small></div></div>
   </div>
 </div>
-<p class="fig-note">One AHU at 10&nbsp;m³/s and a 175&nbsp;Pa average filter loss spends about <strong>16,150&nbsp;kWh a year</strong> just on filtration. Specify a deeper filter with more media area for the same efficiency class — dropping the average by 50&nbsp;Pa — and you save 4,615&nbsp;kWh on that one unit, <strong>92&nbsp;MWh across twenty units</strong>, every year, for nothing but a slightly deeper filter housing decided at design stage. Depth is the cheapest energy measure in an air system, and it is only available before the AHU is ordered.</p>
+<p class="fig-note">One AHU at 10&nbsp;m³/s and a 175&nbsp;Pa average filter loss spends about <strong>16,150&nbsp;kWh a year</strong> just on filtration. Specify a deeper filter with more media area for the same efficiency class, dropping the average by 50&nbsp;Pa, and you save 4,615&nbsp;kWh on that one unit, <strong>92&nbsp;MWh across twenty units</strong>, every year, for nothing but a slightly deeper filter housing decided at design stage. Depth is the cheapest energy measure in an air system, and it is only available before the AHU is ordered.</p>
 
 <h2 id="strategy">7 · Ventilation strategy: DOAS and the case for separating jobs</h2>
 <p>The dominant modern arrangement in tall buildings is to <strong>separate ventilation from cooling</strong>: a dedicated outdoor-air system conditions and dehumidifies fresh air centrally and delivers it at neutral or slightly cool temperature, while sensible cooling is handled locally by fan-coils, chilled beams or floor AHUs. The advantages compound in a tower:</p>
 <ul class="clean">
-  <li><strong>The riser carries only fresh air</strong> — roughly a tenth of the air volume of an all-air system, which is the shaft-area argument made in <a href="mechanical-floors-tall-buildings.html">mechanical floors</a>.</li>
+  <li><strong>The riser carries only fresh air</strong>, roughly a tenth of the air volume of an all-air system, which is the shaft-area argument made in <a href="mechanical-floors-tall-buildings.html">mechanical floors</a>.</li>
   <li><strong>Ventilation is measurable and guaranteed.</strong> Fresh air is delivered by a dedicated path with its own flow measurement, rather than being a fraction of a variable supply that falls with load.</li>
   <li><strong>Dehumidification is done once, properly.</strong> The DOAS coil handles the latent load at a deep dew point; the local units run dry and stay clean.</li>
   <li><strong>Demand control actually works.</strong> CO₂ sensing modulates a stream that is only fresh air, so the response is direct and the savings real.</li>
@@ -167,7 +167,7 @@ BODY = r"""
 <ul class="clean">
   <li><strong>Measure outdoor air where it can be measured.</strong> Fit a proper airflow measuring station in a straight duct section on the fresh-air path of every AHU, not a differential-pressure guess across a damper. Without it, ventilation compliance is an assertion.</li>
   <li><strong>Motorise the intake and relief dampers</strong> where wind reversal is credible, with end-switch proving, and interlock them with the fan so a stopped unit is not a wind-driven hole in the façade.</li>
-  <li><strong>Drain every louvre plenum.</strong> Rain and wash-down water will get in; give it a bunded, drained, corrosion-protected floor with a trapped outlet, and check the trap depth against the plenum pressure — a shallow trap on a negative plenum simply blows dry.</li>
+  <li><strong>Drain every louvre plenum.</strong> Rain and wash-down water will get in; give it a bunded, drained, corrosion-protected floor with a trapped outlet, and check the trap depth against the plenum pressure: a shallow trap on a negative plenum simply blows dry.</li>
   <li><strong>Set the filter change-out on pressure, not on a calendar</strong>, with a differential-pressure switch and a BMS trend on every bank. Changing early wastes filters; changing late wastes far more in fan energy.</li>
   <li><strong>Seal the AHU and the ductwork to a stated class.</strong> At the pressures a tall building generates, casing and duct leakage is not a rounding error; specify the leakage class, test it, and reject on the test.</li>
   <li><strong>Commission across seasons and across wind.</strong> Ventilation rates verified on a still day in March tell you very little; re-verify on a windy day and in the design season, and record the outdoor conditions alongside every reading.</li>
@@ -179,7 +179,7 @@ BODY = r"""
   <li><strong>Calculate the wind pressure at every intake and discharge</strong>, on every orientation, and design the dampers and plenums for it.</li>
   <li><strong>Never share a plenum across orientations</strong> without a means of preventing wind-driven short-circuit.</li>
   <li><strong>Do the separation and dispersion assessment</strong> for towers, flues, kitchen and toilet exhaust against every intake.</li>
-  <li><strong>Evaluate total-enthalpy recovery on real local psychrometrics</strong> — it is transformative on a humid coast and marginal inland.</li>
+  <li><strong>Evaluate total-enthalpy recovery on real local psychrometrics</strong>. It is transformative on a humid coast and marginal inland.</li>
   <li><strong>Specify filters on depth and life-cycle pressure drop</strong>, not on capture class alone.</li>
   <li><strong>Separate ventilation from cooling</strong> where the shaft area or the latent load justifies it.</li>
   <li><strong>Measure the outdoor air</strong> with a real flow station on every unit.</li>
@@ -189,19 +189,19 @@ BODY = r"""
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  At 600&nbsp;m an ordinary day produces <strong>600&nbsp;Pa across the building</strong> — more than the fan's own static — so intake location, damper selection and plenum separation are ventilation design, not architectural detailing. Recover the outdoor air's enthalpy where the climate is humid, because on the coast fresh air is most of the latent load and a wheel is worth well over a hundred tons of chiller; specify filters on depth rather than class, because their pressure drop runs all year; and separate ventilation from cooling so the riser carries a tenth of the air and the fresh air is something you can actually measure.
+  At 600&nbsp;m an ordinary day produces <strong>600&nbsp;Pa across the building</strong>, more than the fan's own static, so intake location, damper selection and plenum separation are ventilation design, not architectural detailing. Recover the outdoor air's enthalpy where the climate is humid, because on the coast fresh air is most of the latent load and a wheel is worth well over a hundred tons of chiller; specify filters on depth rather than class, because their pressure drop runs all year; and separate ventilation from cooling so the riser carries a tenth of the air and the fresh air is something you can actually measure.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ASHRAE <em>Handbook — Fundamentals</em>, Airflow Around Buildings and Climatic Design Information chapters — boundary-layer wind profiles, pressure coefficients and design weather data.</li>
-  <li>EN 1991-1-4 (Eurocode 1, wind actions) and ASCE 7 — wind speed profiles, terrain categories and external pressure coefficients.</li>
-  <li>ASHRAE <em>Handbook — HVAC Applications</em>, Building Air Intake and Exhaust Design — separation distances, plume dispersion and re-entrainment geometry.</li>
-  <li>ANSI/ASHRAE Standard 62.1 — <em>Ventilation for Acceptable Indoor Air Quality</em>: outdoor air rates, intake location and demand-controlled ventilation.</li>
-  <li>ANSI/ASHRAE/IES Standard 90.1 — energy recovery requirements, fan power limits and filtration allowances.</li>
-  <li>ISO 16890 / EN 779 — air filter classification (ePM1, ePM2.5, ePM10) and test methods; and Eurovent guidance on filter life-cycle energy.</li>
-  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed. — outdoor air strategy, riser planning and intake location in tall buildings.</li>
-  <li>CIBSE <em>Guide B2 — Ventilation and Ductwork</em>; and Saudi Building Code <em>SBC 501</em> mechanical provisions.</li>
+  <li>ASHRAE <em>Handbook, Fundamentals</em>, Airflow Around Buildings and Climatic Design Information chapters: boundary-layer wind profiles, pressure coefficients and design weather data.</li>
+  <li>EN 1991-1-4 (Eurocode 1, wind actions) and ASCE 7: wind speed profiles, terrain categories and external pressure coefficients.</li>
+  <li>ASHRAE <em>Handbook, HVAC Applications</em>, Building Air Intake and Exhaust Design: separation distances, plume dispersion and re-entrainment geometry.</li>
+  <li>ANSI/ASHRAE Standard 62.1, <em>Ventilation for Acceptable Indoor Air Quality</em>: outdoor air rates, intake location and demand-controlled ventilation.</li>
+  <li>ANSI/ASHRAE/IES Standard 90.1: energy recovery requirements, fan power limits and filtration allowances.</li>
+  <li>ISO 16890 / EN 779: air filter classification (ePM1, ePM2.5, ePM10) and test methods; and Eurovent guidance on filter life-cycle energy.</li>
+  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed.: outdoor air strategy, riser planning and intake location in tall buildings.</li>
+  <li>CIBSE <em>Guide B2: Ventilation and Ductwork</em>; and Saudi Building Code <em>SBC 501</em> mechanical provisions.</li>
 </ol>
 
 <div class="tags">#Ventilation #OutdoorAir #FreshAir #IAQ #TallBuildings #MegatallBuildings #WindPressure #PressureCoefficient #BoundaryLayer #AirIntake #Louvre #EnergyRecovery #EnthalpyWheel #ERV #DOAS #Dehumidification #Psychrometrics #Filtration #ISO16890 #FanEnergy #ASHRAE62 #ASHRAE901 #DemandControlledVentilation #Commissioning #MEP #BuildingServices #HVAC</div>
@@ -346,16 +346,16 @@ SPEC = dict(
     reg_tag='HVAC · Ventilation · Outdoor Air',
     breadcrumb='HVAC &amp; Cooling',
     tag_line='HVAC &middot; Ventilation &middot; Outdoor Air &middot; Megatall Buildings',
-    desc='Outdoor air and ventilation design in megatall buildings: how wind pressure at height exceeds the fan external static and short-circuits shared plenums, intake and discharge location and dispersion, what total-enthalpy recovery is really worth in a humid coastal versus dry inland climate, the annual fan energy hidden in filter pressure drop, and the case for separating ventilation from cooling — with three interactive charts and installation tricks.',
-    og_desc='At 600 m an ordinary 10 m/s wind produces 600 Pa across the building — more than the fan static. Plus what an enthalpy wheel is worth in Jeddah versus Riyadh, and the annual energy hiding in your filter bank.',
+    desc='Outdoor air and ventilation design in megatall buildings: how wind pressure at height exceeds the fan external static and short-circuits shared plenums, intake and discharge location and dispersion, what total-enthalpy recovery is really worth in a humid coastal versus dry inland climate, the annual fan energy hidden in filter pressure drop, and the case for separating ventilation from cooling, with three interactive charts and installation tricks.',
+    og_desc='At 600 m an ordinary 10 m/s wind produces 600 Pa across the building, more than the fan static. Plus what an enthalpy wheel is worth in Jeddah versus Riyadh, and the annual energy hiding in your filter bank.',
     ld_desc='A design-perspective guide to outdoor air and ventilation in megatall buildings: boundary-layer wind pressure at intakes, plenum and damper strategy, intake and exhaust separation, total-enthalpy recovery evaluated on real psychrometrics, filtration pressure drop and fan energy, and dedicated outdoor-air systems.',
     img_alt='Technical cutaway of a megatall tower&rsquo;s ventilation system showing outdoor-air intake louvres on a mechanical floor, wind pressure acting on the windward and leeward faces, an energy recovery wheel and filter bank inside the air-handling plant, and the fresh-air riser feeding the floors',
     en_tag='HVAC &amp; Cooling &middot; Ventilation &middot; Outdoor Air &middot; Megatall',
     en_title='Outdoor Air &amp; Ventilation in Megatall Buildings: Wind Pressure, Intake Strategy, Energy Recovery &amp; Filtration',
-    en_excerpt='Outdoor air is the one thing a tall building cannot manufacture &mdash; it has to be captured from a moving atmosphere that behaves very differently at 600&nbsp;m. Why an ordinary 10&nbsp;m/s street wind becomes 600&nbsp;Pa across the building and short-circuits any shared intake plenum, how to place intakes and discharges, what a total-enthalpy wheel is actually worth in Jeddah versus Riyadh (three times the difference), the annual fan energy hidden in filter pressure drop, and the case for separating ventilation from cooling &mdash; with three interactive charts.',
+    en_excerpt='Outdoor air is the one thing a tall building cannot manufacture. It has to be captured from a moving atmosphere that behaves very differently at 600&nbsp;m. Why an ordinary 10&nbsp;m/s street wind becomes 600&nbsp;Pa across the building and short-circuits any shared intake plenum, how to place intakes and discharges, what a total-enthalpy wheel is actually worth in Jeddah versus Riyadh (three times the difference), the annual fan energy hidden in filter pressure drop, and the case for separating ventilation from cooling, with three interactive charts.',
     en_search='outdoor air ventilation fresh air tall buildings megatall supertall high-rise indoor air quality IAQ wind pressure boundary layer power law terrain exponent pressure coefficient windward leeward air intake louvre free area face velocity plenum short circuit motorised damper reversal exhaust discharge separation dispersion re-entrainment plume cooling tower drift generator flue energy recovery enthalpy wheel ERV HRV effectiveness latent load psychrometrics humidity ratio dehumidification DOAS dedicated outdoor air system demand controlled ventilation CO2 filtration ISO 16890 ePM1 MERV pressure drop filter depth fan energy leakage class commissioning ASHRAE 62.1 90.1 sand salt corrosion MEP building services HVAC',
     ar_title='الهواء الخارجي والتهوية في المباني فائقة الارتفاع: ضغط الرياح ومواقع السحب واسترجاع الطاقة والفلترة',
-    ar_excerpt='الهواء النقي هو الشيء الوحيد الذي لا يستطيع المبنى تصنيعه — بل يجب التقاطه من غلافٍ جويٍّ يتصرّف على ارتفاع ٦٠٠ متر تصرّفًا مختلفًا تمامًا. لماذا تتحوّل رياح عادية بسرعة ١٠ م/ث عند مستوى الشارع إلى ٦٠٠ باسكال عبر المبنى فتُحدث دائرة قِصر في أي غرفة سحب مشتركة، وكيف تُوضع فتحات السحب والطرد، وكم تساوي عجلة استرجاع الطاقة الكلية في جدة مقابل الرياض (الفارق ثلاثة أضعاف)، وطاقة المراوح السنوية المختبئة في فقد ضغط الفلاتر، ومبرّر فصل التهوية عن التبريد — مع ثلاثة رسوم تفاعلية.',
+    ar_excerpt='الهواء النقي هو الشيء الوحيد الذي لا يستطيع المبنى تصنيعه، بل يجب التقاطه من غلافٍ جويٍّ يتصرّف على ارتفاع ٦٠٠ متر تصرّفًا مختلفًا تمامًا. لماذا تتحوّل رياح عادية بسرعة ١٠ م/ث عند مستوى الشارع إلى ٦٠٠ باسكال عبر المبنى فتُحدث دائرة قِصر في أي غرفة سحب مشتركة، وكيف تُوضع فتحات السحب والطرد، وكم تساوي عجلة استرجاع الطاقة الكلية في جدة مقابل الرياض (الفارق ثلاثة أضعاف)، وطاقة المراوح السنوية المختبئة في فقد ضغط الفلاتر، ومبرّر فصل التهوية عن التبريد، مع ثلاثة رسوم تفاعلية.',
     ar_search='outdoor air ventilation fresh air tall buildings megatall wind pressure boundary layer pressure coefficient intake louvre plenum damper exhaust separation dispersion energy recovery enthalpy wheel ERV DOAS filtration ISO 16890 fan energy ASHRAE 62.1 الهواء الخارجي التهوية الهواء النقي المباني الشاهقة المباني فائقة الارتفاع جودة الهواء الداخلي ضغط الرياح الطبقة الحدية معامل الضغط الجهة المواجهة للريح الجهة الخلفية فتحة السحب الشيش المساحة الحرة سرعة الوجه غرفة التجميع دائرة القصر المخمدات المحركة انعكاس التدفق فتحة الطرد مسافة الفصل تشتت العادم إعادة السحب عمود برج التبريد عادم المولدات استرجاع الطاقة عجلة الإنثالبي كفاءة الاسترجاع الحمل الكامن الخواص السيكرومترية نسبة الرطوبة إزالة الرطوبة نظام الهواء الخارجي المخصص التهوية حسب الطلب ثاني أكسيد الكربون الفلترة عمق الفلتر فقد الضغط طاقة المروحة فئة التسرب التشغيل والاختبار الرمال الأملاح التآكل MEP خدمات المباني',
     body=BODY, charts=CHARTS,
 )

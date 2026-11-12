@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chilled-Water Pumps in Megatall Buildings: Static vs Friction Head, Pressure Zoning, Heat-Exchanger Cascades &amp; Part-Load Control — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Chilled-Water Pumps in Megatall Buildings: Static vs Friction Head, Pressure Zoning, Heat-Exchanger Cascades &amp; Part-Load Control | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -109,16 +109,16 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="Chilled-water pump selection and sizing in megatall buildings from a design perspective: why a closed loop means the pump never sees the 59 bar static column, how to build the head honestly, vertical pressure zoning with plate heat exchangers and the cascade temperature penalty that follows, primary-secondary vs variable primary vs distributed pumping, BEP/POR selection and parallel operation, NPSH and the point of no pressure change, DP sensor location and the real part-load power curve — with three interactive charts, worked numbers and installation tricks.">
+  <meta name="description" content="Chilled-water pump selection and sizing in megatall buildings from a design perspective: why a closed loop means the pump never sees the 59 bar static column, how to build the head honestly, vertical pressure zoning with plate heat exchangers and the cascade temperature penalty that follows, primary-secondary vs variable primary vs distributed pumping, BEP/POR selection and parallel operation, NPSH and the point of no pressure change, DP sensor location and the real part-load power curve, with three interactive charts, worked numbers and installation tricks.">
   <meta property="og:title" content="Chilled-Water Pumps in Megatall Buildings: Static vs Friction Head, Pressure Zoning, Heat-Exchanger Cascades & Part-Load Control | Mohamed Abokhatwa">
-  <meta property="og:description" content="The pump needs 39 m of head; the pipe at the base must hold 600 m. Why that gap is the most expensive misunderstanding in tall-building chilled water — plus zoning, HX cascades, pump selection and DP control, in three interactive charts.">
+  <meta property="og:description" content="The pump needs 39 m of head; the pipe at the base must hold 600 m. Why that gap is the most expensive misunderstanding in tall-building chilled water, plus zoning, HX cascades, pump selection and DP control, in three interactive charts.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/chilled-water-pumps-tall-buildings.html">
   <meta property="og:image" content="https://abokhatwa.com/og-chilled-water-pumps-tall-buildings.jpg">
   <meta property="og:image:alt" content="Cutaway of a megatall tower's chilled-water system: a basement chiller plant, vertical pressure zones broken by plate heat exchangers at mechanical floors, secondary pump sets on each zone, and supply and return risers running the height of the core">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Chilled-Water Pumps in Megatall Buildings: Static vs Friction Head, Pressure Zoning, Heat-Exchanger Cascades & Part-Load Control | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="Why the pump head has almost nothing to do with the height of the tower, what pressure zoning really costs in chiller energy, and how DP sensor location changes pump power by 2x — three interactive charts.">
+  <meta name="twitter:description" content="Why the pump head has almost nothing to do with the height of the tower, what pressure zoning really costs in chiller energy, and how DP sensor location changes pump power by 2x, three interactive charts.">
   <link rel="canonical" href="https://abokhatwa.com/chilled-water-pumps-tall-buildings.html">
 
   <script type="application/ld+json">
@@ -148,6 +148,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -189,28 +190,28 @@
 </div>
 
 <div class="article-body">
-<p class="lead">Ask an engineer to size the chilled-water pump for a 600&nbsp;m tower and you will very often get a number with 600 somewhere in it. That answer is wrong by a factor of fifteen — and the mistake is expensive in both directions, because the same engineer who over-sizes the pump usually under-rates the pipe. In a closed chilled-water loop the water that goes up comes back down, and the returning column pays back every metre the rising column cost: the pump feels <strong>friction only</strong>. The <em>equipment</em>, meanwhile, feels the entire 59&nbsp;bar static column and does not care that the loop is closed. Getting those two facts the right way round is the whole foundation of chilled-water design in a tall building, and almost every other decision — zoning, heat exchangers, pump architecture, valve selection, control — is downstream of it.</p>
+<p class="lead">Ask an engineer to size the chilled-water pump for a 600&nbsp;m tower and you will very often get a number with 600 somewhere in it. That answer is wrong by a factor of fifteen, and the mistake is expensive in both directions, because the same engineer who over-sizes the pump usually under-rates the pipe. In a closed chilled-water loop the water that goes up comes back down, and the returning column pays back every metre the rising column cost: the pump feels <strong>friction only</strong>. The <em>equipment</em>, meanwhile, feels the entire 59&nbsp;bar static column and does not care that the loop is closed. Getting those two facts the right way round is the whole foundation of chilled-water design in a tall building, and almost every other decision (zoning, heat exchangers, pump architecture, valve selection, control) is downstream of it.</p>
 
 <h2 id="why">1 · Why megatall chilled water is a different problem</h2>
 <p>A chilled-water system in a 10-storey building is a sizing exercise. In a 600&nbsp;m tower it is a set of interlocking constraints where solving one worsens another:</p>
 <ul class="clean">
-  <li><strong>Pressure, not flow, sets the architecture.</strong> A 600&nbsp;m water column is <strong>58.9&nbsp;bar (854&nbsp;psi)</strong> at the base. Ordinary chilled-water fittings, coils, control valves and flanges are PN16 (16&nbsp;bar); high-pressure lines reach PN25 or PN40. You cannot run one loop top to bottom, so the tower is divided into vertical pressure zones — and every zone break is a decision that costs either money or temperature.</li>
+  <li><strong>Pressure, not flow, sets the architecture.</strong> A 600&nbsp;m water column is <strong>58.9&nbsp;bar (854&nbsp;psi)</strong> at the base. Ordinary chilled-water fittings, coils, control valves and flanges are PN16 (16&nbsp;bar); high-pressure lines reach PN25 or PN40. You cannot run one loop top to bottom, so the tower is divided into vertical pressure zones, and every zone break is a decision that costs either money or temperature.</li>
   <li><strong>Every zone break costs you cold.</strong> The usual way to break pressure is a plate heat exchanger, and a heat exchanger cannot transfer heat without a temperature difference. Each one pushes the plant's supply temperature down by its approach, and colder supply means a less efficient chiller for the entire building, all year.</li>
   <li><strong>The differential pressure across a terminal varies enormously with height.</strong> A two-port control valve on level 5 of a zone sees a completely different ΔP from the identical valve on level 45. Ordinary valves lose authority and hunt; this is why tall buildings and pressure-independent valves belong together.</li>
   <li><strong>The risers move.</strong> A 600&nbsp;m steel riser going from erection temperature to operating temperature changes length by about <strong>144&nbsp;mm</strong>, and the concrete core it is fixed to shortens over years by a comparable amount through creep and shrinkage. Anchors, guides and expansion devices are structural design, not pipe fitting.</li>
-  <li><strong>Part-load is the whole life of the plant.</strong> A tower spends almost none of its hours at design flow. The pump you select is a peak-day artefact; the pump you actually pay for is the one running at 40–60&nbsp;% flow for twenty years, and its energy is decided by a control decision — where you put the differential-pressure sensor — far more than by the pump's catalogue efficiency.</li>
+  <li><strong>Part-load is the whole life of the plant.</strong> A tower spends almost none of its hours at design flow. The pump you select is a peak-day artefact; the pump you actually pay for is the one running at 40–60&nbsp;% flow for twenty years, and its energy is decided by a control decision (where you put the differential-pressure sensor) far more than by the pump's catalogue efficiency.</li>
 </ul>
-<p>This article is about the pumps. The plant that feeds them — chiller types, staging, part-load efficiency and the low-ΔT syndrome — is covered in <a href="chiller-plant-design.html">chiller plant design</a>, and the two are best read together.</p>
+<p>This article is about the pumps. The plant that feeds them (chiller types, staging, part-load efficiency and the low-ΔT syndrome) is covered in <a href="chiller-plant-design.html">chiller plant design</a>, and the two are best read together.</p>
 
 <h2 id="closed-loop">2 · What the pump actually sees: the closed-loop truth</h2>
-<p>In an <strong>open</strong> system — a fire standpipe, a domestic-water booster, a transfer pump to a roof tank — the pump must lift the water and the lift is real work. That is the physics behind <a href="firefighting-tall-buildings.html">pressure zoning of fire standpipes</a>. A chilled-water loop is <strong>closed</strong>: the supply riser goes up, the return riser comes down, and the two columns are connected. The weight of water in the down-leg pushes the pump exactly as hard as the weight in the up-leg resists it. Net static head is zero, at any height<sup class="cite">[1][2]</sup>:</p>
+<p>In an <strong>open</strong> system (a fire standpipe, a domestic-water booster, a transfer pump to a roof tank) the pump must lift the water and the lift is real work. That is the physics behind <a href="firefighting-tall-buildings.html">pressure zoning of fire standpipes</a>. A chilled-water loop is <strong>closed</strong>: the supply riser goes up, the return riser comes down, and the two columns are connected. The weight of water in the down-leg pushes the pump exactly as hard as the weight in the up-leg resists it. Net static head is zero, at any height<sup class="cite">[1][2]</sup>:</p>
 <div class="eq">\[ H_{pump} \;=\; \underbrace{h_{f,\,risers}}_{\text{supply up + return down}} \;+\; h_{f,\,mains} \;+\; h_{terminal} \;+\; h_{plant} \qquad \text{(static cancels)} \]</div>
-<p>The consequence is counter-intuitive and worth stating bluntly: <strong>a taller tower needs a bigger pump only because the pipe is longer, not because the building is high.</strong> Doubling the height roughly doubles the riser friction, which is a fraction of the total head — it does not double the head, and it certainly does not add 300&nbsp;m to it.</p>
+<p>The consequence is counter-intuitive and worth stating bluntly: <strong>a taller tower needs a bigger pump only because the pipe is longer, not because the building is high.</strong> Doubling the height roughly doubles the riser friction, which is a fraction of the total head. It does not double the head, and it certainly does not add 300&nbsp;m to it.</p>
 <p>What <em>does</em> scale directly with height is the <strong>static pressure the system must contain</strong>. At the lowest point of a zone, the pipe, flanges, valves, coil headers, strainer bodies, pump casings and gaskets all carry the full weight of the water above them, whether the pump is running or not. That number climbs at 0.0981&nbsp;bar per metre and it is the number that dictates the architecture.</p>
 
 <div class="callout warn">
   <span class="lbl">The two classic errors, and they usually travel together</span>
-  <strong>Error one:</strong> adding the building height to the pump head "to get the water up there". The result is a pump with three or four times the head it needs, running far left of its best efficiency point, throttled by a balancing valve to stop it running out on its curve — burning money continuously and often noisily. <strong>Error two:</strong> specifying PN16 equipment throughout because "the pump only makes 4&nbsp;bar". The result is a pipework system that is fine on the test certificate and catastrophically under-rated at the bottom of the tower. The first error is an energy bill; the second is a flood.
+  <strong>Error one:</strong> adding the building height to the pump head "to get the water up there". The result is a pump with three or four times the head it needs, running far left of its best efficiency point, throttled by a balancing valve to stop it running out on its curve, burning money continuously and often noisily. <strong>Error two:</strong> specifying PN16 equipment throughout because "the pump only makes 4&nbsp;bar". The result is a pipework system that is fine on the test certificate and catastrophically under-rated at the bottom of the tower. The first error is an energy bill; the second is a flood.
 </div>
 
 <h2 id="int-head">3 · Interactive: pump head vs static pressure</h2>
@@ -247,7 +248,7 @@
     <div class="ctrl">
       <label>Tower height <span id="vHt">600 m</span></label>
       <input type="range" id="sHt" min="50" max="1000" value="600" step="10">
-      <div class="hint">Height of the riser pair — marker position on the curves.</div>
+      <div class="hint">Height of the riser pair: marker position on the curves.</div>
     </div>
   </div>
   <div class="readout">
@@ -259,64 +260,64 @@
     <div class="cell"><div class="k">Ratio</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rR"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 20&nbsp;MW riser pair at ΔT&nbsp;=&nbsp;8&nbsp;K carries 597&nbsp;L/s in a DN500 riser and needs about <strong>39&nbsp;m of pump head</strong> — roughly 19&nbsp;m of it riser friction, at 119&nbsp;Pa/m, over 1,560&nbsp;m of equivalent pipe. The static pressure at the base of that same column is <strong>600&nbsp;m, or 58.9&nbsp;bar</strong>. The pump is 15× smaller than the pressure class. Note also how flat the blue curve is: taking the tower from 300&nbsp;m to 1,000&nbsp;m raises the pump head from 29&nbsp;m to 51&nbsp;m — a 75&nbsp;% increase in pump head for a 233&nbsp;% increase in height — while the red line grows in exact proportion. Height is a <em>containment</em> problem, not a pumping problem.</p>
+<p class="fig-note">A 20&nbsp;MW riser pair at ΔT&nbsp;=&nbsp;8&nbsp;K carries 597&nbsp;L/s in a DN500 riser and needs about <strong>39&nbsp;m of pump head</strong>, roughly 19&nbsp;m of it riser friction, at 119&nbsp;Pa/m, over 1,560&nbsp;m of equivalent pipe. The static pressure at the base of that same column is <strong>600&nbsp;m, or 58.9&nbsp;bar</strong>. The pump is 15× smaller than the pressure class. Note also how flat the blue curve is: taking the tower from 300&nbsp;m to 1,000&nbsp;m raises the pump head from 29&nbsp;m to 51&nbsp;m (a 75&nbsp;% increase in pump head for a 233&nbsp;% increase in height) while the red line grows in exact proportion. Height is a <em>containment</em> problem, not a pumping problem.</p>
 
 <h2 id="flow">4 · Sizing the flow: ΔT is the most expensive number you will choose</h2>
 <p>Flow follows from the load and the temperature difference, and nothing else<sup class="cite">[1][5]</sup>:</p>
 <div class="eq">\[ Q\ (\text{L/s}) \;=\; \frac{\dot{Q}_{cooling}\ (\text{kW})}{\rho\,c_p\,\Delta T} \;=\; \frac{\dot{Q}_{cooling}}{4.187\,\Delta T} \]</div>
-<p>Because friction rises with roughly the square of flow and pump power with the cube, ΔT propagates through the entire design with enormous leverage. The same 20&nbsp;MW at ΔT&nbsp;=&nbsp;5.5&nbsp;K instead of 8&nbsp;K needs <strong>868&nbsp;L/s instead of 597 — 45&nbsp;% more water</strong>, a larger riser through the whole core, larger pumps, larger valves, and a permanent energy penalty. In a tall building the pipe is also very long and buried in a core that will never be modified, so the ΔT decision is effectively irreversible on day one.</p>
-<p>Design tall buildings at a <strong>wide ΔT — 8&nbsp;K or more</strong>, and then defend it:</p>
+<p>Because friction rises with roughly the square of flow and pump power with the cube, ΔT propagates through the entire design with enormous leverage. The same 20&nbsp;MW at ΔT&nbsp;=&nbsp;5.5&nbsp;K instead of 8&nbsp;K needs <strong>868&nbsp;L/s instead of 597: 45&nbsp;% more water</strong>, a larger riser through the whole core, larger pumps, larger valves, and a permanent energy penalty. In a tall building the pipe is also very long and buried in a core that will never be modified, so the ΔT decision is effectively irreversible on day one.</p>
+<p>Design tall buildings at a <strong>wide ΔT, 8&nbsp;K or more</strong>, and then defend it:</p>
 <ul class="clean">
   <li><strong>Select coils for the wide ΔT</strong>, with enough rows and the right circuiting. A coil selected at 6&nbsp;K will never deliver 8&nbsp;K no matter what the schedule says.</li>
-  <li><strong>Two-port control valves everywhere</strong> — three-port valves guarantee a low ΔT by design, because they blend supply straight into return whenever the coil is not calling.</li>
+  <li><strong>Two-port control valves everywhere</strong>: three-port valves guarantee a low ΔT by design, because they blend supply straight into return whenever the coil is not calling.</li>
   <li><strong>No permanent bypasses.</strong> Every open bypass, every leaking three-port, every uncontrolled decoupler flow is a direct short from supply to return and pulls the whole system's ΔT down.</li>
-  <li><strong>Give the control valve real authority.</strong> Valve authority \(\beta = \Delta p_{valve,open} / \Delta p_{branch}\) should be at least 0.25–0.5; below that the valve's characteristic distorts, it controls in the first few percent of travel, hunts, and sits part-open — again degrading ΔT.</li>
+  <li><strong>Give the control valve real authority.</strong> Valve authority \(\beta = \Delta p_{valve,open} / \Delta p_{branch}\) should be at least 0.25–0.5; below that the valve's characteristic distorts, it controls in the first few percent of travel, hunts, and sits part-open: again degrading ΔT.</li>
 </ul>
-<p>The consequences of losing this battle — flow inflation, extra chillers forced online by decoupler backflow, and the pumping penalty — are quantified in the low-ΔT chart in <a href="chiller-plant-design.html">chiller plant design</a>.</p>
+<p>The consequences of losing this battle (flow inflation, extra chillers forced online by decoupler backflow, and the pumping penalty) are quantified in the low-ΔT chart in <a href="chiller-plant-design.html">chiller plant design</a>.</p>
 
-<h2 id="head-buildup">5 · Building the head honestly — and where the fat hides</h2>
+<h2 id="head-buildup">5 · Building the head honestly, and where the fat hides</h2>
 <p>Pump head in a closed loop is a sum of pressure drops along the <strong>index circuit</strong>: the single hydraulically worst path from pump discharge, out to the most remote terminal, and back. A defensible build-up looks like this, and every line should be a calculation rather than an allowance:</p>
 
 <div class="tbl-wrap">
 <table>
-  <caption>Typical head build-up for a tall-building chilled-water distribution pump (index circuit). Figures are indicative — the point is the proportions.</caption>
+  <caption>Typical head build-up for a tall-building chilled-water distribution pump (index circuit). Figures are indicative: the point is the proportions.</caption>
   <thead><tr><th>Component</th><th class="num">Typical (m)</th><th>Notes</th></tr></thead>
   <tbody>
     <tr><td>Supply + return riser friction</td><td class="num">15–30</td><td>The only item that scales with height. Both legs, plus fittings and offsets.</td></tr>
     <tr><td>Floor mains &amp; branch</td><td class="num">3–8</td><td>To the index terminal and back.</td></tr>
     <tr><td>Cooling coil</td><td class="num">3–7</td><td>From the selected coil, not a rule of thumb.</td></tr>
-    <tr><td>Control valve (open)</td><td class="num">3–6</td><td>Deliberately generous — this is what buys valve authority.</td></tr>
+    <tr><td>Control valve (open)</td><td class="num">3–6</td><td>Deliberately generous: this is what buys valve authority.</td></tr>
     <tr><td>Chiller evaporator</td><td class="num">4–8</td><td>From the chiller selection at the design flow.</td></tr>
     <tr><td>Plate heat exchanger (per crossing)</td><td class="num">3–6</td><td>Each side. Only where a zone break exists.</td></tr>
     <tr><td>Strainers, meters, isolation</td><td class="num">2–5</td><td>Clean values; specify the dirty-strainer allowance separately.</td></tr>
-    <tr><td>Safety margin</td><td class="num">0–5&nbsp;%</td><td>See below — this is where designs go wrong.</td></tr>
+    <tr><td>Safety margin</td><td class="num">0–5&nbsp;%</td><td>See below: this is where designs go wrong.</td></tr>
   </tbody>
 </table>
 </div>
 
 <div class="callout key">
   <span class="lbl">Do not pad a closed loop</span>
-  Adding a 20&nbsp;% "safety factor" to a calculated head does not buy safety; it buys an oversized pump. Because the system curve is a parabola, a pump selected 20&nbsp;% high on head does not deliver 20&nbsp;% more head — it runs out to the right on its curve, delivers substantially more flow than design, drops off its best efficiency point, raises the ΔP across every control valve in the building (destroying their authority), and then has to be throttled back at the balancing valve, converting the surplus into heat and noise. If you want margin, put it in the <strong>impeller</strong>: select a pump whose casing can take a larger impeller later, and fit the one the calculation says. That margin is free until you need it.
+  Adding a 20&nbsp;% "safety factor" to a calculated head does not buy safety; it buys an oversized pump. Because the system curve is a parabola, a pump selected 20&nbsp;% high on head does not deliver 20&nbsp;% more head. It runs out to the right on its curve, delivers substantially more flow than design, drops off its best efficiency point, raises the ΔP across every control valve in the building (destroying their authority), and then has to be throttled back at the balancing valve, converting the surplus into heat and noise. If you want margin, put it in the <strong>impeller</strong>: select a pump whose casing can take a larger impeller later, and fit the one the calculation says. That margin is free until you need it.
 </div>
 
 <h2 id="zoning">6 · Pressure zoning the chilled-water system</h2>
 <p>Once the static pressure exceeds the rating of ordinary equipment, the tower has to be divided. There are three ways to do it, and real megatall towers use all three in different parts of the building<sup class="cite">[2][8]</sup>:</p>
 <ul class="clean">
-  <li><strong>Direct, high-pressure equipment.</strong> No break: use PN25 or PN40 pipe, valves, coils and fittings for the lower zones. No temperature penalty at all, and hydraulically the simplest system — but the cost lands on <em>every terminal on every floor</em>, and high-pressure coils and control valves in the thousands add up quickly. Practical for one extra zone's worth of height, rarely for four.</li>
+  <li><strong>Direct, high-pressure equipment.</strong> No break: use PN25 or PN40 pipe, valves, coils and fittings for the lower zones. No temperature penalty at all, and hydraulically the simplest system, but the cost lands on <em>every terminal on every floor</em>, and high-pressure coils and control valves in the thousands add up quickly. Practical for one extra zone's worth of height, rarely for four.</li>
   <li><strong>Plate heat exchangers at mechanical floors.</strong> The standard solution. Each HX hydraulically separates the zone above from the zone below, so each zone contains only its own static column and can be built in ordinary PN16. The price is a temperature approach at every crossing, plus the pumps, space and maintenance the exchangers bring.</li>
   <li><strong>Gravity/return-side pressure control.</strong> Locating plant rooms high in the tower and feeding zones downward changes which end of the zone carries the static and can remove a zone break entirely. This is an architectural decision about where the mechanical floors go, made years before the pump schedule exists.</li>
 </ul>
 
 <h3>The cascade trap</h3>
-<p>How the heat exchangers are <em>arranged</em> matters more than how many there are. In a <strong>cascade</strong>, zone&nbsp;1 is fed from the plant, zone&nbsp;2 from zone&nbsp;1 through an HX, zone&nbsp;3 from zone&nbsp;2 through another, and so on. The approaches <strong>add up in series</strong>: with four zones and a 1.2&nbsp;K approach, the top zone is three exchangers away from the plant and the plant must make water 3.6&nbsp;K colder than the top-floor coils need. In a <strong>parallel-fed</strong> arrangement, a single high-pressure primary riser — rated for the full column — runs the height of the tower and every zone takes its own HX directly off it. Each zone is then exactly <em>one</em> exchanger from the plant, whatever floor it is on.</p>
-<p>The trade is explicit: the parallel scheme needs one expensive high-pressure riser pair, but that is a few hundred metres of heavy pipe in a shaft. The cascade scheme avoids it and pays instead with plant supply temperature — forever, on every chiller, in every operating hour.</p>
+<p>How the heat exchangers are <em>arranged</em> matters more than how many there are. In a <strong>cascade</strong>, zone&nbsp;1 is fed from the plant, zone&nbsp;2 from zone&nbsp;1 through an HX, zone&nbsp;3 from zone&nbsp;2 through another, and so on. The approaches <strong>add up in series</strong>: with four zones and a 1.2&nbsp;K approach, the top zone is three exchangers away from the plant and the plant must make water 3.6&nbsp;K colder than the top-floor coils need. In a <strong>parallel-fed</strong> arrangement, a single high-pressure primary riser, rated for the full column, runs the height of the tower and every zone takes its own HX directly off it. Each zone is then exactly <em>one</em> exchanger from the plant, whatever floor it is on.</p>
+<p>The trade is explicit: the parallel scheme needs one expensive high-pressure riser pair, but that is a few hundred metres of heavy pipe in a shaft. The cascade scheme avoids it and pays instead with plant supply temperature: forever, on every chiller, in every operating hour.</p>
 
 <h2 id="int-zone">7 · Interactive: zoning, the heat-exchanger cascade &amp; the plant temperature penalty</h2>
 <p>Set the equipment pressure class you intend to build the zones from, the approach of the plate exchangers, and the supply temperature the coils actually need. The chart shows the chilled-water temperature the central plant must produce, against tower height, for both arrangements. The staircases are the zone boundaries. Watch the cascade curve fall through the practical limit for plain water.</p>
 
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Required plant supply temperature — cascade vs parallel-fed heat exchangers</div>
+    <div class="ftitle">Required plant supply temperature: cascade vs parallel-fed heat exchangers</div>
     <div class="fsub">Zones = ceil(0.0981·H / PN). Cascade: the top zone sits (zones−1) exchangers from the plant, so approaches add. Parallel-fed: a high-pressure primary riser serves every zone through one exchanger. Chiller penalty taken at ≈2.5 % per K of depressed supply temperature.</div>
   </div>
   <div class="chart-box"><canvas id="zoneChart"></canvas></div>
@@ -351,7 +352,7 @@
     <div class="cell"><div class="k">Feasible?</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rFz"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At 600&nbsp;m in PN16 the tower needs four zones. Cascaded, the plant must deliver <strong>3.1&nbsp;°C</strong> — below the ~3.3&nbsp;°C practical floor for plain water, so the design does not merely cost energy, it <em>fails</em>, and you are pushed into glycol (worse heat transfer, more pumping, more cost) or into re-arranging the zones. Feed the same four zones in parallel from one high-pressure primary and the plant makes <strong>5.5&nbsp;°C</strong>, one approach below the coils, with a chiller penalty of about 3&nbsp;% instead of 9&nbsp;%. Raise the class to PN40 and the two schemes converge, because two zones need only one exchanger either way — which is the real argument for high-pressure equipment in the lower half of a tower.</p>
+<p class="fig-note">At 600&nbsp;m in PN16 the tower needs four zones. Cascaded, the plant must deliver <strong>3.1&nbsp;°C</strong>: below the ~3.3&nbsp;°C practical floor for plain water, so the design does not merely cost energy, it <em>fails</em>, and you are pushed into glycol (worse heat transfer, more pumping, more cost) or into re-arranging the zones. Feed the same four zones in parallel from one high-pressure primary and the plant makes <strong>5.5&nbsp;°C</strong>, one approach below the coils, with a chiller penalty of about 3&nbsp;% instead of 9&nbsp;%. Raise the class to PN40 and the two schemes converge, because two zones need only one exchanger either way, which is the real argument for high-pressure equipment in the lower half of a tower.</p>
 
 <div class="schematic">
 <svg viewBox="0 0 720 470" role="img" aria-label="Two side-by-side sections of a tall tower comparing chilled-water pressure zoning arrangements. On the left, a cascade: the plant at the base feeds zone one, and each zone above is fed from the zone below through a plate heat exchanger, so the temperature approaches add up and the top zone is three exchangers from the plant. On the right, a parallel-fed arrangement: one high-pressure primary riser runs the full height and each zone takes its own heat exchanger directly off it, so every zone is one exchanger from the plant.">
@@ -377,7 +378,7 @@
   <text x="10" y="20" class="cw-tl">Where the zone breaks sit decides what temperature the plant must make</text>
 
   <!-- ═══════ LEFT: CASCADE ═══════ -->
-  <text x="60" y="44" class="cw-pn">A · Cascade — approaches add up</text>
+  <text x="60" y="44" class="cw-pn">A · Cascade: approaches add up</text>
   <rect x="60" y="54" width="210" height="356" class="cw-out"/>
   <g class="cw-brk">
     <line x1="60" y1="143" x2="270" y2="143"/><line x1="60" y1="232" x2="270" y2="232"/><line x1="60" y1="321" x2="270" y2="321"/>
@@ -432,40 +433,40 @@
   <text x="450" y="444" class="cw-ok">plant makes 6.7 − 1.2 = 5.5 °C</text>
   <text x="450" y="458" class="cw-ok">cost: one high-pressure riser pair in a shaft</text>
 </svg>
-  <div class="cap">Original schematic. Both towers have four pressure zones and both use plate heat exchangers to break the static column — the only difference is the topology. Cascading the exchangers stacks their approaches so the plant carries the sum; feeding every zone from one high-pressure primary riser means each zone pays exactly one approach, whatever its height. The blue and red lines are zone supply and return; the purple pair is the high-pressure primary.</div>
+  <div class="cap">Original schematic. Both towers have four pressure zones and both use plate heat exchangers to break the static column: the only difference is the topology. Cascading the exchangers stacks their approaches so the plant carries the sum; feeding every zone from one high-pressure primary riser means each zone pays exactly one approach, whatever its height. The blue and red lines are zone supply and return; the purple pair is the high-pressure primary.</div>
 </div>
 
 <h2 id="architectures">8 · Pump architectures for tall buildings</h2>
 <ul class="clean">
   <li><strong>Constant primary.</strong> Fixed-speed pumps, three-port control at the terminals. Simple, robust, and energy-illiterate: full pump power at every load and a guaranteed low ΔT. Acceptable only for the chiller evaporator circuit in some plants, never for distribution in a tall building.</li>
-  <li><strong>Primary–secondary (decoupled).</strong> Constant-flow primary pumps dedicated to the chillers, variable-speed secondary pumps serving the distribution, joined by a decoupler (common pipe). Very robust chiller protection and the traditional default. The decoupler must be short, generously sized and correctly located, and the flow in it must be measured — <strong>reverse flow in the decoupler is the single clearest diagnostic that the plant is in low-ΔT trouble</strong>, because it means the secondary is drawing more flow than the running chillers produce and mixing warm return into the supply.</li>
-  <li><strong>Variable primary flow (VPF).</strong> One set of variable-speed pumps through the chillers and out to the system, with a minimum-flow bypass valve to protect the evaporators. Fewer pumps, less space, less energy — but it demands chillers that tolerate variable evaporator flow, a fast and well-tuned bypass, and rate-of-change limits on flow. In a tall building the space and pump-room savings are substantial.</li>
-  <li><strong>Zone-tertiary pumping.</strong> The natural fit for a zoned tower: primary at the plant, secondary distributing to the zone heat exchangers, and a tertiary set on each zone's own loop. Each zone's pumps are then sized for that zone's friction only — small heads, modest powers, and the ability to run each zone on its own schedule.</li>
-  <li><strong>Distributed pumping.</strong> Removing the central secondary entirely and letting each zone or riser pump draw for itself. Best theoretical energy — no central pump forcing pressure through valves that are throttling it away — but the control is genuinely harder and it needs careful pressure management to avoid one zone starving another.</li>
+  <li><strong>Primary–secondary (decoupled).</strong> Constant-flow primary pumps dedicated to the chillers, variable-speed secondary pumps serving the distribution, joined by a decoupler (common pipe). Very robust chiller protection and the traditional default. The decoupler must be short, generously sized and correctly located, and the flow in it must be measured: <strong>reverse flow in the decoupler is the single clearest diagnostic that the plant is in low-ΔT trouble</strong>, because it means the secondary is drawing more flow than the running chillers produce and mixing warm return into the supply.</li>
+  <li><strong>Variable primary flow (VPF).</strong> One set of variable-speed pumps through the chillers and out to the system, with a minimum-flow bypass valve to protect the evaporators. Fewer pumps, less space, less energy, but it demands chillers that tolerate variable evaporator flow, a fast and well-tuned bypass, and rate-of-change limits on flow. In a tall building the space and pump-room savings are substantial.</li>
+  <li><strong>Zone-tertiary pumping.</strong> The natural fit for a zoned tower: primary at the plant, secondary distributing to the zone heat exchangers, and a tertiary set on each zone's own loop. Each zone's pumps are then sized for that zone's friction only: small heads, modest powers, and the ability to run each zone on its own schedule.</li>
+  <li><strong>Distributed pumping.</strong> Removing the central secondary entirely and letting each zone or riser pump draw for itself. Best theoretical energy (no central pump forcing pressure through valves that are throttling it away), but the control is genuinely harder and it needs careful pressure management to avoid one zone starving another.</li>
   <li><strong>Series pumping.</strong> Two pumps in series to reach a head one cannot. In a closed loop this is rarely needed for the reason established in section 2; if a chilled-water pump schedule shows series pumping to "reach the top", the head calculation is almost certainly wrong.</li>
 </ul>
 
 <h2 id="selection">9 · Selecting the actual pump</h2>
 <p>Sizing gives you a duty point. Selection is choosing the machine that will sit on it for twenty years<sup class="cite">[3][6]</sup>:</p>
 <ul class="clean">
-  <li><strong>Land near BEP, and stay inside the POR.</strong> The Hydraulic Institute defines a Preferred Operating Region of roughly <strong>70–120&nbsp;% of best-efficiency flow</strong>; outside it, radial loads, vibration and recirculation shorten seal and bearing life regardless of what the efficiency curve says. Select so the design point is at or slightly left of BEP, so that real-world flows — which are almost always lower than design — fall <em>into</em> the POR rather than off the bottom of it.</li>
-  <li><strong>Watch the curve shape for parallel duty.</strong> Pumps intended to run in parallel need a continuously rising head as flow falls. A flat curve means small head differences cause large flow differences: the pumps share load unequally, one can be pushed back to near shut-off, and the set hunts. Check the combined curve against the system curve, and confirm that a single pump running alone does not run out past its POR — the classic parallel-pump trap covered in <a href="parallel-series-pump-operation.html">parallel and series pump operation</a>.</li>
+  <li><strong>Land near BEP, and stay inside the POR.</strong> The Hydraulic Institute defines a Preferred Operating Region of roughly <strong>70–120&nbsp;% of best-efficiency flow</strong>; outside it, radial loads, vibration and recirculation shorten seal and bearing life regardless of what the efficiency curve says. Select so the design point is at or slightly left of BEP, so that real-world flows, which are almost always lower than design, fall <em>into</em> the POR rather than off the bottom of it.</li>
+  <li><strong>Watch the curve shape for parallel duty.</strong> Pumps intended to run in parallel need a continuously rising head as flow falls. A flat curve means small head differences cause large flow differences: the pumps share load unequally, one can be pushed back to near shut-off, and the set hunts. Check the combined curve against the system curve, and confirm that a single pump running alone does not run out past its POR: the classic parallel-pump trap covered in <a href="parallel-series-pump-operation.html">parallel and series pump operation</a>.</li>
   <li><strong>Size the motor non-overloading.</strong> The motor should cover the whole curve to run-out, not just the duty point, because that is where a pump ends up when a system is not yet balanced or a valve fails open.</li>
   <li><strong>Leave impeller room.</strong> Select a casing that will accept a larger impeller, and fit the calculated one. That is how you carry margin without paying for it every hour.</li>
-  <li><strong>Verify the ΔT the pump implies.</strong> Multiply the selected flow by 4.187 and the design ΔT: if the answer is not the load, something in the chain — coil, chiller or schedule — disagrees with something else. This one-line check catches a surprising number of coordination errors.</li>
+  <li><strong>Verify the ΔT the pump implies.</strong> Multiply the selected flow by 4.187 and the design ΔT: if the answer is not the load, something in the chain (coil, chiller or schedule) disagrees with something else. This one-line check catches a surprising number of coordination errors.</li>
 </ul>
 
 <h2 id="npsh">10 · NPSH, pressurization &amp; the point of no pressure change</h2>
-<p>A closed loop has no suction lift, so NPSH is rarely the binding constraint — but tall buildings introduce a related failure that is far more common and much more damaging: <strong>the top of the loop going sub-atmospheric</strong><sup class="cite">[1][6]</sup>.</p>
+<p>A closed loop has no suction lift, so NPSH is rarely the binding constraint, but tall buildings introduce a related failure that is far more common and much more damaging: <strong>the top of the loop going sub-atmospheric</strong><sup class="cite">[1][6]</sup>.</p>
 <ul class="clean">
-  <li><strong>Set the fill pressure from the highest point, not the plant.</strong> The cold-fill pressure at the pressurisation unit must keep every point in the circuit above atmospheric with margin — the static height of the highest point above the unit, plus roughly 0.3–0.5&nbsp;bar. A zone whose top is 90&nbsp;m above its plant room needs about <strong>9.3&nbsp;bar</strong> of cold fill at the base. Get this wrong and the top of the riser sits under vacuum, drawing air in through every vent and gland.</li>
-  <li><strong>Connect the expansion vessel at the pump suction — always.</strong> The point where the expansion vessel joins the system is the <em>point of no pressure change</em>: the pump cannot alter the pressure there. Connect it at the suction and the pump <em>adds</em> its head to the rest of the system, pushing pressure up everywhere. Connect it at the discharge and the pump <strong>subtracts</strong> its head from the system — and in a tall riser that is exactly how you pull the top of the loop below atmospheric the moment the pump starts. It is a single tee position on a drawing and it decides whether the system breathes air for its whole life.</li>
-  <li><strong>Air separation belongs where air comes out of solution</strong> — the point of highest temperature and lowest pressure, which in a chilled-water tower means the top of the risers. Automatic air vents at every high point, a proper de-aerator on the plant side, and a commissioning fill procedure that vents systematically from the bottom up.</li>
-  <li><strong>Protect against transients.</strong> Long, heavy risers with fast-acting valves and check valves make a chilled-water system capable of real water hammer. Slow-closing valves, correct check-valve selection, and surge analysis where the risers are long enough to warrant it — the same discipline as <a href="water-hammer-control-valve.html">valve closure and water hammer</a>.</li>
+  <li><strong>Set the fill pressure from the highest point, not the plant.</strong> The cold-fill pressure at the pressurisation unit must keep every point in the circuit above atmospheric with margin: the static height of the highest point above the unit, plus roughly 0.3–0.5&nbsp;bar. A zone whose top is 90&nbsp;m above its plant room needs about <strong>9.3&nbsp;bar</strong> of cold fill at the base. Get this wrong and the top of the riser sits under vacuum, drawing air in through every vent and gland.</li>
+  <li><strong>Connect the expansion vessel at the pump suction, always.</strong> The point where the expansion vessel joins the system is the <em>point of no pressure change</em>: the pump cannot alter the pressure there. Connect it at the suction and the pump <em>adds</em> its head to the rest of the system, pushing pressure up everywhere. Connect it at the discharge and the pump <strong>subtracts</strong> its head from the system, and in a tall riser that is exactly how you pull the top of the loop below atmospheric the moment the pump starts. It is a single tee position on a drawing and it decides whether the system breathes air for its whole life.</li>
+  <li><strong>Air separation belongs where air comes out of solution</strong>: the point of highest temperature and lowest pressure, which in a chilled-water tower means the top of the risers. Automatic air vents at every high point, a proper de-aerator on the plant side, and a commissioning fill procedure that vents systematically from the bottom up.</li>
+  <li><strong>Protect against transients.</strong> Long, heavy risers with fast-acting valves and check valves make a chilled-water system capable of real water hammer. Slow-closing valves, correct check-valve selection, and surge analysis where the risers are long enough to warrant it: the same discipline as <a href="water-hammer-control-valve.html">valve closure and water hammer</a>.</li>
 </ul>
 
 <h2 id="int-dp">11 · Interactive: DP sensor location and the real part-load curve</h2>
-<p>The affinity laws promise that half the flow costs one-eighth the power. That is true only if the system curve passes through the origin — pure friction, no fixed head. Real variable-flow systems hold a differential-pressure setpoint somewhere, and <em>where you measure it</em> decides how much of the cube law you actually get. Set the part-load flow and drag the setpoint from "sensor at the pump" (the whole design head held at all times) down towards "sensor at the index terminal" and beyond, to DP reset. The pump curve slides down under the affinity laws; the operating point walks along the control curve; the power readout is where the money is.</p>
+<p>The affinity laws promise that half the flow costs one-eighth the power. That is true only if the system curve passes through the origin: pure friction, no fixed head. Real variable-flow systems hold a differential-pressure setpoint somewhere, and <em>where you measure it</em> decides how much of the cube law you actually get. Set the part-load flow and drag the setpoint from "sensor at the pump" (the whole design head held at all times) down towards "sensor at the index terminal" and beyond, to DP reset. The pump curve slides down under the affinity laws; the operating point walks along the control curve; the power readout is where the money is.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -477,7 +478,7 @@
     <div class="ctrl">
       <label>Part-load flow <span id="vQ">50 %</span></label>
       <input type="range" id="sQpc" min="20" max="110" value="50" step="1">
-      <div class="hint">Where the system is actually running — a tower sits here most of its life.</div>
+      <div class="hint">Where the system is actually running: a tower sits here most of its life.</div>
     </div>
     <div class="ctrl">
       <label>DP setpoint β <span id="vB">1.00</span></label>
@@ -487,7 +488,7 @@
     <div class="ctrl">
       <label>Design head <span id="vHd">39 m</span></label>
       <input type="range" id="sHd" min="15" max="90" value="39" step="1">
-      <div class="hint">From chart 1 — the honestly calculated index-circuit head.</div>
+      <div class="hint">From chart 1: the honestly calculated index-circuit head.</div>
     </div>
     <div class="ctrl">
       <label>Design flow <span id="vQd">597 L/s</span></label>
@@ -497,7 +498,7 @@
     <div class="ctrl">
       <label>Pump efficiency <span id="vEta">80 %</span></label>
       <input type="range" id="sEta" min="55" max="88" value="80" step="1">
-      <div class="hint">Wire-to-water is lower again — add motor and drive losses.</div>
+      <div class="hint">Wire-to-water is lower again: add motor and drive losses.</div>
     </div>
   </div>
   <div class="readout">
@@ -505,18 +506,18 @@
     <div class="cell"><div class="k">Operating head</div><div class="v" id="rH2">39 <small>m</small></div></div>
     <div class="cell"><div class="k">Shaft power</div><div class="v" id="rP2">143 <small>kW</small></div></div>
     <div class="cell"><div class="k">Of design power</div><div class="v" id="rPc">50 <small>%</small></div></div>
-    <div class="cell"><div class="k">vs sensor at pump</div><div class="v" id="rSav">— </div></div>
+    <div class="cell"><div class="k">vs sensor at pump</div><div class="v" id="rSav">– </div></div>
     <div class="cell"><div class="k">Control</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd2"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At 50&nbsp;% flow the three strategies are not close. Sensor at the pump: the control curve is flat, the pump barely slows (94&nbsp;% speed) and draws <strong>50&nbsp;%</strong> of design power. Sensor at the index terminal (β&nbsp;≈&nbsp;0.3): 66&nbsp;% speed and <strong>23.8&nbsp;%</strong>. Ideal DP reset (β&nbsp;→&nbsp;0): 50&nbsp;% speed and <strong>12.5&nbsp;%</strong>, the textbook cube. That is a <strong>4:1 spread in running power</strong> from a decision about where to mount a sensor and how to write a reset sequence — no different pump, no different pipe. In a tall building, run the sensor to the hydraulically most remote terminal of each zone, then reset the setpoint down until the most-open control valve in that zone is nearly wide open. This is the highest-return control sequence in the whole chilled-water system.</p>
+<p class="fig-note">At 50&nbsp;% flow the three strategies are not close. Sensor at the pump: the control curve is flat, the pump barely slows (94&nbsp;% speed) and draws <strong>50&nbsp;%</strong> of design power. Sensor at the index terminal (β&nbsp;≈&nbsp;0.3): 66&nbsp;% speed and <strong>23.8&nbsp;%</strong>. Ideal DP reset (β&nbsp;→&nbsp;0): 50&nbsp;% speed and <strong>12.5&nbsp;%</strong>, the textbook cube. That is a <strong>4:1 spread in running power</strong> from a decision about where to mount a sensor and how to write a reset sequence, no different pump, no different pipe. In a tall building, run the sensor to the hydraulically most remote terminal of each zone, then reset the setpoint down until the most-open control valve in that zone is nearly wide open. This is the highest-return control sequence in the whole chilled-water system.</p>
 
 <h2 id="vfd">12 · Getting the variable-speed drive right</h2>
 <ul class="clean">
-  <li><strong>Respect a minimum speed.</strong> Typically 25–30&nbsp;Hz. Below it, mechanical seal faces lose their lubricating film and thrust balance degrades — and the energy saving from going lower is negligible anyway because the curve is already flat there.</li>
+  <li><strong>Respect a minimum speed.</strong> Typically 25–30&nbsp;Hz. Below it, mechanical seal faces lose their lubricating film and thrust balance degrades, and the energy saving from going lower is negligible anyway because the curve is already flat there.</li>
   <li><strong>Stage on efficiency, not on flow alone.</strong> With variable-speed pumps in parallel, two pumps at half speed are usually more efficient than one at full speed. Base the staging on total power, with hysteresis and minimum run times so the set does not chatter around the changeover.</li>
   <li><strong>Never let the VFD substitute for a wrong impeller.</strong> A pump permanently running at 70&nbsp;% speed because it was oversized is a pump with the wrong impeller. Trim it. The drive should absorb load variation, not a design error.</li>
-  <li><strong>Handle the electrical side deliberately.</strong> Long motor cables in a tall building cause reflected-wave voltage doubling at the motor terminals — specify inverter-duty motors, dV/dt or sine filters where cable runs are long, and shaft-grounding rings or insulated non-drive-end bearings to prevent bearing fluting from common-mode currents. This is a routine and expensive failure in tall buildings and it is entirely preventable at specification.</li>
+  <li><strong>Handle the electrical side deliberately.</strong> Long motor cables in a tall building cause reflected-wave voltage doubling at the motor terminals: specify inverter-duty motors, dV/dt or sine filters where cable runs are long, and shaft-grounding rings or insulated non-drive-end bearings to prevent bearing fluting from common-mode currents. This is a routine and expensive failure in tall buildings and it is entirely preventable at specification.</li>
   <li><strong>Check harmonics at the system level.</strong> Many large drives on one substation is a distortion problem; specify the limits and the mitigation (line reactors, 18-pulse or active front ends) as a package, not drive by drive.</li>
 </ul>
 
@@ -526,45 +527,45 @@
   <li><strong>Eccentric reducer, flat side up.</strong> On a horizontal suction this is the difference between a clean approach and a permanent air pocket sitting at the impeller eye.</li>
   <li><strong>Refuse triple-duty valves.</strong> Combining check, isolation and balancing in one body gives poor flow measurement, high loss and a component you cannot service or verify. Separate check valve, separate isolation, separate balancing device with proper pressure tappings.</li>
   <li><strong>Check pipe strain, and prove it.</strong> Loosen the flange bolts with the system full and measure movement with a dial gauge. If the pipe pulls the casing, the alignment you signed off is fiction. Then do the <strong>final laser alignment after grouting and after the pipework is connected</strong>, not before.</li>
-  <li><strong>Inertia bases and isolators.</strong> Concrete inertia bases of roughly 1.5–2× pump mass on spring isolators, with flexible connectors on both sides — and flexible connectors are for vibration, never for correcting misalignment.</li>
+  <li><strong>Inertia bases and isolators.</strong> Concrete inertia bases of roughly 1.5–2× pump mass on spring isolators, with flexible connectors on both sides, and flexible connectors are for vibration, never for correcting misalignment.</li>
   <li><strong>Anchor and guide the risers as a structural problem.</strong> With about 144&nbsp;mm of thermal movement over 600&nbsp;m, plus long-term shortening of the concrete core through creep and shrinkage, riser anchors, guides, expansion loops or bellows and slab-penetration details must be engineered and the loads given to the structural engineer. This is the item most often left to the installer, and the one most likely to tear a riser.</li>
   <li><strong>Flush properly, then remove the start-up screens.</strong> Fine start-up strainer screens are for commissioning; left in, they collapse into the pump. Log their removal as a formal hold point with a signature against each pump.</li>
-  <li><strong>Fit the instrumentation that lets you prove the pump.</strong> Pressure tappings either side of every pump, a permanent flow meter on each circuit, and power monitoring on each drive. Then <strong>field-verify the pump curve</strong> at commissioning — measure head and flow, plot the real operating point and compare it with the selection. Nameplate agreement is not verification.</li>
+  <li><strong>Fit the instrumentation that lets you prove the pump.</strong> Pressure tappings either side of every pump, a permanent flow meter on each circuit, and power monitoring on each drive. Then <strong>field-verify the pump curve</strong> at commissioning: measure head and flow, plot the real operating point and compare it with the selection. Nameplate agreement is not verification.</li>
   <li><strong>Commission the control, not just the hardware.</strong> Balance with the control valves driven open, set the DP setpoint from the actual index terminal, then commission the DP reset sequence and record the resulting setpoint against load. A perfectly installed pump on a badly commissioned setpoint delivers the 50&nbsp;% power case from chart 3.</li>
-  <li><strong>Rotate the standby.</strong> Automatic duty rotation on a weekly cycle, so the standby pump is proven and its seals do not dry out — and so both machines age evenly.</li>
+  <li><strong>Rotate the standby.</strong> Automatic duty rotation on a weekly cycle, so the standby pump is proven and its seals do not dry out, and so both machines age evenly.</li>
 </ul>
 
 <h2 id="checklist">14 · The design &amp; installation checklist</h2>
 <ul class="clean">
-  <li><strong>Separate the two pressures</strong> — pump head from friction on the index circuit; equipment rating from the full static column. Never let one contaminate the other.</li>
-  <li><strong>Choose a wide ΔT and defend it</strong> — coils selected for it, two-port valves, no bypasses, valve authority ≥ 0.25–0.5.</li>
-  <li><strong>Calculate the head, do not pad it</strong> — margin goes in the impeller size, not the duty point.</li>
-  <li><strong>Zone for pressure, then choose the topology</strong> — parallel-fed heat exchangers off a high-pressure primary wherever the cascade penalty would depress plant supply temperature significantly.</li>
-  <li><strong>Check the plant temperature is achievable</strong> — cascaded approaches can drive the requirement below the practical limit for plain water before anyone notices.</li>
-  <li><strong>Pick the architecture for the zoning</strong> — primary/secondary/zone-tertiary or VPF; measure the decoupler flow and alarm on reverse flow.</li>
+  <li><strong>Separate the two pressures</strong>: pump head from friction on the index circuit; equipment rating from the full static column. Never let one contaminate the other.</li>
+  <li><strong>Choose a wide ΔT and defend it</strong>: coils selected for it, two-port valves, no bypasses, valve authority ≥ 0.25–0.5.</li>
+  <li><strong>Calculate the head, do not pad it</strong>: margin goes in the impeller size, not the duty point.</li>
+  <li><strong>Zone for pressure, then choose the topology</strong>: parallel-fed heat exchangers off a high-pressure primary wherever the cascade penalty would depress plant supply temperature significantly.</li>
+  <li><strong>Check the plant temperature is achievable</strong>: cascaded approaches can drive the requirement below the practical limit for plain water before anyone notices.</li>
+  <li><strong>Pick the architecture for the zoning</strong>: primary/secondary/zone-tertiary or VPF; measure the decoupler flow and alarm on reverse flow.</li>
   <li><strong>Select at BEP, inside the POR</strong>, with a rising curve for parallel duty and a non-overloading motor.</li>
   <li><strong>Set fill pressure from the highest point and put the expansion vessel on the pump suction.</strong></li>
-  <li><strong>Use pressure-independent control valves</strong> where the ΔP varies widely up a zone — which in a tall building is everywhere.</li>
-  <li><strong>Put the DP sensor at the index terminal and commission a reset sequence</strong> — this is worth more than any equipment upgrade.</li>
+  <li><strong>Use pressure-independent control valves</strong> where the ΔP varies widely up a zone, which in a tall building is everywhere.</li>
+  <li><strong>Put the DP sensor at the index terminal and commission a reset sequence</strong>. This is worth more than any equipment upgrade.</li>
   <li><strong>Engineer the riser supports</strong> for thermal movement and structural shortening, with the loads issued to the structural engineer.</li>
-  <li><strong>Prove it on site</strong> — pipe-strain check, post-grout laser alignment, start-up screens removed and signed off, field-verified pump curves, and a commissioned control sequence.</li>
+  <li><strong>Prove it on site</strong>: pipe-strain check, post-grout laser alignment, start-up screens removed and signed off, field-verified pump curves, and a commissioned control sequence.</li>
 </ul>
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  In a closed chilled-water loop the pump never lifts the building — it only pushes water through friction, so a 600&nbsp;m tower needs tens of metres of head, not hundreds; but every component at the bottom of a zone must contain the full <strong>58.9&nbsp;bar</strong> static column, which is what forces the vertical zoning. Break those zones with <strong>parallel-fed</strong> heat exchangers rather than a cascade so the approaches do not stack and depress the plant temperature, choose a <strong>wide ΔT</strong> and protect it with two-port and pressure-independent valves, select the pump <strong>at BEP with no padding</strong>, put the expansion vessel on the <strong>suction</strong>, and then put the DP sensor at the <strong>index terminal</strong> with a reset sequence — because that last decision alone is worth four times the part-load pump energy.
+  In a closed chilled-water loop the pump never lifts the building. It only pushes water through friction, so a 600&nbsp;m tower needs tens of metres of head, not hundreds; but every component at the bottom of a zone must contain the full <strong>58.9&nbsp;bar</strong> static column, which is what forces the vertical zoning. Break those zones with <strong>parallel-fed</strong> heat exchangers rather than a cascade so the approaches do not stack and depress the plant temperature, choose a <strong>wide ΔT</strong> and protect it with two-port and pressure-independent valves, select the pump <strong>at BEP with no padding</strong>, put the expansion vessel on the <strong>suction</strong>, and then put the DP sensor at the <strong>index terminal</strong> with a reset sequence, because that last decision alone is worth four times the part-load pump energy.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ASHRAE <em>Handbook — HVAC Systems and Equipment</em>, Ch. 13 <em>Hydronic Heating and Cooling</em> and Ch. 44 <em>Centrifugal Pumps</em> (closed-loop head, expansion tank location and the point of no pressure change, system pressurization).</li>
-  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed. — vertical pressure zoning, heat-exchanger interfaces, riser design and plant location in tall buildings.</li>
-  <li>Hydraulic Institute — ANSI/HI 9.6.3 <em>Rotodynamic Pumps: Guideline for Operating Regions</em> (BEP, Preferred and Allowable Operating Regions) and ANSI/HI 9.6.1 <em>NPSH Margin</em>.</li>
-  <li>ANSI/ASHRAE/IES Standard 90.1 — <em>Energy Standard for Buildings</em>: variable-flow hydronic requirements, pump power limits and differential-pressure reset.</li>
+  <li>ASHRAE <em>Handbook, HVAC Systems and Equipment</em>, Ch. 13 <em>Hydronic Heating and Cooling</em> and Ch. 44 <em>Centrifugal Pumps</em> (closed-loop head, expansion tank location and the point of no pressure change, system pressurization).</li>
+  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed.: vertical pressure zoning, heat-exchanger interfaces, riser design and plant location in tall buildings.</li>
+  <li>Hydraulic Institute, ANSI/HI 9.6.3 <em>Rotodynamic Pumps: Guideline for Operating Regions</em> (BEP, Preferred and Allowable Operating Regions) and ANSI/HI 9.6.1 <em>NPSH Margin</em>.</li>
+  <li>ANSI/ASHRAE/IES Standard 90.1, <em>Energy Standard for Buildings</em>: variable-flow hydronic requirements, pump power limits and differential-pressure reset.</li>
   <li>Taylor, S.T. <em>Degrading Chilled Water Plant Delta-T: Causes and Mitigation</em>, ASHRAE Transactions; and <em>Primary-Only vs. Primary-Secondary Variable Flow Systems</em>, ASHRAE Journal.</li>
-  <li>Rishel, J.B. <em>HVAC Pump Handbook</em> / <em>Water Pumps and Pumping Systems</em>, McGraw-Hill — variable-speed pumping, DP sensor location and control curves.</li>
+  <li>Rishel, J.B. <em>HVAC Pump Handbook</em> / <em>Water Pumps and Pumping Systems</em>, McGraw-Hill: variable-speed pumping, DP sensor location and control curves.</li>
   <li>Hydraulic Institute &amp; Europump, <em>Variable Speed Pumping: A Guide to Successful Applications</em>; and ASHRAE <em>Fundamentals</em>, Ch. 22 <em>Pipe Sizing</em> (Darcy–Weisbach, friction factors).</li>
-  <li>CIBSE <em>Guide B</em> and <em>Guide H</em>; CIBSE <em>Commissioning Code W — Water Distribution Systems</em>; and BSRIA guidance on pre-commission cleaning and hydronic balancing.</li>
+  <li>CIBSE <em>Guide B</em> and <em>Guide H</em>; CIBSE <em>Commissioning Code W: Water Distribution Systems</em>; and BSRIA guidance on pre-commission cleaning and hydronic balancing.</li>
 </ol>
 
 <div class="tags">#ChilledWater #CHW #PumpSelection #PumpSizing #HVAC #TallBuildings #MegatallBuildings #SupertallBuildings #PressureZoning #HeatExchanger #PlateHeatExchanger #ClosedLoop #StaticHead #FrictionHead #DeltaT #LowDeltaT #VariablePrimaryFlow #PrimarySecondary #VFD #AffinityLaws #DPReset #BEP #POR #NPSH #ExpansionVessel #PICV #ValveAuthority #Commissioning #ASHRAE #MEP #BuildingServices</div>
@@ -575,7 +576,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -736,7 +737,7 @@ let zoneChart=new Chart(document.getElementById('zoneChart'),{
     plugins:{legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       tooltip:{callbacks:{label:c=>`${fmt1(c.parsed.y)} °C at ${fmt0(c.parsed.x)} m`}},
       annotation:{annotations:{
-        lim:{type:'line',scaleID:'y',value:WATER_MIN,borderColor:'#b9770e',borderWidth:1.6,borderDash:[5,4],label:{display:true,content:'3.3 °C — plain-water limit',position:'start',font:{size:10,family:'IBM Plex Sans'},color:'#b9770e',backgroundColor:'rgba(255,255,255,0.85)'}}
+        lim:{type:'line',scaleID:'y',value:WATER_MIN,borderColor:'#b9770e',borderWidth:1.6,borderDash:[5,4],label:{display:true,content:'3.3 °C: plain-water limit',position:'start',font:{size:10,family:'IBM Plex Sans'},color:'#b9770e',backgroundColor:'rgba(255,255,255,0.85)'}}
       }}}}
 });
 function updateZone(){
@@ -815,7 +816,7 @@ function updateDp(){
   document.getElementById('rH2').innerHTML=fmt0(Hop)+' <small>m</small>';
   document.getElementById('rP2').innerHTML=fmt0(kW)+' <small>kW</small>';
   document.getElementById('rPc').innerHTML=fmt0(100*kW/kWd)+' <small>%</small>';
-  document.getElementById('rSav').innerHTML=(b<0.999&&kWref>0.01)?('−'+fmt0(100*(1-kW/kWref))+' <small>%</small>'):'—';
+  document.getElementById('rSav').innerHTML=(b<0.999&&kWref>0.01)?('−'+fmt0(100*(1-kW/kWref))+' <small>%</small>'):'–';
   const e=document.getElementById('rVd2');
   if(b>=0.85)      e.innerHTML='<span class="badge bad">sensor at pump</span>';
   else if(b>=0.45) e.innerHTML='<span class="badge warn">part-way out</span>';

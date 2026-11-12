@@ -18,7 +18,7 @@
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="Control Valve Closure Time & Water Hammer | Mohamed Abokhatwa">
-  <meta property="og:description" content="How control valve closure time directly drives water hammer pressure surges — engineering analysis, Joukowsky equation, and closure time optimization for safe pipeline operation.">
+  <meta property="og:description" content="How control valve closure time directly drives water hammer pressure surges: engineering analysis, Joukowsky equation, and closure time optimization for safe pipeline operation.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://abokhatwa.com/water-hammer-control-valve.html">
   <link rel="canonical" href="https://abokhatwa.com/water-hammer-control-valve.html">
@@ -28,11 +28,11 @@
   <meta property="og:image:alt" content="Control valve closure time and water hammer analysis">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Control Valve Closure Time & Water Hammer | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="How control valve closure time directly drives water hammer pressure surges — engineering analysis, Joukowsky equation, and closure time optimization for safe pipeline operation.">
+  <meta name="twitter:description" content="How control valve closure time directly drives water hammer pressure surges: engineering analysis, Joukowsky equation, and closure time optimization for safe pipeline operation.">
   <meta name="twitter:image" content="https://abokhatwa.com/og-water-hammer-control-valve.jpg">
-  <title>Control Valve Closure Time &amp; Water Hammer — Mohamed Abokhatwa</title>
-  <meta name="description" content="How control valve closure time directly drives water hammer pressure surges — engineering analysis, Joukowsky equation, and closure time optimization for…">
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Control Valve Closure Time &amp; Water Hammer | Mohamed Abokhatwa</title>
+  <meta name="description" content="How control valve closure time directly drives water hammer pressure surges: engineering analysis, Joukowsky equation, and closure time optimization for…">
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -197,7 +197,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Control Valve Closure Time & Water Hammer | Mohamed Abokhatwa",
-  "description": "How control valve closure time directly drives water hammer pressure surges — engineering analysis, Joukowsky equation, and closure time optimization for safe pipeline operation.",
+  "description": "How control valve closure time directly drives water hammer pressure surges: engineering analysis, Joukowsky equation, and closure time optimization for safe pipeline operation.",
   "image": "https://abokhatwa.com/water_hammer_control_valve_v2.png",
   "datePublished": "2026-05-01",
   "dateModified": "2026-05-25",
@@ -236,6 +236,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -285,7 +286,7 @@
 <hr class="article-divider">
 <h2>1. Introduction</h2>
 <p>
-Water hammer — also referred to as hydraulic transient or pressure surge — occurs in pressurised pipeline systems whenever the rate of flow changes rapidly. The kinetic energy of the moving fluid column converts instantaneously into pressure energy, generating a wave that propagates at the acoustic wave speed. Left unmanaged, this surge pressure can exceed the static working pressure by several multiples, leading to pipe rupture, joint failure, pump damage, or structural collapse.
+Water hammer, also referred to as hydraulic transient or pressure surge, occurs in pressurised pipeline systems whenever the rate of flow changes rapidly. The kinetic energy of the moving fluid column converts instantaneously into pressure energy, generating a wave that propagates at the acoustic wave speed. Left unmanaged, this surge pressure can exceed the static working pressure by several multiples, leading to pipe rupture, joint failure, pump damage, or structural collapse.
 </p>
 <p>
 In practice, the hydraulic engineer has relatively few tools to actively mitigate water hammer once pipeline geometry and material are fixed. The control valve, however, offers a proactive design lever: by <strong>extending closure time</strong>, the designer can dramatically reduce peak surge pressure without additional infrastructure. This article examines that relationship in full mathematical and practical detail, and links the analytical approach directly to industry-standard numerical simulation using <strong>Bentley OpenFlows HAMMER</strong>.
@@ -294,7 +295,7 @@ In practice, the hydraulic engineer has relatively few tools to actively mitigat
 <hr class="article-divider">
 <h2>2. Physics of Water Hammer</h2>
 <p>
-When a control valve begins to close, the cross-sectional area available to flow decreases. The fluid immediately upstream decelerates, generating a pressure rise that propagates upstream as a compression wave at the acoustic (pressure wave) speed <em>a</em>. The full cycle of wave travel — from valve to the upstream reservoir and back — defines the critical period. If closure completes within this period, the reflected relief wave arrives too late, and the full instantaneous pressure rise is realised.
+When a control valve begins to close, the cross-sectional area available to flow decreases. The fluid immediately upstream decelerates, generating a pressure rise that propagates upstream as a compression wave at the acoustic (pressure wave) speed <em>a</em>. The full cycle of wave travel, from valve to the upstream reservoir and back, defines the critical period. If closure completes within this period, the reflected relief wave arrives too late, and the full instantaneous pressure rise is realised.
 </p>
 
 <div class="diagram-wrap">
@@ -322,11 +323,11 @@ When a control valve begins to close, the cross-sectional area available to flow
       <marker id="ma4" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 6,3 0,6" fill="#86868b"/></marker>
     </defs>
   </svg>
-  <div class="diagram-caption">Fig. 1 — Reservoir–pipeline–valve system: compression wave propagates upstream upon valve closure at speed <em>a</em>.</div>
+  <div class="diagram-caption">Fig. 1. Reservoir–pipeline–valve system: compression wave propagates upstream upon valve closure at speed <em>a</em>.</div>
 </div>
 
 <hr class="article-divider">
-<h2>3. The Joukowsky Equation — Instantaneous Closure</h2>
+<h2>3. The Joukowsky Equation: Instantaneous Closure</h2>
 <p>For an instantaneous and complete valve closure, the maximum pressure rise is given by the Joukowsky equation:</p>
 
 <div class="formula-box">
@@ -361,7 +362,7 @@ When a control valve begins to close, the cross-sectional area available to flow
 </div>
 
 <hr class="article-divider">
-<h2>4. Critical Time T<sub>c</sub> — The Design Threshold</h2>
+<h2>4. Critical Time T<sub>c</sub>: The Design Threshold</h2>
 
 <div class="formula-box">
   <div class="formula-main">T<sub>c</sub> = 2L / a</div>
@@ -372,7 +373,7 @@ When a control valve begins to close, the cross-sectional area available to flow
   <div class="cond-card cond-danger">
     <h4>Rapid Closure</h4>
     <div class="cond-badge">t<sub>v</sub> ≤ T<sub>c</sub></div>
-    <p>Full Joukowsky pressure always develops — regardless of how much faster the valve closes. This is the <strong>worst-case design scenario</strong>.</p>
+    <p>Full Joukowsky pressure always develops: regardless of how much faster the valve closes. This is the <strong>worst-case design scenario</strong>.</p>
   </div>
   <div class="cond-card cond-safe">
     <h4>Slow (Controlled) Closure</h4>
@@ -413,7 +414,7 @@ When a control valve begins to close, the cross-sectional area available to flow
 
 <!-- Calculator Panel -->
 <div class="interactive-panel">
-  <div class="panel-header">Water Hammer Surge Calculator — Adjust sliders, all results update live</div>
+  <div class="panel-header">Water Hammer Surge Calculator: Adjust sliders, all results update live</div>
   <div class="panel-body">
     <div class="slider-grid">
       <div class="slider-row">
@@ -441,14 +442,14 @@ When a control valve begins to close, the cross-sectional area available to flow
         <div class="sl-row"><input type="range" id="sl-pn" min="6" max="40" step="1" value="16"><span class="sl-val" id="out-pn">PN 16</span></div>
       </div>
     </div>
-    <div id="regime-banner" class="regime-banner regime-rapid">⚠ RAPID CLOSURE — Full Joukowsky Pressure Applies</div>
+    <div id="regime-banner" class="regime-banner regime-rapid">RAPID CLOSURE: Full Joukowsky Pressure Applies</div>
     <div class="results-row">
       <div class="res-card"><div class="res-label">Critical Time T<sub>c</sub></div><div class="res-val res-neutral" id="res-tc">4.0</div><div class="res-unit">seconds</div></div>
       <div class="res-card"><div class="res-label">Joukowsky ΔP<sub>J</sub></div><div class="res-val res-danger" id="res-dpj">15.0</div><div class="res-unit">bar</div></div>
       <div class="res-card"><div class="res-label">Actual ΔP</div><div class="res-val res-danger" id="res-dp">15.0</div><div class="res-unit">bar</div></div>
       <div class="res-card"><div class="res-label">P<sub>max</sub> System</div><div class="res-val res-danger" id="res-pmax">23.0</div><div class="res-unit">bar</div></div>
     </div>
-    <div id="pn-check" class="danger-box" style="margin-bottom:0;font-size:14px;"><strong id="pn-check-title">PN CHECK — </strong><span id="pn-check-body"></span></div>
+    <div id="pn-check" class="danger-box" style="margin-bottom:0;font-size:14px;"><strong id="pn-check-title">PN CHECK: </strong><span id="pn-check-body"></span></div>
     <div class="chart-box" style="margin-top:18px;"><canvas id="chartClosure"></canvas></div>
     <p style="font-size:12px;color:var(--text-tertiary);text-align:center;margin-top:6px;margin-bottom:0;">ΔP vs. Closure Time for current system. Dashed line = T<sub>c</sub>. Red dot = current t<sub>v</sub>.</p>
   </div>
@@ -456,7 +457,7 @@ When a control valve begins to close, the cross-sectional area available to flow
 
 <!-- Wave Panel -->
 <div class="interactive-panel">
-  <div class="panel-header">Pressure Wave Over Time — Idealised Pressure History at Valve Location</div>
+  <div class="panel-header">Pressure Wave Over Time: Idealised Pressure History at Valve Location</div>
   <div class="panel-body">
     <div class="chart-box"><canvas id="chartWave"></canvas></div>
     <p style="font-size:12px;color:var(--text-tertiary);text-align:center;margin-top:6px;margin-bottom:0;">Idealised pressure-time trace at the valve. Blue = static pressure. Red = surge envelope. Uses current calculator parameters.</p>
@@ -465,7 +466,7 @@ When a control valve begins to close, the cross-sectional area available to flow
 
 <!-- Material Comparison Panel -->
 <div class="interactive-panel">
-  <div class="panel-header">Pipe Material Comparison — Joukowsky ΔP for Same Hydraulic Conditions</div>
+  <div class="panel-header">Pipe Material Comparison: Joukowsky ΔP for Same Hydraulic Conditions</div>
   <div class="panel-body">
     <div class="chart-box"><canvas id="chartMaterial"></canvas></div>
     <p style="font-size:12px;color:var(--text-tertiary);text-align:center;margin-top:6px;margin-bottom:0;">Joukowsky pressure (bar) for five pipe materials at the same V₀ and L from the slider above.</p>
@@ -473,7 +474,7 @@ When a control valve begins to close, the cross-sectional area available to flow
 </div>
 
 <hr class="article-divider">
-<h2>7. Numerical Example — Multi-Scenario Comparison</h2>
+<h2>7. Numerical Example: Multi-Scenario Comparison</h2>
 <p>
 The following example is representative of a steel water transmission main. Base parameters: pipeline length L = 2,000 m, diameter DN 900 mm, wave speed a = 1,000 m/s (steel), flow velocity V₀ = 1.5 m/s, static pressure P₀ = 8.0 bar, pipe rating PN 16.
 </p>
@@ -516,18 +517,18 @@ The following example is representative of a steel water transmission main. Base
 
 <div class="callout">
   <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">Key Insight</strong>
-  Extending closure from 4 s (T<sub>c</sub>) to 40 s — a 10× increase — reduces surge pressure from 15.0 bar to 1.5 bar, a <strong>90% reduction</strong>. This allows the system to operate within PN 10 rather than PN 25, eliminating the need for surge protection devices and delivering significant material cost savings.
+  Extending closure from 4 s (T<sub>c</sub>) to 40 s, a 10× increase, reduces surge pressure from 15.0 bar to 1.5 bar, a <strong>90% reduction</strong>. This allows the system to operate within PN 10 rather than PN 25, eliminating the need for surge protection devices and delivering significant material cost savings.
 </div>
 
 <hr class="article-divider">
-<h2>8. Bentley OpenFlows HAMMER — Modelling Valve Closure</h2>
+<h2>8. Bentley OpenFlows HAMMER: Modelling Valve Closure</h2>
 <p>
 While the analytical formulas provide invaluable first-pass design estimates, final design validation for large-scale water infrastructure requires full numerical simulation using the <strong>Method of Characteristics (MOC)</strong>. Bentley OpenFlows HAMMER is the industry-standard software for hydraulic transient analysis, referenced in major project specifications including those of NWC (National Water Company, Saudi Arabia).
 </p>
 
 <div class="callout">
   <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">What is Bentley HAMMER?</strong>
-  OpenFlows HAMMER is a dedicated transient analysis engine built on the MOC — a numerical technique that discretises the pipeline into computational segments and solves the full continuity and momentum equations at each time step. It integrates seamlessly with WaterCAD/WaterGEMS steady-state models, allowing engineers to transition directly from normal operating conditions to transient analysis without rebuilding the network model.
+  OpenFlows HAMMER is a dedicated transient analysis engine built on the MOC: a numerical technique that discretises the pipeline into computational segments and solves the full continuity and momentum equations at each time step. It integrates seamlessly with WaterCAD/WaterGEMS steady-state models, allowing engineers to transition directly from normal operating conditions to transient analysis without rebuilding the network model.
 </div>
 
 <h3>8.1 The Method of Characteristics (MOC)</h3>
@@ -574,7 +575,7 @@ While the analytical formulas provide invaluable first-pass design estimates, fi
     <div class="wf-icon">4</div>
     <div class="wf-content">
       <div class="wf-title">Define the Valve Characteristic Curve</div>
-      <div class="wf-desc">This is the most important and most frequently misconfigured step. HAMMER requires the valve's <strong>relative flow vs. relative position curve</strong>. A butterfly valve, gate valve, and globe valve all have very different characteristic curves — using a linear position curve for a butterfly valve can underestimate peak surge significantly because most flow restriction occurs in the final 20–30% of stem travel.</div>
+      <div class="wf-desc">This is the most important and most frequently misconfigured step. HAMMER requires the valve's <strong>relative flow vs. relative position curve</strong>. A butterfly valve, gate valve, and globe valve all have very different characteristic curves; using a linear position curve for a butterfly valve can underestimate peak surge significantly because most flow restriction occurs in the final 20–30% of stem travel.</div>
       <span class="wf-code">Valve → Transient Closure Curve → Import or define: [Position (0→1)] vs [Relative Flow (0→1)]</span>
     </div>
   </div>
@@ -604,10 +605,10 @@ While the analytical formulas provide invaluable first-pass design estimates, fi
   <tbody>
     <tr><td>Wave Speed (a)</td><td>Directly scales both ΔP<sub>J</sub> and T<sub>c</sub></td><td>Auto-computed from material/geometry. Verify against Korteweg formula for non-standard materials.</td></tr>
     <tr><td>Closure Time (t<sub>v</sub>)</td><td>Primary control parameter</td><td>Must be specified as total travel time. For two-speed actuators, use the custom closure curve instead.</td></tr>
-    <tr><td>Valve Characteristic Curve</td><td>Determines how Cv changes with stem position over time</td><td>Built-in options: Gate, Globe, Butterfly, Ball, Check. Custom import via CSV. This curve — not just t<sub>v</sub> — determines the effective flow-reduction profile.</td></tr>
-    <tr><td>Time Step (Δt)</td><td>Numerical accuracy of wave propagation</td><td>Must satisfy Courant condition: Δt = Δx/a. HAMMER enforces this automatically — do not override.</td></tr>
+    <tr><td>Valve Characteristic Curve</td><td>Determines how Cv changes with stem position over time</td><td>Built-in options: Gate, Globe, Butterfly, Ball, Check. Custom import via CSV. This curve, not just t<sub>v</sub>, determines the effective flow-reduction profile.</td></tr>
+    <tr><td>Time Step (Δt)</td><td>Numerical accuracy of wave propagation</td><td>Must satisfy Courant condition: Δt = Δx/a. HAMMER enforces this automatically: do not override.</td></tr>
     <tr><td>Friction Model</td><td>Attenuates pressure waves over time</td><td>Options: Steady, Quasi-steady, or Unsteady (Vardy-Brown). For preliminary design, steady friction is acceptable.</td></tr>
-    <tr><td>Max / Min Pressure Limits</td><td>Design validation output</td><td>Minimum pressure below vapour pressure (≈ −10 m) indicates column separation — activate DVCM (Discrete Vapour Cavity Model) in HAMMER.</td></tr>
+    <tr><td>Max / Min Pressure Limits</td><td>Design validation output</td><td>Minimum pressure below vapour pressure (≈ −10 m) indicates column separation: activate DVCM (Discrete Vapour Cavity Model) in HAMMER.</td></tr>
   </tbody>
 </table>
 </div>
@@ -619,9 +620,9 @@ While the analytical formulas provide invaluable first-pass design estimates, fi
     <tr><th>Condition</th><th>Analytical Formula</th><th>HAMMER (MOC)</th></tr>
   </thead>
   <tbody>
-    <tr><td>Simple series pipe, rapid closure</td><td>Accurate (within 5%)</td><td>Accurate — use as verification check</td></tr>
+    <tr><td>Simple series pipe, rapid closure</td><td>Accurate (within 5%)</td><td>Accurate: use as verification check</td></tr>
     <tr><td>Simple series pipe, slow closure</td><td>Approximate (valid up to ~5 × T<sub>c</sub>)</td><td>Accurate for any closure time</td></tr>
-    <tr><td>Non-linear valve characteristic</td><td>Not applicable — assumes linear flow reduction</td><td>Accurately models any Cv curve</td></tr>
+    <tr><td>Non-linear valve characteristic</td><td>Not applicable: assumes linear flow reduction</td><td>Accurately models any Cv curve</td></tr>
     <tr><td>Pipeline with high points</td><td>Cannot predict column separation</td><td>Models column separation with DVCM</td></tr>
     <tr><td>Multi-branch networks</td><td>Not applicable</td><td>Handles all network topologies</td></tr>
     <tr><td>Multiple transient events</td><td>Cannot superimpose</td><td>Simulates all events simultaneously</td></tr>
@@ -632,14 +633,14 @@ While the analytical formulas provide invaluable first-pass design estimates, fi
 
 <div class="callout">
   <strong style="display:block;margin-bottom:6px;font-size:13px;color:var(--accent);font-weight:500;">Recommended Engineering Practice</strong>
-  Use the analytical formulas for <strong>preliminary design and valve specification</strong> — fast, transparent, and clear on governing parameters. Proceed to HAMMER (MOC) simulation for <strong>final design validation</strong>, particularly for any pipeline longer than 1 km, with high points, or where surge protection devices are being evaluated.
+  Use the analytical formulas for <strong>preliminary design and valve specification</strong>: fast, transparent, and clear on governing parameters. Proceed to HAMMER (MOC) simulation for <strong>final design validation</strong>, particularly for any pipeline longer than 1 km, with high points, or where surge protection devices are being evaluated.
 </div>
 
 <h3>8.5 Reading the HAMMER Pressure Envelope</h3>
 
 <ul class="checklist">
-  <li><span class="check-icon">✓</span><div><strong>Maximum pressure (red envelope)</strong> must not exceed 1.5 × PN rating of the pipe at any point along the pipeline. Identify the location of peak pressure — typically immediately upstream of the valve, but reflections can amplify pressure at intermediate high points.</div></li>
-  <li><span class="check-icon">✓</span><div><strong>Minimum pressure (blue envelope)</strong> must remain above −10 m (vapour pressure at 20°C) at all points. Pressure falling below this at a high point indicates column separation — potentially more destructive than the positive surge wave when the columns rejoin.</div></li>
+  <li><span class="check-icon">✓</span><div><strong>Maximum pressure (red envelope)</strong> must not exceed 1.5 × PN rating of the pipe at any point along the pipeline. Identify the location of peak pressure, typically immediately upstream of the valve, but reflections can amplify pressure at intermediate high points.</div></li>
+  <li><span class="check-icon">✓</span><div><strong>Minimum pressure (blue envelope)</strong> must remain above −10 m (vapour pressure at 20°C) at all points. Pressure falling below this at a high point indicates column separation: potentially more destructive than the positive surge wave when the columns rejoin.</div></li>
   <li><span class="check-icon">✓</span><div><strong>Pressure class transitions</strong> along the pipeline (e.g., PN 16 to PN 10 sections) must be identified on the profile overlay. Ensure the maximum pressure envelope does not exceed the PN rating of each pipe section independently.</div></li>
   <li><span class="check-icon">✓</span><div><strong>Time-history plots</strong> at the valve node and at critical intermediate nodes confirm the duration of the surge event and whether pressure oscillations are adequately damped by friction before the next transient event.</div></li>
 </ul>
@@ -653,10 +654,10 @@ While the analytical formulas provide invaluable first-pass design estimates, fi
     <tr><th>Parameter</th><th>Recommendation</th><th>Basis</th></tr>
   </thead>
   <tbody>
-    <tr><td>Minimum closure time</td><td>Target t<sub>v</sub> ≥ 5 × T<sub>c</sub> as starting point</td><td>At 5 × T<sub>c</sub>, ΔP = 20% of Joukowsky — manageable within standard PN margin</td></tr>
+    <tr><td>Minimum closure time</td><td>Target t<sub>v</sub> ≥ 5 × T<sub>c</sub> as starting point</td><td>At 5 × T<sub>c</sub>, ΔP = 20% of Joukowsky: manageable within standard PN margin</td></tr>
     <tr><td>Closure time from PN rating</td><td>t<sub>v</sub> = ΔP<sub>J</sub> · T<sub>c</sub> / (PN<sub>allowable</sub> − P₀)</td><td>Directly solves for minimum closure time without over-engineering</td></tr>
-    <tr><td>Two-speed actuators</td><td>Fast initial (0→80% travel) then slow final (20% over ≥ 5 × T<sub>c</sub>)</td><td>Most flow restriction occurs near full closure — only the last 20% of stroke is hydraulically critical</td></tr>
-    <tr><td>Valve characteristic curve</td><td>Always use manufacturer Cv curve in HAMMER — not assumed linear</td><td>Butterfly valves are highly non-linear: ~70% of flow passes through the last 30% of travel</td></tr>
+    <tr><td>Two-speed actuators</td><td>Fast initial (0→80% travel) then slow final (20% over ≥ 5 × T<sub>c</sub>)</td><td>Most flow restriction occurs near full closure: only the last 20% of stroke is hydraulically critical</td></tr>
+    <tr><td>Valve characteristic curve</td><td>Always use manufacturer Cv curve in HAMMER, not assumed linear</td><td>Butterfly valves are highly non-linear: ~70% of flow passes through the last 30% of travel</td></tr>
     <tr><td>Power failure scenario</td><td>Evaluate spring-return closure time separately from motorised closure time</td><td>Fail-safe spring actuators typically close 3–5× faster than motorised operation</td></tr>
     <tr><td>MOC simulation trigger</td><td>Require HAMMER for L &gt; 1,000 m or any system with high points, branches, or surge devices</td><td>Analytical formulas lose accuracy; only MOC resolves reflections, column separation, and device interaction</td></tr>
     <tr><td>Maximum pressure limit</td><td>P<sub>max</sub> ≤ 1.5 × PN (transient allowance per EN 805 / AWWA M11)</td><td>Temporary surge pressure permitted up to 1.5× PN for infrequent events</td></tr>
@@ -671,9 +672,9 @@ While the analytical formulas provide invaluable first-pass design estimates, fi
 <ul>
   <li>The <strong>Joukowsky equation</strong> (ΔP = ρ·a·ΔV) defines the absolute upper limit of surge pressure for any closure equal to or faster than the critical period.</li>
   <li>The <strong>critical time T<sub>c</sub> = 2L/a</strong> is the decisive design threshold. Closure time must be compared against T<sub>c</sub>, not evaluated in absolute seconds alone.</li>
-  <li>For slow closures (t<sub>v</sub> &gt; T<sub>c</sub>), surge pressure is <strong>inversely proportional</strong> to closure time — doubling the closure time halves the surge pressure.</li>
+  <li>For slow closures (t<sub>v</sub> &gt; T<sub>c</sub>), surge pressure is <strong>inversely proportional</strong> to closure time: doubling the closure time halves the surge pressure.</li>
   <li>Pipe material has a profound effect: steel pipes generate surge pressures 3–4× higher than HDPE under identical hydraulic conditions, making closure time specification especially critical for metallic transmission mains.</li>
-  <li><strong>Bentley OpenFlows HAMMER</strong> (MOC-based) is the appropriate tool for final design validation — it captures non-linear valve characteristics, pipeline branches, surge device interaction, and column separation.</li>
+  <li><strong>Bentley OpenFlows HAMMER</strong> (MOC-based) is the appropriate tool for final design validation. It captures non-linear valve characteristics, pipeline branches, surge device interaction, and column separation.</li>
   <li>The recommended workflow: analytical formulas for preliminary design → interactive verification → HAMMER MOC for final design validation and regulatory submission.</li>
 </ul>
 
@@ -689,13 +690,13 @@ While the analytical formulas provide invaluable first-pass design estimates, fi
     <li>Joukowsky, N. (1898). Über den hydraulischen Stoss in Wasserleitungsröhren. <em>Mémoires de l'Académie Impériale des Sciences de St.-Pétersbourg</em>, 9(5). [ASME Translation, 1904]</li>
     <li>Streeter, V. L., &amp; Wylie, E. B. (1993). <em>Fluid Mechanics</em> (9th ed.). McGraw-Hill.</li>
     <li>Chaudhry, M. H. (2014). <em>Applied Hydraulic Transients</em> (3rd ed.). Springer. ISBN 978-1-4614-8538-4.</li>
-    <li>American Water Works Association (2004). <em>AWWA Manual M11 — Steel Pipe: A Guide for Design and Installation</em> (4th ed.). AWWA, Denver.</li>
-    <li>European Committee for Standardisation (2000). <em>EN 805:2000 — Water Supply: Requirements for Systems Outside Buildings</em>. BSI, London.</li>
+    <li>American Water Works Association (2004). <em>AWWA Manual M11, Steel Pipe: A Guide for Design and Installation</em> (4th ed.). AWWA, Denver.</li>
+    <li>European Committee for Standardisation (2000). <em>EN 805:2000, Water Supply: Requirements for Systems Outside Buildings</em>. BSI, London.</li>
     <li>Thorley, A. R. D. (2004). <em>Fluid Transients in Pipeline Systems</em> (2nd ed.). Professional Engineering Publishing, London.</li>
     <li>Fisher Controls International / Emerson Process Management (2005). <em>Control Valve Handbook</em> (4th ed.). Emerson.</li>
-    <li>Bentley Systems, Incorporated (2023). <em>OpenFlows HAMMER User Guide — Transient Analysis Reference</em>. Bentley Documentation Portal.</li>
+    <li>Bentley Systems, Incorporated (2023). <em>OpenFlows HAMMER User Guide: Transient Analysis Reference</em>. Bentley Documentation Portal.</li>
     <li>Plastic Pipe Institute (2012). <em>Handbook of PE Pipe</em> (2nd ed.). PPI, Irving TX.</li>
-    <li>National Water Company — Saudi Arabia / NWC (2020 ed.). <em>Technical Specifications for Water Transmission Networks</em>. NWC, Riyadh.</li>
+    <li>National Water Company: Saudi Arabia / NWC (2020 ed.). <em>Technical Specifications for Water Transmission Networks</em>. NWC, Riyadh.</li>
   </ol>
 </div>
 
@@ -708,7 +709,7 @@ While the analytical formulas provide invaluable first-pass design estimates, fi
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -822,20 +823,20 @@ function update(){
   const rb = document.getElementById('regime-banner');
   if(rapid){
     rb.className='regime-banner regime-rapid';
-    rb.textContent=`⚠ RAPID CLOSURE (t_v = ${fmt1(tv)} s ≤ T_c = ${fmt1(tc)} s) — Full Joukowsky Pressure: ΔP = ${fmt1(dpj)} bar`;
+    rb.textContent=`RAPID CLOSURE (t_v = ${fmt1(tv)} s ≤ T_c = ${fmt1(tc)} s). Full Joukowsky Pressure: ΔP = ${fmt1(dpj)} bar`;
   } else {
     rb.className='regime-banner regime-slow';
-    rb.textContent=`✓ SLOW CLOSURE (t_v = ${fmt1(tv)} s > T_c = ${fmt1(tc)} s) — Attenuation Factor = ${(tc/tv).toFixed(3)} → ΔP = ${fmt1(dp)} bar`;
+    rb.textContent=`✓ SLOW CLOSURE (t_v = ${fmt1(tv)} s > T_c = ${fmt1(tc)} s): Attenuation Factor = ${(tc/tv).toFixed(3)} → ΔP = ${fmt1(dp)} bar`;
   }
 
   // PN check
   const pnEl=document.getElementById('pn-check'), pnT=document.getElementById('pn-check-title'), pnB=document.getElementById('pn-check-body');
   const pnLimit=pn*1.5;
   if(pmax>pnLimit){
-    pnEl.className='danger-box'; pnT.textContent='PN RATING EXCEEDED — ';
+    pnEl.className='danger-box'; pnT.textContent='PN RATING EXCEEDED: ';
     pnB.textContent=`P_max = ${fmt1(pmax)} bar exceeds 1.5 × PN${pn} = ${fmt1(pnLimit)} bar. Increase closure time or upgrade pipe pressure class.`;
   } else {
-    pnEl.className='callout'; pnT.textContent='PN RATING ADEQUATE — ';
+    pnEl.className='callout'; pnT.textContent='PN RATING ADEQUATE: ';
     pnB.textContent=`P_max = ${fmt1(pmax)} bar is within 1.5 × PN${pn} = ${fmt1(pnLimit)} bar. Margin = ${fmt1(pnLimit-pmax)} bar.`;
   }
 

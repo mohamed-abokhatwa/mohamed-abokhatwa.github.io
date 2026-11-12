@@ -346,13 +346,13 @@ REFS = r"""
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
   <li>IEEE Std 141 (<em>IEEE Recommended Practice for Electric Power Distribution for Industrial Plants</em>): definitions of demand, diversity and coincidence factors, from which the HVAC usage is borrowed.</li>
-  <li>ASHRAE Handbook &mdash; <em>Fundamentals</em>, Nonresidential Cooling and Heating Load Calculations: zone peak versus block load, the radiant time series method and hourly schedules.</li>
+  <li>ASHRAE Handbook, <em>Fundamentals</em>, Nonresidential Cooling and Heating Load Calculations: zone peak versus block load, the radiant time series method and hourly schedules.</li>
   <li>ANSI/ASHRAE/ACCA Standard 183, <em>Peak Cooling and Heating Load Calculations in Buildings Except Low-Rise Residential Buildings</em>: the procedure for design peak and block loads.</li>
-  <li>ASHRAE Handbook &mdash; <em>Fundamentals</em>, Climatic Design Information: design-day dry-bulb, daily range and humidity used to build the hourly outdoor conditions.</li>
-  <li>ASHRAE Handbook &mdash; <em>HVAC Systems and Equipment</em>, Hydronic Heating and Cooling: variable-flow systems, two-way and three-way valves, pipe and pump sizing.</li>
+  <li>ASHRAE Handbook, <em>Fundamentals</em>, Climatic Design Information: design-day dry-bulb, daily range and humidity used to build the hourly outdoor conditions.</li>
+  <li>ASHRAE Handbook, <em>HVAC Systems and Equipment</em>, Hydronic Heating and Cooling: variable-flow systems, two-way and three-way valves, pipe and pump sizing.</li>
   <li>Taylor, S.T. &ldquo;Degrading Chilled Water Plant Delta-T: Causes and Mitigation.&rdquo; <em>ASHRAE Transactions</em> 108(1), 2002: the causes and cost of low &Delta;T and its effect on flow and pumping.</li>
   <li>ASHRAE, <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed.: vertical zoning, heat-exchanger pressure breaks and load characteristics in tall buildings.</li>
-  <li>ASHRAE Handbook &mdash; <em>HVAC Applications</em>, Tall Buildings: system arrangements, stack effect and part-load operation in tall buildings.</li>
+  <li>ASHRAE Handbook, <em>HVAC Applications</em>, Tall Buildings: system arrangements, stack effect and part-load operation in tall buildings.</li>
   <li>ANSI/ASHRAE/IES Standard 90.1, <em>Energy Standard for Sites and Buildings Except Low-Rise Residential Buildings</em>: system design loads calculated to Standard 183 for equipment sizing.</li>
   <li>ANSI/ASHRAE Standard 62.1, <em>Ventilation and Acceptable Indoor Air Quality</em>: design ventilation rates and demand-controlled ventilation.</li>
   <li>ASHRAE, <em>District Cooling Guide</em>: building connections, contracted capacity and network diversity between buildings.</li>

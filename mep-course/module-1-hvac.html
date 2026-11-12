@@ -15,24 +15,24 @@
   <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 1 — HVAC: Source-to-Terminal Reference | MEP for Megatall Buildings</title>
-<meta name="description" content="HVAC for super-tall towers from source to terminal — chiller plant, heat rejection, pumps, vertical chilled-water zoning, AHUs, ducts, VAV/FCU, controls and smoke control, with worked numbers and code references.">
+<title>Module 1 · HVAC: Source-to-Terminal Reference | MEP for Megatall Buildings</title>
+<meta name="description" content="HVAC for super-tall towers from source to terminal: chiller plant, heat rejection, pumps, vertical chilled-water zoning, AHUs, ducts, VAV/FCU, controls and smoke control, with worked numbers and code references.">
 <link rel="canonical" href="https://abokhatwa.com/mep-course/module-1-hvac.html">
-<meta property="og:title" content="Module 1 — HVAC: Source to Terminal">
-<meta property="og:description" content="The full chain — chiller plant, heat rejection, pumps, vertical chilled-water zoning, AHUs, ducts, VAV/FCU, controls and smoke control, with worked numbers and code references.">
+<meta property="og:title" content="Module 1 · HVAC: Source to Terminal">
+<meta property="og:description" content="The full chain: chiller plant, heat rejection, pumps, vertical chilled-water zoning, AHUs, ducts, VAV/FCU, controls and smoke control, with worked numbers and code references.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://abokhatwa.com/mep-course/module-1-hvac.html">
 <meta property="og:image" content="https://abokhatwa.com/mep-course/og-mep-course.jpg?v=2">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Module 1 — HVAC: Source to Terminal">
-<meta name="twitter:description" content="Chiller plant, heat rejection, pumps, vertical chilled-water zoning, AHUs, ducts, VAV/FCU, controls and smoke control — with worked numbers.">
+<meta name="twitter:title" content="Module 1 · HVAC: Source to Terminal">
+<meta name="twitter:description" content="Chiller plant, heat rejection, pumps, vertical chilled-water zoning, AHUs, ducts, VAV/FCU, controls and smoke control, with worked numbers.">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":"BreadcrumbList","itemListElement":[
 {"@type":"ListItem","position":1,"name":"Home","item":"https://abokhatwa.com/"},
 {"@type":"ListItem","position":2,"name":"MEP Course","item":"https://abokhatwa.com/mep-course/"},
-{"@type":"ListItem","position":3,"name":"Module 1 — HVAC: Source to Terminal","item":"https://abokhatwa.com/mep-course/module-1-hvac.html"}]},
-{"@type":"LearningResource","name":"Module 1 — HVAC: Source to Terminal","description":"HVAC for super-tall towers from source to terminal — chiller plant, heat rejection, pumps, vertical chilled-water zoning, AHUs, ducts, VAV/FCU, controls and smoke control, with worked numbers and code references.","url":"https://abokhatwa.com/mep-course/module-1-hvac.html","learningResourceType":"Course module","educationalLevel":"Professional","inLanguage":"en","isPartOf":{"@type":"Course","name":"MEP Engineering for Megatall Buildings","url":"https://abokhatwa.com/mep-course/"},"author":{"@type":"Person","name":"Mohamed Abokhatwa"}}]}
+{"@type":"ListItem","position":3,"name":"Module 1 · HVAC: Source to Terminal","item":"https://abokhatwa.com/mep-course/module-1-hvac.html"}]},
+{"@type":"LearningResource","name":"Module 1 · HVAC: Source to Terminal","description":"HVAC for super-tall towers from source to terminal: chiller plant, heat rejection, pumps, vertical chilled-water zoning, AHUs, ducts, VAV/FCU, controls and smoke control, with worked numbers and code references.","url":"https://abokhatwa.com/mep-course/module-1-hvac.html","learningResourceType":"Course module","educationalLevel":"Professional","inLanguage":"en","isPartOf":{"@type":"Course","name":"MEP Engineering for Megatall Buildings","url":"https://abokhatwa.com/mep-course/"},"author":{"@type":"Person","name":"Mohamed Abokhatwa"}}]}
 </script>
 <link rel="stylesheet" href="assets/course.css?v=17">
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
@@ -65,6 +65,7 @@
       <li><a href="../services.html">Services</a></li>
       <li><a href="../about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="../index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -85,8 +86,8 @@
   <div class="course-hero-text">
     <a class="back" href="index.html">&larr; Back to course home</a>
     <span class="kicker">Module 1 · Detailed reference</span>
-    <h1>HVAC — From the Chiller Plant to the Diffuser</h1>
-    <p>A component-by-component reference for the central chilled-water system of a super-tall tower. We follow the cooling from its source — the chiller plant — through every device, pipe and duct, to the last grille in a hotel room. Each component gives you: what it is, how to design it, a worked numeric example, how to do it in the software, and the governing code.</p>
+    <h1>HVAC: From the Chiller Plant to the Diffuser</h1>
+    <p>A component-by-component reference for the central chilled-water system of a super-tall tower. We follow the cooling from its source, the chiller plant, through every device, pipe and duct, to the last grille in a hotel room. Each component gives you: what it is, how to design it, a worked numeric example, how to do it in the software, and the governing code.</p>
   </div>
   <div class="course-hero-art" aria-hidden="true">
     <svg viewBox="0 0 260 240">
@@ -118,7 +119,7 @@
   <div class="grp">Before you size anything</div>
   <a href="#chain">The system chain</a>
   <a href="#criteria">1.1 Design criteria (BOD)</a>
-  <a href="#load">1.2 Cooling load — HAP</a>
+  <a href="#load">1.2 Cooling load (HAP)</a>
   <div class="grp">The source: central plant</div>
   <a href="#chiller">1.3 Chillers</a>
   <a href="#rejection">1.4 Heat rejection / DC</a>
@@ -147,8 +148,8 @@
 
 <main class="content">
 
-<h2 id="chain" style="margin-top:8px">The system chain — what we are following</h2>
-<p class="lead">A central chilled-water HVAC system is one long energy path. Cooling is <em>made</em> at the chiller, <em>carried</em> by water up the tower, <em>transferred</em> to air at the AHU/FCU, and <em>delivered</em> to the room through a diffuser — while heat is <em>rejected</em> outside through cooling towers (or to a district-cooling plant). This module walks that whole path.</p>
+<h2 id="chain" style="margin-top:8px">The system chain: what we are following</h2>
+<p class="lead">A central chilled-water HVAC system is one long energy path. Cooling is <em>made</em> at the chiller, <em>carried</em> by water up the tower, <em>transferred</em> to air at the AHU/FCU, and <em>delivered</em> to the room through a diffuser, while heat is <em>rejected</em> outside through cooling towers (or to a district-cooling plant). This module walks that whole path.</p>
 
 <div class="figure">
 <svg viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HVAC system chain source to terminal">
@@ -182,14 +183,14 @@
 <p style="margin:4px 0 8px">Every number in the calculations below comes either from the example's "Given" line or from one of these fixed physical constants/conversions:</p>
 <table class="t param" style="margin:0">
 <tr><th>Symbol / constant</th><th>Value</th><th>What it is &amp; where it comes from</th></tr>
-<tr><td>Q</td><td>—</td><td>The cooling load (kW) — taken from the cooling-load calc (1.2) or the example's Given.</td></tr>
-<tr><td>ṁ (m-dot)</td><td>—</td><td>Mass flow rate (kg/s) — what we solve for.</td></tr>
-<tr><td>c<sub>p</sub> (water)</td><td>4.187 kJ/kg·K</td><td>Specific heat of water — fixed property; energy to raise 1 kg of water by 1 °C.</td></tr>
-<tr><td>c<sub>p</sub> (air)</td><td>1.005 kJ/kg·K</td><td>Specific heat of air — fixed property.</td></tr>
-<tr><td>ρ (water / air)</td><td>1000 / 1.2 kg/m³</td><td>Density — fixed property.</td></tr>
-<tr><td>g</td><td>9.81 m/s²</td><td>Gravity — fixed constant (pump-power formula).</td></tr>
-<tr><td>η (eta)</td><td>0.65–0.80</td><td>Pump/fan efficiency (decimal) — from the example's Given or manufacturer data.</td></tr>
-<tr><td>ΔT</td><td>(per Given)</td><td>Temperature difference (°C = K for a difference) — a design choice in the Given.</td></tr>
+<tr><td>Q</td><td>–</td><td>The cooling load (kW): taken from the cooling-load calc (1.2) or the example's Given.</td></tr>
+<tr><td>ṁ (m-dot)</td><td>–</td><td>Mass flow rate (kg/s): what we solve for.</td></tr>
+<tr><td>c<sub>p</sub> (water)</td><td>4.187 kJ/kg·K</td><td>Specific heat of water: fixed property; energy to raise 1 kg of water by 1 °C.</td></tr>
+<tr><td>c<sub>p</sub> (air)</td><td>1.005 kJ/kg·K</td><td>Specific heat of air: fixed property.</td></tr>
+<tr><td>ρ (water / air)</td><td>1000 / 1.2 kg/m³</td><td>Density: fixed property.</td></tr>
+<tr><td>g</td><td>9.81 m/s²</td><td>Gravity: fixed constant (pump-power formula).</td></tr>
+<tr><td>η (eta)</td><td>0.65–0.80</td><td>Pump/fan efficiency (decimal): from the example's Given or manufacturer data.</td></tr>
+<tr><td>ΔT</td><td>(per Given)</td><td>Temperature difference (°C = K for a difference): a design choice in the Given.</td></tr>
 <tr><td>1 TR</td><td>= 3.517 kW</td><td>Ton of refrigeration → kW conversion.</td></tr>
 <tr><td>1 MW</td><td>= 1000 kW</td><td>So 3.06 MW = 3,060 kW (this is where the "3,060" comes from).</td></tr>
 <tr><td>Water flow</td><td>1 kg/s ≈ 1 L/s</td><td>Because water ρ ≈ 1000 kg/m³, so kg/s and L/s are practically equal.</td></tr>
@@ -211,7 +212,7 @@
 <div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Key takeaway</div>Garbage in, garbage out: the outdoor/indoor conditions, fresh-air rates and ΔT you fix here propagate through <em>every</em> downstream component. Lock them in the Basis of Design and get client sign-off before sizing.</div>
 
 <!-- ============ 1.2 ============ -->
-<h2 id="load">1.2 Cooling-load calculation — the starting number (Carrier HAP)</h2>
+<h2 id="load">1.2 Cooling-load calculation: the starting number (Carrier HAP)</h2>
 <p><strong>Role:</strong> the cooling load is the heat (kW / TR) each space, zone and the whole building needs removed at peak. Every chiller, pump, pipe, AHU and duct is sized from it. We compute it space-by-space, then aggregate with diversity.</p>
 <h4>Design method</h4>
 <p>Modern practice uses a dynamic method (ASHRAE Radiant Time Series / Heat Balance) rather than hand calculation, because solar and thermal mass shift the peak through the day. The load is the sum of: solar through glazing, conduction through envelope, infiltration, people, lighting, equipment, and the fresh-air (ventilation) load.</p>
@@ -225,23 +226,23 @@
   <div class="step">People: 2 × (75 sens + 55 lat) = <strong>260 W</strong></div>
   <div class="step">Lighting: 8 × 28 = 224 W; Equipment = 150 W → <strong>374 W</strong></div>
   <div class="step">Fresh-air load (approx, total): ≈ ṁ·Δh. Air ṁ = 13.4 L/s × 1.2 = 16.1 g/s; enthalpy drop ~40 kJ/kg (hot humid → room) → 0.0161 × 40 = <strong>644 W</strong></div>
-  <div class="result">Room peak ≈ 1,600 + 392 + 260 + 374 + 644 ≈ <strong>3,270 W ≈ 3.3 kW (0.93 TR)</strong>. Intensity ≈ 117 W/m² — consistent with the 120 W/m² rule used for a quick floor estimate.</div>
+  <div class="result">Room peak ≈ 1,600 + 392 + 260 + 374 + 644 ≈ <strong>3,270 W ≈ 3.3 kW (0.93 TR)</strong>. Intensity ≈ 117 W/m²: consistent with the 120 W/m² rule used for a quick floor estimate.</div>
 </div>
 
-<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In Carrier HAP — to get an accurate load</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In Carrier HAP: to get an accurate load</div>
 <ol style="margin:6px 0 0">
-<li><strong>Weather:</strong> select the project's design-city weather file (or enter the 0.4% DB/WB from ASHRAE climatic design data). Set the correct design months — peak for west rooms is afternoon, for east is morning.</li>
-<li><strong>Spaces:</strong> create one space per room type; enter floor area, wall/glass areas <em>by orientation</em> (critical — HAP applies the right solar profile per façade), U-values and SHGC from the façade spec.</li>
+<li><strong>Weather:</strong> select the project's design-city weather file (or enter the 0.4% DB/WB from ASHRAE climatic design data). Set the correct design months: peak for west rooms is afternoon, for east is morning.</li>
+<li><strong>Spaces:</strong> create one space per room type; enter floor area, wall/glass areas <em>by orientation</em> (critical, HAP applies the right solar profile per façade), U-values and SHGC from the façade spec.</li>
 <li><strong>Internals:</strong> set people density, activity, lighting W/m² and equipment W/m² with realistic schedules (hotel rooms are not 100% occupied at the building peak).</li>
 <li><strong>Ventilation:</strong> enter the ASHRAE 62.1 rates; let HAP compute the fresh-air coil load.</li>
-<li><strong>Systems &amp; Plant:</strong> assign spaces to air systems, then air systems to a plant. <em>Run the "Design" simulation</em> — read the <strong>coil load</strong> (for AHU/FCU sizing) and the <strong>block/plant load with diversity</strong> (for chiller sizing). Do not just add space peaks — use HAP's coincident block load.</li>
+<li><strong>Systems &amp; Plant:</strong> assign spaces to air systems, then air systems to a plant. <em>Run the "Design" simulation</em>: read the <strong>coil load</strong> (for AHU/FCU sizing) and the <strong>block/plant load with diversity</strong> (for chiller sizing). Do not just add space peaks: use HAP's coincident block load.</li>
 </ol>
 <strong>Accuracy traps:</strong> wrong orientation, unrealistic 100% schedules (oversizes plant), and ignoring diversity (oversizes chillers, hurts part-load efficiency).</div>
-<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Method: ASHRAE Handbook—Fundamentals (RTS/HB). Ventilation: ASHRAE 62.1. Envelope limits feeding U/SHGC: SBC 601 / ASHRAE 90.1.</div>
+<div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Method: ASHRAE Handbook, Fundamentals (RTS/HB). Ventilation: ASHRAE 62.1. Envelope limits feeding U/SHGC: SBC 601 / ASHRAE 90.1.</div>
 
 <!-- ============ 1.3 ============ -->
 <div class="flow"><span class="n">load</span><span class="ar">→</span><span class="n cur">CHILLER</span><span class="ar">→</span><span class="n">rejection</span><span class="ar">→</span><span class="n">pumps</span><span class="ar">→</span><span class="n">risers</span><span class="ar">→</span><span class="n">AHU</span><span class="ar">→</span><span class="n">duct</span><span class="ar">→</span><span class="n">room</span></div>
-<h2 id="chiller">1.3 Chillers — the source of cooling</h2>
+<h2 id="chiller">1.3 Chillers: the source of cooling</h2>
 <p><strong>Role:</strong> a chiller is a refrigeration machine that produces chilled water (≈6 °C) by absorbing heat from the return water and rejecting it to the condenser side. It is the "source" we follow everything back to.</p>
 <h4>Types &amp; selection</h4>
 <table class="t param">
@@ -250,22 +251,22 @@
 <tr><td>Air-cooled screw</td><td>Electric, no cooling tower</td><td>Smaller / where no condenser water</td></tr>
 <tr><td>Absorption</td><td>Heat-driven</td><td>Where waste heat / district energy available</td></tr>
 </table>
-<h4>Design method — number &amp; size</h4>
+<h4>Design method: number &amp; size</h4>
 <p>Total plant capacity = block load ÷ diversity. Split into multiple chillers for part-load efficiency and redundancy (<strong>N+1</strong>). Each chiller's evaporator flow comes from Q = ṁ·cₚ·ΔT.</p>
 <div class="example">
   <h4>Worked example 1.3 · Chiller plant for a zone</h4>
   <div class="step"><span class="given">Given:</span> summed space peaks for a stack of floors = 14.4 MW; diversity 0.85; CHW ΔT = 7 °C.</div>
   <div class="step">Plant load = 14.4 × 0.85 = <strong>12.24 MW</strong> = 12,240 ÷ 3.517 = <strong>3,480 TR</strong>.</div>
   <div class="step">Select 4 working + 1 standby (N+1) → each = 12.24 / 4 = <strong>3.06 MW (≈ 870 TR)</strong> chillers, 5 installed.</div>
-  <div class="step">Evaporator flow per chiller — rearrange Q = ṁ·c<sub>p</sub>·ΔT to ṁ = Q ÷ (c<sub>p</sub> × ΔT):
+  <div class="step">Evaporator flow per chiller. Rearrange Q = ṁ·c<sub>p</sub>·ΔT to ṁ = Q ÷ (c<sub>p</sub> × ΔT):
     <div class="formula">ṁ = 3,060 kW ÷ (4.187 kJ/kg·K × 7 K) = 104 kg/s ≈ 104 L/s</div>
     <span style="color:var(--text-secondary);font-size:13.5px">where <strong>3,060</strong> = one chiller's load (3.06 MW × 1,000 = 3,060 kW); <strong>4.187</strong> = specific heat of water; <strong>7</strong> = the chosen ΔT (°C) from the criteria; and for water 1 kg/s ≈ 1 L/s.</span></div>
   <div class="result">5 × ~870 TR water-cooled centrifugal chillers (4 duty + 1 standby), ~104 L/s evaporator flow each. Staging them matches the part-load profile and protects efficiency (see IPLV below).</div>
 </div>
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Water-cooled centrifugal chiller — efficiency vs part load (IPLV)</div>
-    <div class="fsub">kW per ton of refrigeration (lower is better) across the load range. Centrifugal chillers are most efficient near part load — which is why several smaller machines are staged. Set the operating load and machine size to read the input power and the efficiency penalty versus the best point.</div>
+    <div class="ftitle">Water-cooled centrifugal chiller: efficiency vs part load (IPLV)</div>
+    <div class="fsub">kW per ton of refrigeration (lower is better) across the load range. Centrifugal chillers are most efficient near part load, which is why several smaller machines are staged. Set the operating load and machine size to read the input power and the efficiency penalty versus the best point.</div>
   </div>
   <div class="chart-box"><canvas id="iplv"></canvas></div>
   <div class="controls">
@@ -288,13 +289,13 @@
   </div>
   <div class="cap">IPLV curve with your operating point marked; kW/TR is interpolated between the 25/50/75/100% rating points. Centrifugal chillers bottom out near 50% load.</div>
 </div>
-<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Take the <strong>block load from HAP</strong> as plant capacity. Select actual machines in the <strong>manufacturer's selection software</strong> (e.g. Carrier ECAT, Trane Select Assist, York) — enter CHW supply/return temps, condenser water temps and fouling to get the certified <strong>AHRI 550/590</strong> kW/TR and IPLV. Confirm the part-load (IPLV) meets <strong>ASHRAE 90.1 / SBC 601</strong> minimums.</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Take the <strong>block load from HAP</strong> as plant capacity. Select actual machines in the <strong>manufacturer's selection software</strong> (e.g. Carrier ECAT, Trane Select Assist, York): enter CHW supply/return temps, condenser water temps and fouling to get the certified <strong>AHRI 550/590</strong> kW/TR and IPLV. Confirm the part-load (IPLV) meets <strong>ASHRAE 90.1 / SBC 601</strong> minimums.</div>
 <div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Performance rating: AHRI 550/590. Min efficiency: ASHRAE 90.1 / SBC 601. Refrigerant &amp; machinery room safety: ASHRAE 15 &amp; 34, SBC 501.</div>
 
 <!-- ============ 1.4 ============ -->
 <div class="flow"><span class="n">load</span><span class="ar">→</span><span class="n">chiller</span><span class="ar">→</span><span class="n cur">HEAT REJECTION</span><span class="ar">→</span><span class="n">pumps</span><span class="ar">→</span><span class="n">risers</span><span class="ar">→</span><span class="n">AHU</span><span class="ar">→</span><span class="n">duct</span><span class="ar">→</span><span class="n">room</span></div>
-<h2 id="rejection">1.4 Heat rejection — cooling towers (or district cooling)</h2>
-<p><strong>Role:</strong> the heat the chiller absorbs <em>plus</em> the compressor's own work must be dumped outside. Water-cooled plants do this through <strong>cooling towers</strong>, which reject heat by evaporating a little water. On many Saudi giga-projects the tower instead takes <strong>district cooling</strong> — then "heat rejection" happens off-site and the building only has an <em>energy-transfer station</em> (plate HX) at the intake.</p>
+<h2 id="rejection">1.4 Heat rejection: cooling towers (or district cooling)</h2>
+<p><strong>Role:</strong> the heat the chiller absorbs <em>plus</em> the compressor's own work must be dumped outside. Water-cooled plants do this through <strong>cooling towers</strong>, which reject heat by evaporating a little water. On many Saudi giga-projects the tower instead takes <strong>district cooling</strong>: then "heat rejection" happens off-site and the building only has an <em>energy-transfer station</em> (plate HX) at the intake.</p>
 <h4>Design method</h4>
 <p>Heat rejected ≈ chiller load × (1 + 1/COP). Cooling-tower performance is set by <strong>range</strong> (condenser water ΔT) and <strong>approach</strong> (how close the cold water gets to the outdoor wet-bulb).</p>
 <div class="example">
@@ -326,7 +327,7 @@
 
 <!-- ============ 1.6 ============ -->
 <h2 id="chwp">1.6 Chilled-water pumps (primary / secondary)</h2>
-<p><strong>Role:</strong> push chilled water from the chillers out to the coils. Modern plants use <strong>primary–secondary</strong> (constant primary through chillers, variable secondary to the building) or <strong>variable-primary</strong> flow. Secondary pumps have VFDs and modulate to keep a remote differential-pressure set-point — saving large pumping energy at part load.</p>
+<p><strong>Role:</strong> push chilled water from the chillers out to the coils. Modern plants use <strong>primary–secondary</strong> (constant primary through chillers, variable secondary to the building) or <strong>variable-primary</strong> flow. Secondary pumps have VFDs and modulate to keep a remote differential-pressure set-point, saving large pumping energy at part load.</p>
 <div class="example">
   <h4>Worked example 1.6 · Secondary CHW pump for a zone</h4>
   <div class="step"><span class="given">Given:</span> zone load 3,060 kW, ΔT 7 °C → Q = 3,060 ÷ (4.187 × 7) = 104 L/s = 0.104 m³/s; design head H = 32 m (coil + control valve + pipe + HX); η = 0.78.</div>
@@ -340,15 +341,15 @@
 <!-- ============ 1.7 ============ -->
 <div class="flow"><span class="n">pumps</span><span class="ar">→</span><span class="n cur">RISERS + ZONING</span><span class="ar">→</span><span class="n">pipe sizing</span><span class="ar">→</span><span class="n">AHU</span><span class="ar">→</span><span class="n">room</span></div>
 <h2 id="zoning">1.7 Vertical distribution &amp; zoning (heat-exchanger floors)</h2>
-<p><strong>Role:</strong> carry chilled water up ~1 km without the static pressure crushing the equipment. As in <a class="ref" href="module-0-fundamentals.html#zoning">Module 0</a>, the riser is broken into stacked low-pressure loops by <strong>plate heat exchangers</strong> on plant floors — cooling passes up, pressure resets.</p>
+<p><strong>Role:</strong> carry chilled water up ~1 km without the static pressure crushing the equipment. As in <a class="ref" href="module-0-fundamentals.html#zoning">Module 0</a>, the riser is broken into stacked low-pressure loops by <strong>plate heat exchangers</strong> on plant floors: cooling passes up, pressure resets.</p>
 <table class="t param">
 <tr><th>Parameter</th><th>Guide</th></tr>
 <tr><td>Zone height</td><td>~15–25 floors so static pressure stays within pipe/valve PN rating</td></tr>
-<tr><td>HX approach</td><td>~1 °C (a tight approach needs more plate area — a cost trade-off)</td></tr>
+<tr><td>HX approach</td><td>~1 °C (a tight approach needs more plate area, a cost trade-off)</td></tr>
 <tr><td>Pressure rating</td><td>Low zones may need PN16/PN25; deepest risers sometimes PN40 fittings</td></tr>
 </table>
 <div class="box warn"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg> Each HX step costs ~1 °C</div>Every heat-exchanger break warms the water slightly, so the chillers must make water a touch colder for the top zones. Account for the cumulative approach when setting the chiller leaving-water temperature.</div>
-<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Model the whole vertical network in <strong>AFT Fathom</strong> — it shows the static + dynamic pressure at every node so you can confirm each zone stays within its PN rating and place HX floors correctly. For surge on tall CHW risers (pump trip), check transients in <strong>Bentley HAMMER / AFT Impulse</strong>.</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Model the whole vertical network in <strong>AFT Fathom</strong>. It shows the static + dynamic pressure at every node so you can confirm each zone stays within its PN rating and place HX floors correctly. For surge on tall CHW risers (pump trip), check transients in <strong>Bentley HAMMER / AFT Impulse</strong>.</div>
 <div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Pressure ratings: pipe/fitting PN class (ISO/EN/ASME B31.9 building services piping). Insulation: ASHRAE 90.1 / SBC 601.</div>
 
 <!-- ============ 1.8 ============ -->
@@ -358,7 +359,7 @@
 <table class="t param">
 <tr><th>Service</th><th>Velocity</th><th>Friction rate</th></tr>
 <tr><td>CHW mains</td><td>2.0–3.0 m/s</td><td>~100–250 Pa/m</td></tr>
-<tr><td>CHW branches</td><td>1.0–2.0 m/s</td><td>—</td></tr>
+<tr><td>CHW branches</td><td>1.0–2.0 m/s</td><td>–</td></tr>
 </table>
 <div class="example">
   <h4>Worked example 1.8 · Size the zone CHW main</h4>
@@ -371,12 +372,12 @@
 
 <!-- ============ 1.9 ============ -->
 <h2 id="accessories">1.9 Valves, balancing &amp; accessories</h2>
-<p>Between pump and coil sit the devices that control and protect the loop. Size each — never just "match the pipe."</p>
+<p>Between pump and coil sit the devices that control and protect the loop. Size each; never just "match the pipe."</p>
 <ul>
-<li><strong>2-way control valves</strong> (modulate flow to coils) — sized by <strong>Kv/Cv</strong>, not pipe size, for good authority.</li>
-<li><strong>Balancing valves / PICVs</strong> (pressure-independent control valves) — set each terminal's design flow.</li>
+<li><strong>2-way control valves</strong> (modulate flow to coils), sized by <strong>Kv/Cv</strong>, not pipe size, for good authority.</li>
+<li><strong>Balancing valves / PICVs</strong> (pressure-independent control valves): set each terminal's design flow.</li>
 <li><strong>Isolation valves, check valves, strainers, automatic air vents.</strong></li>
-<li><strong>Expansion tank</strong> — absorbs water's thermal expansion; sized on system volume and temperature swing.</li>
+<li><strong>Expansion tank</strong>: absorbs water's thermal expansion; sized on system volume and temperature swing.</li>
 </ul>
 <div class="example">
   <h4>Worked example 1.9 · Control-valve sizing (Kv)</h4>
@@ -384,12 +385,12 @@
   <div class="step"><div class="formula">Kv = Q ÷ √Δp = 6 ÷ √0.3 = 6 ÷ 0.548 = <strong>10.96 m³/h/bar^½</strong></div></div>
   <div class="result">Select the valve with Kv ≥ 11 (next standard, e.g. Kv 12). Confirm valve authority β = Δp<sub>valve</sub>/Δp<sub>branch</sub> ≥ 0.3 so control is stable.</div>
 </div>
-<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Use the <strong>valve manufacturer's sizing tool</strong> (Belimo, Danfoss) — enter flow and design ΔP, it returns Kv, authority and the actuator. PICVs are auto-selected by design flow. Schedule them in Revit.</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Use the <strong>valve manufacturer's sizing tool</strong> (Belimo, Danfoss): enter flow and design ΔP, it returns Kv, authority and the actuator. PICVs are auto-selected by design flow. Schedule them in Revit.</div>
 <div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Valve sizing &amp; authority: CIBSE / BSRIA commissioning guides. Materials: project spec / SBC 501.</div>
 
 <!-- ============ 1.10 ============ -->
 <div class="flow"><span class="n">risers</span><span class="ar">→</span><span class="n cur">AHU</span><span class="ar">→</span><span class="n">duct</span><span class="ar">→</span><span class="n">VAV</span><span class="ar">→</span><span class="n">room</span></div>
-<h2 id="ahu">1.10 Air-handling units — where water becomes cold air</h2>
+<h2 id="ahu">1.10 Air-handling units: where water becomes cold air</h2>
 <p><strong>Role:</strong> the AHU mixes return + fresh air, cools/dehumidifies it across the CHW coil, filters it, and a fan delivers it to the ducts. Sized on airflow (from the sensible load) and the coil load (total).</p>
 <table class="t param">
 <tr><th>Section</th><th>Design parameter</th></tr>
@@ -406,11 +407,11 @@
   <div class="step">Fan power at total static 1,000 Pa, η 0.65: P = Q·Δp ÷ η = 7.0 × 1000 ÷ 0.65 = <strong>10.8 kW</strong>.</div>
   <div class="result">~7 m³/s AHU, ~2.8 m² coil face, ~11 kW fan. Coil CHW flow: 84 ÷ (4.187 × 7) = 2.87 L/s.</div>
 </div>
-<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Take coil load + airflow from <strong>HAP</strong>. Select the AHU in the <strong>manufacturer tool</strong> (Daikin, Trane, AHRI-certified) — enter airflow, entering/leaving air conditions, CHW temps; it sizes coil rows, face area, fan and gives the certified ΔP and sound power. Verify fan power vs <strong>ASHRAE 90.1</strong> fan-power limits. Place the AHU + connect in Revit.</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Take coil load + airflow from <strong>HAP</strong>. Select the AHU in the <strong>manufacturer tool</strong> (Daikin, Trane, AHRI-certified): enter airflow, entering/leaving air conditions, CHW temps; it sizes coil rows, face area, fan and gives the certified ΔP and sound power. Verify fan power vs <strong>ASHRAE 90.1</strong> fan-power limits. Place the AHU + connect in Revit.</div>
 <div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>AHU rating: AHRI 430 / EN 1886 &amp; 13053. Ventilation: ASHRAE 62.1. Fan power: ASHRAE 90.1 / SBC 601. Filters: ISO 16890.</div>
 
 <!-- ============ 1.11 ============ -->
-<h2 id="duct">1.11 Ductwork — sizing &amp; distribution</h2>
+<h2 id="duct">1.11 Ductwork: sizing &amp; distribution</h2>
 <p><strong>Role:</strong> carry conditioned air from AHU to the terminals at low noise and low fan energy. Sized by the <strong>equal-friction</strong> or <strong>static-regain</strong> method.</p>
 <table class="t param">
 <tr><th>Duct</th><th>Velocity</th><th>Friction</th></tr>
@@ -445,16 +446,16 @@
 <div class="example">
   <h4>Worked example 1.13 · FCU selection</h4>
   <div class="step"><span class="given">Given:</span> guestroom total load 3.3 kW (from 1.2), of which sensible ≈ 2.6 kW; CHW 6/13 °C.</div>
-  <div class="step">Select an FCU whose <strong>total</strong> capacity ≥ 3.3 kW <em>and</em> <strong>sensible</strong> ≥ 2.6 kW at the design entering-air and CHW conditions — pick the speed tap that meets it at acceptable NC (≤ NC 30 for a bedroom).</div>
+  <div class="step">Select an FCU whose <strong>total</strong> capacity ≥ 3.3 kW <em>and</em> <strong>sensible</strong> ≥ 2.6 kW at the design entering-air and CHW conditions: pick the speed tap that meets it at acceptable NC (≤ NC 30 for a bedroom).</div>
   <div class="step">FCU CHW flow: 3.3 ÷ (4.187 × 7) = <strong>0.11 L/s</strong>; fit a PICV set to that flow.</div>
   <div class="result">Choose the FCU size meeting both total &amp; sensible at design conditions and noise limit; fresh air delivered separately to meet ASHRAE 62.1.</div>
 </div>
-<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Use the <strong>FCU manufacturer selector</strong> (Daikin, Zehnder) — enter room entering-air temp/RH, CHW temps and required total+sensible; it returns the model, speed, water flow, ΔP and sound. Don't select on total capacity alone — the sensible capacity at <em>your</em> entering conditions is what controls the room.</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Use the <strong>FCU manufacturer selector</strong> (Daikin, Zehnder): enter room entering-air temp/RH, CHW temps and required total+sensible; it returns the model, speed, water flow, ΔP and sound. Don't select on total capacity alone: the sensible capacity at <em>your</em> entering conditions is what controls the room.</div>
 <div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>FCU rating: AHRI 440 / EN 1397. Ventilation: ASHRAE 62.1. Sound: NC limits (ASHRAE Applications).</div>
 
 <!-- ============ 1.14 ============ -->
 <div class="flow"><span class="n">AHU</span><span class="ar">→</span><span class="n">duct</span><span class="ar">→</span><span class="n">VAV/FCU</span><span class="ar">→</span><span class="n cur">ROOM DIFFUSER</span></div>
-<h2 id="terminal">1.14 The last piece — room diffusers &amp; grilles</h2>
+<h2 id="terminal">1.14 The last piece: room diffusers &amp; grilles</h2>
 <p><strong>Role:</strong> the air terminal that delivers conditioned air into the occupied space with the right <strong>throw</strong> (how far the jet reaches), good mixing, and low noise (NC). This is the very end of the chain the occupant actually feels.</p>
 <table class="t param">
 <tr><th>Parameter</th><th>Guide</th></tr>
@@ -467,13 +468,13 @@
   <div class="step"><span class="given">Given:</span> room supply airflow 0.10 m³/s (100 L/s); ceiling height 2.7 m; want 4-way throw, NC ≤ 30.</div>
   <div class="step">At neck velocity 3 m/s, neck area = 0.10 ÷ 3 = 0.033 m² → ~Ø205 mm neck or a 300×300 face diffuser.</div>
   <div class="step">From the catalogue at 100 L/s, that diffuser gives throw ≈ 2.0–2.5 m and NC ≈ 25 <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>.</div>
-  <div class="result">Select 300×300 (Ø200 neck) 4-way ceiling diffuser at 100 L/s: throw ~2.3 m, NC 25 — comfortable, draught-free, quiet.</div>
+  <div class="result">Select 300×300 (Ø200 neck) 4-way ceiling diffuser at 100 L/s: throw ~2.3 m, NC 25. Comfortable, draught-free, quiet.</div>
 </div>
-<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Use the <strong>diffuser manufacturer selector</strong> (Titus, Trox, Krueger) — enter airflow, mounting height and room size; it returns throw, pressure drop and NC for each model. Lay them out in Revit on a ceiling grid; check throws overlap for even coverage.</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Use the <strong>diffuser manufacturer selector</strong> (Titus, Trox, Krueger): enter airflow, mounting height and room size; it returns throw, pressure drop and NC for each model. Lay them out in Revit on a ceiling grid; check throws overlap for even coverage.</div>
 <div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Terminal performance: ASHRAE 70 (testing) &amp; ISO 5219. Comfort/draught: ASHRAE 55. Sound: NC criteria (ASHRAE Applications).</div>
 
 <!-- ============ 1.15 ============ -->
-<h2 id="controls">1.15 Controls &amp; BMS — making it all behave</h2>
+<h2 id="controls">1.15 Controls &amp; BMS: making it all behave</h2>
 <p><strong>Role:</strong> sensors, controllers and control valves/dampers run the system to setpoint and report to the Building Management System. The chain ends not at the diffuser but at the <strong>room thermostat</strong> that tells the FCU/VAV and ultimately the chiller plant how hard to work.</p>
 <ul>
 <li><strong>Field sensors:</strong> room temp/RH, duct temp, CHW supply/return temp &amp; flow, differential pressure, CO₂ (demand-controlled ventilation).</li>
@@ -486,14 +487,14 @@
 
 <!-- ============ 1.16 ============ -->
 <h2 id="smoke">1.16 Smoke control &amp; stair pressurisation</h2>
-<p><strong>Role:</strong> in a fire, keep escape routes and firefighting lifts smoke-free using fans and pressurisation — the HVAC engineer's life-safety duty. Stair/lobby pressurisation also counters the <a class="ref" href="module-0-fundamentals.html#stack">stack effect</a>.</p>
+<p><strong>Role:</strong> in a fire, keep escape routes and firefighting lifts smoke-free using fans and pressurisation, the HVAC engineer's life-safety duty. Stair/lobby pressurisation also counters the <a class="ref" href="module-0-fundamentals.html#stack">stack effect</a>.</p>
 <div class="example">
   <h4>Worked example 1.16 · Stair pressurisation airflow (concept)</h4>
   <div class="step"><span class="given">Given:</span> pressurised stair, target +50 Pa vs floor; leakage area of closed doors/cracks per floor ≈ 0.02 m²; flow through a leak ṁ ∝ A·√(2ΔP/ρ).</div>
-  <div class="step">Leak velocity at 50 Pa: v = √(2×50/1.2) = 9.1 m/s; flow per leak = 0.02 × 9.1 = 0.18 m³/s; with several doors open during escape, total can reach several m³/s — sized by the NFPA 92 design fire scenario, not a single number.</div>
-  <div class="result">Pressurisation fan sized to hold +50 Pa with a defined number of doors open and to limit door-opening force — confirmed by modelling, not a hand calc.</div>
+  <div class="step">Leak velocity at 50 Pa: v = √(2×50/1.2) = 9.1 m/s; flow per leak = 0.02 × 9.1 = 0.18 m³/s; with several doors open during escape, total can reach several m³/s, sized by the NFPA 92 design fire scenario, not a single number.</div>
+  <div class="result">Pressurisation fan sized to hold +50 Pa with a defined number of doors open and to limit door-opening force, confirmed by modelling, not a hand calc.</div>
 </div>
-<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Model stair/lobby pressurisation and smoke movement in <strong>CONTAM</strong> (NIST) — it includes the stack effect over the full height and computes the fan airflow to hold the design pressure with doors open. Coordinate the cause-and-effect with the fire-alarm matrix.</div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Model stair/lobby pressurisation and smoke movement in <strong>CONTAM</strong> (NIST). It includes the stack effect over the full height and computes the fan airflow to hold the design pressure with doors open. Coordinate the cause-and-effect with the fire-alarm matrix.</div>
 <div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code</div>Smoke control: NFPA 92. Life safety/egress: NFPA 101. Under SBC 801 &amp; Saudi Civil Defense approval. Alarm interface: NFPA 72.</div>
 
 <!-- ============ 1.17 ============ -->
@@ -507,29 +508,29 @@
 
 <!-- ============ 1.18 ============ -->
 <div class="flow"><span class="n">central system</span><span class="ar">+</span><span class="n cur">DECENTRALISED / PACKAGED SYSTEMS</span></div>
-<h2 id="packaged">1.18 Packaged, split &amp; VRF systems — when central CHW isn't used</h2>
-<p>Not every space is on the central chilled-water plant. Standalone areas — retail, podium, back-of-house, security/electrical/IT rooms, tenant fit-outs, areas that must run 24/7 independent of the main plant — use <strong>decentralised (direct-expansion, DX)</strong> systems. A complete HVAC design specifies these too.</p>
+<h2 id="packaged">1.18 Packaged, split &amp; VRF systems: when central CHW isn't used</h2>
+<p>Not every space is on the central chilled-water plant. Standalone areas (retail, podium, back-of-house, security/electrical/IT rooms, tenant fit-outs, areas that must run 24/7 independent of the main plant) use <strong>decentralised (direct-expansion, DX)</strong> systems. A complete HVAC design specifies these too.</p>
 
-<div class="compo"><span class="tag">SYSTEM A — PACKAGED / ROOFTOP UNITS (RTU)</span>
-<p><strong>Role:</strong> a self-contained DX unit (compressor, condenser, evaporator, fan, filters) in one casing — typically on a roof or podium — supplying ducted air to a block of spaces. Common for retail, podium and amenity areas.</p>
+<div class="compo"><span class="tag">SYSTEM A: PACKAGED / ROOFTOP UNITS (RTU)</span>
+<p><strong>Role:</strong> a self-contained DX unit (compressor, condenser, evaporator, fan, filters) in one casing, typically on a roof or podium, supplying ducted air to a block of spaces. Common for retail, podium and amenity areas.</p>
 <div class="example">
   <h4>Worked example 1.18a · Packaged unit selection</h4>
   <div class="step"><span class="given">Given:</span> retail block load 30 kW total (8.5 TR); ducted distribution.</div>
   <div class="step">Supply airflow ≈ 0.045–0.055 m³/s per kW (sensible-led) → 30 × 0.05 = <strong>1.5 m³/s (5,400 m³/h)</strong>.</div>
   <div class="step">Pick a packaged DX unit ≥ 30 kW total at the design ambient (40–46 °C), giving ≥ 1.5 m³/s at an external static of ~200 Pa for the ductwork.</div>
-  <div class="result">Select a packaged DX unit rated at the <em>local high ambient</em> (capacity drops as outdoor temp rises — always read capacity at site design ambient, not nominal 35 °C).</div>
+  <div class="result">Select a packaged DX unit rated at the <em>local high ambient</em> (capacity drops as outdoor temp rises, always read capacity at site design ambient, not nominal 35 °C).</div>
 </div></div>
 
-<div class="compo"><span class="tag">SYSTEM B — SPLIT SYSTEMS</span>
+<div class="compo"><span class="tag">SYSTEM B: SPLIT SYSTEMS</span>
 <p><strong>Role:</strong> an indoor unit + a remote outdoor condensing unit linked by refrigerant pipes. Forms: <em>high-wall</em>, <em>4-way ceiling cassette</em>, <em>floor-standing</em>, and <em>concealed ducted (mid-static)</em> which hides above a ceiling and feeds short ducts to grilles (good for hotel suites/apartments/small offices). Single-zone, simple, independent.</p>
 <table class="t param">
 <tr><th>Limit to check</th><th>Why</th></tr>
 <tr><td>Max refrigerant pipe length &amp; height between indoor/outdoor</td><td>Capacity &amp; oil return; manufacturer limits (e.g. ~30–50 m / 15–30 m lift)</td></tr>
 <tr><td>Outdoor-unit location &amp; heat rejection</td><td>Needs clear airflow; clustering on a tall façade is a design problem</td></tr>
 </table>
-<div class="box warn"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg> Don't cool critical rooms on a single split</div>Electrical / IT / telecom rooms need <strong>redundancy (N+1)</strong> and 24/7 duty — use two units on auto-changeover or precision AC, not one comfort split.</div></div>
+<div class="box warn"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg> Don't cool critical rooms on a single split</div>Electrical / IT / telecom rooms need <strong>redundancy (N+1)</strong> and 24/7 duty: use two units on auto-changeover or precision AC, not one comfort split.</div></div>
 
-<div class="compo"><span class="tag">SYSTEM C — VRF / VRV (VARIABLE REFRIGERANT FLOW)</span>
+<div class="compo"><span class="tag">SYSTEM C: VRF / VRV (VARIABLE REFRIGERANT FLOW)</span>
 <p><strong>Role:</strong> one (or more) outdoor unit serves many indoor units on a shared refrigerant circuit, modulating compressor speed; <em>heat-recovery</em> versions move heat from rooms that need cooling to rooms that need heat. Excellent for offices/hotels with diverse, part-load-heavy loads. Branch (BC) controllers distribute refrigerant.</p>
 <div class="example">
   <h4>Worked example 1.18c · Refrigerant concentration safety check (the design trap people miss)</h4>
@@ -537,20 +538,20 @@
   <div class="step">If the whole charge leaked into that room: 20 ÷ 30 = <strong>0.67 kg/m³ &gt; 0.44</strong> → exceeds the safe limit.</div>
   <div class="result">Mitigate per <strong>ASHRAE 15 / ISO 817 / EN 378</strong>: reduce circuit charge, increase room volume, add a leak-detection + mechanical-ventilation interlock, or split the circuit. <em>Always</em> run this check for VRF in small occupied rooms.</div>
 </div>
-<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Design VRF in the <strong>manufacturer tool</strong> (Daikin VRV Xpress, Mitsubishi Diamond System Builder, etc.) — it sizes pipes/branch controllers, applies correction factors for pipe length &amp; height, derates for ambient, and runs the refrigerant-concentration check. Model the system energy in <strong>HAP</strong> (it has VRF/DX system types).</div></div>
+<div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Design VRF in the <strong>manufacturer tool</strong> (Daikin VRV Xpress, Mitsubishi Diamond System Builder, etc.). It sizes pipes/branch controllers, applies correction factors for pipe length &amp; height, derates for ambient, and runs the refrigerant-concentration check. Model the system energy in <strong>HAP</strong> (it has VRF/DX system types).</div></div>
 
-<div class="compo"><span class="tag">SYSTEM D — DEDICATED OUTDOOR-AIR SYSTEM (DOAS) &amp; ENERGY RECOVERY</span>
-<p><strong>Role:</strong> decouples ventilation from cooling — a central unit pre-treats <em>only</em> the fresh outdoor air (cooling + deep dehumidification, often via an energy-recovery wheel/plate that pre-cools incoming air with exhaust), and delivers neutral, dry air to spaces served by FCUs/VRF. In humid climates DOAS is the clean way to handle the big latent load and guarantee ventilation.</p>
-<div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Why DOAS matters in humid climates</div>FCUs and VRF are poor at deep dehumidification. A DOAS dries the fresh air centrally so terminal units only handle <em>sensible</em> room load — better humidity control and comfort.</div></div>
+<div class="compo"><span class="tag">SYSTEM D: DEDICATED OUTDOOR-AIR SYSTEM (DOAS) &amp; ENERGY RECOVERY</span>
+<p><strong>Role:</strong> decouples ventilation from cooling; a central unit pre-treats <em>only</em> the fresh outdoor air (cooling + deep dehumidification, often via an energy-recovery wheel/plate that pre-cools incoming air with exhaust), and delivers neutral, dry air to spaces served by FCUs/VRF. In humid climates DOAS is the clean way to handle the big latent load and guarantee ventilation.</p>
+<div class="box key"><div class="t"><svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Why DOAS matters in humid climates</div>FCUs and VRF are poor at deep dehumidification. A DOAS dries the fresh air centrally so terminal units only handle <em>sensible</em> room load: better humidity control and comfort.</div></div>
 
-<div class="compo"><span class="tag">SYSTEM E — PRECISION / CLOSE-CONTROL AC (CRAC / CRAH)</span>
-<p><strong>Role:</strong> high-sensible, tight-tolerance cooling for data centres, telecom/IT and major electrical rooms — DX (CRAC) or chilled-water (CRAH). High sensible heat ratio, controlled RH, and <strong>N+1 redundancy</strong> with 24/7 duty and standby power. Often the most critical HVAC in the building.</p></div>
+<div class="compo"><span class="tag">SYSTEM E: PRECISION / CLOSE-CONTROL AC (CRAC / CRAH)</span>
+<p><strong>Role:</strong> high-sensible, tight-tolerance cooling for data centres, telecom/IT and major electrical rooms, DX (CRAC) or chilled-water (CRAH). High sensible heat ratio, controlled RH, and <strong>N+1 redundancy</strong> with 24/7 duty and standby power. Often the most critical HVAC in the building.</p></div>
 
 <div class="box code"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Code (decentralised systems)</div>DX equipment rating: AHRI 210/240 (small), 340/360 (large); refrigerant safety: ASHRAE 15 &amp; 34, ISO 817, EN 378; min efficiency: ASHRAE 90.1 / SBC 601; ventilation still per ASHRAE 62.1. Data-centre cooling guidance: ASHRAE TC 9.9.</div>
 
 <!-- ============ 1.19 ============ -->
 <h2 id="install">1.19 Installation, accessories &amp; field tricks</h2>
-<p>A correct calculation still fails if the system is badly installed. These are the accessories every design must show and the field practices that make systems quiet, reliable and maintainable — the knowledge that separates a drawing from a working system.</p>
+<p>A correct calculation still fails if the system is badly installed. These are the accessories every design must show and the field practices that make systems quiet, reliable and maintainable: the knowledge that separates a drawing from a working system.</p>
 
 <h3>Water-side accessories &amp; detailing</h3>
 <table class="t param">
@@ -563,7 +564,7 @@
 <tr><td>Air &amp; dirt separators, auto air vents</td><td>Remove entrained air/dirt</td><td>Air vents at every high point or the system air-locks; separator near the chillers.</td></tr>
 <tr><td>Expansion tank / pressurisation unit</td><td>Absorb water expansion, hold fill pressure</td><td>Size on system volume × expansion at max ΔT; set fill pressure so the top of the system stays positive.</td></tr>
 <tr><td>Isolation &amp; drain valves, unions/flanges</td><td>Maintenance</td><td>Valve + union around every device so it can be removed without draining the riser; drains at every low point.</td></tr>
-<tr><td>Gauges, thermometers, test points (P/T plugs)</td><td>Verify &amp; commission</td><td>At pump suction/discharge, coil in/out, chiller in/out — you can't balance what you can't read.</td></tr>
+<tr><td>Gauges, thermometers, test points (P/T plugs)</td><td>Verify &amp; commission</td><td>At pump suction/discharge, coil in/out, chiller in/out. You can't balance what you can't read.</td></tr>
 <tr><td>Insulation + vapour barrier</td><td>Stop heat gain &amp; condensation</td><td>CHW must be <em>fully</em> vapour-sealed or it drips into ceilings; protect riser insulation mechanically.</td></tr>
 <tr><td>Pipe sleeves + fire-stopping</td><td>Penetrations through rated walls/slabs</td><td>Use a tested/UL-listed firestop system at every fire-rated penetration; escutcheons at finished surfaces.</td></tr>
 </table>
@@ -574,9 +575,9 @@
 <tr><td>Volume / balancing dampers</td><td>Set branch airflow</td><td>Place with straight duct upstream for stable, readable flow; not right at a diffuser neck.</td></tr>
 <tr><td>Turning vanes in elbows</td><td>Cut pressure loss &amp; noise</td><td>Square elbows need vanes; or use radiused bends.</td></tr>
 <tr><td>Fire &amp; smoke dampers</td><td>Maintain fire/smoke compartmentation</td><td>At every rated-barrier crossing; provide an access door at each (NFPA 90A / SBC 801).</td></tr>
-<tr><td>Access doors/panels</td><td>Clean &amp; service dampers/coils</td><td>Coordinate with ceiling access tiles — a damper you can't reach is useless.</td></tr>
+<tr><td>Access doors/panels</td><td>Clean &amp; service dampers/coils</td><td>Coordinate with ceiling access tiles: a damper you can't reach is useless.</td></tr>
 <tr><td>Flexible duct connectors at fans/AHU</td><td>Isolate vibration &amp; noise</td><td>Short canvas connector at AHU discharge/return.</td></tr>
-<tr><td>Flexible duct (final run-outs)</td><td>Connect diffusers</td><td>Keep ≤ ~1.5 m, pulled taut, no kinks — sloppy flex destroys airflow &amp; adds noise.</td></tr>
+<tr><td>Flexible duct (final run-outs)</td><td>Connect diffusers</td><td>Keep ≤ ~1.5 m, pulled taut, no kinks: sloppy flex destroys airflow &amp; adds noise.</td></tr>
 <tr><td>Acoustic lining / silencers (attenuators)</td><td>Meet NC limits</td><td>Add attenuators near AHU &amp; cross-talk silencers between rooms sharing a duct.</td></tr>
 <tr><td>Duct sealing (leakage class)</td><td>Stop wasted air/energy</td><td>Seal to SMACNA leakage class; leaky ducts blow the fan power budget.</td></tr>
 </table>
@@ -591,9 +592,9 @@
 
 <h3>Equipment, clearances &amp; restraint</h3>
 <ul>
-<li><strong>Maintenance clearances:</strong> leave chiller tube-pull length, AHU access-section space, and pump/coil removal room — show them on the drawings, not just the kit.</li>
+<li><strong>Maintenance clearances:</strong> leave chiller tube-pull length, AHU access-section space, and pump/coil removal room; show them on the drawings, not just the kit.</li>
 <li><strong>Housekeeping pads &amp; drip trays</strong> under all plant; bunds where needed.</li>
-<li><strong>Seismic / wind restraint</strong> of equipment, pipes and ducts at height (SBC 301; SMACNA seismic &amp; MSS guidance) — critical in tall buildings.</li>
+<li><strong>Seismic / wind restraint</strong> of equipment, pipes and ducts at height (SBC 301; SMACNA seismic &amp; MSS guidance): critical in tall buildings.</li>
 <li><strong>Refrigerant pipework (splits/VRF):</strong> braze under flowing nitrogen, fit oil traps on long suction risers, pressure-test &amp; vacuum-dehydrate, and charge per actual pipe length.</li>
 </ul>
 <div class="box sw"><div class="t"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> In the software</div>Most accessories are shown on <strong>Revit</strong> details &amp; schedules and on coordinated sections (clash-checked in <strong>Navisworks</strong>). Hanger spacing &amp; seismic bracing follow <strong>MSS SP-58</strong> / SMACNA tables. Commissioning &amp; balancing procedures follow <strong>BSRIA / CIBSE Commissioning Codes</strong> and <strong>AABC/NEBB</strong>.</div>
@@ -609,24 +610,24 @@
 <tr><td>TR (ton of refrigeration)</td><td>A unit of cooling power; 1 TR = 3.517 kW.</td></tr>
 <tr><td>Sensible vs latent heat</td><td>Sensible = heat that changes <em>temperature</em>; latent = heat tied up in <em>moisture</em> (humidity). Coils remove both.</td></tr>
 <tr><td>Enthalpy</td><td>Total heat content of air (sensible + latent), in kJ/kg.</td></tr>
-<tr><td>Psychrometrics</td><td>The science of air + moisture — how temperature and humidity change as we condition air.</td></tr>
+<tr><td>Psychrometrics</td><td>The science of air + moisture: how temperature and humidity change as we condition air.</td></tr>
 <tr><td>Dry-bulb / wet-bulb</td><td>Dry-bulb = ordinary air temperature; wet-bulb = temperature accounting for evaporation (relates to humidity).</td></tr>
 <tr><td>RH (relative humidity)</td><td>How "full" the air is with moisture, as a % of its maximum at that temperature.</td></tr>
-<tr><td>ΔT (delta-T)</td><td>A temperature difference — e.g. between chilled-water supply and return.</td></tr>
-<tr><td>CHW</td><td>Chilled Water — the cold water (≈6 °C) that carries cooling around the building.</td></tr>
+<tr><td>ΔT (delta-T)</td><td>A temperature difference: e.g. between chilled-water supply and return.</td></tr>
+<tr><td>CHW</td><td>Chilled Water: the cold water (≈6 °C) that carries cooling around the building.</td></tr>
 <tr><td>COP / IPLV</td><td>COP = efficiency (cooling out ÷ power in); IPLV = a weighted efficiency over part-load operation.</td></tr>
 <tr><td>AHU / FCU</td><td>Air-Handling Unit (big central air unit) / Fan-Coil Unit (small local room unit).</td></tr>
-<tr><td>VAV</td><td>Variable-Air-Volume box — throttles airflow to a zone to match its load.</td></tr>
-<tr><td>DOAS</td><td>Dedicated Outdoor-Air System — treats only the fresh air, often with energy recovery.</td></tr>
-<tr><td>VRF / VRV</td><td>Variable Refrigerant Flow — one outdoor unit serving many indoor units via refrigerant.</td></tr>
-<tr><td>DX</td><td>Direct Expansion — cooling made by refrigerant in the unit itself (splits, packaged units).</td></tr>
+<tr><td>VAV</td><td>Variable-Air-Volume box: throttles airflow to a zone to match its load.</td></tr>
+<tr><td>DOAS</td><td>Dedicated Outdoor-Air System: treats only the fresh air, often with energy recovery.</td></tr>
+<tr><td>VRF / VRV</td><td>Variable Refrigerant Flow: one outdoor unit serving many indoor units via refrigerant.</td></tr>
+<tr><td>DX</td><td>Direct Expansion: cooling made by refrigerant in the unit itself (splits, packaged units).</td></tr>
 <tr><td>RTU / CRAC</td><td>Rooftop (packaged) Unit / Computer-Room Air Conditioner (precision cooling for IT rooms).</td></tr>
 <tr><td>Heat exchanger (HX)</td><td>A device that passes heat between two fluids without mixing them (used to break tall CHW risers into zones).</td></tr>
 <tr><td>SHGC / U-value</td><td>SHGC = fraction of solar heat passing through glass; U-value = how easily heat conducts through a wall/glass (lower = better).</td></tr>
 <tr><td>ESP / face velocity</td><td>ESP = external static pressure a fan must overcome (ductwork); face velocity = air speed across a coil.</td></tr>
-<tr><td>Kv / Cv</td><td>A valve's flow coefficient — used to size control valves (not just match the pipe).</td></tr>
+<tr><td>Kv / Cv</td><td>A valve's flow coefficient: used to size control valves (not just match the pipe).</td></tr>
 <tr><td>NC (noise criteria)</td><td>A rating of how quiet a space is; lower NC = quieter (e.g. NC 30 for a bedroom).</td></tr>
-<tr><td>PICV</td><td>Pressure-Independent Control Valve — holds a set flow regardless of pressure swings.</td></tr>
+<tr><td>PICV</td><td>Pressure-Independent Control Valve: holds a set flow regardless of pressure swings.</td></tr>
 <tr><td>Smoke control / pressurisation</td><td>Using fans to keep stairs &amp; lobbies free of smoke in a fire.</td></tr>
 </table>
 
@@ -641,13 +642,13 @@
 <tr><td>Smoke control / stack effect</td><td>CONTAM (NIST)</td><td>NFPA 92 / 101; SBC 801</td></tr>
 </table>
 <ul class="refs">
-<li>ASHRAE Handbook — Fundamentals, HVAC Systems &amp; Equipment, HVAC Applications.</li>
+<li>ASHRAE Handbook, Fundamentals, HVAC Systems &amp; Equipment, HVAC Applications.</li>
 <li>ASHRAE Standards 90.1, 62.1, 55, 15 &amp; 34, 70, 202, Guideline 0.</li>
-<li>SBC 501 (Mechanical), SBC 601 (Energy), SBC 801 (Fire) — 2018.</li>
+<li>SBC 501 (Mechanical), SBC 601 (Energy), SBC 801 (Fire), 2018.</li>
 <li>NFPA 90A, 92, 101, 72 (editions as referenced by SBC 801).</li>
 <li>SMACNA HVAC Duct Construction; AHRI &amp; AHRI-certified rating standards; CTI ATC-105; CIBSE Guides B &amp; C.</li>
 </ul>
-<div class="box note"><div class="t">Note</div>Worked numbers are realistic teaching values to show the method — not stamped project calculations. Confirm code editions/clauses against the live SBC and the project specification, and select real equipment in the manufacturers' certified software.</div>
+<div class="box note"><div class="t">Note</div>Worked numbers are realistic teaching values to show the method, not stamped project calculations. Confirm code editions/clauses against the live SBC and the project specification, and select real equipment in the manufacturers' certified software.</div>
 
 <div class="prevnext">
   <a href="module-0-fundamentals.html"><div class="dir">← Previous</div>Module 0 · Fundamentals</a>
@@ -662,7 +663,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on MEP and water infrastructure — HVAC, fire, electrical, plumbing and vertical transport — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on MEP and water infrastructure: HVAC, fire, electrical, plumbing and vertical transport), delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>

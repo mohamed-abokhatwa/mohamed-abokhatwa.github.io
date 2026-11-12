@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stack Effect in Megatall Buildings: The Neutral Plane, Door Forces, Shaft Compartmentation &amp; the Energy Penalty — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Stack Effect in Megatall Buildings: The Neutral Plane, Door Forces, Shaft Compartmentation &amp; the Energy Penalty | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -105,16 +105,16 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="Stack effect in megatall buildings from a design perspective: the Δp = 3460(1/To − 1/Ti)h equation, where the neutral plane really sits and how to move it, the door-opening force limit of 133 N, why Gulf towers are governed by the summer reverse stack rather than winter, shaft compartmentation at sky lobbies, lift-shaft venting, vestibules and revolving doors, pressurization designed against the stack profile, and the megawatt-scale infiltration energy penalty — with three interactive charts, worked numbers and installation tricks.">
+  <meta name="description" content="Stack effect in megatall buildings from a design perspective: the Δp = 3460(1/To − 1/Ti)h equation, where the neutral plane really sits and how to move it, the door-opening force limit of 133 N, why Gulf towers are governed by the summer reverse stack rather than winter, shaft compartmentation at sky lobbies, lift-shaft venting, vestibules and revolving doors, pressurization designed against the stack profile, and the megawatt-scale infiltration energy penalty, with three interactive charts, worked numbers and installation tricks.">
   <meta property="og:title" content="Stack Effect in Megatall Buildings: Neutral Plane, Door Forces, Shaft Compartmentation & the Energy Penalty | Mohamed Abokhatwa">
-  <meta property="og:description" content="The invisible chimney inside every tall building: how big the stack pressure really gets, where the neutral plane sits, why doors jam and lifts misbehave, how compartmentation and vestibules fix it, and what it costs in energy — in three interactive charts.">
+  <meta property="og:description" content="The invisible chimney inside every tall building: how big the stack pressure really gets, where the neutral plane sits, why doors jam and lifts misbehave, how compartmentation and vestibules fix it, and what it costs in energy, in three interactive charts.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/stack-effect-tall-buildings.html">
   <meta property="og:image" content="https://abokhatwa.com/og-stack-effect-tall-buildings.jpg">
   <meta property="og:image:alt" content="Technical cutaway of a supertall tower showing the stack effect: cold air drawn in at the lobby, rushing up the lift and stair shafts, and discharging at the top, with the neutral plane marked across the mid-height">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Stack Effect in Megatall Buildings: Neutral Plane, Door Forces, Shaft Compartmentation & the Energy Penalty | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="Every tall building is a chimney. Where the neutral plane sits, why stair doors jam at 347 N, why the Gulf summer reverse stack governs, and the megawatt infiltration penalty — three interactive charts.">
+  <meta name="twitter:description" content="Every tall building is a chimney. Where the neutral plane sits, why stair doors jam at 347 N, why the Gulf summer reverse stack governs, and the megawatt infiltration penalty, three interactive charts.">
   <link rel="canonical" href="https://abokhatwa.com/stack-effect-tall-buildings.html">
 
   <script type="application/ld+json">
@@ -144,6 +144,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -185,39 +186,39 @@
 </div>
 
 <div class="article-body">
-<p class="lead">There is a chimney inside your building. Nobody drew it, nobody sized it, and it is the full height of the tower. It pulls outside air in through the lobby doors, drives it up every lift shaft, stair and service riser, and pushes it out through the upper floors — and in a megatall building it does this hard enough to jam a stair door shut, hold a lift door open, make a doorway whistle, carry cooking odours forty floors, move smoke the entire height of the core, and quietly burn megawatts. Stack effect is not an operational nuisance to be solved by the facilities team. It is a <strong>design load</strong>, as real as wind, and like wind it must be resolved on the drawing board — because almost every effective remedy is architecture and compartmentation, not equipment.</p>
+<p class="lead">There is a chimney inside your building. Nobody drew it, nobody sized it, and it is the full height of the tower. It pulls outside air in through the lobby doors, drives it up every lift shaft, stair and service riser, and pushes it out through the upper floors, and in a megatall building it does this hard enough to jam a stair door shut, hold a lift door open, make a doorway whistle, carry cooking odours forty floors, move smoke the entire height of the core, and quietly burn megawatts. Stack effect is a <strong>design load</strong>, as real as wind, and not an operational nuisance for the facilities team, and like wind it must be resolved on the drawing board, because almost every effective remedy is architecture and compartmentation, not equipment.</p>
 
 <h2 id="why">1 · Why stack effect becomes a megatall problem</h2>
-<p>Stack effect exists in a two-storey house. It matters in a tower for one reason: the driving pressure is <strong>directly proportional to height</strong>, while every device it acts on — a door leaf, a lift door, a damper, a trap seal — stays exactly the same size. Scale one side of the equation by 100 and leave the other alone, and things that were invisible at 20&nbsp;m become governing at 600&nbsp;m.</p>
+<p>Stack effect exists in a two-storey house. It matters in a tower for one reason: the driving pressure is <strong>directly proportional to height</strong>, while every device it acts on (a door leaf, a lift door, a damper, a trap seal) stays exactly the same size. Scale one side of the equation by 100 and leave the other alone, and things that were invisible at 20&nbsp;m become governing at 600&nbsp;m.</p>
 <ul class="clean">
   <li><strong>The pressure is not small.</strong> A 600&nbsp;m tower at 0&nbsp;°C outside and 21&nbsp;°C inside develops roughly <strong>280&nbsp;Pa</strong> between the top of the shaft and the neutral plane. For comparison, a stair-pressurization system is designed to hold about <strong>25–50&nbsp;Pa</strong>. The uncontrolled natural phenomenon is five to ten times stronger than the engineered system meant to manage the same doors.</li>
-  <li><strong>It never switches off.</strong> Wind is intermittent; stack effect runs every hour that the inside and outside temperatures differ. It is the building's baseline pressure regime, and every other pressure — ventilation, pressurization, lift piston effect, wind — sits on top of it.</li>
+  <li><strong>It never switches off.</strong> Wind is intermittent; stack effect runs every hour that the inside and outside temperatures differ. It is the building's baseline pressure regime, and every other pressure (ventilation, pressurization, lift piston effect, wind) sits on top of it.</li>
   <li><strong>It is a whole-building phenomenon.</strong> There is no local fix. The lift-shaft problem on level 3 is caused by the shaft geometry on levels 1 to 100 and by how tight the roof is. You cannot solve it floor by floor.</li>
-  <li><strong>It is decided in concrete.</strong> The single most powerful control is <em>where the shafts stop</em> — sky lobbies, mechanical floors, lift zoning, lobby vestibules. Those are set by the architect and the vertical-transportation consultant years before an air-balance report exists.</li>
+  <li><strong>It is decided in concrete.</strong> The single most powerful control is <em>where the shafts stop</em>: sky lobbies, mechanical floors, lift zoning, lobby vestibules. Those are set by the architect and the vertical-transportation consultant years before an air-balance report exists.</li>
   <li><strong>It cross-couples with fire safety.</strong> The same pressure that makes a door hard to open is the pressure that will carry smoke up the core. Smoke control and stack effect are one problem, solved once.<sup class="cite">[2][4]</sup> <a href="firefighting-tall-buildings.html">Firefighting in megatall buildings</a> covers the fire-side half of it.</li>
 </ul>
 
 <h2 id="physics">2 · The physics: driving pressure and the neutral plane</h2>
-<p>Air is a fluid with weight. A column of warm indoor air is lighter than a column of cold outdoor air of the same height, so the two columns cannot balance at every level — they can only cross at one. The pressure difference between inside and outside, at a height \(h\) measured from that crossing point, is<sup class="cite">[1][2]</sup>:</p>
+<p>Air is a fluid with weight. A column of warm indoor air is lighter than a column of cold outdoor air of the same height, so the two columns cannot balance at every level. They can only cross at one. The pressure difference between inside and outside, at a height \(h\) measured from that crossing point, is<sup class="cite">[1][2]</sup>:</p>
 <div class="eq">\[ \Delta p = 3460 \left(\frac{1}{T_o} - \frac{1}{T_i}\right) h \qquad (\text{Pa},\ T\ \text{in K},\ h\ \text{in m}) \]</div>
 <p>Two things follow immediately, and both matter more than the number itself:</p>
 <ul class="clean">
   <li><strong>The gradient is fixed by temperature alone.</strong> At 0&nbsp;°C outside / 21&nbsp;°C inside the coefficient works out to about <strong>0.90&nbsp;Pa per metre</strong> of height. At −20&nbsp;°C it is about 1.9&nbsp;Pa/m. This gradient is a property of the weather, not of your design. You cannot reduce it.</li>
-  <li><strong>The only thing you control is \(h\).</strong> \(h\) is <em>not</em> the height of the building — it is the height of the <strong>continuous air column</strong> being driven, measured from the neutral plane. Break that column and you shrink \(h\). This is the whole design strategy in one sentence, and everything in section 9 follows from it.</li>
+  <li><strong>The only thing you control is \(h\).</strong> \(h\) is <em>not</em> the height of the building. It is the height of the <strong>continuous air column</strong> being driven, measured from the neutral plane. Break that column and you shrink \(h\). This is the whole design strategy in one sentence, and everything in section 9 follows from it.</li>
 </ul>
 
 <h3>Where the neutral plane actually sits</h3>
 <p>The <strong>neutral plane</strong> (or neutral pressure level, NPL) is the height at which inside and outside pressure are equal. Below it the building is at negative pressure and sucks air in; above it the building is positive and blows air out. Textbooks say "roughly mid-height", but its real position is set by the <em>distribution of leakage area</em> between the top and bottom of the building. Equating the mass flow in at the bottom to the mass flow out at the top for a winter (upward) stack gives<sup class="cite">[1][5]</sup>:</p>
 <div class="eq">\[ \frac{z}{H-z} = \left(\frac{A_{top}}{A_{bottom}}\right)^{2}\frac{T_o}{T_i} \]</div>
-<p>with \(z\) the NPL height above grade and \(A\) the effective leakage areas. Equal leakage top and bottom puts the NPL at about <strong>0.48&nbsp;H</strong> in winter — just below mid-height. But make the top four times leakier than the bottom and the NPL climbs above 0.9&nbsp;H; make the top four times tighter and it drops below 0.15&nbsp;H. That is an enormous swing, and it is <strong>the one property of the stack profile a designer can genuinely move</strong>.</p>
+<p>with \(z\) the NPL height above grade and \(A\) the effective leakage areas. Equal leakage top and bottom puts the NPL at about <strong>0.48&nbsp;H</strong> in winter, just below mid-height. But make the top four times leakier than the bottom and the NPL climbs above 0.9&nbsp;H; make the top four times tighter and it drops below 0.15&nbsp;H. That is an enormous swing, and it is <strong>the one property of the stack profile a designer can genuinely move</strong>.</p>
 
 <div class="callout key">
   <span class="lbl">The design lever nobody uses</span>
-  You cannot change the pressure <em>gradient</em> — that is the weather. You can change <strong>where the zero is</strong>. Every pressure difference in the building is measured from the neutral plane, so pushing the NPL down (tighten the top, open the bottom) transfers the pressure away from the entrance lobby — where the biggest doors and the most people are — and onto the upper floors, where the doors are small, the openings are few, and the problem is far cheaper to solve. Most towers do the opposite by accident: they seal the podium beautifully and leave the lift-shaft head, the roof plant room and the smoke vents wide open.
+  You cannot change the pressure <em>gradient</em>: that is the weather. You can change <strong>where the zero is</strong>. Every pressure difference in the building is measured from the neutral plane, so pushing the NPL down (tighten the top, open the bottom) transfers the pressure away from the entrance lobby, where the biggest doors and the most people are, and onto the upper floors, where the doors are small, the openings are few, and the problem is far cheaper to solve. Most towers do the opposite by accident: they seal the podium beautifully and leave the lift-shaft head, the roof plant room and the smoke vents wide open.
 </div>
 
 <h2 id="int-npl">3 · Interactive: the stack profile &amp; the neutral plane</h2>
-<p>Set the outdoor and indoor temperatures, the height of the continuous air column, and the ratio of top-to-bottom leakage area. The curve is the pressure difference between the inside of the shaft and outside, up the height of the tower: negative below the neutral plane (air pushed in), zero at it, positive above it (air pushed out). Drag the leakage ratio and watch the neutral plane — and therefore the pressure landing on your lobby doors — slide up and down the tower. Push the outdoor temperature above the indoor temperature and the whole profile inverts: that is the <strong>reverse stack</strong> of a Gulf summer.</p>
+<p>Set the outdoor and indoor temperatures, the height of the continuous air column, and the ratio of top-to-bottom leakage area. The curve is the pressure difference between the inside of the shaft and outside, up the height of the tower: negative below the neutral plane (air pushed in), zero at it, positive above it (air pushed out). Drag the leakage ratio and watch the neutral plane, and therefore the pressure landing on your lobby doors, slide up and down the tower. Push the outdoor temperature above the indoor temperature and the whole profile inverts: that is the <strong>reverse stack</strong> of a Gulf summer.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -229,7 +230,7 @@
     <div class="ctrl">
       <label>Outdoor temperature <span id="vTo">0 °C</span></label>
       <input type="range" id="sTo" min="-30" max="50" value="0" step="1">
-      <div class="hint">Design condition, not the annual average — stack effect is sized on the extreme.</div>
+      <div class="hint">Design condition, not the annual average: stack effect is sized on the extreme.</div>
     </div>
     <div class="ctrl">
       <label>Indoor temperature <span id="vTi">21 °C</span></label>
@@ -239,7 +240,7 @@
     <div class="ctrl">
       <label>Column height <span id="vH">600 m</span></label>
       <input type="range" id="sH" min="50" max="1000" value="600" step="10">
-      <div class="hint">Height of the continuous, connected air column — not necessarily the building height.</div>
+      <div class="hint">Height of the continuous, connected air column, not necessarily the building height.</div>
     </div>
     <div class="ctrl">
       <label>Leakage ratio A&#116;/A&#98; <span id="vR">1.00</span></label>
@@ -255,7 +256,7 @@
     <div class="cell"><div class="k">Regime</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rReg"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At the default 600&nbsp;m, 0&nbsp;°C case the gradient is 0.90&nbsp;Pa/m and the neutral plane sits at 289&nbsp;m — so the lobby sees about 261&nbsp;Pa of suction and the top of the shaft about 281&nbsp;Pa of push. Now drag the leakage ratio down to 0.4: the neutral plane falls to about 78&nbsp;m and the lobby load drops to roughly 70&nbsp;Pa, at the price of ~470&nbsp;Pa at the top of a shaft that has almost no openings to lose it through. That trade — <em>move the pressure to where there are no doors</em> — is free if you make it in the design, and impossible to make later.</p>
+<p class="fig-note">At the default 600&nbsp;m, 0&nbsp;°C case the gradient is 0.90&nbsp;Pa/m and the neutral plane sits at 289&nbsp;m, so the lobby sees about 261&nbsp;Pa of suction and the top of the shaft about 281&nbsp;Pa of push. Now drag the leakage ratio down to 0.4: the neutral plane falls to about 78&nbsp;m and the lobby load drops to roughly 70&nbsp;Pa, at the price of ~470&nbsp;Pa at the top of a shaft that has almost no openings to lose it through. That trade (<em>move the pressure to where there are no doors</em>) is free if you make it in the design, and impossible to make later.</p>
 
 <div class="schematic">
 <svg viewBox="0 0 720 452" role="img" aria-label="Two side-by-side sections of a tall tower. On the left, one continuous shaft the full height of the building forms a single chimney with a large triangular pressure profile: air enters at the base, rises up the shaft and leaves at the top. On the right, the same tower has its shafts broken into three compartments at sky-lobby and mechanical floors, producing three short chimneys, each with its own neutral plane and a pressure profile one third as wide.">
@@ -280,7 +281,7 @@
     .se-ok{fill:var(--success);font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
     .se-wr{fill:var(--warning);font-family:-apple-system,'Inter',sans-serif;font-size:10.5px;font-weight:600;}
   </style>
-  <text x="10" y="20" class="se-tl">Break the column, not the physics — one 600 m chimney vs three 200 m chimneys</text>
+  <text x="10" y="20" class="se-tl">Break the column, not the physics: one 600 m chimney vs three 200 m chimneys</text>
 
   <!-- ══════════ LEFT PANEL: undivided ══════════ -->
   <text x="120" y="42" class="se-pn">A · Continuous shaft</text>
@@ -310,7 +311,7 @@
   <text x="103" y="372" class="se-lbl">air in</text>
   <text x="262" y="58" class="se-lbl">air out</text>
   <text x="160" y="418" class="se-lbl">h = 600 m &#8594; Δp ≈ 270 Pa</text>
-  <text x="160" y="432" class="se-wr">door force ≈ 347 N &#8212; jammed</text>
+  <text x="160" y="432" class="se-wr">door force ≈ 347 N: jammed</text>
 
   <!-- ══════════ RIGHT PANEL: compartmented ══════════ -->
   <text x="470" y="42" class="se-pn">B · Compartmented at sky lobbies</text>
@@ -352,12 +353,12 @@
   <path class="se-ex" d="M549 156 V62"  marker-end="url(#se-ar)"/>
   <path class="se-in" d="M462 380 H528" marker-end="url(#se-ab)"/>
   <text x="468" y="418" class="se-lbl">h = 200 m &#8594; Δp ≈ 90 Pa</text>
-  <text x="468" y="432" class="se-ok">door force ≈ 156 N &#8212; recoverable</text>
+  <text x="468" y="432" class="se-ok">door force ≈ 156 N: recoverable</text>
 </svg>
-  <div class="cap">Original schematic. Left: one continuous shaft is one 600&nbsp;m chimney with a single neutral plane, and the pressure triangle is at its widest at grade and at roof level. Right: the same tower with its lift shafts terminated at a sky lobby and a mechanical floor is <em>three</em> 200&nbsp;m chimneys, each with its own neutral plane. The gradient is identical — the weather did not change — but the driving height h across any one door is a third as long, so the pressure across any door drops by a factor of three.</div>
+  <div class="cap">Original schematic. Left: one continuous shaft is one 600&nbsp;m chimney with a single neutral plane, and the pressure triangle is at its widest at grade and at roof level. Right: the same tower with its lift shafts terminated at a sky lobby and a mechanical floor is <em>three</em> 200&nbsp;m chimneys, each with its own neutral plane. The gradient is identical (the weather did not change), but the driving height h across any one door is a third as long, so the pressure across any door drops by a factor of three.</div>
 </div>
 
-<h2 id="seasons">4 · Winter stack, summer reverse stack — and why the Gulf case is different</h2>
+<h2 id="seasons">4 · Winter stack, summer reverse stack, and why the Gulf case is different</h2>
 <p>Almost every stack-effect reference is written for a cold climate, where the inside is warm, the air rises, and the building inhales at the lobby. In the Gulf the sign flips for most of the year, and the consequences flip with it. Run the numbers at real design conditions<sup class="cite">[1][5]</sup>:</p>
 
 <div class="tbl-wrap">
@@ -374,52 +375,52 @@
 </table>
 </div>
 
-<p>Read the last two rows carefully. A Gulf summer at 45–50&nbsp;°C outside against a 23–24&nbsp;°C conditioned core produces a stack effect <strong>as strong as a European winter</strong> — and it runs in the opposite direction. Air is drawn in at the top of the tower and pushed out at the bottom. Every intuition imported from a cold-climate textbook is now backwards:</p>
+<p>Read the last two rows carefully. A Gulf summer at 45–50&nbsp;°C outside against a 23–24&nbsp;°C conditioned core produces a stack effect <strong>as strong as a European winter</strong>, and it runs in the opposite direction. Air is drawn in at the top of the tower and pushed out at the bottom. Every intuition imported from a cold-climate textbook is now backwards:</p>
 <ul class="clean">
   <li><strong>Smoke and odours travel <em>down</em>, not up.</strong> A fire in an upper zone can drive smoke down the shafts into the podium and the basement car park. Smoke-control zoning designed only for upward migration misses this entirely.</li>
   <li><strong>The lobby doors are blown open, not sucked shut.</strong> Below the neutral plane the building is now positive, so revolving doors run away, swing doors slam outward, and glazed lobby doors take a permanent set. The failure mode is different but the force is the same.</li>
-  <li><strong>The infiltration load lands high, not low.</strong> Hot, humid outside air is drawn in through the upper façade — exactly where the glass is largest, the wind is strongest and the AHU serving the zone is smallest. Condensation risk moves to the top of the tower.</li>
-  <li><strong>Shoulder seasons still bite.</strong> A tower that is neutral in March is not a tower with no stack effect — it is a tower whose neutral plane sweeps through the full height twice a year, taking the pressure problem to every floor in turn.</li>
+  <li><strong>The infiltration load lands high, not low.</strong> Hot, humid outside air is drawn in through the upper façade, exactly where the glass is largest, the wind is strongest and the AHU serving the zone is smallest. Condensation risk moves to the top of the tower.</li>
+  <li><strong>Shoulder seasons still bite.</strong> A tower that is neutral in March still has a stack effect: its neutral plane sweeps through the full height twice a year, taking the pressure problem to every floor in turn.</li>
 </ul>
 
 <div class="callout warn">
   <span class="lbl">The regional trap</span>
-  Gulf towers are routinely commissioned in the mild season, when the stack effect is genuinely small, and signed off as compliant. The building then meets its real design case in July, in the opposite direction from the one the smoke model assumed, with pressurization fans tuned to hold a band against an upward stack that no longer exists. If you design or commission in this region, the governing case is almost always <strong>summer reverse stack</strong> — model it, test for it, and set the control logic to recognise the sign of the outdoor–indoor temperature difference, not just its magnitude.
+  Gulf towers are routinely commissioned in the mild season, when the stack effect is genuinely small, and signed off as compliant. The building then meets its real design case in July, in the opposite direction from the one the smoke model assumed, with pressurization fans tuned to hold a band against an upward stack that no longer exists. If you design or commission in this region, the governing case is almost always <strong>summer reverse stack</strong>: model it, test for it, and set the control logic to recognise the sign of the outdoor–indoor temperature difference, not just its magnitude.
 </div>
 
 <h2 id="symptoms">5 · What stack effect actually breaks</h2>
 <p>The equation is abstract; the defect list is not. Every item below is a routine tall-building complaint whose root cause is the stack pressure, and every one is diagnosed by measuring Δp across the offending door or shaft, not by adjusting the device:</p>
 <ul class="clean">
-  <li><strong>Doors that will not open</strong> — stair doors at the top of the tower and lobby doors at the bottom. The commonest and most serious, because it is a life-safety failure, not a comfort one. Quantified in sections 6 and 7.</li>
-  <li><strong>Lift doors that will not close, or reopen repeatedly.</strong> A car door is a light, low-friction panel with a wide face. Differential pressure across a landing door of only ~50–75&nbsp;Pa is enough to bind the door gibs, defeat the door operator's closing force and trip the reopening device — usually at the lowest floors in winter and the highest floors in summer. This is the single most frequent stack-effect complaint in occupied towers.</li>
+  <li><strong>Doors that will not open</strong>: stair doors at the top of the tower and lobby doors at the bottom. The commonest and most serious, because it is a life-safety failure, not a comfort one. Quantified in sections 6 and 7.</li>
+  <li><strong>Lift doors that will not close, or reopen repeatedly.</strong> A car door is a light, low-friction panel with a wide face. Differential pressure across a landing door of only ~50–75&nbsp;Pa is enough to bind the door gibs, defeat the door operator's closing force and trip the reopening device, usually at the lowest floors in winter and the highest floors in summer. This is the single most frequent stack-effect complaint in occupied towers.</li>
   <li><strong>Whistling and howling.</strong> Air forced through a door undercut or a lift-landing gap at 150–300&nbsp;Pa reaches high velocity in a narrow slot. The noise is unmistakable, and it is the pressure telling you where the leakage path is.</li>
   <li><strong>Lobby doors and revolving doors that fight the user.</strong> Swing doors need two hands; revolving doors either drag or accelerate on their own; automatic sliders re-open on the safety beam because they cannot seal against the pressure.</li>
-  <li><strong>Odour, smoke and contaminant migration.</strong> Kitchen and toilet exhaust, car-park fumes, cooking odours in residential towers and — critically — fire smoke all ride the shaft. This is the mechanism by which a fire on level 5 puts smoke on level 90.<sup class="cite">[2][4]</sup></li>
+  <li><strong>Odour, smoke and contaminant migration.</strong> Kitchen and toilet exhaust, car-park fumes, cooking odours in residential towers and, critically, fire smoke all ride the shaft. This is the mechanism by which a fire on level 5 puts smoke on level 90.<sup class="cite">[2][4]</sup></li>
   <li><strong>Ventilation systems that will not balance.</strong> The pressure across the AHU outdoor-air and relief dampers varies by hundreds of pascals from the bottom of the tower to the top. Systems balanced in the shoulder season go badly off in January and July, and constant-volume terminals at the extremes of the tower simply lose authority.</li>
-  <li><strong>Drainage trap-seal loss.</strong> Stack pressure applied across a shallow water seal empties it and lets drainage gases into the occupied floors — a problem shared with the drainage stack's own air regime, covered in <a href="drainage-stormwater-tall-buildings.html">drainage and stormwater in tall buildings</a>.</li>
+  <li><strong>Drainage trap-seal loss.</strong> Stack pressure applied across a shallow water seal empties it and lets drainage gases into the occupied floors: a problem shared with the drainage stack's own air regime, covered in <a href="drainage-stormwater-tall-buildings.html">drainage and stormwater in tall buildings</a>.</li>
   <li><strong>Condensation and frost.</strong> Warm humid indoor air driven out through the upper façade in winter condenses inside the construction; hot humid outdoor air drawn in high in a Gulf summer condenses on cold interior surfaces. Both are stack-driven envelope failures, not vapour-barrier failures.</li>
   <li><strong>Energy.</strong> The infiltration this all represents is a continuous, uncontrolled outdoor-air load measured in megawatts on a megatall tower. Quantified in section 11.</li>
 </ul>
 
-<h2 id="doors">6 · Doors — the number that governs life safety</h2>
+<h2 id="doors">6 · Doors: the number that governs life safety</h2>
 <p>A door is a lever. The pressure acts over the whole leaf, but the occupant pulls at the handle, near the edge, so the moment about the hinge converts the distributed pressure into a very large force at the knob. The standard expression is<sup class="cite">[2][4]</sup>:</p>
 <div class="eq">\[ F = F_{dc} + \frac{W \cdot A \cdot \Delta p}{2\,(W - d)} \]</div>
 <p>where \(F\) is the total force at the knob (N), \(F_{dc}\) the force to overcome the door closer alone (N), \(W\) the door width (m), \(A\) the door area (m²), \(d\) the distance from the knob to the door edge (typically 0.076&nbsp;m), and \(\Delta p\) the pressure difference across the door (Pa). For a standard 0.91&nbsp;×&nbsp;2.13&nbsp;m leaf this reduces to about <strong>1.06&nbsp;N of extra force for every 1&nbsp;Pa</strong> across the door.</p>
 <p>Codes set the maximum door-opening force in the region of <strong>133&nbsp;N (30&nbsp;lbf)</strong> for a side-hinged swinging egress door<sup class="cite">[6]</sup>. That single number, run backwards through the equation, is the real design constraint:</p>
 <div class="eq">\[ \Delta p_{max} = \frac{(F_{limit} - F_{dc})\,2\,(W-d)}{W \cdot A} \]</div>
-<p>With a fairly typical 60&nbsp;N closer, the answer is about <strong>69&nbsp;Pa</strong>. That is the entire pressure budget available across any egress door in the building — for stack effect, pressurization, wind and HVAC imbalance <em>combined</em>. Against a 600&nbsp;m column producing 270&nbsp;Pa, the arithmetic is brutal: the door is roughly four times over its limit before a single fan has been switched on.</p>
+<p>With a fairly typical 60&nbsp;N closer, the answer is about <strong>69&nbsp;Pa</strong>. That is the entire pressure budget available across any egress door in the building, for stack effect, pressurization, wind and HVAC imbalance <em>combined</em>. Against a 600&nbsp;m column producing 270&nbsp;Pa, the arithmetic is brutal: the door is roughly four times over its limit before a single fan has been switched on.</p>
 
 <div class="callout">
   <span class="lbl">Two consequences engineers miss</span>
-  First, the <strong>closer is part of the budget</strong>. Specifying a heavy closer for durability spends 45–90&nbsp;N of a 133&nbsp;N allowance before the pressure arrives; a lighter closer or a lower-friction hinge set can buy back 20–30&nbsp;Pa for free. Second, the pressurization system is <strong>not</strong> the whole load — the code limit applies to the pressure that is actually there on the day, which is stack plus pressurization plus wind. A stair pressurization system verified at 50&nbsp;Pa on a mild day is compliant on paper and unopenable in January.
+  First, the <strong>closer is part of the budget</strong>. Specifying a heavy closer for durability spends 45–90&nbsp;N of a 133&nbsp;N allowance before the pressure arrives; a lighter closer or a lower-friction hinge set can buy back 20–30&nbsp;Pa for free. Second, the pressurization system is <strong>not</strong> the whole load: the code limit applies to the pressure that is actually there on the day, which is stack plus pressurization plus wind. A stair pressurization system verified at 50&nbsp;Pa on a mild day is compliant on paper and unopenable in January.
 </div>
 
 <h2 id="int-door">7 · Interactive: door force &amp; the compartmentation fix</h2>
-<p>This is the same building as chart 1, read through a door. The red line is the force needed to open a door onto an <strong>undivided</strong> full-height shaft, at every level of the tower. The blue line is the same door when the shaft is broken into \(N\) compartments — at sky lobbies, mechanical floors, or simply by lobby doors in front of the lift landing. Each compartment gets its own neutral plane, so the driving height across any one door is \(H/N\). Slide \(N\) up until the blue curve stays left of the 133&nbsp;N line, and you have just sized the compartmentation strategy for the tower.</p>
+<p>This is the same building as chart 1, read through a door. The red line is the force needed to open a door onto an <strong>undivided</strong> full-height shaft, at every level of the tower. The blue line is the same door when the shaft is broken into \(N\) compartments, at sky lobbies, mechanical floors, or simply by lobby doors in front of the lift landing. Each compartment gets its own neutral plane, so the driving height across any one door is \(H/N\). Slide \(N\) up until the blue curve stays left of the 133&nbsp;N line, and you have just sized the compartmentation strategy for the tower.</p>
 
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Door-opening force vs height — undivided shaft vs N compartments</div>
+    <div class="ftitle">Door-opening force vs height: undivided shaft vs N compartments</div>
     <div class="fsub">F = F&#100;&#99; + W·A·Δp / [2(W−d)] for a 0.91 × 2.13 m leaf, d = 0.076 m. Idealised: each compartment behaves as an independent column of height H/N with its own neutral plane at its mid-height. The dashed line is the 133 N (30 lbf) code limit.</div>
   </div>
   <div class="chart-box"><canvas id="doorChart"></canvas></div>
@@ -442,7 +443,7 @@
     <div class="ctrl">
       <label>Shaft compartments <span id="dN">1</span></label>
       <input type="range" id="sdN" min="1" max="8" value="1" step="1">
-      <div class="hint">Number of independent vertical sections — lift zones, sky lobbies, mechanical-floor breaks.</div>
+      <div class="hint">Number of independent vertical sections: lift zones, sky lobbies, mechanical-floor breaks.</div>
     </div>
     <div class="ctrl">
       <label>Door closer force <span id="dF">60 N</span></label>
@@ -458,41 +459,41 @@
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">The default case — 600&nbsp;m, 0&nbsp;°C, one continuous shaft, 60&nbsp;N closer — needs <strong>347&nbsp;N</strong> to open a stair door at the top of the tower. That is not "stiff"; it is immovable for most adults, and it is the door people are meant to escape through. Break the shaft into four compartments and the worst case falls to about 132&nbsp;N, right on the limit. Add a lighter 40&nbsp;N closer and it drops to 112&nbsp;N with margin to spare for wind and pressurization. Note that the "zones needed" readout assumes stack effect gets the <em>whole</em> budget — in a real design you must leave 25–50&nbsp;Pa of it for the pressurization system, which pushes the answer up by one or two zones.</p>
+<p class="fig-note">The default case (600&nbsp;m, 0&nbsp;°C, one continuous shaft, 60&nbsp;N closer) needs <strong>347&nbsp;N</strong> to open a stair door at the top of the tower. That is not "stiff"; it is immovable for most adults, and it is the door people are meant to escape through. Break the shaft into four compartments and the worst case falls to about 132&nbsp;N, right on the limit. Add a lighter 40&nbsp;N closer and it drops to 112&nbsp;N with margin to spare for wind and pressurization. Note that the "zones needed" readout assumes stack effect gets the <em>whole</em> budget: in a real design you must leave 25–50&nbsp;Pa of it for the pressurization system, which pushes the answer up by one or two zones.</p>
 
-<h2 id="lifts">8 · Lifts — the shaft that makes the chimney</h2>
+<h2 id="lifts">8 · Lifts: the shaft that makes the chimney</h2>
 <p>Of all the vertical paths in a tower, the lift shaft is the one that matters. It is tall, smooth, large in cross-section, warm, and it connects every floor through a landing door that is a deliberately imperfect seal. In most tall buildings the lift shafts carry the majority of the stack airflow, which is why lift problems are the first symptom and lift zoning is the first cure.</p>
 <ul class="clean">
-  <li><strong>Landing-door pressure is the limiting case.</strong> A lift landing door is not an egress door and has no 133&nbsp;N allowance to hide behind — it simply fails to operate. Practical experience puts the threshold for reliable door operation at roughly <strong>50–75&nbsp;Pa</strong> across the landing door, well below the stair-door limit.</li>
-  <li><strong>Lift zoning is compartmentation you are getting anyway.</strong> A megatall tower already divides its lifts into local zones served from sky lobbies, because a single shaft cannot serve 150 floors economically. Each zone's shafts terminate at a sky lobby. If — and only if — those sky lobbies are properly separated from each other by lobby doors and floor-slab sealing, the vertical transportation strategy has already delivered the compartmentation the air needs. <strong>Design the two together</strong>: the lift zoning diagram and the stack-effect strategy are the same drawing.</li>
-  <li><strong>Shaft vents are chimney flues.</strong> Historic codes required a permanent vent of a few percent of shaft area at the top of every hoistway. That vent is an ideal top-of-building opening: it drags the neutral plane to the roof and puts the entire stack pressure onto the lobby. Modern codes permit — and good design demands — that the vent be <strong>omitted or motorised and normally closed</strong> in sprinklered towers, with the shaft instead protected by hoistway pressurization and smoke detection. Eliminating a permanent open shaft vent is one of the highest-value stack-effect decisions available, and it is a code-negotiation item, not an equipment item.</li>
-  <li><strong>Lift-lobby doors are the cheapest vestibule in the building.</strong> Putting a door between the lift landing and the office floor turns one leaky seal into two in series. It halves the pressure across each leaf, cuts the leakage flow by roughly 30&nbsp;% for equal-area seals, and — in the lower third of a tower in winter — is often the difference between doors that work and doors that do not.</li>
+  <li><strong>Landing-door pressure is the limiting case.</strong> A lift landing door is not an egress door and has no 133&nbsp;N allowance to hide behind. It simply fails to operate. Practical experience puts the threshold for reliable door operation at roughly <strong>50–75&nbsp;Pa</strong> across the landing door, well below the stair-door limit.</li>
+  <li><strong>Lift zoning is compartmentation you are getting anyway.</strong> A megatall tower already divides its lifts into local zones served from sky lobbies, because a single shaft cannot serve 150 floors economically. Each zone's shafts terminate at a sky lobby. If, and only if, those sky lobbies are properly separated from each other by lobby doors and floor-slab sealing, the vertical transportation strategy has already delivered the compartmentation the air needs. <strong>Design the two together</strong>: the lift zoning diagram and the stack-effect strategy are the same drawing.</li>
+  <li><strong>Shaft vents are chimney flues.</strong> Historic codes required a permanent vent of a few percent of shaft area at the top of every hoistway. That vent is an ideal top-of-building opening: it drags the neutral plane to the roof and puts the entire stack pressure onto the lobby. Modern codes permit, and good design demands, that the vent be <strong>omitted or motorised and normally closed</strong> in sprinklered towers, with the shaft instead protected by hoistway pressurization and smoke detection. Eliminating a permanent open shaft vent is one of the highest-value stack-effect decisions available, and it is a code-negotiation item, not an equipment item.</li>
+  <li><strong>Lift-lobby doors are the cheapest vestibule in the building.</strong> Putting a door between the lift landing and the office floor turns one leaky seal into two in series. It halves the pressure across each leaf, cuts the leakage flow by roughly 30&nbsp;% for equal-area seals, and, in the lower third of a tower in winter, is often the difference between doors that work and doors that do not.</li>
   <li><strong>Piston effect is a separate, additive problem.</strong> A 10&nbsp;m/s car in a close-fitting shaft generates its own transient pressure pulse of the order of tens of pascals ahead of and behind it. It does not cause the stack effect, but it lands on top of it and can push a marginal door over the threshold. Shaft cross-section, car-to-shaft clearance and inter-shaft venting are the levers.</li>
 </ul>
 
-<h2 id="toolbox">9 · The design toolbox, part 1 — break the column</h2>
+<h2 id="toolbox">9 · The design toolbox, part 1: break the column</h2>
 <p>Everything effective comes back to the same term in the same equation: reduce \(h\), the height of the continuous air column. In rough order of power per unit of cost:</p>
 <ul class="clean">
   <li><strong>Terminate the shafts.</strong> Lift zoning with sky lobbies, stair transfers at mechanical floors, and service risers that stop and restart at plant levels. Three 200&nbsp;m columns instead of one 600&nbsp;m column reduce every pressure by a factor of three. Nothing else comes close.</li>
-  <li><strong>Seal the floor-slab plane.</strong> A compartment only exists if the air cannot go around it. Every slab penetration — risers, cable trays, ducts, plumbing sleeves, the curtain-wall perimeter joint at every slab edge — is a hole in the compartment. The <strong>perimeter slab-edge seal is the most commonly missed vertical leakage path in a curtain-walled tower</strong>, and it is a fire-stopping item that is also an air-sealing item; specify it as both and inspect it as both.</li>
-  <li><strong>Vestibules and airlocks at the extremes.</strong> Two doors in series at the main entrance, at sky lobbies, and at the top-of-stair discharge. Series leakage paths share the pressure: for two comparable leaks the Δp across each leaf roughly halves. Combine with a revolving door at grade — which never presents a fully open path — and the entrance ceases to be the building's main air intake.</li>
+  <li><strong>Seal the floor-slab plane.</strong> A compartment only exists if the air cannot go around it. Every slab penetration (risers, cable trays, ducts, plumbing sleeves, the curtain-wall perimeter joint at every slab edge) is a hole in the compartment. The <strong>perimeter slab-edge seal is the most commonly missed vertical leakage path in a curtain-walled tower</strong>, and it is a fire-stopping item that is also an air-sealing item; specify it as both and inspect it as both.</li>
+  <li><strong>Vestibules and airlocks at the extremes.</strong> Two doors in series at the main entrance, at sky lobbies, and at the top-of-stair discharge. Series leakage paths share the pressure: for two comparable leaks the Δp across each leaf roughly halves. Combine with a revolving door at grade, which never presents a fully open path, and the entrance ceases to be the building's main air intake.</li>
   <li><strong>Airlock the basement and the loading dock.</strong> In winter these are the biggest low-level openings in the building and they are almost always specified for vehicle logistics with no pressure requirement at all. A single roller shutter left open at the dock can dominate \(A_{bottom}\) for the whole tower. Interlocked double shutters, fast-acting doors and a dedicated dock ventilation strategy are the fix.</li>
-  <li><strong>Compartment the chutes.</strong> Refuse and linen chutes are unbroken full-height flues with a self-closing door on every floor. Gasket the hopper doors, interlock them, and terminate and pressurise the chute properly — an ungasketed chute is a 600&nbsp;m open pipe.</li>
-  <li><strong>Stair enclosures: continuous but compartmented.</strong> Egress stairs must run the full height, so the column cannot simply be cut — but a scissor or transfer arrangement at refuge/mechanical floors, with the stair doorway offset and a vestibule at the transfer, breaks the straight air path without breaking the escape route.</li>
+  <li><strong>Compartment the chutes.</strong> Refuse and linen chutes are unbroken full-height flues with a self-closing door on every floor. Gasket the hopper doors, interlock them, and terminate and pressurise the chute properly: an ungasketed chute is a 600&nbsp;m open pipe.</li>
+  <li><strong>Stair enclosures: continuous but compartmented.</strong> Egress stairs must run the full height, so the column cannot simply be cut, but a scissor or transfer arrangement at refuge/mechanical floors, with the stair doorway offset and a vestibule at the transfer, breaks the straight air path without breaking the escape route.</li>
 </ul>
 
-<h2 id="toolbox2">10 · The design toolbox, part 2 — the envelope, the entrance, and moving the neutral plane</h2>
+<h2 id="toolbox2">10 · The design toolbox, part 2: the envelope, the entrance, and moving the neutral plane</h2>
 <ul class="clean">
-  <li><strong>Airtightness is a stack-effect measure, not just an energy measure.</strong> The whole-building leakage rate — typically specified at <strong>≤2.0&nbsp;L/s·m² at 75&nbsp;Pa</strong> by ASHRAE 90.1, with good curtain-wall towers achieving well under 1.0<sup class="cite">[7]</sup> — sets the magnitude of every flow the stack drives. Halve the leakage and you halve the airflow, the energy and the noise, though not the pressure.</li>
-  <li><strong>Distribute the tightness deliberately.</strong> This is the neutral-plane lever from section 2. Make the <em>top</em> of the building as tight as you can afford — no permanent shaft vents, sealed roof plant rooms, gasketed roof hatches, motorised smoke vents held closed — and accept more leakage low down. The neutral plane drops, the entrance pressure falls, and the residual pressure ends up at the top of the shafts where there is nothing much for it to break. Doing the reverse — a superbly sealed podium under an open shaft head — is the classic own goal.</li>
+  <li><strong>Airtightness is a stack-effect measure, not just an energy measure.</strong> The whole-building leakage rate (typically specified at <strong>≤2.0&nbsp;L/s·m² at 75&nbsp;Pa</strong> by ASHRAE 90.1, with good curtain-wall towers achieving well under 1.0<sup class="cite">[7]</sup>) sets the magnitude of every flow the stack drives. Halve the leakage and you halve the airflow, the energy and the noise, though not the pressure.</li>
+  <li><strong>Distribute the tightness deliberately.</strong> This is the neutral-plane lever from section 2. Make the <em>top</em> of the building as tight as you can afford (no permanent shaft vents, sealed roof plant rooms, gasketed roof hatches, motorised smoke vents held closed) and accept more leakage low down. The neutral plane drops, the entrance pressure falls, and the residual pressure ends up at the top of the shafts where there is nothing much for it to break. Doing the reverse, a superbly sealed podium under an open shaft head, is the classic own goal.</li>
   <li><strong>Revolving doors, always, at grade.</strong> A revolving door maintains a closed air path at every point in its rotation and cuts entrance infiltration by around 80&nbsp;% compared with a swing door in the same opening. Provide the code-required swing doors alongside, but design the traffic to use the revolving doors and keep the swing leaves on hold-closed hardware.</li>
-  <li><strong>Bias the pressure with the ventilation system.</strong> The AHUs are a pressure source you already own. Supplying deliberate excess outdoor air to the lower zones — and correspondingly relieving from the upper zones in winter — pushes back against the stack profile and shifts the effective neutral plane. It costs conditioning energy, so it is a trim, not a primary strategy, but it is the one adjustment available <em>after</em> the building is built.</li>
+  <li><strong>Bias the pressure with the ventilation system.</strong> The AHUs are a pressure source you already own. Supplying deliberate excess outdoor air to the lower zones, and correspondingly relieving from the upper zones in winter, pushes back against the stack profile and shifts the effective neutral plane. It costs conditioning energy, so it is a trim, not a primary strategy, but it is the one adjustment available <em>after</em> the building is built.</li>
   <li><strong>Give the stack somewhere harmless to go.</strong> Where the pressure cannot be eliminated, provide a controlled, silenced, dampered relief path in the shaft head rather than letting the building find its own path through door gaps. A motorised relief damper that opens on a measured differential is far better than a permanent hole.</li>
-  <li><strong>Power-assist the doors that remain hard.</strong> Automatic operators on the ground-floor and top-floor stair doors are a legitimate final measure — but only after the compartmentation is right, and never as a substitute for it, because a powered door with no power is worse than a heavy door.</li>
+  <li><strong>Power-assist the doors that remain hard.</strong> Automatic operators on the ground-floor and top-floor stair doors are a legitimate final measure, but only after the compartmentation is right, and never as a substitute for it, because a powered door with no power is worse than a heavy door.</li>
 </ul>
 
 <h2 id="int-energy">11 · Interactive: the energy penalty</h2>
-<p>Stack effect is usually argued as a comfort and safety problem, which is why it loses to budget. Put it in kilowatts and the conversation changes. This chart integrates the stack-driven infiltration over the façade of the tower and converts it to a heating or cooling load — for a fully connected building, and for the same building compartmented into \(N\) sections. The leakage law is \(q = q_{75}(\Delta p / 75)^{0.65}\), the standard building-envelope power law<sup class="cite">[1][7]</sup>.</p>
+<p>Stack effect is usually argued as a comfort and safety problem, which is why it loses to budget. Put it in kilowatts and the conversation changes. This chart integrates the stack-driven infiltration over the façade of the tower and converts it to a heating or cooling load, for a fully connected building, and for the same building compartmented into \(N\) sections. The leakage law is \(q = q_{75}(\Delta p / 75)^{0.65}\), the standard building-envelope power law<sup class="cite">[1][7]</sup>.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -519,75 +520,75 @@
     <div class="ctrl">
       <label>Vertical compartments <span id="eN">1</span></label>
       <input type="range" id="seN" min="1" max="8" value="1" step="1">
-      <div class="hint">Same compartmentation as chart 2 — it cuts the driving pressure, and the flow with it.</div>
+      <div class="hint">Same compartmentation as chart 2: it cuts the driving pressure, and the flow with it.</div>
     </div>
   </div>
   <div class="readout">
     <div class="cell"><div class="k">Δp driving</div><div class="v" id="eDp">283 <small>Pa</small></div></div>
     <div class="cell"><div class="k">Infiltration</div><div class="v" id="eFlow">116 <small>m³/s</small></div></div>
     <div class="cell"><div class="k">Load</div><div class="v" id="eKw">3.09 <small>MW</small></div></div>
-    <div class="cell"><div class="k">vs undivided</div><div class="v" id="eSav">—</div></div>
+    <div class="cell"><div class="k">vs undivided</div><div class="v" id="eSav">–</div></div>
     <div class="cell"><div class="k">Envelope</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="eVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 600&nbsp;m tower with a code-typical 1.5&nbsp;L/s·m² envelope and no vertical compartmentation carries about <strong>3.1&nbsp;MW</strong> of stack-driven infiltration load at a 0&nbsp;°C design day — an uncontrolled outdoor-air load that appears in no schedule and is served by no AHU. Tighten the envelope to 0.75 and compartment the shafts into four, and it falls to roughly <strong>0.63&nbsp;MW</strong>: a five-fold reduction, almost all of it bought with sealing details and a lift-zoning diagram rather than plant. Note also the shape of the red curve — because the flow area grows with height <em>and</em> the pressure grows with height, the load rises as roughly \(H^{1.65}\). Stack effect does not scale linearly with your building; it scales worse.</p>
+<p class="fig-note">A 600&nbsp;m tower with a code-typical 1.5&nbsp;L/s·m² envelope and no vertical compartmentation carries about <strong>3.1&nbsp;MW</strong> of stack-driven infiltration load at a 0&nbsp;°C design day: an uncontrolled outdoor-air load that appears in no schedule and is served by no AHU. Tighten the envelope to 0.75 and compartment the shafts into four, and it falls to roughly <strong>0.63&nbsp;MW</strong>: a five-fold reduction, almost all of it bought with sealing details and a lift-zoning diagram rather than plant. Note also the shape of the red curve: because the flow area grows with height <em>and</em> the pressure grows with height, the load rises as roughly \(H^{1.65}\). Stack effect does not scale linearly with your building; it scales worse.</p>
 
 <h2 id="pressurization">12 · Pressurization designed against the stack profile</h2>
 <p>Stair and lift-lobby pressurization is where stack effect and fire safety collide, and it is the hardest system in a tall building to make work, because it must satisfy two contradictory requirements simultaneously across a 600&nbsp;m column<sup class="cite">[2][3][4]</sup>:</p>
 <ul class="clean">
-  <li><strong>Enough pressure to keep smoke out</strong> — typically a minimum of 12.5&nbsp;Pa in a sprinklered building or 25&nbsp;Pa unsprinklered under NFPA 92, and about 50&nbsp;Pa under EN 12101-6 for a Class&nbsp;B system, measured with the doors closed.</li>
-  <li><strong>Little enough pressure that the doors still open</strong> — the ~69&nbsp;Pa total budget from section 6, of which the stack effect has usually already taken most.</li>
+  <li><strong>Enough pressure to keep smoke out</strong>: typically a minimum of 12.5&nbsp;Pa in a sprinklered building or 25&nbsp;Pa unsprinklered under NFPA 92, and about 50&nbsp;Pa under EN 12101-6 for a Class&nbsp;B system, measured with the doors closed.</li>
+  <li><strong>Little enough pressure that the doors still open</strong>: the ~69&nbsp;Pa total budget from section 6, of which the stack effect has usually already taken most.</li>
 </ul>
-<p>The gap between those two numbers is the entire design space, and on an uncompartmented megatall shaft the gap is negative — the system is impossible before it is designed. That is the real reason compartmentation is not optional: <strong>it is what creates the pressure budget the smoke-control system needs to exist in.</strong> Within a properly compartmented tower, the design moves that make pressurization achievable are:</p>
+<p>The gap between those two numbers is the entire design space, and on an uncompartmented megatall shaft the gap is negative: the system is impossible before it is designed. That is the real reason compartmentation is not optional: <strong>it is what creates the pressure budget the smoke-control system needs to exist in.</strong> Within a properly compartmented tower, the design moves that make pressurization achievable are:</p>
 <ul class="clean">
-  <li><strong>Multiple injection points</strong> — supply the stair at many levels (commonly every 2–4 floors, or at minimum every zone), never from a single fan at one end, so the pressure profile inside the stair follows the profile outside it instead of fighting it.</li>
-  <li><strong>Variable-speed fans on measured differential</strong>, with the control set-point scheduled against outdoor temperature — including its sign, so the system behaves correctly in a reverse stack.</li>
+  <li><strong>Multiple injection points</strong>: supply the stair at many levels (commonly every 2–4 floors, or at minimum every zone), never from a single fan at one end, so the pressure profile inside the stair follows the profile outside it instead of fighting it.</li>
+  <li><strong>Variable-speed fans on measured differential</strong>, with the control set-point scheduled against outdoor temperature, including its sign, so the system behaves correctly in a reverse stack.</li>
   <li><strong>Barometric or motorised relief dampers</strong> sized for the doors-closed case, so the system does not over-pressurise when every door is shut.</li>
   <li><strong>Design for the doors-open condition explicitly.</strong> The code case is typically a defined number of doors open simultaneously; the fan must hold the minimum pressure then, and not exceed the door-force limit when they close.</li>
-  <li><strong>Pressurise the lift shafts and lobbies as a system with the stairs</strong>, not independently — otherwise each one becomes the other's leakage path and the two systems chase each other.</li>
+  <li><strong>Pressurise the lift shafts and lobbies as a system with the stairs</strong>, not independently: otherwise each one becomes the other's leakage path and the two systems chase each other.</li>
 </ul>
 
 <h2 id="install">13 · Installation, commissioning &amp; execution tricks</h2>
 <p>Stack effect is unusually punishing on site, because it is the sum of a thousand small leaks and every one of them is somebody else's scope. These are the interventions that actually change the outcome:</p>
 <ul class="clean">
-  <li><strong>Make the slab-edge seal a witnessed hold point.</strong> The curtain-wall perimeter joint at every floor is simultaneously a fire-stop, a smoke seal and the tower's principal vertical air path. Inspect it floor by floor as the façade goes up — it is unreachable and unfixable afterwards.</li>
+  <li><strong>Make the slab-edge seal a witnessed hold point.</strong> The curtain-wall perimeter joint at every floor is simultaneously a fire-stop, a smoke seal and the tower's principal vertical air path. Inspect it floor by floor as the façade goes up. It is unreachable and unfixable afterwards.</li>
   <li><strong>Seal risers as you build them, not at the end.</strong> Every service penetration should be fire-stopped and air-sealed at the time it is made. Retrofitting seals into a congested riser at handover is how buildings end up with a permanent leak they can never find.</li>
   <li><strong>Blower-door or fan-pressurisation test the compartments, not just the building.</strong> A whole-building airtightness number tells you nothing about whether your compartmentation exists. Test the sky-lobby separation and the shaft breaks independently, early, on a mock-up or the first completed zone, while the detail can still be corrected.</li>
   <li><strong>Log differential pressure across the critical doors for a full year.</strong> Install permanent Δp sensors at the ground-floor stair door, the top-floor stair door, a mid-tower lift landing and the sky-lobby doors, and trend them against outdoor temperature. This is a trivial addition to the BMS and it converts every future complaint from an argument into a data point.</li>
   <li><strong>Commission at the design extreme, or state that you did not.</strong> Pressurization and door forces verified in April are not verified. Where the programme forbids seasonal testing, test at the achievable condition and extrapolate the door force with the stack equation, then re-test in the first design season and hold retention against it.</li>
   <li><strong>Close the shaft head before you close the lobby.</strong> During construction the tower is a bare chimney with an open top and an open bottom; the stack effect on a topped-out, unglazed tower is severe enough to be a site safety issue and it will slam doors and injure people. Sequence the temporary closures top-down and brief the site on it.</li>
-  <li><strong>Fix the door hardware last, and measure it.</strong> Closer force, hinge friction, seal drag and latch geometry are all adjustable at the very end and together are worth 20–30&nbsp;Pa of budget. Measure the actual opening force with a force gauge at the handle on every critical door — not once per type, but on every door on the critical levels — and record it.</li>
+  <li><strong>Fix the door hardware last, and measure it.</strong> Closer force, hinge friction, seal drag and latch geometry are all adjustable at the very end and together are worth 20–30&nbsp;Pa of budget. Measure the actual opening force with a force gauge at the handle on every critical door (not once per type, but on every door on the critical levels) and record it.</li>
   <li><strong>Write the reverse-stack case into the O&amp;M.</strong> Facilities teams inherit a building whose behaviour flips sign twice a year. Tell them which season does what, which doors are affected in each, and what the damper and fan set-points should be in each regime.</li>
 </ul>
 
 <h2 id="checklist">14 · The design &amp; installation checklist</h2>
 <ul class="clean">
-  <li><strong>Treat stack effect as a design load</strong> — compute the gradient at the true design extremes, in both directions, before the core layout is frozen.</li>
-  <li><strong>Break the column</strong> — lift zoning and sky lobbies, stair transfers at mechanical floors, service risers terminated at plant levels. This is the primary control; everything else is secondary.</li>
-  <li><strong>Make the compartments real</strong> — slab-edge seals, riser fire-stopping, gasketed chute doors, sealed sky-lobby separations. A compartment with a hole in it is not a compartment.</li>
-  <li><strong>Place the neutral plane on purpose</strong> — tighten the top (no permanent shaft vents, sealed roof plant), accept leakage low, and take the pressure off the entrance.</li>
-  <li><strong>Vestibule the extremes</strong> — revolving doors plus airlocks at grade, airlocked loading dock and basement, lift-lobby doors in the lower zones.</li>
-  <li><strong>Spend the door budget consciously</strong> — 133&nbsp;N total, of which the closer takes 40–90&nbsp;N; leave 25–50&nbsp;Pa for pressurization and a margin for wind before allocating any to stack.</li>
-  <li><strong>Design pressurization into the budget compartmentation created</strong> — multi-point injection, variable-speed on measured Δp, relief dampers, doors-open and doors-closed cases both proven.</li>
-  <li><strong>Specify airtightness numerically</strong> — a whole-building target with a test to prove it, distributed deliberately between top and bottom.</li>
-  <li><strong>Prove it on site</strong> — witnessed slab-edge seals, compartment pressure tests, force-gauge readings on every critical door, permanent Δp trending, and commissioning at (or extrapolated to) the design season.</li>
+  <li><strong>Treat stack effect as a design load</strong>: compute the gradient at the true design extremes, in both directions, before the core layout is frozen.</li>
+  <li><strong>Break the column</strong>: lift zoning and sky lobbies, stair transfers at mechanical floors, service risers terminated at plant levels. This is the primary control; everything else is secondary.</li>
+  <li><strong>Make the compartments real</strong>: slab-edge seals, riser fire-stopping, gasketed chute doors, sealed sky-lobby separations. A compartment with a hole in it is not a compartment.</li>
+  <li><strong>Place the neutral plane on purpose</strong>: tighten the top (no permanent shaft vents, sealed roof plant), accept leakage low, and take the pressure off the entrance.</li>
+  <li><strong>Vestibule the extremes</strong>: revolving doors plus airlocks at grade, airlocked loading dock and basement, lift-lobby doors in the lower zones.</li>
+  <li><strong>Spend the door budget consciously</strong>: 133&nbsp;N total, of which the closer takes 40–90&nbsp;N; leave 25–50&nbsp;Pa for pressurization and a margin for wind before allocating any to stack.</li>
+  <li><strong>Design pressurization into the budget compartmentation created</strong>: multi-point injection, variable-speed on measured Δp, relief dampers, doors-open and doors-closed cases both proven.</li>
+  <li><strong>Specify airtightness numerically</strong>: a whole-building target with a test to prove it, distributed deliberately between top and bottom.</li>
+  <li><strong>Prove it on site</strong>: witnessed slab-edge seals, compartment pressure tests, force-gauge readings on every critical door, permanent Δp trending, and commissioning at (or extrapolated to) the design season.</li>
 </ul>
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  You cannot change the pressure gradient — that belongs to the weather — so the whole of stack-effect design is the two things you <em>can</em> change: <strong>shorten the air column</strong> by terminating shafts at sky lobbies and mechanical floors and then actually sealing the compartments, and <strong>move the neutral plane</strong> by tightening the top of the building rather than the bottom. Do those and the door forces, the lift doors, the smoke migration, the odour transfer and several megawatts of infiltration all come down together. Skip them and no fan, damper or door closer will buy the building back.
+  You cannot change the pressure gradient (that belongs to the weather), so the whole of stack-effect design is the two things you <em>can</em> change: <strong>shorten the air column</strong> by terminating shafts at sky lobbies and mechanical floors and then actually sealing the compartments, and <strong>move the neutral plane</strong> by tightening the top of the building rather than the bottom. Do those and the door forces, the lift doors, the smoke migration, the odour transfer and several megawatts of infiltration all come down together. Skip them and no fan, damper or door closer will buy the building back.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ASHRAE <em>Handbook — Fundamentals</em>, Chapter 16, <em>Ventilation and Infiltration</em> (stack-effect pressure, neutral pressure level, envelope leakage and the power-law flow model).</li>
-  <li>Klote, J.H. &amp; Milke, J.A. <em>Principles of Smoke Management</em> / <em>Handbook of Smoke Control Engineering</em> (ASHRAE / SFPE / ICC) — stack effect, neutral plane, door-opening force and pressurization design.</li>
-  <li>NFPA 92 — <em>Standard for Smoke Control Systems</em> (minimum and maximum pressure differences, doors-open design case, stair and hoistway pressurization).</li>
-  <li>Tamura, G.T. &amp; Wilson, A.G. (National Research Council Canada). <em>Building pressures caused by chimney action and mechanical ventilation</em>, ASHRAE Transactions — the foundational measured work on stack effect in tall buildings.</li>
+  <li>ASHRAE <em>Handbook, Fundamentals</em>, Chapter 16, <em>Ventilation and Infiltration</em> (stack-effect pressure, neutral pressure level, envelope leakage and the power-law flow model).</li>
+  <li>Klote, J.H. &amp; Milke, J.A. <em>Principles of Smoke Management</em> / <em>Handbook of Smoke Control Engineering</em> (ASHRAE / SFPE / ICC): stack effect, neutral plane, door-opening force and pressurization design.</li>
+  <li>NFPA 92: <em>Standard for Smoke Control Systems</em> (minimum and maximum pressure differences, doors-open design case, stair and hoistway pressurization).</li>
+  <li>Tamura, G.T. &amp; Wilson, A.G. (National Research Council Canada). <em>Building pressures caused by chimney action and mechanical ventilation</em>, ASHRAE Transactions: the foundational measured work on stack effect in tall buildings.</li>
   <li>Jo, J.-H., Lim, J.-H., Song, S.-Y., Yeo, M.-S. &amp; Kim, K.-W. <em>Characteristics of pressure distribution and solution to the problems caused by stack effect in high-rise residential buildings</em>, Building and Environment, 42(1), 2007.</li>
-  <li>NFPA 101 <em>Life Safety Code</em> and the International Building Code (IBC) — maximum door-opening force for egress doors (133 N / 30 lbf); high-rise provisions. Saudi Building Code <em>SBC 201 / SBC 801</em> for regional application.</li>
-  <li>ANSI/ASHRAE/IES Standard 90.1 — <em>Energy Standard for Buildings Except Low-Rise Residential Buildings</em> (air-barrier requirements and the whole-building air-leakage limit of 2.0 L/s·m² at 75 Pa); ASTM E779 / E1827 test methods.</li>
-  <li>Lovatt, J.E. &amp; Wilson, A.G. <em>Stack effect in tall buildings</em>, ASHRAE Transactions; and EN 12101-6, <em>Smoke and heat control systems — Specification for pressure differential systems</em>.</li>
+  <li>NFPA 101 <em>Life Safety Code</em> and the International Building Code (IBC): maximum door-opening force for egress doors (133 N / 30 lbf); high-rise provisions. Saudi Building Code <em>SBC 201 / SBC 801</em> for regional application.</li>
+  <li>ANSI/ASHRAE/IES Standard 90.1: <em>Energy Standard for Buildings Except Low-Rise Residential Buildings</em> (air-barrier requirements and the whole-building air-leakage limit of 2.0 L/s·m² at 75 Pa); ASTM E779 / E1827 test methods.</li>
+  <li>Lovatt, J.E. &amp; Wilson, A.G. <em>Stack effect in tall buildings</em>, ASHRAE Transactions; and EN 12101-6, <em>Smoke and heat control systems: Specification for pressure differential systems</em>.</li>
 </ol>
 
 <div class="tags">#StackEffect #ChimneyEffect #TallBuildings #MegatallBuildings #SupertallBuildings #BuildingPhysics #NeutralPlane #DoorForce #NFPA92 #EN121016 #StairPressurization #SmokeControl #ShaftCompartmentation #SkyLobby #ElevatorDesign #Airtightness #AirBarrier #Infiltration #ASHRAE #HVAC #BuildingEnvelope #EnergyEfficiency #Commissioning #MEP #BuildingServices</div>
@@ -598,7 +599,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -679,7 +680,7 @@ let nplChart=new Chart(document.getElementById('nplChart'),{
     {type:'scatter', label:'Neutral plane', data:[], backgroundColor:'#b9770e', borderColor:'#fff', borderWidth:2, pointRadius:7, order:1}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
-    scales:{x:{type:'linear',title:{display:true,text:'Δp inside vs outside (Pa)   —   air pushed in ← · → air pushed out',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX},
+    scales:{x:{type:'linear',title:{display:true,text:'Δp inside vs outside (Pa):  air pushed in ← · → air pushed out',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX},
             y:{type:'linear',min:0,title:{display:true,text:'Height above grade (m)',font:{family:'IBM Plex Sans',size:12,weight:'600'}},...AX}},
     plugins:{legend:{labels:{font:{family:'IBM Plex Sans',size:11.5},usePointStyle:true,boxWidth:8}},
       tooltip:{callbacks:{label:c=>`${fmt0(c.parsed.x)} Pa at ${fmt0(c.parsed.y)} m`}},
@@ -767,7 +768,7 @@ function updateDoor(){
   document.getElementById('rF1').innerHTML=fmt0(F1)+' <small>N</small>';
   document.getElementById('rFN').innerHTML=fmt0(FN)+' <small>N</small>';
   document.getElementById('rBud').innerHTML=fmt0(budget)+' <small>Pa</small>';
-  document.getElementById('rNeed').textContent=isFinite(need)?need:'—';
+  document.getElementById('rNeed').textContent=isFinite(need)?need:'–';
   const v=document.getElementById('rVd');
   if(Fdc>=FLIM)        v.innerHTML='<span class="badge bad">closer alone over limit</span>';
   else if(FN<=FLIM*0.9)v.innerHTML='<span class="badge good">operable</span>';
@@ -824,7 +825,7 @@ function updateEnergy(){
   document.getElementById('eDp').innerHTML=fmt0(r.dp)+' <small>Pa</small>';
   document.getElementById('eFlow').innerHTML=fmt0(r.Q)+' <small>m³/s</small>';
   document.getElementById('eKw').innerHTML=(r.kW>=1000?fmt2(r.kW/1000)+' <small>MW</small>':fmt0(r.kW)+' <small>kW</small>');
-  document.getElementById('eSav').innerHTML=(N>1&&r1.kW>0.5)?('−'+fmt0(100*(1-r.kW/r1.kW))+' <small>%</small>'):'—';
+  document.getElementById('eSav').innerHTML=(N>1&&r1.kW>0.5)?('−'+fmt0(100*(1-r.kW/r1.kW))+' <small>%</small>'):'–';
   const v=document.getElementById('eVd');
   if(q75<=1.0)      v.innerHTML='<span class="badge good">tight</span>';
   else if(q75<=2.0) v.innerHTML='<span class="badge warn">at code limit</span>';

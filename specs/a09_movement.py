@@ -1,30 +1,30 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">A megatall tower is not a static object. It gets shorter as the concrete creeps and dries, by hundreds of millimetres over its life. Its core and its perimeter shorten by <em>different</em> amounts, so the two ends of every horizontal pipe drift apart. It leans and returns in the wind, twice a minute. And the services inside it expand and contract with their own contents — a plastic riser through 30&nbsp;K over 600&nbsp;m moves <strong>2.7 metres</strong>. None of this appears on a hydraulic calculation, none of it is in the pipe schedule, and all of it is capable of tearing a riser apart. Building movement is the quiet structural problem hidden inside every MEP package in a tall building.</p>
+<p class="lead">A megatall tower moves. It gets shorter as the concrete creeps and dries, by hundreds of millimetres over its life. Its core and its perimeter shorten by <em>different</em> amounts, so the two ends of every horizontal pipe drift apart. It leans and returns in the wind, twice a minute. And the services inside it expand and contract with their own contents: a plastic riser through 30&nbsp;K over 600&nbsp;m moves <strong>2.7 metres</strong>. None of this appears on a hydraulic calculation, none of it is in the pipe schedule, and all of it is capable of tearing a riser apart. Building movement is the quiet structural problem hidden inside every MEP package in a tall building.</p>
 
 <h2 id="four">1 · Four movements, four different timescales</h2>
 <ul class="clean">
-  <li><strong>Thermal, in the service itself</strong> — minutes to hours. A chilled-water riser fills at ambient and runs at 6&nbsp;°C; a hot water riser runs at 60&nbsp;°C. The pipe changes length every time the system starts.</li>
-  <li><strong>Elastic shortening of the structure</strong> — immediate, as each floor's load is applied. Largely complete before the services are installed, but not entirely.</li>
-  <li><strong>Creep and shrinkage</strong> — months to decades. Concrete under sustained load keeps deforming, and it dries and shrinks. Together these dominate, and roughly <strong>a third to a half of the total happens after the pipework is fixed</strong>.</li>
-  <li><strong>Wind sway and differential temperature</strong> — seconds to hours, and reversible. The tower leans, and the sunlit face grows relative to the shaded one, twisting the frame slightly.</li>
+  <li><strong>Thermal, in the service itself</strong>: minutes to hours. A chilled-water riser fills at ambient and runs at 6&nbsp;°C; a hot water riser runs at 60&nbsp;°C. The pipe changes length every time the system starts.</li>
+  <li><strong>Elastic shortening of the structure</strong>: immediate, as each floor's load is applied. Largely complete before the services are installed, but not entirely.</li>
+  <li><strong>Creep and shrinkage</strong>: months to decades. Concrete under sustained load keeps deforming, and it dries and shrinks. Together these dominate, and roughly <strong>a third to a half of the total happens after the pipework is fixed</strong>.</li>
+  <li><strong>Wind sway and differential temperature</strong>: seconds to hours, and reversible. The tower leans, and the sunlit face grows relative to the shaded one, twisting the frame slightly.</li>
 </ul>
 <p>The first is the pipe moving inside a stationary building. The rest are the <em>building</em> moving around a pipe that would rather stay where it is. Both have to be designed for, and they are additive.</p>
 
 <h2 id="int-thermal">2 · Interactive: thermal movement in the riser</h2>
-<p>The classic \( \Delta L = \alpha L \Delta T\) — but in a tower \(L\) is enormous, and the coefficient depends brutally on the material you chose for reasons that had nothing to do with movement.</p>
+<p>The classic \( \Delta L = \alpha L \Delta T\), but in a tower \(L\) is enormous, and the coefficient depends brutally on the material you chose for reasons that had nothing to do with movement.</p>
 
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Thermal movement of a vertical riser</div>
-    <div class="fsub">ΔL = α·L·ΔT. ΔT is measured from the installation temperature to the operating extreme — not from the design ambient. Plastics move an order of magnitude more than steel.</div>
+    <div class="fsub">ΔL = α·L·ΔT. ΔT is measured from the installation temperature to the operating extreme, not from the design ambient. Plastics move an order of magnitude more than steel.</div>
   </div>
   <div class="chart-box"><canvas id="thermChart"></canvas></div>
   <div class="controls">
     <div class="ctrl">
       <label>Riser length <span id="vL">300 m</span></label>
       <input type="range" id="sL" min="20" max="800" value="300" step="10">
-      <div class="hint">Length between anchors, not the building height — anchoring is the design variable.</div>
+      <div class="hint">Length between anchors, not the building height. Anchoring is the design variable.</div>
     </div>
     <div class="ctrl">
       <label>Temperature swing <span id="vT">30 K</span></label>
@@ -50,16 +50,16 @@ BODY = r"""
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 300&nbsp;m steel riser through 30&nbsp;K moves <strong>108&nbsp;mm</strong> overall — manageable if you break it into anchor bays so each one only has to absorb about 22&nbsp;mm. Now drag the coefficient to 150 for PPR or PE-X: the same riser moves <strong>1.35&nbsp;metres</strong>, and over 600&nbsp;m it is 2.7&nbsp;m. Plastic pipe is chosen for corrosion resistance, weight and cost, and in a tall riser it brings a movement problem an order of magnitude larger than the steel it replaced. That is not an argument against it — it is an argument for designing the anchors, guides and compensators <em>as part of choosing the material</em>, rather than discovering the consequence on site.</p>
+<p class="fig-note">A 300&nbsp;m steel riser through 30&nbsp;K moves <strong>108&nbsp;mm</strong> overall: manageable if you break it into anchor bays so each one only has to absorb about 22&nbsp;mm. Now drag the coefficient to 150 for PPR or PE-X: the same riser moves <strong>1.35&nbsp;metres</strong>, and over 600&nbsp;m it is 2.7&nbsp;m. Plastic pipe is chosen for corrosion resistance, weight and cost, and in a tall riser it brings a movement problem an order of magnitude larger than the steel it replaced. That is an argument for designing the anchors, guides and compensators <em>as part of choosing the material</em>, rather than discovering the consequence on site.</p>
 
-<h2 id="shortening">3 · Column shortening — the movement nobody tells you about</h2>
+<h2 id="shortening">3 · Column shortening: the movement nobody tells you about</h2>
 <p>Concrete under sustained compression keeps deforming for years, and it shrinks as it dries. The total vertical strain is the sum of three parts:</p>
 <div class="eq">\[ \varepsilon_{total} \;=\; \underbrace{\frac{\sigma}{E}}_{\text{elastic}} \;+\; \underbrace{\phi\,\frac{\sigma}{E}}_{\text{creep}} \;+\; \underbrace{\varepsilon_{sh}}_{\text{shrinkage}} \]</div>
-<p>with \(\phi\) the creep coefficient, typically 1.5–2.5. For a column at 10&nbsp;MPa in 35&nbsp;GPa concrete with 300&nbsp;µε of shrinkage, the total is around 1,150&nbsp;µε — and over 600&nbsp;m of building that is roughly <strong>690&nbsp;mm of vertical shortening</strong>. Structural engineers know this and compensate for most of it during construction by casting floors slightly high. What matters to the MEP engineer is the <strong>residual</strong>: the portion that occurs <em>after</em> the risers are installed and anchored, which is commonly a third to a half of the total — <strong>200 to 350&nbsp;mm on a 600&nbsp;m tower.</strong></p>
+<p>with \(\phi\) the creep coefficient, typically 1.5–2.5. For a column at 10&nbsp;MPa in 35&nbsp;GPa concrete with 300&nbsp;µε of shrinkage, the total is around 1,150&nbsp;µε, and over 600&nbsp;m of building that is roughly <strong>690&nbsp;mm of vertical shortening</strong>. Structural engineers know this and compensate for most of it during construction by casting floors slightly high. What matters to the MEP engineer is the <strong>residual</strong>: the portion that occurs <em>after</em> the risers are installed and anchored, which is commonly a third to a half of the total: <strong>200 to 350&nbsp;mm on a 600&nbsp;m tower.</strong></p>
 
 <div class="callout warn">
   <span class="lbl">The one that actually breaks things: differential shortening</span>
-  The core and the perimeter columns carry different stresses, have different volume-to-surface ratios and dry at different rates, so they do <strong>not shorten by the same amount</strong>. A differential of 50–100&nbsp;mm between core and perimeter over the height of a megatall tower is normal. Every horizontal pipe, duct and cable tray that spans from the core to the façade is therefore being slowly sheared. A rigidly connected branch at the perimeter will either pull its joint apart or tear its support out of the slab, and it will do it silently over five years — long after the defects period, and it will be diagnosed as poor workmanship.
+  The core and the perimeter columns carry different stresses, have different volume-to-surface ratios and dry at different rates, so they do <strong>not shorten by the same amount</strong>. A differential of 50–100&nbsp;mm between core and perimeter over the height of a megatall tower is normal. Every horizontal pipe, duct and cable tray that spans from the core to the façade is therefore being slowly sheared. A rigidly connected branch at the perimeter will either pull its joint apart or tear its support out of the slab, and it will do it silently over five years, long after the defects period, and it will be diagnosed as poor workmanship.
 </div>
 
 <div class="fig">
@@ -98,20 +98,20 @@ BODY = r"""
     <div class="cell"><div class="k">vs thermal</div><div class="v" id="rVt">1.3<small>×</small></div></div>
   </div>
 </div>
-<p class="fig-note">On a 600&nbsp;m tower the structure shortens by about <strong>694&nbsp;mm</strong> in total, of which roughly <strong>278&nbsp;mm</strong> arrives after the services are fixed — about <strong>1.3 times</strong> the thermal movement of a 600&nbsp;m steel riser through 30&nbsp;K (216&nbsp;mm), and in the same direction for a chilled-water system. The two are additive and they must be summed before the compensators are sized. Note the readout per zone: even broken into 40&nbsp;m bays the structure still delivers 18&nbsp;mm of shortening into each one, on top of the thermal swing, which is why "we have expansion joints" is not the same as "we have allowed for movement".</p>
+<p class="fig-note">On a 600&nbsp;m tower the structure shortens by about <strong>694&nbsp;mm</strong> in total, of which roughly <strong>278&nbsp;mm</strong> arrives after the services are fixed, about <strong>1.3 times</strong> the thermal movement of a 600&nbsp;m steel riser through 30&nbsp;K (216&nbsp;mm), and in the same direction for a chilled-water system. The two are additive and they must be summed before the compensators are sized. Note the readout per zone: even broken into 40&nbsp;m bays the structure still delivers 18&nbsp;mm of shortening into each one, on top of the thermal swing, which is why "we have expansion joints" is not the same as "we have allowed for movement".</p>
 
 <h2 id="anchors">4 · Anchors, guides and compensators</h2>
 <p>The design method is always the same three moves, in order:</p>
 <ul class="clean">
-  <li><strong>Decide where the pipe is <em>not</em> allowed to move</strong> — the anchors. An anchor is a structural connection carrying real force, and it must be designed and issued to the structural engineer with a load, not drawn as a bracket.</li>
-  <li><strong>Force the movement into one direction</strong> — the guides. Between anchors, guides let the pipe slide axially and prevent it buckling sideways. Guide spacing comes from the buckling calculation, and the first guides either side of a compensator are much closer than the rest.</li>
-  <li><strong>Give the movement somewhere to go</strong> — expansion loops, offsets, or bellows/axial compensators.</li>
+  <li><strong>Decide where the pipe is <em>not</em> allowed to move</strong>: the anchors. An anchor is a structural connection carrying real force, and it must be designed and issued to the structural engineer with a load, not drawn as a bracket.</li>
+  <li><strong>Force the movement into one direction</strong>: the guides. Between anchors, guides let the pipe slide axially and prevent it buckling sideways. Guide spacing comes from the buckling calculation, and the first guides either side of a compensator are much closer than the rest.</li>
+  <li><strong>Give the movement somewhere to go</strong>: expansion loops, offsets, or bellows/axial compensators.</li>
 </ul>
-<p>Loops are preferred where space allows because they cannot fail suddenly, need no maintenance and impose only guiding forces. A guided-cantilever loop leg is roughly \( L=\sqrt{3ED\Delta/S_a}\), which for a 219&nbsp;mm riser absorbing 100&nbsp;mm needs an <strong>11.5&nbsp;m</strong> leg — usually impossible in a shaft, which is why tall risers use bellows.</p>
+<p>Loops are preferred where space allows because they cannot fail suddenly, need no maintenance and impose only guiding forces. A guided-cantilever loop leg is roughly \( L=\sqrt{3ED\Delta/S_a}\), which for a 219&nbsp;mm riser absorbing 100&nbsp;mm needs an <strong>11.5&nbsp;m</strong> leg, usually impossible in a shaft, which is why tall risers use bellows.</p>
 
 <div class="callout key">
   <span class="lbl">The number that surprises people: pressure thrust</span>
-  A bellows does not resist pressure the way a pipe does; the pressure acting on its effective area pushes the anchors apart. For a 219&nbsp;mm bellows at 16&nbsp;bar that is about <strong>95&nbsp;kN of pressure thrust</strong>, plus the spring force of compressing it — around <strong>110&nbsp;kN total, eleven tonnes</strong>, applied to a bracket bolted to a shaft wall. Anchors either side of an unrestrained bellows are among the most heavily loaded fixings in the entire MEP installation, and they are routinely detailed as though they carried only pipe weight. Use tied or pressure-balanced bellows where the anchor cannot take the thrust, and always issue the anchor loads to the structural engineer.
+  A bellows does not resist pressure the way a pipe does; the pressure acting on its effective area pushes the anchors apart. For a 219&nbsp;mm bellows at 16&nbsp;bar that is about <strong>95&nbsp;kN of pressure thrust</strong>, plus the spring force of compressing it, around <strong>110&nbsp;kN total, eleven tonnes</strong>, applied to a bracket bolted to a shaft wall. Anchors either side of an unrestrained bellows are among the most heavily loaded fixings in the entire MEP installation, and they are routinely detailed as though they carried only pipe weight. Use tied or pressure-balanced bellows where the anchor cannot take the thrust, and always issue the anchor loads to the structural engineer.
 </div>
 
 <div class="fig">
@@ -150,15 +150,15 @@ BODY = r"""
     <div class="cell"><div class="k">In tonnes</div><div class="v" id="rTn">11.2 <small>t</small></div></div>
   </div>
 </div>
-<p class="fig-note">A DN200 riser absorbing 100&nbsp;mm needs an <strong>11.5&nbsp;m loop leg</strong> — which does not exist in a services shaft — so it gets a bellows, and the bellows loads its anchors with <strong>110&nbsp;kN</strong>. That is over eleven tonnes on a fixing detail that is often drawn as a channel bracket. Two design responses: use <strong>tied or pressure-balanced bellows</strong> so the thrust is carried within the assembly rather than by the building, or place the anchor at a structural element that can genuinely take it and get the load formally accepted. Either way, the number has to be calculated and issued — this is the single most under-transmitted load in MEP design.</p>
+<p class="fig-note">A DN200 riser absorbing 100&nbsp;mm needs an <strong>11.5&nbsp;m loop leg</strong>, which does not exist in a services shaft, so it gets a bellows, and the bellows loads its anchors with <strong>110&nbsp;kN</strong>. That is over eleven tonnes on a fixing detail that is often drawn as a channel bracket. Two design responses: use <strong>tied or pressure-balanced bellows</strong> so the thrust is carried within the assembly rather than by the building, or place the anchor at a structural element that can genuinely take it and get the load formally accepted. Either way, the number has to be calculated and issued. This is the single most under-transmitted load in MEP design.</p>
 
 <h2 id="detailing">5 · Detailing that accommodates movement</h2>
 <ul class="clean">
   <li><strong>Branches from a moving riser must be flexible.</strong> Take branches off with a swing arm or an offset long enough to flex, never with a short rigid tee straight into a fixed branch. A 20&nbsp;mm riser movement against a rigid branch is a fatigue crack at the weld.</li>
   <li><strong>Slab penetrations need clearance and a movement-tolerant seal.</strong> A pipe grouted solid into a slab is an unintended anchor, and it will win against the bracket you designed. Sleeve every penetration, and choose a fire-stop that is rated <em>with</em> movement.</li>
   <li><strong>Horizontal runs from core to perimeter need articulation.</strong> This is the differential-shortening path: provide flexibility, expansion joints, or slotted supports at the perimeter end, and never fix both ends rigidly.</li>
-  <li><strong>Coordinate with building movement joints.</strong> Where the structure has a movement joint, every service crossing it gets a designed flexible crossing — this is elementary and it is still missed on podium-to-tower interfaces, where the movement is largest.</li>
-  <li><strong>Consider seismic and wind restraint together with expansion.</strong> These pull in opposite directions: restraint wants stiffness, expansion wants freedom. The answer is directional — restrain laterally, free axially — and a snubber that is set hard against the pipe defeats both.</li>
+  <li><strong>Coordinate with building movement joints.</strong> Where the structure has a movement joint, every service crossing it gets a designed flexible crossing. This is elementary and it is still missed on podium-to-tower interfaces, where the movement is largest.</li>
+  <li><strong>Consider seismic and wind restraint together with expansion.</strong> These pull in opposite directions: restraint wants stiffness, expansion wants freedom. The answer is directional (restrain laterally, free axially) and a snubber that is set hard against the pipe defeats both.</li>
   <li><strong>Insulation and cladding must move too.</strong> Rigid insulation carried through a guide, or metal cladding fixed across an expansion device, transfers force and tears. Detail the insulation at every compensator explicitly.</li>
 </ul>
 
@@ -167,18 +167,18 @@ BODY = r"""
   <li><strong>Record the installation temperature</strong> and cold-pull or pre-set every compensator to suit it. A bellows installed at neutral on a 45&nbsp;°C day and then run at 6&nbsp;°C spends its whole life at one end of its travel, halving its usable range and its fatigue life.</li>
   <li><strong>Install anchors before the pipe is filled</strong> and verify each against the design load; an anchor added later, after the riser has already found its position, does not do what the calculation assumed.</li>
   <li><strong>Check guides are actually free.</strong> Guides seized by over-tightening, by insulation packed into them or by debris are the commonest cause of a riser buckling. Inspect and record.</li>
-  <li><strong>Leave the travel indicators visible.</strong> Bellows and spring supports come with position indicators — do not bury them behind cladding, and photograph their as-installed positions.</li>
+  <li><strong>Leave the travel indicators visible.</strong> Bellows and spring supports come with position indicators: do not bury them behind cladding, and photograph their as-installed positions.</li>
   <li><strong>Survey the riser at intervals.</strong> Take datum readings at a few levels at handover and re-survey after twelve and thirty-six months; structural shortening is slow and a trend caught early is a cheap adjustment.</li>
-  <li><strong>Do not weld a temporary restraint and leave it.</strong> Temporary construction restraints on risers must be removed and their removal signed off — a forgotten one is an unintended anchor at full stiffness.</li>
+  <li><strong>Do not weld a temporary restraint and leave it.</strong> Temporary construction restraints on risers must be removed and their removal signed off: a forgotten one is an unintended anchor at full stiffness.</li>
   <li><strong>Give the facilities team the movement drawing.</strong> Anchor and guide positions, expected travel and inspection intervals belong in the O&amp;M; without it, a future alteration will cut the riser at an anchor.</li>
 </ul>
 
 <h2 id="checklist">7 · The design &amp; installation checklist</h2>
 <ul class="clean">
-  <li><strong>Sum all four movements</strong> — thermal, elastic, creep-and-shrinkage residual, and sway — before sizing anything.</li>
+  <li><strong>Sum all four movements</strong> (thermal, elastic, creep-and-shrinkage residual, and sway) before sizing anything.</li>
   <li><strong>Get the post-installation shortening figure from the structural engineer</strong>, including the core-to-perimeter differential. Ask for it explicitly; it will not be offered.</li>
   <li><strong>Choose pipe material with its expansion coefficient in view</strong>, especially for plastics in tall risers.</li>
-  <li><strong>Set anchors first, then guides, then compensators</strong> — in that order.</li>
+  <li><strong>Set anchors first, then guides, then compensators</strong>, in that order.</li>
   <li><strong>Calculate and issue every anchor load</strong>, including bellows pressure thrust, to the structural engineer.</li>
   <li><strong>Use tied or pressure-balanced bellows</strong> where thrust cannot be carried by the structure.</li>
   <li><strong>Articulate every core-to-perimeter run</strong> and every movement-joint crossing.</li>
@@ -189,19 +189,19 @@ BODY = r"""
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  A megatall tower shortens by roughly <strong>700&nbsp;mm</strong> over its life and about <strong>280&nbsp;mm of that lands on services already installed</strong> — comparable to the thermal movement of the same steel riser, and additive to it. Meanwhile the core and perimeter shorten by different amounts, quietly shearing every horizontal run between them. Ask the structural engineer for the post-installation and differential figures, choose pipe materials knowing that plastics move ten times as far as steel, set anchors before compensators, and above all <strong>calculate the bellows pressure thrust and issue it</strong> — because a hundred kilonewtons on a bracket detailed for pipe weight is how risers come down.
+  A megatall tower shortens by roughly <strong>700&nbsp;mm</strong> over its life and about <strong>280&nbsp;mm of that lands on services already installed</strong>: comparable to the thermal movement of the same steel riser, and additive to it. Meanwhile the core and perimeter shorten by different amounts, quietly shearing every horizontal run between them. Ask the structural engineer for the post-installation and differential figures, choose pipe materials knowing that plastics move ten times as far as steel, set anchors before compensators, and above all <strong>calculate the bellows pressure thrust and issue it</strong>, because a hundred kilonewtons on a bracket detailed for pipe weight is how risers come down.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ASME B31.1 <em>Power Piping</em> and B31.3 <em>Process Piping</em> — flexibility analysis, expansion stress ranges, anchor and guide design, and the guided-cantilever method.</li>
-  <li>EJMA <em>Standards of the Expansion Joint Manufacturers Association</em> — bellows selection, pressure thrust, spring rates, tied and pressure-balanced arrangements.</li>
-  <li>fib Model Code / EN 1992-1-1 (Eurocode 2) and ACI 209 — creep and shrinkage prediction models for concrete, and long-term deformation.</li>
+  <li>ASME B31.1 <em>Power Piping</em> and B31.3 <em>Process Piping</em>: flexibility analysis, expansion stress ranges, anchor and guide design, and the guided-cantilever method.</li>
+  <li>EJMA <em>Standards of the Expansion Joint Manufacturers Association</em>: bellows selection, pressure thrust, spring rates, tied and pressure-balanced arrangements.</li>
+  <li>fib Model Code / EN 1992-1-1 (Eurocode 2) and ACI 209: creep and shrinkage prediction models for concrete, and long-term deformation.</li>
   <li>CTBUH and Institution of Structural Engineers guidance on <em>column shortening in tall buildings</em>, differential shortening and construction compensation.</li>
-  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed. — riser support, movement accommodation and structural interface.</li>
+  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed.: riser support, movement accommodation and structural interface.</li>
   <li>CIBSE <em>Guide B</em> and BSRIA guidance on pipework support, anchors, guides and thermal movement in building services.</li>
-  <li>SMACNA <em>Seismic Restraint Manual</em> — restraint arrangements compatible with thermal movement and directional freedom.</li>
-  <li>Manufacturer technical data for PP-R, PE-X and PVC-U systems — expansion coefficients, support spacing and compensation detailing for plastics.</li>
+  <li>SMACNA <em>Seismic Restraint Manual</em>: restraint arrangements compatible with thermal movement and directional freedom.</li>
+  <li>Manufacturer technical data for PP-R, PE-X and PVC-U systems: expansion coefficients, support spacing and compensation detailing for plastics.</li>
 </ol>
 
 <div class="tags">#BuildingMovement #ThermalExpansion #ColumnShortening #Creep #Shrinkage #DifferentialShortening #TallBuildings #MegatallBuildings #Risers #PipeSupport #Anchors #Guides #ExpansionLoop #Bellows #ExpansionJoint #PressureThrust #EJMA #ASMEB311 #FlexibilityAnalysis #MovementJoint #SeismicRestraint #FireStopping #PPR #PEX #Commissioning #StructuralInterface #MEP #BuildingServices</div>
@@ -342,16 +342,16 @@ SPEC = dict(
     reg_tag='Tall-Building Systems · Movement · Riser Support',
     breadcrumb='Tall-Building Systems',
     tag_line='Tall-Building Systems &middot; Building Movement &middot; Riser Support &middot; Anchors',
-    desc='Building movement and MEP in megatall buildings: thermal expansion of risers and why plastics move ten times as far as steel, concrete creep and shrinkage shortening a tower by hundreds of millimetres with a third to a half arriving after the services are fixed, differential core-to-perimeter shortening that shears every horizontal run, expansion loop sizing, and the bellows pressure thrust that loads an anchor with eighty kilonewtons — with three interactive charts and installation tricks.',
+    desc='Building movement and MEP in megatall buildings: thermal expansion of risers and why plastics move ten times as far as steel, concrete creep and shrinkage shortening a tower by hundreds of millimetres with a third to a half arriving after the services are fixed, differential core-to-perimeter shortening that shears every horizontal run, expansion loop sizing, and the bellows pressure thrust that loads an anchor with eighty kilonewtons, with three interactive charts and installation tricks.',
     og_desc='A megatall tower shortens by about 700 mm over its life and 280 mm of that lands on services already installed. Plus the bellows pressure thrust that puts eight tonnes on a bracket detailed for pipe weight.',
     ld_desc='A design-perspective guide to building movement and MEP in megatall buildings: thermal expansion by material, elastic, creep and shrinkage shortening and the post-installation residual, differential core-to-perimeter shortening, anchors, guides and compensators, expansion loop sizing and bellows pressure thrust.',
     img_alt='Technical cutaway of a megatall tower services shaft showing a tall riser with fixed anchors, sliding guides and an axial bellows compensator between them, with the surrounding concrete core indicated as shortening over time',
     en_tag='Tall-Building Systems &middot; Building Movement &middot; Riser Support &middot; Anchors',
     en_title='Building Movement &amp; MEP in Megatall Buildings: Thermal Expansion, Column Shortening &amp; Anchor Loads',
-    en_excerpt='A megatall tower is not a static object. It shortens by roughly <strong>700&nbsp;mm</strong> over its life as the concrete creeps and dries, and about <strong>280&nbsp;mm of that arrives after the risers are anchored</strong> &mdash; two and a half times their thermal movement, and additive to it. Core and perimeter shorten by different amounts, quietly shearing every horizontal run between them. Plus why plastic risers move ten times as far as steel, how to size an expansion loop, and the bellows pressure thrust that puts <strong>eight tonnes</strong> on a bracket detailed for pipe weight &mdash; with three interactive charts.',
+    en_excerpt='A megatall tower shortens by roughly <strong>700&nbsp;mm</strong> over its life as the concrete creeps and dries, and about <strong>280&nbsp;mm of that arrives after the risers are anchored</strong>, two and a half times their thermal movement, and additive to it. Core and perimeter shorten by different amounts, quietly shearing every horizontal run between them. Plus why plastic risers move ten times as far as steel, how to size an expansion loop, and the bellows pressure thrust that puts <strong>eight tonnes</strong> on a bracket detailed for pipe weight, with three interactive charts.',
     en_search='building movement thermal expansion column shortening creep shrinkage differential shortening tall buildings megatall supertall MEP risers pipe support anchors guides expansion loop guided cantilever bellows axial compensator tied bellows pressure balanced pressure thrust spring rate anchor load structural interface coefficient of expansion carbon steel stainless copper PPR PEX PVC plastics riser branch swing arm slab penetration sleeve fire stopping movement rated movement joint podium tower interface seismic restraint snubber cold pull pre-set installation temperature travel indicator survey datum EJMA ASME B31.1 Eurocode 2 ACI 209 CTBUH SMACNA commissioning building services',
     ar_title='حركة المبنى وأنظمة الميكانيكا في المباني فائقة الارتفاع: التمدد الحراري وتقاصر الأعمدة وأحمال المثبتات',
-    ar_excerpt='المبنى فائق الارتفاع ليس جسمًا ساكنًا. فهو يقصر بنحو <strong>٧٠٠ ملم</strong> على مدى عمره مع زحف الخرسانة وجفافها، ويصل نحو <strong>٢٨٠ ملم من ذلك بعد تثبيت المواسير الصاعدة</strong> — أي ضعفَي ونصف حركتها الحرارية، ويُجمع معها. كما تتقاصر النواة والمحيط بمقادير مختلفة، فتقص بهدوء كل خط أفقي بينهما. ولماذا تتحرك المواسير البلاستيكية عشرة أضعاف الفولاذ، وكيف تُحسب حلقة التمدد، ودفع الضغط في المفصل المموج الذي يضع <strong>ثمانية أطنان</strong> على كتيفة صُمّمت لوزن الماسورة — مع ثلاثة رسوم تفاعلية.',
+    ar_excerpt='المبنى فائق الارتفاع ليس جسمًا ساكنًا. فهو يقصر بنحو <strong>٧٠٠ ملم</strong> على مدى عمره مع زحف الخرسانة وجفافها، ويصل نحو <strong>٢٨٠ ملم من ذلك بعد تثبيت المواسير الصاعدة</strong>، أي ضعفَي ونصف حركتها الحرارية، ويُجمع معها. كما تتقاصر النواة والمحيط بمقادير مختلفة، فتقص بهدوء كل خط أفقي بينهما. ولماذا تتحرك المواسير البلاستيكية عشرة أضعاف الفولاذ، وكيف تُحسب حلقة التمدد، ودفع الضغط في المفصل المموج الذي يضع <strong>ثمانية أطنان</strong> على كتيفة صُمّمت لوزن الماسورة، مع ثلاثة رسوم تفاعلية.',
     ar_search='building movement thermal expansion column shortening creep shrinkage differential shortening risers anchors guides expansion loop bellows pressure thrust EJMA ASME B31.1 حركة المبنى التمدد الحراري تقاصر الأعمدة الزحف الانكماش التقاصر التفاضلي المباني الشاهقة المباني فائقة الارتفاع المواسير الصاعدة دعامات المواسير المثبتات الثابتة الموجهات حلقة التمدد الكابولي الموجه المفصل المموج المعوض المحوري المفصل المربوط المتوازن ضغطيًا دفع الضغط معدل الزنبرك حمل المثبت الواجهة الإنشائية معامل التمدد الفولاذ الكربوني المقاوم للصدأ النحاس البولي بروبيلين البلاستيك التفريعات ذراع التأرجح اختراق البلاطة الجلبة مانع الحريق المفصل الحركي واجهة القاعدة والبرج التقييد الزلزالي الشد البارد درجة حرارة التركيب مؤشر الحركة المسح المرجعي التشغيل والاختبار MEP خدمات المباني',
     body=BODY, charts=CHARTS,
 )

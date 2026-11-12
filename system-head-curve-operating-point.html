@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The System Head Curve &amp; the Operating Point — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>The System Head Curve &amp; the Operating Point | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -100,16 +100,16 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="A design-grade treatment of the system head curve, pump curve matching, the operating point, BEP/POR/AOR limits, and the oversizing trap — with interactive curves and a worked transmission pump station example.">
+  <meta name="description" content="A design-grade treatment of the system head curve, pump curve matching, the operating point, BEP/POR/AOR limits, and the oversizing trap, with interactive curves and a worked transmission pump station example.">
   <meta property="og:title" content="The System Head Curve & the Operating Point | Mohamed Abokhatwa">
-  <meta property="og:description" content="The system head curve, pump curve matching, the operating point, BEP/POR/AOR limits, and the oversizing trap — with interactive curves and a worked pump-station example.">
+  <meta property="og:description" content="The system head curve, pump curve matching, the operating point, BEP/POR/AOR limits, and the oversizing trap, with interactive curves and a worked pump-station example.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/system-head-curve-operating-point.html">
   <meta property="og:image" content="https://abokhatwa.com/og-system-head-curve-operating-point.jpg">
   <meta property="og:image:alt" content="The System Head Curve and the Operating Point">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The System Head Curve & the Operating Point | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="The system head curve, pump curve matching, the operating point, and the oversizing trap — with interactive curves and a worked example.">
+  <meta name="twitter:description" content="The system head curve, pump curve matching, the operating point, and the oversizing trap, with interactive curves and a worked example.">
   <link rel="canonical" href="https://abokhatwa.com/system-head-curve-operating-point.html">
 
   <script type="application/ld+json">
@@ -117,7 +117,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "The System Head Curve & the Operating Point",
-  "description": "A design-grade treatment of the system head curve, pump curve matching, the operating point, BEP/POR/AOR limits, and the oversizing trap — with interactive curves and a worked transmission pump station example.",
+  "description": "A design-grade treatment of the system head curve, pump curve matching, the operating point, BEP/POR/AOR limits, and the oversizing trap, with interactive curves and a worked transmission pump station example.",
   "image": "https://abokhatwa.com/og-system-head-curve-operating-point.jpg",
   "datePublished": "2026-06-03",
   "dateModified": "2026-06-03",
@@ -155,6 +155,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -197,22 +198,22 @@
 </div>
 
 <div class="article-body">
-<p class="lead">Why the pump you select never operates where the catalogue says it will — and how to make the system, not the salesman, decide the duty point.</p>
+<p class="lead">Why the pump you select never operates where the catalogue says it will, and how to make the system, not the salesman, decide the duty point.</p>
 
 <h2 id="anatomy">1 · Anatomy of the system head curve</h2>
-<p>A centrifugal pump does not have a flow rate. It has a <em>capability</em> — its head&ndash;capacity (H&ndash;Q) curve — and the flow it actually delivers is dictated entirely by the resistance of the system connected to it. That resistance, plotted against flow, is the <strong>system head curve</strong>, and the single point where it crosses the pump curve is the only flow and head the machine can physically produce.</p>
+<p>A centrifugal pump has a <em>capability</em> rather than a flow rate: its head&ndash;capacity (H&ndash;Q) curve. The flow it actually delivers is dictated entirely by the resistance of the system connected to it. That resistance, plotted against flow, is the <strong>system head curve</strong>, and the single point where it crosses the pump curve is the only flow and head the machine can physically produce.</p>
 
 <p>Every system head curve is the sum of two physically distinct components:</p>
 
-<p><strong>1. Static head</strong> — the elevation and pressure the pump must overcome <em>regardless of flow</em>. It is the height water must be lifted from the supply liquid level to the discharge level, plus any difference in surface pressure. On a curve it is a horizontal line: it exists even at zero flow.</p>
+<p><strong>1. Static head</strong>: the elevation and pressure the pump must overcome <em>regardless of flow</em>. It is the height water must be lifted from the supply liquid level to the discharge level, plus any difference in surface pressure. On a curve it is a horizontal line: it exists even at zero flow.</p>
 
 <div class="eq">\[ H_{static} = (z_2 - z_1) + \frac{p_2 - p_1}{\rho g} \]</div>
 
-<p><strong>2. Dynamic (friction) head</strong> — the energy dissipated moving the liquid through pipe, fittings, valves and equipment. It is zero at zero flow and rises steeply — very nearly with the <em>square</em> of flow. This term bends the curve upward into the familiar parabola.</p>
+<p><strong>2. Dynamic (friction) head</strong>: the energy dissipated moving the liquid through pipe, fittings, valves and equipment. It is zero at zero flow and rises steeply: very nearly with the <em>square</em> of flow. This term bends the curve upward into the familiar parabola.</p>
 
 <div class="callout key">
   <span class="lbl">The governing identity</span>
-  The total head a pump must develop at any flow \(Q\) is \( \;H_{sys} = H_{static} + H_{friction}(Q)\). Get the split between these two wrong and every downstream decision — pump size, motor rating, VFD economics, surge protection — inherits the error.
+  The total head a pump must develop at any flow \(Q\) is \( \;H_{sys} = H_{static} + H_{friction}(Q)\). Get the split between these two wrong and every downstream decision (pump size, motor rating, VFD economics, surge protection) inherits the error.
 </div>
 
 <h2 id="building">2 · Building the system curve</h2>
@@ -229,7 +230,7 @@
 <div class="eq">\[ h_f = \frac{10.67\,L\,Q^{1.852}}{C^{1.852}\,D^{4.87}} \quad\text{(SI: }Q\text{ in m}^3/\text{s, }L,D\text{ in m)} \]</div>
 <div class="callout">
   <span class="lbl">A detail that catches people out</span>
-  Hazen&ndash;Williams scales with \(Q^{1.852}\), not \(Q^2\). The resulting system curve is fractionally <em>flatter</em> than a pure square law. For selection it rarely matters; for transient analysis and high-velocity force mains the difference is worth respecting — and it is one reason Darcy&ndash;Weisbach is preferred when surge and temperature effects are in play.
+  Hazen&ndash;Williams scales with \(Q^{1.852}\), not \(Q^2\). The resulting system curve is fractionally <em>flatter</em> than a pure square law. For selection it rarely matters; for transient analysis and high-velocity force mains the difference is worth respecting, and it is one reason Darcy&ndash;Weisbach is preferred when surge and temperature effects are in play.
 </div>
 
 <h3>The shape of the curve tells you the system type</h3>
@@ -248,12 +249,12 @@
 </div>
 
 <h2 id="pumpcurve">3 · The pump curve &amp; the operating point</h2>
-<p>The manufacturer supplies the pump H&ndash;Q curve: head falling as flow rises, for a given impeller diameter and speed. Superimpose it on the system curve and they intersect at exactly one flow. That intersection is the <strong>operating point</strong> (or duty point) — the steady-state equilibrium where the head the pump generates equals the head the system demands.</p>
+<p>The manufacturer supplies the pump H&ndash;Q curve: head falling as flow rises, for a given impeller diameter and speed. Superimpose it on the system curve and they intersect at exactly one flow. That intersection is the <strong>operating point</strong> (or duty point): the steady-state equilibrium where the head the pump generates equals the head the system demands.</p>
 <p>Approximating both curves as parabolas makes the equilibrium explicit. With a pump curve \(H_p = H_0 - c\,Q^2\) and a system curve \(H_{sys} = H_{static} + d\,Q^2\), setting them equal gives the operating flow in closed form:</p>
 <div class="eq">\[ H_0 - c\,Q^2 = H_{static} + d\,Q^2 \;\Longrightarrow\; Q_{op} = \sqrt{\frac{H_0 - H_{static}}{c + d}} \]</div>
 <p>Two consequences follow immediately, and both are routinely violated on real projects:</p>
 <ul class="clean">
-  <li><strong>Raise the static head</strong> (a fuller reservoir, a higher discharge) and the operating point slides <em>up and to the left</em> — less flow, more head. A pump sized for an empty reservoir is the wrong pump for a full one.</li>
+  <li><strong>Raise the static head</strong> (a fuller reservoir, a higher discharge) and the operating point slides <em>up and to the left</em>: less flow, more head. A pump sized for an empty reservoir is the wrong pump for a full one.</li>
   <li><strong>Add friction</strong> (a throttled valve, a fouled pipe, an undersized main) and the system curve steepens, again pushing the duty point left. Throttling does not change the pump; it changes the <em>system</em> the pump sees.</li>
 </ul>
 <p>The interactive figure below lets you move both and watch the duty point respond in real time.</p>
@@ -261,7 +262,7 @@
 <h2 id="interactive">4 · Interactive: matching pump to system</h2>
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Live curve matching — transmission pump station</div>
+    <div class="ftitle">Live curve matching: transmission pump station</div>
     <div class="fsub">Drag the sliders. The duty point is recomputed as the intersection of the pump and system curves; efficiency and shaft power update with it.</div>
   </div>
   <div class="chart-box"><canvas id="mainChart"></canvas></div>
@@ -290,9 +291,9 @@
     <div class="cell"><div class="k">% of BEP &amp; region</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="opStatus"></span></div></div>
   </div>
 </div>
-<p class="fig-note">Notice that <em>throttling</em> (raising friction) and <em>trimming</em> both move the duty flow toward BEP — but only one of them does it without burning the energy as heat across a valve. Section 8 returns to this.</p>
+<p class="fig-note">Notice that <em>throttling</em> (raising friction) and <em>trimming</em> both move the duty flow toward BEP, but only one of them does it without burning the energy as heat across a valve. Section 8 returns to this.</p>
 
-<h2 id="example">5 · Worked example — transmission pump station</h2>
+<h2 id="example">5 · Worked example: transmission pump station</h2>
 <p>A station lifts treated water from a clearwell to an elevated balancing reservoir through a ductile-iron transmission main. The design parameters:</p>
 <div class="tbl-wrap">
 <table>
@@ -315,23 +316,23 @@
 <p>A pump with a shut-off head \(H_0 = 68\ \text{m}\) and curve \(H_p = 68 - 1.27\times10^{-5}\,Q^2\) is selected. Solving for the intersection:</p>
 <div class="eq">\[ Q_{op} = \sqrt{\frac{68 - 45}{(1.27 + 0.70)\times10^{-5}}} = \sqrt{\frac{23}{1.97\times10^{-5}}} \approx 1{,}080\ \text{m}^3/\text{h}, \quad H_{op} \approx 53\ \text{m} \]</div>
 
-<p>The pump's BEP sits at 1,152 m³/h (η ≈ 84%), so the duty point is at <strong>94% of BEP</strong> — comfortably inside the preferred operating region. The absorbed shaft power:</p>
+<p>The pump's BEP sits at 1,152 m³/h (η ≈ 84%), so the duty point is at <strong>94% of BEP</strong>: comfortably inside the preferred operating region. The absorbed shaft power:</p>
 <div class="eq">\[ P = \frac{\rho\,g\,Q\,H}{\eta} = \frac{1000\times9.81\times0.30\times53}{0.837} \approx 186\ \text{kW} \]</div>
 <div class="callout">
   <span class="lbl">Selection verdict</span>
   A clean match: duty point near BEP, sensible velocity, no throttling needed. Motor would be rated at the next standard frame above 186 kW (e.g. 200&ndash;220 kW) accounting for the runout (right-hand) end of the curve, where power peaks for a radial-flow pump.
 </div>
 
-<h2 id="bep">6 · BEP, POR &amp; AOR — where you are allowed to operate</h2>
-<p>The Best Efficiency Point is not merely the peak of the efficiency curve. It is the flow at which the liquid enters the impeller with minimum incidence, internal recirculation is suppressed, and hydraulic radial and axial loads on the shaft are at their minimum. Drift away from BEP and reliability — not just energy cost — degrades.</p>
+<h2 id="bep">6 · BEP, POR &amp; AOR: where you are allowed to operate</h2>
+<p>The Best Efficiency Point is the flow at which the liquid enters the impeller with minimum incidence, internal recirculation is suppressed, and hydraulic radial and axial loads on the shaft are at their minimum. Drift away from BEP and reliability, not just energy cost, degrades.</p>
 <p>The Hydraulic Institute codifies two windows around BEP <sup class="cite">[1]</sup>:</p>
 <div class="tbl-wrap">
 <table>
-  <caption>Operating regions per ANSI/HI 9.6.3 (Rotodynamic Pumps — Guideline for Operating Regions).</caption>
+  <caption>Operating regions per ANSI/HI 9.6.3 (Rotodynamic Pumps, Guideline for Operating Regions).</caption>
   <thead><tr><th>Region</th><th>Typical range</th><th>What happens here</th></tr></thead>
   <tbody>
-    <tr><td><strong>POR</strong> — Preferred Operating Region</td><td>~70% &ndash; 120% of BEP</td><td>Vibration and loads low; the target band for continuous duty</td></tr>
-    <tr><td><strong>AOR</strong> — Allowable Operating Region</td><td>Manufacturer-defined, wider</td><td>Acceptable but with reduced service life / higher vibration limits</td></tr>
+    <tr><td><strong>POR</strong>: Preferred Operating Region</td><td>~70% &ndash; 120% of BEP</td><td>Vibration and loads low; the target band for continuous duty</td></tr>
+    <tr><td><strong>AOR</strong>: Allowable Operating Region</td><td>Manufacturer-defined, wider</td><td>Acceptable but with reduced service life / higher vibration limits</td></tr>
     <tr><td>Below AOR (low flow)</td><td>&lt; ~40&ndash;50% BEP</td><td>Suction &amp; discharge recirculation, temperature rise, cavitation, shaft deflection</td></tr>
     <tr><td>Above AOR (runout)</td><td>&gt; ~120&ndash;130% BEP</td><td>NPSH-limited cavitation, motor overload, steep efficiency fall-off</td></tr>
   </tbody>
@@ -339,14 +340,14 @@
 </div>
 <div class="callout warn">
   <span class="lbl">Low-flow operation is the silent killer</span>
-  Running far left of BEP — the classic symptom of an oversized pump — drives internal recirculation that erodes impellers, spikes vibration, and can raise the pumped liquid's temperature toward flashing in a near-deadhead condition. A minimum continuous flow (thermal and stable) must be guaranteed, by a recirculation line if necessary.
+  Running far left of BEP, the classic symptom of an oversized pump, drives internal recirculation that erodes impellers, spikes vibration, and can raise the pumped liquid's temperature toward flashing in a near-deadhead condition. A minimum continuous flow (thermal and stable) must be guaranteed, by a recirculation line if necessary.
 </div>
 
 <h2 id="oversizing">7 · The oversizing trap</h2>
-<p>The most common — and most expensive — selection error in the industry is conservative margin stacking. A process engineer adds 10% to the flow "to be safe", the hydraulic engineer adds another head margin for "future fouling", a third margin covers pipe ageing. Each is individually defensible; compounded, they select a pump whose curve sits well above the true system curve.</p>
+<p>The most common, and most expensive, selection error in the industry is conservative margin stacking. A process engineer adds 10% to the flow "to be safe", the hydraulic engineer adds another head margin for "future fouling", a third margin covers pipe ageing. Each is individually defensible; compounded, they select a pump whose curve sits well above the true system curve.</p>
 <p>The pump then does one of two things, both bad:</p>
 <ul class="clean">
-  <li><strong>It overpumps.</strong> Against the actual system the duty point lands far to the right — more flow than needed, higher velocity, elevated NPSH demand, motor pushed toward overload.</li>
+  <li><strong>It overpumps.</strong> Against the actual system the duty point lands far to the right: more flow than needed, higher velocity, elevated NPSH demand, motor pushed toward overload.</li>
   <li><strong>It gets throttled back.</strong> To force design flow, a control valve is closed, adding artificial friction. The duty point moves left of BEP, efficiency collapses, and the throttled energy is dissipated as heat and noise across the valve.</li>
 </ul>
 <p>The figure below contrasts a correctly matched pump with an oversized one throttled to deliver the same design flow.</p>
@@ -354,7 +355,7 @@
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Matched vs. oversized-and-throttled</div>
-    <div class="fsub">Both deliver 1,080 m³/h — but the oversized pump must be throttled, paying a permanent energy penalty and operating left of BEP.</div>
+    <div class="fsub">Both deliver 1,080 m³/h, but the oversized pump must be throttled, paying a permanent energy penalty and operating left of BEP.</div>
   </div>
   <div class="chart-box"><canvas id="overChart"></canvas></div>
 </div>
@@ -376,18 +377,18 @@
 </div>
 <div class="callout warn">
   <span class="lbl">The number that ends the argument</span>
-  ~73 kW of avoidable loss, continuous. At a 0.18 USD/kWh tariff and 7,000 running hours, that single oversized selection wastes on the order of <strong>USD 90,000 per year</strong> — recurring for the 20-year asset life, before counting the reliability penalty of running off-BEP. Margins are not free.
+  ~73 kW of avoidable loss, continuous. At a 0.18 USD/kWh tariff and 7,000 running hours, that single oversized selection wastes on the order of <strong>USD 90,000 per year</strong>, recurring for the 20-year asset life, before counting the reliability penalty of running off-BEP. Margins are not free.
 </div>
 
 <h2 id="control">8 · Controlling the operating point</h2>
-<p>When the duty point needs to move — because demand varies, or because the selected pump is slightly off — there are three levers, in ascending order of merit:</p>
+<p>When the duty point needs to move (because demand varies, or because the selected pump is slightly off), there are three levers, in ascending order of merit:</p>
 <div class="tbl-wrap">
 <table>
   <caption>Methods to relocate the duty point, with the affinity laws as the analytical backbone.</caption>
   <thead><tr><th>Method</th><th>Mechanism</th><th>Verdict</th></tr></thead>
   <tbody>
     <tr><td><strong>Throttling</strong></td><td>Adds friction; steepens system curve</td><td>Simplest, worst. Energy destroyed across the valve permanently</td></tr>
-    <tr><td><strong>Impeller trim</strong></td><td>Permanently scales the pump curve down: \(H \propto (D'/D)^2\)</td><td>Cheap, permanent, efficient — ideal when the duty is fixed and slightly high</td></tr>
+    <tr><td><strong>Impeller trim</strong></td><td>Permanently scales the pump curve down: \(H \propto (D'/D)^2\)</td><td>Cheap, permanent, efficient: ideal when the duty is fixed and slightly high</td></tr>
     <tr><td><strong>Variable speed (VFD)</strong></td><td>Scales the whole curve with speed</td><td>Best for variable demand; savings depend heavily on the static/friction split</td></tr>
   </tbody>
 </table>
@@ -396,16 +397,16 @@
 <div class="eq">\[ \frac{Q_2}{Q_1} = \frac{N_2}{N_1}, \qquad \frac{H_2}{H_1} = \left(\frac{N_2}{N_1}\right)^{2}, \qquad \frac{P_2}{P_1} = \left(\frac{N_2}{N_1}\right)^{3} \]</div>
 <div class="callout">
   <span class="lbl">The static-head trap</span>
-  The seductive cube-law power saving (\(P \propto N^3\)) only fully materialises on a <em>high-friction</em> system whose curve passes near the origin. On a high-static system — exactly the transmission lift in our example — the operating point at reduced speed quickly hits the static head and the pump stops delivering. Applying the cube law blindly to a high-static system is the most common VFD-economics mistake in water engineering.
+  The seductive cube-law power saving (\(P \propto N^3\)) only fully materialises on a <em>high-friction</em> system whose curve passes near the origin. On a high-static system, exactly the transmission lift in our example, the operating point at reduced speed quickly hits the static head and the pump stops delivering. Applying the cube law blindly to a high-static system is the most common VFD-economics mistake in water engineering.
 </div>
 
 <h2 id="checklist">9 · Design checklist &amp; engineering judgement</h2>
 <ul class="clean">
   <li><strong>Build the system curve before opening any catalogue.</strong> Separate static and friction explicitly; never let a vendor hand you both the system <em>and</em> the pump.</li>
-  <li><strong>Bracket the static head.</strong> Compute duty points at minimum and maximum reservoir/tank levels — the pump must behave at both extremes, not just the design average.</li>
+  <li><strong>Bracket the static head.</strong> Compute duty points at minimum and maximum reservoir/tank levels: the pump must behave at both extremes, not just the design average.</li>
   <li><strong>Plot the curve family.</strong> Clean vs. fouled (aged \(C\)), single vs. parallel operation, and the future-flow case. The duty point lives somewhere in that envelope, not on a single line.</li>
   <li><strong>Land the design point at 100&ndash;110% of BEP flow</strong> when growth is expected, so the pump migrates <em>toward</em> BEP over its life rather than away from it.</li>
-  <li><strong>Resist margin stacking.</strong> Apply one rational, documented margin — not three hidden ones. Prefer a trimmable impeller or a VFD over throttling away a fat selection.</li>
+  <li><strong>Resist margin stacking.</strong> Apply one rational, documented margin, not three hidden ones. Prefer a trimmable impeller or a VFD over throttling away a fat selection.</li>
   <li><strong>Verify the suction side independently.</strong> A perfect duty point is worthless if NPSH<sub>a</sub> &lt; NPSH<sub>r</sub> there.</li>
 </ul>
 <div class="callout key">
@@ -417,15 +418,15 @@
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>Hydraulic Institute (HI). <em>ANSI/HI 9.6.3 — Rotodynamic Pumps: Guideline for Operating Regions.</em> Parsippany, NJ.</li>
-  <li>Hydraulic Institute (HI). <em>ANSI/HI 9.6.1 — Rotodynamic Pumps: Guideline for NPSH Margin.</em></li>
-  <li>Hydraulic Institute (HI). <em>ANSI/HI 14.3 — Rotodynamic Pumps for Design and Application.</em></li>
+  <li>Hydraulic Institute (HI). <em>ANSI/HI 9.6.3, Rotodynamic Pumps: Guideline for Operating Regions.</em> Parsippany, NJ.</li>
+  <li>Hydraulic Institute (HI). <em>ANSI/HI 9.6.1, Rotodynamic Pumps: Guideline for NPSH Margin.</em></li>
+  <li>Hydraulic Institute (HI). <em>ANSI/HI 14.3: Rotodynamic Pumps for Design and Application.</em></li>
   <li>Karassik, I.J., Messina, J.P., Cooper, P., Heald, C.C. <em>Pump Handbook</em>, 4th ed. McGraw-Hill, 2008.</li>
   <li>Europump &amp; Hydraulic Institute. <em>Pump Life Cycle Costs: A Guide to LCC Analysis for Pumping Systems.</em></li>
   <li>Gülich, J.F. <em>Centrifugal Pumps</em>, 4th ed. Springer, 2020.</li>
   <li>U.S. DOE / HI. <em>Improving Pumping System Performance: A Sourcebook for Industry</em>, 2nd ed.</li>
-  <li>AWWA Manual M11, <em>Steel Pipe — A Guide for Design and Installation</em> (head-loss methods &amp; Hazen&ndash;Williams C values).</li>
-  <li>Crane Co. <em>Technical Paper No. 410 (TP-410) — Flow of Fluids Through Valves, Fittings, and Pipe.</em></li>
+  <li>AWWA Manual M11, <em>Steel Pipe: A Guide for Design and Installation</em> (head-loss methods &amp; Hazen&ndash;Williams C values).</li>
+  <li>Crane Co. <em>Technical Paper No. 410 (TP-410): Flow of Fluids Through Valves, Fittings, and Pipe.</em></li>
 </ol>
 
 <div class="tags">#PumpHydraulics #SystemCurve #CentrifugalPumps #OperatingPoint #BEP #PumpSelection #EnergyEfficiency #WaterEngineering</div>
@@ -436,7 +437,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -611,8 +612,8 @@ function updateMain(){
   document.getElementById('rEff').innerHTML = (eff*100).toFixed(0)+' <small>%</small>';
   document.getElementById('rP').innerHTML = Math.round(power)+' <small>kW</small>';
 
-  let cls='good', txt='POR — preferred';
-  if(pct<70 || pct>120){ cls='warn'; txt='AOR — allowable'; }
+  let cls='good', txt='POR: preferred';
+  if(pct<70 || pct>120){ cls='warn'; txt='AOR: allowable'; }
   if(pct<50 || pct>132){ cls='bad'; txt='Outside AOR'; }
   document.getElementById('opStatus').innerHTML = `${pct.toFixed(0)}% &nbsp;<span class="badge ${cls}">${txt}</span>`;
 }

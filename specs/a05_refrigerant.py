@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">Refrigerant is the only fluid in the building that is dangerous, expensive, environmentally regulated and <strong>a gas and a liquid at the same time</strong> — and the last of those is what makes tall buildings hard. Water in a riser is just heavy. Refrigerant in a riser is a liquid column that boils if you let its pressure fall, an oil carrier that stops carrying if the velocity drops, and a charge that has to be small enough that if it all leaks into one room, the people in that room survive. Those three constraints — <strong>flash gas, oil return and refrigerant concentration limit</strong> — are what actually decide whether a direct-expansion system can be used in a tower at all, and they bite long before the capacity tables do.</p>
+<p class="lead">Refrigerant is the only fluid in the building that is dangerous, expensive, environmentally regulated and <strong>a gas and a liquid at the same time</strong>, and the last of those is what makes tall buildings hard. Water in a riser is just heavy. Refrigerant in a riser is a liquid column that boils if you let its pressure fall, an oil carrier that stops carrying if the velocity drops, and a charge that has to be small enough that if it all leaks into one room, the people in that room survive. Those three constraints (<strong>flash gas, oil return and refrigerant concentration limit</strong>) are what actually decide whether a direct-expansion system can be used in a tower at all, and they bite long before the capacity tables do.</p>
 
 <h2 id="why">1 · Three constraints, all of them vertical</h2>
 <ul class="clean">
   <li><strong>The liquid column has weight.</strong> A 100&nbsp;m vertical lift in an R-410A liquid line costs about <strong>9.3&nbsp;bar</strong> of static pressure. If the liquid arrives at the expansion device below its saturation pressure it has already flashed to gas, the device loses control and the coil starves.</li>
-  <li><strong>Oil has to come home.</strong> Compressor oil circulates with the refrigerant and must be dragged back up vertical suction risers by gas velocity alone. Below a critical velocity it drains back, and the compressor eventually runs dry — a failure that appears months after handover and is always blamed on the compressor.</li>
-  <li><strong>The charge is a safety limit, not a cost item.</strong> ASHRAE 15 caps the refrigerant that may be released into an occupied space by the <strong>refrigerant concentration limit</strong>. In a tower with hundreds of small rooms, the governing room is a small one — and for the newer A2L refrigerants the allowable charge is roughly a seventh of what R-410A allowed.</li>
+  <li><strong>Oil has to come home.</strong> Compressor oil circulates with the refrigerant and must be dragged back up vertical suction risers by gas velocity alone. Below a critical velocity it drains back, and the compressor eventually runs dry: a failure that appears months after handover and is always blamed on the compressor.</li>
+  <li><strong>The charge is a safety limit, not a cost item.</strong> ASHRAE 15 caps the refrigerant that may be released into an occupied space by the <strong>refrigerant concentration limit</strong>. In a tower with hundreds of small rooms, the governing room is a small one, and for the newer A2L refrigerants the allowable charge is roughly a seventh of what R-410A allowed.</li>
 </ul>
 
 <h2 id="flash">2 · Static head, flash gas and the real height limit</h2>
 <p>Liquid refrigerant lifted through a height \(h\) loses static pressure \( \Delta p = \rho g h\). To arrive as liquid, it must leave the condenser sub-cooled by enough that this pressure drop does not take it below saturation:</p>
 <div class="eq">\[ \Delta T_{sub,\;req} \;=\; \frac{\rho\,g\,h}{(\mathrm{d}p/\mathrm{d}T)_{sat}} \]</div>
-<p>For R-410A near 40&nbsp;°C the saturation curve runs at roughly 0.60&nbsp;bar/K and the liquid density is about 950&nbsp;kg/m³, so <strong>every 10&nbsp;m of lift consumes about 1.5&nbsp;K of sub-cooling</strong>. Practical systems can deliver 10–12&nbsp;K before the condenser has to be oversized or a sub-cooler added, which puts the maximum lift at roughly <strong>77&nbsp;m</strong>. That is not a manufacturer's marketing limit — it is why VRF catalogues state maximum indoor-to-outdoor height differences of 50–90&nbsp;m, and it is why a tower cannot be served by one refrigerant system from a single plant deck.</p>
+<p>For R-410A near 40&nbsp;°C the saturation curve runs at roughly 0.60&nbsp;bar/K and the liquid density is about 950&nbsp;kg/m³, so <strong>every 10&nbsp;m of lift consumes about 1.5&nbsp;K of sub-cooling</strong>. Practical systems can deliver 10–12&nbsp;K before the condenser has to be oversized or a sub-cooler added, which puts the maximum lift at roughly <strong>77&nbsp;m</strong>. That physics, not marketing, is why VRF catalogues state maximum indoor-to-outdoor height differences of 50–90&nbsp;m, and it is why a tower cannot be served by one refrigerant system from a single plant deck.</p>
 
 <div class="callout key">
   <span class="lbl">The orientation that costs nothing</span>
-  The penalty applies to <em>lifting</em> liquid. Put the condensing unit <strong>above</strong> the evaporators and the liquid line falls, gaining pressure instead of losing it — the static head now works for you, and the constraint moves to the suction riser and oil return instead. In a tower this is close to free: place the condensing plant at the top of each refrigerant zone rather than the bottom, and the flash-gas limit largely disappears. Getting this the wrong way round is one of the most common and most expensive DX layout errors in tall buildings.
+  The penalty applies to <em>lifting</em> liquid. Put the condensing unit <strong>above</strong> the evaporators and the liquid line falls, gaining pressure instead of losing it: the static head now works for you, and the constraint moves to the suction riser and oil return instead. In a tower this is close to free: place the condensing plant at the top of each refrigerant zone rather than the bottom, and the flash-gas limit largely disappears. Getting this the wrong way round is one of the most common and most expensive DX layout errors in tall buildings.
 </div>
 
 <h2 id="int-flash">3 · Interactive: sub-cooling required for a liquid lift</h2>
@@ -57,22 +57,22 @@ BODY = r"""
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At the default R-410A properties, a <strong>60&nbsp;m lift costs 5.6&nbsp;bar and 9.3&nbsp;K of sub-cooling</strong> against 12&nbsp;K available — a margin of only 2.7&nbsp;K before the liquid line starts producing flash gas, and that is before line friction and a hot riser shaft are counted. The limit is about <strong>77&nbsp;m</strong>. Switch to R-134a with its shallower saturation slope and heavier liquid and the picture changes completely, which is exactly why centrifugal chillers with R-134a and a water distribution system remain the default for tall buildings while DX stays a zone-by-zone solution.</p>
+<p class="fig-note">At the default R-410A properties, a <strong>60&nbsp;m lift costs 5.6&nbsp;bar and 9.3&nbsp;K of sub-cooling</strong> against 12&nbsp;K available: a margin of only 2.7&nbsp;K before the liquid line starts producing flash gas, and that is before line friction and a hot riser shaft are counted. The limit is about <strong>77&nbsp;m</strong>. Switch to R-134a with its shallower saturation slope and heavier liquid and the picture changes completely, which is exactly why centrifugal chillers with R-134a and a water distribution system remain the default for tall buildings while DX stays a zone-by-zone solution.</p>
 
-<h2 id="oil">4 · Oil return — the failure that arrives eighteen months late</h2>
-<p>Oil leaves the compressor with the refrigerant and returns only if the suction gas moves fast enough to carry it up vertical risers. The minimum carrying velocity is roughly <strong>5–7&nbsp;m/s</strong> in a vertical suction riser, and — critically — it must be achieved at <strong>minimum load</strong>, not at design. A variable-capacity system that turns down to 25&nbsp;% has a quarter of the velocity in a riser sized for full flow.</p>
+<h2 id="oil">4 · Oil return: the failure that arrives eighteen months late</h2>
+<p>Oil leaves the compressor with the refrigerant and returns only if the suction gas moves fast enough to carry it up vertical risers. The minimum carrying velocity is roughly <strong>5–7&nbsp;m/s</strong> in a vertical suction riser, and, critically, it must be achieved at <strong>minimum load</strong>, not at design. A variable-capacity system that turns down to 25&nbsp;% has a quarter of the velocity in a riser sized for full flow.</p>
 <ul class="clean">
   <li><strong>Size risers on minimum load, and size horizontal runs on pressure drop.</strong> These are different criteria and they give different diameters; the riser is nearly always smaller than the horizontal main.</li>
-  <li><strong>Use a double suction riser</strong> where turndown is wide: a small riser sized for minimum load and a larger one that floods with oil at low load and takes over as flow rises. Fit the trap at the base and the connection at the top correctly — reversed, it does nothing.</li>
+  <li><strong>Use a double suction riser</strong> where turndown is wide: a small riser sized for minimum load and a larger one that floods with oil at low load and takes over as flow rises. Fit the trap at the base and the connection at the top correctly; reversed, it does nothing.</li>
   <li><strong>Trap at the base of every riser</strong> and at intervals up long risers (commonly every 6–8&nbsp;m) so the oil is lifted in stages rather than as one column.</li>
   <li><strong>Slope horizontal suction lines back toward the compressor</strong> so gravity helps rather than pooling oil in a low point.</li>
-  <li><strong>Do not oversize the pipe.</strong> Oversizing a suction line is not conservative — it is the direct cause of oil starvation. This is the opposite instinct to water design and it catches people out.</li>
+  <li><strong>Do not oversize the pipe.</strong> Oversizing a suction line directly causes oil starvation. This is the opposite instinct to water design and it catches people out.</li>
 </ul>
 
-<h2 id="rcl">5 · Refrigerant concentration limit — the constraint that decides the system</h2>
+<h2 id="rcl">5 · Refrigerant concentration limit: the constraint that decides the system</h2>
 <p>ASHRAE 15 and ISO 5149 limit the refrigerant that may enter an occupied space so that a complete leak from the system cannot produce a hazardous concentration. The rule is simple and unforgiving<sup class="cite">[1][2]</sup>:</p>
 <div class="eq">\[ m_{allowable} \;=\; RCL \times V_{smallest\ occupied\ space} \]</div>
-<p>The governing volume is <strong>the smallest room the system serves</strong>, not the floor area or the building. In a hotel or residential tower that is a bathroom or a small bedroom, and it is brutal: a 50&nbsp;m³ room permits 22&nbsp;kg of R-410A, 12.5&nbsp;kg of R-134a — and only <strong>3.0&nbsp;kg</strong> of R-32, because the A2L refrigerants are limited by flammability rather than toxicity. As the industry moves to lower-GWP A2L and A3 refrigerants, allowable charges fall by roughly a factor of seven, and systems that were compliant on R-410A are not on their replacement.</p>
+<p>The governing volume is <strong>the smallest room the system serves</strong>, not the floor area or the building. In a hotel or residential tower that is a bathroom or a small bedroom, and it is brutal: a 50&nbsp;m³ room permits 22&nbsp;kg of R-410A, 12.5&nbsp;kg of R-134a, and only <strong>3.0&nbsp;kg</strong> of R-32, because the A2L refrigerants are limited by flammability rather than toxicity. As the industry moves to lower-GWP A2L and A3 refrigerants, allowable charges fall by roughly a factor of seven, and systems that were compliant on R-410A are not on their replacement.</p>
 <p>The design responses, in order of preference: <strong>reduce the charge</strong> (smaller circuits, more of them); <strong>increase the volume</strong> the leak can disperse into (permanent openings, ducted returns connecting spaces); <strong>detect and ventilate</strong> (leak detection with mechanical extract, which many codes accept as mitigation); or <strong>change the system</strong> to a chilled-water or DOAS arrangement where the refrigerant never leaves the plant room. In tall residential towers the last of these is increasingly the only compliant answer.</p>
 
 <div class="fig">
@@ -122,7 +122,7 @@ BODY = r"""
     <div class="ctrl">
       <label>Largest single charge <span id="vG">500 kg</span></label>
       <input type="range" id="sG" min="20" max="3000" value="500" step="10">
-      <div class="hint">Not the room total — the largest individual system.</div>
+      <div class="hint">Not the room total: the largest individual system.</div>
     </div>
     <div class="ctrl">
       <label>Room volume <span id="vRv">600 m³</span></label>
@@ -143,18 +143,18 @@ BODY = r"""
     <div class="cell"><div class="k">Round duct</div><div class="v" id="rDd">446 <small>mm</small></div></div>
   </div>
 </div>
-<p class="fig-note">A 500&nbsp;kg charge demands <strong>1,565&nbsp;L/s</strong> of emergency exhaust — about 9 air changes an hour in a 600&nbsp;m³ plant room, through a 450&nbsp;mm duct that must discharge somewhere safe and never near an air intake. Note the square root: doubling the charge only raises the rate by 41&nbsp;%, so consolidating into fewer large machines is ventilation-efficient, while the concentration limit pushes the opposite way. Detection is the other half — sensors at low level for heavier-than-air refrigerants, alarm and ventilation interlock, a purge control outside the room, and self-closing tight-fitting doors.</p>
+<p class="fig-note">A 500&nbsp;kg charge demands <strong>1,565&nbsp;L/s</strong> of emergency exhaust, about 9 air changes an hour in a 600&nbsp;m³ plant room, through a 450&nbsp;mm duct that must discharge somewhere safe and never near an air intake. Note the square root: doubling the charge only raises the rate by 41&nbsp;%, so consolidating into fewer large machines is ventilation-efficient, while the concentration limit pushes the opposite way. Detection is the other half: sensors at low level for heavier-than-air refrigerants, alarm and ventilation interlock, a purge control outside the room, and self-closing tight-fitting doors.</p>
 
 <h2 id="install">7 · Installation &amp; execution tricks</h2>
 <ul class="clean">
   <li><strong>Braze under flowing nitrogen, always.</strong> Without it the inside of the pipe oxidises and sheds scale that ends up in the expansion valves and the compressor. This is the single most-skipped and most-damaging shortcut in refrigerant pipework, and it cannot be inspected afterwards.</li>
-  <li><strong>Pressure-test with nitrogen, then evacuate to a target vacuum and prove it.</strong> Triple evacuation to below 500 microns with a rise test — a vacuum that climbs is either a leak or trapped moisture, and you must know which before charging.</li>
+  <li><strong>Pressure-test with nitrogen, then evacuate to a target vacuum and prove it.</strong> Triple evacuation to below 500 microns with a rise test: a vacuum that climbs is either a leak or trapped moisture, and you must know which before charging.</li>
   <li><strong>Weigh the charge in and record it.</strong> Charge by weight against the calculated value, and log the actual figure per circuit; regulatory leak-checking regimes are all based on the recorded charge.</li>
   <li><strong>Support risers for weight and for expansion.</strong> A long copper riser moves with temperature and must be anchored and guided so the movement lands in a designed loop, not on a branch tee.</li>
   <li><strong>Insulate the suction line completely, including at supports.</strong> Every uninsulated clamp on a cold suction riser inside a shaft becomes a condensation source, and in a tall shaft that water runs a long way before anyone finds it.</li>
-  <li><strong>Fit isolation valves and access ports per zone</strong> so a fault does not require the whole riser to be recovered — recovery of a large charge from a tall system is a multi-day operation.</li>
+  <li><strong>Fit isolation valves and access ports per zone</strong> so a fault does not require the whole riser to be recovered: recovery of a large charge from a tall system is a multi-day operation.</li>
   <li><strong>Commission at low load, not just at design.</strong> Oil return problems only appear at minimum capacity; run the system down to its lowest step and check compressor oil level and suction superheat there.</li>
-  <li><strong>Label the charge and the leak-check regime</strong> on the plant and in the O&amp;M, with the responsible person named — this is a legal requirement in most jurisdictions and it is routinely missing.</li>
+  <li><strong>Label the charge and the leak-check regime</strong> on the plant and in the O&amp;M, with the responsible person named. This is a legal requirement in most jurisdictions and it is routinely missing.</li>
 </ul>
 
 <h2 id="checklist">8 · The design &amp; installation checklist</h2>
@@ -164,25 +164,25 @@ BODY = r"""
   <li><strong>Calculate the sub-cooling budget</strong> for the lift, the friction and the shaft temperature, with margin.</li>
   <li><strong>Size suction risers on minimum load</strong>, with double risers and traps where turndown is wide.</li>
   <li><strong>Never oversize suction pipework.</strong></li>
-  <li><strong>Plan for the A2L transition</strong> — check whether the design still complies on the replacement refrigerant.</li>
-  <li><strong>Design machinery rooms fully</strong> — construction, detection, emergency ventilation at 70√G, discharge location, purge control.</li>
+  <li><strong>Plan for the A2L transition</strong>: check whether the design still complies on the replacement refrigerant.</li>
+  <li><strong>Design machinery rooms fully</strong>: construction, detection, emergency ventilation at 70√G, discharge location, purge control.</li>
   <li><strong>Specify nitrogen purge brazing, evacuation targets and weighed charging</strong> as inspected hold points.</li>
   <li><strong>Commission at minimum load</strong> and record the charge per circuit.</li>
 </ul>
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  Refrigerant in a tower is limited by three vertical facts: <strong>a 100&nbsp;m liquid lift costs 9.3&nbsp;bar and about 15&nbsp;K of sub-cooling you do not have</strong> — so put the condensing plant on top and let the liquid fall; <strong>oil only comes back if the suction riser is sized for minimum load</strong>, which means the riser is smaller than instinct says; and <strong>the allowable charge is set by the smallest room the circuit serves</strong>, which for the incoming A2L refrigerants is roughly a seventh of what R-410A allowed. Those three, not the capacity tables, decide whether you distribute refrigerant at all — and in most megatall buildings the answer is to keep it in a plant room and distribute water.
+  Refrigerant in a tower is limited by three vertical facts: <strong>a 100&nbsp;m liquid lift costs 9.3&nbsp;bar and about 15&nbsp;K of sub-cooling you do not have</strong>, so put the condensing plant on top and let the liquid fall; <strong>oil only comes back if the suction riser is sized for minimum load</strong>, which means the riser is smaller than instinct says; and <strong>the allowable charge is set by the smallest room the circuit serves</strong>, which for the incoming A2L refrigerants is roughly a seventh of what R-410A allowed. Those three, not the capacity tables, decide whether you distribute refrigerant at all, and in most megatall buildings the answer is to keep it in a plant room and distribute water.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ANSI/ASHRAE Standard 15 — <em>Safety Standard for Refrigeration Systems</em>: occupancy classification, refrigerant concentration limits, machinery room construction, detection and emergency ventilation (Q = 70√G).</li>
-  <li>ANSI/ASHRAE Standard 34 — <em>Designation and Safety Classification of Refrigerants</em>: safety groups (A1, A2L, A3, B classes) and refrigerant concentration limits; and ISO 5149 for the international equivalent.</li>
-  <li>ASHRAE <em>Handbook — Refrigeration</em>, System Practices for Halocarbon Refrigerants — liquid line sub-cooling, static head, suction riser sizing, double risers and oil management.</li>
-  <li>ASHRAE <em>Handbook — HVAC Systems and Equipment</em>, Variable Refrigerant Flow chapter — VRF piping limits, height differences and capacity correction.</li>
-  <li>EN 378 — <em>Refrigerating systems and heat pumps: safety and environmental requirements</em>; and the EU F-Gas Regulation and equivalent national regimes on charge records and leak checking.</li>
-  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed. — refrigerant distribution and plant location in tall buildings.</li>
+  <li>ANSI/ASHRAE Standard 15, <em>Safety Standard for Refrigeration Systems</em>: occupancy classification, refrigerant concentration limits, machinery room construction, detection and emergency ventilation (Q = 70√G).</li>
+  <li>ANSI/ASHRAE Standard 34, <em>Designation and Safety Classification of Refrigerants</em>: safety groups (A1, A2L, A3, B classes) and refrigerant concentration limits; and ISO 5149 for the international equivalent.</li>
+  <li>ASHRAE <em>Handbook, Refrigeration</em>, System Practices for Halocarbon Refrigerants: liquid line sub-cooling, static head, suction riser sizing, double risers and oil management.</li>
+  <li>ASHRAE <em>Handbook, HVAC Systems and Equipment</em>, Variable Refrigerant Flow chapter: VRF piping limits, height differences and capacity correction.</li>
+  <li>EN 378, <em>Refrigerating systems and heat pumps: safety and environmental requirements</em>; and the EU F-Gas Regulation and equivalent national regimes on charge records and leak checking.</li>
+  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed.: refrigerant distribution and plant location in tall buildings.</li>
   <li>Saudi Building Code <em>SBC 501</em> mechanical provisions and the Saudi regulations on refrigerant handling and machinery rooms.</li>
   <li>ACR/BRA and AREA industry codes of practice on brazing under nitrogen, evacuation, charging and system commissioning.</li>
 </ol>
@@ -235,7 +235,7 @@ function updFlash(){
   document.getElementById('rMx').innerHTML=fmt0(maxLift)+' <small>m</small>';
   document.getElementById('rMg').innerHTML=fmt1(sc-req(h))+' <small>K</small>';
   const v=document.getElementById('rVd'), m=sc-req(h);
-  if(m<0)        v.innerHTML='<span class="badge bad">flash gas — will not work</span>';
+  if(m<0)        v.innerHTML='<span class="badge bad">flash gas, will not work</span>';
   else if(m<3)   v.innerHTML='<span class="badge warn">no margin</span>';
   else           v.innerHTML='<span class="badge good">workable</span>';
 }
@@ -321,16 +321,16 @@ SPEC = dict(
     reg_tag='HVAC · Refrigerant · VRF · ASHRAE 15',
     breadcrumb='HVAC &amp; Cooling',
     tag_line='HVAC &middot; Refrigerant &middot; VRF &middot; ASHRAE 15 &middot; Megatall Buildings',
-    desc='Refrigerant and VRF system design in megatall buildings: why a 100 m liquid lift costs 9.3 bar and 15 K of sub-cooling and sets the real height limit, why putting condensing plant above the evaporators removes the penalty, suction riser sizing for oil return at minimum load, the ASHRAE 15 refrigerant concentration limit set by the smallest served room and what the A2L transition does to it, and machinery room detection and emergency ventilation — with three interactive charts and installation tricks.',
-    og_desc='A 100 m liquid lift costs 9.3 bar and about 15 K of sub-cooling you do not have — which is why VRF has height limits. Plus oil return at minimum load, and why A2L refrigerants cut the allowable charge by a factor of seven.',
+    desc='Refrigerant and VRF system design in megatall buildings: why a 100 m liquid lift costs 9.3 bar and 15 K of sub-cooling and sets the real height limit, why putting condensing plant above the evaporators removes the penalty, suction riser sizing for oil return at minimum load, the ASHRAE 15 refrigerant concentration limit set by the smallest served room and what the A2L transition does to it, and machinery room detection and emergency ventilation, with three interactive charts and installation tricks.',
+    og_desc='A 100 m liquid lift costs 9.3 bar and about 15 K of sub-cooling you do not have, which is why VRF has height limits. Plus oil return at minimum load, and why A2L refrigerants cut the allowable charge by a factor of seven.',
     ld_desc='A design-perspective guide to refrigerant systems in megatall buildings: liquid line static head, flash gas and sub-cooling budgets, condensing plant orientation, suction riser sizing and oil return, ASHRAE 15 refrigerant concentration limits and the A2L transition, and machinery room detection and emergency ventilation.',
     img_alt='Technical cutaway of a megatall tower showing zoned refrigerant systems with condensing plant on mechanical floors above each zone, liquid and suction risers running down to the floors below, and a refrigerating machinery room with leak detection and emergency ventilation',
     en_tag='HVAC &amp; Cooling &middot; Refrigerant &middot; VRF &middot; ASHRAE 15',
     en_title='Refrigerant Systems &amp; VRF in Megatall Buildings: Flash Gas, Oil Return &amp; the Concentration Limit',
-    en_excerpt='Refrigerant is the only fluid in the building that is a gas and a liquid at once, and that is what makes towers hard. A 100&nbsp;m liquid lift costs 9.3&nbsp;bar and about 15&nbsp;K of sub-cooling you do not have &mdash; the real reason VRF catalogues state height limits &mdash; unless you put the condensing plant above the evaporators and let the liquid fall. Suction risers sized for minimum load so the oil comes back, the ASHRAE&nbsp;15 concentration limit set by the smallest room the circuit serves, what the A2L transition does to allowable charge, and machinery room ventilation at 70&radic;G &mdash; with three interactive charts.',
+    en_excerpt='Refrigerant is the only fluid in the building that is a gas and a liquid at once, and that is what makes towers hard. A 100&nbsp;m liquid lift costs 9.3&nbsp;bar and about 15&nbsp;K of sub-cooling you do not have: the real reason VRF catalogues state height limits, unless you put the condensing plant above the evaporators and let the liquid fall. Suction risers sized for minimum load so the oil comes back, the ASHRAE&nbsp;15 concentration limit set by the smallest room the circuit serves, what the A2L transition does to allowable charge, and machinery room ventilation at 70&radic;G, with three interactive charts.',
     en_search='refrigerant VRF variable refrigerant flow DX direct expansion tall buildings megatall supertall high-rise flash gas sub-cooling liquid line static head vertical lift saturation slope height limit condensing unit above evaporator oil return suction riser velocity minimum load double riser oil trap pipe sizing do not oversize ASHRAE 15 ASHRAE 34 refrigerant concentration limit RCL smallest occupied space A1 A2L A3 safety group flammability LFL R410A R32 R134a R1234yf low GWP F-Gas machinery room leak detection emergency ventilation 70 root G purge control nitrogen purge brazing evacuation micron vacuum rise test weighed charge leak check register commissioning minimum load MEP building services HVAC',
     ar_title='أنظمة التبريد المباشر والـVRF في المباني فائقة الارتفاع: الغاز الوميضي وعودة الزيت وحد التركيز',
-    ar_excerpt='وسيط التبريد هو المائع الوحيد في المبنى الذي يكون غازًا وسائلًا في آنٍ واحد، وهذا ما يجعل الأبراج صعبة. رفع السائل ١٠٠ متر يكلّف ٩٫٣ بار ونحو ١٥ درجة من التبريد الفائق التي لا تملكها — وهو السبب الحقيقي لحدود الارتفاع في كتالوجات الـVRF — إلا إذا وضعت وحدات التكثيف فوق وحدات التبخير وتركت السائل يهبط. تحجيم مواسير السحب على الحمل الأدنى لتعود الزيوت، وحد تركيز وسيط التبريد وفق ASHRAE 15 الذي تحدده أصغر غرفة تخدمها الدائرة، وأثر التحوّل إلى وسائط A2L على الشحنة المسموحة، وتهوية غرف المعدات — مع ثلاثة رسوم تفاعلية.',
+    ar_excerpt='وسيط التبريد هو المائع الوحيد في المبنى الذي يكون غازًا وسائلًا في آنٍ واحد، وهذا ما يجعل الأبراج صعبة. رفع السائل ١٠٠ متر يكلّف ٩٫٣ بار ونحو ١٥ درجة من التبريد الفائق التي لا تملكها، وهو السبب الحقيقي لحدود الارتفاع في كتالوجات الـVRF، إلا إذا وضعت وحدات التكثيف فوق وحدات التبخير وتركت السائل يهبط. تحجيم مواسير السحب على الحمل الأدنى لتعود الزيوت، وحد تركيز وسيط التبريد وفق ASHRAE 15 الذي تحدده أصغر غرفة تخدمها الدائرة، وأثر التحوّل إلى وسائط A2L على الشحنة المسموحة، وتهوية غرف المعدات، مع ثلاثة رسوم تفاعلية.',
     ar_search='refrigerant VRF DX flash gas sub-cooling liquid line static head oil return suction riser ASHRAE 15 ASHRAE 34 RCL A2L R410A R32 machinery room leak detection emergency ventilation nitrogen brazing evacuation وسيط التبريد التبريد المباشر التدفق المتغير لوسيط التبريد المباني الشاهقة المباني فائقة الارتفاع الغاز الوميضي التبريد الفائق خط السائل الضغط الاستاتيكي الرفع الرأسي ميل منحنى التشبع حد الارتفاع وحدة التكثيف فوق المبخر عودة الزيت ماسورة السحب سرعة الغاز الحمل الأدنى الماسورة المزدوجة مصيدة الزيت تحجيم المواسير عدم المبالغة في القطر حد تركيز وسيط التبريد أصغر حيز مأهول مجموعة الأمان القابلية للاشتعال الحد الأدنى للاشتعال إمكانية الاحترار العالمي المنخفضة غرفة معدات التبريد كشف التسرب التهوية الطارئة التحكم في التطهير اللحام تحت النيتروجين التفريغ اختبار الارتفاع الشحن بالوزن سجل فحص التسرب التشغيل والاختبار MEP خدمات المباني',
     body=BODY, charts=CHARTS,
 )

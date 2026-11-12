@@ -16,8 +16,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The VFD Myth: Why Variable Frequency Drives Aren’t a “Magic Fix” for Poor Hydraulic Design — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>The VFD Myth: Why Variable Frequency Drives Aren’t a “Magic Fix” for Poor Hydraulic Design | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -43,16 +43,16 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="The VFD myth — why variable frequency drives are not a magic fix for poor hydraulic design in water transmission systems.">
+  <meta name="description" content="The VFD myth: why variable frequency drives are not a magic fix for poor hydraulic design in water transmission systems.">
   <meta property="og:title" content="The VFD Myth in Hydraulic Design | Mohamed Abokhatwa">
-  <meta property="og:description" content="The VFD myth — why variable frequency drives are not a magic fix for poor hydraulic design in water transmission systems.">
+  <meta property="og:description" content="The VFD myth: why variable frequency drives are not a magic fix for poor hydraulic design in water transmission systems.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/vfd-myth-hydraulic-design.html">
   <meta property="og:image" content="https://abokhatwa.com/og-vfd-myth-hydraulic-design.jpg">
   <meta property="og:image:alt" content="The VFD Myth in Hydraulic Design">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The VFD Myth in Hydraulic Design | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="The VFD myth — why variable frequency drives are not a magic fix for poor hydraulic design in water transmission systems.">
+  <meta name="twitter:description" content="The VFD myth: why variable frequency drives are not a magic fix for poor hydraulic design in water transmission systems.">
   <link rel="canonical" href="https://abokhatwa.com/vfd-myth-hydraulic-design.html">
 
   <script type="application/ld+json">
@@ -60,7 +60,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "The VFD Myth in Hydraulic Design | Mohamed Abokhatwa",
-  "description": "The VFD myth — why variable frequency drives are not a magic fix for poor hydraulic design in water transmission systems.",
+  "description": "The VFD myth: why variable frequency drives are not a magic fix for poor hydraulic design in water transmission systems.",
   "image": "https://abokhatwa.com/vfd-myth-hydraulic-design.jpg",
   "datePublished": "2026-04-01",
   "dateModified": "2026-05-25",
@@ -98,6 +98,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -141,25 +142,25 @@
 
 <div class="article-body">
 <h2>Introduction</h2>
-<p>Variable Frequency Drives (VFDs) are often presented as universal solutions for flow control and energy efficiency in pumping systems. This article challenges that misconception. A VFD is merely a tool that must operate within the laws of <strong>Affinity Laws and System Curves</strong> — applying it without understanding these fundamentals can create more problems than it solves.</p>
+<p>Variable Frequency Drives (VFDs) are often presented as universal solutions for flow control and energy efficiency in pumping systems. This article challenges that misconception. A VFD is merely a tool that must operate within the laws of <strong>Affinity Laws and System Curves</strong>; applying it without understanding these fundamentals can create more problems than it solves.</p>
 
 <hr class="article-divider">
 
 <h2>1. The Trap of Static Head Dominance</h2>
 <p>In applications with high static heads (e.g., wastewater lift stations, high-rise building services), VFDs have significant limitations. While pump performance follows Affinity Laws, the system curve does NOT scale proportionally.</p>
-<div class="callout">Reducing VFD frequency too much in high-static-head systems creates a <strong>"Dead-Head" condition</strong> — the pump rotates, consumes power and generates heat, but moves zero water. This can cause catastrophic overheating.</div>
+<div class="callout">Reducing VFD frequency too much in high-static-head systems creates a <strong>"Dead-Head" condition</strong>: the pump rotates, consumes power and generates heat, but moves zero water. This can cause catastrophic overheating.</div>
 <p><strong>Design Rule:</strong> VFDs work effectively in friction-head-dominated systems but have a narrow effective operating range in static-head-dominated applications.</p>
 
 <hr class="article-divider">
 
 <h2>2. The Efficiency Fallacy: Drifting from BEP</h2>
-<p>Every pump has an optimal <strong>Best Efficiency Point (BEP)</strong>. When VFDs reduce speed to meet lower flow demands, the operating point shifts away from peak efficiency. As speed decreases, the pump's efficiency curve "shrinks" — new operating points outside the Preferred Operating Region (POR) cause:</p>
+<p>Every pump has an optimal <strong>Best Efficiency Point (BEP)</strong>. When VFDs reduce speed to meet lower flow demands, the operating point shifts away from peak efficiency. As speed decreases, the pump's efficiency curve "shrinks"; new operating points outside the Preferred Operating Region (POR) cause:</p>
 <ul>
   <li>Internal hydraulic recirculation and vibration</li>
   <li>Increased mechanical loads on bearings and seals</li>
   <li>Net energy savings may be negated by reduced hydraulic efficiency</li>
 </ul>
-<p><strong>Example:</strong> A pump at 100 m&sup3;/hr, 80% efficiency at 50 Hz may drop to 55% hydraulic efficiency when slowed to 60 m&sup3;/hr via VFD — negating the electrical savings.</p>
+<p><strong>Example:</strong> A pump at 100 m&sup3;/hr, 80% efficiency at 50 Hz may drop to 55% hydraulic efficiency when slowed to 60 m&sup3;/hr via VFD, negating the electrical savings.</p>
 
 <hr class="article-divider">
 
@@ -171,7 +172,7 @@
 <p>Excessive speed reduction via VFD can cause discharge pipe velocity to fall below the <strong>self-cleansing velocity (0.6&ndash;0.9 m/s)</strong>, resulting in sedimentation and pipe clogging.</p>
 
 <h3>Harmonics and Bearing Damage</h3>
-<p>VFDs induce high-frequency switching noise causing bearing currents and "pitting" — leading to premature failure without proper dV/dt filters or grounded shaft brushes.</p>
+<p>VFDs induce high-frequency switching noise causing bearing currents and "pitting", leading to premature failure without proper dV/dt filters or grounded shaft brushes.</p>
 
 <hr class="article-divider">
 
@@ -183,14 +184,14 @@
   <tr><td>Conservative pump sizing (H overestimated)</td><td>Impeller trimming</td><td>Permanent, high-efficiency, no power electronics</td></tr>
   <tr><td>Multiple pumps needed</td><td>Parallel pump staging</td><td>Each unit near BEP</td></tr>
 </table>
-<div class="callout">A VFD should be the <strong>"finishing touch"</strong> of a well-engineered hydraulic system — not a "band-aid" for poor calculations.</div>
+<div class="callout">A VFD should be the <strong>"finishing touch"</strong> of a well-engineered hydraulic system, not a "band-aid" for poor calculations.</div>
 
 <hr class="article-divider">
 <div class="refs">
   <h2>References</h2>
   <ol>
     <li>Hydraulic Institute (HI) 9.6.4: Variable Speed Pumping</li>
-    <li>U.S. Department of Energy (DOE): <em>Variable Speed Pumping — A Guide to Successful Applications</em></li>
+    <li>U.S. Department of Energy (DOE): <em>Variable Speed Pumping, A Guide to Successful Applications</em></li>
     <li>Grundfos/Sulzer Technical Handbooks: The Pitfalls of Low-Speed Operation</li>
   </ol>
 </div>
@@ -202,7 +203,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>

@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Differential Orifice: Why a Surge Vessel Should Empty Freely and Refill Slowly — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>The Differential Orifice: Why a Surge Vessel Should Empty Freely and Refill Slowly | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -148,6 +148,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -473,21 +474,21 @@
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em> — pipe classes and wall thickness of the DN800 K9 reference main.</li>
-  <li>EN 805 <em>Water supply — Requirements for systems and components outside buildings</em> — design pressure terminology, including the maximum design pressure with its allowance for surge.</li>
-  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993 — method of characteristics, the air chamber boundary with an orifice loss, and column separation.</li>
-  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006 — vapour and gas cavity models, and why collapse peaks depend on the model.</li>
-  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help — Hydropneumatic Tank properties (inlet orifice diameter, minor loss coefficient, ratio of losses), transient run options and the Transient Results Viewer.</li>
-  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014 — air chambers on pumping mains, polytropic gas behaviour and the pump-end boundary.</li>
-  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004 — surge suppression devices, including air vessels.</li>
-  <li>Larock, B.E., Jeppson, R.W. &amp; Watters, G.Z. <em>Hydraulics of Pipeline Systems</em>. CRC Press, 2000 — accumulator boundary conditions and the gas law in transient models.</li>
-  <li>Parmakian, J. <em>Waterhammer Analysis</em>. Dover, 1963 — classical graphical analysis of air chambers on pump discharge lines.</li>
-  <li>Stephenson, D. &ldquo;Simple guide for design of air vessels for water hammer protection of pumping lines.&rdquo; <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8), 2002 — simplified sizing of air vessels on pumping lines.</li>
-  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989 — pumping main design, including water hammer protection with air vessels.</li>
-  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005 — checking protection over the whole system and selecting hydropneumatic tanks.</li>
-  <li>Idelchik, I.E. <em>Handbook of Hydraulic Resistance</em>, 3rd ed. Begell House, 1996 — loss coefficient of a thin sharp-edged orifice in a pipe.</li>
-  <li>NSF/ANSI/CAN 61 <em>Drinking Water System Components — Health Effects</em> — approval of plates, coatings and internals in contact with drinking water.</li>
-  <li>EN 13445 <em>Unfired pressure vessels</em>; ASME <em>Boiler and Pressure Vessel Code</em>, Section VIII, Division 1; Pressure Equipment Directive 2014/68/EU — design and conformity of the vessel shell and nozzles.</li>
+  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em>: pipe classes and wall thickness of the DN800 K9 reference main.</li>
+  <li>EN 805 <em>Water supply, Requirements for systems and components outside buildings</em>: design pressure terminology, including the maximum design pressure with its allowance for surge.</li>
+  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993: method of characteristics, the air chamber boundary with an orifice loss, and column separation.</li>
+  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006: vapour and gas cavity models, and why collapse peaks depend on the model.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help: Hydropneumatic Tank properties (inlet orifice diameter, minor loss coefficient, ratio of losses), transient run options and the Transient Results Viewer.</li>
+  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014: air chambers on pumping mains, polytropic gas behaviour and the pump-end boundary.</li>
+  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004: surge suppression devices, including air vessels.</li>
+  <li>Larock, B.E., Jeppson, R.W. &amp; Watters, G.Z. <em>Hydraulics of Pipeline Systems</em>. CRC Press, 2000: accumulator boundary conditions and the gas law in transient models.</li>
+  <li>Parmakian, J. <em>Waterhammer Analysis</em>. Dover, 1963: classical graphical analysis of air chambers on pump discharge lines.</li>
+  <li>Stephenson, D. &ldquo;Simple guide for design of air vessels for water hammer protection of pumping lines.&rdquo; <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8), 2002: simplified sizing of air vessels on pumping lines.</li>
+  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989: pumping main design, including water hammer protection with air vessels.</li>
+  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005: checking protection over the whole system and selecting hydropneumatic tanks.</li>
+  <li>Idelchik, I.E. <em>Handbook of Hydraulic Resistance</em>, 3rd ed. Begell House, 1996: loss coefficient of a thin sharp-edged orifice in a pipe.</li>
+  <li>NSF/ANSI/CAN 61 <em>Drinking Water System Components, Health Effects</em>: approval of plates, coatings and internals in contact with drinking water.</li>
+  <li>EN 13445 <em>Unfired pressure vessels</em>; ASME <em>Boiler and Pressure Vessel Code</em>, Section VIII, Division 1; Pressure Equipment Directive 2014/68/EU: design and conformity of the vessel shell and nozzles.</li>
 </ol>
 
 <div class="tags">#SurgeVessel #DifferentialOrifice #WaterHammer #HydraulicTransients #SurgeProtection #HydropneumaticTank #AirVessel #OrificePlate #HeadLoss #Idelchik #PumpTrip #Downsurge #Upsurge #ColumnSeparation #MethodOfCharacteristics #BentleyHAMMER #OpenFlowsHAMMER #TransmissionMains #DuctileIron #PumpStations #PipelineDesign #CheckValves #SurgeAnalysis #TransientAnalysis #HydraulicDesign #WaterSupply #WaterEngineering #WaterInfrastructure</div>
@@ -499,7 +500,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>

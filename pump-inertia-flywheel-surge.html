@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pump Inertia and the Flywheel: When Spinning Mass Can Replace a Surge Vessel — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Pump Inertia and the Flywheel: When Spinning Mass Can Replace a Surge Vessel | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -148,6 +148,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -511,17 +512,17 @@
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em> &mdash; the DN800 K9 ductile iron pipe of the reference main.</li>
-  <li>EN 805 <em>Water supply &mdash; Requirements for systems and components outside buildings</em> &mdash; design and allowable pressures, and the surge allowance the maximum is checked against.</li>
-  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993 &mdash; the Joukowsky relation, the method of characteristics, pump boundary conditions with rotor inertia, and the discrete vapour cavity model.</li>
-  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005 &mdash; overview of transient control strategies, including added pump inertia.</li>
-  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014 &mdash; pump rundown equations, complete (four-quadrant) pump characteristics, and flywheels as a control measure.</li>
-  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004 &mdash; pump trip and rundown, estimating pump and motor inertia, and where flywheels are and are not practical.</li>
-  <li>Parmakian, J. <em>Waterhammer Analysis</em>. Dover, 1963 &mdash; classical charts for power failure at a pump, built on pipeline and pump inertia parameters.</li>
-  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006 &mdash; column separation, vapour and gas cavity models, and why collapse peaks are model-sensitive.</li>
-  <li>Larock, B.E., Jeppson, R.W. &amp; Watters, G.Z. <em>Hydraulics of Pipeline Systems</em>. CRC Press, 2000 &mdash; homologous pump relations and transient pump boundary conditions.</li>
-  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help &mdash; pump inertia, pump trip, 4-quadrant characteristic curves, check valve closure, transient run options and results viewing.</li>
-  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989 &mdash; water hammer protection of pumping lines, and the practical limits of flywheels on long mains.</li>
+  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em>: the DN800 K9 ductile iron pipe of the reference main.</li>
+  <li>EN 805 <em>Water supply, Requirements for systems and components outside buildings</em>: design and allowable pressures, and the surge allowance the maximum is checked against.</li>
+  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993: the Joukowsky relation, the method of characteristics, pump boundary conditions with rotor inertia, and the discrete vapour cavity model.</li>
+  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005: overview of transient control strategies, including added pump inertia.</li>
+  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014: pump rundown equations, complete (four-quadrant) pump characteristics, and flywheels as a control measure.</li>
+  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004: pump trip and rundown, estimating pump and motor inertia, and where flywheels are and are not practical.</li>
+  <li>Parmakian, J. <em>Waterhammer Analysis</em>. Dover, 1963: classical charts for power failure at a pump, built on pipeline and pump inertia parameters.</li>
+  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006: column separation, vapour and gas cavity models, and why collapse peaks are model-sensitive.</li>
+  <li>Larock, B.E., Jeppson, R.W. &amp; Watters, G.Z. <em>Hydraulics of Pipeline Systems</em>. CRC Press, 2000: homologous pump relations and transient pump boundary conditions.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help: pump inertia, pump trip, 4-quadrant characteristic curves, check valve closure, transient run options and results viewing.</li>
+  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989: water hammer protection of pumping lines, and the practical limits of flywheels on long mains.</li>
 </ol>
 
 <div class="tags">#SurgeAnalysis #WaterHammer #HydraulicTransients #PumpTrip #PowerFailure #PumpInertia #Flywheel #GD2 #MomentOfInertia #PumpRundown #ColumnSeparation #VapourCavity #MethodOfCharacteristics #BentleyHAMMER #OpenFlowsHAMMER #SurgeProtection #TransmissionMain #DuctileIron #PumpStation #PumpStationDesign #MotorStarting #VariableSpeedDrive #SoftStarter #FourQuadrantCharacteristics #CheckValve #TransientAnalysis #PipelineDesign #HydraulicDesign #WaterInfrastructure #WaterEngineering</div>
@@ -533,7 +534,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>

@@ -58,8 +58,8 @@ def build_html(s):
                       'chartjs-plugin-annotation.min.js"></script>\n<script>\n' + charts + '\n</script>\n\n')
     return (
         T('HEAD_TOP')
-        + f"  <title>{s['title']} — Mohamed Abokhatwa</title>\n"
-        + '    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">\n'
+        + f"  <title>{s['title']} | Mohamed Abokhatwa</title>\n"
+        + '    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">\n'
         + '  <link rel="stylesheet" href="style.css?v=17">\n'
         + '  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">\n'
         + '  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">\n'

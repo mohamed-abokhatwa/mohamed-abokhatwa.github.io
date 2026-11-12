@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parallel &amp; Series Pump Operation and Staging — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Parallel &amp; Series Pump Operation and Staging | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -100,16 +100,16 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="A design-grade treatment of parallel and series pump operation: combined-curve construction, the diminishing-returns truth of parallel pumping, series for high-head duty, flat-curve instability and load sharing, and duty/standby/assist staging logic — with interactive curves and worked numerical examples.">
+  <meta name="description" content="A design-grade treatment of parallel and series pump operation: combined-curve construction, the diminishing-returns truth of parallel pumping, series for high-head duty, flat-curve instability and load sharing, and duty/standby/assist staging logic, with interactive curves and worked numerical examples.">
   <meta property="og:title" content="Parallel & Series Pump Operation and Staging | Mohamed Abokhatwa">
-  <meta property="og:description" content="Why two pumps almost never give twice the flow, why a single pump sometimes gives no flow at all, and how the system curve decides which configuration you need — with interactive curves and worked examples.">
+  <meta property="og:description" content="Why two pumps almost never give twice the flow, why a single pump sometimes gives no flow at all, and how the system curve decides which configuration you need, with interactive curves and worked examples.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/parallel-series-pump-operation.html">
   <meta property="og:image" content="https://abokhatwa.com/og-parallel-series-pump-operation.jpg">
   <meta property="og:image:alt" content="Parallel and Series Pump Operation and Staging">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Parallel & Series Pump Operation and Staging | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="Add flows for parallel, heads for series — then find the intersection. Combined curves, the diminishing return, load-sharing failure modes, and duty/standby/assist staging.">
+  <meta name="twitter:description" content="Add flows for parallel, heads for series, then find the intersection. Combined curves, the diminishing return, load-sharing failure modes, and duty/standby/assist staging.">
   <link rel="canonical" href="https://abokhatwa.com/parallel-series-pump-operation.html">
 
   <script type="application/ld+json">
@@ -117,7 +117,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Parallel & Series Pump Operation and Staging",
-  "description": "A design-grade treatment of parallel and series pump operation: combined-curve construction, the diminishing-returns truth of parallel pumping, series for high-head duty, flat-curve instability and load sharing, and duty/standby/assist staging logic — with interactive curves and worked numerical examples.",
+  "description": "A design-grade treatment of parallel and series pump operation: combined-curve construction, the diminishing-returns truth of parallel pumping, series for high-head duty, flat-curve instability and load sharing, and duty/standby/assist staging logic, with interactive curves and worked numerical examples.",
   "image": "https://abokhatwa.com/og-parallel-series-pump-operation.jpg",
   "datePublished": "2026-06-09",
   "dateModified": "2026-06-09",
@@ -155,6 +155,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -200,13 +201,13 @@
 <p class="lead">Why two pumps almost never give twice the flow, why a single pump sometimes gives no flow at all, and how the system curve quietly decides which configuration you actually need.</p>
 
 <h2 id="two-ways">1 · Two ways to combine pumps</h2>
-<p>A single pump rarely covers the full operating envelope of a real station. Demand swings between night and peak, redundancy is mandatory, and sometimes one machine simply cannot produce the required head. The answer is to run pumps together — but <em>how</em> you combine them depends entirely on what you are short of: flow, or head.</p>
+<p>A single pump rarely covers the full operating envelope of a real station. Demand swings between night and peak, redundancy is mandatory, and sometimes one machine simply cannot produce the required head. The answer is to run pumps together, but <em>how</em> you combine them depends entirely on what you are short of: flow, or head.</p>
 
 <p>The combination rules follow directly from the physics of a shared connection, and they are mirror images of each other:</p>
 
 <div class="tbl-wrap">
 <table>
-  <caption>The two combination rules — add the quantity that differs, hold the quantity that is shared.</caption>
+  <caption>The two combination rules: add the quantity that differs, hold the quantity that is shared.</caption>
   <thead><tr><th>Configuration</th><th>Shared</th><th>Combine by</th><th>Construct the combined curve by…</th></tr></thead>
   <tbody>
     <tr><td><strong>Parallel</strong> (common header)</td><td>Same head across each pump</td><td>Adding flows</td><td>Summing \(Q\) <em>horizontally</em> at each head</td></tr>
@@ -219,17 +220,17 @@
 
 <div class="callout key">
   <span class="lbl">The mistake to never make</span>
-  You cannot read the delivered flow off the combined pump curve alone. The combined curve only tells you what the pumps <em>can</em> do; the system head curve decides where they <em>will</em> operate. Combining pumps reshapes the pump side of the equation — the operating point still lives at the intersection with the system curve, exactly as in <a href="system-head-curve-operating-point.html">the system head curve &amp; operating point</a>.
+  You cannot read the delivered flow off the combined pump curve alone. The combined curve only tells you what the pumps <em>can</em> do; the system head curve decides where they <em>will</em> operate. Combining pumps reshapes the pump side of the equation: the operating point still lives at the intersection with the system curve, exactly as in <a href="system-head-curve-operating-point.html">the system head curve &amp; operating point</a>.
 </div>
 
-<h2 id="parallel">2 · Parallel operation — and the diminishing return</h2>
-<p>Parallel pumping is the default for water and wastewater stations: multiple identical units on a common suction manifold and a common discharge header, giving flow flexibility and built-in redundancy. The naïve expectation is that two pumps deliver twice the flow, three deliver three times, and so on. They do not — and understanding <em>why</em> is the single most important idea in this article.</p>
+<h2 id="parallel">2 · Parallel operation: and the diminishing return</h2>
+<p>Parallel pumping is the default for water and wastewater stations: multiple identical units on a common suction manifold and a common discharge header, giving flow flexibility and built-in redundancy. The naïve expectation is that two pumps deliver twice the flow, three deliver three times, and so on. They do not, and understanding <em>why</em> is the single most important idea in this article.</p>
 
-<p>When you add a second pump, total flow rises. But more flow through the <em>same</em> pipe means more friction, so the system curve drives the operating head <strong>up</strong>. At that higher head, each individual pump rides further <em>back</em> on its own H&ndash;Q curve and delivers less than it did alone. The combined output is the sum of these reduced contributions — always less than the simple multiple.</p>
+<p>When you add a second pump, total flow rises. But more flow through the <em>same</em> pipe means more friction, so the system curve drives the operating head <strong>up</strong>. At that higher head, each individual pump rides further <em>back</em> on its own H&ndash;Q curve and delivers less than it did alone. The combined output is the sum of these reduced contributions, always less than the simple multiple.</p>
 
 <div class="callout warn">
   <span class="lbl">The rule of thumb that saves projects</span>
-  The flatter the system curve (high static, low friction), the closer parallel pumping approaches the ideal multiple. The steeper the system curve (friction-dominated), the more brutally the gain collapses — two pumps on a friction-heavy main may deliver only ~1.3–1.5× a single pump, while each runs hot, inefficient, and far left of BEP.
+  The flatter the system curve (high static, low friction), the closer parallel pumping approaches the ideal multiple. The steeper the system curve (friction-dominated), the more brutally the gain collapses: two pumps on a friction-heavy main may deliver only ~1.3–1.5× a single pump, while each runs hot, inefficient, and far left of BEP.
 </div>
 
 <p>This is why parallel pumping and high-friction systems are a poor marriage, and why force-main and long-transmission stations must be checked carefully: the second and third units can add cost, energy, and wear while adding very little water.</p>
@@ -237,7 +238,7 @@
 <h2 id="int-parallel">3 · Interactive: parallel pumps on a system</h2>
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Parallel combination — watch each pump back off as you add units</div>
+    <div class="ftitle">Parallel combination: watch each pump back off as you add units</div>
     <div class="fsub">Increase the pump count and steepen the system. The combined curve shifts right; the duty point climbs the system curve; each pump retreats toward shut-off.</div>
   </div>
   <div class="chart-box"><canvas id="parChart"></canvas></div>
@@ -268,12 +269,12 @@
 </div>
 <p class="fig-note">Set N=2 and watch the “× vs single pump” figure: on the default system it lands near <strong>1.4×</strong>, not 2×. Now drag the static head up (flatter system) and the multiple climbs toward 2; drag friction up (steeper system) and it collapses toward 1.</p>
 
-<h2 id="ex-parallel">4 · Worked example — parallel station</h2>
+<h2 id="ex-parallel">4 · Worked example: parallel station</h2>
 <p>Three identical pumps share a header discharging to a reservoir. Each pump curve is \(H = 60 - 8.0\times10^{-6}\,Q^2\) (Q per pump, m³/h), with BEP at 1,400 m³/h and η ≈ 82%. The system is \(H_{sys} = 30 + 4.0\times10^{-6}\,Q_{total}^2\). Solving the intersection for one, two and three running units:</p>
 
 <div class="tbl-wrap">
 <table>
-  <caption>Parallel operation on a moderate-friction system — the diminishing return, quantified.</caption>
+  <caption>Parallel operation on a moderate-friction system: the diminishing return, quantified.</caption>
   <thead>
     <tr><th>Units running</th><th class="num">Total flow</th><th class="num">Flow / pump</th><th class="num">Duty head</th><th class="num">% of BEP</th><th class="num">η / pump</th><th class="num">kW / pump</th><th class="num">Specific energy</th></tr>
   </thead>
@@ -287,44 +288,44 @@
 
 <p>Read across the table and the lesson is unmistakable:</p>
 <ul class="clean">
-  <li><strong>Two pumps deliver 1.41× the flow of one</strong> (2,236 vs 1,581), not 2×. The third pump adds only 252 m³/h — a 1.57× cumulative multiple for 3× the running plant.</li>
-  <li><strong>Each pump retreats toward shut-off</strong> as units are added: 1,581 → 1,118 → 829 m³/h. By the third unit, every pump runs at just <strong>59% of BEP — below the POR</strong>, in the recirculation-prone zone flagged in <a href="npsh-water-infrastructure.html">the NPSH &amp; low-flow article</a>.</li>
+  <li><strong>Two pumps deliver 1.41× the flow of one</strong> (2,236 vs 1,581), not 2×. The third pump adds only 252 m³/h: a 1.57× cumulative multiple for 3× the running plant.</li>
+  <li><strong>Each pump retreats toward shut-off</strong> as units are added: 1,581 → 1,118 → 829 m³/h. By the third unit, every pump runs at just <strong>59% of BEP: below the POR</strong>, in the recirculation-prone zone flagged in <a href="npsh-water-infrastructure.html">the NPSH &amp; low-flow article</a>.</li>
   <li><strong>Energy per cubic metre nearly doubles</strong>, from 0.136 to 0.233 kWh/m³, because the extra water is pushed against a higher friction head at lower efficiency. Adding pumps to chase flow on a friction-bound system is one of the most expensive habits in the industry.</li>
 </ul>
 
 <div class="callout">
   <span class="lbl">The design response</span>
-  If three-pump parallel operation lands every unit at 59% of BEP, the pumps — or the pipe — are wrong for the duty. Either select flatter-curve pumps with BEP nearer the low-flow end, upsize the main to flatten the system curve, or accept that the “third pump” is genuinely a standby, not a capacity unit. The hydraulics, not the procurement spreadsheet, must set the answer.
+  If three-pump parallel operation lands every unit at 59% of BEP, the pumps, or the pipe, are wrong for the duty. Either select flatter-curve pumps with BEP nearer the low-flow end, upsize the main to flatten the system curve, or accept that the “third pump” is genuinely a standby, not a capacity unit. The hydraulics, not the procurement spreadsheet, must set the answer.
 </div>
 
-<h2 id="stability">5 · Stability &amp; load sharing — where parallel goes wrong</h2>
+<h2 id="stability">5 · Stability &amp; load sharing: where parallel goes wrong</h2>
 <p>Beyond efficiency, parallel operation introduces failure modes that simply do not exist for a single pump. Two deserve permanent residence in your design checklist.</p>
 
 <h3>Match the shut-off heads</h3>
-<p>Two dissimilar pumps in parallel only share load when the system head is below <em>both</em> of their shut-off heads. If the system head rises above the weaker pump's shut-off head, that pump delivers <strong>zero flow</strong> — its check valve slams shut and it churns liquid uselessly, heating up at near-deadhead. Worse, if the check valve leaks or fails, the stronger pump can drive flow <em>backwards</em> through it. Parallel pumps should be identical, or at minimum have closely matched shut-off heads.</p>
+<p>Two dissimilar pumps in parallel only share load when the system head is below <em>both</em> of their shut-off heads. If the system head rises above the weaker pump's shut-off head, that pump delivers <strong>zero flow</strong>. Its check valve slams shut and it churns liquid uselessly, heating up at near-deadhead. Worse, if the check valve leaks or fails, the stronger pump can drive flow <em>backwards</em> through it. Parallel pumps should be identical, or at minimum have closely matched shut-off heads.</p>
 
 <h3>Demand continuously-rising (stable) curves</h3>
-<p>A pump curve that is flat or drooping near shut-off creates the conditions for <strong>hunting</strong>: at one head, two flows are possible. Two such pumps in parallel can swap load unpredictably — one surges forward while the other backs off, then they reverse — producing pressure pulsation, vibration and check-valve hammer. Specify pumps with a head rise to shut-off (typically ≥ 10% above the BEP head) so that for every head there is exactly one stable flow.</p>
+<p>A pump curve that is flat or drooping near shut-off creates the conditions for <strong>hunting</strong>: at one head, two flows are possible. Two such pumps in parallel can swap load unpredictably (one surges forward while the other backs off, then they reverse), producing pressure pulsation, vibration and check-valve hammer. Specify pumps with a head rise to shut-off (typically ≥ 10% above the BEP head) so that for every head there is exactly one stable flow.</p>
 
 <div class="callout warn">
   <span class="lbl">Field symptom</span>
-  Two “identical” parallel pumps where one ammeter reads high and the other low, with discharge pressure oscillating, is the classic signature of a flat-curve / mismatched-curve load-sharing problem — not a faulty motor. The cure is hydraulic (curve shape and matching), not electrical.
+  Two “identical” parallel pumps where one ammeter reads high and the other low, with discharge pressure oscillating, is the classic signature of a flat-curve / mismatched-curve load-sharing problem, not a faulty motor. The cure is hydraulic (curve shape and matching), not electrical.
 </div>
 
-<h2 id="series">6 · Series operation — when one pump cannot make the head</h2>
-<p>Series operation stacks heads: the discharge of the first pump becomes the suction of the second, and the same flow passes through both. It is the configuration for <strong>high-head, high-static</strong> duties — booster stations, long transmission lifts, high-rise supply — where a single machine simply cannot reach the required head no matter how far you throttle.</p>
+<h2 id="series">6 · Series operation: when one pump cannot make the head</h2>
+<p>Series operation stacks heads: the discharge of the first pump becomes the suction of the second, and the same flow passes through both. It is the configuration for <strong>high-head, high-static</strong> duties (booster stations, long transmission lifts, high-rise supply), where a single machine simply cannot reach the required head no matter how far you throttle.</p>
 
-<p>The decisive point: on a high-static system, a pump whose shut-off head is <em>below</em> the static head delivers <strong>nothing</strong>. It cannot even open the discharge against the standing column. No amount of parallel pumps helps — adding pumps in parallel never raises the maximum head. Only series (or a multistage pump, which is series stages in one casing) raises the head ceiling.</p>
+<p>The decisive point: on a high-static system, a pump whose shut-off head is <em>below</em> the static head delivers <strong>nothing</strong>. It cannot even open the discharge against the standing column. No amount of parallel pumps helps: adding pumps in parallel never raises the maximum head. Only series (or a multistage pump, which is series stages in one casing) raises the head ceiling.</p>
 
 <div class="callout series">
   <span class="lbl">Two engineering cautions unique to series</span>
-  <strong>Pressure rating:</strong> the downstream pump's casing, seals and the pipework between stages see the <em>sum</em> of the heads — rate them for the full series discharge pressure, not a single stage. &nbsp;<strong>NPSH:</strong> cavitation is still governed by the <em>first</em> pump's suction conditions; the lead pump must satisfy NPSH on its own (see <a href="npsh-water-infrastructure.html">NPSH in water infrastructure</a>).
+  <strong>Pressure rating:</strong> the downstream pump's casing, seals and the pipework between stages see the <em>sum</em> of the heads; rate them for the full series discharge pressure, not a single stage. &nbsp;<strong>NPSH:</strong> cavitation is still governed by the <em>first</em> pump's suction conditions; the lead pump must satisfy NPSH on its own (see <a href="npsh-water-infrastructure.html">NPSH in water infrastructure</a>).
 </div>
 
 <h2 id="int-series">7 · Interactive: series pumps vs a high-static system</h2>
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Series stacking — raise the static head until one pump quits</div>
+    <div class="ftitle">Series stacking: raise the static head until one pump quits</div>
     <div class="fsub">Heads add vertically. Watch the single-pump duty point vanish the moment static head exceeds its 60 m shut-off, while series-2 and series-3 keep delivering.</div>
   </div>
   <div class="chart-box"><canvas id="serChart"></canvas></div>
@@ -341,15 +342,15 @@
     </div>
   </div>
   <div class="readout">
-    <div class="cell"><div class="k">1 pump</div><div class="v" id="rS1" style="font-size:18px;">—</div></div>
+    <div class="cell"><div class="k">1 pump</div><div class="v" id="rS1" style="font-size:18px;">–</div></div>
     <div class="cell"><div class="k">2 in series</div><div class="v" id="rS2" style="font-size:18px;">1091 <small>m³/h</small></div></div>
     <div class="cell"><div class="k">3 in series</div><div class="v" id="rS3" style="font-size:18px;">1712 <small>m³/h</small></div></div>
     <div class="cell"><div class="k">Min. series needed</div><div class="v" id="rSneed" style="font-size:18px;">2</div></div>
   </div>
 </div>
-<p class="fig-note">At the default 95 m static, the single-pump curve never reaches the system curve — “1 pump” reads a dash because it physically delivers no flow. Drag static below 60 m and it reappears.</p>
+<p class="fig-note">At the default 95 m static, the single-pump curve never reaches the system curve: “1 pump” reads a dash because it physically delivers no flow. Drag static below 60 m and it reappears.</p>
 
-<h2 id="ex-series">8 · Worked example — series booster</h2>
+<h2 id="ex-series">8 · Worked example: series booster</h2>
 <p>A transmission lift requires 95 m of static head before any friction. Each available pump is the same unit as before, \(H = 60 - 8.0\times10^{-6}\,Q^2\) (shut-off 60 m). The transmission main gives \(H_{sys} = 95 + 5.0\times10^{-6}\,Q^2\).</p>
 
 <div class="eq">\[ \text{Series-}n:\quad n\!\left(60 - 8.0\times10^{-6}Q^2\right) = 95 + 5.0\times10^{-6}Q^2 \;\Longrightarrow\; Q=\sqrt{\frac{60n-95}{5.0\times10^{-6} + 8.0\times10^{-6}\,n}} \]</div>
@@ -359,62 +360,62 @@
   <caption>Series configurations against a 95 m static system.</caption>
   <thead><tr><th>Configuration</th><th class="num">Shut-off head</th><th class="num">Reaches 95 m static?</th><th class="num">Duty flow</th><th class="num">Duty head</th></tr></thead>
   <tbody>
-    <tr><td>1 pump</td><td class="num">60 m</td><td class="num">No — below static</td><td class="num">0 m³/h</td><td class="num">—</td></tr>
+    <tr><td>1 pump</td><td class="num">60 m</td><td class="num">No: below static</td><td class="num">0 m³/h</td><td class="num">–</td></tr>
     <tr><td>2 in series</td><td class="num">120 m</td><td class="num">Yes</td><td class="num">1,091 m³/h</td><td class="num">101 m</td></tr>
     <tr><td>3 in series</td><td class="num">180 m</td><td class="num">Yes</td><td class="num">1,712 m³/h</td><td class="num">110 m</td></tr>
   </tbody>
 </table>
 </div>
 
-<p>A single pump produces no flow at all — its 60 m shut-off head cannot lift the 95 m static column. Two in series deliver 1,091 m³/h at 101 m total head (each pump contributing ~50.5 m), and a third stage raises both flow and head. This is the mirror image of the parallel case: on a high-static system, <strong>series adds capability where parallel adds nothing</strong>.</p>
+<p>A single pump produces no flow at all. Its 60 m shut-off head cannot lift the 95 m static column. Two in series deliver 1,091 m³/h at 101 m total head (each pump contributing ~50.5 m), and a third stage raises both flow and head. This is the mirror image of the parallel case: on a high-static system, <strong>series adds capability where parallel adds nothing</strong>.</p>
 
 <div class="callout key">
   <span class="lbl">The one-line decision rule</span>
-  Short of <em>flow</em> on a relatively flat system → go <strong>parallel</strong>. Short of <em>head</em> on a steep / high-static system → go <strong>series</strong> (or specify a multistage pump). Read your system curve before you decide — the static-to-friction ratio chooses the configuration for you.
+  Short of <em>flow</em> on a relatively flat system → go <strong>parallel</strong>. Short of <em>head</em> on a steep / high-static system → go <strong>series</strong> (or specify a multistage pump). Read your system curve before you decide: the static-to-friction ratio chooses the configuration for you.
 </div>
 
-<h2 id="staging">9 · Staging logic — duty, standby &amp; assist</h2>
+<h2 id="staging">9 · Staging logic: duty, standby &amp; assist</h2>
 <p>Real stations rarely run a fixed number of pumps. They <em>stage</em> units in and out to track demand, equalise wear, and preserve redundancy. Good staging design turns the curves above into a control philosophy.</p>
 
 <h3>Sizing for redundancy: the N+1 rule</h3>
-<p>Critical water and wastewater stations are built <strong>N+1</strong>: N pumps meet peak duty, plus one full standby so that peak flow is still met with the largest unit out of service for maintenance or failure. For high-criticality assets, N+2 or duty/standby pairs per stream are used. The standby is not a capacity unit — counting it as capacity is a classic and dangerous error.</p>
+<p>Critical water and wastewater stations are built <strong>N+1</strong>: N pumps meet peak duty, plus one full standby so that peak flow is still met with the largest unit out of service for maintenance or failure. For high-criticality assets, N+2 or duty/standby pairs per stream are used. The standby is not a capacity unit: counting it as capacity is a classic and dangerous error.</p>
 
 <h3>Lead / lag / assist control</h3>
 <ul class="clean">
   <li><strong>Lead pump</strong> starts first and, if variable-speed, modulates to hold the setpoint (level or pressure).</li>
-  <li><strong>Lag / assist pumps</strong> cut in when the lead reaches maximum speed/flow and the setpoint still cannot be held — i.e. when the duty point would otherwise run off the end of the lead pump's curve.</li>
+  <li><strong>Lag / assist pumps</strong> cut in when the lead reaches maximum speed/flow and the setpoint still cannot be held, i.e. when the duty point would otherwise run off the end of the lead pump's curve.</li>
   <li><strong>Alternation</strong> rotates the lead role between units (by run-hours or starts) so wear is shared and no single pump becomes the “always-on” unit.</li>
 </ul>
 
 <h3>The preferred modern architecture: one VFD lead + fixed-speed lags</h3>
-<p>A widely used and cost-effective scheme runs the lead pump on a variable-frequency drive for fine setpoint control and soft starting, while the assist pumps are fixed-speed and staged on/off. The VFD trims the combined output continuously between discrete pump steps, avoiding both throttling losses and the cost of a drive on every unit. Staging thresholds are set from the combined-curve / system-curve intersections so that each unit cuts in near its own efficient region — not deep in recirculation.</p>
+<p>A widely used and cost-effective scheme runs the lead pump on a variable-frequency drive for fine setpoint control and soft starting, while the assist pumps are fixed-speed and staged on/off. The VFD trims the combined output continuously between discrete pump steps, avoiding both throttling losses and the cost of a drive on every unit. Staging thresholds are set from the combined-curve / system-curve intersections so that each unit cuts in near its own efficient region, not deep in recirculation.</p>
 
 <div class="callout warn">
   <span class="lbl">Anti-cycling and minimum flow</span>
-  Staging thresholds need hysteresis (separate cut-in and cut-out points) and minimum run timers to prevent rapid start/stop cycling, which destroys motors and check valves. And every pump — especially a lead VFD pump at low speed — must stay above its minimum continuous stable flow; below it, recirculation and heat-up begin regardless of how elegant the control logic is.
+  Staging thresholds need hysteresis (separate cut-in and cut-out points) and minimum run timers to prevent rapid start/stop cycling, which destroys motors and check valves. And every pump, especially a lead VFD pump at low speed, must stay above its minimum continuous stable flow; below it, recirculation and heat-up begin regardless of how elegant the control logic is.
 </div>
 
 <h2 id="checklist">10 · Design checklist &amp; engineering judgement</h2>
 <ul class="clean">
-  <li><strong>Plot the combined curve against the real system curve</strong> for every running combination (1, 2, 3 … N) — never assume a flow multiple.</li>
+  <li><strong>Plot the combined curve against the real system curve</strong> for every running combination (1, 2, 3 … N); never assume a flow multiple.</li>
   <li><strong>Check each pump's % of BEP in every staging step.</strong> If adding a unit drives the others below POR, the configuration is wrong, not merely sub-optimal.</li>
   <li><strong>For parallel:</strong> use identical units, demand continuously-rising curves (≥10% head rise to shut-off), and match shut-off heads to prevent load-sharing failure.</li>
   <li><strong>For series:</strong> rate downstream casings and inter-stage pipe for the cumulative pressure, and confirm the lead pump satisfies NPSH alone.</li>
-  <li><strong>Confirm the head ceiling.</strong> If maximum static head approaches a single pump's shut-off, parallel cannot help — you need series or multistage.</li>
+  <li><strong>Confirm the head ceiling.</strong> If maximum static head approaches a single pump's shut-off, parallel cannot help. You need series or multistage.</li>
   <li><strong>Size N+1 (minimum).</strong> Standby is not capacity. Document it explicitly so no one “borrows” the spare on the next flow study.</li>
   <li><strong>Set staging thresholds from the curves,</strong> with hysteresis, anti-cycling timers, minimum-flow protection, and lead alternation for even wear.</li>
 </ul>
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  Combining pumps reshapes what the plant <em>can</em> do; the system curve still decides what it <em>will</em> do. Add flows for parallel, heads for series — then go find the intersection, every single time.
+  Combining pumps reshapes what the plant <em>can</em> do; the system curve still decides what it <em>will</em> do. Add flows for parallel, heads for series, then go find the intersection, every single time.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>Jones, G.M. (ed.). <em>Pumping Station Design</em>, 3rd ed. Butterworth-Heinemann, 2008 — the definitive reference for parallel/series staging and station hydraulics.</li>
-  <li>Hydraulic Institute (HI). <em>ANSI/HI 9.6.3 — Rotodynamic Pumps: Guideline for Operating Regions (POR / AOR).</em></li>
-  <li>Hydraulic Institute (HI). <em>ANSI/HI 1.3 — Rotodynamic (Centrifugal) Pumps for Design and Application.</em></li>
-  <li>Hydraulic Institute (HI). <em>ANSI/HI 9.6.1 — Rotodynamic Pumps: Guideline for NPSH Margin.</em></li>
+  <li>Jones, G.M. (ed.). <em>Pumping Station Design</em>, 3rd ed. Butterworth-Heinemann, 2008: the definitive reference for parallel/series staging and station hydraulics.</li>
+  <li>Hydraulic Institute (HI). <em>ANSI/HI 9.6.3, Rotodynamic Pumps: Guideline for Operating Regions (POR / AOR).</em></li>
+  <li>Hydraulic Institute (HI). <em>ANSI/HI 1.3: Rotodynamic (Centrifugal) Pumps for Design and Application.</em></li>
+  <li>Hydraulic Institute (HI). <em>ANSI/HI 9.6.1, Rotodynamic Pumps: Guideline for NPSH Margin.</em></li>
   <li>Karassik, I.J., Messina, J.P., Cooper, P., Heald, C.C. <em>Pump Handbook</em>, 4th ed. McGraw-Hill, 2008.</li>
   <li>Gülich, J.F. <em>Centrifugal Pumps</em>, 4th ed. Springer, 2020 (curve stability, parallel hunting).</li>
   <li>U.S. DOE &amp; Hydraulic Institute. <em>Improving Pumping System Performance: A Sourcebook for Industry</em>, 2nd ed.</li>
@@ -430,7 +431,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -670,7 +671,7 @@ function updateSer(){
   serChart.options.plugins.annotation.annotations.stat={type:'line',yMin:Hs,yMax:Hs,xMin:0,xMax:SER_XMAX,borderColor:'rgba(192,57,43,0.35)',borderWidth:1.2,borderDash:[2,3],label:{display:true,content:'static '+Hs+' m',position:'end',color:'#c0392b',font:{family:'IBM Plex Sans',size:10,weight:'600'},backgroundColor:'rgba(255,255,255,0.85)'}};
   serChart.update('none');
 
-  const fmt=s=> s? Math.round(s.q)+' <small>m³/h</small>' : '—';
+  const fmt=s=> s? Math.round(s.q)+' <small>m³/h</small>' : '–';
   document.getElementById('rS1').innerHTML=fmt(r[0]);
   document.getElementById('rS2').innerHTML=fmt(r[1]);
   document.getElementById('rS3').innerHTML=fmt(r[2]);

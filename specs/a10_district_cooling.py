@@ -1,23 +1,23 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">Connect a megatall tower to a district cooling network and you have not simplified the design — you have replaced a plant you control with a <strong>contract you cannot renegotiate</strong>. The provider guarantees a supply temperature and a pressure; you guarantee a return temperature. That last clause is where the money is. Every kelvin of return temperature you fail to deliver inflates the flow you must contract for, and the capacity charge follows the flow: <strong>a design ΔT of 8&nbsp;K delivered as 4&nbsp;K doubles the capacity charge for exactly the same cooling.</strong> The energy transfer station is a small room with four pieces of equipment in it, and it is one of the highest-leverage designs in the building.</p>
+<p class="lead">Connect a megatall tower to a district cooling network and you have not simplified the design. You have replaced a plant you control with a <strong>contract you cannot renegotiate</strong>. The provider guarantees a supply temperature and a pressure; you guarantee a return temperature. That last clause is where the money is. Every kelvin of return temperature you fail to deliver inflates the flow you must contract for, and the capacity charge follows the flow: <strong>a design ΔT of 8&nbsp;K delivered as 4&nbsp;K doubles the capacity charge for exactly the same cooling.</strong> The energy transfer station is a small room with four pieces of equipment in it, and it is one of the highest-leverage designs in the building.</p>
 
 <h2 id="why">1 · What the connection really changes</h2>
 <ul class="clean">
-  <li><strong>ΔT stops being an efficiency question and becomes a bill.</strong> In an in-house plant a low ΔT wastes pump energy and forces extra chillers on — bad, but internal. On a district connection it is a contractual quantity that is metered, charged and penalised.</li>
+  <li><strong>ΔT stops being an efficiency question and becomes a bill.</strong> In an in-house plant a low ΔT wastes pump energy and forces extra chillers on: bad, but internal. On a district connection it is a contractual quantity that is metered, charged and penalised.</li>
   <li><strong>You inherit somebody else's pressure.</strong> District networks run at high pressure to reach distant customers. That network pressure lands at your ETS and adds to whatever static your own building generates.</li>
-  <li><strong>The interface is almost always indirect.</strong> A plate heat exchanger separates the network hydraulically from the building — mandatory in a tall building, because the network cannot be exposed to a 60&nbsp;bar building static and the building cannot be exposed to network transients.</li>
+  <li><strong>The interface is almost always indirect.</strong> A plate heat exchanger separates the network hydraulically from the building: mandatory in a tall building, because the network cannot be exposed to a 60&nbsp;bar building static and the building cannot be exposed to network transients.</li>
   <li><strong>And that heat exchanger costs you temperature.</strong> The approach is added to the supply temperature the provider delivers, and the building's coils must be selected for the warmer number.</li>
   <li><strong>The meter is the cash register.</strong> A BTU meter measures flow and two temperatures; at low ΔT the temperature sensors dominate the uncertainty, and the uncertainty is money.</li>
 </ul>
 
 <h2 id="int-dt">2 · Interactive: what a degraded ΔT costs</h2>
-<p>District tariffs are typically split into a <strong>capacity charge</strong> — based on contracted peak capacity or peak flow — and a <strong>consumption charge</strong> on metered energy. Cooling delivered is unchanged by a poor ΔT; the <em>flow</em> to deliver it is not.</p>
+<p>District tariffs are typically split into a <strong>capacity charge</strong>, based on contracted peak capacity or peak flow, and a <strong>consumption charge</strong> on metered energy. Cooling delivered is unchanged by a poor ΔT; the <em>flow</em> to deliver it is not.</p>
 
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Contracted flow and capacity charge vs achieved ΔT</div>
-    <div class="fsub">Q = load / (4.187·ΔT). Capacity charge is taken as proportional to contracted peak flow. Consumption is unchanged — the same cooling is delivered either way.</div>
+    <div class="fsub">Q = load / (4.187·ΔT). Capacity charge is taken as proportional to contracted peak flow. Consumption is unchanged: the same cooling is delivered either way.</div>
   </div>
   <div class="chart-box"><canvas id="dtChart"></canvas></div>
   <div class="controls">
@@ -50,19 +50,19 @@ BODY = r"""
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">Design at 8&nbsp;K and deliver 6&nbsp;K and the contracted flow rises by <strong>33&nbsp;%</strong>; deliver 4&nbsp;K and it <strong>doubles</strong>. On a modest 4&nbsp;M annual capacity charge that is 1.33&nbsp;M a year for nothing — no extra cooling, no extra comfort, just warmer water going back. The causes are all inside your boundary and all fixable at design: three-port valves anywhere in the building, open bypasses, coils selected at a narrower ΔT than the contract, decoupler backflow, and control valves with too little authority to close properly. This is the single strongest reason to design a district-connected tower at a <strong>wide ΔT and then defend it</strong> — the same argument as in <a href="chilled-water-pumps-tall-buildings.html">chilled-water pumps</a>, but with an invoice attached.</p>
+<p class="fig-note">Design at 8&nbsp;K and deliver 6&nbsp;K and the contracted flow rises by <strong>33&nbsp;%</strong>; deliver 4&nbsp;K and it <strong>doubles</strong>. On a modest 4&nbsp;M annual capacity charge that is 1.33&nbsp;M a year for nothing: no extra cooling, no extra comfort, just warmer water going back. The causes are all inside your boundary and all fixable at design: three-port valves anywhere in the building, open bypasses, coils selected at a narrower ΔT than the contract, decoupler backflow, and control valves with too little authority to close properly. This is the single strongest reason to design a district-connected tower at a <strong>wide ΔT and then defend it</strong>: the same argument as in <a href="chilled-water-pumps-tall-buildings.html">chilled-water pumps</a>, but with an invoice attached.</p>
 
 <h2 id="ets">3 · The energy transfer station</h2>
 <p>An indirect ETS is deceptively simple: a plate heat exchanger, a control valve on the primary, isolation and strainers, and a meter. Each of those four is a common failure point:</p>
 <ul class="clean">
-  <li><strong>The heat exchanger.</strong> Sized on approach, fouling allowance and both-side pressure drops, and rated for the <em>primary</em> network pressure on one side and the building static on the other. Specify the plate material and gasket for the network's water chemistry, and provide space to open the plate pack — an exchanger that cannot be stripped will not be cleaned.</li>
-  <li><strong>The primary control valve.</strong> This is the component that actually delivers your ΔT. It must have real authority against the network's differential pressure — which is large and varies with the network's own load — so it is almost always a <strong>pressure-independent control valve</strong>. An ordinary two-port valve on a district primary is the classic cause of a building that cannot hold its return temperature.</li>
+  <li><strong>The heat exchanger.</strong> Sized on approach, fouling allowance and both-side pressure drops, and rated for the <em>primary</em> network pressure on one side and the building static on the other. Specify the plate material and gasket for the network's water chemistry, and provide space to open the plate pack: an exchanger that cannot be stripped will not be cleaned.</li>
+  <li><strong>The primary control valve.</strong> This is the component that actually delivers your ΔT. It must have real authority against the network's differential pressure, which is large and varies with the network's own load, so it is almost always a <strong>pressure-independent control valve</strong>. An ordinary two-port valve on a district primary is the classic cause of a building that cannot hold its return temperature.</li>
   <li><strong>Strainers and filtration.</strong> The network is a shared system carrying everybody's debris. Provide a properly sized primary strainer with differential-pressure monitoring, and consider side-stream filtration; a fouled plate pack shows up first as a widening approach and then as a ΔT failure.</li>
-  <li><strong>The meter.</strong> Located, installed and maintained to the standard the contract references — with the straight lengths the flow meter actually needs and the matched sensor pair in the correct pockets.</li>
+  <li><strong>The meter.</strong> Located, installed and maintained to the standard the contract references, with the straight lengths the flow meter actually needs and the matched sensor pair in the correct pockets.</li>
 </ul>
 
 <h2 id="int-approach">4 · Interactive: the approach you pay for twice</h2>
-<p>The heat exchanger's approach adds to the supply temperature the building sees, and a warmer supply means every coil in the tower must be larger to do the same job — because coil capacity follows the log-mean temperature difference, which shrinks fast as the supply warms.</p>
+<p>The heat exchanger's approach adds to the supply temperature the building sees, and a warmer supply means every coil in the tower must be larger to do the same job, because coil capacity follows the log-mean temperature difference, which shrinks fast as the supply warms.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -100,10 +100,10 @@ BODY = r"""
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rAv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">With a 4.5&nbsp;°C primary and a 1.5&nbsp;K approach the building gets <strong>6.0&nbsp;°C</strong> — exactly the reference selection, so the coils are unchanged. Loosen the approach to 3&nbsp;K to save money on plates and the secondary rises to 7.5&nbsp;°C, the LMTD shrinks from 8.4&nbsp;K to 6.9&nbsp;K, and <strong>every coil in the tower needs roughly 22&nbsp;% more area</strong> to deliver the same duty. That is the approach paid for twice: once in the exchanger you did not buy, and again in a thousand coils and the fan energy to push air through them. Buy the plates.</p>
+<p class="fig-note">With a 4.5&nbsp;°C primary and a 1.5&nbsp;K approach the building gets <strong>6.0&nbsp;°C</strong>, exactly the reference selection, so the coils are unchanged. Loosen the approach to 3&nbsp;K to save money on plates and the secondary rises to 7.5&nbsp;°C, the LMTD shrinks from 8.4&nbsp;K to 6.9&nbsp;K, and <strong>every coil in the tower needs roughly 22&nbsp;% more area</strong> to deliver the same duty. That is the approach paid for twice: once in the exchanger you did not buy, and again in a thousand coils and the fan energy to push air through them. Buy the plates.</p>
 
 <h2 id="int-meter">5 · Interactive: the meter is the cash register</h2>
-<p>A BTU meter computes energy from a flow measurement and a temperature <em>difference</em>. Because the difference is small, the temperature sensors contribute far more uncertainty than their absolute accuracy suggests — and the smaller your ΔT, the worse it gets.</p>
+<p>A BTU meter computes energy from a flow measurement and a temperature <em>difference</em>. Because the difference is small, the temperature sensors contribute far more uncertainty than their absolute accuracy suggests, and the smaller your ΔT, the worse it gets.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -141,56 +141,56 @@ BODY = r"""
     <div class="cell"><div class="k">Class</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rMv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At a 6&nbsp;K operating ΔT with a decent 0.1&nbsp;K matched sensor pair, the metering uncertainty is about <strong>2.8&nbsp;%</strong> — on a 10&nbsp;M invoice, <strong>0.28&nbsp;M a year</strong> of pure measurement uncertainty. Let the ΔT fall to 4&nbsp;K and it rises to 3.8&nbsp;%; use ordinary 0.2&nbsp;K sensors instead of a matched pair and it roughly doubles again. Two conclusions follow, and both are cheap at design stage: specify a <strong>matched sensor pair</strong> to the standard the contract cites and install them in the correct pockets, and remember that <strong>protecting ΔT improves the accuracy of your own bill</strong> as well as its size. A meter is not a commodity item on a district connection; it is the instrument that decides what you pay for twenty years.</p>
+<p class="fig-note">At a 6&nbsp;K operating ΔT with a decent 0.1&nbsp;K matched sensor pair, the metering uncertainty is about <strong>2.8&nbsp;%</strong>: on a 10&nbsp;M invoice, <strong>0.28&nbsp;M a year</strong> of pure measurement uncertainty. Let the ΔT fall to 4&nbsp;K and it rises to 3.8&nbsp;%; use ordinary 0.2&nbsp;K sensors instead of a matched pair and it roughly doubles again. Two conclusions follow, and both are cheap at design stage: specify a <strong>matched sensor pair</strong> to the standard the contract cites and install them in the correct pockets, and remember that <strong>protecting ΔT improves the accuracy of your own bill</strong> as well as its size. A meter is not a commodity item on a district connection; it is the instrument that decides what you pay for twenty years.</p>
 
 <h2 id="pressure">6 · Pressure, transients and the interface</h2>
 <ul class="clean">
   <li><strong>Rate the primary side for the network, not the building.</strong> District networks run at high pressure and are subject to transients from pumping stations kilometres away. Get the network's maximum operating and test pressures in writing and rate the primary side, the exchanger and the meter accordingly.</li>
-  <li><strong>Rate the secondary side for the building's own static.</strong> In a tall tower the ETS often sits at the bottom, where the building-side static is highest — see the zoning discussion in <a href="chilled-water-pumps-tall-buildings.html">chilled-water pumps</a>.</li>
+  <li><strong>Rate the secondary side for the building's own static.</strong> In a tall tower the ETS often sits at the bottom, where the building-side static is highest. See the zoning discussion in <a href="chilled-water-pumps-tall-buildings.html">chilled-water pumps</a>.</li>
   <li><strong>Protect against transients.</strong> A large primary control valve closing quickly against a long network main is a water-hammer source; specify closure times and check them, and coordinate with the network operator.</li>
   <li><strong>Provide isolation that lets you work.</strong> Double isolation and a drain on the primary, so the ETS can be serviced without the network operator attending, and a bypass arrangement if the contract allows it.</li>
-  <li><strong>Agree the boundary in writing.</strong> Who owns the meter, who owns the strainer, who may operate the primary valves, and what the response time is when the network fails — these are design-stage decisions that end up in the O&amp;M and in disputes.</li>
+  <li><strong>Agree the boundary in writing.</strong> Who owns the meter, who owns the strainer, who may operate the primary valves, and what the response time is when the network fails. These are design-stage decisions that end up in the O&amp;M and in disputes.</li>
 </ul>
 
 <h2 id="install">7 · Installation &amp; execution tricks</h2>
 <ul class="clean">
-  <li><strong>Give the flow meter its straight lengths.</strong> The commonest metering error on site is an elbow immediately upstream. Reserve the upstream and downstream straight runs on the drawing and defend them in coordination — they are usually 10D and 5D but check the meter's own requirement.</li>
-  <li><strong>Install the sensor pair in the specified pockets</strong>, fully immersed, with the pockets in the correct locations relative to the exchanger and the meter, and keep the pair together — a matched pair separated during installation is no longer matched.</li>
+  <li><strong>Give the flow meter its straight lengths.</strong> The commonest metering error on site is an elbow immediately upstream. Reserve the upstream and downstream straight runs on the drawing and defend them in coordination. They are usually 10D and 5D but check the meter's own requirement.</li>
+  <li><strong>Install the sensor pair in the specified pockets</strong>, fully immersed, with the pockets in the correct locations relative to the exchanger and the meter, and keep the pair together: a matched pair separated during installation is no longer matched.</li>
   <li><strong>Flush before the exchanger is connected.</strong> Commission the building side to a stated cleanliness standard with temporary spool pieces in place of the plate pack; a new plate pack fouled by construction debris starts life with a widened approach it never recovers from.</li>
   <li><strong>Record the approach at commissioning</strong> and trend it. A rising approach is the single best early indicator of fouling, and it will move before anyone notices a ΔT problem.</li>
-  <li><strong>Commission the ΔT, not just the flow.</strong> Verify the return temperature at the ETS across the load range, and trend it against the contract from day one — the first year's data is what you will need if the ΔT clause is ever disputed.</li>
+  <li><strong>Commission the ΔT, not just the flow.</strong> Verify the return temperature at the ETS across the load range, and trend it against the contract from day one: the first year's data is what you will need if the ΔT clause is ever disputed.</li>
   <li><strong>Alarm on ΔT.</strong> A BMS alarm on sustained low return temperature turns a slow financial leak into an actionable event. It is one line of logic and it is almost never there.</li>
   <li><strong>Keep the plate pack accessible</strong> and record the tightened dimension of the pack; over-tightening a gasketed exchanger to stop a leak is how plates get crushed.</li>
 </ul>
 
 <h2 id="checklist">8 · The design &amp; installation checklist</h2>
 <ul class="clean">
-  <li><strong>Design at a wide ΔT and defend it</strong> — two-port valves, no bypasses, coils selected for the contract ΔT, valve authority checked.</li>
+  <li><strong>Design at a wide ΔT and defend it</strong>: two-port valves, no bypasses, coils selected for the contract ΔT, valve authority checked.</li>
   <li><strong>Use pressure-independent control valves</strong> on the primary and at the terminals.</li>
-  <li><strong>Buy the closer approach</strong> — it is cheaper than the coil area and fan energy it saves.</li>
+  <li><strong>Buy the closer approach</strong>: it is cheaper than the coil area and fan energy it saves.</li>
   <li><strong>Rate each side for its own pressure regime</strong>, with the network's figures obtained in writing.</li>
   <li><strong>Specify a matched sensor pair and a properly installed flow meter</strong>, to the standard the contract cites.</li>
   <li><strong>Reserve the meter's straight lengths</strong> on the drawing.</li>
   <li><strong>Provide strainers with DP monitoring</strong> and consider side-stream filtration.</li>
   <li><strong>Trend approach and ΔT from handover</strong>, with a BMS alarm on sustained low return temperature.</li>
-  <li><strong>Write the operational boundary down</strong> — ownership, access, isolation and failure response.</li>
+  <li><strong>Write the operational boundary down</strong>: ownership, access, isolation and failure response.</li>
 </ul>
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  A district connection converts ΔT from an efficiency metric into a <strong>contractual quantity with a price</strong>: deliver 4&nbsp;K where you promised 8&nbsp;K and the capacity charge doubles for identical cooling. So design wide, use pressure-independent valves so the return temperature is actually controlled, and buy the <strong>closer heat-exchanger approach</strong> — because the 1.5&nbsp;K you save on plates comes back as 15&nbsp;% more coil area in every room in the tower. Then treat the meter as the cash register it is: a matched sensor pair, its straight lengths reserved on the drawing, and the approach and return temperature trended and alarmed from the day the building opens.
+  A district connection converts ΔT from an efficiency metric into a <strong>contractual quantity with a price</strong>: deliver 4&nbsp;K where you promised 8&nbsp;K and the capacity charge doubles for identical cooling. So design wide, use pressure-independent valves so the return temperature is actually controlled, and buy the <strong>closer heat-exchanger approach</strong>, because the 1.5&nbsp;K you save on plates comes back as 15&nbsp;% more coil area in every room in the tower. Then treat the meter as the cash register it is: a matched sensor pair, its straight lengths reserved on the drawing, and the approach and return temperature trended and alarmed from the day the building opens.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ASHRAE <em>District Cooling Guide</em>, 2nd ed. — network design, energy transfer stations, ΔT management and customer interface.</li>
-  <li>International District Energy Association (IDEA) — district cooling best practice, contracting models and delta-T requirements.</li>
-  <li>EN 1434 / OIML R75 — heat and cooling meters: accuracy classes, matched temperature sensor pairs and installation requirements.</li>
-  <li>Taylor, S.T. <em>Degrading Chilled Water Plant Delta-T: Causes and Mitigation</em>, ASHRAE Transactions — the mechanisms behind low-ΔT syndrome.</li>
-  <li>ASHRAE <em>Handbook — HVAC Systems and Equipment</em>, District Heating and Cooling chapter; and the Heat Exchangers chapter for plate exchanger selection and fouling.</li>
+  <li>ASHRAE <em>District Cooling Guide</em>, 2nd ed.: network design, energy transfer stations, ΔT management and customer interface.</li>
+  <li>International District Energy Association (IDEA): district cooling best practice, contracting models and delta-T requirements.</li>
+  <li>EN 1434 / OIML R75, heat and cooling meters: accuracy classes, matched temperature sensor pairs and installation requirements.</li>
+  <li>Taylor, S.T. <em>Degrading Chilled Water Plant Delta-T: Causes and Mitigation</em>, ASHRAE Transactions, the mechanisms behind low-ΔT syndrome.</li>
+  <li>ASHRAE <em>Handbook, HVAC Systems and Equipment</em>, District Heating and Cooling chapter; and the Heat Exchangers chapter for plate exchanger selection and fouling.</li>
   <li>Saudi Building Code <em>SBC 501</em> and the Saudi regulatory framework for district cooling services and metering.</li>
-  <li>CIBSE <em>CP1 Heat Networks: Code of Practice</em> and CIBSE <em>Guide B</em> — substation design, metering and commissioning practice transferable to cooling networks.</li>
-  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed. — pressure zoning of the building side and interface location in tall buildings.</li>
+  <li>CIBSE <em>CP1 Heat Networks: Code of Practice</em> and CIBSE <em>Guide B</em>, substation design, metering and commissioning practice transferable to cooling networks.</li>
+  <li>ASHRAE <em>Design Guide for Tall, Supertall, and Megatall Building Systems</em>, 2nd ed.: pressure zoning of the building side and interface location in tall buildings.</li>
 </ol>
 
 <div class="tags">#DistrictCooling #EnergyTransferStation #ETS #TallBuildings #MegatallBuildings #DeltaT #LowDeltaT #CapacityCharge #Tariff #PlateHeatExchanger #Approach #Fouling #PICV #ValveAuthority #BTUMeter #EnergyMetering #EN1434 #MatchedSensorPair #Uncertainty #Commissioning #SideStreamFiltration #WaterHammer #PressureRating #ASHRAE #IDEA #MEP #BuildingServices #HVAC</div>
@@ -214,7 +214,7 @@ let dtChart=new Chart(document.getElementById('dtChart'),{
     {type:'scatter',label:'Your building',data:[],backgroundColor:'#b9770e',borderColor:'#fff',borderWidth:2,pointRadius:7,yAxisID:'y',order:1}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
-    scales:{x:{type:'linear',min:2.5,max:14,reverse:true,title:{display:true,text:'Achieved ΔT (K)  —  worse to the right',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
+    scales:{x:{type:'linear',min:2.5,max:14,reverse:true,title:{display:true,text:'Achieved ΔT (K): worse to the right',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
             y:{type:'linear',position:'left',min:0,title:{display:true,text:'Contracted flow (L/s)',font:{family:'DM Sans',size:12,weight:'600'}},...AX},
             y1:{type:'linear',position:'right',min:0,title:{display:true,text:'Capacity charge multiplier',font:{family:'DM Sans',size:12,weight:'600'}},grid:{drawOnChartArea:false},ticks:{font:{family:'DM Sans',size:11}}}},
     plugins:{legend:{labels:{font:{family:'DM Sans',size:11.5},usePointStyle:true,boxWidth:8}}}}
@@ -341,16 +341,16 @@ SPEC = dict(
     reg_tag='HVAC · District Cooling · ETS',
     breadcrumb='HVAC &amp; Cooling',
     tag_line='HVAC &middot; District Cooling &middot; Energy Transfer Station &middot; Megatall',
-    desc='District cooling and energy transfer station design for megatall buildings: why a district connection turns delta-T from an efficiency metric into a contractual quantity with a price, the capacity charge penalty from a degraded return temperature, plate heat exchanger approach and the coil area it costs, pressure-independent control valves, BTU metering uncertainty and why the temperature sensors dominate at low delta-T, and the pressure interface — with three interactive charts and installation tricks.',
+    desc='District cooling and energy transfer station design for megatall buildings: why a district connection turns delta-T from an efficiency metric into a contractual quantity with a price, the capacity charge penalty from a degraded return temperature, plate heat exchanger approach and the coil area it costs, pressure-independent control valves, BTU metering uncertainty and why the temperature sensors dominate at low delta-T, and the pressure interface, with three interactive charts and installation tricks.',
     og_desc='Deliver 4 K where you promised 8 K and the district cooling capacity charge doubles for identical cooling. Plus the heat-exchanger approach you pay for twice, and why the meter is the cash register.',
     ld_desc='A design-perspective guide to district cooling connections and energy transfer stations in megatall buildings: delta-T as a contractual quantity, capacity charge penalties, plate heat exchanger approach and coil area, pressure-independent control valves, energy metering uncertainty, and the pressure and transient interface.',
     img_alt='Technical cutaway of a district cooling energy transfer station at the base of a megatall tower, showing plate heat exchangers separating the district network from the building circuit, primary control valves, strainers and a BTU meter, with the building risers leaving upward',
     en_tag='HVAC &amp; Cooling &middot; District Cooling &middot; ETS &middot; Megatall',
     en_title='District Cooling &amp; Energy Transfer Stations for Megatall Buildings: Delta-T, Approach &amp; Metering',
-    en_excerpt='Connecting a tower to a district network does not simplify the design &mdash; it replaces a plant you control with a contract you cannot renegotiate, and &Delta;T stops being an efficiency metric and becomes a bill. Deliver 4&nbsp;K where you promised 8&nbsp;K and the <strong>capacity charge doubles</strong> for identical cooling. The heat-exchanger approach you pay for twice (1.5&nbsp;K saved on plates comes back as 15&nbsp;% more coil area in every room), pressure-independent valves, and why at low &Delta;T the temperature sensors &mdash; not the flow meter &mdash; dominate what you pay &mdash; with three interactive charts.',
+    en_excerpt='Connecting a tower to a district network replaces a plant you control with a contract you cannot renegotiate, and &Delta;T stops being an efficiency metric and becomes a bill. Deliver 4&nbsp;K where you promised 8&nbsp;K and the <strong>capacity charge doubles</strong> for identical cooling. The heat-exchanger approach you pay for twice (1.5&nbsp;K saved on plates comes back as 15&nbsp;% more coil area in every room), pressure-independent valves, and why at low &Delta;T the temperature sensors, not the flow meter, dominate what you pay, with three interactive charts.',
     en_search='district cooling energy transfer station ETS tall buildings megatall delta-T low delta-T return temperature capacity charge demand charge consumption charge tariff contract penalty contracted flow plate heat exchanger approach fouling plate pack gasket pressure independent control valve PICV valve authority two port three port bypass decoupler BTU meter energy meter EN 1434 OIML R75 matched sensor pair Pt100 flow meter accuracy straight lengths electromagnetic ultrasonic measurement uncertainty network pressure transient water hammer strainer side stream filtration commissioning trending alarm ASHRAE district cooling guide IDEA CIBSE CP1 MEP building services HVAC',
     ar_title='التبريد المركزي ومحطات نقل الطاقة للمباني فائقة الارتفاع: فرق الحرارة والاقتراب والعدادات',
-    ar_excerpt='ربط البرج بشبكة تبريد مركزي لا يبسّط التصميم — بل يستبدل محطةً تتحكم بها بعقدٍ لا يمكنك إعادة التفاوض عليه، ويتحوّل فرق الحرارة من مؤشر كفاءة إلى فاتورة. سلّم ٤ كلفن حيث وعدت بثمانية، <strong>وتتضاعف رسوم السعة</strong> مقابل التبريد نفسه. وفرق اقتراب المبادل الذي تدفع ثمنه مرتين (توفير ١٫٥ كلفن في الصفائح يعود ١٥٪ زيادة في مساحة الملفات بكل غرفة)، والصمامات المستقلة عن الضغط، ولماذا تهيمن حساسات الحرارة — لا عداد التدفق — على ما تدفعه عند فروق الحرارة المنخفضة — مع ثلاثة رسوم تفاعلية.',
+    ar_excerpt='ربط البرج بشبكة تبريد مركزي لا يبسّط التصميم، بل يستبدل محطةً تتحكم بها بعقدٍ لا يمكنك إعادة التفاوض عليه، ويتحوّل فرق الحرارة من مؤشر كفاءة إلى فاتورة. سلّم ٤ كلفن حيث وعدت بثمانية، <strong>وتتضاعف رسوم السعة</strong> مقابل التبريد نفسه. وفرق اقتراب المبادل الذي تدفع ثمنه مرتين (توفير ١٫٥ كلفن في الصفائح يعود ١٥٪ زيادة في مساحة الملفات بكل غرفة)، والصمامات المستقلة عن الضغط، ولماذا تهيمن حساسات الحرارة، لا عداد التدفق، على ما تدفعه عند فروق الحرارة المنخفضة، مع ثلاثة رسوم تفاعلية.',
     ar_search='district cooling energy transfer station ETS delta-T capacity charge plate heat exchanger approach PICV BTU meter EN 1434 matched sensor pair uncertainty commissioning IDEA التبريد المركزي محطة نقل الطاقة المباني الشاهقة المباني فائقة الارتفاع فرق درجات الحرارة درجة حرارة العودة رسوم السعة رسوم الاستهلاك التعرفة العقد الغرامة التدفق المتعاقد عليه المبادل الحراري الصفائحي فرق الاقتراب الاتساخ حزمة الصفائح الحشية الصمام المستقل عن الضغط سلطة الصمام صمام ثنائي المسار ثلاثي المسار مسار التجاوز صمام الفصل عداد الطاقة الحرارية زوج الحساسات المتطابق دقة عداد التدفق الأطوال المستقيمة العداد الكهرومغناطيسي بالموجات فوق الصوتية عدم اليقين في القياس ضغط الشبكة العابر المطرقة المائية المصفاة الترشيح الجانبي التشغيل والاختبار التتبع الإنذار MEP خدمات المباني',
     body=BODY, charts=CHARTS,
 )

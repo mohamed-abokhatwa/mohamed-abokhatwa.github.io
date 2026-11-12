@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surge Scenarios in Pumping Stations — Which One Governs the Design — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Surge Scenarios in Pumping Stations: Which One Governs the Design | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -94,24 +94,24 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="A scenario-by-scenario analysis of hydraulic transients in pumping stations — pump trip, start-up, check-valve slam, and valve closure — and which event truly governs the transient design envelope.">
-  <meta property="og:title" content="Surge Scenarios in Pumping Stations — Which One Governs the Design | Mohamed Abokhatwa">
-  <meta property="og:description" content="A scenario-by-scenario analysis of hydraulic transients in pumping stations — pump trip, start-up, check-valve slam, and valve closure — and which event governs the design envelope.">
+  <meta name="description" content="A scenario-by-scenario analysis of hydraulic transients in pumping stations (pump trip, start-up, check-valve slam, and valve closure), and which event truly governs the transient design envelope.">
+  <meta property="og:title" content="Surge Scenarios in Pumping Stations: Which One Governs the Design | Mohamed Abokhatwa">
+  <meta property="og:description" content="A scenario-by-scenario analysis of hydraulic transients in pumping stations (pump trip, start-up, check-valve slam, and valve closure), and which event governs the design envelope.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/surge-scenarios-pump-stations.html">
   <meta property="og:image" content="https://abokhatwa.com/og-surge-scenarios-pump-stations.jpg">
   <meta property="og:image:alt" content="Surge Scenarios in Pumping Stations">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Surge Scenarios in Pumping Stations — Which One Governs the Design | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="A scenario-by-scenario analysis of hydraulic transients in pumping stations — and which event governs the transient design envelope.">
+  <meta name="twitter:title" content="Surge Scenarios in Pumping Stations: Which One Governs the Design | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="A scenario-by-scenario analysis of hydraulic transients in pumping stations, and which event governs the transient design envelope.">
   <link rel="canonical" href="https://abokhatwa.com/surge-scenarios-pump-stations.html">
 
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Surge Scenarios in Pumping Stations — and Which One Governs the Design",
-  "description": "A scenario-by-scenario analysis of hydraulic transients in pumping stations — pump trip, start-up, check-valve slam, and valve closure — and which event truly governs the transient design envelope.",
+  "headline": "Surge Scenarios in Pumping Stations, and Which One Governs the Design",
+  "description": "A scenario-by-scenario analysis of hydraulic transients in pumping stations (pump trip, start-up, check-valve slam, and valve closure), and which event truly governs the transient design envelope.",
   "image": "https://abokhatwa.com/og-surge-scenarios-pump-stations.jpg",
   "datePublished": "2026-06-03",
   "dateModified": "2026-06-03",
@@ -149,6 +149,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -174,7 +175,7 @@
   <a href="/" class="back">&#8592; All articles</a>
 <div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="surge-transients.html" class="breadcrumb-current">Surge &amp; Transients</a></div>
   <span class="tag">Hydraulic Transients &middot; Surge Analysis &middot; Pump Stations &middot; Water Hammer</span>
-  <h1>Surge Scenarios in Pumping Stations — and Which One Governs the Design</h1>
+  <h1>Surge Scenarios in Pumping Stations, and Which One Governs the Design</h1>
   <div class="byline">
     <span>Mohamed Abokhatwa</span>
     <span style="color:var(--border-light)">|</span>
@@ -194,9 +195,9 @@
 <p class="lead">Every protection device on a pumping main is sized to a single number: the worst transient the system can credibly produce. Finding that number is a scenario problem, not a formula problem.</p>
 
 <h2 id="framework">The transient design envelope</h2>
-<p>A pumping system is not designed against a transient — it is designed against an <strong>envelope</strong>: the highest head (maximum upsurge) and the lowest head (maximum downsurge) reached at every point along the pipeline, across all credible operating events. The two bounding lines of that envelope rarely come from the same event. The high-pressure bound protects the pipe, fittings, and pump casing against rupture; the low-pressure bound protects against column separation, pipe collapse, and the violent rejoin shock that follows a vapour cavity.</p>
+<p>A pumping system is designed against an <strong>envelope</strong> rather than a single transient: the highest head (maximum upsurge) and the lowest head (maximum downsurge) reached at every point along the pipeline, across all credible operating events. The two bounding lines of that envelope rarely come from the same event. The high-pressure bound protects the pipe, fittings, and pump casing against rupture; the low-pressure bound protects against column separation, pipe collapse, and the violent rejoin shock that follows a vapour cavity.</p>
 
-<p>The driving physics is the Joukowsky relation — the instantaneous head rise produced when a velocity change <span class="sym">ΔV</span> is arrested faster than a pressure wave can travel out and back:</p>
+<p>The driving physics is the Joukowsky relation: the instantaneous head rise produced when a velocity change <span class="sym">ΔV</span> is arrested faster than a pressure wave can travel out and back:</p>
 
 <div class="eq">
   Δ<var>H</var> = <var>a</var> · Δ<var>V</var> / <var>g</var>
@@ -207,36 +208,36 @@
 
 <div class="eq">
   <var>T<sub>r</sub></var> = 2<var>L</var> / <var>a</var>
-  <span class="where">Any disturbance completed in less than <var>T<sub>r</sub></var> is "rapid" — it produces the full Joukowsky head locally before relief can arrive.</span>
+  <span class="where">Any disturbance completed in less than <var>T<sub>r</sub></var> is "rapid". It produces the full Joukowsky head locally before relief can arrive.</span>
 </div>
 
 <div class="callout key">
   <span class="label">The core idea</span>
-  Scenario analysis exists to answer one question: <strong>of all the things that can change the flow, which one changes it fastest and largest at the worst location?</strong> That event — not an arbitrary safety factor — sets the design pressure and the protection philosophy.
+  Scenario analysis exists to answer one question: <strong>of all the things that can change the flow, which one changes it fastest and largest at the worst location?</strong> That event, not an arbitrary safety factor, sets the design pressure and the protection philosophy.
 </div>
 
 <h2 id="scenarios">The scenario catalogue</h2>
 <p>A defensible transient study for a pumping station evaluates the following events. Each is characterised by its <em>mechanism</em>, whether it is <em>voluntary</em> (you can slow it down) or <em>involuntary</em> (you cannot), and which side of the envelope it tends to drive.</p>
 
 <h3 id="s1">1 · Pump power failure (pump trip)</h3>
-<p>On loss of power, the pump's only remaining energy is the rotational inertia of the impeller and motor (<span class="sym">GD²</span> / <span class="sym">WR²</span>). The pump decelerates, head collapses at the discharge, and a <strong>downsurge</strong> wave races down the main. Flow decays, reverses, and the check valve slams shut — at which point the reversed velocity is arrested and a Joukowsky <strong>upsurge</strong> reflects back. Because power failure is <strong>involuntary and effectively instantaneous</strong>, it cannot be slowed by operating procedure. This single event is the reason surge protection exists.</p>
+<p>On loss of power, the pump's only remaining energy is the rotational inertia of the impeller and motor (<span class="sym">GD²</span> / <span class="sym">WR²</span>). The pump decelerates, head collapses at the discharge, and a <strong>downsurge</strong> wave races down the main. Flow decays, reverses, and the check valve slams shut, at which point the reversed velocity is arrested and a Joukowsky <strong>upsurge</strong> reflects back. Because power failure is <strong>involuntary and effectively instantaneous</strong>, it cannot be slowed by operating procedure. This single event is the reason surge protection exists.</p>
 
 <h3 id="s2">2 · Pump start-up</h3>
 <p>Starting a pump against an empty or partially drained main, or starting direct-on-line, drives flow into the pipe and produces an upsurge. In modern stations this is almost always a <strong>voluntary, controllable</strong> event: soft starters, variable-frequency drives, and ramped open/close of the discharge valve limit the rate of velocity change so the disturbance time greatly exceeds <span class="sym">T<sub>r</sub></span>. Start-up rarely governs unless the control logic is crude or a pump starts against a closed system.</p>
 
 <h3 id="s3">3 · Check-valve slam</h3>
-<p>When forward flow decays after a trip, an undamped or oversized check valve stays open until flow has already reversed. It then closes on a substantial <strong>reverse velocity</strong>, producing a sharp, localised pressure spike at the valve. This spike can locally exceed the smooth pump-trip upsurge even though it acts over a very short length. Slam is a function of valve dynamic characteristic, not pipeline length — which is why it is checked separately, and why nozzle / spring-assisted / tilting-disc check valves are specified on critical stations.</p>
+<p>When forward flow decays after a trip, an undamped or oversized check valve stays open until flow has already reversed. It then closes on a substantial <strong>reverse velocity</strong>, producing a sharp, localised pressure spike at the valve. This spike can locally exceed the smooth pump-trip upsurge even though it acts over a very short length. Slam is a function of valve dynamic characteristic, not pipeline length, which is why it is checked separately, and why nozzle / spring-assisted / tilting-disc check valves are specified on critical stations.</p>
 
 <h3 id="s4">4 · Controlled and emergency valve closure</h3>
-<p>Closing an isolation or control valve arrests flow and generates an upsurge upstream and a downsurge downstream of the valve. A <strong>controlled</strong> closure (slow, programmed) is benign by definition — the closure time is set far above <span class="sym">T<sub>r</sub></span>. An <strong>emergency</strong> or spring-return closure, however, can approach rapid-closure conditions and must be analysed as a credible event, particularly on short, stiff mains where <span class="sym">T<sub>r</sub></span> is small.</p>
+<p>Closing an isolation or control valve arrests flow and generates an upsurge upstream and a downsurge downstream of the valve. A <strong>controlled</strong> closure (slow, programmed) is benign by definition: the closure time is set far above <span class="sym">T<sub>r</sub></span>. An <strong>emergency</strong> or spring-return closure, however, can approach rapid-closure conditions and must be analysed as a credible event, particularly on short, stiff mains where <span class="sym">T<sub>r</sub></span> is small.</p>
 
 <h3 id="s5">5 · Single-pump trip vs. simultaneous multi-pump trip</h3>
-<p>The <strong>simultaneous trip of all duty pumps</strong> — the typical consequence of a station-wide power failure — produces the largest velocity change and therefore the deepest downsurge. A single pump tripping while others keep running is generally milder for the global envelope, but can create asymmetric local effects and reverse-flow loading on the tripped unit's check valve. Both are run; the simultaneous trip almost always bounds the minimum-pressure line.</p>
+<p>The <strong>simultaneous trip of all duty pumps</strong>, the typical consequence of a station-wide power failure, produces the largest velocity change and therefore the deepest downsurge. A single pump tripping while others keep running is generally milder for the global envelope, but can create asymmetric local effects and reverse-flow loading on the tripped unit's check valve. Both are run; the simultaneous trip almost always bounds the minimum-pressure line.</p>
 
 <hr class="article-divider">
 
 <h2 id="governing">Which scenario governs the design?</h2>
-<p>The honest answer is that <strong>no single scenario governs everything</strong> — but the responsibility is not evenly shared. The two bounds of the envelope are governed differently and predictably:</p>
+<p>The honest answer is that <strong>no single scenario governs everything</strong>, but the responsibility is not evenly shared. The two bounds of the envelope are governed differently and predictably:</p>
 
 <div class="table-wrap">
   <table>
@@ -258,7 +259,7 @@
       <tr>
         <td><strong>Maximum head</strong><br>(upsurge)</td>
         <td class="govern">Pump-trip reverse-flow reflection <em>or</em> check-valve slam <em>or</em> emergency valve closure</td>
-        <td>System-dependent competition — long mains favour the trip reflection, short/stiff mains and poor check valves favour slam/closure.</td>
+        <td>System-dependent competition: long mains favour the trip reflection, short/stiff mains and poor check valves favour slam/closure.</td>
         <td>Pipe pressure class, surge vessel sizing, check-valve type, relief valve set-point</td>
       </tr>
     </tbody>
@@ -267,23 +268,23 @@
 
 <div class="callout key">
   <span class="label">The governing principle</span>
-  <strong>Involuntary events set the floor; voluntary events you simply design out.</strong> You cannot negotiate with a power failure, so it almost always governs the low-pressure side. The high-pressure side is a contest you must referee scenario-by-scenario — never assume the pump trip also bounds the maximum, because a slamming check valve frequently beats it locally.
+  <strong>Involuntary events set the floor; voluntary events you simply design out.</strong> You cannot negotiate with a power failure, so it almost always governs the low-pressure side. The high-pressure side is a contest you must referee scenario-by-scenario: never assume the pump trip also bounds the maximum, because a slamming check valve frequently beats it locally.
 </div>
 
 <p>Two diagnostic numbers tell you in advance how the contest will resolve:</p>
 <ul>
-  <li><strong>Long main, large <span class="sym">T<sub>r</sub></span>:</strong> the pump-trip downsurge has time to develop fully and the reflected upsurge dominates — the trip tends to govern both bounds.</li>
-  <li><strong>Short, stiff main, small <span class="sym">T<sub>r</sub></span>:</strong> the trip is mild but any rapid valve action or check-valve slam becomes rapid relative to <span class="sym">T<sub>r</sub></span> — these govern the maximum.</li>
+  <li><strong>Long main, large <span class="sym">T<sub>r</sub></span>:</strong> the pump-trip downsurge has time to develop fully and the reflected upsurge dominates; the trip tends to govern both bounds.</li>
+  <li><strong>Short, stiff main, small <span class="sym">T<sub>r</sub></span>:</strong> the trip is mild but any rapid valve action or check-valve slam becomes rapid relative to <span class="sym">T<sub>r</sub></span>. These govern the maximum.</li>
 </ul>
 
 <hr class="article-divider">
 
 <h2 id="example">Worked example: a 5 km ductile-iron pumping main</h2>
-<p>To make the contest concrete, consider a single transmission main lifting treated water from a pump station to an elevated ground reservoir. The pipeline crosses an intermediate ridge — a classic location for column separation.</p>
+<p>To make the contest concrete, consider a single transmission main lifting treated water from a pump station to an elevated ground reservoir. The pipeline crosses an intermediate ridge: a classic location for column separation.</p>
 
 <div class="callout danger">
-  <span class="label">Important — illustrative only</span>
-  The figures, profiles, and curves that follow are <strong>schematic and hand-constructed to illustrate the methodology</strong>. They are <strong>not</strong> the output of a calibrated transient simulation and must never be used for design. A real pumping main develops its envelope from non-linear pump four-quadrant behaviour, true elevation profile, friction, vapour-cavity formation and rejoin, and the dynamic characteristic of every valve — interactions that cannot be reproduced by hand. <strong>A validated Method-of-Characteristics surge model — such as Bentley OpenFlows HAMMER or AFT Impulse — is mandatory</strong> for any pumping station of consequence. The role of the engineer is to define the scenario matrix and to interpret the model; the role of the software is to compute the envelope these sketches only suggest.
+  <span class="label">Important: illustrative only</span>
+  The figures, profiles, and curves that follow are <strong>schematic and hand-constructed to illustrate the methodology</strong>. They are <strong>not</strong> the output of a calibrated transient simulation and must never be used for design. A real pumping main develops its envelope from non-linear pump four-quadrant behaviour, true elevation profile, friction, vapour-cavity formation and rejoin, and the dynamic characteristic of every valve: interactions that cannot be reproduced by hand. <strong>A validated Method-of-Characteristics surge model (such as Bentley OpenFlows HAMMER or AFT Impulse) is mandatory</strong> for any pumping station of consequence. The role of the engineer is to define the scenario matrix and to interpret the model; the role of the software is to compute the envelope these sketches only suggest.
 </div>
 
 <div class="worked">
@@ -297,30 +298,30 @@
     <div class="given"><div class="g-label">Pump TDH</div><div class="g-val">84 <small>m</small></div></div>
   </div>
 
-  <p><strong>Step 1 — Steady velocity.</strong></p>
+  <p><strong>Step 1: Steady velocity.</strong></p>
   <div class="calc">
     <span class="sym">A</span> = π/4 × 0.80² = 0.503 m² &nbsp;→&nbsp;
     <span class="sym">V</span><sub>0</sub> = 0.500 / 0.503 = <span class="res">≈ 1.0 m/s</span>
   </div>
 
-  <p><strong>Step 2 — Joukowsky potential (full velocity arrest).</strong></p>
+  <p><strong>Step 2: Joukowsky potential (full velocity arrest).</strong></p>
   <div class="calc">
     Δ<span class="sym">H</span> = <span class="sym">a</span> · Δ<span class="sym">V</span> / <span class="sym">g</span> = (1 000 × 1.0) / 9.81 = <span class="res">≈ 102 m</span> &nbsp;(≈ 10 bar)
   </div>
 
-  <p><strong>Step 3 — Characteristic period.</strong></p>
+  <p><strong>Step 3: Characteristic period.</strong></p>
   <div class="calc">
     <span class="sym">T<sub>r</sub></span> = 2<span class="sym">L</span>/<span class="sym">a</span> = (2 × 5 000) / 1 000 = <span class="res">10 s</span>
   </div>
 
-  <p>With <span class="sym">T<sub>r</sub></span> = 10 s, a power failure is decidedly rapid: the discharge head collapses long before any relief wave returns from the reservoir. The full Joukowsky band of ±102 m is therefore physically available at the pump — the unprotected system will both cavitate at the ridge and over-pressure the casing on reflection. This is why the three figures below all trace back to the <em>same</em> trip event, yet only one of them sets each design limit.</p>
+  <p>With <span class="sym">T<sub>r</sub></span> = 10 s, a power failure is decidedly rapid: the discharge head collapses long before any relief wave returns from the reservoir. The full Joukowsky band of ±102 m is therefore physically available at the pump: the unprotected system will both cavitate at the ridge and over-pressure the casing on reflection. This is why the three figures below all trace back to the <em>same</em> trip event, yet only one of them sets each design limit.</p>
 </div>
 
-<h3 id="downsurge">The downsurge envelope — the floor of the design</h3>
-<p>The figure below plots the <strong>minimum head reached at every point</strong> for two unprotected scenarios — a simultaneous pump trip and an emergency valve closure — against the pipe profile and the vapour-pressure limit. Where a minimum-head curve touches the vapour line, the water column separates.</p>
+<h3 id="downsurge">The downsurge envelope: the floor of the design</h3>
+<p>The figure below plots the <strong>minimum head reached at every point</strong> for two unprotected scenarios (a simultaneous pump trip and an emergency valve closure) against the pipe profile and the vapour-pressure limit. Where a minimum-head curve touches the vapour line, the water column separates.</p>
 
 <div class="chart-card">
-  <div class="ctitle">Figure 1 — Minimum-head (downsurge) envelope along the main</div>
+  <div class="ctitle">Figure 1: Minimum-head (downsurge) envelope along the main</div>
   <div class="csub">Pump trip drives the column to vapour pressure over the ridge; valve closure barely disturbs the floor.</div>
   <div class="chart-box"><canvas id="chartDownsurge"></canvas></div>
   <div class="chart-note">Head referenced to the pump-station datum (elevation 0). Column separation occurs where the minimum-head line meets the vapour-pressure limit.</div>
@@ -329,15 +330,15 @@
 
 <div class="callout danger">
   <span class="label">Reading the floor</span>
-  The pump-trip minimum head is pinned to the vapour line between roughly chainage 1 000 m and 2 000 m — a <strong>column-separation zone</strong> straddling the ridge. The valve-closure curve never approaches it. <strong>The minimum-pressure design bound is owned outright by the involuntary pump trip.</strong>
+  The pump-trip minimum head is pinned to the vapour line between roughly chainage 1 000 m and 2 000 m: a <strong>column-separation zone</strong> straddling the ridge. The valve-closure curve never approaches it. <strong>The minimum-pressure design bound is owned outright by the involuntary pump trip.</strong>
 </div>
 
-<h3 id="upsurge">The upsurge envelope — the contest for the ceiling</h3>
+<h3 id="upsurge">The upsurge envelope: the contest for the ceiling</h3>
 <p>The maximum-head side is less tidy. Here the smooth pump-trip reflection competes with a localised check-valve slam right at the station. Both are plotted against the steady-state hydraulic grade line.</p>
 
 <div class="chart-card">
-  <div class="ctitle">Figure 2 — Maximum-head (upsurge) envelope along the main</div>
-  <div class="csub">The trip reflection bounds most of the line — but the check-valve slam spike beats it locally at the station.</div>
+  <div class="ctitle">Figure 2: Maximum-head (upsurge) envelope along the main</div>
+  <div class="csub">The trip reflection bounds most of the line, but the check-valve slam spike beats it locally at the station.</div>
   <div class="chart-box"><canvas id="chartUpsurge"></canvas></div>
   <div class="chart-note">The slam spike is highly localised (it decays within a few hundred metres) yet sets the governing pressure at the check valve and pump casing.</div>
   <div class="chart-hint">↳ Tip: click any legend item to toggle that series on or off.</div>
@@ -345,14 +346,14 @@
 
 <div class="callout note">
   <span class="label">Reading the ceiling</span>
-  Over most of the pipeline the pump-trip reflection (peaking ≈ 148 m) governs the pressure class. But at the station, the <strong>check-valve slam spikes to ≈ 165 m</strong> — it locally governs the casing, the discharge spool, and the valve selection. Take a single "maximum" number from the trip case and you under-design the very components nearest the pump.
+  Over most of the pipeline the pump-trip reflection (peaking ≈ 148 m) governs the pressure class. But at the station, the <strong>check-valve slam spikes to ≈ 165 m</strong>. It locally governs the casing, the discharge spool, and the valve selection. Take a single "maximum" number from the trip case and you under-design the very components nearest the pump.
 </div>
 
-<h3 id="timehistory">Why protection is sized to the trip — the pressure–time history</h3>
+<h3 id="timehistory">Why protection is sized to the trip: the pressure–time history</h3>
 <p>The final figure tracks head at the pump discharge through time for the governing pump-trip event, comparing the <strong>unprotected</strong> system with one fitted with a correctly sized surge vessel. This is the chart that justifies the capital cost of protection.</p>
 
 <div class="chart-card">
-  <div class="ctitle">Figure 3 — Head vs. time at the pump discharge (pump trip)</div>
+  <div class="ctitle">Figure 3: Head vs. time at the pump discharge (pump trip)</div>
   <div class="csub">Unprotected: deep downsurge to vapour, then a violent +148 m rebound. Protected: a gentle, bounded oscillation.</div>
   <div class="chart-box"><canvas id="chartTime"></canvas></div>
   <div class="chart-note">Oscillation period ≈ T<sub>r</sub> = 10 s for the unprotected line; the surge vessel lengthens the period and collapses the amplitude into the safe band.</div>
@@ -361,7 +362,7 @@
 
 <div class="callout key">
   <span class="label">The design conclusion</span>
-  The unprotected trace swings across a <strong>~155 m band</strong> (from below 0 to +148 m) — separation <em>and</em> over-pressure from one event. The surge vessel is sized so that this exact scenario stays inside the allowable band (≈ +92 m / +55 m here). Every protection parameter — air volume, throttle orifice, vessel pre-charge — is solved against the pump-trip time history, not against start-up or controlled closure.
+  The unprotected trace swings across a <strong>~155 m band</strong> (from below 0 to +148 m): separation <em>and</em> over-pressure from one event. The surge vessel is sized so that this exact scenario stays inside the allowable band (≈ +92 m / +55 m here). Every protection parameter (air volume, throttle orifice, vessel pre-charge) is solved against the pump-trip time history, not against start-up or controlled closure.
 </div>
 
 <hr class="article-divider">
@@ -394,19 +395,19 @@
   </table>
 </div>
 
-<p>For water at ambient temperature, the vapour-pressure floor sits at roughly &minus;10 m gauge (near full vacuum). Many KSA utility specifications (NWC, MEWA-aligned) tighten this to a practical limit such as &minus;0.8 bar to retain a margin against separation and against thin-wall pipe collapse — a constraint that frequently drives surge-vessel sizing more than the maximum-pressure check does.</p>
+<p>For water at ambient temperature, the vapour-pressure floor sits at roughly &minus;10 m gauge (near full vacuum). Many KSA utility specifications (NWC, MEWA-aligned) tighten this to a practical limit such as &minus;0.8 bar to retain a margin against separation and against thin-wall pipe collapse: a constraint that frequently drives surge-vessel sizing more than the maximum-pressure check does.</p>
 
 <div class="callout note">
   <span class="label">Tool workflow</span>
-  In practice this envelope is generated in a Method-of-Characteristics solver (Bentley OpenFlows HAMMER, AFT Impulse). The discipline is in the <strong>scenario matrix</strong>, not the software: every credible event × every protection state is run, and the controlling case for each bound is documented. The model confirms the engineering judgement — it does not replace it.
+  In practice this envelope is generated in a Method-of-Characteristics solver (Bentley OpenFlows HAMMER, AFT Impulse). The discipline is in the <strong>scenario matrix</strong>, not the software: every credible event × every protection state is run, and the controlling case for each bound is documented. The model confirms the engineering judgement. It does not replace it.
 </div>
 
 <h2 id="takeaways">Key takeaways</h2>
 <ul>
   <li><strong>Design to the envelope, not to one event.</strong> The maximum and minimum bounds usually come from different scenarios.</li>
-  <li><strong>The minimum-pressure bound is almost always owned by the simultaneous pump power failure</strong> — it is involuntary, instantaneous, and produces the largest velocity change. This is the scenario that sizes your protection.</li>
+  <li><strong>The minimum-pressure bound is almost always owned by the simultaneous pump power failure</strong>. It is involuntary, instantaneous, and produces the largest velocity change. This is the scenario that sizes your protection.</li>
   <li><strong>The maximum-pressure bound is a genuine contest</strong> between the trip reflection, check-valve slam, and emergency valve closure. Slam frequently governs locally at the station even when the trip governs the line.</li>
-  <li><strong>Voluntary events (start-up, controlled closure) rarely govern</strong> because their rate is a design choice — slow them past <span class="sym">T<sub>r</sub></span> and they disappear from the envelope.</li>
+  <li><strong>Voluntary events (start-up, controlled closure) rarely govern</strong> because their rate is a design choice: slow them past <span class="sym">T<sub>r</sub></span> and they disappear from the envelope.</li>
   <li><strong>The ratio of event time to <span class="sym">T<sub>r</sub></span> = 2L/a predicts the outcome</strong> before any simulation: long mains favour the trip; short, stiff mains favour valve and slam events.</li>
 </ul>
 
@@ -415,16 +416,16 @@
 <h2 id="references">References &amp; further reading</h2>
 <p class="ref-intro">Standards and texts that underpin the scenario set, acceptance criteria, and protection methods discussed above. Practitioners should always work to the latest published edition and to the governing project specification.</p>
 <ol class="refs">
-  <li><strong>AWWA C150/A21.50</strong> — <em>Thickness Design of Ductile-Iron Pipe.</em> American Water Works Association. (Working pressure plus surge allowance and the associated safety factor for ductile-iron mains.)</li>
-  <li><strong>AWWA Manual M11</strong> — <em>Steel Water Pipe: A Guide for Design and Installation</em>; and <strong>AWWA C200</strong>, <em>Steel Water Pipe.</em> American Water Works Association. (Transient pressure allowances for steel mains.)</li>
-  <li><strong>AWWA Manual M51</strong> — <em>Air-Release, Air/Vacuum, and Combination Air Valves.</em> American Water Works Association. (Sizing and placement of air valves for column-separation control.)</li>
-  <li><strong>AWWA C508 / C510 / C512</strong> — Swing-check, gate, and air-release / combination valve standards used in check-valve and reverse-flow selection.</li>
-  <li><strong>E. B. Wylie &amp; V. L. Streeter</strong>, <em>Fluid Transients in Systems.</em> Prentice Hall. (Method of Characteristics; column separation — DVCM/DGCM; pump four-quadrant behaviour.)</li>
+  <li><strong>AWWA C150/A21.50</strong>: <em>Thickness Design of Ductile-Iron Pipe.</em> American Water Works Association. (Working pressure plus surge allowance and the associated safety factor for ductile-iron mains.)</li>
+  <li><strong>AWWA Manual M11</strong>, <em>Steel Water Pipe: A Guide for Design and Installation</em>; and <strong>AWWA C200</strong>, <em>Steel Water Pipe.</em> American Water Works Association. (Transient pressure allowances for steel mains.)</li>
+  <li><strong>AWWA Manual M51</strong>: <em>Air-Release, Air/Vacuum, and Combination Air Valves.</em> American Water Works Association. (Sizing and placement of air valves for column-separation control.)</li>
+  <li><strong>AWWA C508 / C510 / C512</strong>: Swing-check, gate, and air-release / combination valve standards used in check-valve and reverse-flow selection.</li>
+  <li><strong>E. B. Wylie &amp; V. L. Streeter</strong>, <em>Fluid Transients in Systems.</em> Prentice Hall. (Method of Characteristics; column separation, DVCM/DGCM; pump four-quadrant behaviour.)</li>
   <li><strong>M. H. Chaudhry</strong>, <em>Applied Hydraulic Transients.</em> Springer. (Pump trip dynamics, surge-protection device theory, boundary conditions.)</li>
   <li><strong>A. R. D. Thorley</strong>, <em>Fluid Transients in Pipeline Systems.</em> (Check-valve dynamic characteristics and slam.)</li>
-  <li><strong>Bentley Systems</strong> — <em>OpenFlows HAMMER User Documentation</em> (Method-of-Characteristics transient solver; scenario management, protection-device modelling). Applied Flow Technology — <em>AFT Impulse</em> documentation.</li>
+  <li><strong>Bentley Systems</strong>: <em>OpenFlows HAMMER User Documentation</em> (Method-of-Characteristics transient solver; scenario management, protection-device modelling). Applied Flow Technology: <em>AFT Impulse</em> documentation.</li>
   <li><strong>BHR Group / Pump Industry guidance</strong> on surge-vessel, flywheel, and air-vessel sizing for pumping mains.</li>
-  <li><strong>NWC / MEWA project specifications</strong> (KSA) — applicable allowable transient pressure and minimum-pressure limits for water transmission systems.</li>
+  <li><strong>NWC / MEWA project specifications</strong> (KSA): applicable allowable transient pressure and minimum-pressure limits for water transmission systems.</li>
 </ol>
 <p class="ref-note">This article is an educational discussion of methodology. It is not a design document and does not substitute for a project-specific transient analysis performed in a validated surge-modelling package.</p>
 
@@ -436,7 +437,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -561,8 +562,8 @@ new Chart(document.getElementById('chartDownsurge'),{
   data:{labels:chainage,datasets:[
     {label:'Pipe profile (elevation)',data:elevation,borderColor:BROWN,backgroundColor:'rgba(138,109,59,.08)',fill:true,borderWidth:2,...lineCommon,tension:0.25},
     {label:'Vapour-pressure floor',data:vaporHGL,borderColor:GREY,borderDash:[6,5],...lineCommon,borderWidth:1.8},
-    {label:'Min head — Pump trip (governs)',data:tripMin,borderColor:DANGER,backgroundColor:'rgba(192,57,43,.06)',...lineCommon},
-    {label:'Min head — Valve closure',data:valveMin,borderColor:OK,...lineCommon}
+    {label:'Min head: Pump trip (governs)',data:tripMin,borderColor:DANGER,backgroundColor:'rgba(192,57,43,.06)',...lineCommon},
+    {label:'Min head: Valve closure',data:valveMin,borderColor:OK,...lineCommon}
   ]},
   options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
     plugins:{legend:{position:'bottom',labels:{usePointStyle:true,boxWidth:8,padding:14}},
@@ -577,8 +578,8 @@ new Chart(document.getElementById('chartUpsurge'),{
   type:'line',
   data:{labels:chainage,datasets:[
     {label:'Steady-state HGL',data:steadyHGL,borderColor:ACCENT,borderDash:[5,4],...lineCommon,borderWidth:2},
-    {label:'Max head — Pump-trip reflection (governs line)',data:tripMax,borderColor:DANGER,backgroundColor:'rgba(192,57,43,.05)',fill:true,...lineCommon},
-    {label:'Max head — Check-valve slam (governs at station)',data:slamMax,borderColor:WARN,...lineCommon}
+    {label:'Max head: Pump-trip reflection (governs line)',data:tripMax,borderColor:DANGER,backgroundColor:'rgba(192,57,43,.05)',fill:true,...lineCommon},
+    {label:'Max head: Check-valve slam (governs at station)',data:slamMax,borderColor:WARN,...lineCommon}
   ]},
   options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
     plugins:{legend:{position:'bottom',labels:{usePointStyle:true,boxWidth:8,padding:14}},
@@ -598,7 +599,7 @@ new Chart(document.getElementById('chartTime'),{
   data:{labels:t,datasets:[
     {label:'Allowable max',data:allowMax,borderColor:'rgba(127,140,141,.6)',borderDash:[4,4],borderWidth:1.5,pointRadius:0,tension:0},
     {label:'Allowable min (0 m)',data:allowMin,borderColor:'rgba(127,140,141,.6)',borderDash:[4,4],borderWidth:1.5,pointRadius:0,tension:0},
-    {label:'Unprotected — pump trip',data:unprot,borderColor:DANGER,backgroundColor:'rgba(192,57,43,.06)',...lineCommon,borderWidth:3},
+    {label:'Unprotected: pump trip',data:unprot,borderColor:DANGER,backgroundColor:'rgba(192,57,43,.06)',...lineCommon,borderWidth:3},
     {label:'With surge vessel',data:prot,borderColor:OK,...lineCommon,borderWidth:3}
   ]},
   options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},

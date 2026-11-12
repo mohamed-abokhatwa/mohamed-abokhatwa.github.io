@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">Water reuse in a tower is usually presented as a sustainability gesture and designed as an afterthought, which is why so many systems end up either starved or overflowing. It is actually a <strong>matching problem</strong>: greywater from showers, basins and laundry is roughly <strong>twice</strong> the volume that toilet flushing can absorb, so a scheme designed to flush WCs throws half its source away — while the cooling towers next door are drinking <strong>1,800&nbsp;m³ a day</strong> that the same greywater could only cover 13&nbsp;% of. Get the source and the sink matched and reuse is one of the strongest business cases in a Gulf tower. Get them mismatched and you have built a treatment plant that spends its life bypassing to drain.</p>
+<p class="lead">Water reuse in a tower is usually presented as a sustainability gesture and designed as an afterthought, which is why so many systems end up either starved or overflowing. It is actually a <strong>matching problem</strong>: greywater from showers, basins and laundry is roughly <strong>twice</strong> the volume that toilet flushing can absorb, so a scheme designed to flush WCs throws half its source away, while the cooling towers next door are drinking <strong>1,800&nbsp;m³ a day</strong> that the same greywater could only cover 13&nbsp;% of. Get the source and the sink matched and reuse is one of the strongest business cases in a Gulf tower. Get them mismatched and you have built a treatment plant that spends its life bypassing to drain.</p>
 
 <h2 id="balance">1 · Start with the water balance, not the technology</h2>
 <p>Every reuse scheme is defined by three quantities, and the design is simply the smallest of them:</p>
 <ul class="clean">
-  <li><strong>What is available.</strong> Greywater — showers, baths, basins, laundry — is typically <strong>50–55&nbsp;%</strong> of indoor demand. Kitchen waste is usually excluded as it is heavily loaded with fats and food solids and belongs with blackwater.</li>
+  <li><strong>What is available.</strong> Greywater (showers, baths, basins, laundry) is typically <strong>50–55&nbsp;%</strong> of indoor demand. Kitchen waste is usually excluded as it is heavily loaded with fats and food solids and belongs with blackwater.</li>
   <li><strong>What can use it.</strong> WC flushing is around <strong>28&nbsp;%</strong> of indoor demand. Irrigation is seasonal and often small on a tower site. <strong>Cooling tower makeup</strong> is in a different league entirely and is the sink that changes the arithmetic.</li>
   <li><strong>When each happens.</strong> Greywater arrives in a morning and evening peak; flushing follows occupancy; cooling tower makeup peaks in the afternoon and runs all night in summer. The mismatch in <em>time</em> is what sizes the storage.</li>
 </ul>
@@ -16,7 +16,7 @@ BODY = r"""
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Greywater available against the demands that can use it</div>
-    <div class="fsub">Indoor demand from population and per-capita consumption, split by end use. Cooling tower makeup at 2.0 m³/h per MW of heat rejection — 1.5 of evaporation plus blowdown at four cycles of concentration, the same basis as the <a href="cooling-towers-heat-rejection-tall-buildings.html">cooling tower water balance</a>.</div>
+    <div class="fsub">Indoor demand from population and per-capita consumption, split by end use. Cooling tower makeup at 2.0 m³/h per MW of heat rejection: 1.5 of evaporation plus blowdown at four cycles of concentration, the same basis as the <a href="cooling-towers-heat-rejection-tall-buildings.html">cooling tower water balance</a>.</div>
   </div>
   <div class="chart-box"><canvas id="balChart"></canvas></div>
   <div class="controls">
@@ -49,14 +49,14 @@ BODY = r"""
     <div class="cell"><div class="k">Match</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rMv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 2,000-person tower produces <strong>238&nbsp;m³/d</strong> of greywater against a WC flushing demand of only <strong>123&nbsp;m³/d</strong> — so a flush-only scheme discards nearly half its source, and the treatment plant is sized by the <em>sink</em>, not the source. Now bring the cooling plant in: 50&nbsp;MW of rejection needs <strong>2,400&nbsp;m³/d</strong> of makeup, which the greywater covers only 10&nbsp;% of. That is the design conclusion in both directions: <strong>in a water-cooled tower the sink is effectively unlimited</strong>, so collect every drop you can and treat to the quality the towers need; in a district-cooled or air-cooled tower the sink is small, so size on flushing plus irrigation and do not over-collect. Note also that greywater into cooling towers demands a higher treatment standard than flushing — you are creating an aerosol.</p>
+<p class="fig-note">A 2,000-person tower produces <strong>238&nbsp;m³/d</strong> of greywater against a WC flushing demand of only <strong>123&nbsp;m³/d</strong>, so a flush-only scheme discards nearly half its source, and the treatment plant is sized by the <em>sink</em>, not the source. Now bring the cooling plant in: 50&nbsp;MW of rejection needs <strong>2,400&nbsp;m³/d</strong> of makeup, which the greywater covers only 10&nbsp;% of. That is the design conclusion in both directions: <strong>in a water-cooled tower the sink is effectively unlimited</strong>, so collect every drop you can and treat to the quality the towers need; in a district-cooled or air-cooled tower the sink is small, so size on flushing plus irrigation and do not over-collect. Note also that greywater into cooling towers demands a higher treatment standard than flushing. You are creating an aerosol.</p>
 
 <h2 id="quality">3 · Treatment: to what standard, and why that decides everything</h2>
 <p>Reuse standards differ sharply by end use, and the required quality drives the entire plant selection:</p>
 <ul class="clean">
   <li><strong>Irrigation, sub-surface.</strong> The least demanding. Screening, biological treatment and disinfection are typically sufficient.</li>
   <li><strong>WC flushing.</strong> Human contact is credible, so turbidity, BOD and residual disinfectant limits tighten, and colour and odour become a user-acceptance issue as much as a health one. A membrane bioreactor (MBR) is the usual answer because it produces a consistent, low-turbidity effluent in a small footprint.</li>
-  <li><strong>Cooling tower makeup.</strong> The most demanding, and the one most often underestimated: the tower creates a breathable aerosol, so microbiological control is paramount, and the water chemistry must also suit the treatment programme — nutrients such as phosphorus and nitrogen left in reclaimed water feed biofilm and directly undermine the Legionella control discussed in <a href="cooling-towers-heat-rejection-tall-buildings.html">cooling towers</a>.</li>
+  <li><strong>Cooling tower makeup.</strong> The most demanding, and the one most often underestimated: the tower creates a breathable aerosol, so microbiological control is paramount, and the water chemistry must also suit the treatment programme: nutrients such as phosphorus and nitrogen left in reclaimed water feed biofilm and directly undermine the Legionella control discussed in <a href="cooling-towers-heat-rejection-tall-buildings.html">cooling towers</a>.</li>
   <li><strong>Never for potable use</strong>, and physically impossible to cross-connect: separate pipework, distinct colour coding and marking, no shared valves or hose points, and backflow protection at every interface.</li>
 </ul>
 
@@ -96,10 +96,10 @@ BODY = r"""
     <div class="cell"><div class="k">Plant footprint</div><div class="v" id="rFp">86 <small>m²</small></div></div>
   </div>
 </div>
-<p class="fig-note">A 238&nbsp;m³/d plant at an 8-hour retention time is a <strong>79&nbsp;m³ bioreactor</strong>, and with raw and treated buffers the total wet volume is around <strong>258&nbsp;m³</strong> — roughly 86&nbsp;m² of plant room at 3&nbsp;m depth, plus the membranes, blowers, dosing and controls. That is a real basement room that must be found early, ventilated, drained, acoustically treated and given odour control, and it needs a maintenance route for membrane replacement. The tank sizes are dominated by the <em>buffers</em>, not the reactor — which is the practical point: <strong>storage is what makes the profiles match</strong>, and skimping on it produces a plant that alternately starves and overflows.</p>
+<p class="fig-note">A 238&nbsp;m³/d plant at an 8-hour retention time is a <strong>79&nbsp;m³ bioreactor</strong>, and with raw and treated buffers the total wet volume is around <strong>258&nbsp;m³</strong>, roughly 86&nbsp;m² of plant room at 3&nbsp;m depth, plus the membranes, blowers, dosing and controls. That is a real basement room that must be found early, ventilated, drained, acoustically treated and given odour control, and it needs a maintenance route for membrane replacement. The tank sizes are dominated by the <em>buffers</em>, not the reactor, which is the practical point: <strong>storage is what makes the profiles match</strong>, and skimping on it produces a plant that alternately starves and overflows.</p>
 
 <h2 id="int-econ">4 · Interactive: does it actually pay?</h2>
-<p>Reuse has a real operating cost — energy for aeration and membranes, membrane replacement, chemicals and skilled attendance — and a scheme justified on the water tariff alone can be a net loss if that cost is ignored.</p>
+<p>Reuse has a real operating cost (energy for aeration and membranes, membrane replacement, chemicals and skilled attendance) and a scheme justified on the water tariff alone can be a net loss if that cost is ignored.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -137,36 +137,36 @@ BODY = r"""
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rEv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">At a combined 9 per m³ tariff and a realistic 3 per m³ operating cost, a 238&nbsp;m³/d scheme nets about <strong>0.52&nbsp;M a year</strong> against roughly <strong>1.07&nbsp;M</strong> of capital — a simple payback near <strong>2.1 years</strong>, which is genuinely good. Now drag the operating cost up to 6 and the tariff down to 4: the net saving collapses and the payback disappears entirely. <strong>The result is almost entirely a function of the local tariff</strong>, and in jurisdictions where water is heavily subsidised a reuse scheme has to be justified on resource grounds, on a green rating credit, or on resilience — not on payback. Say which one, in the design report, rather than presenting a payback that depends on a subsidy decision.</p>
+<p class="fig-note">At a combined 9 per m³ tariff and a realistic 3 per m³ operating cost, a 238&nbsp;m³/d scheme nets about <strong>0.52&nbsp;M a year</strong> against roughly <strong>1.07&nbsp;M</strong> of capital: a simple payback near <strong>2.1 years</strong>, which is genuinely good. Now drag the operating cost up to 6 and the tariff down to 4: the net saving collapses and the payback disappears entirely. <strong>The result is almost entirely a function of the local tariff</strong>, and in jurisdictions where water is heavily subsidised a reuse scheme has to be justified on resource grounds, on a green rating credit, or on resilience, not on payback. Say which one, in the design report, rather than presenting a payback that depends on a subsidy decision.</p>
 
-<h2 id="pipework">5 · Dual pipework — where these schemes actually fail</h2>
+<h2 id="pipework">5 · Dual pipework: where these schemes actually fail</h2>
 <ul class="clean">
   <li><strong>Cross-connection is the catastrophic failure mode</strong>, and it happens during fit-out and alteration rather than at construction. Distinct pipe colour and continuous marking, different connection types where practicable, no shared valves, hose points or drain-downs, and a documented commissioning cross-connection test.</li>
   <li><strong>Label the outlets.</strong> Non-potable outlets marked in the languages the building's users and maintainers actually read, with a permanent sign not a sticker.</li>
-  <li><strong>Design the top-up carefully.</strong> The treated water tank needs a potable top-up for when the reuse plant is down — and that top-up is the single most likely cross-connection in the whole building. It must be through a <strong>type AA or AB air gap</strong>, never a check valve.</li>
+  <li><strong>Design the top-up carefully.</strong> The treated water tank needs a potable top-up for when the reuse plant is down, and that top-up is the single most likely cross-connection in the whole building. It must be through a <strong>type AA or AB air gap</strong>, never a check valve.</li>
   <li><strong>Give the plant a bypass to drain</strong> that is automatic on out-of-spec water quality, with the reuse system reverting to potable top-up. A plant that cannot fail safely will be switched off manually and left off.</li>
-  <li><strong>Monitor quality continuously</strong> — turbidity and residual disinfectant as a minimum, interlocked to the bypass, trended and alarmed.</li>
-  <li><strong>Remember the reuse riser has its own pressure zoning problem</strong>, exactly as in <a href="domestic-water-tall-buildings.html">domestic water supply</a> — a third set of zones, tanks and PRVs, which is a real cost the business case must carry.</li>
+  <li><strong>Monitor quality continuously</strong>: turbidity and residual disinfectant as a minimum, interlocked to the bypass, trended and alarmed.</li>
+  <li><strong>Remember the reuse riser has its own pressure zoning problem</strong>, exactly as in <a href="domestic-water-tall-buildings.html">domestic water supply</a>: a third set of zones, tanks and PRVs, which is a real cost the business case must carry.</li>
 </ul>
 
 <h2 id="install">6 · Installation &amp; execution tricks</h2>
 <ul class="clean">
   <li><strong>Find the plant room at concept.</strong> 250&nbsp;m³ of tankage plus plant is a basement room; it cannot be squeezed in later, and it needs drainage, ventilation, odour control, acoustic treatment and a membrane replacement route.</li>
-  <li><strong>Separate greywater drainage from the start.</strong> Collecting greywater means a second drainage stack system from every bathroom — decided at the earliest layout stage, impossible to retrofit, and a real coordination load in the riser shafts.</li>
+  <li><strong>Separate greywater drainage from the start.</strong> Collecting greywater means a second drainage stack system from every bathroom, decided at the earliest layout stage, impossible to retrofit, and a real coordination load in the riser shafts.</li>
   <li><strong>Exclude kitchens deliberately and physically</strong>, and put a grease interceptor on anything that might connect anyway.</li>
   <li><strong>Design for the commissioning gap.</strong> A reuse plant with no flow during a long fit-out has no biology; plan seeding, a temporary feed, or a start-up sequence timed to occupancy.</li>
-  <li><strong>Trend the reuse fraction from day one</strong> — the percentage of non-potable demand actually met. It is the one number that tells you whether the scheme is working, and it is almost never measured.</li>
+  <li><strong>Trend the reuse fraction from day one</strong>: the percentage of non-potable demand actually met. It is the one number that tells you whether the scheme is working, and it is almost never measured.</li>
   <li><strong>Meter everything</strong>: raw collected, treated produced, reused delivered, potable top-up and bypass to drain. Without all five the balance cannot be closed and faults hide.</li>
   <li><strong>Write the operator competence into the O&amp;M.</strong> An MBR is a small wastewater treatment works inside a luxury building; it needs someone who understands biology, not just a facilities technician with a checklist.</li>
 </ul>
 
 <h2 id="checklist">7 · The design &amp; installation checklist</h2>
 <ul class="clean">
-  <li><strong>Build the water balance first</strong> — source, sink and timing — and size on the smaller of source and sink.</li>
+  <li><strong>Build the water balance first</strong> (source, sink and timing) and size on the smaller of source and sink.</li>
   <li><strong>Identify the real sink.</strong> With water-cooled plant it is effectively unlimited; without it, flushing and irrigation cap the scheme.</li>
   <li><strong>Set the treatment standard by end use</strong>, with cooling tower makeup the most demanding.</li>
-  <li><strong>Include condensate and dewatering</strong> as sources — both are cleaner than greywater.</li>
-  <li><strong>Size the buffers, not just the reactor</strong> — storage is what matches the profiles.</li>
+  <li><strong>Include condensate and dewatering</strong> as sources: both are cleaner than greywater.</li>
+  <li><strong>Size the buffers, not just the reactor</strong>: storage is what matches the profiles.</li>
   <li><strong>Cost it honestly</strong> with operating cost included, and state the real justification if the payback does not stand alone.</li>
   <li><strong>Design dual pipework against cross-connection</strong>, with an air-gapped potable top-up.</li>
   <li><strong>Provide automatic bypass on out-of-spec quality</strong>, interlocked to continuous monitoring.</li>
@@ -175,19 +175,19 @@ BODY = r"""
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  Water reuse is a <strong>matching problem, not a treatment problem</strong>: greywater is about twice the volume WC flushing can absorb, so a flush-only scheme discards half its source — while a 50&nbsp;MW cooling plant next door drinks <strong>1,800&nbsp;m³ a day</strong> that the same greywater covers only 13&nbsp;% of. Find the real sink first, size on the smaller of source and sink, and put the effort into <strong>storage</strong>, because the buffers are what make the profiles meet. Then treat the two things that actually kill these schemes: an <strong>air-gapped potable top-up</strong> so the top-up is not the cross-connection, and an <strong>automatic bypass on out-of-spec quality</strong> so the plant can fail safely instead of being switched off and left off.
+  Water reuse is a <strong>matching problem, not a treatment problem</strong>: greywater is about twice the volume WC flushing can absorb, so a flush-only scheme discards half its source, while a 50&nbsp;MW cooling plant next door drinks <strong>1,800&nbsp;m³ a day</strong> that the same greywater covers only 13&nbsp;% of. Find the real sink first, size on the smaller of source and sink, and put the effort into <strong>storage</strong>, because the buffers are what make the profiles meet. Then treat the two things that actually kill these schemes: an <strong>air-gapped potable top-up</strong> so the top-up is not the cross-connection, and an <strong>automatic bypass on out-of-spec quality</strong> so the plant can fail safely instead of being switched off and left off.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>WHO <em>Guidelines for the Safe Use of Wastewater, Excreta and Greywater</em>, and <em>Water Safety in Buildings</em> — health-based targets for reuse applications.</li>
-  <li>BS 8525 — <em>Greywater systems</em>: design, installation, water quality and maintenance; and BS 8515 for rainwater harvesting.</li>
-  <li>NSF/ANSI 350 — onsite residential and commercial water reuse treatment systems; and the International Plumbing Code / Uniform Plumbing Code non-potable water provisions.</li>
-  <li>ISO 30500 and ISO 16075 — non-sewered sanitation and guidelines for treated wastewater use for irrigation.</li>
+  <li>WHO <em>Guidelines for the Safe Use of Wastewater, Excreta and Greywater</em>, and <em>Water Safety in Buildings</em>: health-based targets for reuse applications.</li>
+  <li>BS 8525, <em>Greywater systems</em>: design, installation, water quality and maintenance; and BS 8515 for rainwater harvesting.</li>
+  <li>NSF/ANSI 350: onsite residential and commercial water reuse treatment systems; and the International Plumbing Code / Uniform Plumbing Code non-potable water provisions.</li>
+  <li>ISO 30500 and ISO 16075: non-sewered sanitation and guidelines for treated wastewater use for irrigation.</li>
   <li>Saudi regulations on treated sewage effluent reuse and the Saudi Building Code <em>SBC 701</em> plumbing provisions, including non-potable distribution and marking.</li>
-  <li>Estidama Pearl, Mostadam and LEED water efficiency credits — the rating requirements that often drive these schemes.</li>
-  <li>ASHRAE <em>Handbook — HVAC Applications</em>, Water Treatment chapter, and ASHRAE 188 — implications of reclaimed water for cooling tower chemistry and Legionella risk.</li>
-  <li>AWWA M14 — <em>Backflow Prevention and Cross-Connection Control</em>, for the potable top-up and interface protection.</li>
+  <li>Estidama Pearl, Mostadam and LEED water efficiency credits: the rating requirements that often drive these schemes.</li>
+  <li>ASHRAE <em>Handbook, HVAC Applications</em>, Water Treatment chapter, and ASHRAE 188: implications of reclaimed water for cooling tower chemistry and Legionella risk.</li>
+  <li>AWWA M14: <em>Backflow Prevention and Cross-Connection Control</em>, for the potable top-up and interface protection.</li>
 </ol>
 
 <div class="tags">#WaterReuse #Greywater #Recycling #TallBuildings #MegatallBuildings #WaterBalance #WCFlushing #Irrigation #CoolingTowerMakeup #Condensate #GroundwaterReuse #MBR #MembraneBioreactor #Disinfection #Turbidity #DualPipework #CrossConnection #AirGap #BackflowPrevention #NonPotable #BS8525 #NSF350 #Estidama #Mostadam #LEED #WaterScarcity #Metering #Commissioning #MEP #BuildingServices</div>
@@ -227,9 +227,9 @@ function updBal(){
   document.getElementById('rWc').innerHTML=fmt0(wc)+' <small>m³/d</small>';
   document.getElementById('rTm').innerHTML=fmt0(mk)+' <small>m³/d</small>';
   const sink=wc+mk, v=document.getElementById('rMv');
-  if(mk>gw*2)        v.innerHTML='<span class="badge good">sink unlimited — collect everything</span>';
+  if(mk>gw*2)        v.innerHTML='<span class="badge good">sink unlimited: collect everything</span>';
   else if(sink>=gw)  v.innerHTML='<span class="badge good">source is the constraint</span>';
-  else               v.innerHTML='<span class="badge warn">sink limits it — do not over-collect</span>';
+  else               v.innerHTML='<span class="badge warn">sink limits it: do not over-collect</span>';
 }
 [sP,sD,sG,sC].forEach(s=>s.addEventListener('input',updBal));updBal();
 
@@ -298,12 +298,12 @@ function updEcon(){
   econChart.update('none');
   document.getElementById('rCap').innerHTML=fmt2(cap/1e6)+' <small>M</small>';
   document.getElementById('rNet').innerHTML=fmt2(net(T)/1e6)+' <small>M/yr</small>';
-  document.getElementById('rPb').innerHTML=(net(T)>0?fmt1(pb(T)):'—')+' <small>yr</small>';
+  document.getElementById('rPb').innerHTML=(net(T)>0?fmt1(pb(T)):'–')+' <small>yr</small>';
   document.getElementById('rWs').innerHTML=fmt0(V*365)+' <small>m³/yr</small>';
   const v=document.getElementById('rEv');
   if(net(T)<=0)        v.innerHTML='<span class="badge bad">operating cost exceeds tariff</span>';
   else if(pb(T)<=5)    v.innerHTML='<span class="badge good">pays back on water alone</span>';
-  else if(pb(T)<=15)   v.innerHTML='<span class="badge warn">marginal — justify on resource</span>';
+  else if(pb(T)<=15)   v.innerHTML='<span class="badge warn">marginal, justify on resource</span>';
   else                 v.innerHTML='<span class="badge bad">not a financial case</span>';
 }
 [sRv,sTa,sOp,sCx].forEach(s=>s.addEventListener('input',updEcon));updEcon();
@@ -319,16 +319,16 @@ SPEC = dict(
     reg_tag='Plumbing · Water Reuse · Greywater',
     breadcrumb='Plumbing &amp; Drainage',
     tag_line='Plumbing &middot; Water Reuse &middot; Greywater &middot; Megatall Buildings',
-    desc='Greywater and water reuse in megatall buildings: why reuse is a matching problem rather than a treatment problem, the water balance between greywater available and the demands that can absorb it, cooling tower makeup as the sink that changes the arithmetic, treatment standards by end use, plant and storage sizing, honest economics including operating cost, and dual pipework designed against cross-connection — with three interactive charts.',
-    og_desc='Greywater is about twice the volume WC flushing can absorb, so a flush-only scheme discards half its source — while a 50 MW cooling plant next door drinks 2,400 m3 a day the same greywater covers only 10 percent of.',
+    desc='Greywater and water reuse in megatall buildings: why reuse is a matching problem rather than a treatment problem, the water balance between greywater available and the demands that can absorb it, cooling tower makeup as the sink that changes the arithmetic, treatment standards by end use, plant and storage sizing, honest economics including operating cost, and dual pipework designed against cross-connection, with three interactive charts.',
+    og_desc='Greywater is about twice the volume WC flushing can absorb, so a flush-only scheme discards half its source, while a 50 MW cooling plant next door drinks 2,400 m3 a day the same greywater covers only 10 percent of.',
     ld_desc='A design-perspective guide to greywater and water reuse in megatall buildings: water balance and source-sink matching, treatment standards by end use, membrane bioreactor and storage sizing, economics including operating cost, and dual pipework and cross-connection control.',
     img_alt='Technical cutaway of a megatall tower water reuse system showing separate greywater drainage stacks from the bathrooms, a basement membrane bioreactor treatment plant with balance and treated water tanks, and a purple non-potable riser feeding WC flushing and cooling tower makeup',
     en_tag='Plumbing &amp; Drainage &middot; Water Reuse &middot; Greywater &middot; Megatall',
     en_title='Greywater &amp; Water Reuse in Megatall Buildings: Matching Source to Sink, Treatment &amp; Dual Pipework',
-    en_excerpt='Water reuse is usually presented as a sustainability gesture and designed as an afterthought, which is why so many schemes end up starved or overflowing. It is actually a <strong>matching problem</strong>: greywater is about <em>twice</em> the volume WC flushing can absorb, so a flush-only scheme throws half its source away &mdash; while the cooling towers next door drink <strong>1,800&nbsp;m&sup3; a day</strong> that the same greywater covers only 13&nbsp;% of. Treatment standards by end use, plant and storage sizing, honest economics with operating cost included, and the dual pipework that these schemes actually fail on &mdash; with three interactive charts.',
+    en_excerpt='Water reuse is usually presented as a sustainability gesture and designed as an afterthought, which is why so many schemes end up starved or overflowing. It is actually a <strong>matching problem</strong>: greywater is about <em>twice</em> the volume WC flushing can absorb, so a flush-only scheme throws half its source away, while the cooling towers next door drink <strong>1,800&nbsp;m&sup3; a day</strong> that the same greywater covers only 13&nbsp;% of. Treatment standards by end use, plant and storage sizing, honest economics with operating cost included, and the dual pipework that these schemes actually fail on, with three interactive charts.',
     en_search='greywater water reuse recycling tall buildings megatall water balance source sink matching indoor demand per capita showers basins laundry WC flushing irrigation cooling tower makeup condensate recovery groundwater reuse dewatering treatment standard membrane bioreactor MBR turbidity BOD disinfection residual chlorine aerosol Legionella nutrients phosphorus biofilm balance tank treated storage hydraulic retention time plant footprint odour control dual pipework purple pipe cross connection colour coding marking potable top-up air gap type AA AB backflow prevention automatic bypass out of spec quality monitoring metering reuse fraction payback operating cost tariff subsidy Estidama Mostadam LEED BS 8525 NSF 350 WHO commissioning MEP building services',
     ar_title='إعادة استخدام المياه الرمادية في المباني فائقة الارتفاع: مطابقة المصدر بالمصرف والمعالجة والشبكة المزدوجة',
-    ar_excerpt='غالبًا ما تُقدَّم إعادة استخدام المياه كبادرة استدامة وتُصمَّم لاحقًا، ولهذا ينتهي كثير من الأنظمة إمّا جائعًا أو فائضًا. وهي في الحقيقة <strong>مسألة مطابقة</strong>: المياه الرمادية تبلغ نحو <em>ضعف</em> ما يمكن أن تستوعبه صناديق الطرد، فالنظام المخصص للطرد وحده يهدر نصف مصدره — بينما أبراج التبريد المجاورة تشرب <strong>١٨٠٠ متر مكعب يوميًا</strong> لا تغطي منها المياه الرمادية سوى ١٣٪. مع معايير المعالجة حسب الاستخدام، وتحجيم المحطة والتخزين، والاقتصاديات الصادقة، والشبكة المزدوجة التي تفشل فيها هذه الأنظمة فعلًا — مع ثلاثة رسوم تفاعلية.',
+    ar_excerpt='غالبًا ما تُقدَّم إعادة استخدام المياه كبادرة استدامة وتُصمَّم لاحقًا، ولهذا ينتهي كثير من الأنظمة إمّا جائعًا أو فائضًا. وهي في الحقيقة <strong>مسألة مطابقة</strong>: المياه الرمادية تبلغ نحو <em>ضعف</em> ما يمكن أن تستوعبه صناديق الطرد، فالنظام المخصص للطرد وحده يهدر نصف مصدره، بينما أبراج التبريد المجاورة تشرب <strong>١٨٠٠ متر مكعب يوميًا</strong> لا تغطي منها المياه الرمادية سوى ١٣٪. مع معايير المعالجة حسب الاستخدام، وتحجيم المحطة والتخزين، والاقتصاديات الصادقة، والشبكة المزدوجة التي تفشل فيها هذه الأنظمة فعلًا، مع ثلاثة رسوم تفاعلية.',
     ar_search='greywater water reuse recycling water balance MBR membrane bioreactor dual pipework cross connection air gap backflow potable top-up cooling tower makeup condensate BS 8525 NSF 350 Estidama Mostadam المياه الرمادية إعادة استخدام المياه إعادة التدوير المباني الشاهقة المباني فائقة الارتفاع الميزان المائي مطابقة المصدر والمصرف الطلب الداخلي نصيب الفرد الأدشاش المغاسل الغسيل صناديق الطرد الري تعويض أبراج التبريد استرجاع المياه المكثفة إعادة استخدام المياه الجوفية نزح المياه معيار المعالجة المفاعل الحيوي الغشائي العكارة الأكسجين الحيوي المطلوب التعقيم الكلور المتبقي الرذاذ الليجيونيلا المغذيات الفوسفور الغشاء الحيوي خزان الموازنة خزان المياه المعالجة زمن المكوث الهيدروليكي مساحة المحطة التحكم في الروائح الشبكة المزدوجة الماسورة البنفسجية التوصيل المتقاطع الترميز اللوني التغذية التكميلية بالمياه الصالحة الفجوة الهوائية منع الارتداد التجاوز التلقائي مراقبة الجودة العدادات نسبة إعادة الاستخدام فترة الاسترداد تكلفة التشغيل التعرفة الدعم التشغيل والاختبار MEP خدمات المباني',
     body=BODY, charts=CHARTS,
 )

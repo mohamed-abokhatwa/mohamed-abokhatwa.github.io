@@ -408,7 +408,7 @@ function updWave(){
   document.getElementById('rWw').innerHTML=fmt2(KW*De/Epa);
   const pct=100*(a-1050)/1050, ap=Math.abs(pct);
   const cls=ap<=10?'badge good':(ap<=25?'badge warn':'badge bad');
-  const txt=(pct>=0?'+':'−')+fmt1(ap)+' %'+(ap>25?' — a different pipe':'');
+  const txt=(pct>=0?'+':'−')+fmt1(ap)+' %'+(ap>25?', a different pipe':'');
   document.getElementById('rWd').innerHTML='<span class="'+cls+'">'+txt+'</span>';
 }
 sPre.addEventListener('input',function(){
@@ -575,23 +575,23 @@ window.addEventListener('load',function(){try{waveChart.resize();airChart.resize
 REFS = r"""
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993 — Korteweg wave speed with restraint factors, wave speed with free gas, method of characteristics, vapour cavity model.</li>
-  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014 — wave speed in thin- and thick-walled pipe, free gas, Joukowsky head.</li>
-  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004 — pump trip transients, round-trip time, uncertainty of wave speed with entrained air.</li>
-  <li>Larock, B.E., Jeppson, R.W. &amp; Watters, G.Z. <em>Hydraulics of Pipeline Systems</em>. CRC Press, 2000 — method-of-characteristics implementation and pump boundaries.</li>
-  <li>Parmakian, J. <em>Waterhammer Analysis</em>. Dover, 1963 — the Joukowsky relation and pump-trip waterhammer.</li>
-  <li>Swaffield, J.A. &amp; Boldy, A.P. <em>Pressure Surge in Pipe and Duct Systems</em>. Avebury Technical, 1993 — surge propagation and the effect of free air on wave speed.</li>
-  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006 — vapour and gas cavity models and the sensitivity of collapse pressures.</li>
-  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989 — water hammer in pumping main design.</li>
-  <li>Stephenson, D. &ldquo;Simple guide for design of air vessels for water hammer protection of pumping lines.&rdquo; <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8), 2002 — air vessel sizing.</li>
-  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005 — transient analysis and protection practice.</li>
-  <li>AWWA M11 <em>Steel Pipe — A Guide for Design and Installation</em> — surge in steel pipe design.</li>
-  <li>AWWA M45 <em>Fiberglass Pipe Design</em> — surge in GRP pipe design.</li>
-  <li>AWWA M55 <em>PE Pipe — Design and Installation</em> — surge in polyethylene pipe design.</li>
-  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em>; ISO 4427-2 <em>Polyethylene (PE) pipes for water supply</em>; ISO 1452-2 <em>PVC-U pipes for water supply</em> — K-class and SDR wall thicknesses.</li>
-  <li>AWWA M51 <em>Air Valves: Air-Release, Air/Vacuum, and Combination</em> — air admission during transients.</li>
-  <li>EN 805 <em>Water supply — Requirements for systems and components outside buildings</em> — maximum design pressure including surge.</li>
-  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help — Wave Speed Calculator, wave speed adjustment, column separation, Hydropneumatic Tank, Transient Results Viewer.</li>
+  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993: Korteweg wave speed with restraint factors, wave speed with free gas, method of characteristics, vapour cavity model.</li>
+  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014: wave speed in thin- and thick-walled pipe, free gas, Joukowsky head.</li>
+  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004: pump trip transients, round-trip time, uncertainty of wave speed with entrained air.</li>
+  <li>Larock, B.E., Jeppson, R.W. &amp; Watters, G.Z. <em>Hydraulics of Pipeline Systems</em>. CRC Press, 2000: method-of-characteristics implementation and pump boundaries.</li>
+  <li>Parmakian, J. <em>Waterhammer Analysis</em>. Dover, 1963: the Joukowsky relation and pump-trip waterhammer.</li>
+  <li>Swaffield, J.A. &amp; Boldy, A.P. <em>Pressure Surge in Pipe and Duct Systems</em>. Avebury Technical, 1993: surge propagation and the effect of free air on wave speed.</li>
+  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006: vapour and gas cavity models and the sensitivity of collapse pressures.</li>
+  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989: water hammer in pumping main design.</li>
+  <li>Stephenson, D. &ldquo;Simple guide for design of air vessels for water hammer protection of pumping lines.&rdquo; <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8), 2002: air vessel sizing.</li>
+  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005: transient analysis and protection practice.</li>
+  <li>AWWA M11 <em>Steel Pipe, A Guide for Design and Installation</em>: surge in steel pipe design.</li>
+  <li>AWWA M45 <em>Fiberglass Pipe Design</em>: surge in GRP pipe design.</li>
+  <li>AWWA M55 <em>PE Pipe, Design and Installation</em>: surge in polyethylene pipe design.</li>
+  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em>; ISO 4427-2 <em>Polyethylene (PE) pipes for water supply</em>; ISO 1452-2 <em>PVC-U pipes for water supply</em>: K-class and SDR wall thicknesses.</li>
+  <li>AWWA M51 <em>Air Valves: Air-Release, Air/Vacuum, and Combination</em>, air admission during transients.</li>
+  <li>EN 805 <em>Water supply, Requirements for systems and components outside buildings</em>: maximum design pressure including surge.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help: Wave Speed Calculator, wave speed adjustment, column separation, Hydropneumatic Tank, Transient Results Viewer.</li>
 </ol>
 """
 

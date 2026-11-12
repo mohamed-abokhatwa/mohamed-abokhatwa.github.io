@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pressure Management & District Metered Areas (DMA) — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Pressure Management & District Metered Areas (DMA) | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -105,16 +105,16 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="Pressure management and District Metered Areas (DMA): pressure is the master variable for leakage. The FAVAD/N1 leakage–pressure law, dividing the network into DMAs to measure and localise loss, minimum night flow, and fixed vs time vs flow-modulated PRV control — with three interactive charts and worked numbers.">
+  <meta name="description" content="Pressure management and District Metered Areas (DMA): pressure is the master variable for leakage. The FAVAD/N1 leakage–pressure law, dividing the network into DMAs to measure and localise loss, minimum night flow, and fixed vs time vs flow-modulated PRV control, with three interactive charts and worked numbers.">
   <meta property="og:title" content="Pressure Management & District Metered Areas (DMA) | Mohamed Abokhatwa">
-  <meta property="og:description" content="Pressure is the master variable for leakage. The FAVAD/N1 law, DMAs and minimum night flow, and flow-modulated PRV control — the engineering of Non-Revenue Water, in three interactive charts.">
+  <meta property="og:description" content="Pressure is the master variable for leakage. The FAVAD/N1 law, DMAs and minimum night flow, and flow-modulated PRV control: the engineering of Non-Revenue Water, in three interactive charts.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/pressure-management-dma.html">
   <meta property="og:image" content="https://abokhatwa.com/og-pressure-management-dma.jpg">
   <meta property="og:image:alt" content="District Metered Area with a pressure-reducing valve on the metered inlet">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pressure Management & District Metered Areas (DMA) | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="Why dropping average pressure cuts leakage more than proportionally, how DMAs and minimum night flow find the loss, and why flow-modulated PRVs win — in three interactive charts.">
+  <meta name="twitter:description" content="Why dropping average pressure cuts leakage more than proportionally, how DMAs and minimum night flow find the loss, and why flow-modulated PRVs win, in three interactive charts.">
   <link rel="canonical" href="https://abokhatwa.com/pressure-management-dma.html">
 
   <script type="application/ld+json">
@@ -161,6 +161,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -203,27 +204,27 @@
 </div>
 
 <div class="article-body">
-<p class="lead">A new distribution network leaks the day it is commissioned, and leaks more every year after. You cannot dig up every joint, and you cannot hear most of the loss. But there is one variable that controls how fast water escapes a pipe through every crack and loose fitting at once — pressure — and one way to see where the loss is hiding without opening the ground: divide the network into measured zones and listen to it at three in the morning. This is the engineering of leakage control: pressure management and the District Metered Area.</p>
+<p class="lead">A new distribution network leaks the day it is commissioned, and leaks more every year after. You cannot dig up every joint, and you cannot hear most of the loss. But there is one variable that controls how fast water escapes a pipe through every crack and loose fitting at once (pressure) and one way to see where the loss is hiding without opening the ground: divide the network into measured zones and listen to it at three in the morning. This is the engineering of leakage control: pressure management and the District Metered Area.</p>
 
 <h2 id="why">1 · Pressure is the master variable</h2>
-<p>Most of what a water utility loses is not dramatic. The visible burst that floods a street is a small fraction; the bulk of <strong>Non-Revenue Water (NRW)</strong> is background leakage — a constant weep from thousands of joints, fittings and hairline cracks, none big enough to surface<sup class="cite">[1]</sup>. Three things make all of it worse, and pressure drives every one:</p>
+<p>Most of what a water utility loses is not dramatic. The visible burst that floods a street is a small fraction; the bulk of <strong>Non-Revenue Water (NRW)</strong> is background leakage: a constant weep from thousands of joints, fittings and hairline cracks, none big enough to surface<sup class="cite">[1]</sup>. Three things make all of it worse, and pressure drives every one:</p>
 <ul class="clean">
-  <li><strong>Leakage flow.</strong> Every leak is an orifice; the higher the pressure behind it, the faster it flows — and, crucially, the leak area itself often <em>grows</em> with pressure, so the effect is more than the simple square-root of an orifice.</li>
+  <li><strong>Leakage flow.</strong> Every leak is an orifice; the higher the pressure behind it, the faster it flows, and, crucially, the leak area itself often <em>grows</em> with pressure, so the effect is more than the simple square-root of an orifice.</li>
   <li><strong>Burst frequency.</strong> High and, especially, <em>fluctuating</em> pressure fatigues pipes and joints. Cutting peak pressure and pressure transients measurably lowers new-burst rates, which is leakage you never have to find.</li>
   <li><strong>Pressure-dependent consumption.</strong> Some demand (and waste) simply rises with pressure at the tap. Lower the pressure to what the service actually needs and that component falls too.</li>
 </ul>
 
 <div class="callout key">
   <span class="lbl">The governing idea</span>
-  Leakage is not a fixed quantity you chase pipe by pipe — it is a <strong>function of pressure across the whole zone at once</strong>. Manage the pressure down to what the service genuinely requires, and you cut every leak in the zone simultaneously, slow the rate of new bursts, and trim wasteful demand — without finding a single one. The <strong>DMA</strong> is the instrument that lets you measure it and act on it.
+  Leakage is a <strong>function of pressure across the whole zone at once</strong>, not a fixed quantity you chase pipe by pipe. Manage the pressure down to what the service genuinely requires, and you cut every leak in the zone simultaneously, slow the rate of new bursts, and trim wasteful demand, without finding a single one. The <strong>DMA</strong> is the instrument that lets you measure it and act on it.
 </div>
 
 <h2 id="favad">2 · The leakage–pressure law (FAVAD &amp; N1)</h2>
-<p>If a leak were a rigid hole, flow would follow the orifice equation and rise with the square root of pressure (an exponent of 0.5). In reality many leak paths — longitudinal splits, joints, plastic pipe — open wider as pressure rises, so the area is variable. The <strong>FAVAD</strong> principle (Fixed and Variable Area Discharges) captures this with a single power law<sup class="cite">[2]</sup>:</p>
+<p>If a leak were a rigid hole, flow would follow the orifice equation and rise with the square root of pressure (an exponent of 0.5). In reality many leak paths (longitudinal splits, joints, plastic pipe) open wider as pressure rises, so the area is variable. The <strong>FAVAD</strong> principle (Fixed and Variable Area Discharges) captures this with a single power law<sup class="cite">[2]</sup>:</p>
 
 <div class="eq">\[ \frac{L_1}{L_0} = \left(\frac{P_1}{P_0}\right)^{N_1} \]</div>
 
-<p>where \(L\) is leakage, \(P\) is the average zone pressure, and the exponent \(N_1\) typically runs from <strong>0.5</strong> (round holes in rigid metal) through <strong>~1.0</strong> for a mixed network, to <strong>1.5</strong> and above where flexible pipe and background leakage dominate<sup class="cite">[3]</sup>. The practical consequence is large: with \(N_1 = 1.0\), a <strong>15&nbsp;m cut from a 55&nbsp;m average pressure</strong> — about 31% — removes <strong>about a third of the leakage</strong>, and with a higher \(N_1\) the saving is greater still. Pressure management is the single most cost-effective leakage intervention there is.</p>
+<p>where \(L\) is leakage, \(P\) is the average zone pressure, and the exponent \(N_1\) typically runs from <strong>0.5</strong> (round holes in rigid metal) through <strong>~1.0</strong> for a mixed network, to <strong>1.5</strong> and above where flexible pipe and background leakage dominate<sup class="cite">[3]</sup>. The practical consequence is large: with \(N_1 = 1.0\), a <strong>15&nbsp;m cut from a 55&nbsp;m average pressure</strong> (about 31%) removes <strong>about a third of the leakage</strong>, and with a higher \(N_1\) the saving is greater still. Pressure management is the single most cost-effective leakage intervention there is.</p>
 
 <h2 id="int-favad">3 · Interactive: leakage vs. pressure</h2>
 <p>This is the FAVAD curve: leakage as a share of its value at today's pressure. Drag the managed pressure down and read how much leakage goes with it; change \(N_1\) to see how the gain depends on what your network is made of. The shaded band is the minimum service pressure you must never drop the critical point below.</p>
@@ -243,7 +244,7 @@
     <div class="ctrl">
       <label>Managed average pressure <span id="vP1">38 m</span></label>
       <input type="range" id="sP1" min="12" max="78" value="38" step="1">
-      <div class="hint">Target AZP after the PRV — limited by the critical (lowest) node.</div>
+      <div class="hint">Target AZP after the PRV: limited by the critical (lowest) node.</div>
     </div>
     <div class="ctrl">
       <label>Leakage exponent N₁ <span id="vN1">1.0</span></label>
@@ -258,12 +259,12 @@
     <div class="cell"><div class="k">Critical point</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rPv"></span></div></div>
   </div>
 </div>
-<p class="fig-note">Start from a 55&nbsp;m zone and bring it to 38&nbsp;m: with N₁&nbsp;=&nbsp;1.0 that is ~31% less leakage, every leak in the zone, for the price of one valve. Push N₁ to 1.5 (a plastic network) and the same cut saves over 40%. Drag the managed pressure into the red band and the verdict warns — you have starved the highest or furthest customer.</p>
+<p class="fig-note">Start from a 55&nbsp;m zone and bring it to 38&nbsp;m: with N₁&nbsp;=&nbsp;1.0 that is ~31% less leakage, every leak in the zone, for the price of one valve. Push N₁ to 1.5 (a plastic network) and the same cut saves over 40%. Drag the managed pressure into the red band and the verdict warns. You have starved the highest or furthest customer.</p>
 
-<h2 id="dma">4 · The DMA — dividing the network to see the loss</h2>
+<h2 id="dma">4 · The DMA: dividing the network to see the loss</h2>
 <p>You cannot manage what you cannot measure, and a whole city's network is too big to measure as one thing. The <strong>District Metered Area</strong> solves both: the network is permanently divided into discrete zones of typically <strong>500–3,000 connections</strong>, each fed through <em>one</em> (or a few) flow-metered inlets, with all other boundary pipes valved shut<sup class="cite">[4]</sup>. That single change unlocks the whole discipline:</p>
 <ul class="clean">
-  <li><strong>You can measure the loss.</strong> Continuous inlet flow tells you exactly how much water enters the zone — and how that compares with what is billed.</li>
+  <li><strong>You can measure the loss.</strong> Continuous inlet flow tells you exactly how much water enters the zone, and how that compares with what is billed.</li>
   <li><strong>You can localise it.</strong> A rising night flow in one DMA points the leakage team at a few streets instead of a city.</li>
   <li><strong>You can manage the pressure.</strong> A single inlet is the natural place to put a PRV and control the pressure of the entire zone at once (the subject of <a href="prv-altitude-valve-fcv.html">PRVs, altitude and float-control valves</a>).</li>
 </ul>
@@ -280,7 +281,7 @@
     .pm-tl{fill:var(--text-primary);font-family:-apple-system,'Inter',sans-serif;font-size:13px;font-weight:600;}
     .pm-closed{stroke:var(--danger);stroke-width:2.5;}
   </style>
-  <text x="34" y="24" class="pm-tl">One District Metered Area — single metered inlet, boundary valves closed</text>
+  <text x="34" y="24" class="pm-tl">One District Metered Area: single metered inlet, boundary valves closed</text>
   <!-- supply main -->
   <rect x="30" y="120" width="26" height="20" rx="3" class="pm-src"/>
   <text x="26" y="156" class="pm-lbl">supply main</text>
@@ -309,20 +310,20 @@
   <div class="cap">Original schematic. The zone is sealed except for one metered inlet carrying a PRV; every other connection to neighbouring zones is valved shut, so all flow in and all the zone's pressure are controlled at a single point.</div>
 </div>
 
-<h2 id="mnf">5 · Minimum night flow — measuring leakage</h2>
+<h2 id="mnf">5 · Minimum night flow: measuring leakage</h2>
 <p>The DMA's most powerful trick happens while the city sleeps. Between about <strong>02:00 and 04:00</strong> legitimate demand falls to its daily minimum, so most of what still flows through the inlet is leakage. The <strong>minimum night flow (MNF)</strong> is therefore the clearest window onto loss<sup class="cite">[5]</sup>:</p>
 
 <div class="eq">\[ \text{Leakage} \approx \text{MNF} - \text{legitimate night use} \]</div>
 
-<p>Subtract a small, estimated allowance for genuine night consumption (toilets, a few night-shift users, the rare large user) from the measured MNF, and what remains is the zone's real loss. Track it night after night and a step up means a new burst has started — found within a day, in one small zone, long before anyone phones it in. The next chart builds a DMA's daily inflow and reads its leakage straight off the night.</p>
+<p>Subtract a small, estimated allowance for genuine night consumption (toilets, a few night-shift users, the rare large user) from the measured MNF, and what remains is the zone's real loss. Track it night after night and a step up means a new burst has started: found within a day, in one small zone, long before anyone phones it in. The next chart builds a DMA's daily inflow and reads its leakage straight off the night.</p>
 
 <h2 id="int-mnf">6 · Interactive: minimum night flow &amp; leakage</h2>
-<p>The blue area is the zone's metered inflow across the day — legitimate demand riding on a flat bed of leakage. The lowest point, around 03:00, is the minimum night flow; subtract the dashed legitimate-night-use line and the gap is the leakage you are paying for.</p>
+<p>The blue area is the zone's metered inflow across the day: legitimate demand riding on a flat bed of leakage. The lowest point, around 03:00, is the minimum night flow; subtract the dashed legitimate-night-use line and the gap is the leakage you are paying for.</p>
 
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">A DMA's daily inflow and its minimum night flow</div>
-    <div class="fsub">Inflow = legitimate demand (a diurnal pattern) + a near-constant leakage. The marker at 03:00 is the minimum night flow (MNF); the dashed amber line is the estimated legitimate night use. Leakage ≈ MNF − legitimate night use — the band between them.</div>
+    <div class="fsub">Inflow = legitimate demand (a diurnal pattern) + a near-constant leakage. The marker at 03:00 is the minimum night flow (MNF); the dashed amber line is the estimated legitimate night use. Leakage ≈ MNF − legitimate night use: the band between them.</div>
   </div>
   <div class="chart-box"><canvas id="mnfChart"></canvas></div>
   <div class="controls">
@@ -349,22 +350,22 @@
     <div class="cell"><div class="k">Leakage share</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rShare"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 1,500-connection zone with 12&nbsp;L/s of leakage shows a minimum night flow around 15&nbsp;L/s — almost all of it loss, because real night use is tiny. Slide the leakage down and watch the night floor fall toward the legitimate line; that downward step is exactly what a repaired burst looks like on the monitoring chart.</p>
+<p class="fig-note">A 1,500-connection zone with 12&nbsp;L/s of leakage shows a minimum night flow around 15&nbsp;L/s, almost all of it loss, because real night use is tiny. Slide the leakage down and watch the night floor fall toward the legitimate line; that downward step is exactly what a repaired burst looks like on the monitoring chart.</p>
 
-<h2 id="prv">7 · Controlling the pressure — fixed, time, and flow-modulated</h2>
+<h2 id="prv">7 · Controlling the pressure: fixed, time, and flow-modulated</h2>
 <p>Once a DMA has a single inlet, a <a href="prv-altitude-valve-fcv.html">pressure-reducing valve</a> there governs the whole zone. There are three levels of sophistication<sup class="cite">[6]</sup>:</p>
 <ul class="clean">
-  <li><strong>Fixed-outlet.</strong> The PRV holds a constant downstream pressure regardless of flow. Simple and a big improvement on no control — but it must be set high enough for the <em>peak-hour</em> critical point, which means it over-pressurises the zone all night, exactly when demand is lowest and leakage worst.</li>
-  <li><strong>Time-modulated.</strong> The outlet pressure is dropped on a clock during the known night hours. Cheap, effective, but blind — it cannot react to an unusual demand (a fire, a hot evening).</li>
-  <li><strong>Flow-modulated.</strong> The controller reads the inlet flow and sets just enough pressure to keep the critical point at target for the <em>actual</em> demand — high at the peak, low at night. It removes the night over-pressure that fixed control cannot, capturing the most leakage. Beware the suction-side and high-differential conditions that can make a hard-working PRV <a href="cavitation-prvs-fcvs.html">cavitate</a>.</li>
+  <li><strong>Fixed-outlet.</strong> The PRV holds a constant downstream pressure regardless of flow. Simple and a big improvement on no control, but it must be set high enough for the <em>peak-hour</em> critical point, which means it over-pressurises the zone all night, exactly when demand is lowest and leakage worst.</li>
+  <li><strong>Time-modulated.</strong> The outlet pressure is dropped on a clock during the known night hours. Cheap, effective, but blind. It cannot react to an unusual demand (a fire, a hot evening).</li>
+  <li><strong>Flow-modulated.</strong> The controller reads the inlet flow and sets just enough pressure to keep the critical point at target for the <em>actual</em> demand: high at the peak, low at night. It removes the night over-pressure that fixed control cannot, capturing the most leakage. Beware the suction-side and high-differential conditions that can make a hard-working PRV <a href="cavitation-prvs-fcvs.html">cavitate</a>.</li>
 </ul>
 
 <h2 id="int-pm">8 · Interactive: pressure management across the day</h2>
-<p>Three ways to run the same zone: no control (pressure floats high all day), a fixed-outlet PRV, and a flow-modulated PRV that tracks demand. Watch the night, between midnight and dawn — that is where flow-modulation peels away the over-pressure the fixed valve is forced to keep, and where most of the extra leakage saving comes from.</p>
+<p>Three ways to run the same zone: no control (pressure floats high all day), a fixed-outlet PRV, and a flow-modulated PRV that tracks demand. Watch the night, between midnight and dawn: that is where flow-modulation peels away the over-pressure the fixed valve is forced to keep, and where most of the extra leakage saving comes from.</p>
 
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Zone pressure across the day — three control modes</div>
+    <div class="ftitle">Zone pressure across the day: three control modes</div>
     <div class="fsub">Outlet pressure for an uncontrolled inlet (flat high), a fixed-outlet PRV (flat at setpoint), and a flow-modulated PRV that follows demand to hold the critical point at target. The dashed red line is the minimum the critical point allows. The extra leakage saving uses the FAVAD law on the day's average pressure.</div>
   </div>
   <div class="chart-box"><canvas id="pmChart"></canvas></div>
@@ -372,7 +373,7 @@
     <div class="ctrl">
       <label>Uncontrolled inlet pressure <span id="vPin">62 m</span></label>
       <input type="range" id="sPin" min="40" max="90" value="62" step="1">
-      <div class="hint">Pressure with no PRV — set by the source / upstream zone.</div>
+      <div class="hint">Pressure with no PRV: set by the source / upstream zone.</div>
     </div>
     <div class="ctrl">
       <label>Fixed PRV setpoint <span id="vSet">40 m</span></label>
@@ -386,21 +387,21 @@
     </div>
   </div>
   <div class="readout">
-    <div class="cell"><div class="k">Avg pressure — fixed</div><div class="v" id="rApFix">40 <small>m</small></div></div>
-    <div class="cell"><div class="k">Avg pressure — modulated</div><div class="v" id="rApMod">31 <small>m</small></div></div>
+    <div class="cell"><div class="k">Avg pressure: fixed</div><div class="v" id="rApFix">40 <small>m</small></div></div>
+    <div class="cell"><div class="k">Avg pressure: modulated</div><div class="v" id="rApMod">31 <small>m</small></div></div>
     <div class="cell"><div class="k">Extra leakage cut</div><div class="v" id="rExtra">18 <small>%</small></div></div>
-    <div class="cell"><div class="k">Night pressure — mod.</div><div class="v" id="rNp">23 <small>m</small></div></div>
+    <div class="cell"><div class="k">Night pressure: mod.</div><div class="v" id="rNp">23 <small>m</small></div></div>
   </div>
 </div>
-<p class="fig-note">The fixed PRV already strips the zone of the uncontrolled over-pressure. The flow-modulated valve then takes the night pressure down toward the critical-point minimum — where leakage runs hardest — for a further double-digit cut on top of the fixed valve, at the cost of a smarter controller and a watch on cavitation.</p>
+<p class="fig-note">The fixed PRV already strips the zone of the uncontrolled over-pressure. The flow-modulated valve then takes the night pressure down toward the critical-point minimum, where leakage runs hardest, for a further double-digit cut on top of the fixed valve, at the cost of a smarter controller and a watch on cavitation.</p>
 
 <h2 id="tradeoffs">9 · The trade-offs to design around</h2>
 <p>Pressure management and DMAs are not free wins; they reshape the network's behaviour:</p>
 <ul class="clean">
   <li><strong>Lost redundancy.</strong> Closed boundary valves un-loop the network, so a burst inside a DMA has fewer alternative paths. Keep DMAs from getting so small that a single failure isolates many customers, and design boundary valves to re-open for emergencies and fire flow.</li>
-  <li><strong>Water age.</strong> Less circulation and lower velocities can raise residence time and threaten the disinfectant residual at the extremities — the same dead-end risk from the <a href="distribution-network-looped-branched.html">looped-vs-branched</a> trade.</li>
+  <li><strong>Water age.</strong> Less circulation and lower velocities can raise residence time and threaten the disinfectant residual at the extremities: the same dead-end risk from the <a href="distribution-network-looped-branched.html">looped-vs-branched</a> trade.</li>
   <li><strong>Fire flow.</strong> A single metered inlet and a reduced pressure must still meet the required fire flow at the critical hydrant; this often sets the PRV setpoint and the inlet size, and is why boundary valves are designed to open.</li>
-  <li><strong>Transients.</strong> A fast-acting modulating PRV that hunts, or that slams on a demand step, can introduce <a href="surge-vessel.html">surges</a> — tune the control, and check the valve is not driven into <a href="cavitation-prvs-fcvs.html">cavitation</a> at high differential.</li>
+  <li><strong>Transients.</strong> A fast-acting modulating PRV that hunts, or that slams on a demand step, can introduce <a href="surge-vessel.html">surges</a>: tune the control, and check the valve is not driven into <a href="cavitation-prvs-fcvs.html">cavitation</a> at high differential.</li>
 </ul>
 
 <div class="callout green">
@@ -410,31 +411,31 @@
 
 <h2 id="checklist">10 · The design checklist</h2>
 <ul class="clean">
-  <li><strong>Define the DMAs</strong> — 500–3,000 connections, sensible hydraulic boundaries, one (or few) metered inlets; map every boundary valve.</li>
-  <li><strong>Meter and log every inlet</strong> — continuous flow (and ideally inlet pressure) to a data system; establish a night-flow baseline.</li>
-  <li><strong>Find the critical point</strong> — the lowest-pressure node at peak demand sets the floor for any pressure reduction.</li>
-  <li><strong>Set the PRV</strong> — from the critical point and the fire-flow case; choose fixed, time- or flow-modulated to match the night over-pressure and N₁.</li>
-  <li><strong>Hold minimum pressure</strong> — ≥ ~14 m (20 psi) at the critical point under all conditions including fire flow<sup class="cite">[7]</sup>.</li>
-  <li><strong>Check cavitation &amp; transients</strong> — verify the valve at maximum differential and tune modulation so it does not surge (<a href="cavitation-prvs-fcvs.html">cavitation in PRVs/FCVs</a>).</li>
-  <li><strong>Preserve resilience</strong> — boundary valves that open for fire/emergencies; watch water age at the extremities.</li>
-  <li><strong>Run the water balance</strong> — close the loop with an AWWA M36 audit and track the Infrastructure Leakage Index (ILI) over time<sup class="cite">[1]</sup>.</li>
+  <li><strong>Define the DMAs</strong>: 500–3,000 connections, sensible hydraulic boundaries, one (or few) metered inlets; map every boundary valve.</li>
+  <li><strong>Meter and log every inlet</strong>: continuous flow (and ideally inlet pressure) to a data system; establish a night-flow baseline.</li>
+  <li><strong>Find the critical point</strong>: the lowest-pressure node at peak demand sets the floor for any pressure reduction.</li>
+  <li><strong>Set the PRV</strong>: from the critical point and the fire-flow case; choose fixed, time- or flow-modulated to match the night over-pressure and N₁.</li>
+  <li><strong>Hold minimum pressure</strong>: ≥ ~14 m (20 psi) at the critical point under all conditions including fire flow<sup class="cite">[7]</sup>.</li>
+  <li><strong>Check cavitation &amp; transients</strong>: verify the valve at maximum differential and tune modulation so it does not surge (<a href="cavitation-prvs-fcvs.html">cavitation in PRVs/FCVs</a>).</li>
+  <li><strong>Preserve resilience</strong>: boundary valves that open for fire/emergencies; watch water age at the extremities.</li>
+  <li><strong>Run the water balance</strong>: close the loop with an AWWA M36 audit and track the Infrastructure Leakage Index (ILI) over time<sup class="cite">[1]</sup>.</li>
 </ul>
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  Leakage is a function of pressure, and pressure is controllable. Split the network into measured DMAs, read the loss from the minimum night flow, and bring the pressure down to what the service truly needs — with a flow-modulated PRV where the night over-pressure earns it — and you cut every leak in the zone at once, slow the next burst, and find the ones you cannot hear.
+  Leakage is a function of pressure, and pressure is controllable. Split the network into measured DMAs, read the loss from the minimum night flow, and bring the pressure down to what the service truly needs (with a flow-modulated PRV where the night over-pressure earns it) and you cut every leak in the zone at once, slow the next burst, and find the ones you cannot hear.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>American Water Works Association. <em>Manual M36 — Water Audits and Loss Control Programs</em> (water balance, Non-Revenue Water, Infrastructure Leakage Index).</li>
-  <li>Lambert, A.O. (2001). <em>What do we know about pressure–leakage relationships in distribution systems?</em> IWA Conference on System Approach to Leakage Control — the FAVAD concept.</li>
-  <li>May, J. (1994). <em>Pressure-dependent leakage.</em> World Water &amp; Environmental Engineering — origin of the N1 leakage exponent.</li>
-  <li>UKWIR / WRc. <em>A Manual of DMA Practice</em> — district metered area design, sizing and monitoring.</li>
-  <li>Thornton, J., Sturm, R., Kunkel, G. <em>Water Loss Control.</em> McGraw-Hill — minimum night flow analysis, BABE/component methods.</li>
+  <li>American Water Works Association. <em>Manual M36: Water Audits and Loss Control Programs</em> (water balance, Non-Revenue Water, Infrastructure Leakage Index).</li>
+  <li>Lambert, A.O. (2001). <em>What do we know about pressure–leakage relationships in distribution systems?</em> IWA Conference on System Approach to Leakage Control: the FAVAD concept.</li>
+  <li>May, J. (1994). <em>Pressure-dependent leakage.</em> World Water &amp; Environmental Engineering: origin of the N1 leakage exponent.</li>
+  <li>UKWIR / WRc. <em>A Manual of DMA Practice</em>: district metered area design, sizing and monitoring.</li>
+  <li>Thornton, J., Sturm, R., Kunkel, G. <em>Water Loss Control.</em> McGraw-Hill: minimum night flow analysis, BABE/component methods.</li>
   <li>IWA Water Loss Specialist Group. <em>Pressure management: principles, PRVs and flow modulation</em>; and manufacturer application guides for modulated control.</li>
-  <li>Great Lakes&ndash;Upper Mississippi River Board (GLUMRB). <em>Recommended Standards for Water Works (Ten States Standards)</em> — minimum distribution pressure.</li>
-  <li>AWWA. <em>Manual M32 — Computer Modeling of Water Distribution Systems</em> (locating the critical point, AZP).</li>
+  <li>Great Lakes&ndash;Upper Mississippi River Board (GLUMRB). <em>Recommended Standards for Water Works (Ten States Standards)</em>: minimum distribution pressure.</li>
+  <li>AWWA. <em>Manual M32: Computer Modeling of Water Distribution Systems</em> (locating the critical point, AZP).</li>
 </ol>
 
 <div class="tags">#PressureManagement #DMA #DistrictMeteredArea #NonRevenueWater #NRW #LeakageControl #FAVAD #MinimumNightFlow #PRV #FlowModulation #WaterLoss #DistributionNetwork #PipelineDesign #WaterInfrastructure</div>
@@ -445,7 +446,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>

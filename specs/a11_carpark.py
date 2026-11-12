@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">The car park is the least glamorous space in a megatall development and the one most likely to be grossly over-ventilated. It is usually sized by a prescriptive air-change rate copied from a code table — six, ten, sometimes twelve air changes an hour — and that rule produces, for a typical 5,000&nbsp;m² basement, a system of <strong>41.7&nbsp;m³/s</strong> when the actual contaminant load needs <strong>11.6</strong>. The factor of three and a half buys nothing: no better air, no better safety. It buys a bigger fan, a bigger shaft through the podium, a bigger electrical supply and a permanent energy bill. And it is the same mistake as the Hunter curve in <a href="domestic-water-tall-buildings.html">domestic water</a> — a prescriptive rule written for a different generation of the thing it regulates.</p>
+<p class="lead">The car park is the least glamorous space in a megatall development and the one most likely to be grossly over-ventilated. It is usually sized by a prescriptive air-change rate copied from a code table (six, ten, sometimes twelve air changes an hour) and that rule produces, for a typical 5,000&nbsp;m² basement, a system of <strong>41.7&nbsp;m³/s</strong> when the actual contaminant load needs <strong>11.6</strong>. The factor of three and a half buys nothing: no better air, no better safety. It buys a bigger fan, a bigger shaft through the podium, a bigger electrical supply and a permanent energy bill. And it is the same mistake as the Hunter curve in <a href="domestic-water-tall-buildings.html">domestic water</a>: a prescriptive rule written for a different generation of the thing it regulates.</p>
 
 <h2 id="two">1 · Two duties, two completely different systems</h2>
 <p>A car park ventilation system does two unrelated jobs, and confusing them is the root of most bad designs:</p>
 <ul class="clean">
-  <li><strong>Normal ventilation</strong> — dilute vehicle exhaust, principally carbon monoxide, to a safe concentration. This is a <em>contaminant dilution</em> problem, it is highly intermittent, and it should be demand-controlled.</li>
-  <li><strong>Fire mode</strong> — clear smoke to allow firefighting access, or in a designed smoke-control system, hold smoke back from an escape route. This is a <em>high-temperature, short-duration</em> problem with completely different equipment requirements.</li>
+  <li><strong>Normal ventilation</strong>: dilute vehicle exhaust, principally carbon monoxide, to a safe concentration. This is a <em>contaminant dilution</em> problem, it is highly intermittent, and it should be demand-controlled.</li>
+  <li><strong>Fire mode</strong>: clear smoke to allow firefighting access, or in a designed smoke-control system, hold smoke back from an escape route. This is a <em>high-temperature, short-duration</em> problem with completely different equipment requirements.</li>
 </ul>
-<p>They share ductwork and fans but almost nothing else. Fire mode usually governs the fan and the shaft; normal mode governs the energy. Design both explicitly, and never let the fire-mode airflow become the normal-mode airflow by default — which is exactly what a single-speed system does.</p>
+<p>They share ductwork and fans but almost nothing else. Fire mode usually governs the fan and the shaft; normal mode governs the energy. Design both explicitly, and never let the fire-mode airflow become the normal-mode airflow by default, which is exactly what a single-speed system does.</p>
 
 <h2 id="int-co">2 · Interactive: prescriptive air changes vs actual CO dilution</h2>
 <p>Dilution ventilation is a mass balance: the airflow needed is the contaminant generation rate divided by the concentration you will allow.</p>
@@ -17,7 +17,7 @@ BODY = r"""
 
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Ventilation rate — CO dilution vs prescriptive air changes</div>
+    <div class="ftitle">Ventilation rate: CO dilution vs prescriptive air changes</div>
     <div class="fsub">Q = E/(C&#108;&#105;&#109;&#105;&#116;). CO limit converted at 1.145 mg/m³ per ppm. The prescriptive line is the code air-change rate applied to the same volume.</div>
   </div>
   <div class="chart-box"><canvas id="coChart"></canvas></div>
@@ -56,13 +56,13 @@ BODY = r"""
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVd"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 5,000&nbsp;m² basement at 150 movements an hour needs about <strong>11.6&nbsp;m³/s</strong> to hold 25&nbsp;ppm — an effective 2.8 air changes an hour. The 10&nbsp;ACH rule demands <strong>41.7&nbsp;m³/s</strong>. Both numbers are defensible in their own terms; only one reflects the building. The practical resolution is <strong>demand-controlled ventilation</strong>: install the fan capacity the code requires, and then run it on CO and NO₂ sensors so it spends almost all its life near the dilution rate rather than the prescriptive one. Modern codes increasingly permit exactly this, and it converts an over-sized system from an energy problem into a resilience margin.</p>
+<p class="fig-note">A 5,000&nbsp;m² basement at 150 movements an hour needs about <strong>11.6&nbsp;m³/s</strong> to hold 25&nbsp;ppm: an effective 2.8 air changes an hour. The 10&nbsp;ACH rule demands <strong>41.7&nbsp;m³/s</strong>. Both numbers are defensible in their own terms; only one reflects the building. The practical resolution is <strong>demand-controlled ventilation</strong>: install the fan capacity the code requires, and then run it on CO and NO₂ sensors so it spends almost all its life near the dilution rate rather than the prescriptive one. Modern codes increasingly permit exactly this, and it converts an over-sized system from an energy problem into a resilience margin.</p>
 
 <h2 id="int-energy">3 · Interactive: what demand control is worth</h2>
 
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Annual fan energy — constant speed vs CO demand control</div>
+    <div class="ftitle">Annual fan energy: constant speed vs CO demand control</div>
     <div class="fsub">P = Q·Δp/η. Under demand control the flow follows occupancy and the power follows the cube law, with a minimum ventilation floor held at all times.</div>
   </div>
   <div class="chart-box"><canvas id="engChart"></canvas></div>
@@ -96,13 +96,13 @@ BODY = r"""
     <div class="cell"><div class="k">If jet-fan (120 Pa)</div><div class="v" id="rJf">2.9 <small>MWh/yr</small></div></div>
   </div>
 </div>
-<p class="fig-note">A 42&nbsp;m³/s ducted system at 250&nbsp;Pa running continuously uses about <strong>142&nbsp;MWh a year</strong>. Put it on CO control with a 35&nbsp;% average demand and it falls to around <strong>6&nbsp;MWh</strong> — because power follows the cube of flow, a two-thirds reduction in flow is a 96&nbsp;% reduction in power. Then note the second lever: replacing ducted distribution with jet fans cuts the system pressure to roughly 120&nbsp;Pa and halves what remains. Demand control and low system resistance compound, and together they are the difference between a car park that costs a hundred and forty megawatt-hours a year and one that costs three.</p>
+<p class="fig-note">A 42&nbsp;m³/s ducted system at 250&nbsp;Pa running continuously uses about <strong>142&nbsp;MWh a year</strong>. Put it on CO control with a 35&nbsp;% average demand and it falls to around <strong>6&nbsp;MWh</strong>, because power follows the cube of flow, a two-thirds reduction in flow is a 96&nbsp;% reduction in power. Then note the second lever: replacing ducted distribution with jet fans cuts the system pressure to roughly 120&nbsp;Pa and halves what remains. Demand control and low system resistance compound, and together they are the difference between a car park that costs a hundred and forty megawatt-hours a year and one that costs three.</p>
 
 <h2 id="jetfan">4 · Jet fans versus ducted distribution</h2>
 <p>A jet-fan (impulse) system deletes the supply and extract ductwork inside the car park and moves air with a series of small high-velocity induction fans that push it toward the extract shafts. In a tall-building podium the advantages are structural before they are mechanical:</p>
 <ul class="clean">
   <li><strong>It gives back the ceiling void.</strong> A 42&nbsp;m³/s ducted system needs roughly <strong>6&nbsp;m² of duct cross-section</strong>. Removing it typically wins 300–500&nbsp;mm of clear height, which across a deep basement can be a whole additional parking level for the same excavation.</li>
-  <li><strong>Far lower system pressure</strong>, because there is no duct run — most of the resistance is at the shafts alone.</li>
+  <li><strong>Far lower system pressure</strong>, because there is no duct run. Most of the resistance is at the shafts alone.</li>
   <li><strong>Better coverage.</strong> A CFD-designed jet-fan layout sweeps the whole floor plate rather than relying on grille positions, and it removes the stagnant pockets that ducted systems leave in corners.</li>
   <li><strong>It requires CFD, not a rule of thumb.</strong> The design is a momentum problem; jet-fan positions, orientations and thrust must be modelled for both normal and fire cases, including a fan-out-of-service scenario. A jet-fan system laid out by eye is a genuine risk.</li>
   <li><strong>Fire mode is where it earns or fails.</strong> The system must be shown to produce the required smoke clearance or containment with the design fire in the worst location, with the shafts and make-up air paths modelled honestly.</li>
@@ -110,16 +110,16 @@ BODY = r"""
 
 <h2 id="fire">5 · Fire mode, make-up air and the things that are always missed</h2>
 <ul class="clean">
-  <li><strong>Extract needs make-up.</strong> A high extract rate with no designed inlet path simply pulls the car park into deep negative pressure, the fans run far off their curve, and doors become unopenable. Provide dedicated make-up air with its own free area, and check the resulting door forces — the same arithmetic as in <a href="stack-effect-tall-buildings.html">stack effect</a>.</li>
+  <li><strong>Extract needs make-up.</strong> A high extract rate with no designed inlet path simply pulls the car park into deep negative pressure, the fans run far off their curve, and doors become unopenable. Provide dedicated make-up air with its own free area, and check the resulting door forces: the same arithmetic as in <a href="stack-effect-tall-buildings.html">stack effect</a>.</li>
   <li><strong>Fans must be rated for temperature.</strong> Smoke-extract fans are certified to a temperature-time class (commonly 300&nbsp;°C for 60&nbsp;minutes, sometimes 400&nbsp;°C/120&nbsp;min); so must their motors, bearings, flexible connections, supports and cabling. A correctly rated fan on unrated cable is a system that fails in the first ten minutes.</li>
   <li><strong>Power must survive.</strong> Fire-mode fans need protected, segregated supplies with a designed changeover, and the changeover must be tested as part of the fire sequence rather than as an electrical test.</li>
-  <li><strong>Zone the extract.</strong> Extracting from the whole basement at once is usually the wrong strategy; extract from the fire zone and hold the adjacent ones, which requires dampers that are rated, actuated, monitored and — critically — accessible for testing.</li>
+  <li><strong>Zone the extract.</strong> Extracting from the whole basement at once is usually the wrong strategy; extract from the fire zone and hold the adjacent ones, which requires dampers that are rated, actuated, monitored and, critically, accessible for testing.</li>
   <li><strong>Design for the sprinkler interaction.</strong> Cooled smoke loses buoyancy and stratifies low, which changes the extract strategy fundamentally. Agree with the fire engineer whether the design fire is sprinkler-controlled and model accordingly.</li>
   <li><strong>Do not forget the ramp.</strong> The vehicle ramp is a chimney connecting every level and the outside; it drives its own stack flow, short-circuits extract, and is often the uncontrolled make-up path nobody drew.</li>
 </ul>
 
 <h2 id="ev">6 · The change nobody has finished designing for: electric vehicles</h2>
-<p>The contaminant basis of every car park ventilation code is combustion exhaust. As fleets electrify, CO generation falls toward zero — and two new problems replace it:</p>
+<p>The contaminant basis of every car park ventilation code is combustion exhaust. As fleets electrify, CO generation falls toward zero, and two new problems replace it:</p>
 <ul class="clean">
   <li><strong>The dilution case weakens, so the fire case governs completely.</strong> If CO is no longer the driver, normal ventilation approaches a nominal minimum and the entire system exists for fire. That is a cleaner design basis, and it argues even more strongly for demand control.</li>
   <li><strong>The fire itself is different.</strong> A lithium-ion battery fire releases far more energy over a longer period than a conventional vehicle fire, is difficult to extinguish with water, and produces hydrogen fluoride and other toxic products. Sprinkler assumptions, design fire size and extract duration all need revisiting, and the guidance is still moving.</li>
@@ -129,13 +129,13 @@ BODY = r"""
 
 <h2 id="install">7 · Installation &amp; execution tricks</h2>
 <ul class="clean">
-  <li><strong>Place CO sensors where the gas is</strong> — at breathing height, near ramps, near queuing and parking bays, away from the extract grilles that will read clean air and hold the fans off.</li>
+  <li><strong>Place CO sensors where the gas is</strong>: at breathing height, near ramps, near queuing and parking bays, away from the extract grilles that will read clean air and hold the fans off.</li>
   <li><strong>Add NO₂ sensing where diesel is significant.</strong> CO alone under-reads the hazard from a diesel fleet, and the two do not track each other.</li>
-  <li><strong>Commission the fire mode end to end</strong> — detection, damper actuation and proving, fan changeover to the fire supply, ramp-up time and the make-up air path — as a single witnessed sequence, and repeat it annually.</li>
+  <li><strong>Commission the fire mode end to end</strong> (detection, damper actuation and proving, fan changeover to the fire supply, ramp-up time and the make-up air path) as a single witnessed sequence, and repeat it annually.</li>
   <li><strong>Prove the make-up air path is open.</strong> Blocked or later-glazed inlet louvres are the commonest defect found on a fire-mode test, and the system fails silently until the day it matters.</li>
   <li><strong>Measure the actual airflow</strong> at commissioning rather than accepting a fan speed. Traverse the shafts and record it; jet-fan systems in particular need shaft flow verification because there is no duct to measure.</li>
   <li><strong>Fit the fans where they can be maintained.</strong> Jet fans are ceiling-mounted at high level over parked cars; provide an access strategy that does not require closing half the car park.</li>
-  <li><strong>Label and interlock the dampers</strong> to the fire matrix, with position proving to the BMS — a damper without proving is an assumption.</li>
+  <li><strong>Label and interlock the dampers</strong> to the fire matrix, with position proving to the BMS: a damper without proving is an assumption.</li>
 </ul>
 
 <h2 id="checklist">8 · The design &amp; installation checklist</h2>
@@ -153,18 +153,18 @@ BODY = r"""
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  Car park ventilation is <strong>two systems sharing one set of fans</strong>: a dilution system that a prescriptive air-change rule over-sizes by roughly three and a half times, and a smoke system that genuinely needs the capacity. Install what fire requires, then run it on CO and NO₂ so it lives near the dilution rate — that alone is a 90&nbsp;% energy reduction, and choosing jet fans over ducts halves what is left while giving back 300–500&nbsp;mm of clear height across the whole basement. Then design the part everyone forgets: <strong>the make-up air path</strong>, because an extract system with no designed inlet is a set of fans running off their curve behind doors nobody can open.
+  Car park ventilation is <strong>two systems sharing one set of fans</strong>: a dilution system that a prescriptive air-change rule over-sizes by roughly three and a half times, and a smoke system that genuinely needs the capacity. Install what fire requires, then run it on CO and NO₂ so it lives near the dilution rate. That alone is a 90&nbsp;% energy reduction, and choosing jet fans over ducts halves what is left while giving back 300–500&nbsp;mm of clear height across the whole basement. Then design the part everyone forgets: <strong>the make-up air path</strong>, because an extract system with no designed inlet is a set of fans running off their curve behind doors nobody can open.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ASHRAE <em>Handbook — HVAC Applications</em>, Enclosed Vehicular Facilities chapter — contaminant generation, dilution ventilation and design criteria for car parks.</li>
-  <li>ANSI/ASHRAE Standard 62.1 — ventilation rates for parking garages; and ASHRAE 90.1 for demand-controlled ventilation and fan power limits.</li>
-  <li>BS 7346-7 — <em>Code of practice on functional recommendations and calculation methods for smoke and heat control systems for covered car parks</em>; and EN 12101 series for smoke control components.</li>
+  <li>ASHRAE <em>Handbook, HVAC Applications</em>, Enclosed Vehicular Facilities chapter: contaminant generation, dilution ventilation and design criteria for car parks.</li>
+  <li>ANSI/ASHRAE Standard 62.1: ventilation rates for parking garages; and ASHRAE 90.1 for demand-controlled ventilation and fan power limits.</li>
+  <li>BS 7346-7: <em>Code of practice on functional recommendations and calculation methods for smoke and heat control systems for covered car parks</em>; and EN 12101 series for smoke control components.</li>
   <li>NFPA 88A <em>Standard for Parking Structures</em> and NFPA 92 <em>Standard for Smoke Control Systems</em>.</li>
   <li>CIBSE <em>Guide B2</em> and CIBSE TM 33; and the Saudi Building Code <em>SBC 501</em> and <em>SBC 801</em> for mechanical and fire provisions.</li>
-  <li>Occupational exposure limits for carbon monoxide and nitrogen dioxide — ACGIH TLVs and national OEL schedules.</li>
-  <li>Guidance on electric vehicle fire risk in covered car parks — including work by BRE, the Fire Protection Association and national fire research bodies; still developing at the time of writing.</li>
+  <li>Occupational exposure limits for carbon monoxide and nitrogen dioxide: ACGIH TLVs and national OEL schedules.</li>
+  <li>Guidance on electric vehicle fire risk in covered car parks: including work by BRE, the Fire Protection Association and national fire research bodies; still developing at the time of writing.</li>
   <li>Manufacturer and CFD-practice guidance on impulse (jet fan) ventilation design, including fan-out-of-service and fire-case modelling.</li>
 </ol>
 
@@ -217,7 +217,7 @@ function updCo(){
   const v=document.getElementById('rVd'), r=qp/qc;
   if(r<1)        v.innerHTML='<span class="badge bad">code rate is not enough</span>';
   else if(r<1.5) v.innerHTML='<span class="badge good">well matched</span>';
-  else if(r<3)   v.innerHTML='<span class="badge warn">over-sized — use demand control</span>';
+  else if(r<3)   v.innerHTML='<span class="badge warn">over-sized, use demand control</span>';
   else           v.innerHTML='<span class="badge bad">heavily over-sized</span>';
 }
 [sA,sH,sM,sC,sR].forEach(s=>s.addEventListener('input',updCo));updCo();
@@ -273,16 +273,16 @@ SPEC = dict(
     reg_tag='HVAC · Car Park Ventilation · Smoke Extract',
     breadcrumb='HVAC &amp; Cooling',
     tag_line='HVAC &middot; Car Park Ventilation &middot; Jet Fans &middot; Smoke Extract',
-    desc='Car park ventilation design for tall-building podiums and basements: why a prescriptive air-change rule over-sizes the system by three and a half times against actual CO dilution, demand-controlled ventilation and the cube law, jet fans versus ducted distribution and the clear height they give back, fire mode with make-up air, damper zoning and temperature-rated fans, and what electric vehicles change — with two interactive charts and installation tricks.',
+    desc='Car park ventilation design for tall-building podiums and basements: why a prescriptive air-change rule over-sizes the system by three and a half times against actual CO dilution, demand-controlled ventilation and the cube law, jet fans versus ducted distribution and the clear height they give back, fire mode with make-up air, damper zoning and temperature-rated fans, and what electric vehicles change, with two interactive charts and installation tricks.',
     og_desc='A prescriptive 10 air changes an hour demands 41.7 m3/s where CO dilution needs 11.6. Demand control cuts fan energy by 90 percent, and jet fans give back 300-500 mm of clear height across the whole basement.',
     ld_desc='A design-perspective guide to car park ventilation in tall-building podiums: contaminant dilution versus prescriptive air-change rates, demand-controlled ventilation energy, jet fan versus ducted systems, fire-mode design, make-up air, damper zoning and the implications of electric vehicles.',
     img_alt='Technical cutaway of a tall-building basement car park showing ceiling-mounted jet fans driving air across the parking bays toward extract shafts, with the vehicle ramp and make-up air louvres indicated',
     en_tag='HVAC &amp; Cooling &middot; Car Park Ventilation &middot; Jet Fans &middot; Fire Mode',
     en_title='Car Park Ventilation in Tall-Building Podiums: CO Dilution, Jet Fans, Fire Mode &amp; the EV Question',
-    en_excerpt='The car park is the least glamorous space in a development and the one most likely to be grossly over-ventilated. A prescriptive 10 air changes an hour demands <strong>41.7&nbsp;m&sup3;/s</strong> where the actual CO dilution needs <strong>11.6</strong> &mdash; and the factor of three and a half buys nothing but a bigger fan and a permanent bill. Demand control, jet fans versus ducts and the 300&ndash;500&nbsp;mm of clear height they give back, fire mode and the make-up air path everyone forgets, and what electric vehicles change &mdash; with two interactive charts.',
+    en_excerpt='The car park is the least glamorous space in a development and the one most likely to be grossly over-ventilated. A prescriptive 10 air changes an hour demands <strong>41.7&nbsp;m&sup3;/s</strong> where the actual CO dilution needs <strong>11.6</strong>, and the factor of three and a half buys nothing but a bigger fan and a permanent bill. Demand control, jet fans versus ducts and the 300&ndash;500&nbsp;mm of clear height they give back, fire mode and the make-up air path everyone forgets, and what electric vehicles change, with two interactive charts.',
     en_search='car park ventilation basement garage podium tall buildings megatall CO dilution carbon monoxide NO2 nitrogen dioxide exposure limit TWA prescriptive air changes ACH demand controlled ventilation CO sensors placement jet fan impulse ventilation ducted distribution clear height CFD momentum fan out of service smoke extract fire mode temperature rated fan 300C 60 min 400C damper zoning proving make-up air free area door force negative pressure ramp stack effect sprinkler cooled smoke stratification electric vehicle EV fire lithium ion battery charger load BS 7346-7 NFPA 88A NFPA 92 ASHRAE 62.1 commissioning fire sequence MEP building services HVAC',
     ar_title='تهوية مواقف السيارات في قواعد الأبراج: تخفيف أول أكسيد الكربون والمراوح النفاثة ووضع الحريق',
-    ar_excerpt='موقف السيارات هو أقل الأماكن بريقًا وأكثرها عرضةً للمبالغة في التهوية. قاعدة عشر تغييرات هواء في الساعة تفرض <strong>٤١٫٧ م٣/ث</strong> بينما يحتاج تخفيف أول أكسيد الكربون فعليًا إلى <strong>١١٫٦</strong> — والفارق البالغ ثلاثة أضعاف ونصف لا يشتري سوى مروحة أكبر وفاتورة دائمة. التحكم حسب الطلب، والمراوح النفاثة مقابل المجاري الهوائية وما تعيده من ٣٠٠ إلى ٥٠٠ ملم من الارتفاع الصافي، ووضع الحريق ومسار هواء التعويض الذي ينساه الجميع، وما تغيّره السيارات الكهربائية — مع رسمين تفاعليين.',
+    ar_excerpt='موقف السيارات هو أقل الأماكن بريقًا وأكثرها عرضةً للمبالغة في التهوية. قاعدة عشر تغييرات هواء في الساعة تفرض <strong>٤١٫٧ م٣/ث</strong> بينما يحتاج تخفيف أول أكسيد الكربون فعليًا إلى <strong>١١٫٦</strong>، والفارق البالغ ثلاثة أضعاف ونصف لا يشتري سوى مروحة أكبر وفاتورة دائمة. التحكم حسب الطلب، والمراوح النفاثة مقابل المجاري الهوائية وما تعيده من ٣٠٠ إلى ٥٠٠ ملم من الارتفاع الصافي، ووضع الحريق ومسار هواء التعويض الذي ينساه الجميع، وما تغيّره السيارات الكهربائية، مع رسمين تفاعليين.',
     ar_search='car park ventilation basement jet fan impulse CO dilution demand controlled ventilation smoke extract fire mode make-up air EV fire BS 7346-7 NFPA 88A تهوية مواقف السيارات القبو الجراج قاعدة البرج المباني الشاهقة تخفيف أول أكسيد الكربون ثاني أكسيد النيتروجين حدود التعرض تغييرات الهواء في الساعة التهوية حسب الطلب حساسات أول أكسيد الكربون المروحة النفاثة تهوية الدفع المجاري الهوائية الارتفاع الصافي المحاكاة العددية لديناميكا الموائع عطل مروحة شفط الدخان وضع الحريق مروحة مقاومة للحرارة تقسيم المخمدات إثبات الوضع هواء التعويض المساحة الحرة قوة فتح الباب الضغط السالب المنحدر تأثير المدخنة الرشاشات تطبق الدخان السيارات الكهربائية حريق بطارية الليثيوم أحمال الشواحن التشغيل والاختبار تسلسل الحريق MEP خدمات المباني',
     body=BODY, charts=CHARTS,
 )

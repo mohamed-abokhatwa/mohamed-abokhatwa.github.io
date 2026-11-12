@@ -17,7 +17,7 @@
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="Designing DAF for Large-Scale SWRO Pre-treatment | Mohamed Abokhatwa">
-  <meta property="og:description" content="A technical guide to DAF system design for mega-scale SWRO plants — surface loading rates, retention times, air-to-solids ratio, and micro-bubble mechanics for a 300,000 m³/day facility.">
+  <meta property="og:description" content="A technical guide to DAF system design for mega-scale SWRO plants: surface loading rates, retention times, air-to-solids ratio, and micro-bubble mechanics for a 300,000 m³/day facility.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://abokhatwa.com/daf-swro-pretreatment.html">
   <link rel="canonical" href="https://abokhatwa.com/daf-swro-pretreatment.html">
@@ -27,11 +27,11 @@
   <meta property="og:image:alt" content="Dissolved Air Flotation DAF design for SWRO pre-treatment">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Designing DAF for Large-Scale SWRO Pre-treatment | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="A technical guide to DAF system design for mega-scale SWRO plants — surface loading rates, retention times, air-to-solids ratio, and micro-bubble mechanics for a 300,000 m³/day facility.">
+  <meta name="twitter:description" content="A technical guide to DAF system design for mega-scale SWRO plants: surface loading rates, retention times, air-to-solids ratio, and micro-bubble mechanics for a 300,000 m³/day facility.">
   <meta name="twitter:image" content="https://abokhatwa.com/og-daf-swro-pretreatment.jpg">
-  <title>Technical Deep-Dive: Designing DAF for Large-Scale SWRO Pre-treatment — Mohamed Abokhatwa</title>
-  <meta name="description" content="A technical guide to DAF system design for mega-scale SWRO plants — surface loading rates, retention times, air-to-solids ratio, and micro-bubble mechanics for a 300,000 m³/day facility.">
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Technical Deep-Dive: Designing DAF for Large-Scale SWRO Pre-treatment | Mohamed Abokhatwa</title>
+  <meta name="description" content="A technical guide to DAF system design for mega-scale SWRO plants: surface loading rates, retention times, air-to-solids ratio, and micro-bubble mechanics for a 300,000 m³/day facility.">
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <style>
@@ -62,7 +62,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Designing DAF for Large-Scale SWRO Pre-treatment | Mohamed Abokhatwa",
-  "description": "A technical guide to DAF system design for mega-scale SWRO plants — surface loading rates, retention times, air-to-solids ratio, and micro-bubble mechanics for a 300,000 m³/day facility.",
+  "description": "A technical guide to DAF system design for mega-scale SWRO plants: surface loading rates, retention times, air-to-solids ratio, and micro-bubble mechanics for a 300,000 m³/day facility.",
   "image": "https://abokhatwa.com/daf-swro-pretreatment.jpg",
   "datePublished": "2026-04-01",
   "dateModified": "2026-05-25",
@@ -100,6 +100,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -135,15 +136,15 @@ document.getElementById('navToggle').addEventListener('click', function() {
 
 <div class="article-body">
 <h2>Overview</h2>
-<p>Dissolved Air Flotation (DAF) is a critical pre-treatment technology for large-scale SWRO plants dealing with high-turbidity or algae-laden source water. Unlike conventional sedimentation, DAF forces suspended solids to the surface using micro-bubbles — enabling far higher surface loading rates and more compact system footprints.</p>
+<p>Dissolved Air Flotation (DAF) is a critical pre-treatment technology for large-scale SWRO plants dealing with high-turbidity or algae-laden source water. Unlike conventional sedimentation, DAF forces suspended solids to the surface using micro-bubbles, enabling far higher surface loading rates and more compact system footprints.</p>
 <h2>Key Design Parameters</h2>
-<p><ul><li><strong>Surface Loading Rate (SLR):</strong> 5–15 m/hr depending on water quality and coagulant effectiveness</li><li><strong>Retention Time (RT):</strong> 20–30 minutes in the flotation zone</li><li><strong>Recycle Ratio:</strong> 10–20% of total influent flow returned as pressurized recycle</li><li><strong>Air-to-Solids Ratio (A/S):</strong> 0.01–0.06 — the primary driver of flotation efficiency</li></ul></p>
+<p><ul><li><strong>Surface Loading Rate (SLR):</strong> 5–15 m/hr depending on water quality and coagulant effectiveness</li><li><strong>Retention Time (RT):</strong> 20–30 minutes in the flotation zone</li><li><strong>Recycle Ratio:</strong> 10–20% of total influent flow returned as pressurized recycle</li><li><strong>Air-to-Solids Ratio (A/S):</strong> 0.01–0.06, the primary driver of flotation efficiency</li></ul></p>
 <h2>Saturation Vessel Design</h2>
 <p>The saturation vessel dissolves air into the recycle stream at 4–6 bar pressure using packed bed internals (e.g., Pall Rings). Proper vessel sizing ensures adequate air dissolution without channeling or carry-over into the flotation tank, which can disrupt the micro-bubble distribution at the release nozzles.</p>
 <h2>Case Study: 300,000 m³/day Facility</h2>
 <p>At mega-scale, multi-train DAF configurations are essential. For a 300,000 m³/day plant, a typical arrangement uses 6–8 DAF trains operating in parallel with cross-connection headers, allowing individual trains to be isolated for maintenance without impacting overall production. Scraper mechanisms must be engineered for high-load scenarios where float accumulates rapidly during algal bloom events.</p>
 <h2>Polymer Dosing & Floc Management</h2>
-<p>Effective DAF performance depends on upstream coagulation-flocculation. Optimizing polymer type and dosage — typically cationic polyacrylamide at 0.5–2.0 mg/L — creates the right floc size for micro-bubble attachment. Over-dosing creates dense floc that sinks; under-dosing produces floc too small to float efficiently.</p>
+<p>Effective DAF performance depends on upstream coagulation-flocculation. Optimizing polymer type and dosage, typically cationic polyacrylamide at 0.5–2.0 mg/L, creates the right floc size for micro-bubble attachment. Over-dosing creates dense floc that sinks; under-dosing produces floc too small to float efficiently.</p>
 </div>
 
 <!-- Newsletter Section -->
@@ -151,7 +152,7 @@ document.getElementById('navToggle').addEventListener('click', function() {
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>

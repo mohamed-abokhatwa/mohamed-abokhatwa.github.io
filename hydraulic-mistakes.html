@@ -17,7 +17,7 @@
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="Common Mistakes in Hydraulic Modeling | Mohamed Abokhatwa">
-  <meta property="og:description" content="Critical errors engineers make in hydraulic modeling of water transmission systems — and how to avoid them in practice.">
+  <meta property="og:description" content="Critical errors engineers make in hydraulic modeling of water transmission systems, and how to avoid them in practice.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://abokhatwa.com/hydraulic-mistakes.html">
   <link rel="canonical" href="https://abokhatwa.com/hydraulic-mistakes.html">
@@ -27,11 +27,11 @@
   <meta property="og:image:alt" content="Common hydraulic modeling mistakes in water systems">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Common Mistakes in Hydraulic Modeling | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="Critical errors engineers make in hydraulic modeling of water transmission systems — and how to avoid them in practice.">
+  <meta name="twitter:description" content="Critical errors engineers make in hydraulic modeling of water transmission systems, and how to avoid them in practice.">
   <meta name="twitter:image" content="https://abokhatwa.com/og-hydraulic-mistakes.jpg">
-  <title>Common Mistakes in Hydraulic Modeling — Mohamed Abokhatwa</title>
-  <meta name="description" content="Critical errors engineers make in hydraulic modeling of water transmission systems — and how to avoid them in practice.">
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Common Mistakes in Hydraulic Modeling | Mohamed Abokhatwa</title>
+  <meta name="description" content="Critical errors engineers make in hydraulic modeling of water transmission systems, and how to avoid them in practice.">
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -66,7 +66,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Common Mistakes in Hydraulic Modeling | Mohamed Abokhatwa",
-  "description": "Critical errors engineers make in hydraulic modeling of water transmission systems — and how to avoid them in practice.",
+  "description": "Critical errors engineers make in hydraulic modeling of water transmission systems, and how to avoid them in practice.",
   "image": "https://abokhatwa.com/hydraulic_modeling_mistakes.png",
   "datePublished": "2026-05-01",
   "dateModified": "2026-05-25",
@@ -104,6 +104,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -146,8 +147,8 @@
 <div class="article-body">
 
 <h2>Introduction</h2>
-<p>After two decades of designing and managing water transmission networks — from <strong>400 km+ pipeline systems in Waad Al-Shamal</strong> to <strong>80 km transmission networks for NEOM</strong> — I've reviewed dozens of hydraulic models. One truth remains constant: <strong>the model is only as reliable as the assumptions behind it.</strong></p>
-<p>In this article, I share the most critical and recurring mistakes I've encountered in hydraulic modeling, with a focus on the <strong>design phase</strong> — where getting it wrong is far less costly than getting it wrong during construction or, worse, during operation.</p>
+<p>After two decades of designing and managing water transmission networks (from <strong>400 km+ pipeline systems in Waad Al-Shamal</strong> to <strong>80 km transmission networks for NEOM</strong>), I've reviewed dozens of hydraulic models. One truth remains constant: <strong>the model is only as reliable as the assumptions behind it.</strong></p>
+<p>In this article, I share the most critical and recurring mistakes I've encountered in hydraulic modeling, with a focus on the <strong>design phase</strong>, where getting it wrong is far less costly than getting it wrong during construction or, worse, during operation.</p>
 
 <hr class="article-divider">
 
@@ -155,9 +156,9 @@
   <div class="mistake-num-lg">1</div>
   <div class="mistake-title">Ignoring Transient (Surge) Analysis Entirely</div>
 </div>
-<p>This is perhaps the most dangerous mistake of all. Many design teams model only <strong>steady-state conditions</strong> — peak demand, minimum pressure, and average flow. Steady-state tells you how the system behaves when it is stable. It tells you nothing about the critical seconds following a <strong>pump trip, valve closure, or power failure.</strong></p>
-<p>In a transmission pipeline designed for 145,000 m&sup3;/day at 8 bar steady-state, a sudden pump trip can generate a <strong>pressure surge exceeding 20–25 bar</strong> within 2–3 seconds — more than <strong>3&times; the design operating pressure.</strong></p>
-<div class="callout">For pipelines longer than 2 km or pump heads exceeding 30 m, transient analysis is <strong>mandatory</strong> — not optional.</div>
+<p>This is perhaps the most dangerous mistake of all. Many design teams model only <strong>steady-state conditions</strong>: peak demand, minimum pressure, and average flow. Steady-state tells you how the system behaves when it is stable. It tells you nothing about the critical seconds following a <strong>pump trip, valve closure, or power failure.</strong></p>
+<p>In a transmission pipeline designed for 145,000 m&sup3;/day at 8 bar steady-state, a sudden pump trip can generate a <strong>pressure surge exceeding 20–25 bar</strong> within 2–3 seconds, more than <strong>3&times; the design operating pressure.</strong></p>
+<div class="callout">For pipelines longer than 2 km or pump heads exceeding 30 m, transient analysis is <strong>mandatory</strong>, not optional.</div>
 
 <hr class="article-divider">
 
@@ -177,7 +178,7 @@
   <tr><td>HDPE</td><td>~200–400 m/s</td></tr>
   <tr><td>GRP/FRP</td><td>~400–700 m/s</td></tr>
 </table>
-<p>Using steel wave speed for an HDPE pipeline would overestimate surge pressure by <strong>3–5&times;</strong> — leading to unnecessary over-design or false confidence in the pipe's resilience.</p>
+<p>Using steel wave speed for an HDPE pipeline would overestimate surge pressure by <strong>3–5&times;</strong>, leading to unnecessary over-design or false confidence in the pipe's resilience.</p>
 
 <hr class="article-divider">
 
@@ -185,7 +186,7 @@
   <div class="mistake-num-lg">3</div>
   <div class="mistake-title">Neglecting Pipe Profile and Topography</div>
 </div>
-<p>In real projects — especially in mountainous areas like <strong>Al-Baha</strong> or desert escarpments — elevation changes of <strong>200–400 m</strong> over 10–30 km are common. When pressure drops below <strong>vapour pressure (~−100 kPa gauge)</strong> at a high point, <strong>column separation</strong> occurs — a vapour cavity forms, then collapses violently when pressure returns.</p>
+<p>In real projects, especially in mountainous areas like <strong>Al-Baha</strong> or desert escarpments, elevation changes of <strong>200–400 m</strong> over 10–30 km are common. When pressure drops below <strong>vapour pressure (~−100 kPa gauge)</strong> at a high point, <strong>column separation</strong> occurs: a vapour cavity forms, then collapses violently when pressure returns.</p>
 <div class="callout">Always superimpose the transient pressure envelope on the pipe profile. Any section where minimum transient pressure + elevation head falls below the pipe centreline elevation requires urgent attention.</div>
 
 <hr class="article-divider">
@@ -194,15 +195,15 @@
   <div class="mistake-num-lg">4</div>
   <div class="mistake-title">Improper Air Valve Sizing and Placement</div>
 </div>
-<p>Air valves are a primary surge protection measure — yet their sizing and placement are frequently incorrect.</p>
+<p>Air valves are a primary surge protection measure, yet their sizing and placement are frequently incorrect.</p>
 <h3>Common mistakes</h3>
-<p><strong>4a — Placing air valves only at high points:</strong> Air valves are also needed at local high points in undulating profiles, before reducers, and upstream of long downward slopes.</p>
-<p><strong>4b — Undersizing the inflow orifice:</strong> For a DN 1,200 mm DI pipeline at <strong>2.0 m/s</strong>:</p>
+<p><strong>4a. Placing air valves only at high points:</strong> Air valves are also needed at local high points in undulating profiles, before reducers, and upstream of long downward slopes.</p>
+<p><strong>4b. Undersizing the inflow orifice:</strong> For a DN 1,200 mm DI pipeline at <strong>2.0 m/s</strong>:</p>
 <ul>
   <li>Flow rate = 1.13 m&sup2; &times; 2.0 m/s = <strong>~8,140 m&sup3;/h</strong></li>
-  <li>Required air inflow (~22%) = <strong>~1,800 Nm&sup3;/h</strong> — frequently underestimated</li>
+  <li>Required air inflow (~22%) = <strong>~1,800 Nm&sup3;/h</strong>: frequently underestimated</li>
 </ul>
-<p><strong>4c — Ignoring the slam effect:</strong> A combination air valve closing too rapidly generates a <strong>slam surge</strong> — sometimes more damaging than the original transient. Slow-closing or anti-slam air valves must be specified.</p>
+<p><strong>4c. Ignoring the slam effect:</strong> A combination air valve closing too rapidly generates a <strong>slam surge</strong>, sometimes more damaging than the original transient. Slow-closing or anti-slam air valves must be specified.</p>
 
 <hr class="article-divider">
 
@@ -210,7 +211,7 @@
   <div class="mistake-num-lg">5</div>
   <div class="mistake-title">Surge Protection Devices Specified Without Simulation</div>
 </div>
-<p>Specifying a surge vessel or PRV without integrating them into the transient model is a critical design gap. The right protection strategy is always determined <em>after</em> running the transient model — not before.</p>
+<p>Specifying a surge vessel or PRV without integrating them into the transient model is a critical design gap. The right protection strategy is always determined <em>after</em> running the transient model, not before.</p>
 <table>
   <tr><th>Device</th><th>Key Parameters to Validate</th></tr>
   <tr><td>Surge vessel</td><td>Volume, pre-charge pressure, connection size</td></tr>
@@ -227,10 +228,10 @@
   <div class="mistake-num-lg">6</div>
   <div class="mistake-title">Using Steady-State Model for Emergency Scenarios</div>
 </div>
-<p>For demand changes occurring over <strong>less than 30–60 seconds</strong>, transient analysis is required — not steady-state. Failing to recognise this boundary has led to systems that perform adequately in normal operation but fail during emergencies.</p>
+<p>For demand changes occurring over <strong>less than 30–60 seconds</strong>, transient analysis is required, not steady-state. Failing to recognise this boundary has led to systems that perform adequately in normal operation but fail during emergencies.</p>
 
 <hr class="article-divider">
-<h2>Conclusion — Design Checklist</h2>
+<h2>Conclusion: Design Checklist</h2>
 <table>
   <tr><th>#</th><th>Check Item</th><th>Analysis Type</th></tr>
   <tr><td>1</td><td>Steady-state pressure and velocity verified</td><td>Steady-State</td></tr>
@@ -250,10 +251,10 @@
   <ol>
     <li>Wylie, E.B. and Streeter, V.L. (1993). <em>Fluid Transients in Systems</em>. Prentice Hall.</li>
     <li>Chaudhry, M.H. (2014). <em>Applied Hydraulic Transients</em>, 3rd ed. Springer.</li>
-    <li>AWWA M11 (2017). <em>Steel Pipe — A Guide for Design and Installation</em>.</li>
+    <li>AWWA M11 (2017). <em>Steel Pipe: A Guide for Design and Installation</em>.</li>
     <li>AWWA M51 (2017). <em>Air-Release, Air/Vacuum, and Combination Air Valves</em>.</li>
     <li>Thorley, A.R.D. (2004). <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing.</li>
-    <li>BS EN 805 (2000). <em>Water supply — Requirements for systems outside buildings</em>.</li>
+    <li>BS EN 805 (2000). <em>Water supply: Requirements for systems outside buildings</em>.</li>
   </ol>
 </div>
 
@@ -267,7 +268,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>

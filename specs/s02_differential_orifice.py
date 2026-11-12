@@ -493,21 +493,21 @@ window.addEventListener('load',function(){try{trialChart.resize();envChart.resiz
 REFS = r"""
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em> — pipe classes and wall thickness of the DN800 K9 reference main.</li>
-  <li>EN 805 <em>Water supply — Requirements for systems and components outside buildings</em> — design pressure terminology, including the maximum design pressure with its allowance for surge.</li>
-  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993 — method of characteristics, the air chamber boundary with an orifice loss, and column separation.</li>
-  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006 — vapour and gas cavity models, and why collapse peaks depend on the model.</li>
-  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help — Hydropneumatic Tank properties (inlet orifice diameter, minor loss coefficient, ratio of losses), transient run options and the Transient Results Viewer.</li>
-  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014 — air chambers on pumping mains, polytropic gas behaviour and the pump-end boundary.</li>
-  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004 — surge suppression devices, including air vessels.</li>
-  <li>Larock, B.E., Jeppson, R.W. &amp; Watters, G.Z. <em>Hydraulics of Pipeline Systems</em>. CRC Press, 2000 — accumulator boundary conditions and the gas law in transient models.</li>
-  <li>Parmakian, J. <em>Waterhammer Analysis</em>. Dover, 1963 — classical graphical analysis of air chambers on pump discharge lines.</li>
-  <li>Stephenson, D. &ldquo;Simple guide for design of air vessels for water hammer protection of pumping lines.&rdquo; <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8), 2002 — simplified sizing of air vessels on pumping lines.</li>
-  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989 — pumping main design, including water hammer protection with air vessels.</li>
-  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005 — checking protection over the whole system and selecting hydropneumatic tanks.</li>
-  <li>Idelchik, I.E. <em>Handbook of Hydraulic Resistance</em>, 3rd ed. Begell House, 1996 — loss coefficient of a thin sharp-edged orifice in a pipe.</li>
-  <li>NSF/ANSI/CAN 61 <em>Drinking Water System Components — Health Effects</em> — approval of plates, coatings and internals in contact with drinking water.</li>
-  <li>EN 13445 <em>Unfired pressure vessels</em>; ASME <em>Boiler and Pressure Vessel Code</em>, Section VIII, Division 1; Pressure Equipment Directive 2014/68/EU — design and conformity of the vessel shell and nozzles.</li>
+  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em>: pipe classes and wall thickness of the DN800 K9 reference main.</li>
+  <li>EN 805 <em>Water supply, Requirements for systems and components outside buildings</em>: design pressure terminology, including the maximum design pressure with its allowance for surge.</li>
+  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993: method of characteristics, the air chamber boundary with an orifice loss, and column separation.</li>
+  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006: vapour and gas cavity models, and why collapse peaks depend on the model.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help: Hydropneumatic Tank properties (inlet orifice diameter, minor loss coefficient, ratio of losses), transient run options and the Transient Results Viewer.</li>
+  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014: air chambers on pumping mains, polytropic gas behaviour and the pump-end boundary.</li>
+  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004: surge suppression devices, including air vessels.</li>
+  <li>Larock, B.E., Jeppson, R.W. &amp; Watters, G.Z. <em>Hydraulics of Pipeline Systems</em>. CRC Press, 2000: accumulator boundary conditions and the gas law in transient models.</li>
+  <li>Parmakian, J. <em>Waterhammer Analysis</em>. Dover, 1963: classical graphical analysis of air chambers on pump discharge lines.</li>
+  <li>Stephenson, D. &ldquo;Simple guide for design of air vessels for water hammer protection of pumping lines.&rdquo; <em>Journal of Hydraulic Engineering</em> (ASCE), 128(8), 2002: simplified sizing of air vessels on pumping lines.</li>
+  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989: pumping main design, including water hammer protection with air vessels.</li>
+  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005: checking protection over the whole system and selecting hydropneumatic tanks.</li>
+  <li>Idelchik, I.E. <em>Handbook of Hydraulic Resistance</em>, 3rd ed. Begell House, 1996: loss coefficient of a thin sharp-edged orifice in a pipe.</li>
+  <li>NSF/ANSI/CAN 61 <em>Drinking Water System Components, Health Effects</em>: approval of plates, coatings and internals in contact with drinking water.</li>
+  <li>EN 13445 <em>Unfired pressure vessels</em>; ASME <em>Boiler and Pressure Vessel Code</em>, Section VIII, Division 1; Pressure Equipment Directive 2014/68/EU: design and conformity of the vessel shell and nozzles.</li>
 </ol>
 """
 

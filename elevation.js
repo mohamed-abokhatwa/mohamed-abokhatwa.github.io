@@ -248,7 +248,7 @@
     var b1 = $('b-static'); if (b1) b1.style.width = Math.min(100, sb / (S.H * BAR) * 100) + '%';
 
     if (e > S.H + 1 || e < 0) {
-      setT('r-zn', '—'); set('r-zone', '—');
+      setT('r-zn', '–'); set('r-zone', '–');
       var b0 = $('b-zone'); if (b0) b0.style.width = '0%';
     } else {
       var zn = Math.min(S.nz, Math.floor(e / S.zg) + 1);
@@ -259,7 +259,7 @@
     }
     var sp = stackPa(e, S.To);
     set('r-stack', (sp >= 0 ? '↑' : '↓') + ' ' + Math.abs(sp).toFixed(0) + '<small>Pa</small>');
-    set('r-wind', e < 0 ? '—' : windMs(e).toFixed(1) + '<small>m/s</small>');
+    set('r-wind', e < 0 ? '–' : windMs(e).toFixed(1) + '<small>m/s</small>');
   }
 
   function calc() {
@@ -298,21 +298,21 @@
     if (S.zf < S.zd - 0.5) {
       note = ar
         ? 'الحاكم هو عمود الحريق عند PN' + S.PF + '، ولدى عمود المياه ' + head.toFixed(0) +
-          ' مترًا من الطاقة غير المستغلة — رفع رتبته لا يفيد قبل رفع رتبة عمود الحريق معه. ' +
+          ' مترًا من الطاقة غير المستغلة: رفع رتبته لا يفيد قبل رفع رتبة عمود الحريق معه. ' +
           S.nz + ' نطاقات، أي ' + (S.nz - 1) + ' طوابق ميكانيكية وسيطة إضافة إلى دور السطح.'
         : 'Governed by the fire standpipe at PN' + S.PF + '. The domestic riser carries ' +
-          head.toFixed(0) + ' m of unused headroom — raising its class buys nothing until the ' +
+          head.toFixed(0) + ' m of unused headroom: raising its class buys nothing until the ' +
           'standpipe class rises with it. ' + S.nz + ' zones, so ' + (S.nz - 1) +
           ' intermediate mechanical levels plus roof plant.';
     } else if (S.zd < S.zf - 0.5) {
       note = ar
         ? 'الحاكم هو عمود المياه عند PN' + S.PN + ' بضغط متبقٍّ ' + S.PM.toFixed(1) +
           ' بار، ولعمود الحريق ' + head.toFixed(0) + ' متر من الطاقة. تقع الخزانات وصمامات تخفيض الضغط كل ' +
-          S.zg.toFixed(0) + ' متر — ' + S.nz + ' نطاقات إجمالًا.'
+          S.zg.toFixed(0) + ' متر، ' + S.nz + ' نطاقات إجمالًا.'
         : 'Governed by the domestic riser at PN' + S.PN + ' with ' + S.PM.toFixed(1) +
           ' bar residual. The standpipe has ' + head.toFixed(0) +
           ' m of headroom. Break tanks and PRVs land every ' + S.zg.toFixed(0) +
-          ' m — ' + S.nz + ' zones in all.';
+          ' m, ' + S.nz + ' zones in all.';
     } else {
       note = ar
         ? 'ينكسر العمودان عند المنسوب نفسه، وهذا هو الحل الأكفأ: دور ميكانيكي واحد يخدمهما. ' +

@@ -197,7 +197,7 @@ def build():
             "models linked back to their live interactive versions." % (n, figs))
 
     out = [T('HEAD_TOP'),
-      "  <title>The Megatall MEP Handbook &mdash; Mohamed Abokhatwa</title>\n",
+      "  <title>The Megatall MEP Handbook | Mohamed Abokhatwa</title>\n",
       '  <link rel="stylesheet" href="style.css?v=7">\n',
       '  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">\n',
       '  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">\n',
@@ -220,7 +220,7 @@ def build():
       '  <div class="hb-kicker">Collected edition &middot; %d chapters</div>\n'
       '  <h1>The Megatall<br>MEP Handbook</h1>\n'
       '  <p class="hb-sub">Everything on this site about designing mechanical services for tall '
-      'buildings, in the order it should be read &mdash; from the stack effect that governs the '
+      'buildings, in the order it should be read, from the stack effect that governs the '
       'whole tower down to what a litre of water costs by the time it reaches the top floor.</p>\n'
       '  <div class="hb-meta">\n'
       '    <div><div class="k">Chapters</div><div class="v">%d<small>seven parts</small></div></div>\n'
@@ -236,8 +236,8 @@ def build():
       '</div>\n'
       '<p class="hb-note"><b>About this edition.</b> The interactive charts in the online articles '
       'cannot be printed, so each one appears here as a figure card carrying its title, the model it '
-      'uses and the finding it produced, with a link to run it live. Everything else &mdash; the '
-      'derivations, the worked numbers, the installation notes and the references &mdash; is complete. '
+      'uses and the finding it produced, with a link to run it live. Everything else (the '
+      'derivations, the worked numbers, the installation notes and the references) is complete. '
       'Print it, or use your browser&rsquo;s <em>Save as PDF</em>.</p>\n'
       % (n, n, round(total/60), figs))
 
@@ -260,7 +260,7 @@ def build():
                'published at abokhatwa.com. Every model in this edition was derived from the stated '
                'equation, computed independently, and checked against the figure it produced. Where a '
                'chapter cites a code or standard, check it against the edition your project is '
-               'contracted to &mdash; the numbers here are engineering, not compliance.</p>\n</div>\n')
+               'contracted to: the numbers here are engineering, not compliance.</p>\n</div>\n')
     out.append(T('FOOTER')); out.append(T('TAIL'))
 
     html = ''.join(out)

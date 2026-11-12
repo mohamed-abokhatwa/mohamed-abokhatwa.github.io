@@ -519,17 +519,17 @@ window.addEventListener('load',function(){try{runChart.resize();invChart.resize(
 REFS = r"""
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em> &mdash; the DN800 K9 ductile iron pipe of the reference main.</li>
-  <li>EN 805 <em>Water supply &mdash; Requirements for systems and components outside buildings</em> &mdash; design and allowable pressures, and the surge allowance the maximum is checked against.</li>
-  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993 &mdash; the Joukowsky relation, the method of characteristics, pump boundary conditions with rotor inertia, and the discrete vapour cavity model.</li>
-  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005 &mdash; overview of transient control strategies, including added pump inertia.</li>
-  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014 &mdash; pump rundown equations, complete (four-quadrant) pump characteristics, and flywheels as a control measure.</li>
-  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004 &mdash; pump trip and rundown, estimating pump and motor inertia, and where flywheels are and are not practical.</li>
-  <li>Parmakian, J. <em>Waterhammer Analysis</em>. Dover, 1963 &mdash; classical charts for power failure at a pump, built on pipeline and pump inertia parameters.</li>
-  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006 &mdash; column separation, vapour and gas cavity models, and why collapse peaks are model-sensitive.</li>
-  <li>Larock, B.E., Jeppson, R.W. &amp; Watters, G.Z. <em>Hydraulics of Pipeline Systems</em>. CRC Press, 2000 &mdash; homologous pump relations and transient pump boundary conditions.</li>
-  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help &mdash; pump inertia, pump trip, 4-quadrant characteristic curves, check valve closure, transient run options and results viewing.</li>
-  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989 &mdash; water hammer protection of pumping lines, and the practical limits of flywheels on long mains.</li>
+  <li>ISO 2531 <em>Ductile iron pipes, fittings, accessories and their joints for water applications</em>: the DN800 K9 ductile iron pipe of the reference main.</li>
+  <li>EN 805 <em>Water supply, Requirements for systems and components outside buildings</em>: design and allowable pressures, and the surge allowance the maximum is checked against.</li>
+  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993: the Joukowsky relation, the method of characteristics, pump boundary conditions with rotor inertia, and the discrete vapour cavity model.</li>
+  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005: overview of transient control strategies, including added pump inertia.</li>
+  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014: pump rundown equations, complete (four-quadrant) pump characteristics, and flywheels as a control measure.</li>
+  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004: pump trip and rundown, estimating pump and motor inertia, and where flywheels are and are not practical.</li>
+  <li>Parmakian, J. <em>Waterhammer Analysis</em>. Dover, 1963: classical charts for power failure at a pump, built on pipeline and pump inertia parameters.</li>
+  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006: column separation, vapour and gas cavity models, and why collapse peaks are model-sensitive.</li>
+  <li>Larock, B.E., Jeppson, R.W. &amp; Watters, G.Z. <em>Hydraulics of Pipeline Systems</em>. CRC Press, 2000: homologous pump relations and transient pump boundary conditions.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> product documentation and help: pump inertia, pump trip, 4-quadrant characteristic curves, check valve closure, transient run options and results viewing.</li>
+  <li>Stephenson, D. <em>Pipeline Design for Water Engineers</em>, 3rd ed. Elsevier, 1989: water hammer protection of pumping lines, and the practical limits of flywheels on long mains.</li>
 </ol>
 """
 

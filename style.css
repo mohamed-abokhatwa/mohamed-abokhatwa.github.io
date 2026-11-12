@@ -266,12 +266,13 @@ body::before {
   color: var(--text-primary);
   text-decoration: none;
   letter-spacing: -0.015em;
+  white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 18px;
   list-style: none;
 }
 
@@ -285,6 +286,7 @@ body::before {
   transition: color .18s, border-color .18s;
   border-bottom: 1px solid transparent;
   padding-bottom: 2px;
+  white-space: nowrap;
 }
 .nav-links a:hover { color: var(--text-primary); border-bottom-color: var(--fire); }
 .nav-links a.active { color: var(--text-primary); border-bottom-color: var(--fire); }
@@ -644,7 +646,7 @@ html[lang="ar"] .nav-links a, html[lang="ar"] .lang-switch, html[lang="ar"] .btn
 
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 /* the mono nav is wider than the old one, so it folds earlier */
-@media (max-width: 1080px) { .nav-links { gap: 20px; } .nav-links a { font-size: 11px; } }
+@media (max-width: 1080px) { .nav-links { gap: 16px; } .nav-links a { font-size: 11px; } }
 @media (max-width: 920px) {
   .nav-hamburger { display: flex; }
   .theme-toggle { width: 30px; height: 30px; margin-left: 2px; }

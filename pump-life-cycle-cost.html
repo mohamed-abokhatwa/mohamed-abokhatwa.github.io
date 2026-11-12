@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pump Life-Cycle Cost &amp; Energy Efficiency — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Pump Life-Cycle Cost &amp; Energy Efficiency | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -100,16 +100,16 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="A design-grade treatment of pump life-cycle cost: the Europump/HI LCC methodology, present-value mathematics, specific energy (kWh/m³) benchmarking, MEI and IE efficiency floors — and a 20-year worked example showing where the real money sits, with three interactive cost explorers.">
+  <meta name="description" content="A design-grade treatment of pump life-cycle cost: the Europump/HI LCC methodology, present-value mathematics, specific energy (kWh/m³) benchmarking, MEI and IE efficiency floors, and a 20-year worked example showing where the real money sits, with three interactive cost explorers.">
   <meta property="og:title" content="Pump Life-Cycle Cost & Energy Efficiency | Mohamed Abokhatwa">
-  <meta property="og:description" content="Purchase price is ~6% of what a continuously running pump costs over 20 years — energy is ~84%. LCC methodology, kWh/m³ benchmarking, MEI floors, and the efficiency premium that pays for itself in under 2 years.">
+  <meta property="og:description" content="Purchase price is ~6% of what a continuously running pump costs over 20 years; energy is ~84%. LCC methodology, kWh/m³ benchmarking, MEI floors, and the efficiency premium that pays for itself in under 2 years.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/pump-life-cycle-cost.html">
   <meta property="og:image" content="https://abokhatwa.com/og-pump-life-cycle-cost.jpg">
   <meta property="og:image:alt" content="Pump Life-Cycle Cost and Energy Efficiency">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pump Life-Cycle Cost & Energy Efficiency | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="The cheapest pump is rarely the cheapest pump. Europump/HI LCC methodology, specific energy benchmarking, MEI — and where the real money sits over 20 years.">
+  <meta name="twitter:description" content="The cheapest pump is rarely the cheapest pump. Europump/HI LCC methodology, specific energy benchmarking, MEI, and where the real money sits over 20 years.">
   <link rel="canonical" href="https://abokhatwa.com/pump-life-cycle-cost.html">
 
   <script type="application/ld+json">
@@ -117,7 +117,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Pump Life-Cycle Cost & Energy Efficiency",
-  "description": "A design-grade treatment of pump life-cycle cost: the Europump/HI LCC methodology, present-value mathematics, specific energy (kWh/m³) benchmarking, MEI and IE efficiency floors — and a 20-year worked example showing where the real money sits.",
+  "description": "A design-grade treatment of pump life-cycle cost: the Europump/HI LCC methodology, present-value mathematics, specific energy (kWh/m³) benchmarking, MEI and IE efficiency floors, and a 20-year worked example showing where the real money sits.",
   "image": "https://abokhatwa.com/og-pump-life-cycle-cost.jpg",
   "datePublished": "2026-06-11",
   "dateModified": "2026-06-11",
@@ -155,6 +155,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -180,7 +181,7 @@
   <a href="/" class="back">&#8592; All articles</a>
 <div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><a href="pump-engineering.html" class="breadcrumb-current">Pump Engineering</a></div>
   <span class="tag">Pump Engineering &middot; Life-Cycle Cost &middot; Energy Efficiency &middot; LCC</span>
-  <h1>Life-Cycle Cost &amp; Energy Efficiency — Where the Real Money Sits</h1>
+  <h1>Life-Cycle Cost &amp; Energy Efficiency: Where the Real Money Sits</h1>
   <div class="byline">
     <span>Mohamed Abokhatwa</span>
     <span style="color:var(--border-light)">|</span>
@@ -197,7 +198,7 @@
 </div>
 
 <div class="article-body">
-<p class="lead">The purchase price of a continuously running water pump is roughly 6% of what it will cost you over twenty years. Energy is over 80%. Every procurement decision made on capital price alone is a decision to overpay — quietly, monthly, for two decades.</p>
+<p class="lead">The purchase price of a continuously running water pump is roughly 6% of what it will cost you over twenty years. Energy is over 80%. Every procurement decision made on capital price alone is a decision to overpay: quietly, monthly, for two decades.</p>
 
 <h2 id="iceberg">1 · The iceberg: what a pump actually costs</h2>
 <p>Life-cycle cost (LCC) analysis, formalised by the joint <strong>Europump / Hydraulic Institute</strong> methodology<sup class="cite">[1]</sup>, prices a pumping system across its whole service life, not at the purchase order. The method sums eight cost elements:</p>
@@ -206,17 +207,17 @@
 
 <div class="tbl-wrap">
 <table>
-  <caption>The eight Europump/HI cost elements — and who typically "owns" each one.</caption>
+  <caption>The eight Europump/HI cost elements: and who typically "owns" each one.</caption>
   <thead><tr><th>Element</th><th>What it covers</th><th>Typical share*</th></tr></thead>
   <tbody>
-    <tr><td><strong>C<sub>ic</sub></strong> — initial cost</td><td>Pump, motor, drive, base — the purchase order</td><td class="num">5–15%</td></tr>
-    <tr><td><strong>C<sub>in</sub></strong> — installation</td><td>Civil, piping, electrical, commissioning</td><td class="num">3–10%</td></tr>
-    <tr><td><strong>C<sub>e</sub></strong> — energy</td><td>Electricity over the service life</td><td class="num"><strong>40–85%</strong></td></tr>
-    <tr><td><strong>C<sub>o</sub></strong> — operation</td><td>Labour and supervision attributable to the system</td><td class="num">2–8%</td></tr>
-    <tr><td><strong>C<sub>m</sub></strong> — maintenance</td><td>Routine and predicted repairs, spares, overhauls</td><td class="num">5–15%</td></tr>
-    <tr><td><strong>C<sub>s</sub></strong> — downtime</td><td>Loss of production / service when the system stops</td><td class="num">site-specific</td></tr>
-    <tr><td><strong>C<sub>env</sub></strong> — environmental</td><td>Disposal of parts, contamination, permits</td><td class="num">&lt;2%</td></tr>
-    <tr><td><strong>C<sub>d</sub></strong> — decommissioning</td><td>Removal and site restoration at end of life</td><td class="num">&lt;1%</td></tr>
+    <tr><td><strong>C<sub>ic</sub></strong>: initial cost</td><td>Pump, motor, drive, base: the purchase order</td><td class="num">5–15%</td></tr>
+    <tr><td><strong>C<sub>in</sub></strong>: installation</td><td>Civil, piping, electrical, commissioning</td><td class="num">3–10%</td></tr>
+    <tr><td><strong>C<sub>e</sub></strong>: energy</td><td>Electricity over the service life</td><td class="num"><strong>40–85%</strong></td></tr>
+    <tr><td><strong>C<sub>o</sub></strong>: operation</td><td>Labour and supervision attributable to the system</td><td class="num">2–8%</td></tr>
+    <tr><td><strong>C<sub>m</sub></strong>: maintenance</td><td>Routine and predicted repairs, spares, overhauls</td><td class="num">5–15%</td></tr>
+    <tr><td><strong>C<sub>s</sub></strong>: downtime</td><td>Loss of production / service when the system stops</td><td class="num">site-specific</td></tr>
+    <tr><td><strong>C<sub>env</sub></strong>: environmental</td><td>Disposal of parts, contamination, permits</td><td class="num">&lt;2%</td></tr>
+    <tr><td><strong>C<sub>d</sub></strong>: decommissioning</td><td>Removal and site restoration at end of life</td><td class="num">&lt;1%</td></tr>
   </tbody>
 </table>
 </div>
@@ -226,11 +227,11 @@
 
 <div class="eq">\[ PV = C_a \cdot \frac{1-(1+r)^{-n}}{r} \qquad\text{e.g. } n=20,\; r=6\% \;\Rightarrow\; PV = 11.47\,C_a \]</div>
 
-<p>That factor of <strong>11.47</strong> is the whole story in one number: every dollar of annual energy cost you design into the system today is an <em>eleven-and-a-half dollar</em> commitment in present-value terms. (The same mathematics — as a capital recovery factor — drives the <a href="calculators.html#economic-pipe-diameter">economic pipe diameter calculator</a>.)</p>
+<p>That factor of <strong>11.47</strong> is the whole story in one number: every dollar of annual energy cost you design into the system today is an <em>eleven-and-a-half dollar</em> commitment in present-value terms. (The same mathematics, as a capital recovery factor, drives the <a href="calculators.html#economic-pipe-diameter">economic pipe diameter calculator</a>.)</p>
 
 <div class="callout key">
   <span class="lbl">The procurement trap</span>
-  Capital cost is visible, budgeted and negotiated once; energy is invisible, unbudgeted at tender stage, and paid 175,000 hours in a row. Any evaluation that scores bids on purchase price without a priced energy clause systematically selects the <strong>most expensive</strong> system. The fix is procedural, not technical: put kWh/m³ — with a guarantee and a test standard — in the bid evaluation formula.
+  Capital cost is visible, budgeted and negotiated once; energy is invisible, unbudgeted at tender stage, and paid 175,000 hours in a row. Any evaluation that scores bids on purchase price without a priced energy clause systematically selects the <strong>most expensive</strong> system. The fix is procedural, not technical: put kWh/m³, with a guarantee and a test standard, in the bid evaluation formula.
 </div>
 
 <h2 id="int-lcc">2 · Interactive: the 20-year cost explorer</h2>
@@ -239,14 +240,14 @@
 <div class="fig">
   <div class="fig-head">
     <div class="ftitle">Cumulative present-value cost over 20 years</div>
-    <div class="fsub">Capital (pump + installation, dashed) is paid once at year 0. Energy (blue) and maintenance (green) accumulate — discounted at your rate. The amber line is total LCC. Capital is estimated at $600/kW installed; maintenance at 6% of capital per year.</div>
+    <div class="fsub">Capital (pump + installation, dashed) is paid once at year 0. Energy (blue) and maintenance (green) accumulate, discounted at your rate. The amber line is total LCC. Capital is estimated at $600/kW installed; maintenance at 6% of capital per year.</div>
   </div>
   <div class="chart-box"><canvas id="lccChart"></canvas></div>
   <div class="controls">
     <div class="ctrl">
       <label>Absorbed power P2 <span id="vP2">200 kW</span></label>
       <input type="range" id="sP2" min="50" max="500" value="200" step="10">
-      <div class="hint">Shaft power at duty — read it off the curve sheet, at your duty.</div>
+      <div class="hint">Shaft power at duty: read it off the curve sheet, at your duty.</div>
     </div>
     <div class="ctrl">
       <label>Operating hours <span id="vHrs">6000 h/yr</span></label>
@@ -271,9 +272,9 @@
     <div class="cell"><div class="k">Energy = capital by</div><div class="v" id="rCross">year 2</div></div>
   </div>
 </div>
-<p class="fig-note">On the defaults — a 200 kW pump at 6,000 h/yr — the energy bill overtakes the <em>entire installed capital cost</em> during <strong>year 2</strong>, and never looks back. Drag the hours up to 8,760 (continuous) and it happens within the first 14 months.</p>
+<p class="fig-note">On the defaults (a 200 kW pump at 6,000 h/yr), the energy bill overtakes the <em>entire installed capital cost</em> during <strong>year 2</strong>, and never looks back. Drag the hours up to 8,760 (continuous) and it happens within the first 14 months.</p>
 
-<h2 id="worked">3 · Worked example — a 200 kW transmission pump, priced honestly</h2>
+<h2 id="worked">3 · Worked example: a 200 kW transmission pump, priced honestly</h2>
 <p>A transmission pump absorbs 200 kW at duty and runs 6,000 h/yr. Electricity costs $0.08/kWh; the discount rate is 6%; the horizon is 20 years. Energy per year: \(200 \times 6{,}000 = 1.2\) GWh → $96,000/yr.</p>
 
 <div class="tbl-wrap">
@@ -291,15 +292,15 @@
 </table>
 </div>
 
-<p>Read the shares again: the item every tender meeting argues about — the purchase price — is <strong>6%</strong> of the truth. The item almost no tender meeting prices — energy — is <strong>84%</strong>. The pump is not a product purchase; it is an energy contract with a machine attached.</p>
+<p>Read the shares again: the item every tender meeting argues about, the purchase price, is <strong>6%</strong> of the truth. The item almost no tender meeting prices, energy, is <strong>84%</strong>. The pump is not a product purchase; it is an energy contract with a machine attached.</p>
 
 <div class="callout">
   <span class="lbl">What one efficiency point is worth here</span>
-  At this duty, raising wire-to-water efficiency by a single percentage point cuts absorbed power by ≈ 2.5 kW, worth ≈ $1,200/yr — about <strong>$13,600 in present value over 20 years, per point</strong>. A pump 5 points better than the cheap alternative is "worth" $68,000 extra before it costs you anything. That arithmetic, not the brochure, is how selection should be scored.
+  At this duty, raising wire-to-water efficiency by a single percentage point cuts absorbed power by ≈ 2.5 kW, worth ≈ $1,200/yr, about <strong>$13,600 in present value over 20 years, per point</strong>. A pump 5 points better than the cheap alternative is "worth" $68,000 extra before it costs you anything. That arithmetic, not the brochure, is how selection should be scored.
 </div>
 
-<h2 id="premium">4 · The efficiency premium — paying more to pay less</h2>
-<p>The standard procurement dilemma: Pump A is cheaper; Pump B costs more but is more efficient. The LCC method converts the dilemma into arithmetic. With duty 1,000 m³/h at 50 m, hydraulic power is fixed at \(P_{hyd}=\rho g Q H = 136.3\) kW — what varies is how much electricity each pump's <strong>wire-to-water efficiency</strong> needs to deliver it:</p>
+<h2 id="premium">4 · The efficiency premium: paying more to pay less</h2>
+<p>The standard procurement dilemma: Pump A is cheaper; Pump B costs more but is more efficient. The LCC method converts the dilemma into arithmetic. With duty 1,000 m³/h at 50 m, hydraulic power is fixed at \(P_{hyd}=\rho g Q H = 136.3\) kW; what varies is how much electricity each pump's <strong>wire-to-water efficiency</strong> needs to deliver it:</p>
 
 <div class="eq">\[ P_{wire}=\frac{\rho\, g\, Q\, H}{3.6\times 10^{6}\,\eta_{wire\text{-}to\text{-}water}} \qquad \eta_{w2w}=\eta_{pump}\cdot\eta_{motor}\cdot\eta_{drive} \]</div>
 
@@ -311,18 +312,18 @@
     <tr><td>Wire-to-water efficiency</td><td class="num">72%</td><td class="num">78%</td><td class="num">+6 pts</td></tr>
     <tr><td>Absorbed power</td><td class="num">189.2 kW</td><td class="num">174.7 kW</td><td class="num">−14.6 kW</td></tr>
     <tr><td>Energy cost / year</td><td class="num">$90,800</td><td class="num">$83,800</td><td class="num">−$7,000</td></tr>
-    <tr><td>Simple payback of premium</td><td class="num">—</td><td class="num"></td><td class="num"><strong>1.7 years</strong></td></tr>
-    <tr><td>20-yr PV saving (after premium)</td><td class="num">—</td><td class="num"></td><td class="num"><strong>≈ $68,000</strong></td></tr>
+    <tr><td>Simple payback of premium</td><td class="num">–</td><td class="num"></td><td class="num"><strong>1.7 years</strong></td></tr>
+    <tr><td>20-yr PV saving (after premium)</td><td class="num">–</td><td class="num"></td><td class="num"><strong>≈ $68,000</strong></td></tr>
   </tbody>
 </table>
 </div>
 
-<p>Pump B repays its premium before the second summer and then returns roughly <em>five times the premium</em> in present value. And this is the conservative version: it assumes both pumps hold their efficiency for 20 years, while in reality the cheaper hydraulic tends to be the one running further from BEP, eroding faster — see <a href="sustainable-pump-selection.html">sustainable pump selection</a>.</p>
+<p>Pump B repays its premium before the second summer and then returns roughly <em>five times the premium</em> in present value. And this is the conservative version: it assumes both pumps hold their efficiency for 20 years, while in reality the cheaper hydraulic tends to be the one running further from BEP, eroding faster. See <a href="sustainable-pump-selection.html">sustainable pump selection</a>.</p>
 
 <h2 id="int-premium">5 · Interactive: is the better pump worth it?</h2>
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Cumulative cost of two bids — watch them cross</div>
+    <div class="ftitle">Cumulative cost of two bids: watch them cross</div>
     <div class="fsub">Both lines include capital at year 0 plus discounted energy (duty 1,000 m³/h @ 50 m, 6,000 h/yr, r = 6%). Where the premium pump's line drops below the cheap pump's line is the payback point.</div>
   </div>
   <div class="chart-box"><canvas id="premChart"></canvas></div>
@@ -333,12 +334,12 @@
       <div class="hint">Extra capital vs the low bid (base price $80,000).</div>
     </div>
     <div class="ctrl">
-      <label>Pump A — η wire-to-water <span id="vEA">72 %</span></label>
+      <label>Pump A: η wire-to-water <span id="vEA">72 %</span></label>
       <input type="range" id="sEA" min="55" max="85" value="72" step="1">
       <div class="hint">Pump × motor × drive, all at the duty point.</div>
     </div>
     <div class="ctrl">
-      <label>Pump B — η wire-to-water <span id="vEB">78 %</span></label>
+      <label>Pump B: η wire-to-water <span id="vEB">78 %</span></label>
       <input type="range" id="sEB" min="55" max="90" value="78" step="1">
       <div class="hint">Set it below Pump A and watch the verdict flip.</div>
     </div>
@@ -356,26 +357,26 @@
     <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rVerdict"></span></div></div>
   </div>
 </div>
-<p class="fig-note">Try the stress test every evaluation should run: halve the tariff to $0.04 — Pump B <em>still</em> pays back in under 4 years. Efficiency premiums on continuously running pumps survive almost any realistic assumption; that is why scoring them out of the bid is indefensible.</p>
+<p class="fig-note">Try the stress test every evaluation should run: halve the tariff to $0.04; Pump B <em>still</em> pays back in under 4 years. Efficiency premiums on continuously running pumps survive almost any realistic assumption; that is why scoring them out of the bid is indefensible.</p>
 
-<h2 id="specific-energy">6 · Specific energy — the KPI that cuts through</h2>
-<p>Power tells you what the pump draws; it does not tell you whether that is <em>good</em>. The benchmarking metric that does is <strong>specific energy</strong> — kilowatt-hours per cubic metre delivered:</p>
+<h2 id="specific-energy">6 · Specific energy: the KPI that cuts through</h2>
+<p>Power tells you what the pump draws; it does not tell you whether that is <em>good</em>. The benchmarking metric that does is <strong>specific energy</strong>, kilowatt-hours per cubic metre delivered:</p>
 
 <div class="eq">\[ E_s=\frac{P_{wire}}{Q}=\frac{\rho\, g\, H}{3.6\times 10^{6}\,\eta_{w2w}} \;\;\text{kWh/m}^3 \;=\; 0.002725\,\frac{H}{\eta_{w2w}} \]</div>
 
 <p>Three properties make it the right KPI:</p>
 <ul class="clean">
-  <li><strong>It is flow-independent</strong> — only head and wire-to-water efficiency remain, so stations of different sizes become directly comparable.</li>
-  <li><strong>It prices the whole chain</strong> — a worn impeller, a throttled valve, an IE1 motor and an oversized pump all surface as the same symptom: more kWh per m³.</li>
-  <li><strong>It is trendable from SCADA</strong> — energy meter ÷ flow meter, computed monthly. Rising \(E_s\) at constant head is the cheapest condition-monitoring instrument you will ever install.</li>
+  <li><strong>It is flow-independent</strong>: only head and wire-to-water efficiency remain, so stations of different sizes become directly comparable.</li>
+  <li><strong>It prices the whole chain</strong>: a worn impeller, a throttled valve, an IE1 motor and an oversized pump all surface as the same symptom: more kWh per m³.</li>
+  <li><strong>It is trendable from SCADA</strong>: energy meter ÷ flow meter, computed monthly. Rising \(E_s\) at constant head is the cheapest condition-monitoring instrument you will ever install.</li>
 </ul>
 
-<p>Two warnings keep it honest. First, compare like with like — \(E_s\) scales with head, so a 150 m booster is not "worse" than a 30 m distribution pump; benchmark against the <em>same duty</em>, or normalise as \(E_s/H\) (kWh/m³ per metre of lift). Second, in branched systems compute it per pumping stage, not for the network average, or good and bad stations cancel each other out<sup class="cite">[9]</sup>.</p>
+<p>Two warnings keep it honest. First, compare like with like: \(E_s\) scales with head, so a 150 m booster is not "worse" than a 30 m distribution pump; benchmark against the <em>same duty</em>, or normalise as \(E_s/H\) (kWh/m³ per metre of lift). Second, in branched systems compute it per pumping stage, not for the network average, or good and bad stations cancel each other out<sup class="cite">[9]</sup>.</p>
 
 <h2 id="int-es">7 · Interactive: benchmark your station</h2>
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Specific energy vs wire-to-water efficiency — where do you sit?</div>
+    <div class="ftitle">Specific energy vs wire-to-water efficiency: where do you sit?</div>
     <div class="fsub">The curve is E<sub>s</sub> for your head across the full efficiency range; the marker is your station. The shaded band (η ≥ 75%) is where a well-engineered, well-selected, well-maintained system should operate. Annual figures use 6,000 h/yr.</div>
   </div>
   <div class="chart-box"><canvas id="esChart"></canvas></div>
@@ -403,10 +404,10 @@
     <div class="cell"><div class="k">CO₂ / year (0.45 kg/kWh)</div><div class="v" id="rCO2">511 <small>t</small></div></div>
   </div>
 </div>
-<p class="fig-note">Slide the efficiency from 72% to 78% — six points — and watch ≈ $7,000/yr and ≈ 39 tonnes of CO₂/yr disappear at this single station. Now imagine the utility has forty stations. Specific energy is where energy programmes and <a href="envision-sustainability.html">sustainability commitments</a> stop being slogans and become a number with a trend line.</p>
+<p class="fig-note">Slide the efficiency from 72% to 78%, six points, and watch ≈ $7,000/yr and ≈ 39 tonnes of CO₂/yr disappear at this single station. Now imagine the utility has forty stations. Specific energy is where energy programmes and <a href="envision-sustainability.html">sustainability commitments</a> stop being slogans and become a number with a trend line.</p>
 
 <h2 id="mei">8 · MEI and the regulatory floor</h2>
-<p>Since 2013 the EU Ecodesign framework has made the worst pumps illegal to sell, using the <strong>Minimum Efficiency Index (MEI)</strong> — a statistical ranking of a pump's hydraulic efficiency (at 75%, 100% and 110% of BEP flow) against the market distribution of its type<sup class="cite">[3]</sup>:</p>
+<p>Since 2013 the EU Ecodesign framework has made the worst pumps illegal to sell, using the <strong>Minimum Efficiency Index (MEI)</strong>: a statistical ranking of a pump's hydraulic efficiency (at 75%, 100% and 110% of BEP flow) against the market distribution of its type<sup class="cite">[3]</sup>:</p>
 
 <div class="tbl-wrap">
 <table>
@@ -414,8 +415,8 @@
   <thead><tr><th class="num">MEI</th><th>Meaning</th><th>Status</th></tr></thead>
   <tbody>
     <tr><td class="num">0.10</td><td>Worst 10% of the 2012 market excluded</td><td>Mandatory from Jan 2013</td></tr>
-    <tr><td class="num"><strong>0.40</strong></td><td>Worst 40% excluded</td><td><strong>Mandatory from Jan 2015 — the current floor</strong></td></tr>
-    <tr><td class="num">0.70</td><td>Roughly the best third of the market</td><td>The benchmark value — specify it, don't just accept 0.40</td></tr>
+    <tr><td class="num"><strong>0.40</strong></td><td>Worst 40% excluded</td><td><strong>Mandatory from Jan 2015: the current floor</strong></td></tr>
+    <tr><td class="num">0.70</td><td>Roughly the best third of the market</td><td>The benchmark value: specify it, don't just accept 0.40</td></tr>
   </tbody>
 </table>
 </div>
@@ -423,54 +424,54 @@
 <p>Three design-desk consequences:</p>
 <ul class="clean">
   <li><strong>MEI ≥ 0.4 is a floor, not a target.</strong> It only removes the catastrophically bad. For continuously running duties, specifying MEI ≥ 0.7 costs little and bakes the efficiency premium of Section 4 into the tender.</li>
-  <li><strong>The motor has its own floor:</strong> EU 2019/1781 mandates <strong>IE3</strong> for most motors 0.75–1,000 kW (since July 2021) and <strong>IE4</strong> for 75–200 kW (since July 2023)<sup class="cite">[4]</sup>. An IE3→IE4 step is worth ~1 efficiency point — recall what a point is worth from Section 3.</li>
-  <li><strong>MEI rates the bare pump, not your system.</strong> A MEI 0.7 pump selected off-BEP, throttled, or driven through a poor system curve can still produce a dreadful kWh/m³ — which is why Europump's <em>Extended Product Approach</em> evaluates pump + motor + drive against the actual load profile<sup class="cite">[6]</sup>. Regulation trims the worst hardware; only design controls the energy bill.</li>
+  <li><strong>The motor has its own floor:</strong> EU 2019/1781 mandates <strong>IE3</strong> for most motors 0.75–1,000 kW (since July 2021) and <strong>IE4</strong> for 75–200 kW (since July 2023)<sup class="cite">[4]</sup>. An IE3→IE4 step is worth ~1 efficiency point: recall what a point is worth from Section 3.</li>
+  <li><strong>MEI rates the bare pump, not your system.</strong> A MEI 0.7 pump selected off-BEP, throttled, or driven through a poor system curve can still produce a dreadful kWh/m³, which is why Europump's <em>Extended Product Approach</em> evaluates pump + motor + drive against the actual load profile<sup class="cite">[6]</sup>. Regulation trims the worst hardware; only design controls the energy bill.</li>
 </ul>
 
-<h2 id="where">9 · Where the real money hides — ranked</h2>
+<h2 id="where">9 · Where the real money hides, ranked</h2>
 <p>Pulling the article together: over a 20-year horizon, these are the decisions that actually move the LCC of a typical water pumping system, in descending order of leverage:</p>
 
 <ul class="clean">
-  <li><strong>1. The system you make the pump fight</strong> — pipe diameter, fittings and control philosophy set the head. Friction head is purchased in perpetuity: the <a href="calculators.html#economic-pipe-diameter">economic diameter</a> trade-off and valve-free control (VFD vs throttling — see <a href="vfd-myth-hydraulic-design.html">the VFD myth</a>) dwarf every hardware choice.</li>
-  <li><strong>2. Where the duty sits on the curve</strong> — a pump at 80% of BEP burns the brochure efficiency; the <a href="system-head-curve-operating-point.html">oversizing trap</a> is an LCC catastrophe sold as "margin". Staging and <a href="parallel-series-pump-operation.html">parallel operation</a> decide this for every flow the station actually sees, not just the design point.</li>
-  <li><strong>3. Wire-to-water hardware</strong> — pump MEI/efficiency, motor IE class, drive losses. This is the 1.7-year-payback territory of Section 4.</li>
-  <li><strong>4. Keeping it there</strong> — wear ring clearances, impeller condition, alignment. A 3–5 point efficiency erosion between overhauls is common and invisible without the \(E_s\) trend.</li>
-  <li><strong>5. The tariff structure</strong> — time-of-use pumping against storage can cut $/kWh without touching a single machine; it needs the storage and controls designed in from day one.</li>
+  <li><strong>1. The system you make the pump fight</strong>: pipe diameter, fittings and control philosophy set the head. Friction head is purchased in perpetuity: the <a href="calculators.html#economic-pipe-diameter">economic diameter</a> trade-off and valve-free control (VFD vs throttling, see <a href="vfd-myth-hydraulic-design.html">the VFD myth</a>) dwarf every hardware choice.</li>
+  <li><strong>2. Where the duty sits on the curve</strong>: a pump at 80% of BEP burns the brochure efficiency; the <a href="system-head-curve-operating-point.html">oversizing trap</a> is an LCC catastrophe sold as "margin". Staging and <a href="parallel-series-pump-operation.html">parallel operation</a> decide this for every flow the station actually sees, not just the design point.</li>
+  <li><strong>3. Wire-to-water hardware</strong>: pump MEI/efficiency, motor IE class, drive losses. This is the 1.7-year-payback territory of Section 4.</li>
+  <li><strong>4. Keeping it there</strong>: wear ring clearances, impeller condition, alignment. A 3–5 point efficiency erosion between overhauls is common and invisible without the \(E_s\) trend.</li>
+  <li><strong>5. The tariff structure</strong>: time-of-use pumping against storage can cut $/kWh without touching a single machine; it needs the storage and controls designed in from day one.</li>
 </ul>
 
 <div class="callout warn">
   <span class="lbl">The mistake that outranks them all</span>
-  Treating LCC as a report written <em>after</em> selection to justify it. The Europump/HI method is a <strong>comparison tool between design alternatives while they are still alternatives</strong> — two diameters, two control philosophies, two staging plans, two bids. Run it at concept stage with honest hours and tariffs, and the 20-year answer usually contradicts the capital-cost answer. That contradiction is the entire value of the method.
+  Treating LCC as a report written <em>after</em> selection to justify it. The Europump/HI method is a <strong>comparison tool between design alternatives while they are still alternatives</strong>: two diameters, two control philosophies, two staging plans, two bids. Run it at concept stage with honest hours and tariffs, and the 20-year answer usually contradicts the capital-cost answer. That contradiction is the entire value of the method.
 </div>
 
 <h2 id="checklist">10 · LCC checklist for the design desk</h2>
 <ul class="clean">
-  <li><strong>Price energy at concept stage</strong> — duty power × real operating hours × tariff × PV factor, for every alternative on the table.</li>
-  <li><strong>Use honest hours</strong> — the load profile (how many hours at which flow), not the design point alone; that is the Extended Product Approach in one sentence.</li>
-  <li><strong>Put kWh/m³ in the tender</strong> — guaranteed at stated duties, tested per ISO 9906 / HI 14.6 (grade specified — see <a href="reading-pump-curves.html">reading pump curves properly</a>), with damages tied to the shortfall.</li>
+  <li><strong>Price energy at concept stage</strong>: duty power × real operating hours × tariff × PV factor, for every alternative on the table.</li>
+  <li><strong>Use honest hours</strong>: the load profile (how many hours at which flow), not the design point alone; that is the Extended Product Approach in one sentence.</li>
+  <li><strong>Put kWh/m³ in the tender</strong>: guaranteed at stated duties, tested per ISO 9906 / HI 14.6 (grade specified, see <a href="reading-pump-curves.html">reading pump curves properly</a>), with damages tied to the shortfall.</li>
   <li><strong>Specify MEI ≥ 0.7 and the IE class</strong>, not just "compliant".</li>
-  <li><strong>Score bids on PV of (capital + energy + maintenance)</strong> — never on capital alone.</li>
+  <li><strong>Score bids on PV of (capital + energy + maintenance)</strong>, never on capital alone.</li>
   <li><strong>Trend specific energy monthly</strong> from SCADA per station; investigate any sustained rise at constant head.</li>
-  <li><strong>Re-run the LCC at major renewals</strong> — an impeller replacement is a free opportunity to re-select for the duty the station actually runs, which is rarely the duty it was designed for.</li>
+  <li><strong>Re-run the LCC at major renewals</strong>: an impeller replacement is a free opportunity to re-select for the duty the station actually runs, which is rarely the duty it was designed for.</li>
 </ul>
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  Over twenty years the purchase price is a rounding error and the energy bill is the asset. Design the system head down, put the duty on BEP, buy the efficiency premium, and measure kWh/m³ forever — that is where the real money sits.
+  Over twenty years the purchase price is a rounding error and the energy bill is the asset. Design the system head down, put the duty on BEP, buy the efficiency premium, and measure kWh/m³ forever: that is where the real money sits.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>Europump &amp; Hydraulic Institute. <em>Pump Life Cycle Costs: A Guide to LCC Analysis for Pumping Systems</em>, 2nd ed. — the founding methodology and the eight cost elements.</li>
+  <li>Europump &amp; Hydraulic Institute. <em>Pump Life Cycle Costs: A Guide to LCC Analysis for Pumping Systems</em>, 2nd ed., the founding methodology and the eight cost elements.</li>
   <li>U.S. DOE &amp; Hydraulic Institute. <em>Improving Pumping System Performance: A Sourcebook for Industry</em>, 2nd ed.</li>
-  <li>European Commission Regulation (EU) No 547/2012 — ecodesign requirements for water pumps (MEI), implementing Directive 2009/125/EC.</li>
-  <li>European Commission Regulation (EU) 2019/1781 — ecodesign requirements for electric motors and variable speed drives (IE classes).</li>
-  <li>Hydraulic Institute. <em>ANSI/HI 9.6.3 — Rotodynamic Pumps: Guideline for Operating Regions (POR / AOR).</em></li>
-  <li>Europump. <em>Extended Product Approach for Pumps</em> — energy assessment of pump + motor + drive against load profiles, 2014.</li>
+  <li>European Commission Regulation (EU) No 547/2012: ecodesign requirements for water pumps (MEI), implementing Directive 2009/125/EC.</li>
+  <li>European Commission Regulation (EU) 2019/1781: ecodesign requirements for electric motors and variable speed drives (IE classes).</li>
+  <li>Hydraulic Institute. <em>ANSI/HI 9.6.3, Rotodynamic Pumps: Guideline for Operating Regions (POR / AOR).</em></li>
+  <li>Europump. <em>Extended Product Approach for Pumps</em>: energy assessment of pump + motor + drive against load profiles, 2014.</li>
   <li>ISO/ASME 14414:2019. <em>Pump system energy assessment.</em></li>
   <li>Jones, G.M. (ed.). <em>Pumping Station Design</em>, 3rd ed. Butterworth-Heinemann, 2008.</li>
   <li>Gülich, J.F. <em>Centrifugal Pumps</em>, 4th ed. Springer, 2020.</li>
-  <li>Hydraulic Institute. <em>ANSI/HI 14.6 — Rotodynamic Pumps for Hydraulic Performance Acceptance Tests.</em></li>
+  <li>Hydraulic Institute. <em>ANSI/HI 14.6: Rotodynamic Pumps for Hydraulic Performance Acceptance Tests.</em></li>
 </ol>
 
 <div class="tags">#LifeCycleCost #LCC #EnergyEfficiency #SpecificEnergy #kWhm3 #MEI #PumpSelection #WireToWater #WaterEngineering #Sustainability</div>
@@ -481,7 +482,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -667,8 +668,8 @@ const vDC=document.getElementById('vDC'), vEA=document.getElementById('vEA'), vE
 let premChart=new Chart(document.getElementById('premChart'),{
   type:'scatter',
   data:{datasets:[
-    {label:'Pump A — low bid', data:[], borderColor:'#c0392b', showLine:true, ...baseLine, borderWidth:2.5},
-    {label:'Pump B — efficiency premium', data:[], borderColor:'#1b4f72', showLine:true, ...baseLine, borderWidth:2.5},
+    {label:'Pump A: low bid', data:[], borderColor:'#c0392b', showLine:true, ...baseLine, borderWidth:2.5},
+    {label:'Pump B: efficiency premium', data:[], borderColor:'#1b4f72', showLine:true, ...baseLine, borderWidth:2.5},
     {label:'Payback point', data:[], borderColor:'#1e8449', backgroundColor:'#1e8449', pointRadius:7, showLine:false}
   ]},
   options:{
@@ -713,11 +714,11 @@ function updatePrem(){
   const simplePB= saveYr>0 ? dC/saveYr : Infinity;
   document.getElementById('rDkw').innerHTML = dKw.toFixed(1)+' <small>kW</small>';
   document.getElementById('rSave').textContent = (saveYr<0?'−':'')+'$'+Math.abs(Math.round(saveYr)).toLocaleString('en-US');
-  document.getElementById('rPB').innerHTML = saveYr>0 ? (simplePB<0.05?'immediate':simplePB.toFixed(1)+' <small>yr</small>') : '—';
+  document.getElementById('rPB').innerHTML = saveYr>0 ? (simplePB<0.05?'immediate':simplePB.toFixed(1)+' <small>yr</small>') : '–';
   document.getElementById('rNPV').textContent = (npvSave<0?'−':'')+'$'+Math.abs(Math.round(npvSave)).toLocaleString('en-US');
   let v;
   if(saveYr<=0) v='<span class="badge bad">B never pays back</span>';
-  else if(npvSave>0 && simplePB<=5) v='<span class="badge good">B wins — buy the efficiency</span>';
+  else if(npvSave>0 && simplePB<=5) v='<span class="badge good">B wins: buy the efficiency</span>';
   else if(npvSave>0) v='<span class="badge warn">B wins, slowly</span>';
   else v='<span class="badge bad">premium too high</span>';
   document.getElementById('rVerdict').innerHTML=v;

@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reading Manufacturer Pump Curves Properly — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Reading Manufacturer Pump Curves Properly | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -100,16 +100,16 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="How to read a manufacturer pump curve sheet the way a designer must: the H–Q trim family, efficiency, absorbed power P2 and NPSHr read together at one flow; ISO 9906 tolerance grades; speed, trim and viscosity corrections; and the misreadings that cause real field failures — with three interactive charts and worked numbers.">
+  <meta name="description" content="How to read a manufacturer pump curve sheet the way a designer must: the H–Q trim family, efficiency, absorbed power P2 and NPSHr read together at one flow; ISO 9906 tolerance grades; speed, trim and viscosity corrections; and the misreadings that cause real field failures, with three interactive charts and worked numbers.">
   <meta property="og:title" content="Reading Manufacturer Pump Curves Properly | Mohamed Abokhatwa">
-  <meta property="og:description" content="H–Q, efficiency, power and NPSHr live on one sheet and must be read at one flow. Trim families, ISO 9906 tolerances, affinity corrections, viscosity derating — and the classic misreadings that put pumps in trouble.">
+  <meta property="og:description" content="H–Q, efficiency, power and NPSHr live on one sheet and must be read at one flow. Trim families, ISO 9906 tolerances, affinity corrections, viscosity derating, and the classic misreadings that put pumps in trouble.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/reading-pump-curves.html">
   <meta property="og:image" content="https://abokhatwa.com/og-reading-pump-curves.jpg">
   <meta property="og:image:alt" content="Reading Manufacturer Pump Curves Properly">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Reading Manufacturer Pump Curves Properly | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="The curve sheet is four families on one chart — and every value must be read at the same flow. Trims, tolerances, affinity and viscosity corrections, and the misreadings that cause field failures.">
+  <meta name="twitter:description" content="The curve sheet is four families on one chart, and every value must be read at the same flow. Trims, tolerances, affinity and viscosity corrections, and the misreadings that cause field failures.">
   <link rel="canonical" href="https://abokhatwa.com/reading-pump-curves.html">
 
   <script type="application/ld+json">
@@ -155,6 +155,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -193,24 +194,24 @@
 </div>
 
 <div class="hero-img-wrap">
-  <img fetchpriority="high" width="1376" height="768" src="reading-pump-curves.webp" alt="Reading manufacturer pump curves properly — H-Q, efficiency, power and NPSHr families">
+  <img fetchpriority="high" width="1376" height="768" src="reading-pump-curves.webp" alt="Reading manufacturer pump curves properly: H-Q, efficiency, power and NPSHr families">
 </div>
 
 <div class="article-body">
-<p class="lead">A manufacturer curve sheet is four families of information stacked on one chart — head, efficiency, power and NPSHr — and every one of them must be read at the same flow. Most field failures traced back to “the pump” are really failures to read that sheet properly.</p>
+<p class="lead">A manufacturer curve sheet is four families of information stacked on one chart (head, efficiency, power and NPSHr), and every one of them must be read at the same flow. Most field failures traced back to “the pump” are really failures to read that sheet properly.</p>
 
 <h2 id="what-it-is">1 · What the curve sheet actually is</h2>
-<p>The performance curve in a pump datasheet is not a drawing — it is <strong>test data</strong>. The manufacturer ran the pump (or a homologous model of it) on a test rig, measured flow, head, power and suction performance, and plotted the results per the acceptance-test standards <strong>ISO 9906</strong> or <strong>ANSI/HI 14.6</strong>. Three consequences follow immediately, and each one changes how you read the sheet:</p>
+<p>The performance curve in a pump datasheet is <strong>test data</strong>. The manufacturer ran the pump (or a homologous model of it) on a test rig, measured flow, head, power and suction performance, and plotted the results per the acceptance-test standards <strong>ISO 9906</strong> or <strong>ANSI/HI 14.6</strong>. Three consequences follow immediately, and each one changes how you read the sheet:</p>
 
 <ul class="clean">
-  <li><strong>It is valid for one speed, one impeller diameter, and one fluid</strong> — almost always clean cold water, SG = 1.0, at the rated speed printed in the title block. Change any of these and the curve must be corrected, not reused.</li>
-  <li><strong>It carries a tolerance, not a guarantee of exactness.</strong> The acceptance grade (Section 5) defines how far the delivered pump may deviate from the printed line — and ±5% head on a flat curve can move the duty flow a long way.</li>
-  <li><strong>The catalogue chart is usually a family, not your pump.</strong> What you see is the full-diameter and minimum-diameter envelope with intermediate trims. Your pump is <em>one</em> line in that family — and often an interpolated trim between two printed ones.</li>
+  <li><strong>It is valid for one speed, one impeller diameter, and one fluid</strong>, almost always clean cold water, SG = 1.0, at the rated speed printed in the title block. Change any of these and the curve must be corrected, not reused.</li>
+  <li><strong>It carries a tolerance, not a guarantee of exactness.</strong> The acceptance grade (Section 5) defines how far the delivered pump may deviate from the printed line, and ±5% head on a flat curve can move the duty flow a long way.</li>
+  <li><strong>The catalogue chart is usually a family, not your pump.</strong> What you see is the full-diameter and minimum-diameter envelope with intermediate trims. Your pump is <em>one</em> line in that family, and often an interpolated trim between two printed ones.</li>
 </ul>
 
 <div class="callout key">
   <span class="lbl">The single discipline that prevents most errors</span>
-  Draw one vertical line at your duty flow and read <strong>everything</strong> on it: head from the H–Q curve of <em>your trim</em>, efficiency from the η curve, absorbed power from the P2 curve, and NPSHr from the suction curve. Mixing values read at different flows — BEP efficiency with duty-point head, for instance — is the most common and most expensive curve-reading mistake in the industry.
+  Draw one vertical line at your duty flow and read <strong>everything</strong> on it: head from the H–Q curve of <em>your trim</em>, efficiency from the η curve, absorbed power from the P2 curve, and NPSHr from the suction curve. Mixing values read at different flows (BEP efficiency with duty-point head, for instance) is the most common and most expensive curve-reading mistake in the industry.
 </div>
 
 <h2 id="families">2 · The four families on one chart</h2>
@@ -223,25 +224,25 @@
   <tbody>
     <tr><td><strong>H–Q</strong> (one per trim)</td><td>Head, m</td><td>Whether the pump meets the duty; where it intersects the system curve</td><td>Reading the envelope or the wrong trim line</td></tr>
     <tr><td><strong>Efficiency η</strong></td><td>%</td><td>Energy cost; how far the duty sits from BEP</td><td>Quoting BEP efficiency at a non-BEP duty</td></tr>
-    <tr><td><strong>Power P2</strong></td><td>kW</td><td>Motor size — including at end of curve, not just at duty</td><td>Forgetting it is plotted for water, SG = 1.0</td></tr>
-    <tr><td><strong>NPSHr (NPSH3)</strong></td><td>m</td><td>Suction safety, with margin — see <a href="npsh-water-infrastructure.html">the NPSH design guide</a></td><td>Treating NPSHr as “safe” instead of “already cavitating 3%”</td></tr>
+    <tr><td><strong>Power P2</strong></td><td>kW</td><td>Motor size: including at end of curve, not just at duty</td><td>Forgetting it is plotted for water, SG = 1.0</td></tr>
+    <tr><td><strong>NPSHr (NPSH3)</strong></td><td>m</td><td>Suction safety, with margin: see <a href="npsh-water-infrastructure.html">the NPSH design guide</a></td><td>Treating NPSHr as “safe” instead of “already cavitating 3%”</td></tr>
   </tbody>
 </table>
 </div>
 
 <p>Two of these need a precise definition, because the names mislead:</p>
-<p><strong>P2 is shaft power</strong> — the mechanical power absorbed at the pump coupling, not the electrical power drawn from the wall (that is P1, larger by the motor and drive losses). It relates to the hydraulic power through the pump efficiency:</p>
+<p><strong>P2 is shaft power</strong>: the mechanical power absorbed at the pump coupling, not the electrical power drawn from the wall (that is P1, larger by the motor and drive losses). It relates to the hydraulic power through the pump efficiency:</p>
 
 <div class="eq">\[ P_2=\frac{\rho\, g\, Q\, H}{3.6\times 10^{6}\,\eta} \;\text{kW} \qquad (Q\ \text{in m}^3/\text{h},\ H\ \text{in m},\ \rho\ \text{in kg/m}^3) \]</div>
 
-<p><strong>NPSHr on the sheet is NPSH3</strong> — by definition, the suction head at which the pump has <em>already lost 3% of its head</em> to cavitation. It is a test criterion, not a safety boundary. A pump operating with NPSH available exactly equal to NPSHr is cavitating by definition; HI 9.6.1 margins exist precisely because of this<sup class="cite">[4]</sup>.</p>
+<p><strong>NPSHr on the sheet is NPSH3</strong>: by definition, the suction head at which the pump has <em>already lost 3% of its head</em> to cavitation. It is a test criterion, not a safety boundary. A pump operating with NPSH available exactly equal to NPSHr is cavitating by definition; HI 9.6.1 margins exist precisely because of this<sup class="cite">[4]</sup>.</p>
 
 <h2 id="int-sheet">3 · Interactive: the curve-sheet explorer</h2>
-<p>The model below is a realistic medium-size water pump at 1,480 rpm with four impeller trims (430 / 410 / 390 / 370 mm). Move the duty flow and switch trims — the vertical line is the “read everything here” discipline made visible.</p>
+<p>The model below is a realistic medium-size water pump at 1,480 rpm with four impeller trims (430 / 410 / 390 / 370 mm). Move the duty flow and switch trims: the vertical line is the “read everything here” discipline made visible.</p>
 
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">One flow, four readings — H, η, P2 and NPSHr on a single sheet</div>
+    <div class="ftitle">One flow, four readings: H, η, P2 and NPSHr on a single sheet</div>
     <div class="fsub">Solid blue = selected trim; faded blue = the rest of the family. Green = efficiency (right axis), amber = absorbed power P2 (far right axis), red dotted = NPSHr (left axis, metres). The shaded band is the POR (70–120% of BEP) for the selected trim.</div>
   </div>
   <div class="chart-box"><canvas id="sheetChart"></canvas></div>
@@ -254,7 +255,7 @@
     <div class="ctrl">
       <label>Duty flow <span id="vQ">1100 m³/h</span></label>
       <input type="range" id="sQ" min="200" max="2000" value="1100" step="20">
-      <div class="hint">The vertical line — read all four values at this one flow.</div>
+      <div class="hint">The vertical line: read all four values at this one flow.</div>
     </div>
   </div>
   <div class="readout">
@@ -265,10 +266,10 @@
     <div class="cell"><div class="k">% of BEP</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rBep"></span></div></div>
   </div>
 </div>
-<p class="fig-note">Try this: hold the duty at 1,100 m³/h and trim down to 370 mm. Head and power fall — but <strong>NPSHr does not move</strong>, because trimming the outer diameter does nothing to the impeller eye. Then push the flow to 1,800 m³/h and watch NPSHr climb the steep right-hand wall while efficiency collapses.</p>
+<p class="fig-note">Try this: hold the duty at 1,100 m³/h and trim down to 370 mm. Head and power fall, but <strong>NPSHr does not move</strong>, because trimming the outer diameter does nothing to the impeller eye. Then push the flow to 1,800 m³/h and watch NPSHr climb the steep right-hand wall while efficiency collapses.</p>
 
-<h2 id="worked">4 · Worked example — reading one duty completely</h2>
-<p>Required duty: <strong>1,000 m³/h at 45 m</strong>. On the family above, the full 430 mm impeller gives 52.0 m at 1,000 m³/h — too much. The 390 mm trim gives 41.4 m — too little. The <strong>410 mm trim</strong> gives 46.5 m, slightly above the requirement: the correct selection (the surplus is absorbed as the duty point slides marginally up the system curve — never select a trim that falls <em>short</em>).</p>
+<h2 id="worked">4 · Worked example: reading one duty completely</h2>
+<p>Required duty: <strong>1,000 m³/h at 45 m</strong>. On the family above, the full 430 mm impeller gives 52.0 m at 1,000 m³/h, too much. The 390 mm trim gives 41.4 m, too little. The <strong>410 mm trim</strong> gives 46.5 m, slightly above the requirement: the correct selection (the surplus is absorbed as the duty point slides marginally up the system curve, never select a trim that falls <em>short</em>).</p>
 
 <p>Now the vertical line at 1,000 m³/h on the 410 mm trim, reading all four families:</p>
 
@@ -278,26 +279,26 @@
   <thead><tr><th>Quantity</th><th class="num">Value</th><th>Design consequence</th></tr></thead>
   <tbody>
     <tr><td>Head H</td><td class="num">46.5 m</td><td>Meets the 45 m duty with a small surplus ✓</td></tr>
-    <tr><td>Efficiency η</td><td class="num">84.4%</td><td>Duty sits at 94% of this trim's BEP (≈ 1,060 m³/h) — inside POR ✓</td></tr>
+    <tr><td>Efficiency η</td><td class="num">84.4%</td><td>Duty sits at 94% of this trim's BEP (≈ 1,060 m³/h): inside POR ✓</td></tr>
     <tr><td>Power P2</td><td class="num">150 kW</td><td>At end of allowable region (120% BEP ≈ 1,272 m³/h): <strong>175 kW</strong></td></tr>
     <tr><td>NPSHr (NPSH3)</td><td class="num">4.0 m</td><td>With HI margin ratio 1.3 → require NPSHa ≥ 5.2 m</td></tr>
   </tbody>
 </table>
 </div>
 
-<p>The motor decision shows why the power family must be read across the whole operating region, not at one point: duty power is 150 kW, and the habitual “duty + 10%” rule suggests 165 kW. But if operation can ever reach the right-hand end of the allowable region, absorbed power reaches 175 kW. The next standard IEC rating, <strong>200 kW</strong>, covers both — and the selection is documented as <em>non-overloading across the AOR</em>, not as a margin guess.</p>
+<p>The motor decision shows why the power family must be read across the whole operating region, not at one point: duty power is 150 kW, and the habitual “duty + 10%” rule suggests 165 kW. But if operation can ever reach the right-hand end of the allowable region, absorbed power reaches 175 kW. The next standard IEC rating, <strong>200 kW</strong>, covers both, and the selection is documented as <em>non-overloading across the AOR</em>, not as a margin guess.</p>
 
 <div class="callout">
   <span class="lbl">Why “end of curve” matters so much</span>
-  For low- and medium-specific-speed pumps, P2 <em>rises</em> continuously toward runout. Any future that lowers system resistance — a second main commissioned, a PRV failing open, a pipe break, even a generous head tolerance — slides the duty right and the power up. Motors tripping on overload during commissioning are very often a power curve read at the duty point only.
+  For low- and medium-specific-speed pumps, P2 <em>rises</em> continuously toward runout. Any future that lowers system resistance (a second main commissioned, a PRV failing open, a pipe break, even a generous head tolerance) slides the duty right and the power up. Motors tripping on overload during commissioning are very often a power curve read at the duty point only.
 </div>
 
-<h2 id="tolerance">5 · The curve is a band, not a line — ISO 9906 grades</h2>
+<h2 id="tolerance">5 · The curve is a band, not a line: ISO 9906 grades</h2>
 <p>Acceptance standards define how far the delivered pump may deviate from the quoted curve. Under ISO 9906:2012 (harmonised with ANSI/HI 14.6), the common grades are<sup class="cite">[1,2]</sup>:</p>
 
 <div class="tbl-wrap">
 <table>
-  <caption>ISO 9906:2012 acceptance grades — tolerance on the guarantee point.</caption>
+  <caption>ISO 9906:2012 acceptance grades: tolerance on the guarantee point.</caption>
   <thead><tr><th>Grade</th><th class="num">Flow ΔQ</th><th class="num">Head ΔH</th><th class="num">Efficiency Δη</th><th>Typical use</th></tr></thead>
   <tbody>
     <tr><td><strong>1B</strong></td><td class="num">±4.5%</td><td class="num">±3%</td><td class="num">−3%</td><td>Large / high-energy pumps, contractual efficiency</td></tr>
@@ -307,25 +308,25 @@
 </table>
 </div>
 
-<p>Grade 1U and 1E variants tighten this further (1U allows only positive tolerance; 1E adds a non-negative efficiency tolerance). The design consequence is rarely appreciated: on a <strong>flat pump curve</strong>, a −5% head tolerance at the duty head can shift the achieved <em>flow</em> by far more than 5% — exactly the geometry problem described in <a href="system-head-curve-operating-point.html">the system head curve article</a>. If the process genuinely needs a minimum flow, specify the guarantee point and grade accordingly, and say so in the datasheet — “Grade 2B” silently accepted from the quotation is a decision, whether you made it or not.</p>
+<p>Grade 1U and 1E variants tighten this further (1U allows only positive tolerance; 1E adds a non-negative efficiency tolerance). The design consequence is rarely appreciated: on a <strong>flat pump curve</strong>, a −5% head tolerance at the duty head can shift the achieved <em>flow</em> by far more than 5%, exactly the geometry problem described in <a href="system-head-curve-operating-point.html">the system head curve article</a>. If the process genuinely needs a minimum flow, specify the guarantee point and grade accordingly, and say so in the datasheet: “Grade 2B” silently accepted from the quotation is a decision, whether you made it or not.</p>
 
-<h2 id="speed-trim">6 · Speed &amp; trim — using the affinity laws on the whole curve</h2>
+<h2 id="speed-trim">6 · Speed &amp; trim: using the affinity laws on the whole curve</h2>
 <p>Catalogue curves are printed for one speed. Run the pump on a VFD, or order a different trim, and the affinity laws scale the <em>entire curve</em>, point by point:</p>
 
 <div class="eq">\[ \frac{Q_2}{Q_1}=\frac{N_2}{N_1} \qquad \frac{H_2}{H_1}=\left(\frac{N_2}{N_1}\right)^{\!2} \qquad \frac{P_2}{P_1}=\left(\frac{N_2}{N_1}\right)^{\!3} \]</div>
 
 <p>Three corrections to the way these laws are commonly used:</p>
 <ul class="clean">
-  <li><strong>They map curve to curve, not duty to duty.</strong> The laws connect <em>homologous points</em> — the same point on the scaled curve. Your new duty point is found by intersecting the <em>scaled curve</em> with the <em>system curve</em>; it is not the old duty point scaled.</li>
-  <li><strong>% speed ≠ % flow whenever static head exists.</strong> The “20% speed = 20% flow = 50% power” story is true only for purely frictional systems. With static head, flow falls faster than speed — and below the speed where the scaled shut-off head equals the static head, flow stops entirely.</li>
+  <li><strong>They map curve to curve, not duty to duty.</strong> The laws connect <em>homologous points</em>: the same point on the scaled curve. Your new duty point is found by intersecting the <em>scaled curve</em> with the <em>system curve</em>; it is not the old duty point scaled.</li>
+  <li><strong>% speed ≠ % flow whenever static head exists.</strong> The “20% speed = 20% flow = 50% power” story is true only for purely frictional systems. With static head, flow falls faster than speed, and below the speed where the scaled shut-off head equals the static head, flow stops entirely.</li>
   <li><strong>Trim is not exactly affinity.</strong> Diameter scaling \(Q\propto D,\ H\propto D^2\) is a first estimate; real trims lose some efficiency and deviate from the square law because the casing stays the same size. Use the manufacturer's <em>tested</em> trim curves for selection, and limit trims to roughly 75–80% of full diameter<sup class="cite">[6]</sup>.</li>
 </ul>
 
 <h2 id="int-speed">7 · Interactive: speed correction against a real system</h2>
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">VFD speed scaling — why % speed is not % flow</div>
-    <div class="fsub">The full-speed curve (dashed) scales down with speed; the duty point is the intersection with the system curve (red). The dotted green parabola through the origin is the BEP migration path — duty points on it keep the full-speed efficiency.</div>
+    <div class="ftitle">VFD speed scaling: why % speed is not % flow</div>
+    <div class="fsub">The full-speed curve (dashed) scales down with speed; the duty point is the intersection with the system curve (red). The dotted green parabola through the origin is the BEP migration path: duty points on it keep the full-speed efficiency.</div>
   </div>
   <div class="chart-box"><canvas id="speedChart"></canvas></div>
   <div class="controls">
@@ -337,7 +338,7 @@
     <div class="ctrl">
       <label>Static head <span id="vStat">20 m</span></label>
       <input type="range" id="sStat" min="0" max="40" value="20" step="1">
-      <div class="hint">At 0 m the system is pure friction — only then does % speed = % flow.</div>
+      <div class="hint">At 0 m the system is pure friction: only then does % speed = % flow.</div>
     </div>
   </div>
   <div class="readout">
@@ -348,20 +349,20 @@
     <div class="cell"><div class="k">No-flow speed</div><div class="v" id="rNoflow">58 <small>%</small></div></div>
   </div>
 </div>
-<p class="fig-note">With 20 m static, 90% speed delivers only ≈ 85% flow — and below ≈ 58% speed the pump dead-heads against the static column and delivers nothing. Set static to 0 m and the cube-law story comes back: 90% speed → 90% flow → 73% power.</p>
+<p class="fig-note">With 20 m static, 90% speed delivers only ≈ 85% flow, and below ≈ 58% speed the pump dead-heads against the static column and delivers nothing. Set static to 0 m and the cube-law story comes back: 90% speed → 90% flow → 73% power.</p>
 
-<h2 id="viscosity">8 · Viscosity — the silent curve killer</h2>
-<p>Everything so far assumed water. Pump a viscous fluid — sludge, glycerine solutions, oils, some polymers — and the water curve must be derated. The Hydraulic Institute method (ANSI/HI 9.6.7) condenses the physics into a single parameter B computed at the water BEP, from which three correction factors follow<sup class="cite">[5]</sup>:</p>
+<h2 id="viscosity">8 · Viscosity: the silent curve killer</h2>
+<p>Everything so far assumed water. Pump a viscous fluid (sludge, glycerine solutions, oils, some polymers) and the water curve must be derated. The Hydraulic Institute method (ANSI/HI 9.6.7) condenses the physics into a single parameter B computed at the water BEP, from which three correction factors follow<sup class="cite">[5]</sup>:</p>
 
 <div class="eq">\[ B=16.5\;\frac{\nu^{0.50}\;H_{BEP}^{0.0625}}{Q_{BEP}^{0.375}\;N^{0.25}} \qquad\Longrightarrow\qquad C_Q,\;C_H,\;C_\eta \]</div>
 
-<p>with ν in cSt, Q in m³/h, H in m and N in rpm. The corrected performance is \(Q_{vis}=C_Q\,Q_w\), \(H_{vis}=C_H\,H_w\), \(\eta_{vis}=C_\eta\,\eta_w\) — and the pattern of the factors is the important lesson: <strong>flow and head survive moderate viscosity almost intact, but efficiency does not.</strong> At 120 cSt on the pump above, B ≈ 2.7: flow and head keep ~99% of their water values, while efficiency keeps only ~90% — and absorbed power rises accordingly (times the fluid SG, on top).</p>
+<p>with ν in cSt, Q in m³/h, H in m and N in rpm. The corrected performance is \(Q_{vis}=C_Q\,Q_w\), \(H_{vis}=C_H\,H_w\), \(\eta_{vis}=C_\eta\,\eta_w\), and the pattern of the factors is the important lesson: <strong>flow and head survive moderate viscosity almost intact, but efficiency does not.</strong> At 120 cSt on the pump above, B ≈ 2.7: flow and head keep ~99% of their water values, while efficiency keeps only ~90%, and absorbed power rises accordingly (times the fluid SG, on top).</p>
 
 <h2 id="int-visc">9 · Interactive: HI viscosity correction</h2>
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Water curve vs viscous curve — efficiency dies first</div>
-    <div class="fsub">Dashed = water test curve; solid = corrected viscous performance per the HI 9.6.7 generalized method (C<sub>H</sub> applied uniformly for clarity). Green pair (right axis) = efficiency. Amber pair (far right axis) = shaft power P2 — the only curve that responds to specific gravity.</div>
+    <div class="ftitle">Water curve vs viscous curve: efficiency dies first</div>
+    <div class="fsub">Dashed = water test curve; solid = corrected viscous performance per the HI 9.6.7 generalized method (C<sub>H</sub> applied uniformly for clarity). Green pair (right axis) = efficiency. Amber pair (far right axis) = shaft power P2: the only curve that responds to specific gravity.</div>
   </div>
   <div class="chart-box"><canvas id="viscChart"></canvas></div>
   <div class="controls">
@@ -373,22 +374,22 @@
     <div class="ctrl">
       <label>Specific gravity <span id="vSG">1.00</span></label>
       <input type="range" id="sSG" min="85" max="120" value="100" step="1">
-      <div class="hint">Power scales with SG directly — the curve-sheet P2 is for SG = 1.0.</div>
+      <div class="hint">Power scales with SG directly: the curve-sheet P2 is for SG = 1.0.</div>
     </div>
   </div>
   <div class="readout">
-    <div class="cell"><div class="k">Parameter B</div><div class="v" id="rB">—</div></div>
+    <div class="cell"><div class="k">Parameter B</div><div class="v" id="rB">–</div></div>
     <div class="cell"><div class="k">C<sub>Q</sub> = C<sub>H</sub></div><div class="v" id="rCQ">1.00</div></div>
     <div class="cell"><div class="k">C<sub style="text-transform:none">η</sub> (efficiency)</div><div class="v" id="rCE">1.00</div></div>
     <div class="cell"><div class="k"><span style="text-transform:none">η</span> at BEP</div><div class="v" id="rEv">85.1 <small>%</small></div></div>
     <div class="cell"><div class="k">P2 at BEP vs water</div><div class="v" id="rPv">1.00 <small>×</small></div></div>
   </div>
 </div>
-<p class="fig-note">Slide to 500 cSt: flow and head still keep ~94% — but efficiency keeps only 74% of its water value (85% → ~63% absolute) and shaft power is up ~19% <em>before</em> the SG multiplier. Then slide the specific gravity up and watch <strong>only the amber power curve</strong> rise: head in metres and efficiency are blind to density — the kilowatts are not. Size the motor for the viscous condition, never from the water sheet.</p>
+<p class="fig-note">Slide to 500 cSt: flow and head still keep ~94%, but efficiency keeps only 74% of its water value (85% → ~63% absolute) and shaft power is up ~19% <em>before</em> the SG multiplier. Then slide the specific gravity up and watch <strong>only the amber power curve</strong> rise: head in metres and efficiency are blind to density; the kilowatts are not. Size the motor for the viscous condition, never from the water sheet.</p>
 
 <div class="callout visc">
   <span class="lbl">Boundaries of the method</span>
-  The HI correction applies to conventional rotodynamic pumps with Newtonian fluids and roughly 1 &lt; B &lt; 40. Above that — thick sludges, non-Newtonian slurries — the rotodynamic pump itself becomes the wrong machine, and positive-displacement selection should be on the table. The correction is a derating tool, not a licence.
+  The HI correction applies to conventional rotodynamic pumps with Newtonian fluids and roughly 1 &lt; B &lt; 40. Above that (thick sludges, non-Newtonian slurries), the rotodynamic pump itself becomes the wrong machine, and positive-displacement selection should be on the table. The correction is a derating tool, not a licence.
 </div>
 
 <h2 id="misreadings">10 · The misreadings that cause field failures</h2>
@@ -396,40 +397,40 @@
 
 <ul class="clean">
   <li><strong>Reading the family envelope instead of the quoted trim.</strong> The catalogue page shows max-to-min trim; the delivered pump is one line. A duty read off the full-diameter curve but supplied as a 390 mm trim is short by 10 m of head before it ever starts.</li>
-  <li><strong>Treating the printed line as exact.</strong> A Grade 2B pump may legally deliver 5% less head. On a flat curve crossing a flat system curve, that can be a 15–20% flow shortfall — contractually acceptable, hydraulically disastrous if you never specified the grade.</li>
+  <li><strong>Treating the printed line as exact.</strong> A Grade 2B pump may legally deliver 5% less head. On a flat curve crossing a flat system curve, that can be a 15–20% flow shortfall: contractually acceptable, hydraulically disastrous if you never specified the grade.</li>
   <li><strong>Quoting BEP efficiency at a non-BEP duty.</strong> The energy study used 85%; the pump runs at 70% of BEP where the sheet reads 78%. Every kWh estimate downstream of that number is wrong.</li>
-  <li><strong>Sizing the motor at the duty point.</strong> Rising power toward runout plus any future drop in system resistance equals overload trips. Read P2 at the end of the allowable operating region — and check it again for SG and viscosity if the fluid is not cold water.</li>
-  <li><strong>Reading NPSHr as a safety line.</strong> NPSH3 means 3% head loss <em>already occurring</em>. Apply the HI 9.6.1 margin (ratio ≥ 1.1–1.3 for typical water duties, more for high-energy pumps) above the curve value — at the highest expected flow, where NPSHr is steepest.</li>
-  <li><strong>Expecting trim to fix suction problems.</strong> Trimming reduces head and power; the impeller eye — and therefore NPSHr at a given flow — stays essentially unchanged.</li>
+  <li><strong>Sizing the motor at the duty point.</strong> Rising power toward runout plus any future drop in system resistance equals overload trips. Read P2 at the end of the allowable operating region, and check it again for SG and viscosity if the fluid is not cold water.</li>
+  <li><strong>Reading NPSHr as a safety line.</strong> NPSH3 means 3% head loss <em>already occurring</em>. Apply the HI 9.6.1 margin (ratio ≥ 1.1–1.3 for typical water duties, more for high-energy pumps) above the curve value, at the highest expected flow, where NPSHr is steepest.</li>
+  <li><strong>Expecting trim to fix suction problems.</strong> Trimming reduces head and power; the impeller eye, and therefore NPSHr at a given flow, stays essentially unchanged.</li>
   <li><strong>Using a 50 Hz curve for a 60 Hz pump (or vice versa).</strong> A 20% speed difference moves head by 44% and power by 73%. Always confirm the rated speed in the title block matches the site supply and motor.</li>
-  <li><strong>Assuming % speed = % flow on a VFD.</strong> True only with zero static head. With static head the turndown range is far narrower than the drive range — and below the no-flow speed the pump churns at shut-off, which is a reliability event, not a control state (see <a href="vfd-myth-hydraulic-design.html">the VFD myth</a>).</li>
-  <li><strong>Ignoring the limits the sheet does not print.</strong> Minimum continuous stable flow (often 40–70% of BEP depending on the pump), maximum casing pressure, and allowable operating region boundaries frequently live in the selection software or the O&amp;M manual — ask for them and put them on the datasheet.</li>
+  <li><strong>Assuming % speed = % flow on a VFD.</strong> True only with zero static head. With static head the turndown range is far narrower than the drive range, and below the no-flow speed the pump churns at shut-off, which is a reliability event, not a control state (see <a href="vfd-myth-hydraulic-design.html">the VFD myth</a>).</li>
+  <li><strong>Ignoring the limits the sheet does not print.</strong> Minimum continuous stable flow (often 40–70% of BEP depending on the pump), maximum casing pressure, and allowable operating region boundaries frequently live in the selection software or the O&amp;M manual: ask for them and put them on the datasheet.</li>
 </ul>
 
 <h2 id="checklist">11 · Curve-reading checklist</h2>
 <ul class="clean">
-  <li><strong>Confirm the title block first:</strong> speed, impeller diameter, fluid, temperature, test standard and acceptance grade — before reading a single value.</li>
+  <li><strong>Confirm the title block first:</strong> speed, impeller diameter, fluid, temperature, test standard and acceptance grade, before reading a single value.</li>
   <li><strong>One vertical line:</strong> read H, η, P2 and NPSHr at the same flow, on the same trim.</li>
-  <li><strong>Locate the duty relative to BEP</strong> and confirm it sits inside the POR (70–120% of BEP per HI 9.6.3) for every expected operating mode — not just the design point.</li>
+  <li><strong>Locate the duty relative to BEP</strong> and confirm it sits inside the POR (70–120% of BEP per HI 9.6.3) for every expected operating mode, not just the design point.</li>
   <li><strong>Read power at the end of the allowable region</strong>, correct for SG and viscosity, then size the motor as non-overloading.</li>
   <li><strong>Add the NPSH margin</strong> to the curve value at the <em>highest</em> expected flow, per HI 9.6.1.</li>
-  <li><strong>Scale curves, not points,</strong> when applying affinity for speed — and use tested trim curves rather than the square law where they exist.</li>
+  <li><strong>Scale curves, not points,</strong> when applying affinity for speed, and use tested trim curves rather than the square law where they exist.</li>
   <li><strong>Specify the acceptance grade</strong> in the procurement documents if the duty actually matters; demand the witnessed test for large machines.</li>
-  <li><strong>Ask for what is not printed:</strong> MCSF, allowable region limits, maximum working pressure, and the tested — not interpolated — curve for the exact trim supplied.</li>
+  <li><strong>Ask for what is not printed:</strong> MCSF, allowable region limits, maximum working pressure, and the tested, not interpolated, curve for the exact trim supplied.</li>
 </ul>
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  The curve sheet answers four questions at every flow — how much head, at what efficiency, for how much power, needing how much suction. Read all four, at one flow, on your trim, with the tolerance and the fluid corrections applied — and the pump will do in the field exactly what it did on paper.
+  The curve sheet answers four questions at every flow: how much head, at what efficiency, for how much power, needing how much suction. Read all four, at one flow, on your trim, with the tolerance and the fluid corrections applied, and the pump will do in the field exactly what it did on paper.
 </div>
 
 <h2 id="refs">References &amp; standards</h2>
 <ol class="refs">
-  <li>ISO 9906:2012. <em>Rotodynamic pumps — Hydraulic performance acceptance tests — Grades 1, 2 and 3.</em></li>
-  <li>Hydraulic Institute. <em>ANSI/HI 14.6 — Rotodynamic Pumps for Hydraulic Performance Acceptance Tests.</em></li>
-  <li>Hydraulic Institute. <em>ANSI/HI 9.6.3 — Rotodynamic Pumps: Guideline for Operating Regions (POR / AOR).</em></li>
-  <li>Hydraulic Institute. <em>ANSI/HI 9.6.1 — Rotodynamic Pumps: Guideline for NPSH Margin.</em></li>
-  <li>Hydraulic Institute. <em>ANSI/HI 9.6.7 — Rotodynamic Pumps: Guideline for Effects of Liquid Viscosity on Performance.</em></li>
+  <li>ISO 9906:2012. <em>Rotodynamic pumps, Hydraulic performance acceptance tests: Grades 1, 2 and 3.</em></li>
+  <li>Hydraulic Institute. <em>ANSI/HI 14.6: Rotodynamic Pumps for Hydraulic Performance Acceptance Tests.</em></li>
+  <li>Hydraulic Institute. <em>ANSI/HI 9.6.3, Rotodynamic Pumps: Guideline for Operating Regions (POR / AOR).</em></li>
+  <li>Hydraulic Institute. <em>ANSI/HI 9.6.1, Rotodynamic Pumps: Guideline for NPSH Margin.</em></li>
+  <li>Hydraulic Institute. <em>ANSI/HI 9.6.7, Rotodynamic Pumps: Guideline for Effects of Liquid Viscosity on Performance.</em></li>
   <li>Gülich, J.F. <em>Centrifugal Pumps</em>, 4th ed. Springer, 2020 (trim deviations, curve shapes, suction behaviour).</li>
   <li>Karassik, I.J., Messina, J.P., Cooper, P., Heald, C.C. <em>Pump Handbook</em>, 4th ed. McGraw-Hill, 2008.</li>
   <li>Jones, G.M. (ed.). <em>Pumping Station Design</em>, 3rd ed. Butterworth-Heinemann, 2008.</li>
@@ -445,7 +446,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -636,9 +637,9 @@ function updateSheet(){
   sheetChart.options.plugins.annotation.annotations.por.xMax=1.2*bep.q;
   sheetChart.update('none');
 
-  document.getElementById('rHead').innerHTML = onCurve ? H.toFixed(1)+' <small>m</small>' : '—';
-  document.getElementById('rEff').innerHTML  = onCurve ? (E*100).toFixed(1)+' <small>%</small>' : '—';
-  document.getElementById('rP2').innerHTML   = onCurve ? Math.round(P)+' <small>kW</small>' : '—';
+  document.getElementById('rHead').innerHTML = onCurve ? H.toFixed(1)+' <small>m</small>' : '–';
+  document.getElementById('rEff').innerHTML  = onCurve ? (E*100).toFixed(1)+' <small>%</small>' : '–';
+  document.getElementById('rP2').innerHTML   = onCurve ? Math.round(P)+' <small>kW</small>' : '–';
   document.getElementById('rNpsh').innerHTML = NP.toFixed(1)+' <small>m</small>';
 
   const pct=q/bep.q*100;
@@ -706,8 +707,8 @@ function updateSpeed(){
   const Pfull=p2T(Q_FULL_DUTY,1);
   document.getElementById('rQs').innerHTML = Q>0 ? Math.round(Q)+' <small>m³/h</small>' : '<span class="badge bad">no flow</span>';
   document.getElementById('rQpct').innerHTML = Q>0 ? (Q/Q_FULL_DUTY*100).toFixed(0)+' <small>%</small>' : '0 <small>%</small>';
-  document.getElementById('rPs').innerHTML = Q>0 ? Math.round(P)+' <small>kW</small>' : '—';
-  document.getElementById('rPpct').innerHTML = Q>0 ? (P/Pfull*100).toFixed(0)+' <small>%</small>' : '—';
+  document.getElementById('rPs').innerHTML = Q>0 ? Math.round(P)+' <small>kW</small>' : '–';
+  document.getElementById('rPpct').innerHTML = Q>0 ? (P/Pfull*100).toFixed(0)+' <small>%</small>' : '–';
   document.getElementById('rNoflow').innerHTML = Math.ceil(Math.sqrt(Hs/60)*100)+' <small>%</small>';
 }
 [sSpd,sStat].forEach(s=>s.addEventListener('input',updateSpeed));

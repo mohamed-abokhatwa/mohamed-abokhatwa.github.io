@@ -17,8 +17,8 @@
   <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
   <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monitoring & Controlling Non-Revenue Water with NETBASE WMS — Mohamed Abokhatwa</title>
-    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa — Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <title>Monitoring & Controlling Non-Revenue Water with NETBASE WMS | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
   <link rel="stylesheet" href="style.css?v=17">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
@@ -105,16 +105,16 @@
   </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <meta name="description" content="How Non-Revenue Water is monitored and controlled in practice with a Water Management System like NETBASE: the smart-water data chain from loggers and SCADA to the night-flow engine, converting minimum night flow to daily leakage (net night flow, night-day factor, pressure correction), burst alarming, detection latency, and prioritising where to send crews — with three interactive charts, worked numbers and the in-software workflow.">
+  <meta name="description" content="How Non-Revenue Water is monitored and controlled in practice with a Water Management System like NETBASE: the smart-water data chain from loggers and SCADA to the night-flow engine, converting minimum night flow to daily leakage (net night flow, night-day factor, pressure correction), burst alarming, detection latency, and prioritising where to send crews, with three interactive charts, worked numbers and the in-software workflow.">
   <meta property="og:title" content="Monitoring & Controlling Non-Revenue Water with NETBASE WMS | Mohamed Abokhatwa">
-  <meta property="og:description" content="The smart-water workflow for NRW: loggers and SCADA into a WMS, the night-flow engine, burst alarms, detection latency, and crew prioritisation — the in-software detail, in three interactive charts.">
+  <meta property="og:description" content="The smart-water workflow for NRW: loggers and SCADA into a WMS, the night-flow engine, burst alarms, detection latency, and crew prioritisation, the in-software detail, in three interactive charts.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abokhatwa.com/nrw-monitoring-netbase-wms.html">
   <meta property="og:image" content="https://abokhatwa.com/og-nrw-monitoring-netbase-wms.jpg">
   <meta property="og:image:alt" content="A smart-water control dashboard monitoring district metered areas and night flow">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Monitoring & Controlling Non-Revenue Water with NETBASE WMS | Mohamed Abokhatwa">
-  <meta name="twitter:description" content="The smart-water data chain, the night-flow engine, burst alarming, detection latency and crew prioritisation — how a WMS like NETBASE turns data into recovered water.">
+  <meta name="twitter:description" content="The smart-water data chain, the night-flow engine, burst alarming, detection latency and crew prioritisation: how a WMS like NETBASE turns data into recovered water.">
   <link rel="canonical" href="https://abokhatwa.com/nrw-monitoring-netbase-wms.html">
 
   <script type="application/ld+json">
@@ -161,6 +161,7 @@
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
       <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
       <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
     </ul>
@@ -203,18 +204,18 @@
 </div>
 
 <div class="article-body">
-<p class="lead">The previous two articles built the theory: divide the network into <a href="pressure-management-dma.html">District Metered Areas</a>, read the loss from minimum night flow, and account for every drop with the <a href="non-revenue-water-leakage.html">water balance and the ILI</a>. But a water balance built once a year, by hand, is a post-mortem. To actually <em>control</em> Non-Revenue Water you need the loss measured every night, every DMA, automatically — and a system that turns that torrent of data into a short, ranked list of where to send a crew tomorrow morning. That system is a Water Management System (WMS) such as <strong>NETBASE</strong>, and this is how it works, end to end.</p>
+<p class="lead">The previous two articles built the theory: divide the network into <a href="pressure-management-dma.html">District Metered Areas</a>, read the loss from minimum night flow, and account for every drop with the <a href="non-revenue-water-leakage.html">water balance and the ILI</a>. But a water balance built once a year, by hand, is a post-mortem. To actually <em>control</em> Non-Revenue Water you need the loss measured every night, every DMA, automatically, and a system that turns that torrent of data into a short, ranked list of where to send a crew tomorrow morning. That system is a Water Management System (WMS) such as <strong>NETBASE</strong>, and this is how it works, end to end.</p>
 
 <h2 id="why">1 · From a yearly audit to a living network</h2>
 <p>Manual leakage control has a fatal latency. A burst that starts the day after your annual survey can run for months before anyone notices the bill. Smart NRW management closes that gap by instrumenting the network and letting software watch it continuously. The shift is from <em>knowing how much you lost last year</em> to <em>knowing which zone started leaking last night</em>. Three capabilities make that possible<sup class="cite">[1][2]</sup>:</p>
 <ul class="clean">
   <li><strong>Permanent measurement.</strong> Flow and pressure loggers on every DMA inlet, reporting continuously instead of during an annual visit.</li>
-  <li><strong>Automated analysis.</strong> The WMS computes each DMA's night flow, converts it to a daily leakage volume, and compares it with that zone's own history — every day, for hundreds of zones at once.</li>
+  <li><strong>Automated analysis.</strong> The WMS computes each DMA's night flow, converts it to a daily leakage volume, and compares it with that zone's own history, every day, for hundreds of zones at once.</li>
   <li><strong>Exception-based action.</strong> Instead of reading every chart, engineers react to <em>alarms</em>: the zones whose loss has stepped up. The data does the watching; people do the fixing.</li>
 </ul>
 
 <h2 id="chain">2 · The smart-water data chain</h2>
-<p>A WMS sits in the middle of a layered architecture. Each layer has a job, and the value of the system is only as good as the weakest one — bad data in, bad decisions out. Read it left to right: the field measures, communications carry, the WMS stores and analyses, and people and valves act — then the loop repeats<sup class="cite">[2][5]</sup>.</p>
+<p>A WMS sits in the middle of a layered architecture. Each layer has a job, and the value of the system is only as good as the weakest one: bad data in, bad decisions out. Read it left to right: the field measures, communications carry, the WMS stores and analyses, and people and valves act, then the loop repeats<sup class="cite">[2][5]</sup>.</p>
 
 <div class="schematic">
 <svg viewBox="0 0 720 270" role="img" aria-label="The smart-water data chain: field sensors and loggers, communications, the WMS such as NETBASE, analytics, and action, with a feedback loop">
@@ -229,7 +230,7 @@
     <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="var(--accent)"/></marker>
     <marker id="ah2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="var(--text-tertiary)"/></marker>
   </defs>
-  <text x="12" y="22" class="sw-t" style="font-size:13px;">The smart-water data chain — measure → carry → analyse → act → repeat</text>
+  <text x="12" y="22" class="sw-t" style="font-size:13px;">The smart-water data chain: measure → carry → analyse → act → repeat</text>
 
   <!-- 5 stage boxes -->
   <rect x="12"  y="60" width="120" height="92" class="sw-b" fill="var(--accent)" opacity="0.12" stroke="var(--accent)"/>
@@ -270,9 +271,9 @@
 
   <!-- feedback loop: action back to field -->
   <path class="sw-fb" d="M648 152 V200 H64 V152"/>
-  <text x="356" y="216" text-anchor="middle" class="sw-s">closed loop — fixing a leak and trimming pressure changes what the field measures next</text>
+  <text x="356" y="216" text-anchor="middle" class="sw-s">closed loop: fixing a leak and trimming pressure changes what the field measures next</text>
 </svg>
-  <div class="cap">Original schematic. The WMS (NETBASE) is the historian and analytics core; it is fed by field loggers/SCADA over scheduled and alarm-driven communications, and its output drives field crews and pressure control — which in turn change the next measurements.</div>
+  <div class="cap">Original schematic. The WMS (NETBASE) is the historian and analytics core; it is fed by field loggers/SCADA over scheduled and alarm-driven communications, and its output drives field crews and pressure control, which in turn change the next measurements.</div>
 </div>
 
 <p>The data sources differ in what they see and how often, and a good WMS fuses all of them onto one time-base:</p>
@@ -289,12 +290,12 @@
 </table>
 </div>
 
-<h2 id="acquire">3 · Step one — acquisition and the unglamorous art of clean data</h2>
+<h2 id="acquire">3 · Step one: acquisition and the unglamorous art of clean data</h2>
 <p>Every leakage figure the WMS ever produces rests on the quality of the raw signal, so the first job inside the software is <strong>data validation</strong>, not analysis. Loggers drop out, modems miss a call, a meter ices up, a clock drifts. Before night flow means anything, NETBASE-class platforms run each channel through validation, gap-filling and correction<sup class="cite">[3][5]</sup>:</p>
 <ul class="clean">
   <li><strong>Time synchronisation.</strong> Every logger and SCADA tag must share one clock, or the night window will sample the wrong hour. Confirm the data is in the correct time zone and that daylight-saving shifts are handled.</li>
   <li><strong>Unit and scaling check.</strong> Verify the meter's pulse weight / K-factor and engineering units (L/s vs m³/h vs Ml/d) at import; a wrong scale factor silently multiplies every result.</li>
-  <li><strong>Spike and flat-line removal.</strong> Reject physically impossible jumps and stuck values, and flag — don't silently invent — missing periods. Short gaps can be interpolated; long ones should be excluded so they cannot poison the night-flow average.</li>
+  <li><strong>Spike and flat-line removal.</strong> Reject physically impossible jumps and stuck values, and flag (don't silently invent) missing periods. Short gaps can be interpolated; long ones should be excluded so they cannot poison the night-flow average.</li>
   <li><strong>DMA integrity.</strong> The single most common cause of a wrong night flow is a boundary valve that is supposed to be shut but is passing, or a second feed nobody logged. Periodic closed-valve / zero-pressure tests prove the zone is truly sealed.</li>
 </ul>
 
@@ -303,29 +304,29 @@
   An un-validated network throws false alarms (a logger gap looks like a burst) and misses real ones (a leaking boundary valve inflates the baseline until a true burst hides inside it). Most "the software is wrong" complaints are really data or DMA-integrity problems. Budget as much effort for data governance as for analysis.
 </div>
 
-<h2 id="nightflow">4 · Step two — the night-flow engine</h2>
+<h2 id="nightflow">4 · Step two: the night-flow engine</h2>
 <p>This is the analytical heart of the WMS, and it is worth understanding exactly what the software does between the raw inlet flow and the leakage number on the dashboard. It runs every DMA, every night<sup class="cite">[2][3][4]</sup>.</p>
 
 <h3>4.1 Find the minimum night flow</h3>
-<p>Between roughly <strong>02:00 and 04:00</strong> legitimate demand bottoms out, so the inlet flow is dominated by leakage. The WMS picks the minimum sustained flow in that window — the <strong>minimum night flow (MNF)</strong>.</p>
+<p>Between roughly <strong>02:00 and 04:00</strong> legitimate demand bottoms out, so the inlet flow is dominated by leakage. The WMS picks the minimum sustained flow in that window: the <strong>minimum night flow (MNF)</strong>.</p>
 
 <h3>4.2 Subtract legitimate night use</h3>
-<p>Not all of the MNF is loss. A residual of genuine night consumption remains — toilet cisterns, a few night-shift users, the occasional large customer. The standard estimate is an allowance per property plus any metered <em>exceptional</em> night users<sup class="cite">[3]</sup>:</p>
+<p>Not all of the MNF is loss. A residual of genuine night consumption remains: toilet cisterns, a few night-shift users, the occasional large customer. The standard estimate is an allowance per property plus any metered <em>exceptional</em> night users<sup class="cite">[3]</sup>:</p>
 <div class="eq">\[ \text{NNF} = \text{MNF} - \big(N_p \times q_{\text{legit}} + Q_{\text{exceptional}}\big) \]</div>
 <p>where NNF is the <strong>net night flow</strong> (the leakage component at night), \(N_p\) the number of properties, and \(q_{\text{legit}}\) a per-property night allowance (a common default is ≈ 1.7 L/property/hour). Exceptional users (a hospital, a factory) are measured separately and removed explicitly, not averaged in.</p>
 
 <h3>4.3 Convert night leakage to a daily volume</h3>
-<p>Leakage at 3 a.m. is <em>not</em> the daily average leakage, because pressure is highest at night and — by the <a href="pressure-management-dma.html">FAVAD law</a> — leakage rises with pressure. To turn the net night flow into a daily volume you apply the <strong>Night-Day Factor (NDF)</strong>: the number of "night-equivalent" hours in the day once you account for the lower daytime pressure<sup class="cite">[3][4]</sup>:</p>
+<p>Leakage at 3 a.m. is <em>not</em> the daily average leakage, because pressure is highest at night and, by the <a href="pressure-management-dma.html">FAVAD law</a>, leakage rises with pressure. To turn the net night flow into a daily volume you apply the <strong>Night-Day Factor (NDF)</strong>: the number of "night-equivalent" hours in the day once you account for the lower daytime pressure<sup class="cite">[3][4]</sup>:</p>
 <div class="eq">\[ \text{Daily leakage} = \text{NNF} \times \text{NDF}, \qquad \text{NDF} = \sum_{h=1}^{24}\left(\frac{P_h}{P_{\text{night}}}\right)^{N_1} \]</div>
 <p>With constant pressure the NDF would be 24; because daytime pressure is lower, it is typically <strong>20–22</strong>. This pressure correction is exactly why a co-located pressure logger matters: without it, the WMS over-states daily leakage by assuming night conditions all day.</p>
 
 <div class="callout key">
-  <span class="lbl">Worked example — one DMA, one night</span>
-  A 1,500-property DMA logs <strong>MNF = 12.0 m³/h</strong>. Legitimate night use = 1,500 × 1.7 L/prop·h = <strong>2.55 m³/h</strong>, so <strong>NNF = 9.45 m³/h</strong>. With an AZP-derived <strong>NDF = 20</strong>, daily leakage ≈ 9.45 × 20 = <strong>189 m³/day</strong> — about 126 L/property/day. Track that number nightly and a sudden jump is a new burst; a slow creep is rising background leakage telling you the zone is due for attention.
+  <span class="lbl">Worked example: one DMA, one night</span>
+  A 1,500-property DMA logs <strong>MNF = 12.0 m³/h</strong>. Legitimate night use = 1,500 × 1.7 L/prop·h = <strong>2.55 m³/h</strong>, so <strong>NNF = 9.45 m³/h</strong>. With an AZP-derived <strong>NDF = 20</strong>, daily leakage ≈ 9.45 × 20 = <strong>189 m³/day</strong>, about 126 L/property/day. Track that number nightly and a sudden jump is a new burst; a slow creep is rising background leakage telling you the zone is due for attention.
 </div>
 
 <h2 id="int-trend">5 · Interactive: nightly monitoring &amp; the burst alarm</h2>
-<p>This is the view an engineer actually lives in: one DMA's minimum night flow, night after night. The WMS learns the zone's baseline and sets an alarm threshold above it; when a burst steps the night flow up across that line, the zone alarms and lands on tomorrow's work list. Set the background leakage, drop in a burst, and tune how sensitive the alarm is — then watch how fast it fires and how much water escapes before it does.</p>
+<p>This is the view an engineer actually lives in: one DMA's minimum night flow, night after night. The WMS learns the zone's baseline and sets an alarm threshold above it; when a burst steps the night flow up across that line, the zone alarms and lands on tomorrow's work list. Set the background leakage, drop in a burst, and tune how sensitive the alarm is, then watch how fast it fires and how much water escapes before it does.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -353,14 +354,14 @@
   <div class="readout">
     <div class="cell"><div class="k">Alarm threshold</div><div class="v" id="rThr">13 <small>m³/h</small></div></div>
     <div class="cell"><div class="k">Time to alarm</div><div class="v" id="rDays">1 <small>night</small></div></div>
-    <div class="cell"><div class="k">Lost before alarm</div><div class="v" id="rLost">— <small>m³</small></div></div>
+    <div class="cell"><div class="k">Lost before alarm</div><div class="v" id="rLost">– <small>m³</small></div></div>
     <div class="cell"><div class="k">Status</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rTrendBadge"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 6 m³/h burst on a 10 m³/h baseline with a 3 m³/h threshold trips the alarm the very next night — days, not months, after it started. Now shrink the burst toward the threshold: it takes longer to stand out from the nightly scatter, and more water is lost before detection. Loosen the sensitivity too far and a real burst can hide in the noise; tighten it too far and ordinary variation cries wolf. Tuning that line per DMA is the daily craft of running a WMS.</p>
+<p class="fig-note">A 6 m³/h burst on a 10 m³/h baseline with a 3 m³/h threshold trips the alarm the very next night: days, not months, after it started. Now shrink the burst toward the threshold: it takes longer to stand out from the nightly scatter, and more water is lost before detection. Loosen the sensitivity too far and a real burst can hide in the noise; tighten it too far and ordinary variation cries wolf. Tuning that line per DMA is the daily craft of running a WMS.</p>
 
 <h2 id="int-latency">6 · Interactive: how often you read the data decides how much you lose</h2>
-<p>Detecting a burst quickly is worth real water, and detection speed is capped by how often the loggers actually deliver data. A logger that records every 15 minutes but only dials home once a day cannot warn you any faster than once a day. This chart traces the water lost from the moment a burst starts until the WMS first sees it — for a traditional daily read versus the transmission interval you choose.</p>
+<p>Detecting a burst quickly is worth real water, and detection speed is capped by how often the loggers actually deliver data. A logger that records every 15 minutes but only dials home once a day cannot warn you any faster than once a day. This chart traces the water lost from the moment a burst starts until the WMS first sees it, for a traditional daily read versus the transmission interval you choose.</p>
 
 <div class="fig">
   <div class="fig-head">
@@ -387,20 +388,20 @@
     <div class="cell"><div class="k">Water saved</div><div class="v" style="font-size:15px;margin-top:6px;"><span id="rLatBadge"></span></div></div>
   </div>
 </div>
-<p class="fig-note">A 5 L/s burst loses 18 m³ every hour. Found on the next day's read, that is up to ~432 m³ gone; moved to a 6-hour delivery, ~108 m³; on 15-minute near-real-time telemetry, almost nothing. This is the business case for more frequent communications and event-driven alarming — and the reason "fast logging on alarm" modes exist on modern loggers. More data is not vanity; it is recovered water.</p>
+<p class="fig-note">A 5 L/s burst loses 18 m³ every hour. Found on the next day's read, that is up to ~432 m³ gone; moved to a 6-hour delivery, ~108 m³; on 15-minute near-real-time telemetry, almost nothing. This is the business case for more frequent communications and event-driven alarming, and the reason "fast logging on alarm" modes exist on modern loggers. More data is not vanity; it is recovered water.</p>
 
-<h2 id="pressure">7 · Step three — closing the loop with pressure</h2>
-<p>Monitoring tells you where the loss is; the cheapest control acts on all of it at once. Because the WMS already holds each zone's flow and pressure, it is the natural place to drive <strong>pressure management</strong>. Modern PRV controllers accept a flow signal and modulate the outlet so the critical point sits at target for the actual demand — high at peak, low at night — and the WMS both supplies that flow signal and verifies the result by watching night flow fall<sup class="cite">[2][6]</sup>. The full mechanics — fixed, time- and flow-modulated control, and the FAVAD payback — are covered in <a href="pressure-management-dma.html">pressure management &amp; DMAs</a>; here the point is that the same platform that <em>detects</em> the loss also <em>commands the valve</em> and <em>confirms the saving</em>, all on one set of data.</p>
+<h2 id="pressure">7 · Step three: closing the loop with pressure</h2>
+<p>Monitoring tells you where the loss is; the cheapest control acts on all of it at once. Because the WMS already holds each zone's flow and pressure, it is the natural place to drive <strong>pressure management</strong>. Modern PRV controllers accept a flow signal and modulate the outlet so the critical point sits at target for the actual demand (high at peak, low at night), and the WMS both supplies that flow signal and verifies the result by watching night flow fall<sup class="cite">[2][6]</sup>. The full mechanics (fixed, time- and flow-modulated control, and the FAVAD payback) are covered in <a href="pressure-management-dma.html">pressure management &amp; DMAs</a>; here the point is that the same platform that <em>detects</em> the loss also <em>commands the valve</em> and <em>confirms the saving</em>, all on one set of data.</p>
 
-<h2 id="prioritise">8 · Step four — deciding where to dig first</h2>
-<p>A city has hundreds of DMAs and a handful of leakage crews. The WMS turns the night-flow results into a ranked work list so the limited teams attack the zones with the most recoverable water first — the difference between current leakage and that zone's achievable level. It is a classic Pareto problem: a small number of DMAs usually hold most of the recoverable loss.</p>
+<h2 id="prioritise">8 · Step four: deciding where to dig first</h2>
+<p>A city has hundreds of DMAs and a handful of leakage crews. The WMS turns the night-flow results into a ranked work list so the limited teams attack the zones with the most recoverable water first: the difference between current leakage and that zone's achievable level. It is a classic Pareto problem: a small number of DMAs usually hold most of the recoverable loss.</p>
 
 <h2 id="int-priority">9 · Interactive: prioritising the crews</h2>
-<p>Twelve DMAs, ranked by recoverable leakage. You have only so many crews this cycle — drag the count and the WMS assigns them to the worst zones first. Watch how quickly the cumulative line climbs: tackling the top few zones captures the majority of the recoverable water, which is why ranking beats working the network in map order.</p>
+<p>Twelve DMAs, ranked by recoverable leakage. You have only so many crews this cycle: drag the count and the WMS assigns them to the worst zones first. Watch how quickly the cumulative line climbs: tackling the top few zones captures the majority of the recoverable water, which is why ranking beats working the network in map order.</p>
 
 <div class="fig">
   <div class="fig-head">
-    <div class="ftitle">Recoverable leakage by DMA — where the crews should go</div>
+    <div class="ftitle">Recoverable leakage by DMA: where the crews should go</div>
     <div class="fsub">Bars are each DMA's recoverable leakage (m³/day), sorted worst-first. The green bars are the zones your crews reach this cycle. The navy line is the cumulative share of total recoverable loss captured.</div>
   </div>
   <div class="chart-box"><canvas id="priChart"></canvas></div>
@@ -413,29 +414,29 @@
     <div class="ctrl">
       <label>Value of recovered water <span id="vUv">0.60 $/m³</span></label>
       <input type="range" id="sUv" min="0.2" max="2" value="0.6" step="0.05">
-      <div class="hint">Marginal value of a recovered m³ — sets the annual benefit.</div>
+      <div class="hint">Marginal value of a recovered m³: sets the annual benefit.</div>
     </div>
   </div>
   <div class="readout">
     <div class="cell"><div class="k">DMAs addressed</div><div class="v" id="rDmas">4 <small>of 12</small></div></div>
     <div class="cell"><div class="k">Water recovered</div><div class="v" id="rRec2">1,930 <small>m³/d</small></div></div>
     <div class="cell"><div class="k">Share of total</div><div class="v" id="rShare2">62 <small>%</small></div></div>
-    <div class="cell"><div class="k">Annual value</div><div class="v" id="rAnn">— <small>k$/yr</small></div></div>
+    <div class="cell"><div class="k">Annual value</div><div class="v" id="rAnn">– <small>k$/yr</small></div></div>
   </div>
 </div>
-<p class="fig-note">With four crews on the worst four of twelve zones you capture about 62% of all recoverable water — the Pareto pay-off. Adding crews five and six helps far less per crew: the curve flattens. The WMS makes this visible so management funds the crews that matter and stops spreading effort evenly across zones that barely leak.</p>
+<p class="fig-note">With four crews on the worst four of twelve zones you capture about 62% of all recoverable water: the Pareto pay-off. Adding crews five and six helps far less per crew: the curve flattens. The WMS makes this visible so management funds the crews that matter and stops spreading effort evenly across zones that barely leak.</p>
 
-<h2 id="apparent">10 · Don't forget apparent loss — AMI and the meter</h2>
-<p>Everything so far attacks <em>real</em> losses. The other half of NRW — <a href="non-revenue-water-leakage.html">apparent loss</a> — lives in the same data platform. Advanced Metering Infrastructure (AMI) streams customer consumption into the WMS, which lets it: size the legitimate-night-use allowance from real night consumption instead of a default; flag stopped or under-registering meters by their profile; detect zero-consumption accounts that should not be zero; and tighten the water balance because billed volume is now measured continuously, not estimated. Real and apparent loss share one system of record<sup class="cite">[1][7]</sup>.</p>
+<h2 id="apparent">10 · Don't forget apparent loss: AMI and the meter</h2>
+<p>Everything so far attacks <em>real</em> losses. The other half of NRW, <a href="non-revenue-water-leakage.html">apparent loss</a>, lives in the same data platform. Advanced Metering Infrastructure (AMI) streams customer consumption into the WMS, which lets it: size the legitimate-night-use allowance from real night consumption instead of a default; flag stopped or under-registering meters by their profile; detect zero-consumption accounts that should not be zero; and tighten the water balance because billed volume is now measured continuously, not estimated. Real and apparent loss share one system of record<sup class="cite">[1][7]</sup>.</p>
 
-<h2 id="inside">11 · Inside the software — getting accurate results</h2>
+<h2 id="inside">11 · Inside the software: getting accurate results</h2>
 <p>The platform is only as good as how it is set up. The settings and habits that separate a trustworthy WMS deployment from a noisy one<sup class="cite">[3][5]</sup>:</p>
 <ul class="clean">
   <li><strong>Prove the DMA before you trust the number.</strong> Run a closed-valve test on commissioning and periodically; an unlogged second feed or a passing boundary valve corrupts every night flow that follows.</li>
   <li><strong>Set the night window deliberately.</strong> Confirm 02:00–04:00 is genuinely the local minimum for that zone; shift it for areas with unusual demand (industrial, irrigation, different time zone/culture).</li>
   <li><strong>Calibrate legitimate night use, don't accept the default.</strong> Use AMI or a night-use study to set the per-property allowance and to list exceptional users explicitly; the 1.7 L/prop·h figure is a starting point, not gospel.</li>
-  <li><strong>Feed it real pressure for the NDF.</strong> Compute the night-day factor from a measured AZP profile, not an assumption — it directly scales the daily leakage volume.</li>
-  <li><strong>Tune alarm thresholds per DMA.</strong> Quiet residential zones tolerate tight thresholds; mixed-use zones need wider ones. Review false-alarm and missed-event rates and adjust — a blanket threshold fails everywhere at once.</li>
+  <li><strong>Feed it real pressure for the NDF.</strong> Compute the night-day factor from a measured AZP profile, not an assumption. It directly scales the daily leakage volume.</li>
+  <li><strong>Tune alarm thresholds per DMA.</strong> Quiet residential zones tolerate tight thresholds; mixed-use zones need wider ones. Review false-alarm and missed-event rates and adjust: a blanket threshold fails everywhere at once.</li>
   <li><strong>Check meter K-factors and units at every import.</strong> A single wrong scale factor is the most common silent error in the whole chain.</li>
   <li><strong>Integrate GIS and the hydraulic model.</strong> Pull mains length and connection counts from GIS for UARL/ILI; export validated demands to the calibrated <a href="distribution-network-looped-branched.html">network model</a> (EPANET, WaterGEMS, InfoWorks) so monitoring and modelling agree.</li>
   <li><strong>Govern the data continuously.</strong> Watch logger battery and signal health, communication success rates, and gap statistics; a fleet of silent loggers is a dashboard of comforting lies.</li>
@@ -448,32 +449,32 @@
 
 <h2 id="checklist">12 · The implementation checklist</h2>
 <ul class="clean">
-  <li><strong>Instrument the DMAs</strong> — flow at every inlet, pressure at AZP/critical point, with adequate logging and transmission frequency for your detection target.</li>
-  <li><strong>Establish the data backbone</strong> — reliable communications, a validated import into the WMS, one synchronised clock, correct units and K-factors.</li>
-  <li><strong>Configure the night-flow engine</strong> — night window, legitimate night use, exceptional users, and a measured NDF per zone.</li>
-  <li><strong>Set and tune alarms</strong> — per-DMA thresholds; review false/missed rates and adjust.</li>
-  <li><strong>Wire in pressure control</strong> — flow-modulated PRVs driven and verified by the platform.</li>
-  <li><strong>Prioritise and dispatch</strong> — rank by recoverable loss; send crews worst-first; track run-time to repair.</li>
-  <li><strong>Add AMI for apparent loss</strong> — calibrate night use, catch meter faults, tighten the balance.</li>
-  <li><strong>Integrate GIS and model</strong> — for ILI benchmarking and for keeping monitoring and the hydraulic model consistent.</li>
-  <li><strong>Govern and review</strong> — logger health, data completeness, and a monthly ILI/water-balance trend, not just a yearly number.</li>
+  <li><strong>Instrument the DMAs</strong>: flow at every inlet, pressure at AZP/critical point, with adequate logging and transmission frequency for your detection target.</li>
+  <li><strong>Establish the data backbone</strong>: reliable communications, a validated import into the WMS, one synchronised clock, correct units and K-factors.</li>
+  <li><strong>Configure the night-flow engine</strong>: night window, legitimate night use, exceptional users, and a measured NDF per zone.</li>
+  <li><strong>Set and tune alarms</strong>: per-DMA thresholds; review false/missed rates and adjust.</li>
+  <li><strong>Wire in pressure control</strong>: flow-modulated PRVs driven and verified by the platform.</li>
+  <li><strong>Prioritise and dispatch</strong>: rank by recoverable loss; send crews worst-first; track run-time to repair.</li>
+  <li><strong>Add AMI for apparent loss</strong>: calibrate night use, catch meter faults, tighten the balance.</li>
+  <li><strong>Integrate GIS and model</strong>: for ILI benchmarking and for keeping monitoring and the hydraulic model consistent.</li>
+  <li><strong>Govern and review</strong>: logger health, data completeness, and a monthly ILI/water-balance trend, not just a yearly number.</li>
 </ul>
 
 <div class="callout key">
   <span class="lbl">The one-line summary</span>
-  A WMS like NETBASE turns a network of loggers into a nightly verdict: it validates the data, computes each DMA's leakage from the net night flow with a measured pressure correction, alarms the zones that stepped up, ranks them by recoverable water, and drives the pressure that suppresses all of it — converting raw telemetry into the shortest possible list of where to dig tomorrow.
+  A WMS like NETBASE turns a network of loggers into a nightly verdict: it validates the data, computes each DMA's leakage from the net night flow with a measured pressure correction, alarms the zones that stepped up, ranks them by recoverable water, and drives the pressure that suppresses all of it, converting raw telemetry into the shortest possible list of where to dig tomorrow.
 </div>
 
 <h2 id="refs">References &amp; further reading</h2>
 <ol class="refs">
-  <li>American Water Works Association. <em>Manual M36 — Water Audits and Loss Control Programs</em> (water balance, NRW components, real vs apparent loss).</li>
-  <li>Farley, M. &amp; Trow, S. <em>Losses in Water Distribution Networks: A Practitioner's Guide to Assessment, Monitoring and Control.</em> IWA Publishing — DMA monitoring and night-flow analysis.</li>
-  <li>UK Water Industry / WRc. <em>Managing Leakage</em> series — esp. <em>Report E: Interpreting Measured Night Flows</em> (net night flow, legitimate night use, hour-to-day / night-day factor).</li>
+  <li>American Water Works Association. <em>Manual M36: Water Audits and Loss Control Programs</em> (water balance, NRW components, real vs apparent loss).</li>
+  <li>Farley, M. &amp; Trow, S. <em>Losses in Water Distribution Networks: A Practitioner's Guide to Assessment, Monitoring and Control.</em> IWA Publishing: DMA monitoring and night-flow analysis.</li>
+  <li>UK Water Industry / WRc. <em>Managing Leakage</em> series: esp. <em>Report E: Interpreting Measured Night Flows</em> (net night flow, legitimate night use, hour-to-day / night-day factor).</li>
   <li>Lambert, A.O. &amp; Morrison, J.A.E. <em>Recent developments in pressure–leakage relationships and night-day factors.</em> IWA Water Loss conferences (FAVAD / N1).</li>
-  <li>Ovarro (formerly Servelec Technologies / Technolog). <em>NETBASE Water Network Management Software</em> — product and application documentation (DMA management, night-line analysis, alarms, pressure management, reporting).</li>
-  <li>Thornton, J., Sturm, R. &amp; Kunkel, G. <em>Water Loss Control.</em> McGraw-Hill — active leakage control, intervention and pressure management.</li>
+  <li>Ovarro (formerly Servelec Technologies / Technolog). <em>NETBASE Water Network Management Software</em>: product and application documentation (DMA management, night-line analysis, alarms, pressure management, reporting).</li>
+  <li>Thornton, J., Sturm, R. &amp; Kunkel, G. <em>Water Loss Control.</em> McGraw-Hill: active leakage control, intervention and pressure management.</li>
   <li>IWA / smart-water references on AMI, telemetry and data validation for water utilities; AWWA standards for metering accuracy.</li>
-  <li>EPANET (US EPA); Bentley OpenFlows WaterGEMS; Autodesk/Innovyze InfoWorks WS Pro — hydraulic model integration and demand calibration; Esri ArcGIS for GIS/asset data.</li>
+  <li>EPANET (US EPA); Bentley OpenFlows WaterGEMS; Autodesk/Innovyze InfoWorks WS Pro: hydraulic model integration and demand calibration; Esri ArcGIS for GIS/asset data.</li>
 </ol>
 
 <div class="tags">#NonRevenueWater #NRW #SmartWater #NETBASE #WMS #WaterManagementSystem #LeakageControl #DMA #MinimumNightFlow #NetNightFlow #NightDayFactor #BurstDetection #SCADA #Telemetry #DataLoggers #AMI #PressureManagement #GIS #HydraulicModel #WaterLoss #PipelineDesign #WaterInfrastructure</div>
@@ -484,7 +485,7 @@
 <section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
   <div style="max-width:560px; margin:0 auto;">
     <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
-    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering — delivered to your inbox.</p>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
     <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
       <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
       <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
@@ -644,7 +645,7 @@ function updateTrend(){
   document.getElementById('rThr').innerHTML=fmt1(thr)+' <small>m³/h</small>';
   const badge=document.getElementById('rTrendBadge');
   if(alarmIdx<0){
-    document.getElementById('rDays').innerHTML='—';
+    document.getElementById('rDays').innerHTML='–';
     document.getElementById('rLost').innerHTML='&infin; <small>(undetected)</small>';
     badge.innerHTML='<span class="badge bad">burst hidden</span>';
   } else {
@@ -671,8 +672,8 @@ const TXS=[]; for(let t=0;t<=48;t+=1) TXS.push(t);
 let latChart=new Chart(document.getElementById('latChart'),{
   data:{labels:TXS,datasets:[
     {type:'line', label:'Cumulative water lost', data:[], borderColor:'#1b4f72', backgroundColor:'rgba(27,79,114,0.10)', borderWidth:3, pointRadius:0, tension:0, fill:true, order:3},
-    {type:'scatter', label:'Detected — your interval', data:[], backgroundColor:'#1e8449', borderColor:'#fff', borderWidth:2, pointRadius:8, order:1},
-    {type:'scatter', label:'Detected — daily read', data:[], backgroundColor:'#1b4f72', borderColor:'#fff', borderWidth:2, pointRadius:7, order:2}
+    {type:'scatter', label:'Detected: your interval', data:[], backgroundColor:'#1e8449', borderColor:'#fff', borderWidth:2, pointRadius:8, order:1},
+    {type:'scatter', label:'Detected: daily read', data:[], backgroundColor:'#1b4f72', borderColor:'#fff', borderWidth:2, pointRadius:7, order:2}
   ]},
   options:{
     responsive:true, maintainAspectRatio:false,

@@ -562,7 +562,7 @@
   <li><strong>A compartmentation break.</strong> Terminating shafts at mechanical floors is the single most effective control on <a href="stack-effect-tall-buildings.html">stack effect</a>, and it is also where smoke zones and fire compartments naturally align.</li>
 </ul>
 
-<h2>2 · The area economics: and why they mislead</h2>
+<h2>2 · The area economics, and why they mislead</h2>
 <p>There is a real optimisation buried here, and it is worth doing because it is so often asserted without numbers. Adding mechanical floors costs whole floors of lettable area. But it <em>saves</em> shaft area on every other floor, because a riser that only serves one zone carries a fraction of the load. With \(F\) floors of area \(A\), \(N\) mechanical floors, and a riser cross-section of \(k\) per floor served, the total area lost is approximately:</p>
 <div class="eq">\[ L(N) \;=\; \underbrace{N\,A}_{\text{mechanical floors}} \;+\; \underbrace{\frac{k\,F^{2}}{2N}}_{\text{shafts on every floor}} \qquad\Longrightarrow\qquad N^{*} = F\sqrt{\frac{k}{2A}} \]</div>
 <p>Run it for a real tower (150 floors of 1,000&nbsp;m², 0.35&nbsp;m² of riser per floor served), and the optimum is <strong>two</strong> mechanical floors, costing about 2.65&nbsp;% of gross floor area. Real megatall towers have five to ten. The economics are not wrong; they are simply not the binding constraint. <strong>Mechanical floors are sited by pressure, fire and structure, and the area calculation only tells you what that decision costs.</strong> Knowing the number is still valuable: it is the difference between "we need another mechanical floor" and "another mechanical floor costs 0.7&nbsp;% of your lettable area and here is what it buys."</p>
@@ -704,7 +704,7 @@
 <h2>3 · Column shortening: the movement nobody tells you about</h2>
 <p>Concrete under sustained compression keeps deforming for years, and it shrinks as it dries. The total vertical strain is the sum of three parts:</p>
 <div class="eq">\[ \varepsilon_{total} \;=\; \underbrace{\frac{\sigma}{E}}_{\text{elastic}} \;+\; \underbrace{\phi\,\frac{\sigma}{E}}_{\text{creep}} \;+\; \underbrace{\varepsilon_{sh}}_{\text{shrinkage}} \]</div>
-<p>with \(\phi\) the creep coefficient, typically 1.5–2.5. For a column at 10&nbsp;MPa in 35&nbsp;GPa concrete with 300&nbsp;µε of shrinkage, the total is around 1,150&nbsp;µε, and over 600&nbsp;m of building that is roughly <strong>690&nbsp;mm of vertical shortening</strong>. Structural engineers know this and compensate for most of it during construction by casting floors slightly high. What matters to the MEP engineer is the <strong>residual</strong>: the portion that occurs <em>after</em> the risers are installed and anchored, which is commonly a third to a half of the total: <strong>200 to 350&nbsp;mm on a 600&nbsp;m tower.</strong></p>
+<p>with \(\phi\) the creep coefficient, typically 1.5–2.5. For a column at 10&nbsp;MPa in 35&nbsp;GPa concrete with 300&nbsp;µε of shrinkage, the total is around 1,150&nbsp;µε, and over 600&nbsp;m of building that is roughly <strong>690&nbsp;mm of vertical shortening</strong>. Structural engineers know this and compensate for most of it during construction by casting floors slightly high. What matters to the MEP engineer is the <strong>residual</strong>: the portion that occurs <em>after</em> the risers are installed and anchored, which is commonly a third to a half of the total, <strong>200 to 350&nbsp;mm on a 600&nbsp;m tower.</strong></p>
 
 <div class="callout warn">
   <span class="lbl">The one that actually breaks things: differential shortening</span>
@@ -951,7 +951,7 @@
 </ul>
 <p>The static-pressure physics is the same \(p=\rho g h\) that drives <a href="firefighting-tall-buildings.html">fire standpipe zoning</a>; what changes is the ceiling. Fire equipment tolerates 12–24&nbsp;bar. A shower mixer tolerates five.</p>
 
-<h2>2 · Estimating demand: and why Hunter over-sizes your tower</h2>
+<h2>2 · Estimating demand, and why Hunter over-sizes your tower</h2>
 <p>Roy Hunter's 1940 fixture-unit method is still the default in most codes. It models each fixture as an on/off process, assigns weighted <strong>water supply fixture units (WSFU)</strong>, and reads a design flow off an empirical curve<sup class="cite">[1][2]</sup>. It was a brilliant piece of work, calibrated against the fixtures of 1940, which used a 20-litre flush, an unrestricted 15&nbsp;L/min tap and no aerators at all.</p>
 <p>Modern fittings use a 4.5-litre dual flush, 6&nbsp;L/min aerated taps and 9&nbsp;L/min showers. The fixtures changed by a factor of three; the curve did not. The modern replacement (the basis of the IAPMO Water Demand Calculator and of EN 806 / DIN 1988-300 style methods) treats simultaneous use as a <strong>binomial process</strong><sup class="cite">[3]</sup>:</p>
 <div class="eq">\[ Q_{design} \;=\; n\,p\,q_f \;+\; z\,q_f\sqrt{n\,p\,(1-p)} \]</div>
@@ -1552,7 +1552,7 @@
 <ul class="clean">
   <li><strong>Irrigation, sub-surface.</strong> The least demanding. Screening, biological treatment and disinfection are typically sufficient.</li>
   <li><strong>WC flushing.</strong> Human contact is credible, so turbidity, BOD and residual disinfectant limits tighten, and colour and odour become a user-acceptance issue as much as a health one. A membrane bioreactor (MBR) is the usual answer because it produces a consistent, low-turbidity effluent in a small footprint.</li>
-  <li><strong>Cooling tower makeup.</strong> The most demanding, and the one most often underestimated: the tower creates a breathable aerosol, so microbiological control is paramount, and the water chemistry must also suit the treatment programme: nutrients such as phosphorus and nitrogen left in reclaimed water feed biofilm and directly undermine the Legionella control discussed in <a href="cooling-towers-heat-rejection-tall-buildings.html">cooling towers</a>.</li>
+  <li><strong>Cooling tower makeup.</strong> The most demanding, and the one most often underestimated: the tower creates a breathable aerosol, so microbiological control is paramount, and the water chemistry must also suit the treatment programme; nutrients such as phosphorus and nitrogen left in reclaimed water feed biofilm and directly undermine the Legionella control discussed in <a href="cooling-towers-heat-rejection-tall-buildings.html">cooling towers</a>.</li>
   <li><strong>Never for potable use</strong>, and physically impossible to cross-connect: separate pipework, distinct colour coding and marking, no shared valves or hose points, and backflow protection at every interface.</li>
 </ul>
 
@@ -1705,7 +1705,7 @@
   <div class="hb-fig-model">Static mass from volume; dynamic allowance as a fraction of static representing the sloshing (convective) mass excited by building sway. Indicative only: a real design needs a fluid-structure assessment.</div>
   <a class="hb-fig-live" href="pools-wellness-mep-tall-buildings.html#stChart">Run this model in the online edition</a>
 </figure>
-<p class="fig-note">A 400&nbsp;m² pool at 1.6&nbsp;m mean depth is <strong>640 tonnes of water</strong> and, with the tank and surround, close to <strong>900 tonnes</strong> at roof level: a load intensity of <strong>22&nbsp;kPa</strong>, roughly <strong>seven times</strong> a normal office floor. It also sits at the point of maximum building sway, so a share of that water is a dynamic mass moving with the structure. Two things follow that the MEP engineer must actually do: issue the <strong>full operating mass including the balance tank</strong> to the structural engineer early, and note that a pool near the top of a tower interacts with the building's dynamics: in some towers deliberately, as a tuned sloshing damper, which is only possible if the interaction is recognised at concept rather than discovered in commissioning.</p>
+<p class="fig-note">A 400&nbsp;m² pool at 1.6&nbsp;m mean depth is <strong>640 tonnes of water</strong> and, with the tank and surround, close to <strong>900 tonnes</strong> at roof level: a load intensity of <strong>22&nbsp;kPa</strong>, roughly <strong>seven times</strong> a normal office floor. It also sits at the point of maximum building sway, so a share of that water is a dynamic mass moving with the structure. Two things follow that the MEP engineer must actually do: issue the <strong>full operating mass including the balance tank</strong> to the structural engineer early, and note that a pool near the top of a tower interacts with the building's dynamics, in some towers deliberately, as a tuned sloshing damper, which is only possible if the interaction is recognised at concept rather than discovered in commissioning.</p>
 
 <h2>7 · Installation &amp; execution tricks</h2>
 <ul class="clean">
@@ -3894,7 +3894,7 @@
 <h2>4 · Day tanks, transfer and the control that matters</h2>
 <ul class="clean">
   <li><strong>Size the day tank on code first, runtime second.</strong> Many jurisdictions cap the quantity permitted at the equipment inside a building; that cap, not the runtime you would like, sets the tank.</li>
-  <li><strong>Duplicate the transfer pumps and their power.</strong> Duty and standby, both on the essential supply, with automatic changeover on failure to achieve level: the failure that matters is not the pump, it is the pump that did not start.</li>
+  <li><strong>Duplicate the transfer pumps and their power.</strong> Duty and standby, both on the essential supply, with automatic changeover on failure to achieve level: the failure that matters is not the pump but the pump that did not start.</li>
   <li><strong>Prevent overfill mechanically, not just electrically.</strong> A high-level float switch plus an independent overfill prevention device plus an overflow returning by gravity to the bulk tank. Relying on a single level probe is how a mechanical floor gets flooded with diesel.</li>
   <li><strong>Design the return leg.</strong> Engines return more fuel than they burn; the return must go somewhere thermally sensible and must not pressurise the day tank or push hot fuel back into the bulk store.</li>
   <li><strong>Fit remote isolation.</strong> A remotely operated shut-off at the bulk tank and at each floor served, operable from the fire command centre, is required by most codes and is worth having regardless.</li>

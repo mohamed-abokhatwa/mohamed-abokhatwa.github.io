@@ -95,7 +95,7 @@ BODY = r"""
 <h2 id="daytank">4 · Day tanks, transfer and the control that matters</h2>
 <ul class="clean">
   <li><strong>Size the day tank on code first, runtime second.</strong> Many jurisdictions cap the quantity permitted at the equipment inside a building; that cap, not the runtime you would like, sets the tank.</li>
-  <li><strong>Duplicate the transfer pumps and their power.</strong> Duty and standby, both on the essential supply, with automatic changeover on failure to achieve level: the failure that matters is not the pump, it is the pump that did not start.</li>
+  <li><strong>Duplicate the transfer pumps and their power.</strong> Duty and standby, both on the essential supply, with automatic changeover on failure to achieve level: the failure that matters is not the pump but the pump that did not start.</li>
   <li><strong>Prevent overfill mechanically, not just electrically.</strong> A high-level float switch plus an independent overfill prevention device plus an overflow returning by gravity to the bulk tank. Relying on a single level probe is how a mechanical floor gets flooded with diesel.</li>
   <li><strong>Design the return leg.</strong> Engines return more fuel than they burn; the return must go somewhere thermally sensible and must not pressurise the day tank or push hot fuel back into the bulk store.</li>
   <li><strong>Fit remote isolation.</strong> A remotely operated shut-off at the bulk tank and at each floor served, operable from the fire command centre, is required by most codes and is worth having regardless.</li>

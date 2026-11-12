@@ -234,7 +234,7 @@ Long-distance transmission mains exhibit complex longitudinal profiles with mult
     </label>
   </div>
   <canvas id="profileChart" height="200"></canvas>
-  <div id="fig1caption" class="diagram-caption">Fig. 1: Gravity-fed system: HGL drops along the pipeline; higher flow expands air accumulation zones (amber). Zones where the profile approaches or exceeds the HGL are negative-pressure risk areas requiring CAV placement.</div>
+  <div id="fig1caption" class="diagram-caption">Fig. 1. Gravity-fed system: HGL drops along the pipeline; higher flow expands air accumulation zones (amber). Zones where the profile approaches or exceeds the HGL are negative-pressure risk areas requiring CAV placement.</div>
 </div>
 
 <hr class="article-divider">
@@ -380,7 +380,7 @@ The small orifice is sized to continuously vent air released from solution durin
   </div>
   <canvas id="sizeChart" height="220"></canvas>
   <div id="sizeResult" class="diag-note diag-note-blue" style="margin-top:12px;font-size:14px;line-height:1.8;font-weight:500;"></div>
-  <div class="diagram-caption">Fig. 2: Computed orifice diameters and surge pressure check. Large orifice sized per AWWA M51; surge ΔH computed via Joukowsky equation.</div>
+  <div class="diagram-caption">Fig. 2. Computed orifice diameters and surge pressure check. Large orifice sized per AWWA M51; surge ΔH computed via Joukowsky equation.</div>
 </div>
 
 <hr class="article-divider">
@@ -482,7 +482,7 @@ The placement of CAVs is the most nuanced step in transmission main design. It s
   </div>
   <canvas id="spacingCanvas" width="860" height="210"></canvas>
   <div id="spacingNote" class="diag-note diag-note-blue" style="margin-top:10px;"></div>
-  <div class="diagram-caption">Fig. 3: Recommended CAV spacing based on terrain slope. Green markers = mandatory; blue = spacing-based; red = anti-vacuum on steep descent.</div>
+  <div class="diagram-caption">Fig. 3. Recommended CAV spacing based on terrain slope. Green markers = mandatory; blue = spacing-based; red = anti-vacuum on steep descent.</div>
 </div>
 
 <hr class="article-divider">
@@ -530,7 +530,7 @@ If the large orifice is too large, air enters at high velocity during a pressure
   </div>
   <canvas id="surgeChart" height="220"></canvas>
   <div id="surgeNote" class="diag-note diag-note-danger" style="margin-top:10px;"></div>
-  <div class="diagram-caption">Fig. 4: Joukowsky surge head (m w.c.) for four pipe materials at varying velocity change. Any result exceeding 50% of working pressure requires a slow-closing CAV.</div>
+  <div class="diagram-caption">Fig. 4. Joukowsky surge head (m w.c.) for four pipe materials at varying velocity change. Any result exceeding 50% of working pressure requires a slow-closing CAV.</div>
 </div>
 
 <div class="callout">
@@ -602,7 +602,7 @@ If the large orifice is too large, air enters at high velocity during a pressure
 <div class="diagram-wrap">
   <div class="diagram-title">CAV Placement Along Alignment: Worked Example (K0 to K45)</div>
   <canvas id="alignChart" height="260"></canvas>
-  <div class="diagram-caption">Fig. 5: Pipeline profile of the worked example. CAV locations by type: ● Mandatory high-point | ▲ Spacing-based | ■ Anti-vacuum (steep descent). HGL shown under minimum flow.</div>
+  <div class="diagram-caption">Fig. 5. Pipeline profile of the worked example. CAV locations by type: ● Mandatory high-point | ▲ Spacing-based | ■ Anti-vacuum (steep descent). HGL shown under minimum flow.</div>
 </div>
 
 <hr class="article-divider">
@@ -783,7 +783,7 @@ function updateProfile(){
   profileChart.data.datasets[1].data=hgl;
   profileChart.data.datasets[2].data=getProfileData().map((p,i)=>p>hgl[i]-20?p:null);
   profileChart.update();
-  document.getElementById('fig1caption').textContent='Fig. 1: '+fig1Cap[sysType];
+  document.getElementById('fig1caption').textContent='Fig. 1. '+fig1Cap[sysType];
 }
 
 // ── CANVAS 2: Valve Operating State ─────────────────────────────────────────

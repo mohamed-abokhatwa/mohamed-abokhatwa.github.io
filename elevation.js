@@ -25,8 +25,8 @@
   var BAR = 0.0981, TI = 22, ETA = 0.70, FLOOR = 4.2;
   var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var S = { H: 828, PN: 16, PM: 1.5, PF: 12, zd: 147.8, zf: 122.3, zg: 122.3, nz: 7,
-            To: 5, elev: 828, tgt: 828, scale: 0.18, datumY: 320,
+  var S = { H: 1006, PN: 16, PM: 1.5, PF: 12, zd: 147.8, zf: 122.3, zg: 122.3, nz: 9,
+            To: 5, elev: 1006, tgt: 1006, scale: 0.18, datumY: 320,
             anchors: [], run: false, idle: 0 };
 
   var pal = {};

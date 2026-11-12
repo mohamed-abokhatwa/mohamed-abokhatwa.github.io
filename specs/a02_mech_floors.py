@@ -11,7 +11,7 @@ BODY = r"""
   <li><strong>A compartmentation break.</strong> Terminating shafts at mechanical floors is the single most effective control on <a href="stack-effect-tall-buildings.html">stack effect</a>, and it is also where smoke zones and fire compartments naturally align.</li>
 </ul>
 
-<h2 id="economics">2 · The area economics: and why they mislead</h2>
+<h2 id="economics">2 · The area economics, and why they mislead</h2>
 <p>There is a real optimisation buried here, and it is worth doing because it is so often asserted without numbers. Adding mechanical floors costs whole floors of lettable area. But it <em>saves</em> shaft area on every other floor, because a riser that only serves one zone carries a fraction of the load. With \(F\) floors of area \(A\), \(N\) mechanical floors, and a riser cross-section of \(k\) per floor served, the total area lost is approximately:</p>
 <div class="eq">\[ L(N) \;=\; \underbrace{N\,A}_{\text{mechanical floors}} \;+\; \underbrace{\frac{k\,F^{2}}{2N}}_{\text{shafts on every floor}} \qquad\Longrightarrow\qquad N^{*} = F\sqrt{\frac{k}{2A}} \]</div>
 <p>Run it for a real tower (150 floors of 1,000&nbsp;m², 0.35&nbsp;m² of riser per floor served), and the optimum is <strong>two</strong> mechanical floors, costing about 2.65&nbsp;% of gross floor area. Real megatall towers have five to ten. The economics are not wrong; they are simply not the binding constraint. <strong>Mechanical floors are sited by pressure, fire and structure, and the area calculation only tells you what that decision costs.</strong> Knowing the number is still valuable: it is the difference between "we need another mechanical floor" and "another mechanical floor costs 0.7&nbsp;% of your lettable area and here is what it buys."</p>

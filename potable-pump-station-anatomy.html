@@ -204,7 +204,7 @@
 <p>The pump is the part everyone photographs. It is also the part least likely to fail the project. A large potable station fails (on paper at the design review, or at 7&nbsp;a.m. in its third summer), for reasons that have nothing to do with the impeller and everything to do with how the machines are arranged, sequenced and fed:</p>
 <ul class="clean">
   <li><strong>It is sized for redundancy, not just flow.</strong> The duty point tells you how much water; the <em>firm capacity</em> rule tells you how many machines, because the station must still deliver with one unit out for maintenance or failure.</li>
-  <li><strong>It must follow a moving target.</strong> Demand is not a number, it is a curve: almost flat at night, a wall at the morning peak. A bank of pumps that can only run flat-out either floods the storage or hammers itself to death cycling on and off.</li>
+  <li><strong>It must follow a moving target.</strong> Demand is a curve, not a number: almost flat at night, a wall at the morning peak. A bank of pumps that can only run flat-out either floods the storage or hammers itself to death cycling on and off.</li>
   <li><strong>It lives or dies on its suction side.</strong> Discharge problems announce themselves; suction problems hide until the pump is cavitating, eroding and losing head. Where the pumps sit relative to the water surface is decided here, before the slab is poured.</li>
   <li><strong>It is full of hardware that is not pumps.</strong> Check valves, isolation valves, the suction and discharge manifolds, flow meters, surge protection and the control logic are where most of the operating trouble actually lives.</li>
 </ul>
@@ -227,7 +227,7 @@
 <p>Everything downstream of this article (selection, surge, control) has its own treatment on this site. Here we build the skeleton: how many pumps, how they run, and how they are fed.</p>
 
 <h2 id="duty">3 · From demand to the duty point</h2>
-<p>A potable station exists to move a known volume against a known head. The volume comes from the same demand basis that sizes the storage it usually feeds<sup class="cite">[2]</sup>: population \(P\) and per-capita demand \(q\) give the average, maximum and peak-hour demands:</p>
+<p>A potable station exists to move a known volume against a known head. The volume comes from the same demand basis that sizes the storage it usually feeds<sup class="cite">[2]</sup>. Population \(P\) and per-capita demand \(q\) give the average, maximum and peak-hour demands:</p>
 
 <div class="eq">\[ \text{ADD} = P\,q \qquad \text{MDD} = f_d\cdot\text{ADD} \qquad \text{PHD} = f_h\cdot\frac{\text{ADD}}{24} \]</div>
 

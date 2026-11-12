@@ -9,7 +9,7 @@ document.documentElement.classList.add('rt-live');
 var $=function(i){return document.getElementById(i);};
 var G=9.81, L_KM=700, COVER=1.5, D=2.0, C_HW=130, ETA_M=0.82, SUCT=25;
 var A=Math.PI*D*D/4, Q=4.0;
-var BAR=0.0981, TI=22, ETA_T=0.70, H_TOWER=828, PN=16, PMIN=1.5, PF=12;
+var BAR=0.0981, TI=22, ETA_T=0.70, H_TOWER=1006, PN=16, PMIN=1.5, PF=12;
 var A_WAVE=1000;
 var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -246,7 +246,7 @@ function draw(){
   ctx.globalAlpha = inA ? 0.55 : 1;
   ctx.textBaseline='middle';
 
-  /* alternating zone tint, so the seven zones read at a glance */
+  /* alternating zone tint, so the nine zones read at a glance */
   for(var zt=0; zt<NZ; zt+=2){
     var t0=Math.min(H_TOWER,zt*ZG), t1=Math.min(H_TOWER,(zt+1)*ZG);
     if(t1<=t0) break;
@@ -331,7 +331,7 @@ function draw(){
   ctx.strokeStyle=rgba(pal.ink,0.14); ctx.lineWidth=1;
   ctx.beginPath(); ctx.moveTo(Math.round(railX)+0.5,roofY-24); ctx.lineTo(Math.round(railX)+0.5,gy); ctx.stroke();
   ctx.textAlign='right'; ctx.font='500 9px "IBM Plex Mono", monospace';
-  [0,200,400,600,828].forEach(function(el){
+  [0,200,400,600,800,1006].forEach(function(el){
     var ey=BY(el);
     ctx.strokeStyle=rgba(pal.ink,0.35); ctx.lineWidth=1;
     ctx.beginPath(); ctx.moveTo(railX-5,Math.round(ey)+0.5); ctx.lineTo(railX,Math.round(ey)+0.5); ctx.stroke();

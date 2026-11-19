@@ -34,3 +34,13 @@ Run in this order (needs numpy for the two independent codes):
     python3 specs/surge_data/gen_datasets.py    specs/surge_data
     python3 specs/surge_data/closed_form.py     specs/surge_data
     python3 specs/surge_data/vessel_articles.py specs/surge_data
+
+## Surge-analysis practice articles (s08–s11)
+
+- `series_moc.py` — numpy MOC solver for pipes in series, each with its own length and wave speed,
+  reproducing HAMMER's length and wave-speed adjustment; agrees with `moc.py` to 0.01 m on the uniform main.
+- `gen_analyst.py` — every dataset behind `specs/s08_model_check.py`, `s09_pump_data.py`,
+  `s10_pressure_limits.py` and `s11_surge_report.py`; writes `analyst.json`
+  (`gen_datasets_helpers.py` holds the decimation helpers shared with `gen_datasets.py`).
+
+    python3 specs/surge_data/gen_analyst.py specs/surge_data

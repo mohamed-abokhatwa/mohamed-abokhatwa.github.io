@@ -14,7 +14,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 SURGE7 = ['wave-speed-surge-analysis', 'surge-vessel-differential-orifice', 'surge-vessel-type-selection',
           'one-way-surge-tank-design', 'surge-relief-valve-sizing', 'pump-inertia-flywheel-surge',
-          'choosing-surge-protection']
+          'choosing-surge-protection',
+          'surge-model-time-step-convergence', 'pump-trip-data-inertia-specific-speed',
+          'surge-envelope-pipe-pressure-limits', 'surge-study-report-review-checklist']
 fails, warns, info = [], [], []
 def F(m): fails.append(m)
 def W(m): warns.append(m)
@@ -112,7 +114,7 @@ if "window.addEventListener('load'" not in charts: W('no load->resize handler')
 info.append(f'charts JS {len(charts)//1024} KB')
 
 elems = {}
-for m in re.finditer(r'<(input|select|canvas|span|div|td|strong|b|p)\b([^>]*)\sid="([^"]+)"([^>]*)>', body):
+for m in re.finditer(r'<(input|select|canvas|span|div|td|tbody|strong|b|p)\b([^>]*)\sid="([^"]+)"([^>]*)>', body):
     tag, a1, i, a2 = m.groups(); attrs = a1 + a2
     val = re.search(r'\svalue="([^"]*)"', attrs)
     if tag == 'select':

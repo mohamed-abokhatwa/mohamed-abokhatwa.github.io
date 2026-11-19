@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Is Your HAMMER Run Right? Time Step, Wave-Speed Adjustment, Convergence and Run Duration | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=3">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:3px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:3px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:var(--success);} .callout.green .lbl{color:var(--success);}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:start;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:start;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:end;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:3px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:3px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:var(--air);}
+    .fig-head .fsub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid var(--border);background:var(--bg-2);}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+    .ctrl label span{color:var(--air);font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:var(--danger);}
+    .ctrl .hint{font-size:11.5px;color:var(--text-secondary);margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:3px;font-size:13px;font-family:inherit;background:var(--sheet);color:var(--text-primary);}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid var(--border);}
+    .readout .cell{padding:14px 16px;border-right:1px solid var(--border);}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary);}
+    .readout .v{font-size:22px;font-weight:700;color:var(--air);font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:var(--text-secondary);}
+    .badge{display:inline-block;padding:3px 10px;border-radius:3px;font-size:12px;font-weight:600;}
+    .badge.good{background:var(--success-w);color:var(--success);}
+    .badge.warn{background:var(--warning-w);color:var(--warning);}
+    .badge.bad{background:var(--danger-w);color:var(--danger);}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:var(--air);text-decoration:none;border:1px solid var(--border);border-radius:3px;padding:4px 11px;background:var(--sheet);transition:.18s;}
+    .calc-link:hover{border-color:var(--air);background:var(--bg-2);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="How to check a surge model before trusting it: why one time step forces length or wave-speed adjustments, what they did to a 12 km DN800 main, cleaning short pipes, halving the step, run duration and the Joukowsky test, with four interactive charts and the Bentley HAMMER settings.">
+  <meta property="og:title" content="Is Your HAMMER Run Right? Time Step, Wave-Speed Adjustment, Convergence and Run Duration | Mohamed Abokhatwa">
+  <meta property="og:description" content="On a 12 km DN800 main with a 2.4 m meter spool, a 0.1 s time step with wave-speed adjustment reported a 90 m maximum against a converged 119.3 m, and a 90 s run missed the upsurge entirely because it arrives at 101 s.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/surge-model-time-step-convergence.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-surge-model-time-step-convergence.jpg">
+  <meta property="og:image:alt" content="Engineer checking a surge model: a pipeline profile with maximum and minimum head envelopes, a time-step grid of characteristic lines over a pipe made of short and long segments, and a stopwatch">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Is Your HAMMER Run Right? Time Step, Wave-Speed Adjustment, Convergence and Run Duration | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="On a 12 km DN800 main with a 2.4 m meter spool, a 0.1 s time step with wave-speed adjustment reported a 90 m maximum against a converged 119.3 m, and a 90 s run missed the upsurge entirely because it arrives at 101 s.">
+  <link rel="canonical" href="https://abokhatwa.com/surge-model-time-step-convergence.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Is Your HAMMER Run Right? Time Step, Wave-Speed Adjustment, Convergence and Run Duration",
+  "description": "Checking a hydraulic transient model: time step and wave-speed or length adjustment, model cleaning, grid convergence, run duration and the Joukowsky test, worked on a 12 km DN800 main with the Bentley HAMMER settings.",
+  "image": "https://abokhatwa.com/og-surge-model-time-step-convergence.jpg",
+  "datePublished": "2026-11-19",
+  "dateModified": "2026-11-19",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/surge-model-time-step-convergence.html" }
+}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Surge &amp; Transient Analysis</span></div>
+  <span class="tag">Surge Analysis &middot; Model Checking &middot; Time Step</span>
+  <h1>Is Your HAMMER Run Right? Time Step, Wave-Speed Adjustment, Convergence and Run Duration</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>November 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>23 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="surge-model-time-step-convergence.webp" alt="Engineer checking a surge model: a pipeline profile with maximum and minimum head envelopes, a time-step grid of characteristic lines over a pipe made of short and long segments, and a stopwatch">
+</div>
+
+<div class="article-body">
+
+<p class="lead">A transient model can be wrong in ways that no error message reports. We built the 12&nbsp;km reference main the way it usually arrives from a GIS import, with a 2.4&nbsp;m flowmeter spool and four other short pipes. We then ran it with a custom 0.1&nbsp;s time step and HAMMER-style wave-speed adjustment. It reported a maximum head of <strong>90.0&nbsp;m</strong>; the converged answer is <strong>119.3&nbsp;m</strong>. At 0.05&nbsp;s the same model put the line minimum at +1.4&nbsp;m, a failure, when the true value is +4.3&nbsp;m, a pass. And a 90&nbsp;s run of the correct model reports no upsurge at all, because the 119&nbsp;m peak does not arrive until <strong>101&nbsp;s</strong> after the trip. This article sets out the five checks we make before any surge result leaves the office, with the numbers that show why each one matters.</p>
+
+<h2 id="five-checks">1 &middot; Five checks before you believe a transient run</h2>
+<p>The reference main for the surge series is a 12&nbsp;km, DN800 ductile iron line carrying 0.70&nbsp;m&sup3;/s (1.39&nbsp;m/s) from an HGL of 85.0&nbsp;m at the pump to 44.8&nbsp;m at the reservoir. The wave speed is 1,050&nbsp;m/s, so 2L/a = 22.9&nbsp;s. Protection is a hydropneumatic vessel at the pump with 3.5&nbsp;m&sup3; of gas in a 20&nbsp;m&sup3; shell and a DN400 differential connection (see <a href="surge-vessel.html">Sizing the Hydropneumatic Surge Vessel</a>). Converged, this design keeps the line at or above <strong>+4.26&nbsp;m</strong> (lowest at 4.3&nbsp;km), with a maximum of <strong>119.3&nbsp;m</strong> at the pump, against a design minimum of +3.0&nbsp;m and a project limit of 136&nbsp;m.</p>
+<p>Every number in this article comes from two method-of-characteristics codes written independently for this series: the solver behind the <a href="choosing-surge-protection.html">surge protection series</a> and a new multi-pipe solver that reproduces it to 0.01&nbsp;m on the uniform main [1][2]. Neither is Bentley HAMMER, but the time-step and adjustment logic follows the HAMMER documentation [3][4], so the effects shown here are the ones a HAMMER user meets. The five checks are:</p>
+<ol>
+  <li><strong>The steady state.</strong> Flows, HGL at both ends and the pump duty point match the hydraulic design before anything is tripped.</li>
+  <li><strong>The time step and the adjustment it forces.</strong> One time step serves the whole model, so every pipe's length or wave speed is bent to fit it. Sections 2 to 6 cover this.</li>
+  <li><strong>Grid convergence.</strong> Halving the time step should leave the answer unchanged (section 7).</li>
+  <li><strong>Run duration.</strong> The envelope must stop changing well before the run ends (section 8).</li>
+  <li><strong>A hand check.</strong> A test case whose answer is known, such as the Joukowsky rise for a fast valve closure, must come out right (section 9).</li>
+</ol>
+<div class="callout key">
+  <span class="lbl">The reviewer's question</span>
+  &ldquo;How do you know this number is right?&rdquo; A surge report that cannot answer it with the time step, the adjustments, a halved-step rerun and a run duration has not been checked, whatever software produced it. The <a href="surge-study-report-review-checklist.html">surge study report</a> article lists where each of these goes in the deliverable.
+</div>
+
+<h2 id="why-adjust">2 &middot; Why one time step forces an adjustment</h2>
+<p>The method of characteristics moves along lines on which a pressure wave travels one reach in one time step. Each pipe <em>i</em> is cut into \(n_i\) reaches of length \(\Delta x_i = a_i\,\Delta t\), and that only works if its length is a whole number of reaches [1][5]:</p>
+<div class="eq">\[ n_i \;=\; \frac{L_i}{a_i\,\Delta t} \quad\text{must be an integer} \;\ge 1 \]</div>
+<p>With dozens of pipes of arbitrary length and several wave speeds, no practical \(\Delta t\) satisfies every pipe exactly. HAMMER therefore rounds each \(n_i\) and changes either the pipe's length or its wave speed so the rounded value fits [3][4]:</p>
+<div class="eq">\[ \text{Adjust length: } L_i' = n_i\,a_i\,\Delta t \qquad\qquad \text{Adjust wave speed: } a_i' = \frac{L_i}{n_i\,\Delta t} \]</div>
+<p>In both modes the wave takes \(n_i\,\Delta t\) to cross the pipe instead of \(L_i/a_i\). The difference lies in what else changes. Adjusting the length keeps the pipe's impedance \(a/gA\), so each metre per second of flow change still produces the right head change, but the pipe holds a different volume of water. Adjusting the wave speed keeps the volume but changes the impedance: a pipe whose wave speed is cut from 1,150 to 24&nbsp;m/s responds to a flow change with 2&nbsp;% of the head it should, and behaves like a small soft accumulator.</p>
+<p>HAMMER shows the result in its <strong>Transient Time Step Options</strong> dialog: the time step, and the <strong>Max</strong>, <strong>Mean</strong> and <strong>RMS Adjustment</strong> over all pipes, in absolute terms or as a percentage. <strong>Length</strong> is the default adjustment; wave speed is offered as faster and acceptable for slow mass oscillations [3]. When the adjustment is too large HAMMER warns that the approximation &ldquo;deviates excessively from the entered values&rdquo;, and suggests lengthening short pipes, subdividing long ones or raising the <strong>Max Adjustment</strong> value [3]. The documentation says plainly that there is no hard rule for how much adjustment is acceptable, and that users should test the sensitivity of their results [4]. The rest of this article is that test, on one model.</p>
+<div class="callout warn">
+  <span class="lbl">The tempting shortcut</span>
+  Raising <strong>Max Adjustment</strong> until the warning goes away, or typing in a larger <strong>Custom Time Step</strong> to make a big model run faster, is exactly how the results in section 5 were produced. Both are legitimate settings. Neither is safe without the checks that follow.
+</div>
+
+<h2 id="as-imported">3 &middot; The model as it arrives</h2>
+<p>A model built from a GIS export or a station layout drawing carries every fitting that was drawn as a pipe. Ours has five pieces of steel station pipework between the pump and the boundary valve (one of them a 2.4&nbsp;m magnetic flowmeter spool), a 3.2&nbsp;m spool at a washout chamber, a 5.6&nbsp;m spool at an air valve tee and a 41&nbsp;m steel road crossing, among ten long ductile iron pipes. The total is still 12,000&nbsp;m. The steel station pipework is thicker-walled, so we give it 1,150&nbsp;m/s.</p>
+
+<div class="tbl-wrap"><table>
+  <caption>The as-imported model, and what two time steps do to it in each adjustment mode (adjustment as a percentage of the entered value)</caption>
+  <thead><tr><th>Pipe</th><th>Description</th><th class="num">L <span style="text-transform:none">(m)</span></th><th class="num">a <span style="text-transform:none">(m/s)</span></th><th class="num">Travel time <span style="text-transform:none">(s)</span></th><th class="num">n at 0.1&nbsp;s</th><th class="num">Length adj. at 0.1&nbsp;s</th><th class="num">Wave speed adj. at 0.1&nbsp;s</th><th class="num">n at 0.005&nbsp;s</th></tr></thead>
+  <tbody>
+    <tr><td>P-1</td><td>Pump discharge spool</td><td class="num">6.5</td><td class="num">1,150</td><td class="num">0.0057</td><td class="num">1</td><td class="num">+1,669&nbsp;%</td><td class="num">&minus;94.3&nbsp;%</td><td class="num">1</td></tr>
+    <tr><td>P-2</td><td>Discharge header</td><td class="num">11.0</td><td class="num">1,150</td><td class="num">0.0096</td><td class="num">1</td><td class="num">+945&nbsp;%</td><td class="num">&minus;90.4&nbsp;%</td><td class="num">2</td></tr>
+    <tr><td>P-3</td><td>Header to vessel tee and meter</td><td class="num">18.4</td><td class="num">1,150</td><td class="num">0.0160</td><td class="num">1</td><td class="num">+525&nbsp;%</td><td class="num">&minus;84.0&nbsp;%</td><td class="num">3</td></tr>
+    <tr><td>P-4</td><td>Flowmeter spool</td><td class="num">2.4</td><td class="num">1,150</td><td class="num">0.0021</td><td class="num">1</td><td class="num">+4,692&nbsp;%</td><td class="num">&minus;97.9&nbsp;%</td><td class="num">1</td></tr>
+    <tr><td>P-5</td><td>Meter to station boundary valve</td><td class="num">27.7</td><td class="num">1,150</td><td class="num">0.0241</td><td class="num">1</td><td class="num">+315&nbsp;%</td><td class="num">&minus;75.9&nbsp;%</td><td class="num">5</td></tr>
+    <tr><td>P-6</td><td>Field main</td><td class="num">486.0</td><td class="num">1,050</td><td class="num">0.4629</td><td class="num">5</td><td class="num">+8.0&nbsp;%</td><td class="num">&minus;7.4&nbsp;%</td><td class="num">93</td></tr>
+    <tr><td>P-7</td><td>Field main</td><td class="num">1,212.5</td><td class="num">1,050</td><td class="num">1.1548</td><td class="num">12</td><td class="num">+3.9&nbsp;%</td><td class="num">&minus;3.8&nbsp;%</td><td class="num">231</td></tr>
+    <tr><td>P-8</td><td>Field main</td><td class="num">834.6</td><td class="num">1,050</td><td class="num">0.7949</td><td class="num">8</td><td class="num">+0.6&nbsp;%</td><td class="num">&minus;0.6&nbsp;%</td><td class="num">159</td></tr>
+    <tr><td>P-9</td><td>Washout chamber spool</td><td class="num">3.2</td><td class="num">1,050</td><td class="num">0.0030</td><td class="num">1</td><td class="num">+3,181&nbsp;%</td><td class="num">&minus;97.0&nbsp;%</td><td class="num">1</td></tr>
+    <tr><td>P-10</td><td>Field main</td><td class="num">1,560.2</td><td class="num">1,050</td><td class="num">1.4859</td><td class="num">15</td><td class="num">+0.9&nbsp;%</td><td class="num">&minus;0.9&nbsp;%</td><td class="num">297</td></tr>
+    <tr><td>P-11</td><td>Road crossing (steel sleeve)</td><td class="num">41.0</td><td class="num">1,150</td><td class="num">0.0357</td><td class="num">1</td><td class="num">+180&nbsp;%</td><td class="num">&minus;64.3&nbsp;%</td><td class="num">7</td></tr>
+    <tr><td>P-12</td><td>Field main</td><td class="num">922.8</td><td class="num">1,050</td><td class="num">0.8789</td><td class="num">9</td><td class="num">+2.4&nbsp;%</td><td class="num">&minus;2.3&nbsp;%</td><td class="num">176</td></tr>
+    <tr><td>P-13</td><td>Field main</td><td class="num">1,407.3</td><td class="num">1,050</td><td class="num">1.3403</td><td class="num">13</td><td class="num">&minus;3.0&nbsp;%</td><td class="num">+3.1&nbsp;%</td><td class="num">268</td></tr>
+    <tr><td>P-14</td><td>Air valve tee spool</td><td class="num">5.6</td><td class="num">1,050</td><td class="num">0.0053</td><td class="num">1</td><td class="num">+1,775&nbsp;%</td><td class="num">&minus;94.7&nbsp;%</td><td class="num">1</td></tr>
+    <tr><td>P-15</td><td>Field main</td><td class="num">2,015.0</td><td class="num">1,050</td><td class="num">1.9190</td><td class="num">19</td><td class="num">&minus;1.0&nbsp;%</td><td class="num">+1.0&nbsp;%</td><td class="num">384</td></tr>
+    <tr><td>P-16</td><td>Field main</td><td class="num">1,175.9</td><td class="num">1,050</td><td class="num">1.1199</td><td class="num">11</td><td class="num">&minus;1.8&nbsp;%</td><td class="num">+1.8&nbsp;%</td><td class="num">224</td></tr>
+    <tr><td>P-17</td><td>Field main to reservoir</td><td class="num">2,269.9</td><td class="num">1,050</td><td class="num">2.1618</td><td class="num">22</td><td class="num">+1.8&nbsp;%</td><td class="num">&minus;1.7&nbsp;%</td><td class="num">432</td></tr>
+  </tbody>
+</table></div>
+<p>At 0.1&nbsp;s the flowmeter spool, whose true travel time is 2.1&nbsp;ms, has to become one reach of 0.1&nbsp;s. Adjusting length turns 2.4&nbsp;m of pipe into 115&nbsp;m; adjusting wave speed turns 1,150&nbsp;m/s into 24&nbsp;m/s. The long pipes barely move. The <strong>Mean</strong> and <strong>RMS</strong> figures look alarming only because a handful of short pipes dominate them, which is the first lesson: <strong>read the adjustment pipe by pipe, not as one number</strong>.</p>
+
+<h2 id="int-adjust">4 &middot; Interactive: the adjustment for any time step</h2>
+<p>Choose the model and the adjustment mode and move the time step. The chart shows the largest adjustment in the model over the whole range of time steps for both modes; the table lists every pipe at the selected step. The readouts are the three figures HAMMER reports.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Time step against the adjustment it forces</div>
+    <div class="fsub">\(n_i = \max(1, \mathrm{round}(L_i/a_i\Delta t))\). Length mode: \((n_i a_i\Delta t - L_i)/L_i\). Wave speed mode: \((L_i/n_i\Delta t - a_i)/a_i\). Max, mean and RMS of the absolute values over all pipes, unweighted. Log scales on both axes.</div>
+  </div>
+  <div class="chart-box"><canvas id="adjChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Model</label>
+      <select id="sModel">
+        <option value="raw" selected>As imported: 17 pipes, shortest 2.4 m</option>
+        <option value="clean">Cleaned: 11 pipes, shortest 41 m</option>
+      </select>
+      <div class="hint">Section 6 explains how the short pipes were merged.</div>
+    </div>
+    <div class="ctrl">
+      <label>Adjust</label>
+      <select id="sMode">
+        <option value="length" selected>Length (HAMMER default)</option>
+        <option value="wave">Wave speed</option>
+      </select>
+      <div class="hint">The table and readouts follow this choice.</div>
+    </div>
+    <div class="ctrl">
+      <label>Time step <span id="vDt">0.1 s</span></label>
+      <input type="range" id="sDt" min="0" max="16" value="14" step="1">
+      <div class="hint">From 0.001 to 0.2&nbsp;s.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Max adjustment</div><div class="v" id="rMax">&ndash;</div></div>
+    <div class="cell"><div class="k">Mean adjustment</div><div class="v" id="rMean">&ndash;</div></div>
+    <div class="cell"><div class="k">RMS adjustment</div><div class="v" id="rRms">&ndash;</div></div>
+    <div class="cell"><div class="k">Worst pipe</div><div class="v" style="font-size:15px;margin-top:6px;" id="rWorst">&ndash;</div></div>
+    <div class="cell"><div class="k">Reaches in the model</div><div class="v" id="rReach">&ndash;</div></div>
+    <div class="cell"><div class="k">Run effort vs 0.1 s</div><div class="v" id="rCost">&ndash;</div></div>
+  </div>
+  <div class="tbl-wrap" style="margin-top:14px;"><table>
+    <thead><tr><th>Pipe</th><th class="num">L <span style="text-transform:none">(m)</span></th><th class="num">a <span style="text-transform:none">(m/s)</span></th><th class="num">n</th><th class="num">Modelled <span style="text-transform:none">L / a</span></th><th class="num">Adjustment</th></tr></thead>
+    <tbody id="adjRows"></tbody>
+  </table></div>
+</div>
+<p class="fig-note">On the as-imported model the largest adjustment never falls below 5&nbsp;% in either mode, even at 0.001&nbsp;s with 11,421 reaches for a 12&nbsp;km main. The cleaned model gets below 5&nbsp;% at 0.005&nbsp;s with 2,284 reaches, and below 1.1&nbsp;% at 0.002&nbsp;s. The curves are saw-toothed: a slightly <em>larger</em> step can need less adjustment than a smaller one, because what matters is how close each \(L_i/a_i\Delta t\) falls to a whole number. Run effort is the number of reaches times the number of steps, relative to the same model at 0.1&nbsp;s.</p>
+
+<h2 id="effect">5 &middot; What the adjustment does to the answer</h2>
+<p>We ran the vessel-protected trip on both models at seven time steps in both modes, 150&nbsp;s each, and compared every result with a reference run of the as-imported model at 0.0005&nbsp;s (22,850 reaches, largest adjustment 4.3&nbsp;%). The reference gives +4.26&nbsp;m at 4.3&nbsp;km, a maximum of 119.27&nbsp;m and a peak gas volume of 16.19&nbsp;m&sup3;. The cleaned model at 0.0005&nbsp;s agrees to 0.01&nbsp;m.</p>
+
+<div class="tbl-wrap"><table>
+  <caption>Vessel-protected pump trip on the as-imported model. Reference: +4.26&nbsp;m minimum, 119.27&nbsp;m maximum</caption>
+  <thead><tr><th class="num">&Delta;t <span style="text-transform:none">(s)</span></th><th class="num">Reaches</th><th class="num">Min, length adj. <span style="text-transform:none">(m)</span></th><th class="num">Max, length adj. <span style="text-transform:none">(m)</span></th><th class="num">Min, wave speed adj. <span style="text-transform:none">(m)</span></th><th class="num">Max, wave speed adj. <span style="text-transform:none">(m)</span></th></tr></thead>
+  <tbody>
+    <tr><td class="num">0.2</td><td class="num">65</td><td class="num">+2.64</td><td class="num">123.07</td><td class="num">+12.44</td><td class="num">85.00</td></tr>
+    <tr><td class="num">0.1</td><td class="num">122</td><td class="num">+3.58</td><td class="num">121.43</td><td class="num">+4.92</td><td class="num">89.95</td></tr>
+    <tr><td class="num">0.05</td><td class="num">234</td><td class="num">+4.05</td><td class="num">120.07</td><td class="num">+1.44</td><td class="num">109.69</td></tr>
+    <tr><td class="num">0.02</td><td class="num">575</td><td class="num">+4.20</td><td class="num">119.52</td><td class="num">+4.07</td><td class="num">117.57</td></tr>
+    <tr><td class="num">0.01</td><td class="num">1,144</td><td class="num">+4.25</td><td class="num">119.34</td><td class="num">+4.18</td><td class="num">118.96</td></tr>
+    <tr><td class="num">0.005</td><td class="num">2,285</td><td class="num">+4.26</td><td class="num">119.29</td><td class="num">+4.24</td><td class="num">119.21</td></tr>
+    <tr><td class="num">0.002</td><td class="num">5,710</td><td class="num">+4.26</td><td class="num">119.28</td><td class="num">+4.25</td><td class="num">119.35</td></tr>
+  </tbody>
+</table></div>
+
+<p>Four things stand out.</p>
+<ul class="clean">
+  <li><strong>The errors go both ways.</strong> At 0.1&nbsp;s, wave-speed adjustment reports a maximum of 90.0&nbsp;m, 29&nbsp;m low, and a minimum of +4.9&nbsp;m, 0.7&nbsp;m better than the truth. The soft spools near the pump absorb the upsurge. At 0.05&nbsp;s the same mode puts the minimum at +1.4&nbsp;m near 0.9&nbsp;km: a design that passes is reported as failing.</li>
+  <li><strong>Length adjustment fails more gently here.</strong> It keeps every pipe's impedance, so its errors come from the extra water and travel time. At 0.1&nbsp;s it reads 121.4&nbsp;m and +3.6&nbsp;m, conservative on both sides, but still 0.7&nbsp;m out on a 1.3&nbsp;m margin.</li>
+  <li><strong>At 0.005&nbsp;s and below both modes agree with the reference</strong> to within 0.1&nbsp;m on both extremes. Even then the worst adjusted pipe, now a chamber spool changed by 24&nbsp;%, still moves the peak at the pump by 0.08&nbsp;m in wave-speed mode.</li>
+  <li><strong>At 0.2&nbsp;s the model says there is no problem at all.</strong> Wave-speed adjustment reports a maximum of 85.0&nbsp;m, the steady head, and a minimum of +12.4&nbsp;m. Length adjustment at the same step reports +2.6&nbsp;m, a failure. Neither number has anything to do with the real main.</li>
+</ul>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">The same trip, the same model, different time steps</div>
+    <div class="fsub">Vessel-protected pump trip, 150&nbsp;s runs. Upper: highest head on the line. Lower: lowest pressure head on the line. Dashed lines are the 0.0005&nbsp;s reference run of the as-imported model (+4.26&nbsp;m and 119.27&nbsp;m). Time step on a log scale.</div>
+  </div>
+  <div class="chart-box" style="height:300px;"><canvas id="resMaxChart"></canvas></div>
+  <div class="chart-box" style="height:300px;"><canvas id="resMinChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Model</label>
+      <select id="sModel2">
+        <option value="raw" selected>As imported: 17 pipes</option>
+        <option value="clean">Cleaned: 11 pipes</option>
+      </select>
+      <div class="hint">Both adjustment modes are drawn.</div>
+    </div>
+    <div class="ctrl">
+      <label>Time step for the readouts</label>
+      <select id="sDt2">
+        <option value="0">0.2 s</option>
+        <option value="1" selected>0.1 s</option>
+        <option value="2">0.05 s</option>
+        <option value="3">0.02 s</option>
+        <option value="4">0.01 s</option>
+        <option value="5">0.005 s</option>
+        <option value="6">0.002 s</option>
+      </select>
+      <div class="hint">Readouts for the length (L) and wave speed (a) modes.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Max adjustment, L / a</div><div class="v" id="rAdj2" style="font-size:17px;">&ndash;</div></div>
+    <div class="cell"><div class="k">Highest head, L / a</div><div class="v" id="rMax2" style="font-size:17px;">&ndash;</div></div>
+    <div class="cell"><div class="k">Error on the max, L / a</div><div class="v" id="rEmax2" style="font-size:17px;">&ndash;</div></div>
+    <div class="cell"><div class="k">Lowest head, L / a</div><div class="v" id="rMin2" style="font-size:17px;">&ndash;</div></div>
+    <div class="cell"><div class="k">Error on the min, L / a</div><div class="v" id="rEmin2" style="font-size:17px;">&ndash;</div></div>
+    <div class="cell"><div class="k">Verdict at +3.0 m, L / a</div><div class="v" style="font-size:14px;margin-top:6px;" id="rVer2">&ndash;</div></div>
+  </div>
+</div>
+<p class="fig-note">Switch to the cleaned model and the spread collapses: at 0.1&nbsp;s the maximum is within 1.2&nbsp;m of the reference in both modes, and from 0.05&nbsp;s down every result is within 0.15&nbsp;m. At 0.1&nbsp;s the cleaned model in wave-speed mode still drops the minimum to +3.4&nbsp;m near 1&nbsp;km, because the 41&nbsp;m road crossing is then one reach with its wave speed cut by 64&nbsp;% and the 66&nbsp;m station pipe by 43&nbsp;%. At 0.2&nbsp;s even the cleaned model fails in wave-speed mode (&minus;0.4&nbsp;m). A large custom time step is the first thing we look for in someone else's run.</p>
+
+<h2 id="clean-model">6 &middot; Cleaning the model: what to merge and what to keep</h2>
+<p>The cure for adjustment is rarely a smaller time step. On a large network that multiplies run time, and HAMMER's documentation itself points to lengthening short pipes, subdividing long ones and using Skelebrator to remove short pipes [3][4]. We merged five things:</p>
+<ul class="clean">
+  <li><strong>Station pipework</strong> P-1 to P-5 became one 66.0&nbsp;m steel pipe. Where merged pipes have different wave speeds, keep the travel time: \(a_{eq} = \sum L_i \big/ \sum (L_i/a_i)\). Where they have different bores, keep the volume and the impedance as far as you can, and keep the station in detail if a check valve or the vessel connection sits inside it.</li>
+  <li><strong>Chamber spools</strong> (P-9, P-14) were added to the neighbouring field pipe. A washout or air valve node must stay where the device is; only the spool goes.</li>
+  <li><strong>The road crossing</strong> stayed at 41&nbsp;m: it is long enough to be a few reaches and its wave speed is genuinely different.</li>
+</ul>
+<p>Some things must never be merged away, whatever they do to the time step: a dead-end branch (it reflects the wave and doubles the pressure at its end), a closed valve, the node of any protection device, a high point or a change of gradient on the profile, and any pipe where the diameter changes enough to change the impedance. When in doubt, keep the pipe and reduce the time step for that run only.</p>
+<div class="callout green">
+  <span class="lbl">Our working rule</span>
+  We clean the model until the largest adjustment is a few percent on every pipe longer than about two reaches, and then prove the time step by halving it (section 7). We read the adjustment pipe by pipe: on the cleaned model at 0.05&nbsp;s, a 40&nbsp;% length change on the 41&nbsp;m road crossing moved the answer by 0.14&nbsp;m at most, while a 98&nbsp;% wave-speed change on a 2.4&nbsp;m spool beside the pump moved the maximum by 29&nbsp;m.
+</div>
+
+<h2 id="convergence">7 &middot; Halve the step: grid convergence on the uniform main</h2>
+<p>Even with no adjustment at all, a coarse grid smears steep wave fronts and moves the extremes. On the uniform reference main, where any \(\Delta t = 12{,}000/(1{,}050\,N)\) fits exactly, we ran three cases at six grid sizes: the vessel design, the 400&nbsp;kg&middot;m&sup2; flywheel of <a href="pump-inertia-flywheel-surge.html">Pump Inertia and the Flywheel</a>, and the unprotected trip, whose peak comes from cavity collapse.</p>
+
+<div class="tbl-wrap"><table>
+  <caption>Grid convergence on the uniform 12&nbsp;km main, 150&nbsp;s runs</caption>
+  <thead><tr><th class="num">Reaches N</th><th class="num">&Delta;x <span style="text-transform:none">(m)</span></th><th class="num">&Delta;t <span style="text-transform:none">(s)</span></th><th class="num">Vessel: min <span style="text-transform:none">(m)</span></th><th class="num">Vessel: max <span style="text-transform:none">(m)</span></th><th class="num">Flywheel: min <span style="text-transform:none">(m)</span></th><th class="num">Unprotected max, vapour cavity <span style="text-transform:none">(m)</span></th><th class="num">Unprotected max, gas cavity <span style="text-transform:none">(m)</span></th></tr></thead>
+  <tbody>
+    <tr><td class="num">30</td><td class="num">400</td><td class="num">0.381</td><td class="num">+4.57</td><td class="num">118.90</td><td class="num">+9.40</td><td class="num">189.1</td><td class="num">168.1</td></tr>
+    <tr><td class="num">60</td><td class="num">200</td><td class="num">0.191</td><td class="num">+4.41</td><td class="num">119.06</td><td class="num">+9.36</td><td class="num">189.3</td><td class="num">161.1</td></tr>
+    <tr><td class="num">120</td><td class="num">100</td><td class="num">0.095</td><td class="num">+4.33</td><td class="num">119.15</td><td class="num">+9.34</td><td class="num">189.9</td><td class="num">164.6</td></tr>
+    <tr><td class="num">240</td><td class="num">50</td><td class="num">0.048</td><td class="num">+4.29</td><td class="num">119.19</td><td class="num">+9.33</td><td class="num">190.0</td><td class="num">161.2</td></tr>
+    <tr><td class="num">480</td><td class="num">25</td><td class="num">0.024</td><td class="num">+4.27</td><td class="num">119.21</td><td class="num">+9.32</td><td class="num">190.0</td><td class="num">162.5</td></tr>
+    <tr><td class="num">960</td><td class="num">12</td><td class="num">0.012</td><td class="num">+4.26</td><td class="num">119.22</td><td class="num">+9.32</td><td class="num">190.1</td><td class="num">162.2</td></tr>
+  </tbody>
+</table></div>
+<p>The two protected cases converge cleanly. From the coarsest grid to the finest, the vessel minimum falls by 0.31&nbsp;m, and every halving halves the change (0.16, 0.08, 0.04, 0.02, 0.01&nbsp;m), which is first-order behaviour. A model at 0.38&nbsp;s would report +4.57&nbsp;m and overstate the margin above +3.0&nbsp;m by a quarter. The flywheel minimum hardly moves (0.08&nbsp;m). The collapse peak behaves differently: the vapour cavity model settles at 189&ndash;190&nbsp;m, while the gas cavity model wanders between 161 and 168&nbsp;m with no trend. Collapse peaks do not converge the way a single-phase result does, which is why this series quotes them as a range and designs to keep the line out of vapour [6][7].</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Does the answer stop moving when the step is halved?</div>
+    <div class="fsub">Uniform reference main, N = 30 to 960 reaches (\(\Delta t\) = 0.38 to 0.012&nbsp;s). Upper: the two protected minima. Lower: the unprotected maximum in the two cavity models. Grid on a log scale.</div>
+  </div>
+  <div class="chart-box" style="height:300px;"><canvas id="gridMinChart"></canvas></div>
+  <div class="chart-box" style="height:300px;"><canvas id="gridMaxChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Your run</label>
+      <select id="sGrid">
+        <option value="0" selected>N = 30, &Delta;t = 0.381 s</option>
+        <option value="1">N = 60, &Delta;t = 0.190 s</option>
+        <option value="2">N = 120, &Delta;t = 0.095 s</option>
+        <option value="3">N = 240, &Delta;t = 0.048 s</option>
+        <option value="4">N = 480, &Delta;t = 0.024 s</option>
+        <option value="5">N = 960, &Delta;t = 0.012 s</option>
+      </select>
+      <div class="hint">The readouts compare it with the run at half the step (twice the reaches).</div>
+    </div>
+    <div class="ctrl">
+      <label>Tolerance on a halving <span id="vTol">0.10 m</span></label>
+      <input type="range" id="sTol" min="0.02" max="0.5" value="0.1" step="0.02">
+      <div class="hint">How much change you will accept before trusting the run.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Vessel min, this run</div><div class="v" id="rG1">&ndash;</div></div>
+    <div class="cell"><div class="k">At half the step</div><div class="v" id="rG2">&ndash;</div></div>
+    <div class="cell"><div class="k">Change on halving</div><div class="v" id="rG3">&ndash;</div></div>
+    <div class="cell"><div class="k">Extrapolated value</div><div class="v" id="rG4">&ndash;</div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;" id="rG5">&ndash;</div></div>
+  </div>
+</div>
+<p class="fig-note">The extrapolated value assumes first-order convergence: \(H_\infty \approx 2H_{2N} - H_N\). From every grid, even N = 30 (0.38&nbsp;s), the extrapolation lands within 0.01&nbsp;m of the finest run. With a 0.10&nbsp;m tolerance the vessel minimum is converged from N = 60. Select N = 960 and there is no finer run to compare with, which is the honest position for any production model: the last halving is the evidence.</p>
+<p>In HAMMER this check is two runs: the time step HAMMER suggests, and the same scenario with <strong>Use Custom Time Step?</strong> checked and half that value. The documentation recommends the same kind of test with a very small step [4]. Compare the minimum and maximum envelopes at the critical points, not only at the pump.</p>
+
+<h2 id="duration">8 &middot; Run duration: the peak that arrives at 101 seconds</h2>
+<p>A pump trip on a long main with a vessel is a slow event. The first downsurge is over in one wave cycle, but the column then swings back and forth between the vessel and the reservoir with a period set by the gas volume and the length of the line, much longer than 2L/a. On the reference main the lowest head is reached at 18.6&nbsp;s. The highest head, 119.2&nbsp;m at the pump, comes at <strong>101&nbsp;s</strong> on the return swing, more than four times 2L/a. The <a href="hammer-transient-simulation-workflow.html">HAMMER workflow article</a> on this site uses 90&nbsp;s as an example duration; on this main a 90&nbsp;s run would report a maximum of 85.0&nbsp;m, the steady head, and miss the upsurge entirely.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">What a run of a given length would report</div>
+    <div class="fsub">Vessel-protected pump trip on the uniform reference main, 400&nbsp;s at \(\Delta t\) = 0.0095&nbsp;s. Head at the pump and at mid-line (6&nbsp;km); the shaded area is the part of the event a run of the chosen length never sees. The dashed traces are the line envelope as it builds up.</div>
+  </div>
+  <div class="chart-box"><canvas id="durChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Run duration <span id="vDur">90 s</span></label>
+      <input type="range" id="sDur" min="20" max="400" value="90" step="5">
+      <div class="hint">2L/a = 22.9&nbsp;s. The vertical line marks the end of the run.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Duration / (2L/a)</div><div class="v" id="rD1">&ndash;</div></div>
+    <div class="cell"><div class="k">Reported min</div><div class="v" id="rD2">&ndash;</div></div>
+    <div class="cell"><div class="k">Reported max</div><div class="v" id="rD3">&ndash;</div></div>
+    <div class="cell"><div class="k">Max missed by</div><div class="v" id="rD4">&ndash;</div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:15px;margin-top:6px;" id="rD5">&ndash;</div></div>
+  </div>
+</div>
+<p class="fig-note">The minimum is captured from 19&nbsp;s onwards; the maximum needs 102&nbsp;s. Between 102 and 400&nbsp;s nothing changes, so 150&nbsp;s (6.6 &times; 2L/a) is enough here. On a main protected by air valves, a one-way tank or a flywheel the governing peak can come later still, after a cavity has grown and collapsed or a tank has drained.</p>
+<p>Our rule: run at least long enough to see the first full swing of the slowest oscillation in the system, then extend the run by half and confirm that neither envelope moves. If the maximum or minimum occurs in the last quarter of the run, the run is too short.</p>
+
+<h2 id="hand-check">9 &middot; Hand checks the model must pass</h2>
+<p>Before trusting a model of a real system, we run a test scenario whose answer we already know. The cleanest is the Joukowsky test: replace the pump with a reservoir at the duty head, put a valve at the far end, and close it faster than 2L/a. The head at the valve must jump by [1][5]</p>
+<div class="eq">\[ \Delta H \;=\; \frac{a\,\Delta V}{g} \;=\; \frac{1050 \times 1.3926}{9.81} \;=\; 149.1\ \text{m} \]</div>
+<p>Our test model holds 45.8&nbsp;m at the valve in steady flow (1.0&nbsp;m across the open valve).</p>
+<div class="tbl-wrap"><table>
+  <caption>Joukowsky test on the uniform main: valve at 12&nbsp;km closing linearly, reservoir at 85.0&nbsp;m upstream</caption>
+  <thead><tr><th>Check</th><th class="num">Hand value</th><th class="num">Model</th><th>Comment</th></tr></thead>
+  <tbody>
+    <tr><td>Rise at the valve, instant closure (first step)</td><td class="num">149.1&nbsp;m</td><td class="num">149.1&nbsp;m</td><td>from 45.8&nbsp;m to 194.9&nbsp;m in one step</td></tr>
+    <tr><td>Head at the valve, 5&nbsp;s closure, just after closure</td><td class="num">about 195&nbsp;m</td><td class="num">196.3&nbsp;m</td><td>closure well inside 2L/a, so the full Joukowsky rise plus a little line packing</td></tr>
+    <tr><td>Peak at the valve, instant closure</td><td class="num">&ge; 194.9&nbsp;m</td><td class="num">233.8&nbsp;m at 22.9&nbsp;s</td><td>Joukowsky plus line packing, just before the reflection returns at 2L/a = 22.9&nbsp;s</td></tr>
+    <tr><td>Peak at the valve, 5&nbsp;s closure</td><td class="num">&ge; 194.9&nbsp;m</td><td class="num">227.5&nbsp;m at 24.4&nbsp;s</td><td>slightly lower and later: the rise is built over 5&nbsp;s instead of in one step</td></tr>
+  </tbody>
+</table></div>
+<p>The rise above the Joukowsky value is line packing: as the front runs upstream it meets water at progressively higher head, and the water still flowing towards the valve behind it keeps packing the line, so the head at the valve keeps climbing until the reflection returns [1][8]. On a long, high-friction main it is a real part of the peak. If the first rise in your model is a few percent off \(a\Delta V/g\), look at the adjusted wave speeds before anything else.</p>
+<p>Three more checks take minutes:</p>
+<ul class="clean">
+  <li><strong>Steady state.</strong> The initial HGL along the profile matches the hydraulic model, every pump sits at its duty point, and no air valve or relief valve is open at time zero.</li>
+  <li><strong>Travel time.</strong> A disturbance at the pump must reach chainage \(x\) at \(x/a\): 5.71&nbsp;s to mid-line here. Place a report point there and look at the trace.</li>
+  <li><strong>Energy.</strong> With friction on, every oscillation must decay. An oscillation that grows or does not die away points to a boundary or device input error.</li>
+</ul>
+
+<h2 id="hammer-setup">10 &middot; Setting it up in Bentley HAMMER</h2>
+<p>Field names differ slightly between HAMMER versions; these follow the current documentation [3][4][9].</p>
+<ol>
+  <li><strong>Compute the steady state first</strong> and compare it with the design model: flows, pump duty points and the HGL at the ends of the main (85.0&nbsp;m and 44.8&nbsp;m here).</li>
+  <li><strong>Clean the model for transients.</strong> Merge station pipework, chamber spools and other short pipes as in section 6, or use <strong>Skelebrator</strong>, but keep every device node, dead end, closed valve and high point.</li>
+  <li><strong>Open Transient Time Step Options</strong> and read the suggested <strong>Time Step</strong> and the <strong>Max</strong>, <strong>Mean</strong> and <strong>RMS Adjustment</strong>. Set <strong>Adjustment Type</strong> to relative so the figures are percentages, and sort the pipe adjustments to find the worst pipes.</li>
+  <li><strong>Leave Adjust on Length</strong> unless you have a reason to change it, and do not raise <strong>Max Adjustment</strong> just to clear the warning. If the warning appears, fix the short pipes it points to.</li>
+  <li><strong>Set the run duration</strong> in time, not time steps, and make it at least 6&ndash;7 &times; 2L/a for a pumped main with a vessel. Extend it by half once and confirm that the envelopes do not change.</li>
+  <li><strong>Choose report points</strong> at the pump, at the vessel, at every high point and knee, and at mid-line, and turn on <strong>Generate Animation Data</strong> so the profile envelopes can be checked along the whole line.</li>
+  <li><strong>Run the halved step:</strong> check <strong>Use Custom Time Step?</strong>, enter half the suggested value, and rerun the governing scenario. Record both results in the report.</li>
+  <li><strong>Run the Joukowsky test</strong> once per model as a separate scenario, with the pump replaced by a reservoir and a valve closing in a fraction of 2L/a at the far end.</li>
+  <li><strong>Record everything</strong>: time step, adjustment mode, max/mean/RMS adjustment, the worst pipes, the halved-step result and the run duration, in the model basis of the report.</li>
+</ol>
+
+<h2 id="checklist">11 &middot; Checklist</h2>
+<ul class="clean">
+  <li><strong>Steady state matches the design model</strong> before any transient run.</li>
+  <li><strong>Short pipes merged</strong> where they carry no device, dead end, high point or change of section.</li>
+  <li><strong>Adjustment read pipe by pipe</strong>, with the worst pipes named and their effect understood.</li>
+  <li><strong>Max Adjustment left at a value you can defend</strong>, never raised only to clear a warning.</li>
+  <li><strong>Halved time step run</strong> on the governing scenario, with the change in minimum and maximum recorded.</li>
+  <li><strong>Collapse peaks quoted as a range</strong>, and the design judged on keeping the line out of vapour.</li>
+  <li><strong>Run duration</strong> long enough that neither envelope changes when it is extended by half.</li>
+  <li><strong>Joukowsky test and travel-time check</strong> passed by the model.</li>
+  <li><strong>Envelopes read along the whole line</strong>, not only at the pump.</li>
+  <li><strong>All of the above written into the report</strong> (see <a href="surge-study-report-review-checklist.html">The Surge Study Report</a>).</li>
+</ul>
+
+<div class="callout green">
+  <span class="lbl">Surge analysis practice series</span>
+  <ol>
+    <li><strong>Is your HAMMER run right? Time step, adjustment and run duration</strong></li>
+    <li><a href="pump-trip-data-inertia-specific-speed.html">Pump data for a pump trip: inertia, specific speed and four-quadrant curves</a></li>
+    <li><a href="surge-envelope-pipe-pressure-limits.html">Reading the surge envelope against the pipe's real limits</a></li>
+    <li><a href="surge-study-report-review-checklist.html">The surge study report: what to deliver and what a reviewer checks</a></li>
+  </ol>
+  The protection devices themselves are covered in the <a href="choosing-surge-protection.html">surge protection design series</a>.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993: the method of characteristics, the Courant condition, interpolation and wave-speed adjustment, and the Joukowsky relation.</li>
+  <li>Abokhatwa, M. <em>Surge protection design series</em>, abokhatwa.com, 2026: the reference main, the vessel design and the verified MOC solver used throughout this article.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> documentation, &ldquo;Transient Time Step Options Dialog Box&rdquo;: time step, Max, Mean and RMS Adjustment, Adjust (Length or Wave speed), Adjustment Type, Use Custom Time Step and the excessive-adjustment warning.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> documentation, &ldquo;Selection of the Time Step&rdquo;: why the time step forces adjustments, the absence of a fixed limit, and sensitivity testing with a smaller step.</li>
+  <li>Chaudhry, M.H. <em>Applied Hydraulic Transients</em>, 3rd ed. Springer, 2014: discretisation of pipe networks, wave-speed adjustment and the accuracy of characteristic methods.</li>
+  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006: vapour and gas cavity models and why collapse peaks depend on the model and the grid.</li>
+  <li>Simpson, A.R. &amp; Bergant, A. &ldquo;Numerical comparison of pipe-column-separation models.&rdquo; <em>Journal of Hydraulic Engineering</em>, 120(3), 1994: grid sensitivity of the discrete vapour cavity model.</li>
+  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004: line packing and the effect of friction on the transient peak.</li>
+  <li>Karney, B.W. &amp; Ghidaoui, M.S. &ldquo;Flexible discretization algorithm for fixed-grid MOC in pipelines.&rdquo; <em>Journal of Hydraulic Engineering</em>, 123(11), 1997: the errors introduced by wave-speed adjustment and interpolation, and ways to limit them.</li>
+</ol>
+
+<div class="tags">#SurgeAnalysis #WaterHammer #HydraulicTransients #BentleyHAMMER #OpenFlowsHAMMER #TimeStep #WaveSpeedAdjustment #CourantCondition #MethodOfCharacteristics #GridConvergence #ModelVerification #RunDuration #Joukowsky #LinePacking #ColumnSeparation #SurgeVessel #PumpTrip #TransmissionMain #DuctileIron #PumpStation #TransientAnalysis #HydraulicModelling #Skeletonization #PipelineDesign #WaterEngineering</div>
+
+</div>
+
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="f-line"><span class="nm">&copy; 2026 Mohamed Abokhatwa</span> <i class="sep">&middot;</i> <span>Riyadh, Saudi Arabia</span> <i class="sep">&middot;</i> <a href="mailto:mohamed@abokhatwa.com" dir="ltr">mohamed@abokhatwa.com</a> <i class="sep">&middot;</i> <a href="tel:+966541706700" dir="ltr">+966 54 170 6700</a> <i class="sep">&middot;</i> <a href="https://www.linkedin.com/in/abokhatwa" target="_blank" rel="noopener">LinkedIn</a> <i class="sep">&middot;</i> <a href="/">All articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="chart-theme.js?v=13"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+
+const D={"pipes":{"raw":[["P-1","Pump discharge spool",6.5,1150.0],["P-2","Discharge header",11.0,1150.0],["P-3","Header to vessel tee and meter",18.4,1150.0],["P-4","Flowmeter spool",2.4,1150.0],["P-5","Meter to station boundary valve",27.7,1150.0],["P-6","Field main",486.0,1050.0],["P-7","Field main",1212.5,1050.0],["P-8","Field main",834.6,1050.0],["P-9","Washout chamber spool",3.2,1050.0],["P-10","Field main",1560.2,1050.0],["P-11","Road crossing (steel sleeve)",41.0,1150.0],["P-12","Field main",922.8,1050.0],["P-13","Field main",1407.3,1050.0],["P-14","Air valve tee spool",5.6,1050.0],["P-15","Field main",2015.0,1050.0],["P-16","Field main",1175.9,1050.0],["P-17","Field main to reservoir",2269.9,1050.0]],"clean":[["P-1","Station pipework, P-1 to P-5 merged",66.0,1150.0],["P-6","Field main",486.0,1050.0],["P-7","Field main",1212.5,1050.0],["P-8","Field main with P-9 merged",837.8,1050.0],["P-10","Field main",1560.2,1050.0],["P-11","Road crossing (steel sleeve)",41.0,1150.0],["P-12","Field main",922.8,1050.0],["P-13","Field main with P-14 merged",1412.9,1050.0],["P-15","Field main",2015.0,1050.0],["P-16","Field main",1175.9,1050.0],["P-17","Field main to reservoir",2269.9,1050.0]]},"results":[{"model":"raw","mode":"length","dt":0.2,"line_min":2.64,"x_min":1973,"line_max":123.07,"gas_max":17.18,"vapour":false,"reaches":65,"max_adj":9483.3},{"model":"raw","mode":"length","dt":0.1,"line_min":3.58,"x_min":1562,"line_max":121.43,"gas_max":16.67,"vapour":false,"reaches":122,"max_adj":4691.7},{"model":"raw","mode":"length","dt":0.05,"line_min":4.05,"x_min":4162,"line_max":120.07,"gas_max":16.36,"vapour":false,"reaches":234,"max_adj":2295.8},{"model":"raw","mode":"length","dt":0.02,"line_min":4.2,"x_min":4329,"line_max":119.52,"gas_max":16.24,"vapour":false,"reaches":575,"max_adj":858.3},{"model":"raw","mode":"length","dt":0.01,"line_min":4.25,"x_min":4319,"line_max":119.34,"gas_max":16.21,"vapour":false,"reaches":1144,"max_adj":379.2},{"model":"raw","mode":"length","dt":0.005,"line_min":4.26,"x_min":4324,"line_max":119.29,"gas_max":16.2,"vapour":false,"reaches":2285,"max_adj":139.6},{"model":"raw","mode":"length","dt":0.002,"line_min":4.26,"x_min":4336,"line_max":119.28,"gas_max":16.19,"vapour":false,"reaches":5710,"max_adj":31.2},{"model":"raw","mode":"wave","dt":0.2,"line_min":12.44,"x_min":0,"line_max":85.0,"gas_max":11.54,"vapour":false,"reaches":65,"max_adj":99.0},{"model":"raw","mode":"wave","dt":0.1,"line_min":4.92,"x_min":552,"line_max":89.95,"gas_max":14.57,"vapour":false,"reaches":122,"max_adj":97.9},{"model":"raw","mode":"wave","dt":0.05,"line_min":1.44,"x_min":921,"line_max":109.69,"gas_max":15.59,"vapour":false,"reaches":234,"max_adj":95.8},{"model":"raw","mode":"wave","dt":0.02,"line_min":4.07,"x_min":5252,"line_max":117.57,"gas_max":16.1,"vapour":false,"reaches":575,"max_adj":89.6},{"model":"raw","mode":"wave","dt":0.01,"line_min":4.18,"x_min":4371,"line_max":118.96,"gas_max":16.17,"vapour":false,"reaches":1144,"max_adj":79.1},{"model":"raw","mode":"wave","dt":0.005,"line_min":4.24,"x_min":4261,"line_max":119.21,"gas_max":16.19,"vapour":false,"reaches":2285,"max_adj":58.3},{"model":"raw","mode":"wave","dt":0.002,"line_min":4.25,"x_min":4222,"line_max":119.35,"gas_max":16.19,"vapour":false,"reaches":5710,"max_adj":23.8},{"model":"clean","mode":"length","dt":0.2,"line_min":3.8,"x_min":4162,"line_max":120.51,"gas_max":16.44,"vapour":false,"reaches":59,"max_adj":461.0},{"model":"clean","mode":"length","dt":0.1,"line_min":4.16,"x_min":4162,"line_max":119.74,"gas_max":16.29,"vapour":false,"reaches":116,"max_adj":180.5},{"model":"clean","mode":"length","dt":0.05,"line_min":4.32,"x_min":4163,"line_max":119.13,"gas_max":16.17,"vapour":false,"reaches":228,"max_adj":40.2},{"model":"clean","mode":"length","dt":0.02,"line_min":4.28,"x_min":4308,"line_max":119.26,"gas_max":16.19,"vapour":false,"reaches":571,"max_adj":12.2},{"model":"clean","mode":"length","dt":0.01,"line_min":4.25,"x_min":4329,"line_max":119.3,"gas_max":16.2,"vapour":false,"reaches":1143,"max_adj":12.2},{"model":"clean","mode":"length","dt":0.005,"line_min":4.26,"x_min":4324,"line_max":119.27,"gas_max":16.19,"vapour":false,"reaches":2284,"max_adj":4.2},{"model":"clean","mode":"length","dt":0.002,"line_min":4.26,"x_min":4338,"line_max":119.28,"gas_max":16.19,"vapour":false,"reaches":5710,"max_adj":1.1},{"model":"clean","mode":"wave","dt":0.2,"line_min":-0.38,"x_min":3048,"line_max":111.95,"gas_max":15.77,"vapour":false,"reaches":59,"max_adj":82.2},{"model":"clean","mode":"wave","dt":0.1,"line_min":3.38,"x_min":956,"line_max":118.14,"gas_max":16.09,"vapour":false,"reaches":116,"max_adj":64.3},{"model":"clean","mode":"wave","dt":0.05,"line_min":4.17,"x_min":4562,"line_max":119.17,"gas_max":16.18,"vapour":false,"reaches":228,"max_adj":28.7},{"model":"clean","mode":"wave","dt":0.02,"line_min":4.28,"x_min":4287,"line_max":119.29,"gas_max":16.19,"vapour":false,"reaches":571,"max_adj":10.9},{"model":"clean","mode":"wave","dt":0.01,"line_min":4.22,"x_min":4371,"line_max":119.2,"gas_max":16.19,"vapour":false,"reaches":1143,"max_adj":10.9},{"model":"clean","mode":"wave","dt":0.005,"line_min":4.25,"x_min":4319,"line_max":119.26,"gas_max":16.19,"vapour":false,"reaches":2284,"max_adj":4.3},{"model":"clean","mode":"wave","dt":0.002,"line_min":4.25,"x_min":4330,"line_max":119.28,"gas_max":16.19,"vapour":false,"reaches":5710,"max_adj":1.0}],"ref":{"dt":0.0005,"line_min":4.26,"x_min":4337,"line_max":119.27,"gas_max":16.19,"reaches":22841},"grid":[{"N":30,"dx":400.0,"dt":0.381,"ves_min":4.57,"ves_xmin":4400,"ves_max":118.9,"ves_gas":16.13,"fly_min":9.4,"fly_xmin":3200,"un_max":189.06,"un_max_dgcm":168.14},{"N":60,"dx":200.0,"dt":0.1905,"ves_min":4.41,"ves_xmin":4200,"ves_max":119.06,"ves_gas":16.16,"fly_min":9.36,"fly_xmin":3000,"un_max":189.26,"un_max_dgcm":161.13},{"N":120,"dx":100.0,"dt":0.0952,"ves_min":4.33,"ves_xmin":4300,"ves_max":119.15,"ves_gas":16.17,"fly_min":9.34,"fly_xmin":3000,"un_max":189.92,"un_max_dgcm":164.55},{"N":240,"dx":50.0,"dt":0.0476,"ves_min":4.29,"ves_xmin":4300,"ves_max":119.19,"ves_gas":16.18,"fly_min":9.33,"fly_xmin":3000,"un_max":190.0,"un_max_dgcm":161.19},{"N":480,"dx":25.0,"dt":0.0238,"ves_min":4.27,"ves_xmin":4325,"ves_max":119.21,"ves_gas":16.19,"fly_min":9.32,"fly_xmin":3025,"un_max":190.03,"un_max_dgcm":162.53},{"N":960,"dx":12.5,"dt":0.0119,"ves_min":4.26,"ves_xmin":4338,"ves_max":119.22,"ves_gas":16.19,"fly_min":9.32,"fly_xmin":3025,"un_max":190.06,"un_max_dgcm":162.17}],"duration":{"t":[0.0095,3.8381,3.8476,7.6857,7.6952,11.5333,11.5429,15.381,15.3905,17.1429,18.7238,19.2286,19.2381,22.8571,23.0762,23.0857,26.9143,26.9238,28.5714,30.7619,30.7714,34.6095,34.619,38.4571,38.4667,40.0,42.3048,42.3143,45.7143,46.1524,46.1619,50.0,50.0095,51.4286,53.8381,53.8476,57.6857,57.6952,61.5333,61.5429,62.8571,65.381,65.3905,69.2286,69.2381,73.0762,73.0857,74.2857,76.9143,76.9238,79.3238,80.7619,80.7714,84.6095,84.619,88.4571,88.4667,92.3048,92.3143,96.1524,96.1619,97.1429,98.4476,100.0,100.0095,101.2571,103.181,103.8381,103.8476,107.6857,107.6952,111.5333,111.5429,115.381,115.3905,119.2286,119.2381,122.4095,123.0762,123.0857,126.9143,126.9238,127.6952,130.7619,130.7714,132.5238,134.6095,134.619,138.4571,138.4667,142.3048,142.3143,144.2,146.1524,146.1619,150.0,150.0095,152.6095,153.4286,153.8476,154.2857,155.5619,157.6857,157.6952,161.5333,161.5429,163.2,165.381,165.3905,166.6762,169.2286,169.2381,173.0762,173.0857,176.9143,176.9238,178.8381,180.7619,180.7714,182.8952,184.6095,184.619,188.4571,188.4667,188.8667,192.3048,192.3143,196.1524,196.1619,200.0,200.0095,201.8952,203.8381,203.8476,207.019,207.6857,207.6952,211.5333,211.5429,215.381,215.3905,219.2286,219.2381,222.8571,223.0762,223.0857,226.9143,226.9238,230.7619,230.7714,234.6095,234.619,235.2286,238.1714,238.4571,238.4667,242.3048,242.3143,245.7143,246.1524,246.1619,246.2095,250.0,250.0095,250.8,253.8381,253.8476,257.0,257.1429,257.6952,261.5333,261.5429,262.1714,265.381,265.3905,268.4857,269.2286,269.2381,269.419,272.0381,273.0762,273.0857,276.9143,276.9238,280.0,280.7619,280.7714,284.6095,284.619,288.4571,288.4667,292.3048,292.3143,296.1524,296.1619,300.0,300.0095,303.8381,303.8476,306.4381,307.6857,307.6952,307.7333,311.5333,311.5429,315.381,315.3905,319.2286,319.2381,323.0762,323.0857,326.9143,326.9238,330.7619,330.7714,334.6095,334.619,338.4571,338.4667,341.181,342.3048,342.3143,345.3048,346.1524,346.1619,349.5905,350.0,350.0095,350.819,353.8381,353.8476,356.1333,357.6857,357.6952,357.7524,360.9619,361.5333,361.5429,362.2095,365.381,365.3905,369.2286,369.2381,371.8762,373.0762,373.0857,376.9143,376.9238,380.7619,380.7714,384.6095,384.619,388.4571,388.4667,392.3048,392.3143,396.1524,396.1619,400.0],"pump":[81.9,41.2,41.1,26.4,26.4,18.3,18.3,13.0,13.0,11.1,9.7,9.2,9.2,6.5,6.6,6.6,6.0,6.0,5.8,5.6,5.6,5.3,5.3,5.1,5.1,5.0,5.0,5.0,4.8,4.9,4.9,6.8,6.8,7.6,8.8,8.8,10.7,10.7,12.6,12.6,13.3,14.7,14.7,18.1,18.2,25.0,25.0,27.1,32.3,32.3,38.0,42.0,42.0,55.2,55.3,71.3,71.3,87.5,87.5,107.3,107.4,111.5,115.6,118.5,118.5,119.2,117.7,116.5,116.5,104.5,104.5,86.6,86.6,68.7,68.6,54.5,54.4,43.5,41.5,41.5,32.3,32.3,30.9,26.3,26.3,24.3,22.4,22.4,20.0,20.0,18.5,18.5,17.8,17.2,17.2,16.4,16.4,16.3,16.3,16.3,16.4,16.5,17.0,17.0,18.6,18.7,19.5,20.6,20.6,21.3,22.9,22.9,26.3,26.3,31.0,31.0,33.9,37.1,37.1,41.3,45.5,45.5,54.9,54.9,55.9,64.3,64.3,73.7,73.7,81.7,81.8,84.6,86.5,86.5,87.4,87.3,87.3,81.8,81.8,72.1,72.1,62.3,62.2,53.5,53.0,53.0,44.9,44.8,38.3,38.3,32.8,32.8,32.0,29.1,28.9,28.9,26.3,26.3,24.8,24.6,24.6,24.6,23.5,23.5,23.4,23.0,23.0,22.9,22.9,22.9,23.5,23.5,23.7,25.0,25.0,26.8,27.2,27.3,27.4,29.3,30.1,30.1,33.8,33.8,37.1,38.1,38.1,43.7,43.7,50.5,50.5,57.8,57.8,64.5,64.6,70.1,70.1,72.9,72.9,73.8,73.9,73.9,73.9,72.5,72.5,68.0,67.9,61.4,61.4,54.4,54.4,47.6,47.6,42.2,42.2,37.7,37.7,34.0,34.0,31.8,31.1,31.0,29.4,29.0,29.0,27.7,27.6,27.6,27.5,27.1,27.1,27.0,27.0,27.0,27.0,27.4,27.5,27.5,27.6,28.5,28.5,30.2,30.2,31.7,32.6,32.6,36.0,36.0,39.9,39.9,44.3,44.3,49.2,49.2,54.5,54.5,59.7,59.7,64.3],"mid":[64.9,64.9,64.9,37.8,37.7,17.7,17.6,7.9,7.9,4.8,21.5,24.5,24.6,36.7,37.1,37.1,42.5,42.5,43.9,25.8,25.7,13.9,13.9,8.5,8.5,7.1,24.9,24.9,35.1,35.9,36.0,40.9,40.9,42.1,25.3,25.3,17.3,17.3,14.6,14.6,14.2,31.0,31.1,39.8,39.8,44.1,44.1,45.2,35.0,34.9,33.5,33.9,33.9,37.9,37.9,56.8,56.8,71.8,71.8,83.8,83.8,85.9,83.1,84.3,84.4,85.9,87.2,87.0,87.0,79.8,79.8,72.0,72.0,55.0,54.9,43.9,43.9,36.4,36.5,36.5,38.6,38.6,38.7,37.7,37.7,39.7,37.1,37.1,30.6,30.6,28.4,28.4,25.6,27.4,27.4,32.1,32.1,33.1,33.1,33.1,33.1,35.6,33.5,33.5,29.3,29.3,28.9,29.4,29.4,27.7,31.1,31.1,37.0,37.0,39.5,39.5,42.4,41.6,41.6,40.9,41.5,41.5,45.9,45.9,45.5,53.1,53.1,62.2,62.2,67.2,67.6,69.9,69.1,69.1,67.3,67.0,67.0,64.1,64.1,61.3,61.3,55.1,55.1,48.1,48.4,48.4,41.7,41.7,39.2,39.2,38.0,38.0,37.7,38.6,38.6,38.6,36.3,36.3,33.8,34.4,34.4,34.4,31.7,31.7,31.6,32.6,32.6,34.2,34.2,33.6,36.0,36.0,36.1,35.2,35.2,34.5,35.4,35.4,35.4,34.6,34.9,34.9,38.2,38.2,41.3,41.2,41.2,45.4,45.4,47.0,47.0,50.3,50.3,53.3,53.3,58.9,58.9,61.9,61.9,63.4,63.0,63.0,63.0,59.4,59.4,56.4,56.4,52.5,52.5,50.4,50.4,46.6,46.6,43.4,43.4,39.5,39.5,38.3,38.3,37.3,37.4,37.4,37.8,37.8,37.8,36.5,36.5,36.5,36.6,35.6,35.6,34.6,34.3,34.3,34.3,35.3,35.3,35.3,35.2,36.5,36.5,38.3,38.3,38.3,38.8,38.8,39.5,39.5,40.6,40.6,43.8,43.8,47.2,47.2,50.6,50.6,52.8,52.8,54.5],"env_min":[44.8,41.18,41.13,26.44,26.42,16.92,16.9,7.22,7.2,4.79,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26,4.26],"env_max":[85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,85.0,90.57,90.61,107.35,107.39,111.47,115.64,118.53,118.54,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22,119.22],"final_min":4.26,"final_max":119.22,"t_min":18.6,"t_max":101.2}};
+const FF="'IBM Plex Sans', system-ui, sans-serif";
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:FF,size:11}}};
+const TTL={family:FF,size:12,weight:'600'};
+const LBL={size:10,family:FF};
+const LEGF={family:FF,size:11.5};
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1), fmt2=v=>v.toFixed(2);
+const sgn=(v,d)=>(v<-0.0049?'−':(v>0.0049?'+':''))+Math.abs(v).toFixed(d);
+const pct=v=>(v>=100?fmt0(v):v>=10?fmt1(v):fmt2(v))+' %';
+const PMIN=3.0, PMAX=136.0;
+const DTS=[0.001,0.0015,0.002,0.003,0.004,0.005,0.0075,0.01,0.015,0.02,0.03,0.04,0.05,0.075,0.1,0.15,0.2];
+function disc(pipes,dt,mode){
+  return pipes.map(p=>{const L=p[2],a=p[3];const n=Math.max(1,Math.round(L/(a*dt)));
+    const adj=mode==='length'?(n*a*dt-L)/L:(L/(n*dt)-a)/a;
+    return {id:p[0],desc:p[1],L:L,a:a,n:n,Lm:mode==='length'?n*a*dt:L,am:mode==='length'?a:L/(n*dt),adj:adj};});
+}
+function stats(pipes,dt,mode){
+  const d=disc(pipes,dt,mode), ab=d.map(p=>Math.abs(p.adj));
+  let w=0; ab.forEach((v,i)=>{if(v>ab[w])w=i;});
+  return {d:d,max:ab[w],mean:ab.reduce((s,v)=>s+v,0)/ab.length,rms:Math.sqrt(ab.reduce((s,v)=>s+v*v,0)/ab.length),
+          worst:w,reaches:d.reduce((s,p)=>s+p.n,0)};
+}
+/* ---------- CHART 1 : adjustment calculator ---------- */
+const sModel=document.getElementById('sModel'), sMode=document.getElementById('sMode'), sDt=document.getElementById('sDt');
+const GRID=[];for(let k=0;k<=240;k++)GRID.push(Math.pow(10,-3+k*(Math.log10(0.2)+3)/240));
+const adjChart=new Chart(document.getElementById('adjChart'),{
+  data:{datasets:[
+    {type:'line',label:'Max adjustment, length mode',data:[],borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2,pointRadius:0,order:3},
+    {type:'line',label:'Max adjustment, wave speed mode',data:[],borderColor:'#b9770e',backgroundColor:'#b9770e',borderWidth:2,pointRadius:0,order:4},
+    {type:'scatter',label:'Selected',data:[],backgroundColor:'#6b4f9e',borderColor:'#fff',borderWidth:2,pointRadius:8,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,
+    scales:{x:{type:'logarithmic',min:0.001,max:0.2,title:{display:true,text:'Time step Δt (s, log scale)',font:TTL},grid:{color:'#eef2f5'},
+               ticks:{font:{family:FF,size:11},callback:v=>[0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.2].includes(+v.toPrecision(3))?String(+v.toPrecision(3)):''}},
+            y:{type:'logarithmic',min:0.1,max:20000,title:{display:true,text:'Largest adjustment in the model (%, log scale)',font:TTL},grid:{color:'#eef2f5'},
+               ticks:{font:{family:FF,size:11},callback:v=>[0.1,1,10,100,1000,10000].includes(+v.toPrecision(3))?fmt0(v)+(v<1?'':'')+' %':''}}},
+    plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${pct(c.parsed.y)} at Δt ${c.parsed.x.toPrecision(3)} s`}},
+      annotation:{annotations:{five:{type:'line',yMin:5,yMax:5,borderColor:'#1e8449',borderWidth:1.2,borderDash:[6,4],
+        label:{display:true,content:'5 %',position:'start',font:LBL,color:'#fff',backgroundColor:'rgba(30,132,73,0.85)'}}}}}}
+});
+function updAdj(){
+  const M=D.pipes[sModel.value], mode=sMode.value, dt=DTS[+sDt.value];
+  document.getElementById('vDt').textContent=dt+' s';
+  adjChart.data.datasets[0].data=GRID.map(t=>({x:t,y:Math.max(0.1,100*stats(M,t,'length').max)}));
+  adjChart.data.datasets[1].data=GRID.map(t=>({x:t,y:Math.max(0.1,100*stats(M,t,'wave').max)}));
+  const s=stats(M,dt,mode);
+  adjChart.data.datasets[2].data=[{x:dt,y:Math.max(0.1,100*s.max)}];
+  adjChart.update('none');
+  document.getElementById('rMax').innerHTML=pct(100*s.max);
+  document.getElementById('rMean').innerHTML=pct(100*s.mean);
+  document.getElementById('rRms').innerHTML=pct(100*s.rms);
+  const w=s.d[s.worst];
+  document.getElementById('rWorst').innerHTML=w.id+' ('+fmt1(w.L)+' m)';
+  document.getElementById('rReach').innerHTML=fmt0(s.reaches);
+  const s0=stats(M,0.1,mode);
+  document.getElementById('rCost').innerHTML=fmt0((s.reaches/dt)/(s0.reaches/0.1))+' <small>×</small>';
+  document.getElementById('adjRows').innerHTML=s.d.map(p=>'<tr><td>'+p.id+'</td><td class="num">'+p.L.toLocaleString('en-US',{minimumFractionDigits:1,maximumFractionDigits:1})+
+    '</td><td class="num">'+fmt0(p.a)+'</td><td class="num">'+fmt0(p.n)+'</td><td class="num">'+(mode==='length'?fmt1(p.Lm)+' m':fmt0(p.am)+' m/s')+
+    '</td><td class="num">'+(p.adj>=0?'+':'−')+pct(Math.abs(100*p.adj))+'</td></tr>').join('');
+}
+[sModel,sMode,sDt].forEach(s=>s.addEventListener('input',updAdj));updAdj();
+
+/* ---------- CHART 2 : results against the time step ---------- */
+const sModel2=document.getElementById('sModel2'), sDt2=document.getElementById('sDt2');
+const R=D.results, REF=D.ref, RDT=[0.2,0.1,0.05,0.02,0.01,0.005,0.002];
+const pick=(m,mode)=>RDT.map(dt=>R.find(r=>r.model===m&&r.mode===mode&&r.dt===dt));
+const xLog={type:'logarithmic',min:0.0015,max:0.25,reverse:true,title:{display:true,text:'Time step Δt (s, log scale, finer to the right)',font:TTL},grid:{color:'#eef2f5'},
+  ticks:{font:{family:FF,size:11},callback:v=>[0.002,0.005,0.01,0.02,0.05,0.1,0.2].includes(+v.toPrecision(3))?String(+v.toPrecision(3)):''}};
+function mkRes(cv,key,ref,ymin,ymax,ylab,extra){
+  return new Chart(cv,{
+    data:{datasets:[
+      {type:'line',label:'Adjust length',data:[],borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2.2,pointRadius:4,order:2},
+      {type:'line',label:'Adjust wave speed',data:[],borderColor:'#b9770e',backgroundColor:'#b9770e',borderWidth:2.2,pointRadius:4,order:3},
+      {type:'scatter',label:'Selected step',data:[],backgroundColor:'#6b4f9e',borderColor:'#fff',borderWidth:2,pointRadius:8,order:1}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,animation:false,
+      scales:{x:xLog,y:{type:'linear',min:ymin,max:ymax,title:{display:true,text:ylab,font:TTL},...AX}},
+      plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:8}},
+        tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${fmt2(c.parsed.y)} m at Δt ${c.parsed.x} s`}},
+        annotation:{annotations:Object.assign({ref:{type:'line',yMin:ref,yMax:ref,borderColor:'#7f8c8d',borderWidth:1.5,borderDash:[6,4],
+          label:{display:true,content:'reference '+fmt2(ref)+' m',position:'start',font:LBL,color:'#fff',backgroundColor:'rgba(127,140,141,0.9)'}}},extra||{})}}}
+  });
+}
+const resMax=mkRes(document.getElementById('resMaxChart'),'line_max',REF.line_max,80,130,'Highest head on the line (m)');
+const resMin=mkRes(document.getElementById('resMinChart'),'line_min',REF.line_min,-2,14,'Lowest head on the line (m)',
+  {crit:{type:'line',yMin:PMIN,yMax:PMIN,borderColor:'#1e8449',borderWidth:1.5,borderDash:[2,3],
+    label:{display:true,content:'+3.0 m design minimum',position:'end',font:LBL,color:'#fff',backgroundColor:'rgba(30,132,73,0.85)'}}});
+const badge=v=>v>=PMIN?'<span class="badge good">pass</span>':'<span class="badge bad">fail</span>';
+function updRes(){
+  const m=sModel2.value, i=+sDt2.value, L=pick(m,'length'), A=pick(m,'wave');
+  resMax.data.datasets[0].data=L.map(r=>({x:r.dt,y:r.line_max}));
+  resMax.data.datasets[1].data=A.map(r=>({x:r.dt,y:r.line_max}));
+  resMin.data.datasets[0].data=L.map(r=>({x:r.dt,y:r.line_min}));
+  resMin.data.datasets[1].data=A.map(r=>({x:r.dt,y:r.line_min}));
+  resMax.data.datasets[2].data=[{x:L[i].dt,y:L[i].line_max},{x:A[i].dt,y:A[i].line_max}];
+  resMin.data.datasets[2].data=[{x:L[i].dt,y:L[i].line_min},{x:A[i].dt,y:A[i].line_min}];
+  resMax.update('none');resMin.update('none');
+  const PP=D.pipes[m];
+  document.getElementById('rAdj2').innerHTML=pct(100*stats(PP,RDT[i],'length').max)+' / '+pct(100*stats(PP,RDT[i],'wave').max);
+  document.getElementById('rMax2').innerHTML=fmt1(L[i].line_max)+' / '+fmt1(A[i].line_max)+' <small>m</small>';
+  document.getElementById('rEmax2').innerHTML=sgn(L[i].line_max-REF.line_max,1)+' / '+sgn(A[i].line_max-REF.line_max,1)+' <small>m</small>';
+  document.getElementById('rMin2').innerHTML=sgn(L[i].line_min,2)+' / '+sgn(A[i].line_min,2)+' <small>m</small>';
+  document.getElementById('rEmin2').innerHTML=sgn(L[i].line_min-REF.line_min,2)+' / '+sgn(A[i].line_min-REF.line_min,2)+' <small>m</small>';
+  document.getElementById('rVer2').innerHTML=badge(L[i].line_min)+' '+badge(A[i].line_min);
+}
+[sModel2,sDt2].forEach(s=>s.addEventListener('input',updRes));updRes();
+
+/* ---------- CHART 3 : grid convergence ---------- */
+const G=D.grid, sGrid=document.getElementById('sGrid'), sTol=document.getElementById('sTol');
+const xN={type:'logarithmic',min:24,max:1200,title:{display:true,text:'Reaches N on the 12 km main (log scale)',font:TTL},grid:{color:'#eef2f5'},
+  ticks:{font:{family:FF,size:11},callback:v=>[30,60,120,240,480,960].includes(Math.round(v))?String(Math.round(v)):''},
+  afterBuildTicks:ax=>{ax.ticks=[30,60,120,240,480,960].map(v=>({value:v}));}};
+const gMin=new Chart(document.getElementById('gridMinChart'),{
+  data:{datasets:[
+    {type:'line',label:'Vessel: lowest head (m)',data:G.map(r=>({x:r.N,y:r.ves_min})),borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2.2,pointRadius:4,yAxisID:'y',order:2},
+    {type:'line',label:'Flywheel: lowest head (m, right)',data:G.map(r=>({x:r.N,y:r.fly_min})),borderColor:'#b9770e',backgroundColor:'#b9770e',borderWidth:2.2,pointRadius:4,yAxisID:'y1',order:3},
+    {type:'scatter',label:'Your run',data:[],backgroundColor:'#6b4f9e',borderColor:'#fff',borderWidth:2,pointRadius:8,yAxisID:'y',order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,
+    scales:{x:xN,y:{type:'linear',min:4.0,max:5.0,position:'left',title:{display:true,text:'Vessel case (m)',font:TTL},...AX},
+            y1:{type:'linear',min:9.0,max:10.0,position:'right',title:{display:true,text:'Flywheel case (m)',font:TTL},grid:{drawOnChartArea:false},ticks:{font:{family:FF,size:11}}}},
+    plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:8}},tooltip:{callbacks:{label:c=>`${c.dataset.label.replace(' (m)','').replace(' (m, right)','')}: ${fmt2(c.parsed.y)} m at N = ${Math.round(c.parsed.x)}`}}}}
+});
+const gMax=new Chart(document.getElementById('gridMaxChart'),{
+  data:{datasets:[
+    {type:'line',label:'Unprotected max, vapour cavity model (m)',data:G.map(r=>({x:r.N,y:r.un_max})),borderColor:'#c0392b',backgroundColor:'#c0392b',borderWidth:2.2,pointRadius:4,order:2},
+    {type:'line',label:'Unprotected max, gas cavity model (m)',data:G.map(r=>({x:r.N,y:r.un_max_dgcm})),borderColor:'#7f8c8d',backgroundColor:'#7f8c8d',borderWidth:2.2,borderDash:[6,4],pointRadius:4,order:3}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,
+    scales:{x:xN,y:{type:'linear',min:150,max:200,title:{display:true,text:'Highest head on the line (m)',font:TTL},...AX}},
+    plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:8}},tooltip:{callbacks:{label:c=>`${c.dataset.label.replace(' (m)','')}: ${fmt1(c.parsed.y)} m at N = ${Math.round(c.parsed.x)}`}},
+      annotation:{annotations:{lim:{type:'line',yMin:163.4,yMax:163.4,borderColor:'#6b4f9e',borderWidth:1.2,borderDash:[4,4],
+        label:{display:true,content:'PN16 rating ≈ 163 m',position:'start',font:LBL,color:'#fff',backgroundColor:'rgba(107,79,158,0.85)'}}}}}}
+});
+function updGrid(){
+  const i=+sGrid.value, tol=+sTol.value, r=G[i], f=G[i+1];
+  document.getElementById('vTol').textContent=fmt2(tol)+' m';
+  gMin.data.datasets[2].data=[{x:r.N,y:r.ves_min}];gMin.update('none');
+  document.getElementById('rG1').innerHTML=sgn(r.ves_min,2)+' <small>m</small>';
+  if(!f){
+    ['rG2','rG3','rG4'].forEach(k=>document.getElementById(k).innerHTML='<small>no finer run</small>');
+    document.getElementById('rG5').innerHTML='<span class="badge warn">halve once more to prove it</span>';return;
+  }
+  const ch=f.ves_min-r.ves_min, ex=2*f.ves_min-r.ves_min;
+  document.getElementById('rG2').innerHTML=sgn(f.ves_min,2)+' <small>m</small>';
+  document.getElementById('rG3').innerHTML=sgn(ch,2)+' <small>m</small>';
+  document.getElementById('rG4').innerHTML=sgn(ex,2)+' <small>m</small>';
+  document.getElementById('rG5').innerHTML=Math.abs(ch)<=tol+1e-9?'<span class="badge good">converged within '+fmt2(tol)+' m</span>':'<span class="badge warn">not converged: halve again</span>';
+}
+[sGrid,sTol].forEach(s=>s.addEventListener('input',updGrid));updGrid();
+
+/* ---------- CHART 4 : run duration ---------- */
+const U=D.duration, sDur=document.getElementById('sDur'), TLA=2*12000/1050;
+const durChart=new Chart(document.getElementById('durChart'),{
+  data:{datasets:[
+    {type:'line',label:'Head at the pump (m)',data:U.t.map((t,k)=>({x:t,y:U.pump[k]})),borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2,pointRadius:0,order:3},
+    {type:'line',label:'Head at 6 km (m)',data:U.t.map((t,k)=>({x:t,y:U.mid[k]})),borderColor:'#b9770e',backgroundColor:'#b9770e',borderWidth:1.6,pointRadius:0,order:4},
+    {type:'line',label:'Line maximum so far (m)',data:U.t.map((t,k)=>({x:t,y:U.env_max[k]})),borderColor:'#c0392b',backgroundColor:'#c0392b',borderWidth:1.4,borderDash:[6,4],pointRadius:0,order:2},
+    {type:'line',label:'Line minimum so far (m)',data:U.t.map((t,k)=>({x:t,y:U.env_min[k]})),borderColor:'#1e8449',backgroundColor:'#1e8449',borderWidth:1.4,borderDash:[6,4],pointRadius:0,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',axis:'x',intersect:false},
+    scales:{x:{type:'linear',min:0,max:400,title:{display:true,text:'Time after the trip (s)',font:TTL},...AX},
+            y:{type:'linear',min:0,max:130,title:{display:true,text:'Head (m)',font:TTL},...AX}},
+    plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:8}},tooltip:{callbacks:{label:c=>`${c.dataset.label.replace(' (m)','')}: ${fmt1(c.parsed.y)} m at ${fmt1(c.parsed.x)} s`}},
+      annotation:{annotations:{
+        unseen:{type:'box',xMin:90,xMax:400,backgroundColor:'rgba(127,140,141,0.13)',borderWidth:0},
+        end:{type:'line',xMin:90,xMax:90,borderColor:'#6b4f9e',borderWidth:1.6,label:{display:true,content:'end of run',position:'start',font:LBL,color:'#fff',backgroundColor:'rgba(107,79,158,0.85)'}},
+        tla:{type:'line',xMin:TLA,xMax:TLA,borderColor:'#7f8c8d',borderWidth:1,borderDash:[3,3],label:{display:true,content:'2L/a',position:'end',font:LBL,color:'#fff',backgroundColor:'rgba(127,140,141,0.9)'}}
+      }}}}
+});
+function updDur(){
+  const T=+sDur.value; document.getElementById('vDur').textContent=T+' s';
+  const A=durChart.options.plugins.annotation.annotations; A.unseen.xMin=T; A.end.xMin=T; A.end.xMax=T; durChart.update('none');
+  let k=0; for(let j=0;j<U.t.length;j++){ if(U.t[j]<=T+1e-9) k=j; }
+  const mn=U.env_min[k], mx=U.env_max[k], miss=U.final_max-mx;
+  document.getElementById('rD1').innerHTML=fmt1(T/TLA)+' <small>×</small>';
+  document.getElementById('rD2').innerHTML=sgn(mn,2)+' <small>m</small>';
+  document.getElementById('rD3').innerHTML=fmt1(mx)+' <small>m</small>';
+  document.getElementById('rD4').innerHTML=fmt1(Math.max(0,miss))+' <small>m</small>';
+  document.getElementById('rD5').innerHTML=(miss<=0.05&&mn<=U.final_min+0.05)?'<span class="badge good">full envelope captured</span>':
+    (mn>U.final_min+0.05?'<span class="badge bad">misses the minimum</span>':'<span class="badge bad">misses the maximum</span>');
+}
+sDur.addEventListener('input',updDur);updDur();
+window.addEventListener('load',function(){try{[adjChart,resMax,resMin,gMin,gMax,durChart].forEach(c=>c.resize());}catch(e){}});
+
+</script>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<!-- End WhatsApp Button -->
+
+<script src="article-features.js?v=14"></script>
+<script src="theme.js?v=13"></script>
+</body>
+</html>

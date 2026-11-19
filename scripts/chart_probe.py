@@ -31,7 +31,7 @@ equations = {
 
 controls = []
 elems = {}
-for m in re.finditer(r'<(input|select|canvas|span|div|td|strong|b|p|small|em|li|h3|h4)\b([^>]*)\sid="([^"]+)"([^>]*)>', body):
+for m in re.finditer(r'<(input|select|canvas|span|div|td|tbody|strong|b|p|small|em|li|h3|h4)\b([^>]*)\sid="([^"]+)"([^>]*)>', body):
     tag, a1, i, a2 = m.groups(); attrs = a1 + a2
     g = lambda k: (re.search(r'\s%s="([^"]*)"' % k, attrs) or [None, None])[1]
     d = dict(tag=tag, value=g('value') or '', type=g('type') or '', checked=bool(re.search(r'\schecked\b', attrs)))

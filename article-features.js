@@ -9,6 +9,10 @@
      1.  ARTICLES DATA
      ───────────────────────────────────────────────────────────── */
   var ARTICLES = [
+    { url:'surge-study-report-review-checklist.html', title:'The Surge Study Report: What to Deliver and What a Reviewer Checks', cat:'surge', thumb:'surge-study-report-review-checklist.webp', mins:18, tag:'Surge Analysis · Reporting · Review' },
+    { url:'surge-envelope-pipe-pressure-limits.html', title:'Reading the Surge Envelope Against the Pipe’s Real Limits: PFA, PMA, Vacuum and Fatigue', cat:'surge', thumb:'surge-envelope-pipe-pressure-limits.webp', mins:17, tag:'Surge Analysis · Pressure Limits · EN 805' },
+    { url:'pump-trip-data-inertia-specific-speed.html', title:'Pump Data for a Pump Trip: Inertia, Specific Speed and Four-Quadrant Curves', cat:'surge', thumb:'pump-trip-data-inertia-specific-speed.webp', mins:20, tag:'Surge Analysis · Pump Data · Inertia' },
+    { url:'surge-model-time-step-convergence.html', title:'Is Your HAMMER Run Right? Time Step, Wave-Speed Adjustment, Convergence and Run Duration', cat:'surge', thumb:'surge-model-time-step-convergence.webp', mins:23, tag:'Surge Analysis · Model Checking · Time Step' },
     { url:'chilled-water-diversity-megatall.html', title:'Chilled-Water Diversity in Megatall Towers: Peak or Block, Per Use or Per Tower, and Which Components Get It', cat:'hvac', thumb:'chilled-water-diversity-megatall.webp', mins:30, tag:'HVAC · Chilled Water · Diversity' },
     { url:'wave-speed-surge-analysis.html', title:'Wave Speed in Surge Analysis: The Number That Sets the Surge but Barely Moves the Surge Vessel', cat:'surge', thumb:'wave-speed-surge-analysis.webp', mins:37, tag:'Surge Analysis · Wave Speed · Pipe Materials' },
     { url:'surge-vessel-differential-orifice.html', title:'The Differential Orifice: Why a Surge Vessel Should Empty Freely and Refill Slowly', cat:'surge', thumb:'surge-vessel-differential-orifice.webp', mins:36, tag:'Surge Analysis · Surge Vessel · Orifice Design' },

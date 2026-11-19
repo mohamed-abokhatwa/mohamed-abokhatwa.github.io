@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading the Surge Envelope Against the Pipe’s Real Limits: PFA, PMA, Vacuum and Fatigue | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=3">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:3px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:3px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:var(--success);} .callout.green .lbl{color:var(--success);}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:start;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:start;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:end;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:3px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:3px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:var(--air);}
+    .fig-head .fsub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid var(--border);background:var(--bg-2);}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+    .ctrl label span{color:var(--air);font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:var(--danger);}
+    .ctrl .hint{font-size:11.5px;color:var(--text-secondary);margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:3px;font-size:13px;font-family:inherit;background:var(--sheet);color:var(--text-primary);}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid var(--border);}
+    .readout .cell{padding:14px 16px;border-right:1px solid var(--border);}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary);}
+    .readout .v{font-size:22px;font-weight:700;color:var(--air);font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:var(--text-secondary);}
+    .badge{display:inline-block;padding:3px 10px;border-radius:3px;font-size:12px;font-weight:600;}
+    .badge.good{background:var(--success-w);color:var(--success);}
+    .badge.warn{background:var(--warning-w);color:var(--warning);}
+    .badge.bad{background:var(--danger-w);color:var(--danger);}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:var(--air);text-decoration:none;border:1px solid var(--border);border-radius:3px;padding:4px 11px;background:var(--sheet);transition:.18s;}
+    .calc-link:hover{border-color:var(--air);background:var(--bg-2);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="How to judge a surge envelope against the limits that apply: EN 805 DP, MDP and STP against PFA, PMA and PEA, surge allowances for ductile iron, steel, PE, GRP and PVC, vacuum collapse of thin-walled pipe, and fatigue of PVC under recurring surges, with three interactive charts and the HAMMER set-up.">
+  <meta property="og:title" content="Reading the Surge Envelope Against the Pipe’s Real Limits: PFA, PMA, Vacuum and Fatigue | Mohamed Abokhatwa">
+  <meta property="og:description" content="The unprotected 12 km main peaks at 165–190 m, above the 16 bar rating of its PN16 components but inside their 20 bar PMA. What fails it is the vacuum: the whole line goes beyond the −0.8 bar components must withstand.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/surge-envelope-pipe-pressure-limits.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-surge-envelope-pipe-pressure-limits.jpg">
+  <meta property="og:image:alt" content="Pipeline profile with maximum and minimum surge pressure envelopes crossing coloured limit bands for PFA, PMA and vacuum, beside cross-sections of ductile iron, steel, PE and GRP pipes, one of them buckled inward">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Reading the Surge Envelope Against the Pipe’s Real Limits: PFA, PMA, Vacuum and Fatigue | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="The unprotected 12 km main peaks at 165–190 m, above the 16 bar rating of its PN16 components but inside their 20 bar PMA. What fails it is the vacuum: the whole line goes beyond the −0.8 bar components must withstand.">
+  <link rel="canonical" href="https://abokhatwa.com/surge-envelope-pipe-pressure-limits.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Reading the Surge Envelope Against the Pipe’s Real Limits: PFA, PMA, Vacuum and Fatigue",
+  "description": "Checking surge results against pipe limits: EN 805 and EN 545 pressure terms, material surge allowances, vacuum collapse and PVC fatigue, worked on a 12 km DN800 main with the Bentley HAMMER set-up.",
+  "image": "https://abokhatwa.com/og-surge-envelope-pipe-pressure-limits.jpg",
+  "datePublished": "2026-11-19",
+  "dateModified": "2026-11-19",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/surge-envelope-pipe-pressure-limits.html" }
+}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Surge &amp; Transient Analysis</span></div>
+  <span class="tag">Surge Analysis &middot; Pressure Limits &middot; EN 805</span>
+  <h1>Reading the Surge Envelope Against the Pipe’s Real Limits: PFA, PMA, Vacuum and Fatigue</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>November 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>17 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="surge-envelope-pipe-pressure-limits.webp" alt="Pipeline profile with maximum and minimum surge pressure envelopes crossing coloured limit bands for PFA, PMA and vacuum, beside cross-sections of ductile iron, steel, PE and GRP pipes, one of them buckled inward">
+</div>
+
+<div class="article-body">
+
+<p class="lead">&ldquo;Maximum head below PN&rdquo; is how many surge results are judged, and it is too crude in both directions. On the 12&nbsp;km reference main the unprotected pump trip peaks at <strong>165&ndash;190&nbsp;m</strong> (16.1&ndash;18.6&nbsp;bar), above the 16&nbsp;bar rating of its flanged components. Yet under EN 805 and EN 545 those components may take <strong>20&nbsp;bar</strong> during a surge, so the peak itself would pass. What fails the design is the other side of the envelope: the line falls to full vacuum, beyond the <strong>&minus;0.8&nbsp;bar</strong> that pipeline components are required to withstand. This article sets the envelope against the limits that actually apply: the EN 805 pressure terms, the allowances in each pipe material's standard, collapse under vacuum, and fatigue for plastic pipes that see recurring surges.</p>
+
+<h2 id="terms">1 &middot; The pressure terms that matter</h2>
+<p>EN 805 separates what the system does from what its components can take [1]. For the system, the designer fixes:</p>
+<ul class="clean">
+  <li><strong>DP, design pressure:</strong> the highest steady operating pressure of the system or zone, including future developments but excluding surge.</li>
+  <li><strong>MDP, maximum design pressure:</strong> DP plus surge. It is written MDPc when the surge has been calculated and MDPa when a fixed allowance is used instead; that allowance must not be less than 2&nbsp;bar.</li>
+  <li><strong>STP, system test pressure:</strong> the hydrostatic test after laying. When surge is calculated, STP = MDPc + 1&nbsp;bar. When it is not, STP is the lower of 1.5 &times; MDPa and MDPa + 5&nbsp;bar.</li>
+</ul>
+<p>The product standards rate each component with three matching terms [1][2]:</p>
+<ul class="clean">
+  <li><strong>PFA, allowable operating pressure:</strong> what the component may carry continuously. It must be at least DP.</li>
+  <li><strong>PMA, allowable maximum operating pressure:</strong> what it may carry for short periods, including surge. It must be at least MDP.</li>
+  <li><strong>PEA, allowable site test pressure:</strong> what it may see in the hydrostatic test. It must be at least STP.</li>
+</ul>
+<p>For ductile iron to EN 545, PMA = 1.2 &times; PFA [2]. For flanged components the PN class sets the figures: PN10 is 10/12/17&nbsp;bar (PFA/PMA/PEA), PN16 is 16/20/25 and PN25 is 25/30/35. The pipe barrel is usually much stronger than the flanges: a DN800 pipe in class C25 has a PFA of 25&nbsp;bar. <strong>The weakest component sets the limit</strong>, and in a pumped main that is usually a valve, a flange, the vessel or an air valve, not the pipe.</p>
+<div class="eq">\[ p\,[\text{bar}] \;=\; \frac{\rho g h}{10^5} \;=\; \frac{998 \times 9.81 \times h}{10^5} \;=\; \frac{h\,[\text{m}]}{10.21} \]</div>
+<p>On the negative side, EN 805 and the related product standards require components to withstand a transient pressure <strong>80&nbsp;kPa below atmospheric</strong>, that is &minus;0.8&nbsp;bar or &minus;8.2&nbsp;m of water [1][3]. Full vacuum, where water boils and the column separates, is about &minus;9.8&nbsp;m at ordinary temperatures. Owners often add their own limits on top: this series uses 136&nbsp;m as a project maximum and +3.0&nbsp;m as a design minimum [4].</p>
+
+<h2 id="reference-main">2 &middot; The reference main in EN 805 terms</h2>
+<p>The reference main is a 12&nbsp;km DN800 ductile iron line with PN16 flanged valves and fittings, pumping 0.70&nbsp;m&sup3;/s at 85.0&nbsp;m at the pump [4]. The steady head at the pump is 85&nbsp;m, but against a closed line valve the pump makes its shut-off head of 105&nbsp;m (5&nbsp;m suction plus 100&nbsp;m), so we take DP = 105&nbsp;m = 10.3&nbsp;bar. With the series vessel (3.5&nbsp;m&sup3; of gas in a 20&nbsp;m&sup3; shell), the calculated maximum is 119.2&nbsp;m:</p>
+<div class="tbl-wrap"><table>
+  <caption>EN 805 check of the vessel-protected main, PN16 flanged components (PFA 16, PMA 20, PEA 25&nbsp;bar)</caption>
+  <thead><tr><th>Term</th><th>How it is set</th><th class="num">Head <span style="text-transform:none">(m)</span></th><th class="num">bar</th><th>Component limit</th><th>Check</th></tr></thead>
+  <tbody>
+    <tr><td>DP</td><td>pump shut-off head</td><td class="num">105.0</td><td class="num">10.3</td><td>PFA 16.0</td><td><span class="badge good">pass</span></td></tr>
+    <tr><td>MDPc</td><td>calculated maximum</td><td class="num">119.2</td><td class="num">11.7</td><td>PMA 20.0</td><td><span class="badge good">pass</span></td></tr>
+    <tr><td>STP</td><td>MDPc + 1&nbsp;bar</td><td class="num">129.4</td><td class="num">12.7</td><td>PEA 25.0</td><td><span class="badge good">pass</span></td></tr>
+    <tr><td>MDPa</td><td>DP + 2&nbsp;bar (if surge were not calculated)</td><td class="num">125.4</td><td class="num">12.3</td><td>PMA 20.0</td><td><span class="badge good">pass</span></td></tr>
+    <tr><td>STP</td><td>lower of 1.5 MDPa and MDPa + 5&nbsp;bar</td><td class="num">176.5</td><td class="num">17.3</td><td>PEA 25.0</td><td><span class="badge good">pass</span></td></tr>
+    <tr><td>Minimum</td><td>calculated lowest head</td><td class="num">+4.3</td><td class="num">+0.42</td><td>&minus;0.8&nbsp;bar</td><td><span class="badge good">pass</span></td></tr>
+  </tbody>
+</table></div>
+<p>Two things follow. A calculated surge earns a lower test pressure: 12.7&nbsp;bar instead of 17.3, which matters on long mains where the test pressure decides section lengths and the pump size for the test. And the vessel design is limited not by the PN16 rating but by the project's own 136&nbsp;m, which is a choice about how much margin the owner wants, not a component limit. A report should say which limit it is applying and why.</p>
+
+<h2 id="int-envelope">3 &middot; Interactive: one envelope, several limits</h2>
+<p>Choose a protection case and a component class, and read the envelope against each limit. Where the peak comes from cavity collapse, two cavity models give different values, so both are drawn and both are checked [5].</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Surge envelope of the reference main against component limits</div>
+    <div class="fsub">12&nbsp;km DN800 ductile iron, flat profile, all pumps tripping. Maximum and minimum pressure heads from a method-of-characteristics model with a vapour cavity model; the dashed red trace is the maximum from a gas cavity model where the peak comes from cavity collapse. Lengths counted on the 100&nbsp;m grid. 1&nbsp;bar = 10.21&nbsp;m.</div>
+  </div>
+  <div class="chart-box"><canvas id="envChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Protection</label>
+      <select id="sCase">
+        <option value="0">No protection</option>
+        <option value="1" selected>Vessel: 3.5 m³ gas, 20 m³ shell</option>
+        <option value="2">Relief valve at 95 m, no vessel</option>
+        <option value="3">Flywheel: 400 kg·m² in total</option>
+      </select>
+      <div class="hint">The four designs of the surge protection series.</div>
+    </div>
+    <div class="ctrl">
+      <label>Weakest component class</label>
+      <select id="sCls">
+        <option value="10">PN10: PFA 10, PMA 12, PEA 17 bar</option>
+        <option value="16" selected>PN16: PFA 16, PMA 20, PEA 25 bar</option>
+        <option value="25">PN25 or C25 barrel: PFA 25, PMA 30, PEA 35 bar</option>
+      </select>
+      <div class="hint">Ductile iron to EN 545: PMA = 1.2 PFA, PEA = PMA + 5 bar.</div>
+    </div>
+    <div class="ctrl">
+      <label>Units</label>
+      <select id="sUnit">
+        <option value="m" selected>metres of water</option>
+        <option value="bar">bar</option>
+      </select>
+      <div class="hint">Gauge pressure in both.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Highest pressure</div><div class="v" id="rMax" style="font-size:17px;">&ndash;</div></div>
+    <div class="cell"><div class="k">Against PFA</div><div class="v" style="font-size:14px;margin-top:6px;" id="rPFA">&ndash;</div></div>
+    <div class="cell"><div class="k">Against PMA (MDP check)</div><div class="v" style="font-size:14px;margin-top:6px;" id="rPMA">&ndash;</div></div>
+    <div class="cell"><div class="k">Against 136 m project limit</div><div class="v" style="font-size:14px;margin-top:6px;" id="rPrj">&ndash;</div></div>
+    <div class="cell"><div class="k">Lowest pressure</div><div class="v" id="rMin" style="font-size:17px;">&ndash;</div></div>
+    <div class="cell"><div class="k">Against &minus;0.8 bar</div><div class="v" style="font-size:14px;margin-top:6px;" id="rVac">&ndash;</div></div>
+    <div class="cell"><div class="k">Against +3.0 m</div><div class="v" style="font-size:14px;margin-top:6px;" id="rDes">&ndash;</div></div>
+    <div class="cell"><div class="k">STP (MDPc + 1 bar)</div><div class="v" id="rSTP" style="font-size:17px;">&ndash;</div></div>
+  </div>
+</div>
+<p class="fig-note">With no protection the peak of 164.6&ndash;189.9&nbsp;m (16.1&ndash;18.6&nbsp;bar) exceeds PFA but stays inside the PMA of PN16 components, while the whole line goes to vapour. With the relief valve the peak along the line is 126.7&ndash;143.3&nbsp;m, inside PFA and PMA but over the project limit under one cavity model, and the line still goes to vapour. Only the vessel and the flywheel meet every limit. Switch to PN10 components and the vessel case still passes PMA (12&nbsp;bar = 122.5&nbsp;m against 119.2&nbsp;m), but with 3.3&nbsp;m to spare, which is less than the spread between cavity models on any case that cavitates.</p>
+<div class="callout warn">
+  <span class="lbl">Why a peak inside PMA is still not a pass</span>
+  The unprotected case passes the maximum-pressure check only because the column has already separated: the peak comes from cavity collapse, its value depends on the cavity model (25&nbsp;m apart here), and the separation itself takes every point on the line to full vacuum. We never accept a maximum that depends on column separation. The line must first be kept out of vapour; only then is its maximum a number that can be checked against PMA.
+</div>
+
+<h2 id="materials">4 &middot; What each pipe material allows</h2>
+<p>Each material family states its surge allowance differently. These are the rules we apply, with the references; always check the current edition and the manufacturer's own rating.</p>
+<div class="tbl-wrap"><table>
+  <caption>Surge allowances by material</caption>
+  <thead><tr><th>Material</th><th>Standard</th><th>Maximum including surge</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Ductile iron</td><td>EN 545 [2]</td><td>PMA = 1.2 &times; PFA</td><td>Flanged components rated by PN; the barrel class (C25, C30, C40) is usually higher.</td></tr>
+    <tr><td>Ductile iron</td><td>AWWA C150 [6]</td><td>Working pressure plus a 100&nbsp;psi (6.9&nbsp;bar) surge allowance, built into the thickness design</td><td>Larger surges need a thicker class or protection.</td></tr>
+    <tr><td>Steel</td><td>AWWA M11 [7]</td><td>Hoop stress under working plus transient pressure &le; 75&nbsp;% of yield</td><td>Working pressure alone is limited to 50&nbsp;% of yield.</td></tr>
+    <tr><td>Polyethylene</td><td>AWWA C906, M55 [8]</td><td>Occasional surge: total &le; 2.0 &times; PC. Recurring surge: total &le; 1.5 &times; PC</td><td>PC is the pressure class; temperature derating applies.</td></tr>
+    <tr><td>GRP</td><td>AWWA M45, C950 [9]</td><td>Working plus surge &le; 1.4 &times; PN</td><td>Commonly stated by manufacturers; confirm with the supplier.</td></tr>
+    <tr><td>PVC-U, PVC-O</td><td>EN ISO 1452, AWWA C900 [10]</td><td>Per the class standard and the manufacturer</td><td>Recurring surges are checked for fatigue (section 6).</td></tr>
+  </tbody>
+</table></div>
+<p>The occasional and recurring distinction runs through all of them. A power failure that trips every pump is an occasional event: a few times a year at most. A pump start or a planned stop is a recurring one: thousands of times over the life of the main. The design envelope of a surge study is usually the occasional trip, checked against PMA or its equivalent. Recurring events are smaller but far more numerous, and for plastics they are the ones that consume the pipe (section 6).</p>
+
+<h2 id="vacuum">5 &middot; Vacuum: will the pipe collapse?</h2>
+<p>A minimum envelope at vapour pressure means the pipe wall carries about one atmosphere of external pressure. For thick ductile iron that is trivial. For thin steel, GRP and plastics it is a buckling check. For a long unrestrained pipe, the elastic critical pressure is [11][12]:</p>
+<div class="eq">\[ P_{cr} \;=\; \frac{2E}{1-\nu^2}\left(\frac{t}{D_m}\right)^3 \;=\; \frac{2E}{1-\nu^2}\left(\frac{1}{SDR-1}\right)^3 \]</div>
+<p>where \(t\) is the wall thickness, \(D_m\) the mean diameter and SDR the outside diameter over the wall. For GRP, rated by its ring stiffness SN = \(EI/D_m^3\) in N/m&sup2;, the same expression is \(P_{cr} = 24\,SN\) per unit length. Real pipes are not perfectly round, and the ovality reduces the capacity. The factor used in the PE pipe literature for an ovality \(\delta\) is [8][12]</p>
+<div class="eq">\[ f_o \;=\; \left[\frac{1-\delta}{(1+\delta)^2}\right]^3 \qquad (\delta = 0.03 \Rightarrow f_o = 0.76) \]</div>
+<p>We then apply a safety factor, 2.0 in our practice for a short-term event. Surges last seconds, so the short-term modulus applies, reduced for temperature. A buried pipe is also supported by the soil, which raises its buckling resistance considerably; the unrestrained value applies above ground, in chambers and galleries, and in poorly compacted trench.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">Allowable vacuum for an unsupported pipe</div>
+    <div class="fsub">\(P_{allow} = f_o\,P_{cr}/SF\) with \(P_{cr} = 2E(1-\nu^2)^{-1}(SDR-1)^{-3}\), or \(24\,SN\) for GRP. Curve against SDR (or SN) for the chosen material; marker at your pipe. Full vacuum is 1.01&nbsp;bar below atmospheric; EN 805 components must withstand 0.8&nbsp;bar.</div>
+  </div>
+  <div class="chart-box"><canvas id="vacChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Material</label>
+      <select id="sMat">
+        <option value="pe" selected>PE100 (E 900 MPa, &nu; 0.45)</option>
+        <option value="pvc">PVC-U (E 3,000 MPa, &nu; 0.38)</option>
+        <option value="steel">Steel (E 207,000 MPa, &nu; 0.30)</option>
+        <option value="grp">GRP (by stiffness class SN)</option>
+      </select>
+      <div class="hint">Short-term moduli at about 20&nbsp;&deg;C; use the manufacturer's value.</div>
+    </div>
+    <div class="ctrl">
+      <label><span id="lDim">SDR</span> <span id="vDim">17</span></label>
+      <input type="range" id="sDim" min="0" max="7" value="3" step="1">
+      <div class="hint" id="hDim">Outside diameter over wall thickness.</div>
+    </div>
+    <div class="ctrl">
+      <label>Modulus multiplier <span id="vE">1.00</span></label>
+      <input type="range" id="sE" min="0.5" max="1.2" value="1" step="0.05">
+      <div class="hint">Below 1 for higher temperature or longer load duration.</div>
+    </div>
+    <div class="ctrl">
+      <label>Ovality <span id="vOv">3 %</span></label>
+      <input type="range" id="sOv" min="0" max="8" value="3" step="0.5">
+      <div class="hint">Out-of-roundness from bedding and handling.</div>
+    </div>
+    <div class="ctrl">
+      <label>Safety factor <span id="vSF">2.0</span></label>
+      <input type="range" id="sSF" min="1" max="3" value="2" step="0.1">
+      <div class="hint">Our practice: 2.0 for a short-term surge.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Critical pressure</div><div class="v" id="rPcr">&ndash;</div></div>
+    <div class="cell"><div class="k">Ovality factor</div><div class="v" id="rFo">&ndash;</div></div>
+    <div class="cell"><div class="k">Allowable vacuum</div><div class="v" id="rPal">&ndash;</div></div>
+    <div class="cell"><div class="k">Full vacuum</div><div class="v" style="font-size:14px;margin-top:6px;" id="rFull">&ndash;</div></div>
+    <div class="cell"><div class="k">EN 805: &minus;0.8 bar</div><div class="v" style="font-size:14px;margin-top:6px;" id="rEN">&ndash;</div></div>
+  </div>
+</div>
+<p class="fig-note">PE100 SDR17 allows 2.1&nbsp;bar of vacuum with 3&nbsp;% ovality and a factor of 2, comfortably more than full vacuum. SDR26 allows only 0.55&nbsp;bar and should not be exposed to full vacuum unsupported. GRP SN5000 has a critical pressure of 1.2&nbsp;bar before any reduction, so with ovality and a factor of 2 it allows 0.46&nbsp;bar; SN10000 allows 0.92. A DN800 steel pipe (outside diameter about 0.81&nbsp;m) needs a D/t of about 120 or less to take full vacuum on these assumptions, which is 6.7&nbsp;mm of wall or more. These are the cases in which the minimum envelope, not the maximum, decides the pipe class or the protection.</p>
+
+<h2 id="fatigue">6 &middot; Fatigue: recurring surges in plastic pipes</h2>
+<p>Ductile iron and steel are rarely limited by surge fatigue in water service. PVC and PE are: each pressure cycle consumes a little of the pipe's life, and the consumption rises steeply with the size of the swing. For PVC the method recommended by the PVC pipe industry is the one developed by Folkman, used in the Uni-Bell cyclic life calculator [13]. The hoop stress amplitude and the cycles to failure are</p>
+<div class="eq">\[ \sigma_{amp} \;=\; \frac{(P_{max}-P_{min})(DR-1)}{4}, \qquad N \;=\; 10^{\,-4.196\,\log_{10}\sigma_{amp} \;+\; 17.76} \]</div>
+<p>with pressures and stress in psi. The cyclic life in years is \(N\) divided by the number of cycles per year. We divide the result by 2 as a design margin. The pressures come straight from the surge model: the maximum and minimum at the critical point for each recurring event (a normal start, a normal stop, a duty change), not the trip envelope.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">PVC cyclic life from the recurring surge</div>
+    <div class="fsub">Folkman method as used in the Uni-Bell calculator [13]: \(\sigma_{amp} = \Delta P\,(DR-1)/4\) (psi), \(N = 10^{-4.196\log\sigma_{amp}+17.76}\). Curves: cycles to failure against the pressure swing for four DRs, log scale. Horizontal line: cycles needed for the design life with the chosen margin.</div>
+  </div>
+  <div class="chart-box"><canvas id="fatChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>DR</label>
+      <select id="sDR">
+        <option value="14">DR14</option>
+        <option value="18" selected>DR18</option>
+        <option value="21">DR21</option>
+        <option value="25">DR25</option>
+      </select>
+      <div class="hint">Outside diameter over wall thickness.</div>
+    </div>
+    <div class="ctrl">
+      <label>Maximum pressure in the cycle <span id="vPx">9.0 bar</span></label>
+      <input type="range" id="sPx" min="1" max="16" value="9" step="0.5">
+      <div class="hint">From the surge model at the critical point.</div>
+    </div>
+    <div class="ctrl">
+      <label>Minimum pressure in the cycle <span id="vPn">1.5 bar</span></label>
+      <input type="range" id="sPn" min="-0.8" max="10" value="1.5" step="0.1">
+      <div class="hint">Gauge; negative values are below atmospheric.</div>
+    </div>
+    <div class="ctrl">
+      <label>Cycles per day <span id="vCy">24</span></label>
+      <input type="range" id="sCy" min="1" max="200" value="24" step="1">
+      <div class="hint">A start and a stop are two cycles.</div>
+    </div>
+    <div class="ctrl">
+      <label>Design life <span id="vLf">50 years</span></label>
+      <input type="range" id="sLf" min="10" max="100" value="50" step="5">
+      <div class="hint">With a margin of 2 on cycles.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Pressure swing</div><div class="v" id="rDP">&ndash;</div></div>
+    <div class="cell"><div class="k">Stress amplitude</div><div class="v" id="rSa">&ndash;</div></div>
+    <div class="cell"><div class="k">Cycles to failure</div><div class="v" id="rN">&ndash;</div></div>
+    <div class="cell"><div class="k">Cyclic life</div><div class="v" id="rLife">&ndash;</div></div>
+    <div class="cell"><div class="k">With margin of 2</div><div class="v" id="rLife2">&ndash;</div></div>
+    <div class="cell"><div class="k">Verdict</div><div class="v" style="font-size:14px;margin-top:6px;" id="rFV">&ndash;</div></div>
+  </div>
+</div>
+<p class="fig-note">A DR18 force main cycling between 1.5 and 9.0&nbsp;bar 24 times a day lasts about 430 years by this method, 216 with the margin. Raise the maximum to 12&nbsp;bar and drop the minimum to 0, a swing of 12&nbsp;bar, and the life falls to about 60 years, 30 with the margin: short of a 50-year design life. Because life goes with the swing to the power of about 4.2, a protection device that halves the recurring swing multiplies the life roughly eighteen times. For PE, the industry's approach is the allowance in section 4: the recurring surge is kept within a total of 1.5 &times; PC, a level at which PE4710 pipe has been shown to last millions of cycles [8].</p>
+
+<h2 id="worked-example">7 &middot; Worked example: checking the reference main</h2>
+<h3>Step 1: identify the weakest component</h3>
+<p>Pipe barrel DN800 C25 (PFA 25&nbsp;bar); valves, flanges and the vessel connection PN16 (16/20/25&nbsp;bar); air valves PN16. The system is PN16.</p>
+<h3>Step 2: set DP and MDP</h3>
+<p>DP = 105&nbsp;m = 10.3&nbsp;bar (pump shut-off). MDPc = 119.2&nbsp;m = 11.7&nbsp;bar from the governing trip. Both within PFA 16 and PMA 20.</p>
+<h3>Step 3: check the owner's criteria</h3>
+<p>Maximum 119.2&nbsp;m against the 136&nbsp;m project limit: 16.8&nbsp;m of margin. Minimum +4.3&nbsp;m against +3.0&nbsp;m: 1.3&nbsp;m of margin. The line never goes below atmospheric, so the &minus;0.8&nbsp;bar requirement is not engaged.</p>
+<h3>Step 4: check vacuum capacity anyway</h3>
+<p>If the vessel is out of service, the line goes to vapour (section 3). Ductile iron DN800 C25 is not at risk of collapse, but any thin-walled steel spools in the station and the air valves' own ratings must be checked against full vacuum, or the operating rules must forbid running without the vessel.</p>
+<h3>Step 5: set the test pressure</h3>
+<p>STP = MDPc + 1&nbsp;bar = 12.7&nbsp;bar, within PEA 25. Had the surge not been calculated, the test would have been 17.3&nbsp;bar.</p>
+<h3>Step 6: recurring events</h3>
+<p>Ductile iron is not fatigue-limited in this service. Had the main been PVC or PE, the normal start and stop would be modelled, and their swings run through section 6.</p>
+
+<h2 id="hammer-setup">8 &middot; Reading the limits in Bentley HAMMER</h2>
+<p>HAMMER reports heads and pressures; the limits are yours to add [14]. Field names differ slightly between versions.</p>
+<ol>
+  <li><strong>Give every pipe its pressure rating</strong> in a user data field (PFA and PMA, or PC for plastics), and record the weakest component on each pipe, not only the barrel class.</li>
+  <li><strong>Plot pressure, not head</strong>, in the profile view: maximum and minimum pressure envelopes along the path, with the ground or pipe crown profile.</li>
+  <li><strong>Draw the limits on the profile</strong>: PMA, PFA, the project maximum, &minus;0.8&nbsp;bar, full vacuum and the design minimum.</li>
+  <li><strong>Use colour coding</strong> on the plan to show pipes whose maximum transient pressure exceeds their PMA, or whose minimum falls below their vacuum capacity, and check every flagged pipe.</li>
+  <li><strong>Check vapour pockets and cavity volumes</strong> in the results: any column separation means the maximum is model-dependent, as in the unprotected case above.</li>
+  <li><strong>Model recurring events separately</strong> (normal start, normal stop, duty changes) and export the pressure range at the critical points for the fatigue check.</li>
+  <li><strong>Report MDPc and STP</strong> from the governing envelope, so the test pressure can be set from the calculation.</li>
+</ol>
+
+<h2 id="checklist">9 &middot; Checklist</h2>
+<ul class="clean">
+  <li><strong>Weakest component identified</strong> on every part of the line: valves, flanges, vessel, air valves, fittings.</li>
+  <li><strong>DP, MDP and STP stated</strong> in EN 805 terms, with the basis of DP.</li>
+  <li><strong>MDP &le; PMA, DP &le; PFA, STP &le; PEA</strong> for the weakest component.</li>
+  <li><strong>Owner's criteria applied</strong> separately and named as such.</li>
+  <li><strong>Minimum envelope checked</strong> against &minus;0.8&nbsp;bar, full vacuum and the collapse capacity of every thin-walled pipe.</li>
+  <li><strong>No acceptance resting on a collapse peak</strong>: column separation is designed out first.</li>
+  <li><strong>Occasional and recurring events separated</strong>, with fatigue checked for plastic pipes.</li>
+  <li><strong>Temperature derating</strong> applied to plastic pipe ratings.</li>
+</ul>
+
+<div class="callout green">
+  <span class="lbl">Surge analysis practice series</span>
+  <ol>
+    <li><a href="surge-model-time-step-convergence.html">Is your HAMMER run right? Time step, adjustment and run duration</a></li>
+    <li><a href="pump-trip-data-inertia-specific-speed.html">Pump data for a pump trip: inertia, specific speed and four-quadrant curves</a></li>
+    <li><strong>Reading the surge envelope against the pipe's real limits</strong></li>
+    <li><a href="surge-study-report-review-checklist.html">The surge study report: what to deliver and what a reviewer checks</a></li>
+  </ol>
+  The protection devices themselves are covered in the <a href="choosing-surge-protection.html">surge protection design series</a>.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>EN 805 <em>Water supply. Requirements for systems and components outside buildings</em>: DP, MDP (MDPa and MDPc), STP, the minimum 2&nbsp;bar surge allowance, the test pressure rules, and the PFA, PMA and PEA relations for components.</li>
+  <li>EN 545 <em>Ductile iron pipes, fittings, accessories and their joints for water pipelines</em>: pressure classes, PMA = 1.2 PFA, and the PFA, PMA and PEA of flanged components by PN.</li>
+  <li>EN 14801 <em>Conditions for pressure classification of products for water and wastewater pipelines</em>: components to withstand a transient pressure 80&nbsp;kPa below atmospheric.</li>
+  <li>Abokhatwa, M. <em>Surge protection design series</em>, abokhatwa.com, 2026: the reference main, its protection cases, the 136&nbsp;m and +3.0&nbsp;m project criteria, and the verified MOC solver.</li>
+  <li>Bergant, A., Simpson, A.R. &amp; Tijsseling, A.S. &ldquo;Water hammer with column separation: a historical review.&rdquo; <em>Journal of Fluids and Structures</em>, 22(2), 2006: why collapse peaks depend on the cavity model.</li>
+  <li>AWWA C150/A21.50 <em>Thickness Design of Ductile-Iron Pipe</em>: working pressure plus a 100&nbsp;psi surge allowance in the thickness design.</li>
+  <li>AWWA Manual M11 <em>Steel Pipe: A Guide for Design and Installation</em>: allowable stress under working and transient pressure, and buckling of steel pipe.</li>
+  <li>AWWA C906 and Manual M55 <em>PE Pipe: Design and Installation</em>; Plastics Pipe Institute guidance: pressure class, occasional surge (total 2.0 &times; PC) and recurring surge (total 1.5 &times; PC), unconstrained buckling and the ovality correction.</li>
+  <li>AWWA Manual M45 <em>Fiberglass Pipe Design</em> and AWWA C950: surge allowance for GRP, with manufacturers' statements of the 1.4 &times; PN limit.</li>
+  <li>EN ISO 1452 <em>Plastics piping systems for water supply: PVC-U</em>, and AWWA C900 <em>PVC pressure pipe</em>: pressure classes and temperature derating for PVC.</li>
+  <li>Timoshenko, S.P. &amp; Gere, J.M. <em>Theory of Elastic Stability</em>, 2nd ed. McGraw-Hill, 1961: buckling of long thin tubes under external pressure.</li>
+  <li>Plastics Pipe Institute. <em>Handbook of Polyethylene Pipe</em>, 2nd ed., 2008: design for external pressure, short-term modulus and ovality compensation.</li>
+  <li>Folkman, S. &amp; Parvez, J. &ldquo;PVC pipe cyclic design method.&rdquo; ASCE Pipelines 2020; and Uni-Bell PVC Pipe Association, <em>Force Main Design Guide for PVC Pipe</em> and Cyclic-Life Calculator: stress amplitude, cycles to failure and cyclic life.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> documentation: profile envelopes, user data fields, colour coding and transient results.</li>
+</ol>
+
+<div class="tags">#SurgeAnalysis #WaterHammer #HydraulicTransients #EN805 #EN545 #PFA #PMA #PEA #DesignPressure #MaximumDesignPressure #SystemTestPressure #SurgeAllowance #VacuumCollapse #PipeBuckling #PEPipe #PVCPipe #GRPPipe #SteelPipe #DuctileIron #Fatigue #CyclicLoading #ColumnSeparation #BentleyHAMMER #PipelineDesign #WaterEngineering</div>
+
+</div>
+
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="f-line"><span class="nm">&copy; 2026 Mohamed Abokhatwa</span> <i class="sep">&middot;</i> <span>Riyadh, Saudi Arabia</span> <i class="sep">&middot;</i> <a href="mailto:mohamed@abokhatwa.com" dir="ltr">mohamed@abokhatwa.com</a> <i class="sep">&middot;</i> <a href="tel:+966541706700" dir="ltr">+966 54 170 6700</a> <i class="sep">&middot;</i> <a href="https://www.linkedin.com/in/abokhatwa" target="_blank" rel="noopener">LinkedIn</a> <i class="sep">&middot;</i> <a href="/">All articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="chart-theme.js?v=13"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+
+const D={"x":[0,100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200,2300,2400,2500,2600,2700,2800,2900,3000,3100,3200,3300,3400,3500,3600,3700,3800,3900,4000,4100,4200,4300,4400,4500,4600,4700,4800,4900,5000,5100,5200,5300,5400,5500,5600,5700,5800,5900,6000,6100,6200,6300,6400,6500,6600,6700,6800,6900,7000,7100,7200,7300,7400,7500,7600,7700,7800,7900,8000,8100,8200,8300,8400,8500,8600,8700,8800,8900,9000,9100,9200,9300,9400,9500,9600,9700,9800,9900,10000,10100,10200,10300,10400,10500,10600,10700,10800,10900,11000,11100,11200,11300,11400,11500,11600,11700,11800,11900,12000],"cases":[{"key":"none","Hmax":[189.92,189.73,189.54,189.35,189.16,188.97,166.24,166.12,165.93,165.81,165.62,165.5,165.31,165.19,164.99,164.87,164.68,164.56,164.36,164.24,164.04,163.92,163.72,163.6,163.4,163.27,163.14,163.02,162.89,162.76,162.64,162.51,162.38,162.25,162.12,161.99,161.86,161.73,161.6,161.46,161.33,161.2,161.06,160.93,160.79,160.66,160.52,160.38,160.25,160.11,159.97,159.83,159.69,159.55,159.41,159.27,159.12,158.98,158.84,158.69,158.55,158.4,158.25,158.11,157.96,157.81,157.66,157.51,157.36,157.2,157.05,156.9,156.74,156.59,156.43,156.27,156.12,155.96,155.8,155.64,155.48,155.31,155.15,154.99,154.82,154.65,154.49,154.32,154.15,153.98,153.81,153.64,153.46,153.29,153.11,152.94,152.76,152.58,152.4,152.22,152.03,151.85,151.67,151.48,151.29,151.1,150.91,150.72,150.53,150.33,150.14,148.09,147.61,147.14,146.67,146.21,145.76,145.31,144.86,144.42,44.8],"Hmin":[-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,44.8],"Hmax_dgcm":[164.55,163.71,163.33,162.62,161.92,161.28,160.86,161.7,160.97,160.46,159.9,160.74,159.9,159.64,160.49,158.32,159.07,158.78,159.17,160.01,157.96,158.71,158.5,158.88,159.72,157.67,158.42,157.96,158.45,158.54,157.4,158.16,157.34,157.97,157.21,156.14,156.99,156.17,154.18,153.99,154.48,154.72,154.16,153.79,153.51,153.26,153.04,152.85,153.18,153.13,152.83,152.57,152.48,152.47,152.07,151.78,151.53,151.29,151.09,151.25,150.99,150.66,150.38,150.15,149.95,149.76,149.56,149.37,149.19,149.0,148.8,148.63,148.48,148.31,148.32,148.45,148.94,148.64,148.29,147.6,146.87,146.96,146.95,146.84,146.41,146.65,146.86,147.01,147.32,147.82,147.39,146.99,146.44,146.06,145.51,145.11,144.69,144.05,143.48,142.97,142.45,141.88,141.44,140.69,139.98,139.32,138.82,138.25,137.38,135.95,136.13,130.14,130.33,121.51,122.27,122.83,122.24,121.51,122.32,118.21,44.8],"line_max":189.92,"line_max_dgcm":164.55,"line_min":-9.8},{"key":"vessel","Hmax":[119.15,118.84,118.52,118.19,117.86,117.51,117.17,116.81,116.45,116.08,115.7,115.31,114.92,114.52,114.11,113.7,113.28,112.85,112.41,111.96,111.51,111.05,110.58,110.1,109.62,109.13,108.63,108.12,107.6,107.08,106.55,106.01,105.46,104.91,104.35,103.78,103.2,102.61,102.02,101.41,100.8,100.19,99.56,98.93,98.29,97.64,96.98,96.32,95.65,94.97,94.29,93.59,92.89,92.19,91.48,90.76,90.03,89.3,88.56,87.81,87.06,86.3,85.54,84.77,84.25,83.8,83.34,82.86,82.38,81.88,81.37,80.85,80.31,79.77,79.21,78.64,78.05,77.46,76.86,76.24,75.61,74.97,74.32,73.65,72.98,72.29,71.6,70.89,70.18,69.45,68.71,67.97,67.22,66.46,65.7,64.93,64.16,63.38,62.66,61.94,61.21,60.47,59.71,58.94,58.17,57.38,56.59,55.78,54.97,54.15,53.32,52.49,51.65,50.8,49.95,49.1,48.24,47.39,46.52,45.66,44.8],"Hmin":[4.85,4.84,4.82,4.8,4.79,4.78,4.77,4.76,4.75,4.74,4.73,4.73,4.72,4.72,4.72,4.72,4.73,4.73,4.74,4.74,4.75,4.76,4.78,4.79,4.81,4.79,4.74,4.7,4.66,4.62,4.58,4.54,4.51,4.48,4.45,4.43,4.41,4.39,4.37,4.36,4.35,4.34,4.33,4.33,4.33,4.34,4.34,4.36,4.37,4.39,4.41,4.44,4.47,4.51,4.54,4.59,4.64,4.69,4.75,4.81,4.88,4.95,5.03,5.12,5.21,5.3,5.41,5.52,5.63,5.76,5.89,6.03,6.17,6.33,6.49,6.66,6.85,7.04,7.24,7.45,7.68,7.91,8.16,8.42,8.69,8.98,9.28,9.6,9.94,10.29,10.66,11.05,11.46,11.89,12.35,12.83,13.33,13.87,14.43,15.03,15.66,16.32,17.03,17.77,18.57,19.41,20.31,21.27,22.29,23.38,24.55,25.81,27.16,28.62,30.2,31.91,33.78,35.82,38.06,40.53,44.8],"Hmax_dgcm":null,"line_max":119.15,"line_max_dgcm":null,"line_min":4.33},{"key":"srv","Hmax":[96.3,117.42,117.64,117.86,118.07,118.29,118.5,118.65,118.87,119.02,119.23,119.38,119.6,119.75,119.97,120.12,120.33,120.49,120.71,120.86,121.08,121.24,121.45,121.61,121.79,121.94,122.1,122.25,122.41,122.56,122.72,122.87,123.03,123.19,123.35,123.5,123.66,123.82,123.98,124.14,124.3,124.46,124.62,124.78,124.94,125.11,125.27,125.43,125.6,125.76,125.93,126.09,126.26,126.43,126.59,126.76,126.93,127.1,127.27,127.44,127.61,127.78,127.96,128.13,128.3,128.48,128.65,128.83,129.01,129.19,129.36,129.54,129.72,129.91,130.09,130.27,130.46,130.64,130.83,131.01,131.2,131.39,131.58,131.77,131.96,132.15,132.34,132.54,132.73,132.93,133.13,133.33,133.52,133.73,133.93,134.13,134.33,134.54,134.74,134.95,135.16,135.37,135.58,135.79,136.01,136.22,138.44,138.93,139.41,139.89,140.36,140.83,141.29,141.75,142.21,142.43,142.65,142.87,143.08,143.3,44.8],"Hmin":[-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,-9.8,44.8],"Hmax_dgcm":[95.88,102.56,103.45,104.03,104.55,105.23,105.96,106.73,107.18,107.76,108.29,108.81,109.4,110.05,110.49,110.89,111.45,111.84,112.4,112.8,113.24,113.5,113.94,112.14,112.42,111.6,111.77,111.96,112.17,112.41,113.07,113.77,114.13,114.46,114.82,115.13,114.48,114.51,114.51,114.68,114.84,115.02,115.22,115.42,115.61,115.81,116.01,116.21,116.42,116.66,116.94,117.27,117.55,117.39,117.6,117.84,118.12,118.4,118.81,118.83,118.92,119.19,119.49,119.56,119.22,119.42,119.65,119.91,120.46,120.57,121.15,120.91,120.39,120.62,120.81,121.02,121.26,121.54,121.78,122.63,124.33,124.32,125.01,125.01,122.1,121.89,122.3,122.58,122.92,123.13,123.27,123.37,123.48,123.66,123.9,124.15,124.51,124.57,124.68,124.85,125.12,125.46,125.72,125.82,125.82,125.71,124.65,125.12,125.55,126.05,126.23,126.73,124.55,120.98,121.3,121.73,122.24,118.65,117.7,118.21,44.8],"line_max":143.3,"line_max_dgcm":126.73,"line_min":-9.8},{"key":"fly","Hmax":[85.0,84.67,84.33,84.0,83.66,83.33,82.99,82.66,82.32,81.98,81.65,81.31,80.98,80.65,80.31,79.97,79.64,79.3,78.97,78.64,78.3,77.97,77.63,77.3,76.96,76.62,76.29,75.95,75.62,75.28,74.95,74.61,74.28,73.94,73.61,73.28,72.94,72.61,72.27,71.94,71.6,71.27,70.93,70.59,70.26,69.92,69.59,69.25,68.92,68.59,68.25,67.91,67.58,67.25,66.94,66.82,66.69,66.56,66.42,66.28,66.13,65.98,65.83,65.67,65.5,65.33,65.16,64.98,64.79,64.6,64.41,64.2,64.0,63.78,63.56,63.34,63.11,62.87,62.62,62.37,62.12,61.85,61.58,61.3,61.02,60.72,60.42,60.11,59.8,59.47,59.14,58.8,58.45,58.1,57.73,57.36,56.97,56.58,56.18,55.77,55.35,54.92,54.48,54.03,53.57,53.1,52.68,52.67,52.66,52.35,51.72,51.08,50.43,49.77,49.09,48.4,47.7,47.0,46.27,45.54,44.8],"Hmin":[10.77,10.68,10.6,10.52,10.44,10.36,10.29,10.21,10.14,10.08,10.01,9.95,9.89,9.84,9.78,9.73,9.68,9.64,9.6,9.56,9.52,9.49,9.46,9.43,9.41,9.39,9.37,9.36,9.35,9.34,9.34,9.34,9.34,9.35,9.37,9.38,9.4,9.43,9.46,9.49,9.53,9.57,9.62,9.67,9.73,9.79,9.85,9.93,10.0,10.08,10.17,10.26,10.36,10.47,10.58,10.69,10.82,10.95,11.08,11.22,11.37,11.53,11.69,11.86,12.04,12.23,12.42,12.62,12.83,13.05,13.28,13.52,13.76,14.02,14.28,14.56,14.84,15.14,15.45,15.76,16.09,16.43,16.79,17.15,17.53,17.92,18.33,18.75,19.18,19.63,20.1,20.58,21.08,21.59,22.12,22.67,23.24,23.83,24.44,25.07,25.72,26.4,27.09,27.81,28.56,29.33,30.13,30.96,31.81,32.7,33.61,34.56,35.54,36.56,37.61,38.71,39.84,41.01,42.23,43.49,44.8],"Hmax_dgcm":null,"line_max":85.0,"line_max_dgcm":null,"line_min":9.34}]};
+const FF="'IBM Plex Sans', system-ui, sans-serif";
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:FF,size:11}}};
+const TTL={family:FF,size:12,weight:'600'};
+const LBL={size:10,family:FF};
+const LEGF={family:FF,size:11.5};
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1), fmt2=v=>v.toFixed(2);
+const sgn=(v,d)=>(v<-0.0049?'−':(v>0.0049?'+':''))+Math.abs(v).toFixed(d);
+const M2B=10.21, VAP=-9.8, PRJ=136.0, PMIN=3.0, VAC=-0.8*M2B;
+const good=t=>'<span class="badge good">'+t+'</span>', bad=t=>'<span class="badge bad">'+t+'</span>', warn=t=>'<span class="badge warn">'+t+'</span>';
+/* ---------- CHART 1 : envelope against limits ---------- */
+const sCase=document.getElementById('sCase'), sCls=document.getElementById('sCls'), sUnit=document.getElementById('sUnit');
+const X=D.x.map(x=>x/1000);
+const hl=(v,txt,col,pos)=>({type:'line',yMin:v,yMax:v,borderColor:col,borderWidth:1.4,borderDash:[6,4],label:{display:true,content:txt,position:pos||'end',font:LBL,color:'#fff',backgroundColor:col}});
+const envChart=new Chart(document.getElementById('envChart'),{
+  data:{datasets:[
+    {type:'line',label:'Maximum, vapour cavity model',data:[],borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2.4,pointRadius:0,order:2},
+    {type:'line',label:'Maximum, gas cavity model',data:[],borderColor:'#c0392b',backgroundColor:'#c0392b',borderWidth:1.6,borderDash:[5,4],pointRadius:0,order:3},
+    {type:'line',label:'Minimum',data:[],borderColor:'#b9770e',backgroundColor:'#b9770e',borderWidth:2.4,pointRadius:0,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',axis:'x',intersect:false},
+    scales:{x:{type:'linear',min:0,max:12,title:{display:true,text:'Chainage from the pump station (km)',font:TTL},...AX},
+            y:{type:'linear',title:{display:true,text:'Pressure head (m)',font:TTL},...AX}},
+    plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:8,filter:(it,d)=>d.datasets[it.datasetIndex].data.length>0}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${sUnit.value==='bar'?fmt2(c.parsed.y)+' bar':fmt1(c.parsed.y)+' m'} at ${fmt1(c.parsed.x)} km`}},
+      annotation:{annotations:{}}}}
+});
+function updEnv(){
+  const c=D.cases[+sCase.value], pfa=+sCls.value, pma=1.2*pfa, pea=pma+5, u=sUnit.value, k=u==='bar'?1/M2B:1;
+  const Y=a=>a.map((v,i)=>({x:X[i],y:+(v*k).toFixed(3)}));
+  envChart.data.datasets[0].data=Y(c.Hmax);
+  envChart.data.datasets[1].data=c.Hmax_dgcm?Y(c.Hmax_dgcm):[];
+  envChart.data.datasets[2].data=Y(c.Hmin);
+  const unit=u==='bar'?' bar':' m', fv=v=>u==='bar'?fmt1(v*k):fmt0(v*k);
+  envChart.options.scales.y.min=-15*k; envChart.options.scales.y.max=Math.max(220,pma*M2B+10)*k;
+  envChart.options.scales.y.title.text=u==='bar'?'Pressure (bar gauge)':'Pressure head (m)';
+  envChart.options.plugins.annotation.annotations={
+    pma:hl(pma*M2B*k,'PMA '+fmt0(pma)+' bar','rgba(192,57,43,0.85)'),
+    pfa:hl(pfa*M2B*k,'PFA '+fmt0(pfa)+' bar','rgba(185,119,14,0.85)'),
+    prj:hl(PRJ*k,'project max 136 m','rgba(107,79,158,0.85)','start'),
+    des:hl(PMIN*k,'+3.0 m','rgba(30,132,73,0.85)','start'),
+    vac:hl(VAC*k,'−0.8 bar','rgba(192,57,43,0.85)','start'),
+  };
+  envChart.update('none');
+  const lo=c.line_max_dgcm!=null?Math.min(c.line_max,c.line_max_dgcm):c.line_max, hi=c.line_max_dgcm!=null?Math.max(c.line_max,c.line_max_dgcm):c.line_max;
+  const show=v=>u==='bar'?fmt2(v/M2B):fmt1(v);
+  document.getElementById('rMax').innerHTML=(lo!==hi?show(lo)+'–'+show(hi):show(hi))+' <small>'+unit.trim()+'</small>';
+  const chk=(lim)=>hi<=lim?good('pass'):(lo>lim?bad('fails'):warn('depends on cavity model'));
+  document.getElementById('rPFA').innerHTML=chk(pfa*M2B);
+  document.getElementById('rPMA').innerHTML=c.line_min<=VAP+0.05?bad('not valid: column separation'):chk(pma*M2B);
+  document.getElementById('rPrj').innerHTML=chk(PRJ);
+  document.getElementById('rMin').innerHTML=(u==='bar'?sgn(c.line_min/M2B,2):sgn(c.line_min,1))+' <small>'+unit.trim()+'</small>'+(c.line_min<=VAP+0.05?' <small>(vapour)</small>':'');
+  document.getElementById('rVac').innerHTML=c.line_min>=VAC?good('pass'):bad('fails');
+  document.getElementById('rDes').innerHTML=c.line_min>=PMIN?good('pass'):bad('fails');
+  const stp=hi/M2B+1;
+  document.getElementById('rSTP').innerHTML=fmt1(stp)+' <small>bar</small> '+(stp<=pea?good('≤ PEA '+fmt0(pea)):bad('> PEA '+fmt0(pea)));
+}
+[sCase,sCls,sUnit].forEach(s=>s.addEventListener('input',updEnv));updEnv();
+
+/* ---------- CHART 2 : vacuum collapse ---------- */
+const MAT={pe:{E:900e6,nu:0.45,name:'PE100',dims:[9,11,13.6,17,21,26,33,41],def:3},
+           pvc:{E:3000e6,nu:0.38,name:'PVC-U',dims:[13.6,17,21,26,33,41,51],def:3},
+           steel:{E:207e9,nu:0.30,name:'Steel',dims:[50,60,70,80,90,100,110,120,135,150,175,200],def:5},
+           grp:{name:'GRP',dims:[1250,2500,5000,10000,20000],def:2}};
+const sMat=document.getElementById('sMat'), sDim=document.getElementById('sDim'), sE=document.getElementById('sE'), sOv=document.getElementById('sOv'), sSF=document.getElementById('sSF');
+const fo=d=>Math.pow((1-d)/Math.pow(1+d,2),3);
+function pcr(m,dim,em){ // Pa
+  if(m==='grp') return 24*dim;
+  const M=MAT[m], r=1/(dim-1); return 2*M.E*em/(1-M.nu*M.nu)*r*r*r;
+}
+const vacChart=new Chart(document.getElementById('vacChart'),{
+  data:{datasets:[
+    {type:'line',label:'Allowable vacuum (bar)',data:[],borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2.4,pointRadius:3,order:2},
+    {type:'line',label:'Critical pressure, no reduction (bar)',data:[],borderColor:'#7f8c8d',backgroundColor:'#7f8c8d',borderWidth:1.4,borderDash:[5,4],pointRadius:0,order:3},
+    {type:'line',showLine:false,label:'Your pipe',data:[],backgroundColor:'#c0392b',borderColor:'#fff',borderWidth:2,pointRadius:8,order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,
+    scales:{x:{type:'category',title:{display:true,text:'SDR',font:TTL},...AX},
+            y:{type:'logarithmic',min:0.01,max:100,title:{display:true,text:'Pressure below atmospheric (bar, log scale)',font:TTL},grid:{color:'#eef2f5'},
+               ticks:{font:{family:FF,size:11},callback:v=>[0.01,0.1,0.8,1,10,100].includes(+v.toPrecision(2))?String(+v.toPrecision(2)):''}}},
+    plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label.replace(' (bar)','')}: ${fmt2(c.parsed.y)} bar`}},
+      annotation:{annotations:{
+        full:{type:'line',yMin:1.013,yMax:1.013,borderColor:'#c0392b',borderWidth:1.5,borderDash:[6,4],label:{display:true,content:'full vacuum 1.01 bar',position:'start',font:LBL,color:'#fff',backgroundColor:'rgba(192,57,43,0.85)'}},
+        en:{type:'line',yMin:0.8,yMax:0.8,borderColor:'#b9770e',borderWidth:1.2,borderDash:[3,3],label:{display:true,content:'EN 805: 0.8 bar',position:'end',font:LBL,color:'#fff',backgroundColor:'rgba(185,119,14,0.85)'}}
+      }}}}
+});
+let lastMat=null;
+function updVac(){
+  const m=sMat.value, M=MAT[m];
+  if(m!==lastMat){ sDim.max=String(M.dims.length-1); sDim.value=String(M.def); lastMat=m; }
+  const i=Math.min(+sDim.value,M.dims.length-1), dim=M.dims[i], em=+sE.value, ov=+sOv.value/100, sf=+sSF.value;
+  const lab=m==='grp'?'SN':(m==='steel'?'D/t':'SDR');
+  document.getElementById('lDim').textContent=lab;
+  document.getElementById('vDim').textContent=m==='grp'?fmt0(dim)+' N/m²':String(dim);
+  document.getElementById('hDim').textContent=m==='grp'?'Ring stiffness class.':(m==='steel'?'Outside diameter over wall thickness.':'Outside diameter over wall thickness.');
+  document.getElementById('vE').textContent=fmt2(em);
+  document.getElementById('vOv').textContent=(ov*100).toFixed(1).replace('.0','')+' %';
+  document.getElementById('vSF').textContent=sf.toFixed(1);
+  const f=fo(ov);
+  vacChart.options.scales.x.title.text=m==='grp'?'Stiffness class SN (N/m²)':(m==='steel'?'D/t':'SDR');
+  vacChart.data.labels=M.dims.map(d=>m==='grp'?fmt0(d):String(d));
+  vacChart.data.datasets[0].data=M.dims.map(d=>pcr(m,d,em)*f/sf/1e5);
+  vacChart.data.datasets[1].data=M.dims.map(d=>pcr(m,d,em)/1e5);
+  vacChart.data.datasets[2].data=M.dims.map((d,j)=>j===i?pcr(m,d,em)*f/sf/1e5:null);
+  vacChart.update('none');
+  const p=pcr(m,dim,em)/1e5, pa=p*f/sf;
+  document.getElementById('rPcr').innerHTML=fmt2(p)+' <small>bar</small>';
+  document.getElementById('rFo').innerHTML=fmt2(f);
+  document.getElementById('rPal').innerHTML=fmt2(pa)+' <small>bar</small>';
+  document.getElementById('rFull').innerHTML=pa>=1.013?good('withstands'):bad('collapse risk');
+  document.getElementById('rEN').innerHTML=pa>=0.8?good('withstands'):bad('below requirement');
+}
+[sMat,sDim,sE,sOv,sSF].forEach(s=>s.addEventListener('input',updVac));updVac();
+
+/* ---------- CHART 3 : PVC fatigue ---------- */
+const sDR=document.getElementById('sDR'), sPx=document.getElementById('sPx'), sPn=document.getElementById('sPn'), sCy=document.getElementById('sCy'), sLf=document.getElementById('sLf');
+const PSI=14.5038, Ncyc=(dP,DR)=>Math.pow(10,-4.196*Math.log10(dP*PSI*(DR-1)/4)+17.76);
+const SW=[];for(let k=0;k<=60;k++)SW.push(0.5+k*0.25);
+const fatChart=new Chart(document.getElementById('fatChart'),{
+  data:{datasets:[[14,'#1e8449'],[18,'#1b4f72'],[21,'#b9770e'],[25,'#c0392b']].map(([dr,c])=>({type:'line',label:'DR'+dr,data:SW.map(s=>({x:s,y:Ncyc(s,dr)})),borderColor:c,backgroundColor:c,borderWidth:1.8,pointRadius:0,order:3}))
+    .concat([{type:'scatter',label:'Your cycle',data:[],backgroundColor:'#111',borderColor:'#fff',borderWidth:2,pointRadius:8,order:1}])},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,
+    scales:{x:{type:'linear',min:0.5,max:15.5,title:{display:true,text:'Pressure swing Pmax − Pmin (bar)',font:TTL},...AX},
+            y:{type:'logarithmic',min:1e4,max:1e10,title:{display:true,text:'Cycles to failure (log scale)',font:TTL},grid:{color:'#eef2f5'},
+               ticks:{font:{family:FF,size:11},callback:v=>{const e=Math.log10(v);return Math.abs(e-Math.round(e))<1e-9?'10'+['⁰','¹','²','³','⁴','⁵','⁶','⁷','⁸','⁹','¹⁰'][Math.round(e)]:'';}}}},
+    plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:8}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${Math.round(c.parsed.y).toExponential(2)} cycles at ${fmt2(c.parsed.x)} bar`}},
+      annotation:{annotations:{need:{type:'line',yMin:1e6,yMax:1e6,borderColor:'#6b4f9e',borderWidth:1.5,borderDash:[6,4],label:{display:true,content:'needed',position:'end',font:LBL,color:'#fff',backgroundColor:'rgba(107,79,158,0.85)'}}}}}}
+});
+function updFat(){
+  const DR=+sDR.value, px=+sPx.value, pn=+sPn.value, cy=+sCy.value, lf=+sLf.value;
+  document.getElementById('vPx').textContent=fmt1(px)+' bar';
+  document.getElementById('vPn').textContent=sgn(pn,1)+' bar';
+  document.getElementById('vCy').textContent=cy;
+  document.getElementById('vLf').textContent=lf+' years';
+  const dP=Math.max(0,px-pn), sa=dP*PSI*(DR-1)/4, perYr=cy*365, need=2*perYr*lf;
+  const A=fatChart.options.plugins.annotation.annotations.need; A.yMin=need; A.yMax=need; A.label.content='needed for '+lf+' years with margin 2';
+  fatChart.data.datasets[4].data=dP>0?[{x:dP,y:Ncyc(dP,DR)}]:[];
+  fatChart.update('none');
+  document.getElementById('rDP').innerHTML=fmt1(dP)+' <small>bar</small>';
+  if(dP<=0){['rSa','rN','rLife','rLife2'].forEach(k=>document.getElementById(k).innerHTML='<small>no swing</small>');document.getElementById('rFV').innerHTML=warn('set Pmax above Pmin');return;}
+  const N=Ncyc(dP,DR), life=N/perYr;
+  document.getElementById('rSa').innerHTML=fmt0(sa)+' <small>psi</small>';
+  document.getElementById('rN').innerHTML=N>=1e6?(N/1e6).toFixed(N>=1e7?0:1)+' <small>million</small>':fmt0(N);
+  document.getElementById('rLife').innerHTML=life>=1000?'> 1,000 <small>years</small>':fmt0(life)+' <small>years</small>';
+  document.getElementById('rLife2').innerHTML=life/2>=1000?'> 1,000 <small>years</small>':fmt0(life/2)+' <small>years</small>';
+  document.getElementById('rFV').innerHTML=life/2>=lf?good('meets '+lf+' years'):bad('short of '+lf+' years');
+}
+[sDR,sPx,sPn,sCy,sLf].forEach(s=>s.addEventListener('input',updFat));updFat();
+window.addEventListener('load',function(){try{[envChart,vacChart,fatChart].forEach(c=>c.resize());}catch(e){}});
+
+</script>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<!-- End WhatsApp Button -->
+
+<script src="article-features.js?v=14"></script>
+<script src="theme.js?v=13"></script>
+</body>
+</html>

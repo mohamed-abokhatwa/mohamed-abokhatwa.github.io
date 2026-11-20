@@ -67,7 +67,7 @@
   "description": "A step-by-step Bentley HAMMER workflow for computing a transient simulation: pump shutdown setup, wave speed, calculation options, EPS initialization, profiles, and reading the transient envelope.",
   "image": "https://abokhatwa.com/og-hammer-transient-simulation-workflow.jpg",
   "datePublished": "2026-06-03",
-  "dateModified": "2026-06-03",
+  "dateModified": "2026-11-20",
   "author": {
     "@type": "Person",
     "name": "Mohamed Abokhatwa",
@@ -215,10 +215,10 @@
 <ul>
   <li><strong>Points to report</strong>: by default HAMMER saves no element results, only profiles. Change this to <strong>Selected Points</strong> and pick your points of interest from the drawing: the <strong>pump</strong>, the <strong>high point</strong>, and the <strong>tank</strong>. These are where you will later graph pressure and flow.</li>
   <li><strong>Report period</strong>: how often results are saved for graphs (e.g. every 10 time steps). The default is usually fine.</li>
-  <li><strong>Run duration</strong>: switch from "time steps" to <strong>time</strong> and enter a duration in seconds. We use <strong>90 seconds</strong>: long enough to capture the event <em>and</em> let the system settle so you can confirm the transient has decayed.</li>
+  <li><strong>Run duration</strong>: switch from "time steps" to <strong>time</strong> and enter a duration in seconds. Do not pick a fixed number. Base it on the wave period 2L/a and on the slowest oscillation in the system, then check it. On our 12&nbsp;km reference main with a surge vessel, 2L/a is 22.9&nbsp;s, yet the highest pressure arrives <strong>101&nbsp;s</strong> after the trip, on the return swing of the vessel. A 90&nbsp;s run would report no upsurge at all. We start at 6&ndash;7 times 2L/a (150&nbsp;s there), extend the run by half, and confirm that neither envelope changes. If the maximum or minimum falls in the last quarter of the run, the run is too short. The worked numbers are in <a href="surge-model-time-step-convergence.html">Is Your HAMMER Run Right?</a></li>
   <li><strong>Generate animation data</strong>: set this to <strong>True</strong>. It is off by default, but it is what lets you replay the surge visually afterward. Always enable it.</li>
 </ul>
-<p>HAMMER calculates the <strong>hydraulic time step</strong> automatically, balancing accuracy against run time. You can override it with a custom value under <em>Analysis &rarr; Transient Time Step Options</em>, but the auto value is a sensible default for a first run.</p>
+<p>HAMMER calculates the <strong>hydraulic time step</strong> automatically, balancing accuracy against run time. You can override it with a custom value under <em>Analysis &rarr; Transient Time Step Options</em>, and the auto value is a sensible start. Check what it costs: the same dialog reports the <strong>Max</strong>, <strong>Mean</strong> and <strong>RMS Adjustment</strong> HAMMER had to make to pipe lengths or wave speeds so that every pipe fits the step. Short pipes, such as meter spools and chamber pieces, force the largest adjustments. Merge them into their neighbours rather than raising the Max Adjustment value, and rerun the governing case at half the time step to confirm the answer does not move. Our <a href="surge-model-time-step-convergence.html">model-checking article</a> shows a 29&nbsp;m error on the peak from one 2.4&nbsp;m spool.</p>
 
 <hr class="article-divider">
 
@@ -301,7 +301,7 @@
   <li>Run transients on a <strong>hydraulically equivalent skeleton</strong>: same answer, far less setup.</li>
   <li>The pump's <strong>inertia and specific speed</strong> drive the spin-down; the four-quadrant curve makes reverse flow credible.</li>
   <li><strong>Wave speed on every pipe</strong> is non-negotiable: use the calculator and the material library.</li>
-  <li>Always enable <strong>Generate Animation Data</strong>, select your key points, and run long enough for the system to settle.</li>
+  <li>Always enable <strong>Generate Animation Data</strong>, select your key points, and run long enough that the envelopes stop changing (check by extending the run).</li>
   <li>Initialize the transient at a sensible <strong>EPS time step</strong> (pump on).</li>
   <li>Read the <strong>transient envelope</strong>: vapor pockets and the <strong>column-separation slam</strong> are the events that justify surge protection.</li>
 </ul>

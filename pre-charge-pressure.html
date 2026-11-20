@@ -89,7 +89,7 @@
   "description": "Pre-charge of bladder surge vessels and the gas volume of air-over-water vessels, in absolute pressure: unit and datum traps, transient results for each setting, HAMMER set-up, commissioning and a checklist.",
   "image": "https://abokhatwa.com/og-pre-charge-pressure.jpg",
   "datePublished": "2026-05-01",
-  "dateModified": "2026-09-17",
+  "dateModified": "2026-11-20",
   "author": {
     "@type": "Person",
     "name": "Mohamed Abokhatwa",
@@ -506,7 +506,7 @@
 <p>"Pre-charge pressure" hides two numbers. On a bladder or diaphragm vessel the pre-charge is a setting, and with the shell it fixes the gas volume for as long as the charge holds. On an air-over-water vessel the gas pressure is whatever the line imposes, 9.35&nbsp;bar abs at the pump here, and the design number is the gas volume held by the level control.</p>
 <ul>
   <li>Work in absolute pressure. Forgetting the atmosphere undersizes the charge <strong>3.7 times</strong> on this duty; mixing bar and metres, or reading an HGL as a head, does worse. Pump TDH is not the gas pressure.</li>
-  <li>For a bladder, too low a pre-charge fails the downsurge, one above the minimum lets the bladder close on its outlet whenever the line is drained, and too high a pre-charge empties the shell, abruptly. The pre-charge that can be set and still sits at or below the design minimum lies between atmospheric and <strong>0.29&nbsp;bar&nbsp;g</strong>, and the shell must be sized for the value chosen: 28.4&nbsp;m&sup3; at atmospheric, 24.5&nbsp;m&sup3; at 0.16&nbsp;bar&nbsp;g.</li>
+  <li>For a bladder, too low a pre-charge fails the downsurge, one above the minimum lets the bladder close on its outlet whenever the line is drained, and too high a pre-charge empties the shell, abruptly. The pre-charge that can be set and still sits at or below the design minimum lies between atmospheric and <strong>0.29&nbsp;bar&nbsp;g</strong>, and the shell must be sized for the value chosen: 28.4&nbsp;m&sup3; at atmospheric, 24.5&nbsp;m&sup3; at 0.16&nbsp;bar&nbsp;g. With a sub-atmospheric criterion such as &minus;3&nbsp;m (allowed only where the project specification and the manufacturers&rsquo; ratings permit it), the same rule asks for a pre-charge below atmospheric, which cannot be set: use the lowest value that can be set, and confirm in the model that the vessel's own pressure stays above it. Sized for &minus;3&nbsp;m, the reference vessel's own pressure bottoms out at only +0.2&nbsp;m gauge, so an atmospheric pre-charge would have almost nothing in hand.</li>
   <li>For air-over-water, the gas volume must sit inside a window: <strong>3.22 to 5.21&nbsp;m&sup3;</strong> in the 20&nbsp;m&sup3; reference vessel at n = 1.2, only 3.22 to 3.43&nbsp;m&sup3; with a fifth of the shell kept as water, and moving with the exponent. A gas ratio is an outcome of sizing, not a rule.</li>
   <li>Neither number stays right on its own: temperature and leakage move a pre-charge, dissolution moves a gas volume.</li>
 </ul>

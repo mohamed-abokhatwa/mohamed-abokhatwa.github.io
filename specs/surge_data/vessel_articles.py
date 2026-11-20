@@ -133,6 +133,7 @@ D['connection_size'] = cs
 sens = [('Base case', {}, 1.2, 'free', 3.0),
         ('Minimum criterion +5.0 m (tighter)', {}, 1.2, 'free', 5.0),
         ('Minimum criterion +1.0 m (looser)', {}, 1.2, 'free', 1.0),
+        ('Minimum criterion -3.0 m (sub-atmospheric, common practice)', {}, 1.2, 'free', -3.0),
         ('Line 24 km, same end heads', dict(L=24000.0), 1.2, 'free', 3.0),
         ('Wave speed 700 m/s', dict(a=700.0), 1.2, 'free', 3.0),
         ('Wave speed 450 m/s (GRP-type pipe)', dict(a=450.0), 1.2, 'free', 3.0),

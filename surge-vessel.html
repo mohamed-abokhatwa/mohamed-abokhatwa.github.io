@@ -79,7 +79,7 @@
   "description": "Step-by-step sizing of a hydropneumatic surge vessel for a water transmission main: absolute gas pressure, rigid-column estimate, transient iteration with column separation, connection sizing and the HAMMER set-up.",
   "image": "https://d8j0ntlcm91z4.cloudfront.net/user_3DrcxvLSmsv5g8tPL57WIum7RP6/hf_20260517_194531_a798e431-c75a-4a41-b7b3-146f9a1a846d.png",
   "datePublished": "2026-05-01",
-  "dateModified": "2026-09-17",
+  "dateModified": "2026-11-20",
   "author": {
     "@type": "Person",
     "name": "Mohamed Abokhatwa",
@@ -210,7 +210,7 @@
     <tr><td>Load case</td><td>Pump trip</td><td>All pumps at once (power failure)</td></tr>
   </table>
 </div>
-<p>Because the profile is flat at datum elevation, head and pressure head are the same number throughout this example; on a real profile, subtract the pipe elevation from the head before comparing it with either limit. Both limits are criteria for this example, not rules. On a project they come from the pipe standard, the owner's requirements and the design pressure terms of EN 805, which treats surge as part of the maximum design pressure [5]; AWWA M11 discusses the same combination of working and surge pressure for large mains [6].</p>
+<p>Because the profile is flat at datum elevation, head and pressure head are the same number throughout this example; on a real profile, subtract the pipe elevation from the head before comparing it with either limit. Both limits are criteria for this example, not rules. Many owners accept a sub-atmospheric minimum instead, commonly around &minus;3&nbsp;m, where the pipe, joints and air valves suit it; section 8 shows what that does to this vessel. Before adopting any minimum, check it against the project specification, the owner&rsquo;s or utility&rsquo;s standards and the manufacturers&rsquo; ratings for the pipe, joints, gaskets, valves and air valves, and state it with its source in the design basis. On a project they come from the pipe standard, the owner's requirements and the design pressure terms of EN 805, which treats surge as part of the maximum design pressure [5]; AWWA M11 discusses the same combination of working and surge pressure for large mains [6].</p>
 <div class="callout"><strong>How the numbers were produced.</strong> Every transient result below comes from a method-of-characteristics model [2] with a vapour cavity model, cross-checked with a gas cavity model [7] and an independent second code: 120 reaches, 150 s runs, n = 1.2, separate outflow and inflow losses on the vessel connection, and an instantaneous pump stop behind ideal check valves. That load case is conservative for the downsurge and the vessel's gas demand, but it leaves out check valve slam, and real pump inertia softens the first downsurge (see <a href="pump-inertia-flywheel-surge.html">pump inertia and the flywheel</a>). These are not Bentley HAMMER output: they are a reproducible example, and a project needs its own analysis in HAMMER, or an equivalent program, on the real profile (section 9).</div>
 
 <hr class="article-divider">
@@ -358,6 +358,7 @@
     <tr><td>Base case</td><td>3.08</td><td>19.1</td><td>–</td><td>–</td></tr>
     <tr><td>Minimum criterion +5.0 m (tighter)</td><td>3.68</td><td>21.0</td><td>+10 %</td><td><span class="badge badge-warning">Medium</span></td></tr>
     <tr><td>Minimum criterion +1.0 m (looser)</td><td>2.70</td><td>17.8</td><td>&minus;7 %</td><td><span class="badge badge-warning">Medium</span></td></tr>
+    <tr><td>Minimum criterion &minus;3.0 m (sub-atmospheric, common practice)</td><td>2.03</td><td>15.9</td><td>&minus;17 %</td><td><span class="badge badge-danger">High</span></td></tr>
     <tr><td>Line doubled to 24 km (same flow and end heads)</td><td>6.16</td><td>38.2</td><td>+100 %</td><td><span class="badge badge-danger">High</span></td></tr>
     <tr><td>Wave speed 700 m/s</td><td>3.19</td><td>19.1</td><td>0 %</td><td><span class="badge badge-info">Low</span></td></tr>
     <tr><td>Wave speed 450 m/s (GRP-type pipe)</td><td>1.99</td><td>12.7</td><td>&minus;34 %</td><td><span class="badge badge-danger">High</span></td></tr>
@@ -369,7 +370,7 @@
   </table>
 </div>
 <ul>
-  <li><strong>Length dominates.</strong> A column twice as long, at the same flow and end heads, doubles the shell; the minimum criterion moves it by only &minus;7 % to +10 % between +1.0 m and +5.0 m.</li>
+  <li><strong>Length dominates.</strong> A column twice as long, at the same flow and end heads, doubles the shell; the minimum criterion moves it by &minus;7 % to +10 % between +1.0 m and +5.0 m, and by &minus;17 % at &minus;3.0 m, a common sub-atmospheric criterion. With &minus;3.0 m the line runs below atmospheric pressure in places, so the pipe, its joints and any air valves on it must be suited to that; check it against the project specification, the owner&rsquo;s standards and the manufacturers&rsquo; vacuum ratings before using it. The choice belongs in the design basis, not in the sizing (see <a href="surge-model-time-step-convergence.html">which design minimum</a>).</li>
   <li><strong>Wave speed matters only when it changes the downsurge.</strong> At 700 m/s the vessel barely changes (3.19 m&sup3; of gas, the same 19.1 m&sup3; shell): it works against the mass oscillation, not the water hammer wave. At 450 m/s the vessel is a third smaller; at 300 m/s the unprotected line stays at +5.0 m or above and no vessel is needed for the minimum criterion, though the upsurge must still be checked. See <a href="wave-speed-surge-analysis.html">wave speed: the number that sets the surge</a>.</li>
   <li><strong>The gas law exponent is where this design is thinnest.</strong> The required shell moves by only &minus;5 % to +7 % between n = 1.0 and 1.4, but checked at the two ends, the 20 m&sup3; vessel with 3.5 m&sup3; of gas gives a line minimum of only <strong>+0.3 m at n = 1.4</strong>, below the +3.0 m criterion; at n = 1.0 its gas expands to 17.75 m&sup3; and leaves <strong>2.25 m&sup3; of water (11 %)</strong>. The design therefore relies on n = 1.2 as the design exponent, which is engineering judgement, not a property of the air. If the owner wants both ends covered, the set point has to rise to about 4.2 m&sup3; of gas for +3.0 m at n = 1.4; at n = 1.0 that gas expands to about 19.3 m&sup3;, so a 20 % reserve would take a shell of about 24 m&sup3;.</li>
 </ul>

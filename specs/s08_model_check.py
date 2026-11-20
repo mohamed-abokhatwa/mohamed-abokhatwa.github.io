@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 BODY = r"""
-<p class="lead">A transient model can be wrong in ways that no error message reports. We built the 12&nbsp;km reference main the way it usually arrives from a GIS import, with a 2.4&nbsp;m flowmeter spool and four other short pipes. We then ran it with a custom 0.1&nbsp;s time step and HAMMER-style wave-speed adjustment. It reported a maximum head of <strong>90.0&nbsp;m</strong>; the converged answer is <strong>119.3&nbsp;m</strong>. At 0.05&nbsp;s the same model put the line minimum at +1.4&nbsp;m, a failure, when the true value is +4.3&nbsp;m, a pass. And a 90&nbsp;s run of the correct model reports no upsurge at all, because the 119&nbsp;m peak does not arrive until <strong>101&nbsp;s</strong> after the trip. This article sets out the five checks we make before any surge result leaves the office, with the numbers that show why each one matters.</p>
+<p class="lead">A transient model can be wrong in ways that no error message reports. We built the 12&nbsp;km reference main the way it usually arrives from a GIS import, with a 2.4&nbsp;m flowmeter spool and four other short pipes. We then ran it with a custom 0.1&nbsp;s time step and HAMMER-style wave-speed adjustment. It reported a maximum head of <strong>90.0&nbsp;m</strong>; the converged answer is <strong>119.3&nbsp;m</strong>. At 0.05&nbsp;s the same model put the line minimum at +1.4&nbsp;m, below the +3.0&nbsp;m design minimum used in this series, when the true value is +4.3&nbsp;m, a pass. And a 90&nbsp;s run of the correct model reports no upsurge at all, because the 119&nbsp;m peak does not arrive until <strong>101&nbsp;s</strong> after the trip. This article sets out the five checks we make before any surge result leaves the office, with the numbers that show why each one matters.</p>
 
 <h2 id="five-checks">1 &middot; Five checks before you believe a transient run</h2>
 <p>The reference main for the surge series is a 12&nbsp;km, DN800 ductile iron line carrying 0.70&nbsp;m&sup3;/s (1.39&nbsp;m/s) from an HGL of 85.0&nbsp;m at the pump to 44.8&nbsp;m at the reservoir. The wave speed is 1,050&nbsp;m/s, so 2L/a = 22.9&nbsp;s. Protection is a hydropneumatic vessel at the pump with 3.5&nbsp;m&sup3; of gas in a 20&nbsp;m&sup3; shell and a DN400 differential connection (see <a href="surge-vessel.html">Sizing the Hydropneumatic Surge Vessel</a>). Converged, this design keeps the line at or above <strong>+4.26&nbsp;m</strong> (lowest at 4.3&nbsp;km), with a maximum of <strong>119.3&nbsp;m</strong> at the pump, against a design minimum of +3.0&nbsp;m and a project limit of 136&nbsp;m.</p>
+<div class="callout key">
+  <span class="lbl">Which design minimum?</span>
+  The minimum pressure is a project criterion, set by the owner or the designer, not a physical limit. This series uses +3.0&nbsp;m: the line stays above atmospheric with a margin, so no air is drawn in at joints or air valves and the model's uncertainty is covered. Many owners and consultants accept a sub-atmospheric minimum instead, commonly around &minus;3&nbsp;m (&minus;0.3&nbsp;bar). That is defensible when the pipe, joints and fittings are rated for it (EN 805 asks components to withstand &minus;0.8&nbsp;bar, or &minus;8.2&nbsp;m), when the 6.8&nbsp;m left before vapour at &minus;9.8&nbsp;m covers the model's uncertainty, and when every air valve that will open below atmospheric is in the model and sized for the air it admits. Both criteria can be right; what matters is the margin between the computed minimum and the chosen one. A numerical error eats that margin whichever criterion you use. The chart in section 5 lets you set your own (see also <a href="surge-envelope-pipe-pressure-limits.html">the pipe's real limits</a>).
+</div>
 <p>Every number in this article comes from two method-of-characteristics codes written independently for this series: the solver behind the <a href="choosing-surge-protection.html">surge protection series</a> and a new multi-pipe solver that reproduces it to 0.01&nbsp;m on the uniform main [1][2]. Neither is Bentley HAMMER, but the time-step and adjustment logic follows the HAMMER documentation [3][4], so the effects shown here are the ones a HAMMER user meets. The five checks are:</p>
 <ol>
   <li><strong>The steady state.</strong> Flows, HGL at both ends and the pump duty point match the hydraulic design before anything is tripped.</li>
@@ -101,7 +105,7 @@ __RESROWS__
 
 <p>Four things stand out.</p>
 <ul class="clean">
-  <li><strong>The errors go both ways.</strong> At 0.1&nbsp;s, wave-speed adjustment reports a maximum of 90.0&nbsp;m, 29&nbsp;m low, and a minimum of +4.9&nbsp;m, 0.7&nbsp;m better than the truth. The soft spools near the pump absorb the upsurge. At 0.05&nbsp;s the same mode puts the minimum at +1.4&nbsp;m near 0.9&nbsp;km: a design that passes is reported as failing.</li>
+  <li><strong>The errors go both ways.</strong> At 0.1&nbsp;s, wave-speed adjustment reports a maximum of 90.0&nbsp;m, 29&nbsp;m low, and a minimum of +4.9&nbsp;m, 0.7&nbsp;m better than the truth. The soft spools near the pump absorb the upsurge. At 0.05&nbsp;s the same mode puts the minimum at +1.4&nbsp;m near 0.9&nbsp;km: against the +3.0&nbsp;m minimum, a design that passes is reported as failing. With a &minus;3&nbsp;m criterion this case would still pass, but the error is the same 2.8&nbsp;m, and it would flip any design whose true minimum lay within 2.8&nbsp;m of that criterion.</li>
   <li><strong>Length adjustment fails more gently here.</strong> It keeps every pipe's impedance, so its errors come from the extra water and travel time. At 0.1&nbsp;s it reads 121.4&nbsp;m and +3.6&nbsp;m, conservative on both sides, but still 0.7&nbsp;m out on a 1.3&nbsp;m margin.</li>
   <li><strong>At 0.005&nbsp;s and below both modes agree with the reference</strong> to within 0.1&nbsp;m on both extremes. Even then the worst adjusted pipe, now a chamber spool changed by 24&nbsp;%, still moves the peak at the pump by 0.08&nbsp;m in wave-speed mode.</li>
   <li><strong>At 0.2&nbsp;s the model says there is no problem at all.</strong> Wave-speed adjustment reports a maximum of 85.0&nbsp;m, the steady head, and a minimum of +12.4&nbsp;m. Length adjustment at the same step reports +2.6&nbsp;m, a failure. Neither number has anything to do with the real main.</li>
@@ -136,6 +140,11 @@ __RESROWS__
       </select>
       <div class="hint">Readouts for the length (L) and wave speed (a) modes.</div>
     </div>
+    <div class="ctrl">
+      <label>Design minimum <span id="vCrit2">+3.0 m</span></label>
+      <input type="range" id="sCrit2" min="-5" max="5" value="3" step="0.5">
+      <div class="hint">+3.0&nbsp;m in this series; many owners accept about &minus;3&nbsp;m.</div>
+    </div>
   </div>
   <div class="readout">
     <div class="cell"><div class="k">Max adjustment, L / a</div><div class="v" id="rAdj2" style="font-size:17px;">&ndash;</div></div>
@@ -143,7 +152,7 @@ __RESROWS__
     <div class="cell"><div class="k">Error on the max, L / a</div><div class="v" id="rEmax2" style="font-size:17px;">&ndash;</div></div>
     <div class="cell"><div class="k">Lowest head, L / a</div><div class="v" id="rMin2" style="font-size:17px;">&ndash;</div></div>
     <div class="cell"><div class="k">Error on the min, L / a</div><div class="v" id="rEmin2" style="font-size:17px;">&ndash;</div></div>
-    <div class="cell"><div class="k">Verdict at +3.0 m, L / a</div><div class="v" style="font-size:14px;margin-top:6px;" id="rVer2">&ndash;</div></div>
+    <div class="cell"><div class="k">Verdict at the minimum, L / a</div><div class="v" style="font-size:14px;margin-top:6px;" id="rVer2">&ndash;</div></div>
   </div>
 </div>
 <p class="fig-note">Switch to the cleaned model and the spread collapses: at 0.1&nbsp;s the maximum is within 1.2&nbsp;m of the reference in both modes, and from 0.05&nbsp;s down every result is within 0.15&nbsp;m. At 0.1&nbsp;s the cleaned model in wave-speed mode still drops the minimum to +3.4&nbsp;m near 1&nbsp;km, because the 41&nbsp;m road crossing is then one reach with its wave speed cut by 64&nbsp;% and the 66&nbsp;m station pipe by 43&nbsp;%. At 0.2&nbsp;s even the cleaned model fails in wave-speed mode (&minus;0.4&nbsp;m). A large custom time step is the first thing we look for in someone else's run.</p>
@@ -383,12 +392,15 @@ function mkRes(cv,key,ref,ymin,ymax,ylab,extra){
   });
 }
 const resMax=mkRes(document.getElementById('resMaxChart'),'line_max',REF.line_max,80,130,'Highest head on the line (m)');
-const resMin=mkRes(document.getElementById('resMinChart'),'line_min',REF.line_min,-2,14,'Lowest head on the line (m)',
+const resMin=mkRes(document.getElementById('resMinChart'),'line_min',REF.line_min,-6,14,'Lowest head on the line (m)',
   {crit:{type:'line',yMin:PMIN,yMax:PMIN,borderColor:'#1e8449',borderWidth:1.5,borderDash:[2,3],
     label:{display:true,content:'+3.0 m design minimum',position:'end',font:LBL,color:'#fff',backgroundColor:'rgba(30,132,73,0.85)'}}});
-const badge=v=>v>=PMIN?'<span class="badge good">pass</span>':'<span class="badge bad">fail</span>';
+const sCrit2=document.getElementById('sCrit2');
+const badge=(v,c)=>v>=c?'<span class="badge good">pass</span>':'<span class="badge bad">fail</span>';
 function updRes(){
-  const m=sModel2.value, i=+sDt2.value, L=pick(m,'length'), A=pick(m,'wave');
+  const m=sModel2.value, i=+sDt2.value, L=pick(m,'length'), A=pick(m,'wave'), crit=+sCrit2.value;
+  document.getElementById('vCrit2').textContent=sgn(crit,1)+' m';
+  const ca=resMin.options.plugins.annotation.annotations.crit; ca.yMin=crit; ca.yMax=crit; ca.label.content=sgn(crit,1)+' m design minimum';
   resMax.data.datasets[0].data=L.map(r=>({x:r.dt,y:r.line_max}));
   resMax.data.datasets[1].data=A.map(r=>({x:r.dt,y:r.line_max}));
   resMin.data.datasets[0].data=L.map(r=>({x:r.dt,y:r.line_min}));
@@ -402,9 +414,9 @@ function updRes(){
   document.getElementById('rEmax2').innerHTML=sgn(L[i].line_max-REF.line_max,1)+' / '+sgn(A[i].line_max-REF.line_max,1)+' <small>m</small>';
   document.getElementById('rMin2').innerHTML=sgn(L[i].line_min,2)+' / '+sgn(A[i].line_min,2)+' <small>m</small>';
   document.getElementById('rEmin2').innerHTML=sgn(L[i].line_min-REF.line_min,2)+' / '+sgn(A[i].line_min-REF.line_min,2)+' <small>m</small>';
-  document.getElementById('rVer2').innerHTML=badge(L[i].line_min)+' '+badge(A[i].line_min);
+  document.getElementById('rVer2').innerHTML=badge(L[i].line_min,crit)+' '+badge(A[i].line_min,crit);
 }
-[sModel2,sDt2].forEach(s=>s.addEventListener('input',updRes));updRes();
+[sModel2,sDt2,sCrit2].forEach(s=>s.addEventListener('input',updRes));updRes();
 
 /* ---------- CHART 3 : grid convergence ---------- */
 const G=D.grid, sGrid=document.getElementById('sGrid'), sTol=document.getElementById('sTol');

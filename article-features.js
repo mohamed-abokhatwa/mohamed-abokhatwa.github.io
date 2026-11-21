@@ -963,6 +963,88 @@
     document.documentElement.classList.add('has-ar-rail');
   }
 
+
+  /* ─────────────────────────────────────────────────────────────
+     12b. TABLES ON SMALL SCREENS
+     Every table scrolls inside its own box, its caption sits above the
+     box (so it wraps to the screen instead of scrolling away), columns
+     keep a readable minimum width instead of being squeezed into tall
+     strips, and a hint appears when there are columns off-screen.
+     ───────────────────────────────────────────────────────────── */
+  function initTables() {
+    var tables = document.querySelectorAll('.article-body table, .hb-body table');
+    if (!tables.length) return;
+    var css = document.createElement('style');
+    css.textContent = [
+      '.article-body table,.hb-body table{display:table!important;max-width:none!important;overflow:visible!important;}',
+      '.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0;max-width:100%;}',
+      '.tbl-cap{font-size:13px;line-height:1.55;color:var(--text-tertiary);margin:26px 0 8px;}',
+      '.tbl-cap + .tbl-wrap{margin-top:0;}',
+      '.tbl-sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}',
+      '.tbl-hint{display:none;font-family:var(--font-mono,monospace);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary);margin:-16px 0 22px;}',
+      '.tbl-hint.on{display:block;}',
+      '@media (max-width:760px){',
+      '  .tbl-wrap>table{min-width:var(--tmin,100%);}',
+      '  .tbl-wrap th{letter-spacing:.05em;padding:9px 10px;line-height:1.35;}',
+      '  .tbl-wrap td{padding:9px 10px;font-size:13.5px;line-height:1.5;}',
+      '}'
+    ].join('\n');
+    document.head.appendChild(css);
+    Array.prototype.forEach.call(tables, function (t) {
+      var wrap = t.parentElement;
+      if (!wrap.classList.contains('tbl-wrap')) {
+        wrap = document.createElement('div');
+        wrap.className = 'tbl-wrap';
+        t.parentNode.insertBefore(wrap, t);
+        wrap.appendChild(t);
+      }
+      var cap = t.querySelector('caption');
+      if (cap && cap.textContent.trim()) {
+        var p = document.createElement('p');
+        p.className = 'tbl-cap';
+        p.setAttribute('aria-hidden', 'true');
+        p.innerHTML = cap.innerHTML;
+        wrap.parentNode.insertBefore(p, wrap);
+        cap.classList.add('tbl-sr');
+      }
+      /* narrow screens: give each column a width that suits its text, so long-text
+         columns do not collapse into very tall cells (wide tables then scroll) */
+      var widths = [], rows = t.rows;
+      for (var r = 0; r < rows.length; r++) {
+        var c = 0;
+        for (var k = 0; k < rows[r].cells.length; k++) {
+          var cell = rows[r].cells[k], span = cell.colSpan || 1;
+          if (span === 1) {
+            var len = cell.textContent.replace(/\s+/g, ' ').trim().length;
+            widths[c] = widths[c] || [];
+            widths[c].push(len);
+          }
+          c += span;
+        }
+      }
+      var minW = 0;
+      for (var j = 0; j < widths.length; j++) {
+        var a = widths[j] || [0], avg = 0;
+        for (var q = 0; q < a.length; q++) avg += a[q];
+        avg /= a.length;
+        minW += Math.min(260, Math.max(96, avg * 4.2));
+      }
+      wrap.style.setProperty('--tmin', Math.round(minW) + 'px');
+      var hint = document.createElement('div');
+      hint.className = 'tbl-hint';
+      hint.textContent = document.documentElement.lang === 'ar' ? 'اسحب لرؤية بقية الأعمدة' : 'Swipe sideways to see all columns';
+      wrap.parentNode.insertBefore(hint, wrap.nextSibling);
+      var check = function () {
+        var more = wrap.scrollWidth > wrap.clientWidth + 2;
+        var end = Math.abs(wrap.scrollLeft) + wrap.clientWidth >= wrap.scrollWidth - 2;
+        hint.classList.toggle('on', more && !end);
+      };
+      wrap.addEventListener('scroll', check, { passive: true });
+      window.addEventListener('resize', check);
+      check();
+    });
+  }
+
   /* ─────────────────────────────────────────────────────────────
      13.  INIT
      ───────────────────────────────────────────────────────────── */
@@ -978,6 +1060,7 @@
     initBackToTop();
     initFabTracking();
     initSectionRail();
+    initTables();
   }
 
   if (document.readyState === 'loading') {

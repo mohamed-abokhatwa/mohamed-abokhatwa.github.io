@@ -400,10 +400,11 @@ th {
   padding: 10px 14px;
   text-align:start;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  /* no capitals: headers carry units and symbols (m, m³/s, a, Δt, η) that change meaning in upper case */
+  letter-spacing: 0.02em;
+  text-transform: none;
   color: var(--text-secondary);
   border-bottom: 1px solid var(--text-tertiary);
   background: transparent;

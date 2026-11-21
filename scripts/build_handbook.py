@@ -198,7 +198,7 @@ def build():
 
     out = [T('HEAD_TOP'),
       "  <title>The Megatall MEP Handbook | Mohamed Abokhatwa</title>\n",
-      '  <link rel="stylesheet" href="style.css?v=7">\n',
+      '  <link rel="stylesheet" href="style.css?v=20">\n',
       '  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">\n',
       '  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">\n',
       '  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=2">\n',

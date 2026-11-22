@@ -338,6 +338,19 @@ function draw(){
   ctx.textAlign='left';
   ctx.globalAlpha=1;
 
+  /* the topics of the cards, where they sit on the route; the one being read in fire */
+  if(S.marks){
+    for(var mk=0; mk<S.marks.length; mk++){
+      var m=S.marks[mk], tx=AX(m.km), act=m.el.classList.contains('at');
+      if(act && inA){
+        ctx.strokeStyle=rgba(pal.fire,0.5); ctx.lineWidth=1; ctx.setLineDash([1,3]);
+        ctx.beginPath(); ctx.moveTo(Math.round(tx)+0.5,pTop); ctx.lineTo(Math.round(tx)+0.5,gy); ctx.stroke(); ctx.setLineDash([]);
+      }
+      ctx.fillStyle=act?pal.fire:rgba(pal.ink,0.45);
+      ctx.beginPath(); ctx.moveTo(tx,gy-1); ctx.lineTo(tx-3.5,gy+5); ctx.lineTo(tx+3.5,gy+5); ctx.closePath(); ctx.fill();
+    }
+  }
+
   /* ---------- the marker ---------- */
   ctx.fillStyle=pal.fire; ctx.strokeStyle=rgba(pal.fire,0.9); ctx.lineWidth=1.2;
   ctx.setLineDash([3,3]);
@@ -430,11 +443,19 @@ function parseAt(v){
   return m[1]==='ch' ? (+m[2])/L_KM : 1+(+m[2])/H_TOWER;
 }
 function computeAnchors(){
-  S.anchors=[].slice.call(document.querySelectorAll('[data-at]')).map(function(el){
+  var all=[].slice.call(document.querySelectorAll('[data-at]')).map(function(el){
     var off=el.classList.contains('rt-dock')?34:110;
-    return {y:el.getBoundingClientRect().top+window.pageYOffset+off, p:parseAt(el.dataset.at)};
+    return {y:el.getBoundingClientRect().top+window.pageYOffset+off, p:parseAt(el.dataset.at), el:el};
   }).sort(function(a,b){return a.y-b.y;});
-  if(S.anchors.length) S.anchors[0].y=Math.round(vpH()*0.34);
+  if(all.length) all[0].y=Math.round(vpH()*0.34);
+  /* the topics along the route, drawn as ticks on the profile */
+  S.marks=all.filter(function(a){return a.el.classList.contains('rt-dock')&&a.p>0&&a.p<1;})
+             .map(function(a){return {km:a.p*L_KM, el:a.el};});
+  /* Constant speed: the marker runs the whole main, and then the whole tower,
+     at one steady rate of scroll. Only the start, the end of the main and the
+     summit are pinned; the cards in between are topics placed along the
+     route, not stops, so they no longer make the marker crawl or leap. */
+  S.anchors=all.filter(function(a){return a.p<=0||Math.abs(a.p-1)<1e-9||a.p>=2-1e-9;});
 }
 function pAt(y){
   var a=S.anchors,i=0;

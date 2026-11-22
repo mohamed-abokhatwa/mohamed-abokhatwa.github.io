@@ -114,22 +114,15 @@ function draw(){
   var inA = S.p < 1;
 
   /* ---------- left view: the main in profile ---------- */
-  /* One reach at a time. Seven pumped reaches drawn on one axis read as
-     stairs; drawn one at a time this is what it actually is — a single main
-     running from one station to the next, the grade falling on friction and
-     the two surge envelopes closing on the far end. The window pans as the
-     reader travels the route. */
-  var ax0=cx0+42, ax1=split-16, pTop=padT+22;
+  /* The whole 700 km in one fixed view, so the marker travels once from the
+     sea to the plateau. Each booster lifts the grade, so the HGL is drawn as
+     what it is on a multi-station main: a falling line per reach with a
+     vertical lift at every station, the reach under the marker picked out. */
+  var ax0=cx0+42, ax1=split-16, pTop=padT+16;
   var curKm=pToCh(Math.min(1,S.p));
   var rNow=reachAt(Math.min(L_KM-0.001,curKm));
-  if(S.wx0==null){ S.wx0=rNow.x0; S.wx1=rNow.x1; }
-  /* pan across a station the reader actually walks over; jump straight there
-     if they have skipped reaches via a link, rather than sliding 600 km */
-  if(Math.abs(rNow.x0-S.wx0) > (rNow.x1-rNow.x0)*1.5){ S.wx0=rNow.x0; S.wx1=rNow.x1; }
-  else { S.wx0+=(rNow.x0-S.wx0)*0.22; S.wx1+=(rNow.x1-S.wx1)*0.22; }
-  if(Math.abs(rNow.x0-S.wx0)<0.4){S.wx0=rNow.x0;S.wx1=rNow.x1;}
-  S.panning=Math.abs(rNow.x0-S.wx0)>0.4;
-  var wx0=S.wx0, wSpan=Math.max(1,S.wx1-S.wx0);
+  S.panning=false;
+  var wx0=0, wSpan=L_KM;
 
   var atop=-1e9, abot=1e9, sc, sk;
   for(sc=0; sc<=140; sc++){
@@ -141,7 +134,7 @@ function draw(){
 
   var AX=function(km){ return ax0+((km-wx0)/wSpan)*(ax1-ax0); };
   var AY=function(m){ return gy-((m-abot)/(atop-abot))*(gy-pTop); };
-  var N=560,i,km;
+  var N=1400,i,km;
 
   ctx.globalAlpha = inA ? 1 : 0.55;
   ctx.lineJoin='round'; ctx.lineCap='round';
@@ -159,10 +152,14 @@ function draw(){
   }
   /* chainage, in real route kilometres */
   ctx.textAlign='center';
-  for(var tk=0; tk<=5; tk++){
-    var lk=wx0+wSpan*tk/5;
-    ctx.fillStyle=rgba(pal.ink3,0.95); ctx.fillText(Math.round(lk),AX(lk),gy+13);
+  var tstep=((ax1-ax0)/7>36)?100:200;
+  for(var lk=0; lk<=L_KM; lk+=tstep){
+    ctx.fillStyle=rgba(pal.ink3,0.95); ctx.fillText(lk,AX(lk),gy+13);
   }
+
+  /* the reach under the marker */
+  ctx.fillStyle=rgba(pal.water,0.07);
+  ctx.fillRect(AX(rNow.x0),pTop,Math.max(2,AX(rNow.x1)-AX(rNow.x0)),gy-pTop);
 
   /* ground, with the section hatched below it */
   ctx.beginPath(); ctx.moveTo(AX(wx0),AY(ground(wx0)));
@@ -188,42 +185,43 @@ function draw(){
     }
   }
 
-  function polyA(fn,col,dash,wdt){
+  /* each reach on its own, sampled strictly inside it, so the grade and the
+     envelopes break cleanly at the stations instead of sliding across them */
+  function polyA(fn,col,dash,wdt,lift){
     ctx.beginPath();
-    for(var k=0;k<=N;k++){var q=wx0+wSpan*k/N; var yy=AY(fn(q)); if(k===0)ctx.moveTo(AX(q),yy); else ctx.lineTo(AX(q),yy);}
+    var per=Math.max(40,Math.round(N/REACH.length));
+    for(var r=0;r<REACH.length;r++){
+      var R=REACH[r];
+      for(var k=0;k<=per;k++){
+        var q=R.x0+(R.x1-R.x0)*k/per; q=Math.min(R.x1-1e-6,Math.max(R.x0+1e-6,q));
+        var yy=AY(fn(q));
+        if(k===0){ if(lift&&r>0) ctx.lineTo(AX(q),yy); else ctx.moveTo(AX(q),yy); }
+        else ctx.lineTo(AX(q),yy);
+      }
+    }
     ctx.setLineDash(dash||[]); ctx.strokeStyle=col; ctx.lineWidth=wdt||1.15; ctx.stroke(); ctx.setLineDash([]);
   }
   polyA(envMax,rgba(pal.air,0.7),[4,3]);
   polyA(envMin,rgba(pal.danger,0.8),[4,3]);
-  polyA(pipe,rgba(pal.ink,0.5),[6,3]);
-  polyA(hgl,pal.water,null,1.8);
+  polyA(pipe,rgba(pal.ink,0.5),[6,3],1.15,true);
+  polyA(hgl,pal.water,null,1.8,true);
 
-  /* the station this reach is pumped from, and the one it delivers to */
+  /* every pumping station, the one feeding the reach under the marker in fire */
   var rIdx=REACH.indexOf(rNow);
   ctx.font='500 8.5px "IBM Plex Mono", monospace';
-  ctx.fillStyle=rgba(pal.fire,0.95);
-  ctx.fillRect(AX(rNow.x0)-2.5,AY(hgl(rNow.x0))-2.5,5,5);
-  ctx.textAlign='left';
-  ctx.fillText('S'+(rIdx+1), AX(rNow.x0)+7, AY(hgl(rNow.x0))-9);
-  ctx.textAlign='right';
-  ctx.fillStyle=rgba(pal.ink3,0.9);
-  ctx.fillText(rIdx===REACH.length-1?'RESERVOIR':'S'+(rIdx+2), ax1-2, AY(hgl(rNow.x1))-9);
-
-  /* locator: the whole 700 km, with the reach on screen picked out */
-  var ly0=padT+3, lyH=11;
-  var gMin=1e9,gMax=-1e9,lg;
-  for(lg=0;lg<=60;lg++){var gk=L_KM*lg/60; gMin=Math.min(gMin,ground(gk)); gMax=Math.max(gMax,ground(gk));}
-  var LX=function(km){ return ax0+(km/L_KM)*(ax1-ax0); };
-  var LY=function(m){ return ly0+lyH-((m-gMin)/Math.max(1,gMax-gMin))*lyH; };
-  ctx.fillStyle=rgba(pal.water,0.10);
-  ctx.fillRect(LX(rNow.x0),ly0-1,Math.max(2,LX(rNow.x1)-LX(rNow.x0)),lyH+2);
-  ctx.beginPath(); ctx.moveTo(LX(0),LY(ground(0)));
-  for(lg=1;lg<=120;lg++){var gk2=L_KM*lg/120; ctx.lineTo(LX(gk2),LY(ground(gk2)));}
-  ctx.strokeStyle=rgba(pal.ink,0.32); ctx.lineWidth=1; ctx.stroke();
-  for(var st=0; st<STATIONS.length; st++){
-    ctx.fillStyle=rgba(pal.ink,st===rIdx?0.75:0.28);
-    ctx.fillRect(LX(STATIONS[st])-1,ly0+lyH-1,2,3);
+  for(var si=0; si<REACH.length; si++){
+    var sx=AX(REACH[si].x0), sy=AY(REACH[si].s);
+    ctx.fillStyle=si===rIdx?rgba(pal.fire,0.95):rgba(pal.ink,0.55);
+    ctx.fillRect(sx-2.5,sy-2.5,5,5);
+    ctx.textAlign=si===0?'left':'center';
+    ctx.fillText('S'+(si+1), si===0?sx+5:sx, sy-10);
   }
+  /* the delivery end, named only where there is room beside S7 */
+  if(ax1-AX(REACH[REACH.length-1].x0)>90){
+    ctx.textAlign='right'; ctx.fillStyle=rgba(pal.ink3,0.9);
+    ctx.fillText('RESERVOIR', ax1-2, AY(TWL)+12);
+  }
+
   ctx.globalAlpha=1;
 
   /* ---------- divider + the site ---------- */
@@ -360,7 +358,11 @@ function draw(){
   /* view labels */
   ctx.font='500 9px "IBM Plex Mono", monospace'; ctx.textAlign='left';
   ctx.fillStyle=rgba(pal.ink3,0.9);
-  ctx.fillText('THE MAIN  -  REACH '+(rIdx+1)+' OF '+REACH.length+'  -  CH '+Math.round(rNow.x0)+'-'+Math.round(rNow.x1)+' km', ax0, padT-4);
+  var mainLbl=['THE MAIN  -  CH 0-'+L_KM+' km  -  REACH '+(rIdx+1)+' OF '+REACH.length,
+               'THE MAIN  -  REACH '+(rIdx+1)+'/'+REACH.length, 'THE MAIN'];
+  var room=split-4-ax0-10, li=0;
+  while(li<mainLbl.length-1 && ctx.measureText(mainLbl[li]).width>room) li++;
+  ctx.fillText(mainLbl[li], ax0, padT-4);
   ctx.fillText('THE TOWER  -  ELEVATION m', bx0, padT-4);
 }
 

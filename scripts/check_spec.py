@@ -16,7 +16,10 @@ SURGE7 = ['wave-speed-surge-analysis', 'surge-vessel-differential-orifice', 'sur
           'one-way-surge-tank-design', 'surge-relief-valve-sizing', 'pump-inertia-flywheel-surge',
           'choosing-surge-protection',
           'surge-model-time-step-convergence', 'pump-trip-data-inertia-specific-speed',
-          'surge-envelope-pipe-pressure-limits', 'surge-study-report-review-checklist']
+          'surge-envelope-pipe-pressure-limits', 'surge-study-report-review-checklist',
+          'surge-model-field-validation', 'surge-sensitivity-uncertainty', 'transient-forces-pipe-supports',
+          'booster-stations-series-surge', 'transient-model-demands-network-detail', 'pipeline-filling-draining-restart-surge',
+          'pump-start-stop-vfd-ramp-surge', 'wastewater-force-main-surge']
 fails, warns, info = [], [], []
 def F(m): fails.append(m)
 def W(m): warns.append(m)

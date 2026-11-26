@@ -162,6 +162,54 @@
   ═══════════════════════════════════════ -->
 
   <url>
+    <loc>https://abokhatwa.com/wastewater-force-main-surge.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/pump-start-stop-vfd-ramp-surge.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/pipeline-filling-draining-restart-surge.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/transient-model-demands-network-detail.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/booster-stations-series-surge.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/transient-forces-pipe-supports.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/surge-sensitivity-uncertainty.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://abokhatwa.com/surge-model-field-validation.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://abokhatwa.com/surge-study-report-review-checklist.html</loc>
     <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>

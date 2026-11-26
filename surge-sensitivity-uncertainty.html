@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JRFPTBLVT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JRFPTBLVT4');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://assets.calendly.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <meta name="theme-color" content="#edf0ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#070c0b" media="(prefers-color-scheme: dark)">
+  <script>(function(){var t=localStorage.getItem("site-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sensitivity and Uncertainty in Surge Analysis: Bounding the Result Instead of Quoting One Number | Mohamed Abokhatwa</title>
+    <link rel="alternate" type="application/rss+xml" title="Mohamed Abokhatwa | Engineering Insights" href="https://abokhatwa.com/feed.xml">
+  <link rel="stylesheet" href="style.css?v=20">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png?v=3">
+  <script>
+    MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" id="MathJax-script" async></script>
+  <style>
+    .article-hero{padding:140px 24px 80px;max-width:var(--max-w);margin:0 auto;}
+    .article-hero .back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary);text-decoration:none;margin-bottom:48px;transition:var(--transition);}
+    .article-hero .back:hover{color:var(--text-primary);}
+    .article-hero .tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;}
+    .article-hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:24px;max-width:880px;}
+    .article-hero .byline{font-size:14px;color:var(--text-tertiary);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .hero-img-wrap{width:100%;background:var(--bg-4);border-bottom:1px solid var(--border);}
+    .hero-img-wrap img{width:100%;height:auto;display:block;max-width:100%;}
+    .article-body{max-width:720px;margin:0 auto;padding:80px 24px 120px;}
+    .article-body h2{font-size:28px;font-weight:600;color:var(--text-primary);margin:3.5rem 0 1rem;letter-spacing:-.02em;scroll-margin-top:90px;}
+    .article-body h3{font-size:19px;font-weight:500;color:var(--text-primary);margin:2.5rem 0 .6rem;letter-spacing:-.01em;scroll-margin-top:90px;}
+    .article-body p{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.2rem;}
+    .article-body ul,.article-body ol{padding-left:24px;margin-bottom:1.2rem;}
+    .article-body li{font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:6px;}
+    .article-body strong{color:var(--text-primary);font-weight:500;}
+    .article-divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+    .lead{font-size:21px !important;line-height:1.6 !important;color:var(--text-primary) !important;font-weight:400;margin-bottom:1.6rem !important;}
+    sup.cite{font-size:11px;color:var(--accent);font-weight:600;vertical-align:super;}
+
+    .article-body .eq{background:var(--bg-3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:3px;padding:6px 20px;margin:22px 0;overflow-x:auto;color:var(--text-primary);}
+
+    .callout{border-radius:3px;padding:20px 24px;margin:28px 0;font-size:16px;line-height:1.7;border:1px solid var(--border);background:var(--bg-3);color:var(--text-secondary);border-left:3px solid var(--accent);}
+    .callout .lbl{font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;color:var(--accent);}
+    .callout strong{color:var(--text-primary);}
+    .callout.warn{border-left-color:var(--danger);} .callout.warn .lbl{color:var(--danger);}
+    .callout.key{border-left-color:var(--warning);} .callout.key .lbl{color:var(--warning);}
+    .callout.green{border-left-color:var(--success);} .callout.green .lbl{color:var(--success);}
+
+    .tbl-wrap{overflow-x:auto;margin:24px 0;}
+    .article-body table{width:100%;border-collapse:collapse;font-size:14px;background:var(--bg-3);border-radius:3px;overflow:hidden;border:1px solid var(--border);}
+    .article-body caption{caption-side:top;text-align:start;font-size:13px;color:var(--text-tertiary);margin-bottom:10px;}
+    .article-body th{background:var(--bg-4);color:var(--text-primary);text-align:start;padding:11px 14px;font-weight:600;font-size:13px;}
+    .article-body td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;color:var(--text-secondary);line-height:1.6;}
+    .article-body td.num,.article-body th.num{text-align:end;font-variant-numeric:tabular-nums;}
+
+    ul.clean li{margin-bottom:9px;}
+
+    .schematic{margin:30px 0;border:1px solid var(--border);border-radius:3px;background:var(--bg-3);padding:22px 20px 10px;box-shadow:var(--shadow-glass);}
+    .schematic svg{width:100%;height:auto;display:block;}
+    .schematic .cap{font-size:13px;color:var(--text-tertiary);margin-top:12px;text-align:center;line-height:1.5;}
+
+    .fig{margin:30px 0;border:1px solid var(--border);border-radius:3px;overflow:hidden;background:var(--sheet);box-shadow:var(--shadow-glass);}
+    .fig-head{padding:18px 22px 6px;}
+    .fig-head .ftitle{font-weight:700;font-size:15px;color:var(--air);}
+    .fig-head .fsub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5;}
+    .chart-box{position:relative;height:430px;padding:8px 14px 18px;}
+    @media(max-width:640px){.chart-box{height:340px;}}
+    .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px 22px 22px;border-top:1px solid var(--border);background:var(--bg-2);}
+    .ctrl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;}
+    .ctrl label span{color:var(--air);font-variant-numeric:tabular-nums;}
+    .ctrl input[type=range]{width:100%;accent-color:var(--danger);}
+    .ctrl .hint{font-size:11.5px;color:var(--text-secondary);margin-top:4px;line-height:1.45;}
+    .ctrl select{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:3px;font-size:13px;font-family:inherit;background:var(--sheet);color:var(--text-primary);}
+    .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;border-top:1px solid var(--border);}
+    .readout .cell{padding:14px 16px;border-right:1px solid var(--border);}
+    .readout .cell:last-child{border-right:none;}
+    .readout .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-secondary);}
+    .readout .v{font-size:22px;font-weight:700;color:var(--air);font-variant-numeric:tabular-nums;margin-top:2px;}
+    .readout .v small{font-size:13px;font-weight:500;color:var(--text-secondary);}
+    .badge{display:inline-block;padding:3px 10px;border-radius:3px;font-size:12px;font-weight:600;}
+    .badge.good{background:var(--success-w);color:var(--success);}
+    .badge.warn{background:var(--warning-w);color:var(--warning);}
+    .badge.bad{background:var(--danger-w);color:var(--danger);}
+    .fig-note{font-size:15px;color:var(--text-tertiary);margin-top:-8px;}
+
+    .article-body ol.refs{counter-reset:ref;list-style:none;padding:0;font-size:14px;}
+    .article-body ol.refs li{counter-increment:ref;padding:10px 0 10px 38px;position:relative;border-bottom:1px solid var(--border);color:var(--text-secondary);line-height:1.55;margin-bottom:0;}
+    .article-body ol.refs li::before{content:"["counter(ref)"]";position:absolute;left:0;top:10px;color:var(--accent);font-weight:700;}
+    .article-body ol.refs em{color:var(--text-tertiary);}
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-tertiary);margin-bottom:20px;flex-wrap:wrap;}
+    .breadcrumb a{color:var(--text-tertiary);text-decoration:none;transition:color .2s;}
+    .breadcrumb a:hover{color:var(--text-primary);}
+    .breadcrumb-sep{opacity:.4;}
+    .breadcrumb-current{color:var(--text-secondary);}
+
+    .fig-head{position:relative;}
+    .calc-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:12px;font-weight:600;color:var(--air);text-decoration:none;border:1px solid var(--border);border-radius:3px;padding:4px 11px;background:var(--sheet);transition:.18s;}
+    .calc-link:hover{border-color:var(--air);background:var(--bg-2);}
+  </style>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <meta name="description" content="How to bound a surge result: input ranges, a tornado chart for each limit, sweeps that reveal thresholds, 300 sampled runs of the reference vessel design, and sizing on a corner case or a percentile, with three interactive charts and the HAMMER steps.">
+  <meta property="og:title" content="Sensitivity and Uncertainty in Surge Analysis: Bounding the Result Instead of Quoting One Number | Mohamed Abokhatwa">
+  <meta property="og:description" content="The reference vessel design passes at +4.33 m in a single run. Sample its seven uncertain inputs 300 times and 31 % of the runs fail +3.0 m; a corner-case design needs 5.30 m³ of gas instead of 3.5.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abokhatwa.com/surge-sensitivity-uncertainty.html">
+  <meta property="og:image" content="https://abokhatwa.com/og-surge-sensitivity-uncertainty.jpg">
+  <meta property="og:image:alt" content="A pipeline profile with a bundle of many faint surge envelopes fanning out around one bold envelope, beside a tornado chart of horizontal bars, on a drafting table">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sensitivity and Uncertainty in Surge Analysis: Bounding the Result Instead of Quoting One Number | Mohamed Abokhatwa">
+  <meta name="twitter:description" content="The reference vessel design passes at +4.33 m in a single run. Sample its seven uncertain inputs 300 times and 31 % of the runs fail +3.0 m; a corner-case design needs 5.30 m³ of gas instead of 3.5.">
+  <link rel="canonical" href="https://abokhatwa.com/surge-sensitivity-uncertainty.html">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Sensitivity and Uncertainty in Surge Analysis: Bounding the Result Instead of Quoting One Number",
+  "description": "Sensitivity and uncertainty in hydraulic transient analysis: tornado charts, sweeps, sampled runs and robust sizing of a surge vessel, with the Bentley HAMMER steps.",
+  "image": "https://abokhatwa.com/og-surge-sensitivity-uncertainty.jpg",
+  "datePublished": "2026-11-27",
+  "dateModified": "2026-11-27",
+  "author": { "@type": "Person", "name": "Mohamed Abokhatwa", "url": "https://abokhatwa.com/about.html" },
+  "publisher": { "@type": "Person", "name": "Mohamed Abokhatwa" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://abokhatwa.com/surge-sensitivity-uncertainty.html" }
+}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Mohamed Abokhatwa</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Articles</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="one-tower.html">One Tower</a></li>
+      <li><a href="mep-course/">Course</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://engspace.app" target="_blank" rel="noopener" title="Engineering Workspace">Workspace</a></li>
+      <li><a href="https://surgespace.engspace.app" target="_blank" rel="noopener" title="SurgeSpace: water hammer and surge analysis">SurgeSpace</a></li>
+      <li><a href="https://www.linkedin.com/in/abokhatwa" target="_blank">LinkedIn</a></li>
+      <li><a href="index-ar.html" class="lang-switch">العربية</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="icon-sun"  width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<script>
+  document.getElementById('navToggle').addEventListener('click', function() {
+    var open = document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('open', open);
+    this.setAttribute('aria-expanded', open);
+  });
+</script>
+
+<div class="article-hero">
+  <a href="/" class="back">&#8592; All articles</a>
+  <div class="breadcrumb"><a href="/">Articles</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Surge &amp; Transient Analysis</span></div>
+  <span class="tag">Surge Analysis &middot; Sensitivity &middot; Uncertainty</span>
+  <h1>Sensitivity and Uncertainty in Surge Analysis: Bounding the Result Instead of Quoting One Number</h1>
+  <div class="byline">
+    <span>Mohamed Abokhatwa</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>Mechanical Manager &middot; MSc, PMP, PMI-RMP, Envision SP</span>
+    <span style="color:var(--border-light)">|</span>
+    <span>November 2026</span>
+    <span style="color:var(--border-light)">|</span>
+    <span data-mins-fixed>15 min read</span>
+  </div>
+</div>
+
+<div class="hero-img-wrap">
+  <img fetchpriority="high" width="1376" height="768" src="surge-sensitivity-uncertainty.webp" alt="A pipeline profile with a bundle of many faint surge envelopes fanning out around one bold envelope, beside a tornado chart of horizontal bars, on a drafting table">
+</div>
+
+<div class="article-body">
+
+<p class="lead">The reference vessel design on the 12&nbsp;km main keeps the line at <strong>+4.33&nbsp;m</strong> against a +3.0&nbsp;m criterion: a pass, with 1.33&nbsp;m to spare. That single run assumes one wave speed, one friction, one gas volume, one gas law and one flow. Move each within a plausible range and the minimum runs from <strong>+0.29 to +8.45&nbsp;m</strong> on the gas law alone. Sample all seven together, 300 times, and <strong>31&nbsp;%</strong> of the combinations fail the criterion, while the maximum reaches 143&nbsp;m in the worst of them, above the 136&nbsp;m limit. This article shows how to find which inputs matter, how to bound the result, and how to turn a single number into a design that survives its own uncertainty.</p>
+
+<h2 id="why">1 &middot; One run is one point in a cloud</h2>
+<p>Every input to a surge model carries an uncertainty, and some carry a lot [1][2]:</p>
+<ul class="clean">
+  <li><strong>Wave speed:</strong> &plusmn;10&nbsp;% is common for a buried main before it is measured (see <a href="wave-speed-surge-analysis.html">wave speed</a>).</li>
+  <li><strong>Friction:</strong> new pipe against pipe after years of service; &plusmn;15&nbsp;% on the head loss at duty.</li>
+  <li><strong>Vessel gas volume:</strong> the level control holds it within a band, typically &plusmn;10&nbsp;% (see <a href="pre-charge-pressure.html">pre-charge pressure</a>).</li>
+  <li><strong>Gas law exponent:</strong> between isothermal (1.0) and adiabatic (1.4); 1.2 is a convention, not a measurement.</li>
+  <li><strong>Connection loss:</strong> &plusmn;30&nbsp;% on the loss coefficients of the vessel connection and its orifice.</li>
+  <li><strong>Flow:</strong> &plusmn;10&nbsp;% on the duty, for operating points and future demand.</li>
+  <li><strong>Delivery level:</strong> &plusmn;3&nbsp;m on the reservoir HGL.</li>
+</ul>
+<p>The base case is the vessel design of the surge series: 3.5&nbsp;m&sup3; of gas, a DN400 connection with a differential orifice (loss coefficients 2 out and 10 in), on the 12&nbsp;km DN800 ductile iron main at 0.70&nbsp;m&sup3;/s, with the pump modelled as stopping at once [3]. Every run below is a full transient run of the trip, 150&nbsp;s, with the same solver.</p>
+
+<h2 id="tornado">2 &middot; One at a time: the tornado</h2>
+<p>The first step is to move each input to the ends of its range with everything else at base, and see how far the result moves. Sorted by size, the bars form a tornado [2][4].</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">What moves the result most</div>
+    <div class="fsub">Reference vessel design, pump trip, 150&nbsp;s runs. Each bar spans the result with the input at the low and the high end of its range, everything else at base. Bars sorted by span. The base case is the vertical line.</div>
+  </div>
+  <div class="chart-box"><canvas id="torChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Result</label>
+      <select id="sOut">
+        <option value="min" selected>Lowest head on the line</option>
+        <option value="max">Highest head on the line</option>
+      </select>
+      <div class="hint">The two limits are driven by different inputs.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Base case</div><div class="v" id="rBase">&ndash;</div></div>
+    <div class="cell"><div class="k">Most influential</div><div class="v" id="rTop" style="font-size:15px;margin-top:6px;">&ndash;</div></div>
+    <div class="cell"><div class="k">Its span</div><div class="v" id="rSpan">&ndash;</div></div>
+    <div class="cell"><div class="k">Least influential</div><div class="v" id="rLow" style="font-size:15px;margin-top:6px;">&ndash;</div></div>
+  </div>
+</div>
+<p class="fig-note">For the minimum, the gas law exponent dominates: +8.45&nbsp;m isothermal, +0.29&nbsp;m adiabatic. Flow (+5.67 to +2.26&nbsp;m) and the gas volume tolerance (+2.68 to +5.64&nbsp;m) follow. Wave speed barely matters (+3.93 to +4.42&nbsp;m): the vessel works on the mass oscillation, not on the water hammer wave. For the maximum the order changes: the gas law and friction lead, each moving the peak by about 16&nbsp;m. One tornado per limit is needed.</p>
+
+<h2 id="sweep">3 &middot; Shape, not only span</h2>
+<p>A tornado shows the ends of each range. Sweeping an input across its range shows whether the response is linear, whether it has a threshold, and where the criterion is crossed.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">One input across its range</div>
+    <div class="fsub">Seven runs across the range of the chosen input, everything else at base. Lowest head on the left axis, highest head on the right.</div>
+  </div>
+  <div class="chart-box"><canvas id="swChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Input</label>
+      <select id="sPar">
+        <option value="0">Wave speed</option>
+        <option value="1">Friction loss at duty</option>
+        <option value="2">Gas volume at steady flow</option>
+        <option value="3" selected>Gas law exponent</option>
+        <option value="4">Connection loss (factor)</option>
+        <option value="5">Flow</option>
+        <option value="6">Delivery level</option>
+      </select>
+      <div class="hint">The base value is marked.</div>
+    </div>
+    <div class="ctrl">
+      <label>Design minimum <span id="vCr">+3.0 m</span></label>
+      <input type="range" id="sCr" min="-5" max="8" value="3" step="0.5">
+      <div class="hint">Check it against the project's allowable values.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Range of the input</div><div class="v" id="rRng" style="font-size:17px;">&ndash;</div></div>
+    <div class="cell"><div class="k">Lowest head across it</div><div class="v" id="rSwMin" style="font-size:17px;">&ndash;</div></div>
+    <div class="cell"><div class="k">Highest head across it</div><div class="v" id="rSwMax" style="font-size:17px;">&ndash;</div></div>
+    <div class="cell"><div class="k">Criterion met over</div><div class="v" id="rMet">&ndash;</div></div>
+  </div>
+</div>
+<p class="fig-note">The gas law exponent moves the minimum steeply: from about 1.25 upwards the reference design falls below +3.0&nbsp;m. Gas volume is close to linear, about 0.15&nbsp;m of minimum for every 1&nbsp;% of gas, flattening at the top of the range. Friction works the other way from intuition: more friction damps the oscillation and raises the minimum. Lower the criterion to &minus;3&nbsp;m (only where the project specification and the manufacturers' ratings allow it) and every input passes across its whole range.</p>
+
+<h2 id="together">4 &middot; All together: sampling the cloud</h2>
+<p>Inputs do not wait for each other to be unfavourable. We drew 300 combinations, each input uniform within its range and independent of the others, and ran the trip for each [4][5]. Uniform sampling is deliberately plain: it says only that every value in the range is plausible, which is usually all a designer can defend.</p>
+
+<div class="fig">
+  <div class="fig-head">
+    <div class="ftitle">300 plausible versions of the same design</div>
+    <div class="fsub">Distribution of the lowest head on the line over 300 runs with all seven inputs sampled uniformly within their ranges. Bins of 0.5&nbsp;m. The bars below the criterion are the share of plausible systems that fail it.</div>
+  </div>
+  <div class="chart-box"><canvas id="mcChart"></canvas></div>
+  <div class="controls">
+    <div class="ctrl">
+      <label>Design minimum <span id="vCr2">+3.0 m</span></label>
+      <input type="range" id="sCr2" min="-5" max="8" value="3" step="0.5">
+      <div class="hint">As above.</div>
+    </div>
+    <div class="ctrl">
+      <label>Maximum limit <span id="vMx">136 m</span></label>
+      <input type="range" id="sMx" min="110" max="160" value="136" step="1">
+      <div class="hint">Project limit of this series.</div>
+    </div>
+  </div>
+  <div class="readout">
+    <div class="cell"><div class="k">Runs below the minimum</div><div class="v" id="rFail">&ndash;</div></div>
+    <div class="cell"><div class="k">5th percentile of the minimum</div><div class="v" id="rP5">&ndash;</div></div>
+    <div class="cell"><div class="k">Median of the minimum</div><div class="v" id="rP50">&ndash;</div></div>
+    <div class="cell"><div class="k">Runs above the maximum limit</div><div class="v" id="rOver">&ndash;</div></div>
+    <div class="cell"><div class="k">95th percentile of the maximum</div><div class="v" id="rP95">&ndash;</div></div>
+  </div>
+</div>
+<p class="fig-note">The median of the 300 runs (+4.56&nbsp;m) is close to the base case, but 31&nbsp;% of them fall below +3.0&nbsp;m, the 5th percentile is &minus;0.43&nbsp;m and the lowest is &minus;2.91&nbsp;m. At the top, 5&nbsp;% of the runs exceed 129.8&nbsp;m and the worst reaches 143.4&nbsp;m, above the 136&nbsp;m limit. The single run said &ldquo;pass with 1.3&nbsp;m to spare&rdquo;; the cloud says the design passes in about two systems out of three.</p>
+
+<h2 id="corner">5 &middot; From a range to a robust design</h2>
+<p>Two ways to design for the cloud are common [2][5]:</p>
+<ul class="clean">
+  <li><strong>The corner case.</strong> Run every input at its unfavourable end together. On this main that is the high wave speed, high friction, low gas, adiabatic gas, high connection loss, high flow and low delivery level, and it gives &minus;4.85&nbsp;m. A vessel sized so that even this corner meets +3.0&nbsp;m needs <strong>5.30&nbsp;m&sup3;</strong> of gas instead of 3.5, which at the nominal inputs gives +8.84&nbsp;m. Corners are conservative, because all the inputs are rarely unfavourable at once, but they are simple and defensible.</li>
+  <li><strong>A percentile.</strong> Choose the design so that, say, 95&nbsp;% of sampled systems meet the criterion. It is less conservative and needs the sampling to be repeated for each candidate size.</li>
+</ul>
+<p>Whichever is used, the inputs that dominate the tornado are where effort pays: here, specify the vessel's gas volume band tightly, justify the gas law with the expected rate of compression, and confirm the design flow range. Measuring the wave speed (see <a href="surge-model-field-validation.html">field validation</a>) would barely change this answer, because the vessel works on the mass oscillation; on an unprotected main or one protected by air valves, the order would be different.</p>
+
+<div class="tbl-wrap"><table>
+  <caption>Reference vessel design: the result as a single run, as a range and as a corner case</caption>
+  <thead><tr><th>Basis</th><th class="num">Lowest head (m)</th><th class="num">Highest head (m)</th><th>Verdict at +3.0&nbsp;m / 136&nbsp;m</th></tr></thead>
+  <tbody>
+    <tr><td>Single base run</td><td class="num">+4.33</td><td class="num">119.2</td><td><span class="badge good">passes</span></td></tr>
+    <tr><td>300 sampled runs, 5th / 95th percentile</td><td class="num">&minus;0.43</td><td class="num">129.8</td><td><span class="badge warn">fails 31&nbsp;% of the time</span></td></tr>
+    <tr><td>Corner case, 3.5&nbsp;m&sup3; of gas</td><td class="num">&minus;4.85</td><td class="num">118.0</td><td><span class="badge bad">fails</span></td></tr>
+    <tr><td>Corner case, 5.30&nbsp;m&sup3; of gas</td><td class="num">+3.00</td><td class="num">101.0</td><td><span class="badge good">passes</span></td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="what-to-vary">6 &middot; What to vary, and what not to</h2>
+<p>Not everything in a model is uncertain in the same way, and treating every input alike blurs the answer [1][2].</p>
+<ul class="clean">
+  <li><strong>Physical uncertainties</strong> (wave speed, friction, inertia, gas law) belong in the ranges. Their bounds come from data, tests or the literature.</li>
+  <li><strong>Operating states</strong> (flow, number of pumps, reservoir levels) are not uncertain at all: each is a separate scenario that the design must pass, not a range to be averaged over. We include them in the sampling only to see their weight, and design for each one explicitly.</li>
+  <li><strong>Design choices</strong> (the criterion, the vessel size, the orifice ratio) are what the analysis is meant to fix. They are never sampled.</li>
+  <li><strong>Model choices</strong> (the cavity model, the time step) are checked separately, as in <a href="surge-model-time-step-convergence.html">Is your HAMMER run right?</a>, and their effect reported alongside the range.</li>
+  <li><strong>Correlated inputs</strong> should move together. Friction and the operating flow are linked through the pump curve; the gas volume and its pressure through the level control. Sampling them independently can create combinations that cannot happen.</li>
+</ul>
+<p>The ranges in this article are illustrative. On a project, write each one down with its source in the assumptions register (see <a href="surge-study-report-review-checklist.html">The surge study report</a>), and check the minimum used against the allowable values in the project specification and the manufacturers&rsquo; ratings.</p>
+
+<h2 id="report">7 &middot; Reporting a range</h2>
+<p>A surge report that gives one number for each limit implies a precision the model does not have. We report:</p>
+<ul class="clean">
+  <li>the base result, the inputs behind it, and the ranges assumed for each input with their source;</li>
+  <li>the tornado for each limit, so a reviewer can see which inputs matter;</li>
+  <li>the corner case or the percentile used for the design, and the margin it leaves;</li>
+  <li>the inputs that should be pinned down by specification or test, because they dominate.</li>
+</ul>
+<p>The structure is in <a href="surge-study-report-review-checklist.html">The surge study report</a>.</p>
+
+<h2 id="hammer">8 &middot; Running it in Bentley HAMMER</h2>
+<p>Field names differ slightly between versions [6].</p>
+<ol>
+  <li><strong>Create one alternative per uncertain input</strong> (physical properties for wave speed and friction, initial settings for flows and levels, the hydropneumatic tank's gas volume and gas law exponent, the connection's loss coefficients), each with a low and a high version.</li>
+  <li><strong>Create a scenario for each low and high</strong>, changing only that input, and use <strong>Batch Run</strong> to compute them together.</li>
+  <li><strong>Tabulate the envelope extremes</strong> of each scenario from the results tables, and build the tornado from them.</li>
+  <li><strong>Build the corner scenario</strong> by combining the unfavourable alternatives.</li>
+  <li><strong>For sampling</strong>, script the inputs (HAMMER's programming interfaces, or export, edit and re-import the input) and collect the extremes; or sample a reduced set of inputs that the tornado shows to matter.</li>
+  <li><strong>Size the protection on the chosen basis</strong>, then rerun the base and the corner with the final size.</li>
+</ol>
+
+<h2 id="checklist">9 &middot; Checklist</h2>
+<ul class="clean">
+  <li><strong>Range set for every uncertain input</strong>, with its source.</li>
+  <li><strong>Tornado for the minimum and for the maximum</strong>, sorted by span.</li>
+  <li><strong>Sweeps</strong> for the dominant inputs, looking for thresholds.</li>
+  <li><strong>Combined uncertainty</strong>: corner case or sampled percentile, stated.</li>
+  <li><strong>Design sized on that basis</strong>, with the margin reported.</li>
+  <li><strong>Dominant inputs pinned down</strong> by specification, test or operating rule.</li>
+</ul>
+
+<div class="callout green">
+  <span class="lbl">Surge analysis practice series</span>
+  <ol>
+    <li><a href="surge-model-time-step-convergence.html">Is your HAMMER run right? Time step, adjustment and run duration</a></li>
+    <li><a href="surge-model-field-validation.html">Validating a surge model with a field pump-trip test</a></li>
+    <li><strong>Sensitivity and uncertainty: bounding the result</strong></li>
+    <li><a href="pump-trip-data-inertia-specific-speed.html">Pump data for a pump trip: inertia, specific speed and four-quadrant curves</a></li>
+    <li><a href="transient-model-demands-network-detail.html">Demands, branches and dead ends in a transient model</a></li>
+    <li><a href="surge-envelope-pipe-pressure-limits.html">Reading the surge envelope against the pipe's real limits</a></li>
+    <li><a href="transient-forces-pipe-supports.html">Transient forces on pipe supports and bends</a></li>
+    <li><a href="booster-stations-series-surge.html">Booster stations in series</a></li>
+    <li><a href="pump-start-stop-vfd-ramp-surge.html">Pump starts, controlled stops and drive ramps</a></li>
+    <li><a href="pipeline-filling-draining-restart-surge.html">Filling, draining and restarting a transmission main</a></li>
+    <li><a href="wastewater-force-main-surge.html">Surge in wastewater force mains</a></li>
+    <li><a href="surge-study-report-review-checklist.html">The surge study report: what to deliver and what a reviewer checks</a></li>
+  </ol>
+  The protection devices themselves are covered in the <a href="choosing-surge-protection.html">surge protection design series</a>.
+</div>
+
+<h2 id="refs">References &amp; standards</h2>
+<ol class="refs">
+  <li>Boulos, P.F., Karney, B.W., Wood, D.J. &amp; Lingireddy, S. &ldquo;Hydraulic transient guidelines for protecting water distribution systems.&rdquo; <em>Journal AWWA</em>, 97(5), 2005: uncertain inputs in transient analysis and the need for sensitivity runs.</li>
+  <li>Thorley, A.R.D. <em>Fluid Transients in Pipeline Systems</em>, 2nd ed. Professional Engineering Publishing, 2004: the influence of wave speed, friction, gas law and pump data on surge results.</li>
+  <li>Abokhatwa, M. <em>Surge protection design series</em>, abokhatwa.com, 2026: the reference main, its vessel design and the verified MOC solver.</li>
+  <li>Saltelli, A. et al. <em>Global Sensitivity Analysis: The Primer</em>. Wiley, 2008: one-at-a-time and sampling-based sensitivity methods.</li>
+  <li>Wylie, E.B. &amp; Streeter, V.L. <em>Fluid Transients in Systems</em>. Prentice Hall, 1993: the transient model and the gas law of a hydropneumatic vessel.</li>
+  <li>Bentley Systems. <em>OpenFlows HAMMER</em> documentation: alternatives, scenarios, batch run and results tables.</li>
+</ol>
+
+<div class="tags">#SurgeAnalysis #WaterHammer #SensitivityAnalysis #Uncertainty #TornadoChart #MonteCarlo #RobustDesign #SurgeVessel #GasLaw #WaveSpeed #BentleyHAMMER #TransientAnalysis #TransmissionMain #WaterEngineering</div>
+
+</div>
+
+<!-- Newsletter Section -->
+<iframe name="mc_hidden" style="display:none;width:0;height:0;border:none;" aria-hidden="true"></iframe>
+<section style="padding:96px 24px; text-align:center; border-top:1px solid var(--border);">
+  <div style="max-width:560px; margin:0 auto;">
+    <h2 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); font-weight:700; letter-spacing:-0.035em; margin-bottom:14px; color:var(--text-primary);">Engineering Insights</h2>
+    <p style="color:var(--text-secondary); margin-bottom:32px; font-size:17px; line-height:1.6;">Get expert articles on water, infrastructure and MEP engineering, delivered to your inbox.</p>
+    <form id="mc-newsletter-form" action="https://abokhatwa.us20.list-manage.com/subscribe/post?u=645cde9278168c77168879d6b&amp;id=1891a44d03&amp;f_id=003dc2e1f0" method="post" target="mc_hidden" onsubmit="return mcSubmit(event)" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <input type="email" name="EMAIL" id="mc-email" aria-label="Email address" placeholder="Your email address" style="flex:1; min-width:240px; max-width:340px; padding:13px 18px; border-radius:3px; border:1px solid var(--border-light); font-size:15px; outline:none; background:var(--bg-3); color:var(--text-primary); font-family:inherit; transition:border-color .2s, box-shadow .2s;">
+      <div aria-hidden="true" style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;"><input type="text" name="b_645cde9278168c77168879d6b_1891a44d03" tabindex="-1" value=""></div>
+      <button type="submit" class="btn btn-primary" style="padding:13px 28px;">Subscribe</button>
+    </form>
+    <div id="mc-msg" style="margin-top:16px; font-size:13px; color:var(--text-tertiary);">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="f-line"><span class="nm">&copy; 2026 Mohamed Abokhatwa</span> <i class="sep">&middot;</i> <span>Riyadh, Saudi Arabia</span> <i class="sep">&middot;</i> <a href="mailto:mohamed@abokhatwa.com" dir="ltr">mohamed@abokhatwa.com</a> <i class="sep">&middot;</i> <a href="tel:+966541706700" dir="ltr">+966 54 170 6700</a> <i class="sep">&middot;</i> <a href="https://www.linkedin.com/in/abokhatwa" target="_blank" rel="noopener">LinkedIn</a> <i class="sep">&middot;</i> <a href="/">All articles</a></p>
+  </div>
+</footer>
+
+<!-- Floating Consultation Button -->
+<div class="fab-consult" onclick="Calendly.initPopupWidget({url:'https://calendly.com/mohamed-abokhatwa/30min'});return false;">
+  <span class="fab-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+  <span class="fab-text">Book a Consultation</span>
+</div>
+<script>
+function mcSubmit(e) {
+  var email = document.getElementById('mc-email').value.trim();
+  var msg = document.getElementById('mc-msg');
+  var input = document.getElementById('mc-email');
+  var parts = email.split('@');
+  var valid = parts.length === 2 && parts[0].length >= 2 && parts[1].includes('.') && parts[1].split('.')[0].length >= 2 && parts[1].split('.').pop().length >= 2;
+  if (!valid) {
+    input.style.border = '1.5px solid #e34000';
+    msg.style.color = '#e34000';
+    msg.textContent = 'Please enter a valid email address (e.g. name@domain.com)';
+    return false;
+  }
+  input.style.border = '1.5px solid rgba(0,113,227,0.2)';
+  msg.style.color = '#6e6e73';
+  msg.textContent = 'Subscribing...';
+  setTimeout(function() {
+    document.getElementById('mc-newsletter-form').style.display = 'none';
+    msg.style.color = '#0071e3';
+    msg.style.fontSize = '1.1rem';
+    msg.style.fontWeight = '600';
+    msg.textContent = '✓ Thank you for subscribing!';
+  }, 1200);
+  return true;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="chart-theme.js?v=13"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js"></script>
+<script>
+
+const D={"base":{"min":4.33,"max":119.15},"par":[{"key":"a","label":"Wave speed","unit":"m/s","base":1050.0,"lo":945.0,"hi":1155.0,"at_lo":{"min":3.93,"max":108.57},"at_hi":{"min":4.42,"max":119.94},"sweep":[{"v":945.0,"min":3.93,"max":108.57},{"v":980.0,"min":4.04,"max":112.86},{"v":1015.0,"min":4.18,"max":116.76},{"v":1050.0,"min":4.33,"max":119.15},{"v":1085.0,"min":4.49,"max":120.3},{"v":1120.0,"min":4.49,"max":120.48},{"v":1155.0,"min":4.42,"max":119.94}]},{"key":"hf","label":"Friction loss at duty","unit":"m","base":40.2,"lo":34.17,"hi":46.23,"at_lo":{"min":3.6,"max":127.4},"at_hi":{"min":5.07,"max":111.73},"sweep":[{"v":34.17,"min":3.6,"max":127.4},{"v":36.18,"min":3.84,"max":124.56},{"v":38.19,"min":4.09,"max":121.8},{"v":40.2,"min":4.33,"max":119.15},{"v":42.21,"min":4.57,"max":116.59},{"v":44.22,"min":4.82,"max":114.11},{"v":46.23,"min":5.07,"max":111.73}]},{"key":"V0","label":"Gas volume at steady flow","unit":"m\u00b3","base":3.5,"lo":3.15,"hi":3.85,"at_lo":{"min":2.68,"max":122.51},"at_hi":{"min":5.64,"max":114.99},"sweep":[{"v":3.15,"min":2.68,"max":122.51},{"v":3.2667,"min":3.24,"max":121.52},{"v":3.3833,"min":3.79,"max":120.39},{"v":3.5,"min":4.33,"max":119.15},{"v":3.6167,"min":4.86,"max":117.82},{"v":3.7333,"min":5.35,"max":116.43},{"v":3.85,"min":5.64,"max":114.99}]},{"key":"n","label":"Gas law exponent","unit":"","base":1.2,"lo":1.0,"hi":1.4,"at_lo":{"min":8.45,"max":105.89},"at_hi":{"min":0.29,"max":122.26},"sweep":[{"v":1.0,"min":8.45,"max":105.89},{"v":1.0667,"min":7.09,"max":111.37},{"v":1.1333,"min":5.86,"max":115.82},{"v":1.2,"min":4.33,"max":119.15},{"v":1.2667,"min":2.89,"max":121.29},{"v":1.3333,"min":1.55,"max":122.29},{"v":1.4,"min":0.29,"max":122.26}]},{"key":"kfac","label":"Connection loss (factor)","unit":"","base":1.0,"lo":0.7,"hi":1.3,"at_lo":{"min":4.6,"max":121.66},"at_hi":{"min":4.06,"max":116.78},"sweep":[{"v":0.7,"min":4.6,"max":121.66},{"v":0.8,"min":4.51,"max":120.81},{"v":0.9,"min":4.42,"max":119.97},{"v":1.0,"min":4.33,"max":119.15},{"v":1.1,"min":4.24,"max":118.34},{"v":1.2,"min":4.15,"max":117.55},{"v":1.3,"min":4.06,"max":116.78}]},{"key":"Q","label":"Flow","unit":"m\u00b3/s","base":0.7,"lo":0.63,"hi":0.77,"at_lo":{"min":5.67,"max":116.33},"at_hi":{"min":2.26,"max":118.43},"sweep":[{"v":0.63,"min":5.67,"max":116.33},{"v":0.6533,"min":5.33,"max":117.74},{"v":0.6767,"min":4.95,"max":118.67},{"v":0.7,"min":4.33,"max":119.15},{"v":0.7233,"min":3.67,"max":119.24},{"v":0.7467,"min":2.98,"max":118.98},{"v":0.77,"min":2.26,"max":118.43}]},{"key":"hdn","label":"Delivery level (HGL)","unit":"m","base":44.8,"lo":41.8,"hi":47.8,"at_lo":{"min":3.13,"max":112.82},"at_hi":{"min":5.52,"max":123.56},"sweep":[{"v":41.8,"min":3.13,"max":112.82},{"v":42.8,"min":3.53,"max":115.13},{"v":43.8,"min":3.93,"max":117.24},{"v":44.8,"min":4.33,"max":119.15},{"v":45.8,"min":4.73,"max":120.84},{"v":46.8,"min":5.12,"max":122.31},{"v":47.8,"min":5.52,"max":123.56}]}],"mc":[{"min":2.44,"max":124.08},{"min":3.79,"max":111.89},{"min":-1.1,"max":111.63},{"min":3.41,"max":124.81},{"min":1.7,"max":120.06},{"min":5.42,"max":104.29},{"min":9.02,"max":106.81},{"min":5.58,"max":102.28},{"min":3.03,"max":111.34},{"min":6.6,"max":109.73},{"min":-0.52,"max":129.2},{"min":-1.37,"max":120.57},{"min":6.17,"max":123.14},{"min":6.49,"max":110.38},{"min":3.72,"max":112.09},{"min":3.01,"max":118.08},{"min":8.56,"max":109.98},{"min":-0.13,"max":121.89},{"min":5.44,"max":111.28},{"min":5.65,"max":108.78},{"min":-0.24,"max":116.78},{"min":2.06,"max":125.44},{"min":5.94,"max":122.57},{"min":2.81,"max":123.19},{"min":5.92,"max":113.93},{"min":3.04,"max":108.26},{"min":6.95,"max":115.11},{"min":5.71,"max":114.95},{"min":9.32,"max":102.73},{"min":7.6,"max":114.54},{"min":1.52,"max":115.67},{"min":2.68,"max":109.75},{"min":1.91,"max":114.61},{"min":3.07,"max":123.56},{"min":1.78,"max":124.03},{"min":7.67,"max":103.63},{"min":1.87,"max":120.6},{"min":8.04,"max":110.25},{"min":-1.7,"max":143.36},{"min":3.99,"max":109.83},{"min":4.92,"max":113.67},{"min":5.35,"max":108.39},{"min":5.73,"max":116.37},{"min":-0.46,"max":125.07},{"min":4.93,"max":125.62},{"min":9.3,"max":97.2},{"min":5.44,"max":126.12},{"min":5.96,"max":124.2},{"min":2.32,"max":116.24},{"min":1.44,"max":108.22},{"min":3.11,"max":117.32},{"min":6.45,"max":117.24},{"min":6.13,"max":113.67},{"min":0.78,"max":119.94},{"min":4.75,"max":128.79},{"min":4.93,"max":114.94},{"min":2.02,"max":121.57},{"min":3.29,"max":115.97},{"min":6.62,"max":109.58},{"min":5.21,"max":104.24},{"min":8.49,"max":106.86},{"min":3.58,"max":128.52},{"min":1.18,"max":120.85},{"min":6.4,"max":124.16},{"min":4.17,"max":107.78},{"min":7.92,"max":117.1},{"min":1.17,"max":114.31},{"min":3.65,"max":132.62},{"min":8.61,"max":102.19},{"min":7.45,"max":114.43},{"min":6.49,"max":104.73},{"min":-1.95,"max":126.15},{"min":5.65,"max":119.85},{"min":1.95,"max":118.06},{"min":3.89,"max":110.0},{"min":7.83,"max":111.21},{"min":1.46,"max":129.89},{"min":-0.17,"max":115.32},{"min":6.18,"max":111.95},{"min":4.78,"max":121.64},{"min":-0.35,"max":116.47},{"min":-0.77,"max":121.65},{"min":3.27,"max":122.71},{"min":2.77,"max":121.46},{"min":2.92,"max":121.61},{"min":0.82,"max":137.8},{"min":4.44,"max":116.85},{"min":4.31,"max":118.95},{"min":7.43,"max":116.19},{"min":5.02,"max":109.64},{"min":6.06,"max":111.27},{"min":0.77,"max":109.71},{"min":4.28,"max":109.94},{"min":7.29,"max":107.23},{"min":7.55,"max":112.73},{"min":3.83,"max":128.91},{"min":8.04,"max":119.09},{"min":1.32,"max":119.83},{"min":5.43,"max":131.12},{"min":4.46,"max":118.69},{"min":6.92,"max":107.51},{"min":4.19,"max":110.42},{"min":5.44,"max":122.76},{"min":5.85,"max":109.64},{"min":6.05,"max":105.43},{"min":7.7,"max":116.64},{"min":7.16,"max":122.77},{"min":6.06,"max":105.99},{"min":-0.21,"max":125.32},{"min":7.47,"max":111.1},{"min":5.51,"max":114.04},{"min":4.2,"max":131.95},{"min":1.42,"max":121.32},{"min":5.06,"max":121.96},{"min":1.86,"max":116.32},{"min":4.56,"max":111.69},{"min":6.67,"max":118.31},{"min":5.71,"max":114.33},{"min":1.45,"max":117.9},{"min":6.78,"max":114.55},{"min":6.6,"max":101.18},{"min":4.56,"max":108.5},{"min":3.89,"max":130.26},{"min":7.08,"max":114.37},{"min":6.38,"max":102.84},{"min":-1.37,"max":134.87},{"min":1.82,"max":115.48},{"min":5.15,"max":115.42},{"min":6.71,"max":110.8},{"min":2.2,"max":123.77},{"min":4.85,"max":111.51},{"min":7.69,"max":114.39},{"min":3.87,"max":116.51},{"min":6.54,"max":113.73},{"min":4.11,"max":125.11},{"min":6.89,"max":109.04},{"min":-0.27,"max":114.74},{"min":1.56,"max":131.41},{"min":2.79,"max":123.29},{"min":4.2,"max":109.09},{"min":7.06,"max":108.57},{"min":4.49,"max":120.08},{"min":6.72,"max":115.05},{"min":9.13,"max":111.74},{"min":2.93,"max":113.31},{"min":2.69,"max":113.63},{"min":-0.21,"max":129.76},{"min":3.54,"max":118.83},{"min":2.44,"max":115.46},{"min":4.12,"max":119.0},{"min":3.47,"max":118.24},{"min":1.4,"max":126.36},{"min":2.9,"max":126.42},{"min":3.03,"max":113.96},{"min":-0.43,"max":122.06},{"min":0.05,"max":117.98},{"min":6.65,"max":112.49},{"min":6.84,"max":112.01},{"min":0.92,"max":119.59},{"min":2.1,"max":111.16},{"min":-0.37,"max":124.5},{"min":4.37,"max":110.13},{"min":4.35,"max":117.29},{"min":0.59,"max":120.84},{"min":2.9,"max":118.87},{"min":6.44,"max":102.48},{"min":6.72,"max":110.73},{"min":6.05,"max":115.29},{"min":-0.58,"max":120.67},{"min":1.73,"max":119.19},{"min":5.32,"max":110.91},{"min":1.61,"max":131.22},{"min":5.83,"max":114.65},{"min":-0.11,"max":111.41},{"min":4.7,"max":117.26},{"min":3.83,"max":130.83},{"min":4.48,"max":119.07},{"min":5.26,"max":119.13},{"min":6.65,"max":108.11},{"min":5.05,"max":114.52},{"min":7.01,"max":105.81},{"min":6.2,"max":104.73},{"min":0.55,"max":125.56},{"min":2.91,"max":124.97},{"min":-0.09,"max":109.34},{"min":1.47,"max":126.72},{"min":3.67,"max":107.71},{"min":10.47,"max":102.49},{"min":3.41,"max":116.84},{"min":8.16,"max":97.88},{"min":3.0,"max":111.68},{"min":7.49,"max":110.05},{"min":1.84,"max":107.25},{"min":4.55,"max":117.59},{"min":9.87,"max":110.45},{"min":4.23,"max":116.21},{"min":-0.39,"max":117.63},{"min":1.39,"max":117.7},{"min":3.02,"max":125.54},{"min":6.71,"max":102.47},{"min":6.2,"max":119.21},{"min":7.55,"max":105.92},{"min":5.1,"max":121.05},{"min":3.11,"max":115.58},{"min":3.07,"max":133.59},{"min":6.85,"max":106.24},{"min":6.55,"max":111.92},{"min":2.14,"max":118.34},{"min":-0.17,"max":131.02},{"min":7.16,"max":108.24},{"min":-0.65,"max":118.24},{"min":4.13,"max":120.94},{"min":9.02,"max":106.2},{"min":5.35,"max":113.58},{"min":-1.71,"max":115.13},{"min":4.32,"max":119.77},{"min":6.99,"max":117.31},{"min":9.3,"max":108.37},{"min":4.75,"max":115.42},{"min":6.94,"max":120.67},{"min":7.9,"max":112.48},{"min":7.26,"max":104.83},{"min":6.3,"max":102.77},{"min":6.01,"max":106.78},{"min":0.4,"max":122.02},{"min":8.24,"max":105.84},{"min":2.64,"max":124.78},{"min":5.99,"max":110.08},{"min":4.96,"max":125.89},{"min":4.54,"max":106.58},{"min":2.69,"max":113.66},{"min":9.23,"max":101.9},{"min":7.16,"max":114.41},{"min":6.87,"max":113.87},{"min":3.58,"max":111.57},{"min":7.14,"max":110.63},{"min":0.63,"max":140.16},{"min":6.25,"max":120.76},{"min":5.38,"max":99.2},{"min":7.93,"max":104.1},{"min":8.37,"max":111.39},{"min":5.17,"max":114.36},{"min":5.07,"max":120.59},{"min":2.34,"max":123.62},{"min":-0.12,"max":120.85},{"min":8.5,"max":110.58},{"min":4.19,"max":107.02},{"min":8.97,"max":106.88},{"min":3.63,"max":137.59},{"min":2.06,"max":118.09},{"min":9.15,"max":115.93},{"min":7.3,"max":108.78},{"min":6.57,"max":118.24},{"min":-1.21,"max":124.72},{"min":8.07,"max":105.72},{"min":7.68,"max":121.18},{"min":4.17,"max":123.53},{"min":1.94,"max":126.19},{"min":8.14,"max":102.55},{"min":4.99,"max":124.21},{"min":2.22,"max":115.68},{"min":0.93,"max":120.65},{"min":5.36,"max":108.48},{"min":1.41,"max":110.97},{"min":5.99,"max":112.73},{"min":7.85,"max":112.56},{"min":5.03,"max":121.9},{"min":3.98,"max":119.6},{"min":6.67,"max":117.04},{"min":8.51,"max":117.79},{"min":4.83,"max":125.59},{"min":2.96,"max":118.3},{"min":-2.91,"max":112.94},{"min":0.86,"max":120.39},{"min":5.23,"max":116.11},{"min":4.9,"max":113.24},{"min":6.86,"max":99.08},{"min":8.9,"max":110.73},{"min":5.75,"max":114.82},{"min":3.86,"max":121.15},{"min":5.26,"max":116.26},{"min":8.96,"max":110.87},{"min":2.06,"max":120.13},{"min":4.25,"max":113.02},{"min":1.41,"max":113.55},{"min":5.88,"max":120.8},{"min":3.95,"max":113.44},{"min":7.45,"max":114.38},{"min":-2.55,"max":109.16},{"min":7.23,"max":103.72},{"min":4.56,"max":119.3},{"min":5.57,"max":107.24},{"min":6.64,"max":110.14},{"min":3.94,"max":108.29},{"min":3.87,"max":124.12},{"min":2.17,"max":121.0},{"min":5.59,"max":129.72},{"min":2.98,"max":121.42},{"min":-2.6,"max":110.66},{"min":6.01,"max":101.93}]};
+const FF="'IBM Plex Sans', system-ui, sans-serif";
+const AX={grid:{color:'#eef2f5'},ticks:{font:{family:FF,size:11}}};
+const TTL={family:FF,size:12,weight:'600'};
+const LBL={size:10,family:FF};
+const LEGF={family:FF,size:11.5};
+const fmt0=v=>Math.round(v).toLocaleString('en-US');
+const fmt1=v=>v.toFixed(1), fmt2=v=>v.toFixed(2);
+const sgn=(v,d)=>(v<-0.0049?'−':(v>0.0049?'+':''))+Math.abs(v).toFixed(d);
+const P=D.par, B=D.base;
+const fv=(p,v)=>p.key==='a'?fmt0(v)+' m/s':p.key==='Q'?fmt2(v)+' m³/s':p.key==='V0'?fmt2(v)+' m³':p.key==='hf'||p.key==='hdn'?fmt1(v)+' m':fmt2(v);
+/* ---------- CHART 1 : tornado ---------- */
+const sOut=document.getElementById('sOut');
+const torChart=new Chart(document.getElementById('torChart'),{
+  data:{labels:[],datasets:[{type:'bar',label:'Span over the input range (m)',data:[],backgroundColor:[],borderWidth:0,barPercentage:0.7}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,indexAxis:'y',
+    scales:{x:{type:'linear',title:{display:true,text:'Result (m)',font:TTL},...AX},y:{...AX}},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{const r=c.raw;return `${fmt2(r[0])} to ${fmt2(r[1])} m`;}}},
+      annotation:{annotations:{base:{type:'line',xMin:0,xMax:0,borderColor:'#111',borderWidth:1.4,label:{display:true,content:'base',position:'start',font:LBL,color:'#fff',backgroundColor:'rgba(17,17,17,0.8)'}},
+        crit:{type:'line',xMin:3,xMax:3,borderColor:'#1e8449',borderWidth:1.2,borderDash:[5,4]}}}}}
+});
+function updTor(){
+  const o=sOut.value, rows=P.map(p=>({lab:p.label,lo:Math.min(p.at_lo[o],p.at_hi[o]),hi:Math.max(p.at_lo[o],p.at_hi[o]),span:Math.abs(p.at_hi[o]-p.at_lo[o])}))
+    .sort((a,b)=>b.span-a.span);
+  torChart.data.labels=rows.map(r=>r.lab);
+  torChart.data.datasets[0].data=rows.map(r=>[r.lo,r.hi]);
+  torChart.data.datasets[0].backgroundColor=rows.map((r,i)=>i===0?'#c0392b':(i<3?'#b9770e':'#1b4f72'));
+  const A=torChart.options.plugins.annotation.annotations; A.base.xMin=B[o]; A.base.xMax=B[o];
+  A.crit.display=(o==='min'); A.crit.xMin=o==='min'?3:136; A.crit.xMax=A.crit.xMin; A.crit.display=true;
+  torChart.update('none');
+  document.getElementById('rBase').innerHTML=(o==='min'?sgn(B[o],2):fmt2(B[o]))+' <small>m</small>';
+  document.getElementById('rTop').innerHTML=rows[0].lab;
+  document.getElementById('rSpan').innerHTML=fmt2(rows[0].span)+' <small>m</small>';
+  document.getElementById('rLow').innerHTML=rows[rows.length-1].lab+' ('+fmt2(rows[rows.length-1].span)+' m)';
+}
+sOut.addEventListener('input',updTor);updTor();
+
+/* ---------- CHART 2 : sweep ---------- */
+const sPar=document.getElementById('sPar'), sCr=document.getElementById('sCr');
+const swChart=new Chart(document.getElementById('swChart'),{
+  data:{datasets:[
+    {type:'line',label:'Lowest head (m)',data:[],borderColor:'#1b4f72',backgroundColor:'#1b4f72',borderWidth:2.2,pointRadius:4,yAxisID:'y',order:2},
+    {type:'line',label:'Highest head (m, right)',data:[],borderColor:'#c0392b',backgroundColor:'#c0392b',borderWidth:1.8,borderDash:[5,4],pointRadius:3,yAxisID:'y1',order:3},
+    {type:'scatter',label:'Base',data:[],backgroundColor:'#111',borderColor:'#fff',borderWidth:2,pointRadius:7,yAxisID:'y',order:1}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,
+    scales:{x:{type:'linear',title:{display:true,text:'',font:TTL},...AX},
+            y:{type:'linear',min:-2,max:12,position:'left',title:{display:true,text:'Lowest head on the line (m)',font:TTL},...AX},
+            y1:{type:'linear',min:95,max:135,position:'right',title:{display:true,text:'Highest head (m)',font:TTL},grid:{drawOnChartArea:false},ticks:{font:{family:FF,size:11}}}},
+    plugins:{legend:{labels:{font:LEGF,usePointStyle:true,boxWidth:8}},tooltip:{callbacks:{label:c=>`${c.dataset.label.replace(' (m)','').replace(' (m, right)','')}: ${fmt2(c.parsed.y)} m`}},
+      annotation:{annotations:{crit:{type:'line',yScaleID:'y',yMin:3,yMax:3,borderColor:'#1e8449',borderWidth:1.4,borderDash:[6,4],label:{display:true,content:'+3.0 m',position:'end',font:LBL,color:'#fff',backgroundColor:'rgba(30,132,73,0.85)'}}}}}}
+});
+function updSw(){
+  const p=P[+sPar.value], cr=+sCr.value;
+  document.getElementById('vCr').textContent=sgn(cr,1)+' m';
+  swChart.data.datasets[0].data=p.sweep.map(s=>({x:s.v,y:s.min}));
+  swChart.data.datasets[1].data=p.sweep.map(s=>({x:s.v,y:s.max}));
+  swChart.data.datasets[2].data=[{x:p.base,y:B.min}];
+  swChart.options.scales.x.title.text=p.label+(p.unit?' ('+p.unit+')':'');
+  swChart.options.scales.x.min=p.lo; swChart.options.scales.x.max=p.hi;
+  const a=swChart.options.plugins.annotation.annotations.crit; a.yMin=cr; a.yMax=cr; a.label.content=sgn(cr,1)+' m';
+  swChart.update('none');
+  const mins=p.sweep.map(s=>s.min), maxs=p.sweep.map(s=>s.max), ok=p.sweep.filter(s=>s.min>=cr).length;
+  document.getElementById('rRng').innerHTML=fv(p,p.lo)+' to '+fv(p,p.hi);
+  document.getElementById('rSwMin').innerHTML=sgn(Math.min(...mins),2)+' to '+sgn(Math.max(...mins),2)+' <small>m</small>';
+  document.getElementById('rSwMax').innerHTML=fmt1(Math.min(...maxs))+' to '+fmt1(Math.max(...maxs))+' <small>m</small>';
+  document.getElementById('rMet').innerHTML=ok+' <small>of 7 points</small>';
+}
+[sPar,sCr].forEach(s=>s.addEventListener('input',updSw));updSw();
+
+/* ---------- CHART 3 : sampled cloud ---------- */
+const sCr2=document.getElementById('sCr2'), sMx=document.getElementById('sMx');
+const MN=D.mc.map(r=>r.min).sort((a,b)=>a-b), MX=D.mc.map(r=>r.max).sort((a,b)=>a-b), NR=MN.length;
+const pct=(arr,p)=>{const i=(arr.length-1)*p, lo=Math.floor(i), hi=Math.ceil(i); return arr[lo]+(arr[hi]-arr[lo])*(i-lo);};
+const BIN=0.5, B0=Math.floor(MN[0]/BIN)*BIN, NB=Math.ceil((MN[NR-1]-B0)/BIN)+1;
+const centres=[], counts=[]; for(let k=0;k<NB;k++){centres.push(B0+BIN*(k+0.5)); counts.push(0);} MN.forEach(v=>{counts[Math.min(NB-1,Math.floor((v-B0)/BIN))]++;});
+const mcChart=new Chart(document.getElementById('mcChart'),{
+  data:{labels:centres.map(c=>fmt2(c)),datasets:[{type:'bar',label:'Runs',data:counts,backgroundColor:[],borderWidth:0,barPercentage:1,categoryPercentage:0.95}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,
+    scales:{x:{title:{display:true,text:'Lowest head on the line, bin centre (m)',font:TTL},...AX},y:{title:{display:true,text:'Number of runs (of 300)',font:TTL},...AX}},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.parsed.y} runs`}}}}
+});
+function updMc(){
+  const cr=+sCr2.value, mx=+sMx.value;
+  document.getElementById('vCr2').textContent=sgn(cr,1)+' m';
+  document.getElementById('vMx').textContent=mx+' m';
+  mcChart.data.datasets[0].backgroundColor=centres.map(c=>c+BIN/2<=cr?'#c0392b':(c-BIN/2<cr?'#b9770e':'#1b4f72'));
+  mcChart.update('none');
+  const fail=MN.filter(v=>v<cr).length, over=MX.filter(v=>v>mx).length;
+  document.getElementById('rFail').innerHTML=fail+' <small>('+fmt0(100*fail/NR)+' %)</small>';
+  document.getElementById('rP5').innerHTML=sgn(pct(MN,0.05),2)+' <small>m</small>';
+  document.getElementById('rP50').innerHTML=sgn(pct(MN,0.5),2)+' <small>m</small>';
+  document.getElementById('rOver').innerHTML=over+' <small>('+fmt0(100*over/NR)+' %)</small>';
+  document.getElementById('rP95').innerHTML=fmt1(pct(MX,0.95))+' <small>m</small>';
+}
+[sCr2,sMx].forEach(s=>s.addEventListener('input',updMc));updMc();
+window.addEventListener('load',function(){try{[torChart,swChart,mcChart].forEach(c=>c.resize());}catch(e){}});
+
+</script>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/966541706700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fab-glass fab-wa">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="fab-glass-text">WhatsApp</span>
+</a>
+
+<!-- End WhatsApp Button -->
+
+<script src="article-features.js?v=15"></script>
+<script src="theme.js?v=13"></script>
+</body>
+</html>

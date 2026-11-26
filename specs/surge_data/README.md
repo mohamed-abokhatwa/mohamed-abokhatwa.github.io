@@ -44,3 +44,15 @@ Run in this order (needs numpy for the two independent codes):
   (`gen_datasets_helpers.py` holds the decimation helpers shared with `gen_datasets.py`).
 
     python3 specs/surge_data/gen_analyst.py specs/surge_data
+
+## Surge-analysis practice articles, second set (s12–s19)
+
+- `net_moc.py` — MOC solver for small networks: junction demands (fixed or orifice), branches,
+  dead ends, vessels at junctions, pumps with a prescribed speed, a valve opening or a rundown, and
+  in-line boosters with a bypass. It reproduces `moc.py` to 0.01 m on the reference main
+  (unprotected trip, pump rundown, vessel); the check is stored under `checks` in `practice2.json`.
+- `gen_practice2.py` — every dataset behind `specs/s12_*.py` to `specs/s19_*.py`; writes `practice2.json`.
+  The filling article (s17) uses closed forms and a rigid-column ODE computed in the page itself.
+
+    python3 specs/surge_data/gen_practice2.py specs/surge_data            # all sections
+    python3 specs/surge_data/gen_practice2.py specs/surge_data s15 s19    # selected sections

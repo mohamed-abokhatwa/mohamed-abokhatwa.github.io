@@ -387,6 +387,13 @@ p strong{color:var(--text-primary); font-weight:600;}
     .app-stats b s { font-size:.72em; font-weight:500; color:var(--text-tertiary); margin-inline-end:6px;
       text-decoration-thickness:1.5px; }
     .app-panel + .app-panel { margin-top:18px; }
+    .app-id { display:flex; align-items:center; gap:16px; margin:0 0 20px; }
+    .app-id img { width:64px; height:64px; flex:none; border-radius:22%; display:block;
+      box-shadow:0 0 0 1px var(--border), 0 2px 6px rgba(0,0,0,.18); }
+    .app-id b { display:block; font-family:var(--font-display); font-size:19px; font-weight:700;
+      letter-spacing:-.02em; line-height:1.2; color:var(--text-primary); }
+    .app-id span { display:block; margin-top:4px; font-family:var(--font-mono); font-size:11px;
+      letter-spacing:.04em; color:var(--text-tertiary); line-height:1.5; }
     @media (max-width:720px){ .app-stats{grid-template-columns:1fr 1fr;} .app-panel{padding:24px 22px;} }
 
     /* ── Filter UI ── */
@@ -698,6 +705,7 @@ p strong{color:var(--text-primary); font-weight:600;}
   <div class="rt-tag"><span class="rt-p">البرنامج</span><span class="rt-ln"></span><span class="rt-nm">Engineering Workspace &middot; engspace.app</span></div>
   <h2 class="section-title">الفحص الذي يسبق خروج أي<br>مستند من المكتب.</h2>
   <div class="app-panel">
+    <div class="app-id"><img src="img/apps/engspace.webp" width="64" height="64" alt="أيقونة تطبيق Engineering Workspace" loading="lazy"><div><b>Engineering Workspace</b><span>ويندوز وماك &middot; التحميل من engspace.app</span></div></div>
     <p class="app-lede">يقرأ Engineering Workspace العقد والمواصفات والمخططات وسنوات المراسلات، ثم يفحص ما أنت على وشك
       إصداره في ضوئها، ويحفظ السجل الذي يحميك حين يتأخر الجواب. سجلات، واستوديوهات مخططات، وسلاسل
       اعتماد، وملف مطالبات، حول سجل مشروع واحد، على أجهزة تملكها أنت.</p>
@@ -720,6 +728,7 @@ p strong{color:var(--text-primary); font-weight:600;}
   <div class="rt-tag"><span class="rt-p">البرنامج</span><span class="rt-ln"></span><span class="rt-nm">SurgeSpace &middot; surgespace.engspace.app</span></div>
   <h2 class="section-title">شاهد كل موجة ضغط<br>قبل أن يراها خط الأنابيب.</h2>
   <div class="app-panel">
+    <div class="app-id"><img src="img/apps/surgespace.webp" width="64" height="64" alt="أيقونة تطبيق SurgeSpace" loading="lazy"><div><b>SurgeSpace</b><span>ويندوز &middot; Microsoft Store</span></div></div>
     <p class="app-lede">SurgeSpace بيئة عمل لتحليل المطرقة المائية والموجات الضاغطة على Windows. ارسم المنظومة، أو أعطه
       مخططاتك ومقاطعك الطولية وأوراق البيانات، ثم افصل المضخات أو أغلق الصمامات وشاهد الموجات تنتقل على طول
       الأنبوب. يحدد أسوأ الضغوط وتجاويف البخار والصدمات، ويحسب أحجام خزانات الهواء وصمامات الهواء التي تتحكم فيها.</p>
@@ -740,16 +749,17 @@ p strong{color:var(--text-primary); font-weight:600;}
 
 <section data-at="el:1009.5"><div class="rt-wrap-wide">
   <div class="rt-tag"><span class="rt-p">تطبيق الجوال</span><span class="rt-ln"></span><span class="rt-nm">كوكب المهندسين &middot; iPhone وiPad</span></div>
-  <h2 class="section-title">سبع وأربعون حاسبة<br>في جيب كل مهندس.</h2>
+  <h2 class="section-title">تسع وخمسون حاسبة<br>في جيب كل مهندس.</h2>
   <div class="app-panel">
-    <p class="app-lede">كوكب المهندسين تطبيق مجاني للمهندسين وطلاب الهندسة في كل التخصصات. يضم صندوق أدواته ٤٧ حاسبة
+    <div class="app-id"><img src="img/apps/planet-of-engineers.webp" width="64" height="64" alt="أيقونة تطبيق كوكب المهندسين" loading="lazy"><div><b>كوكب المهندسين</b><span>آيفون وآيباد &middot; متجر App Store &middot; قريبًا على Google Play</span></div></div>
+    <p class="app-lede">كوكب المهندسين تطبيق مجاني للمهندسين وطلاب الهندسة في كل التخصصات. يضم صندوق أدواته ٥٩ حاسبة
       تعمل دون إنترنت في الموقع، من ترخيم الكمرات وتباعد الحديد إلى هبوط الجهد وقدرة المضخات وحمل التبريد. وتعرض
       «نجدة الموقع» سؤالك مع صورة على مهندسين من حول العالم، وتكشف «بوصلة الرواتب» ما يتقاضاه المهندسون فعلًا حسب
       الدولة والتخصص والخبرة، وتمنح «مساحة الطلاب» تمارين الاختبارات والمرشدين وفرص التدريب ومجتمع جامعتك.</p>
     <p class="app-note">بدون إعلانات وبدون مشتريات داخل التطبيق، بالعربية والإنجليزية. كل معادلة مراجعة على القيم المرجعية
       وعلى تنفيذ مستقل ثانٍ، بالمنهج نفسه المتبع في حاسبات هذا الموقع.</p>
     <div class="app-stats">
-      <div><b>٤٧</b><span>حاسبة تعمل دون إنترنت</span></div>
+      <div><b>٥٩</b><span>حاسبة تعمل دون إنترنت</span></div>
       <div><b>+٩٬٧٠٠</b><span>جامعة في مساحة الطلاب</span></div>
       <div><b>AR + EN</b><span>مظهر داكن أو فاتح</span></div>
       <div><b>مجاني</b><span>بلا إعلانات ولا مشتريات داخل التطبيق</span></div>

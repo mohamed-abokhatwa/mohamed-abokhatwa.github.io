@@ -1082,8 +1082,8 @@
       '<img src="/planet-of-engineers/icon.png" alt="" width="56" height="56" loading="lazy">' +
       '<div><p class="poe-t">' + (ar ? 'كوكب المهندسين: التطبيق' : 'Planet of Engineers, the app') + '</p>' +
       '<p class="poe-d">' + (ar
-        ? '٤٧ حاسبة هندسية تعمل دون إنترنت، وإجابات من مهندسين في الموقع، ورواتب حقيقية، ومساحة للطلاب. مجاني وبلا إعلانات.'
-        : '47 engineering calculators that work offline, answers from engineers on site, real salary data and a campus for students. Free, no ads.') + '</p>' +
+        ? '٥٩ حاسبة هندسية تعمل دون إنترنت، وإجابات من مهندسين في الموقع، ورواتب حقيقية، ومساحة للطلاب. مجاني وبلا إعلانات.'
+        : '59 engineering calculators that work offline, answers from engineers on site, real salary data and a campus for students. Free, no ads.') + '</p>' +
       '<p class="poe-a"><a href="https://apps.apple.com/app/id6831519575" target="_blank" rel="noopener" ' +
         'onclick="if(window.gtag)gtag(\'event\',\'app_click\',{source:\'article_strip\',page_path:window.location.pathname});">' +
         (ar ? 'حمّله من App Store' : 'Download on the App Store') + '</a>' +

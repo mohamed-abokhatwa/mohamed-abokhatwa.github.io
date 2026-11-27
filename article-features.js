@@ -1053,6 +1053,47 @@
     });
   }
 
+
+  /* ─────────────────────────────────────────────────────────────
+     12c. PLANET OF ENGINEERS: a quiet strip before the references
+     ───────────────────────────────────────────────────────────── */
+  function injectAppStrip() {
+    var body = document.querySelector('.article-body');
+    if (!body || document.querySelector('.poe-strip')) return;
+    var ar = (document.documentElement.getAttribute('lang') || '').indexOf('ar') === 0;
+    var css = document.createElement('style');
+    css.textContent = [
+      '.poe-strip{display:flex;gap:16px;align-items:center;margin:36px 0 28px;padding:16px 18px;border:1px solid var(--border);border-radius:3px;background:var(--bg-2);}',
+      '.poe-strip img{width:56px;height:56px;border-radius:12px;flex:0 0 auto;border:1px solid var(--border);}',
+      '.poe-strip .poe-t{font-weight:600;color:var(--text-primary);font-size:15px;margin:0 0 2px;}',
+      '.poe-strip .poe-d{color:var(--text-secondary);font-size:14px;line-height:1.55;margin:0 0 8px;}',
+      '.poe-strip .poe-a{display:flex;gap:14px;flex-wrap:wrap;font-size:13.5px;}',
+      '.poe-strip .poe-a a{color:var(--accent);font-weight:600;text-decoration:none;}',
+      '.poe-strip .poe-a a:hover{text-decoration:underline;}',
+      '.poe-strip .poe-a span{color:var(--text-tertiary);}',
+      '@media (max-width:520px){.poe-strip{align-items:flex-start;}.poe-strip img{width:44px;height:44px;}}',
+      '@media print{.poe-strip{display:none;}}'
+    ].join('\n');
+    document.head.appendChild(css);
+    var el = document.createElement('aside');
+    el.className = 'poe-strip';
+    el.setAttribute('aria-label', ar ? 'تطبيق كوكب المهندسين' : 'Planet of Engineers app');
+    el.innerHTML =
+      '<img src="/planet-of-engineers/icon.png" alt="" width="56" height="56" loading="lazy">' +
+      '<div><p class="poe-t">' + (ar ? 'كوكب المهندسين: التطبيق' : 'Planet of Engineers, the app') + '</p>' +
+      '<p class="poe-d">' + (ar
+        ? '٤٧ حاسبة هندسية تعمل دون إنترنت، وإجابات من مهندسين في الموقع، ورواتب حقيقية، ومساحة للطلاب. مجاني وبلا إعلانات.'
+        : '47 engineering calculators that work offline, answers from engineers on site, real salary data and a campus for students. Free, no ads.') + '</p>' +
+      '<p class="poe-a"><a href="https://apps.apple.com/app/id6831519575" target="_blank" rel="noopener" ' +
+        'onclick="if(window.gtag)gtag(\'event\',\'app_click\',{source:\'article_strip\',page_path:window.location.pathname});">' +
+        (ar ? 'حمّله من App Store' : 'Download on the App Store') + '</a>' +
+      '<a href="/planet-of-engineers/" target="_blank" rel="noopener">' + (ar ? 'عن التطبيق' : 'About the app') + '</a>' +
+      '<span>' + (ar ? 'قريبًا على Google Play' : 'Google Play coming soon') + '</span></p></div>';
+    var refs = body.querySelector('#refs') || body.querySelector('h2[id*="ref"]');
+    if (refs) refs.parentNode.insertBefore(el, refs);
+    else body.appendChild(el);
+  }
+
   /* ─────────────────────────────────────────────────────────────
      13.  INIT
      ───────────────────────────────────────────────────────────── */
@@ -1069,6 +1110,7 @@
     initFabTracking();
     initSectionRail();
     initTables();
+    injectAppStrip();
   }
 
   if (document.readyState === 'loading') {
